@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1994, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1994, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -37,7 +37,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyNew(inPointer,instanciation) { \
-    macroVoidPointer (inPointer) ; \
+    macroCheckPointerIsNull (inPointer) ; \
     prologueForNew () ; \
     inPointer = new instanciation ; \
     registerPointer (inPointer COMMA_HERE) ; \
@@ -50,7 +50,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyNewArray(inPointer,type,size) { \
-    macroVoidPointer (inPointer) ; \
+    macroCheckPointerIsNull (inPointer) ; \
     prologueForNew () ; \
     inPointer = new type [size] ; \
     registerArray (inPointer COMMA_HERE) ; \
@@ -63,7 +63,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyNewPODArray(inPointer,type,size) { \
-    macroVoidPointer (inPointer) ; \
+    macroCheckPointerIsNull (inPointer) ; \
     inPointer = (type *) allocAndRegisterPODArray ((size) * sizeof (type) COMMA_HERE) ; \
   }
 #else
@@ -87,7 +87,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyNewThere(inPointer,instanciation) { \
-    macroVoidPointerThere (inPointer) ; \
+    macroCheckPointerIsNullThere (inPointer) ; \
     prologueForNew () ; \
     inPointer = new instanciation ; \
     registerPointer (inPointer COMMA_THERE) ; \
@@ -125,7 +125,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define macroMyNewArrayThere(inPointer,type,size) { \
-    macroVoidPointerThere (inPointer) ; \
+    macroCheckPointerIsNullThere (inPointer) ; \
     prologueForNew () ; \
     inPointer = new type [size] ; \
     registerArray (inPointer COMMA_THERE) ; \
@@ -199,23 +199,39 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
-//         Assertion for checking if a pointer is void
-//
+//         Assertion for checking if a pointer is NULL
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define macroVoidPointer(inPointer) routineVoidPointer (inPointer COMMA_HERE)
+  #define macroCheckPointerIsNull(inPointer) routineCheckPointerIsNull (inPointer COMMA_HERE)
 #else
-  #define macroVoidPointer(inPointer)
+  #define macroCheckPointerIsNull(inPointer)
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define macroVoidPointerThere(inPointer) routineVoidPointer (inPointer COMMA_THERE)
+  #define macroCheckPointerIsNullThere(inPointer) routineCheckPointerIsNull (inPointer COMMA_THERE)
 #else
-  #define macroVoidPointerThere(inPointer)
+  #define macroCheckPointerIsNullThere(inPointer)
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//         Assertion for checking if a pointer is not NULL
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define macroCheckPointerIsNotNull(inPointer) routineCheckPointerIsNotNull (inPointer COMMA_HERE)
+#else
+  #define macroCheckPointerIsNotNull(inPointer)
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define macroCheckPointerIsNotNullThere(inPointer) routineCheckPointerIsNotNull (inPointer COMMA_THERE)
+#else
+  #define macroCheckPointerIsNotNullThere(inPointer)
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -237,7 +253,8 @@ void displayAllocatedBlocksInfo (void) ;
   void * allocAndRegisterPODArray (const size_t inSize COMMA_LOCATION_ARGS) ;
   void registerArray (const void * inPointer COMMA_LOCATION_ARGS) ;
   void routineValidPointer (const void * inPointer COMMA_LOCATION_ARGS) ;
-  void routineVoidPointer (const void * inPointer COMMA_LOCATION_ARGS) ;
+  void routineCheckPointerIsNull (const void * inPointer COMMA_LOCATION_ARGS) ;
+  void routineCheckPointerIsNotNull (const void * inPointer COMMA_LOCATION_ARGS) ;
   void routineFreePointer (const void * inPointer COMMA_LOCATION_ARGS) ;
   void routineFreePODArrayPointer (void * inPointer COMMA_LOCATION_ARGS) ;
   void routineFreeArrayPointer (const void * inPointer COMMA_LOCATION_ARGS) ;

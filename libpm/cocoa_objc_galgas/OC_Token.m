@@ -80,7 +80,11 @@
            (UInt64) mRange.length,
            (SInt64) inTranslation) ;
   }
-  mRange.location += (NSUInteger) inTranslation ;
+  if (inTranslation >= 0) {
+    mRange.location += (NSUInteger) inTranslation ;
+  }else{
+    mRange.location -= (NSUInteger) -inTranslation ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

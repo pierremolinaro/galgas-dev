@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2012, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2012, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -51,7 +51,7 @@ class AbstractFileHandle {
 
 //---
   public: void appendBinaryData (const size_t inByteCount, const uint8_t * inByteArray) ;
-  public: void appendUTF8String (const size_t inByteCount, const char * inByteArray) ;
+  public: void appendUTF8String (const int inByteCount, const char * inByteArray) ;
 } ;
 
 

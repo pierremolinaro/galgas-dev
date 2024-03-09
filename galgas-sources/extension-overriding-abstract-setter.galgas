@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -8,13 +25,13 @@ refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
   private let @formalParameterListAST mOverridingExtensionSetterFormalParameterList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -22,22 +39,23 @@ syntax extension galgas3DeclarationsSyntax {
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
       !isPredefined: false # Is not predefined
       !className
       !setterName
-      !formalParameterList}
+      !formalParameterList
+    }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $setter$
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
       !isPredefined: false # Is not predefined
       !inClassName
@@ -45,21 +63,21 @@ syntax extension galgas3DeclarationsSyntax {
       !formalParameterList}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   KEY REPRESENTATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingAbstractExtensionSetterAST keyRepresentation -> @string {
   result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -71,9 +89,9 @@ override method @overridingAbstractExtensionSetterAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -84,12 +102,12 @@ override method @overridingAbstractExtensionSetterAST enterDeclarationInSemantic
 {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -101,7 +119,7 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
 #  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !mOverridingExtensionSetterName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check type is an abstract class
   if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].mTypeName.string + "' is not a class"
@@ -146,9 +164,9 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   EXTENSION LIST MAP
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -168,4 +186,4 @@ override method @overridingAbstractExtensionSetterAST buildExtensionListMaps
     !self.mOverridingExtensionSetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

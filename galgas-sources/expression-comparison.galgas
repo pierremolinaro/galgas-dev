@@ -1,19 +1,36 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @comparison { 
+enum @comparison {
   case equal # ==
   case notEqual # !=
-  case lowerOrEqual 
-  case lowerThan 
-  case greaterOrEqual 
+  case lowerOrEqual
+  case lowerThan
+  case greaterOrEqual
   case greaterThan
   case sameInstance # ===
   case differentInstances # !==
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @comparisonExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
@@ -22,139 +39,141 @@ refclass @comparisonExpressionAST : @semanticExpressionAST {
   public let @semanticExpressionAST mRightExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <relation_factor_ggs3> !@semanticExpressionAST outExpression {
-    <simple_expression_ggs3> ? outExpression
+  #·······························································································
+
+  rule <relation_factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@semanticExpressionAST outExpression {
+    <simple_expression_ggs3> !?ioDeclarations ? outExpression
     repeat
     while
       let operatorLocation = @location.here
       $==$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.equal !rightOperand}
     while
       let operatorLocation = @location.here
       $!=$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.notEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $<=$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>=$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterThan !rightOperand}
     while
       let operatorLocation = @location.here
       $<$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerThan !rightOperand}
     while
       let operatorLocation = @location.here
       $===$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.sameInstance !rightOperand}
     while
       let operatorLocation = @location.here
       $!==$
       let leftOperand = outExpression
-      <simple_expression_ggs3> ?let rightOperand
+      <simple_expression_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.differentInstances !rightOperand}
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <relation_factor> !@semanticExpressionAST outExpression {
-    <simple_expression> ? outExpression
+  #·······························································································
+
+  rule <relation_factor> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression {
+    <simple_expression> !?ioDeclarations ?outExpression
     repeat
     while
       let operatorLocation = @location.here
       $==$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.equal !rightOperand}
     while
       let operatorLocation = @location.here
       $!=$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.notEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $<=$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>=$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterThan !rightOperand}
     while
       let operatorLocation = @location.here
       $<$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerThan !rightOperand}
     while
       let operatorLocation = @location.here
       $===$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.sameInstance !rightOperand}
     while
       let operatorLocation = @location.here
       $!==$
       let leftOperand = outExpression
-      <simple_expression> ?let rightOperand
+      <simple_expression> !?ioDeclarations ?let rightOperand
       outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.differentInstances !rightOperand}
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @comparisonExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -166,7 +185,7 @@ override method @comparisonExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @comparisonExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -176,7 +195,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -186,12 +205,12 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
     !?ioTypeMap
-    !?ioVariableMap 
+    !?ioVariableMap
     ?var @semanticExpressionForGeneration rightExpression
   ]
 #--- Operator name
@@ -232,7 +251,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @comparisonExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mBoolType
@@ -243,9 +262,9 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mLeftExpression
@@ -275,7 +294,7 @@ override method @comparisonExpressionForGeneration generateExpression
   [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
-    !?ioTemporaryVariableIndex 
+    !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let rightTemporaryOperand
   ]
@@ -293,4 +312,4 @@ override method @comparisonExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (" + operatorName + ", " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

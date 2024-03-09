@@ -10,20 +10,20 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
+Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName COMMA_THERE),
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
+Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
                 %!^%const String & inSourceString,
                 %!^%const String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -33,8 +33,8 @@ mMatchedTemplateDelimiterIndex (-1) {
 %
   for (key) in STRINGS_IN_EXPLICIT_RULES do
    if [key count] > 0 then
-   %\n//--- Unicode string for '$%![key identifierRepresentation]%$'\n%
-   %static const utf32 kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% [] = % ![key utf32Representation]% ;\n%
+   %\n//--- Unicode string for '$%![key utf8RepresentationWithoutDelimiters]%$'\n%
+   %static const std::initializer_list <utf32> kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% = % ![key utf32Representation !withZeroTerminator: false]% ;\n%
    end
   end
 %
@@ -46,7 +46,7 @@ mMatchedTemplateDelimiterIndex (-1) {
     before %static const cTemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
       if [mEndString count] == 0 then
-        %nullptr, 0,%
+        %{}, 0,%
       else
         %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString count] string]%,%
       end
@@ -91,7 +91,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 //               P A R S E    L E X I C A L    T O K E N
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
+bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
@@ -99,8 +99,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
         && (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
         && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       const bool foundEndDelimitor = testForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
-                                                              %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
-                                                              true) ;
+                                                               true) ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }
@@ -111,14 +110,13 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
         replacementIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST count] string]%) ;
         if (replacementIndex >= 0) {
           if (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {
-            token.mTemplateStringBeforeToken.addString (String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString)) ;
+            token.mTemplateStringBeforeToken.appendString (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString) ;
           }else{
             String s ;
             while (notTestForInputUTF32String (%!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndString,
-                                               %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mEndStringLength,
                                                kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
-              s.addUnicodeChar (previousChar () COMMA_HERE) ;
+              s.appendChar (previousChar ()) ;
             }
             %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
           }
@@ -126,7 +124,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       }
       mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (%!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST count] string]%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
-        token.mTemplateStringBeforeToken.addUnicodeChar (mCurrentChar COMMA_HERE) ;
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
         advance () ;
       }
     }
@@ -148,8 +146,8 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 //                         I N T R O S P E C T I O N
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+GALGAS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
 %for (mTerminalName * * * * *) in TERMINAL_LIST
   do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
   end

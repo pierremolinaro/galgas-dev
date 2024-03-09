@@ -52,18 +52,18 @@ mDefaultValue (inDefaultValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCommandString,
+void C_StringCommandLineOption::setStringOptionForCommandChar (const String & inCommandString,
                                                                bool & outFound,
                                                                bool & outCommandLineOptionStringIsValid) {
-  outCommandLineOptionStringIsValid = (strlen (inCommandString) > 2) && (inCommandString [1] == '=') ;
+  outCommandLineOptionStringIsValid = (inCommandString.length () > 2) && (inCommandString.charAtIndex (1 COMMA_HERE) == '=') ;
   outFound = false ;
   if (outCommandLineOptionStringIsValid) {
     C_StringCommandLineOption * p = gFirstStringOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = inCommandString [0] == p->mCommandChar ;
+      outFound = UNICODE_VALUE (inCommandString.charAtIndex (0 COMMA_HERE)) == uint32_t (p->mCommandChar) ;
       if (outFound) {
         p->mValue.removeAllKeepingCapacity () ;
-        p->mValue.addString (& inCommandString [2]) ;
+        p->mValue.appendString (inCommandString.subStringFromIndex (2)) ;
       }
       p = p->mNext ;
     }
@@ -72,17 +72,17 @@ void C_StringCommandLineOption::setStringOptionForCommandChar (const char * inCo
 
 //--------------------------------------------------------------------------------------------------
 
-void C_StringCommandLineOption::setStringOptionForCommandString (const char * inCommandString,
+void C_StringCommandLineOption::setStringOptionForCommandString (const String & inCommandString,
                                                                  bool & outFound,
                                                                  bool & outCommandLineOptionStringIsValid) {
-  const uint32_t optionLength = (uint32_t) (strlen (inCommandString) & UINT32_MAX) ;
+  const int32_t optionLength = inCommandString.length () ;
   outCommandLineOptionStringIsValid = optionLength > 4 ;
 //--- Find '=' character
-  uint32_t equalSignIndex = 0 ;
+  int32_t equalSignIndex = 0 ;
   if (outCommandLineOptionStringIsValid) {
     outFound = false ;
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && ! outFound) {
-      outFound = inCommandString [equalSignIndex] == '=' ;
+      outFound = UNICODE_VALUE (inCommandString.charAtIndex (equalSignIndex COMMA_HERE)) == '=' ;
       if (! outFound) {
         equalSignIndex ++ ;
       }
@@ -90,15 +90,15 @@ void C_StringCommandLineOption::setStringOptionForCommandString (const char * in
     outCommandLineOptionStringIsValid = outFound && (equalSignIndex > 0) && (equalSignIndex < (optionLength - 1)) ;
   }
 //--- Search option
+  const String command = inCommandString.leftSubString (equalSignIndex) ;
   outFound = false ;
   if (outCommandLineOptionStringIsValid) {
     C_StringCommandLineOption * p = gFirstStringOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = (strlen (p->mCommandString) == equalSignIndex) &&
-                 (strncmp (p->mCommandString, inCommandString, equalSignIndex) == 0) ;
+      outFound = strcmp (p->mCommandString, command.cString ()) == 0 ;
       if (outFound) {
         p->mValue.removeAllKeepingCapacity () ;
-        p->mValue.addString (& inCommandString [strlen (p->mCommandString) + 1]) ;
+        p->mValue.appendString (inCommandString.subStringFromIndex (int32_t (strlen (p->mCommandString) + 1))) ;
       }
       p = p->mNext ;
     }
@@ -114,9 +114,8 @@ void C_StringCommandLineOption::printUsageOfStringOptions (void) {
     if (c != '\0') {
       printf (" [-%c=string]", c) ;
     }
-    const char * s = p->mCommandString ;
-    if (s [0] != 0) {
-      printf (" [--%s=string]", s) ;
+    if (p->mCommandString [0] != '\0') {
+      printf (" [--%s=string]", p->mCommandString) ;
     }
     p = p->mNext ;
   }
@@ -130,26 +129,26 @@ void C_StringCommandLineOption::printStringOptions (void) {
     if (p->mCommandChar != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString ("-") ;
-      gCout.addChar (p->mCommandChar) ;
-      gCout.addString ("=string") ;
+      gCout.appendCString ("-") ;
+      gCout.appendASCIIChar (p->mCommandChar) ;
+      gCout.appendCString ("=string") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ;
     }
     if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString ("--") ;
-      gCout.addString (p->mCommandString) ;
-      gCout.addString ("=string") ;
+      gCout.appendCString ("--") ;
+      gCout.appendString (p->mCommandString) ;
+      gCout.appendCString ("=string") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ;
     }
-    gCout.addString ("    ") ;
-    gCout.addString (p->mComment)  ;
-    gCout.addString (" (default value: '") ;
-    gCout.addString (p->mDefaultValue) ;
-    gCout.addString ("')\n") ;
+    gCout.appendCString ("    ") ;
+    gCout.appendString (p->mComment)  ;
+    gCout.appendCString (" (default value: '") ;
+    gCout.appendString (p->mDefaultValue) ;
+    gCout.appendCString ("')\n") ;
     p = p->mNext ;
   }
 }

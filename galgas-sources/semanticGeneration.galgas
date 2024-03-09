@@ -1,21 +1,28 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Generate predefined types                
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Generate predefined types
+#
 #  Copyright (C) 2010, ..., 2021 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Grammar
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -35,7 +42,7 @@ override method @grammarForGeneration appendDeclaration1
    ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -48,67 +55,67 @@ override method @grammarForGeneration appendSpecificImplementation
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentConstantIn, argumentIn :
-          let t = [inUnifiedTypeMap searchKey !mGalgasTypeNameForGrammarAnalysis]
+          let t = [inUnifiedTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
           [t addHeaderFileName !?ioInclusionSet]
         case argumentInOut, argumentOut :
-        end     
+        end
       end
     end
   end
   outImplementation = self.mCppFileContents
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration implementationCppFileName -> @string {
   result = "grammar-" + [self.mGrammarName fileNameRepresentation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration hasCppHeaderFile -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration headerKind -> @headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration isPredefined -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Syntax
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string {
   result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration headerKind -> @headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration isPredefined -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @syntaxDeclarationForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
                                                                    !@string outHeader {
@@ -128,10 +135,10 @@ override method @syntaxDeclarationForGeneration appendDeclaration1 ?!@stringset 
     !selectMethodList
     !self.mHasIndexing
     !self.mHasTranslateFeature
-  ] 
+  ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @syntaxDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -143,7 +150,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
     !{}
   ]
 #---
-  let lexiqueCppName = "C_Lexique_" + [self.mLexiqueName identifierRepresentation]
+  let lexiqueCppName = "Lexique_" + [self.mLexiqueName identifierRepresentation]
   for (mNonterminalName mRuleIndex mLabelImplementationList) in self.mRuleDeclarationList do
   #--- Generate rule label implementation
     for (mLabelName mSignatureForGeneration * * mInstructionListForGeneration) in mLabelImplementationList do
@@ -208,17 +215,17 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
         !false # Do not generate 'resetTemplateString'
         !false # Do not generate syntaxDirectedTranslationString argument
         ?let @string code
-      )  
+      )
       outImplementation += code
     end
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# P R O C E D U R E    I M P L E M E N T A T I O N      
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+# P R O C E D U R E    I M P L E M E N T A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateProcedure
   ?static:let @bool inGenerateStatic
@@ -273,7 +280,7 @@ proc generateProcedure
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
-    switch mFormalArgumentPassingMode 
+    switch mFormalArgumentPassingMode
     case argumentConstantIn :
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     case argumentInOut :
@@ -319,7 +326,7 @@ proc generateProcedure
   outGeneratedCode += " {\n"
 #--- Release 'out' arguments
   for (* mFormalArgumentPassingMode * * mFormalArgumentCppName) in inFormalArgumentList do
-    switch mFormalArgumentPassingMode 
+    switch mFormalArgumentPassingMode
     case argumentOut :
       outGeneratedCode += "  " + mFormalArgumentCppName + ".drop () ; // Release 'out' argument\n"
     case argumentConstantIn, argumentIn, argumentInOut :
@@ -335,11 +342,11 @@ proc generateProcedure
   outGeneratedCode += "}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# F U N C T I O N    I M P L E M E N A T I O N   
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+# F U N C T I O N    I M P L E M E N A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateFunction ?let @string inFunctionCppRepresentationName
                       ?!@stringset ioInclusionSet
@@ -423,7 +430,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
   outGeneratedCode += "}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionGetterNew ?let @string inFunctionCppRepresentationName
                                 ?!@stringset ioInclusionSet
@@ -468,7 +475,7 @@ proc generateExtensionGetterNew ?let @string inFunctionCppRepresentationName
     else
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation]
     end
-    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then 
+    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode += " /* " + mFormalArgumentCppName + " */"
     else
       outGeneratedCode += " " + mFormalArgumentCppName
@@ -498,11 +505,11 @@ proc generateExtensionGetterNew ?let @string inFunctionCppRepresentationName
   outGeneratedCode += "}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N                                          
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+# E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionSetter
   ?let @string inClassName
@@ -551,7 +558,7 @@ proc generateExtensionSetter
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
-    switch mFormalArgumentPassingMode 
+    switch mFormalArgumentPassingMode
     case argumentConstantIn :
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     case argumentInOut :
@@ -594,11 +601,11 @@ proc generateExtensionSetter
   outGeneratedCode += "}"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N                                              
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+# E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
                                 ?!@stringset ioInclusionSet
@@ -640,7 +647,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
       end
     else
       searching = false
-    end  
+    end
   end
   ioInclusionSet += !"method-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
@@ -652,7 +659,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
-    switch mFormalArgumentPassingMode 
+    switch mFormalArgumentPassingMode
     case argumentConstantIn :
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     case argumentInOut :
@@ -687,9 +694,9 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   outGeneratedCode += "}"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation Filewrappers
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
   "ggs"
@@ -699,7 +706,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
-    ?@constructorMap CONSTRUCTOR_MAP
+    ?@classFunctionMap CLASS_FUNC_MAP
     ?@getterMap GETTER_MAP
     ?@setterMap MODIFIER_MAP
     ?@instanceMethodMap INSTANCE_METHOD_MAP
@@ -710,11 +717,16 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
 
+  template unifiedClassBodyForPackage "unified-class-body-for-package.h.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@classFunctionMap CLASS_FUNC_MAP
+    ?@classMethodMap CLASS_METHOD_MAP
+
   template genericTypeImplementation "generic-type.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapEntry SUPER_TYPE_INDEX
-    ?@operators SUPPORTED_OPERATORS
 
 #---------- Extern Type
   template externTypeHeader1 "GALGAS_extern_type.h1.galgasTemplate"
@@ -881,11 +893,11 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string REFERENCED_TYPE_IDENTIFIER
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#           G E N E R A T I O N    F I L E W R A P P E R S
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticComponentGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
@@ -896,13 +908,13 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapEntry RETURN_TYPE
-  
+
   template abstractExtensionGetterImplementation "abstract-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapEntry RETURN_TYPE
-  
+
   template extensionGetterDeclaration "extension-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
@@ -915,24 +927,24 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string GETTER_IMPLEMENTATION
     ?@unifiedTypeMapEntry RETURN_TYPE
-  
+
   template overridingExtensionGetterImplementation "overriding-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@string GETTER_IMPLEMENTATION
     ?@unifiedTypeMapEntry RETURN_TYPE
-  
+
 #------------ Extension setter
   template abstractExtensionSetterDeclaration "abstract-extension-setter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-  
+
   template abstractExtensionSetterImplementation "abstract-extension-setter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-  
+
   template extensionSetterDeclaration "extension-setter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
@@ -948,19 +960,19 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@string MODIFIER_IMPLEMENTATION
-  
+
 
 #------------ Extension method
   template abstractExtensionMethodDeclaration "abstract-extension-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-  
+
   template abstractExtensionMethodImplementation "abstract-extension-method.cpp.galgasTemplate"
     ?@unifiedTypeMapEntry RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-  
+
   template extensionMethodDeclaration "extension-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
@@ -971,23 +983,23 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string METHOD_IMPLEMENTATION
-  
+
   template overridingExtensionMethodImplementation "overriding-extension-method.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
-  
+
   template filewrapperDeclaration "filewrapper-declaration.h.galgasTemplate"
     ?@stringlist FILE_INDEX_STRING_LIST
     ?@stringlist DIRECTORY_INDEX_STRING_LIST
     ?@stringlist TEXT_CONTENT_INDEX_STRING_LIST
     ?@stringlist BINARY_CONTENT_INDEX_STRING_LIST
     ?@string FILEWRAPPER_NAME
-  
+
   template filewrapperImplementation "filewrapper-implementation.cpp.galgasTemplate"
     ?@string FILEWRAPPER_NAME
     ?@string FILEWRAPPER_IMPLEMENTATION
-  
+
 #--- Extension getter implemented as function
   template extensionGetterAsFunctionDeclaration "extension-getter-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
@@ -1010,13 +1022,13 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string TYPE_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
-  
+
 
 #--- Extension setter implemented as function
   template extensionSetterAsFunctionDeclaration "extension-setter-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST  
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
 #--- Function
   template functionDeclaration "function-declaration.h.galgasTemplate"
@@ -1060,15 +1072,15 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GENERATED_INSTRUCTION_STRING
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! func
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1077,16 +1089,16 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
     !self.mFunctionName
     !self.mFormalArgumentList
     ![self.mReturnType identifierRepresentation]
-  ] 
+  ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1095,26 +1107,29 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
     !self.mFunctionName
     !@formalInputParameterListForGeneration {}
     ![self.mReturnType identifierRepresentation]
-  ] 
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! Semantic Type
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
-  let selfTypeDefinition = [self.mSelfTypeEntry  definition]
-  result = [filewrapper typeGenerationTemplate.genericTypeImplementation
-    !selfTypeDefinition.mTypeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypeDefinition.mSuperType
-    !selfTypeDefinition.mHandledOperatorFlags
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! Semantic Type
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  if [selfTypeDefinition mTypeKindEnum] == .packageType then
+    result = ""
+  else
+    result = [filewrapper typeGenerationTemplate.genericTypeImplementation
+      !selfTypeDefinition.mTypeName.string
+      ![self.mSelfTypeEntry identifierRepresentation]
+      !selfTypeDefinition.mSuperType
+    ]
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Sub programs
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionImplementationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1138,10 +1153,10 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
     !code
     !self.mFormalArgumentList
     ![self.mReturnType identifierRepresentation]
-  ] 
+  ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1166,18 +1181,18 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
     !code
     !@formalInputParameterListForGeneration {}
     ![self.mReturnType identifierRepresentation]
-  ] 
+  ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Lexique
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1188,7 +1203,7 @@ override method @lexiqueDeclarationForGeneration appendDeclaration1
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1198,7 +1213,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   outHeader = self.mCppContents
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
@@ -1246,15 +1261,15 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Program
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @programComponentForGeneration headerKind ->@headerKind {
   result = @headerKind.noHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @programComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1264,17 +1279,17 @@ override method @programComponentForGeneration appendSpecificImplementation
   outImplementation = self.mImplementationString
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Filewrapper
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc recursivlyEnumerateRegularFile
   ?let @wrapperFileMap inFilewrapperFileMap
@@ -1304,7 +1319,7 @@ proc recursivlyEnumerateRegularFile
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1327,7 +1342,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
     !regularTextContentIndexStringList
     !regularBinaryContentIndexStringList
     !self.mFilewrapperName
-  ] 
+  ]
 #--- template generation
   for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters *) in self.mFilewrapperTemplateListForGeneration do
     outHeader += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
@@ -1338,7 +1353,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateWrapperContents
   ?let @string inFilewrapperName
@@ -1423,7 +1438,7 @@ proc generateWrapperContents
   + " [" + [[inFilewrapperRegularFileMap count] + 1 string] + "] = {\n"
   for (* * * * mWrapperFileIndex) in inFilewrapperRegularFileMap do
     ioImplementation += "  & gWrapperFile_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] + ",\n"
-  end  
+  end
   ioImplementation += "  nullptr\n"
   +"} ;\n\n"
 #--- Generate all directory wrapper list
@@ -1447,8 +1462,8 @@ proc generateWrapperContents
   + "  gWrapperAllDirectories_" + [inFilewrapperName identifierRepresentation] + "_" + [inFilewrapperDirectoryIndex string] + "\n"
   + ") ;\n\n"
 }
-  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1499,131 +1514,59 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#    P R I M I T I V E    T Y P E
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_generation" {
-}{
-}{
-  template predefinedTypesImplementation "predefined_types.cpp.galgasTemplate"
+refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
+  public let @string mPredefinedTypeName
+  public let @string mCppDeclarationString
+  public let @bool isPackage %selector
 
-  template primitiveTypesHeaderPrologue "predefined-types-file-header.h.galgasTemplate"
+  #-----------------------------------------------------------------------------------------------
 
-  template predefinedTypeSeparation "predefined-types-separation.h.galgasTemplate"
+  override method appendPrimitiveTypePreDeclaration ?!@string ioHeader {
+    ioHeader += "class GALGAS_" + self.mPredefinedTypeName + " ;\n"
+  }
 
-  template sint_type "sint-type.h.galgasTemplate"
-  
-  template sint64_type "sint64-type.h.galgasTemplate"
-  
-  template object_type "object-type.h.galgasTemplate"
-  
-  template uint_type "uint-type.h.galgasTemplate"
-  
-  template uint64_type "uint64-type.h.galgasTemplate"
-  
-  template bool_type "bool-type.h.galgasTemplate"
-  
-  template binaryset_type "binaryset-type.h.galgasTemplate"
-  
-  template function_type "function-type.h.galgasTemplate"
-  
-  template type_type "type-type.h.galgasTemplate"
-  
-  template location_type "location-type.h.galgasTemplate"
-  
-  template data_type "data-type.h.galgasTemplate"
-  
-  template char_type "char-type.h.galgasTemplate"
-  
-  template double_type "double-type.h.galgasTemplate"
-  
-  template string_type "string-type.h.galgasTemplate"
-  
-  template stringset_type "stringset-type.h.galgasTemplate"
+  #-----------------------------------------------------------------------------------------------
 
-  template filewrapper_type "filewrapper-type.h.galgasTemplate"
+  override getter appendPrimitiveTypeDeclaration -> @string {
+    result = self.mCppDeclarationString
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    if [self isPackage] then
+      result += [filewrapper typeGenerationTemplate.unifiedClassBodyForPackage
+        !selfTypeDefinition.mTypeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !selfTypeDefinition.mClassFunctionMap
+        !selfTypeDefinition.mClassMethodMap
+      ]
+    else
+      result += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+        !selfTypeDefinition.mTypeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !selfTypeDefinition.mIsConcrete
+        !selfTypeDefinition.mClassFunctionMap
+        !selfTypeDefinition.mGetterMap
+        !selfTypeDefinition.mSetterMap
+        !selfTypeDefinition.mInstanceMethodMap
+        !selfTypeDefinition.mClassMethodMap
+        !selfTypeDefinition.mOptionalMethodMap
+        !selfTypeDefinition.mEnumerationDescriptor
+        !selfTypeDefinition.mHandledOperatorFlags
+        !selfTypeDefinition.mAddAssignOperatorArguments
+        !selfTypeDefinition.mTypeForEnumeratedElement
+      ]
+    end
+  }
 
-  template application_type "application-type.h.galgasTemplate"
+  #-----------------------------------------------------------------------------------------------
 
-  template bigint_type "bigint-type.h.galgasTemplate"
-
-  template timer_type "timer-type.h.galgasTemplate"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @string outHeader {
-  switch self.mKind
-  case predefined_object :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.object_type]
-  case predefined_uint :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.uint_type]
-  case predefined_uint64 :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.uint64_type]
-  case predefined_sint :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.sint_type]
-  case predefined_sint64 :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.sint64_type]
-  case predefined_char :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.char_type]
-  case predefined_double :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.double_type]
-  case predefined_string :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.string_type]
-  case predefined_stringset :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
-  case predefined_bool :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.bool_type]
-  case predefined_binaryset :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.binaryset_type]
-  case predefined_function :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.function_type]
-  case predefined_location :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.location_type]
-  case predefined_type :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.type_type]
-  case predefined_data :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.data_type]
-  case predefined_filewrapper :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.filewrapper_type]
-  case predefined_application :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.application_type]
-  case predefined_bigint :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
-  case predefined_timer :
-    outHeader = [filewrapper predefinedTypeGenerationTemplate.timer_type]
-  end
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypeDefinition.mTypeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypeDefinition.mIsConcrete
-    !selfTypeDefinition.mConstructorMap
-    !selfTypeDefinition.mGetterMap
-    !selfTypeDefinition.mSetterMap
-    !selfTypeDefinition.mInstanceMethodMap
-    !selfTypeDefinition.mClassMethodMap
-    !selfTypeDefinition.mOptionalMethodMap
-    !selfTypeDefinition.mEnumerationDescriptor
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!@string ioHeader {
-#  message "PREDEFINED @" + mPredefinedTypeName + "\n"
-  ioHeader += "class GALGAS_" + self.mPredefinedTypeName + " ;\n"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generate Predefined types
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generatePredefinedTypeFiles
   ?let @string inDirectory
@@ -1699,11 +1642,11 @@ proc generatePredefinedTypeFiles
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #           G E N E R A T I O N    F I L E W R A P P E R S
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
@@ -1715,5 +1658,5 @@ filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_ge
   template semanticFileImplementation "semantic-file.cpp.galgasTemplate"
     ?@stringlist IMPORTED_COMPONENT_LIST
 }
-                            
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————

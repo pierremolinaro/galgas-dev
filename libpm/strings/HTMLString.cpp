@@ -45,16 +45,16 @@ void HTMLString::writeStartCode (const String & inWindowTitle,
                  "<head>\n"
                  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
                  "<title>\n") ;
-  addString (inWindowTitle) ;
+  appendString (inWindowTitle) ;
   addRawData ("</title>") ;
   if (inCSSFileName.length () > 0) {
     addRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
-    addRawData (inCSSFileName.cString (HERE)) ;
+    addRawData (inCSSFileName.cString ()) ;
     addRawData ("\">") ;
   }  
   if (inCSSContents.length () > 0) {
     addRawData ("<style type=\"text/css\">") ;
-    addRawData (inCSSContents.cString (HERE)) ;
+    addRawData (inCSSContents.cString ()) ;
     addRawData ("</style>") ;
   }
   addRawData ("</head>"
@@ -70,7 +70,7 @@ void HTMLString::writeEndCode (void) {
 //--------------------------------------------------------------------------------------------------
 
 void HTMLString::addRawData (const char * in_Cstring) {
-  super::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
+  super::handleAppendUTF8Array (in_Cstring, int32_t (strlen (in_Cstring))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -78,22 +78,22 @@ void HTMLString::addRawData (const char * in_Cstring) {
 //  Performs HTML character translation (i.e. '<' --> '&lt;', ...)                               
 //--------------------------------------------------------------------------------------------------
 
-void HTMLString::performActualCharArrayOutput (const char * inCharArray,
-                                               const int32_t inArrayCount) {
+void HTMLString::handleAppendUTF8Array (const char * inCharArray,
+                                        const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
     case '<' :
-      super::performActualCharArrayOutput ("&lt;", 4) ;
+      super::handleAppendUTF8Array ("&lt;", 4) ;
       break ;
     case '>' :
-      super::performActualCharArrayOutput ("&gt;", 4) ;
+      super::handleAppendUTF8Array ("&gt;", 4) ;
       break ;
     case '&' :
-      super::performActualCharArrayOutput ("&amp;", 5) ;
+      super::handleAppendUTF8Array ("&amp;", 5) ;
       break ;
     default :
-      super::performActualCharArrayOutput (& c, 1) ;
+      super::handleAppendUTF8Array (& c, 1) ;
       break ;
     }
   }
@@ -101,24 +101,20 @@ void HTMLString::performActualCharArrayOutput (const char * inCharArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void HTMLString::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                  const int32_t inArrayCount) {
-  for (int32_t i=0 ; i<inArrayCount ; i++) {
-    const utf32 codePoint = inCharArray [i] ;
-    switch (UNICODE_VALUE (codePoint)) {
-    case '<' :
-      super::performActualCharArrayOutput ("&lt;", 4) ;
-      break ;
-    case '>' :
-      super::performActualCharArrayOutput ("&gt;", 4) ;
-      break ;
-    case '&' :
-      super::performActualCharArrayOutput ("&amp;", 5) ;
-      break ;
-    default :
-      super::performActualUnicodeArrayOutput (& codePoint, 1) ;
-      break ;
-    }
+void HTMLString::handleAppendCharacter (const utf32 inCharacter) {
+  switch (UNICODE_VALUE (inCharacter)) {
+  case '<' :
+    super::handleAppendUTF8Array ("&lt;", 4) ;
+    break ;
+  case '>' :
+    super::handleAppendUTF8Array ("&gt;", 4) ;
+    break ;
+  case '&' :
+    super::handleAppendUTF8Array ("&amp;", 5) ;
+    break ;
+  default :
+    super::handleAppendCharacter (inCharacter) ;
+    break ;
   }
 }
 
@@ -126,16 +122,16 @@ void HTMLString::performActualUnicodeArrayOutput (const utf32 * inCharArray,
 //                 Comments as a table                                                           
 //--------------------------------------------------------------------------------------------------
 
-void HTMLString::addCppTitleComment (const String & inCommentString,
-                                     const String & inTableStyleClass) {
+void HTMLString::appendTitleComment (const String & inCommentString,
+                                     const char * inTableStyleClass) {
   addRawData ("<table") ;
-  if (inTableStyleClass.length () > 0) {
+  if (inTableStyleClass != nullptr) {
     addRawData (" class=\"") ;
-    addRawData (inTableStyleClass.cString (HERE)) ;
+    addRawData (inTableStyleClass) ;
     addRawData ("\"") ;
   }
   addRawData ("><tr><td>\n") ;
-  addString (inCommentString) ;
+  appendString (inCommentString) ;
   addRawData ("\n</td></tr></table>\n") ;
 }
 

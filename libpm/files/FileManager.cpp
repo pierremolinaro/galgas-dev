@@ -70,20 +70,20 @@
     const int32_t pathLength = inFilePath.length () ;
     int32_t firstChar = 0 ;
     if ((pathLength > 3)
-     && isalpha ((int) UNICODE_VALUE (inFilePath (0 COMMA_HERE)))
-     && (UNICODE_VALUE (inFilePath (1 COMMA_HERE)) == ':')
-     && (UNICODE_VALUE (inFilePath (2 COMMA_HERE)) == '\\')) {
-      result.addString ("/") ;
-      result.addUnicodeChar (inFilePath (0 COMMA_HERE) COMMA_HERE) ;
-      result.addString ("/") ;
+     && isalpha ((int) UNICODE_VALUE (inFilePath.charAtIndex (0 COMMA_HERE)))
+     && (UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)) == ':')
+     && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '\\')) {
+      result.appendCString ("/") ;
+      result.appendChar (inFilePath.charAtIndex (0 COMMA_HERE)) ;
+      result.appendCString ("/") ;
       firstChar = 3 ;
     }
     for (int32_t i=firstChar ; i<pathLength ; i++) {
-      const utf32 c = inFilePath (i COMMA_HERE) ;
+      const utf32 c = inFilePath.charAtIndex (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) == '\\') {
-        result.addString ("/") ;
+        result.appendCString ("/") ;
       }else{
-        result.addUnicodeChar (c COMMA_HERE) ;
+        result.appendChar (c) ;
       }
     }
     return result ;
@@ -118,16 +118,16 @@
       const int32_t fileLength = inFilePath.length () ;
       int32_t firstChar = 0 ;
       if ((fileLength > 3)
-       && (UNICODE_VALUE (inFilePath (0 COMMA_HERE)) == '/')
-       && isalpha ((int) UNICODE_VALUE (inFilePath (1 COMMA_HERE)))
-       && (UNICODE_VALUE (inFilePath (2 COMMA_HERE)) == '/')) {
-        winPath.addUnicodeChar (inFilePath (1 COMMA_HERE) COMMA_HERE) ;
-        winPath.addString (":\\") ;
+       && (UNICODE_VALUE (inFilePath.charAtIndex (0 COMMA_HERE)) == '/')
+       && isalpha ((int) UNICODE_VALUE (inFilePath.charAtIndex (1 COMMA_HERE)))
+       && (UNICODE_VALUE (inFilePath.charAtIndex (2 COMMA_HERE)) == '/')) {
+        winPath.appendChar (inFilePath.charAtIndex (1 COMMA_HERE)) ;
+        winPath.appendCString (":\\") ;
         firstChar = 3 ;
       }
       for (int32_t i=firstChar ; i<fileLength ; i++) {
-        const utf32 c = inFilePath (i COMMA_HERE) ;
-        winPath.addUnicodeChar ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c COMMA_HERE) ;
+        const utf32 c = inFilePath.charAtIndex (i COMMA_HERE) ;
+        winPath.appendChar ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c) ;
       }
     return winPath ;
   }
@@ -142,7 +142,7 @@
 //--------------------------------------------------------------------------------------------------
 
 FILE * FileManager::openTextFileForReading (const String & inFilePath) {
-  return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "rt") ;
+  return ::fopen (nativePathWithUnixPath (inFilePath).cString (), "rt") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ FILE * FileManager::openTextFileForReading (const String & inFilePath) {
 //--------------------------------------------------------------------------------------------------
 
 FILE * FileManager::openBinaryFileForReading (const String & inFilePath) {
-  return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "rb") ;
+  return ::fopen (nativePathWithUnixPath (inFilePath).cString (), "rb") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -166,11 +166,11 @@ FILE * FileManager::openBinaryFileForReading (const String & inFilePath) {
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
-                                                 U8Data & outBinaryData) {
+                                               U8Data & outBinaryData) {
   outBinaryData.free () ;
 //--- Open file for binary reading
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
-  FILE * inputFile = ::fopen (nativePath.cString (HERE), "rb") ;
+  FILE * inputFile = ::fopen (nativePath.cString (), "rb") ;
   bool ok = inputFile != nullptr ;
 //--- Go to the end of the file
   if (ok) {
@@ -231,7 +231,7 @@ static bool parseUTF32LE (const U8Data & inDataString,
     n <<= 8 ;
     n |= inDataString (i COMMA_HERE) ;
     ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) ;
-    outString.addUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+    outString.appendChar (TO_UNICODE (n)) ;
   }
   if (! ok) {
     outString.removeAllKeepingCapacity () ;
@@ -254,7 +254,7 @@ static bool parseUTF32BE (const U8Data & inDataString,
     n <<= 8 ;
     n |= inDataString (i+3 COMMA_HERE) ;
     ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) ;
-    outString.addUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+    outString.appendChar (TO_UNICODE (n)) ;
   }
   if (! ok) {
     outString.removeAllKeepingCapacity () ;
@@ -282,7 +282,7 @@ static bool parseUTF16LE (const U8Data & inDataString,
       foundUTF16prefix = false ;
     }else{
       ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) && ! foundUTF16prefix ;
-      outString.addUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (n)) ;
     }
   }
   ok &= ! foundUTF16prefix ;
@@ -312,7 +312,7 @@ static bool parseUTF16BE (const U8Data & inDataString,
       foundUTF16prefix = false ;
     }else{
       ok = isUnicodeCharacterAssigned (TO_UNICODE (n)) && ! foundUTF16prefix ;
-      outString.addUnicodeChar (TO_UNICODE (n) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (n)) ;
     }
   }
   ok &= ! foundUTF16prefix ;
@@ -470,23 +470,23 @@ static bool parseWithEncoding (const U8Data & inDataString,
     const uint8_t c = inDataString (idx COMMA_HERE) ;
     if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+        outString.appendChar (TO_UNICODE ('\n')) ;
       }
       foundCR = false ;
     }else if (c == 0x0D) { // CR
-      outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE ('\n')) ;
       foundCR = true ;
     }else if ((c & 0x80) == 0) { // ASCII Character
-      outString.addUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (c)) ;
       foundCR = false ;
     }else{
       const utf32 uc = unicodeCharacterForSingleByteCharacter ((char) c, inTextFileEncoding) ;
-      outString.addUnicodeChar (uc COMMA_HERE) ;
+      outString.appendChar (uc) ;
       foundCR = false ;
     }
   }
   if (foundCR) {
-    outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+    outString.appendChar (TO_UNICODE ('\n')) ;
   }
   return ok ;
 }
@@ -547,17 +547,17 @@ static void parseASCIIWithReplacementCharacter (const U8Data & inDataString,
     index ++ ;
     if (c == 0x0A) { // LF
       if (! foundCR) {
-        outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+        outString.appendChar (TO_UNICODE ('\n')) ;
       }
       foundCR = false ;
     }else if (c == 0x0D) { // CR
-      outString.addUnicodeChar (TO_UNICODE ('\n') COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE ('\n')) ;
       foundCR = true ;
     }else if ((c != 0) && (c & 0x80) == 0) { // ASCII Character (not NUL)
-      outString.addUnicodeChar (TO_UNICODE (c) COMMA_HERE) ;
+      outString.appendChar (TO_UNICODE (c)) ;
       foundCR = false ;
     }else{
-      outString.addUnicodeChar (UNICODE_REPLACEMENT_CHARACTER COMMA_HERE) ;
+      outString.appendChar (UNICODE_REPLACEMENT_CHARACTER) ;
       foundCR = false ;
     }
   }
@@ -566,10 +566,10 @@ static void parseASCIIWithReplacementCharacter (const U8Data & inDataString,
 //--------------------------------------------------------------------------------------------------
 
 String FileManager::stringWithContentOfFile (const String & inFilePath,
-                                                 PMTextFileEncoding & outTextFileEncoding,
-                                                 bool & outOk) {
+                                             PMTextFileEncoding & outTextFileEncoding,
+                                             bool & outOk) {
   #ifdef PRINT_SNIFF_ENCODING
-    printf ("** SNIFF ENCODING for '%s': ", inFilePath.cString (HERE)) ;
+    printf ("** SNIFF ENCODING for '%s': ", inFilePath.cString ()) ;
   #endif
 //--- Read file
   U8Data stringData ;
@@ -578,7 +578,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath,
 //--- Assign C string to String
   String result_string ;
   if (outOk) {
-    result_string.setCapacity ((uint32_t) (length + 2)) ;
+    result_string.setCapacity (length + 2) ;
   //------------ 1- Search for BOM
     outOk = searchBOMandParse (stringData, length, outTextFileEncoding, result_string) ;
   //------------ 2- Try UTF-32BE, UTF-32LE, UTF-16BE, UTF-16LE, UTF-8 encodings
@@ -610,7 +610,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath) {
   String result_string = stringWithContentOfFile (inFilePath, textFileEncoding, ok) ;
 //--- Assign C string to String
   if (! ok) {
-    throw C_TextReadException (inFilePath.cString (HERE)) ;
+    throw C_TextReadException (inFilePath.cString ()) ;
   }
   return result_string ;
 }
@@ -628,7 +628,7 @@ bool FileManager::writeStringToFile (const String & inString,
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent ()) ;
   TextFileWrite file (inFilePath) ;
   bool success = file.isOpened () ;
-  file.addString (inString) ;
+  file.appendString (inString) ;
   if (success) {
     success = file.close () ;
   }
@@ -641,14 +641,14 @@ bool FileManager::writeStringToExecutableFile (const String & inString,
                                                  const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
   TextFileWrite file (inFilePath) ;
-  file.addString (inString) ;
+  file.appendString (inString) ;
   bool success = file.isOpened () ;
   if (success) {
     success = file.close () ;
     #if COMPILE_FOR_WINDOWS == 0
       struct stat fileStat ;
-      ::stat (inFilePath.cString (HERE), & fileStat) ;
-      ::chmod (inFilePath.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+      ::stat (inFilePath.cString (), & fileStat) ;
+      ::chmod (inFilePath.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     #endif
   }
   return success ;
@@ -685,8 +685,8 @@ bool FileManager::writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
     success = binaryFile.close () ;
     #if COMPILE_FOR_WINDOWS == 0
       struct stat fileStat ;
-      ::stat (inFilePath.cString (HERE), & fileStat) ;
-      ::chmod (inFilePath.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+      ::stat (inFilePath.cString (), & fileStat) ;
+      ::chmod (inFilePath.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     #endif
   }
 //---
@@ -706,8 +706,8 @@ bool FileManager::makeFileExecutable (const String & inFilePath) {
   #if COMPILE_FOR_WINDOWS == 0
     if (result) {
       struct stat fileStat ;
-      ::stat (inFilePath.cString (HERE), & fileStat) ;
-      ::chmod (inFilePath.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+      ::stat (inFilePath.cString (), & fileStat) ;
+      ::chmod (inFilePath.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
     }
   #endif
   return result ;
@@ -734,14 +734,14 @@ bool FileManager::directoryExistsWithNativePath (const String & inDirectoryNativ
     const char dirSep = '/' ;
   #endif
   String directoryNativePath = inDirectoryNativePath ;
-  while ((directoryNativePath.length () > 0) && (directoryNativePath.lastCharacter(HERE) == dirSep)) {
+  while ((directoryNativePath.length () > 0) && (directoryNativePath.lastChar(HERE) == dirSep)) {
     directoryNativePath = directoryNativePath.subString (0, directoryNativePath.length () - 1) ;
   }
 //--- Get file properties
   bool exists = directoryNativePath.length () > 0 ;
   if (exists) {
     struct stat fileProperties ;
-    const int err = ::stat (directoryNativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (directoryNativePath.cString (), & fileProperties) ;
     exists = (err == 0) && ((fileProperties.st_mode & S_IFDIR) != 0) ;
   }
  //--- Return result
@@ -783,9 +783,9 @@ bool FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath) {
       const String nativePath = nativePathWithUnixPath (directoryPath) ;
     //--- Create directory (mkdir returns 0 if creation is ok)
       #if COMPILE_FOR_WINDOWS == 1
-        const int result = ::mkdir (nativePath.cString (HERE)) ;
+        const int result = ::mkdir (nativePath.cString ()) ;
       #else
-        const int result = ::mkdir (nativePath.cString (HERE), 0770) ;
+        const int result = ::mkdir (nativePath.cString (), 0770) ;
       #endif
       ok = result == 0 ;
     }
@@ -798,9 +798,9 @@ bool FileManager::makeDirectoryIfDoesNotExist (const String & inDirectoryPath) {
 String FileManager::removeDirectory (const String & inDirectoryPath) {
  String errorString ;
   const String nativePath = nativePathWithUnixPath (inDirectoryPath) ;
-  const int result = rmdir (nativePath.cString (HERE)) ;
+  const int result = rmdir (nativePath.cString ()) ;
   if (result < 0) {
-    errorString.addString (::strerror (errno)) ;
+    errorString.appendString (::strerror (errno)) ;
   }
   return errorString ;
 }
@@ -814,7 +814,7 @@ String FileManager::removeDirectory (const String & inDirectoryPath) {
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::isAbsolutePath (const String & inPath) {
-  return (inPath.length () > 0) && (UNICODE_VALUE (inPath (0 COMMA_HERE)) == '/') ;
+  return (inPath.length () > 0) && (UNICODE_VALUE (inPath.charAtIndex (0 COMMA_HERE)) == '/') ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -822,7 +822,7 @@ bool FileManager::isAbsolutePath (const String & inPath) {
 String FileManager::absolutePathFromCurrentDirectory (const String & inPath) {
   const int32_t stringLength = inPath.length () ;
   String result ;
-  if ((stringLength > 0) && (UNICODE_VALUE (inPath (0 COMMA_HERE)) == '/')) {
+  if ((stringLength > 0) && (UNICODE_VALUE (inPath.charAtIndex (0 COMMA_HERE)) == '/')) {
     result = inPath ;
   }else{
     result = currentDirectory () + "/" + inPath ;
@@ -836,17 +836,17 @@ String FileManager::absolutePathFromCurrentDirectory (const String & inPath) {
 //    if path argument it self is relative, current directory is prepended
 
 String FileManager::absolutePathFromPath (const String & inPath,
-                                              const String & inFromPath) {
+                                          const String & inFromPath) {
   const int32_t pathLength = inPath.length () ;
   String result ;
-  if ((pathLength > 0) && (UNICODE_VALUE (inPath (0 COMMA_HERE)) == '/')) {
+  if ((pathLength > 0) && (UNICODE_VALUE (inPath.charAtIndex (0 COMMA_HERE)) == '/')) {
     result = inPath ;
   }else{
     result = absolutePathFromCurrentDirectory (inFromPath) ;
-    if (UNICODE_VALUE (result.lastCharacter (HERE)) != '/') {
-      result.addUnicodeChar (TO_UNICODE ('/') COMMA_HERE) ;
+    if (UNICODE_VALUE (result.lastChar (HERE)) != '/') {
+      result.appendChar (TO_UNICODE ('/')) ;
     }
-    result.addString (inPath) ;
+    result.appendString (inPath) ;
   }
   return result ;
 }
@@ -867,13 +867,13 @@ String FileManager::relativePathFromPath (const String & inPath,
     idx ++ ;
   }
   for (int32_t i=idx ; i<absoluteReferencePathComponents.count () ; i++) {
-    result.addString ("../") ;
+    result.appendCString ("../") ;
   }
   for (int32_t i=idx ; i<absoluteReceiverPathComponents.count () ; i++) {
     if (i > idx) {
-      result.addString ("/") ;
+      result.appendCString ("/") ;
     }
-    result.addString (absoluteReceiverPathComponents (i COMMA_HERE)) ;
+    result.appendString (absoluteReceiverPathComponents (i COMMA_HERE)) ;
   }
   return result ;
 }
@@ -894,7 +894,7 @@ String FileManager::relativePathFromPath (const String & inPath,
 #else
   bool FileManager::makeSymbolicLinkWithPath (const String & inPath,
                                                 const String & inLinkPath) {
-    const int r = symlink (inPath.cString (HERE), inLinkPath.cString (HERE)) ;
+    const int r = symlink (inPath.cString (), inLinkPath.cString ()) ;
     return r >= 0 ;
   }
 #endif
@@ -915,7 +915,7 @@ String FileManager::relativePathFromPath (const String & inPath,
 #else
   bool FileManager::isSymbolicLink (const String & inLinkPath) {
     char buffer [8] ; // Any value
-    return readlink (inLinkPath.cString (HERE), buffer, 8) >= 0 ;
+    return readlink (inLinkPath.cString (), buffer, 8) >= 0 ;
   }
 #endif
 
@@ -937,13 +937,13 @@ String FileManager::relativePathFromPath (const String & inPath,
     size_t bufferSize = 128 ;
     while (loop) {
       macroMyReallocPODArray (buffer, char, bufferSize) ;
-      const int64_t r = readlink (inLinkPath.cString (HERE), buffer, bufferSize) ;
+      const int64_t r = readlink (inLinkPath.cString (), buffer, bufferSize) ;
       if (r < 0) { // Error
         outOk = false ;
         loop = false ;
       }else if (r < (int64_t) bufferSize) { // ok
         buffer [r] = '\0' ;
-        result.addString (buffer) ;
+        result.appendString (buffer) ;
         loop = false ;
       }else{ // Buffer too small
         bufferSize *= 2 ;
@@ -969,9 +969,9 @@ String FileManager::relativePathFromPath (const String & inPath,
 String FileManager::deleteFile (const String & inFilePath) {
   String returnValue ;
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
-  const int result = unlink (nativePath.cString (HERE)) ;
+  const int result = unlink (nativePath.cString ()) ;
   if (result < 0) {
-    returnValue.addString (::strerror (errno)) ;
+    returnValue.appendString (::strerror (errno)) ;
   }
   return returnValue ;
 }
@@ -990,11 +990,11 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
                                             const TC_UniqueArray <String> & inDirectoriesToExclude) {
   String result ;
   const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
-  DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartSearchPath.cString ()) ;
   if (dir != nullptr) {
     String fileName = inStartSearchPath ;
-    fileName.addString ("/") ;
-    fileName.addString (inFileName) ;
+    fileName.appendCString ("/") ;
+    fileName.appendString (inFileName) ;
     if (FileManager::fileExistsAtPath (fileName)) {
       result = fileName ;
     }else{
@@ -1002,12 +1002,12 @@ static String recursiveSearchInDirectory (const String & inStartSearchPath,
       while ((current != nullptr) && (result.length () == 0)) {
         if (current->d_name [0] != '.') {
           String name = inStartSearchPath ;
-          name.addString ("/") ;
-          name.addString (current->d_name) ;
+          name.appendCString ("/") ;
+          name.appendString (current->d_name) ;
           if (FileManager::directoryExistsWithNativePath (name)) {
             bool dirOk = true ;
             for (int32_t i=0 ; (i<inDirectoriesToExcludeCount) && dirOk ; i++) {
-              if (UNICODE_VALUE (inDirectoriesToExclude (i COMMA_HERE) (0 COMMA_HERE)) == '.') {
+              if (UNICODE_VALUE (inDirectoriesToExclude (i COMMA_HERE).charAtIndex (0 COMMA_HERE)) == '.') {
                 const char * dotPtr = strrchr (current->d_name, '.') ;
                 dirOk = (dotPtr == nullptr) || (inDirectoriesToExclude (i COMMA_HERE).compare (dotPtr) != 0) ;
               }else{
@@ -1049,14 +1049,14 @@ static void recursiveFindAllFilesInDirectory (const String & inStartSearchPath,
                                               TC_UniqueArray <String> & outFoundFilePathes) {
 //--- Iterate throught directory
   const String nativeStartSearchPath = FileManager::nativePathWithUnixPath (inStartSearchPath) ;
-  DIR * dir = ::opendir (nativeStartSearchPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartSearchPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = inStartSearchPath ;
-        name.addString ("/") ;
-        name.addString (current->d_name) ;
+        name.appendCString ("/") ;
+        name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           recursiveFindAllFilesInDirectory (name, inExtension, outFoundFilePathes) ;
         }else if (FileManager::fileExistsAtPath (name) && (name.pathExtension () == inExtension)) {
@@ -1093,7 +1093,7 @@ DateTime FileManager::fileModificationTime (const String & inFilePath) {
   time_t modificationTime = 0 ;
   if (nativePath.length () > 0) {
     struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (nativePath.cString (), & fileProperties) ;
     if ((err == 0) && ((fileProperties.st_mode & S_IFREG) != 0)) {
       modificationTime = fileProperties.st_mtime ;
     }
@@ -1116,7 +1116,7 @@ uint64_t FileManager::fileSize (const String & inFilePath) {
   const String nativePath = nativePathWithUnixPath (inFilePath) ;
   if (nativePath.length () > 0) {
     struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (nativePath.cString (), & fileProperties) ;
     if ((err == 0) && ((fileProperties.st_mode & S_IFREG) != 0)) {
       result = (uint64_t) fileProperties.st_size ;
     }
@@ -1137,7 +1137,7 @@ int32_t FileManager::filePosixPermissions (const String & inFilePath) {
 //--- Get file properties
   int32_t permissions = -1 ;
   struct stat fileProperties ;
-  const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+  const int err = ::stat (nativePath.cString (), & fileProperties) ;
   if (err == 0) {
     permissions = ((int32_t) fileProperties.st_mode) & 0xFFF ;
   }
@@ -1153,7 +1153,7 @@ int32_t FileManager::setFilePosixPermissions (const String & inFilePath,
   const int32_t v = inNewFilePosixPermissions & (int32_t) 0xFFFFF000 ;
   if (v == 0) {
     const String nativePath = nativePathWithUnixPath (inFilePath) ;
-    newMode = ::chmod (nativePath.cString (HERE), (uint16_t) (inNewFilePosixPermissions & UINT16_MAX)) ;
+    newMode = ::chmod (nativePath.cString (), (uint16_t) (inNewFilePosixPermissions & UINT16_MAX)) ;
   }
   return newMode ;
 }
@@ -1172,7 +1172,7 @@ bool FileManager::fileExistsAtPath (const String & inFilePath) {
   bool exists = nativePath.length () > 0 ;
   if (exists) {
     struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+    const int err = ::stat (nativePath.cString (), & fileProperties) ;
     exists = (err == 0) && ((fileProperties.st_mode & S_IFREG) != 0) ;
   }
  //--- Return result

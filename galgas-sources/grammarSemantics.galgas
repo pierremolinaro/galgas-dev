@@ -1,48 +1,55 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Grammar Semantics                        
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Grammar Semantics
+#
 #  Copyright (C) 2009, ..., 2011 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#         Instruction abstract class for grammar component                                                     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#         Instruction abstract class for grammar component
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
   public let @location mStartLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#        Syntax signature                   
-#      (sequence of terminal, nonterminal, select and repeat)                                                  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#        Syntax signature
+#      (sequence of terminal, nonterminal, select and repeat)
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxInstructionListForGrammarAnalysis {
   public let @abstractSyntaxInstructionForGrammarAnalysis mInstruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   Production rules list (for a grammar component)     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#   Production rules list (for a grammar component)
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @productionRuleListForGrammarAnalysis {
   public let @lstring mLeftNonterminalSymbol
@@ -51,18 +58,18 @@ list @productionRuleListForGrammarAnalysis {
   public let @uint mProductionIndex
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @unusedNonTerminalSymbolMapForGrammarAnalysis {
   public let @uint mNonTerminalIndex
   insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#             nonterminal symbols sorted list    
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#             nonterminal symbols sorted list
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
   public let @lstring mNonTerminalSymbol
@@ -72,76 +79,65 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
   mNonTerminalIndex <
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   Terminal call instruction               
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  public let @lstring mTerminalSymbolName
-  public let @uint mTerminalSymbolIndex
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   Nonterminal call instruction            
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#   Nonterminal call instruction
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mNonterminalSymbolName
   public let @uint mNonterminalSymbolIndex
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# Liste of branches of a 'select' or 'repeat' instruction                                                      
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+# Liste of branches of a 'select' or 'repeat' instruction
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @branchListForGrammarAnalysis {
   public let @syntaxInstructionListForGrammarAnalysis mSyntaxInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   select instruction (for a grammar component) 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#   select instruction (for a grammar component)
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @branchListForGrammarAnalysis mSelectBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   repeat instruction                      
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#   repeat instruction
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @branchListForGrammarAnalysis mRepeatBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    List of syntax components For Grammar  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    List of syntax components For Grammar
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxComponentListForGrammarAnalysis {
   public let @productionRuleListForGrammarAnalysis mProductionRulesList
   public let @lstring mSyntaxComponentName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#      Terminal symbol map                  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#      Terminal symbol map
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @terminalSymbolsMapForGrammarAnalysis {
   public let @uint mTerminalIndex
@@ -149,5 +145,5 @@ map @terminalSymbolsMapForGrammarAnalysis {
   search searchKey error message "the terminal symbol '$%K$' is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

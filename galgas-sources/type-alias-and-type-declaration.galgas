@@ -1,121 +1,101 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
-  
+  #·······························································································
+
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $typealias$
     $@type$ ?let aliasTypeName indexing dictionaryDefinition
     $=$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring definedTypeName
     ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !aliasTypeName
       !definedTypeName
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
   # SIMPLE ALIAS
-  #·················································································································
-  
+  #·······························································································
+
   rule <type_definition_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                               !@lstring outTypeName {
     $@type$ ?outTypeName
   }
 
-  #·················································································································
+  #·······························································································
 
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-   #·················································································································
-  
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
-    $typealias$
-    $@type$ ?let aliasTypeName indexing dictionaryDefinition
-    $=$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @lstring definedTypeName
-    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !aliasTypeName
-      !definedTypeName
-    }
-  }
-  
-  #·················································································································
-  # SIMPLE ALIAS
-  #·················································································································
-  
-  rule <type_definition> ?!@galgasDeclarationAST unused ioDeclarations
-                         ?!@stringset unused ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
-    $@type$ ?outTypeName
-  }
-
-  #·················································································································
-  
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
     $[$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
     error .here : "Not handled yet"
     $]$
   }
 
-  #·················································································································
-  
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
     $[$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
     $:$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?*
+    <type_definition_ggs3> !?ioDeclarations ?*
     error .here : "Not handled yet"
     $]$
   }
 
-  #·················································································································
-  
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
-    select
-    or
-      $<$
-      repeat
-        <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let t
-        error t : "not handled yet"
-      while
-        $,$
-      end
-      $>$
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    $<$
+    repeat
+      <type_definition_ggs3> !?ioDeclarations ?let t
+      error t : "not handled yet"
+    while
+      $,$
     end
-    $?$ ?let selector
-    error .here : "Not handled yet"
-    if selector.string != "" then
-      error selector : "only '?' is allowed here"
-    end
+    $>$
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
-                         !@lstring outTypeName {
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    $?$
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
     $($
     repeat
-      <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outTypeName
+      <type_definition_ggs3> !?ioDeclarations ?outTypeName
     while
       $,$
     end
@@ -123,30 +103,121 @@ syntax extension galgas4DeclarationsSyntax {
     $)$
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+   #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $typealias$
+    $@type$ ?let aliasTypeName indexing dictionaryDefinition
+    $=$
+    <type_definition> !?ioDeclarations ?let @lstring definedTypeName
+    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
+      !isPredefined: false # Is not predefined
+      !aliasTypeName
+      !definedTypeName
+    }
+  }
+
+  #·······························································································
+  # SIMPLE ALIAS
+  #·······························································································
+
+  rule <type_definition> ?!@galgasDeclarationAST unused ioDeclarations
+                         !@lstring outTypeName {
+    $@type$ ?outTypeName
+  }
+
+  #·······························································································
+
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName {
+    $[$
+    <type_definition> !?ioDeclarations ?outTypeName
+    error .here : "Not handled yet"
+    $]$
+  }
+
+  #·······························································································
+
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName {
+    $[$
+    <type_definition> !?ioDeclarations ?outTypeName
+    $:$
+    <type_definition> !?ioDeclarations ?*
+    error .here : "Not handled yet"
+    $]$
+  }
+
+  #·······························································································
+
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName {
+    <type_definition> !?ioDeclarations ?outTypeName
+    $?$
+    error .here : "Not handled yet"
+  }
+
+  #·······························································································
+
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName {
+    <type_definition> !?ioDeclarations ?outTypeName
+     $<$
+    repeat
+      <type_definition> !?ioDeclarations ?let t
+      error t : "not handled yet"
+    while
+      $,$
+    end
+    $>$
+  }
+
+  #·······························································································
+
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName {
+    $($
+    repeat
+      <type_definition> !?ioDeclarations ?outTypeName
+    while
+      $,$
+    end
+    error .here : "Not handled yet"
+    $)$
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @typealiasDeclarationAST : @semanticDeclarationAST {
   private let @lstring mAliasTypeName
   private let @lstring mDefinedTypeName
 
-  #·················································································································
+  #·······························································································
 
   override getter keyRepresentation -> @string {
     result = "typealias @" + self.mAliasTypeName
   }
 
-  #·················································································································
+  #·······························································································
 
   override method addAssociatedElement ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
   }
 
-  #·················································································································
+  #·······························································································
 
   override method enterDeclarationInGraph
                                   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -160,7 +231,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addEdge !aliasKey !referenceKey]
   }
 
-  #·················································································································
+  #·······························································································
 
   override method enterDeclarationInSemanticContext
                               ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -187,7 +258,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !def.mAllTypedPropertyList
           !def.mPropertyMap # struct, class
           !def.mCurrentTypedPropertyList
-          !def.mConstructorMap
+          !def.mClassFunctionMap
           !def.mGetterMap
           !def.mSetterMap
           !def.mInstanceMethodMap
@@ -205,15 +276,15 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !defaultConstructorName: def.defaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
           !"typealias-" + [self.mAliasTypeName fileNameRepresentation]
           !.oneHeader
-        }  
+        }
         [!?ioTypeMap insertType !self.mAliasTypeName !definition]
       end
     end
   }
 
-  #·················································································································
+  #·······························································································
 
-  override method semanticAnalysis  ?!@lstringlist unused ioUsefulnessRootEntities 
+  override method semanticAnalysis  ?!@lstringlist unused ioUsefulnessRootEntities
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                     ?let @string unused inProductDirectory
                                     ?let @semanticContext unused inSemanticContext
@@ -226,25 +297,25 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDefinedTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
   #--- Enter type alias declaration
-    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !self.mDefinedTypeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !self.mDefinedTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "typealias " + self.mAliasTypeName
-      !@aliasTypeForGeneration.new {![ioTypeMap searchKey !self.mAliasTypeName] !self.mAliasTypeName !t}
+      !@aliasTypeForGeneration.new {![ioTypeMap typeMapEntryForLKey !self.mAliasTypeName] !self.mAliasTypeName !t}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
   private let @string mAliasTypeName
   private let @unifiedTypeMapEntry mReferencedType
 
-  #·················································································································
+  #·······························································································
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -255,7 +326,7 @@ refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  #·················································································································
+  #·······························································································
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset unused ioInclusionSet
@@ -263,14 +334,14 @@ refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
     outImplementation = ""
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter appendTypeGenericImplementation -> @string {
     result = ""
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

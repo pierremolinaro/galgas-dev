@@ -1,13 +1,30 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiSimpleAttributeListAST {
   public let @lstring mKey
   public let @lstring mValue
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiCompoundAttributeListAST {
   public let @lstring mKey
@@ -15,14 +32,14 @@ list @guiCompoundAttributeListAST {
   public let @lstring mValue
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalLabelListAST {
   public let @lstring mTerminal
   public let @uint mDisplayFlags
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiLabelListAST {
   public let @uint mLeadingCharacterStrippedCount
@@ -30,7 +47,7 @@ list @guiLabelListAST {
   public let @location mLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @withLexiqueListAST {
   public let @lstring mLexiqueFileName
@@ -38,7 +55,7 @@ list @withLexiqueListAST {
   public let @guiSimpleAttributeListAST mSimpleAttributes
   public let @guiCompoundAttributeListAST mCompoundAttributes
 }
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiCommandLineOptionList {
   public let @string mOptionComponent
@@ -48,7 +65,7 @@ list @guiCommandLineOptionList {
   public let @string mComment
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMap {
   public let @string mLexiqueName
@@ -56,14 +73,14 @@ map @extensionMap {
   insert insertKey error message "the '%K' extension is already declared in %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @textMacroList {
   public let @string mKey
   public let @string mContents
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @importedLexiqueList {
   public let @string mLexiqueClassName
@@ -75,14 +92,14 @@ list @importedLexiqueList {
   public let @lexicalStyleListAST mLexicalStyleList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @projectIndexingDescriptorList {
   let @lstring mProjectFileExtension
   let @lstring indexingPathSuffix
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgasGUIComponentListAST {
   public let @lstring mGUIComponentName
@@ -92,13 +109,13 @@ list @galgasGUIComponentListAST {
   public let @projectIndexingDescriptorList mProjectIndexingDescriptorList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
@@ -132,9 +149,9 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
       !withLexiqueList
       !projectExtensionList
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
     $lexique$
@@ -201,9 +218,9 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     $}$
     ioWithLexiqueList +=  !lexiqueReference !labels !simpleAttributes !compoundAttributes
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
     $option$
@@ -211,8 +228,8 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     ioImportedOptionList += !optionReference
   }
 
-  #·················································································································
-  
+  #·······························································································
+
   rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
     $identifier$ ?let @lstring mKey
     $:$
@@ -224,19 +241,18 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     end
     ioSimpleGlobalAttributes += !mKey !mValue
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
@@ -268,9 +284,9 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       !withLexiqueList
       !projectExtensionList
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
     $lexique$
@@ -337,9 +353,9 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     $}$
     ioWithLexiqueList +=  !lexiqueReference !labels !simpleAttributes !compoundAttributes
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
     $option$
@@ -347,8 +363,8 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     ioImportedOptionList += !optionReference
   }
 
-  #·················································································································
-  
+  #·······························································································
+
   rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
     $identifier$ ?let @lstring mKey
     $:$
@@ -360,14 +376,14 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     end
     ioSimpleGlobalAttributes += !mKey !mValue
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTIC ANALYSIS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @guiAnalysisContext {
   public var @stringlist mImportedOptionComponentList = {}
@@ -381,14 +397,14 @@ struct @guiAnalysisContext {
   public var @projectIndexingDescriptorList mProjectIndexingDescriptorList = {}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForGeneration {
   public let @guiAnalysisContext mGuiComponentContext
   insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileAllGuiComponentFromASTGalgas3
   ?let @galgasGUIComponentListAST inGuiComponentListAST
@@ -405,7 +421,7 @@ proc compileAllGuiComponentFromASTGalgas3
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST-element inGUIComponentAST
                                           ?let @semanticContext inSemanticContext
@@ -413,7 +429,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST-elemen
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
     error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
-#--- 
+#---
   var @guiAnalysisContext context = .new {}
   context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
 #--- Check imported options components
@@ -529,9 +545,9 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST-elemen
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
                                       ?let @string inOutputDirectory
@@ -578,9 +594,9 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#         G E N E R A T I O N    T E M P L A T E S
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
@@ -594,4 +610,4 @@ filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
     ?@bool QUIET_OUTPUT_BY_DEFAULT
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

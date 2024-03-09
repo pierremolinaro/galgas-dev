@@ -52,7 +52,7 @@ mBoolValue (inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bool::constructor_default (UNUSED_LOCATION_ARGS) {
+GALGAS_bool GALGAS_bool::class_func_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_bool (false) ;
 }
 
@@ -207,13 +207,13 @@ GALGAS_sint_36__34_ GALGAS_bool::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) cons
 
 void GALGAS_bool::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.addString ("<@bool:") ;
+  ioString.appendCString ("<@bool:") ;
   if (isValid ()) {
-    ioString.addString (mBoolValue ? "true" : "false") ;
+    ioString.appendString (mBoolValue ? "true" : "false") ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

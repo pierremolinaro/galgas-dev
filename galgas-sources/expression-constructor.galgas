@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @constructorExpressionAST : @semanticExpressionAST {
   private let @lstring mTypeName
@@ -9,19 +26,19 @@ refclass @constructorExpressionAST : @semanticExpressionAST {
   private let @location locationForOldStyleCollectionInitializerError
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #refclass @defaultConstructorExpressionAST : @semanticExpressionAST {
 #  private let @lstring mTypeName
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <optional_type> !@lstring outTypeName {
     select
@@ -30,10 +47,11 @@ syntax extension galgas3ExpressionSyntax {
       $@type$ ?outTypeName indexing typeReferenceInConstructor
     end
   }
-  
-  #·················································································································
-  
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+
+  #·······························································································
+
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
   #--- Type name
     <optional_type> ?let @lstring typeName
     $.$
@@ -46,7 +64,7 @@ syntax extension galgas3ExpressionSyntax {
       expressionList = {}
     or
       ${$
-      <output_expression_list_ggs3> ?expressionList
+      <output_expression_list_ggs3> !?ioDeclarations ?expressionList
       $}$
     end
     let endOfExpression = @location.here
@@ -57,9 +75,9 @@ syntax extension galgas3ExpressionSyntax {
       ![startOfExpression union !endOfExpression]
     }
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
 #  rule <primary_ggs3> !@semanticExpressionAST outExpression {
 #    <optional_type> ?let @lstring typeName
 #    $.$
@@ -67,15 +85,15 @@ syntax extension galgas3ExpressionSyntax {
 #    outExpression = @defaultConstructorExpressionAST.new {!typeName}
 #  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <optional_type> !@lstring outTypeName {
     select
@@ -84,10 +102,11 @@ syntax extension galgas4ExpressionSyntax {
       $@type$ ?outTypeName indexing typeReferenceInConstructor
     end
   }
-  
-  #·················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
+
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
   #--- Type name
     <optional_type> ?let @lstring typeName
     $.$
@@ -101,11 +120,11 @@ syntax extension galgas4ExpressionSyntax {
     or
       ${$
       error .here : "'{' is obsolete here, use '('" #GGS4
-      <output_expression_list> ?expressionList
+      <output_expression_list> !?ioDeclarations ?expressionList
       $}$
     or
       $($
-      <output_expression_list> ?expressionList
+      <output_expression_list> !?ioDeclarations ?expressionList
       select
         $)$
       or
@@ -121,17 +140,18 @@ syntax extension galgas4ExpressionSyntax {
       ![startOfExpression union !endOfExpression]
     }
   }
-  
-  #·················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
+
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
   #--- Type name
     $@type$ ?let typeName indexing typeReferenceInConstructor
     let startOfExpression = @location.here
   #--- Actual arguments
     let @actualOutputExpressionList expressionList
     $($
-    <output_expression_list> ?expressionList
+    <output_expression_list> !?ioDeclarations ?expressionList
     $)$
     let endOfExpression = @location.here
     outExpression = @constructorExpressionAST.new {
@@ -141,14 +161,14 @@ syntax extension galgas4ExpressionSyntax {
       ![startOfExpression union !endOfExpression]
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @constructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -179,7 +199,7 @@ private proc analyzeConstructorInvocation
 {
   outConstructorType = inType
   if inTypeName.string != "" then
-    outConstructorType = [ioTypeMap searchKey !inTypeName]
+    outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
   if [outConstructorType isNull] then
     error inTypeName
@@ -187,15 +207,15 @@ private proc analyzeConstructorInvocation
     : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
   else
   #--- Get constructor map from type map
-    let @constructorMap constructorMap = [outConstructorType definition].mConstructorMap
+    let @classFunctionMap classFunctionMap = [outConstructorType definition].mClassFunctionMap
   #--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
-    with inConstructorName.string in constructorMap  do
+    with inConstructorName.string in classFunctionMap  do
       constructorFormalArgumentTypeList = mArgumentTypeList
       outHasCompilerArgument = mHasCompilerArgument
       outReturnedType = mReturnedType
     else
-      if [constructorMap count] == 0 then
+      if [classFunctionMap count] == 0 then
         error inConstructorName
         : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
@@ -203,7 +223,7 @@ private proc analyzeConstructorInvocation
         error inConstructorName
         : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-        fixit { replace [constructorMap keyList] }
+        fixit { replace [classFunctionMap keyList] }
       end
     end
   #--- Analysis arguments
@@ -217,7 +237,7 @@ private proc analyzeConstructorInvocation
     for (mActualSelector mExpression mEndOfExpressionLocation) in inInitializerEffectiveParameterExpressions,
         (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
@@ -247,7 +267,7 @@ private proc analyzeConstructorInvocation
 #·····················································································································
 
 override method @constructorExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
@@ -286,9 +306,9 @@ override method @constructorExpressionAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @constructorExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry mConstructorType
@@ -313,13 +333,13 @@ override method @constructorExpressionForGeneration generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet 
+      !?ioUnusedVariableCppNameSet
       ?let @string parameter
     ]
-    parameterList += !parameter  
+    parameterList += !parameter
   end
   outCppExpression = "GALGAS_"  + [self.mConstructorType identifierRepresentation]
-                   + "::constructor_" + [self.mConstructorName identifierRepresentation]
+                   + "::class_func_" + [self.mConstructorName identifierRepresentation]
                    + " ("
   for (mValue) in parameterList
     do outCppExpression += mValue
@@ -341,7 +361,7 @@ override method @constructorExpressionForGeneration generateExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mConstructorName
@@ -360,7 +380,7 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   [self.mResultType addHeaderFileName !?ioInclusionSet]
   outCppExpression =
     "GALGAS_"  + [self.mResultType identifierRepresentation]
-  + "::constructor_"
+  + "::class_func_"
   + [self.mConstructorName identifierRepresentation]
   if self.mHasCompilerArgument then
     outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
@@ -369,4 +389,4 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

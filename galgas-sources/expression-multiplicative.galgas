@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @multiplicationExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
@@ -40,103 +57,105 @@ refclass @moduloExpressionAST : @semanticExpressionAST {
   public let @semanticExpressionAST mRightExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <term_ggs3> !@semanticExpressionAST outExpression {
-    <factor_ggs3> ? outExpression
+  #·······························································································
+
+  rule <term_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                   !@semanticExpressionAST outExpression {
+    <factor_ggs3> !?ioDeclarations ?outExpression
     repeat
     while
       let operatorLocation = @location.here
       $*$
       let leftOperand = outExpression
-      <factor_ggs3> ?let @semanticExpressionAST rightOperand
+      <factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @multiplicationExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
-      <factor_ggs3> ?let @semanticExpressionAST rightOperand
+      <factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @multiplicationExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
-      <factor_ggs3> ?let rightOperand
+      <factor_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
-      <factor_ggs3> ?let rightOperand
+      <factor_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @divisionExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
-      <factor_ggs3> ?let rightOperand
+      <factor_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @moduloExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <term> !@semanticExpressionAST outExpression {
-    <factor> ? outExpression
+  #·······························································································
+
+  rule <term> ?!@galgasDeclarationAST ioDeclarations
+              !@semanticExpressionAST outExpression {
+    <factor> !?ioDeclarations ?outExpression
     repeat
     while
       let operatorLocation = @location.here
       $*$
       let leftOperand = outExpression
-      <factor> ?let @semanticExpressionAST rightOperand
+      <factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @multiplicationExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
-      <factor> ?let @semanticExpressionAST rightOperand
+      <factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
       outExpression = @multiplicationExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
-      <factor> ?let rightOperand
+      <factor> !?ioDeclarations ?let rightOperand
       outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
-      <factor> ?let rightOperand
+      <factor> !?ioDeclarations ?let rightOperand
       outExpression = @divisionExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
-      <factor> ?let rightOperand
+      <factor> !?ioDeclarations ?let rightOperand
       outExpression = @moduloExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -148,7 +167,7 @@ override method @multiplicationExpressionNoOverflowAST enterExpressionInSemantic
 #·····················································································································
 
 override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -157,7 +176,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -167,7 +186,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -182,7 +201,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftExpression.mResultType
@@ -193,7 +212,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 override method @multiplicationExpressionAST enterExpressionInSemanticContext
@@ -206,7 +225,7 @@ override method @multiplicationExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @multiplicationExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -215,7 +234,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -225,7 +244,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -240,7 +259,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftExpression.mResultType
@@ -251,7 +270,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -263,7 +282,7 @@ override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContex
 #·····················································································································
 
 override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -272,7 +291,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -282,7 +301,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -297,7 +316,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftExpression.mResultType
@@ -308,7 +327,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -320,7 +339,7 @@ override method @divisionExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @divisionExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -329,7 +348,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -339,7 +358,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -354,7 +373,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftExpression.mResultType
@@ -365,7 +384,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @moduloExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -377,7 +396,7 @@ override method @moduloExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @moduloExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -386,7 +405,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -396,7 +415,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -411,7 +430,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftExpression.mResultType
@@ -422,4 +441,4 @@ override method @moduloExpressionAST analyzeSemanticExpression
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

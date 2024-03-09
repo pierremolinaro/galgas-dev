@@ -45,7 +45,7 @@ var переменная = 7
 
 \sectionLabel{Les mots réservés}{motReservesGALGAS3}
 
-Les mots réservés de GALGAS sont les identificateurs listés dans le \refTableauPage{mots-reserves}.
+Les mots réservés de GALGAS sont les identificateurs listés dans le \refTableauPage{mots-reserves-ggs3}.
 
 \begin{table}[t]
   \centering
@@ -53,13 +53,13 @@ Les mots réservés de GALGAS sont les identificateurs listés dans le \refTable
     \input{partie-utilisation/included-keyword-list-3.tex}
   \end{tabular}
   \caption{Mots réservés du langage GALGAS3}
-  \labelTableau{mots-reserves}
+  \labelTableau{mots-reserves-ggs3}
 \end{table}
 
 
 \sectionLabel{Les délimiteurs}{delimiteursGALGAS3}
 
-Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimiteurs}.
+Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimiteursGGS3}.
 
 \begin{table}[t]
   \centering
@@ -67,7 +67,7 @@ Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimite
     \input{partie-utilisation/included-delimiter-list-3.tex}
   \end{tabular}
   \caption{Délimiteurs du langage GALGAS3}
-  \labelTableau{delimiteurs}
+  \labelTableau{delimiteursGGS3}
 \end{table}
 
 
@@ -80,10 +80,10 @@ Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimite
     \ggst=!=  & \ggst=!selecteur:=  & \ggst=!?=  & \ggst=!?selecteur:= & \ggst=?= & \ggst=?selecteur:= & \ggst=?!= & \ggst=?!selecteur:= \\
    \end{tabular}
   \caption{Sélecteurs du langage GALGAS3}
-  \labelTableau{selecteurs}
+  \labelTableau{selecteursGGS3}
 \end{table}
 
-Les sélecteurs du langage GALGAS sont listés dans le \refTableauPage{selecteurs}.
+Les sélecteurs du langage GALGAS sont listés dans le \refTableauPage{selecteursGGS3}.
 
 
 
@@ -158,21 +158,7 @@ Une constante littérale entière peut être écrite~:
 
 Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres décimaux ou hexadécimaux~: \ggst=1_234=, \ggst=0x123_4567=.
 
-Une constante littérale entière est typée~; son type est fixé par son suffixe (\refTableau{suffixeConstantesLiteralesEntieres}).
-
-\begin{table}[t]
-  \centering
-  \begin{tabular}{llllllllllllll}
-    \textbf{Suffixe} & \textbf{Type} & \textbf{Exemples}\\
-    \emph{Pas de suffixe}  & \ggst=@uint=  & \ggst=1_234=, \ggst=0x1234_5678= \\
-    \texttt{L}  & \ggst=@uint64=  & \ggst=1_234L=, \ggst=0x1234_5678L= \\
-    \texttt{S}  & \ggst=@sint=  & \ggst=1_234S=, \ggst=0x1234_5678S= \\
-    \texttt{LS}  & \ggst=@sint64=  & \ggst=1_234LS=, \ggst=0x1234_5678LS= \\
-    \texttt{G}  & \ggst=@bigint=  & \ggst=1_234G=, \ggst=0x1234_5678G= \\
-   \end{tabular}
-  \caption{Suffixes et types des constantes littérales entières}
-  \labelTableau{suffixeConstantesLiteralesEntieres}
-\end{table}
+Une constante littérale entière a pour type \ggst=@bigint=.
 
 
 
@@ -206,7 +192,7 @@ Un \emph{caractère littéral} est un caractère Unicode placé entre deux apost
  'a', 'æ', 'Œ'
 \end{galgas3}
 
-Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesCaracteres}.
+Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesCaracteres-ggs3}.
 
 \begin{table}[t]
   \centering
@@ -224,7 +210,7 @@ Plusieurs séquences d'échappements sont définies et listées dans le \refTabl
     \texttt{\textquotesingle\textbackslash Uabcdefgh\textquotesingle}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
    \end{tabular}
   \caption{Séquence d'échappement des constantes littérales caractère}
-  \labelTableau{echappementConstantesLiteralesCaracteres}
+  \labelTableau{echappementConstantesLiteralesCaracteres-ggs3}
 \end{table}
 
 
@@ -238,7 +224,7 @@ Un \emph{chaîne de caractères littérale} est une séquence de caractères Uni
  "une chaîne", "Œnologie"
 \end{galgas3}
 
-Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesChaine}.
+Plusieurs séquences d'échappements sont définies et listées dans le \refTableau{echappementConstantesLiteralesChaine-ggs3}.
 
 \begin{table}[t]
   \centering
@@ -256,7 +242,7 @@ Plusieurs séquences d'échappements sont définies et listées dans le \refTabl
     \texttt{"\textbackslash Uabcdefgh"}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
    \end{tabular}
   \caption{Séquence d'échappement des constantes littérales chaîne de caractères}
-  \labelTableau{echappementConstantesLiteralesChaine}
+  \labelTableau{echappementConstantesLiteralesChaine-ggs3}
 \end{table}
 
 
@@ -293,7 +279,7 @@ Un attribut~:
   \item est suivi par une ou plusieurs lettres Unicode, chiffres décimaux, «~\texttt{-}~» ou «~\texttt{\_}~».
 \end{itemize}
 
-La liste des attributs est donnée dans le \refTableauPage{attributs-reserves}. Un attribut est un mot réservé « secondaire ».
+La liste des attributs est donnée dans le \refTableauPage{attributs-reserves-ggs3}. Un attribut est un mot réservé « secondaire ».
 
 \begin{table}[ht]
   \centering
@@ -301,7 +287,7 @@ La liste des attributs est donnée dans le \refTableauPage{attributs-reserves}. 
     \input{partie-utilisation/included-attribute-list-3.tex}
   \end{tabular}
   \caption{Attributs du langage GALGAS3}
-  \labelTableau{attributs-reserves}
+  \labelTableau{attributs-reserves-ggs3}
 \end{table}
 
 

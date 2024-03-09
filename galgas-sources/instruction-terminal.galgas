@@ -1,26 +1,30 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @terminalCheckInstruction : @syntaxInstructionAST {
-  private let @lstring mTerminalName
-  private let @actualInputParameterListAST mActualInputParameterList
-  private let @2lstringlist mIndexingKeyList # Empty list if no index
-  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list_ggs3> ?let @actualInputParameterListAST actualInputParameterList
+    <actual_input_parameter_list_ggs3> !?ioDeclarations ?let @actualInputParameterListAST actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
@@ -30,10 +34,10 @@ syntax extension galgas3SyntaxComponentSyntax {
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
-    outInstruction = @terminalCheckInstruction.new {
+    outInstruction = @terminalCheckInstructionAST.new {
       !terminalName.location
       !terminalName
       !actualInputParameterList
@@ -43,7 +47,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
     outIndexNameList = {}
@@ -65,21 +69,20 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                            ?!@stringset unused ioUserImplicitDeclaredTypeSet
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
-    <actual_input_parameter_list> ?let actualInputParameterList
+    <actual_input_parameter_list> !?ioDeclarations ?let actualInputParameterList
     <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
@@ -89,10 +92,10 @@ syntax extension galgas4SyntaxComponentSyntax {
       grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
       $:>$
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
-    outInstruction = @terminalCheckInstruction.new {
+    outInstruction = @terminalCheckInstructionAST.new {
       !terminalName.location
       !terminalName
       !actualInputParameterList
@@ -102,7 +105,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
     outIndexNameList = {}
@@ -126,111 +129,162 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! TRANSFORM
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! @terminalCheckInstructionAST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @terminalCheckInstruction transformInstruction
-  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
-  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
-  let @uint terminalSymbolIndex
-  with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
-    terminalSymbolIndex = mTerminalIndex
-  else
-    terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
-    [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
-  end
-  ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis.new {
-    !self.mInstructionLocation
-    !self.mTerminalName
-    !terminalSymbolIndex
+refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
+  private let @lstring mTerminalName
+  private let @actualInputParameterListAST mActualInputParameterList
+  private let @2lstringlist mIndexingKeyList # Empty list if no index
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
+
+  #·······························································································
+
+  override method  transformInstruction
+    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+    ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
+    let @uint terminalSymbolIndex
+    with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap  do
+      terminalSymbolIndex = mTerminalIndex
+    else
+      terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
+      [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
+    end
+    ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis.new {
+      !self.mInstructionLocation
+      !self.mTerminalName
+      !terminalSymbolIndex
+    }
   }
-}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-override method @terminalCheckInstruction analyzeSyntaxInstruction
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
-  ?let @terminalMap inTerminalMap
-  ?let @string inLexiqueName
-  ?let @nonterminalMap unused inNonterminalMap
-  ?let @string unused inComponentName
-  ?let @stringset inIndexNameSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-  ?!@uint unused ioSelectMethodCount {
-  [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
-#---
-  if [self.mActualInputParameterList count] != [sentAttributeList count] then
-    error self.mTerminalName
-    : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList count] string]
-    + " input parameter" + if [sentAttributeList count] > 1 then "s" else "" end
-    + ", but this instruction names "
-    + [[self.mActualInputParameterList count] string] + " input parameter" 
-    + if [self.mActualInputParameterList count] > 1 then "s" else "" end
-  end
-#---
-  var terminalCheckAssignementList = @terminalCheckAssignementList {}
-  for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
-    [mInputParameter analyzeInputParameter
+  #·······························································································
+
+  override method analyzeSyntaxInstruction
+    ?let @lstring unused inUsefulnessCallerEntityName
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+    ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?let @bool inHasTranslateFeature
+    ?let @terminalMap inTerminalMap
+    ?let @string inLexiqueName
+    ?let @nonterminalMap unused inNonterminalMap
+    ?let @string unused inComponentName
+    ?let @stringset inIndexNameSet
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@localVarManager ioVariableMap
+    ?!@uint unused ioSelectMethodCount {
+    [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
+  #---
+    if [self.mActualInputParameterList count] != [sentAttributeList count] then
+      error self.mTerminalName
+      : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList count] string]
+      + " input parameter" + if [sentAttributeList count] > 1 then "s" else "" end
+      + ", but this instruction names "
+      + [[self.mActualInputParameterList count] string] + " input parameter"
+      + if [self.mActualInputParameterList count] > 1 then "s" else "" end
+    end
+  #---
+    var terminalCheckAssignementList = @terminalCheckAssignementList {}
+    for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
+      [mInputParameter analyzeInputParameter
+        !inAnalysisContext
+        !?ioTypeMap
+        !mLexicalType
+        !mLexicalAttributeName
+        !?terminalCheckAssignementList
+        !?ioVariableMap
+      ]
+      if mLexicalFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'"
+        warning mLexicalFormalSelector : "the formal selector is declared here"
+      end
+    end
+  #---
+    for (mValue0 *) in self.mIndexingKeyList do
+      if not [inIndexNameSet hasKey !mValue0.string] then
+        error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
+      end
+    end
+  #--- Check syntax directed translation destination variable
+    [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
       !inAnalysisContext
       !?ioTypeMap
-      !mLexicalType
-      !mLexicalAttributeName
-      !?terminalCheckAssignementList
+      !inHasTranslateFeature
       !?ioVariableMap
     ]
-    if mLexicalFormalSelector.string != mActualSelector.string then
-      error mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'"
-      warning mLexicalFormalSelector : "the formal selector is declared here"
-    end
-  end
-#---
-  for (mValue0 *) in self.mIndexingKeyList do
-    if not [inIndexNameSet hasKey !mValue0.string] then
-      error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
-    end
-  end
-#--- Check syntax directed translation destination variable
-  [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
-    !inAnalysisContext
-    !?ioTypeMap
-    !inHasTranslateFeature
-    !?ioVariableMap
-  ]
-  [self.mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
-    !inAnalysisContext
-    !?ioTypeMap
-    !inHasTranslateFeature
-    !?ioVariableMap
-  ]
-#---
-  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !self.mTerminalName
-    !inLexiqueName
-    !terminalCheckAssignementList
-    !self.mIndexingKeyList
-    !self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-    !self.mGrammarInstructionSyntaxDirectedTranslationToken
+    [self.mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
+      !inAnalysisContext
+      !?ioTypeMap
+      !inHasTranslateFeature
+      !?ioVariableMap
+    ]
+  #---
+    ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !self.mTerminalName
+      !inLexiqueName
+      !terminalCheckAssignementList
+      !self.mIndexingKeyList
+      !self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+      !self.mGrammarInstructionSyntaxDirectedTranslationToken
+    }
   }
+
+  #·······························································································
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! @terminalCheckInstructionForGeneration
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+  public let @lstring mTerminalSymbolName
+  public let @uint mTerminalSymbolIndex
+
+  #·······························································································
+
+  override method tikzNodeForSyntaxInstruction ?!@rowList ioRowList
+                                                ?fromRow:let @uint inRow
+                                                ?!column:@uint ioColumn
+                                                ?!node: @string ioCurrentNode
+                                                ?!arrowShape: @string ioArrowShape
+                                                ?!arrows:@string ioArrows
+                                                ?!@uint unused ioMaxUsedRowIndex
+                                                ?debug:let @bool unused inDebug {
+    [!?ioRowList appendRow
+      !nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
+      !row:inRow
+      !column:ioColumn
+      ?nodeName:let nodeName
+    ]
+    ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
+    ioCurrentNode = nodeName
+    ioArrowShape = "--"
+    ioColumn += 1
+  }
+
+  #·······························································································
+
+  override getter isLinear -> @bool {
+    result = true
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! @terminalCheckInstructionForGeneration
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @lstring mTerminalName
@@ -241,9 +295,9 @@ refclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneratio
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   ?let @string unused inPosfix
@@ -260,9 +314,9 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! COMPARE SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction -> @bool {
@@ -283,12 +337,12 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
   if not result then
     error self.mInstructionLocation
     :"reference syntax instruction is here"
-  end  
+  end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@stringset unused ioInclusionSet
@@ -303,13 +357,13 @@ override method @terminalCheckInstructionForGeneration generateInstruction
     else
     end
     ioGeneratedCode += mTargetVarCppName + " = " + compilerCppName () + "->synthetizedAttribute_"
-                    + [mSourceLexicalAttributeName identifierRepresentation]
-                    + " () ;\n"
+    ioGeneratedCode += [mSourceLexicalAttributeName identifierRepresentation]
+    ioGeneratedCode += " () ;\n"
   end
 #--- Indexing
   for (mValue0 mValue1) in self.mIndexingKeyList do
     ioGeneratedCode += compilerCppName ()
-    ioGeneratedCode += "->enterIndexing (C_Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
+    ioGeneratedCode += "->enterIndexing (Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
     ioGeneratedCode += [mValue0 identifierRepresentation]
     ioGeneratedCode += ", " + [mValue1 utf8RepresentationEscapingQuestionMark] + ") ;\n"
   end
@@ -328,9 +382,9 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ]
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode += compilerCppName () + "->acceptTerminal (C_Lexique_"
-                  + self.mLexiqueIdentifier + "::kToken_" + [self.mTerminalName identifierRepresentation]
-                  + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"
+  ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + [self.mTerminalName identifierRepresentation]
+  ioGeneratedCode += [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

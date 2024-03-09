@@ -2,17 +2,25 @@
 //
 //  Perform FIRST computations for pure BNF grammar.
 //
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 1999, ..., 2024 Pierre Molinaro.
 //
-//  e-mail : pierre@pcmolinaro.name
+//  MIT License
+//                                           
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
 //
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-//  more details.
-//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//                                           
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
@@ -80,10 +88,6 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
                           const bool inVerboseOptionOn) {
 //  const int32_t symbolsCountEX = inVocabulary.getAllSymbolsCount () ;
   const int32_t symbolsCount = (int32_t) inUsefulSymbols.configuration().constantCountForVariable (0 COMMA_HERE) ;
-/*  if (symbolsCountEX != symbolsCount) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }*/
   C_RelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
   vocabulary2Config.appendConfiguration (inUsefulSymbols.configuration()) ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
@@ -102,21 +106,21 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
   const uint64_t m = FIRST_with_empty_relation.value64Count() ;
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p>") ;
-    ioHTMLFileContents.addString ("Calculus completed in ") ;
-    ioHTMLFileContents.addSigned (inIterationsCount) ;
-    ioHTMLFileContents.addString (" iterations, ") ;
-    ioHTMLFileContents.addUnsigned (m) ;
-    ioHTMLFileContents.addString (" values ;\n"
+    ioHTMLFileContents.appendCString ("Calculus completed in ") ;
+    ioHTMLFileContents.appendSigned (inIterationsCount) ;
+    ioHTMLFileContents.appendCString (" iterations, ") ;
+    ioHTMLFileContents.appendUnsigned (m) ;
+    ioHTMLFileContents.appendCString (" values ;\n"
                           "'$$' means the nonterminal can be derived to empty string (see step 4).\n") ;
     ioHTMLFileContents.addRawData ("</p>") ;
     ioHTMLFileContents.addRawData ("<table class=\"result\">") ;
     for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
       ioHTMLFileContents.addRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      ioHTMLFileContents.addString (FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE)) ;
+      ioHTMLFileContents.appendString (FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE)) ;
       ioHTMLFileContents.addRawData ("</code></td><td><code>") ;
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
-        ioHTMLFileContents.addString (" ") ;
+        ioHTMLFileContents.appendCString (" ") ;
         inVocabulary.printInFile (ioHTMLFileContents, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
       ioHTMLFileContents.addRawData ("</code></td></tr>") ;
@@ -139,7 +143,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
 //--- Display nonterminal symbols in error
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p>") ;
-    ioHTMLFileContents.addString ("Every useful nonterminal should"
+    ioHTMLFileContents.appendCString ("Every useful nonterminal should"
                    " either have a non empty FIRST,"
                    " either be derived to empty string,"
                    " either both."
@@ -148,22 +152,22 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
     ioHTMLFileContents.addRawData ("<p>") ;
     if (ntInErrorCount == 0) {
       ioHTMLFileContents.addRawData ("<span class=\"success\">") ;
-      ioHTMLFileContents.addString ("All FIRST are correct.\n\n") ;
+      ioHTMLFileContents.appendCString ("All FIRST are correct.\n\n") ;
       ioHTMLFileContents.addRawData ("</span>") ;
     }else{
       ioHTMLFileContents.addRawData ("<span class=\"error\">") ;
-      ioHTMLFileContents.addString ("Error : ") ;
-      ioHTMLFileContents.addUnsigned (ntInErrorCount) ;
-      ioHTMLFileContents.addString (" nonterminal symbol") ;
-      ioHTMLFileContents.addString ((ntInErrorCount>1) ? " has" : "s have") ;
-      ioHTMLFileContents.addString (" an empty FIRST :") ;
+      ioHTMLFileContents.appendCString ("Error : ") ;
+      ioHTMLFileContents.appendUnsigned (ntInErrorCount) ;
+      ioHTMLFileContents.appendCString (" nonterminal symbol") ;
+      ioHTMLFileContents.appendString ((ntInErrorCount>1) ? " has" : "s have") ;
+      ioHTMLFileContents.appendCString (" an empty FIRST :") ;
       TC_UniqueArray <uint64_t> errorArray_relation ;
       ntInError_relation.getValueArray (errorArray_relation) ;
       ioHTMLFileContents.addRawData ("<code>") ;
       for (int32_t i=0 ; i<errorArray_relation.count () ; i++) {
         const uint64_t ntInError = errorArray_relation (i COMMA_HERE) ;
-        ioHTMLFileContents.addString (" ") ;
-        ioHTMLFileContents.addString (ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE)) ;
+        ioHTMLFileContents.appendCString (" ") ;
+        ioHTMLFileContents.appendString (ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE)) ;
       }
       ioHTMLFileContents.addRawData ("</code>") ;
       ioHTMLFileContents.addRawData ("</span>") ;
@@ -172,9 +176,9 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
   }
   if (inVerboseOptionOn) {
     if (ntInErrorCount == 0) {
-      gCout.addString ("ok.\n") ;
+      gCout.appendCString ("ok.\n") ;
     }else{
-      gCout.addString ("error.\n") ;
+      gCout.appendCString ("error.\n") ;
     }
     gCout.flush () ;
   }
@@ -198,13 +202,13 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   const C_RelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout.addString ("  FIRST sets... ") ;
+    gCout.appendCString ("  FIRST sets... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p><a name=\"first_sets\"></a></p>") ;
-    ioHTMLFileContents.addCppTitleComment ("FIRST set", "title") ;
+    ioHTMLFileContents.appendTitleComment ("FIRST set", "title") ;
   }
 
 //--- Compute FIRST sets

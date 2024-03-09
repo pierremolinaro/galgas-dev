@@ -73,9 +73,8 @@ void U8Data::appendByte (const uint8_t inByte) {
 //--------------------------------------------------------------------------------------------------
 
 void U8Data::appendString (const String & inString) {
-  const utf32 * ptr = inString.utf32String (HERE) ;
-  for (int32_t i=0 ; i<inString.length () ; i++) {
-    appendUTF32Character (ptr [i]) ;
+  for (int32_t i = 0 ; i < inString.length () ; i++) {
+    appendUTF32Character (inString.charAtIndex (i COMMA_HERE)) ;
   }
 }
 

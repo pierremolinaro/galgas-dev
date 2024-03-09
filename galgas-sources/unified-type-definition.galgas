@@ -1,19 +1,26 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  semantics definitions for semantics component 
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  semantics definitions for semantics component
+#
 #  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @unifiedTypeDefinition {
   public let @lstring mTypeName
@@ -25,7 +32,7 @@ struct @unifiedTypeDefinition {
   public let @typedPropertyList mAllTypedPropertyList
   public let @propertyMap mPropertyMap # struct, class
   public let @typedPropertyList mCurrentTypedPropertyList
-  public let @constructorMap mConstructorMap
+  public let @classFunctionMap mClassFunctionMap
   public let @getterMap mGetterMap
   public let @setterMap mSetterMap
   public let @instanceMethodMap mInstanceMethodMap
@@ -40,55 +47,57 @@ struct @unifiedTypeDefinition {
   public let @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
   public let @bool mGenerateHeaderInSeparateFile # Significant only for classes
   public let @unifiedTypeMapEntry mTypeForEnumeratedElement
-  public let @string defaultConstructorName %selector # Used in [@xxx default] (empty string if no default constructor)
+  public let @string defaultConstructorName %selector # Used in [@xxx default] (empty string if no default initializer)
   public let @string mHeaderFileName # Name of C++ header file that contains type declaration
   public let @headerKind mHeaderKind
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#  T Y P E    K I N D    E N U M E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-getter @unifiedTypeMapEntry identifierRepresentation -> @string {
-  result = [[self definition].mTypeName.string identifierRepresentation]
-}
+enum @typeKindEnum {
+  case classType (@bool isReference)
+  case weakReferenceType (@unifiedTypeMapEntry referenceType)
+  case enumType
+  case listType
+  case sortedListType
+  case mapType
+  case sharedMapType
+  case sharedMapEntryType
+  case listMapType
+  case boolsetType
+  case structType
+  case graphType
+  case externType
+  case otherType
+  case packageType
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #-----------------------------------------------------------------------------------------------
 
-getter @unifiedTypeMapEntry typeName -> @string {
-  result = [self definition].mTypeName.string
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry baseType -> @unifiedTypeMapEntry outBaseType {
-  outBaseType = self
-  loop while not [[outBaseType definition].mSuperType isNull] do
-    outBaseType = [outBaseType definition].mSuperType
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMapEntry addHeaderFileName ?!@stringset ioInclusions {
-  let typeDefinition = [self definition]
-  if (not typeDefinition.mIsPredefined) & (typeDefinition.mHeaderKind != .noHeader) then
-    ioInclusions += !typeDefinition.mHeaderFileName
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMapEntry addHeaderFileName1 ?!@stringset ioInclusions {
-  let typeDefinition = [self definition]
-  if not typeDefinition.mIsPredefined then
-    switch typeDefinition.mHeaderKind
-    case noHeader :
-    case oneHeader :
-      ioInclusions += !typeDefinition.mHeaderFileName
-    case twoHeaders :
-      ioInclusions += !typeDefinition.mHeaderFileName + "-1"
+  getter string -> @string {
+    switch self
+      case classType (isReference) : result = if isReference then "reference class" else "value class" end
+      case enumType : result = "enumeration"
+      case listType : result = "list"
+      case sortedListType : result = "sorted list"
+      case mapType : result = "map"
+      case sharedMapType : result = "shared map"
+      case sharedMapEntryType : result = "shared map entry"
+      case listMapType : result = "list map"
+      case structType : result = "struct"
+      case boolsetType : result = "boolset"
+      case graphType : result = "graph"
+      case otherType : result = "other"
+      case externType : result = "extern"
+      case packageType : result = "package"
+      case weakReferenceType (*) : result = "weak reference"
     end
-  end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

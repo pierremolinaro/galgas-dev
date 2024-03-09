@@ -1,11 +1,11 @@
 #! /usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
 
 import sys, os, fnmatch
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
 
 def compterLignesFichier (nomFichier) :
   fd = open (nomFichier, 'r')
@@ -15,7 +15,7 @@ def compterLignesFichier (nomFichier) :
   fd.close ()
   return n
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------
 
 def compterLignes (repertoire, extension) :
   n = 0
@@ -24,13 +24,15 @@ def compterLignes (repertoire, extension) :
       n += compterLignesFichier (os.path.join (root, filename))
   return n
 
+#-----------------------------------------------------------------------------------------
+
 #----------------------------------------------------------------- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 os.chdir (scriptDir)
 #----------------------------------------------------------------- Get goal as first argument
 print ("Sources GALGAS : " + str (compterLignes (scriptDir + "/galgas-sources", "galgas")) + " lignes")
 
-print ("Templates GALGAS : " + str (compterLignes (scriptDir + "/generation_templates", "galgasTemplate")) + " lignes")
+print ("Templates GALGAS : " + str (compterLignes (scriptDir + "/galgas-sources/+generation-templates", "galgasTemplate")) + " lignes")
 
 n = compterLignes (scriptDir + "/hand_coded_sources", "cpp") + compterLignes (scriptDir + "/hand_coded_sources", "h")
 print ("Sources C++ compilateur GALGAS : " + str (n) + " lignes")
@@ -51,4 +53,4 @@ print ("Sources C++ engendrés par GALGAS : " + str (n) + " lignes")
 
 print ("Tous les sources C++ du projet compilateur GALGAS : " + str (n + n_libpm) + " lignes")
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------

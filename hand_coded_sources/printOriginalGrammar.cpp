@@ -3,16 +3,24 @@
 //  Routines for printing original grammar (with 'select' and 'repeat')                          
 //
 //  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
+//                                           
+//  MIT License
+//                                           
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  e-mail : pierre@pcmolinaro.name
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
 //
-//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
-//
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-//  more details.
-//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//                                           
 //--------------------------------------------------------------------------------------------------
 
 #include "MF_MemoryControl.h"
@@ -48,7 +56,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::
 printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
-  inHTMLfile.addString ("repeat ") ;
+  inHTMLfile.appendCString ("repeat ") ;
   inHTMLfile.addRawData ("</span>") ;
   cEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mRepeatBranchList, kENUMERATION_UP) ;
   bool first = true ;
@@ -57,7 +65,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
       first = false ;
     }else{
       inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
-      inHTMLfile.addString ("while ") ;
+      inHTMLfile.appendCString ("while ") ;
       inHTMLfile.addRawData ("</span>") ;
     }
     inHTMLfile.addRawData ("<span class=\"within_galgas_structure\">") ;
@@ -66,7 +74,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
     currentBranch.gotoNextObject () ;
   }
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
-  inHTMLfile.addString ("end repeat;") ;
+  inHTMLfile.appendCString ("end repeat;") ;
   inHTMLfile.addRawData ("</span></span>") ;
 }
 
@@ -76,7 +84,7 @@ void cPtr_selectInstructionForGrammarAnalysis::
 printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
-  inHTMLfile.addString ("select ") ;
+  inHTMLfile.appendCString ("select ") ;
   inHTMLfile.addRawData ("</span>") ;
   cEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mSelectBranchList, kENUMERATION_UP) ;
   bool first = true ;
@@ -85,7 +93,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
       first = false ;
     }else{
       inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
-      inHTMLfile.addString ("or ") ;
+      inHTMLfile.appendCString ("or ") ;
       inHTMLfile.addRawData ("</span>") ;
     }
     inHTMLfile.addRawData ("<span class=\"within_galgas_structure\">") ;
@@ -94,7 +102,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
     currentBranch.gotoNextObject () ;
   }
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
-  inHTMLfile.addString ("end select;") ;
+  inHTMLfile.appendCString ("end select;") ;
   inHTMLfile.addRawData ("</span></span>") ;
 }
 
@@ -103,9 +111,9 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_nonterminal\">") ;
-  inHTMLfile.addString ("<") ;
-  inHTMLfile.addString (mProperty_mNonterminalSymbolName.mProperty_string.stringValue ()) ;
-  inHTMLfile.addString (">; ") ;
+  inHTMLfile.appendCString ("<") ;
+  inHTMLfile.appendString (mProperty_mNonterminalSymbolName.mProperty_string.stringValue ()) ;
+  inHTMLfile.appendCString (">; ") ;
   inHTMLfile.addRawData ("</span>") ;
 }
 
@@ -114,9 +122,9 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
 void cPtr_terminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_terminal\">") ;
-  inHTMLfile.addString ("$") ;
-  inHTMLfile.addString (mProperty_mTerminalSymbolName.mProperty_string.stringValue ()) ;
-  inHTMLfile.addString ("$; ") ;
+  inHTMLfile.appendCString ("$") ;
+  inHTMLfile.appendString (mProperty_mTerminalSymbolName.mProperty_string.stringValue ()) ;
+  inHTMLfile.appendCString ("$; ") ;
   inHTMLfile.addRawData ("</span>") ;
 }
 
@@ -132,37 +140,37 @@ void printOriginalGrammar (HTMLString & inHTMLfile,
     currentSyntaxComponent.gotoNextObject () ;
   }
   inHTMLfile.addRawData ("<p>") ;
-  inHTMLfile.addString ("The original grammar has ") ;
-  inHTMLfile.addSigned (productionsCount) ;
-  inHTMLfile.addString (" production") ;
-  inHTMLfile.addString ((productionsCount > 1) ? "s" : "") ;
-  inHTMLfile.addString (".") ;
+  inHTMLfile.appendCString ("The original grammar has ") ;
+  inHTMLfile.appendSigned (productionsCount) ;
+  inHTMLfile.appendCString (" production") ;
+  inHTMLfile.appendString ((productionsCount > 1) ? "s" : "") ;
+  inHTMLfile.appendCString (".") ;
   inHTMLfile.addRawData ("</p><table class=\"result\">") ;
 
 //--- Print productions rules by traversing syntax components
   currentSyntaxComponent.rewind () ;
   while (currentSyntaxComponent.hasCurrentObject ()) {
     inHTMLfile.addRawData ("<tr><td class=\"result_title\" colspan=\"2\">") ;
-    inHTMLfile.addString ("RULES FROM '") ;
-    inHTMLfile.addString (currentSyntaxComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue ()) ;
-    inHTMLfile.addString ("' component") ;
+    inHTMLfile.appendCString ("RULES FROM '") ;
+    inHTMLfile.appendString (currentSyntaxComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue ()) ;
+    inHTMLfile.appendCString ("' component") ;
     inHTMLfile.addRawData ("</td></tr>") ;
     cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentSyntaxComponent.current_mProductionRulesList (HERE), kENUMERATION_UP) ;
     while (currentRule.hasCurrentObject ()) {
       inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule
-      inHTMLfile.addString ("rule ") ;
+      inHTMLfile.appendCString ("rule ") ;
       inHTMLfile.addRawData ("<code>") ;
-      inHTMLfile.addString ("<") ;
-      inHTMLfile.addString (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_string.stringValue ()) ;
-      inHTMLfile.addString (">") ;
+      inHTMLfile.appendCString ("<") ;
+      inHTMLfile.appendString (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_string.stringValue ()) ;
+      inHTMLfile.appendCString (">") ;
       inHTMLfile.addRawData ("</code><br>") ;
-      inHTMLfile.addString ("file '")  ;
-      inHTMLfile.addString (currentSyntaxComponent.current_mSyntaxComponentName (HERE).mProperty_location.sourceText ().sourceFilePath ()) ;
-      inHTMLfile.addString ("'") ;
+      inHTMLfile.appendCString ("file '")  ;
+      inHTMLfile.appendString (currentSyntaxComponent.current_mSyntaxComponentName (HERE).mProperty_location.sourceText ().sourceFilePath ()) ;
+      inHTMLfile.appendCString ("'") ;
       inHTMLfile.addRawData ("<br>") ;
-      inHTMLfile.addString ("line ") ;
-      inHTMLfile.addSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().lineNumber ()) ;
+      inHTMLfile.appendCString ("line ") ;
+      inHTMLfile.appendSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().lineNumber ()) ;
       inHTMLfile.addRawData ("</td><td><code>") ;
       printInstructionsListForGrammar (currentRule.current_mInstructionList (HERE),
                                        inHTMLfile) ;

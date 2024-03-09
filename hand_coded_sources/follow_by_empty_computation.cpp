@@ -3,16 +3,24 @@
 //  Routines for computing followed by empty strings symbols                                     
 //
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                                     
+//                                           
+//  MIT License
+//                                           
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  e-mail : pierre@pcmolinaro.name
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
 //
-//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
-//
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-//  more details.
-//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//                                           
 //--------------------------------------------------------------------------------------------------
 
 #include "follow_by_empty_computation.h"
@@ -83,15 +91,15 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
 
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<p><a name=\"follow_by_empty\"></a>") ;
-    ioHTMLFileContents.addString ("Calculus completed in ") ;
-    ioHTMLFileContents.addSigned (inIterationsCount) ;
-    ioHTMLFileContents.addString (" iterations.\n") ;
+    ioHTMLFileContents.appendCString ("Calculus completed in ") ;
+    ioHTMLFileContents.appendSigned (inIterationsCount) ;
+    ioHTMLFileContents.appendCString (" iterations.\n") ;
     ioHTMLFileContents.addRawData ("</p><p>") ;
     if (n == 1) {
-      ioHTMLFileContents.addString ("One nonterminal symbol (the start symbol) can be followed by the empty string.\n") ;
+      ioHTMLFileContents.appendCString ("One nonterminal symbol (the start symbol) can be followed by the empty string.\n") ;
     }else{
-      ioHTMLFileContents.addUnsigned (n) ;
-       ioHTMLFileContents.addString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
+      ioHTMLFileContents.appendUnsigned (n) ;
+       ioHTMLFileContents.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
     ioHTMLFileContents.addRawData ("</p>") ;
     TC_UniqueArray <uint64_t> array ;
@@ -106,8 +114,8 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
     ioHTMLFileContents.addRawData ("</table>") ;
   }
   if (inVerboseOptionOn) {
-    gCout.addUnsigned (n) ;
-    gCout.addString (".\n") ;
+    gCout.appendUnsigned (n) ;
+    gCout.appendCString (".\n") ;
     gCout.flush () ;
   }
 }
@@ -124,12 +132,12 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout.addString ("  Nonterminal symbols followed by empty... ") ;
+    gCout.appendCString ("  Nonterminal symbols followed by empty... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.addCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
   }
 
 //--- Compute nonterminal symbols followed by empty 

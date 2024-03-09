@@ -37,11 +37,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const utf32 * inEntryString,
-                                                              const int16_t inEntryStringLength,
+C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const std::initializer_list <utf32> & inEntryString,
                                                               const int16_t inTokenCode) :
 mEntryString (inEntryString),
-mEntryStringLength (inEntryStringLength),
 mTokenCode (inTokenCode) {
 }
 
@@ -49,7 +47,6 @@ mTokenCode (inTokenCode) {
 
 C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) :
 mEntryString (inOperand.mEntryString),
-mEntryStringLength (inOperand.mEntryStringLength),
 mTokenCode (inOperand.mTokenCode) {
 }
 
@@ -130,14 +127,14 @@ static String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
   String result ;
   if (inSourceText.isValid ()) {
     const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
-    result.addString (inSourceText.sourceFilePath ()) ;
-    result.addString (":") ;
-    result.addSigned (inIssue.mStartLocation.lineNumber ()) ;
-    result.addString (":") ;
-    result.addSigned (inIssue.mStartLocation.columnNumber ()) ;
-    result.addString (":") ;
-    result.addSigned (inIssue.mEndLocation.columnNumber ()) ;
-    result.addString (":\n") ;
+    result.appendString (inSourceText.sourceFilePath ()) ;
+    result.appendCString (":") ;
+    result.appendSigned (inIssue.mStartLocation.lineNumber ()) ;
+    result.appendCString (":") ;
+    result.appendSigned (inIssue.mStartLocation.columnNumber ()) ;
+    result.appendCString (":") ;
+    result.appendSigned (inIssue.mEndLocation.columnNumber ()) ;
+    result.appendCString (":\n") ;
   }
   return result ;
 }
@@ -149,48 +146,48 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
                                                         const SourceTextInString & inSourceText) {
   String result ;
   if (!inSourceText.isValid ()) {
-    result.addString (inMessage) ;
+    result.appendString (inMessage) ;
   }else{
   //--- Construct message
-    result.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    result.addString (inMessage) ;
+    result.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+    result.appendString (inMessage) ;
     if (verboseOutput ()) {
       const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
-      result.addString (textLine) ;
-      result.addString ("\n") ;
+      result.appendString (textLine) ;
+      result.appendCString ("\n") ;
     //--- Underline issue
       for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
-        result.addString ("-") ;
+        result.appendCString ("-") ;
       }
       for (int32_t i=inIssue.mStartLocation.columnNumber () ; i <= inIssue.mEndLocation.columnNumber () ; i++) {
-        result.addString ("^") ;
+        result.appendCString ("^") ;
       }
-      result.addString ("\n") ;
+      result.appendCString ("\n") ;
     //--- Add fix it suggestions
       const String ZeroWidthSpace = stringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
         const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
         case kFixItRemove :
-          result.addString ("Fix-it, remove\n") ;
+          result.appendCString ("Fix-it, remove\n") ;
           break ;
         case kFixItReplace :
-          result.addString ("Fix-it, replace with ") ;
-          result.addString (ZeroWidthSpace) ;
-          result.addString (d.actionString()) ;
-          result.addString ("\n") ;
+          result.appendCString ("Fix-it, replace with ") ;
+          result.appendString (ZeroWidthSpace) ;
+          result.appendString (d.actionString()) ;
+          result.appendCString ("\n") ;
           break ;
         case kFixItInsertBefore :
-          result.addString ("Fix-it, insert before: ") ;
-          result.addString (ZeroWidthSpace) ;
-          result.addString (d.actionString()) ;
-          result.addString ("\n") ;
+          result.appendCString ("Fix-it, insert before: ") ;
+          result.appendString (ZeroWidthSpace) ;
+          result.appendString (d.actionString()) ;
+          result.appendCString ("\n") ;
           break ;
         case kFixItInsertAfter :
-          result.addString ("Fix-it, insert after: ") ;
-          result.addString (ZeroWidthSpace) ;
-          result.addString (d.actionString()) ;
-          result.addString ("\n") ;
+          result.appendCString ("Fix-it, insert after: ") ;
+          result.appendString (ZeroWidthSpace) ;
+          result.appendString (d.actionString()) ;
+          result.appendCString ("\n") ;
           break ;
         }
       }
@@ -215,12 +212,12 @@ void signalLexicalWarning (Compiler * inCompiler,
 //--- Construct location warning message
   String warningMessage ;
 //--- Add warning
-  warningMessage.addString (verboseOutput () ? "lexical " : "") ;
-  warningMessage.addString ("warning #") ;
-  warningMessage.addSigned (mTotalWarningCount) ;
-  warningMessage.addString (": ") ;
-  warningMessage.addString (inLexicalWarningMessage) ;
-  warningMessage.addString ("\n") ;
+  warningMessage.appendString (verboseOutput () ? "lexical " : "") ;
+  warningMessage.appendCString ("warning #") ;
+  warningMessage.appendSigned (mTotalWarningCount) ;
+  warningMessage.appendCString (": ") ;
+  warningMessage.appendString (inLexicalWarningMessage) ;
+  warningMessage.appendCString ("\n") ;
 //--- Print
   ggs_printWarning (inCompiler, inSourceText, inIssue, warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
@@ -244,12 +241,12 @@ void signalLexicalError (Compiler * inCompiler,
   mErrorTotalCount ++ ;
 //--- Construct parsing error message
   String errorMessage ;
-  errorMessage.addString (verboseOutput () ? "lexical " : "") ;
-  errorMessage.addString ("error #") ;
-  errorMessage.addSigned (mErrorTotalCount) ;
-  errorMessage.addString (": ") ;
-  errorMessage.addString (inLexicalErrorMessage) ;
-  errorMessage.addString ("\n") ;
+  errorMessage.appendString (verboseOutput () ? "lexical " : "") ;
+  errorMessage.appendCString ("error #") ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendCString (": ") ;
+  errorMessage.appendString (inLexicalErrorMessage) ;
+  errorMessage.appendCString ("\n") ;
 //--- Print
   ggs_printError (inCompiler, inSourceText, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -276,23 +273,23 @@ void signalParsingError (Compiler * inCompiler,
 //--- Construct location error message
   String errorMessage ;
 //--- Construct parsing error message
-  errorMessage.addString (verboseOutput () ? "syntax " : "") ;
-  errorMessage.addString ("error #") ;
-  errorMessage.addSigned (mErrorTotalCount) ;
-  errorMessage.addString (": found ") ;
-  errorMessage.addString (inFoundTokenMessage) ;
-  errorMessage.addString (", expected:\n") ;
+  errorMessage.appendString (verboseOutput () ? "syntax " : "") ;
+  errorMessage.appendCString ("error #") ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendCString (": found ") ;
+  errorMessage.appendString (inFoundTokenMessage) ;
+  errorMessage.appendCString (", expected:\n") ;
   for (int32_t i=0 ; i<inAcceptedTokenNames.count () ; i++) {
-    errorMessage.addString ("-  ") ;
-   errorMessage.addString (inAcceptedTokenNames (i COMMA_HERE)) ;
-   errorMessage.addString ("\n") ;
+    errorMessage.appendCString ("-  ") ;
+   errorMessage.appendString (inAcceptedTokenNames (i COMMA_HERE)) ;
+   errorMessage.appendCString ("\n") ;
   }
 //--- Previous token location
-  errorMessage.addString ("Previous token end location:") ;
-  errorMessage.addSigned (inPreviousTokenEndLocation.lineNumber ()) ;
-  errorMessage.addString (":") ;
-  errorMessage.addSigned (inPreviousTokenEndLocation.columnNumber ()) ;
-  errorMessage.addString ("\n") ;
+  errorMessage.appendCString ("Previous token end location:") ;
+  errorMessage.appendSigned (inPreviousTokenEndLocation.lineNumber ()) ;
+  errorMessage.appendCString (":") ;
+  errorMessage.appendSigned (inPreviousTokenEndLocation.columnNumber ()) ;
+  errorMessage.appendCString ("\n") ;
 //--- Print
   ggs_printError (inCompiler, inSourceText, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -318,36 +315,36 @@ void signalExtractError (Compiler * inCompiler,
 //--- Construct location error message
   String errorMessage ;
 //--- Print extract error
-  errorMessage.addString (verboseOutput () ? "semantic " : "") ;
-  errorMessage.addString ("error: I have found:\n") ;
+  errorMessage.appendString (verboseOutput () ? "semantic " : "") ;
+  errorMessage.appendCString ("error: I have found:\n") ;
   if (! verboseOutput ()) {
-    errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.addString ("error: ") ;
+    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+    errorMessage.appendCString ("error: ") ;
   }
-  errorMessage.addString ("  - ") ;
-  errorMessage.addString (inActualFoundClassErrorString) ;
-  errorMessage.addString (";\n") ;
+  errorMessage.appendCString ("  - ") ;
+  errorMessage.appendString (inActualFoundClassErrorString) ;
+  errorMessage.appendCString (";\n") ;
   if (! verboseOutput ()) {
-    errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.addString ("error: ") ;
+    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+    errorMessage.appendCString ("error: ") ;
   }
-  errorMessage.addString ("I was expected:\n") ;
+  errorMessage.appendCString ("I was expected:\n") ;
   if (! verboseOutput ()) {
-    errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.addString ("error: ") ;
+    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+    errorMessage.appendCString ("error: ") ;
   }
-  errorMessage.addString ("  - ") ;
-  errorMessage.addString (inExpectedClassesErrorStringsArray (0 COMMA_HERE)) ;
+  errorMessage.appendCString ("  - ") ;
+  errorMessage.appendString (inExpectedClassesErrorStringsArray (0 COMMA_HERE)) ;
   for (int32_t i=1 ; i<inExpectedClassesErrorStringsArray.count () ; i++) {
-    errorMessage.addString (";\n") ;
+    errorMessage.appendCString (";\n") ;
     if (! verboseOutput ()) {
-      errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-      errorMessage.addString ("error: ") ;
+      errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+      errorMessage.appendCString ("error: ") ;
     }
-    errorMessage.addString ("  - ") ;
-    errorMessage.addString (inExpectedClassesErrorStringsArray (i COMMA_HERE)) ;
+    errorMessage.appendCString ("  - ") ;
+    errorMessage.appendString (inExpectedClassesErrorStringsArray (i COMMA_HERE)) ;
   }
-  errorMessage.addString (".\n") ;
+  errorMessage.appendCString (".\n") ;
 //--- Print
   ggs_printError (inCompiler, inSourceText, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -403,38 +400,38 @@ void signalCastError (Compiler * inCompiler,
 //--- Print extract error
   String errorMessage ;
   expectedClassMessageArray.sortArrayUsingCompareMethod () ;
-  errorMessage.addString (verboseOutput () ? "semantic " : "") ;
-  errorMessage.addString ("error: I have found:\n") ;
+  errorMessage.appendString (verboseOutput () ? "semantic " : "") ;
+  errorMessage.appendCString ("error: I have found:\n") ;
   if (! verboseOutput ()) {
-    errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.addString ("error: ") ;
+    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+    errorMessage.appendCString ("error: ") ;
   }
-  errorMessage.addString ("  - ") ;
-  errorMessage.addString (inActualFoundClassErrorString) ;
-  errorMessage.addString (";\n") ;
+  errorMessage.appendCString ("  - ") ;
+  errorMessage.appendString (inActualFoundClassErrorString) ;
+  errorMessage.appendCString (";\n") ;
   if (! verboseOutput ()) {
-    errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.addString ("error: ") ;
+    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+    errorMessage.appendCString ("error: ") ;
   }
-  errorMessage.addString ("I was expected:\n") ;
+  errorMessage.appendCString ("I was expected:\n") ;
   if (! verboseOutput ()) {
-    errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.addString ("error: ") ;
+    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+    errorMessage.appendCString ("error: ") ;
   }
   if (expectedClassMessageArray.count () > 0) {
-    errorMessage.addString ("  - ") ;
-    errorMessage.addString (expectedClassMessageArray (0 COMMA_HERE)) ;
+    errorMessage.appendCString ("  - ") ;
+    errorMessage.appendString (expectedClassMessageArray (0 COMMA_HERE)) ;
     for (int32_t i=1 ; i<expectedClassMessageArray.count () ; i++) {
-      errorMessage.addString (";\n") ;
+      errorMessage.appendCString (";\n") ;
       if (! verboseOutput ()) {
-        errorMessage.addString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-        errorMessage.addString ("error: ") ;
+        errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+        errorMessage.appendCString ("error: ") ;
       }
-      errorMessage.addString ("  - ") ;
-      errorMessage.addString (expectedClassMessageArray (i COMMA_HERE)) ;
+      errorMessage.appendCString ("  - ") ;
+      errorMessage.appendString (expectedClassMessageArray (i COMMA_HERE)) ;
     }
   }
-  errorMessage.addString (".\n") ;
+  errorMessage.appendCString (".\n") ;
 //--- Print
   ggs_printError (inCompiler, inSourceText, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -455,12 +452,12 @@ void signalSemanticWarning (Compiler * inCompiler,
 //--- Construct location error message
   String warningMessage ;
 //--- Add warning
-  warningMessage.addString (verboseOutput () ? "semantic " : "") ;
-  warningMessage.addString ("warning #") ;
-  warningMessage.addSigned (mTotalWarningCount) ;
-  warningMessage.addString (": ") ;
-  warningMessage.addString (inWarningMessage) ;
-  warningMessage.addString ("\n") ;
+  warningMessage.appendString (verboseOutput () ? "semantic " : "") ;
+  warningMessage.appendCString ("warning #") ;
+  warningMessage.appendSigned (mTotalWarningCount) ;
+  warningMessage.appendCString (": ") ;
+  warningMessage.appendString (inWarningMessage) ;
+  warningMessage.appendCString ("\n") ;
 //--- Print
   ggs_printWarning (inCompiler, inSourceText, inIssue, warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
@@ -482,11 +479,11 @@ void signalSemanticError (Compiler * inCompiler,
 //--- Construct location error message
   String errorMessage ;
 //--- Print error
-  errorMessage.addString ("semantic error #") ;
-  errorMessage.addSigned (mErrorTotalCount) ;
-  errorMessage.addString (": ") ;
-  errorMessage.addString (inErrorMessage) ;
-  errorMessage.addString ("\n") ;
+  errorMessage.appendCString ("semantic error #") ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendCString (": ") ;
+  errorMessage.appendString (inErrorMessage) ;
+  errorMessage.appendCString ("\n") ;
 //--- Print
   ggs_printError (inCompiler, inSourceText, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -504,10 +501,10 @@ void signalRunTimeError (Compiler * inCompiler,
   mErrorTotalCount ++ ;
 //--- Construct location error message
   String errorMessage = "Run Time Error #" ;
-  errorMessage.addSigned (mErrorTotalCount) ;
-  errorMessage.addString (": ") ;
-  errorMessage.addString (inRunTimeErrorMessage) ;
-  errorMessage.addString ("\n") ;
+  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendCString (": ") ;
+  errorMessage.appendString (inRunTimeErrorMessage) ;
+  errorMessage.appendCString ("\n") ;
 //--- Print
   ggs_printError (inCompiler, SourceTextInString (), C_IssueWithFixIt (), errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -525,10 +522,10 @@ void signalRunTimeWarning (Compiler * inCompiler,
   mTotalWarningCount ++ ;
 //--- Construct location error message
   String warningMessage = "Run Time Warning #" ;
-  warningMessage.addSigned (mTotalWarningCount) ;
-  warningMessage.addString (": ") ;
-  warningMessage.addString (inWarningMessage) ;
-  warningMessage.addString ("\n") ;
+  warningMessage.appendSigned (mTotalWarningCount) ;
+  warningMessage.appendCString (": ") ;
+  warningMessage.appendString (inWarningMessage) ;
+  warningMessage.appendCString ("\n") ;
 //--- Print
   ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
@@ -573,11 +570,11 @@ void ggs_printError (Compiler * inCompiler,
   String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
-      errorMessage.addString ("[Error raised from file '") ;
-      errorMessage.addString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
-      errorMessage.addString ("' at line ") ;
-      errorMessage.addSigned (IN_SOURCE_LINE) ;
-      errorMessage.addString ("]\n") ;
+      errorMessage.appendCString ("[Error raised from file '") ;
+      errorMessage.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
+      errorMessage.appendCString ("' at line ") ;
+      errorMessage.appendSigned (IN_SOURCE_LINE) ;
+      errorMessage.appendCString ("]\n") ;
     }
   #endif
 //--- Append source string
@@ -585,17 +582,17 @@ void ggs_printError (Compiler * inCompiler,
     if (cocoaOutput ()) {
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addUnicodeChar (COCOA_ERROR_ID COMMA_HERE) ;
-      gCout.addString (errorMessage) ;
+      gCout.appendChar (COCOA_ERROR_ID) ;
+      gCout.appendString (errorMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ; ;
       gCout.flush () ;
     }else{
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString (errorMessage) ;
+      gCout.appendString (errorMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ; ;
       gCout.flush () ;
     }
   }
@@ -610,20 +607,20 @@ void fatalError (const String & inErrorMessage,
   mErrorTotalCount ++ ;
 //--- Error message
   String errorMessage = inErrorMessage ;
-  errorMessage.addString (" in file '") ;
-  errorMessage.addString (inSourceFile) ;
-  errorMessage.addString ("', line ") ;
-  errorMessage.addSigned (inSourceLine) ;
-  errorMessage.addString ("\n") ;
+  errorMessage.appendCString (" in file '") ;
+  errorMessage.appendString (inSourceFile) ;
+  errorMessage.appendCString ("', line ") ;
+  errorMessage.appendSigned (inSourceLine) ;
+  errorMessage.appendCString ("\n") ;
 //----
   String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), SourceTextInString ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
-      message.addString ("[Error raised from file '") ;
-      message.addString (String (inSourceFile).lastPathComponent ()) ;
-      message.addString ("' at line ") ;
-      message.addSigned (inSourceLine) ;
-      message.addString ("]\n") ;
+      message.appendCString ("[Error raised from file '") ;
+      message.appendString (String (inSourceFile).lastPathComponent ()) ;
+      message.appendCString ("' at line ") ;
+      message.appendSigned (inSourceLine) ;
+      message.appendCString ("]\n") ;
     }
   #endif
 //--- Append source string
@@ -631,17 +628,17 @@ void fatalError (const String & inErrorMessage,
     if (cocoaOutput ()) {
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addUnicodeChar (COCOA_ERROR_ID COMMA_HERE) ;
-      gCout.addString (message) ;
+      gCout.appendChar (COCOA_ERROR_ID) ;
+      gCout.appendString (message) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ; ;
       gCout.flush () ;
     }else{
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString (message) ;
+      gCout.appendString (message) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ; ;
       gCout.flush () ;
     }
   }
@@ -673,11 +670,11 @@ void ggs_printWarning (Compiler * inCompiler,
   String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
-      warningMessage.addString ("[Warning raised from file '") ;
-      warningMessage.addString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
-      warningMessage.addString ("' at line ") ;
-      warningMessage.addSigned (IN_SOURCE_LINE) ;
-      warningMessage.addString ("]\n") ;
+      warningMessage.appendCString ("[Warning raised from file '") ;
+      warningMessage.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
+      warningMessage.appendCString ("' at line ") ;
+      warningMessage.appendSigned (IN_SOURCE_LINE) ;
+      warningMessage.appendCString ("]\n") ;
     }
   #endif
 //--- Append source string
@@ -688,17 +685,17 @@ void ggs_printWarning (Compiler * inCompiler,
     if (cocoaOutput ()) {
       gCout.setForeColor (kYellowForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addUnicodeChar (COCOA_WARNING_ID COMMA_HERE) ;
-      gCout.addString (warningMessage) ;
+      gCout.appendChar (COCOA_WARNING_ID) ;
+      gCout.appendString (warningMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ; ;
       gCout.flush () ;
     }else{
       gCout.setForeColor (kYellowForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString (warningMessage) ;
+      gCout.appendString (warningMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ; ;
       gCout.flush () ;
     }
   }
@@ -715,13 +712,13 @@ void ggs_printFileOperationSuccess (const String & inMessage) {
     if (cocoaOutput ()) {
       gCout.setForeColor (kGreenForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString (inMessage) ;
+      gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
     }else{
       gCout.setForeColor (kGreenForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString (inMessage) ;
+      gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
     }
@@ -739,13 +736,13 @@ void ggs_printFileCreationSuccess (const String & inMessage) {
     if (cocoaOutput ()) {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString (inMessage) ;
+      gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
     }else{
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString (inMessage) ;
+      gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
     }
@@ -764,14 +761,14 @@ void ggs_printMessage (const String & inMessage
     String message = inMessage ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (verboseOutput ()) {
-        message.addString ("[Displayed from file '") ;
-        message.addString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
-        message.addString ("' at line ") ;
-        message.addSigned (IN_SOURCE_LINE) ;
-        message.addString ("]\n") ;
+        message.appendCString ("[Displayed from file '") ;
+        message.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
+        message.appendCString ("' at line ") ;
+        message.appendSigned (IN_SOURCE_LINE) ;
+        message.appendCString ("]\n") ;
       }
     #endif
-    gCout.addString (message) ;
+    gCout.appendString (message) ;
     gCout.flush () ;
   }
 }
@@ -802,12 +799,12 @@ cToken::~cToken (void) {
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark C_parsingContext
+  #pragma mark ParsingContext
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext::C_parsingContext (void) :
+ParsingContext::ParsingContext (void) :
 mParsingArrayIndex (0),
 mLocation (),
 mCurrentTokenPtr (nullptr),
@@ -818,7 +815,7 @@ mTemplateString () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext::C_parsingContext (const C_parsingContext & inSource) :
+ParsingContext::ParsingContext (const ParsingContext & inSource) :
 mParsingArrayIndex (inSource.mParsingArrayIndex),
 mLocation (inSource.mLocation),
 mCurrentTokenPtr (inSource.mCurrentTokenPtr),
@@ -829,7 +826,7 @@ mTemplateString (inSource.mTemplateString) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext & C_parsingContext::operator = (const C_parsingContext & inSource) {
+ParsingContext & ParsingContext::operator = (const ParsingContext & inSource) {
   mParsingArrayIndex = inSource.mParsingArrayIndex ;
   mLocation = inSource.mLocation ;
   mCurrentTokenPtr = inSource.mCurrentTokenPtr ;

@@ -30,13 +30,13 @@
 class C_StringListCommandLineOption final : public C_CommandLineOption {
 //--- Constructor
   public: C_StringListCommandLineOption (const char * inDomainName,
-                                          const char * inIdentifier,
-                                          const char inChar,
-                                          const char * inString,
-                                          const char * inComment) ;
+                                         const char * inIdentifier,
+                                         const char inChar,
+                                         const char * inString,
+                                         const char * inComment) ;
 //--- No Copy
-  private: C_StringListCommandLineOption (const C_StringListCommandLineOption &) ;
-  private: C_StringListCommandLineOption & operator = (const C_StringListCommandLineOption &) ;
+  private: C_StringListCommandLineOption (const C_StringListCommandLineOption &) = delete ;
+  private: C_StringListCommandLineOption & operator = (const C_StringListCommandLineOption &) = delete ;
 
 //--- Attributes
   private: C_StringListCommandLineOption * mNext ;
@@ -44,12 +44,13 @@ class C_StringListCommandLineOption final : public C_CommandLineOption {
   public: inline TC_Array <String> readProperty_value (void) const { return mValue ; }
 
 //--- Static methods
-  public: static void setStringListOptionForCommandChar (const char * inCommandCommandLineOptionString,
-                                                          bool & outFound,
-                                                          bool & outCommandLineOptionStringIsValid) ;
-  public: static void setStringListOptionForCommandString (const char * inCommandCommandLineOptionString,
-                                                            bool & outFound,
-                                                            bool & outCommandLineOptionStringIsValid)  ;
+  public: static void setStringListOptionForCommandChar (const String & inCommandCommandLineOptionString,
+                                                         bool & outFound,
+                                                         bool & outCommandLineOptionStringIsValid) ;
+
+  public: static void setStringListOptionForCommandString (const String & inCommandCommandLineOptionString,
+                                                           bool & outFound,
+                                                           bool & outCommandLineOptionStringIsValid)  ;
   public: static void printUsageOfStringOptions (void) ;
   public: static void printStringOptions (void) ;
 

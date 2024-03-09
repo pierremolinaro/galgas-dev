@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @fixitElementAST {
   case fixItRemove
@@ -9,13 +26,13 @@ enum @fixitElementAST {
   case fixItInsertBefore (@semanticExpressionAST exp @location errorLocation)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @fixitListAST {
   public let @fixitElementAST mElement
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @errorInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mLocationExpression
@@ -24,15 +41,16 @@ refclass @errorInstructionAST : @semanticInstructionAST {
   private let @fixitListAST mFixitListAST
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <issue_fixit> !@fixitListAST outFixitListAST {
+  rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
+                     !@fixitListAST outFixitListAST {
     outFixitListAST = {}
     select
     or
@@ -51,31 +69,32 @@ syntax extension galgas3InstructionsSyntax {
       while
         $replace$
         let errorLocation = @location.here
-        <expression_ggs3> ?let @semanticExpressionAST expression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
       while
         $insert$ ; $after$
         let errorLocation = @location.here
-        <expression_ggs3> ?let @semanticExpressionAST expression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
       while
         $insert$ ; $before$
         let errorLocation = @location.here
-        <expression_ggs3> ?let @semanticExpressionAST expression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
         outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
       end
       $}$
     end
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $error$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST mReceiverExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression_ggs3> ?let @semanticExpressionAST mErrorExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mErrorExpression
     var mBuiltVariableList = @lstringlist {}
     select
     or
@@ -87,7 +106,7 @@ syntax extension galgas3InstructionsSyntax {
         $,$
       end
     end
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @errorInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
@@ -95,19 +114,20 @@ syntax extension galgas3InstructionsSyntax {
       !mBuiltVariableList
       !fixitListAST
     }
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <issue_fixit> !@fixitListAST outFixitListAST {
+  rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
+                     !@fixitListAST outFixitListAST {
     outFixitListAST = {}
     select
     or
@@ -126,17 +146,17 @@ syntax extension galgas4InstructionsSyntax {
         or
           $%replaceBy$
           let errorLocation = @location.here
-          <expression> ?let @semanticExpressionAST expression
+          <expression> !?ioDeclarations ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
         or
           $%insertAfter$
           let errorLocation = @location.here
-          <expression> ?let @semanticExpressionAST expression
+          <expression> !?ioDeclarations ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
         or
           $%insertBefore$
           let errorLocation = @location.here
-          <expression> ?let @semanticExpressionAST expression
+          <expression> !?ioDeclarations ?let @semanticExpressionAST expression
           outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
         end
       while
@@ -146,16 +166,15 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $error$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST mReceiverExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression> ?let @semanticExpressionAST mErrorExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mErrorExpression
     var mBuiltVariableList = @lstringlist {}
     select
     or
@@ -169,7 +188,7 @@ syntax extension galgas4InstructionsSyntax {
       end
       $)$
     end
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @errorInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
@@ -177,15 +196,15 @@ syntax extension galgas4InstructionsSyntax {
       !mBuiltVariableList
       !fixitListAST
     }
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -193,11 +212,11 @@ override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifie
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (element) in self do
-    switch element 
+    switch element
     case fixItRemove :
     case fixItReplace (@semanticExpressionAST exp *) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
@@ -209,9 +228,9 @@ method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @fixitElementForGeneration {
   case fixItRemove
@@ -220,13 +239,13 @@ enum @fixitElementForGeneration {
   case fixItInsertAfter (@semanticExpressionForGeneration exp)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @fixitListForGeneration {
   private let @fixitElementForGeneration mElement
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeErrorOrWarningInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -245,7 +264,7 @@ proc analyzeErrorOrWarningInstruction
 {
 #--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mLocationType
     !inAnalysisContext
@@ -262,7 +281,7 @@ proc analyzeErrorOrWarningInstruction
   )
 #--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: .null
     !inAnalysisContext
@@ -273,12 +292,12 @@ proc analyzeErrorOrWarningInstruction
 #--- Analyze fixit expressions
   outFixitListForGeneration = {}
   for (element) in inFixitListAST do
-    switch element 
+    switch element
     case fixItRemove :
       outFixitListForGeneration += !.fixItRemove
     case fixItReplace (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
@@ -296,7 +315,7 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
     case fixItInsertBefore (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
@@ -314,7 +333,7 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
     case fixItInsertAfter (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
@@ -382,9 +401,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @fixitListForGeneration generateFixIt
   ?!@stringset ioInclusionSet
@@ -432,7 +451,7 @@ method @fixitListForGeneration generateFixIt
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @errorInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -490,4 +509,4 @@ override method @errorInstructionForGeneration generateInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

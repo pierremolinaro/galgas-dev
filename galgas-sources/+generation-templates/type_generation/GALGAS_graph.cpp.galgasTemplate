@@ -10,7 +10,7 @@ AC_GALGAS_graph () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyGraph (LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyGraph (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyGraph (THERE) ;
   return result ;

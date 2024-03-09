@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST                                    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring mEnumTypeName
@@ -14,13 +31,13 @@ list @enumConstantList {
   public let @2lstringlist mAssociatedValueDefinitionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!  SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
@@ -35,7 +52,7 @@ syntax extension galgas3DeclarationsSyntax {
       or
         $($
         repeat
-          $@type$ ?let associatedValueType
+          <type_definition_ggs3> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
           associatedValueTypeList += !associatedValueType !associatedValueName
         while
@@ -57,18 +74,17 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
     ${$
@@ -81,7 +97,7 @@ syntax extension galgas4DeclarationsSyntax {
       or
         $($
         repeat
-          $@type$ ?let associatedValueType
+          <type_definition> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
           associatedValueTypeList += !associatedValueType !associatedValueName
         while
@@ -93,7 +109,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     repeat
     while
-      <method_declaration> !mEnumTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
+      <method_declaration> !mEnumTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
@@ -104,12 +120,12 @@ syntax extension galgas4DeclarationsSyntax {
   }
 
 
-  #·················································································································
+  #·······························································································
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!  ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -146,9 +162,9 @@ override method @enumDeclarationAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!  SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @enumDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -157,14 +173,14 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #---
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
 #  let @classMethodMap classMethodMap = {}
   var @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
   [!?ioTypeMap makeEntry  !self.mEnumTypeName ?let enumTypeEntry]
-#--- Constructors
+#--- Class functions
   var @constantIndexMap constantMap = {}
   var @bool hasAssociatedValues = false
   for (mConstantName mAssociatedValueDefinitionList) in self.mConstantList do
@@ -177,7 +193,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
       hasAssociatedValues = true
     end
     [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList]
-    [!?constructorMap insertOrReplace
+    [!?classFunctionMap insertOrReplace
       !mConstantName
       !argumentTypeList
       !false
@@ -255,7 +271,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !{}
     !{}
     !{}
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -277,12 +293,12 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!  SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @enumDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -304,7 +320,7 @@ override method @enumDeclarationAST semanticAnalysis
     for (mValue0 mValue1) in mAssociatedValueDefinitionList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
       [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-      let associatedTypeEntry = [ioTypeMap searchKey !mValue0]
+      let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !mValue0]
       associatedTypeList += !associatedTypeEntry
       if [associatedValueNameSet hasKey !mValue1.string] then
         error mValue1 : "duplicated name"
@@ -315,7 +331,7 @@ override method @enumDeclarationAST semanticAnalysis
     enumConstantListForGeneration += !mConstantName.string !associatedTypeList
   end
 #---
-  let selfType = [ioTypeMap searchKey !self.mEnumTypeName]
+  let selfType = [ioTypeMap typeMapEntryForLKey !self.mEnumTypeName]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "enum " + self.mEnumTypeName
     !@enumTypeForGeneration.new {
@@ -324,9 +340,9 @@ override method @enumDeclarationAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#!  CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!  CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumConstantListForGeneration {
   public let @string mConstantName
@@ -385,7 +401,7 @@ override method @enumTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![selfTypedefinition.mTypeName.string identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
@@ -444,5 +460,5 @@ override method @enumTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

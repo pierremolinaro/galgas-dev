@@ -39,9 +39,13 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* $terminal$ */,
   false /* comment */,
   false /* commentMark */,
+  false /* ?selector: */,
   false /* ? */,
+  false /* ?!selector: */,
   false /* ?! */,
+  false /* !selector: */,
   false /* ! */,
+  false /* !?selector: */,
   false /* !? */,
   false /* < */,
   false /* <= */,
@@ -75,6 +79,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* fileprivate */,
   false /* filewrapper */,
   false /* for */,
+  false /* final */,
   false /* fixit */,
   false /* func */,
   false /* getter */,
@@ -342,7 +347,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [181] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [186] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -354,9 +359,13 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [181] = {
   NO /* $terminal$ */,
   NO /* comment */,
   NO /* commentMark */,
+  NO /* ?selector: */,
   NO /* ? */,
+  NO /* ?!selector: */,
   NO /* ?! */,
+  NO /* !selector: */,
   NO /* ! */,
+  NO /* !?selector: */,
   NO /* !? */,
   NO /* < */,
   NO /* <= */,
@@ -390,6 +399,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [181] = {
   NO /* fileprivate */,
   NO /* filewrapper */,
   NO /* for */,
+  NO /* final */,
   NO /* fixit */,
   NO /* func */,
   NO /* getter */,

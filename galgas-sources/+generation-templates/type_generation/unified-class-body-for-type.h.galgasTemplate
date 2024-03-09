@@ -1,4 +1,4 @@
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9,10 +9,10 @@
                %!^%COMMA_LOCATION_ARGS) ;
 
 %
-if [CONSTRUCTOR_MAP count] > 0 then
-  %//--------------------------------- GALGAS constructors\n%
-  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CONSTRUCTOR_MAP do
-    %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![lkey.string identifierRepresentation]% (%?^
+if [CLASS_FUNC_MAP count] > 0 then
+  %//--------------------------------- GALGAS class functions\n%
+  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CLASS_FUNC_MAP do
+    %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% class_func_%![lkey.string identifierRepresentation]% (%?^
     for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
       do (IDX) %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^

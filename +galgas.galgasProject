@@ -2,16 +2,23 @@
 #                                           
 #  Compile all galgas sources               
 #                                           
-#  Copyright (C) 1997, ..., 2023 Pierre Molinaro.                                                                     
+#  Copyright (C) 1997, ..., 2024 Pierre Molinaro.                                                                     
 #                                           
-#  e-mail : pierre@pcmolinaro.name          
+#  MIT License
 #                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  
-#  License as published by the Free Software Foundation.                                                               
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        
-#  details.                                 
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+# DEALINGS IN THE SOFTWARE.
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -112,13 +119,34 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/extension-overriding-method.galgas"
   "galgas-sources/extension-overriding-setter.galgas"
 
-#--- Semantics Component`
+#--- Predefined types
+  "galgas-sources/predefinedTypeAST.galgas"
+  "galgas-sources/predefinedType-application.galgas"
+  "galgas-sources/predefinedType-bigint.galgas"
+  "galgas-sources/predefinedType-binaryset.galgas"
+  "galgas-sources/predefinedType-bool.galgas"
+  "galgas-sources/predefinedType-char.galgas"
+  "galgas-sources/predefinedType-data.galgas"
+  "galgas-sources/predefinedType-double.galgas"
+  "galgas-sources/predefinedType-filewrapper.galgas"
+  "galgas-sources/predefinedType-function.galgas"
+  "galgas-sources/predefinedType-location.galgas"
+  "galgas-sources/predefinedType-object.galgas"
+  "galgas-sources/predefinedType-stringset.galgas"
+  "galgas-sources/predefinedType-sint.galgas"
+  "galgas-sources/predefinedType-sint64.galgas"
+  "galgas-sources/predefinedType-string.galgas"
+  "galgas-sources/predefinedType-timer.galgas"
+  "galgas-sources/predefinedType-type.galgas"
+  "galgas-sources/predefinedType-uint.galgas"
+  "galgas-sources/predefinedType-uint64.galgas"
+
+#--- Semantics Component
   "galgas-sources/actual-parameters.galgas"
   "galgas-sources/extern-procedure-declaration.galgas"
   "galgas-sources/procedure-declaration.galgas"
   "galgas-sources/semanticsTypesForAST.galgas"
   "galgas-sources/semanticsTypes.galgas"
-  "galgas-sources/semanticsTypeFeatures.galgas"
   "galgas-sources/semanticsConstructors.galgas"
   "galgas-sources/semanticsGetters.galgas"
   "galgas-sources/semanticsSetters.galgas"
@@ -132,7 +160,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/semanticAnalysis.galgas"
   "galgas-sources/semanticInstructionGeneration.galgas"
   "galgas-sources/semanticGeneration.galgas"
-  "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
   "galgas-sources/variable-manager.galgas"
   "galgas-sources/unified-type-definition.galgas"

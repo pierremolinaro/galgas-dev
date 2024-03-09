@@ -125,19 +125,19 @@ void setExecutionMode (String & outErrorMessage) {
     gModeLatexSuffixString = modeComponents (1 COMMA_HERE) ;
     bool ok = true ;
     for (int32_t i=0 ; (i<gModeLatexSuffixString.length ()) && ok ; i++) {
-      const uint32_t c = UNICODE_VALUE (gModeLatexSuffixString (i COMMA_HERE)) ;
+      const uint32_t c = UNICODE_VALUE (gModeLatexSuffixString.charAtIndex (i COMMA_HERE)) ;
       ok = ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')) ;
     }
     if (! ok) {
-      outErrorMessage.addString ("** Fatal Error: invalid '--mode=latex:suffix' parameter; suffix should contain only letters\n") ;
+      outErrorMessage.appendCString ("** Fatal Error: invalid '--mode=latex:suffix' parameter; suffix should contain only letters\n") ;
     }
   }else if ((modeComponents.count () == 1) && (mode == "latex")) {
     gExecutionMode = kExecutionModeLatex ;
     gModeLatexSuffixString = "" ;
   }else{
-    outErrorMessage.addString ("** Fatal Error: invalid '--mode=") ;
-    outErrorMessage.addString (mode) ;
-    outErrorMessage.addString ("' parameter; it should be:\n"
+    outErrorMessage.appendCString ("** Fatal Error: invalid '--mode=") ;
+    outErrorMessage.appendString (mode) ;
+    outErrorMessage.appendCString ("' parameter; it should be:\n"
       "  --mode=                     default mode: perform compilation;\n"
       "  --mode=lexical-only         perform only lexical analysis;\n"
       "  --mode=syntax-only          perform only syntax analysis;\n"

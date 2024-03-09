@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @logListAST {
   public let @lstring mLogMessage
@@ -14,15 +31,16 @@ refclass @logInstructionAST : @semanticInstructionAST {
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
     var @logListAST logList = {}
@@ -40,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression_ggs3> ?let logExpression
+        <expression_ggs3> !?ioDeclarations ?let logExpression
         logList += !logMessage !logExpression
       end
     while
@@ -52,18 +70,17 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
@@ -82,7 +99,7 @@ syntax extension galgas4InstructionsSyntax {
       or
         $"string"$ ?let logMessage
         $:$
-        <expression> ?let logExpression
+        <expression> !?ioDeclarations ?let logExpression
         logList += !logMessage !logExpression
       end
     while
@@ -94,25 +111,25 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @logInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   for (* mLogExpression) in self.mLogList do
     [mLogExpression enterExpressionInSemanticContext !?ioTypeMap]
-  end 
+  end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @logInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -124,7 +141,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   for (mLogMessage mLogExpression) in self.mLogList do
   #--- Analyze source expression
     [mLogExpression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: @unifiedTypeMapEntry.null
       !inAnalysisContext
@@ -136,13 +153,13 @@ override method @logInstructionAST analyzeSemanticInstruction
     ioInstructionListForGeneration += !@logInstructionForGeneration.new {
       !mLogMessage
       !expression
-    }  
+    }
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @logInstructionForGeneration : @semanticInstructionForGeneration {
   public let @lstring mLogMessage
@@ -161,7 +178,7 @@ override method @logInstructionForGeneration generateInstruction
   [self.mLogExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
-    !?ioTemporaryVariableIndex 
+    !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let @string logVar
   ]
@@ -169,4 +186,4 @@ override method @logInstructionForGeneration generateInstruction
   ioGeneratedCode += " " + [self.mLogMessage.location commaSourceFile] + ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

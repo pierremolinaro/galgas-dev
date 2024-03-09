@@ -1,39 +1,56 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Template Abstract Syntax Tree types      
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Template Abstract Syntax Tree types
+#
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
+#
+#  e-mail : pierre@pcmolinaro.name
+#
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
 #  License as published by the Free Software Foundation.
-#                                           
+#
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#  details.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @templateInstructionAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionListAST {
   public let @templateInstructionAST mInstruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   E X P R E S S I O N                     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#   E X P R E S S I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @templateExpressionAST {
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateExpressionListAST {
   public let @lstring mActualSelector
@@ -41,148 +58,148 @@ list @templateExpressionListAST {
   public let @location mEndOfExpressionLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   C O N S T R U C T O R                   
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   Class Function
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateConstructorAST : @templateExpressionAST {
+refclass @templateClassFunctionAST : @templateExpressionAST {
   private let @lstring mTypeName
-  private let @lstring mConstructorName
+  private let @lstring mClassFunctionName
   private let @templateExpressionListAST mExpressionList
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   F I L E W R A P P E R    T E M P L A T E     C A L L
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateFileWrapperTemplateCallAST : @templateExpressionAST {
   private let @lstring mFileWrapperName
   private let @lstring mTemplateName
   private let @templateExpressionListAST mOutExpressionList
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   E X T E N S I O N    T E M P L A T E     C A L L      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   E X T E N S I O N    T E M P L A T E     C A L L
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateExtensionTemplateCallAST : @templateExpressionAST {
   private let @templateExpressionAST mExpressionValue
   private let @lstring mTemplateName
   private let @templateExpressionListAST mOutExpressionList
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   B O O L E A N    O P E R A T I O N S    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   B O O L E A N    O P E R A T I O N S
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateAndOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateOrOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateXorOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateTrueBoolAST : @templateExpressionAST {
   private let @location mLocation
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateFalseBoolAST : @templateExpressionAST {
   private let @location mLocation
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralStringExpressionAST : @templateExpressionAST {
   private let @stringlist mLiteralStringList
   private let @location mLocation
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralUIntExpressionAST : @templateExpressionAST {
   private let @lbigint mLiteralInt
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #refclass @templateLiteralSIntExpressionAST : @templateExpressionAST {
 #  private let @lsint mLiteralInt
 #}
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #refclass @templateLiteralUInt64ExpressionAST : @templateExpressionAST {
 #  private let @luint64 mLiteralInt
 #}
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #refclass @templateLiteralSInt64ExpressionAST : @templateExpressionAST {
 #  private let @lsint64 mLiteralInt
 #}
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralCharExpressionAST : @templateExpressionAST {
   private let @lchar mLiteralChar
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLiteralDoubleExpressionAST : @templateExpressionAST {
   private let @ldouble mLiteralDouble
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
   private let @lstring mStructFieldName
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateNotOperatorAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLogicalNegateAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateOptionAccessAST : @templateExpressionAST {
   private let @lstring mOptionComponentName
   private let @lstring mOptionName
   private let @lstring mGetterName
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateTestDynamicClassAST : @templateExpressionAST {
   private let @templateExpressionAST mReceiverExpression
@@ -191,109 +208,109 @@ refclass @templateTestDynamicClassAST : @templateExpressionAST {
   private let @lstring mTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   F U N C T I O N    C A L L              
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   F U N C T I O N    C A L L
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateFunctionCallAST : @templateExpressionAST {
   private let @lstring mFunctionName
   private let @templateExpressionListAST mExpressionList
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   S I M P L E    V A R I A B L E          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   S I M P L E    V A R I A B L E
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateVarInExpressionAST : @templateExpressionAST {
   private let @lstring mVarName
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   A D D I T I O N    O P E R A T I O N    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   A D D I T I O N    O P E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateAddOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   S U B S T R A C T I O N    O P E R A T I O N 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   S U B S T R A C T I O N    O P E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateSubOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   M U L T I P L I C A T I O N    O P E R A T I O N    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   M U L T I P L I C A T I O N    O P E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateMultiplyOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   D I V I S I O N    O P E R A T I O N    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   D I V I S I O N    O P E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateDivideOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   M O D U L O    O P E R A T I O N        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   M O D U L O    O P E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateModuloOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   U N A R Y   -    O P E R A T I O N      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   U N A R Y   -    O P E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateUnaryMinusOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#  ==    O P E R A T I O N                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#  ==    O P E R A T I O N
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateNonEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateStrictInfTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInfOrEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
@@ -301,56 +318,56 @@ refclass @templateInfOrEqualTestAST : @templateExpressionAST {
   private let @templateExpressionAST mRightExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateStrictSupTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateSupOrEqualTestAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateLeftShiftOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateRightShiftOperationAST : @templateExpressionAST {
   private let @location mOperatorLocation
   private let @templateExpressionAST mLeftExpression
   private let @templateExpressionAST mRightExpression
 }
- 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    I N S T R U C T I O N S                
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    I N S T R U C T I O N S
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionStringAST : @templateInstructionAST {
   private let @string mTemplateString
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionExpressionAST : @templateInstructionAST {
   private let @templateExpressionAST mExpression
   private let @location mLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateBlockInstructionAST : @templateInstructionAST {
   private let @templateExpressionAST mExpression
@@ -358,29 +375,29 @@ refclass @templateBlockInstructionAST : @templateInstructionAST {
   private let @templateInstructionListAST mBlockInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionGetColumnLocationAST : @templateInstructionAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionIfBranchListAST {
   public let @templateExpressionAST mExpression
   public let @templateInstructionListAST mInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @templateInstructionIfAST : @templateInstructionAST {
   private let @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList
   private let @templateInstructionListAST mElseInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

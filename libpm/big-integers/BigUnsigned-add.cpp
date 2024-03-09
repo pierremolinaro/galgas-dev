@@ -19,12 +19,12 @@ BigUnsigned BigUnsigned::operator + (const BigUnsigned inOperand) const {
     for (size_t i = 1 ; i <= minChunkCount ; i++) {
       const ChunkUInt v1 = mSharedArray.chunkAtIndex (i COMMA_HERE) ;
       const ChunkUInt v2 = inOperand.mSharedArray.chunkAtIndex (i COMMA_HERE) ;
-      const ChunkUInt sum1 = v1 + v2 ; // Can overflow
-      ChunkUInt newCarry = sum1 < v2 ;
-      const ChunkUInt sum2 = sum1 + carry ; // Can overflow
-      newCarry += sum2 < sum1 ; // No overflow
+      ChunkUInt sum = v1 ;
+      ChunkUInt newCarry = 0 ;
+      addReportingOverflow (sum, v2, newCarry) ;
+      addReportingOverflow (sum, carry, newCarry) ;
       carry = newCarry ;
-      result.mSharedArray.appendChunk (sum2 COMMA_HERE) ;
+      result.mSharedArray.appendChunk (sum COMMA_HERE) ;
     }
     if (n < inOperand.mSharedArray.chunkCount ()) {
       for (size_t i = n + 1 ; i <= inOperand.mSharedArray.chunkCount () ; i++) {

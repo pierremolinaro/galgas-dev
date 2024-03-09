@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -9,22 +26,22 @@ refclass @abstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mAbstractExtensionGetterReturnedTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $getter$
     $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring returnedTypeName
     select
     or
       $identifier$ ? let idf
@@ -35,19 +52,19 @@ syntax extension galgas3DeclarationsSyntax {
       !className
       !mGetterName
       !mFormalInputParameterList
-      !mReturnedTypeName
+      !returnedTypeName
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $getter$
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    $@type$ ?let @lstring mReturnedTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring returnedTypeName
     select
     or
       $identifier$ ? let idf
@@ -58,30 +75,29 @@ syntax extension galgas3DeclarationsSyntax {
       !inClassName
       !mGetterName
       !mFormalInputParameterList
-      !mReturnedTypeName
+      !returnedTypeName
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $func$
     $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
     $.$
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
+    <type_definition> !?ioDeclarations ?let returnedTypeName
     select
     or
       $identifier$ ? let idf
@@ -96,17 +112,16 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet {
+                            ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $func$
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let returnedTypeName
+    <type_definition> !?ioDeclarations ?let returnedTypeName
     select
     or
       $identifier$ ? let idf
@@ -121,29 +136,28 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   KEY REPRESENTATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @abstractExtensionGetterAST keyRepresentation -> @string {
   result = "abstract extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionGetterAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
-{
+            ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+            ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+            ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
+            ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+            ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {
     !"extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
     !self.mAbstractExtensionGetterName.location
@@ -167,9 +181,9 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionGetterAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -180,12 +194,12 @@ override method @abstractExtensionGetterAST enterDeclarationInSemanticContext
 {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                                                                                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionGetterAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -194,7 +208,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap searchKey !self.mTypeName]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is an abstract class
   if not [[selfType definition].mTypeKindEnum isClassType] then
     error self.mAbstractExtensionGetterName
@@ -208,7 +222,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
-      ![ioTypeMap searchKey !mFormalArgumentTypeName]
+      ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
       !mFormalArgumentName.string
       !mFormalArgumentName
       !mIsConstant
@@ -221,14 +235,14 @@ override method @abstractExtensionGetterAST semanticAnalysis
       !mImplementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionGetterName.string
-      ![ioTypeMap searchKey !self.mAbstractExtensionGetterReturnedTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
       !formalParameterListForGeneration
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP                                                                                                 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   EXTENSION LIST MAP
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -247,9 +261,9 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
   ioAbstractExtensionGetterListMap += !self.mTypeName.string !self.mAbstractExtensionGetterName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                                                                                                    
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -275,7 +289,7 @@ override method @abstractExtensionGetterForGeneration appendDeclaration1
     !self.mAbstractExtensionGetterName
     !self.mAbstractExtensionGetterFormalParameterList
     !self.mResultType
-  ] 
+  ]
 }
 
 #·······················································································································
@@ -298,8 +312,8 @@ override method @abstractExtensionGetterForGeneration appendSpecificImplementati
     !self.mAbstractExtensionGetterName
     !self.mAbstractExtensionGetterFormalParameterList
     !self.mResultType
-  ] 
+  ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @setterCallInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -18,21 +35,19 @@ refclass @selfSetterCallInstructionAST : @semanticInstructionAST {
   private let @actualParameterListAST mActualParameterList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
-    $!?$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
+    $!?$
     let @bool prefixedBySelf
     select
       prefixedBySelf = false
@@ -54,10 +69,10 @@ syntax extension galgas3InstructionsSyntax {
       typeNameForCasting = ["" nowhere]
     or
       $as$
-      $@type$ ?typeNameForCasting
+      <type_definition_ggs3> !?ioDeclarations ?typeNameForCasting
     end
     $identifier$ ?let mSetterName
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
     outInstruction = @setterCallInstructionAST.new {
       !instructionLocation
@@ -70,40 +85,38 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $[$
     let instructionLocation = @location.here
-    $!?$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
+    $!?$
     $self$
     $identifier$ ?let mSetterName
-    <actual_parameter_list_ggs3> ?let @actualParameterListAST actualParameterList
+    <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
     outInstruction = @selfSetterCallInstructionAST.new {
       !instructionLocation
       !mSetterName
       !actualParameterList
     }
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $[$
 #    let instructionLocation = @location.here
-#    $!?$ ?let selector
+#    $!?selector:$ ?let selector
 #    if selector.string != "" then
 #      error selector : "an empty selector '!?' is required here"
 #    end
@@ -137,16 +150,12 @@ syntax extension galgas4InstructionsSyntax {
 #    $]$
 #  }
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    $!?$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
+    $!?$
     let @bool prefixedBySelf
     select
       prefixedBySelf = false
@@ -157,7 +166,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $identifier$ ?let mReceiverName
     select
-      <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       if prefixedBySelf then
         outInstruction = @selfSetterCallInstructionAST.new {
           !instructionLocation
@@ -176,7 +185,7 @@ syntax extension galgas4InstructionsSyntax {
       while
       end
       [!?receiverStructProperties popLast ?let setterName]
-      <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
+      <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       outInstruction = @setterCallInstructionAST.new {
         !instructionLocation
         !prefixedBySelf
@@ -189,13 +198,13 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @setterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -215,9 +224,9 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -256,7 +265,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
        ?receiverType
        ?targetVariableCppName
        ?nameForCheckingFormalParameterUsing
-    ]  
+    ]
   end
 #--- Get target variable type
   var ok = true
@@ -281,9 +290,9 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
 #--- Type cast ?
   let @unifiedTypeMapEntry castType
   if self.mTypeNameForCasting.string != "" then
-    castType = [ioTypeMap searchKey !self.mTypeNameForCasting]
+    castType = [ioTypeMap typeMapEntryForLKey !self.mTypeNameForCasting]
     checkAssignmentTypes (!receiverType !castType !self.mTypeNameForCasting.location)
-  else 
+  else
     castType = receiverType
   end
 #--- Get setter signature
@@ -324,7 +333,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
         else
           searching = false
         end
-      end  
+      end
     end
   end
 #--- Generate instructions
@@ -389,9 +398,9 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -465,7 +474,7 @@ override method @setterCallInstructionForGeneration generateInstruction
                         + ") && (dynamic_cast <cPtr_" + [self.mCastType identifierRepresentation] + " *> ("
                         + pointerUniqueName + ") == nullptr)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-        ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@" 
+        ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@"
                         + [self.mCastType definition].mTypeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
         ioGeneratedCode += "  " + pointerUniqueName + " = nullptr ;\n"
         ioGeneratedCode += "}\n"
@@ -557,4 +566,4 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

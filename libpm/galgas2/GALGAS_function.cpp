@@ -65,29 +65,29 @@ GALGAS_function::~ GALGAS_function (void) {
 
 void GALGAS_function::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
-  ioString.addString ("<@function:") ;
+  ioString.appendCString ("<@function:") ;
   if (nullptr == mFunctionDescriptor) {
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }else{
-    ioString.addString (mFunctionDescriptor->mFunctionName) ;
-    ioString.addString (" [") ;
+    ioString.appendString (mFunctionDescriptor->mFunctionName) ;
+    ioString.appendCString (" [") ;
     for (uint32_t i=0 ; i<mFunctionDescriptor->mParameterCount ; i++) {
       if (i > 0) {
-        ioString.addString (" ") ;
+        ioString.appendCString (" ") ;
       }
-      ioString.addString ("?@") ;
-      ioString.addString (mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName) ;
+      ioString.appendCString ("?@") ;
+      ioString.appendString (mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName) ;
     }
-    ioString.addString ("] -> @") ;
-    ioString.addString (mFunctionDescriptor->mResultType->mGalgasTypeName) ;
+    ioString.appendCString ("] -> @") ;
+    ioString.appendString (mFunctionDescriptor->mResultType->mGalgasTypeName) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist GALGAS_function::constructor_functionList (LOCATION_ARGS) {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+GALGAS_functionlist GALGAS_function::class_func_functionList (LOCATION_ARGS) {
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
   while (nullptr != p) {
     result.addAssign_operation (GALGAS_function (p) COMMA_HERE) ;
@@ -98,7 +98,7 @@ GALGAS_functionlist GALGAS_function::constructor_functionList (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_function::constructor_isFunctionDefined (const GALGAS_string & inFunctionName
+GALGAS_bool GALGAS_function::class_func_isFunctionDefined (const GALGAS_string & inFunctionName
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result ;
   if (inFunctionName.isValid ()) {
@@ -116,7 +116,7 @@ GALGAS_bool GALGAS_function::constructor_isFunctionDefined (const GALGAS_string 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function GALGAS_function::constructor_functionWithName (const GALGAS_string & inFunctionName
+GALGAS_function GALGAS_function::class_func_functionWithName (const GALGAS_string & inFunctionName
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_function result ;
   if (inFunctionName.isValid ()) {
@@ -135,7 +135,7 @@ GALGAS_function GALGAS_function::constructor_functionWithName (const GALGAS_stri
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typelist GALGAS_function::getter_formalParameterTypeList (LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   for (uint32_t i=0 ; i<mFunctionDescriptor->mParameterCount ; i++) {
     result.addAssign_operation (GALGAS_type (mFunctionDescriptor->mFormalParameterTypeList [i]) COMMA_HERE) ;
   }
@@ -165,14 +165,14 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
   bool ok = mFunctionDescriptor->mParameterCount == argumentsArray.count () ;
   if (! ok) {
     String errorMessage ;
-    errorMessage.addString ("the '") ;
-    errorMessage.addString (mFunctionDescriptor->mFunctionName) ;
-    errorMessage.addString ("' function is called with ") ;
-    errorMessage.addUnsigned (argumentsArray.count ()) ;
-    errorMessage.addString (" actual parameter") ;
-    errorMessage.addString ((argumentsArray.count () > 1) ? "s" : "") ;
-    errorMessage.addString (", but its header requires ") ;
-    errorMessage.addUnsigned (mFunctionDescriptor->mParameterCount) ;
+    errorMessage.appendCString ("the '") ;
+    errorMessage.appendString (mFunctionDescriptor->mFunctionName) ;
+    errorMessage.appendCString ("' function is called with ") ;
+    errorMessage.appendUnsigned (argumentsArray.count ()) ;
+    errorMessage.appendCString (" actual parameter") ;
+    errorMessage.appendString ((argumentsArray.count () > 1) ? "s" : "") ;
+    errorMessage.appendCString (", but its header requires ") ;
+    errorMessage.appendUnsigned (mFunctionDescriptor->mParameterCount) ;
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
   }
 //--- Check parameters
@@ -188,15 +188,15 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
       }
       if (! ok) {
         String errorMessage ;
-        errorMessage.addString ("the actual parameter #") ;
-        errorMessage.addUnsigned (i) ;
-        errorMessage.addString (" of the '") ;
-        errorMessage.addString (mFunctionDescriptor->mFunctionName) ;
-        errorMessage.addString ("' function call has the '@") ;
-        errorMessage.addString (parameter.staticTypeDescriptor ()->mGalgasTypeName) ;
-        errorMessage.addString ("', but the function header requires an instance of '@") ;
-        errorMessage.addString (mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName) ;
-        errorMessage.addString ("'") ;
+        errorMessage.appendCString ("the actual parameter #") ;
+        errorMessage.appendUnsigned (i) ;
+        errorMessage.appendCString (" of the '") ;
+        errorMessage.appendString (mFunctionDescriptor->mFunctionName) ;
+        errorMessage.appendCString ("' function call has the '@") ;
+        errorMessage.appendString (parameter.staticTypeDescriptor ()->mGalgasTypeName) ;
+        errorMessage.appendCString ("', but the function header requires an instance of '@") ;
+        errorMessage.appendString (mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName) ;
+        errorMessage.appendCString ("'") ;
         inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
     }

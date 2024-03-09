@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2018 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -93,31 +93,31 @@ void GALGAS_uint::class_method_setRandomSeed (class GALGAS_uint inSeed
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_random (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_random (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (uint32_t (galgas_random ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_max (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (UINT32_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_errorCount (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_errorCount (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (uint32_t (totalErrorCount ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_warningCount (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_warningCount (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (uint32_t (totalWarningCount ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_valueWithMask (const GALGAS_uint & inLowerIndex,
+GALGAS_uint GALGAS_uint::class_func_valueWithMask (const GALGAS_uint & inLowerIndex,
                                                     const GALGAS_uint & inUpperIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
@@ -139,7 +139,7 @@ GALGAS_uint GALGAS_uint::constructor_valueWithMask (const GALGAS_uint & inLowerI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_uint::constructor_compilationMode (UNUSED_LOCATION_ARGS) {
+GALGAS_uint GALGAS_uint::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
   #ifdef __LP64__
     return GALGAS_uint (64) ;
   #else
@@ -274,7 +274,7 @@ GALGAS_string GALGAS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {
   int32_t idx = 6 ;
   while (v > 0) {
     const utf32 c = TO_UNICODE ((v % 26) + 'a') ;
-    s.setUnicodeCharacterAtIndex (c, idx COMMA_HERE) ;
+    s.setCharAtIndex (c, idx COMMA_HERE) ;
     idx -= 1 ;
     v /= 26 ;
   }
@@ -297,7 +297,7 @@ GALGAS_string GALGAS_uint::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnsigned (mUIntValue) ;
+    s.appendUnsigned (mUIntValue) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -309,8 +309,8 @@ GALGAS_string GALGAS_uint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addString ("0x") ;
-    s.addUnsignedHex (mUIntValue) ;
+    s.appendCString ("0x") ;
+    s.appendUnsignedHex (mUIntValue) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -329,7 +329,7 @@ GALGAS_string GALGAS_uint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.addUnsignedHex (mUIntValue) ;
+      s.appendUnsignedHex (mUIntValue) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -344,7 +344,7 @@ GALGAS_string GALGAS_uint::getter_hexStringSeparatedBy (const GALGAS_char & inSe
 
 GALGAS_string GALGAS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
   String s ;
-  s.addUnsignedHex (mUIntValue) ;
+  s.appendUnsignedHex (mUIntValue) ;
   return GALGAS_string (s) ;
 }
 
@@ -352,13 +352,13 @@ GALGAS_string GALGAS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_uint::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.addString ("<@uint:") ;
+  ioString.appendCString ("<@uint:") ;
   if (isValid ()) {
-    ioString.addUnsigned (mUIntValue) ;
+    ioString.appendUnsigned (mUIntValue) ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -369,7 +369,7 @@ GALGAS_uint GALGAS_uint::getter_significantBitCount (UNUSED_LOCATION_ARGS) const
     uint32_t v = mUIntValue ;
     uint32_t idx = 0 ;
     while (v != 0) {
-      idx ++ ;
+      idx += 1 ;
       v >>= 1 ;
     }
     result = GALGAS_uint (idx) ;
@@ -472,8 +472,8 @@ GALGAS_uint GALGAS_uint::add_operation (const GALGAS_uint & inOperand,
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
-    const bool ovf = r < mUIntValue ;
+    uint32_t r ;
+    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint + operation overflow" COMMA_THERE) ;
     }else{
@@ -489,8 +489,8 @@ GALGAS_bool GALGAS_uint::getter_canAdd (const GALGAS_uint & inOperand
                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
-    const bool ovf = r < mUIntValue ;
+    uint32_t r ;
+    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     result = GALGAS_bool (!ovf) ;
   }
   return result ;
@@ -502,13 +502,10 @@ void GALGAS_uint::plusAssign_operation (const GALGAS_uint inOperand,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue + inOperand.mUIntValue ;
-    const bool ovf = r < mUIntValue ;
+    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint += operation overflow" COMMA_THERE) ;
       mIsValid = false ;
-    }else{
-      mUIntValue = r ;
     }
   }
 }
@@ -519,12 +516,10 @@ void GALGAS_uint::minusAssign_operation (const GALGAS_uint inOperand,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const bool ovf = mUIntValue < inOperand.mUIntValue ;
+    const bool ovf = __builtin_sub_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint -= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
-    }else{
-      mUIntValue -= inOperand.mUIntValue ;
     }
   }
 }
@@ -536,13 +531,10 @@ void GALGAS_uint::mulAssign_operation (const GALGAS_uint inOperand,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue * inOperand.mUIntValue ;
-    const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
+    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint *= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
-    }else{
-      mUIntValue = r ;
     }
   }
 }
@@ -628,8 +620,8 @@ GALGAS_uint GALGAS_uint::multiply_operation (const GALGAS_uint & inOperand,
                                              COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue * inOperand.mUIntValue ;
-    const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
+    uint32_t r ;
+    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@uint * operation overflow" COMMA_THERE) ;
     }else{
@@ -645,8 +637,8 @@ GALGAS_bool GALGAS_uint::getter_canMultiply (const GALGAS_uint & inOperand
                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue * inOperand.mUIntValue ;
-    const bool ovf = (inOperand.mUIntValue != 0) && ((r / inOperand.mUIntValue) != mUIntValue) ;
+    uint32_t r ;
+    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
     result = GALGAS_bool (!ovf) ;
   }
   return result ;

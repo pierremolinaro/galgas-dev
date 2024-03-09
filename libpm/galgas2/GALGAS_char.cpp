@@ -46,7 +46,7 @@ mCharValue (TO_UNICODE (0)) {
 //--------------------------------------------------------------------------------------------------
 
 #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
-  GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (Compiler * inCompiler
+  GALGAS_char GALGAS_char::class_func_unicodeCharacterFromRawKeyboard (Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) {
     inCompiler->onTheFlyRunTimeError (
       "@char unicodeCharacterFromRawKeyboard constructor is not implemented for Windows"
@@ -67,7 +67,7 @@ mCharValue (TO_UNICODE (0)) {
     }
   }
 
-  GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (Compiler * /* inCompiler */
+  GALGAS_char GALGAS_char::class_func_unicodeCharacterFromRawKeyboard (Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   //--- Save current configuration
     struct termios termios_orig ;
@@ -160,28 +160,28 @@ typeComparisonResult GALGAS_char::objectCompare (const GALGAS_char & inOperand) 
 
 void GALGAS_char::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.addString ("<@char:") ;
+  ioString.appendCString ("<@char:") ;
   if (isValid ()) {
     if (isprint ((int) UNICODE_VALUE (mCharValue))) {
-      ioString.addString ("'") ;
-      ioString.addUnicodeChar (mCharValue COMMA_HERE) ;
-      ioString.addString ("'") ;
+      ioString.appendCString ("'") ;
+      ioString.appendChar (mCharValue) ;
+      ioString.appendCString ("'") ;
     }else{
-      ioString.addString (unicodeName (mCharValue)) ;
+      ioString.appendString (unicodeName (mCharValue)) ;
     }
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_char::getter_string (LOCATION_ARGS) const {
+GALGAS_string GALGAS_char::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnicodeChar (mCharValue COMMA_THERE) ;
+    s.appendChar (mCharValue) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -193,9 +193,9 @@ GALGAS_string GALGAS_char::getter_utf_33__32_CharConstantRepresentation (UNUSED_
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addString ("TO_UNICODE (") ;
-    s.addStringAsCLiteralCharConstant (mCharValue) ;
-    s.addString (")") ;
+    s.appendCString ("TO_UNICODE (") ;
+    s.appendStringAsCLiteralCharConstant (mCharValue) ;
+    s.appendCString (")") ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -401,7 +401,7 @@ GALGAS_uint GALGAS_char::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_char GALGAS_char::constructor_unicodeCharacterWithUnsigned (const GALGAS_uint & inValue
+GALGAS_char GALGAS_char::class_func_unicodeCharacterWithUnsigned (const GALGAS_uint & inValue
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_char result ;
   if (inValue.isValid ()) {
@@ -412,7 +412,7 @@ GALGAS_char GALGAS_char::constructor_unicodeCharacterWithUnsigned (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_char GALGAS_char::constructor_replacementCharacter (UNUSED_LOCATION_ARGS) {
+GALGAS_char GALGAS_char::class_func_replacementCharacter (UNUSED_LOCATION_ARGS) {
   return GALGAS_char (UNICODE_REPLACEMENT_CHARACTER) ;
 }
 

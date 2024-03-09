@@ -37,23 +37,20 @@ AbstractFileHandle (inFileName, "wt") {
 //                  Write a character string into the file
 //--------------------------------------------------------------------------------------------------
 
-void TextFileWrite::performActualCharArrayOutput (const char * inCharArray,
+void TextFileWrite::handleAppendUTF8Array (const char * inCharArray,
                                                   const int32_t inArrayCount) {
-  if (isOpened () && (inArrayCount > 0)) {
-    appendUTF8String (size_t (inArrayCount), inCharArray) ;
+  if (isOpened () && (inCharArray != nullptr) && (inArrayCount > 0)) {
+    appendUTF8String (int (inArrayCount), inCharArray) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void TextFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                     const int32_t inArrayCount) {
+void TextFileWrite::handleAppendCharacter (const utf32 inCharacter) {
   if (isOpened ()) {
-    for (int32_t i=0 ; i<inArrayCount ; i++) {
-      char buffer [8] ;
-      const int32_t length = UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
-      appendUTF8String (size_t (length), buffer) ;
-    }
+    char buffer [8] ;
+    const int32_t length = UTF8StringFromUTF32Character (inCharacter, buffer) ;
+    appendUTF8String (int (length), buffer) ;
   }
 }
 

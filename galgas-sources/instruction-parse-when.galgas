@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseWhenInstruction : @syntaxInstructionAST {
   private let @semanticExpressionAST mWhenExpression
@@ -11,31 +28,33 @@ refclass @parseWhenInstruction : @syntaxInstructionAST {
   private let @location mEndOfElseInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·················································································································
-  
-  rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
+  #·······························································································
+
+  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
+                                       !@syntaxInstructionList outElseInstructionList {
     $else$
-    <syntax_instruction_list_ggs3> ? outElseInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?outElseInstructionList
   }
-  
-  #·················································································································
-  
-  rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
+
+  #·······························································································
+
+  rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
+                                       !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let whenExpression
+    <expression_ggs3> !?ioDeclarations ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list_ggs3> ?let whenInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> ?let elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
     let endOfElseInstructions = @location.here
     outElseInstructionList = {}
     outElseInstructionList += !@parseWhenInstruction.new {
@@ -48,20 +67,21 @@ syntax extension galgas3SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
-  #·················································································································
-  
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+
+  #·······························································································
+
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $with$
-    <expression_ggs3> ?let @semanticExpressionAST whenExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList whenInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> ?let @syntaxInstructionList elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations ?let @syntaxInstructionList elseInstructionList
     let endOfElseInstructions = @location.here
     $end$
     outInstruction = @parseWhenInstruction.new {
@@ -74,38 +94,36 @@ syntax extension galgas3SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·················································································································
-  
+  #·······························································································
+
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
-                                       ?!@stringset ioUserImplicitDeclaredTypeSet
                                        !@syntaxInstructionList outElseInstructionList {
     $else$
-    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? outElseInstructionList
+    <syntax_instruction_list> !?ioDeclarations ? outElseInstructionList
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <branchOfParseWhithInstruction> ?!@galgasDeclarationAST ioDeclarations
-                                       ?!@stringset ioUserImplicitDeclaredTypeSet
                                        !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
-    <expression> ?let whenExpression
+    <expression> !?ioDeclarations ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let whenInstructionList
+    <syntax_instruction_list> !?ioDeclarations ?let whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
     let endOfElseInstructions = @location.here
     outElseInstructionList = {}
     outElseInstructionList += !@parseWhenInstruction.new {
@@ -118,22 +136,21 @@ syntax extension galgas4SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet
                             !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $with$
-    <expression> ?let @semanticExpressionAST whenExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList whenInstructionList
+    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhithInstruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList elseInstructionList
+    <branchOfParseWhithInstruction> !?ioDeclarations ?let @syntaxInstructionList elseInstructionList
     let endOfElseInstructions = @location.here
     $end$
     outInstruction = @parseWhenInstruction.new {
@@ -146,14 +163,14 @@ syntax extension galgas4SyntaxComponentSyntax {
       !endOfElseInstructions
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseWhenInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -170,10 +187,10 @@ override method @parseWhenInstruction transformInstruction
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @parseWhenInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -190,7 +207,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount {
 #--- When expression
   [self.mWhenExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -255,9 +272,9 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mWhenExpression
@@ -265,9 +282,9 @@ refclass @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticInstructionListForGeneration mElseInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseWhenInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -275,9 +292,9 @@ override method @parseWhenInstructionForGeneration appendSyntaxSignature
   ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !self.mInstructionList)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseWhenInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -308,4 +325,4 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

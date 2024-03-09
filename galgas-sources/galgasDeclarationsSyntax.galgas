@@ -1,48 +1,60 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
-  #·················································································································
-  #          Start symbol                     
-  #·················································································································
+  #·······························································································
+  #          Start symbol
+  #·······························································································
 
-  rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
+  rule <start_symbol_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
       <declaration_ggs3> !?ioDeclarations
     end
   }
 
-  #·················································································································
-  #          Rules prototypes                 
-  #·················································································································
+  #·······························································································
+  #          Rules prototypes
+  #·······························································································
 
-  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
-  
-  rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList
-  
-  rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList
+  rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList
 
-  rule <expression_ggs3> !@semanticExpressionAST outExpression
+  rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                        !@semanticInstructionListAST outInstructionsList
 
-  #·················································································································
+  rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                          !@formalInputParameterListAST outFormalInputParameterList
+
+  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression
+
+  #·······························································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
-  #·················································································································
+  #·······························································································
 
-  rule <property_declaration_ggs3> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
     let @bool isConstant
     select
@@ -53,7 +65,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       [accessControl checkCompatibilityWithLet !.here]
       isConstant = true
     end
-    $@type$ ?let propertyTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName
     var selectorAttribute = false
     repeat
@@ -66,7 +78,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       initialization = .none
     or
       $=$
-      <expression_ggs3> ?let expression
+      <expression_ggs3> !?ioDeclarations ?let expression
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=
@@ -78,10 +90,11 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !initialization
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <property_declaration_ggs3> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-    $@type$ ?let propertyTypeName
+  rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+    $@type$ ?let propertyTypeName // Ne pas utiliser <type_definition_ggs3>
     $identifier$ ?let propertyName
     let @bool selectorAttribute
     select
@@ -95,7 +108,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       initialization = .none
     or
       $=$
-      <expression_ggs3> ?let expression
+      <expression_ggs3> !?ioDeclarations ?let expression
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=
@@ -109,14 +122,13 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       let errorLocation = [propertyTypeName.location union !propertyName.location]
       error errorLocation
       : "old style property declaration (due to '--error-old-style-property-declaration' option)"
-#      fixit { replace "public let @" + propertyTypeName + " " + propertyName }
     end
   }
 
 
-  #·················································································································
+  #·······························································································
   #! Filewrapper Declaration
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
@@ -125,7 +137,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !false # private
@@ -137,7 +149,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !filewrapperTemplateList
     }
   }
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -147,7 +159,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !true # private
@@ -160,7 +172,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
     outFilewrapperTextFileExtensionList = {}
@@ -177,7 +189,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
     outFilewrapperBinaryFileExtensionList = {}
@@ -194,9 +206,10 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <filewrapper_templates> !@filewrapperTemplateListAST outFilewrapperTemplateList {
+  rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
+                               !@filewrapperTemplateListAST outFilewrapperTemplateList {
     ${$
     outFilewrapperTemplateList = {}
     repeat
@@ -207,8 +220,21 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
       repeat
       while
-        $?$ ?let selector
-        $@type$ ?let @lstring typeName
+        $?selector:$ ?let selector
+        <type_definition_ggs3> !?ioDeclarations ?let typeName
+        let @bool isUnused
+        select
+          isUnused = false
+        or
+          $unused$
+          isUnused = true
+        end
+        $identifier$ ?let argumentName
+        filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+      while
+        $?$
+        let selector = ["" here]
+        <type_definition_ggs3> !?ioDeclarations ?let typeName
         let @bool isUnused
         select
           isUnused = false
@@ -227,51 +253,49 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
-  #·················································································································
-  #          Start symbol                     
-  #·················································································································
+  #·······························································································
+  #          Start symbol
+  #·······························································································
 
   rule <start_symbol> ?!@galgasDeclarationAST ioDeclarations {
     repeat
     while
-      <declaration> !?ioDeclarations !?*
+      <declaration> !?ioDeclarations
     end
   }
 
-  #·················································································································
-  #          Rules prototypes                 
-  #·················································································································
+  #·······························································································
+  #          Rules prototypes
+  #·······························································································
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@formalParameterListAST outFormalParameterList
-  
-  rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
-                                   ?!@stringset ioUserImplicitDeclaredTypeSet
-                                   !@semanticInstructionListAST outInstructionsList
-  
-  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
 
-  rule <expression> !@semanticExpressionAST outExpression
+  rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionListAST outInstructionsList
+
+  rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
+                                     !@formalInputParameterListAST outFormalInputParameterList
+
+  rule <expression> ?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpression
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName
 
-  #·················································································································
+  #·······························································································
   #    A T T R I B U T E    I N    C O L L E C T I O N
-  #·················································································································
+  #·······························································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
     let @bool isConstant
@@ -283,7 +307,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       [accessControl checkCompatibilityWithLet !.here]
       isConstant = true
     end
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let propertyTypeName
+    <type_definition> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName
     var selectorAttribute = false
     repeat
@@ -296,7 +320,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       initialization = .none
     or
       $=$
-      <expression> ?let expression
+      <expression> !?ioDeclarations ?let expression
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=
@@ -308,19 +332,18 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !initialization
   }
 
-  #·················································································································
+  #·······························································································
   #! Filewrapper Declaration
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
     $in$
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !false # private
@@ -332,10 +355,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !filewrapperTemplateList
     }
   }
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $filewrapper$
     $identifier$ ?let @lstring mFilewrapperName indexing filewrapperDefinition
@@ -343,7 +365,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $"string"$ ?let @lstring mFilewrapperPath
     <filewrapper_text_files> ?let filewrapperTextFileExtensionList
     <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
-    <filewrapper_templates> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let filewrapperTemplateList
+    <filewrapper_templates> !?ioDeclarations ?let filewrapperTemplateList
     ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !true # private
@@ -356,7 +378,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
     outFilewrapperTextFileExtensionList = {}
@@ -373,7 +395,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
     outFilewrapperBinaryFileExtensionList = {}
@@ -390,10 +412,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@filewrapperTemplateListAST outFilewrapperTemplateList {
     ${$
     outFilewrapperTemplateList = {}
@@ -412,12 +433,12 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
           select
             selector = ["" nowhere]
           or
-            $?$ ?selector
-            if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-              error selector.location : "check no useless selector: this selector should be removed"
-            end
+            $?$
+            selector = ["" nowhere]
+          or
+            $?selector:$ ?selector
           end
-          <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let typeName
+          <type_definition> !?ioDeclarations ?let typeName
           let @bool isUnused
           select
             isUnused = false
@@ -440,8 +461,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

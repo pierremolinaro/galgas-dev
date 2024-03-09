@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @incDecKind {
   case increment
@@ -38,29 +55,33 @@ refclass @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
-    <semantic_instruction_inc_dec> !prefixedBySelf: false ?outInstruction
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
+    <semantic_instruction_inc_dec> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
-  
+
  #·····················································································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     $.$
-    <semantic_instruction_inc_dec> !prefixedBySelf: true ?outInstruction
+    <semantic_instruction_inc_dec> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
-  
-  #·················································································································
 
-  rule <semantic_instruction_inc_dec> ?prefixedBySelf: let @bool inPrefixedBySelf !@semanticInstructionAST outInstruction {
+  #·······························································································
+
+  rule <semantic_instruction_inc_dec> ?!@galgasDeclarationAST unused ioDeclarations
+                                      ?prefixedBySelf: let @bool inPrefixedBySelf
+                                      !@semanticInstructionAST outInstruction {
     $identifier$ ?let mReceiverName
     var mStructAttributeList = @lstringlist {}
     repeat
@@ -108,9 +129,10 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $self$
     let instructionLocation = @location.here
     select
@@ -138,15 +160,15 @@ syntax extension galgas3InstructionsSyntax {
         !.decrement
       }
     end
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @incDecInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
@@ -166,9 +188,9 @@ override method @selfIncDecInstructionAST enterInstructionInSemanticContext ?!@u
 override method @selfIncDecNoOVFInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @incDecInstructionAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -208,7 +230,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
        ?targetType
        ?targetVariableCppName
        ?* # nameForCheckingFormalParameterUsing
-    ]  
+    ]
   end
 #---
   for (value) in self.mStructAttributeList do
@@ -340,9 +362,9 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @incDecInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -414,4 +436,4 @@ override method @incDecNoOVFInstructionForGeneration generateInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

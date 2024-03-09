@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectElementListAST {
   public let @lstring mOptionalTypeName # Empty string if joker
@@ -64,15 +81,16 @@ refclass @forInstructionAST : @semanticInstructionAST {
   private let @location mEndOf_foreach_instruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
-  
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  #·······························································································
+
+  rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $literalInt$ ?let count
     $*$
     var n = [count.bigint uint]
@@ -84,15 +102,16 @@ syntax extension galgas3InstructionsSyntax {
       n -= 1
     end
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+
+  #·······························································································
+
+  rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     let @lstring typeName
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition_ggs3> !?ioDeclarations ?typeName
     end
     select
       $*$
@@ -109,10 +128,11 @@ syntax extension galgas3InstructionsSyntax {
       ioElementList += !typeName !isUnused !constantName
     end
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+
+  #·······························································································
+
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST {}
     let @bool endsWithEllipsis
@@ -121,7 +141,7 @@ syntax extension galgas3InstructionsSyntax {
       endsWithEllipsis = true
     or
       repeat
-        <for_instruction_element> !?elementList
+        <for_instruction_element> !?ioDeclarations !?elementList
       while
       end
       select
@@ -134,7 +154,7 @@ syntax extension galgas3InstructionsSyntax {
     let location = @location.here
     $)$
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
       !elementList
       !mEndsWithEllipsis: endsWithEllipsis
@@ -142,15 +162,16 @@ syntax extension galgas3InstructionsSyntax {
       !location
     }
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+
+  #·······························································································
+
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     let @lstring typeName
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition_ggs3> !?ioDeclarations ?typeName
     end
     let @lstring enumerationVariable
     select
@@ -160,7 +181,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?enumerationVariable
     end
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionVarInExpAST.new {
       !typeName
       !enumerationVariable
@@ -168,10 +189,11 @@ syntax extension galgas3InstructionsSyntax {
       !@location.here
     }
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+
+  #·······························································································
+
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     let startLocation = @location.here
     $)$
@@ -183,17 +205,18 @@ syntax extension galgas3InstructionsSyntax {
     end
     let endLocation = @location.here
     $in$
-    <expression_ggs3> ?let @semanticExpressionAST enumeratedExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
       !prefix
       !enumeratedExpression
       ![startLocation union !endLocation]
     }
   }
-  
-  #·················································································································
-  
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+
+  #·······························································································
+
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
     var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST {}
@@ -205,7 +228,7 @@ syntax extension galgas3InstructionsSyntax {
         $>$
         ascending = false
       end
-      <for_instruction_enumerated_object> ?let @abstractEnumeratedCollectionAST enumeratedObject
+      <for_instruction_enumerated_object> !?ioDeclarations ?let @abstractEnumeratedCollectionAST enumeratedObject
       mEnumeratedObjectList += !ascending !enumeratedObject
     while
       $,$
@@ -215,7 +238,7 @@ syntax extension galgas3InstructionsSyntax {
       mWhileExpression = @trueExpressionAST.new {!@location.here}
     or
       $while$
-      <expression_ggs3> ? mWhileExpression
+      <expression_ggs3> !?ioDeclarations ? mWhileExpression
     end
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList
@@ -223,7 +246,7 @@ syntax extension galgas3InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
       $before$
-      <semantic_instruction_list_ggs3> ? mBeforeInstructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mBeforeInstructionList
     end
     let endof_before_branch = @location.here
     $do$
@@ -235,14 +258,14 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list_ggs3> ?let mDoInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let mDoInstructionList
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
       $between$
-      <semantic_instruction_list_ggs3> ? mBetweenInstructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mBetweenInstructionList
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -250,7 +273,7 @@ syntax extension galgas3InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST {}
     or
       $after$
-      <semantic_instruction_list_ggs3> ? mAfterInstructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mAfterInstructionList
     end
     let endof_after_branch = @location.here
     $end$
@@ -273,17 +296,18 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
-  
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  #·······························································································
+
+  rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $literalInt$ ?let count
     $*$
     var n = [count.bigint uint]
@@ -295,15 +319,16 @@ syntax extension galgas4InstructionsSyntax {
       n -= 1
     end
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+
+  #·······························································································
+
+  rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
+                                 ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     let @lstring typeName
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition> !?ioDeclarations ?typeName
     end
     select
       $*$
@@ -320,21 +345,22 @@ syntax extension galgas4InstructionsSyntax {
       ioElementList += !typeName !isUnused !constantName
     end
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+
+  #·······························································································
+
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     var elementList = @forInstructionEnumeratedObjectElementListAST {}
     repeat
-      <for_instruction_element> !?elementList
+      <for_instruction_element> !?ioDeclarations !?elementList
     while
       $,$
     end
     let location = @location.here
     $)$
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
       !elementList
       !mEndsWithEllipsis: false
@@ -342,15 +368,16 @@ syntax extension galgas4InstructionsSyntax {
       !location
     }
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+
+  #·······························································································
+
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     let @lstring typeName
     select
       typeName = ["" nowhere]
     or
-      $@type$ ?typeName
+      <type_definition> !?ioDeclarations ?typeName
     end
     let @lstring enumerationVariable
     select
@@ -360,7 +387,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?enumerationVariable
     end
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionVarInExpAST.new {
       !typeName
       !enumerationVariable
@@ -368,10 +395,11 @@ syntax extension galgas4InstructionsSyntax {
       !@location.here
     }
   }
-  
-  #·················································································································
-  
-  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
+
+  #·······························································································
+
+  rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
+                                           !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
     let startLocation = @location.here
     $)$
@@ -383,18 +411,17 @@ syntax extension galgas4InstructionsSyntax {
     end
     let endLocation = @location.here
     $in$
-    <expression> ?let @semanticExpressionAST enumeratedExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST enumeratedExpression
     outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
       !prefix
       !enumeratedExpression
       ![startLocation union !endLocation]
     }
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
@@ -407,7 +434,7 @@ syntax extension galgas4InstructionsSyntax {
         $>$
         ascending = false
       end
-      <for_instruction_enumerated_object> ?let @abstractEnumeratedCollectionAST enumeratedObject
+      <for_instruction_enumerated_object> !?ioDeclarations ?let @abstractEnumeratedCollectionAST enumeratedObject
       mEnumeratedObjectList += !ascending !enumeratedObject
     while
       $,$
@@ -417,7 +444,7 @@ syntax extension galgas4InstructionsSyntax {
       mWhileExpression = @trueExpressionAST.new {!@location.here}
     or
       $while$
-      <expression> ? mWhileExpression
+      <expression> !?ioDeclarations ? mWhileExpression
     end
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList
@@ -425,7 +452,7 @@ syntax extension galgas4InstructionsSyntax {
       mBeforeInstructionList = @semanticInstructionListAST {}
     or
       $before$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mBeforeInstructionList
+      <semantic_instruction_list> !?ioDeclarations ? mBeforeInstructionList
     end
     let endof_before_branch = @location.here
     $do$
@@ -437,14 +464,14 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ? indexVariableName
       $)$
     end
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let mDoInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let mDoInstructionList
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
       mBetweenInstructionList = @semanticInstructionListAST {}
     or
       $between$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mBetweenInstructionList
+      <semantic_instruction_list> !?ioDeclarations ? mBetweenInstructionList
     end
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
@@ -452,7 +479,7 @@ syntax extension galgas4InstructionsSyntax {
       mAfterInstructionList = @semanticInstructionListAST {}
     or
       $after$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? mAfterInstructionList
+      <semantic_instruction_list> !?ioDeclarations ? mAfterInstructionList
     end
     let endof_after_branch = @location.here
     $end$
@@ -475,13 +502,13 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @forInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mWhileExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -517,9 +544,9 @@ override method @enumeratedCollectionVarInExpAST enterInSemanticContext ?!@unifi
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
@@ -544,7 +571,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 {
   [self.mEnumeratedExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -568,7 +595,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
       !@lstring.new {!self.mPrefix.string + mEnumerationName !self.mEndOfAnonymousEnumeration}
       !true # No warning if unused
       !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
-  between 
+  between
     suggestion += " "
   end
   suggestion += ")"
@@ -592,7 +619,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 {
   [self.mEnumeratedExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -609,7 +636,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
 #--- Arguments
     if ([self.mElementList count] == 0) & not self.mEndsWithEllipsis then
       let currentTypedAttributeList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
-      for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do 
+      for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
        [!?ioVariableMap insertUsedLocalConstant
          !@lstring.new {!mEnumerationName !self.mEndOfEnumerationExpression}
          !mEnumeratedType
@@ -641,7 +668,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then # Empty string if joker
           if mOptionalTypeName.string != "" then
-            let foundType = [ioTypeMap searchKey !mOptionalTypeName]
+            let foundType = [ioTypeMap typeMapEntryForLKey !mOptionalTypeName]
             if foundType != mEnumeratedType then
               error mOptionalTypeName : "incorrect '@" + [foundType definition].mTypeName.string + "' type: '@" + [mEnumeratedType definition].mTypeName.string + "' type required here"
             end
@@ -670,7 +697,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 {
   [self.mEnumeratedExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -688,7 +715,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   end
 #--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
-    let explicitType = [ioTypeMap searchKey !self.mEnumerationOptionalTypeName]
+    let explicitType = [ioTypeMap typeMapEntryForLKey !self.mEnumerationOptionalTypeName]
     if [enumeratedElementType definition].mTypeName.string != [explicitType definition].mTypeName.string then
       error self.mEnumerationOptionalTypeName: "the '@" + [enumeratedElementType definition].mTypeName.string + "' type is expected here"
     end
@@ -791,7 +818,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   end
 #---
   [self.mWhileExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -851,9 +878,9 @@ override method @forInstructionAST analyzeSemanticInstruction
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectListForGeneration {
   public let @string mEnumerationOrder
@@ -874,9 +901,9 @@ refclass @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticInstructionListForGeneration mAfterInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @forInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -1054,4 +1081,4 @@ override method @forInstructionForGeneration generateInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

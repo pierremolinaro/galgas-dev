@@ -1,38 +1,47 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @lstring mVariableName
   private let @semanticExpressionAST mSourceExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableDeclarationNoAssignmentAST : @semanticInstructionAST {
   private let @lstring mTypeName
   private let @lstring mVariableName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
-    $var$
-    $@type$ ?let typeName
-    $identifier$ ?let variableName
-    outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
-  }
-
-  #·················································································································
-
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
-    $@type$ ?let typeName
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
+    $@type$ ?let typeName # Obsolete, dont't use <type_definition_ggs3>
     $identifier$ ?let variableName
     outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
     if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
@@ -41,13 +50,14 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $var$
     $identifier$ ?let variableName
     $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     outInstruction = @localVariableDeclarationWithAssignmentAST.new {
       !variableName.location
       !variableName
@@ -55,80 +65,22 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $var$
-    $@type$ ?let typeName
-    $identifier$ ?let variableName
-    $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-      !typeName.location
-      !false
-      !typeName
-      !variableName
-      !sourceExpression
-    }
-  }
-
-  #·················································································································
-
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
-    $@type$ ?let typeName
-    $identifier$ ?let variableName
-    $=$
-    <expression_ggs3> ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-      !typeName.location
-      !false
-      !typeName
-      !variableName
-      !sourceExpression
-    }
-    if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
-      error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
-      fixit { replace "var @" + typeName }
-    end
-  }
-
-  #·················································································································
-
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·················································································································
-
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
-                              !@semanticInstructionAST outInstruction {
-    $var$
-    $identifier$ ?let variableName
-    $=$
-    <expression> ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableDeclarationWithAssignmentAST.new {
-      !variableName.location
-      !variableName
-      !sourceExpression
-    }
-  }
-
-  #·················································································································
-
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
-                              !@semanticInstructionAST outInstruction {
-    $var$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let typeName
+    <type_definition_ggs3> !?ioDeclarations ?let typeName
     $identifier$ ?let variableName
     select
-      outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
+      outInstruction = @localVariableDeclarationNoAssignmentAST.new {
+        !typeName.location
+        !typeName
+        !variableName
+      }
     or
       $=$
-      <expression> ?let @semanticExpressionAST sourceExpression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
         !typeName.location
         !false
@@ -139,13 +91,79 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
+
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
+    $@type$ ?let typeName # Obsolete, dont't use <type_definition_ggs3>
+    $identifier$ ?let variableName
+    $=$
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
+    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+      !typeName.location
+      !false
+      !typeName
+      !variableName
+      !sourceExpression
+    }
+    if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
+      error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
+      fixit { replace "var @" + typeName }
+    end
+  }
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·······························································································
+
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
+                              !@semanticInstructionAST outInstruction {
+    $var$
+    $identifier$ ?let variableName
+    $=$
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
+    outInstruction = @localVariableDeclarationWithAssignmentAST.new {
+      !variableName.location
+      !variableName
+      !sourceExpression
+    }
+  }
+
+  #·······························································································
+
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
+                              !@semanticInstructionAST outInstruction {
+    $var$
+    <type_definition> !?ioDeclarations ?let typeName
+    $identifier$ ?let variableName
+    select
+      outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
+    or
+      $=$
+      <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
+      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+        !typeName.location
+        !false
+        !typeName
+        !variableName
+        !sourceExpression
+      }
+    end
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -153,10 +171,10 @@ override method @localVariableDeclarationWithAssignmentAST enterInstructionInSem
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -167,7 +185,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
 {
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -193,17 +211,17 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationNoAssignmentAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [!?ioTypeMap makeEntry !self.mTypeName ?*]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -214,7 +232,7 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
   ?!@localVarManager ioVariableMap
 {
 #--- Check target variable
-  let targetType = [ioTypeMap searchKey !self.mTypeName]
+  let targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
   [!?ioVariableMap insertDeclaredLocalVariable
     !self.mVariableName
@@ -229,9 +247,9 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mVariableType
@@ -251,4 +269,4 @@ override method @localVariableDeclarationForGeneration generateInstruction
   ioGeneratedCode += "GALGAS_" + [self.mVariableType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

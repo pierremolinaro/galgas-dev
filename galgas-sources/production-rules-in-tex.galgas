@@ -1,21 +1,28 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  Copyright (C) 2016, ..., 2016 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    O U T P U T    P R O D U C T I O N    R U L E S    I N    T E X                                           
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    O U T P U T    P R O D U C T I O N    R U L E S    I N    T E X
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_generation" {
 }{
@@ -25,7 +32,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
     ?@string TEX_ESCAPED_DOCUMENT_NAME
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func escapeForTex ?let @string inString -> @string result {
   result = ""
@@ -57,7 +64,7 @@ private func escapeForTex ?let @string inString -> @string result {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc emitProductionRulesInTexFile
   ?let @string inProductDirectory
@@ -101,7 +108,7 @@ proc emitProductionRulesInTexFile
   [s writeToFileWhenDifferentContents !texFilePath ?*]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @productionRuleListForGrammarAnalysis-element displayRule
   ?let @string inSyntaxComponentName
@@ -155,7 +162,7 @@ method @productionRuleListForGrammarAnalysis-element displayRule
   ioGeneratedCode += "\\end{tikzpicture}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @productionRuleListForGrammarAnalysis-element displayRuleVertically
   ?let @string inSyntaxComponentName
@@ -215,9 +222,9 @@ method @productionRuleListForGrammarAnalysis-element displayRuleVertically
   ioGeneratedCode += "\\end{tikzpicture}\n\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! tikzNodeForSyntaxInstruction
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -256,13 +263,13 @@ method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @rowList {
   public let @2stringlist columns # Node name, node definition
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @rowList appendRow
   ?nodeDefinition:let @string inNodeDefinition
@@ -292,7 +299,7 @@ setter @rowList appendRow
   [!?self setColumnsAtIndex !cols !inRow]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -304,31 +311,7 @@ abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxIn
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @terminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-  ?!@rowList ioRowList
-  ?fromRow:let @uint inRow
-  ?!column:@uint ioColumn
-  ?!node: @string ioCurrentNode
-  ?!arrowShape: @string ioArrowShape
-  ?!arrows:@string ioArrows
-  ?!@uint unused ioMaxUsedRowIndex
-  ?debug:let @bool unused inDebug
-{
-  [!?ioRowList appendRow
-    !nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
-    !row:inRow
-    !column:ioColumn
-    ?nodeName:let nodeName
-  ]
-  ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
-  ioCurrentNode = nodeName
-  ioArrowShape = "--"
-  ioColumn += 1
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -354,7 +337,7 @@ override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstr
   ioColumn += 1
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -448,7 +431,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -556,9 +539,9 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! isLinear
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   result = [self count] > 4
@@ -567,34 +550,28 @@ getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @abstractSyntaxInstructionForGrammarAnalysis isLinear -> @bool
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @terminalInstructionForGrammarAnalysis isLinear -> @bool {
-  result = true
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @nonTerminalInstructionForGrammarAnalysis isLinear -> @bool {
   result = true
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @selectInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @repeatInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

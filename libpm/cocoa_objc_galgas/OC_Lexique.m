@@ -255,7 +255,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-- (void) buildPopupMenuItemArrayWithStyleArray:(NSArray *) inTokenArray {
+- (void) buildPopupMenuItemArrayWithStyleArray: (NSArray *) inTokenArray {
   NSDictionary * defaultAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
     [NSFont systemFontOfSize:11.0], NSFontAttributeName,
     nil
@@ -275,32 +275,32 @@
   const UInt16 ** popUpListData = [self popupListData] ;
   if (NULL != popUpListData) {
     const NSUInteger tokenCount = inTokenArray.count ;
-    for (NSUInteger tokenIndex=0 ; tokenIndex<tokenCount ; tokenIndex++) {
-      OC_Token * token = [inTokenArray objectAtIndex:tokenIndex] ;
+    for (NSUInteger tokenIndex = 0 ; tokenIndex < tokenCount ; tokenIndex++) {
+      OC_Token * token = [inTokenArray objectAtIndex: tokenIndex] ;
       const NSUInteger terminal = token.tokenCode ;
-      // printf ("terminal %u\n", terminal) ;
       BOOL found = NO ;
       NSUInteger idx = 0 ;
       NSUInteger labelLength = 0 ;
-      const UInt16 * p = popUpListData [idx] ;
-      while ((p != NULL) && ! found) {
-        p++ ; // Pass display flags
-        if (*p == terminal) {
+      const UInt16 * ptr = popUpListData [idx] ;
+      while (!found && (ptr != NULL)) {
+        ptr += 1 ; // Pass display flags
+        if (*ptr == terminal) {
           found = YES ;
-          p += 2 ;
+          ptr += 2 ;
           labelLength = 0 ;
-          while ((*p != 0) && found) {
-            labelLength ++ ;
-            found = ((tokenIndex+labelLength) < tokenCount) && ([[inTokenArray objectAtIndex:tokenIndex+labelLength] tokenCode] == *p) ;
-            p += 2 ;
+          while (found && (*ptr != 0)) {
+            labelLength += 1 ;
+            found = ((tokenIndex+labelLength) < tokenCount) && ([[inTokenArray objectAtIndex:tokenIndex+labelLength] tokenCode] == *ptr) ;
+            ptr += 2 ;
           }
-        }else{
-          idx ++ ;
-          p = popUpListData [idx] ;
+        }
+        if (!found) {
+          idx += 1 ;
+          ptr = popUpListData [idx] ;
         }
       }
       if (found) {
-        p = popUpListData [idx] ;
+        const UInt16 * p = popUpListData [idx] ;
         const UInt16 displayFlags = *p ;
         p += 2 ; // Goto display strip description
         NSMutableString * title = [NSMutableString new] ;
@@ -337,16 +337,14 @@
           keyEquivalent:@""
         ] ;
         if (displayFlags == 0) {
-          [item setAttributedTitle:[[NSAttributedString alloc]
-            initWithString:title
-            attributes:defaultAttributes
-          ]] ;
+          [item setAttributedTitle:
+            [[NSAttributedString alloc] initWithString:title attributes:defaultAttributes]
+          ] ;
         }else{
           NSMutableAttributedString * s = prefixString.mutableCopy ;
-          [s appendAttributedString:[[NSAttributedString alloc]
-            initWithString:title
-            attributes:specialAttributes
-          ]] ;
+          [s appendAttributedString:
+            [[NSAttributedString alloc] initWithString: title attributes: specialAttributes]
+          ] ;
           [item setAttributedTitle:s] ;
         }
         [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex] range].location] ;
@@ -503,7 +501,10 @@
     NSLog (@"  Suppress affected Tokens") ;
   #endif
   search = YES ;
-  const NSUInteger affectedRangeEndLocation = inEditedRange.location + inEditedRange.length - (NSUInteger) inChangeInLength ;
+  const NSUInteger affectedRangeEndLocation = (inChangeInLength >= 0)
+    ? (inEditedRange.location + inEditedRange.length - (NSUInteger) inChangeInLength)
+    : (inEditedRange.location + inEditedRange.length + (NSUInteger) -inChangeInLength)
+  ;
   while ((*outLowerIndexToRedrawInStyleArray < (SInt32) [ioStyledRangeArray count]) && search) {
     OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] ;
     search = [token range].location < affectedRangeEndLocation ;
@@ -611,7 +612,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"build popup") ;
   #endif
-  [self buildPopupMenuItemArrayWithStyleArray:ioStyledRangeArray] ;
+  [self buildPopupMenuItemArrayWithStyleArray: ioStyledRangeArray] ;
 //---
   #ifdef DEBUG_MESSAGES
     NSLog (@"tokenizeForSourceString:tokenArray:... DONE") ;

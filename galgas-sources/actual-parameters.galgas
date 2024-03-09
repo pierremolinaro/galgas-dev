@@ -1,13 +1,29 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  A C T U A L    P A R A M E T E R         
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  A C T U A L    P A R A M E T E R
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualParameterListAST {
   public let @actualParameterAST mActualParameter
- 
-  #·················································································································
+
+  #·······························································································
 
   method analyzeRoutineArguments?let @lstring inUsefulnessCallerEntityName
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -21,7 +37,7 @@ list @actualParameterListAST {
                                 !@actualParameterListForGeneration outActualParameterListForGeneration {
     if [inRoutineSignature count] != [self count] then
       error inRoutineName
-      : "the " + inInvokedEntityName + " defines " + [[inRoutineSignature count] string] 
+      : "the " + inInvokedEntityName + " defines " + [[inRoutineSignature count] string]
       + " formal argument(s), but this invocation names "
       + [[self count] string] + " argument(s)"
       : outActualParameterListForGeneration
@@ -46,28 +62,28 @@ list @actualParameterListAST {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @actualParameterAST {
 
-  #·················································································································
+  #·······························································································
 
   abstract method enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-  #·················································································································
+  #·······························································································
 
   abstract getter isCompatibleWith ?let @formalArgumentPassingModeAST unused inFormalPassingMode
                                    ?let @string unused inSelector -> @bool
-  
-  #·················································································································
+
+  #·······························································································
 
   abstract method enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList
 
-  #·················································································································
+  #·······························································································
 
   abstract method checkAgainstFormalArgument
     ?let @lstring inUsefulnessCallerEntityName
@@ -82,24 +98,24 @@ abstract refclass @actualParameterAST {
     ?!@stringset ioExclusiveVariableSet
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @semanticExpressionAST mOutputActualParameterExpression
   public let @location mEndOfExpressionLocation
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mOutputActualParameterExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -108,8 +124,8 @@ refclass @outputActualParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList {
     ioActualOutputArgumentList +=
@@ -118,7 +134,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
       !self.mEndOfExpressionLocation
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
                                   ?let @lstring inUsefulnessCallerEntityName
@@ -144,7 +160,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
         error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
        end
       [self.mOutputActualParameterExpression analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: inFormalArgumentType
         !inAnalysisContext
@@ -167,23 +183,23 @@ refclass @outputActualParameterAST : @actualParameterAST {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mOutputInputActualParameterName
   public let @lstringlist mStructAttributeList
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -192,14 +208,14 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
                               ?let @lstring unused inUsefulnessCallerEntityName
@@ -269,21 +285,21 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -292,14 +308,14 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
                                   ?let @lstring unused inUsefulnessCallerEntityName
@@ -323,11 +339,11 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
   #--- Find a constructor without any argument
-    let constructorMap = [inFormalArgumentType definition].mConstructorMap
+    let classFunctionMap = [inFormalArgumentType definition].mClassFunctionMap
     var @bool hasCompilerArgument = false
     var @string constructorName = ""
     var found = false
-    for c in constructorMap while not found do
+    for c in classFunctionMap while not found do
       if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == inFormalArgumentType) then
         hasCompilerArgument = c.mHasCompilerArgument
         constructorName = c.lkey.string
@@ -354,21 +370,21 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -377,14 +393,14 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
                             ?let @lstring unused inUsefulnessCallerEntityName
@@ -436,22 +452,22 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputJokerParameterAST : @actualParameterAST {
   public let @location mQualifierLocation
   public let @uint mJokerIndex
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string unused inSelector -> @bool {
@@ -460,14 +476,14 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
 #      result = self.mActualSelector.string == inSelector
 #    end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mQualifierLocation : "a getter does not support output/input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
     override method checkAgainstFormalArgument
                                                 ?let @lstring unused inUsefulnessCallerEntityName
@@ -487,11 +503,11 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
         + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
       end
     #--- Find a constructor without any argument
-      let constructorMap = [inFormalArgumentType definition].mConstructorMap
+      let classFunctionMap = [inFormalArgumentType definition].mClassFunctionMap
       var @bool hasCompilerArgument = false
       var @string constructorName = ""
       var found = false
-      for c in constructorMap while not found do
+      for c in classFunctionMap while not found do
         if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == inFormalArgumentType) then
           hasCompilerArgument = c.mHasCompilerArgument
           constructorName = c.lkey.string
@@ -517,23 +533,23 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
         !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
     }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputActualParameterName
   public let @lstringlist mPoisonedVarNameList
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -542,14 +558,14 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -608,23 +624,23 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputActualSelfPropertyName
   public let @lstringlist mPoisonedVarNameList
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -633,14 +649,14 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -663,7 +679,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
-    
+
     if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
       if not selfIsMutable then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
@@ -694,29 +710,29 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
         !targetVariableCppName
         !poisonedVarCppNameList
       }
-  
+
     else
       error self.mInputActualSelfPropertyName : "'self' not available in this context"
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @location mSelfLocation
   public let @lstringlist mPoisonedVarNameList
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -725,14 +741,14 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -755,7 +771,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
-    
+
     if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: *] then
       if not selfIsMutable then
         error self.mSelfLocation : "'self' not mutable in this context"
@@ -787,17 +803,17 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
         !targetVariableCppName
         !poisonedVarCppNameList
       }
-  
+
     else
       error self.mSelfLocation : "'self' not available in this context"
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualNewVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -805,12 +821,12 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
   public let @lstring mInputActualParameterName
   public let @lstringlist mPoisonedVarNameList
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -819,14 +835,14 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -853,7 +869,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
     end
   #--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
-      let parameterType = [ioTypeMap searchKey !self.mInputOptionalActualTypeName]
+      let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
         :"the parameter object has the '@" + [parameterType definition].mTypeName.string
@@ -898,11 +914,11 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualNewConstantParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -911,12 +927,12 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
   public let @bool mMarkedAsUnused
   public let @lstringlist mPoisonedVarNameList
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -925,14 +941,14 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -959,7 +975,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
     end
   #--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
-      let parameterType = [ioTypeMap searchKey !self.mInputOptionalActualTypeName]
+      let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
         :"the parameter object has the '@" + [parameterType definition].mTypeName.string
@@ -1012,22 +1028,22 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstringlist mPoisonedVarNameList
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
@@ -1036,14 +1052,14 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
       result = self.mActualSelector.string == inSelector
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -1060,7 +1076,7 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
-      + "' passing mode: this parameter should be passed with '" 
+      + "' passing mode: this parameter should be passed with '"
       + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
@@ -1086,22 +1102,22 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputJokerActualParameterAST : @actualParameterAST {
   public let @location mQualifierLocation
   public let @uint mJokerIndex
 
-  #·················································································································
+  #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string unused inSelector -> @bool {
@@ -1110,14 +1126,14 @@ refclass @inputJokerActualParameterAST : @actualParameterAST {
 #      result = self.mActualSelector.string == inSelector
 #    end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
     error self.mQualifierLocation : "a getter does not support input parameter"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method checkAgainstFormalArgument
     ?let @lstring unused inUsefulnessCallerEntityName
@@ -1146,8 +1162,8 @@ refclass @inputJokerActualParameterAST : @actualParameterAST {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

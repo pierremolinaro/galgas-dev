@@ -1,23 +1,35 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3GrammarComponentSyntax (galgasScanner3) {
 
-  #·················································································································
-  #   G R A M M A R    C O M P O N E N T      
-  #·················································································································
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName
+
+  #·······························································································
+  #   G R A M M A R    C O M P O N E N T
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @lbool hasIndexing
@@ -50,12 +62,12 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   #--- Root symbol
     $<non_terminal>$ ?let @lstring  mStartSymbol indexing ruleReference
     var mLabelList = @nonTerminalLabelListAST {}
-    <grammar_start_symbol_label_ggs3> !@lstring.new {!"" !@location.here} !?mLabelList
+    <grammar_start_symbol_label_ggs3> !?ioDeclarations !@lstring.new {!"" !@location.here} !?mLabelList
     repeat
     while
       $label$
       $identifier$ ?let @lstring labelName
-      <grammar_start_symbol_label_ggs3> !labelName !?mLabelList
+      <grammar_start_symbol_label_ggs3> !?ioDeclarations !labelName !?mLabelList
      end
   #--- Unused non terminal symbols
     var mUnusedNonterminalList = @lstringlist {}
@@ -79,16 +91,16 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !hasTranslateFeature}
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <grammar_start_symbol_label_ggs3>
-    ?let @lstring inLabelName
-    ?!@nonTerminalLabelListAST ioLabelList {
+  rule <grammar_start_symbol_label_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                         ?let @lstring inLabelName
+                                         ?!@nonTerminalLabelListAST ioLabelList {
     var @stringset argumentNameSet = {}
     var @formalParameterListAST mFormalParameterList = {}
     repeat
     while
-      <label_formal_parameter_ggs3> ?let argumentName !?mFormalParameterList
+      <label_formal_parameter_ggs3> !?ioDeclarations ?let argumentName !?mFormalParameterList
       if [argumentNameSet hasKey !argumentName.string] then
         error argumentName: "there is already an argument named '" + argumentName + "'"
       end
@@ -97,13 +109,19 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     ioLabelList += !inLabelName !mFormalParameterList !.here
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter_ggs3>
-    !@lstring outArgumentName
-    ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
-    $@type$ ?let @lstring mTypeName
+  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                     !@lstring outArgumentName
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    let @lstring selector
+    select
+      $?selector:$ ?selector
+    or
+      $?$
+      selector = ["" here]
+    end
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
      $unused$
@@ -117,13 +135,20 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter_ggs3> !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
+  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                     !@lstring outArgumentName
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    let @lstring selector
+    select
+      $?selector:$ ?selector
+    or
+      $?$
+      selector = ["" here]
+    end
     $let$
-    $@type$ ?let @lstring mTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
      $unused$
@@ -137,12 +162,19 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter_ggs3> !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?!$ ?let selector
-    $@type$ ?let @lstring mTypeName
+  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                     !@lstring outArgumentName
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    let @lstring selector
+    select
+      $?!selector:$ ?selector
+    or
+      $?!$
+      selector = ["" here]
+    end
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
      $unused$
@@ -156,12 +188,19 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter_ggs3> !@lstring outArgumentName
-                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $!$ ?let selector
-    $@type$ ?let @lstring mTypeName
+  rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                     !@lstring outArgumentName
+                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    let @lstring selector
+    select
+      $!selector:$ ?selector
+    or
+      $!$
+      selector = ["" here]
+    end
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
@@ -171,20 +210,25 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
-  #·················································································································
-  #   G R A M M A R    C O M P O N E N T      
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName
+
+
+  #·······························································································
+  #   G R A M M A R    C O M P O N E N T
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @lbool hasIndexing
     select
       hasIndexing = @lbool.new {!false !@location.here}
@@ -215,12 +259,12 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   #--- Root symbol
     $<non_terminal>$ ?let @lstring startSymbol indexing ruleReference
     var mLabelList = @nonTerminalLabelListAST {}
-    <grammar_start_symbol_label> !@lstring.new {!"" !@location.here} !?mLabelList
+    <grammar_start_symbol_label> !?ioDeclarations !@lstring.new {!"" !@location.here} !?mLabelList
     repeat
     while
       $label$
       $identifier$ ?let @lstring labelName
-      <grammar_start_symbol_label> !labelName !?mLabelList
+      <grammar_start_symbol_label> !?ioDeclarations !labelName !?mLabelList
      end
   #--- Unused non terminal symbols
     var mUnusedNonterminalList = @lstringlist {}
@@ -244,9 +288,10 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !hasTranslateFeature}
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <grammar_start_symbol_label> ?let @lstring inLabelName
+  rule <grammar_start_symbol_label> ?!@galgasDeclarationAST ioDeclarations
+                                    ?let @lstring inLabelName
                                     ?!@nonTerminalLabelListAST ioLabelList {
     var @stringset argumentNameSet = {}
     var @formalParameterListAST formalParameterList = {}
@@ -254,7 +299,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     select
     or
       repeat
-        <label_formal_parameter> ?let argumentName !?formalParameterList
+        <label_formal_parameter> !?ioDeclarations ?let argumentName !?formalParameterList
         if [argumentNameSet hasKey !argumentName.string] then
           error argumentName: "there is already an argument named '" + argumentName + "'"
         end
@@ -267,12 +312,13 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     ioLabelList += !inLabelName !formalParameterList !.here
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter> !@lstring outArgumentName
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
-    $@type$ ?let @lstring mTypeName
+    $?selector:$ ?let selector
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
     or
      $unused$
@@ -286,13 +332,35 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter> !@lstring outArgumentName
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?$ ?let selector
+    $?$
+    let selector = ["" here]
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    select
+    or
+     $unused$
+    end
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentIn
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $?selector:$ ?let selector
     $let$
-    $@type$ ?let @lstring mTypeName
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
     or
      $unused$
@@ -306,12 +374,35 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter> !@lstring outArgumentName
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $?!$ ?let selector
-    $@type$ ?let @lstring mTypeName
+    $?$
+    let selector = ["" here]
+    $let$
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    select
+    or
+     $unused$
+    end
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentConstantIn
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $?!selector:$ ?let selector
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
     or
      $unused$
@@ -325,12 +416,34 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <label_formal_parameter> !@lstring outArgumentName
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
-    $!$ ?let selector
-    $@type$ ?let @lstring mTypeName
+    $?!$
+    let selector = ["" here]
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    select
+    or
+     $unused$
+    end
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentInOut
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $!selector:$ ?let selector
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
@@ -340,8 +453,25 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·················································································································
+  #·······························································································
+
+  rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outArgumentName
+                                ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+    $!$
+    let selector = ["" here]
+    <type_definition> !?ioDeclarations ?let @lstring mTypeName
+    $identifier$ ?outArgumentName
+    ioStartSymbolLabelFormalParameterList +=
+      !selector
+      !@formalArgumentPassingModeAST. argumentOut
+      !mTypeName
+      !outArgumentName
+      !false
+  }
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

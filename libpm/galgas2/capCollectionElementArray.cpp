@@ -203,11 +203,11 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
     mSharedRoot->mArray [inInsertionIndex] = inObject ;
     mSharedRoot->mCount ++ ;
   }else{
-    String s = "insertAtIndex: insertion index (" ;
-    s.addUnsigned (inInsertionIndex) ;
-    s.addString (") > length (") ;
-    s.addUnsigned (count ()) ;
-    s.addString (")") ;
+    String s ("insertAtIndex: insertion index (") ;
+    s.appendUnsigned (inInsertionIndex) ;
+    s.appendCString (") > length (") ;
+    s.appendUnsigned (count ()) ;
+    s.appendCString (")") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }
 }
@@ -229,11 +229,11 @@ void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outO
     mSharedRoot->mCount -- ;
     mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
   }else{
-    String s = "removeObjectAtIndex: index (" ;
-    s.addUnsigned (inIndex) ;
-    s.addString (") >= length (") ;
-    s.addUnsigned (count ()) ;
-    s.addString (")") ;
+    String s ("removeObjectAtIndex: index (") ;
+    s.appendUnsigned (inIndex) ;
+    s.appendCString (") >= length (") ;
+    s.appendUnsigned (count ()) ;
+    s.appendCString (")") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }
 }
@@ -412,10 +412,10 @@ typeComparisonResult capCollectionElementArray::compareCollectionElementArray (c
 void capCollectionElementArray::description (String & ioString,
                                              const int32_t inIndentation) const {
   for (uint32_t i=0 ; i<count () ; i++) {
-    ioString.addNL () ; ;
-    ioString.addStringMultiple ("| ", inIndentation) ;
-    ioString.addString ("|-at ") ;
-    ioString.addUnsigned (i) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendCString ("|-at ") ;
+    ioString.appendUnsigned (i) ;
     mSharedRoot->mArray [i].description (ioString, inIndentation + 1) ;
   }
 }
@@ -431,10 +431,10 @@ void capCollectionElementArray::subListToIndex (capCollectionElementArray & outS
   outOk = false ;
   if (inIndex >= count ()) {
     String s ;
-    s.addString ("Cannot get a sub list from index ") ;
-    s.addUnsigned (inIndex) ;
-    s.addString (" with a list of length ") ;
-    s.addUnsigned (count ()) ;
+    s.appendCString ("Cannot get a sub list from index ") ;
+    s.appendUnsigned (inIndex) ;
+    s.appendCString (" with a list of length ") ;
+    s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const uint32_t length = inIndex + 1 ;
@@ -458,12 +458,12 @@ void capCollectionElementArray::subListWithRange (capCollectionElementArray & ou
   outSubList.removeAllObjects () ;
   if ((inStartIndex + inLength) > count ()) {
     String s ;
-    s.addString ("Cannot get a sub list of range [") ;
-    s.addUnsigned (inStartIndex) ;
-    s.addString (":") ;
-    s.addUnsigned (inLength) ;
-    s.addString ("] from a list of length ") ;
-    s.addUnsigned (count ()) ;
+    s.appendCString ("Cannot get a sub list of range [") ;
+    s.appendUnsigned (inStartIndex) ;
+    s.appendCString (":") ;
+    s.appendUnsigned (inLength) ;
+    s.appendCString ("] from a list of length ") ;
+    s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     outSubList.setCapacity (inLength) ;
@@ -484,11 +484,10 @@ void capCollectionElementArray::subListFromIndex (capCollectionElementArray & ou
   outOk = false ;
   outSubList.removeAllObjects () ;
   if (inIndex > count ()) {
-    String s ;
-    s.addString ("Cannot get a sub list from index ") ;
-    s.addUnsigned (inIndex) ;
-    s.addString (" with a list of length ") ;
-    s.addUnsigned (count ()) ;
+    String s ("Cannot get a sub list from index ") ;
+    s.appendUnsigned (inIndex) ;
+    s.appendCString (" with a list of length ") ;
+    s.appendUnsigned (count ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
     const uint32_t length = count () - inIndex ;

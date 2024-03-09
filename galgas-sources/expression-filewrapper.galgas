@@ -1,19 +1,36 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperPath
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
@@ -21,15 +38,16 @@ refclass @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @actualOutputExpressionList mExpressions
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  #·······························································································
+
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $[$
     $filewrapper$
     $identifier$ ?let filewrapperName indexing filewrapperReference
@@ -47,7 +65,7 @@ syntax extension galgas3ExpressionSyntax {
         }
       or
         $identifier$ ?let @lstring filewrapperTemplateName
-        <output_expression_list_ggs3> ?let @actualOutputExpressionList expressionList
+        <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
         outExpression = @filewrapperTemplateInExpressionAST.new {
           !filewrapperName
           !filewrapperTemplateName
@@ -56,19 +74,20 @@ syntax extension galgas3ExpressionSyntax {
       end
     end
     $]$
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $filewrapper$
     $[$
     $identifier$ ?let filewrapperName indexing filewrapperReference
@@ -85,7 +104,7 @@ syntax extension galgas4ExpressionSyntax {
       or
         $identifier$ ?let @lstring filewrapperTemplateName
         $:$
-        <output_expression_list> ?let @actualOutputExpressionList expressionList
+        <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
         outExpression = @filewrapperTemplateInExpressionAST.new {
           !filewrapperName
           !filewrapperTemplateName
@@ -94,15 +113,15 @@ syntax extension galgas4ExpressionSyntax {
       end
     end
     $]$
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -112,7 +131,7 @@ override method @filewrapperObjectInstanciationInExpressionAST enterExpressionIn
 #·····················································································································
 
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -138,13 +157,13 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   end
 #---
   outExpression = @filewrapperInExpressionForGeneration.new {
-    ![ioTypeMap searchKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
+    ![ioTypeMap typeMapEntryForLKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
     !filewrapperPath.string}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -157,7 +176,7 @@ override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticCon
 #·····················································································································
 
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -189,7 +208,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     error self.mFilewrapperTemplateName
     : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
     + [[templateSignature count] string] + " parameter(s), while this call has "
-    + [[self.mExpressions count] string] + " parameter(s)" 
+    + [[self.mExpressions count] string] + " parameter(s)"
     : effectiveParameterList
   else
     effectiveParameterList = {}
@@ -197,10 +216,9 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      [mExpression analyzeSemanticExpression 
-        !inUsefulnessCallerEntityName
+      [mExpression analyzeSemanticExpression
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: mFormalArgumentType
         !inAnalysisContext
@@ -221,7 +239,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     !effectiveParameterList}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -231,7 +249,7 @@ override method @filewrapperInExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @filewrapperInExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -283,7 +301,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
         ?*
       ]
     else
-      error self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" : filewrapperFileMap 
+      error self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" : filewrapperFileMap
       directoryList = @stringlist {} # For exiting loop
     end
   end
@@ -300,7 +318,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
     !if isTextFile
       then inAnalysisContext.mPredefinedTypes.mStringType
-      else [ioTypeMap searchKey !@lstring.new {!"data" !@location.here}]
+      else [ioTypeMap typeMapEntryForLKey !@lstring.new {!"data" !@location.here}]
      end
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
@@ -308,9 +326,9 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     !isTextFile}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -329,7 +347,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_filewrapper (gWrapperDirectory_0_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -356,7 +374,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
       !?ioUnusedVariableCppNameSet
       ?let parameter
     ]
-    parameterList += !parameter  
+    parameterList += !parameter
   end
   outCppExpression = "GALGAS_string (filewrapperTemplate_" + [self.mFilewrapperName identifierRepresentation] + "_" + [self.mFilewrapperTemplateName identifierRepresentation]
                   + " (" + compilerCppName ()
@@ -367,7 +385,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   outCppExpression += [self.mLocation commaSourceFile] + "))"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -389,4 +407,4 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
   outCppExpression += " (gWrapperFileContent_" + [self.mFilewrapperFileIndex string] + "_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,11 +1,11 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_Lexique' : an abstract lexique class ;
+//  'Lexique' : an abstract lexique class ;
 //  Galgas generated scanner classes inherit from this class.
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -19,11 +19,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Lexique.h"
+#include "Lexique.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "unicode_character_cpp.h"
-#include "unicode_string_routines.h"
 #include "C_galgas_CLI_Options.h"
 #include "cIndexingDictionary.h"
 #include "FileManager.h"
@@ -44,13 +43,12 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cTemplateDelimiter::
-cTemplateDelimiter (const utf32 * inStartString,
-                    const int32_t inStartStringLength,
-                    const utf32 * inEndString,
-                    const int32_t inEndStringLength,
-                    void (* inReplacementFunction) (C_Lexique & inLexique, const String & inElementString, String & ioTemplateString),
-                    const bool inDiscardStartString) :
+cTemplateDelimiter::cTemplateDelimiter (const std::initializer_list <utf32> & inStartString,
+    const int32_t inStartStringLength,
+    const std::initializer_list <utf32> & inEndString,
+    const int32_t inEndStringLength,
+    void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
+    const bool inDiscardStartString) :
 mStartString (inStartString),
 mStartStringLength (inStartStringLength),
 mEndString (inEndString),
@@ -72,9 +70,9 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::C_Lexique (Compiler * inCallerCompiler,
-                      const String & inSourceFileName
-                      COMMA_LOCATION_ARGS) :
+Lexique::Lexique (Compiler * inCallerCompiler,
+                  const String & inSourceFileName
+                  COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mFirstToken (nullptr),
@@ -107,8 +105,8 @@ mLatexNextCharacterToEnterIndex (0) {
       mTokenEndLocation.resetWithSourceText (source) ;
     }else if (inCallerCompiler != nullptr) {
       String errorMessage = "cannot read '" ;
-      errorMessage.addString (inSourceFileName) ;
-      errorMessage.addString ("': this file does not exist or is not encoded in UTF8") ;
+      errorMessage.appendString (inSourceFileName) ;
+      errorMessage.appendCString ("': this file does not exist or is not encoded in UTF8") ;
       inCallerCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE)  ;
     }
   }
@@ -117,10 +115,10 @@ mLatexNextCharacterToEnterIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::C_Lexique (Compiler * inCallerCompiler,
-                      const String & inSourceString,
-                      const String & inStringForError
-                      COMMA_LOCATION_ARGS) :
+Lexique::Lexique (Compiler * inCallerCompiler,
+                  const String & inSourceString,
+                  const String & inStringForError
+                  COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mFirstToken (nullptr),
@@ -147,7 +145,7 @@ mLatexNextCharacterToEnterIndex (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_Lexique::~C_Lexique (void) {
+Lexique::~Lexique (void) {
   macroMyDelete (mIndexingDictionary) ;
   mLastToken = nullptr ;
   mCurrentTokenPtr = nullptr ;
@@ -166,23 +164,23 @@ C_Lexique::~C_Lexique (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::appendLastSeparatorTo (String & ioString) const {
+void Lexique::appendLastSeparatorTo (String & ioString) const {
   if (nullptr != mLastToken) {
     const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
     const String lastSeparatorString = sourceText ().sourceString ().subStringFromIndex (lastSeparatorStart) ;
-    ioString.addString (lastSeparatorString) ;
+    ioString.appendString (lastSeparatorString) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterTokenFromPointer (cToken * inToken) {
+void Lexique::enterTokenFromPointer (cToken * inToken) {
   macroValidPointer (inToken) ;
 //--- Append separator and comments
   const int32_t tokenStart = mTokenStartLocation.index () ;
   if (tokenStart > mLastSeparatorIndex) {
     const String sep = sourceText ().sourceString ().subString (mLastSeparatorIndex, tokenStart -mLastSeparatorIndex) ;
-    inToken->mSeparatorStringBeforeToken.addString (sep) ;
+    inToken->mSeparatorStringBeforeToken.appendString (sep) ;
   }
   mLastSeparatorIndex = mTokenEndLocation.index () + 1 ;
 //--- Enter token in token list
@@ -198,43 +196,43 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) != '\0') {
-        s.addUnicodeChar (c COMMA_HERE) ;
+        s.appendChar (c) ;
       }
     }
-    gCout.addString ("  ") ;
-    gCout.addString (getCurrentTokenString (inToken)) ;
-    gCout.addString (", from location ") ;
-    gCout.addSigned (inToken->mStartLocation.index ()) ;
-    gCout.addString (" (line ") ;
-    gCout.addSigned (inToken->mStartLocation.lineNumber ()) ;
-    gCout.addString (", column ") ;
-    gCout.addSigned (inToken->mStartLocation.columnNumber ()) ;
-    gCout.addString (")") ;
-    gCout.addString (" to location ") ;
-    gCout.addSigned (inToken->mEndLocation.index ()) ;
-    gCout.addString (" (line ") ;
-    gCout.addSigned (inToken->mEndLocation.lineNumber ()) ;
-    gCout.addString (", column ") ;
-    gCout.addSigned (inToken->mEndLocation.columnNumber ()) ;
-    gCout.addString (")") ;
+    gCout.appendCString ("  ") ;
+    gCout.appendString (getCurrentTokenString (inToken)) ;
+    gCout.appendCString (", from location ") ;
+    gCout.appendSigned (inToken->mStartLocation.index ()) ;
+    gCout.appendCString (" (line ") ;
+    gCout.appendSigned (inToken->mStartLocation.lineNumber ()) ;
+    gCout.appendCString (", column ") ;
+    gCout.appendSigned (inToken->mStartLocation.columnNumber ()) ;
+    gCout.appendCString (")") ;
+    gCout.appendCString (" to location ") ;
+    gCout.appendSigned (inToken->mEndLocation.index ()) ;
+    gCout.appendCString (" (line ") ;
+    gCout.appendSigned (inToken->mEndLocation.lineNumber ()) ;
+    gCout.appendCString (", column ") ;
+    gCout.appendSigned (inToken->mEndLocation.columnNumber ()) ;
+    gCout.appendCString (")") ;
     if (inToken->mTemplateStringBeforeToken.length () > 0) {
-      gCout.addString (", template '") ;
-      gCout.addString (inToken->mTemplateStringBeforeToken) ;
-      gCout.addString ("'") ;
+      gCout.appendCString (", template '") ;
+      gCout.appendString (inToken->mTemplateStringBeforeToken) ;
+      gCout.appendCString ("'") ;
     }
-    gCout.addNL () ; ;
+    gCout.appendNewLine () ; ;
   }else if (executionModeIsLatex ()) {
     while (mLatexNextCharacterToEnterIndex < inToken->mStartLocation.index ()) {
       const utf32 c = sourceText ().readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE) ;
       appendCharacterToLatexFile (c) ;
-      mLatexNextCharacterToEnterIndex ++ ;
+      mLatexNextCharacterToEnterIndex += 1 ;
     }
     const String styleName = styleNameForIndex (styleIndexForTerminal (inToken->mTokenCode)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString.addString ("\\") ;
-      mLatexOutputString.addString (styleName) ;
-      mLatexOutputString.addString (latexModeStyleSuffixString ()) ;
-      mLatexOutputString.addString ("{") ;
+      mLatexOutputString.appendCString ("\\") ;
+      mLatexOutputString.appendString (styleName) ;
+      mLatexOutputString.appendString (latexModeStyleSuffixString ()) ;
+      mLatexOutputString.appendCString ("{") ;
     }
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
@@ -243,7 +241,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
       }
     }
     if (styleName.length () > 0) {
-      mLatexOutputString.addString ("}") ;
+      mLatexOutputString.appendCString ("}") ;
     }
   //---
     mLatexNextCharacterToEnterIndex = inToken->mEndLocation.index () + 1 ;
@@ -252,7 +250,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::resetForSecondPass (void) {
+void Lexique::resetForSecondPass (void) {
   mCurrentLocation.resetWithSourceText (sourceText ()) ;
   mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
   mPreviousChar = TO_UNICODE ('\0') ;
@@ -262,7 +260,7 @@ void C_Lexique::resetForSecondPass (void) {
     mEndLocationForHere = mCurrentTokenPtr->mEndLocation ;
     mStartLocationForNext = mCurrentTokenPtr->mStartLocation ;
     mEndLocationForNext = mCurrentTokenPtr->mEndLocation ;
-    mTemplateString.addString (mCurrentTokenPtr->mTemplateStringBeforeToken) ;
+    mTemplateString.appendString (mCurrentTokenPtr->mTemplateStringBeforeToken) ;
     mCurrentLocation = mCurrentTokenPtr->mEndLocation ;
   }
 }
@@ -275,18 +273,17 @@ void C_Lexique::resetForSecondPass (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
-                                               const int32_t inTemplateDelimiterArrayLength) {
+int32_t Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
+                                             const int32_t inTemplateDelimiterArrayLength) {
   int32_t templateIndex = 0 ;
   bool found = false ;
 
   while ((templateIndex < inTemplateDelimiterArrayLength) && ! found) {
     found = testForInputUTF32String (inTemplateDelimiterArray [templateIndex].mStartString,
-                                     inTemplateDelimiterArray [templateIndex].mStartStringLength,
                                      inTemplateDelimiterArray [templateIndex].mDiscardStartString) ;
-    templateIndex ++ ;
+    templateIndex += 1 ;
   }
-  templateIndex -- ;
+  templateIndex -= 1 ;
   if (! found) {
     templateIndex = -1 ;
   }
@@ -305,16 +302,16 @@ int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemp
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::performLexicalAnalysis (void) {
+void Lexique::performLexicalAnalysis (void) {
   if (executionModeIsLexicalAnalysisOnly ()) {
-    gCout.addString ("*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n") ;
+    gCout.appendCString ("*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n") ;
   }
   bool loop = true ;
   while (loop) {
     loop = parseLexicalToken () ;
   }
   if (executionModeIsLexicalAnalysisOnly ()) {
-    gCout.addString ("*** END OF LEXICAL ANALYSIS ***\n") ;
+    gCout.appendCString ("*** END OF LEXICAL ANALYSIS ***\n") ;
   }else if (executionModeIsLatex ()) {
     generateLatexFile () ;
   }
@@ -326,7 +323,7 @@ void C_Lexique::performLexicalAnalysis (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::advance (void) {
+void Lexique::advance (void) {
   mTokenEndLocation = mCurrentLocation ;
   mPreviousChar = mCurrentChar ;
   if (UNICODE_VALUE (mCurrentChar) != '\0') {
@@ -337,7 +334,7 @@ void C_Lexique::advance (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::advance (const int32_t inCount) {
+void Lexique::advance (const int32_t inCount) {
   for (int32_t i=0 ; i<inCount ; i++) {
     advance () ;
   }
@@ -345,8 +342,8 @@ void C_Lexique::advance (const int32_t inCount) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
-                                            const utf32 inHighBound) {
+bool Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
+                                          const utf32 inHighBound) {
   const bool ok = (UNICODE_VALUE (inLowBound) <= UNICODE_VALUE (mCurrentChar))
      && (UNICODE_VALUE (mCurrentChar) <= UNICODE_VALUE (inHighBound)) ;
   if (ok) {
@@ -357,7 +354,7 @@ bool C_Lexique::testForInputUTF32CharRange (const utf32 inLowBound,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForInputUTF32Char (const utf32 inChar) {
+bool Lexique::testForInputUTF32Char (const utf32 inChar) {
   const bool ok = UNICODE_VALUE (inChar) == UNICODE_VALUE (mCurrentChar) ;
   if (ok) {
     advance () ;
@@ -367,7 +364,7 @@ bool C_Lexique::testForInputUTF32Char (const utf32 inChar) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) {
+bool Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnicodeCharacter)) {
   const bool ok = inFunction (mCurrentChar) ;
   if (ok) {
     advance () ;
@@ -377,16 +374,18 @@ bool C_Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnico
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
-                                         const int32_t inStringLength,
-                                         const bool inAdvanceOnMatch) {
+bool Lexique::testForInputUTF32String (const std::initializer_list <utf32> & inTestCstring,
+                                       const bool inAdvanceOnMatch) {
 //--- Test
-  bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index () COMMA_HERE),
-                           inTestCstring,
-                           inStringLength) == 0 ;
+  bool ok = true ;
+  int32_t i = 0 ;
+  for (auto it = inTestCstring.begin () ; (it != inTestCstring.end ()) && ok ; it++) {
+    ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) == UNICODE_VALUE (* it) ;
+    i += 1 ;
+  }
 //--- Avancer dans la lecture si test ok et fin de source non atteinte
   if (ok && inAdvanceOnMatch) {
-    advance (inStringLength) ;
+    advance (int32_t (inTestCstring.size ())) ;
   }
 //---
   return ok ;
@@ -394,24 +393,24 @@ bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
-                                            const int32_t inStringLength,
-                                            const char * inEndOfFileErrorMessage
-                                            COMMA_LOCATION_ARGS) {
+bool Lexique::notTestForInputUTF32String (const std::initializer_list <utf32> & inTestCstring,
+                                          const char * inEndOfFileErrorMessage
+                                          COMMA_LOCATION_ARGS) {
   bool ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () COMMA_HERE)) != '\0' ;
   if (! ok) { // End of input file reached
     lexicalError (inEndOfFileErrorMessage COMMA_THERE) ;
   }else{
   //--- Test
     ok = false ;
-    for (int32_t i=0 ; (i<inStringLength) && ! ok ; i++) {
-      ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) != UNICODE_VALUE (* inTestCstring) ;
-      inTestCstring ++ ;
+    int32_t i = 0 ;
+    for (auto it = inTestCstring.begin () ; (it != inTestCstring.end ()) && ! ok ; it++) {
+      ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) != UNICODE_VALUE (* it) ;
+      i += 1 ;
     }
     if (ok) {
       advance () ;
     }else{
-      advance (inStringLength) ;
+      advance (int32_t (inTestCstring.size ())) ;
     }
   }
 //---
@@ -420,11 +419,11 @@ bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalLog (LOCATION_ARGS) {
+void Lexique::lexicalLog (LOCATION_ARGS) {
   String message ;
-  message.addString ("LEXICAL LOG:'") ;
-  message.addStringAsCLiteralCharConstant (mCurrentChar) ;
-  message.addString ("'\n") ;
+  message.appendCString ("LEXICAL LOG:'") ;
+  message.appendStringAsCLiteralCharConstant (mCurrentChar) ;
+  message.appendCString ("'\n") ;
   printMessage (message COMMA_THERE) ;
 }
 
@@ -434,9 +433,9 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 //
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::searchInList (const String & inString,
-                                 const C_unicode_lexique_table_entry * inTableArray,
-                                 const int32_t inTableSize) {
+int32_t Lexique::searchInList (const String & inString,
+                               const C_unicode_lexique_table_entry * inTableArray,
+                               const int32_t inTableSize) {
   const int32_t searchedStringLength = inString.length () ;
   int32_t code = -1 ; // -1 means 'not found'
   int32_t bottom = 0 ;
@@ -444,9 +443,9 @@ int32_t C_Lexique::searchInList (const String & inString,
 
   while ((code < 0) && (top >= bottom)) {
     const int32_t index = (bottom + top) / 2 ;
-    int32_t result = searchedStringLength - inTableArray [index].mEntryStringLength ;
+    int32_t result = searchedStringLength - int32_t (inTableArray [index].mEntryString.size ()) ;
     if (result == 0) {
-      result = inString.compare (String (inTableArray [index].mEntryString)) ;
+      result = inString.compareWithInitializerList (inTableArray [index].mEntryString) ;
     }
     if (result < 0) { // <
       top = index - 1 ;
@@ -467,7 +466,7 @@ int32_t C_Lexique::searchInList (const String & inString,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
+void Lexique::internalBottomUpParserError (LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     printf ("*** Fatal error: Internal bottom-up parser error at line %d of file '%s'.\n", IN_SOURCE_LINE, IN_SOURCE_FILE) ;
   #else
@@ -482,20 +481,20 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
+void Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
   String errorMessage ;
-  errorMessage.addString ("Unknown character: ") ;
-  errorMessage.addString (unicodeName (mCurrentChar)) ;
-  errorMessage.addString (" (Unicode ") ;
-  errorMessage.adddHex0xUnsigned (UNICODE_VALUE (mCurrentChar)) ;
-  errorMessage.addString (")") ;
+  errorMessage.appendCString ("Unknown character: ") ;
+  errorMessage.appendString (unicodeName (mCurrentChar)) ;
+  errorMessage.appendCString (" (Unicode ") ;
+  errorMessage.appendUnsigned0xHex (UNICODE_VALUE (mCurrentChar)) ;
+  errorMessage.appendCString (")") ;
   lexicalError (errorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalError (const String & inLexicalErrorMessage
-                              COMMA_LOCATION_ARGS) {
+void Lexique::lexicalError (const String & inLexicalErrorMessage
+                            COMMA_LOCATION_ARGS) {
   signalLexicalError (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
     signalLexicalErrorInLatexOutput () ;
@@ -509,11 +508,11 @@ void C_Lexique::lexicalError (const String & inLexicalErrorMessage
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
-                              const cToken * inPreviousTokenPtr,
-                              const cToken * inCurrentTokenPtr,
-                              const int32_t inCurrentTokenCode
-                              COMMA_LOCATION_ARGS) {
+void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminalsArray,
+                            const cToken * inPreviousTokenPtr,
+                            const cToken * inCurrentTokenPtr,
+                            const int32_t inCurrentTokenCode
+                            COMMA_LOCATION_ARGS) {
 //--- Build error message
   String foundTokenMessage = getMessageForTerminal (inCurrentTokenCode) ;
   const int32_t expectedTerminalsCount = inExpectedTerminalsArray.count () ;
@@ -524,12 +523,15 @@ void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTermina
 //--- Sort expected token name array
   expectedTokenNames.sortArrayUsingCompareMethod () ;
 //--- Signal error
-  signalParsingError (this,
-                      sourceText (),
-                      (inPreviousTokenPtr == nullptr) ? LocationInSource () : inPreviousTokenPtr->mEndLocation,
-                      C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
-                      foundTokenMessage,
-                      expectedTokenNames COMMA_THERE) ;
+  signalParsingError (
+    this,
+    sourceText (),
+    (inPreviousTokenPtr == nullptr) ? LocationInSource () : inPreviousTokenPtr->mEndLocation,
+    C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
+    foundTokenMessage,
+    expectedTokenNames
+    COMMA_THERE
+  ) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -540,12 +542,17 @@ void C_Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTermina
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::lexicalWarning (const String & inLexicalWarningMessage
-                                COMMA_LOCATION_ARGS) { // §
-  signalLexicalWarning (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalWarningMessage COMMA_THERE) ;
+void Lexique::lexicalWarning (const String & inLexicalWarningMessage
+                              COMMA_LOCATION_ARGS) {
+  signalLexicalWarning (
+    this,
+    sourceText (),
+    C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()),
+    inLexicalWarningMessage
+    COMMA_THERE
+  ) ;
 }
 
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -558,7 +565,7 @@ void C_Lexique::lexicalWarning (const String & inLexicalWarningMessage
 //
 //--------------------------------------------------------------------------------------------------
 
-int32_t C_Lexique::nextProductionIndex (void) {
+int32_t Lexique::nextProductionIndex (void) {
   int32_t result = 0 ;
   if (mIndexForSecondPassParsing < mArrayForSecondPassParsing.count ()) {
     result = mArrayForSecondPassParsing (mIndexForSecondPassParsing COMMA_HERE) ;
@@ -569,7 +576,7 @@ int32_t C_Lexique::nextProductionIndex (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-String C_Lexique::separatorString (void) const {
+String Lexique::separatorString (void) const {
   String result ;
   if (mCurrentTokenPtr != nullptr) {
     result = mCurrentTokenPtr->mSeparatorStringBeforeToken ;
@@ -579,7 +586,7 @@ String C_Lexique::separatorString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-String C_Lexique::tokenString (void) const {
+String Lexique::tokenString (void) const {
   String result ;
   if (mCurrentTokenPtr != nullptr) {
     const int32_t tokenStart = mCurrentTokenPtr->mStartLocation.index () ;
@@ -603,7 +610,8 @@ String C_Lexique::tokenString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATION_ARGS) {
+void Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL
+                              COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     int32_t currentTokenCode = 0 ;
   #endif
@@ -618,7 +626,7 @@ void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATIO
       macroValidPointer (mCurrentTokenPtr) ;
       mStartLocationForNext = mCurrentTokenPtr->mStartLocation ;
       mEndLocationForNext = mCurrentTokenPtr->mEndLocation ;
-      mTemplateString.addString (mCurrentTokenPtr->mTemplateStringBeforeToken) ;
+      mTemplateString.appendString (mCurrentTokenPtr->mTemplateStringBeforeToken) ;
       mTemplateStringLocation = mCurrentTokenPtr->mStartLocation ;
       mCurrentLocation = mCurrentTokenPtr->mEndLocation ;
     }
@@ -629,16 +637,22 @@ void C_Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL COMMA_LOCATIO
       const String expectedTokenString = getMessageForTerminal (inExpectedTerminal) ;
       macroAssertThere (false,
                       "Internal second pass parsing error (current token:%s, expected token:%s)",
-                      (intptr_t) currentTokenString.cString (HERE),
-                      (intptr_t) expectedTokenString.cString (HERE)) ;
+                      (intptr_t) currentTokenString.cString (),
+                      (intptr_t) expectedTokenString.cString ()) ;
     }
   #endif
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
-                               const char * inIndexedKeyPosfix) {
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Indexing
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void Lexique::enterIndexing (const uint32_t inIndexingKind,
+                             const char * inIndexedKeyPosfix) {
   if ((nullptr != mIndexingDictionary) && (sourceText ().sourceFilePath ().length () > 0)) {
     const uint32_t tokenStartLocation = (uint32_t) mCurrentTokenPtr->mStartLocation.index () ;
     const uint32_t tokenLine = (uint32_t) mCurrentTokenPtr->mStartLocation.lineNumber () ;
@@ -655,13 +669,13 @@ void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enableIndexing (void) {
+void Lexique::enableIndexing (void) {
   macroMyNew (mIndexingDictionary, cIndexingDictionary) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::generateIndexFile (void) {
+void Lexique::generateIndexFile (void) {
   if (nullptr != mIndexingDictionary) {
     mIndexingDictionary->generateIndexFile (indexingModeOutputFilePath ()) ;
   }
@@ -675,8 +689,8 @@ void C_Lexique::generateIndexFile (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-C_parsingContext C_Lexique::parsingContext (void) const {
-  C_parsingContext context ;
+ParsingContext Lexique::parsingContext (void) const {
+  ParsingContext context ;
   context.mParsingArrayIndex = mIndexForSecondPassParsing ;
   context.mLocation = mCurrentLocation ;
   context.mCurrentChar = mCurrentChar ;
@@ -688,7 +702,7 @@ C_parsingContext C_Lexique::parsingContext (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
+void Lexique::setParsingContext (const ParsingContext & inContext) {
   mIndexForSecondPassParsing = inContext.mParsingArrayIndex ;
   mCurrentTokenPtr = inContext.mCurrentTokenPtr ;
   mCurrentLocation = inContext.mLocation ;
@@ -709,9 +723,9 @@ void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterProduction (const char * inProductionName,
-                                 const char * inLabel,
-                                 const char * inTag) {
+void Lexique::enterProduction (const char * inProductionName,
+                               const char * inLabel,
+                               const char * inTag) {
 //--- If Debug is not running, check if trigger list contains non terminal
   if (! mDebugIsRunning) {
     TC_UniqueArray <String> stringArray ;
@@ -721,21 +735,21 @@ void C_Lexique::enterProduction (const char * inProductionName,
   if (mDebugIsRunning) {
     String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
-      message.addString ("|  ") ;
+      message.appendCString ("|  ") ;
     }
-    message.addString ((mDebugDepthCounter > 0) ? "|- " : "") ;
-    message.addString (inProductionName) ;
+    message.appendString ((mDebugDepthCounter > 0) ? "|- " : "") ;
+    message.appendString (inProductionName) ;
     if (inLabel != nullptr) {
-      message.addString (" label '") ;
-      message.addString (inLabel) ;
-      message.addString ("'") ;
+      message.appendCString (" label '") ;
+      message.appendString (inLabel) ;
+      message.appendCString ("'") ;
     }
     if ((inTag != nullptr) && (inTag [0] != '\0')) {
-      message.addString (" tag '") ;
-      message.addString (inTag) ;
-      message.addString ("'") ;
+      message.appendCString (" tag '") ;
+      message.appendString (inTag) ;
+      message.appendCString ("'") ;
     }
-    message.addString ("\n") ;
+    message.appendCString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
     mDebugDepthCounter ++ ;
   }
@@ -743,7 +757,7 @@ void C_Lexique::enterProduction (const char * inProductionName,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::exitProduction (void) {
+void Lexique::exitProduction (void) {
   if (mDebugIsRunning) {
     mDebugDepthCounter -- ;
     mDebugIsRunning = mDebugDepthCounter > 0 ;
@@ -752,19 +766,19 @@ void C_Lexique::exitProduction (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::didParseTerminal (const char * inTerminalName,
-                                  const String & inValue) {
+void Lexique::didParseTerminal (const char * inTerminalName,
+                                const String & inValue) {
   if (mDebugIsRunning) {
     String message ;
     for (uint16_t i=1 ; i<mDebugDepthCounter ; i++) {
-      message.addString ("|  ") ;
+      message.appendCString ("|  ") ;
     }
-    message.addString ((mDebugDepthCounter > 0) ? "|- " : "") ;
-    message.addString (inTerminalName) ;
+    message.appendString ((mDebugDepthCounter > 0) ? "|- " : "") ;
+    message.appendString (inTerminalName) ;
     if (inValue.length () > 0) {
-      message.addString (inValue) ;
+      message.appendString (inValue) ;
     }
-    message.addString ("\n") ;
+    message.appendCString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
   }
 }
@@ -777,7 +791,7 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
+void Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
   if (executionModeIsLatex ()) {
     while (mLatexNextCharacterToEnterIndex < mTokenStartLocation.index ()) {
       const utf32 c = sourceText ().readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE) ;
@@ -786,10 +800,10 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
     }
     const String styleName = styleNameForIndex (styleIndexForTerminal (inTerminalIndex)) ;
     if (styleName.length () > 0) {
-      mLatexOutputString.addString ("\\") ;
-      mLatexOutputString.addString (styleName) ;
-      mLatexOutputString.addString (latexModeStyleSuffixString ()) ;
-      mLatexOutputString.addString ("{") ;
+      mLatexOutputString.appendCString ("\\") ;
+      mLatexOutputString.appendString (styleName) ;
+      mLatexOutputString.appendString (latexModeStyleSuffixString ()) ;
+      mLatexOutputString.appendCString ("{") ;
     }
     for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
       const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
@@ -798,7 +812,7 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
       }
     }
     if (styleName.length () > 0) {
-      mLatexOutputString.addString ("}") ;
+      mLatexOutputString.appendCString ("}") ;
     }
   //---
     mLatexNextCharacterToEnterIndex = mTokenEndLocation.index () + 1 ;
@@ -807,42 +821,42 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
+void Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   switch (UNICODE_VALUE (inUnicodeCharacter)) {
-  case '>' : mLatexOutputString.addString ("\\textgreater{}") ; break ;
-  case '<' : mLatexOutputString.addString ("\\textless{}") ; break ;
-  case '~' : mLatexOutputString.addString ("$\\sim$") ; break ;
-  case '^' : mLatexOutputString.addString ("$\\wedge$") ; break ;
-  case '|' : mLatexOutputString.addString ("\\textbar{}") ; break ;
-  case '&' : mLatexOutputString.addString ("\\&") ; break ;
-  case '%' : mLatexOutputString.addString ("\\%") ; break ;
-  case '#' : mLatexOutputString.addString ("\\#") ; break ;
-  case '$' : mLatexOutputString.addString ("\\$") ; break ;
-  case ' ' : mLatexOutputString.addString ("\\hspace*{.6em}") ; break ;
-  case '\n' : mLatexOutputString.addString ("\\newline\n") ; break ;
-  case '{' : mLatexOutputString.addString ("\\{") ; break ;
-  case '}' : mLatexOutputString.addString ("\\}") ; break ;
-  case '_' : mLatexOutputString.addString ("\\_") ; break ;
-  case '\\' : mLatexOutputString.addString ("\\textbackslash{}")  ; break ;
-  case '\'' : mLatexOutputString.addString ("\\textquotesingle{}") ; break ;
-  case '"' : mLatexOutputString.addString ("\"") ; break ;
+  case '>' : mLatexOutputString.appendCString ("\\textgreater{}") ; break ;
+  case '<' : mLatexOutputString.appendCString ("\\textless{}") ; break ;
+  case '~' : mLatexOutputString.appendCString ("$\\sim$") ; break ;
+  case '^' : mLatexOutputString.appendCString ("$\\wedge$") ; break ;
+  case '|' : mLatexOutputString.appendCString ("\\textbar{}") ; break ;
+  case '&' : mLatexOutputString.appendCString ("\\&") ; break ;
+  case '%' : mLatexOutputString.appendCString ("\\%") ; break ;
+  case '#' : mLatexOutputString.appendCString ("\\#") ; break ;
+  case '$' : mLatexOutputString.appendCString ("\\$") ; break ;
+  case ' ' : mLatexOutputString.appendCString ("\\hspace*{.6em}") ; break ;
+  case '\n' : mLatexOutputString.appendCString ("\\newline\n") ; break ;
+  case '{' : mLatexOutputString.appendCString ("\\{") ; break ;
+  case '}' : mLatexOutputString.appendCString ("\\}") ; break ;
+  case '_' : mLatexOutputString.appendCString ("\\_") ; break ;
+  case '\\' : mLatexOutputString.appendCString ("\\textbackslash{}")  ; break ;
+  case '\'' : mLatexOutputString.appendCString ("\\textquotesingle{}") ; break ;
+  case '"' : mLatexOutputString.appendCString ("\"") ; break ;
   default:
-    mLatexOutputString.addUnicodeChar (inUnicodeCharacter COMMA_HERE) ;
-    mLatexOutputString.addString ("{}") ;
+    mLatexOutputString.appendChar (inUnicodeCharacter) ;
+    mLatexOutputString.appendCString ("{}") ;
     break ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::signalLexicalErrorInLatexOutput (void) {
-  mLatexOutputString.addString ("\\lexicalError") ;
-  mLatexOutputString.addString (latexModeStyleSuffixString ()) ;
+void Lexique::signalLexicalErrorInLatexOutput (void) {
+  mLatexOutputString.appendCString ("\\lexicalError") ;
+  mLatexOutputString.appendString (latexModeStyleSuffixString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::generateLatexFile (void) {
+void Lexique::generateLatexFile (void) {
   const String latexFilePath = sourceText ().sourceFilePath () + ".tex" ;
 //--- Suppress last '\newline'
   const String newLine = "\\newline\n" ;

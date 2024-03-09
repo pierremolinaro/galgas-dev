@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -32,6 +32,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
+#include <exception>
 #include <exception>
 #include <stdio.h> 
 #include <dirent.h> 
@@ -87,7 +88,6 @@ class String : public AbstractOutputStream {
 //--- Constructors
   public: explicit String (void) ; // Empty string
   public: String (const char * inCString) ; // From a C string
-  public: explicit String (const utf32 * inUTF32String) ;
   public: static String spaces (const int32_t inSpaceCount) ;
   
 //--- Virtual destructor
@@ -100,27 +100,14 @@ class String : public AbstractOutputStream {
 //--- Get string from stdin
   public: static String newWithStdIn (void) ;
 
-//--- Copy from a C string
-  public: String & operator = (const char * inSource) ;
-
 //--- Set capacity (does nothing if length >= inCapacity)
-  public: void setCapacity (const uint32_t inCapacity) ;
+  public: void setCapacity (const int32_t inCapacity) ;
   
 //--- Remove 'inCount' characters from 'inIndex' index
   public: void removeCountFromIndex (const int32_t inCount, const int32_t inIndex COMMA_LOCATION_ARGS) ;
 
 //--- Insert 'inChar' character at 'inIndex' index
   public: void insertCharacterAtIndex (const utf32 inChar, const int32_t inIndex COMMA_LOCATION_ARGS) ;
-
-//--- Init from a string
-  public: void setFromCstring (const char * inCstring) ;
-  public: void setFromString (const String & inString) ;
-
-//--- Insulate
-  public: void insulate (void) const ;
-
-//--- hash code
-  public: uint32_t hash (void) const ;
 
 //--- Set length to 0 ; do not release memory
   public: void removeAllKeepingCapacity (void) ;
@@ -129,7 +116,7 @@ class String : public AbstractOutputStream {
   public: void removeAll (void) ;
 
 //--- Get dynamic array allocated size
-  public: uint32_t capacity (void) const ;
+  public: int32_t capacity (void) const ;
 
 //--- Get current column index (starting from 0)
   public: uint32_t currentColumn (void) const ;
@@ -138,18 +125,18 @@ class String : public AbstractOutputStream {
   public: void appendSpacesUntilColumn (const uint32_t inColumn) ;
 
 //--- Get a character
-  public: utf32 operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: utf32 charAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   public: utf32 readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
-//--- Set a character
-  public: void setUnicodeCharacterAtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
+//--- Set an UTF32 character
+  public: void setCharAtIndex (const utf32 inCharacter, const int32_t inIndex COMMA_LOCATION_ARGS) ;
 
 //--- Contains a character
-  public: bool containsCharacter (const utf32 inCharacter) const ;
-  public: bool containsCharacterInRange (const utf32 inFirstCharacter, const utf32 inLastCharacter) const ;
+  public: bool containsChar (const utf32 inCharacter) const ;
+  public: bool containsCharInRange (const utf32 inFirstCharacter, const utf32 inLastCharacter) const ;
 
 //--- Get last character
-  public: utf32 lastCharacter (LOCATION_ARGS) const ;
+  public: utf32 lastChar (LOCATION_ARGS) const ;
 
 //--- Get string length
   public: int32_t length (void) const ;
@@ -173,15 +160,16 @@ class String : public AbstractOutputStream {
 //--- Get MD5 value
   public: String md5 (void) const ;
 
-//--- Get a string pointer
-  public: const char * cString (LOCATION_ARGS) const ;
+//--- Get SHA256 value
+  public: String sha256 (void) const ;
 
-//--- Get a UTF32 string pointer
-  public: const utf32 * utf32String (LOCATION_ARGS) const ;
+//--- Get a string pointer
+  public: const char * cString (void) const ;
 
 //--- Compare with an other string 
-  public: int32_t compare (const char * const inCstring) const ;
+  public: int32_t compareWithCString (const char * const inCstring) const ;
   public: int32_t compare (const String & inString) const ;
+  public: int32_t compareWithInitializerList (const std::initializer_list <utf32> & inString) const ;
   public: int32_t compareStringByLength (const String & inString) const ;
   public: bool operator == (const String & inString) const { return compare (inString) == 0 ; }
   public: bool operator != (const String & inString) const { return compare (inString) != 0 ; }
@@ -210,8 +198,7 @@ class String : public AbstractOutputStream {
 //--- Substitute 'inSearchedString' by 'inReplacementString'
   public: String stringByReplacingStringByString (const String inSearchedString,
                                                   const String inReplacementString,
-                                                  uint32_t & outReplacementCount,
-                                                  bool & outOk) const ;
+                                                  uint32_t & outReplacementCount) const ;
 
   public: String stringByReplacingStringByString (const String inSearchedString,
                                                   const String inReplacementString) const ;
@@ -236,7 +223,6 @@ class String : public AbstractOutputStream {
 
 //--- String concatenation
   public: String operator + (const String & inOperand) const ;
-  public: String operator + (const char * inOperand) const ;
 
 //--- Returns a string where ", ', <, > and & have been replaced by &quot;, &apos;, &lt;, &gt; and &amp;
   public: String XMLEscapedString (void) const ;
@@ -262,9 +248,6 @@ class String : public AbstractOutputStream {
 //--- Returns a string made by deleting the extension (if any, and only the last)
 //    from the receiver.
   public: String stringByDeletingPathExtension (void) const ;
-
-//--- Returns a string made by deleting from the receiver all characters from inSearchedString
-  public: String stringByDeletingTailFromString (const String & inSearchedString) const ;
 
 //--- Returns the last path component of the receiver.
   public: String lastPathComponent (void) const ;
@@ -306,26 +289,25 @@ class String : public AbstractOutputStream {
                                 bool & outOk) const ;
 
   public: void convertToUInt32 (uint32_t & outResult,
-                                 bool & outOk) const ;
+                                bool & outOk) const ;
 
   public: void convertToSInt32 (int32_t & outResult,
-                                 bool & outOk) const ;
+                                bool & outOk) const ;
 
   public: void convertToUInt64 (uint64_t & outResult,
-                                 bool & outOk) const ;
+                                bool & outOk) const ;
 
   public: void convertToSInt64 (int64_t & outResult,
-                                 bool & outOk) const ;
+                                bool & outOk) const ;
 
 //---------------- Virtual output stream methods --------------
-  protected: virtual void performActualCharArrayOutput (const char * inCharArray,
-                                                        const int32_t inArrayCount) ;
+  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
+                                                 const int32_t inArrayCount) ;
 
-  protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                           const int32_t inArrayCount) ;
+  protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
 
 //--- Private (internal) methods
-  private: void insulateEmbeddedString (const uint32_t inNewCapacity) const ;
+  private: void insulateEmbeddedString (const int32_t inNewCapacity) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private: void checkString (LOCATION_ARGS) const ;
@@ -336,13 +318,11 @@ class String : public AbstractOutputStream {
                                  String & outString) ;
 
 //---------------- Private attributes -------------
-  private: mutable class cEmbeddedString * mEmbeddedString ;
+  private: mutable class PrivateEmbeddedString * mEmbeddedString ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//  Exception generated by readTextFile method when a read error occurs                          
-//
+//  Exception generated by readTextFile method when a read error occurs
 //--------------------------------------------------------------------------------------------------
 
 const size_t kTextReadExceptionStringMaxLength = 1000 ;
@@ -379,7 +359,6 @@ class LineColumnContents final {
   public: int32_t lineNumber (void) const { return mLineNumber ; }
   public: int32_t columnNumber (void) const { return mColumnNumber ; }
   public: String lineContents (void) const { return mLineContents ; }
-
 } ;
 
 //--------------------------------------------------------------------------------------------------

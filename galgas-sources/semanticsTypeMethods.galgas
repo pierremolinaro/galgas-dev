@@ -1,21 +1,28 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  semantics definitions for semantics component 
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  semantics definitions for semantics component
+#
 #  Copyright (C) 2010, ..., 2018 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc enterClassMethodWithInputArgument
+proc enterClassMethodWithInputArgument
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?methodName:let @string inClassMethodName
@@ -33,9 +40,9 @@ private proc enterClassMethodWithInputArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc enterClassMethodWith3InputArguments
+proc enterClassMethodWith3InputArguments
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?methodName:let @string inClassMethodName
@@ -61,9 +68,9 @@ private proc enterClassMethodWith3InputArguments
   [!?ioClassMethodMap insertOrReplace !.new {!inClassMethodName !.here} !argList !inHasCompilerArgument]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc enterClassMethodWithStringInputArgument
+proc enterClassMethodWithStringInputArgument
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?classMethod:let @string inClassMethodName
@@ -80,163 +87,5 @@ private proc enterClassMethodWithStringInputArgument
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @uintPredefinedTypeAST getClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classMethodMap outClassMethodMap
-{
-  outClassMethodMap = {}
-  enterClassMethodWithInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setRandomSeed"
-    !argType:"uint"
-    !argName:"inSeed"
-    !compilerArgument:false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @applicationPredefinedTypeAST getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                                                                !@classMethodMap outClassMethodMap {
-  outClassMethodMap = {}
-  enterClassMethodWithInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName: "exit"
-    !argType: "uint"
-    !argName: "inErrorCode"
-    !compilerArgument:false
-  )
-  enterClassMethodWith3InputArguments (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setBoolOptionValue"
-    !argType1:"string"
-    !argName1:"inDomain"
-    !argType2:"string"
-    !argName2:"inIdentifier"
-    !argType3:"bool"
-    !argName3:"inValue"
-    !compilerArgument:false
-  )
-  enterClassMethodWith3InputArguments (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setUIntOptionValue"
-    !argType1:"string"
-    !argName1:"inDomain"
-    !argType2:"string"
-    !argName2:"inIdentifier"
-    !argType3:"uint"
-    !argName3:"inValue"
-    !compilerArgument:false
-  )
-  enterClassMethodWith3InputArguments (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setStringOptionValue"
-    !argType1:"string"
-    !argName1:"inDomain"
-    !argType2:"string"
-    !argName2:"inIdentifier"
-    !argType3:"string"
-    !argName3:"inValue"
-    !compilerArgument:false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @stringPredefinedTypeAST getClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classMethodMap outClassMethodMap
-{
-  outClassMethodMap = {}
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"deleteFile"
-    !argName:"inFilePath"
-    !compilerArg:true
-  )
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"deleteFileIfExists"
-    !argName:"inFilePath"
-    !compilerArg:true
-  )
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"removeEmptyDirectory"
-    !argName:"inDirectoryPath"
-    !compilerArg:true
-  )
-  enterClassMethodWithStringInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !classMethod:"removeDirectoryRecursively"
-    !argName:"inDirectoryPath"
-    !compilerArg:true
-  )
-  [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringType]
-  [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?let @unifiedTypeMapEntry boolType]
-#--- Generate file
-  var @formalParameterSignature argList = {}
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
-  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
-  [!?outClassMethodMap insertOrReplace
-    !.new {!"generateFile" !.here}
-    !argList
-    !true
-  ]
-#--- Generate file with pattern
-  argList = {}
-  argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
-  argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"
-  argList += !["lineComment" nowhere] !stringType !.argumentConstantIn !"inLineCommentPrefix"
-  argList += !["header" nowhere] !stringType !.argumentConstantIn !"inHeader"
-  argList += !["defaultUserZone1" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone1"
-  argList += !["generatedZone2" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone2"
-  argList += !["defaultUserZone2" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone2"
-  argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
-  argList += !["makeExecutable" nowhere] !boolType !.argumentConstantIn !"inMakeExecutable"
-  [!?outClassMethodMap insertOrReplace
-    !@lstring.new {!"generateFileWithPattern" !@location.here}
-    !argList
-    !true
-  ]
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @binarysetPredefinedTypeAST getClassMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@classMethodMap outClassMethodMap
-{
-  outClassMethodMap = {}
-  enterClassMethodWithInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setNodeTableSize"
-    !argType:"uint"
-    !argName:"inTableSize"
-    !compilerArgument:false
-  )
-  enterClassMethodWithInputArgument (
-    !?outClassMethodMap
-    !?ioUnifiedTypeMap
-    !methodName:"setAndTableSize"
-    !argType:"uint"
-    !argName:"inTableSize"
-    !compilerArgument:false
-  )
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

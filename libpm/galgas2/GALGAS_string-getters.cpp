@@ -61,7 +61,7 @@ GALGAS_lstring GALGAS_string::getter_nowhere (LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (isValid ()) {
     result.mProperty_string = * this ;
-    result.mProperty_location = GALGAS_location::constructor_nowhere (THERE) ;
+    result.mProperty_location = GALGAS_location::class_func_nowhere (THERE) ;
   }
   return result ;
 }
@@ -72,7 +72,7 @@ GALGAS_lstring GALGAS_string::getter_here (Compiler * inCompiler COMMA_LOCATION_
   GALGAS_lstring result ;
   if (isValid ()) {
     result.mProperty_string = * this ;
-    result.mProperty_location = GALGAS_location::constructor_here (inCompiler COMMA_THERE) ;
+    result.mProperty_location = GALGAS_location::class_func_here (inCompiler COMMA_THERE) ;
   }
   return result ;
 }
@@ -129,11 +129,22 @@ GALGAS_string GALGAS_string::getter_md_35_ (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_string::getter_utf_33__32_Representation (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_string::getter_sha_32__35__36_ (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
+    result = GALGAS_string (mString.sha256 ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_string::getter_utf_33__32_Representation (const GALGAS_bool & inAppendZeroTerminator
+                                                               COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inAppendZeroTerminator.isValid ()) {
     String s ;
-    s.appendUTF32LiteralStringConstant (mString) ;
+    s.appendUTF32LiteralStringConstant (mString, inAppendZeroTerminator.boolValue ()) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -206,7 +217,7 @@ GALGAS_string GALGAS_string::getter_utf_38_RepresentationWithoutDelimiters (UNUS
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addStringAsCLiteralStringConstantWithoutDelimiters (mString) ;
+    s.appendStringAsCLiteralStringConstantWithoutDelimiters (mString) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -338,12 +349,12 @@ GALGAS_string GALGAS_string::getter_absolutePathFromPath (const GALGAS_string & 
     const String path = mString ;
     const int32_t stringLength = path.length () ;
     String r ;
-    if ((stringLength > 0) && (UNICODE_VALUE (path (0 COMMA_HERE)) == '/')) {
+    if ((stringLength > 0) && (UNICODE_VALUE (path.charAtIndex (0 COMMA_HERE)) == '/')) {
       r = path ;
     }else{
       r = inBasePath.mString ;
-      r.addUnicodeChar (TO_UNICODE ('/') COMMA_HERE) ;
-      r.addString (path) ;
+      r.appendChar (TO_UNICODE ('/')) ;
+      r.appendString (path) ;
     }
     result = GALGAS_string (r.stringByStandardizingPath ()) ;
   }
@@ -373,7 +384,7 @@ GALGAS_char GALGAS_string::getter_lastCharacter (Compiler * inCompiler
         COMMA_THERE
       ) ;
     }else{
-      result = GALGAS_char (mString.lastCharacter (THERE)) ;
+      result = GALGAS_char (mString.lastChar (THERE)) ;
     }
   }
   return result ;
@@ -459,11 +470,11 @@ GALGAS_string GALGAS_string::getter_stringByLeftPadding (const GALGAS_uint & inP
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const int32_t paddedStringLength = (int32_t) inPaddedStringLength.uintValue () ;
     const int32_t paddingLength = paddedStringLength - mString.length () ;
-    String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
+    String s ; s.setCapacity (paddedStringLength) ;
     for (int32_t i=0 ; i<paddingLength ; i++) {
-      s.addUnicodeChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
-    s.addString (mString) ;
+    s.appendString (mString) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -479,10 +490,10 @@ GALGAS_string GALGAS_string::getter_stringByRightPadding (const GALGAS_uint & in
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const int32_t paddedStringLength = (int32_t) inPaddedStringLength.uintValue () ;
     const int32_t paddingLength = paddedStringLength - mString.length () ;
-    String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
-    s.addString (mString) ;
+    String s ; s.setCapacity (paddedStringLength) ;
+    s.appendString (mString) ;
     for (int32_t i=0 ; i<paddingLength ; i++) {
-      s.addUnicodeChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
     result = GALGAS_string (s) ;
   }
@@ -499,13 +510,13 @@ GALGAS_string GALGAS_string::getter_stringByLeftAndRightPadding (const GALGAS_ui
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const int32_t paddedStringLength = (int32_t) inPaddedStringLength.uintValue () ;
     const int32_t paddingLength = paddedStringLength - mString.length () ;
-    String s ; s.setCapacity ((uint32_t) paddedStringLength) ;
+    String s ; s.setCapacity (paddedStringLength) ;
     for (int32_t i=0 ; i<(paddingLength / 2) ; i++) {
-      s.addUnicodeChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
-    s.addString (mString) ;
+    s.appendString (mString) ;
     for (int32_t i=paddingLength / 2 ; i<paddingLength ; i++) {
-      s.addUnicodeChar (paddingChar COMMA_HERE) ;
+      s.appendChar (paddingChar) ;
     }
     result = GALGAS_string (s) ;
   }
@@ -532,9 +543,8 @@ GALGAS_string GALGAS_string::getter_stringByReplacingStringByString (const GALGA
         COMMA_THERE
       ) ;
     }else{
-      bool ok = false ;
       uint32_t replacementCount = 0 ;
-      const String s = mString.stringByReplacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount, ok) ;
+      const String s = mString.stringByReplacingStringByString (inSearchedString.mString, inReplacementString.mString, replacementCount) ;
       result = GALGAS_string (s) ;
     }
   }
@@ -573,13 +583,13 @@ GALGAS_char GALGAS_string::getter_characterAtIndex (const GALGAS_uint & inIndex,
     const int32_t stringLength = mString.length () ;
     if (idx >= stringLength) {
       String message = "string index (" ;
-      message.addSigned (idx) ;
-      message.addString (") too large (string length: ") ;
-      message.addSigned (stringLength) ;
-      message.addString (")") ;
+      message.appendSigned (idx) ;
+      message.appendCString (") too large (string length: ") ;
+      message.appendSigned (stringLength) ;
+      message.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      result = GALGAS_char (mString (idx COMMA_HERE)) ;
+      result = GALGAS_char (mString.charAtIndex (idx COMMA_HERE)) ;
     }
   }
   return result ;
@@ -591,7 +601,7 @@ GALGAS_bool GALGAS_string::getter_containsCharacter (const GALGAS_char & inChara
                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inCharacter.isValid ()) {
-    result = GALGAS_bool (mString.containsCharacter (inCharacter.charValue ())) ;
+    result = GALGAS_bool (mString.containsChar (inCharacter.charValue ())) ;
   }
   return result ;
 }
@@ -603,7 +613,7 @@ GALGAS_bool GALGAS_string::getter_containsCharacterInRange (const GALGAS_char & 
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid () && inFirstCharacter.isValid () && inLastCharacter.isValid ()) {
-    result = GALGAS_bool (mString.containsCharacterInRange (inFirstCharacter.charValue (), inLastCharacter.charValue ())) ;
+    result = GALGAS_bool (mString.containsCharInRange (inFirstCharacter.charValue (), inLastCharacter.charValue ())) ;
   }
   return result ;
 }
@@ -626,7 +636,7 @@ GALGAS_stringlist GALGAS_string::getter_componentsSeparatedByString (const GALGA
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (inSeparator.isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     TC_UniqueArray <String> components ;
     mString.componentsSeparatedByString (inSeparator.mString, components) ;
     for (int32_t i=0 ; i<components.count () ; i++) {
@@ -641,7 +651,7 @@ GALGAS_stringlist GALGAS_string::getter_componentsSeparatedByString (const GALGA
 GALGAS_sint GALGAS_string::getter_system (UNUSED_LOCATION_ARGS) const {
   GALGAS_sint result ;
   if (isValid ()) {
-    result = GALGAS_sint (::system (mString.cString (HERE))) ;
+    result = GALGAS_sint (::system (mString.cString ())) ;
   }
   return result ;
 }
@@ -655,11 +665,11 @@ GALGAS_sint GALGAS_string::getter_commandWithArguments (const GALGAS_stringlist 
   if (isValid () && inArguments.isValid ()) {
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
-      command.addString (" '") ;
-      command.addString (inArguments.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
-      command.addString ("'") ;
+      command.appendCString (" '") ;
+      command.appendString (inArguments.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendCString ("'") ;
     }
-    result = GALGAS_sint (::system (command.cString (HERE))) ;
+    result = GALGAS_sint (::system (command.cString ())) ;
   }
   return result ;
 }
@@ -673,9 +683,9 @@ GALGAS_string GALGAS_string::getter_hiddenCommandWithArguments (const GALGAS_str
   if (isValid () && inArguments.isValid ()) {
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
-      command.addString (" '") ;
-      command.addString (inArguments.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
-      command.addString ("'") ;
+      command.appendCString (" '") ;
+      command.appendString (inArguments.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendCString ("'") ;
     }
     result = GALGAS_string (command).getter_popen (inCompiler COMMA_THERE) ;
   }
@@ -689,14 +699,14 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
                                             const String & inRelativePath,
                                             GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.addString ("/") ;
-        name.addString (current->d_name) ;
+        name.appendCString ("/") ;
+        name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForRegularFiles (name,
@@ -721,7 +731,7 @@ GALGAS_stringlist GALGAS_string::getter_regularFiles (const GALGAS_bool & inRecu
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     recursiveSearchForRegularFiles (mString,
                                     inRecursiveSearch.boolValue (),
                                     "",
@@ -737,14 +747,14 @@ static void recursiveSearchForHiddenFiles (const String & inUnixStartPath,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
       if ((strlen (current->d_name) > 1) && (current->d_name [0] == '.') && (strcmp (current->d_name, "..") != 0)) {
         String name = nativeStartPath ;
-        name.addString ("/") ;
-        name.addString (current->d_name) ;
+        name.appendCString ("/") ;
+        name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForHiddenFiles (name,
@@ -769,7 +779,7 @@ GALGAS_stringlist GALGAS_string::getter_hiddenFiles (const GALGAS_bool & inRecur
                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     recursiveSearchForHiddenFiles (mString,
                                    inRecursiveSearch.boolValue (),
                                    "",
@@ -785,14 +795,14 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.addString ("/") ;
-        name.addString (current->d_name) ;
+        name.appendCString ("/") ;
+        name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           const String relativePath = inRelativePath + current->d_name ;
           ioResult.addAssign_operation (GALGAS_string (relativePath) COMMA_HERE) ;
@@ -816,7 +826,7 @@ GALGAS_stringlist GALGAS_string::getter_directories (const GALGAS_bool & inRecur
                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (inRecursiveSearch.isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     if (FileManager::directoryExists (mString)) {
       recursiveSearchForDirectories (mString,
                                      inRecursiveSearch.boolValue (),
@@ -835,14 +845,14 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
                                             const String & inRelativePath,
                                             GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.addString ("/") ;
-        name.addString (current->d_name) ;
+        name.appendCString ("/") ;
+        name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForRegularFiles (name,
@@ -878,7 +888,7 @@ GALGAS_stringlist GALGAS_string::getter_regularFilesWithExtensions (const GALGAS
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if ((inRecursiveSearch.isValid ()) && (inExtensionList.isValid ())) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     if (FileManager::directoryExists (mString)) {
       recursiveSearchForRegularFiles (mString,
                                       inExtensionList,
@@ -898,14 +908,14 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
                                            const String & inRelativePath,
                                            GALGAS_stringlist & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
-  DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
+  DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
     struct dirent  * current = readdir (dir) ;
     while (current != nullptr) {
       if (current->d_name [0] != '.') {
         String name = nativeStartPath ;
-        name.addString ("/") ;
-        name.addString (current->d_name) ;
+        name.appendCString ("/") ;
+        name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
         //--- Look for extension
           const String extension = name.pathExtension () ;
@@ -942,7 +952,7 @@ GALGAS_stringlist GALGAS_string::getter_directoriesWithExtensions (const GALGAS_
                                                                    COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid () && inRecursiveSearch.isValid () && inExtensionList.isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     if (FileManager::directoryExists (mString)) {
       recursiveSearchForDirectories (mString,
                                      inExtensionList,
@@ -959,7 +969,7 @@ GALGAS_stringlist GALGAS_string::getter_directoriesWithExtensions (const GALGAS_
 GALGAS_bool GALGAS_string::getter_doesEnvironmentVariableExist (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (::getenv (mString.cString (HERE)) != nullptr) ;
+    result = GALGAS_bool (::getenv (mString.cString ()) != nullptr) ;
   }
   return result ;
 }
@@ -1107,13 +1117,13 @@ GALGAS_bool GALGAS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) c
   //--- Sign
     int32_t idx = 0 ;
     if (ok) {
-      const utf32 c = mString (0 COMMA_HERE) ;
+      const utf32 c = mString.charAtIndex (0 COMMA_HERE) ;
       if ((UNICODE_VALUE (c) == '+') || (UNICODE_VALUE (c) == '-')) {
         idx = 1 ;
       }
     }
     while ((idx < mString.length ()) && ok) {
-      const utf32 c = mString (idx COMMA_HERE) ;
+      const utf32 c = mString.charAtIndex (idx COMMA_HERE) ;
       idx += 1 ;
       ok = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') ;
     }
@@ -1129,7 +1139,7 @@ GALGAS_bigint GALGAS_string::getter_decimalSignedBigInt (Compiler * inCompiler
   GALGAS_bigint result ;
   if (isValid ()) {
     bool ok = false ;
-    BigSigned bigint (mString.cString (HERE), BigUnsignedBase::ten, ok) ;
+    BigSigned bigint (mString.cString (), BigUnsignedBase::ten, ok) ;
     if (ok) {
       result = GALGAS_bigint (bigint) ;
     }else{
@@ -1253,29 +1263,29 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
       String errorMessage ;
       bool ok = 0 != CreatePipe (& g_hChildStd_OUT_Rd, & g_hChildStd_OUT_Wr, & saAttr, 0) ;
       if (! ok) {
-        errorMessage.addString ("@string popen: 'CreatePipe' error") ;
+        errorMessage.appendCString ("@string popen: 'CreatePipe' error") ;
       }else{
         ok = SetHandleInformation (g_hChildStd_OUT_Rd, HANDLE_FLAG_INHERIT, 0) ;
         if (! ok) {
-          errorMessage.addString ("@string popen: 'SetHandleInformation' error") ;
+          errorMessage.appendCString ("@string popen: 'SetHandleInformation' error") ;
         }
       }
       if (ok) {
         ok = CreatePipe (& g_hChildStd_IN_Rd, & g_hChildStd_IN_Wr, & saAttr, 0) ;
         if (! ok) {
-          errorMessage.addString ("@string popen: 'CreatePipe (2)' error") ;
+          errorMessage.appendCString ("@string popen: 'CreatePipe (2)' error") ;
         }
       }
       if (ok) {
         ok = SetHandleInformation (g_hChildStd_IN_Wr, HANDLE_FLAG_INHERIT, 0) ;
         if (! ok) {
-          errorMessage.addString ("@string popen: 'SetHandleInformation (2)' error") ;
+          errorMessage.appendCString ("@string popen: 'SetHandleInformation (2)' error") ;
         }
       }
       if (ok) {
-        ok = CreateChildProcess (g_hChildStd_OUT_Wr, g_hChildStd_IN_Rd, mString.cString (HERE)) ;
+        ok = CreateChildProcess (g_hChildStd_OUT_Wr, g_hChildStd_IN_Rd, mString.cString ()) ;
         if (! ok) {
-          errorMessage.addString ("@string popen: 'CreateChildProcess' error") ;
+          errorMessage.appendCString ("@string popen: 'CreateChildProcess' error") ;
         }
       }
       if (! ok) {
@@ -1309,7 +1319,7 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
                                              COMMA_UNUSED_LOCATION_ARGS) const {
     GALGAS_string result ;
     if (isValid ()) {
-      FILE * f = popen (mString.cString (HERE), "r") ;
+      FILE * f = popen (mString.cString (), "r") ;
       U8Data response ;
       bool loop = true ;
       while (loop) {

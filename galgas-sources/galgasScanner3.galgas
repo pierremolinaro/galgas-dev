@@ -1,21 +1,29 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  GALGAS scanner definition                
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  GALGAS scanner definition
+#
 #  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 lexique galgasScanner3 {
-#--- Indexing keys
+#--- indexing keys
 indexing classDefinition : "Class Definition"
 indexing enumDefinition : "Enum Definition"
 indexing structDefinition : "Struct Definition"
@@ -94,7 +102,7 @@ style terminalStyle -> "Terminal Symbols"
 style nonTerminalStyle -> "Non Terminal Symbols"
 style integerStyle -> "Integer Constants"
 style bigintStyle -> "Big Integer Constants"
-style floatStyle -> "Floating Point Constants" 
+style floatStyle -> "Floating Point Constants"
 style characterStyle -> "Character Constants"
 style stringStyle -> "String Constants"
 style typeNameStyle -> "Type Names (@...)"
@@ -136,6 +144,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "fileprivate",
   "filewrapper",
   "for",
+  "final",
   "fixit",
   "func",
   "getter",
@@ -166,6 +175,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "option",
   "or",
   "override",
+#  "package",
   "parse",
   "public",
   "protected",
@@ -189,7 +199,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "style",
   "super",
   "switch",
-  "syntax", 
+  "syntax",
   "tag",
   "template",
   "then",
@@ -320,7 +330,7 @@ rule '@' {
   default
     error incorrectTypeNameError
   end
-  send $@type$ 
+  send $@type$
 }
 
 # -------------------------- Attribute -----------------------------
@@ -478,12 +488,6 @@ rule '\'' {
       default
         error invalideUnicodeDefinition8
       end
-#    case '&' :
-#      repeat
-#      while ~ ";" error incorrectHTMLescapeSequence :
-#        enterCharacterIntoString (!?tokenString !* )
-#      end
-#      convertHTMLSequenceToUnicodeCharacter (!?tokenString !?charValue error unknownHTMLescapeSequence )
     default
       error incorrectCharConstant
     end
@@ -547,7 +551,7 @@ rule '$' {
   default
     error incorrect_terminal_end
   end
-  send $\$terminal\$$ 
+  send $\$terminal\$$
 }
 
 # ------------------------------------ Comment ----------------------------
@@ -601,32 +605,22 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
 rule list galgasDelimitorsList
 
 # --------- Special formal arguments, actual parameters --------------------------
-$?$ ! tokenString style selectorStyle error message "the '\?' or '\?selector:' delimitor"
-$?!$ ! tokenString style selectorStyle error message "the '\?!' or '\?!selector:' delimitor"
-$!$ ! tokenString style selectorStyle error message "the '!' or '!selector:' delimitor"
-$!?$ ! tokenString style selectorStyle error message "the '!\?' or '!\?selector:' delimitor"
+# --------- Special formal arguments, actual parameters --------------------------
+$?selector:$ ! tokenString style selectorStyle error message "the '\?selector:' delimitor"
+$?$ style delimitersStyle error message "the '?' delimitor"
 
-rule '?' {
-  tag onlyInterrogationMark
+$?!selector:$ ! tokenString style selectorStyle error message "the '\?!selector:' delimitor"
+$?!$ style delimitersStyle error message "the '?!' delimitor"
+
+$!selector:$ ! tokenString style selectorStyle error message "the '!selector:' delimitor"
+$!$ style delimitersStyle error message "the '!' delimitor"
+
+$!?selector:$ ! tokenString style selectorStyle error message "the '!\?selector:' delimitor"
+$!?$ style delimitersStyle error message "the '!?' delimitor"
+
+rule "?!" {
+  tag onlyInterrogationExclamationMark
   select
-  case '!' :
-    tag onlyExclamationInterrogationMark
-    select
-    case 'a' -> 'z' | 'A' ->'Z' :
-      repeat
-        enterCharacterIntoString (!?tokenString !* )
-      while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
-      end
-      select
-      case ':' :
-        send $?!$
-      default
-        resetString (!?tokenString )
-        rewind onlyExclamationInterrogationMark send $?!$
-      end
-    default
-      send $?!$
-    end
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
       enterCharacterIntoString (!?tokenString !* )
@@ -634,7 +628,27 @@ rule '?' {
     end
     select
     case ':' :
-      send $?$
+      send $?!selector:$
+    default
+      resetString (!?tokenString )
+      rewind onlyInterrogationExclamationMark send $?!$
+    end
+  default
+    send $?!$
+  end
+}
+
+rule '?' {
+  tag onlyInterrogationMark
+  select
+  case 'a' -> 'z' | 'A' ->'Z' :
+    repeat
+      enterCharacterIntoString (!?tokenString !* )
+    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    end
+    select
+    case ':' :
+      send $?selector:$
     default
       resetString (!?tokenString )
       rewind onlyInterrogationMark send $?$
@@ -644,27 +658,9 @@ rule '?' {
   end
 }
 
-rule '!' {
-  tag onlyExclamationMark
+rule "!?" {
+  tag onlyExclamationInterrogationMark
   select
-  case '?' :
-    tag onlyInterrogationExclamationMark
-    select
-    case 'a' -> 'z' | 'A' ->'Z' :
-      repeat
-        enterCharacterIntoString (!?tokenString !* )
-      while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
-      end
-      select
-      case ':' :
-        send $!?$
-      default
-        resetString (!?tokenString )
-        rewind onlyInterrogationExclamationMark send $!?$
-      end
-    default
-      send $!?$
-    end
   case 'a' -> 'z' | 'A' ->'Z' :
     repeat
       enterCharacterIntoString (!?tokenString !* )
@@ -672,7 +668,27 @@ rule '!' {
     end
     select
     case ':' :
-      send $!$
+      send $!?selector:$
+    default
+      resetString (!?tokenString )
+      rewind onlyExclamationInterrogationMark send $!?$
+    end
+  default
+    send $!?$
+  end
+}
+
+rule '!' {
+  tag onlyExclamationMark
+  select
+  case 'a' -> 'z' | 'A' ->'Z' :
+    repeat
+      enterCharacterIntoString (!?tokenString !* )
+    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    end
+    select
+    case ':' :
+      send $!selector:$
     default
       resetString (!?tokenString )
       rewind onlyExclamationMark send $!$

@@ -223,32 +223,32 @@ bool DateTime::operator <= (const DateTime & inDate) const {
 String DateTime::string (void) const {
   String result ;
   const int32_t dayOfMonth = getDayOfMonth () ;
-  result.addString (getMonthName ()) ;
-  result.addString (" ") ;
-  result.addSigned (dayOfMonth) ;
+  result.appendCString (getMonthName ()) ;
+  result.appendCString (" ") ;
+  result.appendSigned (dayOfMonth) ;
   switch (dayOfMonth) {
   case 1 :
-    result.addString ("st") ;
+    result.appendCString ("st") ;
     break ;
   case 2 :
-    result.addString ("nd") ;
+    result.appendCString ("nd") ;
     break ;
   case 3 :
-    result.addString ("rd") ;
+    result.appendCString ("rd") ;
     break ;
   default :
-    result.addString ("th") ;
+    result.appendCString ("th") ;
     break ;
   }
-  result.addString (", ") ;
-  result.addSigned (getYearCount ()) ;
-  result.addString (", at ") ;
-  result.addSigned (getHourOfDay ()) ;
-  result.addString ("h") ;
-  result.addSigned (getMinuteOfHour ()) ;
-  result.addString ("\'") ;
-  result.addSigned (getSecondOfMinute ()) ;
-  result.addString ("\"") ;
+  result.appendCString (", ") ;
+  result.appendSigned (getYearCount ()) ;
+  result.appendCString (", at ") ;
+  result.appendSigned (getHourOfDay ()) ;
+  result.appendCString ("h") ;
+  result.appendSigned (getMinuteOfHour ()) ;
+  result.appendCString ("\'") ;
+  result.appendSigned (getSecondOfMinute ()) ;
+  result.appendCString ("\"") ;
   return result ;
 }
 

@@ -24,9 +24,8 @@ mProperty_lkey (inLKey) {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_location ("location",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_location ("location",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -67,9 +66,8 @@ GALGAS_location GALGAS_location::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_stringlist ("stringlist",
-                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ("stringlist",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -113,7 +111,7 @@ GALGAS_stringlist GALGAS_stringlist::extractObject (const GALGAS_object & inObje
 class cCollectionElement_stringlist : public cCollectionElement {
   public: GALGAS_stringlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_stringlist (const GALGAS_string & in_mValue
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_stringlist (const GALGAS_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -163,9 +161,9 @@ cCollectionElement * cCollectionElement_stringlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_stringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -191,14 +189,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist GALGAS_stringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_stringlist GALGAS_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_stringlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist GALGAS_stringlist::constructor_listWithValue (const GALGAS_string & inOperand0
-                                                                COMMA_LOCATION_ARGS) {
+GALGAS_stringlist GALGAS_stringlist::class_func_listWithValue (const GALGAS_string & inOperand0
+                                                               COMMA_LOCATION_ARGS) {
   GALGAS_stringlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_stringlist (capCollectionElementArray ()) ;
@@ -378,7 +376,7 @@ GALGAS_stringlist GALGAS_stringlist::add_operation (const GALGAS_stringlist & in
 GALGAS_stringlist GALGAS_stringlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -388,7 +386,7 @@ GALGAS_stringlist GALGAS_stringlist::getter_subListWithRange (const GALGAS_range
 GALGAS_stringlist GALGAS_stringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -398,7 +396,7 @@ GALGAS_stringlist GALGAS_stringlist::getter_subListFromIndex (const GALGAS_uint 
 GALGAS_stringlist GALGAS_stringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -476,9 +474,8 @@ GALGAS_string cEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_string ("string",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_string ("string",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -519,9 +516,8 @@ GALGAS_string GALGAS_string::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bool ("bool",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bool ("bool",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -562,9 +558,8 @@ GALGAS_bool GALGAS_bool::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -608,7 +603,7 @@ GALGAS_lstringlist GALGAS_lstringlist::extractObject (const GALGAS_object & inOb
 class cCollectionElement_lstringlist : public cCollectionElement {
   public: GALGAS_lstringlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lstringlist (const GALGAS_lstring & in_mValue
                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lstringlist (const GALGAS_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -658,9 +653,9 @@ cCollectionElement * cCollectionElement_lstringlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_lstringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -686,14 +681,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_lstringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lstringlist GALGAS_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lstringlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_lstringlist::constructor_listWithValue (const GALGAS_lstring & inOperand0
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_lstringlist GALGAS_lstringlist::class_func_listWithValue (const GALGAS_lstring & inOperand0
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lstringlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_lstringlist (capCollectionElementArray ()) ;
@@ -873,7 +868,7 @@ GALGAS_lstringlist GALGAS_lstringlist::add_operation (const GALGAS_lstringlist &
 GALGAS_lstringlist GALGAS_lstringlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -883,7 +878,7 @@ GALGAS_lstringlist GALGAS_lstringlist::getter_subListWithRange (const GALGAS_ran
 GALGAS_lstringlist GALGAS_lstringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -893,7 +888,7 @@ GALGAS_lstringlist GALGAS_lstringlist::getter_subListFromIndex (const GALGAS_uin
 GALGAS_lstringlist GALGAS_lstringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -971,9 +966,8 @@ GALGAS_lstring cEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint ("uint",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ("uint",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1014,9 +1008,8 @@ GALGAS_uint GALGAS_uint::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_stringset ("stringset",
-                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringset ("stringset",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1057,9 +1050,8 @@ GALGAS_stringset GALGAS_stringset::extractObject (const GALGAS_object & inObject
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_char ("char",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_char ("char",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1100,9 +1092,8 @@ GALGAS_char GALGAS_char::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbool ("lbool",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ("lbool",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1159,10 +1150,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbool GALGAS_lbool::constructor_new (const GALGAS_bool & in_bool,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbool GALGAS_lbool::class_func_new (const GALGAS_bool & in_bool,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbool result ;
   if (in_bool.isValid () && in_location.isValid ()) {
     result = GALGAS_lbool (in_bool, in_location) ;
@@ -1200,15 +1191,15 @@ void GALGAS_lbool::drop (void) {
 
 void GALGAS_lbool::description (String & ioString,
                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @lbool:") ;
+  ioString.appendCString ("<struct @lbool:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_bool.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1217,9 +1208,8 @@ void GALGAS_lbool::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
-                                       nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1263,7 +1253,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::extractObject (const GALGAS_object 
 class cCollectionElement__32_stringlist : public cCollectionElement {
   public: GALGAS__32_stringlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement__32_stringlist (const GALGAS_string & in_mValue_30_,
                                              const GALGAS_string & in_mValue_31_
                                              COMMA_LOCATION_ARGS) ;
@@ -1315,13 +1305,13 @@ cCollectionElement * cCollectionElement__32_stringlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement__32_stringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue0" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue0" ":") ;
   mObject.mProperty_mValue_30_.description (ioString, inIndentation) ;
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue1" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue1" ":") ;
   mObject.mProperty_mValue_31_.description (ioString, inIndentation) ;
 }
 
@@ -1347,15 +1337,15 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist GALGAS__32_stringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS__32_stringlist GALGAS__32_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS__32_stringlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist GALGAS__32_stringlist::constructor_listWithValue (const GALGAS_string & inOperand0,
-                                                                        const GALGAS_string & inOperand1
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS__32_stringlist GALGAS__32_stringlist::class_func_listWithValue (const GALGAS_string & inOperand0,
+                                                                       const GALGAS_string & inOperand1
+                                                                       COMMA_LOCATION_ARGS) {
   GALGAS__32_stringlist result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
     result = GALGAS__32_stringlist (capCollectionElementArray ()) ;
@@ -1557,7 +1547,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::add_operation (const GALGAS__32_str
 GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1567,7 +1557,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListWithRange (const GALG
 GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1577,7 +1567,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListFromIndex (const GALG
 GALGAS__32_stringlist GALGAS__32_stringlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -1692,9 +1682,8 @@ GALGAS_string cEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) con
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_double ("double",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_double ("double",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1735,9 +1724,8 @@ GALGAS_double GALGAS_double::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1778,9 +1766,8 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::extractObject (const GALGAS_object & in
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sint ("sint",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint ("sint",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1821,9 +1808,8 @@ GALGAS_sint GALGAS_sint::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1864,9 +1850,8 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::extractObject (const GALGAS_object & in
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bigint ("bigint",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint ("bigint",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1903,56 +1888,12 @@ GALGAS_bigint GALGAS_bigint::extractObject (const GALGAS_object & inObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @application generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_application ("application",
-                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_application::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_application ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_application::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_application (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_application GALGAS_application::extractObject (const GALGAS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_application result ;
-  const GALGAS_application * p = (const GALGAS_application *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_application *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("application", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //     @binaryset generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_binaryset ("binaryset",
-                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1993,9 +1934,8 @@ GALGAS_binaryset GALGAS_binaryset::extractObject (const GALGAS_object & inObject
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_data ("data",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_data ("data",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2036,9 +1976,8 @@ GALGAS_data GALGAS_data::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2079,9 +2018,8 @@ GALGAS_filewrapper GALGAS_filewrapper::extractObject (const GALGAS_object & inOb
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_function ("function",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_function ("function",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2122,9 +2060,8 @@ GALGAS_function GALGAS_function::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_object ("object",
-                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_object ("object",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2165,9 +2102,8 @@ GALGAS_object GALGAS_object::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_timer ("timer",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timer ("timer",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2208,9 +2144,8 @@ GALGAS_timer GALGAS_timer::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_type ("type",
-                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ("type",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2251,9 +2186,8 @@ GALGAS_type GALGAS_type::extractObject (const GALGAS_object & inObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_functionlist ("functionlist",
-                                     nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ("functionlist",
+                                                                    nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2297,7 +2231,7 @@ GALGAS_functionlist GALGAS_functionlist::extractObject (const GALGAS_object & in
 class cCollectionElement_functionlist : public cCollectionElement {
   public: GALGAS_functionlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_functionlist (const GALGAS_function & in_mValue
                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_functionlist (const GALGAS_functionlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -2347,9 +2281,9 @@ cCollectionElement * cCollectionElement_functionlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_functionlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -2375,14 +2309,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist GALGAS_functionlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_functionlist GALGAS_functionlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_functionlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist GALGAS_functionlist::constructor_listWithValue (const GALGAS_function & inOperand0
-                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_functionlist GALGAS_functionlist::class_func_listWithValue (const GALGAS_function & inOperand0
+                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_functionlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_functionlist (capCollectionElementArray ()) ;
@@ -2562,7 +2496,7 @@ GALGAS_functionlist GALGAS_functionlist::add_operation (const GALGAS_functionlis
 GALGAS_functionlist GALGAS_functionlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2572,7 +2506,7 @@ GALGAS_functionlist GALGAS_functionlist::getter_subListWithRange (const GALGAS_r
 GALGAS_functionlist GALGAS_functionlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2582,7 +2516,7 @@ GALGAS_functionlist GALGAS_functionlist::getter_subListFromIndex (const GALGAS_u
 GALGAS_functionlist GALGAS_functionlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_functionlist result = GALGAS_functionlist::constructor_emptyList (THERE) ;
+  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2660,9 +2594,8 @@ GALGAS_function cEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luintlist ("luintlist",
-                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2706,7 +2639,7 @@ GALGAS_luintlist GALGAS_luintlist::extractObject (const GALGAS_object & inObject
 class cCollectionElement_luintlist : public cCollectionElement {
   public: GALGAS_luintlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_luintlist (const GALGAS_luint & in_mValue
                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_luintlist (const GALGAS_luintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -2756,9 +2689,9 @@ cCollectionElement * cCollectionElement_luintlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_luintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -2784,14 +2717,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist GALGAS_luintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_luintlist GALGAS_luintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_luintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist GALGAS_luintlist::constructor_listWithValue (const GALGAS_luint & inOperand0
-                                                              COMMA_LOCATION_ARGS) {
+GALGAS_luintlist GALGAS_luintlist::class_func_listWithValue (const GALGAS_luint & inOperand0
+                                                             COMMA_LOCATION_ARGS) {
   GALGAS_luintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_luintlist (capCollectionElementArray ()) ;
@@ -2971,7 +2904,7 @@ GALGAS_luintlist GALGAS_luintlist::add_operation (const GALGAS_luintlist & inOpe
 GALGAS_luintlist GALGAS_luintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_luintlist result = GALGAS_luintlist::constructor_emptyList (THERE) ;
+  GALGAS_luintlist result = GALGAS_luintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2981,7 +2914,7 @@ GALGAS_luintlist GALGAS_luintlist::getter_subListWithRange (const GALGAS_range &
 GALGAS_luintlist GALGAS_luintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_luintlist result = GALGAS_luintlist::constructor_emptyList (THERE) ;
+  GALGAS_luintlist result = GALGAS_luintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -2991,7 +2924,7 @@ GALGAS_luintlist GALGAS_luintlist::getter_subListFromIndex (const GALGAS_uint & 
 GALGAS_luintlist GALGAS_luintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_luintlist result = GALGAS_luintlist::constructor_emptyList (THERE) ;
+  GALGAS_luintlist result = GALGAS_luintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3069,9 +3002,8 @@ GALGAS_luint cEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luint ("luint",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint ("luint",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3128,10 +3060,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luint GALGAS_luint::constructor_new (const GALGAS_uint & in_uint,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luint GALGAS_luint::class_func_new (const GALGAS_uint & in_uint,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint result ;
   if (in_uint.isValid () && in_location.isValid ()) {
     result = GALGAS_luint (in_uint, in_location) ;
@@ -3169,15 +3101,15 @@ void GALGAS_luint::drop (void) {
 
 void GALGAS_luint::description (String & ioString,
                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @luint:") ;
+  ioString.appendCString ("<struct @luint:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_uint.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3186,9 +3118,8 @@ void GALGAS_luint::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_objectlist ("objectlist",
-                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ("objectlist",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3232,7 +3163,7 @@ GALGAS_objectlist GALGAS_objectlist::extractObject (const GALGAS_object & inObje
 class cCollectionElement_objectlist : public cCollectionElement {
   public: GALGAS_objectlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_objectlist (const GALGAS_object & in_mValue
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_objectlist (const GALGAS_objectlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -3282,9 +3213,9 @@ cCollectionElement * cCollectionElement_objectlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_objectlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -3310,14 +3241,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_objectlist GALGAS_objectlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_objectlist GALGAS_objectlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_objectlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_objectlist GALGAS_objectlist::constructor_listWithValue (const GALGAS_object & inOperand0
-                                                                COMMA_LOCATION_ARGS) {
+GALGAS_objectlist GALGAS_objectlist::class_func_listWithValue (const GALGAS_object & inOperand0
+                                                               COMMA_LOCATION_ARGS) {
   GALGAS_objectlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_objectlist (capCollectionElementArray ()) ;
@@ -3497,7 +3428,7 @@ GALGAS_objectlist GALGAS_objectlist::add_operation (const GALGAS_objectlist & in
 GALGAS_objectlist GALGAS_objectlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_objectlist result = GALGAS_objectlist::constructor_emptyList (THERE) ;
+  GALGAS_objectlist result = GALGAS_objectlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3507,7 +3438,7 @@ GALGAS_objectlist GALGAS_objectlist::getter_subListWithRange (const GALGAS_range
 GALGAS_objectlist GALGAS_objectlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_objectlist result = GALGAS_objectlist::constructor_emptyList (THERE) ;
+  GALGAS_objectlist result = GALGAS_objectlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3517,7 +3448,7 @@ GALGAS_objectlist GALGAS_objectlist::getter_subListFromIndex (const GALGAS_uint 
 GALGAS_objectlist GALGAS_objectlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_objectlist result = GALGAS_objectlist::constructor_emptyList (THERE) ;
+  GALGAS_objectlist result = GALGAS_objectlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3595,9 +3526,8 @@ GALGAS_object cEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typelist ("typelist",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ("typelist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3641,7 +3571,7 @@ GALGAS_typelist GALGAS_typelist::extractObject (const GALGAS_object & inObject,
 class cCollectionElement_typelist : public cCollectionElement {
   public: GALGAS_typelist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_typelist (const GALGAS_type & in_mValue
                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_typelist (const GALGAS_typelist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -3691,9 +3621,9 @@ cCollectionElement * cCollectionElement_typelist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_typelist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -3719,14 +3649,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_typelist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_typelist GALGAS_typelist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_typelist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_typelist::constructor_listWithValue (const GALGAS_type & inOperand0
-                                                            COMMA_LOCATION_ARGS) {
+GALGAS_typelist GALGAS_typelist::class_func_listWithValue (const GALGAS_type & inOperand0
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_typelist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_typelist (capCollectionElementArray ()) ;
@@ -3906,7 +3836,7 @@ GALGAS_typelist GALGAS_typelist::add_operation (const GALGAS_typelist & inOperan
 GALGAS_typelist GALGAS_typelist::getter_subListWithRange (const GALGAS_range & inRange,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3916,7 +3846,7 @@ GALGAS_typelist GALGAS_typelist::getter_subListWithRange (const GALGAS_range & i
 GALGAS_typelist GALGAS_typelist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -3926,7 +3856,7 @@ GALGAS_typelist GALGAS_typelist::getter_subListFromIndex (const GALGAS_uint & in
 GALGAS_typelist GALGAS_typelist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4004,9 +3934,8 @@ GALGAS_type cEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uintlist ("uintlist",
-                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ("uintlist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4050,7 +3979,7 @@ GALGAS_uintlist GALGAS_uintlist::extractObject (const GALGAS_object & inObject,
 class cCollectionElement_uintlist : public cCollectionElement {
   public: GALGAS_uintlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_uintlist (const GALGAS_uint & in_mValue
                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_uintlist (const GALGAS_uintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -4100,9 +4029,9 @@ cCollectionElement * cCollectionElement_uintlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_uintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -4128,14 +4057,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_uintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_uintlist GALGAS_uintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_uintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_uintlist::constructor_listWithValue (const GALGAS_uint & inOperand0
-                                                            COMMA_LOCATION_ARGS) {
+GALGAS_uintlist GALGAS_uintlist::class_func_listWithValue (const GALGAS_uint & inOperand0
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_uintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_uintlist (capCollectionElementArray ()) ;
@@ -4315,7 +4244,7 @@ GALGAS_uintlist GALGAS_uintlist::add_operation (const GALGAS_uintlist & inOperan
 GALGAS_uintlist GALGAS_uintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uintlist result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+  GALGAS_uintlist result = GALGAS_uintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4325,7 +4254,7 @@ GALGAS_uintlist GALGAS_uintlist::getter_subListWithRange (const GALGAS_range & i
 GALGAS_uintlist GALGAS_uintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uintlist result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+  GALGAS_uintlist result = GALGAS_uintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4335,7 +4264,7 @@ GALGAS_uintlist GALGAS_uintlist::getter_subListFromIndex (const GALGAS_uint & in
 GALGAS_uintlist GALGAS_uintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_uintlist result = GALGAS_uintlist::constructor_emptyList (THERE) ;
+  GALGAS_uintlist result = GALGAS_uintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4413,9 +4342,8 @@ GALGAS_uint cEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
-                                         nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4459,7 +4387,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::extractObject (const GALGAS_obj
 class cCollectionElement_uint_36__34_list : public cCollectionElement {
   public: GALGAS_uint_36__34_list_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_ & in_mValue
                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_list_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -4509,9 +4437,9 @@ cCollectionElement * cCollectionElement_uint_36__34_list::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_uint_36__34_list::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -4537,14 +4465,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list GALGAS_uint_36__34_list::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_list GALGAS_uint_36__34_list::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint_36__34_list (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list GALGAS_uint_36__34_list::constructor_listWithValue (const GALGAS_uint_36__34_ & inOperand0
-                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_uint_36__34_list GALGAS_uint_36__34_list::class_func_listWithValue (const GALGAS_uint_36__34_ & inOperand0
+                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_list result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_uint_36__34_list (capCollectionElementArray ()) ;
@@ -4724,7 +4652,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::add_operation (const GALGAS_uin
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListWithRange (const GALGAS_range & inRange,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4734,7 +4662,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListWithRange (const 
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4744,7 +4672,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListFromIndex (const 
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+  GALGAS_uint_36__34_list result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -4822,9 +4750,8 @@ GALGAS_uint_36__34_ cEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS)
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
-                                   nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4868,7 +4795,7 @@ GALGAS_bigintlist GALGAS_bigintlist::extractObject (const GALGAS_object & inObje
 class cCollectionElement_bigintlist : public cCollectionElement {
   public: GALGAS_bigintlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_bigintlist (const GALGAS_bigint & in_mValue
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_bigintlist (const GALGAS_bigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -4918,9 +4845,9 @@ cCollectionElement * cCollectionElement_bigintlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_bigintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -4946,14 +4873,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist GALGAS_bigintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_bigintlist GALGAS_bigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_bigintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist GALGAS_bigintlist::constructor_listWithValue (const GALGAS_bigint & inOperand0
-                                                                COMMA_LOCATION_ARGS) {
+GALGAS_bigintlist GALGAS_bigintlist::class_func_listWithValue (const GALGAS_bigint & inOperand0
+                                                               COMMA_LOCATION_ARGS) {
   GALGAS_bigintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_bigintlist (capCollectionElementArray ()) ;
@@ -5133,7 +5060,7 @@ GALGAS_bigintlist GALGAS_bigintlist::add_operation (const GALGAS_bigintlist & in
 GALGAS_bigintlist GALGAS_bigintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_bigintlist result = GALGAS_bigintlist::constructor_emptyList (THERE) ;
+  GALGAS_bigintlist result = GALGAS_bigintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5143,7 +5070,7 @@ GALGAS_bigintlist GALGAS_bigintlist::getter_subListWithRange (const GALGAS_range
 GALGAS_bigintlist GALGAS_bigintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_bigintlist result = GALGAS_bigintlist::constructor_emptyList (THERE) ;
+  GALGAS_bigintlist result = GALGAS_bigintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5153,7 +5080,7 @@ GALGAS_bigintlist GALGAS_bigintlist::getter_subListFromIndex (const GALGAS_uint 
 GALGAS_bigintlist GALGAS_bigintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_bigintlist result = GALGAS_bigintlist::constructor_emptyList (THERE) ;
+  GALGAS_bigintlist result = GALGAS_bigintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5231,9 +5158,8 @@ GALGAS_bigint cEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
-                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5277,7 +5203,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::extractObject (const GALGAS_object & inOb
 class cCollectionElement_lbigintlist : public cCollectionElement {
   public: GALGAS_lbigintlist_2D_element mObject ;
 
-//--- Constructors
+//--- Class functions
   public: cCollectionElement_lbigintlist (const GALGAS_lbigint & in_mValue
                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lbigintlist (const GALGAS_lbigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -5327,9 +5253,9 @@ cCollectionElement * cCollectionElement_lbigintlist::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_lbigintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mValue" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mValue" ":") ;
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
@@ -5355,14 +5281,14 @@ AC_GALGAS_list (inSharedArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigintlist GALGAS_lbigintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+GALGAS_lbigintlist GALGAS_lbigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lbigintlist (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigintlist GALGAS_lbigintlist::constructor_listWithValue (const GALGAS_lbigint & inOperand0
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_lbigintlist GALGAS_lbigintlist::class_func_listWithValue (const GALGAS_lbigint & inOperand0
+                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_lbigintlist result ;
   if (inOperand0.isValid ()) {
     result = GALGAS_lbigintlist (capCollectionElementArray ()) ;
@@ -5542,7 +5468,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::add_operation (const GALGAS_lbigintlist &
 GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListWithRange (const GALGAS_range & inRange,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lbigintlist result = GALGAS_lbigintlist::constructor_emptyList (THERE) ;
+  GALGAS_lbigintlist result = GALGAS_lbigintlist::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5552,7 +5478,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListWithRange (const GALGAS_ran
 GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_lbigintlist result = GALGAS_lbigintlist::constructor_emptyList (THERE) ;
+  GALGAS_lbigintlist result = GALGAS_lbigintlist::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5562,7 +5488,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListFromIndex (const GALGAS_uin
 GALGAS_lbigintlist GALGAS_lbigintlist::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_lbigintlist result = GALGAS_lbigintlist::constructor_emptyList (THERE) ;
+  GALGAS_lbigintlist result = GALGAS_lbigintlist::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
@@ -5640,9 +5566,8 @@ GALGAS_lbigint cEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lsint ("lsint",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint ("lsint",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5699,10 +5624,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & in_sint,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lsint GALGAS_lsint::class_func_new (const GALGAS_sint & in_sint,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint result ;
   if (in_sint.isValid () && in_location.isValid ()) {
     result = GALGAS_lsint (in_sint, in_location) ;
@@ -5740,15 +5665,15 @@ void GALGAS_lsint::drop (void) {
 
 void GALGAS_lsint::description (String & ioString,
                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @lsint:") ;
+  ioString.appendCString ("<struct @lsint:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_sint.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5757,9 +5682,8 @@ void GALGAS_lsint::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
-                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5816,10 +5740,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_new (const GALGAS_sint_36__34_ & in_sint64,
-                                                            const GALGAS_location & in_location,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::class_func_new (const GALGAS_sint_36__34_ & in_sint64,
+                                                           const GALGAS_location & in_location,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint_36__34_ result ;
   if (in_sint64.isValid () && in_location.isValid ()) {
     result = GALGAS_lsint_36__34_ (in_sint64, in_location) ;
@@ -5857,15 +5781,15 @@ void GALGAS_lsint_36__34_::drop (void) {
 
 void GALGAS_lsint_36__34_::description (String & ioString,
                                         const int32_t inIndentation) const {
-  ioString.addString ("<struct @lsint64:") ;
+  ioString.appendCString ("<struct @lsint64:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_sint_36__34_.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5874,9 +5798,8 @@ void GALGAS_lsint_36__34_::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
-                                      nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5933,10 +5856,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36__34_ & in_uint64,
-                                                            const GALGAS_location & in_location,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luint_36__34_ GALGAS_luint_36__34_::class_func_new (const GALGAS_uint_36__34_ & in_uint64,
+                                                           const GALGAS_location & in_location,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint_36__34_ result ;
   if (in_uint64.isValid () && in_location.isValid ()) {
     result = GALGAS_luint_36__34_ (in_uint64, in_location) ;
@@ -5974,15 +5897,15 @@ void GALGAS_luint_36__34_::drop (void) {
 
 void GALGAS_luint_36__34_::description (String & ioString,
                                         const int32_t inIndentation) const {
-  ioString.addString ("<struct @luint64:") ;
+  ioString.appendCString ("<struct @luint64:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_uint_36__34_.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5991,9 +5914,8 @@ void GALGAS_luint_36__34_::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_range ("range",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ("range",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6050,10 +5972,10 @@ mProperty_length (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_range GALGAS_range::constructor_new (const GALGAS_uint & in_start,
-                                            const GALGAS_uint & in_length,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_range GALGAS_range::class_func_new (const GALGAS_uint & in_start,
+                                           const GALGAS_uint & in_length,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_range result ;
   if (in_start.isValid () && in_length.isValid ()) {
     result = GALGAS_range (in_start, in_length) ;
@@ -6091,15 +6013,15 @@ void GALGAS_range::drop (void) {
 
 void GALGAS_range::description (String & ioString,
                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @range:") ;
+  ioString.appendCString ("<struct @range:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_start.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_length.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6108,9 +6030,8 @@ void GALGAS_range::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_functionlist_2D_element ("functionlist-element",
-                                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist_2D_element ("functionlist-element",
+                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6164,9 +6085,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::constructor_new (const GALGAS_function & in_mValue,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::class_func_new (const GALGAS_function & in_mValue,
+                                                                               Compiler * /* inCompiler */
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_functionlist_2D_element (in_mValue) ;
@@ -6200,13 +6121,13 @@ void GALGAS_functionlist_2D_element::drop (void) {
 
 void GALGAS_functionlist_2D_element::description (String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @functionlist-element:") ;
+  ioString.appendCString ("<struct @functionlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6215,9 +6136,8 @@ void GALGAS_functionlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_luintlist_2D_element ("luintlist-element",
-                                             nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist_2D_element ("luintlist-element",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6271,9 +6191,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_new (const GALGAS_luint & in_mValue,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::class_func_new (const GALGAS_luint & in_mValue,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_luintlist_2D_element (in_mValue) ;
@@ -6307,13 +6227,13 @@ void GALGAS_luintlist_2D_element::drop (void) {
 
 void GALGAS_luintlist_2D_element::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.addString ("<struct @luintlist-element:") ;
+  ioString.appendCString ("<struct @luintlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6322,9 +6242,8 @@ void GALGAS_luintlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_objectlist_2D_element ("objectlist-element",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist_2D_element ("objectlist-element",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6378,9 +6297,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::constructor_new (const GALGAS_object & in_mValue,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::class_func_new (const GALGAS_object & in_mValue,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_objectlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_objectlist_2D_element (in_mValue) ;
@@ -6414,13 +6333,13 @@ void GALGAS_objectlist_2D_element::drop (void) {
 
 void GALGAS_objectlist_2D_element::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @objectlist-element:") ;
+  ioString.appendCString ("<struct @objectlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6429,9 +6348,8 @@ void GALGAS_objectlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_stringlist_2D_element ("stringlist-element",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist_2D_element ("stringlist-element",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6485,9 +6403,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::constructor_new (const GALGAS_string & in_mValue,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::class_func_new (const GALGAS_string & in_mValue,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_stringlist_2D_element (in_mValue) ;
@@ -6521,13 +6439,13 @@ void GALGAS_stringlist_2D_element::drop (void) {
 
 void GALGAS_stringlist_2D_element::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @stringlist-element:") ;
+  ioString.appendCString ("<struct @stringlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6536,9 +6454,8 @@ void GALGAS_stringlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typelist_2D_element ("typelist-element",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist_2D_element ("typelist-element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6592,9 +6509,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist_2D_element GALGAS_typelist_2D_element::constructor_new (const GALGAS_type & in_mValue,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_typelist_2D_element GALGAS_typelist_2D_element::class_func_new (const GALGAS_type & in_mValue,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typelist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_typelist_2D_element (in_mValue) ;
@@ -6628,13 +6545,13 @@ void GALGAS_typelist_2D_element::drop (void) {
 
 void GALGAS_typelist_2D_element::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString.addString ("<struct @typelist-element:") ;
+  ioString.appendCString ("<struct @typelist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6643,9 +6560,8 @@ void GALGAS_typelist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uintlist_2D_element ("uintlist-element",
-                                            nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist_2D_element ("uintlist-element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6699,9 +6615,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_new (const GALGAS_uint & in_mValue,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::class_func_new (const GALGAS_uint & in_mValue,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_uintlist_2D_element (in_mValue) ;
@@ -6735,13 +6651,13 @@ void GALGAS_uintlist_2D_element::drop (void) {
 
 void GALGAS_uintlist_2D_element::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString.addString ("<struct @uintlist-element:") ;
+  ioString.appendCString ("<struct @uintlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6750,9 +6666,8 @@ void GALGAS_uintlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uint_36__34_list_2D_element ("uint64list-element",
-                                                    nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list_2D_element ("uint64list-element",
+                                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6806,9 +6721,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::constructor_new (const GALGAS_uint_36__34_ & in_mValue,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::class_func_new (const GALGAS_uint_36__34_ & in_mValue,
+                                                                                       Compiler * /* inCompiler */
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint_36__34_list_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_uint_36__34_list_2D_element (in_mValue) ;
@@ -6842,13 +6757,13 @@ void GALGAS_uint_36__34_list_2D_element::drop (void) {
 
 void GALGAS_uint_36__34_list_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString.addString ("<struct @uint64list-element:") ;
+  ioString.appendCString ("<struct @uint64list-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6857,9 +6772,8 @@ void GALGAS_uint_36__34_list_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_bigintlist_2D_element ("bigintlist-element",
-                                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist_2D_element ("bigintlist-element",
+                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6913,9 +6827,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_new (const GALGAS_bigint & in_mValue,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::class_func_new (const GALGAS_bigint & in_mValue,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bigintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_bigintlist_2D_element (in_mValue) ;
@@ -6949,13 +6863,13 @@ void GALGAS_bigintlist_2D_element::drop (void) {
 
 void GALGAS_bigintlist_2D_element::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @bigintlist-element:") ;
+  ioString.appendCString ("<struct @bigintlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6964,9 +6878,8 @@ void GALGAS_bigintlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS__32_stringlist_2D_element ("2stringlist-element",
-                                                  nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist_2D_element ("2stringlist-element",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7023,10 +6936,10 @@ mProperty_mValue_31_ (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::constructor_new (const GALGAS_string & in_mValue0,
-                                                                                    const GALGAS_string & in_mValue1,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::class_func_new (const GALGAS_string & in_mValue0,
+                                                                                   const GALGAS_string & in_mValue1,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_stringlist_2D_element result ;
   if (in_mValue0.isValid () && in_mValue1.isValid ()) {
     result = GALGAS__32_stringlist_2D_element (in_mValue0, in_mValue1) ;
@@ -7064,15 +6977,15 @@ void GALGAS__32_stringlist_2D_element::drop (void) {
 
 void GALGAS__32_stringlist_2D_element::description (String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString.addString ("<struct @2stringlist-element:") ;
+  ioString.appendCString ("<struct @2stringlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue_30_.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_mValue_31_.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7081,9 +6994,8 @@ void GALGAS__32_stringlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lstring ("lstring",
-                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstring ("lstring",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7140,10 +7052,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lstring::constructor_new (const GALGAS_string & in_string,
-                                                const GALGAS_location & in_location,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lstring GALGAS_lstring::class_func_new (const GALGAS_string & in_string,
+                                               const GALGAS_location & in_location,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result ;
   if (in_string.isValid () && in_location.isValid ()) {
     result = GALGAS_lstring (in_string, in_location) ;
@@ -7181,15 +7093,15 @@ void GALGAS_lstring::drop (void) {
 
 void GALGAS_lstring::description (String & ioString,
                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @lstring:") ;
+  ioString.appendCString ("<struct @lstring:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_string.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7198,9 +7110,8 @@ void GALGAS_lstring::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbigint ("lbigint",
-                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7257,10 +7168,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigint GALGAS_lbigint::constructor_new (const GALGAS_bigint & in_bigint,
-                                                const GALGAS_location & in_location,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbigint GALGAS_lbigint::class_func_new (const GALGAS_bigint & in_bigint,
+                                               const GALGAS_location & in_location,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigint result ;
   if (in_bigint.isValid () && in_location.isValid ()) {
     result = GALGAS_lbigint (in_bigint, in_location) ;
@@ -7298,15 +7209,15 @@ void GALGAS_lbigint::drop (void) {
 
 void GALGAS_lbigint::description (String & ioString,
                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @lbigint:") ;
+  ioString.appendCString ("<struct @lbigint:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_bigint.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7315,9 +7226,8 @@ void GALGAS_lbigint::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lchar ("lchar",
-                              nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lchar ("lchar",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7374,10 +7284,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lchar::constructor_new (const GALGAS_char & in_char,
-                                            const GALGAS_location & in_location,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lchar GALGAS_lchar::class_func_new (const GALGAS_char & in_char,
+                                           const GALGAS_location & in_location,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lchar result ;
   if (in_char.isValid () && in_location.isValid ()) {
     result = GALGAS_lchar (in_char, in_location) ;
@@ -7415,15 +7325,15 @@ void GALGAS_lchar::drop (void) {
 
 void GALGAS_lchar::description (String & ioString,
                                 const int32_t inIndentation) const {
-  ioString.addString ("<struct @lchar:") ;
+  ioString.appendCString ("<struct @lchar:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_char.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7432,9 +7342,8 @@ void GALGAS_lchar::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_ldouble ("ldouble",
-                                nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7491,10 +7400,10 @@ mProperty_location (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ldouble GALGAS_ldouble::constructor_new (const GALGAS_double & in_double,
-                                                const GALGAS_location & in_location,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ldouble GALGAS_ldouble::class_func_new (const GALGAS_double & in_double,
+                                               const GALGAS_location & in_location,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ldouble result ;
   if (in_double.isValid () && in_location.isValid ()) {
     result = GALGAS_ldouble (in_double, in_location) ;
@@ -7532,15 +7441,15 @@ void GALGAS_ldouble::drop (void) {
 
 void GALGAS_ldouble::description (String & ioString,
                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @ldouble:") ;
+  ioString.appendCString ("<struct @ldouble:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_double.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7549,9 +7458,8 @@ void GALGAS_ldouble::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lstringlist_2D_element ("lstringlist-element",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist_2D_element ("lstringlist-element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7605,9 +7513,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_new (const GALGAS_lstring & in_mValue,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::class_func_new (const GALGAS_lstring & in_mValue,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_lstringlist_2D_element (in_mValue) ;
@@ -7641,13 +7549,13 @@ void GALGAS_lstringlist_2D_element::drop (void) {
 
 void GALGAS_lstringlist_2D_element::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.addString ("<struct @lstringlist-element:") ;
+  ioString.appendCString ("<struct @lstringlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7656,9 +7564,8 @@ void GALGAS_lstringlist_2D_element::description (String & ioString,
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lbigintlist_2D_element ("lbigintlist-element",
-                                               nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist_2D_element ("lbigintlist-element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7712,9 +7619,9 @@ mProperty_mValue (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::constructor_new (const GALGAS_lbigint & in_mValue,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::class_func_new (const GALGAS_lbigint & in_mValue,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigintlist_2D_element result ;
   if (in_mValue.isValid ()) {
     result = GALGAS_lbigintlist_2D_element (in_mValue) ;
@@ -7748,13 +7655,13 @@ void GALGAS_lbigintlist_2D_element::drop (void) {
 
 void GALGAS_lbigintlist_2D_element::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.addString ("<struct @lbigintlist-element:") ;
+  ioString.appendCString ("<struct @lbigintlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }else{
     mProperty_mValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--- START OF USER ZONE 2

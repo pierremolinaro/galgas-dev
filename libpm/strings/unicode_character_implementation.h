@@ -62,8 +62,8 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
   String unicodeName (const utf32 inUnicodeCharacter) {
     String result ;
     if (! isUnicodeCharacterAssigned (inUnicodeCharacter)) {
-      result.addString ("invalid unicode character \\U") ;
-      result.addUnsignedHex8 (UNICODE_VALUE (inUnicodeCharacter)) ;
+      result.appendCString ("invalid unicode character \\U") ;
+      result.appendUnsignedHex8 (UNICODE_VALUE (inUnicodeCharacter)) ;
     }else{
       const uint32_t pageIndex = UNICODE_VALUE (inUnicodeCharacter) / gNamePageSize ;
       if (pageIndex <= gLastNamePage) {
@@ -80,17 +80,17 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
             case 0 : // Prefix
               break ;
             case 0x40 : // Enter name, append space character
-              result.addString (gPartNames [idx]) ;
-              result.addString (" ") ;
+              result.appendString (gPartNames [idx]) ;
+              result.appendCString (" ") ;
               idx = 0 ;
               break ;
             case 0x80 : // Enter name, append minus character
-              result.addString (gPartNames [idx]) ;
-              result.addString ("-") ;
+              result.appendString (gPartNames [idx]) ;
+              result.appendCString ("-") ;
               idx = 0 ;
               break ;
             default : // Enter name, exit
-              result.addString (gPartNames [idx]) ;
+              result.appendString (gPartNames [idx]) ;
               completed = true ;
               break ;
             }
@@ -99,11 +99,11 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
       }
       if (result.length () == 0) {
         if (UNICODE_VALUE (inUnicodeCharacter) < 0x10000) {
-          result.addString ("\\u") ;
-          result.addUnsignedHex4 (UNICODE_VALUE (inUnicodeCharacter)) ;
+          result.appendCString ("\\u") ;
+          result.appendUnsignedHex4 (UNICODE_VALUE (inUnicodeCharacter)) ;
         }else{
-          result.addString ("\\U") ;
-          result.addUnsignedHex8 (UNICODE_VALUE (inUnicodeCharacter)) ;
+          result.appendCString ("\\U") ;
+          result.appendUnsignedHex8 (UNICODE_VALUE (inUnicodeCharacter)) ;
         }
       }
     } 
@@ -528,7 +528,6 @@ char singleByteCharacterForUnicodeCharacter (const utf32 inUnicodeChar,
      }else if (UNICODE_VALUE (inUnicodeChar) < mapping [mid].mUnicode) {
        high = mid - 1 ;
      }else{ // Found
-       // printf ("found") ;
        result = mapping [mid].mSingleByteCode ;
      }
    }

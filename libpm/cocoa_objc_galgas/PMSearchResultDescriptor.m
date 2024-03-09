@@ -110,7 +110,11 @@
       NSLog (@"mRange [%lu, %lu], inPreviousRange [%lu, %lu], inChangeInLength %ld", mRange.location, mRange.length, inPreviousRange.location, inPreviousRange.length, inChangeInLength) ;
     #endif
     if ((inPreviousRange.location + inPreviousRange.length) <= mRange.location) { // Change before
-      mRange.location += (NSUInteger) inChangeInLength ;
+      if (inChangeInLength >= 0) {
+        mRange.location += (NSUInteger) inChangeInLength ;
+      }else{
+        mRange.location -= (NSUInteger) -inChangeInLength ;
+      }
       #ifdef DEBUG_MESSAGES
         NSLog (@" - Change before -> mRange [%lu, %lu]", mRange.location, mRange.length) ;
       #endif

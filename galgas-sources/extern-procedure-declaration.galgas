@@ -1,14 +1,31 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    E X T E R N    R O U T I N E    D E C L A R A T I O N                                                     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -23,7 +40,7 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # Is not internal
@@ -33,20 +50,19 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $proc$
     var isUsefull = false
@@ -59,7 +75,7 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # Is not internal
@@ -69,11 +85,11 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @bool isFilePrivate %selector
@@ -81,7 +97,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @formalParameterListAST mFormalArgumentListAST
   public let @bool usefullProcedure %selector
 
-  #·················································································································
+  #·······························································································
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -92,13 +108,13 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
     ioExtensionOverrideDefinitionList += !self
   }
 
-  #·················································································································
+  #·······························································································
 
   override getter keyRepresentation -> @string {
     result = "routine " + self.mRoutineName + "("
     for parameter in self.mFormalArgumentListAST
     do
-      switch parameter.mFormalArgumentPassingMode 
+      switch parameter.mFormalArgumentPassingMode
       case argumentConstantIn, argumentIn :
         result +="?"
       case argumentInOut :
@@ -113,7 +129,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
     result += ")"
   }
 
-  #·················································································································
+  #·······························································································
 
   override method enterDeclarationInSemanticContext
                       ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -139,9 +155,9 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
     ]
   }
 
-  #·················································································································
+  #·······························································································
 
-  override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities 
+  override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?let @string unused inProductDirectory
                                   ?let @semanticContext unused inSemanticContext
@@ -152,7 +168,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
     var formalArgumentList = @formalParameterListForGeneration {}
     var routineSignature = @formalParameterSignature {}
     for argument in self.mFormalArgumentListAST do
-      let parameterType = [ioTypeMap searchKey !argument.mFormalArgumentTypeName]
+      let parameterType = [ioTypeMap typeMapEntryForLKey !argument.mFormalArgumentTypeName]
       formalArgumentList +=
         !argument.mFormalSelector
         !argument.mFormalArgumentPassingMode
@@ -183,39 +199,39 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
        }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    R O U T I N E    D E C L A R A T I O N 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    R O U T I N E    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string routineMangledName %selector
   public let @formalParameterListForGeneration mFormalArgumentList
 
-  #·················································································································
+  #·······························································································
 
   override getter headerKind -> @headerKind {
     result = .oneHeader
   }
 
-  #·················································································································
+  #·······························································································
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
     outHeader = [filewrapper semanticComponentGenerationTemplate.routineDeclaration
       !self.routineMangledName
       !self.mFormalArgumentList
-    ] 
+    ]
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1,6 +1,21 @@
-
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalList {
   public let @lstring mTerminalName
@@ -11,7 +26,7 @@ list @terminalList {
   public let @uint mStyleIndex # 0 if default style
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalExplicitTokenListMap {
   public let @lstring mTerminal
@@ -21,7 +36,7 @@ map @lexicalExplicitTokenListMap {
   search searchKey error message "the '%K' terminal is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @tokenSortedlist {
   public let @uint mLength
@@ -31,7 +46,7 @@ sortedlist @tokenSortedlist {
   mLength <, mName <
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalExplicitTokenListMapMap {
   public let @lexicalExplicitTokenListMap mExplicitTokenListMap
@@ -41,7 +56,7 @@ map @lexicalExplicitTokenListMapMap {
   search searchKey error message "the '%K' token list is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalMessageMap {
   public let @lstring mLexicalMessage
@@ -50,7 +65,7 @@ map @lexicalMessageMap {
   search searchKey error message "the '%K' message is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRoutineFormalArgumentList {
   public let @lexicalArgumentModeAST mLexicalFormalArgumentMode
@@ -58,7 +73,7 @@ list @lexicalRoutineFormalArgumentList {
   public let @string mArgumentNameForComment
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalRoutineMap {
   public let @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
@@ -68,14 +83,14 @@ map @lexicalRoutineMap {
   search searchKey error message "the '%K' lexical routine is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalFunctionFormalArgumentList {
   public let @lexicalTypeEnum mLexicalType
   public let @string mArgumentNameForComment
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalFunctionMap {
   public let @lexicalFunctionFormalArgumentList mLexicalTypeList
@@ -87,7 +102,7 @@ map @lexicalFunctionMap {
 }
 
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateDelimitorList {
   public let @lstring mStartString
@@ -96,7 +111,7 @@ list @templateDelimitorList {
 }
 
 #------------------------------------------------------------------*
-#                       Styles map                         
+#                       Styles map
 #------------------------------------------------------------------*
 
 map @styleMap {
@@ -114,7 +129,7 @@ map @lexicalTagMap {
   search searchKey error message "the '%K' tag is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @lexiqueAnalysisContext {
   public let @string mLexiqueName
@@ -131,5 +146,5 @@ struct @lexiqueAnalysisContext {
   public let @stringset mUnicodeTestFunctions
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

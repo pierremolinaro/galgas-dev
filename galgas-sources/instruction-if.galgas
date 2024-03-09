@@ -1,9 +1,26 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @ifExpressionKind {
-  case regularExp (@semanticExpressionAST exp)
+  case regularExp (@semanticExpressionAST exp @location endOfExp)
   case letExp (@lstring constantName @semanticExpressionAST exp @location endOfExp @lstring typeName)
   case optionalMethodCall (
     @semanticExpressionAST receiver
@@ -12,7 +29,7 @@ enum @ifExpressionKind {
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @optionalMethodActualArgument {
   case actualOutput (@semanticExpressionAST expression @location location)
@@ -21,20 +38,20 @@ enum @optionalMethodActualArgument {
   case actualInputJoker (@bool checkSelector @location location @uint idx)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @optionalMethodActualArgumentList {
   public let @lstring mSelector
   public let @optionalMethodActualArgument mActualArgument
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @ifExpressionList {
   public let @ifExpressionKind mExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @ifInstructionAST : @semanticInstructionAST {
   public let @ifExpressionList mExpressions
@@ -44,33 +61,35 @@ refclass @ifInstructionAST : @semanticInstructionAST {
   public let @location mEndOf_if_instruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <expression_or_ggs3> !@semanticExpressionAST outExpression
+  rule <expression_or_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                            !@semanticExpressionAST outExpression
 
-  #·················································································································
+  #·······························································································
 
-  rule <if_instruction_core> !@semanticInstructionAST outInstruction {
+  rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                             !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    <if_expression_ggs3> ?let testExpression
+    <if_expression_ggs3> !?ioDeclarations ?let testExpression
     $then$
-    <semantic_instruction_list_ggs3> ?let then_instructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let then_instructionList
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST {}
     or
       $else$
-      <semantic_instruction_list_ggs3> ? else_instructionList
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?else_instructionList
     or
       $elsif$
-      <if_instruction_core> ?let instruction
+      <if_instruction_core> !?ioDeclarations ?let instruction
       else_instructionList = {!instruction}
     end
     outInstruction = @ifInstructionAST.new {
@@ -82,18 +101,20 @@ syntax extension galgas3InstructionsSyntax {
       !@location.here
     }
   }
-  
-  #·················································································································
-  
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+
+  #·······························································································
+
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $if$
-    <if_instruction_core> ?outInstruction
+    <if_instruction_core> !?ioDeclarations ?outInstruction
     $end$
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <if_expression_ggs3> !@ifExpressionList outExpressionList {
+  rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                            !@ifExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       select
@@ -106,7 +127,7 @@ syntax extension galgas3InstructionsSyntax {
           constantName = ["" here]
         end
         $=$
-        <expression_or_ggs3> ?let expression
+        <expression_or_ggs3> !?ioDeclarations ?let expression
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letExp {
@@ -117,7 +138,7 @@ syntax extension galgas3InstructionsSyntax {
           }
         or
           $as$
-          $@type$ ?let @lstring typeName
+          <type_definition_ggs3> !?ioDeclarations ?let typeName
           outExpressionList += !.letExp {
             !constantName: constantName
             !exp: expression
@@ -128,39 +149,59 @@ syntax extension galgas3InstructionsSyntax {
       or
         $let$
         $[$
-        <expression_ggs3> ?let @semanticExpressionAST receiverExpression
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
-          $!$ ?let selector
-          <expression_ggs3> ?let expression
-          optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
+          let @lstring selector
+          select
+            $!selector:$ ?selector
+          or
+            $!$
+            selector = ["" here]
+          end
+          <expression_ggs3> !?ioDeclarations ?let expression
+          optionalMethodActualArgumentList +=
+            !selector
+            !.actualOutput {!expression: expression !location: .here}
         while
-          $?$ ?let selector
+          let @lstring selector
+          select
+            $?selector:$ ?selector
+          or
+            $?$
+            selector = ["" here]
+          end
           select
             $let$
-            let @lstring typeName 
+            let @lstring typeName
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName  
+              <type_definition_ggs3> !?ioDeclarations ?typeName
             end
             $identifier$ ?let constantName
-            optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
-            let @lstring typeName 
+            let @lstring typeName
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName  
+              <type_definition_ggs3> !?ioDeclarations ?typeName
             end
-           $identifier$ ?let variableName
-            optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
+            $identifier$ ?let variableName
+            optionalMethodActualArgumentList += 
+              !selector
+              !.actualVarInput {!typeName: typeName !variableName: variableName}
           or
             $*$
-            optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
           or
             $literalInt$ ?let repetitionCount
             $*$
@@ -171,56 +212,58 @@ syntax extension galgas3InstructionsSyntax {
               error repetitionCount : "the repetition count should be > 0"
             end
             for i in 0 ..< repetitionCount.bigint do
-              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
+              optionalMethodActualArgumentList +=
+                !selector
+                !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
             end
           end
         end
         $]$
         outExpressionList += !.optionalMethodCall {
-          !receiver: receiverExpression 
+          !receiver: receiverExpression
           !optionalMethodName: optionalMethodName
           !parameters: optionalMethodActualArgumentList
         }
       or
-        <expression_ggs3> ?let expression
-        outExpressionList += !.regularExp {!exp: expression}
+        <expression_ggs3> !?ioDeclarations ?let expression
+        outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
       $,$
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <expression_or> !@semanticExpressionAST outExpression
+  rule <expression_or> ?!@galgasDeclarationAST ioDeclarations
+                       !@semanticExpressionAST outExpression
 
-  #·················································································································
+  #·······························································································
 
   rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
-                             ?!@stringset ioUserImplicitDeclaredTypeSet
                              !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    <if_expression> ?let testExpression
+    <if_expression> !?ioDeclarations ?let testExpression
     $then$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let then_instructionList
+    <semantic_instruction_list> !?ioDeclarations ?let then_instructionList
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
       else_instructionList = @semanticInstructionListAST {}
     or
       $else$
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ? else_instructionList
+      <semantic_instruction_list> !?ioDeclarations ? else_instructionList
     or
       $elsif$
-      <if_instruction_core> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let instruction
+      <if_instruction_core> !?ioDeclarations ?let instruction
       else_instructionList = {!instruction}
     end
     outInstruction = @ifInstructionAST.new {
@@ -232,20 +275,20 @@ syntax extension galgas4InstructionsSyntax {
       !@location.here
     }
   }
-  
-  #·················································································································
-  
+
+  #·······························································································
+
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $if$
-    <if_instruction_core> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?outInstruction
+    <if_instruction_core> !?ioDeclarations ?outInstruction
     $end$
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <if_expression> !@ifExpressionList outExpressionList {
+  rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
+                       !@ifExpressionList outExpressionList {
     outExpressionList = {}
     repeat
       select
@@ -258,7 +301,7 @@ syntax extension galgas4InstructionsSyntax {
           constantName = ["" here]
         end
         $=$
-        <expression_or> ?let expression
+        <expression_or> !?ioDeclarations ?let expression
         let endOfReceiverExpression = @location.here
         select
           outExpressionList += !.letExp {
@@ -269,7 +312,7 @@ syntax extension galgas4InstructionsSyntax {
           }
         or
           $as$
-          $@type$ ?let @lstring typeName
+          <type_definition> !?ioDeclarations ?let typeName
           outExpressionList += !.letExp {
             !constantName: constantName
             !exp: expression
@@ -280,33 +323,50 @@ syntax extension galgas4InstructionsSyntax {
       or
         $let$
         $[$
-        <expression> ?let @semanticExpressionAST receiverExpression
+        <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = {}
         repeat
         while
-          $!$ ?let selector
-          <expression> ?let expression
-          optionalMethodActualArgumentList += !selector !.actualOutput {!expression: expression !location: .here}
+          $!selector:$ ?let selector
+          <expression> !?ioDeclarations ?let expression
+          optionalMethodActualArgumentList +=
+            !selector
+            !.actualOutput {!expression: expression !location: .here}
         while
-          $?$ ?let selector
+          $!$
+          let selector = ["" here]
+          <expression> !?ioDeclarations ?let expression
+          optionalMethodActualArgumentList +=
+            !selector
+            !.actualOutput {!expression: expression !location: .here}
+        while
+          let @lstring selector
+          select
+            $?selector:$ ?selector
+          or
+            $?$
+            selector = ["" here]
+          end
           select
             $let$
-            let @lstring typeName 
+            let @lstring typeName
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName  
+              <type_definition> !?ioDeclarations ?typeName
             end
             $identifier$ ?let constantName
-            optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
-            let @lstring typeName 
+            let @lstring typeName
             select
               typeName = ["" nowhere]
             or
-              $@type$ ?typeName  
+              <type_definition> !?ioDeclarations ?typeName
             end
             $identifier$ ?let variableName
             optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
@@ -329,31 +389,31 @@ syntax extension galgas4InstructionsSyntax {
         end
         $]$
         outExpressionList += !.optionalMethodCall {
-          !receiver: receiverExpression 
+          !receiver: receiverExpression
           !optionalMethodName: optionalMethodName
           !parameters: optionalMethodActualArgumentList
         }
       or
-        <expression> ?let expression
-        outExpressionList += !.regularExp {!exp: expression}
+        <expression> !?ioDeclarations ?let expression
+        outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
       end
     while
       $,$
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (expression) in self.mExpressions do
     switch expression
-    case regularExp (exp) :
+    case regularExp (exp *) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
     case letExp (* exp * @lstring typeName) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
@@ -375,9 +435,9 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
   [self.m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 # l'expression a peut être de la forme let varA = exp as @T ; idem pour b
 #
 # L'instruction : IF a, b THEN X ELSE Y END est analysée par :
@@ -399,8 +459,8 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
 #    closeBranch
 #  closeOverride
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @ifInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -413,9 +473,9 @@ override method @ifInstructionAST analyzeSemanticInstruction
   var @ifTestListForGeneration testListForGeneration = {}
   for (expression) in self.mExpressions do
     switch expression
-    case regularExp (exp) :
+    case regularExp (exp endOfExpression) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: .null
         !inAnalysisContext
@@ -425,7 +485,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       ]
       checkExpressionIsBoolean (
         !inAnalysisContext
-        !self.mEndOf_if_instruction
+        !endOfExpression
         !analyzed_if_expression
         ?let if_expression
       )
@@ -434,7 +494,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       [!?ioVariableMap openBranch]
     case letExp (constantName exp * @lstring typeName) :
       [exp analyzeSemanticExpression
-        !inUsefulnessCallerEntityName
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
         !inferenceType: .null
         !inAnalysisContext
@@ -450,7 +510,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         if typeName.string == "" then
           error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
         else
-          castType = [ioTypeMap searchKey !typeName]
+          castType = [ioTypeMap typeMapEntryForLKey !typeName]
           testType = castType
         #--- Check expression type is a descendant of named type
           var @unifiedTypeMapEntry t = castType
@@ -470,7 +530,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
         if typeName.string == "" then
           castType = classType
         else
-          castType = [ioTypeMap searchKey !typeName]
+          castType = [ioTypeMap typeMapEntryForLKey !typeName]
         end
         testType = castType
         var @unifiedTypeMapEntry t = castType
@@ -574,9 +634,9 @@ override method @ifInstructionAST analyzeSemanticInstruction
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! ANALYZE OPTIONAL METHOD CALL
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityName
                                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -589,7 +649,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
                                        ?!@ifTestListForGeneration ioTestListForGeneration {
 #--- Expression analysis
   [inReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -626,7 +686,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
       switch actualParameter
       case actualOutput (expression location) :
         [expression analyzeSemanticExpression
-          !inUsefulnessCallerEntityName
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
           !inferenceType: formalType
           !inAnalysisContext
@@ -696,9 +756,9 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 # L'instruction : IF a, b THEN X ELSE Y END est traduite en :
 #
 #  enumGalgasBool testResult = kBoolTrue ;
@@ -715,7 +775,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
 #    Y
 #  }
 #
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @ifTestForGeneration {
   case regular (@semanticExpressionForGeneration exp)
@@ -872,4 +932,4 @@ override method @ifInstructionForGeneration generateInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

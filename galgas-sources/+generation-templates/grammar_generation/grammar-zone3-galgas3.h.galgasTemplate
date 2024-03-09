@@ -17,10 +17,10 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
     if HAS_TRANSLATE_FEATURE then
       %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
-    %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+    %Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- indexing
     %//--- indexing\n%
-    %  public: virtual void nt_%![lkey identifierRepresentation]%_indexing (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+    %  public: virtual void nt_%![lkey identifierRepresentation]%_indexing (Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   for (label_lkey label_mFormalParametersList) in mNonterminalSymbolParametersMap do
   %//----------- '%!label_lkey.string%' label\n%
   #--- Non terminal declaration
@@ -40,7 +40,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
     if HAS_TRANSLATE_FEATURE then
       %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
-    %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+    %Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- Start symbol ?
     if START_SYMBOL_NAME == lkey.string then
       %//--- Start symbol\n%
@@ -100,7 +100,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
 end
 
 for (mSyntaxComponentName mNonTerminalToAddCount) in ADDED_NON_TERMINAL_LIST
-  do %  public: virtual int32_t select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
+  do %  public: virtual int32_t select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
   between %\n%
 end
 %} ;

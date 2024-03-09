@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @testDynamicClassInExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mReceiverExpression
@@ -26,16 +43,17 @@ refclass @castInExpressionAST : @semanticExpressionAST {
   private let @lstring mTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <expression_ggs3> !@semanticExpressionAST outExpression {
-    <expression_or_ggs3> ?outExpression
+  #·······························································································
+
+  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression {
+    <expression_or_ggs3> !?ioDeclarations ?outExpression
     select
     or
       let endOfReceiverExpression = @location.here
@@ -54,6 +72,7 @@ syntax extension galgas3ExpressionSyntax {
         kind = .strictlyInherited
       end
       $@type$ ?let typeName
+#      <type_definition_ggs3> !?ioDeclarations ?let typeName
       outExpression = @testDynamicClassInExpressionAST.new {
         !outExpression
         !endOfReceiverExpression
@@ -63,6 +82,7 @@ syntax extension galgas3ExpressionSyntax {
     or
       let endOfReceiverExpression = @location.here
       $as$
+#      <type_definition_ggs3> !?ioDeclarations ?let typeName
       $@type$ ?let typeName
       outExpression = @castInExpressionAST.new {
         !outExpression
@@ -72,45 +92,35 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <expression> !@semanticExpressionAST outExpression {
-    <expression_or> ?outExpression
+  #·······························································································
+
+  rule <expression> ?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpression {
+    <expression_or> !?ioDeclarations ?outExpression
     select
     or
       let endOfReceiverExpression = @location.here
       $is$
-      let @dynamicTypeComparisonKind kind
-      select
-        $==$
-        kind = .equal
-      or
-        $>=$
-        kind = .inherited
-      or
-        kind = .inherited
-      or
-        $>$
-        kind = .strictlyInherited
-      end
       $@type$ ?let typeName
+#      <type_definition> !?ioDeclarations ?let typeName
       outExpression = @testDynamicClassInExpressionAST.new {
         !outExpression
         !endOfReceiverExpression
-        !kind
+        !.inherited
         !typeName
       }
     or
       let endOfReceiverExpression = @location.here
       $as$
+#      <type_definition> !?ioDeclarations ?let typeName
       $@type$ ?let typeName
       outExpression = @castInExpressionAST.new {
         !outExpression
@@ -120,13 +130,13 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @testDynamicClassInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -137,7 +147,7 @@ override method @testDynamicClassInExpressionAST enterExpressionInSemanticContex
 #·····················································································································
 
 override method @testDynamicClassInExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -147,7 +157,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 {
 #--- Receiver expression analysis
   [self.mReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -156,7 +166,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     ?let expression
   ]
 #--- Get type information
-   let castType = [ioTypeMap searchKey !self.mTypeName]
+   let castType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is either a class
   if [[expression.mResultType definition].mTypeKindEnum isClassType] then
   #--- Check expression type is a descendant of named type
@@ -192,10 +202,10 @@ override method @castInExpressionAST enterExpressionInSemanticContext
   [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @castInExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -205,16 +215,16 @@ override method @castInExpressionAST analyzeSemanticExpression
 {
 #--- Receiver expression analysis
   [self.mReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext 
+    !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
    ]
 #--- Get type information
-   let type = [ioTypeMap searchKey !self.mTypeName]
+   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is an @object type
   if [[expression.mResultType definition].mTypeKindEnum isClassType]then
   #--- Check expression type is a descendant of named type
@@ -253,9 +263,9 @@ override method @castInExpressionAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
@@ -300,7 +310,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @castInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -309,7 +319,7 @@ override method @castInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [self.mCastType addHeaderFileName !?ioInclusionSet] 
+  [self.mCastType addHeaderFileName !?ioInclusionSet]
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
 #--- Receiver expression
@@ -325,7 +335,7 @@ override method @castInExpressionForGeneration generateExpression
   + " " + outCppExpression + " ;\n"
   + "if (" + receiverExpression + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-#--- 
+#---
   ioGeneratedCode +=
     "if (nullptr != dynamic_cast <const cPtr_"
   + [self.mTypeName identifierRepresentation]
@@ -336,7 +346,7 @@ override method @castInExpressionForGeneration generateExpression
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode +=
     compilerCppName () + "->castError (\""
-  + [self.mTypeName identifierRepresentation] 
+  + [self.mTypeName identifierRepresentation]
   + "\", " + receiverExpression + ".ptr ()->classDescriptor ()"
   + [self.mLocation commaSourceFile] + ") ;\n"
   [!?ioGeneratedCode decIndentation !2]
@@ -346,7 +356,7 @@ override method @castInExpressionForGeneration generateExpression
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
@@ -379,4 +389,4 @@ override method @extractObjectInExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

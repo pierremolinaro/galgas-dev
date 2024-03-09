@@ -50,7 +50,7 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::constructor_nil (LOCATION_ARGS) {
+GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::class_func_nil (LOCATION_ARGS) {
   GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;

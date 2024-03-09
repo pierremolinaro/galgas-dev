@@ -22,7 +22,7 @@
      <Add option="-Wundef" />
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
-     <Add option="-std=c++14" />
+     <Add option="-std=c++17" />
      <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
@@ -46,7 +46,7 @@
      <Add option="-Winline" />
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
-     <Add option="-std=c++14" />
+     <Add option="-std=c++17" />
      <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
@@ -170,7 +170,6 @@
    <Unit filename="../libpm/streams/C_ConsoleOut.cpp" />
    <Unit filename="../libpm/streams/C_ErrorOut.cpp" />
    <Unit filename="../libpm/strings/unicode_character_cpp.cpp" />
-   <Unit filename="../libpm/strings/unicode_string_routines.cpp" />
    <Unit filename="../libpm/strings/String-class-getters.cpp" />
    <Unit filename="../libpm/strings/String-class.cpp" />
    <Unit filename="../libpm/strings/HTMLString.cpp" />
@@ -189,12 +188,13 @@
    <Unit filename="../libpm/utilities/UInt32Set.cpp" />
    <Unit filename="../libpm/utilities/DirectedGraph.cpp" />
    <Unit filename="../libpm/utilities/md5.cpp" />
+   <Unit filename="../libpm/utilities/SHA256.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_CLI_Options.cpp" />
    <Unit filename="../libpm/galgas2/typeComparisonResult.cpp" />
    <Unit filename="../libpm/galgas2/Compiler.cpp" />
-   <Unit filename="../libpm/galgas2/C_Lexique.cpp" />
-   <Unit filename="../libpm/galgas2/C_Lexique-parsing.cpp" />
+   <Unit filename="../libpm/galgas2/Lexique.cpp" />
+   <Unit filename="../libpm/galgas2/Lexique-parsing.cpp" />
    <Unit filename="../libpm/galgas2/LocationInSource.cpp" />
    <Unit filename="../libpm/galgas2/SourceTextInString.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_type_descriptor.cpp" />

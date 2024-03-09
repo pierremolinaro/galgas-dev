@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @arrayDeclarationAST : @semanticDeclarationAST {
   private let @lstring mArrayTypeName
@@ -8,20 +25,20 @@ refclass @arrayDeclarationAST : @semanticDeclarationAST {
   private let @lbigint mDimension
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @arrayDeclarationAST keyRepresentation
   ->@string {
   result = "array @" + self.mArrayTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $array$
@@ -40,13 +57,13 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -59,9 +76,9 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mElementTypeName !self.mElementTypeName.location}]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @arrayDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -80,14 +97,14 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry !self.mElementTypeName ?let elementTypeIndex]
 #  [!?ioTypeMap makeEntry  !self.mElementTypeName ?let elementTypeIndex]
 #---
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap ={}
   let @instanceMethodMap instanceMethodMap = {}
-#--- 
+#---
 #  [!?ioTypeMap makeEntryFromString !"bool" ?let boolType]
   [!?ioTypeMap makeEntry !.new {!"bool" !.nowhere} ?let boolType]
-#--- 
+#---
 #  [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
   [!?ioTypeMap makeEntry !.new {!"uint" !.nowhere} ?let uintType]
 #---
@@ -98,7 +115,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     idx += 1
   end
 #--- Constructor
-  [!?constructorMap insertKey
+  [!?classFunctionMap insertKey
     !@lstring.new {!"new" !@location.here}
     !uintArgs
     !false
@@ -234,12 +251,12 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @arrayDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -262,16 +279,16 @@ override method @arrayDeclarationAST semanticAnalysis
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
   private let @uint mDimension
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @arrayTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -300,7 +317,7 @@ override method @arrayTypeForGeneration appendDeclaration1
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @arrayTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -325,5 +342,5 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

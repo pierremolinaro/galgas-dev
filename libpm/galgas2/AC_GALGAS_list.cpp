@@ -92,19 +92,19 @@ AC_GALGAS_list::~ AC_GALGAS_list (void) {
 
 void AC_GALGAS_list::description (String & ioString,
                                   const int32_t inIndentation) const {
-  ioString.addString ("<list @") ;
-  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.addString (" (") ;
-  ioString.addUnsigned (count()) ;
-  ioString.addString (" object") ;
-  ioString.addString ((count() > 1) ? "s" : "") ;
-  ioString.addString ("):") ;
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
   if (isValid ()) {
     mSharedArray.description (ioString, inIndentation) ;
   }else{
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -252,10 +252,10 @@ capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIn
       result = mSharedArray.objectAtIndex (index COMMA_THERE) ;
     }else{
       String s = "objectAtIndex: index (" ;
-      s.addUnsigned (index) ;
-      s.addString (") >= length (") ;
-      s.addUnsigned (count ()) ;
-      s.addString (")") ;
+      s.appendUnsigned (index) ;
+      s.appendCString (") >= length (") ;
+      s.appendUnsigned (count ()) ;
+      s.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
@@ -276,10 +276,10 @@ cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GAL
         macroUniqueSharedObject (result) ;
       }else{
         String s = "objectAtIndex: index (" ;
-        s.addUnsigned (index) ;
-        s.addString (") >= length (") ;
-        s.addUnsigned (count ()) ;
-        s.addString (")") ;
+        s.appendUnsigned (index) ;
+        s.appendCString (") >= length (") ;
+        s.appendUnsigned (count ()) ;
+        s.appendCString (")") ;
         inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       }
     }else{
@@ -491,7 +491,7 @@ static void enterAllKeys (const cListMapNode * inNode, GALGAS_stringset & ioResu
 GALGAS_stringset AC_GALGAS_listmap::getter_allKeys (LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (isValid ()) {
-    result = GALGAS_stringset::constructor_emptySet (THERE) ;
+    result = GALGAS_stringset::class_func_emptySet (THERE) ;
     enterAllKeys (mSharedListMap->root (), result) ;
   }
   return result ;
@@ -512,7 +512,7 @@ static void enterKeyList (const cListMapNode * inNode, GALGAS_stringlist & ioRes
 GALGAS_stringlist AC_GALGAS_listmap::getter_keyList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
-    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
     enterKeyList (mSharedListMap->root (), result) ;
   }
   return result ;
@@ -566,13 +566,13 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
                                               uint32_t & ioIdx) {
   if (nullptr != inNode) {
     internalDescription (inNode->mInfPtr, ioString, inIndentation, ioIdx) ;
-    ioString.addString ("\n") ;
-    ioString.addStringMultiple ("| ", inIndentation) ;
-    ioString.addString ("|-at ") ;
-    ioString.addUnsigned (ioIdx) ;
-    ioString.addString (": key '") ;
-    ioString.addString (inNode->mKey) ;
-    ioString.addString ("' ") ;
+    ioString.appendCString ("\n") ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendCString ("|-at ") ;
+    ioString.appendUnsigned (ioIdx) ;
+    ioString.appendCString (": key '") ;
+    ioString.appendString (inNode->mKey) ;
+    ioString.appendCString ("' ") ;
     inNode->myList.description (ioString, inIndentation + 1) ;
     ioIdx ++ ;
     internalDescription (inNode->mSupPtr, ioString, inIndentation, ioIdx) ;
@@ -583,32 +583,32 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
 
 void cSharedListMapRoot::description (String & ioString,
                                       const int32_t inIndentation) const {
-  ioString.addString (" (") ;
-  ioString.addUnsigned (count ()) ;
-  ioString.addString (" object") ;
-  ioString.addString ((count () > 1) ? "s" : "") ;
-  ioString.addString ("): ") ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count () > 1) ? "s" : "") ;
+  ioString.appendCString ("): ") ;
   uint32_t idx = 0 ;
   internalDescription (mRoot, ioString, inIndentation, idx) ;
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_listmap::description (String & ioString,
                                      const int32_t inIndentation) const {
-  ioString.addString ("<@") ;
-  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<@") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
-    ioString.addString (": ") ;
-    ioString.addUnsigned (count()) ;
-    ioString.addString (" object") ;
-    ioString.addString ((count() > 1) ? "s" : "") ;
+    ioString.appendCString (": ") ;
+    ioString.appendUnsigned (count()) ;
+    ioString.appendCString (" object") ;
+    ioString.appendString ((count() > 1) ? "s" : "") ;
     mSharedListMap->description (ioString, inIndentation) ;
   }else{
-    ioString.addString (": not built") ;
+    ioString.appendCString (": not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

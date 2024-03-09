@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -36,8 +36,8 @@ class C_StringCommandLineOption final : public C_CommandLineOption {
                                       const char * inComment,
                                       const char * inDefaultValue) ;
 //--- No Copy
-  private: C_StringCommandLineOption (const C_StringCommandLineOption &) ;
-  private: C_StringCommandLineOption & operator = (const C_StringCommandLineOption &) ;
+  private: C_StringCommandLineOption (const C_StringCommandLineOption &) = delete ;
+  private: C_StringCommandLineOption & operator = (const C_StringCommandLineOption &) = delete ;
 
 //--- Attributes
   private: C_StringCommandLineOption * mNext ;
@@ -46,12 +46,14 @@ class C_StringCommandLineOption final : public C_CommandLineOption {
   public: const char * mDefaultValue ;
 
 //--- Static methods
-  public: static void setStringOptionForCommandChar (const char * inCommandCommandLineOptionString,
-                                                      bool & outFound,
-                                                      bool & outCommandLineOptionStringIsValid) ;
-  public: static void setStringOptionForCommandString (const char * inCommandCommandLineOptionString,
-                                                        bool & outFound,
-                                                        bool & outCommandLineOptionStringIsValid)  ;
+  public: static void setStringOptionForCommandChar (const String & inCommandCommandLineOptionString,
+                                                     bool & outFound,
+                                                     bool & outCommandLineOptionStringIsValid) ;
+
+  public: static void setStringOptionForCommandString (const String & inCommandCommandLineOptionString,
+                                                       bool & outFound,
+                                                       bool & outCommandLineOptionStringIsValid)  ;
+
   public: static void printUsageOfStringOptions (void) ;
   public: static void printStringOptions (void) ;
 

@@ -11,18 +11,26 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
                    _ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "checkEntityUsefulness",
+    identifier: "errorClassDeclaration",
     commandChar: "",
-    commandString: "check-usefulness",
-    comment: "Check Entity Usefulness",
+    commandString: "error-class-declaration",
+    comment: "'class' declaration is obsolete use 'valueclass'",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "check_big_int",
+    identifier: "propertyAccessRequiresSelf",
     commandChar: "",
-    commandString: "check-big-int",
-    comment: "Run bit integers checks",
+    commandString: "error-property-access-without-self",
+    comment: "'self' is required for accessing properties in getter, setter and methods",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    identifier: "checkEntityUsefulness",
+    commandChar: "",
+    commandString: "check-usefulness",
+    comment: "Check Entity Usefulness",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
@@ -51,26 +59,18 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
+    identifier: "errorValueClassDeclaration",
+    commandChar: "",
+    commandString: "error-value-class-declaration",
+    comment: "Error on 'value class' declaration",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
     identifier: "errorAnomynousForInstructionEnumeratedObject",
     commandChar: "",
     commandString: "error-anonymous-for-instruction",
-    comment: "error on anonymous 'for' instruction enumerated object ('for () in ...')",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
-    identifier: "errorClassDeclaration",
-    commandChar: "",
-    commandString: "error-class-declaration",
-    comment: "'class' declaration is obsolete use 'valueclass'",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
-    identifier: "errorEllipsisInEnumeratedObject",
-    commandChar: "",
-    commandString: "error-ellipsis-in-for-instruction",
-    comment: "error on ellipsis in enumerated object ('for (x y ...) in xxx')",
+    comment: "Error on anonymous 'for' instruction enumerated object ('for () in ...')",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
@@ -78,31 +78,23 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     identifier: "errorObsoleteGetterCall",
     commandChar: "",
     commandString: "error-on-obsolete-getter-call",
-    comment: "error on call of an obsolete getter",
+    comment: "Error on call of an obsolete getter",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "errorOldStyleCollectionInitializer",
+    identifier: "errorPropertyGetterCall",
     commandChar: "",
-    commandString: "error-old-syle-collection-initializer",
-    comment: "error on old style collection initializer",
+    commandString: "error-property-getter-call",
+    comment: "Error on calling property getter (instead of dot notation)",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "errorOldStyleLocalVarDeclaration",
+    identifier: "errorEllipsisInEnumeratedObject",
     commandChar: "",
-    commandString: "error-old-style-local-var-declaration",
-    comment: "error on old style local variable declaration",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
-    identifier: "errorOldStylePropertyDeclaration",
-    commandChar: "",
-    commandString: "error-old-style-property-declaration",
-    comment: "error on old style property declaration",
+    commandString: "error-ellipsis-in-for-instruction",
+    comment: "Error on ellipsis in enumerated object ('for (x y ...) in xxx')",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
@@ -115,26 +107,26 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "errorOnUselessSelector",
+    identifier: "errorOldStyleCollectionInitializer",
     commandChar: "",
-    commandString: "error-on-useless-selector",
-    comment: "Error on useless selector (GGS4)",
+    commandString: "error-old-syle-collection-initializer",
+    comment: "Error on old style collection initializer",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "errorPropertyGetterCall",
+    identifier: "errorOldStyleLocalVarDeclaration",
     commandChar: "",
-    commandString: "error-property-getter-call",
-    comment: "error on calling property getter (instead of dot notation)",
+    commandString: "error-old-style-local-var-declaration",
+    comment: "Error on old style local variable declaration",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "errorValueClassDeclaration",
+    identifier: "errorOldStylePropertyDeclaration",
     commandChar: "",
-    commandString: "error-value-class-declaration",
-    comment: "error on 'value class' declaration",
+    commandString: "error-old-style-property-declaration",
+    comment: "Error on old style property declaration",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
@@ -155,18 +147,18 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "outputHTMLTypeListFile",
-    commandChar: "T",
-    commandString: "output-html-type-dump-file",
-    comment: "Output a HTML file that contains all defined types",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
     identifier: "outputHTMLgrammarFile",
     commandChar: "",
     commandString: "output-html-grammar-file",
     comment: "Output a HTML file for every grammar component",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    identifier: "outputHTMLTypeListFile",
+    commandChar: "T",
+    commandString: "output-html-type-dump-file",
+    comment: "Output a HTML file that contains all defined types",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
@@ -179,10 +171,10 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "propertyAccessRequiresSelf",
+    identifier: "check_big_int",
     commandChar: "",
-    commandString: "error-property-access-without-self",
-    comment: "'self' is required for accessing properties in getter, setter and methods",
+    commandString: "check-big-int",
+    comment: "Run bit integers checks",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
@@ -190,7 +182,7 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     identifier: "warningNotGalgas4Feature",
     commandChar: "",
     commandString: "warns-on-feature-not-handled-in-galgas4",
-    comment: "warns on feature not handled in galgas 4",
+    comment: "Warns on feature not handled in galgas 4",
     defaultValue: ""
   ))
   ioUIntOptionArray.append (SWIFT_CommandLineOption (
@@ -200,14 +192,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     commandString: "macosx",
     comment: "Generate an Xcode project for OS X",
     defaultValue: "0"
-  ))
-  ioStringOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
-    identifier: "cppCompile",
-    commandChar: "",
-    commandString: "compile",
-    comment: "Perform C++ compilation on 'string' target",
-    defaultValue: ""
   ))
   ioStringOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
@@ -223,6 +207,14 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     commandChar: "",
     commandString: "extract-libpm",
     comment: "Extract embedded LIBPM at given path",
+    defaultValue: ""
+  ))
+  ioStringOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    identifier: "cppCompile",
+    commandChar: "",
+    commandString: "compile",
+    comment: "Perform C++ compilation on 'string' target",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (

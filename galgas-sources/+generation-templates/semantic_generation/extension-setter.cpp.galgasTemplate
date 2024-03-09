@@ -10,7 +10,7 @@ static TC_UniqueArray <extensionSetterSignature_%![CLASS_NAME identifierRepresen
 
 void enterExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) {
-  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, nullptr COMMA_HERE) ;
+  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, nullptr) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ void callExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_%
          }
          p = p->mSuperclassDescriptor ;
        }
-       gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, nullptr COMMA_HERE) ;
+       gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, nullptr) ;
     }
     f (inObject, %
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do

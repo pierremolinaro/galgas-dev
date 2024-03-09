@@ -45,13 +45,13 @@ mUInt64Value (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_max (UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint_36__34_ (UINT64_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_MaskWithCompressedBitString (const GALGAS_string & inBitString,
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_MaskWithCompressedBitString (const GALGAS_string & inBitString,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_ result ;
@@ -61,7 +61,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_MaskWithCompres
     uint64_t v = 0 ;
     for (int32_t i=0 ; (i<bitStringLength) && ok ; i++) {
       v <<= 1 ;
-      const utf32 c = inBitString.stringValue () (i COMMA_HERE) ;
+      const utf32 c = inBitString.stringValue ().charAtIndex (i COMMA_HERE) ;
       if ((UNICODE_VALUE (c) == '1') || (UNICODE_VALUE (c) == '0')) {
         v ++ ;
       }else if (UNICODE_VALUE (c) != 'X') {
@@ -79,7 +79,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_MaskWithCompres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_BaseValueWithCompressedBitString (const GALGAS_string & inBitString,
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_BaseValueWithCompressedBitString (const GALGAS_string & inBitString,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_ result ;
@@ -89,7 +89,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_BaseValueWithCo
     const int32_t bitStringLength = inBitString.stringValue ().length () ;
     for (int32_t i=0 ; (i<bitStringLength) && ok ; i++) {
       v <<= 1 ;
-      const utf32 c = inBitString.stringValue () (i COMMA_HERE) ;
+      const utf32 c = inBitString.stringValue ().charAtIndex (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) == '1') {
         v += 1 ;
       }else if ((UNICODE_VALUE (c) != '0') && (UNICODE_VALUE (c) != 'X')) {
@@ -107,7 +107,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_BaseValueWithCo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_WithBitString (const GALGAS_string & inBitString,
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::class_func_uint_36__34_WithBitString (const GALGAS_string & inBitString,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_ result ;
@@ -117,7 +117,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_uint_36__34_WithBitString (
     const int32_t bitStringLength = inBitString.stringValue ().length () ;
     for (int32_t i=0 ; (i<bitStringLength) && ok ; i++) {
       v <<= 1 ;
-      const utf32 c = inBitString.stringValue () (i COMMA_HERE) ;
+      const utf32 c = inBitString.stringValue ().charAtIndex (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) == '1') {
         v += 1 ;
       }else if (UNICODE_VALUE (c) != '0') {
@@ -609,7 +609,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_alphaString (UNUSED_LOCATION_ARGS) con
     int32_t idx = 13 ;
     while (v > 0) {
       const utf32 c = TO_UNICODE (uint32_t ((v % 26) + 'a')) ;
-      s.setUnicodeCharacterAtIndex (c, idx COMMA_HERE) ;
+      s.setCharAtIndex (c, idx COMMA_HERE) ;
       idx -= 1 ;
       v /= 26 ;
     }
@@ -624,7 +624,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnsigned (mUInt64Value) ;
+    s.appendUnsigned (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -636,8 +636,8 @@ GALGAS_string GALGAS_uint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addString ("0x") ;
-    s.addUnsignedHex16 (mUInt64Value) ;
+    s.appendCString ("0x") ;
+    s.appendUnsignedHex16 (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -656,7 +656,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_hexStringSeparatedBy (const GALGAS_cha
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.addUnsignedHex16 (mUInt64Value) ;
+      s.appendUnsignedHex16 (mUInt64Value) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -673,7 +673,7 @@ GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     String s ;
-    s.addUnsignedHex16 (mUInt64Value) ;
+    s.appendUnsignedHex16 (mUInt64Value) ;
     result = GALGAS_string (s) ;
   }
   return result ;
@@ -683,13 +683,13 @@ GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 void GALGAS_uint_36__34_::description (String & ioString,
                                        const int32_t /* inIndentation */) const {
-  ioString.addString ("<@uint64:") ;
+  ioString.appendCString ("<@uint64:") ;
   if (isValid ()) {
-    ioString.addUnsigned (mUInt64Value) ;
+    ioString.appendUnsigned (mUInt64Value) ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @rightShiftExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -48,115 +65,117 @@ refclass @subExpressionNoOverflowAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <simple_expression_ggs3> !@semanticExpressionAST outExpression {
-    <term_ggs3> ? outExpression
+  #·······························································································
+
+  rule <simple_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                !@semanticExpressionAST outExpression {
+    <term_ggs3> !?ioDeclarations ? outExpression
     repeat
     while
       let operatorLocation = @location.here
       $<<$
       let leftOperand = outExpression
-      <term_ggs3> ?let rightOperand
+      <term_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @leftShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $>>$
       let leftOperand = outExpression
-      <term_ggs3> ?let rightOperand
+      <term_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @rightShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $+$
       let leftOperand = outExpression
-      <term_ggs3> ?let rightOperand
+      <term_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @addExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&+$
       let leftOperand = outExpression
-      <term_ggs3> ?let rightOperand
+      <term_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @addExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $-$
       let leftOperand = outExpression
-      <term_ggs3> ?let rightOperand
+      <term_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @subExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&-$
       let leftOperand = outExpression
-      <term_ggs3> ?let rightOperand
+      <term_ggs3> !?ioDeclarations ?let rightOperand
       outExpression = @subExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <simple_expression> !@semanticExpressionAST outExpression {
-    <term> ? outExpression
+  #·······························································································
+
+  rule <simple_expression> ?!@galgasDeclarationAST ioDeclarations
+                           !@semanticExpressionAST outExpression {
+    <term> !?ioDeclarations ?outExpression
     repeat
     while
       let operatorLocation = @location.here
       $<<$
       let leftOperand = outExpression
-      <term> ?let rightOperand
+      <term> !?ioDeclarations ?let rightOperand
       outExpression = @leftShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $>>$
       let leftOperand = outExpression
-      <term> ?let rightOperand
+      <term> !?ioDeclarations ?let rightOperand
       outExpression = @rightShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $+$
       let leftOperand = outExpression
-      <term> ?let rightOperand
+      <term> !?ioDeclarations ?let rightOperand
       outExpression = @addExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&+$
       let leftOperand = outExpression
-      <term> ?let rightOperand
+      <term> !?ioDeclarations ?let rightOperand
       outExpression = @addExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $-$
       let leftOperand = outExpression
-      <term> ?let rightOperand
+      <term> !?ioDeclarations ?let rightOperand
       outExpression = @subExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&-$
       let leftOperand = outExpression
-      <term> ?let rightOperand
+      <term> !?ioDeclarations ?let rightOperand
       outExpression = @subExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @rightShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -168,7 +187,7 @@ override method @rightShiftExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @rightShiftExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -178,7 +197,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -188,7 +207,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mBigIntType
     !inAnalysisContext
@@ -228,7 +247,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @leftShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -240,7 +259,7 @@ override method @leftShiftExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @leftShiftExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -250,7 +269,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -260,7 +279,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mBigIntType
     !inAnalysisContext
@@ -300,7 +319,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -312,7 +331,7 @@ override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @addExpressionNoOverflowAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -322,7 +341,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -332,7 +351,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -347,7 +366,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
@@ -367,7 +386,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @addExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -379,7 +398,7 @@ override method @addExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @addExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -388,7 +407,7 @@ override method @addExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -398,7 +417,7 @@ override method @addExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -413,7 +432,7 @@ override method @addExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
@@ -433,7 +452,7 @@ override method @addExpressionAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -445,7 +464,7 @@ override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @subExpressionNoOverflowAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -455,7 +474,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -465,7 +484,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -480,7 +499,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
@@ -500,7 +519,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @subExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -512,7 +531,7 @@ override method @subExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @subExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType
   ?let @analysisContext inAnalysisContext
@@ -521,7 +540,7 @@ override method @subExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inInferenceType
     !inAnalysisContext
@@ -531,7 +550,7 @@ override method @subExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: leftExpression.mResultType
     !inAnalysisContext
@@ -546,7 +565,7 @@ override method @subExpressionAST analyzeSemanticExpression
     !self.mOperatorLocation
     !?leftExpression
     !?rightExpression
-  )  
+  )
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
@@ -566,9 +585,9 @@ override method @subExpressionAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @binaryOperator {
   case rightShift
@@ -664,4 +683,4 @@ override method @binaryOperatorExpressionForGeneration generateExpression
   outCppExpression += [self.mLocation commaSourceFile] + ")"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

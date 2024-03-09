@@ -82,9 +82,9 @@ end
     case boolsetType : %boolset%
     case structType : %struct%
     case graphType : %graph%
-    case arrayType : %array%
     case externType : %extern%
-    case predefinedType : %predefined type%
+    case otherType : %other type%
+    case packageType : %package type%
     case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>
@@ -180,11 +180,11 @@ end
 if not [[element definition].mTypeForEnumeratedElement isNull] then
   %<tr class="result_line"><td><b>for</b> enumeration type</td><td>%!linkForType (![[element definition].mTypeForEnumeratedElement definition].mTypeName.string)%</td></tr>%
 end
-#--- Constructors
-if [[element definition].mConstructorMap count] > 0 then
-  %<tr class="result_line"><td>Constructors</td><td>%
-  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in [element definition].mConstructorMap do
-    %<b>constructor</b> %!lkey.string
+#--- Class functions
+if [[element definition].mClassFunctionMap count] > 0 then
+  %<tr class="result_line"><td>Class Functions</td><td>%
+  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in [element definition].mClassFunctionMap do
+    %<b>class function</b> %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % <span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end !%</span>%

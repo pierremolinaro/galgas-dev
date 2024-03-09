@@ -1,14 +1,31 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    R O U T I N E    D E C L A R A T I O N 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    R O U T I N E    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
-  #    R O U T I N E    D E C L A R A T I O N 
-  #·················································································································
+  #·······························································································
+  #    R O U T I N E    D E C L A R A T I O N
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
@@ -22,9 +39,9 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -38,7 +55,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -53,9 +70,9 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -69,20 +86,19 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
-  #    R O U T I N E    D E C L A R A T I O N 
-  #·················································································································
+  #·······························································································
+  #    R O U T I N E    D E C L A R A T I O N
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
     var isUsefull = false
     repeat
@@ -94,9 +110,9 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -110,10 +126,9 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $proc$
     var isUsefull = false
@@ -126,9 +141,9 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST mFormalParameterList
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mRoutineInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
@@ -142,17 +157,17 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @procDeclarationAST : @externProcedureDeclarationAST {
   public let @semanticInstructionListAST mRoutineInstructionList
   public let @location mEndOfRoutineInstructionList
 
-  #·················································································································
+  #·······························································································
 
   override method enterDeclarationInSemanticContext
                           ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -180,9 +195,9 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
     ]
   }
 
-  #·················································································································
+  #·······························································································
 
-  override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities 
+  override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                                   ?let @string unused inProductDirectory
                                   ?let @semanticContext inSemanticContext
@@ -192,7 +207,7 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
   #---
     var routineSignature = @formalParameterSignature {}
     for argument in self.mFormalArgumentListAST do
-      let parameterType = [ioTypeMap searchKey !argument.mFormalArgumentTypeName]
+      let parameterType = [ioTypeMap typeMapEntryForLKey !argument.mFormalArgumentTypeName]
       routineSignature +=
         !argument.mFormalSelector
         !parameterType
@@ -240,21 +255,21 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
       }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #    R O U T I N E    I M P L E M E N T A T I O N
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
   public let @bool mGenerateStatic
   public let @semanticInstructionListForGeneration mRoutineInstructionList
 
-  #·················································································································
+  #·······························································································
 
   override method appendSpecificImplementation
     ?let @unifiedTypeMap unused inTypeMap
@@ -280,11 +295,11 @@ refclass @routineImplementationForGeneration : @routinePrototypeDeclarationForGe
     outImplementation = [filewrapper semanticComponentGenerationTemplate.routineImplementation
       !self.routineMangledName
       !code
-    ] 
+    ]
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

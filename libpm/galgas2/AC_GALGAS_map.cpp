@@ -23,7 +23,6 @@
 #include "C_galgas_type_descriptor.h"
 #include "MF_MemoryControl.h"
 #include "Compiler.h"
-#include "unicode_string_routines.h"
 #include "C_galgas_CLI_Options.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -315,13 +314,13 @@ static void internalDescription (cMapNode * inNode,
                                  uint32_t & ioIdx) {
   if (nullptr != inNode) {
     internalDescription (inNode->mInfPtr, ioString, inIndentation, ioIdx) ;
-    ioString.addString ("\n") ;
-    ioString.addStringMultiple ("| ", inIndentation) ;
-    ioString.addString ("|-at ") ;
-    ioString.addUnsigned (ioIdx) ;
-    ioString.addString (": key '") ;
-    ioString.addString (inNode->mKey) ;
-    ioString.addString ("' ") ;
+    ioString.appendCString ("\n") ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendCString ("|-at ") ;
+    ioString.appendUnsigned (ioIdx) ;
+    ioString.appendCString (": key '") ;
+    ioString.appendString (inNode->mKey) ;
+    ioString.appendCString ("' ") ;
     inNode->mAttributes.description (ioString, inIndentation + 2) ;
     ioIdx ++ ;
     internalDescription (inNode->mSupPtr, ioString, inIndentation, ioIdx) ;
@@ -334,16 +333,16 @@ void cSharedMapRoot::description (String & ioString,
                                   const int32_t inIndentation,
                                   const uint32_t inLevel) const {
   if (inLevel > 0) {
-    ioString.addString ("\n") ;
-    ioString.addStringMultiple ("| ", inIndentation + 1) ;
-    ioString.addString ("override #") ;
-    ioString.addUnsigned (inLevel) ;
+    ioString.appendCString ("\n") ;
+    ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+    ioString.appendCString ("override #") ;
+    ioString.appendUnsigned (inLevel) ;
   }
-  ioString.addString (" (") ;
-  ioString.addUnsigned (count ()) ;
-  ioString.addString (" object") ;
-  ioString.addString ((count () > 1) ? "s" : "") ;
-  ioString.addString ("): ") ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count () > 1) ? "s" : "") ;
+  ioString.appendCString ("): ") ;
   uint32_t idx = 0 ;
   internalDescription (mRoot, ioString, inIndentation, idx) ;
 }
@@ -352,8 +351,8 @@ void cSharedMapRoot::description (String & ioString,
 
 void AC_GALGAS_map::description (String & ioString,
                                  const int32_t inIndentation) const {
-  ioString.addString ("<map @") ;
-  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
   if (isValid ()) {
     const cSharedMapRoot * currentMap = mSharedMap ;
     uint32_t level = 0 ;
@@ -363,9 +362,9 @@ void AC_GALGAS_map::description (String & ioString,
       currentMap = currentMap->mOverridenMap ;
     }
   }else{
-    ioString.addString (" not built") ;
+    ioString.appendCString (" not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -438,9 +437,9 @@ const cMapNode * cSharedMapRoot::findNodeForKeyInMapOrInOverridenMaps (const GAL
     result = findEntryInMap (key, this) ;
     if (nullptr == result) {
       String errorMessage ;
-      errorMessage.addString ("the '") ;
-      errorMessage.addString (key) ;
-      errorMessage.addString ("' key is not defined in map") ;
+      errorMessage.appendCString ("the '") ;
+      errorMessage.appendString (key) ;
+      errorMessage.appendCString ("' key is not defined in map") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }
   }
@@ -911,7 +910,7 @@ static void enterKeyInStringSet (const cMapNode * inNode,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset cSharedMapRoot::keySet (LOCATION_ARGS) const {
-  GALGAS_stringset result = GALGAS_stringset::constructor_emptySet (THERE) ;
+  GALGAS_stringset result = GALGAS_stringset::class_func_emptySet (THERE) ;
   enterKeyInStringSet (mRoot, result) ;
   return result ;
 }
@@ -950,7 +949,7 @@ static void enterKeyInLStringList (cMapNode * inNode,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist cSharedMapRoot::keyList (LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
+  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
   enterKeyInLStringList (mRoot, result) ;
   return result ;
 }
@@ -982,8 +981,8 @@ GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
     cMapNode * node = findEntryInMap (key, this) ;
     if (nullptr == node) {
       String message = "'locationForKey' map reader run-time error: the '" ;
-      message.addString (key) ;
-      message.addString ("' does not exist in map") ;
+      message.appendString (key) ;
+      message.appendCString ("' does not exist in map") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       cMapElement * p = (cMapElement *) node->mAttributes.ptr () ;
@@ -1228,8 +1227,8 @@ const cMapElement * cSharedMapRoot::searchForReadingAttribute (const GALGAS_stri
     }else{
     //--- Build error message
       String message = "cannot read attribute in map: the '" ;
-      message.addString (key) ;
-      message.addString ("' key does not exist") ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
@@ -1274,8 +1273,8 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_string &
     }else if (inErrorOnUnknownKey) {
     //--- Build error message
       String message = "cannot read attribute in map: the '" ;
-      message.addString (key) ;
-      message.addString ("' key does not exist") ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
@@ -1492,16 +1491,16 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
       const String removeErrorMessage (inRemoveErrorMessage) ;
       const int32_t errorMessageLength = removeErrorMessage.length () ;
       for (int32_t i=0 ; i<errorMessageLength ; i++) {
-        const utf32 c = removeErrorMessage (i COMMA_HERE) ;
+        const utf32 c = removeErrorMessage.charAtIndex (i COMMA_HERE) ;
         if (perCentFound) {
           if (UNICODE_VALUE (c) == 'K') {
-            message.addString (key) ;
+            message.appendString (key) ;
           }
           perCentFound = false ;
         }else if (UNICODE_VALUE (c) == '%') {
           perCentFound = true ;
         }else{
-          message.addUnicodeChar (c COMMA_HERE) ;
+          message.appendChar (c) ;
         }
       }
     //--- Emit error message

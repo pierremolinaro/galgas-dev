@@ -53,22 +53,23 @@ mDefaultValue (inDefaultValue) {
 //--------------------------------------------------------------------------------------------------
 
 void C_UIntCommandLineOption::
-setUIntOptionForCommandChar (const char * inCommandCommandLineOptionString,
+setUIntOptionForCommandChar (const String & inCommandCommandLineOptionString,
                              bool & outFound,
                              bool & outCommandLineOptionStringIsValid) {
-  const uint32_t optionLength = (uint32_t) (strlen (inCommandCommandLineOptionString) & UINT32_MAX) ;
-  outCommandLineOptionStringIsValid = (optionLength > 2) && (inCommandCommandLineOptionString [1] == '=') ;
+  const int32_t optionLength = inCommandCommandLineOptionString.length () ;
+  outCommandLineOptionStringIsValid = (optionLength > 2) && (inCommandCommandLineOptionString.charAtIndex (1 COMMA_HERE) == '=') ;
   uint32_t optionValue = 0 ;
-  for (uint32_t i=2 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
-    outCommandLineOptionStringIsValid = (inCommandCommandLineOptionString [i] >= '0') && (inCommandCommandLineOptionString [i] <= '9') ;
+  for (int32_t i=2 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
+    const uint32_t c = UNICODE_VALUE (inCommandCommandLineOptionString.charAtIndex (i COMMA_HERE)) ;
+    outCommandLineOptionStringIsValid = (c >= '0') && (c <= '9') ;
     optionValue *= 10 ;
-    optionValue += (uint32_t) (inCommandCommandLineOptionString [i] - '0') ;
+    optionValue += c - '0' ;
   }
   outFound = false ;
   C_UIntCommandLineOption * p = gFirstIntOption ;
   if (outCommandLineOptionStringIsValid) {
     while ((p != nullptr) && ! outFound) {
-      outFound = inCommandCommandLineOptionString [0] == p->mCommandChar ;
+      outFound = UNICODE_VALUE (inCommandCommandLineOptionString.charAtIndex (0 COMMA_HERE)) == uint32_t (p->mCommandChar) ;
       if (outFound) {
         p->mValue = optionValue ;
       }
@@ -80,17 +81,17 @@ setUIntOptionForCommandChar (const char * inCommandCommandLineOptionString,
 //--------------------------------------------------------------------------------------------------
 
 void C_UIntCommandLineOption::
-setUIntOptionForCommandString (const char * inCommandCommandLineOptionString,
+setUIntOptionForCommandString (const String & inCommandCommandLineOptionString,
                                bool & outFound,
                                bool & outCommandLineOptionStringIsValid) {
-  const uint32_t optionLength = (uint32_t) (strlen (inCommandCommandLineOptionString) & UINT32_MAX) ;
+  const int32_t optionLength = inCommandCommandLineOptionString.length () ;
   outCommandLineOptionStringIsValid = optionLength > 2 ;
 //--- Find '=' character
-  uint32_t equalSignIndex = 0 ;
+  int32_t equalSignIndex = 0 ;
   if (outCommandLineOptionStringIsValid) {
     bool found = false ;
     while ((equalSignIndex < optionLength) && outCommandLineOptionStringIsValid && !found) {
-      found = inCommandCommandLineOptionString [equalSignIndex] == '=' ;
+      found = inCommandCommandLineOptionString.charAtIndex (equalSignIndex COMMA_HERE) == '=' ;
       if (! found) {
         equalSignIndex ++ ;
       }
@@ -99,18 +100,19 @@ setUIntOptionForCommandString (const char * inCommandCommandLineOptionString,
   }
 //--- Compute option value
   uint32_t optionValue = 0 ;
-  for (uint32_t i=equalSignIndex+1 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
-    outCommandLineOptionStringIsValid = (inCommandCommandLineOptionString [i] >= '0') && (inCommandCommandLineOptionString [i] <= '9') ;
+  for (int32_t i=equalSignIndex+1 ; (i<optionLength) && outCommandLineOptionStringIsValid ; i++) {
+    const uint32_t c = UNICODE_VALUE (inCommandCommandLineOptionString.charAtIndex (i COMMA_HERE)) ;
+    outCommandLineOptionStringIsValid = (c >= '0') && (c <= '9') ;
     optionValue *= 10 ;
-    optionValue += (uint32_t) (inCommandCommandLineOptionString [i] - '0') ;
+    optionValue += uint32_t (c - '0') ;
   }
 //--- Search option
   outFound = false ;
+  const String command = inCommandCommandLineOptionString.leftSubString (equalSignIndex) ;
   if (outCommandLineOptionStringIsValid) {
     C_UIntCommandLineOption * p = gFirstIntOption ;
     while ((p != nullptr) && ! outFound) {
-      outFound = (strlen (p->mCommandString) == equalSignIndex) &&
-                  (strncmp (inCommandCommandLineOptionString, p->mCommandString, equalSignIndex) == 0) ;
+      outFound = command == p->mCommandString ;
       if (outFound) {
         p->mValue = optionValue ;
       }
@@ -128,9 +130,8 @@ void C_UIntCommandLineOption::printUsageOfUIntOptions (void) {
     if (c != '\0') {
       printf (" [-%c=number]", c) ;
     }
-    const char * s = p->mCommandString ;
-    if (s [0] != 0) {
-      printf (" [--%s=number]", s) ;
+    if (p->mCommandString [0] != '\0') {
+      printf (" [--%s=number]", p->mCommandString) ;
     }
     p = p->mNext ;
   }
@@ -144,26 +145,26 @@ void C_UIntCommandLineOption::printUIntOptions (void) {
     if (p->mCommandChar != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString ("-") ;
-      gCout.addChar (p->mCommandChar) ;
-      gCout.addString ("=number") ;
+      gCout.appendCString ("-") ;
+      gCout.appendASCIIChar (p->mCommandChar) ;
+      gCout.appendCString ("=number") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ;
     }
     if (p->mCommandString [0] != '\0') {
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
-      gCout.addString ("--") ;
-      gCout.addString (p->mCommandString) ;
-      gCout.addString ("=number") ;
+      gCout.appendCString ("--") ;
+      gCout.appendString (p->mCommandString) ;
+      gCout.appendCString ("=number") ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.addNL () ; ;
+      gCout.appendNewLine () ;
     }
-    gCout.addString ("    ") ;
-    gCout.addString (p->mComment) ;
-    gCout.addString (" (default value: ") ;
-    gCout.addUnsigned (p->mDefaultValue) ;
-    gCout.addString (")\n") ;
+    gCout.appendCString ("    ") ;
+    gCout.appendString (p->mComment) ;
+    gCout.appendCString (" (default value: ") ;
+    gCout.appendUnsigned (p->mDefaultValue) ;
+    gCout.appendCString (")\n") ;
     p = p->mNext ;
   }
 }

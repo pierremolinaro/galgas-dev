@@ -4,9 +4,9 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
-  %C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
+  %C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
   %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%) ;\n\n%
@@ -17,9 +17,9 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
-  %C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
+  %C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
   %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
@@ -31,9 +31,9 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
-  %C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
+  %C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
   %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
@@ -45,9 +45,9 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
-  %C_StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![lkey utf8RepresentationEscapingQuestionMark]%,\n%
+%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
+  %C_StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
   %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
   %                                         %![mComment utf8RepresentationEscapingQuestionMark]%) ;\n\n%

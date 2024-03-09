@@ -1,25 +1,30 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  semantics routine map
-#                                           
-#  Copyright (C) 2023, ..., 2023 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func routineMangledName ?let @lstring inRoutineName 
+func routineMangledName ?let @lstring inRoutineName
                         ?let @formalParameterSignature inRoutineFormalParameters -> @lstring {
   var str = inRoutineName.string
   for parameter in inRoutineFormalParameters do
-    switch parameter.mFormalArgumentPassingMode 
+    switch parameter.mFormalArgumentPassingMode
     case argumentConstantIn, argumentIn :
       str +="?"
     case argumentInOut :
@@ -32,13 +37,13 @@ func routineMangledName ?let @lstring inRoutineName
   result = .new {!str !inRoutineName.location}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func routineArgumentFromFormalParameters ?let @formalParameterSignature inRoutineFormalParameters -> @string {
   result = "("
   for parameter in inRoutineFormalParameters
   do
-    switch parameter.mFormalArgumentPassingMode 
+    switch parameter.mFormalArgumentPassingMode
     case argumentConstantIn, argumentIn :
       result +="?"
     case argumentInOut :
@@ -53,13 +58,13 @@ private func routineArgumentFromFormalParameters ?let @formalParameterSignature 
   result += ")"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @routineMap {
   private var @internalRoutineMap mInternalRoutineMap = {}
- 
-  #·················································································································
- 
+
+  #·······························································································
+
   setter insertKey ?let @lstring inRoutineName
                    ?let @formalParameterSignature inRoutineSignature
                    ?isFilePrivate: let @bool inIsFilePrivate {
@@ -82,62 +87,67 @@ struct @routineMap {
     end
   }
 
-  #·················································································································
- 
+  #·······························································································
+
   method searchKey ?let @lstring inRoutineName
                    ?actualParameters: @actualParameterListAST inActualParameterList
                    !@formalParameterSignature outRoutineSignature
                    !isFilePrivate: @bool outIsFilePrivate
                    !routineMangledName: @lstring outRoutineMangledName {
-    [self.mInternalRoutineMap searchKey !inRoutineName ?let routineArgumentMap]
-    outIsFilePrivate = false
-    outRoutineSignature = {}
-    for entry in routineArgumentMap do
-      outIsFilePrivate = entry.mIsFilePrivate
-      outRoutineSignature = entry.mRoutineSignature
-    end
-    var @acceptableParameterList acceptableParameterList = {}
-    for entry in routineArgumentMap do
-      var accept = [inActualParameterList length] == [entry.mRoutineSignature length]
-      for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
-        accept = [actualParameter isCompatibleWith
-          !formalParameter.mFormalArgumentPassingMode
-          !formalParameter.mFormalSelector
-        ]
+    if let [self.mInternalRoutineMap searchKey !inRoutineName ?let routineArgumentMap] then
+      outIsFilePrivate = false
+      outRoutineSignature = {}
+      for entry in routineArgumentMap do
+        outIsFilePrivate = entry.mIsFilePrivate
+        outRoutineSignature = entry.mRoutineSignature
       end
-      if accept then
-        acceptableParameterList += !entry.mRoutineSignature !entry.mIsFilePrivate
+      var @acceptableParameterList acceptableParameterList = {}
+      for entry in routineArgumentMap do
+        var accept = [inActualParameterList length] == [entry.mRoutineSignature length]
+        for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
+          accept = [actualParameter isCompatibleWith
+            !formalParameter.mFormalArgumentPassingMode
+            !formalParameter.mFormalSelector
+          ]
+        end
+        if accept then
+          acceptableParameterList += !entry.mRoutineSignature !entry.mIsFilePrivate
+        end
       end
-    end
-    if [acceptableParameterList count] == 1 then
-      [acceptableParameterList first ?outRoutineSignature ?outIsFilePrivate]
-      outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
-    elsif [acceptableParameterList count] == 0 then
-      error inRoutineName
-      : "cannot find any procedure with compatible formal argument list"
-      : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+      if [acceptableParameterList count] == 1 then
+        [acceptableParameterList first ?outRoutineSignature ?outIsFilePrivate]
+        outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
+      elsif [acceptableParameterList count] == 0 then
+        error inRoutineName
+        : "cannot find any procedure with compatible formal argument list"
+        : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+      else
+        var s = "ambiguity, several procedures with compatible formal argument list:"
+        for element in acceptableParameterList do
+          s += "\n  - " + routineArgumentFromFormalParameters (!element.mRoutineSignature)
+        end
+        error inRoutineName
+        : s
+        : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
+      end
     else
-      var s = "ambiguity, several procedures with compatible formal argument list:"
-      for element in acceptableParameterList do
-        s += "\n  - " + routineArgumentFromFormalParameters (!element.mRoutineSignature)
-      end
       error inRoutineName
-      : s
+      : "the '" + inRoutineName + "' routine is not declared"
       : outRoutineSignature, outIsFilePrivate, outRoutineMangledName
     end
   }
 
-  #·················································································································
- 
+  #·······························································································
+
   getter locationForKey ?let @string inKey -> @location {
     result = [self.mInternalRoutineMap locationForKey !inKey]
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @internalRoutineMap {
   public var @routineArgumentMap mArgumentMap
@@ -146,7 +156,7 @@ map @internalRoutineMap {
   insert or replace
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @routineArgumentMap {
   public let @formalParameterSignature mRoutineSignature
@@ -155,11 +165,11 @@ map @routineArgumentMap {
   search searchKey error message "-- internal error --"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @acceptableParameterList {
   public let @formalParameterSignature mRoutineSignature
   public let @bool mIsFilePrivate
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

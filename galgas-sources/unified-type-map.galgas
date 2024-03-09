@@ -1,164 +1,246 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  semantics definitions for semantics component 
-#                                           
-#  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMap unsolvedEntryList -> @lstringlist {
-  result = {}
-  for (lkey element) in self do
-    if [element.mDefinition isUnsolved] then
-      result += !lkey
-    end
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @unifiedTypeMap makeEntry ?let @lstring inLKey !@unifiedTypeMapEntry outEntry {
-  if inLKey.string == "" then
-    outEntry = .null
-  elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .element {!weakElement: element}
-  else
-    let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
-    [!?self internalInsertKey !inLKey !newElement]
-    outEntry = .element {!weakElement: newElement}
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @unifiedTypeMap makeEntryFromString ?let @string inKey !@unifiedTypeMapEntry outEntry {
-  if inKey == "" then
-    outEntry = .null
-  elsif let [self searchKey !inKey ?let @unifiedTypeMapElementClass element] then
-    outEntry = .element {!weakElement: element}
-  else
-    let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
-    [!?self internalInsertKey !.new {!inKey !.nowhere} !newElement]
-    outEntry = .element {!weakElement: newElement}
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMap searchKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
-  if inLKey.string == "" then
-    result = .null
-  elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    result = .element {!weakElement: element}
-  else
-    error inLKey : "there is no '@" + inLKey + "' type" : result
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-setter @unifiedTypeMap insertType ?let @lstring inTypeName ?let @unifiedTypeDefinition inTypeDefinition {
-  if let [self searchKey !inTypeName ?let @unifiedTypeMapElementClass element] then
-    switch element.mDefinition
-    case solved (*) :
-      error inTypeName : "type already defined"
-    case unsolved :
-      var e = element
-      e.mDefinition = .solved {!definition: inTypeDefinition}
-    end
-  else
-    let newElement = @unifiedTypeMapElementClass.new {!.solved {!definition: inTypeDefinition}}
-    [!?self internalInsertKey !inTypeName !newElement]
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @unifiedTypeMap searchType ?let @lstring inLKey
-                                  !@unifiedTypeDefinition outTypeDefinition {
-  if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-    switch element.mDefinition
-    case solved (definition) :
-      outTypeDefinition = definition
-    case unsolved :
-      error inLKey : "unsolved type" : outTypeDefinition
-    end
-  else
-    error inLKey : "there is no '@" + inLKey + "' type" : outTypeDefinition
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! Types
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  semantics definitions for semantics component
+#
+#  Copyright (C) 2023, ..., 2023 Pierre Molinaro.
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! @unifiedTypeMap
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @unifiedTypeMap {
   private var @unifiedTypeMapElementClass mElement
   insert internalInsertKey error message "the '%K' key is already declared in %L"
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter unsolvedEntryList -> @lstringlist {
+    result = {}
+    for (lkey element) in self do
+      if [element.mDefinition isUnsolved] then
+        result += !lkey
+      end
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  setter makeEntry ?let @lstring inLKey !@unifiedTypeMapEntry outEntry {
+    if inLKey.string == "" then
+      outEntry = .null
+    elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
+      outEntry = .element {!weakElement: element}
+    else
+      let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
+      [!?self internalInsertKey !inLKey !newElement]
+      outEntry = .element {!weakElement: newElement}
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  setter makeEntryFromString ?let @string inKey !@unifiedTypeMapEntry outEntry {
+    if inKey == "" then
+      outEntry = .null
+    elsif let [self searchKey !inKey ?let @unifiedTypeMapElementClass element] then
+      outEntry = .element {!weakElement: element}
+    else
+      let newElement = @unifiedTypeMapElementClass.new {!.unsolved}
+      [!?self internalInsertKey !.new {!inKey !.nowhere} !newElement]
+      outEntry = .element {!weakElement: newElement}
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter typeMapEntryForLKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
+    if inLKey.string == "" then
+      result = .null
+    elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
+      result = .element {!weakElement: element}
+    else
+      error inLKey : "there is no '@" + inLKey + "' type" : result
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  setter insertType ?let @lstring inTypeName ?let @unifiedTypeDefinition inTypeDefinition {
+    if let [self searchKey !inTypeName ?let @unifiedTypeMapElementClass element] then
+      switch element.mDefinition
+      case solved (*) :
+        error inTypeName : "type already defined"
+      case unsolved :
+        var e = element
+        e.mDefinition = .solved {!definition: inTypeDefinition}
+      end
+    else
+      let newElement = @unifiedTypeMapElementClass.new {!.solved {!definition: inTypeDefinition}}
+      [!?self internalInsertKey !inTypeName !newElement]
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter typeDefinition ?let @lstring inLKey -> @unifiedTypeDefinition {
+    if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
+      switch element.mDefinition
+      case solved (definition) :
+#        if definition.mTypeKindEnum == .packageType then
+#          error inLKey : "the '@" + inLKey + "' type is a package and cannot be used here" : result
+#        else
+#          result = definition
+#        end
+        result = definition
+      case unsolved :
+        error inLKey : "unsolved type" : result
+      end
+    else
+      error inLKey : "there is no '@" + inLKey + "' type" : result
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+#  getter typeOrPackageDefinition ?let @lstring inLKey -> @unifiedTypeDefinition {
+#    if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
+#      switch element.mDefinition
+#      case solved (definition) :
+#        result = definition
+#      case unsolved :
+#        error inLKey : "unsolved type" : result
+#      end
+#    else
+#      error inLKey : "there is no '@" + inLKey + "' type" : result
+#    end
+#  }
+
+  #-----------------------------------------------------------------------------------------------
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @unifiedTypeMapElementClass {
-  public var @typeDefinition mDefinition
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! @typeDefinition
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @typeDefinition {
   case unsolved
   case solved (@unifiedTypeDefinition definition)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+# @unifiedTypeMapElementClass
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @unifiedTypeMapElementClass {
+  public var @typeDefinition mDefinition
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter definition -> @unifiedTypeDefinition {
+    switch self.mDefinition
+    case unsolved :
+      error .nowhere : "unsolved type" : result
+    case solved (definition) :
+      result = definition
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! @unifiedTypeMapEntry
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @unifiedTypeMapEntry {
   case null
   case element (@unifiedTypeMapElementClass-weak weakElement)
-}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-# @unifiedTypeMapElementClass getters
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  #-----------------------------------------------------------------------------------------------
 
-getter @unifiedTypeMapElementClass definition -> @unifiedTypeDefinition {
-  switch self.mDefinition
-  case unsolved :
-    error .nowhere : "unsolved type" : result
-  case solved (definition) :
-    result = definition
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! @unifiedTypeMapEntry getters
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @unifiedTypeMapEntry definition -> @unifiedTypeDefinition {
-  switch self
-  case null :
-    error .nowhere : "null type" : result
-  case element (weakElement) :
-    if let type = weakElement then
-      switch type.mDefinition
-      case unsolved :
-        error .nowhere : "unsolved type" : result
-      case solved (definition) :
-        result = definition
+  getter definition -> @unifiedTypeDefinition {
+    switch self
+    case null :
+      error .nowhere : "null type" : result
+    case element (weakElement) :
+      if let type = weakElement then
+        switch type.mDefinition
+        case unsolved :
+          error .nowhere : "unsolved type" : result
+        case solved (definition) :
+          result = definition
+        end
+      else
+        error .nowhere : "nil type" : result
       end
-    else
-      error .nowhere : "nil type" : result
     end
-  end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter identifierRepresentation -> @string {
+    result = [[self definition].mTypeName.string identifierRepresentation]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter typeName -> @string {
+    result = [self definition].mTypeName.string
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter baseType -> @unifiedTypeMapEntry outBaseType {
+    outBaseType = self
+    loop while not [[outBaseType definition].mSuperType isNull] do
+      outBaseType = [outBaseType definition].mSuperType
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  method addHeaderFileName ?!@stringset ioInclusions {
+    let typeDefinition = [self definition]
+    if (not typeDefinition.mIsPredefined) & (typeDefinition.mHeaderKind != .noHeader) then
+      ioInclusions += !typeDefinition.mHeaderFileName
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  method addHeaderFileName1 ?!@stringset ioInclusions {
+    let typeDefinition = [self definition]
+    if not typeDefinition.mIsPredefined then
+      switch typeDefinition.mHeaderKind
+      case noHeader :
+      case oneHeader :
+        ioInclusions += !typeDefinition.mHeaderFileName
+      case twoHeaders :
+        ioInclusions += !typeDefinition.mHeaderFileName + "-1"
+      end
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

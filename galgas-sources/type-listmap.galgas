@@ -1,62 +1,80 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listmapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListmapTypeName
   private let @lstring mAssociatedListTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($
-    $@type$ ?let @lstring mAssociatedListTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let associatedListTypeName
     $)$
     ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
-      !mAssociatedListTypeName}
+      !associatedListTypeName
+    }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset unused ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
     $($
-    $@type$ ?let @lstring mAssociatedListTypeName
+    <type_definition> !?ioDeclarations ?let associatedListTypeName
     $)$
     ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
-      !mAssociatedListTypeName}
+      !associatedListTypeName
+    }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ASSOCIATED ELEMENT                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ASSOCIATED ELEMENT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
@@ -84,9 +102,9 @@ override method @listmapDeclarationAST addAssociatedElement
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -99,9 +117,9 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT                        
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -110,14 +128,14 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
-  [ioTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+  let associatedTypeDefinition = [ioTypeMap typeDefinition !self.mAssociatedListTypeName]
   var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.mAllTypedPropertyList
   if associatedTypeDefinition.mTypeKindEnum != @typeKindEnum.listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
     listTypedAttributeList = @typedPropertyList {}
   end
 #---
-  var @constructorMap constructorMap ={}
+  var @classFunctionMap classFunctionMap ={}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
@@ -128,7 +146,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
-    !?ioTypeMap 
+    !?ioTypeMap
     !getterName:"count"
     !obsoleteName: ""
     !returnedTypeName:"uint"
@@ -154,13 +172,13 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !?getterMap
     !?ioTypeMap
     !getterName: "listForKey"
-    !argSelector: "" !"string" !"inKey"
+    !argSelector: ""!argType: "string" !argName: "inKey"
     !returnedTypeName:self.mAssociatedListTypeName.string
     !hasCompilerArgument:false
   )
-#--- Constructors
-  enterConstructorWithoutArgument (
-    !?constructorMap
+#--- Class functions
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"emptyMap"
     !resultTypeName:self.mListmapTypeName.string
@@ -220,12 +238,12 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !self.isPredefined
     !true # Concrete Type
     !@unifiedTypeMapEntry.null
-    !@typeKindEnum. arrayType
+    !@typeKindEnum.listMapType
     !true # Support collection value
     !@typedPropertyList {}
     !{}
     !listTypedAttributeList
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -247,12 +265,12 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -268,7 +286,7 @@ override method @listmapDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListmapTypeName.string + "-element" !self.mListmapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
-  [ioTypeMap searchType !self.mAssociatedListTypeName ?let associatedTypeDefinition]
+  let associatedTypeDefinition = [ioTypeMap typeDefinition !self.mAssociatedListTypeName]
 #  [ioTypeMap searchKey
 #    !self.mAssociatedListTypeName
 #    ?3*
@@ -285,16 +303,16 @@ override method @listmapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "list map " + self.mListmapTypeName
     !@listmapTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mListmapTypeName]
-      ![ioTypeMap searchKey !self.mAssociatedListTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mListmapTypeName]
+      ![ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]
       !associatedTypeDefinition.mAllTypedPropertyList
-      ![ioTypeMap searchKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @listmapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mAssociatedListTypeIndex
@@ -302,7 +320,7 @@ refclass @listmapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mAssociatedListMapElementTypeIndex
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -319,7 +337,7 @@ override method @listmapTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
@@ -332,7 +350,7 @@ override method @listmapTypeForGeneration appendDeclaration1
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -347,5 +365,5 @@ override method @listmapTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

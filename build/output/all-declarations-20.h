@@ -259,7 +259,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                          const GALGAS_string & in_mApplicationBundleName,
                                          const GALGAS_string & in_mProjectName) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -269,9 +269,9 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_XcodeProjectDescriptor constructor_new (Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_XcodeProjectDescriptor class_func_new (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,

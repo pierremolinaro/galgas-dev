@@ -62,22 +62,22 @@ GALGAS_type::~ GALGAS_type (void) {
 
 void GALGAS_type::description (String & ioString,
                                const int32_t /* inIndentation */) const {
-  ioString.addString ("<@type: ") ;
+  ioString.appendCString ("<@type: ") ;
   if (nullptr == mTypeDescriptor) {
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }else{
-    ioString.addString ("@") ;
-    ioString.addString (mTypeDescriptor->mGalgasTypeName) ;
+    ioString.appendCString ("@") ;
+    ioString.appendString (mTypeDescriptor->mGalgasTypeName) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_type::constructor_typeList (LOCATION_ARGS) {
+GALGAS_typelist GALGAS_type::class_func_typeList (LOCATION_ARGS) {
   TC_UniqueArray <C_galgas_type_descriptor *> typeList ;
   C_galgas_type_descriptor::typeListRoot (typeList) ;
-  GALGAS_typelist result = GALGAS_typelist::constructor_emptyList (THERE) ;
+  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
   for (int32_t i=0 ; i<typeList.count () ; i++) {
     result.addAssign_operation (GALGAS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;
   }
@@ -104,8 +104,8 @@ GALGAS_type GALGAS_type::getter_superclass (Compiler * inCompiler
   if (mTypeDescriptor != nullptr) {
     if (nullptr == mTypeDescriptor->mSuperclassDescriptor) {
       String s = "'superclass' reader invoked on class type value '@" ;
-      s.addString (mTypeDescriptor->mGalgasTypeName) ;
-      s.addString ("', without super class") ;
+      s.appendString (mTypeDescriptor->mGalgasTypeName) ;
+      s.appendCString ("', without super class") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = GALGAS_type (mTypeDescriptor->mSuperclassDescriptor) ;

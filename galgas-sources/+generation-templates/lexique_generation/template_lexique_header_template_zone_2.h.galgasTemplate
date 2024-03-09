@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Lexique.h"
+#include "Lexique.h"
 
 //--------------------------------------------------------------------------------------------------
 //                       T O K E N    C L A S S
@@ -16,13 +16,13 @@ typedef cTokenFor_%!SUPER_LEXIQUE_IDENTIFIER% cTokenFor_%!LEXIQUE_IDENTIFIER% ;
 //                     S C A N N E R    C L A S S
 //--------------------------------------------------------------------------------------------------
 
-class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique_%!SUPER_LEXIQUE_IDENTIFIER% {
+class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique_%!SUPER_LEXIQUE_IDENTIFIER% {
 //--- Constructors
-  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
+  public: Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
                        const String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public: C_Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
+  public: Lexique_%!LEXIQUE_IDENTIFIER% (Compiler * inCallerCompiler,
                        const String & inSourceString,
                        const String & inStringForError
                        COMMA_LOCATION_ARGS) ;
@@ -34,7 +34,7 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique_%!SUPER_LEXIQUE_IDENTIF
 //    an error if a direct delete is performed; only the static method
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ C_Lexique_%!LEXIQUE_IDENTIFIER% (void) {}
+    protected: virtual ~ Lexique_%!LEXIQUE_IDENTIFIER% (void) {}
   #endif
 //--- Scanner mode for template scanner
   private: int32_t mMatchedTemplateDelimiterIndex ;

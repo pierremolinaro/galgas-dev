@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @readAccessWithInstructionAST : @semanticInstructionAST {
   public let @lstring mPrefix
@@ -32,18 +49,19 @@ refclass @readWriteAccessWithInstructionAST : @semanticInstructionAST {
   public let @location mEndOf_else_instructions
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST keyExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here
     let @lstring withPrefix
     select
@@ -53,20 +71,19 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? withPrefix
     end
     $in$
-    <with_instruction_core> !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
+    <with_instruction_core> !?ioDeclarations !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
     $end$
    }
 
-  #·················································································································
+  #·······························································································
 
-  rule <with_instruction_core>
-    ?let @location inInstructionLocation
-    ?let @semanticExpressionAST inKeyExpression
-    ?let @location inEndOfKeyExpression
-    ?let @lstring inWithPrefix
-    !@semanticInstructionAST outInstruction
-  {
-    <expression_ggs3> ?let @semanticExpressionAST receiverExpression
+  rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                ?let @location inInstructionLocation
+                                ?let @semanticExpressionAST inKeyExpression
+                                ?let @location inEndOfKeyExpression
+                                ?let @lstring inWithPrefix
+                                !@semanticInstructionAST outInstruction {
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
     select
@@ -77,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
     let endOfDoInstructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -87,7 +104,7 @@ syntax extension galgas3InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list_ggs3> ?mElseBranchInstructions
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mElseBranchInstructions
     end
     outInstruction = @readAccessWithInstructionAST.new {
       !inInstructionLocation
@@ -104,19 +121,15 @@ syntax extension galgas3InstructionsSyntax {
     }
  }
 
-  #·················································································································
+  #·······························································································
 
-  rule <with_instruction_core>
-    ?let @location inInstructionLocation
-    ?let @semanticExpressionAST inKeyExpression
-    ?let @location inEndOfKeyExpression
-    ?let @lstring inWithPrefix
-    !@semanticInstructionAST outInstruction
-  {
-    $!?$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
+  rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations                          
+                                ?let @location inInstructionLocation
+                                ?let @semanticExpressionAST inKeyExpression
+                                ?let @location inEndOfKeyExpression
+                                ?let @lstring inWithPrefix
+                                !@semanticInstructionAST outInstruction {
+    $!?$
     var structAttributeList = @lstringlist {}
     let @bool targetIsPrefixedBySelf
     let @lstring targetObjectName
@@ -155,7 +168,7 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
     let endOf_do_instructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -165,7 +178,7 @@ syntax extension galgas3InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list_ggs3> ? mElseBranchInstructions
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?mElseBranchInstructions
     end
     let endOf_else_instructions = @location.here
     outInstruction = @readWriteAccessWithInstructionAST.new {
@@ -185,22 +198,21 @@ syntax extension galgas3InstructionsSyntax {
     }
  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST keyExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST keyExpression
     let endOfKeyExpression = @location.here
     let @lstring withPrefix
     select
@@ -210,22 +222,19 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ? withPrefix
     end
     $in$
-    <with_instruction_core> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
+    <with_instruction_core> !?ioDeclarations !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
     $end$
    }
 
-  #·················································································································
+  #·······························································································
 
-  rule <with_instruction_core>
-    ?!@galgasDeclarationAST ioDeclarations
-    ?!@stringset ioUserImplicitDeclaredTypeSet
-    ?let @location inInstructionLocation
-    ?let @semanticExpressionAST inKeyExpression
-    ?let @location inEndOfKeyExpression
-    ?let @lstring inWithPrefix
-    !@semanticInstructionAST outInstruction
-  {
-    <expression> ?let @semanticExpressionAST receiverExpression
+  rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations
+                                ?let @location inInstructionLocation
+                                ?let @semanticExpressionAST inKeyExpression
+                                ?let @location inEndOfKeyExpression
+                                ?let @lstring inWithPrefix
+                                !@semanticInstructionAST outInstruction {
+    <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
     let endOfReceiverExpression = @location.here
     let @lstring searchMethodNameForErrorSignaling
     select
@@ -235,7 +244,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
     let endOfDoInstructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -245,7 +254,7 @@ syntax extension galgas4InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?mElseBranchInstructions
+      <semantic_instruction_list> !?ioDeclarations ?mElseBranchInstructions
     end
     outInstruction = @readAccessWithInstructionAST.new {
       !inInstructionLocation
@@ -262,21 +271,17 @@ syntax extension galgas4InstructionsSyntax {
     }
  }
 
-  #·················································································································
+  #·······························································································
 
   rule <with_instruction_core>
     ?!@galgasDeclarationAST ioDeclarations
-    ?!@stringset ioUserImplicitDeclaredTypeSet
     ?let @location inInstructionLocation
     ?let @semanticExpressionAST inKeyExpression
     ?let @location inEndOfKeyExpression
     ?let @lstring inWithPrefix
     !@semanticInstructionAST outInstruction
   {
-    $!?$ ?let selector
-    if selector.string != "" then
-      error selector : "an empty selector '!?' is required here"
-    end
+    $!?$
     var structAttributeList = @lstringlist {}
     let @bool targetIsPrefixedBySelf
     let @lstring targetObjectName
@@ -314,7 +319,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?searchMethodNameForErrorSignaling
     end
     $do$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mDoBranchInstructions
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mDoBranchInstructions
     let endOf_do_instructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
@@ -324,7 +329,7 @@ syntax extension galgas4InstructionsSyntax {
       if searchMethodNameForErrorSignaling.string != "" then
         error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
       end
-      <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?mElseBranchInstructions
+      <semantic_instruction_list> !?ioDeclarations ?mElseBranchInstructions
     end
     let endOf_else_instructions = @location.here
     outInstruction = @readWriteAccessWithInstructionAST.new {
@@ -344,13 +349,13 @@ syntax extension galgas4InstructionsSyntax {
     }
  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readAccessWithInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -371,9 +376,9 @@ override method @readWriteAccessWithInstructionAST enterInstructionInSemanticCon
   [self.m_else_Instructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -384,7 +389,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Analyze receiver expression
   [self.mReceiverExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -406,7 +411,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze key expression
   [self.mKeyExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -429,7 +434,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check this type handle 'with' access
   if not [[receiverType definition].mHandledOperatorFlags supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
-  end  
+  end
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
@@ -443,7 +448,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
-    ![ioTypeMap searchKey !["lstring" nowhere]]
+    ![ioTypeMap typeMapEntryForLKey !["lstring" nowhere]]
     !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mPropertylkey"
@@ -498,7 +503,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                                 ?!@localVarManager ioVariableMap {
 #--- Analyze source expression
   [self.mKeyExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -565,7 +570,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check this type handle 'with' access
   if not [[targetType definition].mHandledOperatorFlags supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
-  end  
+  end
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
@@ -587,7 +592,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
-    ![ioTypeMap searchKey !["lstring" nowhere]]
+    ![ioTypeMap typeMapEntryForLKey !["lstring" nowhere]]
     !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mProperty_lkey"
@@ -634,9 +639,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -662,9 +667,9 @@ refclass @readWriteWithInstructionForGeneration : @semanticInstructionForGenerat
   public let @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readOnlyWithInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -683,7 +688,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   let receiverType = self.mReceiverExpression.mResultType
 #--- key expression
   [self.mKeyExpression generateExpression
-    !?ioGeneratedCode 
+    !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
@@ -788,4 +793,4 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

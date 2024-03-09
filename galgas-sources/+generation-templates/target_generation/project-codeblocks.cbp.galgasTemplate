@@ -22,7 +22,7 @@
      <Add option="-Wundef" />
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
-     <Add option="-std=c++14" />
+     <Add option="-std=c++17" />
      <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
@@ -47,7 +47,7 @@
      <Add option="-Winline" />
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
-     <Add option="-std=c++14" />
+     <Add option="-std=c++17" />
      <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
@@ -141,7 +141,6 @@ end
    <Unit filename="%!LIBPM_PATH%/streams/C_ConsoleOut.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/C_ErrorOut.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/unicode_character_cpp.cpp" />
-   <Unit filename="%!LIBPM_PATH%/strings/unicode_string_routines.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class-getters.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/HTMLString.cpp" />
@@ -160,12 +159,13 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/UInt32Set.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/DirectedGraph.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/md5.cpp" />
+   <Unit filename="%!LIBPM_PATH%/utilities/SHA256.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_CLI_Options.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/typeComparisonResult.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/Compiler.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas2/C_Lexique.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas2/C_Lexique-parsing.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/Lexique.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/Lexique-parsing.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/LocationInSource.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/SourceTextInString.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_type_descriptor.cpp" />

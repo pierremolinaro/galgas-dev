@@ -79,15 +79,15 @@ AC_GALGAS_value_class & AC_GALGAS_value_class::operator = (const AC_GALGAS_value
 
 void AC_GALGAS_value_class::description (String & ioString,
                                         const int32_t inIndentation) const {
-  ioString.addString ("<@") ;
-  ioString.addString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.addString (":") ;
+  ioString.appendCString ("<@") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (":") ;
   if (isValid ()) {
     mObjectPtr->description (ioString, inIndentation) ;
   }else{
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------

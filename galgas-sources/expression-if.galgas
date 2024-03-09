@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @ifExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
@@ -9,22 +26,23 @@ refclass @ifExpressionAST : @semanticExpressionAST {
   public let @semanticExpressionAST mElseExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $if$
-    <expression_ggs3> ?let ifExpression
+    <expression_ggs3> !?ioDeclarations ?let ifExpression
     let operatorLocation = @location.here
     $then$
-    <expression_ggs3> ?let thenExpression
+    <expression_ggs3> !?ioDeclarations ?let thenExpression
     $else$
-    <expression_ggs3> ?let elseExpression
+    <expression_ggs3> !?ioDeclarations ?let elseExpression
     $end$
     outExpression = @ifExpressionAST.new {
       !operatorLocation
@@ -34,24 +52,25 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <primary> !@semanticExpressionAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $if$
-    <expression> ?let ifExpression
+    <expression> !?ioDeclarations ?let ifExpression
     let operatorLocation = @location.here
     $then$
-    <expression> ?let thenExpression
+    <expression> !?ioDeclarations ?let thenExpression
     $else$
-    <expression> ?let elseExpression
+    <expression> !?ioDeclarations ?let elseExpression
     $end$
     outExpression = @ifExpressionAST.new {
       !operatorLocation
@@ -61,7 +80,7 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 #  rule <primary> !@semanticExpressionAST outExpression {
 #    $if$
@@ -82,13 +101,13 @@ syntax extension galgas4ExpressionSyntax {
 #    }
 #  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @ifExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -101,7 +120,7 @@ override method @ifExpressionAST enterExpressionInSemanticContext
 #·······················································································································
 
 override method @ifExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
@@ -111,7 +130,7 @@ override method @ifExpressionAST analyzeSemanticExpression
 {
 #--- 'if' expression analysis
   [self.mIfExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inAnalysisContext.mPredefinedTypes.mBoolType
     !inAnalysisContext
@@ -121,7 +140,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- 'then' expression analysis
   [self.mThenExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
@@ -131,7 +150,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- 'else' expression analysis
   [self.mElseExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: inType
     !inAnalysisContext
@@ -160,9 +179,9 @@ override method @ifExpressionAST analyzeSemanticExpression
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @ifExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mIfExpression
@@ -221,4 +240,4 @@ override method @ifExpressionForGeneration generateExpression
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

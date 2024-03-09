@@ -76,8 +76,8 @@ String SourceTextInString::getLineForLocation (const LocationInSource & inLocati
     }
   //--- Get error line text
     for (int32_t i=index ; (i<sourceTextLength) && (UNICODE_VALUE (mObject->mSourceString.readCharOrNul (i COMMA_HERE)) != '\n') ; i++) {
-      const utf32 character = mObject->mSourceString (i COMMA_HERE) ;
-      errorLine.addUnicodeChar (character COMMA_HERE) ;
+      const utf32 character = mObject->mSourceString.charAtIndex (i COMMA_HERE) ;
+      errorLine.appendChar (character) ;
     }
   }
   return errorLine ;
@@ -87,11 +87,11 @@ String SourceTextInString::getLineForLocation (const LocationInSource & inLocati
 
 void SourceTextInString::appendSourceContents (String & ioMessage) const {
   if ((nullptr != mObject) && mObject->mShowSourceOnDetailledErrorMessage) {
-    const bool insertCarriageReturn = (mObject->mSourceString.length () > 0) && (UNICODE_VALUE (mObject->mSourceString.lastCharacter (HERE)) != '\n')  ;
-    ioMessage.addString ("-- SOURCE STRING (--verbose option) --\n") ;
-    ioMessage.addString (mObject->mSourceString) ;
-    ioMessage.addString (insertCarriageReturn ? "\n" : "") ;
-    ioMessage.addString ("-------------------------------------------------------\n") ;
+    const bool insertCarriageReturn = (mObject->mSourceString.length () > 0) && (UNICODE_VALUE (mObject->mSourceString.lastChar (HERE)) != '\n')  ;
+    ioMessage.appendCString ("-- SOURCE STRING (--verbose option) --\n") ;
+    ioMessage.appendString (mObject->mSourceString) ;
+    ioMessage.appendString (insertCarriageReturn ? "\n" : "") ;
+    ioMessage.appendCString ("-------------------------------------------------------\n") ;
   }
 }
 

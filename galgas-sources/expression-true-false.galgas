@@ -1,66 +1,87 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @trueExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @falseExpressionAST : @semanticExpressionAST {
   private let @location mLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  #·······························································································
+
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $true$
     outExpression = @trueExpressionAST.new {!.here}
   }
 
-  #·················································································································
-  
-  rule <primary_ggs3> !@semanticExpressionAST outExpression {
+  #·······························································································
+
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $false$
     outExpression = @falseExpressionAST.new {!.here}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $true$
     outExpression = @trueExpressionAST.new {!.here}
   }
 
-  #·················································································································
-  
-  rule <primary> !@semanticExpressionAST outExpression {
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $false$
     outExpression = @falseExpressionAST.new {!.here}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @trueExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -70,7 +91,7 @@ override method @trueExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @trueExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -81,7 +102,7 @@ override method @trueExpressionAST analyzeSemanticExpression
   outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @falseExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -91,7 +112,7 @@ override method @falseExpressionAST enterExpressionInSemanticContext
 #·····················································································································
 
 override method @falseExpressionAST analyzeSemanticExpression
-  ?let @lstring unused inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
   ?let @analysisContext inAnalysisContext
@@ -102,9 +123,9 @@ override method @falseExpressionAST analyzeSemanticExpression
   outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @trueExpressionForGeneration : @semanticExpressionForGeneration {
 }
@@ -120,7 +141,7 @@ override method @trueExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (true)"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @falseExpressionForGeneration : @semanticExpressionForGeneration {
 }
@@ -136,11 +157,11 @@ override method @falseExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (false)"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           D E T E C T    ' T R U E '    E X P R E S S I O N                                                  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#           D E T E C T    ' T R U E '    E X P R E S S I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @semanticExpressionForGeneration isTrueExpression -> @bool {
   result = false
@@ -152,4 +173,4 @@ override getter @trueExpressionForGeneration isTrueExpression -> @bool {
   result = true
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListAST {
   public let @lstring mTypeName
@@ -19,15 +36,16 @@ refclass @structuredCastInstructionAST : @semanticInstructionAST {
   private let @location mEndOfCastInstruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
-  
-  rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList {
+  #·······························································································
+
+  rule <cast_instruction_branch> ?!@galgasDeclarationAST ioDeclarations
+                                 ?!@castInstructionBranchListAST ioCastInstructionBranchList {
     $case$
     let @dynamicTypeComparisonKind kind
     select
@@ -40,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
       $>$
       kind = .strictlyInherited
     end
-    $@type$ ?let mTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let typeName
     let @lstring mConstantVarName # Empty string if no constant var
     select
       $identifier$ ?mConstantVarName
@@ -48,28 +66,29 @@ syntax extension galgas3InstructionsSyntax {
       mConstantVarName = @lstring.new {!"" !@location.here}
     end
     $:$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mCastBranchInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mCastBranchInstructionList
     ioCastInstructionBranchList +=
-      !mTypeName
+      !typeName
       !mConstantVarName
       !mCastBranchInstructionList
       !kind
       !@location.here
   }
-  
-  #·················································································································
-  
-  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+
+  #·······························································································
+
+  rule <cast_else_or_default> ?!@galgasDeclarationAST ioDeclarations
+                              !@semanticInstructionListAST outElseOrDefault {
     select
       outElseOrDefault = {}
     or
       $else$
-      <semantic_instruction_list_ggs3> ? outElseOrDefault
+      <semantic_instruction_list_ggs3> !?ioDeclarations ?outElseOrDefault
     or
       $default$
       let instructionLocation = @location.here
       $error$
-      <expression_ggs3> ?let @semanticExpressionAST errorLocationExpression
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST errorLocationExpression
       outElseOrDefault = {}
       outElseOrDefault += !@errorInstructionAST.new {
         !instructionLocation
@@ -80,22 +99,23 @@ syntax extension galgas3InstructionsSyntax {
       }
     end
   }
-  
-  #·················································································································
-  
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+
+  #·······························································································
+
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $cast$
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
       warning .here : "This instruction is not handled in GALGAS 4"
     end
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST expression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
     var mCastInstructionBranchList = @castInstructionBranchListAST {}
     repeat
-      <cast_instruction_branch> !? mCastInstructionBranchList
+      <cast_instruction_branch> !?ioDeclarations !?mCastInstructionBranchList
     while
     end
-    <cast_else_or_default> ?let @semanticInstructionListAST mElseOrDefault
+    <cast_else_or_default> !?ioDeclarations ?let @semanticInstructionListAST mElseOrDefault
     $end$
     let endOfInstructionLocation = @location.here
     outInstruction = @structuredCastInstructionAST.new {
@@ -106,15 +126,13 @@ syntax extension galgas3InstructionsSyntax {
       !endOfInstructionLocation}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structuredCastInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -126,9 +144,9 @@ override method @structuredCastInstructionAST enterInstructionInSemanticContext
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -139,7 +157,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Expression
   [self.mCastExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -153,7 +171,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   var castBranchList = @castInstructionBranchListForGeneration {}
   for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
   #--- Get named type
-    let type = [ioTypeMap searchKey !mTypeName]
+    let type = [ioTypeMap typeMapEntryForLKey !mTypeName]
   #--- Check named type is a descendant of receiver type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == castExpression.mResultType
@@ -218,9 +236,9 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !else_instructionList}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListForGeneration {
   public let @dynamicTypeComparisonKind mTypeComparisonKind
@@ -237,9 +255,9 @@ refclass @structuredCastInstructionForGeneration : @semanticInstructionForGenera
   private let @semanticInstructionListForGeneration mElseInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structuredCastInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -302,7 +320,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
       !?ioUnusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
-    )  
+    )
   end
 #---
   ioGeneratedCode += "}\n"
@@ -310,4 +328,4 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

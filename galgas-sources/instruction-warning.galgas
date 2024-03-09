@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @warningInstructionAST : @semanticInstructionAST {
   public let @semanticExpressionAST mLocationExpression
@@ -8,22 +25,22 @@ refclass @warningInstructionAST : @semanticInstructionAST {
   public let @fixitListAST mFixitListAST
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST mReceiverExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression_ggs3> ?let @semanticExpressionAST mWarningExpression
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mWarningExpression
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @warningInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
@@ -31,26 +48,25 @@ syntax extension galgas3InstructionsSyntax {
       !fixitListAST
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                              ?!@stringset unused ioUserImplicitDeclaredTypeSet
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     $warning$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST mReceiverExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
-    <expression> ?let @semanticExpressionAST mWarningExpression
-    <issue_fixit> ?let @fixitListAST fixitListAST
+    <expression> !?ioDeclarations ?let @semanticExpressionAST mWarningExpression
+    <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
     outInstruction = @warningInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
@@ -58,14 +74,14 @@ syntax extension galgas4InstructionsSyntax {
       !fixitListAST
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @warningInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -73,10 +89,10 @@ override method @warningInstructionAST enterInstructionInSemanticContext ?!@unif
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @warningInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -109,9 +125,9 @@ override method @warningInstructionAST analyzeSemanticInstruction
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @warningInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -157,4 +173,4 @@ override method @warningInstructionForGeneration generateInstruction
     + [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

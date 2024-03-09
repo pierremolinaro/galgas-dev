@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseLoopInstruction : @syntaxInstructionAST {
   private let @semanticExpressionAST mVariantExpression
@@ -11,26 +28,26 @@ refclass @parseLoopInstruction : @syntaxInstructionAST {
   private let @location mEndOfInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_instruction_ggs3>
-    !@syntaxInstructionAST outInstruction {
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $loop$
-    <expression_ggs3> ?let @semanticExpressionAST variantExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $while$
-    <expression_ggs3> ?let @semanticExpressionAST whileExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST whileExpression
     let endOfWhileExpression = @location.here
     $do$
-    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList instructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList instructionList
     $end$
     let endOfInstructionList = @location.here
     outInstruction = @parseLoopInstruction.new {
@@ -40,32 +57,32 @@ syntax extension galgas3SyntaxComponentSyntax {
       !whileExpression
       !endOfWhileExpression
       !instructionList
-      !endOfInstructionList}
+      !endOfInstructionList
+    }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            ?!@stringset ioUserImplicitDeclaredTypeSet
                             !@syntaxInstructionAST outInstruction {
     $parse$
     let instructionLocation = @location.here
     $loop$
-    <expression> ?let @semanticExpressionAST variantExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $while$
-    <expression> ?let @semanticExpressionAST whileExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST whileExpression
     let endOfWhileExpression = @location.here
     $do$
-    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList instructionList
+    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList
     $end$
     let endOfInstructionList = @location.here
     outInstruction = @parseLoopInstruction.new {
@@ -78,13 +95,13 @@ syntax extension galgas4SyntaxComponentSyntax {
       !endOfInstructionList}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseLoopInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -100,10 +117,10 @@ override method @parseLoopInstruction transformInstruction
   )
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 override method @parseLoopInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -120,7 +137,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount {
 #--- Variant expression
   [self.mVariantExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -135,7 +152,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   end
 #--- While expression
   [self.mWhileExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -180,9 +197,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mVariantExpression
@@ -190,9 +207,9 @@ refclass @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticInstructionListForGeneration mInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -200,9 +217,9 @@ override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !self.mInstructionList)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseLoopInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -261,4 +278,4 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += compilerCppName () + "->resetTemplateString () ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

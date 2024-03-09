@@ -22,16 +22,17 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include <typeinfo>
-
-//--------------------------------------------------------------------------------------------------
-
 #include "String-class.h"
 #include "TC_UniqueArray.h"
 #include "LocationInSource.h"
 #include "SourceTextInString.h"
 #include "C_IssueWithFixIt.h"
 #include "SharedObject.h"
+
+//--------------------------------------------------------------------------------------------------
+
+#include <typeinfo>
+#include <initializer_list>
 
 //--------------------------------------------------------------------------------------------------
 
@@ -73,17 +74,15 @@ class C_lexicalErrorException {
 //--------------------------------------------------------------------------------------------------
 
 class C_unicode_lexique_table_entry final {
-  public: const utf32 * mEntryString ;
-  public: const int16_t mEntryStringLength ;
+  public: const std::initializer_list <utf32> mEntryString ;
   public: const int16_t mTokenCode ;
 
 //--- Constructor
-  public: C_unicode_lexique_table_entry (const utf32 * inEntryString,
-                                         const int16_t inEntryStringLength,
+  public: C_unicode_lexique_table_entry (const std::initializer_list <utf32> & inEntryString,
                                          const int16_t inTokenCode) ;
-//--- No copy
+//--- Handle copy
   public: C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) ;
-  private: C_unicode_lexique_table_entry & operator = (const C_unicode_lexique_table_entry &) ;
+  private: C_unicode_lexique_table_entry & operator = (const C_unicode_lexique_table_entry &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -115,7 +114,7 @@ class cToken {
 //
 //--------------------------------------------------------------------------------------------------
 
-class C_parsingContext {
+class ParsingContext final {
   private: int32_t mParsingArrayIndex ;
   private: LocationInSource mLocation ;
   private: cToken * mCurrentTokenPtr ;
@@ -123,13 +122,13 @@ class C_parsingContext {
   private: utf32 mPreviousChar ;
   private: String mTemplateString ;
 
-  friend class C_Lexique ;
+  friend class Lexique ;
   
-  public: C_parsingContext (void) ;
+  public: ParsingContext (void) ;
 
-//--- No copy
-  public: C_parsingContext (const C_parsingContext & inSource) ;
-  public: C_parsingContext & operator = (const C_parsingContext & inSource) ;
+//--- Copy
+  public: ParsingContext (const ParsingContext & inSource) ;
+  public: ParsingContext & operator = (const ParsingContext & inSource) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

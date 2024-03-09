@@ -1,18 +1,35 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalDropInstructionAST : @lexicalInstructionAST {
   private let @lstring mTerminalName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $drop$
@@ -20,15 +37,15 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $drop$
@@ -36,13 +53,13 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalDropInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
@@ -50,9 +67,9 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
   [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalDropInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
@@ -61,7 +78,7 @@ override getter @lexicalDropInstructionAST generateObjcCocoaInstructionCode
   outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalDropInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
@@ -70,9 +87,9 @@ override getter @lexicalDropInstructionAST generateSwiftCocoaInstructionCode
   outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + "\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! C++ CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalDropInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
@@ -88,5 +105,5 @@ override getter @lexicalDropInstructionAST generateLexicalInstructionCode
   result = "enterDroppedTerminal (kToken_" + [self.mTerminalName identifierRepresentation] + ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST                                     
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @insertMethodListAST {
   public let @lstring mInsertMethodName
@@ -39,24 +56,24 @@ refclass @mapDeclarationAST : @semanticDeclarationAST {
   private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @mapDeclarationAST keyRepresentation ->@string result {
   result = "map @" + self.mMapTypeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX                                  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·················································································································
-  
+  #·······························································································
+
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $map$
   #--- Map type name
-    $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}
@@ -66,7 +83,7 @@ syntax extension galgas3DeclarationsSyntax {
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
     repeat
     while
-      <property_declaration_ggs3> !? propertyList
+      <property_declaration_ggs3> !?ioDeclarations !? propertyList
     while
       <map_insert_setter_declaration> !? mInsertMethodList
     while
@@ -76,12 +93,12 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
-      <method_declaration_ggs3> !mMapTypeName !?ioDeclarations
+      <method_declaration_ggs3> !mapTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
       !isPredefined: false # Is not predefined
-      !mMapTypeName
+      !mapTypeName
       !propertyList
       !mInsertMethodList
       !mSearchMethodList
@@ -89,8 +106,8 @@ syntax extension galgas3DeclarationsSyntax {
       !insertOrReplaceDeclarationListAST
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
@@ -100,7 +117,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
     $remove$
@@ -111,7 +128,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
     $insert$
@@ -120,7 +137,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioInsertOrReplaceDeclarationListAST += !@location.here
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $insert$
@@ -141,21 +158,20 @@ syntax extension galgas3DeclarationsSyntax {
       !mShadowErrorMessage
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·················································································································
-  
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $map$
   #--- Map type name
-    $@type$ ?let @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map properties
     ${$
     var propertyList = @propertyInCollectionListAST {}
@@ -165,7 +181,7 @@ syntax extension galgas4DeclarationsSyntax {
     var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = {}
     repeat
     while
-      <property_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? propertyList
+      <property_declaration> !?ioDeclarations !? propertyList
     while
       <map_insert_setter_declaration> !? mInsertMethodList
     while
@@ -175,12 +191,12 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
     while
-      <method_declaration> !mMapTypeName !?ioDeclarations !?ioUserImplicitDeclaredTypeSet
+      <method_declaration> !mapTypeName !?ioDeclarations
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
       !isPredefined: false # Is not predefined
-      !mMapTypeName
+      !mapTypeName
       !propertyList
       !mInsertMethodList
       !mSearchMethodList
@@ -188,8 +204,8 @@ syntax extension galgas4DeclarationsSyntax {
       !insertOrReplaceDeclarationListAST
     }
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $%searchMethod$
@@ -199,7 +215,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
     $%removeSetter$
@@ -209,14 +225,14 @@ syntax extension galgas4DeclarationsSyntax {
     ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
     $%insertOrReplaceSetter$
     ioInsertOrReplaceDeclarationListAST += !@location.here
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
     $%insertSetter$
@@ -236,13 +252,13 @@ syntax extension galgas4DeclarationsSyntax {
       !mShadowErrorMessage
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ASSOCIATED ELEMENT                      
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ASSOCIATED ELEMENT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
@@ -271,9 +287,9 @@ override method @mapDeclarationAST addAssociatedElement
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH                          
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -288,9 +304,9 @@ override method @mapDeclarationAST enterDeclarationInGraph
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN SEMANTIC CONTEXT               
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -306,20 +322,20 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 #--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #---
-  var @constructorMap constructorMap = {}
+  var @classFunctionMap classFunctionMap = {}
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
-#--- Constructors
-  enterConstructorWithoutArgument (
-    !?constructorMap
+#--- Class functions
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"emptyMap"
     !resultTypeName:self.mMapTypeName.string
     !hasLexiqueArg:false
   )
-  enterConstructorWithArgument (
-    !?constructorMap
+  enterClassFunctionWithArgument (
+    !?classFunctionMap
     !?ioTypeMap
     !name:"mapWithMapToOverride"
     !argTypeName:self.mMapTypeName.string
@@ -374,10 +390,10 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   )
   enterInheritedGetterWithArgument (
     !?getterMap
-    !?ioTypeMap 
+    !?ioTypeMap
     !getterName:"locationForKey"
     !argumentTypeName:"string"
-    !argumentName:"inKey" 
+    !argumentName:"inKey"
     !returnedTypeName:"location"
     !hasCompilerArgument:true
   )
@@ -578,7 +594,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !{}
     !{}
     !typedPropertyList
-    !constructorMap
+    !classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
@@ -600,24 +616,24 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS                       
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @insertMethodMap {
   insert insertKey error message "the '%K' insert setter is already declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @searchMethodMap {
   insert insertKey error message "the '%K' search method is already declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@lstringlist unused ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused  inSemanticContext
@@ -636,7 +652,7 @@ override method @mapDeclarationAST semanticAnalysis
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    let @unifiedTypeMapEntry t = [ioTypeMap searchKey !propertyTypeName]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     let hasSelector = false
     typedAttributeList +=
       !t
@@ -680,15 +696,15 @@ override method @mapDeclarationAST semanticAnalysis
   let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST count] > 0
   if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
     [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceDeclarationLocation]
-    error insertOrReplaceDeclarationLocation 
+    error insertOrReplaceDeclarationLocation
       : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
   end
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "map " + self.mMapTypeName
     !@mapTypeForGeneration.new {
-      ![ioTypeMap searchKey !self.mMapTypeName]
-      ![ioTypeMap searchKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
+      ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName]
+      ![ioTypeMap typeMapEntryForLKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList
@@ -697,10 +713,10 @@ override method @mapDeclarationAST semanticAnalysis
       !hasInsertOrReplaceModifier
     }
 }
-  
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION                         
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
@@ -712,7 +728,7 @@ refclass @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mHasInsertOrReplaceModifier
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -729,7 +745,7 @@ override method @mapTypeForGeneration appendDeclaration1
     !selfTypedefinition.mTypeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mConstructorMap
+    !selfTypedefinition.mClassFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
@@ -742,7 +758,7 @@ override method @mapTypeForGeneration appendDeclaration1
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
@@ -759,7 +775,7 @@ override method @mapTypeForGeneration appendDeclaration2
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -778,4 +794,4 @@ override method @mapTypeForGeneration appendSpecificImplementation
   ]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

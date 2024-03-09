@@ -26,7 +26,7 @@ AbstractFileHandle::AbstractFileHandle (const String & inFilePath,
                                         const char * inMode) :
 mFilePtr ((inFilePath.length () == 0)
   ? nullptr :
-  ::fopen (FileManager::nativePathWithUnixPath (inFilePath).cString (HERE), inMode)
+  ::fopen (FileManager::nativePathWithUnixPath (inFilePath).cString (), inMode)
 ),
 mFilePath (inFilePath) {
 }
@@ -71,6 +71,7 @@ bool AbstractFileHandle::close (void) {
 void AbstractFileHandle::appendBinaryData (const size_t inByteCount,
                                            const uint8_t * inByteArray) {
   if ((mFilePtr != nullptr) && (inByteCount > 0)) {
+    macroCheckPointerIsNotNull (inByteArray) ;
     ::fwrite (inByteArray, sizeof (uint8_t), inByteCount, mFilePtr) ;
   }
 }
@@ -79,9 +80,10 @@ void AbstractFileHandle::appendBinaryData (const size_t inByteCount,
 //   appendUTF8String
 //--------------------------------------------------------------------------------------------------
 
-void AbstractFileHandle::appendUTF8String (const size_t inByteCount, const char * inByteArray) {
+void AbstractFileHandle::appendUTF8String (const int inByteCount, const char * inByteArray) {
   if ((mFilePtr != nullptr) && (inByteCount > 0)) {
-    ::fprintf (mFilePtr, "%.*s", int (inByteCount), inByteArray) ;
+    macroCheckPointerIsNotNull (inByteArray) ;
+    ::fprintf (mFilePtr, "%.*s", inByteCount, inByteArray) ;
   }
 }
 

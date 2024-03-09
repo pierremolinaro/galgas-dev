@@ -175,8 +175,7 @@ template <typename TYPE> class TC_UniqueArray final {
 //--- Force entry
   public: void forceObjectAtIndex (const int32_t inIndex,
                                    const TYPE & inValue,
-                                   const TYPE & inDefaultValue
-                                   COMMA_LOCATION_ARGS) ;
+                                   const TYPE & inDefaultValue) ;
 
 //--- Prepend object
   public: void prependObject (const TYPE & inValue) ; // inValue is copied
@@ -458,27 +457,19 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setCapacity (const int32_t 
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::forceObjectAtIndex (const int32_t inIndex,
                                                                          const TYPE & inValue,
-                                                                         const TYPE & inDefaultValue
-                                                                         COMMA_LOCATION_ARGS) {
-  if (mCapacity <= inIndex) {
-    int32_t newCapacity = (mCapacity > 32) ? mCapacity : 32 ;
-    while (newCapacity <= inIndex) {
-      newCapacity <<= 1 ;
-    }
-    TYPE * newArray = nullptr ;
-    macroMyNewArrayThere (newArray, TYPE, uint32_t (newCapacity)) ;
-    for (int32_t i=0 ; i<mCount ; i++) {
-      newArray [i] = mArray [i] ;
-    }
-    macroMyDeleteArray (mArray) ; mArray = newArray ;
-    mCapacity = newCapacity ;
+                                                                         const TYPE & inDefaultValue) {
+//--- Realloc if necessary
+  if (mCapacity < (inIndex + 1)) {
+    setCapacity (inIndex + 1) ;
   }
+//--- Append default values if necessary
   if (mCount <= inIndex) {
     for (int32_t i=mCount ; i<inIndex ; i++) {
       mArray [i] = inDefaultValue ;
     }
     mCount = inIndex + 1 ;
   }
+//--- Write value
   mArray [inIndex] = inValue ;
 }
 

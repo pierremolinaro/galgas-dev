@@ -1,30 +1,37 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Semantic Analysis of expression          
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Semantic Analysis of expression
+#
 #  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    A N A L Y S I S    C O N T E X T       
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    A N A L Y S I S    C O N T E X T
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @selfAvailability {
   case none
   case available (@unifiedTypeMapEntry type @bool mutable @bool mutableproperties)
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @analysisContext {
   public let @semanticContext mSemanticContext
@@ -35,7 +42,7 @@ struct @analysisContext {
   public let @bool requiresSelfForAccessingProperty %selector
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypes
   ?let @unifiedTypeMapEntry inTargetType
@@ -62,7 +69,7 @@ proc checkAssignmentTypes
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTargetType
                                                 ?let @unifiedTypeMapEntry inSourceType
@@ -125,7 +132,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         !propertyType
         !inErrorLocation
         !ioExpression
-        ![inTargetType definition].mTypeName.string 
+        ![inTargetType definition].mTypeName.string
       }
       ioExpression = conversionExpression
       ok = propertyType == inTargetType
@@ -162,7 +169,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkDiadicOperator ?let @bool inOperandIsHandled
                           ?let @string inOperatorNameForErrorMessage
@@ -174,7 +181,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
   if not inOperandIsHandled then
     error inErrorLocation
     : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not accept '"
-      + inOperatorNameForErrorMessage 
+      + inOperatorNameForErrorMessage
       + "' operator (right operand type is '@" + [rightType definition].mTypeName.string + ")"
   else
     var @unifiedTypeMapEntry rightType = rightType
@@ -257,7 +264,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
         !propertyType
         !inErrorLocation
         !ioRightExpression
-        ![leftType definition].mTypeName.string 
+        ![leftType definition].mTypeName.string
       }
       ioRightExpression = conversionExpression
       ok = propertyType == leftType
@@ -295,11 +302,11 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
   public let @unifiedTypeMapEntry mLocationType
@@ -326,14 +333,14 @@ struct @predefinedTypes {
   public let @unifiedTypeMapEntry mLStringListType
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    E X P R E S S I O N    A N A L Y S I S 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    E X P R E S S I O N    A N A L Y S I S
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry inType
   ?let @analysisContext inAnalysisContext
@@ -341,4 +348,4 @@ abstract method @semanticExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,10 +1,27 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #syntax extension galgas3SyntaxComponentSyntax {
 #
-#  #·················································································································
+#  #·······························································································
 #
 #  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
 #    $separator-string$
@@ -26,30 +43,30 @@
 #    end
 #  }
 #
-#  #·················································································································
+#  #·······························································································
 #
 #}
 #
-##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+##—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #syntax extension galgas4SyntaxComponentSyntax {
 #
-#  #·················································································································
+#  #·······························································································
 #
-# 
-#  #·················································································································
+#
+#  #·······························································································
 #
 #}
 #
-##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+##—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #refclass @SeparatorStringSyntaxInstruction : @syntaxInstructionAST {
 #
-#  #·················································································································
+#  #·······························································································
 #
 #  private let @abstractInputParameter mInputParameter
 #
-#  #·················································································································
+#  #·······························································································
 #
 #  override method transformInstruction
 #    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -64,8 +81,8 @@
 #  #  }
 #  }
 #
-#  #·················································································································
-#  
+#  #·······························································································
+#
 #  override method analyzeSyntaxInstruction
 #    ?let @lstring unused inUsefulnessCallerEntityName
 #    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
@@ -99,7 +116,7 @@
 #  #  }
 #  }
 #
-#  #·················································································································
+#  #·······························································································
 #
 #}
 #
@@ -142,9 +159,9 @@
 ##  }
 ##}
 #
-##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+##—————————————————————————————————————————————————————————————————————————————————————————————————
 ##! GENERATION TYPES
-##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+##—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #refclass @SeparatorStringInstructionForGeneration : @syntaxInstructionForGeneration {
 #  private let @string mNonterminalName
@@ -152,7 +169,7 @@
 #  private let @actualParameterListForGeneration mActualParameterList
 #  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 #
-#  #·················································································································
+#  #·······························································································
 #
 #  override method appendSyntaxSignature
 #    ?let @string unused inPosfix
@@ -167,7 +184,7 @@
 ##    }
 #  }
 #
-#  #·················································································································
+#  #·······························································································
 #
 #  override getter compareInstructionSyntaxSignature
 #    ?let @semanticInstructionForGeneration inTestedInstruction
@@ -189,10 +206,10 @@
 #    if not result then
 #      error self.mInstructionLocation
 #      :"reference syntax instruction is here"
-#    end  
+#    end
 #  }
 #
-#  #·················································································································
+#  #·······························································································
 #
 #  override method generateInstruction
 #    ?!@stringset ioInclusionSet
@@ -242,9 +259,9 @@
 #      ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
 #    end
 #  }
-#  
-#  #·················································································································
+#
+#  #·······························································································
 #
 #}
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

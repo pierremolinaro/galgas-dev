@@ -34,7 +34,7 @@ BigUnsigned BigUnsigned::operator << (const size_t inShiftCount) const {
       ChunkUInt carry = 0 ;
       for (size_t i = 1 ; i <= n ; i++) {
         const ChunkUInt v = mSharedArray.chunkAtIndex (i COMMA_HERE) ;
-        result.mSharedArray.appendChunk (ChunkUInt ((v << bitShiftCount) | carry) COMMA_HERE) ;
+        result.mSharedArray.appendChunk (leftShiftIgnoringOverflow (v, bitShiftCount) | carry COMMA_HERE) ;
         carry = v >> (ChunkUIntBitCount - bitShiftCount) ;
       }
       if (carry != 0) {
@@ -65,7 +65,7 @@ BigUnsigned BigUnsigned::operator >> (const size_t inShiftCount) const {
         for (size_t i = n ; i > wordShiftCount ; i--) {
           const ChunkUInt v = mSharedArray.chunkAtIndex (i COMMA_HERE) ;
           result.mSharedArray.setChunkAtIndex ((v >> bitShiftCount) | carry, i - wordShiftCount COMMA_HERE) ;
-          carry = ChunkUInt (v << (ChunkUIntBitCount - bitShiftCount)) ;
+          carry = leftShiftIgnoringOverflow (v, ChunkUIntBitCount - bitShiftCount) ;
         }
       }else{ // wordShiftCount > 0
         for (size_t i = 1 + wordShiftCount ; i <= n ; i++) {

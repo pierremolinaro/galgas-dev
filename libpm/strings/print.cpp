@@ -15,8 +15,8 @@ void routine_println_3F_ (const GALGAS_string inString,
                           Compiler * /* inCompiler */
                           COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
-    gCout.addString (inString.stringValue ()) ;
-    gCout.addNL () ; ;
+    gCout.appendString (inString.stringValue ()) ;
+    gCout.appendNewLine () ;
   }
 }
 
@@ -26,7 +26,7 @@ void routine_print_3F_ (const GALGAS_string inString,
                         Compiler * /* inCompiler */
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
-    gCout.addString (inString.stringValue ()) ;
+    gCout.appendString (inString.stringValue ()) ;
   }
 }
 

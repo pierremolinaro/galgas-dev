@@ -1,6 +1,23 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @loopInstructionWithVariantAST : @semanticInstructionAST {
   public let @semanticExpressionAST mVariantExpression
@@ -14,31 +31,32 @@ refclass @loopInstructionWithVariantAST : @semanticInstructionAST {
   public let @location mEndOfLoopInstruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
     $loop$
     let instructionLocation = @location.here
   #--- Variant
     $($
-    <expression_ggs3> ?let @semanticExpressionAST variantExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $)$
   #---
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST firstInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST firstInstructions
   #---
     let endOfFirstInstructions = @location.here
     $while$
-    <expression_ggs3> ?let @semanticExpressionAST loopExpression
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST loopExpression
     let endOfLoopExpression = @location.here
     $do$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST secondInstructions
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST secondInstructions
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
@@ -54,37 +72,36 @@ syntax extension galgas3InstructionsSyntax {
       !endOfSecondInstructions
       !endOfLoopInstruction
     }
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction {
     $loop$
     let instructionLocation = @location.here
   #--- Variant
     $($
-    <expression> ?let @semanticExpressionAST variantExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST variantExpression
     let endOfVariantExpression = @location.here
     $)$
   #---
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST firstInstructions
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST firstInstructions
   #---
     let endOfFirstInstructions = @location.here
     $while$
-    <expression> ?let @semanticExpressionAST loopExpression
+    <expression> !?ioDeclarations ?let @semanticExpressionAST loopExpression
     let endOfLoopExpression = @location.here
     $do$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST secondInstructions
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST secondInstructions
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
@@ -100,15 +117,15 @@ syntax extension galgas4InstructionsSyntax {
       !endOfSecondInstructions
       !endOfLoopInstruction
     }
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @loopInstructionWithVariantAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mVariantExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -117,9 +134,9 @@ override method @loopInstructionWithVariantAST enterInstructionInSemanticContext
   [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @loopInstructionWithVariantAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -130,7 +147,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap {
 #--- Variant expression
   [self.mVariantExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -145,13 +162,9 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !variantExpression.mLocation
     !?variantExpression
   )
-#  if variantExpression.mResultType != inAnalysisContext.mPredefinedTypes.mUIntType then
-#    error self.mEndOfVariantExpression
-#    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType definition].mTypeName.string + "', but it has '@" + [variantExpression.mResultType definition].mTypeName.string + "' type"
-#  end
 #--- Loop expression
   [self.mLoopExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inferenceType: @unifiedTypeMapEntry.null
     !inAnalysisContext
@@ -205,9 +218,9 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !second_instructionList}
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @loopInstructionWithVariantForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -277,4 +290,4 @@ override method @loopInstructionWithVariantForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

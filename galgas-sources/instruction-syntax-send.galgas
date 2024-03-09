@@ -1,133 +1,154 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @syntaxSendInstruction : @syntaxInstructionAST {
-  private let @semanticExpressionAST mExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·················································································································
-  
-  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
+  #·······························································································
+
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
     $send$
     let instructionLocation = @location.here
-    <expression_ggs3> ?let @semanticExpressionAST sentExpression
-    outInstruction = @syntaxSendInstruction.new {
+    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sentExpression
+    outInstruction = @syntaxSendInstructionAST.new {
       !instructionLocation
       !sentExpression
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·················································································································
-  
-  rule <syntax_instruction> ?!@galgasDeclarationAST unused ioDeclarations
-                            ?!@stringset unused ioUserImplicitDeclaredTypeSet
+  #·······························································································
+
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
     $send$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST sentExpression
-    outInstruction = @syntaxSendInstruction.new {
+    <expression> !?ioDeclarations ?let @semanticExpressionAST sentExpression
+    outInstruction = @syntaxSendInstructionAST.new {
       !instructionLocation
       !sentExpression
     }
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! TRANSFORM
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @syntaxSendInstruction transformInstruction
-  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
-  ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
-}
+refclass @syntaxSendInstructionAST : @syntaxInstructionAST {
+  private let @semanticExpressionAST mExpression
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  
-override method @syntaxSendInstruction analyzeSyntaxInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @bool inHasTranslateFeature
-  ?let @terminalMap unused inTerminalMap
-  ?let @string unused inLexiqueName
-  ?let @nonterminalMap unused inNonterminalMap
-  ?let @string unused inComponentName
-  ?let @stringset unused inIndexNameSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-  ?!@uint unused ioSelectMethodCount {
-  if not inHasTranslateFeature then
-    error self.mInstructionLocation : "'send' instruction is only allowed when syntax componant has 'translate' feature"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
-  ]
-#--- Check expression type
-  if expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType  then
-    error self.mInstructionLocation: "'send' expresion should be an @string expression"
-  end
-#---
-  ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !expression
+  #·······························································································
+
+  override method transformInstruction
+    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+    ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
   }
+
+  #·······························································································
+
+  override method analyzeSyntaxInstruction
+                                  ?let @lstring inUsefulnessCallerEntityName
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                  ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+                                  ?let @bool inHasTranslateFeature
+                                  ?let @terminalMap unused inTerminalMap
+                                  ?let @string unused inLexiqueName
+                                  ?let @nonterminalMap unused inNonterminalMap
+                                  ?let @string unused inComponentName
+                                  ?let @stringset unused inIndexNameSet
+                                  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                                  ?!@localVarManager ioVariableMap
+                                  ?!@uint unused ioSelectMethodCount {
+    if not inHasTranslateFeature then
+      error self.mInstructionLocation 
+      : "'send' instruction is only allowed when syntax componant has 'translate' feature"
+    end
+  #--- Analyze source expression
+    [self.mExpression analyzeSemanticExpression
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: @unifiedTypeMapEntry.null
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration expression
+    ]
+  #--- Check expression type
+    if expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType  then
+      error self.mInstructionLocation: "'send' expresion should be an @string expression"
+    end
+  #---
+    ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !expression
+    }
+  }
+
+  #·······························································································
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! @syntaxSendInstructionForGeneration
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
+
+  #·······························································································
+
+  override method generateInstruction ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
+                                      ?!@string ioGeneratedCode {
+    [self.mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string sourceVar
+    ]
+  #---
+    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName ()]
+    ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
+    ioGeneratedCode += "  " + syntaxDirectedTranslationResultVarName ()
+    ioGeneratedCode += ".appendString (" + sourceVar + ".stringValue ()) ;\n"
+    ioGeneratedCode += "}\n"
+  }
+
+  #·······························································································
+
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @syntaxSendInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
-  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string sourceVar]
-#---
-  [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName ()]
-  ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
-                   + "  " + syntaxDirectedTranslationResultVarName () + ".addString (" + sourceVar + ".stringValue ()) ;\n"
-                   + "}\n"
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

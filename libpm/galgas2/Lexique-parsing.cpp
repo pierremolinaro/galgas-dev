@@ -1,11 +1,11 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_Lexique' : an abstract lexique class ;
+//  'Lexique' : an abstract lexique class ;
 //  Galgas generated scanner classes inherit from this class.
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -19,11 +19,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Lexique.h"
+#include "Lexique.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "unicode_character_cpp.h"
-#include "unicode_string_routines.h"
 #include "C_galgas_CLI_Options.h"
 #include "cIndexingDictionary.h"
 #include "FileManager.h"
@@ -39,7 +38,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ().sourceFilePath ().cString (HERE), lineNumber ()
+  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ().sourceFilePath ().cString (), lineNumber ()
 #else
   #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE
 #endif
@@ -60,22 +59,22 @@ static bool TRACE_LL1_PARSING (void) { return false ; }
 //
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
-                                                 const int32_t* inProductionArray,
-                                                 const int32_t* inProductionIndexArray,
-                                                 const int32_t* inFirstProductionIndexArray,
-                                                 const int32_t* inDecisionTableArray,
-                                                 const int32_t* inDecisionTableIndexArray,
-                                                 const TC_Array <int32_t> & inErrorStack,
-                                                 const int32_t inErrorProgramCounter) {
+bool Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
+                                               const int32_t* inProductionArray,
+                                               const int32_t* inProductionIndexArray,
+                                               const int32_t* inFirstProductionIndexArray,
+                                               const int32_t* inDecisionTableArray,
+                                               const int32_t* inDecisionTableIndexArray,
+                                               const TC_Array <int32_t> & inErrorStack,
+                                               const int32_t inErrorProgramCounter) {
   if (TRACE_LL1_PARSING ()) {
     String m = getMessageForTerminal (inTerminal) ;
-    gCout.addString ("------ Enter 'acceptTerminalForErrorSignaling' with '") ;
-    gCout.addString (m) ;
-    gCout.addString ("' (") ;
-    gCout.addSigned (inTerminal) ;
-    gCout.addString (") terminal and program counter ") ;
-    gCout.addSigned (inErrorProgramCounter) ;
+    gCout.appendCString ("------ Enter 'acceptTerminalForErrorSignaling' with '") ;
+    gCout.appendString (m) ;
+    gCout.appendCString ("' (") ;
+    gCout.appendSigned (inTerminal) ;
+    gCout.appendCString (") terminal and program counter ") ;
+    gCout.appendSigned (inErrorProgramCounter) ;
     gCout.flush () ;
   }
   bool accept = false ;
@@ -90,20 +89,20 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
       accept = reachedTerminal == inTerminal ;
       if (TRACE_LL1_PARSING ()) {
         const String m = getMessageForTerminal (reachedTerminal) ;
-        gCout.addString ("reached '") ;
-        gCout.addString (m) ;
-        gCout.addString ("' terminal") ;
-        gCout.addString (accept ? " (accepted)" : "") ;
-        gCout.addNL () ; ;
+        gCout.appendCString ("reached '") ;
+        gCout.appendString (m) ;
+        gCout.appendCString ("' terminal") ;
+        gCout.appendCString (accept ? " (accepted)" : "") ;
+        gCout.appendNewLine () ;
         gCout.flush () ;
       }
       loop = false ;
     }else if (instruction < 0) { // We reach a nonterminal
       const int32_t reachedNonterminal = (int32_t) (- instruction - 1) ;
       if (TRACE_LL1_PARSING ()) {
-        gCout.addString ("reached non-terminal ") ;
-        gCout.addSigned (reachedNonterminal) ;
-        gCout.addNL () ; ;
+        gCout.appendCString ("reached non-terminal ") ;
+        gCout.appendSigned (reachedNonterminal) ;
+        gCout.appendNewLine () ;
         gCout.flush () ;
       }
       int32_t nonTerminalEntry = inDecisionTableIndexArray [reachedNonterminal] ;
@@ -111,9 +110,9 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
         stack.appendObject (programCounter) ;
         programCounter = inProductionIndexArray [inFirstProductionIndexArray [reachedNonterminal]] ;
         if (TRACE_LL1_PARSING ()) {
-          gCout.addString ("One rule: goto ") ;
-          gCout.addSigned (programCounter) ;
-          gCout.addNL () ; ;
+          gCout.appendCString ("One rule: goto ") ;
+          gCout.appendSigned (programCounter) ;
+          gCout.appendNewLine () ;
           gCout.flush () ;
         }
       }else{ // More than one rule : test if terminal is accepted, and call rule
@@ -125,11 +124,11 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
             found = inDecisionTableArray [nonTerminalEntry] == inTerminal ;
             if (TRACE_LL1_PARSING ()) {
               const String m = getMessageForTerminal (inDecisionTableArray [nonTerminalEntry]) ;
-              gCout.addString ("try '") ;
-              gCout.addString (m) ;
-              gCout.addString ("' non terminal") ;
-              gCout.addString (found ? " (accepted)": "") ;
-              gCout.addNL () ; ;
+              gCout.appendCString ("try '") ;
+              gCout.appendString (m) ;
+              gCout.appendCString ("' non terminal") ;
+              gCout.appendCString (found ? " (accepted)": "") ;
+              gCout.appendNewLine () ;
               gCout.flush () ;
             }
             if (found) {
@@ -161,9 +160,9 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
     }
   }
   if (TRACE_LL1_PARSING ()) {
-    gCout.addString ("------ Exit 'acceptTerminalForErrorSignaling' with accept == ") ;
-    gCout.addString (accept ? "true" : "false") ;
-    gCout.addNL () ; ;
+    gCout.appendCString ("------ Exit 'acceptTerminalForErrorSignaling' with accept == ") ;
+    gCout.appendCString (accept ? "true" : "false") ;
+    gCout.appendNewLine () ;
   }
   return accept ;
 }
@@ -174,16 +173,16 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int32_t inTerminal,
 //
 //--------------------------------------------------------------------------------------------------
 
-void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
-                                                          const int32_t inErrorStackCount,
-                                                          const TC_Array <int32_t> & inStack,
-                                                          const TC_Array <int32_t> & inErrorStack,
-                                                          const int32_t* inProductionArray,
-                                                          const int32_t* inProductionIndexArray,
-                                                          const int32_t* inFirstProductionIndexArray,
-                                                          const int32_t* inDecisionTableArray,
-                                                          const int32_t* inDecisionTableIndexArray,
-                                                          TC_UniqueArray <int32_t> & outExpectedTerminalsArray) {
+void Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorProgramCounter,
+                                                        const int32_t inErrorStackCount,
+                                                        const TC_Array <int32_t> & inStack,
+                                                        const TC_Array <int32_t> & inErrorStack,
+                                                        const int32_t* inProductionArray,
+                                                        const int32_t* inProductionIndexArray,
+                                                        const int32_t* inFirstProductionIndexArray,
+                                                        const int32_t* inDecisionTableArray,
+                                                        const int32_t* inDecisionTableIndexArray,
+                                                        TC_UniqueArray <int32_t> & outExpectedTerminalsArray) {
 //--- First, go to the next non terminal, terminal or end of productions rules
   int32_t programCounter = inErrorProgramCounter ;
   const int32_t countToCopy = inErrorStackCount - inErrorStack.count () ;
@@ -195,17 +194,17 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     errorStack.appendObject (inErrorStack (i COMMA_HERE)) ;
   }
   if (TRACE_LL1_PARSING ()) {
-    gCout.addString ("------ Enter 'buildExpectedTerminalsArrayOnSyntaxError'\n") ;
-    gCout.addString ("programCounter: ") ;
-    gCout.addSigned (programCounter) ;
-    gCout.addString (", errorStack: ") ;
-    gCout.addSigned (errorStack.count ()) ;
-    gCout.addString (" value(s):") ;
+    gCout.appendCString ("------ Enter 'buildExpectedTerminalsArrayOnSyntaxError'\n") ;
+    gCout.appendCString ("programCounter: ") ;
+    gCout.appendSigned (programCounter) ;
+    gCout.appendCString (", errorStack: ") ;
+    gCout.appendSigned (errorStack.count ()) ;
+    gCout.appendCString (" value(s):") ;
     for (int32_t i=0 ; i<errorStack.count() ; i++) {
-      gCout.addString (" ") ;
-      gCout.addSigned (errorStack (i COMMA_HERE)) ;
+      gCout.appendCString (" ") ;
+      gCout.appendSigned (errorStack (i COMMA_HERE)) ;
     }
-    gCout.addNL () ; ;
+    gCout.appendNewLine () ;
     gCout.flush () ;
   }
   bool loop = true ;
@@ -214,19 +213,19 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
       loop = false ;
       if (TRACE_LL1_PARSING ()) {
         String m = getMessageForTerminal (inProductionArray [programCounter]) ;
-        gCout.addString ("Terminal '") ;
-        gCout.addString (m) ;
-        gCout.addString ("' (") ;
-        gCout.addSigned (inProductionArray [programCounter]) ;
-        gCout.addString (") reached\n") ;
+        gCout.appendCString ("Terminal '") ;
+        gCout.appendString (m) ;
+        gCout.appendCString ("' (") ;
+        gCout.appendSigned (inProductionArray [programCounter]) ;
+        gCout.appendCString (") reached\n") ;
         gCout.flush () ;
       }
     }else if (inProductionArray [programCounter] < 0) { // We reach a non terminal (<0)
       const int32_t nonTerminal = (int32_t) (- inProductionArray [programCounter] - 1) ;
       if (TRACE_LL1_PARSING ()) {
-        gCout.addString ("Non-Terminal ") ;
-        gCout.addSigned (nonTerminal) ;
-        gCout.addString (" reached\n") ;
+        gCout.appendCString ("Non-Terminal ") ;
+        gCout.appendSigned (nonTerminal) ;
+        gCout.appendCString (" reached\n") ;
         gCout.flush () ;
       }
     //--- We look if we get a non terminal that has only one production rule
@@ -236,9 +235,9 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
         errorStack.appendObject ((int32_t) (programCounter + 1)) ;
         programCounter = inProductionIndexArray [inFirstProductionIndexArray [nonTerminal]] ;
         if (TRACE_LL1_PARSING ()) {
-          gCout.addString ("Only one rule: goto ") ;
-          gCout.addSigned (programCounter) ;
-          gCout.addNL () ; ;
+          gCout.appendCString ("Only one rule: goto ") ;
+          gCout.appendSigned (programCounter) ;
+          gCout.appendNewLine () ;
           gCout.flush () ;
         }
       }else{
@@ -248,14 +247,14 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
       programCounter = errorStack.lastObject (HERE) ;
       errorStack.removeLastObject (HERE) ;
       if (TRACE_LL1_PARSING ()) {
-        gCout.addString ("return instruction (goes to ") ;
-        gCout.addSigned (programCounter) ;
-        gCout.addString (")\n") ;
+        gCout.appendCString ("return instruction (goes to ") ;
+        gCout.appendSigned (programCounter) ;
+        gCout.appendCString (")\n") ;
         gCout.flush () ;
       }
     }else{ // End of source reached
       if (TRACE_LL1_PARSING ()) {
-        gCout.addString ("end of source reached\n") ;
+        gCout.appendCString ("end of source reached\n") ;
         gCout.flush () ;
       }
       loop = false ;
@@ -265,7 +264,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
   if (errorStack.count () == 0) { // We reach end of productions rules
     outExpectedTerminalsArray.appendObject (0) ; // 0 is always "end_of_text" terminal symbol
     if (TRACE_LL1_PARSING ()) {
-      gCout.addString ("add 'end of source' to outExpectedTerminalsArray\n") ;
+      gCout.appendCString ("add 'end of source' to outExpectedTerminalsArray\n") ;
       gCout.flush () ;
     }
   }else if (inProductionArray [programCounter] > 0) { // We reach a terminal symbol
@@ -273,11 +272,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     outExpectedTerminalsArray.appendObject (terminalSymbol) ;
     if (TRACE_LL1_PARSING ()) {
       String m = getMessageForTerminal (inProductionArray [programCounter]) ;
-      gCout.addString ("add '") ;
-      gCout.addString (m) ;
-      gCout.addString ("' (") ;
-      gCout.addSigned (inProductionArray [programCounter]) ;
-      gCout.addString (") to outExpectedTerminalsArray\n") ;
+      gCout.appendCString ("add '") ;
+      gCout.appendString (m) ;
+      gCout.appendCString ("' (") ;
+      gCout.appendSigned (inProductionArray [programCounter]) ;
+      gCout.appendCString (") to outExpectedTerminalsArray\n") ;
       gCout.flush () ;
     }
   }else{  // We reach a non terminal symbol
@@ -296,11 +295,11 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
         if (ok) {
           if (TRACE_LL1_PARSING ()) {
             String m = getMessageForTerminal (inDecisionTableArray [nonTerminalEntry]) ;
-            gCout.addString ("add '") ;
-            gCout.addString (m) ;
-            gCout.addString ("' (") ;
-            gCout.addSigned (inDecisionTableArray [nonTerminalEntry]) ;
-            gCout.addString (") to outExpectedTerminalsArray\n") ;
+            gCout.appendCString ("add '") ;
+            gCout.appendString (m) ;
+            gCout.appendCString ("' (") ;
+            gCout.appendSigned (inDecisionTableArray [nonTerminalEntry]) ;
+            gCout.appendCString (") to outExpectedTerminalsArray\n") ;
             gCout.flush () ;
           }
           outExpectedTerminalsArray.appendObject (inDecisionTableArray [nonTerminalEntry]) ;
@@ -311,7 +310,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
     }
   }
   if (TRACE_LL1_PARSING ()) {
-    gCout.addString ("------ Exit 'buildExpectedTerminalsArrayOnSyntaxError'\n") ;
+    gCout.appendCString ("------ Exit 'buildExpectedTerminalsArrayOnSyntaxError'\n") ;
   }
 }
 
@@ -323,44 +322,43 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int32_t inErrorP
 
 static void indentForParseOnly (const int32_t inIndentation) {
   for (int32_t i=1 ; i<inIndentation ; i++) {
-    gCout.addString ("|  ") ;
+    gCout.appendCString ("|  ") ;
   }
   if (inIndentation > 0) {
-    gCout.addString ("|- ") ;
+    gCout.appendCString ("|- ") ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
-                                       const cProductionNameDescriptor * inProductionNameArray,
-                                       const int32_t * inProductionIndexArray,
-                                       const int32_t * inFirstProductionIndexArray,
-                                       const int32_t * inDecisionTableArray,
-                                       const int32_t * inDecisionTableIndexArray,
-                                       const int32_t inProgramCounterInitialValue) {
+bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
+                                     const cProductionNameDescriptor * inProductionNameArray,
+                                     const int32_t * inProductionIndexArray,
+                                     const int32_t * inFirstProductionIndexArray,
+                                     const int32_t * inDecisionTableArray,
+                                     const int32_t * inDecisionTableIndexArray,
+                                     const int32_t inProgramCounterInitialValue) {
   bool result = false ;
 //--- Lexical analysis
   performLexicalAnalysis () ;
   if (! executionModeIsLexicalAnalysisOnly ()) {
   //--- Variables for generating syntax tree in a form suitable for graphviz
     const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
-       && (sourceFilePath ().stringByDeletingPathExtension () != "") ;
+       && (sourceFilePath ().stringByDeletingPathExtension ().length () > 0) ;
     String syntaxTreeDescriptionString ;
     TC_Array <uint32_t> productionUniqueNameStack ;
     uint32_t uniqueProductionNameIndex = 0 ;
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString.addString ("digraph G {\n"
-                                     "  size =\"4,4\";\n") ;
+      syntaxTreeDescriptionString.appendCString ("digraph G {\n  size =\"4,4\";\n") ;
     }
   //---
     int32_t indentationForParseOnly = 0 ;
     cToken * previousTokenPtr = nullptr ;
     cToken * tokenPtr = mFirstToken ;
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout.addString ("*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n") ;
+      gCout.appendCString ("*** PERFORM TOP-DOWN PARSING ONLY (--mode=syntax-only option) ***\n") ;
     }
     TC_UniqueArray <int32_t> listForSecondPassParsing ;
     TC_Array <int32_t> stack (10000 COMMA_HERE) ;
@@ -391,12 +389,12 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
         }
       }
       if (TRACE_LL1_PARSING ()) {
-        gCout.addString ("---------------------------\n") ;
-        gCout.addString ("Current token is ") ;
-        gCout.addString (getCurrentTokenString (tokenPtr)) ;
-        gCout.addString (" (#") ;
-        gCout.addSigned (currentToken) ;
-        gCout.addString (")\n") ;
+        gCout.appendCString ("---------------------------\n") ;
+        gCout.appendCString ("Current token is ") ;
+        gCout.appendString (getCurrentTokenString (tokenPtr)) ;
+        gCout.appendCString (" (#") ;
+        gCout.appendSigned (currentToken) ;
+        gCout.appendCString (")\n") ;
         gCout.flush () ;
       }
     //--- Get instruction to do
@@ -407,49 +405,49 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
       //--- Get entry of nonterminal symbol to parse
         const int32_t nonTerminalToParse = (int32_t) (- instruction - 1) ;
         if (TRACE_LL1_PARSING ()) {
-          gCout.addString ("Parse non terminal ") ;
-          gCout.addSigned (nonTerminalToParse) ;
-          gCout.addString (": ") ;
+          gCout.appendCString ("Parse non terminal ") ;
+          gCout.appendSigned (nonTerminalToParse) ;
+          gCout.appendCString (": ") ;
           gCout.flush () ;
         }
         int32_t nonTerminalEntry = inDecisionTableIndexArray [nonTerminalToParse] ;
         if (inDecisionTableArray [nonTerminalEntry] < 0) { // Means only one production : don't make any choice
           if (TRACE_LL1_PARSING ()) {
-            gCout.addString (" ok (only one production)\n") ;
+            gCout.appendCString (" ok (only one production)\n") ;
             gCout.flush () ;
           }
           stack.appendObject (programCounter) ;
           programCounter = inProductionIndexArray [inFirstProductionIndexArray [nonTerminalToParse]] ;
           if (produceSyntaxTree) {
             uniqueProductionNameIndex ++ ;
-            syntaxTreeDescriptionString.addString ("  NT") ;
-            syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
-            syntaxTreeDescriptionString.addString (" [label=\"") ;
-            syntaxTreeDescriptionString.addString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
-            syntaxTreeDescriptionString.addString ("\", shape=box];\n") ;
+            syntaxTreeDescriptionString.appendCString ("  NT") ;
+            syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
+            syntaxTreeDescriptionString.appendCString (" [label=\"") ;
+            syntaxTreeDescriptionString.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
+            syntaxTreeDescriptionString.appendCString ("\", shape=box];\n") ;
             if (currentProductionName > 0) {
-              syntaxTreeDescriptionString.addString ("  NT") ;
-              syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
-              syntaxTreeDescriptionString.addString (" -> NT") ;
-              syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
-              syntaxTreeDescriptionString.addString (";\n") ;
+              syntaxTreeDescriptionString.appendCString ("  NT") ;
+              syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
+              syntaxTreeDescriptionString.appendCString (" -> NT") ;
+              syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
+              syntaxTreeDescriptionString.appendCString (";\n") ;
             }
             productionUniqueNameStack.appendObject (currentProductionName) ;
             currentProductionName = uniqueProductionNameIndex ;
           }
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
-            gCout.addString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
-            gCout.addString (", file '") ;
-            gCout.addString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mFileName) ;
-            gCout.addString ("', line ") ;
-            gCout.addUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mLineNumber) ;
-            gCout.addNL () ; ;
+            gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mName) ;
+            gCout.appendCString (", file '") ;
+            gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mFileName) ;
+            gCout.appendCString ("', line ") ;
+            gCout.appendUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse]].mLineNumber) ;
+            gCout.appendNewLine () ;
             indentationForParseOnly ++ ;
           }
         }else{ //--- There are several choices : find the one to do
           if (TRACE_LL1_PARSING ()) {
-            gCout.addString (" try tokens\n") ; gCout.flush () ;
+            gCout.appendCString (" try tokens\n") ; gCout.flush () ;
           }
           int32_t choice = -1 ;
           bool found = false ;
@@ -458,13 +456,13 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
               found = currentToken == inDecisionTableArray [nonTerminalEntry] ;
               if (TRACE_LL1_PARSING ()) {
                 String m = getMessageForTerminal (inDecisionTableArray [nonTerminalEntry]) ;
-                gCout.addString (" try ") ;
-                gCout.addString (m) ;
-                gCout.addString (" (") ;
-                gCout.addSigned (inDecisionTableArray [nonTerminalEntry]) ;
-                gCout.addString (")") ;
-                gCout.addString (found ? " (accepted)" : "") ;
-                gCout.addNL () ; ;
+                gCout.appendCString (" try ") ;
+                gCout.appendString (m) ;
+                gCout.appendCString (" (") ;
+                gCout.appendSigned (inDecisionTableArray [nonTerminalEntry]) ;
+                gCout.appendCString (")") ;
+                gCout.appendString (found ? " (accepted)" : "") ;
+                gCout.appendNewLine () ;
                 gCout.flush () ;
               }
               nonTerminalEntry ++ ;
@@ -478,29 +476,29 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
             programCounter = inProductionIndexArray [inFirstProductionIndexArray [nonTerminalToParse] + choice] ;
             if (produceSyntaxTree) {
               uniqueProductionNameIndex ++ ;
-              syntaxTreeDescriptionString.addString ("  NT") ;
-              syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
-              syntaxTreeDescriptionString.addString (" [label=\"") ;
-              syntaxTreeDescriptionString.addString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse] + choice].mName) ;
-              syntaxTreeDescriptionString.addString ("\", shape=box];\n") ;
+              syntaxTreeDescriptionString.appendCString ("  NT") ;
+              syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
+              syntaxTreeDescriptionString.appendCString (" [label=\"") ;
+              syntaxTreeDescriptionString.appendString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse] + choice].mName) ;
+              syntaxTreeDescriptionString.appendCString ("\", shape=box];\n") ;
               if (currentProductionName > 0) {
-                syntaxTreeDescriptionString.addString ("  NT") ;
-                syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
-                syntaxTreeDescriptionString.addString (" -> NT") ;
-                syntaxTreeDescriptionString.addUnsigned (uniqueProductionNameIndex) ;
-                syntaxTreeDescriptionString.addString (";\n") ;
+                syntaxTreeDescriptionString.appendCString ("  NT") ;
+                syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
+                syntaxTreeDescriptionString.appendCString (" -> NT") ;
+                syntaxTreeDescriptionString.appendUnsigned (uniqueProductionNameIndex) ;
+                syntaxTreeDescriptionString.appendCString (";\n") ;
               }
               productionUniqueNameStack.appendObject (currentProductionName) ;
               currentProductionName = uniqueProductionNameIndex ;
             }
             if (executionModeIsSyntaxAnalysisOnly ()) {
               indentForParseOnly (indentationForParseOnly) ;
-              gCout.addString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mName) ;
-              gCout.addString (", file '") ;
-              gCout.addString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mFileName) ;
-              gCout.addString ("', line ") ;
-              gCout.addUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mLineNumber) ;
-              gCout.addNL () ; ;
+              gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mName) ;
+              gCout.appendCString (", file '") ;
+              gCout.appendCString (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mFileName) ;
+              gCout.appendCString ("', line ") ;
+              gCout.appendUnsigned (inProductionNameArray [inFirstProductionIndexArray [nonTerminalToParse + choice]].mLineNumber) ;
+              gCout.appendNewLine () ;
               indentationForParseOnly ++ ;
             }
             listForSecondPassParsing.appendObject (choice + 1) ;
@@ -517,8 +515,8 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
                                                       inDecisionTableIndexArray,
                                                       expectedTerminalsArray) ;
             if (TRACE_LL1_PARSING ()) {
-              gCout.addSigned (expectedTerminalsArray.count ()) ;
-              gCout.addString (" Token(s) in syntax error message\n") ;
+              gCout.appendSigned (expectedTerminalsArray.count ()) ;
+              gCout.appendCString (" Token(s) in syntax error message\n") ;
               gCout.flush () ;
             }
             parsingError (expectedTerminalsArray, previousTokenPtr, tokenPtr, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
@@ -532,21 +530,21 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
         if (currentToken == terminalSymbol) {
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
-            gCout.addString (getCurrentTokenString (tokenPtr)) ;
-            gCout.addNL () ; ;
+            gCout.appendString (getCurrentTokenString (tokenPtr)) ;
+            gCout.appendNewLine () ;
           }
           currentToken = -1 ; // Ok, current terminal symbol is no longer available
           if (produceSyntaxTree) {
-            syntaxTreeDescriptionString.addString ("  T") ;
-            syntaxTreeDescriptionString.addUnsigned (uniqueTerminalIndex) ;
-            syntaxTreeDescriptionString.addString (" [shape=ellipse, label=") ;
-            syntaxTreeDescriptionString.addStringAsCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
-            syntaxTreeDescriptionString.addString ("];\n") ;
-            syntaxTreeDescriptionString.addString ("  NT") ;
-            syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
-            syntaxTreeDescriptionString.addString (" -> T") ;
-            syntaxTreeDescriptionString.addUnsigned (uniqueTerminalIndex) ;
-            syntaxTreeDescriptionString.addString (";\n") ;
+            syntaxTreeDescriptionString.appendCString ("  T") ;
+            syntaxTreeDescriptionString.appendUnsigned (uniqueTerminalIndex) ;
+            syntaxTreeDescriptionString.appendCString (" [shape=ellipse, label=") ;
+            syntaxTreeDescriptionString.appendStringAsCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
+            syntaxTreeDescriptionString.appendCString ("];\n") ;
+            syntaxTreeDescriptionString.appendCString ("  NT") ;
+            syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
+            syntaxTreeDescriptionString.appendCString (" -> T") ;
+            syntaxTreeDescriptionString.appendUnsigned (uniqueTerminalIndex) ;
+            syntaxTreeDescriptionString.appendCString (";\n") ;
             uniqueTerminalIndex ++ ;
           }
           errorStackCount = stack.count () ;
@@ -554,7 +552,7 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
           errorProgramCounter = programCounter ;
         }else{ // Error !
           if (TRACE_LL1_PARSING ()) {
-            gCout.addString ("ERROR: TOKEN NOT EXPECTED\n") ; gCout.flush () ;
+            gCout.appendCString ("ERROR: TOKEN NOT EXPECTED\n") ; gCout.flush () ;
           }
           TC_UniqueArray <int32_t> expectedTerminalsArray (100 COMMA_HERE) ;
           buildExpectedTerminalsArrayOnSyntaxError (errorProgramCounter,
@@ -574,7 +572,7 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
     //--- It is the end of a production
       }else if (stack.count () > 0) {
         if (TRACE_LL1_PARSING ()) {
-          gCout.addString ("END OF PRODUCTION REACHED\n") ; gCout.flush () ;
+          gCout.appendCString ("END OF PRODUCTION REACHED\n") ; gCout.flush () ;
         }
         programCounter = stack.lastObject (HERE) ;
         if (errorStackCount >= stack.count ()) {
@@ -611,8 +609,8 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
     }
   //--- Output graphviz file
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString.addString ("}\n") ;
-      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
+      syntaxTreeDescriptionString.appendCString ("}\n") ;
+      const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + String (".dot") ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
@@ -620,9 +618,9 @@ bool C_Lexique::performTopDownParsing (const int32_t * inProductionArray,
     listForSecondPassParsing.copyTo (mArrayForSecondPassParsing) ;
     resetForSecondPass () ;
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout.addString ("*** END OF PARSING (success: ") ;
-      gCout.addString (result ? "yes" : "no") ;
-      gCout.addString (") ***\n") ;
+      gCout.appendCString ("*** END OF PARSING (success: ") ;
+      gCout.appendString (result ? "yes" : "no") ;
+      gCout.appendCString (") ***\n") ;
     }
   }
 //---
@@ -665,13 +663,12 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
       macroAssert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
       const int32_t * successorTable = inSuccessorTableArray [tempCurrentState] ;
       int32_t newCurrentState = -1 ;
-      while (((* successorTable) >= 0) && (newCurrentState < 0)) {
+      while ((newCurrentState < 0) && ((* successorTable) >= 0)) {
         if ((* successorTable) == nonTerminal) {
           successorTable ++ ;
           newCurrentState = (* successorTable) ;
         }
-        successorTable ++ ;
-        successorTable ++ ;
+        successorTable += 2 ;
       }
       macroAssert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
       stack.appendObject (-1) ; // Enter any value
@@ -686,8 +683,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
           actionTable ++ ;
           actionCode = (* actionTable) ;
         }
-        actionTable ++ ;
-        actionTable ++ ;
+        actionTable += 2 ;
       }
     //--- action == 0 means the terminal is not expected : exit from loop, and return false
     //--- actionCode > 0 means a shift action is done : so the terminal is accepted : exit and return true
@@ -705,16 +701,16 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const int32_t inExpec
 //
 //--------------------------------------------------------------------------------------------------
 
-bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
-                                        const char * * inNonTerminalSymbolNameArray,
-                                        const uint32_t * inActionTableIndexArray,
-                                        const int32_t * * inSuccessorTableArray,
-                                        const int32_t * inProductionsTableArray) {
+bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
+                                      const char * * inNonTerminalSymbolNameArray,
+                                      const uint32_t * inActionTableIndexArray,
+                                      const int32_t * * inSuccessorTableArray,
+                                      const int32_t * inProductionsTableArray) {
   bool result = false ;
   performLexicalAnalysis () ;
   if (! executionModeIsLexicalAnalysisOnly ()) {
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout.addString ("*** PERFORM BOTTOM-UP PARSING ONLY (--mode=syntax-only option) ***\n"
+      gCout.appendCString ("*** PERFORM BOTTOM-UP PARSING ONLY (--mode=syntax-only option) ***\n"
                           "  Initial State: S0\n") ;
     }
   //--- Variables for generating syntax tree in a form suitable for graphviz
@@ -726,8 +722,8 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     uint32_t uniqueTerminalIndex = 0 ;
     uint32_t currentProductionName = 0 ;
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString.addString ("digraph G {\n"
-                                     "  size =\"4,4\";\n") ;
+      syntaxTreeDescriptionString.appendCString ("digraph G {\n"
+                                             "  size =\"4,4\";\n") ;
     }
   //--- Perform first pass
     TC_UniqueArray <TC_UniqueArray <int32_t> > executionList (100 COMMA_HERE) ;
@@ -740,7 +736,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     cToken * previousTokenPtr = nullptr ;
     cToken * tokenPtr = mFirstToken ;
 
-    int32_t currentToken = int32_t (-1) ;
+    int32_t currentToken = -1 ;
     if (tokenPtr == nullptr) {
       mCurrentLocation.resetLocation () ;
     }else{
@@ -768,7 +764,7 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
       macroAssert (currentState >= 0, "currentState (%lld) < 0", currentState, 0) ;
       const int32_t * actionTable = & (inActionTableArray [inActionTableIndexArray [currentState]]) ;
       int32_t actionCode = 0 ;
-      while (((* actionTable) >= 0) && (actionCode == 0)) {
+      while ((actionCode == 0) && ((* actionTable) >= 0)) {
         if ((* actionTable) == currentToken) {
           actionTable += 1 ;
           actionCode = (* actionTable) ;
@@ -789,29 +785,29 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
       //---
         if (produceSyntaxTree) {
           String terminalUniqueName ;
-          terminalUniqueName.addString ("T") ;
-          terminalUniqueName.addUnsigned (uniqueTerminalIndex) ;
-          syntaxTreeDescriptionString.addString ("  ") ;
-          syntaxTreeDescriptionString.addString (terminalUniqueName) ;
-          syntaxTreeDescriptionString.addString (" [shape=ellipse, label=") ;
-          syntaxTreeDescriptionString.addStringAsCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
-          syntaxTreeDescriptionString.addString ("];\n") ;
+          terminalUniqueName.appendCString ("T") ;
+          terminalUniqueName.appendUnsigned (uniqueTerminalIndex) ;
+          syntaxTreeDescriptionString.appendCString ("  ") ;
+          syntaxTreeDescriptionString.appendString (terminalUniqueName) ;
+          syntaxTreeDescriptionString.appendCString (" [shape=ellipse, label=") ;
+          syntaxTreeDescriptionString.appendStringAsCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
+          syntaxTreeDescriptionString.appendCString ("];\n") ;
           shiftedElementStack.appendObject (terminalUniqueName) ;
           uniqueTerminalIndex ++ ;
         }
       //--- Parse Only : print terminal symbol
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          gCout.addString ("  [S") ;
-          gCout.addSigned (currentState) ;
-          gCout.addString (", ") ;
-          gCout.addString (getCurrentTokenString (tokenPtr)) ;
-          gCout.addString ("] |- Shift -> S") ;
-          gCout.addSigned (actionCode) ;
-          gCout.addNL () ; ;
+          gCout.appendCString ("  [S") ;
+          gCout.appendSigned (currentState) ;
+          gCout.appendCString (", ") ;
+          gCout.appendString (getCurrentTokenString (tokenPtr)) ;
+          gCout.appendCString ("] |- Shift -> S") ;
+          gCout.appendSigned (actionCode) ;
+          gCout.appendNewLine () ;
         }
       }else if (actionCode < 0) {
       //--- Reduce action ------------------------------------
-        actionCode = int32_t (- actionCode - 1) ;
+        actionCode = - actionCode - 1 ;
         macroAssert (actionCode >= 0, "actionCode (%lld) < 0", actionCode, 0) ;
         const int32_t nonTerminal = inProductionsTableArray [2 * actionCode] ;
         const int32_t reduceSize = inProductionsTableArray [2 * actionCode + 1] ;
@@ -834,11 +830,11 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         }
         if (produceSyntaxTree) {
           for (int32_t i=0 ; i<reduceSize ; i++) {
-            syntaxTreeDescriptionString.addString ("  NT") ;
-            syntaxTreeDescriptionString.addUnsigned (currentProductionName) ;
-            syntaxTreeDescriptionString.addString (" -> ") ;
-            syntaxTreeDescriptionString.addString (shiftedElementStack.lastObject (HERE)) ;
-            syntaxTreeDescriptionString.addString (";\n") ;
+            syntaxTreeDescriptionString.appendCString ("  NT") ;
+            syntaxTreeDescriptionString.appendUnsigned (currentProductionName) ;
+            syntaxTreeDescriptionString.appendCString (" -> ") ;
+            syntaxTreeDescriptionString.appendString (shiftedElementStack.lastObject (HERE)) ;
+            syntaxTreeDescriptionString.appendCString (";\n") ;
             shiftedElementStack.removeLastObject (HERE) ;
           }
         }
@@ -847,13 +843,12 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         macroAssert (tempCurrentState >= 0, "tempCurrentState (%lld) < 0", tempCurrentState, 0) ;
         const int32_t * successorTable = inSuccessorTableArray [tempCurrentState] ;
         int32_t newCurrentState = -1 ;
-        while (((* successorTable) >= 0) && (newCurrentState < 0)) {
+        while ((newCurrentState < 0) && ((* successorTable) >= 0)) {
           if ((* successorTable) == nonTerminal) {
             successorTable ++ ;
             newCurrentState = (* successorTable) ;
           }
-          successorTable ++ ;
-          successorTable ++ ;
+          successorTable += 2 ;
         }
         macroAssert (newCurrentState >= 0, "newCurrentState (%lld) < 0", newCurrentState, 0) ;
         stack.appendObject (-1) ; // Enter any value
@@ -861,26 +856,26 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         errorSignalingUselessEntryOnTopOfStack += 2 ;
         if (produceSyntaxTree) {
           String uniqueProductionName ;
-          uniqueProductionName.addString ("NT") ;
-          uniqueProductionName.addUnsigned (currentProductionName) ;
-          syntaxTreeDescriptionString.addString ("  ") ;
-          syntaxTreeDescriptionString.addString (uniqueProductionName) ;
-          syntaxTreeDescriptionString.addString (" [label=\"") ;
-          syntaxTreeDescriptionString.addString (inNonTerminalSymbolNameArray [nonTerminal]) ;
-          syntaxTreeDescriptionString.addString ("\", shape=box];\n") ;
+          uniqueProductionName.appendCString ("NT") ;
+          uniqueProductionName.appendUnsigned (currentProductionName) ;
+          syntaxTreeDescriptionString.appendCString ("  ") ;
+          syntaxTreeDescriptionString.appendString (uniqueProductionName) ;
+          syntaxTreeDescriptionString.appendCString (" [label=\"") ;
+          syntaxTreeDescriptionString.appendString (inNonTerminalSymbolNameArray [nonTerminal]) ;
+          syntaxTreeDescriptionString.appendCString ("\", shape=box];\n") ;
           shiftedElementStack.appendObject (uniqueProductionName) ;
           currentProductionName ++ ;
         }
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          gCout.addString ("  [S") ;
-          gCout.addSigned (currentState) ;
-          gCout.addString (", ") ;
-          gCout.addString (getCurrentTokenString (tokenPtr)) ;
-          gCout.addString ("] |- Reduce ") ;
-          gCout.addString (inNonTerminalSymbolNameArray [nonTerminal]) ;
-          gCout.addString (" -> S") ;
-          gCout.addSigned (newCurrentState) ;
-          gCout.addNL () ; ;
+          gCout.appendCString ("  [S") ;
+          gCout.appendSigned (currentState) ;
+          gCout.appendCString (", ") ;
+          gCout.appendString (getCurrentTokenString (tokenPtr)) ;
+          gCout.appendCString ("] |- Reduce ") ;
+          gCout.appendString (inNonTerminalSymbolNameArray [nonTerminal]) ;
+          gCout.appendCString (" -> S") ;
+          gCout.appendSigned (newCurrentState) ;
+          gCout.appendNewLine () ;
         }
       }else if (actionCode == 1) {
       //--- Accept action -----------------------------------
@@ -888,11 +883,11 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
         executionList (0 COMMA_HERE).appendObjectsFromArray (executionList (1 COMMA_HERE)) ;
         executionList (1 COMMA_HERE).removeAllKeepingCapacity () ;
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          gCout.addString ("  [S") ;
-          gCout.addSigned (currentState) ;
-          gCout.addString (", ") ;
-          gCout.addString (getCurrentTokenString (tokenPtr)) ;
-          gCout.addString ("] : Accept\n") ;
+          gCout.appendCString ("  [S") ;
+          gCout.appendSigned (currentState) ;
+          gCout.appendCString (", ") ;
+          gCout.appendString (getCurrentTokenString (tokenPtr)) ;
+          gCout.appendCString ("] : Accept\n") ;
         }
       }else{
       //--- Parsing error -----------------------------------
@@ -936,15 +931,15 @@ bool C_Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     }
   //--- Output graphviz file
     if (produceSyntaxTree) {
-      syntaxTreeDescriptionString.addString ("}\n") ;
+      syntaxTreeDescriptionString.appendCString ("}\n") ;
       const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
       GALGAS_bool fileWritten ;
       GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
     if (executionModeIsSyntaxAnalysisOnly ()) {
-      gCout.addString ("*** END OF PARSING (success: ") ;
-      gCout.addString (result ? "yes" : "no") ;
-      gCout.addString (") ***\n") ;
+      gCout.appendCString ("*** END OF PARSING (success: ") ;
+      gCout.appendString (result ? "yes" : "no") ;
+      gCout.appendCString (") ***\n") ;
     }
   //--- Set current read location to 0
     resetForSecondPass () ;

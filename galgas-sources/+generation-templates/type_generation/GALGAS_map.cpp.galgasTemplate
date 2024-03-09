@@ -38,9 +38,9 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
 else
   %void cMapElement_%!TYPE_IDENTIFIER%::description (String & ioString, const int32_t inIndentation) const {\n%
   for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
-    %  ioString.addNL () ;\n%
-    %  ioString.addStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString.addString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
+    %  ioString.appendNewLine () ;\n%
+    %  ioString.appendStringMultiple ("| ", inIndentation) ;\n%
+    %  ioString.appendCString (%![mPropertyName utf8RepresentationEscapingQuestionMark]% ":") ;\n%
     %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 end
@@ -80,7 +80,7 @@ GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
@@ -88,7 +88,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
                                                    %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;

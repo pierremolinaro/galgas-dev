@@ -1,0 +1,1082 @@
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Generate predefined types
+#
+#  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @stringPredefinedTypeAST : @predefinedTypeAST {
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter defaultInitializerName -> @string {
+    result = "default"
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                      !@classFunctionMap outMap {
+    outMap = {}
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"homeDirectory"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"newWithStdIn"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"retrieveAndResetTemplateString"
+      !resultTypeName:"string"
+      !hasLexiqueArg:true
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"separatorString"
+      !resultTypeName:"string"
+      !hasLexiqueArg:true
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithSymbolicLinkContents"
+      !argTypeName:"string"
+      !argName:"inPath"
+      !resultTypeName:"string"
+      !hasLexiqueArg:true
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithSourceFilePath"
+      !resultTypeName:"string"
+      !hasLexiqueArg:true
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithCurrentDirectory"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithContentsOfFile"
+      !argTypeName:"string"
+      !argName:"inFilePath"
+      !resultTypeName:"string"
+      !hasLexiqueArg:true
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithCurrentDateTime"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithEnvironmentVariable"
+      !argTypeName:"string"
+      !argName:"inVariableName"
+      !resultTypeName:"string"
+      !hasLexiqueArg:true
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithEnvironmentVariableOrEmpty"
+      !argTypeName:"string"
+      !argName:"inVariableName"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"CppLineComment"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"CppSpaceComment"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"CppTitleComment"
+      !argTypeName:"string"
+      !argName:"inString"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"CppString"
+      !argTypeName:"string"
+      !argName:"inString"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"CppChar"
+      !argTypeName:"char"
+      !argName:"inChar"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"componentsJoinedByString"
+      !argTypeName1:"stringlist"
+      !argName1:"inComponents"
+      !argTypeName2:"string"
+      !argName2:"inSeparator"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringByRepeatingString"
+      !argTypeName1:"string"
+      !argName1:"inString"
+      !argTypeName2:"uint"
+      !argName2:"inCount"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"stringWithSequenceOfCharacters"
+      !argTypeName1:"char"
+      !argName1:"inChar"
+      !argTypeName2:"uint"
+      !argName2:"inCount"
+      !resultTypeName:"string"
+      !hasLexiqueArg:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                    !@classMethodMap outClassMethodMap {
+    outClassMethodMap = {}
+    enterClassMethodWithStringInputArgument (
+      !?outClassMethodMap
+      !?ioUnifiedTypeMap
+      !classMethod:"deleteFile"
+      !argName:"inFilePath"
+      !compilerArg:true
+    )
+    enterClassMethodWithStringInputArgument (
+      !?outClassMethodMap
+      !?ioUnifiedTypeMap
+      !classMethod:"deleteFileIfExists"
+      !argName:"inFilePath"
+      !compilerArg:true
+    )
+    enterClassMethodWithStringInputArgument (
+      !?outClassMethodMap
+      !?ioUnifiedTypeMap
+      !classMethod:"removeEmptyDirectory"
+      !argName:"inDirectoryPath"
+      !compilerArg:true
+    )
+    enterClassMethodWithStringInputArgument (
+      !?outClassMethodMap
+      !?ioUnifiedTypeMap
+      !classMethod:"removeDirectoryRecursively"
+      !argName:"inDirectoryPath"
+      !compilerArg:true
+    )
+    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringType]
+    [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?let @unifiedTypeMapEntry boolType]
+  #--- Generate file
+    var @formalParameterSignature argList = {}
+    argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
+    argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
+    argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
+    [!?outClassMethodMap insertOrReplace
+      !.new {!"generateFile" !.here}
+      !argList
+      !true
+    ]
+  #--- Generate file with pattern
+    argList = {}
+    argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
+    argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"
+    argList += !["lineComment" nowhere] !stringType !.argumentConstantIn !"inLineCommentPrefix"
+    argList += !["header" nowhere] !stringType !.argumentConstantIn !"inHeader"
+    argList += !["defaultUserZone1" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone1"
+    argList += !["generatedZone2" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone2"
+    argList += !["defaultUserZone2" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone2"
+    argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
+    argList += !["makeExecutable" nowhere] !boolType !.argumentConstantIn !"inMakeExecutable"
+    [!?outClassMethodMap insertOrReplace
+      !@lstring.new {!"generateFileWithPattern" !@location.here}
+      !argList
+      !true
+    ]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getInstanceMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                       !@instanceMethodMap outInstanceMethodMap {
+    outInstanceMethodMap = {}
+    enterInstanceMethodWithInputArgument (
+      !?outInstanceMethodMap
+      !?ioUnifiedTypeMap
+      !inputArgTypeName:"string"
+      !inputArgName:"inFilePath"
+      !methodName:"writeToFile"
+      !true
+    )
+    enterInstanceMethodWithInputArgument (
+      !?outInstanceMethodMap
+      !?ioUnifiedTypeMap
+      !inputArgTypeName:"string"
+      !inputArgName:"inFilePath"
+      !methodName:"writeToExecutableFile"
+      !true
+    )
+    enterInstanceMethodWithInputArgument (
+      !?outInstanceMethodMap
+      !?ioUnifiedTypeMap
+      !inputArgTypeName:"string"
+      !inputArgName:"inFilePath"
+      !methodName:"makeDirectoryAndWriteToFile"
+      !true
+    )
+    enterInstanceMethodWithInputArgument (
+      !?outInstanceMethodMap
+      !?ioUnifiedTypeMap
+      !inputArgTypeName:"string"
+      !inputArgName:"inFilePath"
+      !methodName:"makeDirectoryAndWriteToExecutableFile"
+      !true
+    )
+    enterInstanceMethodWithInputArgument (
+      !?outInstanceMethodMap
+      !?ioUnifiedTypeMap
+      !inputArgTypeName:"string"
+      !inputArgName:"inFilePath"
+      !methodName:"makeSymbolicLinkWithPath"
+      !true
+    )
+    enterInstanceMethodWithoutArgument (
+      !?outInstanceMethodMap
+      !methodName:"makeDirectory"
+      !true
+    )
+  #--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
+    var @formalParameterSignature argList = {}
+    [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
+    argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
+    [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
+    argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
+    [!?outInstanceMethodMap insertKey
+      !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
+      !@methodKind.definedAsMember
+      !argList
+      !@location.here
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+    [!?outInstanceMethodMap insertKey
+      !.new {!"writeToExecutableFileWhenDifferentContents" !.here}
+      !@methodKind.definedAsMember
+      !argList
+      !@location.here
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                               !@setterMap outSetterMap {
+    outSetterMap = {}
+    enterModifierWithInputArgument (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !argTypeName:"uint"
+      !argName:"inCapacity"
+      !setterName:"setCapacity"
+      !compilerArg:true
+    )
+    enterModifierWithInputArgument (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !argTypeName:"uint"
+      !argName:"inAmount"
+      !setterName:"incIndentation"
+      !compilerArg:true
+    )
+    enterModifierWithInputArgument (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !argTypeName:"uint"
+      !argName:"inAmount"
+      !setterName:"decIndentation"
+      !compilerArg:true
+    )
+    enterModifierWithInputArgument (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !argTypeName:"uint"
+      !argName:"inColumnIndex"
+      !setterName:"appendSpacesUntilColumn"
+      !compilerArg:true
+    )
+    enterModifierWith2InputArguments (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !arg1TypeName:"char"
+      !arg1Name:"inChar"
+      !arg2TypeName:"uint"
+      !arg2Name:"inIndex"
+      !setterName:"setCharacterAtIndex"
+      !compilerArg:true
+    )
+    enterModifierWith2InputArguments (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !arg1TypeName:"char"
+      !arg1Name:"inChar"
+      !arg2TypeName:"uint"
+      !arg2Name:"inIndex"
+      !setterName:"insertCharacterAtIndex"
+      !compilerArg:true
+    )
+    enterModifierWithOutputAndInputArguments (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !outputArgTypeName:"char"
+      !outputArgName:"outChar"
+      !inputArgTypeName:"uint"
+      !inputArgName:"inIndex"
+      !setterName:"removeCharacterAtIndex"
+      !compilerArg:true
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                               !@getterMap outMap {
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "lastCharacter"
+      !obsoleteName: ""
+      !returnedTypeName:"char"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "nowhere"
+      !obsoleteName: ""
+      !returnedTypeName:"lstring"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "here"
+      !obsoleteName: ""
+      !returnedTypeName:"lstring"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "doesEnvironmentVariableExist"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "count"
+      !obsoleteName: "length"
+      !returnedTypeName:"uint"
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "range"
+      !obsoleteName: ""
+      !returnedTypeName:"range"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "utf8RepresentationWithUnicodeEscaping"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "assemblerRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "fileNameRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "nameRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "cStringRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "identifierRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "decodedStringFromRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "HTMLRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "utf8RepresentationEscapingQuestionMark"
+      !obsoleteName: ""
+      !returnedTypeName: "string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "utf8Representation"
+      !obsoleteName: ""
+      !returnedTypeName: "string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "utf8RepresentationWithoutDelimiters"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "utf8Length"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "utf32Representation"
+      !argSelector: "withZeroTerminator"
+      !argType: "bool"
+      !argName: "inAppendZeroTerminator"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByTrimmingWhiteSpaces"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "md5"
+      !obsoleteName: ""
+      !returnedTypeName: "string"
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "sha256"
+      !obsoleteName: ""
+      !returnedTypeName: "string"
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "decimalUnsignedNumber"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "isDecimalUnsignedNumber"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "decimalUnsigned64Number"
+      !obsoleteName: ""
+      !returnedTypeName: "uint64"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "isDecimalUnsigned64Number"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "decimalSignedNumber"
+      !obsoleteName: ""
+      !returnedTypeName: "sint"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "isDecimalSignedNumber"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "decimalSigned64Number"
+      !obsoleteName: ""
+      !returnedTypeName: "sint64"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "isDecimalSigned64Number"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "decimalSignedBigInt"
+      !obsoleteName: ""
+      !returnedTypeName: "bigint"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "isDecimalSignedBigInt"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "isDoubleNumber"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "doubleNumber"
+      !obsoleteName: ""
+      !returnedTypeName: "double"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "capacity"
+      !obsoleteName: ""
+      !returnedTypeName: "uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "isSymbolicLink"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "fileExists"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "directoryExists"
+      !obsoleteName: ""
+      !returnedTypeName: "bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "pathExtension"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "nativePathWithUnixPath"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "unixPathWithNativePath"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "lastPathComponent"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByDeletingPathExtension"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByCapitalizingFirstCharacter"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "firstCharacterOrNul"
+      !obsoleteName: ""
+      !returnedTypeName:"char"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByDeletingLastPathComponent"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByStandardizingPath"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "lowercaseString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "uppercaseString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "reversedString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "currentColumn"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "system"
+      !obsoleteName: ""
+      !returnedTypeName:"sint"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "popen"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "utf8RepresentationEnclosedWithin"
+      !argSelector: ""
+      !argType: "char" !argName: "inCharacter"
+      !returnedTypeName: "string"
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "commandWithArguments"
+      !argSelector: ""
+      !argType: "stringlist" !argName: "inArguments"
+      !returnedTypeName: "sint"
+      !hasCompilerArgument: true
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "hiddenCommandWithArguments"
+      !argSelector: ""
+      !argType: "stringlist" !argName: "inArguments"
+      !returnedTypeName: "string"
+      !hasCompilerArgument: true
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "characterAtIndex"
+      !argSelector: ""
+      !argType: "uint" !argName: "inIndex"
+      !returnedTypeName:"char"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "containsCharacter"
+      !argSelector: ""
+      !argType: "char" !argName: "inCharacter"
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "containsCharacterInRange"
+      !arg1Selector: ""
+      !arg1TypeName: "char"
+      !arg1Name: "inFirstCharacter"
+      !arg2Selector: ""
+      !arg2TypeName: "char"
+      !arg2Name: "inLastCharacter"
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+   )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByRemovingCharacterAtIndex"
+      !argSelector: ""
+      !argType: "uint" !argName: "inIndex"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "subStringFromIndex"
+      !argSelector: ""
+      !argType: "uint" !argName: "inIndex"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "rightSubString"
+      !argSelector: ""
+      !argType: "uint" !argName: "inLength"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "leftSubString"
+      !argSelector: ""
+      !argType: "uint" !argName: "inLength"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "subString"
+      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inStart"
+      !arg2Selector: "" !arg2TypeName: "uint" !arg2Name: "inLength"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "absolutePathFromPath"
+      !argSelector: ""
+      !argType: "string" !argName: "inPath"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "relativePathFromPath"
+      !argSelector: "" !argType: "string" !argName: "inPath"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "componentsSeparatedByString"
+      !argSelector: "" !argType: "string" !argName: "inSeparator"
+      !returnedTypeName:"stringlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByLeftPadding"
+      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
+      !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByRightPadding"
+      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
+      !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByLeftAndRightPadding"
+      !arg1Selector: "" !arg1TypeName: "uint" !arg1Name: "inPaddedStringLength"
+      !arg2Selector: "" !arg2TypeName: "char" !arg2Name: "inPaddingChar"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "stringByReplacingStringByString"
+      !arg1Selector: "" !arg1TypeName: "string" !arg1Name: "inSearchedString"
+      !arg2Selector: "" !arg2TypeName: "string" !arg2Name: "inReplacementString"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:true
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "regularFiles"
+      !argSelector: ""
+      !argType: "bool"
+      !argName: "inRecursiveSearch"
+      !returnedTypeName:"stringlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "hiddenFiles"
+      !argSelector: ""
+      !argType: "bool" !argName: "inRecursiveSearch"
+      !returnedTypeName:"stringlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "directories"
+      !argSelector: ""
+      !argType: "bool" !argName: "inRecursiveSearch"
+      !returnedTypeName:"stringlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "directoriesWithExtensions"
+      !arg1Selector: "" !arg1TypeName: "bool" !arg1Name: "inRecursiveSearch"
+      !arg2Selector: "" !arg2TypeName: "stringlist" !arg2Name: "inExtensionList"
+      !returnedTypeName:"stringlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "regularFilesWithExtensions"
+      !arg1Selector: "" !arg1TypeName: "bool" !arg1Name: "inRecursiveSearch"
+      !arg2Selector: "" !arg2TypeName: "stringlist" !arg2Name: "inExtensionList"
+      !returnedTypeName:"stringlist"
+      !hasCompilerArgument:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter getSupportedOperatorFlags -> @operators {
+    result = .plusEqualOperatorWithExpression | .infixAddOperator
+      | .generateDescriptionGetterUtilityMethod | .isComparable
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getOptionalMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                       !@optionalMethodMap outMap {
+    outMap = {}
+    enterBaseOptionalMethodWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !optionalMethodName: "extractBigInt"
+      !"bigint"
+      !"outBigInt"
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter cppDeclarationString -> @string {
+    result = [filewrapper predefinedTypeGenerationTemplate.string_type]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -124,7 +124,7 @@ class Compiler : public SharedObject {
   }
 
 //--- Get separator string
-  public: virtual String separatorString (void) const { return "" ; }
+  public: virtual String separatorString (void) const { return String () ; }
 
 //--- Init scanner from source file (for Cocoa GALGAS)
   public: void resetAndLoadSourceFromText (const SourceTextInString & inSourceText) ;

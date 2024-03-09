@@ -1,21 +1,28 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  Copyright (C) 2007, ..., 2019 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #           I N S T R U C T I O N    G E N E R A T I O N
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateInstructionList
   ?!@stringset ioInclusionSet
@@ -38,25 +45,25 @@ proc generateInstructionList
   [!?ioGeneratedCode decIndentation !2]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @templateInstructionForGeneration {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionListForGeneration {
   public let @templateInstructionForGeneration mInstruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticExpressionForGeneration {
   public let @unifiedTypeMapEntry mResultType
   public let @location mLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -65,13 +72,13 @@ abstract method @semanticExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticExpressionListForGeneration {
   public let @semanticExpressionForGeneration mExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mReceiverExpression
@@ -79,11 +86,11 @@ refclass @castInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @unifiedTypeMapEntry mCastType
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  F O R M A L    P A R A M E T E R    L I S T   
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  F O R M A L    P A R A M E T E R    L I S T
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterListForGeneration {
   public let @lstring mFormalSelector
@@ -93,11 +100,11 @@ list @formalParameterListForGeneration {
   public let @string mFormalArgumentCppName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                                                    
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  F O R M A L    I N P U T    P A R A M E T E R    L I S T
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListForGeneration {
   public let @lstring mFormalSelector
@@ -107,17 +114,17 @@ list @formalInputParameterListForGeneration {
   public let @bool mIsConstant
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  A C T U A L    P A R A M E T E R         
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  A C T U A L    P A R A M E T E R
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @actualParameterForGeneration {
   public let @unifiedTypeMapEntry mFormalArgumentType
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @actualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -128,19 +135,19 @@ abstract method @actualParameterForGeneration generateActualParameter
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @actualParameterForGeneration generatePoisonedVariables
   ?!@string ioImplementation
   ?!@stringset ioUnusedVariableCppNameSet
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputActualParameterForGeneration : @actualParameterForGeneration {
   public let @semanticExpressionForGeneration mOutputActualParameterExpression
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mOutputInputVariableCppName
@@ -148,32 +155,32 @@ refclass @outputInputActualParameterForGeneration : @actualParameterForGeneratio
   public let @unifiedTypeMapEntryList mTypeList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
   public let @2stringlist mPoisonedVarNameList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @inputJokerParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
   public let @2stringlist mPoisonedVarNameList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualParameterListForGeneration {
   public let @actualParameterForGeneration mActualParameter
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticInstructionForGeneration {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -182,138 +189,138 @@ abstract method @semanticInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticInstructionListForGeneration {
   public let @semanticInstructionForGeneration mInstruction
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
   public let @semanticInstructionListForGeneration mInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @listOfSemanticInstructionListForGeneration {
   public let @semanticInstructionListForGeneration mInstructionList
   public let @location mEndOfInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticDeclarationForGeneration {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string {
   result = ""
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@string unused ioHeader {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @semanticDeclarationForGeneration implementationCppFileName -> @string
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @semanticDeclarationForGeneration hasCppHeaderFile -> @bool
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @semanticDeclarationForGeneration isPredefined -> @bool
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticDeclarationListForGeneration {
   public let @string infoMessage %selector
   public let @semanticDeclarationForGeneration mDeclaration
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    T Y P E    D E C L A R A T I O N       
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    T Y P E    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticTypeForGeneration : @semanticDeclarationForGeneration {
   public let @unifiedTypeMapEntry mSelfTypeEntry
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration implementationCppFileName -> @string {
   result = [self.mSelfTypeEntry definition].mHeaderFileName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool {
   result = true
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration isPredefined -> @bool {
   result = [self.mSelfTypeEntry definition].mIsPredefined
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration headerKind -> @headerKind {
   result = [self.mSelfTypeEntry definition].mHeaderKind
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    D E C L A R A T I O N    W I T H   H E A D E R    S P E C                                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    D E C L A R A T I O N    W I T H   H E A D E R    S P E C
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
   public let @bool generateHeader %selector
   private let @string mImplementationCppFileName %selector
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticDeclarationWithHeaderForGeneration implementationCppFileName -> @string {
   result = self.mImplementationCppFileName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool {
   result = self.generateHeader
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind {
   result = @headerKind.twoHeaders
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool {
   result = false
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    L E X I Q U E    D E C L A R A T I O N 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    L E X I Q U E    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mLexiqueName
@@ -325,22 +332,22 @@ refclass @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGen
   public let @string mSwiftCocoaImplementation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#   A C T I O N ,    M E T H O D    S I G N A T U R E   
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#   A C T I O N ,    M E T H O D    S I G N A T U R E
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @signatureForGrammarAnalysis {
   public let @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
   public let @lstring mGalgasTypeNameForGrammarAnalysis
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  N O N    T E R M I N A L    S Y M B O L    M A P     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  N O N    T E R M I N A L    S Y M B O L    M A P
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalSymbolLabelMapForGrammarAnalysis {
   public let @signatureForGrammarAnalysis mFormalParametersList
@@ -349,11 +356,11 @@ map @nonterminalSymbolLabelMapForGrammarAnalysis {
   search searchKey error message "the rule label '%K' is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#             nonterminal symbols map       
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#             nonterminal symbols map
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonTerminalSymbolMapForGrammarAnalysis {
   public let @uint mNonTerminalIndex
@@ -363,14 +370,14 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
   search searchKey error message "the '<%K>' non terminal symbol is not declared"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonTerminalToAddList {
   public let @string mSyntaxComponentName
   public let @uint mNonTerminalToAddCount
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mGrammarName
@@ -384,11 +391,11 @@ refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mCppFileContents
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    F U N C T I O N    D E C L A R A T I O N    
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    F U N C T I O N    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFunctionName
@@ -396,22 +403,22 @@ refclass @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHe
   public let @unifiedTypeMapEntry mReturnType
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    F U N C T I O N    I M P L E M E N T A T I O N     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    F U N C T I O N    I M P L E M E N T A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
   public let @string mResultVariableCppName
   public let @semanticInstructionListForGeneration mFunctionInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #    O N C E    F U N C T I O N    D E C L A R A T I O N
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFunctionName
@@ -420,11 +427,11 @@ refclass @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderF
   public let @semanticInstructionListForGeneration mFunctionInstructionList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  T E R M I N A L    C H E C K    I N S T R U C T I O N
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalCheckAssignementList {
   public let @string mTypeName # Empty string if no declaration
@@ -432,28 +439,17 @@ list @terminalCheckAssignementList {
   public let @string mSourceLexicalAttributeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    P R I M I T I V E    T Y P E           
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
-  public let @string mPredefinedTypeName
-  public let @predefinedTypeKindEnum mKind
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    F I L E W R A P P E R    D E C L A R A T I O N     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    F I L E W R A P P E R    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @filewrapperTemplateListForGeneration {
   public let @string mFilewrapperTemplateName
@@ -461,7 +457,7 @@ list @filewrapperTemplateListForGeneration {
   public let @templateInstructionListForGeneration mTemplateInstructionListForGeneration
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFilewrapperName
@@ -471,22 +467,22 @@ refclass @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderFo
   public let @filewrapperTemplateListForGeneration mFilewrapperTemplateListForGeneration
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#    P R O G R A M    D E C L A R A T I O N 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    P R O G R A M    D E C L A R A T I O N
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @stringset mInclusionSet
   public let @string mImplementationString
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# A P P E N D    D E C L A R A T I O N    1 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+# A P P E N D    D E C L A R A T I O N    1
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -495,11 +491,11 @@ method @semanticDeclarationForGeneration appendDeclaration1
   outHeader = ""
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-# A P P E N D    D E C L A R A T I O N    2 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+# A P P E N D    D E C L A R A T I O N    2
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
@@ -509,13 +505,13 @@ method @semanticDeclarationForGeneration appendDeclaration2
   outHeader = ""
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation {
   outImplementation = ""
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inUnifiedTypeMap
@@ -524,7 +520,7 @@ method @semanticDeclarationForGeneration appendSpecificImplementation
   outImplementation = ""
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendSpecificFiles
   ?let @string unused inProductDirectory
@@ -533,5 +529,5 @@ method @semanticDeclarationForGeneration appendSpecificFiles
 {
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

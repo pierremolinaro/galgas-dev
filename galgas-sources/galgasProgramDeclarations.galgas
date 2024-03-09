@@ -1,34 +1,42 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  'program' component parser, as model builder  
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  'program' component parser, as model builder
+#
 #  Copyright (C) 2007, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3ProgramDeclarations (galgasScanner3) {
 
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList
+  rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                                        !@semanticInstructionListAST outInstructionsList
 
-  #·················································································································
-  #   P R O L O G U E                         
-  #·················································································································
+  #·······························································································
+  #   P R O L O G U E
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $before$
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList +=
@@ -36,14 +44,14 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       !endOfPrologue
   }
 
-  #·················································································································
-  #   E P I L O G U E                         
-  #·················································································································
+  #·······························································································
+  #   E P I L O G U E
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $after$
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList +=
@@ -51,9 +59,9 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       !endOfPrologue
   }
 
-  #·················································································································
-  #   S O U R C E    R U L E                  
-  #·················································································································
+  #·······························································································
+  #   S O U R C E    R U L E
+  #·······························································································
 
   rule <declaration_ggs3>
    ?!@galgasDeclarationAST ioDeclarations {
@@ -71,7 +79,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       $identifier$ ?referenceGrammar
     end
   #--- Source file
-    $?$ ?let selector
+    $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
       error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
     end
@@ -92,7 +100,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     $identifier$ ?let @lstring mSourceFileVariableName
   #---
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST mInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mInstructionList
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList +=
@@ -105,29 +113,27 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       !endOfInstructionList
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4ProgramDeclarations (galgasScanner4) {
 
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST unused ioDeclarations
-                                   ?!@stringset ioUserImplicitDeclaredTypeSet
                                    !@semanticInstructionListAST outInstructionsList
 
-  #·················································································································
-  #   P R O L O G U E                         
-  #·················································································································
+  #·······························································································
+  #   P R O L O G U E
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $before$
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList +=
@@ -135,15 +141,14 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       !endOfPrologue
   }
 
-  #·················································································································
-  #   E P I L O G U E                         
-  #·················································································································
+  #·······························································································
+  #   E P I L O G U E
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $after$
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST prologueInstructionList
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList +=
@@ -151,12 +156,11 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       !endOfPrologue
   }
 
-  #·················································································································
-  #   S O U R C E    R U L E                  
-  #·················································································································
+  #·······························································································
+  #   S O U R C E    R U L E
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $case$
     $.$
     $"string"$ ?let @lstring mSourceFileExtension
@@ -171,7 +175,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       $identifier$ ?referenceGrammar
     end
   #--- Source file
-    $?$ ?let selector
+    $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
       error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
     end
@@ -192,7 +196,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     $identifier$ ?let @lstring mSourceFileVariableName
   #---
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST mInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mInstructionList
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList +=
@@ -205,8 +209,8 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       !endOfInstructionList
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

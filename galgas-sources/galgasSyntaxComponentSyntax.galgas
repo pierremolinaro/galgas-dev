@@ -1,35 +1,46 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 
-  #·················································································································
-  #          Rules prototypes                 
-  #·················································································································
+  #·······························································································
+  #          Rules prototypes
+  #·······························································································
 
-  rule <expression_ggs3> !@semanticExpressionAST outExpression
-  
-  rule <semantic_instruction_ggs3> !@semanticInstructionAST outInstruction
-  
-  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
-  
-  rule <actual_parameter_list_ggs3> !@actualParameterListAST outActualParameterList
+  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression
 
-  #·················································································································
-  #      S Y N T A X    C O M P O N E N T     
-  #·················································································································
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction
+
+  rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList
+
+  rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@actualParameterListAST outActualParameterList
+
+  #·······························································································
+  #      S Y N T A X    C O M P O N E N T
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
@@ -57,7 +68,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     var ruleList = @syntaxRuleListAST {}
     repeat
     while
-      <nonterminal_declaration> !? nonterminalDeclarationList
+      <nonterminal_declaration> !?ioDeclarations !?nonterminalDeclarationList
     while
       <syntax_rule_declaration> !?ioDeclarations !? ruleList
     end
@@ -71,9 +82,9 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       !hasTranslateFeature
   }
 
-  #·················································································································
-  #      S Y N T A X    E X T E N S I O N     
-  #·················································································································
+  #·······························································································
+  #      S Y N T A X    E X T E N S I O N
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
@@ -85,9 +96,9 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     var ruleList = @syntaxRuleListAST {}
     repeat
     while
-      <nonterminal_declaration> !? nonterminalDeclarationList
+      <nonterminal_declaration> !?ioDeclarations !?nonterminalDeclarationList
     while
-      <syntax_rule_declaration> !?ioDeclarations !? ruleList
+      <syntax_rule_declaration> !?ioDeclarations !?ruleList
     end
   #--- end
     $}$
@@ -98,35 +109,38 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       !ruleList
   }
 
-  #·················································································································
-  #      N O N T E R M I N A L    D E C L A R A T I O N   
-  #·················································································································
+  #·······························································································
+  #      N O N T E R M I N A L    D E C L A R A T I O N
+  #·······························································································
 
-  rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
+  rule <nonterminal_declaration> ?!@galgasDeclarationAST ioDeclarations
+                                 ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var @nonTerminalLabelListAST labels = {}
-    <formal_parameter_list_ggs3> ?let @formalParameterListAST firstBranchFormalParameters
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST firstBranchFormalParameters
     labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
     repeat
     while
       $label$
       $identifier$ ?let @lstring labelName
-      <formal_parameter_list_ggs3> ?let @formalParameterListAST formalParameters
+      <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameters
       labels += !labelName !formalParameters !.here
     end
     ioNonterminalDeclarationList += !mNonterminalName !labels
   }
 
-  #·················································································································
+  #·······························································································
   #      S Y N T A X    R U L E    D E C L A R A T I O N
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_rule_label> ?!@galgasDeclarationAST unused ioDeclarations ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList {
-    <formal_parameter_list_ggs3> ?let mFormalParameters
+  rule <syntax_rule_label> ?!@galgasDeclarationAST ioDeclarations
+                           ?let @lstring inLabelName
+                           ?!@syntaxRuleLabelListAST ioLabelList {
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let mFormalParameters
     let endOfArguments = @location.here
     ${$
-    <syntax_instruction_list_ggs3> ?let @syntaxInstructionList mSyntaxInstructionList
+    <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList mSyntaxInstructionList
     ioLabelList +=
       !inLabelName
       !mFormalParameters
@@ -136,7 +150,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <syntax_rule_declaration> ?!@galgasDeclarationAST ioDeclarations ?!@syntaxRuleListAST ioRuleList {
     $rule$
@@ -154,20 +168,21 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       !mLabelList
   }
 
-  #·················································································································
-  #   S Y N T A X    I N S T R U C T I O N    L I S T     
-  #·················································································································
+  #·······························································································
+  #   S Y N T A X    I N S T R U C T I O N    L I S T
+  #·······························································································
 
-  rule <syntax_instruction_list_ggs3> !@syntaxInstructionList outSyntaxInstructionList {
+  rule <syntax_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                      !@syntaxInstructionList outSyntaxInstructionList {
     outSyntaxInstructionList = {}
     select
     or
       repeat
         select
-          <semantic_instruction_ggs3> ?let @semanticInstructionAST instruction
+          <semantic_instruction_ggs3> !?ioDeclarations ?let @semanticInstructionAST instruction
           outSyntaxInstructionList += !instruction
         or
-          <syntax_instruction_ggs3> ?let instruction
+          <syntax_instruction_ggs3> !?ioDeclarations ?let instruction
           outSyntaxInstructionList += !instruction
         end
       while
@@ -183,46 +198,47 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     end
   }
 
-  #·················································································································
-  #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                      
-  #·················································································································
+  #·······························································································
+  #   T E R M I N A L    C H E C K    I N S T R U C T I O N
+  #·······························································································
 
-  rule <actual_input_parameter_list_ggs3> !@actualInputParameterListAST outActualInputParameterList
+  rule <actual_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                          !@actualInputParameterListAST outActualInputParameterList
 
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result
+  rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
+                                            !@abstractGrammarInstructionSyntaxDirectedTranslationResult result
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
-  #·················································································································
-  #          Rules prototypes                 
-  #·················································································································
+  #·······························································································
+  #          Rules prototypes
+  #·······························································································
 
-  rule <expression> !@semanticExpressionAST outExpression
-  
+  rule <expression> ?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpression
+
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              ?!@stringset ioUserImplicitDeclaredTypeSet
                               !@semanticInstructionAST outInstruction
-  
-  rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
-                               !@formalParameterListAST outFormalParameterList
-  
-  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
-  
-  #·················································································································
-  #      S Y N T A X    C O M P O N E N T     
-  #·················································································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
+                               !@formalParameterListAST outFormalParameterList
+
+  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
+                                                  !@actualParameterListAST outActualParameterList
+
+  #·······························································································
+  #      S Y N T A X    C O M P O N E N T
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $identifier$ ?let @lstring syntaxComponentName
   #--- Imported lexique
@@ -248,9 +264,9 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     var ruleList = @syntaxRuleListAST {}
     repeat
     while
-      <nonterminal_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? nonterminalDeclarationList
+      <nonterminal_declaration> !?ioDeclarations !? nonterminalDeclarationList
     while
-      <syntax_rule_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? ruleList
+      <syntax_rule_declaration> !?ioDeclarations !? ruleList
     end
   #--- end
     $}$
@@ -262,12 +278,11 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       !hasTranslateFeature
   }
 
-  #·················································································································
-  #      S Y N T A X    E X T E N S I O N     
-  #·················································································································
+  #·······························································································
+  #      S Y N T A X    E X T E N S I O N
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $extension$
     $identifier$ ?let @lstring syntaxComponentName
@@ -277,9 +292,9 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     var ruleList = @syntaxRuleListAST {}
     repeat
     while
-      <nonterminal_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? nonterminalDeclarationList
+      <nonterminal_declaration> !?ioDeclarations !? nonterminalDeclarationList
     while
-      <syntax_rule_declaration> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !? ruleList
+      <syntax_rule_declaration> !?ioDeclarations !? ruleList
     end
   #--- end
     $}$
@@ -290,39 +305,37 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       !ruleList
   }
 
-  #·················································································································
-  #      N O N T E R M I N A L    D E C L A R A T I O N   
-  #·················································································································
+  #·······························································································
+  #      N O N T E R M I N A L    D E C L A R A T I O N
+  #·······························································································
 
   rule <nonterminal_declaration> ?!@galgasDeclarationAST ioDeclarations
-                                 ?!@stringset ioUserImplicitDeclaredTypeSet
                                  ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var @nonTerminalLabelListAST labels = {}
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST firstBranchFormalParameters
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST firstBranchFormalParameters
     labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
     repeat
     while
       $label$
       $identifier$ ?let @lstring labelName
-      <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @formalParameterListAST formalParameters
+      <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameters
       labels += !labelName !formalParameters !.here
     end
     ioNonterminalDeclarationList += !mNonterminalName !labels
   }
 
-  #·················································································································
-  #      S Y N T A X    R U L E    D E C L A R A T I O N  
-  #·················································································································
+  #·······························································································
+  #      S Y N T A X    R U L E    D E C L A R A T I O N
+  #·······························································································
 
   rule <syntax_rule_label> ?!@galgasDeclarationAST ioDeclarations
-                           ?!@stringset ioUserImplicitDeclaredTypeSet
                            ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList {
-    <formal_parameter_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let mFormalParameters
+    <formal_parameter_list> !?ioDeclarations ?let mFormalParameters
     let endOfArguments = @location.here
     ${$
-    <syntax_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @syntaxInstructionList mSyntaxInstructionList
+    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList mSyntaxInstructionList
     ioLabelList +=
       !inLabelName
       !mFormalParameters
@@ -332,17 +345,16 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $}$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <syntax_rule_declaration> ?!@galgasDeclarationAST ioDeclarations
-                                 ?!@stringset ioUserImplicitDeclaredTypeSet
                                  ?!@syntaxRuleListAST ioRuleList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var labelName = @lstring.new{!"" !@location.here}
     var mLabelList = @syntaxRuleLabelListAST {}
     repeat
-      <syntax_rule_label> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet !labelName !?mLabelList
+      <syntax_rule_label> !?ioDeclarations !labelName !?mLabelList
     while
       $label$
       $identifier$ ?labelName
@@ -352,22 +364,21 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       !mLabelList
   }
 
-  #·················································································································
-  #   S Y N T A X    I N S T R U C T I O N    L I S T     
-  #·················································································································
+  #·······························································································
+  #   S Y N T A X    I N S T R U C T I O N    L I S T
+  #·······························································································
 
   rule <syntax_instruction_list> ?!@galgasDeclarationAST ioDeclarations
-                                 ?!@stringset ioUserImplicitDeclaredTypeSet
                                  !@syntaxInstructionList outSyntaxInstructionList {
     outSyntaxInstructionList = {}
     select
     or
       repeat
         select
-          <semantic_instruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionAST instruction
+          <semantic_instruction> !?ioDeclarations ?let @semanticInstructionAST instruction
           outSyntaxInstructionList += !instruction
         or
-          <syntax_instruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let instruction
+          <syntax_instruction> !?ioDeclarations ?let instruction
           outSyntaxInstructionList += !instruction
         end
       while
@@ -383,18 +394,20 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     end
   }
 
-  #·················································································································
-  #   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                      
-  #·················································································································
+  #·······························································································
+  #   T E R M I N A L    C H E C K    I N S T R U C T I O N
+  #·······························································································
 
-  rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList
+  rule <actual_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
+                                     !@actualInputParameterListAST outActualInputParameterList
 
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result
+  rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
+                                            !@abstractGrammarInstructionSyntaxDirectedTranslationResult result
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

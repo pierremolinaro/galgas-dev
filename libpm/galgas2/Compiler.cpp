@@ -117,7 +117,7 @@ void Compiler::writeIssueJSONFile (const String & inFile) {
       mIssueArray (i COMMA_HERE).appendToJSONstring (s, isFirst) ;
       isFirst = false ;
     }
-    s.addString ("\n]\n") ;
+    s.appendCString ("\n]\n") ;
     const bool ok = FileManager::writeStringToFile (s, inFile) ;
     if (!ok) {
       const String message (String ("Cannot write to '") + inFile + "'") ;
@@ -243,7 +243,7 @@ void Compiler::printMessage (const String & inMessage
 
 void Compiler::logFileRead (const String & inFilePath) {
   if (performLogFileRead ()) {
-    printf ("Reading '%s' file.\n", inFilePath.cString (HERE)) ;
+    printf ("Reading '%s' file.\n", inFilePath.cString ()) ;
   }
 }
 
@@ -271,9 +271,9 @@ void Compiler::castError (const String & inTargetTypeName,
                             const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
                             COMMA_LOCATION_ARGS) {
   String m = "cannot cast an @" ;
-  m.addString (inObjectDynamicTypeDescriptor->mGalgasTypeName) ;
-  m.addString (" to an @") ;
-  m.addString (inTargetTypeName) ;
+  m.appendString (inObjectDynamicTypeDescriptor->mGalgasTypeName) ;
+  m.appendCString (" to an @") ;
+  m.appendString (inTargetTypeName) ;
   onTheFlyRunTimeError (m COMMA_THERE) ;
 }
 
@@ -335,16 +335,16 @@ void Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
   const String searchErrorMessage (in_K_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
-    const utf32 c = searchErrorMessage (i COMMA_HERE) ;
+    const utf32 c = searchErrorMessage.charAtIndex (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
-        message.addString (key) ;
+        message.appendString (key) ;
       }
       perCentFound = false ;
     }else if (UNICODE_VALUE (c) == '%') {
       perCentFound = true ;
     }else{
-      message.addUnicodeChar (c COMMA_HERE) ;
+      message.appendChar (c) ;
     }
   }
 //--- Add nearest keys, if any
@@ -370,24 +370,24 @@ void Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
   const String searchErrorMessage (in_K_L_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
-    const utf32 c = searchErrorMessage (i COMMA_HERE) ;
+    const utf32 c = searchErrorMessage.charAtIndex (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
-        message.addString (key) ;
+        message.appendString (key) ;
       }else if (UNICODE_VALUE (c) == 'L') {
         if (!inExistingKeyLocation.isValid ()) {
-          message.addString ("<<unknown>>") ;
+          message.appendCString ("<<unknown>>") ;
         }else if (inExistingKeyLocation.getter_isNowhere (HERE).boolEnum () == kBoolTrue) {
-          message.addString ("<<unknown>>") ;
+          message.appendCString ("<<unknown>>") ;
         }else{
-          message.addString (inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue ()) ;
+          message.appendString (inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue ()) ;
         }
       }
       perCentFound = false ;
     }else if (UNICODE_VALUE (c) == '%') {
       perCentFound = true ;
     }else{
-      message.addUnicodeChar (c COMMA_HERE) ;
+      message.appendChar (c) ;
     }
   }
 //--- Emit error message
@@ -408,18 +408,18 @@ void Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
   const String searchErrorMessage (in_K_L_ErrorMessage) ;
   const int32_t errorMessageLength = searchErrorMessage.length () ;
   for (int32_t i=0 ; i<errorMessageLength ; i++) {
-    const utf32 c = searchErrorMessage (i COMMA_HERE) ;
+    const utf32 c = searchErrorMessage.charAtIndex (i COMMA_HERE) ;
     if (perCentFound) {
       if (UNICODE_VALUE (c) == 'K') {
-        message.addString (key) ;
+        message.appendString (key) ;
       }else if (UNICODE_VALUE (c) == 'L') {
-        message.addString (inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue ()) ;
+        message.appendString (inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue ()) ;
       }
       perCentFound = false ;
     }else if (UNICODE_VALUE (c) == '%') {
       perCentFound = true ;
     }else{
-      message.addUnicodeChar (c COMMA_HERE) ;
+      message.appendChar (c) ;
     }
   }
 //--- Emit error message
@@ -565,8 +565,8 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
   if (fullPathName.length () == 0) {
   //--- File does not exist : create it
     String fileName = startPath ;
-    fileName.addString ("/") ;
-    fileName.addString (inFileName) ;
+    fileName.appendCString ("/") ;
+    fileName.appendString (inFileName) ;
     const String directory = fileName.stringByDeletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
@@ -574,11 +574,11 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
       bool ok = f.isOpened () ;
       if (! ok) {
         String message = "Cannot open '" ;
-        message.addString (fileName) ;
-        message.addString ("' file in write mode.") ;
+        message.appendString (fileName) ;
+        message.appendCString ("' file in write mode.") ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f.addString (inContents) ;
+      f.appendString (inContents) ;
       if (verboseOptionOn) {
         ggs_printFileOperationSuccess (String ("Created '") + fileName + "'.\n") ;
       }
@@ -593,11 +593,11 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
         TextFileWrite f (fullPathName) ;
         if (! f.isOpened ()) {
           String message = "Cannot open '" ;
-          message.addString (fullPathName) ;
-          message.addString ("' file in write mode.") ;
+          message.appendString (fullPathName) ;
+          message.appendCString ("' file in write mode.") ;
           onTheFlySemanticError (message COMMA_HERE) ;
         }else{
-          f.addString (inContents) ;
+          f.appendString (inContents) ;
           if (verboseOptionOn) {
             ggs_printFileOperationSuccess (String ("Replaced '") + fullPathName + "'.\n") ;
           }
@@ -640,8 +640,8 @@ void Compiler::generateFileWithPatternFromPathes (
   if (fullPathName.length () == 0) {
   //--- File does not exist : create it
     String fileName = startPath ;
-    fileName.addString ("/") ;
-    fileName.addString (inFileName) ;
+    fileName.appendCString ("/") ;
+    fileName.appendString (inFileName) ;
     const String directory = fileName.stringByDeletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
@@ -649,19 +649,19 @@ void Compiler::generateFileWithPatternFromPathes (
       bool ok = f.isOpened () ;
       if (! ok) {
         String message = "Cannot open '" ;
-        message.addString (fileName) ;
-        message.addString ("' file in write mode.") ;
+        message.appendString (fileName) ;
+        message.appendCString ("' file in write mode.") ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f.addString (inHeader) ;
-      f.addString (kSTART_OF_USER_ZONE_1) ;
-      f.addString (inDefaultUserZone1) ;
-      f.addString (kEND_OF_USER_ZONE_1) ;
-      f.addString (inGeneratedZone2) ;
-      f.addString (kSTART_OF_USER_ZONE_2) ;
-      f.addString (inDefaultUserZone2) ;
-      f.addString (kEND_OF_USER_ZONE_2) ;
-      f.addString (inGeneratedZone3) ;
+      f.appendString (inHeader) ;
+      f.appendString (kSTART_OF_USER_ZONE_1) ;
+      f.appendString (inDefaultUserZone1) ;
+      f.appendString (kEND_OF_USER_ZONE_1) ;
+      f.appendString (inGeneratedZone2) ;
+      f.appendString (kSTART_OF_USER_ZONE_2) ;
+      f.appendString (inDefaultUserZone2) ;
+      f.appendString (kEND_OF_USER_ZONE_2) ;
+      f.appendString (inGeneratedZone3) ;
       if (verboseOptionOn) {
         ggs_printFileCreationSuccess (String ("Created '") + fileName + "'.\n") ;
       }
@@ -670,8 +670,8 @@ void Compiler::generateFileWithPatternFromPathes (
       if (inMakeExecutable) {
         #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
-          ::stat (fileName.cString (HERE), & fileStat) ;
-          ::chmod (fileName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+          ::stat (fileName.cString (), & fileStat) ;
+          ::chmod (fileName.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
         #endif
       }
     }else{
@@ -718,19 +718,19 @@ void Compiler::generateFileWithPatternFromPathes (
       ok = f.isOpened () ;
       if (! ok) {
         String message = "Cannot open '" ;
-        message.addString (fullPathName) ;
-        message.addString ("' file in write mode.") ;
+        message.appendString (fullPathName) ;
+        message.appendCString ("' file in write mode.") ;
         onTheFlySemanticError (message COMMA_HERE) ;
       }
-      f.addString (inHeader) ;
-      f.addString (kSTART_OF_USER_ZONE_1) ;
-      f.addString (firstUserPart) ;
-      f.addString (kEND_OF_USER_ZONE_1) ;
-      f.addString (inGeneratedZone2) ;
-      f.addString (kSTART_OF_USER_ZONE_2) ;
-      f.addString (secondUserPart) ;
-      f.addString (kEND_OF_USER_ZONE_2) ;
-      f.addString (inGeneratedZone3) ;
+      f.appendString (inHeader) ;
+      f.appendString (kSTART_OF_USER_ZONE_1) ;
+      f.appendString (firstUserPart) ;
+      f.appendString (kEND_OF_USER_ZONE_1) ;
+      f.appendString (inGeneratedZone2) ;
+      f.appendString (kSTART_OF_USER_ZONE_2) ;
+      f.appendString (secondUserPart) ;
+      f.appendString (kEND_OF_USER_ZONE_2) ;
+      f.appendString (inGeneratedZone3) ;
       if (verboseOptionOn) {
         ggs_printFileOperationSuccess (String ("Replaced '") + fullPathName + "'.\n") ;
       }
@@ -738,8 +738,8 @@ void Compiler::generateFileWithPatternFromPathes (
       if (inMakeExecutable) {
         #if COMPILE_FOR_WINDOWS == 0
           struct stat fileStat ;
-          ::stat (fullPathName.cString (HERE), & fileStat) ;
-          ::chmod (fullPathName.cString (HERE), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
+          ::stat (fullPathName.cString (), & fileStat) ;
+          ::chmod (fullPathName.cString (), fileStat.st_mode | S_IXUSR | S_IXGRP | S_IXOTH) ;
         #endif
       }
     }else{

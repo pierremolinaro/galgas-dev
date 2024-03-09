@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,7 +22,6 @@
 #include "String-class.h"
 #include "DateTime.h"
 #include "unicode_character_cpp.h"
-#include "unicode_string_routines.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -46,25 +45,25 @@ AbstractOutputStream::~AbstractOutputStream (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addString (const char * inCstring) {
+void AbstractOutputStream::appendCString (const char * inCstring) {
   if (inCstring != nullptr) {
-    genericCharArrayOutput (inCstring, (int32_t) (strlen (inCstring) & UINT32_MAX)) ;
+    performAppendCString (inCstring, int32_t (strlen (inCstring))) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::genericCharArrayOutput (const char * inCharArray, const int32_t inArrayCount) {
+void AbstractOutputStream::performAppendCString (const char * inCharArray, const int32_t inArrayCount) {
   if (mIndentation == 0) {
-    performActualCharArrayOutput (inCharArray, inArrayCount) ;
+    handleAppendUTF8Array (inCharArray, inArrayCount) ;
   }else if (inArrayCount > 0) {
     for (int32_t i=0 ; i<inArrayCount ; i++) {
       if (mStartingLine) {
         for (int32_t j=0 ; j<mIndentation ; j++) {
-          performActualCharArrayOutput (" ", 1) ;
+          handleAppendUTF8Array (" ", 1) ;
         }
       }
-      performActualCharArrayOutput (& (inCharArray [i]) , 1) ;
+      handleAppendUTF8Array (& inCharArray [i], 1) ;
       mStartingLine = inCharArray [i] == '\n' ;
     }
   }
@@ -72,242 +71,192 @@ void AbstractOutputStream::genericCharArrayOutput (const char * inCharArray, con
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::genericUnicodeArrayOutput (const utf32 * inCharArray, const int32_t inArrayCount) {
+void AbstractOutputStream::performAppendCharacter (const utf32 inCharacter) {
   if (mIndentation == 0) {
-    performActualUnicodeArrayOutput (inCharArray, inArrayCount) ;
-  }else if (inArrayCount > 0) {
-    for (int32_t i=0 ; i<inArrayCount ; i++) {
-      if (mStartingLine) {
-        for (int32_t j=0 ; j<mIndentation ; j++) {
-          const utf32 space [1] = {TO_UNICODE (' ')} ;
-          performActualUnicodeArrayOutput (space, 1) ;
-        }
+    handleAppendCharacter (inCharacter) ;
+  }else{
+    if (mStartingLine) {
+      for (int32_t j=0 ; j<mIndentation ; j++) {
+        handleAppendCharacter (TO_UNICODE (' ')) ;
       }
-      performActualUnicodeArrayOutput (& (inCharArray [i]) , 1) ;
-      mStartingLine = UNICODE_VALUE (inCharArray [i]) == '\n' ;
     }
+    handleAppendCharacter (inCharacter) ;
+    mStartingLine = UNICODE_VALUE (inCharacter) == '\n' ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << String
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addNL (void) {
-  addString ("\n") ;
+void AbstractOutputStream::appendNewLine (void) {
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addString (const String inString) {
-  genericUnicodeArrayOutput (inString.utf32String (HERE), inString.length ()) ;
+void AbstractOutputStream::appendString (const String inString) {
+  for (int32_t i = 0 ; i < inString.length () ; i++) {
+    performAppendCharacter (inString.charAtIndex (i COMMA_HERE)) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << char *
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addString (const char * inCstring, const int32_t inCount) {
-  genericCharArrayOutput (inCstring, inCount) ;
+void AbstractOutputStream::appendString (const std::initializer_list <utf32> & inSource) {
+  for (auto it = inSource.begin () ; it != inSource.end () ; it++) {
+    performAppendCharacter (*it) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendUTF32String (const utf32 * inUTF32String) {
-  genericUnicodeArrayOutput (inUTF32String, utf32_strlen (inUTF32String)) ;
+void AbstractOutputStream::appendString (const char * inCString, const int32_t inCount) {
+  performAppendCString (inCString, inCount) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendUTF32LiteralStringConstant (const String & inString) {
-  const utf32 * str = inString.utf32String (HERE) ;
-  addUnicodeChar (TO_UNICODE ('{') COMMA_HERE) ;
-  while (UNICODE_VALUE (* str) != 0) {
-    const utf32 c = * str ;
-    addString ("\n  TO_UNICODE (") ;
-    if (isprint ((int) UNICODE_VALUE (c))) {
-      addStringAsCLiteralCharConstant (c) ;
+void AbstractOutputStream::appendUTF32LiteralStringConstant (const String inString,
+                                                             const bool inAppendZeroTerminator) {
+  appendChar (TO_UNICODE ('{')) ;
+  for (int32_t i=0 ; i < inString.length () ; i++) {
+    const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
+    appendCString ("\n  TO_UNICODE (") ;
+    if (isprint (int (UNICODE_VALUE (c)))) {
+      appendStringAsCLiteralCharConstant (c) ;
     }else{
-      addUnsigned (UNICODE_VALUE (c)) ;
+      appendUnsigned (UNICODE_VALUE (c)) ;
     }
-    addString ("),") ;
-    str ++ ;
+    appendCString ("),") ;
   }
-  addString ("\n  TO_UNICODE (0)\n}") ;
+  if (inAppendZeroTerminator) {
+    appendCString ("\n  TO_UNICODE (0)") ;
+  }
+  appendCString ("\n}") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << char
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addChar (const char inValue) {
-  addUnicodeChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
+void AbstractOutputStream::appendASCIIChar (const char inValue) {
+  appendChar (TO_UNICODE (uint32_t (inValue))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addUnicodeChar (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
-  genericUnicodeArrayOutput (& inUnicodeCharacter, 1) ;
+void AbstractOutputStream::appendChar (const utf32 inUnicodeCharacter) {
+  performAppendCharacter (inUnicodeCharacter) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << double
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addDouble (const double inValue) {
+void AbstractOutputStream::appendDouble (const double inValue) {
   char s [40] ;
   snprintf (s, 40, "%g", inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark uint64_t
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addUnsigned (const uint64_t inValue) {
+void AbstractOutputStream::appendUnsigned (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRIu64, inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addUnsignedHex16 (const uint64_t inValue) {
+void AbstractOutputStream::appendUnsignedHex16 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%016" PRIX64, inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << int64_t
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addSigned (const int64_t inValue) {
+void AbstractOutputStream::appendSigned (const int64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRId64, inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Bool
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addBool (const bool inValue) {
-  addString (inValue ? "true" : "false") ;
+void AbstractOutputStream::appendBool (const bool inValue) {
+  appendCString (inValue ? "true" : "false") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << uint32_t
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
+void AbstractOutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
   char s [32] ;
   snprintf (s, 31, "%" PRIu64, inValue) ;
   for (uint32_t i = uint32_t (strlen (s)) ; i < inWidth ; i++) {
-    addString (" ") ;
+    appendCString (" ") ;
   }
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addUnsignedHex (const uint64_t inValue) {
+void AbstractOutputStream::appendUnsignedHex (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%" PRIX64, inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::adddHex0xUnsigned (const uint64_t inValue) {
+void AbstractOutputStream::appendUnsigned0xHex (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "0x%" PRIX64, inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addUnsignedHex2 (const uint64_t inValue) {
+void AbstractOutputStream::appendUnsignedHex2 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%02" PRIX64, inValue & 0xFF) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addUnsignedHex4 (const uint64_t inValue) {
+void AbstractOutputStream::appendUnsignedHex4 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%04" PRIX64, inValue & 0xFFFF) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addUnsignedHex8 (const uint64_t inValue) {
+void AbstractOutputStream::appendUnsignedHex8 (const uint64_t inValue) {
   char s [32] ;
   snprintf (s, 31, "%08" PRIX64, inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark << void *
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addPointer (const void * inValue) {
-  char s [30] ;
+void AbstractOutputStream::appendPointer (const void * inValue) {
+  char s [32] ;
   snprintf (s, 29, "%p", inValue) ;
-  addString (s) ;
+  appendCString (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addSpaces (const int32_t inSpaceCount) {
+void AbstractOutputStream::appendSpaces (const int32_t inSpaceCount) {
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
-    addUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+    appendChar (TO_UNICODE (' ')) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addStringMultiple (const String & inString, const int32_t inRepeatCount) {
+void AbstractOutputStream::appendStringMultiple (const String & inString,
+                                                 const int32_t inRepeatCount) {
   for (int32_t i=0 ; i<inRepeatCount ; i++) {
-    addString (inString) ;
+    appendString (inString) ;
   }
 }
 
@@ -315,73 +264,70 @@ void AbstractOutputStream::addStringMultiple (const String & inString, const int
 //                          Comments
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t kCommentMaxLength = 119 ;
+static const int32_t kCommentMaxLength = 99 ;
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addHyphenLineCommentWithoutExtraBlankLine (const String & inLineCommentPrefix) {
-  addString (inLineCommentPrefix) ;
-  for (int32_t i=2 ; i<kCommentMaxLength ; i++) {
-    addString ("-") ;
+void AbstractOutputStream::appendHyphenLineCommentWithoutExtraBlankLine (const char * inLineCommentPrefix) {
+  appendCString (inLineCommentPrefix) ;
+  for (int32_t i=1 ; i<kCommentMaxLength ; i++) {
+    appendCString ("-") ;
   }
-  addString ("*\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendTitleComment (const String & inLineCommentPrefix,
+void AbstractOutputStream::appendTitleComment (const char * inLineCommentPrefix,
+                                               const String & inCommentString) {
+  appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
+  appendSpaceLineComment (inLineCommentPrefix) ;
+  appendCenterJustifiedComment (inLineCommentPrefix, inCommentString) ;
+  appendSpaceLineComment (inLineCommentPrefix) ;
+  appendHyphenLineComment (inLineCommentPrefix) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AbstractOutputStream::appendComment (const char * inLineCommentPrefix,
                                           const String & inCommentString) {
-  addHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
-  addSpaceLineComment (inLineCommentPrefix) ;
-  addCenterJustifiedComment (inLineCommentPrefix, inCommentString) ;
-  addSpaceLineComment (inLineCommentPrefix) ;
-  addCppHyphenLineComment (inLineCommentPrefix) ;
+  appendCString (inLineCommentPrefix) ;
+  appendCString (" ") ;
+  appendString (inCommentString) ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addComment (const String & inLineCommentPrefix,
-                                     const String & inCommentString) {
-  addString (inLineCommentPrefix) ;
-  addString (" ") ;
-  addString (inCommentString) ;
-  addString ("\n") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addCenterJustifiedComment (const String & inLineCommentPrefix,
-                                                    const String & inCommentString) {
+void AbstractOutputStream::appendCenterJustifiedComment (const char * inLineCommentPrefix,
+                                                         const String & inCommentString) {
   const int32_t commentLength = inCommentString.length () ;
   const int32_t n = (kCommentMaxLength - 3 - commentLength) / 2 ;
 
-  addString (inLineCommentPrefix) ;
+  appendCString (inLineCommentPrefix) ;
   for (int32_t i=0 ; i<n ; i++) {
-   addString (" ") ;
+   appendCString (" ") ;
   }
-  addString (inCommentString) ;
+  appendString (inCommentString) ;
   const int32_t fin = kCommentMaxLength - n - commentLength - 2 ;
   for (int32_t j=0 ; j<=fin ; j++) {
-    addString (" ") ;
+    appendCString (" ") ;
   }
-  addString ("\n") ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addSpaceLineComment (const String & inLineCommentPrefix) {
-  addString (inLineCommentPrefix) ;
-  for (int32_t i=1 ; i<kCommentMaxLength ; i++) {
-    addString (" ") ;
-  }
-  addString ("\n") ;
+void AbstractOutputStream::appendSpaceLineComment (const char * inLineCommentPrefix) {
+  appendCString (inLineCommentPrefix) ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addCppHyphenLineComment (const String & inLineCommentPrefix) {
-  addHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
-  addString ("\n") ;
+void AbstractOutputStream::appendHyphenLineComment (const char * inLineCommentPrefix) {
+  appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
+  appendCString ("\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -389,65 +335,59 @@ void AbstractOutputStream::addCppHyphenLineComment (const String & inLineComment
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::append_C_HyphenLineComment (void) {
-  addString ("/*") ;
+  appendCString ("/*") ;
   for (int32_t i=0 ; i<(kCommentMaxLength-4) ; i++) {
-    addString ("-") ;
+    appendCString ("-") ;
   }
-  addString ("*/\n") ;
+  appendCString ("*/\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void AbstractOutputStream::append_C_SpaceLineComment (void) {
-  addString ("/*") ;
+  appendCString ("/*") ;
   for (int32_t i=0 ; i<(kCommentMaxLength-4) ; i++) {
-    addString (" ") ;
+    appendCString (" ") ;
   }
-  addString ("*/\n") ;
+  appendCString ("*/\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //                        C++ Comments
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addCppHyphenLineCommentWithoutExtraBlankLine (void) {
-  addHyphenLineCommentWithoutExtraBlankLine ("//") ;
+void AbstractOutputStream::appendCppHyphenLineCommentWithoutExtraBlankLine (void) {
+  appendHyphenLineCommentWithoutExtraBlankLine ("//") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addCppTitleComment (const String & inCommentString) {
+void AbstractOutputStream::appendCppTitleComment (const String & inCommentString) {
   appendTitleComment ("//", inCommentString) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addCppTitleComment (const char * inCommentString) {
-  appendTitleComment ("//", inCommentString) ;
+void AbstractOutputStream::appendCppComment (const String & inCommentString) {
+  appendComment ("//", inCommentString) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addCppComment (const String & inCommentString) {
-  addComment ("//", inCommentString) ;
+void AbstractOutputStream::appendCppCenterJustifiedComment (const String & inCommentString) {
+  appendCenterJustifiedComment ("//", inCommentString) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addCppCenterJustifiedComment (const String & inCommentString) {
-  addCenterJustifiedComment ("//", inCommentString) ;
+void AbstractOutputStream::appendCppSpaceLineComment (void) {
+  appendSpaceLineComment ("//") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addCppSpaceLineComment (void) {
-  addSpaceLineComment ("//") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void AbstractOutputStream::addCppHyphenLineComment (void) {
-  addCppHyphenLineComment ("//") ;
+void AbstractOutputStream::appendCppHyphenLineComment (void) {
+  appendHyphenLineComment ("//") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -459,55 +399,55 @@ static void internalWriteCstringConstantWithoutDelimiters (AbstractOutputStream 
   int32_t currentColumn = 0 ;
   for (int32_t i=0 ; i<inStringLength ; i++) {
     if (currentColumn > inLineMaxLength) {
-      ioStream.addString ("\"\n  \"") ;
+      ioStream.appendCString ("\"\n  \"") ;
       currentColumn = 0 ;
     }
     currentColumn ++ ;
-    const utf32 c = inString (i COMMA_HERE) ;
+    const utf32 c = inString.charAtIndex (i COMMA_HERE) ;
     switch (UNICODE_VALUE (c)) {
     case '\0' :
       break ;
     case '\a' :
-      ioStream.addString ("\\a") ;
+      ioStream.appendCString ("\\a") ;
       break ;
     case '\b' :
-      ioStream.addString ("\\b") ;
+      ioStream.appendCString ("\\b") ;
       break ;
     case '\f' :
-      ioStream.addString ("\\f") ;
+      ioStream.appendCString ("\\f") ;
       break ;
     case '\n' :
-      ioStream.addString ("\\n") ;
+      ioStream.appendCString ("\\n") ;
       if (i < (inStringLength - 1)) {
-        ioStream.addString ("\"\n  \"") ;
+        ioStream.appendCString ("\"\n  \"") ;
         currentColumn = 1 ;
       }
       break ;
     case '\r' :
-      ioStream.addString ("\\r") ;
+      ioStream.appendCString ("\\r") ;
       break ;
     case '\t' :
-      ioStream.addString ("\\t") ;
+      ioStream.appendCString ("\\t") ;
       break ;
     case '\v' :
-      ioStream.addString ("\\v") ;
+      ioStream.appendCString ("\\v") ;
       break ;
     case '\\' :
-      ioStream.addString ("\\\\") ;
+      ioStream.appendCString ("\\\\") ;
       break ;
     case '\"' :
-      ioStream.addString ("\\\"") ;
+      ioStream.appendCString ("\\\"") ;
       break ;
     default :
       if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) < 127)) {
-        ioStream.addUnicodeChar (c COMMA_HERE) ;
+        ioStream.appendChar (c) ;
       }else{
         char buffer [5] ;
         const int32_t n = UTF8StringFromUTF32Character (c, buffer) ;
         for (int32_t j=0 ; j<n ; j++) {
-          ioStream.addString ("\\x") ;
-          ioStream.addUnsignedHex2 ((uint32_t) buffer [j]) ;
-          ioStream.addString ("\"\"")  ;
+          ioStream.appendCString ("\\x") ;
+          ioStream.appendUnsignedHex2 ((uint32_t) buffer [j]) ;
+          ioStream.appendCString ("\"\"")  ;
         }
       }
     }
@@ -520,70 +460,70 @@ static void internalWriteCstringConstant (AbstractOutputStream & ioStream,
                                           const String & inString,
                                           const int32_t inStringLength,
                                           const int32_t inLineMaxLength) {
-  ioStream.addString ("\"") ;
+  ioStream.appendCString ("\"") ;
   internalWriteCstringConstantWithoutDelimiters (ioStream, inString, inStringLength, inLineMaxLength) ;
-  ioStream.addString ("\"") ;
+  ioStream.appendCString ("\"") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addStringAsCLiteralStringConstant (const String & inString) {
+void AbstractOutputStream::appendStringAsCLiteralStringConstant (const String & inString) {
   internalWriteCstringConstant (*this, inString, inString.length (), 150) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addStringAsCLiteralStringConstantWithoutDelimiters (const String & inString) {
+void AbstractOutputStream::appendStringAsCLiteralStringConstantWithoutDelimiters (const String & inString) {
   internalWriteCstringConstantWithoutDelimiters (*this, inString, inString.length (), 150) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::addStringAsCLiteralCharConstant (const utf32 c) {
+void AbstractOutputStream::appendStringAsCLiteralCharConstant (const utf32 c) {
   switch (UNICODE_VALUE (c)) {
   case '\0' :
-    addString ("'\\0'") ;
+    appendCString ("'\\0'") ;
     break ;
   case '\a' :
-    addString ("'\\a'") ;
+    appendCString ("'\\a'") ;
     break ;
   case '\b' :
-    addString ("'\\b'") ;
+    appendCString ("'\\b'") ;
     break ;
   case '\f' :
-    addString ("'\\f'") ;
+    appendCString ("'\\f'") ;
     break ;
   case '\n' :
-    addString ("'\\n'") ;
+    appendCString ("'\\n'") ;
     break ;
   case '\r' :
-    addString ("'\\r'") ;
+    appendCString ("'\\r'") ;
     break ;
   case '\t' :
-    addString ("'\\t'") ;
+    appendCString ("'\\t'") ;
     break ;
   case '\v' :
-    addString ("'\\v'") ;
+    appendCString ("'\\v'") ;
     break ;
   case '\\' :
-    addString ("'\\\\'") ;
+    appendCString ("'\\\\'") ;
     break ;
   case '\'' :
-    addString ("'\\''") ;
+    appendCString ("'\\''") ;
     break ;
   case '\"' :
-    addString ("'\\\"'") ;
+    appendCString ("'\\\"'") ;
     break ;
   case '\?' :
-    addString ("'\\\?'") ;
+    appendCString ("'\\\?'") ;
     break ;
   default :
     if ((UNICODE_VALUE (c) >= ' ') && (UNICODE_VALUE (c) <= '~')) {
-      addString ("'") ;
-      addUnicodeChar (c COMMA_HERE) ;
-      addString ("'") ;
+      appendCString ("'") ;
+      appendChar (c) ;
+      appendCString ("'") ;
     }else{
-      addUnsigned (UNICODE_VALUE (c)) ;
+      appendUnsigned (UNICODE_VALUE (c)) ;
     }
     break ;
   }
@@ -599,15 +539,15 @@ void AbstractOutputStream::addStringAsCLiteralCharConstant (const utf32 c) {
 
 String stringWithUnsigned (const uint64_t inValue) {
   String result ;
-  result.addUnsigned (inValue) ;
+  result.appendUnsigned (inValue) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-String stringWithHex0xUnsigned (const uint64_t inValue) {
+String stringWithUnsigned0xHex (const uint64_t inValue) {
   String s ;
-  s.adddHex0xUnsigned (inValue) ;
+  s.appendUnsigned0xHex (inValue) ;
   return s ;
 }
 
@@ -615,7 +555,7 @@ String stringWithHex0xUnsigned (const uint64_t inValue) {
 
 String stringWithSigned (const int64_t inValue) {
   String result ;
-  result.addSigned (inValue) ;
+  result.appendSigned (inValue) ;
   return result ;
 }
 
@@ -623,7 +563,7 @@ String stringWithSigned (const int64_t inValue) {
 
 String stringWithCharacter (const char inValue) {
   String result ;
-  result.addUnicodeChar (TO_UNICODE (uint32_t (inValue)) COMMA_HERE) ;
+  result.appendChar (TO_UNICODE (uint32_t (inValue))) ;
   return result ;
 }
 
@@ -631,7 +571,7 @@ String stringWithCharacter (const char inValue) {
 
 String stringWithUnicodeCharacter (const utf32 inValue) {
   String result ;
-  result.addUnicodeChar (inValue COMMA_HERE) ;
+  result.appendChar (inValue) ;
   return result ;
 }
 
@@ -639,7 +579,7 @@ String stringWithUnicodeCharacter (const utf32 inValue) {
 
 String stringWithPointer (const void * inValue) {
   String result ;
-  result.addPointer (inValue) ;
+  result.appendPointer (inValue) ;
   return result ;
 }
 
@@ -647,7 +587,7 @@ String stringWithPointer (const void * inValue) {
 
 String stringWithDouble (const double inValue) {
   String result ;
-  result.addDouble (inValue) ;
+  result.appendDouble (inValue) ;
   return result ;
 }
 

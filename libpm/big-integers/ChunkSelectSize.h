@@ -25,3 +25,55 @@
 #endif
 
 //--------------------------------------------------------------------------------------------------
+// addReportingOverflow
+//  Performs ioResult += inOperand
+//  If overflow occurs, 1 is added to ioOverflowReport
+//--------------------------------------------------------------------------------------------------
+
+inline void addReportingOverflow (ChunkUInt & ioResult,
+                                  const ChunkUInt inOperand,
+                                  ChunkUInt & ioOverflowReport) {
+  const bool overflow = __builtin_add_overflow (ioResult, inOperand, &ioResult) ;
+  ioOverflowReport += ChunkUInt (overflow) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// subtractReportingOverflow
+//  Performs ioResult -= inOperand
+//  If overflow occurs, 1 is added to ioOverflowReport
+//--------------------------------------------------------------------------------------------------
+
+inline void subtractReportingOverflow (ChunkUInt & ioResult,
+                                       const ChunkUInt inOperand,
+                                       ChunkUInt & ioOverflowReport) {
+  const bool overflow = __builtin_sub_overflow (ioResult, inOperand, &ioResult) ;
+  ioOverflowReport += ChunkUInt (overflow) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// subtractIgnoringOverflow
+//  Performs ioResult -= inOperand
+//--------------------------------------------------------------------------------------------------
+
+inline void subtractIgnoringOverflow (ChunkUInt & ioResult,
+                                      const ChunkUInt inOperand) {
+  __builtin_sub_overflow (ioResult, inOperand, &ioResult) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// leftShiftIgnoringOverflow
+//  Performs result = inOperand << inShiftCount
+//--------------------------------------------------------------------------------------------------
+
+inline ChunkUInt leftShiftIgnoringOverflow (const ChunkUInt inOperand,
+                                            const size_t inShiftCount) {
+  const ChunkUInt ChunkUIntBitCount = sizeof (ChunkUInt) * 8 ;
+  ChunkUInt r = inOperand ;
+  if (inShiftCount > 0) {
+    r &= (ChunkUInt (1) << (ChunkUIntBitCount - inShiftCount)) - ChunkUInt (1) ;
+    r <<= inShiftCount ;
+  }
+  return r ;
+}
+
+//--------------------------------------------------------------------------------------------------

@@ -158,21 +158,7 @@ Une constante littérale entière peut être écrite~:
 
 Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres décimaux ou hexadécimaux~: \ggsq=1_234=, \ggsq=0x123_4567=.
 
-Une constante littérale entière est typée~; son type est fixé par son suffixe (\refTableau{suffixeConstantesLiteralesEntieres}).
-
-\begin{table}[t]
-  \centering
-  \begin{tabular}{llllllllllllll}
-    \textbf{Suffixe} & \textbf{Type} & \textbf{Exemples}\\
-    \emph{Pas de suffixe}  & \ggsq=@uint=  & \ggsq=1_234=, \ggsq=0x1234_5678= \\
-    \texttt{L}  & \ggsq=@uint64=  & \ggsq=1_234L=, \ggsq=0x1234_5678L= \\
-    \texttt{S}  & \ggsq=@sint=  & \ggsq=1_234S=, \ggsq=0x1234_5678S= \\
-    \texttt{LS}  & \ggsq=@sint64=  & \ggsq=1_234LS=, \ggsq=0x1234_5678LS= \\
-    \texttt{G}  & \ggsq=@bigint=  & \ggsq=1_234G=, \ggsq=0x1234_5678G= \\
-   \end{tabular}
-  \caption{Suffixes et types des constantes littérales entières}
-  \labelTableau{suffixeConstantesLiteralesEntieres}
-\end{table}
+Une constante littérale entière a pour type \ggsq=@bigint=.
 
 
 

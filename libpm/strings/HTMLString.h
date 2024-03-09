@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2014, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2014, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -38,15 +38,14 @@ class HTMLString : public String {
   public: void addRawData (const char * inCString) ;
 
 //--- General stream methods
-  protected: virtual void performActualCharArrayOutput (const char * inCharArray,
-                                                        const int32_t inArrayCount) ;
+  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
+                                                 const int32_t inArrayCount) ;
 
-  protected: virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                           const int32_t inArrayCount) ;
+  protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
 
 //--- Method for writing a HTML table
-  public: void addCppTitleComment (const String & inCommentString,
-                                   const String & inTableStyleClass) ;
+  public: void appendTitleComment (const String & inCommentString,
+                                   const char * inTableStyleClass) ;
 
 //--- Write start code
   public: void writeStartCode (const String & inWindowTitle,

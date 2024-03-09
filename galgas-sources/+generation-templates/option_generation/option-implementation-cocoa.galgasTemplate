@@ -9,13 +9,13 @@ void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (%?^%NS
            %!^%NSMutableArray * ioUIntOptionArray,
            %!^%NSMutableArray * ioStringOptionArray,
            %!^%NSMutableArray * ioStringListOptionArray) {
-%if ([BOOL_OPTION_MAP count] + [UINT_OPTION_MAP count] + [STRING_OPTION_MAP count] + [STRING_LIST_OPTION_MAP count]) > 0 then
+%if ([BOOL_OPTION_SORTED_LIST count] + [UINT_OPTION_SORTED_LIST count] + [STRING_OPTION_SORTED_LIST count] + [STRING_LIST_OPTION_SORTED_LIST count]) > 0 then
   %  OC_GGS_CommandLineOption * option ;\n%
 end
-for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP do
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
-  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
   %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
   %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%
@@ -23,10 +23,10 @@ for (lkey mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_MAP d
   %  ] ;\n%
   %  [ioBoolOptionArray addObject:option] ;\n%
 end
-for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP do
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
-  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
   %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
   %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%
@@ -34,10 +34,10 @@ for (lkey mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_MAP d
   %  ] ;\n%
   %  [ioUIntOptionArray addObject:option] ;\n%
 end
-for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP do
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
-  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
   %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
   %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%
@@ -45,10 +45,10 @@ for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_MAP
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
 end
-for (lkey mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_MAP do
+for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%\n%
-  %    identifier:@%![lkey utf8RepresentationEscapingQuestionMark]%\n%
+  %    identifier:@%![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
   %    commandChar:%![[mOptionChar uint] string]%\n%
   %    commandString:@%![mOptionString utf8RepresentationEscapingQuestionMark]%\n%
   %    comment:@%![mComment utf8RepresentationEscapingQuestionMark]%\n%

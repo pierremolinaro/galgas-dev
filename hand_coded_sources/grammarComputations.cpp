@@ -3,16 +3,24 @@
 //  This file handles all computations performed on grammars
 //
 //  Copyright (C) 1999, ..., 2023 Pierre Molinaro.
+//                                           
+//  MIT License
+//                                           
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  e-mail : pierre@pcmolinaro.name
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
 //
-//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.
-//
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-//  more details.
-//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//                                           
 //--------------------------------------------------------------------------------------------------
 
 #include "FileManager.h"
@@ -108,26 +116,26 @@ engendrerAppelProduction (const int16_t nombreDeParametres,
                           const String & inAltName,
                           AbstractOutputStream & fichierCPP,
                           const String & inSyntaxDirectedTranslationVarName) const {
-  fichierCPP.addString ("  rule_") ;
-  fichierCPP.addString (mSourceFileName.identifierRepresentation ()) ;
-  fichierCPP.addString ("_") ;
-  fichierCPP.addString (inVocabulary.getSymbol (mLeftNonTerminalIndex COMMA_HERE).identifierRepresentation ()) ;
-  fichierCPP.addString ("_i") ;
-  fichierCPP.addUnsigned (mProductionIndex) ;
-  fichierCPP.addString ("_") ;
-  fichierCPP.addString (inAltName.identifierRepresentation ()) ;
-  fichierCPP.addString ("(") ;
+  fichierCPP.appendCString ("  rule_") ;
+  fichierCPP.appendString (mSourceFileName.identifierRepresentation ()) ;
+  fichierCPP.appendCString ("_") ;
+  fichierCPP.appendString (inVocabulary.getSymbol (mLeftNonTerminalIndex COMMA_HERE).identifierRepresentation ()) ;
+  fichierCPP.appendCString ("_i") ;
+  fichierCPP.appendUnsigned (mProductionIndex) ;
+  fichierCPP.appendCString ("_") ;
+  fichierCPP.appendString (inAltName.identifierRepresentation ()) ;
+  fichierCPP.appendCString ("(") ;
   for (int32_t i=1 ; i<nombreDeParametres ; i++) {
-     fichierCPP.addString ("parameter_") ;
-    fichierCPP.addSigned (i)  ;
-    fichierCPP.addString (", ") ;
+     fichierCPP.appendCString ("parameter_") ;
+    fichierCPP.appendSigned (i)  ;
+    fichierCPP.appendCString (", ") ;
   }
   if (inSyntaxDirectedTranslationVarName.length () > 0) {
-    fichierCPP.addString (inSyntaxDirectedTranslationVarName) ;
-    fichierCPP.addString (", ") ;
+    fichierCPP.appendString (inSyntaxDirectedTranslationVarName) ;
+    fichierCPP.appendCString (", ") ;
   }
-  fichierCPP.addString ("inLexique") ;
-  fichierCPP.addString (") ;\n") ;
+  fichierCPP.appendCString ("inLexique") ;
+  fichierCPP.appendCString (") ;\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -148,7 +156,7 @@ static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
                                HTMLString & ioHTMLFileContents) {
   ioHTMLFileContents.addRawData ("<p><a name=\"identical_productions\"></a></p>") ;
-  ioHTMLFileContents.addCppTitleComment ("Step 2 : searching for identical productions", "title") ;
+  ioHTMLFileContents.appendTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
   for (int32_t i=0 ; i<productions.mProductionArray.count () ; i++) {
     const cProduction & pi = productions.mProductionArray (i COMMA_HERE) ;
@@ -163,22 +171,22 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
       }
       if (identiques) {
         ok = false ;
-        ioHTMLFileContents.addString ("  Error : productions ") ;
-        ioHTMLFileContents.addSigned (i) ;
-        ioHTMLFileContents.addString (" and ") ;
-        ioHTMLFileContents.addSigned (j) ;
-        ioHTMLFileContents.addString (" are identical.\n") ;
+        ioHTMLFileContents.appendCString ("  Error : productions ") ;
+        ioHTMLFileContents.appendSigned (i) ;
+        ioHTMLFileContents.appendCString (" and ") ;
+        ioHTMLFileContents.appendSigned (j) ;
+        ioHTMLFileContents.appendCString (" are identical.\n") ;
       }
     }
   }
   ioHTMLFileContents.addRawData ("<p>") ;
   if (ok) {
     ioHTMLFileContents.addRawData ("<span class=\"success\">") ;
-    ioHTMLFileContents.addString ("Ok : all productions are different.\n") ;
+    ioHTMLFileContents.appendCString ("Ok : all productions are different.\n") ;
     ioHTMLFileContents.addRawData ("</span>") ;
   }else{
     ioHTMLFileContents.addRawData ("<span class=\"error\">") ;
-    ioHTMLFileContents.addString ("As the grammar presents identical productions, it is ambiguous :\n"
+    ioHTMLFileContents.appendCString ("As the grammar presents identical productions, it is ambiguous :\n"
                           "it is impossible to build a deterministic parser.\n\n") ;
     ioHTMLFileContents.addRawData ("</span>") ;
   }
@@ -340,7 +348,7 @@ analyzeGrammar (Compiler * inCompiler,
                                             k_default_style) ; // Style definition
 //--- HTML title
   outHTMLHelperFileContents.addRawData ("<h1>") ;
-  outHTMLHelperFileContents.addString (title) ;
+  outHTMLHelperFileContents.appendString (title) ;
   outHTMLHelperFileContents.addRawData ("</h1>") ;
 //--- Create links to page entries
   outHTMLHelperFileContents.addRawData ("<p><a class=\"header_link\" href=\"#pure_bnf\">Pure BNF productions</a></p>"
@@ -355,7 +363,7 @@ analyzeGrammar (Compiler * inCompiler,
 
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
-    outHTMLHelperFileContents.addCppTitleComment ("Original grammar", "title") ;
+    outHTMLHelperFileContents.appendTitleComment ("Original grammar", "title") ;
     printOriginalGrammar (outHTMLHelperFileContents, inSyntaxComponentsList) ;
   }
 //--- Building pure BNF productions ---------------------------------------------------------------------
@@ -363,7 +371,7 @@ analyzeGrammar (Compiler * inCompiler,
   cPureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
-      gCout.addString ("  Building pure BNF productions... ") ;
+      gCout.appendCString ("  Building pure BNF productions... ") ;
     }
   //--- Build vocabulary
     vocabulary.buildVocabulary (inTerminalSymbolMap,
@@ -377,11 +385,11 @@ analyzeGrammar (Compiler * inCompiler,
 
   //--- Print in bnf file the pure BNF productions
     outHTMLHelperFileContents.addRawData ("<p></p>") ;
-    outHTMLHelperFileContents.addCppTitleComment ("  Pure BNF productions list", "title") ;
+    outHTMLHelperFileContents.appendTitleComment ("  Pure BNF productions list", "title") ;
     printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
-      gCout.addSigned (pureBNFproductions.mProductionArray.count ()) ;
-      gCout.addString (".\n") ;
+      gCout.appendSigned (pureBNFproductions.mProductionArray.count ()) ;
+      gCout.appendCString (".\n") ;
       gCout.flush () ;
     }
   }
@@ -390,45 +398,45 @@ analyzeGrammar (Compiler * inCompiler,
 //--- Search for identical productions -----------------------------------------------------------
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
-      gCout.addString ("  Identical productions... ") ;
+      gCout.appendCString ("  Identical productions... ") ;
     }
     const bool step2ok = searchForIdenticalProductions (pureBNFproductions, outHTMLHelperFileContents) ;
     if (! step2ok) {
       errorFlag = kError ;
       if (! verboseOptionOn) {
-        gCout.addString ("  Identical productions... ") ;
+        gCout.appendCString ("  Identical productions... ") ;
       }
-      gCout.addString ("error.\n") ;
+      gCout.appendCString ("error.\n") ;
     }else if (verboseOptionOn) {
-      gCout.addString ("none, ok.\n") ;
+      gCout.appendCString ("none, ok.\n") ;
     }
     gCout.flush () ;
   }
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
   //--- Enregistrer les caracteristiques de la grammaire
-    outHTMLHelperFileContents.addString ("For information :\n") ;
+    outHTMLHelperFileContents.appendCString ("For information :\n") ;
     outHTMLHelperFileContents.addRawData ("<ul><li>") ;
-    outHTMLHelperFileContents.addSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1)) ;
-    outHTMLHelperFileContents.addString (" terminal symbols, numbered from 0 to ") ;
-    outHTMLHelperFileContents.addSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 2)) ;
-    outHTMLHelperFileContents.addString (" ;") ;
+    outHTMLHelperFileContents.appendSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1)) ;
+    outHTMLHelperFileContents.appendCString (" terminal symbols, numbered from 0 to ") ;
+    outHTMLHelperFileContents.appendSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 2)) ;
+    outHTMLHelperFileContents.appendCString (" ;") ;
     outHTMLHelperFileContents.addRawData ("</li>\n<li>") ;
-    outHTMLHelperFileContents.addString (" the 'empty string' symbol '$$' is numbered ") ;
-    outHTMLHelperFileContents.addSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) ;
-    outHTMLHelperFileContents.addString (" ;") ;
+    outHTMLHelperFileContents.appendCString (" the 'empty string' symbol '$$' is numbered ") ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+    outHTMLHelperFileContents.appendCString (" ;") ;
     outHTMLHelperFileContents.addRawData ("</li>\n<li>") ;
-    outHTMLHelperFileContents.addSigned (vocabulary.getNonTerminalSymbolsCount ()) ;
-    outHTMLHelperFileContents.addString (" nonterminal symbols in the pure BNF grammar, numbered from ") ;
-    outHTMLHelperFileContents.addSigned (vocabulary.getTerminalSymbolsCount ()) ;
-    outHTMLHelperFileContents.addString (" to ") ;
-    outHTMLHelperFileContents.addSigned ((int32_t)(vocabulary.getAllSymbolsCount () - 1)) ;
-    outHTMLHelperFileContents.addString (" ;") ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getNonTerminalSymbolsCount ()) ;
+    outHTMLHelperFileContents.appendCString (" nonterminal symbols in the pure BNF grammar, numbered from ") ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getTerminalSymbolsCount ()) ;
+    outHTMLHelperFileContents.appendCString (" to ") ;
+    outHTMLHelperFileContents.appendSigned ((int32_t)(vocabulary.getAllSymbolsCount () - 1)) ;
+    outHTMLHelperFileContents.appendCString (" ;") ;
     outHTMLHelperFileContents.addRawData ("</li>\n<li>") ;
-    outHTMLHelperFileContents.addString ("whole vocabulary : ") ;
-    outHTMLHelperFileContents.addSigned (vocabulary.getAllSymbolsCount ()) ;
-    outHTMLHelperFileContents.addString (" elements, ") ;
-    outHTMLHelperFileContents.addUnsigned (vocabularyBDDType.BDDBitCount ()) ;
-    outHTMLHelperFileContents.addString (" bits for BDDs.") ;
+    outHTMLHelperFileContents.appendCString ("whole vocabulary : ") ;
+    outHTMLHelperFileContents.appendSigned (vocabulary.getAllSymbolsCount ()) ;
+    outHTMLHelperFileContents.appendCString (" elements, ") ;
+    outHTMLHelperFileContents.appendUnsigned (vocabularyBDDType.BDDBitCount ()) ;
+    outHTMLHelperFileContents.appendCString (" bits for BDDs.") ;
     outHTMLHelperFileContents.addRawData ("</li>\n</ul>\n") ;
   }
 //--- Getting useful symbols ---------------------------------------------------------------------
@@ -589,47 +597,47 @@ analyzeGrammar (Compiler * inCompiler,
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
     String s ;
-    s.addString ("ENDING ON ERROR, STEP") ;
-    s.addSigned ((uint16_t) errorFlag) ;
-    outHTMLHelperFileContents.addCppTitleComment (s, "title") ;
+    s.appendCString ("ENDING ON ERROR, STEP") ;
+    s.appendSigned ((uint16_t) errorFlag) ;
+    outHTMLHelperFileContents.appendTitleComment (s, "title") ;
     String errorMessage  ;
     if (inPopulateHTMLHelperString) {
-      errorMessage.addString ("errors have been raised when analyzing the grammar: see file"
+      errorMessage.appendCString ("errors have been raised when analyzing the grammar: see file"
                               " 'file://") ;
-      errorMessage.addString (inHTMLFileName) ;
-      errorMessage.addString ("'") ;
+      errorMessage.appendString (inHTMLFileName) ;
+      errorMessage.appendCString ("'") ;
     }else{
-      errorMessage.addString ("errors have been raised when analyzing the grammar:"
+      errorMessage.appendCString ("errors have been raised when analyzing the grammar:"
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging") ;
     }
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }else if (warningFlag) {
     String s ;
-    s.addString ("OK ; no error, but warning(s) step(s)") ;
+    s.appendCString ("OK ; no error, but warning(s) step(s)") ;
     int32_t i = 1 ;
     while (warningFlag != 0) {
       if ((warningFlag & 1) != 0) {
-        s.addString (" ") ;
-        s.addSigned (i) ;
+        s.appendCString (" ") ;
+        s.appendSigned (i) ;
       }
       warningFlag >>= 1 ;
       i ++ ;
     }
-    outHTMLHelperFileContents.addCppTitleComment (s, "title") ;
+    outHTMLHelperFileContents.appendTitleComment (s, "title") ;
     String warningMessage  ;
-    warningMessage.addString ("warnings have been raised when analyzing the grammar: ") ;
+    warningMessage.appendCString ("warnings have been raised when analyzing the grammar: ") ;
     if (inPopulateHTMLHelperString) {
-      warningMessage.addString ("see file 'file://") ;
-      warningMessage.addString (inHTMLFileName) ;
-      warningMessage.addString ("'") ;
+      warningMessage.appendCString ("see file 'file://") ;
+      warningMessage.appendString (inHTMLFileName) ;
+      warningMessage.appendCString ("'") ;
     }else{
-      warningMessage.addString ("turn on '-H' command line option, and see generated '") ;
-      warningMessage.addString (inTargetFileName.mProperty_string.stringValue ()) ;
-      warningMessage.addString (".html' file") ;
+      warningMessage.appendCString ("turn on '-H' command line option, and see generated '") ;
+      warningMessage.appendString (inTargetFileName.mProperty_string.stringValue ()) ;
+      warningMessage.appendCString (".html' file") ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }else{
-    outHTMLHelperFileContents.addCppTitleComment ("OK (no error, no warning)", "title") ;
+    outHTMLHelperFileContents.appendTitleComment ("OK (no error, no warning)", "title") ;
   }
   outHTMLHelperFileContents.writeEndCode () ;
 }

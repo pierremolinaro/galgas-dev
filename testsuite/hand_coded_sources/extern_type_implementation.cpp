@@ -27,15 +27,15 @@ void GALGAS_complex::drop (void) {
 
 void GALGAS_complex::description (String & ioString,
                                   const int32_t /* inIndentation */) const {
-  ioString.addString ("<@complex:") ;
+  ioString.appendString ("<@complex:") ;
   if (mIsValid) {
-    ioString.addDouble (mReal) ;
-    ioString.addString (", ") ;
-    ioString.addDouble (mImaginary) ;
+    ioString.appendDouble (mReal) ;
+    ioString.appendString (", ") ;
+    ioString.appendDouble (mImaginary) ;
   }else{
-    ioString.addString ("invalid") ;
+    ioString.appendString ("invalid") ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -60,10 +60,10 @@ typeComparisonResult GALGAS_complex::objectCompare (const GALGAS_complex & inOpe
 
 //---------------------------------------------------------------------------*
 
-GALGAS_complex GALGAS_complex::constructor_new (const GALGAS_double & inReal,
-                                                const GALGAS_double & inImaginary,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_complex GALGAS_complex::class_func_new (const GALGAS_double & inReal,
+                                               const GALGAS_double & inImaginary,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_complex result ;
   if (inReal.isValid () && inImaginary.isValid ()) {
     result.mIsValid = true ;

@@ -3,16 +3,24 @@
 //  Routines for computing useful symbols of the pure BNF grammar                                
 //
 //  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//                                           
+//  MIT License
+//                                           
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  e-mail : pierre@pcmolinaro.name
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
 //
-//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                        
-//
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-//  more details.
-//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//                                           
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
@@ -70,9 +78,9 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
                                     const int32_t inIterationCount,
                                     const bool inVerboseOptionOn) {
   ioHTMLFileContents.addRawData ("<p><a name=\"useful_symbols\"></a>") ;
-  ioHTMLFileContents.addString ("Calculus completed in ") ;
-  ioHTMLFileContents.addSigned (inIterationCount) ;
-  ioHTMLFileContents.addString (" iterations.\n") ;
+  ioHTMLFileContents.appendCString ("Calculus completed in ") ;
+  ioHTMLFileContents.appendSigned (inIterationCount) ;
+  ioHTMLFileContents.appendCString (" iterations.\n") ;
   ioHTMLFileContents.addRawData ("</p>") ;
 
 //------------------------------------------------------ Compute useless symbols
@@ -105,17 +113,17 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   ioHTMLFileContents.addRawData ("<p>") ;
   if (unusedSymbolArrayForWarning.count () == 0) {
     ioHTMLFileContents.addRawData ("<span class=\"success\">") ;
-    ioHTMLFileContents.addString ("All terminal and nonterminal symbols are useful.\n\n") ;
+    ioHTMLFileContents.appendCString ("All terminal and nonterminal symbols are useful.\n\n") ;
     ioHTMLFileContents.addRawData ("</span>") ;
   }else{
     ioHTMLFileContents.addRawData ("<span class=\"warning\">") ;
-    ioHTMLFileContents.addString ("The vocabulary has ") ;
-    ioHTMLFileContents.addSigned (unusedSymbolArrayForWarning.count ()) ;
-    ioHTMLFileContents.addString (" useless symbol(s) : \n") ;
+    ioHTMLFileContents.appendCString ("The vocabulary has ") ;
+    ioHTMLFileContents.appendSigned (unusedSymbolArrayForWarning.count ()) ;
+    ioHTMLFileContents.appendCString (" useless symbol(s) : \n") ;
     ioHTMLFileContents.addRawData ("<code>") ;
     for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
       ioHTMLFileContents.addRawData ("<br>") ;
-      ioHTMLFileContents.addString (uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE)) ;
+      ioHTMLFileContents.appendString (uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE)) ;
     }
     ioHTMLFileContents.addRawData ("</code></span>") ;
   }
@@ -125,27 +133,27 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
 //--- Ok, or warning ?
   const bool warning = (usedSymbolDeclaredAsUnusedArray.count () > 0) || (unusedSymbolArrayForWarning.count () > 0) ;
   if (inVerboseOptionOn) {
-    gCout.addString (warning ? "warning.\n" : "all, ok.\n") ;
+    gCout.appendString (warning ? "warning.\n" : "all, ok.\n") ;
   }
   gCout.flush () ;
 //--- Warn for unused symbols
   if (unusedSymbolArrayForWarning.count () > 0) {
     String warningMessage ;
     if (unusedSymbolArrayForWarning.count () == 1) {
-      warningMessage.addString ("there is 1 useless symbol, not declared as unused: ") ;
+      warningMessage.appendCString ("there is 1 useless symbol, not declared as unused: ") ;
     }else{
-      warningMessage.addString ("there are ") ;
-      warningMessage.addSigned (unusedSymbolArrayForWarning.count ()) ;
-      warningMessage.addString (" useless symbols, not declared as unused: ") ;
+      warningMessage.appendCString ("there are ") ;
+      warningMessage.appendSigned (unusedSymbolArrayForWarning.count ()) ;
+      warningMessage.appendCString (" useless symbols, not declared as unused: ") ;
     }
     bool first = true ;
     for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
       if (first) {
         first = false ;
       }else{
-        warningMessage.addString (", ") ;
+        warningMessage.appendCString (", ") ;
       }
-      warningMessage.addString (uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE)) ;
+      warningMessage.appendString (uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE)) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
@@ -153,20 +161,20 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   if (usedSymbolDeclaredAsUnusedArray.count () > 0) {
     String warningMessage ;
     if (usedSymbolDeclaredAsUnusedArray.count () == 1) {
-      warningMessage.addString ("there is 1 useful symbol declared as unused: ") ;
+      warningMessage.appendCString ("there is 1 useful symbol declared as unused: ") ;
     }else{
-      warningMessage.addString ("there are ") ;
-      warningMessage.addSigned (usedSymbolDeclaredAsUnusedArray.count ()) ;
-      warningMessage.addString (" useful symbols declared as unused: ") ;
+      warningMessage.appendCString ("there are ") ;
+      warningMessage.appendSigned (usedSymbolDeclaredAsUnusedArray.count ()) ;
+      warningMessage.appendCString (" useful symbols declared as unused: ") ;
     }
     bool first = true ;
     for (int32_t i=0 ; i<usedSymbolDeclaredAsUnusedArray.count () ; i++) {
       if (first) {
         first = false ;
       }else{
-        warningMessage.addString (", ") ;
+        warningMessage.appendCString (", ") ;
       }
-      warningMessage.addString (usedSymbolDeclaredAsUnusedArray (i COMMA_HERE)) ;
+      warningMessage.appendString (usedSymbolDeclaredAsUnusedArray (i COMMA_HERE)) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
@@ -189,12 +197,12 @@ void useful_symbols_computations (Compiler * inCompiler,
                                   const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
-    gCout.addString ("  Useful nonterminal symbols... ") ;
+    gCout.appendCString ("  Useful nonterminal symbols... ") ;
     gCout.flush () ;
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-    ioHTMLFileContents.addCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+    ioHTMLFileContents.appendTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   }
   int32_t iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,

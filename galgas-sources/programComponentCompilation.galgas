@@ -1,28 +1,36 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Program component compilation            
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Program component compilation
+#
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @programListForGeneration {
   public let @semanticDeclarationForGeneration mDeclaration
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           G E N E R A T I O N    F I L E W R A P P E R S                                                     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#           G E N E R A T I O N    F I L E W R A P P E R S
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper programFileGenerationTemplate in "+generation-templates/program_generation" {
 }{
@@ -35,11 +43,11 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
     ?@string PROJECT_VERSION_STRING
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           C O M P I L E    ' B E F O R E '     
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#           C O M P I L E    ' B E F O R E '
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileBeforeClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -83,11 +91,11 @@ proc compileBeforeClauseGalgas3
     }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           C O M P I L E    P R O G R A M    R U L E S 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#           C O M P I L E    P R O G R A M    R U L E S
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc compileProgramRulesGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -135,11 +143,11 @@ private proc compileProgramRulesGalgas3
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           C O M P I L E    ' A F T E R '  
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#           C O M P I L E    ' A F T E R '
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileAfterClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -182,11 +190,11 @@ proc compileAfterClauseGalgas3
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#           C O M P I L E    P R O G R A M    C O M P O N E N T                                                
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#           C O M P I L E    P R O G R A M    C O M P O N E N T
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileProgramComponentGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -265,5 +273,5 @@ proc compileProgramComponentGalgas3
   }
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

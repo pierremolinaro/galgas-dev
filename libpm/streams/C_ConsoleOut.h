@@ -34,13 +34,10 @@ class C_ConsoleOut final : public C_ColoredConsole {
   public: virtual void flush (void) ;
   
 //--- General stream method
-  protected: virtual void
-  performActualCharArrayOutput (const char * inCharArray,
-                                const int32_t inArrayCount) ;
+  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
+                                                 const int32_t inArrayCount) ;
 
-  protected: virtual void
-  performActualUnicodeArrayOutput (const utf32 * inCharArray, const int32_t inArrayCount) ;
-
+  protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -5,7 +5,7 @@
 
 static void routine_test_dictionary (void) {
   const int32_t TEST_SIZE = 1000 ;
-  GALGAS_stringset dictionary = GALGAS_stringset::constructor_emptySet (HERE) ;
+  GALGAS_stringset dictionary = GALGAS_stringset::class_func_emptySet (HERE) ;
 //--- First insertion
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
     String s = stringWithSigned (i) ;

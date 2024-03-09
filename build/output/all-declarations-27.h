@@ -10,6 +10,18 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'checkAssignmentTypes???'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkAssignmentTypes_3F__3F__3F_ (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                               const class GALGAS_unifiedTypeMapEntry constinArgument1,
+                                               const class GALGAS_location constinArgument2,
+                                               class Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'analyzeErrorOrWarningInstruction?&?&?????&!!!'
 //
 //--------------------------------------------------------------------------------------------------
@@ -47,30 +59,4 @@ void routine_analyzeOptionalMethodCall_3F__26__3F__26__26__3F_receiverExp_3F_opt
                                                                                                                    class GALGAS_ifTestListForGeneration & ioArgument8,
                                                                                                                    class Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'transformInstructionList?&usedTerminalMap?nonTerminalSymbolMap&addedTerminalIndex&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_transformInstructionList_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (const class GALGAS_syntaxInstructionList constinArgument0,
-                                                                                                                class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
-                                                                                                                const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
-                                                                                                                class GALGAS_uint & ioArgument3,
-                                                                                                                class GALGAS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
-                                                                                                                class Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'compareSyntaxSignature'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_bool function_compareSyntaxSignature (const class GALGAS_semanticInstructionListForGeneration & constinArgument0,
-                                                   const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
-                                                   const class GALGAS_location & constinArgument2,
-                                                   class Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
 

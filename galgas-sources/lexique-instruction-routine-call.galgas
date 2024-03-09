@@ -1,30 +1,47 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @abstractLexicalRoutineActualArgumentAST {
   protected let @location mActualPassingModeLocation
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   private let @lstring mAttributeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   private let @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @lexicalRoutineCallActualArgumentListAST {
   public let @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
   private let @lstring mRoutineName
@@ -32,13 +49,13 @@ refclass @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
   private let @lstringlist mErrorMessageList
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $identifier$ ?let @lstring actionName
@@ -46,18 +63,12 @@ syntax extension galgas3LexiqueComponentSyntax {
     $($
     repeat
     while
-      $!$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!'" fixit { replace "!" }
-      end
+      $!$
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
       actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
     while
-      $!?$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { replace "!?" }
-      end
+      $!?$
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName
       let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
@@ -81,15 +92,15 @@ syntax extension galgas3LexiqueComponentSyntax {
       !errorMessageList}
   }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·················································································································
+  #·······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $identifier$ ?let @lstring actionName
@@ -97,18 +108,12 @@ syntax extension galgas4LexiqueComponentSyntax {
     $($
     repeat
     while
-      $!$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!'" fixit { replace "!" }
-      end
+      $!$
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
       actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
     while
-      $!?$ ?let selector
-      if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { replace "!?" }
-      end
+      $!?$
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName
       let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
@@ -131,20 +136,20 @@ syntax extension galgas4LexiqueComponentSyntax {
       !actualArgumentList
       !errorMessageList}
   }
- 
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateObjcCocoaRoutineArgument
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string 
+  -> @string
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalAttributeInputOutputArgumentAST generateObjcCocoaRoutineArgument
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
@@ -158,7 +163,7 @@ override getter @lexicalAttributeInputOutputArgumentAST generateObjcCocoaRoutine
   outGeneratedCode += "mLexicalAttribute_" + self.mAttributeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFormalInputArgumentAST generateObjcCocoaRoutineArgument
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -166,13 +171,13 @@ override getter @lexicalFormalInputArgumentAST generateObjcCocoaRoutineArgument
   outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateObjcCocoaRoutineOrFunctionArgument]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string 
+  -> @string
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutineArgument
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -186,7 +191,7 @@ override getter @lexicalAttributeInputOutputArgumentAST generateSwiftCocoaRoutin
   outGeneratedCode = "&self.mLexicalAttribute_" + self.mAttributeName
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -194,14 +199,14 @@ override getter @lexicalFormalInputArgumentAST generateSwiftCocoaRoutineArgument
   outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateSwiftCocoaRoutineOrFunctionArgument]
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -226,7 +231,7 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -243,7 +248,7 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -284,9 +289,9 @@ override method @lexicalRoutineCallInstructionAST checkLexicalInstruction
   end
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode
   ?let @string unused inScannerClassName
@@ -299,7 +304,7 @@ override getter @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCo
   outGeneratedCode += ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionCode
   ?let @string unused inScannerClassName
@@ -312,9 +317,9 @@ override getter @lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionC
   outGeneratedCode += ")\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! C++ CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
   -> @string
@@ -355,5 +360,5 @@ override getter @lexicalRoutineCallInstructionAST generateLexicalInstructionCode
   result += ") ;\n"
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 

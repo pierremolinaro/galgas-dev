@@ -34,24 +34,24 @@ HTMLFileWrite::HTMLFileWrite (const String & inFileName,
                                     const String & inCSSFileName,
                                     const String & inCSSContents) :
 TextFileWrite (inFileName) {
-  addRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
+  appendRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
                  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
                  "<title>\n") ;
-  addString (inWindowTitle) ;
-  addRawData ("</title>") ;
+  appendString (inWindowTitle) ;
+  appendRawData ("</title>") ;
   if (inCSSFileName.length () > 0) {
-    addRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
-    addRawData (inCSSFileName.cString (HERE)) ;
-    addRawData ("\">") ;
+    appendRawData ("<link rel=stylesheet type=\"text/css\" href=\"") ;
+    appendRawData (inCSSFileName.cString ()) ;
+    appendRawData ("\">") ;
   }  
   if (inCSSContents.length () > 0) {
-    addRawData ("<style type=\"text/css\">") ;
-    addRawData (inCSSContents.cString (HERE)) ;
-    addRawData ("</style>") ;
+    appendRawData ("<style type=\"text/css\">") ;
+    appendRawData (inCSSContents.cString ()) ;
+    appendRawData ("</style>") ;
   }
-  addRawData ("</head>\n<body><div>\n") ;
+  appendRawData ("</head>\n<body><div>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ TextFileWrite (inFileName) {
 //--------------------------------------------------------------------------------------------------
 
 bool HTMLFileWrite::close (void) {
-  addRawData ("</div></body></html>\n") ;
+  appendRawData ("</div></body></html>\n") ;
   return Super::close () ;
 }
 
@@ -68,15 +68,17 @@ bool HTMLFileWrite::close (void) {
 //--------------------------------------------------------------------------------------------------
 
 HTMLFileWrite::~HTMLFileWrite (void) {
-  addRawData ("</div></body></html>\n") ;
+  appendRawData ("</div></body></html>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Write a character string into the file WITHOUT any translation
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::addRawData (const char * in_Cstring) {
-  Super::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
+void HTMLFileWrite::appendRawData (const char * in_Cstring) {
+  if (nullptr != in_Cstring) {
+    Super::handleAppendUTF8Array (in_Cstring, int32_t (strlen (in_Cstring))) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -84,22 +86,22 @@ void HTMLFileWrite::addRawData (const char * in_Cstring) {
 //  Performs HTML character translation (i.e. '<' --> '&lt;', ...)
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::performActualCharArrayOutput (const char * inCharArray,
+void HTMLFileWrite::handleAppendUTF8Array (const char * inCharArray,
                                                   const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
     case '<' :
-      Super::performActualCharArrayOutput ("&lt;", 4) ;
+      Super::handleAppendUTF8Array ("&lt;", 4) ;
       break ;
     case '>' :
-      Super::performActualCharArrayOutput ("&gt;", 4) ;
+      Super::handleAppendUTF8Array ("&gt;", 4) ;
       break ;
     case '&' :
-      Super::performActualCharArrayOutput ("&amp;", 5) ;
+      Super::handleAppendUTF8Array ("&amp;", 5) ;
       break ;
     default :
-      Super::performActualCharArrayOutput (& c, 1) ;
+      Super::handleAppendUTF8Array (& c, 1) ;
       break ;
     }
   }
@@ -107,24 +109,20 @@ void HTMLFileWrite::performActualCharArrayOutput (const char * inCharArray,
 
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                                     const int32_t inArrayCount) {
-  for (int32_t i=0 ; i<inArrayCount ; i++) {
-    const utf32 codePoint = inCharArray [i] ;
-    switch (UNICODE_VALUE (codePoint)) {
-    case '<' :
-      Super::performActualCharArrayOutput ("&lt;", 4) ;
-      break ;
-    case '>' :
-      Super::performActualCharArrayOutput ("&gt;", 4) ;
-      break ;
-    case '&' :
-      Super::performActualCharArrayOutput ("&amp;", 5) ;
-      break ;
-    default :
-      Super::performActualUnicodeArrayOutput (& codePoint, 1) ;
-      break ;
-    }
+void HTMLFileWrite::handleAppendCharacter (const utf32 inCharacter) {
+  switch (UNICODE_VALUE (inCharacter)) {
+  case '<' :
+    Super::handleAppendUTF8Array ("&lt;", 4) ;
+    break ;
+  case '>' :
+    Super::handleAppendUTF8Array ("&gt;", 4) ;
+    break ;
+  case '&' :
+    Super::handleAppendUTF8Array ("&amp;", 5) ;
+    break ;
+  default :
+    Super::handleAppendCharacter (inCharacter) ;
+    break ;
   }
 }
 
@@ -132,17 +130,17 @@ void HTMLFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
 //                 Comments as a table                   
 //--------------------------------------------------------------------------------------------------
 
-void HTMLFileWrite::addCppTitleComment (const String & inCommentString,
-                                        const String & inTableStyleClass) {
-  addRawData ("<table") ;
+void HTMLFileWrite::appendCppTitleComment (const String & inCommentString,
+                                           const String & inTableStyleClass) {
+  appendRawData ("<table") ;
   if (inTableStyleClass.length () > 0) {
-    addRawData (" class=\"") ;
-    addRawData (inTableStyleClass.cString (HERE)) ;
-    addRawData ("\"") ;
+    appendRawData (" class=\"") ;
+    appendRawData (inTableStyleClass.cString ()) ;
+    appendRawData ("\"") ;
   }
-  addRawData ("><tr><td>\n") ;
-  addString (inCommentString) ;
-  addRawData ("\n</td></tr></table>\n") ;
+  appendRawData ("><tr><td>\n") ;
+  appendString (inCommentString) ;
+  appendRawData ("\n</td></tr></table>\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------

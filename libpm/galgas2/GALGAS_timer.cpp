@@ -33,18 +33,18 @@ mTimer () {
 
 void GALGAS_timer::description (String & ioString,
                                 const int32_t /* inIndentation */) const {
-  ioString.addString ("<@timer: ") ;
+  ioString.appendCString ("<@timer: ") ;
   if (!mIsValid) {
-    ioString.addString ("not built") ;
+    ioString.appendCString ("not built") ;
   }else{
-    ioString.addString (mTimer.timeString ()) ;
+    ioString.appendString (mTimer.timeString ()) ;
   }
-  ioString.addString (">") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_timer GALGAS_timer::constructor_start (UNUSED_LOCATION_ARGS) {
+GALGAS_timer GALGAS_timer::class_func_start (UNUSED_LOCATION_ARGS) {
   GALGAS_timer result ;
   result.mIsValid = true ;
   return result ;

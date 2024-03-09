@@ -35,7 +35,7 @@ mSourceText () {
 
 void LocationInSource::gotoNextLocation (void) {
   if (mIndex < mSourceText.sourceString ().length ()) {
-    const utf32 currentChar = mSourceText.sourceString () (mIndex COMMA_HERE) ;
+    const utf32 currentChar = mSourceText.sourceString ().charAtIndex (mIndex COMMA_HERE) ;
     const bool previousCharWasEndOfLine = UNICODE_VALUE (currentChar) == '\n' ;
     if (previousCharWasEndOfLine) {
       mLineNumber ++ ;

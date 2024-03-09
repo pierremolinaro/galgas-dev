@@ -1,76 +1,111 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
-  #·················································································································
+  #·······························································································
 
-  rule <expression_ggs3> !@semanticExpressionAST outExpressionAST
+  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpressionAST
 
-  #·················································································································
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName
+
+  #·······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
-  #·················································································································
+  #·······························································································
 
-  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList {
+  rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
     repeat
     while
       let @lstring selector
-      let @formalArgumentPassingModeAST mFormalParameterPassingMode
+      let @formalArgumentPassingModeAST formalParameterPassingMode
       select
-        $?$ ?selector
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentIn
+        select
+          $?selector:$ ?selector
+        or
+          $?$
+          selector = ["" here]
+        end
+        select
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+        or
+          $let$
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+        end
       or
-        $?$ ?selector
-        $let$
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentConstantIn
+        select
+          $?!selector:$ ?selector
+        or
+          $?!$
+          selector = ["" here]
+        end
+        formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
       or
-        $?!$ ?selector
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentInOut
-      or
-        $!$ ?selector
-        mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
+        select
+          $!selector:$ ?selector
+        or
+          $!$
+          selector = ["" here]
+        end
+        formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
       end
-      $@type$ ?let @lstring formalParameterTypeName
-      let @bool mIsUnused
+      <type_definition_ggs3> !?ioDeclarations ?let @lstring formalParameterTypeName
+      let @bool isUnused
       select
-        mIsUnused = false
+        isUnused = false
       or
         $unused$
-        mIsUnused = true
+        isUnused = true
       end
-      $identifier$ ?let @lstring mFormalParameterName
+      $identifier$ ?let @lstring formalParameterName
       outFormalParameterList +=
         !selector
-        !mFormalParameterPassingMode
+        !formalParameterPassingMode
         !formalParameterTypeName
-        !mFormalParameterName
-        !mIsUnused
+        !formalParameterName
+        !isUnused
     end
   }
 
-  #·················································································································
+  #·······························································································
   #  A C T U A L    P A R A M E T E R    L I S T
-  #·················································································································
+  #·······························································································
 
-  rule <actual_parameter_list_ggs3> !@actualParameterListAST outActualParameterList {
+  rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@actualParameterListAST outActualParameterList {
     outActualParameterList = {}
     repeat
     while
-      $!$ ?let selector
-      <expression_ggs3> ?let @semanticExpressionAST e
+      let @lstring selector
+      select
+        $!selector:$ ?selector
+      or
+        $!$
+        selector = ["" here]
+      end
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST e
       let @location endOfExpressionLocation = @location.here
       outActualParameterList += !@outputActualParameterAST.new {
         !selector
@@ -78,7 +113,13 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         !endOfExpressionLocation
       }
     while
-      $?$ ?let selector
+      let @lstring selector
+      select
+        $?selector:$ ?selector
+      or
+        $?$
+        selector = ["" here]
+      end
       select
         $*$
         <poisoned_var_list_ggs3> ?let poisonedVarNameList
@@ -101,171 +142,186 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         end
       end
     while
-      $!?$ ?let selector
-      $self$
-      outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
-    while
-      $!?$ ?let selector
-      $identifier$ ?let outputInputActualParameterName
-      var structAttributeList = @lstringlist {}
-      repeat
-      while
-        $.$
-        $identifier$ ?let structAttributeName
-        structAttributeList += !structAttributeName
+      let @lstring selector
+      select
+        $!?selector:$ ?selector
+      or
+        $!?$
+        selector = ["" here]
       end
-      outActualParameterList += !@outputInputActualParameterAST.new { 
-        !selector
-        !outputInputActualParameterName
-        !structAttributeList
-      }
-    while
-      $!?$ ?let selector
-      $*$
-      outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
-    while
-      $!?$ ?let selector
-      $literalInt$ ?let count
-      $*$
-      var n = [count.bigint uint]
-      if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { replace "!?" }
-      end
-      if n == 0 then
-        error count: "the count value should be > 0"
-      else
-        loop (n)
-        while n > 0 do
-          outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
-          n -= 1
+      select
+        $self$
+        outActualParameterList += !@outputInputSelfParameterAST.new {!selector}
+      or
+        $identifier$ ?let outputInputActualParameterName
+        var structAttributeList = @lstringlist {}
+        repeat
+        while
+          $.$
+          $identifier$ ?let structAttributeName
+          structAttributeList += !structAttributeName
+        end
+        outActualParameterList += !@outputInputActualParameterAST.new {
+          !selector
+          !outputInputActualParameterName
+          !structAttributeList
+        }
+      or
+        $*$
+        outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
+      or
+        $literalInt$ ?let count
+        $*$
+        var n = [count.bigint uint]
+        if selector.string != "" then
+          error selector : "the selector should be '!?'" fixit { replace "!?" }
+        end
+        if n == 0 then
+          error count: "the count value should be > 0"
+        else
+          loop (n)
+          while n > 0 do
+            outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
+            n -= 1
+          end
         end
       end
-    while # input parameter, existing variable
-      $?$ ?let selector
-      $identifier$ ?let inputActualParameterName
-      <poisoned_var_list_ggs3> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualExistingVariableParameterAST.new {
-        !selector
-        !inputActualParameterName
-        !poisonedVarNameList
-      }
-    while # input parameter, self.property
-      $?$ ?let selector
-      $self$
-      $.$
-      $identifier$ ?let inputActualParameterName
-      <poisoned_var_list_ggs3> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
-        !selector
-        !inputActualParameterName
-        !poisonedVarNameList
-      }
-    while # input parameter, self
-      $?$ ?let selector
-      $self$
-      <poisoned_var_list_ggs3> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualSelfParameterAST.new {
-        !selector
-        !.here
-        !poisonedVarNameList
-      }
-    while  # input parameter, new variable
-      $?$ ?let selector
-      $var$
-      let @lstring declarationTypeName
+    while 
+      let @lstring selector
       select
-        declarationTypeName = ["" nowhere]
+        $?selector:$ ?selector
       or
-        $@type$ ?declarationTypeName
+        $?$
+        selector = ["" here]
       end
-      $identifier$ ?let inputActualParameterName
-      <poisoned_var_list_ggs3> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualNewVariableParameterAST.new {
-        !selector
-        !declarationTypeName
-        !inputActualParameterName
-        !poisonedVarNameList
-      }
-    while  # input parameter, new variable, explicit type
-      $?$ ?let selector
-      $@type$ ?let @lstring declarationTypeName
-      $identifier$ ?let inputActualParameterName
-      <poisoned_var_list_ggs3> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualNewVariableParameterAST.new {
-        !selector
-        !declarationTypeName
-        !inputActualParameterName
-        !poisonedVarNameList
-      }
-    while # input parameter, new constant
-      $?$ ?let selector
-      $let$
-      let @lstring declarationTypeName
-      select
-        declarationTypeName = ["" nowhere]
-      or
-        $@type$ ?declarationTypeName
+      select # input parameter, self.property
+        $self$
+        $.$
+        $identifier$ ?let inputActualParameterName
+        <poisoned_var_list_ggs3> ?let poisonedVarNameList
+        outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
+          !selector
+          !inputActualParameterName
+          !poisonedVarNameList
+        }
+      or # input parameter, self
+        $self$
+        <poisoned_var_list_ggs3> ?let poisonedVarNameList
+        outActualParameterList += !@inputActualSelfParameterAST.new {
+          !selector
+          !.here
+          !poisonedVarNameList
+        }
+      or  # input parameter, new variable
+        $var$
+        let @lstring declarationTypeName
+        select
+          declarationTypeName = ["" nowhere]
+        or
+          <type_definition_ggs3> !?ioDeclarations ?declarationTypeName
+        end
+        $identifier$ ?let inputActualParameterName
+        <poisoned_var_list_ggs3> ?let poisonedVarNameList
+        outActualParameterList += !@inputActualNewVariableParameterAST.new {
+          !selector
+          !declarationTypeName
+          !inputActualParameterName
+          !poisonedVarNameList
+        }
+      or  # input parameter, new variable, explicit type
+        <type_definition_ggs3> !?ioDeclarations ?let @lstring declarationTypeName
+        $identifier$ ?let inputActualParameterName
+        <poisoned_var_list_ggs3> ?let poisonedVarNameList
+        outActualParameterList += !@inputActualNewVariableParameterAST.new {
+          !selector
+          !declarationTypeName
+          !inputActualParameterName
+          !poisonedVarNameList
+        }
+      or # input parameter, new constant
+        $let$
+        let @lstring declarationTypeName
+        select
+          declarationTypeName = ["" nowhere]
+        or
+          <type_definition_ggs3> !?ioDeclarations ?declarationTypeName
+        end
+        let @bool markedAsUnused
+        select
+          markedAsUnused = false
+        or
+          $unused$
+          markedAsUnused = true
+        end
+        $identifier$ ?let inputActualParameterName
+        <poisoned_var_list_ggs3> ?let poisonedVarNameList
+        outActualParameterList += !@inputActualNewConstantParameterAST.new {
+          !selector
+          !declarationTypeName
+          !inputActualParameterName
+          !markedAsUnused
+          !poisonedVarNameList
+        }
+      or # input parameter, existing variable
+        $identifier$ ?let inputActualParameterName
+        <poisoned_var_list_ggs3> ?let poisonedVarNameList
+        outActualParameterList += !@inputActualExistingVariableParameterAST.new {
+          !selector
+          !inputActualParameterName
+          !poisonedVarNameList
+        }
       end
-      let @bool markedAsUnused
-      select
-        markedAsUnused = false
-      or
-        $unused$
-        markedAsUnused = true
-      end
-      $identifier$ ?let inputActualParameterName
-      <poisoned_var_list_ggs3> ?let poisonedVarNameList
-      outActualParameterList += !@inputActualNewConstantParameterAST.new {
-        !selector
-        !declarationTypeName
-        !inputActualParameterName
-        !markedAsUnused
-        !poisonedVarNameList
-      }
     end
   }
 
-  #·················································································································
-  #  F O R M A L    I N P U T    P A R A M E T E R S 
-  #·················································································································
+  #·······························································································
+  #  F O R M A L    I N P U T    P A R A M E T E R S
+  #·······························································································
 
-  rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList {
+  rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                          !@formalInputParameterListAST outFormalInputParameterList {
     outFormalInputParameterList = {}
     repeat
     while
       let @bool isConstant
-      $?$ ?let selector
+      let @lstring selector
+      select
+        $?selector:$ ?selector
+      or
+        $?$
+        selector = ["" here]
+      end
       select
         isConstant = false
       or
         $let$
         isConstant = true
       end
-      $@type$ ?let @lstring mFormalParameterTypeName
-      let @bool mIsUnused
+      <type_definition_ggs3> !?ioDeclarations ?let formalParameterTypeName
+      let @bool isUnused
       select
-        mIsUnused = false
+        isUnused = false
       or
         $unused$
-        mIsUnused = true
+        isUnused = true
       end
-      $identifier$ ?let @lstring mFormalParameterName
+      $identifier$ ?let @lstring formalParameterName
       outFormalInputParameterList +=
         !selector
-        !mFormalParameterTypeName
-        !mFormalParameterName
-        !mIsUnused
+        !formalParameterTypeName
+        !formalParameterName
+        !isUnused
         !isConstant
     end
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <poisoned_var_list_ggs3> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = {}
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   rule <poisoned_var_list_ggs3> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = {}
@@ -277,29 +333,28 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       $,$
     end
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
-  #·················································································································
+  #·······························································································
 
-  rule <expression> !@semanticExpressionAST outExpressionAST
+  rule <expression> ?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpressionAST
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName
 
-  #·················································································································
+  #·······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
-  #·················································································································
+  #·······························································································
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = {}
     $($
@@ -307,49 +362,60 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     or
       repeat
         let @lstring selector
-        let @formalArgumentPassingModeAST mFormalParameterPassingMode
+        let @formalArgumentPassingModeAST formalParameterPassingMode
         select
-          $?$ ?selector
-          if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-            error selector.location : "check no useless selector: this selector should be removed"
-          end
-          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+          $?selector:$ ?selector
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+        or
+          $?$
+          selector = ["" here]
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
         or
           selector = ["" here]
-          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
         or
-          $?$ ?selector
-          if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-            error selector.location : "check no useless selector: this selector should be removed"
-          end
+          $?$
+          selector = ["" here]
           $let$
-          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+        or
+          $?selector:$ ?selector
+          $let$
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
         or
           $let$
           selector = ["" here]
-          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
         or
-          $?!$ ?selector
-          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
+          $?!selector:$ ?selector
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
         or
-          $!$ ?selector
-          mFormalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
+          $?!$ 
+          selector = ["" here]
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
+        or
+          $!selector:$ ?selector
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
+        or
+          $!$
+          selector = ["" here]
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
         end
-        <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let formalParameterTypeName
-        let @bool mIsUnused
+        <type_definition> !?ioDeclarations ?let formalParameterTypeName
+        let @bool isUnused
         select
-          mIsUnused = false
+          isUnused = false
         or
           $unused$
-          mIsUnused = true
+          isUnused = true
         end
-        $identifier$ ?let @lstring mFormalParameterName
+        $identifier$ ?let @lstring formalParameterName
         outFormalParameterList +=
           !selector
-          !mFormalParameterPassingMode
+          !formalParameterPassingMode
           !formalParameterTypeName
-          !mFormalParameterName
-          !mIsUnused
+          !formalParameterName
+          !isUnused
       while
         $,$
       end
@@ -357,28 +423,38 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     $)$
   }
 
-  #·················································································································
+  #·······························································································
   #  A C T U A L    P A R A M E T E R    L I S T
-  #·················································································································
+  #·······························································································
 
-  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList {
+  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
+                                                  !@actualParameterListAST outActualParameterList {
     $($
     outActualParameterList = {}
     select
     or
       repeat
-         <actual_parameter> !?outActualParameterList
+         <actual_parameter> !?ioDeclarations !?outActualParameterList
        while
          $,$
       end
     end
     $)$
   }
-  
-  #·················································································································
 
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
-    $?$ ?let selector
+  #·······························································································
+  # Actual input argument
+  #·······························································································
+
+  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
+    let @lstring selector
+    select
+      $?selector:$ ?selector
+    or
+      $?$
+      selector = ["" here]
+    end
     select
       $*$
       <poisoned_var_list> ?let poisonedVarNameList
@@ -390,7 +466,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       if selector.string != "" then
         error selector : "the selector should be '?'" fixit { replace "?" }
       end
-     if n == 0 then
+      if n == 0 then
         error count: "the count value should be > 0"
       else
         loop (n)
@@ -399,87 +475,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           n -= 1
         end
       end
-    end
-  }
-
-  #·················································································································
-
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
-    $!?$ ?let selector
-    select
-      $identifier$ ?let outputInputActualParameterName
-      var structAttributeList = @lstringlist {}
-      repeat
-      while
-        $.$
-        $identifier$ ?let structAttributeName
-        structAttributeList += !structAttributeName
-      end
-      ioActualParameterList += !@outputInputActualParameterAST.new { 
-        !selector
-        !outputInputActualParameterName
-        !structAttributeList
-      }
     or
-      $*$
-      ioActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
-    or
-      $self$
-      ioActualParameterList += !@outputInputSelfParameterAST.new {!selector}
-    or
-      $!?$ ?let selector
-      $literalInt$ ?let count
-      $*$
-      var n = [count.bigint uint]
-      if selector.string != "" then
-        error selector : "the selector should be '!?'" fixit { replace "!?" }
-      end
-      if n == 0 then
-        error count: "the count value should be > 0"
-      else
-        loop (n)
-        while n > 0 do
-          ioActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
-          n -= 1
-        end
-      end
-    end
-  }
-
-  #·················································································································
-
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
-    $!$ ?let selector
-    if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-      error selector.location : "check no useless selector: this selector should be removed"
-    end
-    <expression> ?let @semanticExpressionAST e
-    let @location endOfExpressionLocation = @location.here
-    ioActualParameterList += !@outputActualParameterAST.new {
-      !selector
-      !e
-      !endOfExpressionLocation
-    }
-  }
-
-  #·················································································································
-
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
-    let selector = ["" here]
-    <expression> ?let @semanticExpressionAST e
-    let @location endOfExpressionLocation = @location.here
-    ioActualParameterList += !@outputActualParameterAST.new {
-      !selector
-      !e
-      !endOfExpressionLocation
-    }
-  }
-
-  #·················································································································
-
-  rule <actual_parameter> ?!@actualParameterListAST ioActualParameterList {
-    $?$ ?let selector
-    select
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
       ioActualParameterList += !@inputActualExistingVariableParameterAST.new {
@@ -511,7 +507,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       select
         declarationTypeName = ["" nowhere]
       or
-        $@type$ ?declarationTypeName
+        <type_definition> !?ioDeclarations ?declarationTypeName
       end
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
@@ -522,7 +518,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !poisonedVarNameList
       }
     or # input parameter, new variable, explicit type
-      $@type$ ?let @lstring declarationTypeName
+      <type_definition> !?ioDeclarations ?let declarationTypeName
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
       ioActualParameterList += !@inputActualNewVariableParameterAST.new {
@@ -537,7 +533,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       select
         declarationTypeName = ["" nowhere]
       or
-        $@type$ ?declarationTypeName
+        <type_definition> !?ioDeclarations ?declarationTypeName
       end
       let @bool markedAsUnused
       select
@@ -558,11 +554,112 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     end
   }
 
-  #·················································································································
-  #  F O R M A L    I N P U T    P A R A M E T E R S 
-  #·················································································································
+  #·······························································································
+  # Actual output / input argument
+  #·······························································································
 
-  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList {
+  rule <actual_parameter> ?!@galgasDeclarationAST unused ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
+    let @lstring selector
+    select
+      $!?selector:$ ?selector
+    or
+      $!?$
+      selector = ["" here]
+    end
+    select
+      $identifier$ ?let outputInputActualParameterName
+      var structAttributeList = @lstringlist {}
+      repeat
+      while
+        $.$
+        $identifier$ ?let structAttributeName
+        structAttributeList += !structAttributeName
+      end
+      ioActualParameterList += !@outputInputActualParameterAST.new {
+        !selector
+        !outputInputActualParameterName
+        !structAttributeList
+      }
+    or
+      $*$
+      ioActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
+    or
+      $self$
+      ioActualParameterList += !@outputInputSelfParameterAST.new {!selector}
+    or
+      $literalInt$ ?let count
+      $*$
+      var n = [count.bigint uint]
+      if n == 0 then
+        error count: "the count value should be > 0"
+      else
+        loop (n)
+        while n > 0 do
+          ioActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
+          n -= 1
+        end
+      end
+    end
+  }
+
+  #·······························································································
+  # Actual output argument
+  #·······························································································
+
+  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
+    let @lstring selector
+    select
+      $!selector:$ ?selector
+    or
+      $!$
+      selector = ["" here]
+    end
+    <expression> !?ioDeclarations ?let @semanticExpressionAST e
+    let @location endOfExpressionLocation = @location.here
+    ioActualParameterList += !@outputActualParameterAST.new {
+      !selector
+      !e
+      !endOfExpressionLocation
+    }
+  }
+
+  #·······························································································
+
+#  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
+#                          ?!@actualParameterListAST ioActualParameterList {
+#    $!$
+#    let selector = ["" here]
+#    <expression> !?ioDeclarations ?let @semanticExpressionAST e
+#    let @location endOfExpressionLocation = @location.here
+#    ioActualParameterList += !@outputActualParameterAST.new {
+#      !selector
+#      !e
+#      !endOfExpressionLocation
+#    }
+#  }
+
+  #·······························································································
+
+  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
+                          ?!@actualParameterListAST ioActualParameterList {
+    let selector = ["" here]
+    <expression> !?ioDeclarations ?let @semanticExpressionAST e
+    let @location endOfExpressionLocation = @location.here
+    ioActualParameterList += !@outputActualParameterAST.new {
+      !selector
+      !e
+      !endOfExpressionLocation
+    }
+  }
+
+  #·······························································································
+  #  F O R M A L    I N P U T    P A R A M E T E R S
+  #·······························································································
+
+  rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
+                                     !@formalInputParameterListAST outFormalInputParameterList {
     outFormalInputParameterList = {}
     $($
     select
@@ -570,10 +667,10 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       repeat
         let @lstring selector
         select
-          $?$ ?selector
-          if [option galgas_cli_options.errorOnUselessSelector value] && (selector.string == "") then
-            error selector.location : "check no useless selector: this selector should be removed"
-          end
+          $?selector:$ ?selector
+        or
+          $?$
+          selector = ["" here]
         or
           selector = ["" here]
         end
@@ -584,20 +681,20 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           $let$
           isConstant = true
         end
-        $@type$ ?let @lstring mFormalParameterTypeName
-        let @bool mIsUnused
+        <type_definition> !?ioDeclarations ?let formalParameterTypeName
+        let @bool isUnused
         select
-          mIsUnused = false
+          isUnused = false
         or
           $unused$
-          mIsUnused = true
+          isUnused = true
         end
-        $identifier$ ?let @lstring mFormalParameterName
+        $identifier$ ?let @lstring formalParameterName
         outFormalInputParameterList +=
           !selector
-          !mFormalParameterTypeName
-          !mFormalParameterName
-          !mIsUnused
+          !formalParameterTypeName
+          !formalParameterName
+          !isUnused
           !isConstant
       while
         $,$
@@ -606,13 +703,13 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     $)$
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = {}
   }
-  
-  #·················································································································
+
+  #·······························································································
 
   rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = {}
@@ -626,9 +723,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     end
     $)$
   }
-  
-  #·················································································································
+
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————

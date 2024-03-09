@@ -1,42 +1,57 @@
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
-#                                           
-#  e-mail : pierre@pcmolinaro.name          
-#                                           
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#                                           
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.                                 
-#                                           
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3InstructionsSyntax (galgasScanner3) {
 
-  #·················································································································
-  #          Rules prototypes                 
-  #·················································································································
+  #·······························································································
+  #          Rules prototypes
+  #·······························································································
 
-  rule <expression_ggs3> !@semanticExpressionAST outExpression
-  
-  rule <if_expression_ggs3> !@ifExpressionList outExpressionList
-  
-  rule <formal_parameter_list_ggs3> !@formalParameterListAST outFormalParameterList
-  
-  rule <formal_input_parameter_list_ggs3> !@formalInputParameterListAST outFormalInputParameterList
+  rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                         !@semanticExpressionAST outExpression
 
-  #·················································································································
+  rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                            !@ifExpressionList outExpressionList
+
+  rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList
+
+  rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                          !@formalInputParameterListAST outFormalInputParameterList
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName
+
+  #·······························································································
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
-  #·················································································································
+  #·······························································································
 
-  rule <semantic_instruction_list_ggs3> !@semanticInstructionListAST outInstructionsList {
+  rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                        !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
     select
     or
       repeat
-        <semantic_instruction_ggs3> ?let @semanticInstructionAST instruction
+        <semantic_instruction_ggs3> !?ioDeclarations ?let @semanticInstructionAST instruction
         outInstructionsList += !instruction
       while
         select
@@ -51,9 +66,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·················································································································
-  #    F U N C T I O N    D E C L A R A T I O N    
-  #·················································································································
+  #·······························································································
+  #    F U N C T I O N    D E C L A R A T I O N
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $func$
@@ -74,12 +89,12 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    $@type$ ?let resultTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -87,7 +102,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -116,7 +131,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -138,12 +153,12 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    $@type$ ?let resultTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -151,7 +166,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -180,9 +195,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·················································································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
-  #·················································································································
+  #·······························································································
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
+  #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -197,9 +212,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let mActionName indexing functionDefinition
-    <formal_input_parameter_list_ggs3> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
-    $@type$ ?let resultTypeName
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !mActionName
@@ -209,29 +224,29 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     }
   }
 
-  #·················································································································
+  #·······························································································
   #    M E T H O D    C A L L    I N S T R U C T I O N
-  #·················································································································
+  #·······························································································
 
-  rule <actual_parameter_list_ggs3> !@actualParameterListAST outActualParameterList
+  rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                    !@actualParameterListAST outActualParameterList
 
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
-    $?$ ?let selector
-    if selector.string != "" then
-      error selector : "the selector should be '?'" fixit { replace "?" }
-    end
+  rule <syntax_directed_translation_result>
+          ?!@galgasDeclarationAST ioDeclarations
+          !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+    $?$
     select
       $*$
       result = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
     or
-      $@type$ ?let actualParameterTypeName
+      <type_definition_ggs3> !?ioDeclarations ?let @lstring actualParameterTypeName
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
     or
       $let$
-      $@type$ ?let actualParameterTypeName
+      <type_definition_ggs3> !?ioDeclarations ?let @lstring actualParameterTypeName
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
     or
@@ -240,86 +255,95 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <actual_input_parameter_list_ggs3> !@actualInputParameterListAST outActualInputParameterList {
+  rule <actual_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                          !@actualInputParameterListAST outActualInputParameterList {
     outActualInputParameterList = @actualInputParameterListAST {}
     repeat
     while
-      $?$ ?let selector
-      $*$
-      outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
-    while
-      $?$ ?let selector
-      $var$
-      let @lstring actualParameterTypeName
+      let @lstring selector
       select
-        actualParameterTypeName = ["" nowhere]
+        $?selector:$ ?selector
       or
-        $@type$ ?actualParameterTypeName
+        $?$
+        selector = ["" here]
       end
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList +=
-        !selector
-        !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
-    while
-      $?$ ?let selector
-      $let$
-      let @lstring actualParameterTypeName
       select
-        actualParameterTypeName = ["" nowhere]
+        $*$
+        outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
       or
-        $@type$ ?actualParameterTypeName
+        $var$
+        let @lstring actualParameterTypeName
+        select
+          actualParameterTypeName = ["" nowhere]
+        or
+         <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
+        end
+        $identifier$ ?let actualParameterName
+        outActualInputParameterList +=
+          !selector
+          !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+      or
+        $let$
+        let @lstring actualParameterTypeName
+        select
+          actualParameterTypeName = ["" nowhere]
+        or
+          <type_definition_ggs3> !?ioDeclarations ?actualParameterTypeName
+        end
+        $identifier$ ?let actualParameterName
+        outActualInputParameterList +=
+          !selector
+          !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+      or
+        $identifier$ ?let actualParameterName
+        outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
       end
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList +=
-        !selector
-        !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
-    while
-      $?$ ?let selector
-      $identifier$ ?let actualParameterName
-      outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
     end
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4InstructionsSyntax (galgasScanner4) {
 
-  #·················································································································
-  #          Rules prototypes                 
-  #·················································································································
+  #·······························································································
+  #          Rules prototypes
+  #·······························································································
 
-  rule <expression> !@semanticExpressionAST outExpression
-  
-  rule <if_expression> !@ifExpressionList outExpressionList
-  
+  rule <expression> ?!@galgasDeclarationAST ioDeclarations
+                    !@semanticExpressionAST outExpression
+
+  rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
+                       !@ifExpressionList outExpressionList
+
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
-                               ?!@stringset ioUserImplicitDeclaredTypeSet
                                !@formalParameterListAST outFormalParameterList
-  
-  rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+  rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
+                                     !@formalInputParameterListAST outFormalInputParameterList
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         ?!@stringset unused ioUserImplicitDeclaredTypeSet
                          !@lstring outTypeName
 
-  #·················································································································
+  rule <non_empty_output_expression_list> ?!@galgasDeclarationAST ioDeclarations
+                                          !@actualOutputExpressionList outExpressionList
+
+  #·······························································································
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
-  #·················································································································
+  #·······························································································
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
-                                   ?!@stringset ioUserImplicitDeclaredTypeSet
                                    !@semanticInstructionListAST outInstructionsList {
     outInstructionsList = @semanticInstructionListAST {}
     select
     or
       repeat
-        <semantic_instruction> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionAST instruction
+        <semantic_instruction> !?ioDeclarations ?let @semanticInstructionAST instruction
         outInstructionsList += !instruction
       while
         select
@@ -334,12 +358,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
   }
 
-  #·················································································································
-  #    F U N C T I O N    D E C L A R A T I O N    
-  #·················································································································
+  #·······························································································
+  #    F U N C T I O N    D E C L A R A T I O N
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $func$
     var isOnce = false
     var isUsefull = false
@@ -358,12 +381,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -371,7 +394,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -400,10 +423,9 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
     $func$
     var isOnce = false
@@ -423,12 +445,12 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     if isOnce, ([formalInputParameterList count] > 0) then
       error functionName: "an 'once' function should has no argument"
     end
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     let @lstring resultVariableName
     select
       $identifier$ ?resultVariableName
@@ -436,7 +458,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = .new {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -465,12 +487,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
   }
 
-  #·················································································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                   
-  #·················································································································
+  #·······························································································
+  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
+  #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations
-                     ?!@stringset ioUserImplicitDeclaredTypeSet {
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
     $func$
     var isUsefull = false
@@ -483,9 +504,9 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ ?let mActionName indexing functionDefinition
-    <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
-    <type_definition> !?ioDeclarations !?ioUserImplicitDeclaredTypeSet ?let resultTypeName
+    <type_definition> !?ioDeclarations ?let resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
       !isPredefined: false # Is not predefined
       !mActionName
@@ -495,30 +516,29 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     }
   }
 
-  #·················································································································
+  #·······························································································
   #    M E T H O D    C A L L    I N S T R U C T I O N
-  #·················································································································
+  #·······························································································
 
-  rule <actual_parameter_list_within_parenthesis> !@actualParameterListAST outActualParameterList
+  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
+                                                  !@actualParameterListAST outActualParameterList
 
-  #·················································································································
+  #·······························································································
 
-  rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
+  rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
+                                            !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
     $($
-    $?$ ?let selector
-    if selector.string != "" then
-      error selector : "the selector should be '?'" fixit { replace "?" }
-    end
+    $?$
     select
       $*$
       result = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
     or
-      $@type$ ?let actualParameterTypeName
+      <type_definition> !?ioDeclarations ?let @lstring actualParameterTypeName
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
     or
       $let$
-      $@type$ ?let actualParameterTypeName
+      <type_definition> !?ioDeclarations ?let @lstring actualParameterTypeName
       $identifier$ ?let actualParameterName
       result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
     or
@@ -528,46 +548,85 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     $)$
   }
 
-  #·················································································································
+  #·······························································································
 
-  rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
+  rule <actual_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
+                                     !@actualInputParameterListAST outActualInputParameterList {
     outActualInputParameterList = @actualInputParameterListAST {}
     select
     or
       $($
       repeat
         select
-          $?$ ?let selector
+          $?$
+          let selector = ["" here]
           $*$
           outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
         or
-          $?$ ?let selector
+          $?selector:$ ?let selector
+          $*$
+          outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
+        or
+          $?selector:$ ?let selector
           $var$
           let @lstring actualParameterTypeName
           select
             actualParameterTypeName = ["" nowhere]
           or
-            $@type$ ?actualParameterTypeName
+           <type_definition> !?ioDeclarations ?actualParameterTypeName
           end
           $identifier$ ?let actualParameterName
           outActualInputParameterList +=
             !selector
             !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
         or
-          $?$ ?let selector
+          $?$
+          let selector = ["" here]
+          $var$
+          let @lstring actualParameterTypeName
+          select
+            actualParameterTypeName = ["" nowhere]
+          or
+           <type_definition> !?ioDeclarations ?actualParameterTypeName
+          end
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList +=
+            !selector
+            !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+        or
+          $?selector:$ ?let selector
           $let$
           let @lstring actualParameterTypeName
           select
             actualParameterTypeName = ["" nowhere]
           or
-            $@type$ ?actualParameterTypeName
+            <type_definition> !?ioDeclarations ?actualParameterTypeName
           end
           $identifier$ ?let actualParameterName
           outActualInputParameterList +=
             !selector
             !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
         or
-          $?$ ?let selector
+          $?$
+          let selector = ["" here]
+          $let$
+          let @lstring actualParameterTypeName
+          select
+            actualParameterTypeName = ["" nowhere]
+          or
+            <type_definition> !?ioDeclarations ?actualParameterTypeName
+          end
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList +=
+            !selector
+            !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+        or
+          $?selector:$ ?let selector
+          $identifier$ ?let actualParameterName
+          outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
+        or
+          $?$
+          let selector = ["" here]
           $identifier$ ?let actualParameterName
           outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
         end
@@ -576,10 +635,10 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       end
       $)$
     end
-  }  
+  }
 
-  #·················································································································
+  #·······························································································
 
 }
 
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#—————————————————————————————————————————————————————————————————————————————————————————————————
