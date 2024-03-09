@@ -310,3 +310,5 @@ makefile-macosx/arm64/galgas
 makefile-macosx/universal/galgas
 makefile-macosx/x86_64/galgas-debug
 galgas-3-documentation-latex-sources/temp.galgas.tex
+project-codeblocks-linux64/galgas
+project-codeblocks-linux64/galgas-debug
