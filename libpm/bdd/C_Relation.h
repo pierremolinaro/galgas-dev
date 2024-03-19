@@ -9,7 +9,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "C_BDD.h"
+#include "BinaryDecisionDiagram.h"
 #include "C_RelationSingleType.h"
 #include "C_RelationConfiguration.h"
 
@@ -30,12 +30,12 @@ class C_Relation final {
 
 //--- Private constructor (variables, eBDD)
   private: C_Relation (const C_RelationConfiguration & inConfiguration,
-                       const C_BDD inBDD) ;
+                       const BinaryDecisionDiagram inBDD) ;
 
 //--- Constructor (Variable compared with constant)
   public: C_Relation (const C_RelationConfiguration & inConfiguration,
                       const int32_t inVariableIndex,
-                      const C_BDD::compareEnum inComparaison,
+                      const BinaryDecisionDiagram::compareEnum inComparaison,
                       const uint64_t inConstant
                       COMMA_LOCATION_ARGS) ;
 
@@ -114,11 +114,11 @@ class C_Relation final {
   }
   
   public: C_RelationConfiguration configuration (void) const ;
-  public: C_BDD bdd (void) const ;
+  public: BinaryDecisionDiagram bdd (void) const ;
   
 //--- Attributes
   private: C_RelationConfiguration mConfiguration ; 
-  private: C_BDD mBDD ;
+  private: BinaryDecisionDiagram mBDD ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

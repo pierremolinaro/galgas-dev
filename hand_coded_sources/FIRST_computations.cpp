@@ -30,7 +30,7 @@
 
 #include "FIRST_computations.h"
 #include "cPureBNFproductionsList.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -48,11 +48,11 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
     const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     const int32_t n = p.derivationLength () ;
     if (n > 0) {
-      const C_Relation left (vocabulary2Config, 0, C_BDD::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ;
+      const C_Relation left (vocabulary2Config, 0, BinaryDecisionDiagram::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ;
       int32_t j = 0 ;
       C_Relation right (vocabulary2Config, false) ;
       do{
-        right.orWith (C_Relation (vocabulary2Config, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ;
+        right.orWith (C_Relation (vocabulary2Config, 1, BinaryDecisionDiagram::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ;
         j++ ;
       }while ((j<n) && inVocabularyDerivingInEmptyString (p.derivationAtIndex (j-1 COMMA_HERE) COMMA_HERE)) ;
       directFIRST.orWith (left.andOp (right COMMA_HERE) COMMA_HERE) ;
@@ -65,7 +65,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 //----------------------------------------- Delete nonterminal symbols in FIRST
   FIRST.andWith (C_Relation (vocabulary2Config,
                              1,
-                             C_BDD::kLowerOrEqual,
+                             BinaryDecisionDiagram::kLowerOrEqual,
                              (uint64_t) (inTerminalSymbolsCount - 1)
                              COMMA_HERE)
                  COMMA_HERE) ;
@@ -80,7 +80,7 @@ static bool
 displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
                           const bool inPopulateHTMLHelperString,
                           const C_Relation & inVocabularyDerivingInEmptyString,
-                          const cVocabulary & inVocabulary,
+                          const GrammarVocabulary & inVocabulary,
                           const C_Relation & inUsefulSymbols,
                           const C_Relation & inFIRSTsets,
                           TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
@@ -91,7 +91,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
   C_RelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
   vocabulary2Config.appendConfiguration (inUsefulSymbols.configuration()) ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
-  const C_Relation empty (vocabulary2Config, 1, C_BDD::kEqual, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
+  const C_Relation empty (vocabulary2Config, 1, BinaryDecisionDiagram::kEqual, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
   C_Relation vocabularyDerivingInEmptyString = inVocabularyDerivingInEmptyString ;
   vocabularyDerivingInEmptyString.appendConfiguration (inUsefulSymbols.configuration()) ;
   const C_Relation nt_x_empty_relation = vocabularyDerivingInEmptyString.andOp (empty COMMA_HERE) ;
@@ -130,7 +130,7 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
 //----------------------------------------------- Check FIRST
   const C_Relation ntToCheck_relation (inUsefulSymbols.configuration(),
                               0,
-                              C_BDD::kGreaterOrEqual,
+                              BinaryDecisionDiagram::kGreaterOrEqual,
                               (uint64_t) inVocabulary.getTerminalSymbolsCount ()
                               COMMA_HERE) ;
 //--- Get nonterminal symbols in error
@@ -191,7 +191,7 @@ void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     HTMLString & ioHTMLFileContents,
                     const bool inPopulateHTMLHelperString,
-                    const cVocabulary & inVocabulary,
+                    const GrammarVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_Relation & inVocabularyDerivingToEmpty,
                     const C_Relation & inUsefulSymbols,

@@ -32,7 +32,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class cPureBNFproductionsList ;
-class cVocabulary ;
+class GrammarVocabulary ;
 class HTMLString ;
 class String ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
@@ -41,7 +41,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 void
 SLR_computations (const cPureBNFproductionsList & inProductionRules,
-                  const cVocabulary & inVocabulary,
+                  const GrammarVocabulary & inVocabulary,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,

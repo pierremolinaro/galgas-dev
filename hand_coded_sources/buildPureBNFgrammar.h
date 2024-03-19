@@ -27,19 +27,19 @@
 
 class GALGAS_syntaxComponentListForGrammarAnalysis ;
 class cPureBNFproductionsList ;
-class cVocabulary ;
+class GrammarVocabulary ;
 class HTMLString ;
 
 //--------------------------------------------------------------------------------------------------
 
 void
 buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
-                     cVocabulary & ioVocabulary,
+                     GrammarVocabulary & ioVocabulary,
                      cPureBNFproductionsList & ioProductions) ;
 
 void
 printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
-                              const cVocabulary & inVocabulary,
+                              const GrammarVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) ;
 
 //--------------------------------------------------------------------------------------------------

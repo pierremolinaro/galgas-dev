@@ -276,7 +276,7 @@ project (3:7:0) -> "galgas" {
 
 #--- Hand coded sources
   %tool-source : "hand_coded_sources/cDecisionTableElement.cpp"
-  %tool-source : "hand_coded_sources/cVocabulary.cpp"
+  %tool-source : "hand_coded_sources/GrammarVocabulary.cpp"
   %tool-source : "hand_coded_sources/buildPureBNFgrammar.cpp"
   %tool-source : "hand_coded_sources/empty_strings_computations.cpp"
   %tool-source : "hand_coded_sources/follow_by_empty_computation.cpp"

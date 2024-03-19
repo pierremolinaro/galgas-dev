@@ -31,7 +31,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 
   public: virtual void printInstructionForGrammar (HTMLString & inHTMLfile) const override ;
 
-  public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+  public: virtual void fixNewNonterminalSymbols (GrammarVocabulary & ioVocabulary,
                                                  const String & inSyntaxComponentName,
                                                  int32_t & ioCount) const override ;
 

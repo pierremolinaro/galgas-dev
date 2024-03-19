@@ -30,7 +30,7 @@
 
 #include "empty_strings_computations.h"
 #include "cPureBNFproductionsList.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
   for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
     const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     if (p.derivationLength () == 0) {
-      nonterminalSymbolsHavingEmptyDerivation.orWith (C_Relation (inConfiguration, 0, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) COMMA_HERE) ;
+      nonterminalSymbolsHavingEmptyDerivation.orWith (C_Relation (inConfiguration, 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) COMMA_HERE) ;
     }
   }
 
@@ -121,7 +121,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
   C_Relation result = inNonTerminalHavingEmptyDerivation ;
   for (uint32_t i=0 ; i<inAllSymbolsCount ; i++) {
     if (outVocabulaireSeDerivantEnVide ((int32_t) i COMMA_HERE)) {
-      result.orWith (C_Relation (inNonTerminalHavingEmptyDerivation.configuration(), 0, C_BDD::kEqual, i COMMA_HERE) COMMA_HERE) ;
+      result.orWith (C_Relation (inNonTerminalHavingEmptyDerivation.configuration(), 0, BinaryDecisionDiagram::kEqual, i COMMA_HERE) COMMA_HERE) ;
     }
   }
 

@@ -24,10 +24,10 @@
 #include "acStrongPtr_class.h"
 #include "cPtr_weakReference_proxy.h"
 #include "AC_GALGAS_weak_reference.h"
-#include "C_BoolCommandLineOption.h"
-#include "C_UIntCommandLineOption.h"
-#include "C_StringCommandLineOption.h"
-#include "C_StringListCommandLineOption.h"
+#include "BoolCommandLineOption.h"
+#include "UIntCommandLineOption.h"
+#include "StringCommandLineOption.h"
+#include "StringListCommandLineOption.h"
 #include "PrologueEpilogue.h"
 #include "BigSigned.h"
 
@@ -2298,25 +2298,25 @@ class GALGAS_application final {
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_BDD.h"
+#include "BinaryDecisionDiagram.h"
 
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_binaryset : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: C_BDD mBDD ;
+  private: BinaryDecisionDiagram mBDD ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline C_BDD bddValue (void) const { return mBDD ; }
+  public: inline BinaryDecisionDiagram bddValue (void) const { return mBDD ; }
 
 //--------------------------------- Default constructor
   public: GALGAS_binaryset (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_binaryset (const C_BDD & inValue) ;
+  public: GALGAS_binaryset (const BinaryDecisionDiagram & inValue) ;
 
 //-- Start of type generic part
 

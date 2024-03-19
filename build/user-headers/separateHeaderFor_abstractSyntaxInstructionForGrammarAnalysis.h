@@ -2,7 +2,7 @@
 
 class HTMLString ;
 class cPureBNFproductionsList ;
-class cVocabulary ;
+class GrammarVocabulary ;
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
 
   public: virtual void printInstructionForGrammar (HTMLString & inHTMLfile) const = 0 ;
 
-  public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+  public: virtual void fixNewNonterminalSymbols (GrammarVocabulary & ioVocabulary,
                                                  const String & inSyntaxComponentName,
                                                  int32_t & ioCount) const = 0 ;
 

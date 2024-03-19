@@ -32,7 +32,7 @@ mBDD () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryset::GALGAS_binaryset (const C_BDD & inOperand_mBDD) :
+GALGAS_binaryset::GALGAS_binaryset (const BinaryDecisionDiagram & inOperand_mBDD) :
 mIsValid (true),
 mBDD (inOperand_mBDD) {
 }
@@ -40,13 +40,13 @@ mBDD (inOperand_mBDD) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::class_func_emptyBinarySet (UNUSED_LOCATION_ARGS) {
-  return GALGAS_binaryset (C_BDD ()) ;
+  return GALGAS_binaryset (BinaryDecisionDiagram ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryset GALGAS_binaryset::class_func_fullBinarySet (UNUSED_LOCATION_ARGS) {
-  C_BDD bdd ;
+  BinaryDecisionDiagram bdd ;
   bdd.setToTrue () ;
   return GALGAS_binaryset (bdd) ;
 }
@@ -59,7 +59,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithBit (const GALGAS_uin
   GALGAS_binaryset result ;
   if (inBitIndex.isValid ()) {
     const uint32_t bitIndex = inBitIndex.uintValue () ;
-    const C_BDD bdd (bitIndex, true) ;
+    const BinaryDecisionDiagram bdd (bitIndex, true) ;
     result = GALGAS_binaryset (bdd) ;
   }
   return result ;
@@ -76,7 +76,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithPredicateString (cons
     const int32_t stringLength = bitString.length () ;
     int32_t stringIndex = 0 ;
     bool ok = true ;
-    C_BDD resultBDD ;
+    BinaryDecisionDiagram resultBDD ;
     while ((stringIndex < stringLength) && ok) {
       utf32 cc = bitString.charAtIndex (stringIndex COMMA_HERE) ;
       String s ;
@@ -88,15 +88,15 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithPredicateString (cons
         }
       }
       if (s.length () > 0) {
-        C_BDD v ; v.setToTrue () ;
+        BinaryDecisionDiagram v ; v.setToTrue () ;
         uint32_t bitIndex = 0 ;
         for (int32_t i=s.length () - 1 ; i>=0 ; i--) {
           const utf32 c = s.charAtIndex (i COMMA_HERE) ;
           if (UNICODE_VALUE (c) == '0') {
-            v &= C_BDD (bitIndex, false) ;
+            v &= BinaryDecisionDiagram (bitIndex, false) ;
             bitIndex ++ ;
           }else if (UNICODE_VALUE (c) == '1') {
-            v &= C_BDD (bitIndex, true) ;
+            v &= BinaryDecisionDiagram (bitIndex, true) ;
             bitIndex ++ ;
           }else if (UNICODE_VALUE (c) == 'X') {
             bitIndex ++ ;
@@ -125,7 +125,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithPredicateString (cons
 static GALGAS_binaryset binarySetWithComparison (Compiler * inCompiler,
                                                  const GALGAS_uint & inLeftFirstIndex,
                                                  const GALGAS_uint & inBitCount,
-                                                 const C_BDD::compareEnum inComparison,
+                                                 const BinaryDecisionDiagram::compareEnum inComparison,
                                                  const GALGAS_uint & inRightFirstIndex
                                                  COMMA_LOCATION_ARGS) {
   GALGAS_binaryset result ;
@@ -137,7 +137,7 @@ static GALGAS_binaryset binarySetWithComparison (Compiler * inCompiler,
     }else if (maxRight > UINT32_MAX) {
       inCompiler->onTheFlyRunTimeError ("right operand upper bit is greater than 2**31-1" COMMA_THERE) ;
     }else {
-      result = GALGAS_binaryset (C_BDD::varCompareVar (inLeftFirstIndex.uintValue (),
+      result = GALGAS_binaryset (BinaryDecisionDiagram::varCompareVar (inLeftFirstIndex.uintValue (),
                                  inBitCount.uintValue (),
                                  inComparison,
                                  inRightFirstIndex.uintValue ())) ;
@@ -156,7 +156,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithEqualComparison (cons
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
                                   inBitCount,
-                                  C_BDD::kEqual,
+                                  BinaryDecisionDiagram::kEqual,
                                   inRightFirstIndex
                                   COMMA_THERE) ;
 }
@@ -171,7 +171,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithNotEqualComparison (c
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
                                   inBitCount,
-                                  C_BDD::kNotEqual,
+                                  BinaryDecisionDiagram::kNotEqual,
                                   inRightFirstIndex
                                   COMMA_THERE) ;
 }
@@ -186,7 +186,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithLowerOrEqualCompariso
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
                                   inBitCount,
-                                  C_BDD::kLowerOrEqual,
+                                  BinaryDecisionDiagram::kLowerOrEqual,
                                   inRightFirstIndex
                                   COMMA_THERE) ;
 }
@@ -201,7 +201,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithGreaterOrEqualCompari
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
                                   inBitCount,
-                                  C_BDD::kGreaterOrEqual,
+                                  BinaryDecisionDiagram::kGreaterOrEqual,
                                   inRightFirstIndex
                                   COMMA_THERE) ;
 }
@@ -216,7 +216,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithStrictLowerComparison
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
                                   inBitCount,
-                                  C_BDD::kStrictLower,
+                                  BinaryDecisionDiagram::kStrictLower,
                                   inRightFirstIndex
                                   COMMA_THERE) ;
 }
@@ -231,7 +231,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithStrictGreaterComparis
   return binarySetWithComparison (inCompiler,
                                   inLeftFirstIndex,
                                   inBitCount,
-                                  C_BDD::kStrictGreater,
+                                  BinaryDecisionDiagram::kStrictGreater,
                                   inRightFirstIndex
                                   COMMA_THERE) ;
 }
@@ -241,7 +241,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithStrictGreaterComparis
 static GALGAS_binaryset binarySetWithComparisonWithConstant (Compiler * inCompiler,
                                                              const GALGAS_uint & inBitIndex,
                                                              const GALGAS_uint & inBitCount,
-                                                             const C_BDD::compareEnum inComparison,
+                                                             const BinaryDecisionDiagram::compareEnum inComparison,
                                                              const GALGAS_uint_36__34_ & inConstant
                                                              COMMA_LOCATION_ARGS) {
   GALGAS_binaryset result ;
@@ -250,7 +250,7 @@ static GALGAS_binaryset binarySetWithComparisonWithConstant (Compiler * inCompil
     if (maxLeft > UINT32_MAX) {
       inCompiler->onTheFlyRunTimeError ("left operand upper bit is greater than 2**31-1" COMMA_THERE) ;
     }else {
-      result = GALGAS_binaryset (C_BDD::varCompareConst (inBitIndex.uintValue (),
+      result = GALGAS_binaryset (BinaryDecisionDiagram::varCompareConst (inBitIndex.uintValue (),
                                  inBitCount.uintValue (),
                                  inComparison,
                                  inConstant.uint64Value ())) ;
@@ -269,7 +269,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithEqualToConstant (cons
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
                                               inBitCount,
-                                              C_BDD::kEqual,
+                                              BinaryDecisionDiagram::kEqual,
                                               inConstant
                                               COMMA_THERE) ;
 }
@@ -284,7 +284,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithNotEqualToConstant (c
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
                                               inBitCount,
-                                              C_BDD::kNotEqual,
+                                              BinaryDecisionDiagram::kNotEqual,
                                               inConstant
                                               COMMA_THERE) ;
 }
@@ -299,7 +299,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithLowerOrEqualToConstan
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
                                               inBitCount,
-                                              C_BDD::kLowerOrEqual,
+                                              BinaryDecisionDiagram::kLowerOrEqual,
                                               inConstant
                                               COMMA_THERE) ;
 }
@@ -314,7 +314,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithStrictLowerThanConsta
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
                                               inBitCount,
-                                              C_BDD::kStrictLower,
+                                              BinaryDecisionDiagram::kStrictLower,
                                               inConstant
                                               COMMA_THERE) ;
 }
@@ -329,7 +329,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithGreaterOrEqualToConst
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
                                               inBitCount,
-                                              C_BDD::kGreaterOrEqual,
+                                              BinaryDecisionDiagram::kGreaterOrEqual,
                                               inConstant
                                               COMMA_THERE) ;
 }
@@ -344,7 +344,7 @@ GALGAS_binaryset GALGAS_binaryset::class_func_binarySetWithStrictGreaterThanCons
   return binarySetWithComparisonWithConstant (inCompiler,
                                               inBitIndex,
                                               inBitCount,
-                                              C_BDD::kStrictGreater,
+                                              BinaryDecisionDiagram::kStrictGreater,
                                               inConstant
                                               COMMA_THERE) ;
 }
@@ -447,7 +447,7 @@ GALGAS_binaryset GALGAS_binaryset::getter_ITE (const GALGAS_binaryset & inTHENop
                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inTHENoperand.isValid () && inELSEoperand.isValid ()) {
-    result = GALGAS_binaryset (C_BDD::ite (mBDD, inTHENoperand.mBDD, inELSEoperand.mBDD)) ;
+    result = GALGAS_binaryset (BinaryDecisionDiagram::ite (mBDD, inTHENoperand.mBDD, inELSEoperand.mBDD)) ;
   }
   return result ;
 }
@@ -1088,7 +1088,7 @@ typeComparisonResult GALGAS_binaryset::objectCompare (const GALGAS_binaryset & i
 void GALGAS_binaryset::class_method_setNodeTableSize (class GALGAS_uint inTableSize
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (inTableSize.isValid ()) {
-    C_BDD::setHashMapMaxSize (inTableSize.uintValue ()) ;
+    BinaryDecisionDiagram::setHashMapMaxSize (inTableSize.uintValue ()) ;
   }
 }
 
@@ -1097,7 +1097,7 @@ void GALGAS_binaryset::class_method_setNodeTableSize (class GALGAS_uint inTableS
 void GALGAS_binaryset::class_method_setAndTableSize (class GALGAS_uint inTableSize
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (inTableSize.isValid ()) {
-    C_BDD::setANDOperationCacheMaxSize (inTableSize.uintValue ()) ;
+    BinaryDecisionDiagram::setANDOperationCacheMaxSize (inTableSize.uintValue ()) ;
   }
 }
 

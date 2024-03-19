@@ -91,13 +91,13 @@ end
 for (mValue) in HAND_CODED_SOURCE_TOOL_FILE_LIST do
 %  <Unit filename="../%!mValue%" />\n%
 end
-%   <Unit filename="%!LIBPM_PATH%/command_line_interface/C_CommandLineOption.cpp" />
-   <Unit filename="%!LIBPM_PATH%/command_line_interface/C_BoolCommandLineOption.cpp" />
-   <Unit filename="%!LIBPM_PATH%/command_line_interface/C_UIntCommandLineOption.cpp" />
-   <Unit filename="%!LIBPM_PATH%/command_line_interface/C_StringCommandLineOption.cpp" />
-   <Unit filename="%!LIBPM_PATH%/command_line_interface/C_StringListCommandLineOption.cpp" />
-   <Unit filename="%!LIBPM_PATH%/command_line_interface/C_builtin_CLI_Options.cpp" />
-   <Unit filename="%!LIBPM_PATH%/command_line_interface/F_Analyze_CLI_Options.cpp" />
+%   <Unit filename="%!LIBPM_PATH%/command_line_interface/AbstractCommandLineOption.cpp" />
+   <Unit filename="%!LIBPM_PATH%/command_line_interface/BoolCommandLineOption.cpp" />
+   <Unit filename="%!LIBPM_PATH%/command_line_interface/UIntCommandLineOption.cpp" />
+   <Unit filename="%!LIBPM_PATH%/command_line_interface/StringCommandLineOption.cpp" />
+   <Unit filename="%!LIBPM_PATH%/command_line_interface/StringListCommandLineOption.cpp" />
+   <Unit filename="%!LIBPM_PATH%/command_line_interface/builtin-command-line-options.cpp" />
+   <Unit filename="%!LIBPM_PATH%/command_line_interface/analyzeCommandLineOptions.cpp" />
    <Unit filename="%!LIBPM_PATH%/command_line_interface/F_mainForLIBPM.cpp" />
    <Unit filename="%!LIBPM_PATH%/big-integers/BigSigned-add.cpp" />
    <Unit filename="%!LIBPM_PATH%/big-integers/BigSigned-bit.cpp" />

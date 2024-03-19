@@ -22,10 +22,10 @@
 
 //----------------------------------------------------------------------------------------
 
-#include "C_BoolCommandLineOption.h"
+#include "BoolCommandLineOption.h"
 
 //----------------------------------------------------------------------------------------
 
-extern C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_verbose_5F_output ;
+extern BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_verbose_5F_output ;
 
 //----------------------------------------------------------------------------------------

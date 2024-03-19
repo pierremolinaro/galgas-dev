@@ -23,15 +23,15 @@ end
 for  (mValue)  in  HAND_CODED_SOURCE_FILE_LIST  do
     %        "%!mValue%",\n%
 end
-%       "C_CommandLineOption.cpp",
-       "C_BoolCommandLineOption.cpp",
-       "C_UIntCommandLineOption.cpp",
-       "C_StringCommandLineOption.cpp",
-       "C_StringListCommandLineOption.cpp",
-       "C_builtin_CLI_Options.cpp",
-       "F_Analyze_CLI_Options.cpp",
+%       "AbstractCommandLineOption.cpp",
+       "BoolCommandLineOption.cpp",
+       "UIntCommandLineOption.cpp",
+       "StringCommandLineOption.cpp",
+       "StringListCommandLineOption.cpp",
+       "builtin-command-line-options.cpp",
+       "analyzeCommandLineOptions.cpp",
        "F_mainForLIBPM.cpp",
-       "C_BDD.cpp",
+       "BinaryDecisionDiagram.cpp",
        "C_RelationSingleType.cpp",
        "C_RelationConfiguration.cpp",
        "C_Relation.cpp",

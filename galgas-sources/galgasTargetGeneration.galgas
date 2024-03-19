@@ -716,9 +716,9 @@ proc updateGalgasTargets
         !"C_Relation.h",
         !"C_RelationSingleType.cpp",
         !"C_RelationSingleType.h",
-        !"C_BDD-node.h",
-        !"C_BDD.cpp",
-        !"C_BDD.h"
+        !"BinaryDecisionDiagram-node.h",
+        !"BinaryDecisionDiagram.cpp",
+        !"BinaryDecisionDiagram.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -892,20 +892,20 @@ proc updateGalgasTargets
       !fileNames:{
         !"F_mainForLIBPM.cpp",
         !"F_mainForLIBPM.h",
-        !"C_builtin_CLI_Options.cpp",
-        !"C_builtin_CLI_Options.h",
-        !"F_Analyze_CLI_Options.cpp",
-        !"F_Analyze_CLI_Options.h",
-        !"C_CommandLineOption.cpp",
-        !"C_CommandLineOption.h",
-        !"C_BoolCommandLineOption.cpp",
-        !"C_BoolCommandLineOption.h",
-        !"C_UIntCommandLineOption.cpp",
-        !"C_UIntCommandLineOption.h",
-        !"C_StringCommandLineOption.cpp",
-        !"C_StringCommandLineOption.h",
-        !"C_StringListCommandLineOption.cpp",
-        !"C_StringListCommandLineOption.h"
+        !"builtin-command-line-options.cpp",
+        !"builtin-command-line-options.h",
+        !"analyzeCommandLineOptions.cpp",
+        !"analyzeCommandLineOptions.h",
+        !"AbstractCommandLineOption.cpp",
+        !"AbstractCommandLineOption.h",
+        !"BoolCommandLineOption.cpp",
+        !"BoolCommandLineOption.h",
+        !"UIntCommandLineOption.cpp",
+        !"UIntCommandLineOption.h",
+        !"StringCommandLineOption.cpp",
+        !"StringCommandLineOption.h",
+        !"StringListCommandLineOption.cpp",
+        !"StringListCommandLineOption.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

@@ -33,7 +33,7 @@
 
 class cPureBNFproductionsList ;
 class HTMLString ;
-class cVocabulary ;
+class GrammarVocabulary ;
 class Lexique ;
 class C_Relation ;
 
@@ -43,7 +43,7 @@ void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
                               HTMLString & ioHTMLFileContents,
                               const bool inPopulateHTMLHelperString,
-                              const cVocabulary & inVocabulary,
+                              const GrammarVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_Relation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) ;

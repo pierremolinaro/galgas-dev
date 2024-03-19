@@ -6,7 +6,7 @@
 //--------------------------------------------------------------------------------------------------
 
 %for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
-  %extern C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
+  %extern BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 //
@@ -15,7 +15,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 %for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
-  %extern C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
+  %extern UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 //
@@ -24,7 +24,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 %for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
-  %extern C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
+  %extern StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 //
@@ -33,7 +33,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 %for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
-  %extern C_StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
+  %extern StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 

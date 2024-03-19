@@ -31,7 +31,7 @@
 
 #include "SLR_computations.h"
 #include "cPureBNFproductionsList.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 #include "cDecisionTableElement.h"
 #include "grammarCompilation.h"
 
@@ -118,7 +118,7 @@ class c_LR0_items_set final {
 
 //--- Display LR0 items set
   public: void display (const cPureBNFproductionsList & inProductionRules,
-                         const cVocabulary & inVocabulary,
+                         const GrammarVocabulary & inVocabulary,
                          HTMLString & inHTMLfile) ;
 
 //--- Compare two items sets
@@ -212,7 +212,7 @@ bool c_LR0_items_set::isEmptySet (void) const {
 
 void c_LR0_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
-         const cVocabulary & inVocabulary,
+         const GrammarVocabulary & inVocabulary,
          HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const cProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
@@ -520,7 +520,7 @@ class c_LR0_items_sets_collection {
 
 //--- Display LR0 items set
   public: void display (const cPureBNFproductionsList & inProductionRules,
-                         const cVocabulary & inVocabulary,
+                         const GrammarVocabulary & inVocabulary,
                          HTMLString & inHTMLfile) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
@@ -560,7 +560,7 @@ searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
 
 void c_LR0_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
-         const cVocabulary & inVocabulary,
+         const GrammarVocabulary & inVocabulary,
          HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<m_LR0_items_sets_array.count () ; i++) {
     inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
@@ -662,7 +662,7 @@ mTargetState (inTargetState) {
 
 static void
 generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules,
-                               const cVocabulary & inVocabulary,
+                               const GrammarVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_UniqueArray <c_LR0_automaton_transition> & inTransitionList,
                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
@@ -1400,7 +1400,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 
 static void
 compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
-                        const cVocabulary & inVocabulary,
+                        const GrammarVocabulary & inVocabulary,
                         c_LR0_items_sets_collection & outLR0_items_sets_collection,
                         TC_UniqueArray <c_LR0_automaton_transition> & outTransitionList) {
 //--- Create initial LR0 items set (SLR automaton initial state I0)
@@ -1432,7 +1432,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 
 void
 SLR_computations (const cPureBNFproductionsList & inProductionRules,
-                  const cVocabulary & inVocabulary,
+                  const GrammarVocabulary & inVocabulary,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,

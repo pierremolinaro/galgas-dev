@@ -32,7 +32,7 @@
 
 #include "LR1_computations.h"
 #include "cPureBNFproductionsList.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 #include "cDecisionTableElement.h"
 #include "grammarCompilation.h"
 
@@ -524,7 +524,7 @@ class c_LR1_items_set final {
 //--- Display LR1 items set
   public: void
   display (const cPureBNFproductionsList & inProductionRules,
-           const cVocabulary & inVocabulary,
+           const GrammarVocabulary & inVocabulary,
            HTMLString & inHTMLfile) const ;
 
 //--- Compare two items sets
@@ -663,7 +663,7 @@ bool c_LR1_items_set::isEmptySet (void) const {
 
 void c_LR1_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
-         const cVocabulary & inVocabulary,
+         const GrammarVocabulary & inVocabulary,
          HTMLString & inHTMLfile) const {
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const cProduction & p = inProductionRules.mProductionArray (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
@@ -983,7 +983,7 @@ class c_LR1_items_sets_collection {
 
 //--- Display LR1 items set
   public: void display (const cPureBNFproductionsList & inProductionRules,
-                         const cVocabulary & inVocabulary,
+                         const GrammarVocabulary & inVocabulary,
                          HTMLString & inHTMLfile) const ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of SLR table)
@@ -1030,7 +1030,7 @@ searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
 
 void c_LR1_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
-         const cVocabulary & inVocabulary,
+         const GrammarVocabulary & inVocabulary,
          HTMLString & inHTMLfile) const {
   for (int32_t i=0 ; i<m_LR1_items_sets_array.count () ; i++) {
     inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
@@ -1122,7 +1122,7 @@ class c_LR1_automaton_transition final {
 
 static void
 generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules,
-                               const cVocabulary & inVocabulary,
+                               const GrammarVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_UniqueArray <c_LR1_automaton_transition> & inTransitionList,
                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
@@ -1857,7 +1857,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
 
 static void
 compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
-                        const cVocabulary & inVocabulary,
+                        const GrammarVocabulary & inVocabulary,
                         const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
                         c_LR1_items_sets_collection & outLR1_items_sets_collection,
                         const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
@@ -1899,7 +1899,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
 
 void
 LR1_computations (const cPureBNFproductionsList & inProductionRules,
-                  const cVocabulary & inVocabulary,
+                  const GrammarVocabulary & inVocabulary,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,

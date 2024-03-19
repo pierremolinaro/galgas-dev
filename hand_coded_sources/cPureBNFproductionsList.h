@@ -33,7 +33,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class cVocabulary ;
+class GrammarVocabulary ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ class cProduction {
 
 //--- Generate a C++ call instruction of this production
   public: void engendrerAppelProduction (const int16_t nombreDeParametres,
-                                          const cVocabulary & inVocabulary,
+                                          const GrammarVocabulary & inVocabulary,
                                           const String & inAltName,
                                           AbstractOutputStream & fichierCPP,
                                           const String & inSyntaxDirectedTranslationVarName) const ;

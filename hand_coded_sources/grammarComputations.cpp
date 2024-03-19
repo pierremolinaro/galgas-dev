@@ -45,7 +45,7 @@
 #include "cPureBNFproductionsList.h"
 #include "SLR_computations.h"
 #include "LR1_computations.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 #include "printOriginalGrammar.h"
 #include "buildPureBNFgrammar.h"
 #include "grammarCompilation.h"
@@ -112,7 +112,7 @@ mProductionIndex () {
 
 void cProduction::
 engendrerAppelProduction (const int16_t nombreDeParametres,
-                          const cVocabulary & inVocabulary,
+                          const GrammarVocabulary & inVocabulary,
                           const String & inAltName,
                           AbstractOutputStream & fichierCPP,
                           const String & inSyntaxDirectedTranslationVarName) const {
@@ -367,7 +367,7 @@ analyzeGrammar (Compiler * inCompiler,
     printOriginalGrammar (outHTMLHelperFileContents, inSyntaxComponentsList) ;
   }
 //--- Building pure BNF productions ---------------------------------------------------------------------
-  cVocabulary vocabulary ;
+  GrammarVocabulary vocabulary ;
   cPureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
@@ -594,7 +594,7 @@ analyzeGrammar (Compiler * inCompiler,
     }
   }
 //--- Final step ---------------------------------------------------------------------
-  C_BDD::markAndSweepUnusedNodes () ;
+  BinaryDecisionDiagram::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
     String s ;
     s.appendCString ("ENDING ON ERROR, STEP") ;
@@ -660,8 +660,8 @@ routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21_
                                       Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
-    C_BDD::markAndSweepUnusedNodes () ;
-    C_BDD::checkAllBDDsAreWellFormed (HERE) ;
+    BinaryDecisionDiagram::markAndSweepUnusedNodes () ;
+    BinaryDecisionDiagram::checkAllBDDsAreWellFormed (HERE) ;
 
     const GALGAS_location inErrorLocation = inTargetFileName.mProperty_location ;
 

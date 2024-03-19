@@ -18,7 +18,7 @@ mBDD () {
 //--------------------------------------------------------------------------------------------------
 
 C_Relation::C_Relation (const C_RelationConfiguration & inConfiguration,
-                        const C_BDD inBDD) :
+                        const BinaryDecisionDiagram inBDD) :
 mConfiguration (inConfiguration),
 mBDD (inBDD) {
 }
@@ -90,7 +90,7 @@ C_RelationConfiguration C_Relation::configuration (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-C_BDD C_Relation::bdd (void) const {
+BinaryDecisionDiagram C_Relation::bdd (void) const {
   return mBDD ;
 }
 
@@ -110,12 +110,12 @@ void C_Relation::setToFull (void) {
 
 C_Relation::C_Relation (const C_RelationConfiguration & inConfiguration,
                         const int32_t inVariableIndex,
-                        const C_BDD::compareEnum inComparaison,
+                        const BinaryDecisionDiagram::compareEnum inComparaison,
                         const uint64_t inConstant
                         COMMA_LOCATION_ARGS) :
 mConfiguration (inConfiguration),
 mBDD () {
-  mBDD = C_BDD::varCompareConst (inConfiguration.bddStartBitIndexForVariable (inVariableIndex COMMA_THERE),
+  mBDD = BinaryDecisionDiagram::varCompareConst (inConfiguration.bddStartBitIndexForVariable (inVariableIndex COMMA_THERE),
                                  inConfiguration.bddBitCountForVariable (inVariableIndex COMMA_THERE),
                                  inComparaison,
                                  inConstant) ;
@@ -251,7 +251,7 @@ C_Relation C_Relation::swap021 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD result = mBDD.swap021 (bitCount0, bitCount1, bitCount2) ;
+  const BinaryDecisionDiagram result = mBDD.swap021 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration config = mConfiguration.swap021 (THERE) ;
   return C_Relation (config, result) ;
 }
@@ -267,7 +267,7 @@ C_Relation C_Relation::swap102 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD result = mBDD.swap102 (bitCount0, bitCount1, bitCount2) ;
+  const BinaryDecisionDiagram result = mBDD.swap102 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration config = mConfiguration.swap102 (THERE) ;
   return C_Relation (config, result) ;
 }
@@ -283,7 +283,7 @@ C_Relation C_Relation::swap120 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD result = mBDD.swap120 (bitCount0, bitCount1, bitCount2) ;
+  const BinaryDecisionDiagram result = mBDD.swap120 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration config = mConfiguration.swap120 (THERE) ;
   return C_Relation (config, result) ;
 }
@@ -299,7 +299,7 @@ C_Relation C_Relation::swap201 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD result = mBDD.swap201 (bitCount0, bitCount1, bitCount2) ;
+  const BinaryDecisionDiagram result = mBDD.swap201 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration config = mConfiguration.swap201 (THERE) ;
   return C_Relation (config, result) ;
 }
@@ -315,7 +315,7 @@ C_Relation C_Relation::swap210 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD result = mBDD.swap210 (bitCount0, bitCount1, bitCount2) ;
+  const BinaryDecisionDiagram result = mBDD.swap210 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration config = mConfiguration.swap210 (THERE) ;
   return C_Relation (config, result) ;
 }
@@ -363,7 +363,7 @@ C_Relation C_Relation::transposedRelation (LOCATION_ARGS) const {
   for (uint32_t j=0 ; j<bitSize1 ; j++) {
     tab [j + bitSize0] = j ;
   }
-  const C_BDD r = mBDD.substitution (tab, totalSize COMMA_HERE) ;
+  const BinaryDecisionDiagram r = mBDD.substitution (tab, totalSize COMMA_HERE) ;
   macroMyDeleteArray (tab) ;
 //---
   const String name0 = mConfiguration.nameForVariable (0 COMMA_HERE) ;

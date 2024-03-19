@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_BDD.h"
+#include "BinaryDecisionDiagram.h"
 #include "F_mainForLIBPM.h"
 #include "MF_MemoryControl.h"
 #include "F_DisplayException.h"
@@ -28,7 +28,7 @@
 #include "cpp-allocation.h"
 #include "basic-allocation.h"
 #include "PrologueEpilogue.h"
-#include "F_Analyze_CLI_Options.h"
+#include "analyzeCommandLineOptions.h"
 #include "unicode_character_base.h"
 #include "acStrongPtr_class.h"
 
@@ -70,7 +70,7 @@ int main (int argc, const char * argv []) {
       PrologueEpilogue::runPrologueActions () ;
       returnCode = mainForLIBPM (argc, argv) ;
       PrologueEpilogue::runEpilogueActions () ;
-      C_BDD::freeBDDStataStructures () ;
+      BinaryDecisionDiagram::freeBDDStataStructures () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         acStrongPtr_class::printExistingClassInstances () ;
         SharedObject::checkAllObjectsHaveBeenReleased () ;

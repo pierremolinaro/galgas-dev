@@ -30,14 +30,14 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "cPureBNFproductionsList.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 
 //--------------------------------------------------------------------------------------------------
 
 static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                                   const cVocabulary & inVocabulary,
+                                   const GrammarVocabulary & inVocabulary,
                                    C_Relation & outVocabularyFollowedByEmpty,
                                    int32_t & outIterationsCount) {
   const int32_t allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
@@ -73,7 +73,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   macroAssert (vocabularyFollowedByEmpty_Array.count () == allSymbolsCount, "vocabularyFollowedByEmpty_Array.count () == %lld != allSymbolsCount = %lld", vocabularyFollowedByEmpty_Array.count (), allSymbolsCount)
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<vocabularyFollowedByEmpty_Array.count () ; i++) {
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
-      outVocabularyFollowedByEmpty.orWith (C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, C_BDD::kEqual, (uint32_t) i COMMA_HERE) COMMA_HERE) ;
+      outVocabularyFollowedByEmpty.orWith (C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, BinaryDecisionDiagram::kEqual, (uint32_t) i COMMA_HERE) COMMA_HERE) ;
     }
   }
 }
@@ -84,7 +84,7 @@ static void
 displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
                                           HTMLString & ioHTMLFileContents,
                                           const bool inPopulateHTMLHelperString,
-                                          const cVocabulary & inVocabulary,
+                                          const GrammarVocabulary & inVocabulary,
                                           const int32_t inIterationsCount,
                                           const bool inVerboseOptionOn) { 
   const uint64_t n = inVocabularyFollowedByEmpty.value64Count () ;
@@ -126,7 +126,7 @@ void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
                               HTMLString & ioHTMLFileContents,
                               const bool inPopulateHTMLHelperString,
-                              const cVocabulary & inVocabulary,
+                              const GrammarVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_Relation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) {

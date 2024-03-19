@@ -9539,133 +9539,133 @@ GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::extractObject (co
 //
 //--------------------------------------------------------------------------------------------------
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ("galgas_cli_options",
                                          "errorClassDeclaration",
                                          0,
                                          "error-class-declaration",
                                          "'class' declaration is obsolete use 'valueclass'") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ("galgas_cli_options",
                                          "propertyAccessRequiresSelf",
                                          0,
                                          "error-property-access-without-self",
                                          "'self' is required for accessing properties in getter, setter and methods") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ("galgas_cli_options",
                                          "checkEntityUsefulness",
                                          0,
                                          "check-usefulness",
                                          "Check Entity Usefulness") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ("galgas_cli_options",
                                          "displayUnicodeLexicalTestFunctions",
                                          0,
                                          "display-lexical-test-functions",
                                          "Display Unicode Lexical Test Functions") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ("galgas_cli_options",
                                          "emitClassGraph",
                                          0,
                                          "emit-class-graph",
                                          "Emit class graph in dot file") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("galgas_cli_options",
                                          "emitSyntaxDiagrams",
                                          0,
                                          "emit-syntax-diagrams",
                                          "Emit grammar syntax diagrams in TEX files") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ("galgas_cli_options",
                                          "errorValueClassDeclaration",
                                          0,
                                          "error-value-class-declaration",
                                          "Error on 'value class' declaration") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ("galgas_cli_options",
                                          "errorAnomynousForInstructionEnumeratedObject",
                                          0,
                                          "error-anonymous-for-instruction",
                                          "Error on anonymous 'for' instruction enumerated object ('for () in ...')") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorObsoleteGetterCall ("galgas_cli_options",
                                          "errorObsoleteGetterCall",
                                          0,
                                          "error-on-obsolete-getter-call",
                                          "Error on call of an obsolete getter") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorPropertyGetterCall ("galgas_cli_options",
                                          "errorPropertyGetterCall",
                                          0,
                                          "error-property-getter-call",
                                          "Error on calling property getter (instead of dot notation)") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorEllipsisInEnumeratedObject ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorEllipsisInEnumeratedObject ("galgas_cli_options",
                                          "errorEllipsisInEnumeratedObject",
                                          0,
                                          "error-ellipsis-in-for-instruction",
                                          "Error on ellipsis in enumerated object ('for (x y ...) in xxx')") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOnGetterCallWithNoArgument ("galgas_cli_options",
                                          "errorOnGetterCallWithNoArgument",
                                          0,
                                          "error-on-getter-call-with-no-argument",
                                          "Error on getter call; with no argument (GGS4, suppress parenthesis)") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer ("galgas_cli_options",
                                          "errorOldStyleCollectionInitializer",
                                          0,
                                          "error-old-syle-collection-initializer",
                                          "Error on old style collection initializer") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration ("galgas_cli_options",
                                          "errorOldStyleLocalVarDeclaration",
                                          0,
                                          "error-old-style-local-var-declaration",
                                          "Error on old style local variable declaration") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration ("galgas_cli_options",
                                          "errorOldStylePropertyDeclaration",
                                          0,
                                          "error-old-style-property-declaration",
                                          "Error on old style property declaration") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
                                          "generateManyFiles",
                                          0,
                                          "generate-many-cpp-files",
                                          "Generate many C++ implementation files") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ("galgas_cli_options",
                                          "generateOneHeader",
                                          0,
                                          "generate-one-cpp-header",
                                          "Generate one C++ header file for all declarations") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ("galgas_cli_options",
                                          "outputHTMLgrammarFile",
                                          0,
                                          "output-html-grammar-file",
                                          "Output a HTML file for every grammar component") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
                                          "outputHTMLTypeListFile",
                                          84,
                                          "output-html-type-dump-file",
                                          "Output a HTML file that contains all defined types") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ("galgas_cli_options",
                                          "printPredefinedLexicalActions",
                                          0,
                                          "print-predefined-lexical-actions",
                                          "Print the list of predefined lexical routines and functions") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("galgas_cli_options",
                                          "check_big_int",
                                          0,
                                          "check-big-int",
                                          "Run bit integers checks") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Feature ("galgas_cli_options",
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Feature ("galgas_cli_options",
                                          "warningNotGalgas4Feature",
                                          0,
                                          "warns-on-feature-not-handled-in-galgas4",
@@ -9677,7 +9677,7 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Fea
 //
 //--------------------------------------------------------------------------------------------------
 
-C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_options",
+UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_options",
                                          "macosxSDK",
                                          0,
                                          "macosx",
@@ -9690,21 +9690,21 @@ C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_
 //
 //--------------------------------------------------------------------------------------------------
 
-C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ("galgas_cli_options",
+StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ("galgas_cli_options",
                                          "create_project",
                                          0,
                                          "create-project",
                                          "Create a new GALGAS Project",
                                          "") ;
 
-C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ("galgas_cli_options",
+StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ("galgas_cli_options",
                                          "extractLIBPMOption",
                                          0,
                                          "extract-libpm",
                                          "Extract embedded LIBPM at given path",
                                          "") ;
 
-C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ("galgas_cli_options",
+StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ("galgas_cli_options",
                                          "cppCompile",
                                          0,
                                          "compile",

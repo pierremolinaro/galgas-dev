@@ -7190,7 +7190,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_
   if (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
     cEnumerator_commandLineOptionSortedList enumerator_409 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_409.hasCurrentObject ()) {
-      result.appendString ("extern C_BoolCommandLineOption gOption_") ;
+      result.appendString ("extern BoolCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 9)).stringValue ()) ;
       result.appendString ("_") ;
       result.appendString (enumerator_409.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 9)).stringValue ()) ;
@@ -7200,45 +7200,45 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                               UInt options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_974_ (0) ;
+  GALGAS_uint index_972_ (0) ;
   if (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_974 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_974.hasCurrentObject ()) {
-      result.appendString ("extern C_UIntCommandLineOption gOption_") ;
+    cEnumerator_commandLineOptionSortedList enumerator_972 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_972.hasCurrentObject ()) {
+      result.appendString ("extern UIntCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 18)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_974.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 18)).stringValue ()) ;
+      result.appendString (enumerator_972.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 18)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_974_.increment () ;
-      enumerator_974.gotoNextObject () ;
+      index_972_.increment () ;
+      enumerator_972.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String options                                                   \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_1541_ (0) ;
+  GALGAS_uint index_1537_ (0) ;
   if (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_1541 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1541.hasCurrentObject ()) {
-      result.appendString ("extern C_StringCommandLineOption gOption_") ;
+    cEnumerator_commandLineOptionSortedList enumerator_1537 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1537.hasCurrentObject ()) {
+      result.appendString ("extern StringCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 27)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_1541.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 27)).stringValue ()) ;
+      result.appendString (enumerator_1537.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 27)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_1541_.increment () ;
-      enumerator_1541.gotoNextObject () ;
+      index_1537_.increment () ;
+      enumerator_1537.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String List options                                              \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_2115_ (0) ;
+  GALGAS_uint index_2109_ (0) ;
   if (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_2115 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2115.hasCurrentObject ()) {
-      result.appendString ("extern C_StringListCommandLineOption gOption_") ;
+    cEnumerator_commandLineOptionSortedList enumerator_2109 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2109.hasCurrentObject ()) {
+      result.appendString ("extern StringListCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 36)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_2115.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 36)).stringValue ()) ;
+      result.appendString (enumerator_2109.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 36)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_2115_.increment () ;
-      enumerator_2115.gotoNextObject () ;
+      index_2109_.increment () ;
+      enumerator_2109.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -7264,7 +7264,7 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
   if (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
     cEnumerator_commandLineOptionSortedList enumerator_408 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_408.hasCurrentObject ()) {
-      result.appendString ("C_BoolCommandLineOption gOption_") ;
+      result.appendString ("BoolCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 8)).stringValue ()) ;
       result.appendString ("_") ;
       result.appendString (enumerator_408.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 8)).stringValue ()) ;
@@ -7284,79 +7284,79 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                               UInt options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_1391_ (0) ;
+  GALGAS_uint index_1389_ (0) ;
   if (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_1391 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1391.hasCurrentObject ()) {
-      result.appendString ("C_UIntCommandLineOption gOption_") ;
+    cEnumerator_commandLineOptionSortedList enumerator_1389 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1389.hasCurrentObject ()) {
+      result.appendString ("UIntCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 21)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_1391.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 21)).stringValue ()) ;
+      result.appendString (enumerator_1389.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 21)).stringValue ()) ;
       result.appendString (" (\"") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.stringValue ()) ;
       result.appendString ("\",\n                                         ") ;
-      result.appendString (enumerator_1391.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 22)).stringValue ()) ;
+      result.appendString (enumerator_1389.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 22)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1391.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).stringValue ()) ;
+      result.appendString (enumerator_1389.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 23)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1391.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 24)).stringValue ()) ;
+      result.appendString (enumerator_1389.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 24)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1391.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 25)).stringValue ()) ;
+      result.appendString (enumerator_1389.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 25)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_1391.current_mDefaultValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_1389.current_mDefaultValue (HERE).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_1391_.increment () ;
-      enumerator_1391.gotoNextObject () ;
+      index_1389_.increment () ;
+      enumerator_1389.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String options                                                   \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_2441_ (0) ;
+  GALGAS_uint index_2437_ (0) ;
   if (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_2441 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2441.hasCurrentObject ()) {
-      result.appendString ("C_StringCommandLineOption gOption_") ;
+    cEnumerator_commandLineOptionSortedList enumerator_2437 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2437.hasCurrentObject ()) {
+      result.appendString ("StringCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 35)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_2441.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 35)).stringValue ()) ;
+      result.appendString (enumerator_2437.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 35)).stringValue ()) ;
       result.appendString (" (\"") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.stringValue ()) ;
       result.appendString ("\",\n                                         ") ;
-      result.appendString (enumerator_2441.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 36)).stringValue ()) ;
+      result.appendString (enumerator_2437.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 36)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2441.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).stringValue ()) ;
+      result.appendString (enumerator_2437.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 37)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2441.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 38)).stringValue ()) ;
+      result.appendString (enumerator_2437.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 38)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2441.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 39)).stringValue ()) ;
+      result.appendString (enumerator_2437.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 39)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_2441.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 40)).stringValue ()) ;
+      result.appendString (enumerator_2437.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 40)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_2441_.increment () ;
-      enumerator_2441.gotoNextObject () ;
+      index_2437_.increment () ;
+      enumerator_2437.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String List options                                              \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GALGAS_uint index_3539_ (0) ;
+  GALGAS_uint index_3533_ (0) ;
   if (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_3539 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3539.hasCurrentObject ()) {
-      result.appendString ("C_StringListCommandLineOption gOption_") ;
+    cEnumerator_commandLineOptionSortedList enumerator_3533 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3533.hasCurrentObject ()) {
+      result.appendString ("StringListCommandLineOption gOption_") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 49)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_3539.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 49)).stringValue ()) ;
+      result.appendString (enumerator_3533.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 49)).stringValue ()) ;
       result.appendString (" (\"") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.stringValue ()) ;
       result.appendString ("\",\n                                         ") ;
-      result.appendString (enumerator_3539.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 50)).stringValue ()) ;
+      result.appendString (enumerator_3533.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 50)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_3539.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).stringValue ()) ;
+      result.appendString (enumerator_3533.current_mOptionChar (HERE).getter_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).getter_string (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 51)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_3539.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 52)).stringValue ()) ;
+      result.appendString (enumerator_3533.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 52)).stringValue ()) ;
       result.appendString (",\n                                         ") ;
-      result.appendString (enumerator_3539.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 53)).stringValue ()) ;
+      result.appendString (enumerator_3533.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 53)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_3539_.increment () ;
-      enumerator_3539.gotoNextObject () ;
+      index_3533_.increment () ;
+      enumerator_3533.gotoNextObject () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n\n\n") ;

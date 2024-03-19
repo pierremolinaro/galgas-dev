@@ -33,7 +33,7 @@
 
 class cPureBNFproductionsList ;
 class HTMLString ;
-class cVocabulary ;
+class GrammarVocabulary ;
 class String ;
 class Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
@@ -45,7 +45,7 @@ void
 LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
-                  const cVocabulary & inVocabulary,
+                  const GrammarVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_Relation & inFIRSTsets,
                   const C_Relation & inFOLLOWsets,

@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "F_Analyze_CLI_Options.h"
+#include "analyzeCommandLineOptions.h"
 #include "TextFileWrite.h"
 #include "FileManager.h"
 #include "Compiler.h"

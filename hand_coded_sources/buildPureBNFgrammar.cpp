@@ -30,7 +30,7 @@
 
 #include "buildPureBNFgrammar.h"
 #include "cPureBNFproductionsList.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 #include "grammarCompilation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@
 //--------------------------------------------------------------------------------------------------
 
 static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAnalysis & inList,
-                                             cVocabulary & ioVocabulary,
+                                             GrammarVocabulary & ioVocabulary,
                                              const String & inSyntaxComponentName,
                                              int32_t & ioCount) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inList, kENUMERATION_UP) ;
@@ -59,7 +59,7 @@ static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListF
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (GrammarVocabulary & ioVocabulary,
                                                                          const String & inSyntaxComponentName,
                                                                          int32_t & ioCount) const {
   ioVocabulary.addNonTerminalSymbol ("select_",
@@ -80,7 +80,7 @@ void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (GrammarVocabulary & ioVocabulary,
                                                                          const String & inSyntaxComponentName,
                                                                          int32_t & ioCount) const {
   ioVocabulary.addNonTerminalSymbol ("select_",
@@ -102,7 +102,7 @@ void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabu
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
-fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
+fixNewNonterminalSymbols (GrammarVocabulary & /* ioVocabulary */,
                           const String & /* inSyntaxComponentName */,
                           int32_t & /* ioCount */) const {
 }
@@ -110,7 +110,7 @@ fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_terminalInstructionForGrammarAnalysis::
-fixNewNonterminalSymbols (cVocabulary & /* ioVocabulary */,
+fixNewNonterminalSymbols (GrammarVocabulary & /* ioVocabulary */,
                           const String & /* inSyntaxComponentName */,
                           int32_t & /* ioCount */) const {
 }
@@ -366,7 +366,7 @@ buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
 
 void
 buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
-                     cVocabulary & ioVocabulary,
+                     GrammarVocabulary & ioVocabulary,
                      cPureBNFproductionsList & ioProductions) {
 //--- Fix new non terminal symbols index and names
   cEnumerator_syntaxComponentListForGrammarAnalysis currentComponent (inSyntaxComponentsList, kENUMERATION_UP) ;
@@ -468,7 +468,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
 
 void
 printPureBNFgrammarInBNFfile (HTMLString & inHTMLfile,
-                              const cVocabulary & inVocabulary,
+                              const GrammarVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) {
   const int32_t productionsCount = inProductions.mProductionArray.count () ;
   inHTMLfile.addRawData ("<p><a name=\"pure_bnf\"></a>") ;

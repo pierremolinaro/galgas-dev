@@ -28,7 +28,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class cPureBNFproductionsList ;
-class cVocabulary ;
+class GrammarVocabulary ;
 class HTMLString ;
 class Compiler ;
 class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
@@ -42,7 +42,7 @@ void useful_symbols_computations (Compiler * inCompiler,
                                   const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,
                                   const C_RelationSingleType & inVocabularyBDDType,
-                                  const cVocabulary & inVocabulary,
+                                  const GrammarVocabulary & inVocabulary,
                                   HTMLString & ioHTMLFileContents,
                                   const bool inPopulateHTMLHelperString,
                                   C_Relation & outUsefulSymbolsRelation,

@@ -32,7 +32,7 @@
 
 #include "LL1_computations.h"
 #include "cPureBNFproductionsList.h"
-#include "cVocabulary.h"
+#include "GrammarVocabulary.h"
 #include "grammarCompilation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -40,11 +40,11 @@
 class cAffichagePremiersProduction : public C_bdd_value_traversing {
 //--- Attributs
   protected: HTMLString & mFichierBNF ;
-  protected: const cVocabulary & mVocabulary ;
+  protected: const GrammarVocabulary & mVocabulary ;
 
 //--- Constructeur
   public: cAffichagePremiersProduction (HTMLString & inHTMLfile,
-                                         const cVocabulary & inVocabulary) ;
+                                         const GrammarVocabulary & inVocabulary) ;
 
 //--- Methode virtelle appelee pour chaque valeur
   public: virtual void action (const bool * tableauDesValeurs,
@@ -54,7 +54,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
 //--------------------------------------------------------------------------------------------------
 
 cAffichagePremiersProduction::cAffichagePremiersProduction (HTMLString & inHTMLfile,
-                                                            const cVocabulary & inVocabulary) :
+                                                            const GrammarVocabulary & inVocabulary) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary) {
 }
@@ -78,7 +78,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_Relation & inFIRSTsets,
                      const C_Relation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
-                     const cVocabulary & inVocabulary,
+                     const GrammarVocabulary & inVocabulary,
                      HTMLString & ioHTMLFileContents,
                      const bool inPopulateHTMLHelperString,
                      const bool inVerboseOptionOn) {
@@ -123,11 +123,11 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           }
           cProduction & p = inPureBNFproductions.mProductionArray (numeroProduction COMMA_HERE) ;
           if (p.derivationLength () == 0) {
-            C_Relation temp (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
+            C_Relation temp (inFOLLOWsets.configuration(), 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
             p.mDerivationFirst = temp.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
           }else{
             const uint32_t elementEnTete = (uint32_t) p.derivationAtIndex (0 COMMA_HERE) ;
-            C_Relation t (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, elementEnTete COMMA_HERE) ;
+            C_Relation t (inFOLLOWsets.configuration(), 0, BinaryDecisionDiagram::kEqual, elementEnTete COMMA_HERE) ;
             if (((int32_t) elementEnTete) < terminalSymbolsCount) {
               p.mDerivationFirst = t.relationByDeletingLastVariable (HERE) ;
             }else{
@@ -208,13 +208,13 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
 class cEcrireNonTerminal : public C_bdd_value_traversing {
 //--- Attributs
   protected: HTMLString & mFichierBNF ;
-  protected: const cVocabulary & mVocabulary ;
+  protected: const GrammarVocabulary & mVocabulary ;
   protected: String aNomClasseLexique ;
   protected: int16_t aIndice ;
 
 //--- Constructeur
   public: cEcrireNonTerminal (HTMLString & inHTMLfile,
-                               const cVocabulary & inVocabulary,
+                               const GrammarVocabulary & inVocabulary,
                                const String & nomClasseLexique) ;
 
 //--- Methode virtuelle appelee pour chaque valeur
@@ -226,7 +226,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
 
 cEcrireNonTerminal::
 cEcrireNonTerminal (HTMLString & inHTMLfile,
-                    const cVocabulary & inVocabulary,
+                    const GrammarVocabulary & inVocabulary,
                     const String & nomClasseLexique) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary),
@@ -256,7 +256,7 @@ void cEcrireNonTerminal::action (const bool * tableauDesValeurs,
 //--------------------------------------------------------------------------------------------------
 
 static void
-engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
+engendrerAiguillageNonTerminaux (const GrammarVocabulary & inVocabulary,
                                  const int32_t inOriginalGrammarProductionLeftNonTerminalIndex,
                                  const int16_t nombreDeParametres,
                                  const cPureBNFproductionsList & inPureBNFproductions,
@@ -322,7 +322,7 @@ mLineNumber (inLineNumber) {
 
 static void
 printProductions (const cPureBNFproductionsList & inPureBNFproductions,
-                  const cVocabulary & inVocabulary,
+                  const GrammarVocabulary & inVocabulary,
                   const String & inLexiqueName,
                   const int32_t inNonterminalIndex,
                   int16_t & ioProductionIndex,
@@ -392,7 +392,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
 
 static void
 printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
-                    const cVocabulary & inVocabulary,
+                    const GrammarVocabulary & inVocabulary,
                     const String & inLexiqueName,
                     const int32_t inNonterminalIndex,
                     int16_t & ioDecisionTableIndex,
@@ -447,7 +447,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                const String & inTargetFileName,
                                String & ioCppFileContents,
                                const String & inLexiqueName,
-                               const cVocabulary & inVocabulary,
+                               const GrammarVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions,
                                const String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion --------------------------------------------------------------
@@ -1021,7 +1021,7 @@ void
 LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
-                  const cVocabulary & inVocabulary,
+                  const GrammarVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_Relation & inFIRSTsets,
                   const C_Relation & inFOLLOWsets,
