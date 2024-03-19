@@ -25,7 +25,7 @@
 
 #include "follow_by_empty_computation.h"
 #include "HTMLString.h"
-#include "C_Relation.h"
+#include "BinaryDecisionDiagramRelation.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                                    const GrammarVocabulary & inVocabulary,
-                                   C_Relation & outVocabularyFollowedByEmpty,
+                                   BinaryDecisionDiagramRelation & outVocabularyFollowedByEmpty,
                                    int32_t & outIterationsCount) {
   const int32_t allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
   TC_UniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
@@ -73,7 +73,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   macroAssert (vocabularyFollowedByEmpty_Array.count () == allSymbolsCount, "vocabularyFollowedByEmpty_Array.count () == %lld != allSymbolsCount = %lld", vocabularyFollowedByEmpty_Array.count (), allSymbolsCount)
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<vocabularyFollowedByEmpty_Array.count () ; i++) {
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
-      outVocabularyFollowedByEmpty.orWith (C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, BinaryDecisionDiagram::kEqual, (uint32_t) i COMMA_HERE) COMMA_HERE) ;
+      outVocabularyFollowedByEmpty.orWith (BinaryDecisionDiagramRelation (outVocabularyFollowedByEmpty.configuration (), 0, BinaryDecisionDiagram::kEqual, (uint32_t) i COMMA_HERE) COMMA_HERE) ;
     }
   }
 }
@@ -81,7 +81,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
 //--------------------------------------------------------------------------------------------------
  
 static void
-displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
+displayNonterminalSymbolsFollowedByEmpty (const BinaryDecisionDiagramRelation & inVocabularyFollowedByEmpty,
                                           HTMLString & ioHTMLFileContents,
                                           const bool inPopulateHTMLHelperString,
                                           const GrammarVocabulary & inVocabulary,
@@ -128,7 +128,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inPopulateHTMLHelperString,
                               const GrammarVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                              C_Relation & outVocabularyFollowedByEmpty,
+                              BinaryDecisionDiagramRelation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {

@@ -35,7 +35,7 @@ class cPureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 class Lexique ;
-class C_Relation ;
+class BinaryDecisionDiagramRelation ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -45,10 +45,10 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const bool inPopulateHTMLHelperString,
                      const GrammarVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                     const C_Relation & inUsefulSymbols,
-                     const C_Relation & inFIRSTsets,
-                     const C_Relation & inNonterminalSymbolsFollowedByEmpty,
-                     C_Relation & outFOLLOWsets,
+                     const BinaryDecisionDiagramRelation & inUsefulSymbols,
+                     const BinaryDecisionDiagramRelation & inFIRSTsets,
+                     const BinaryDecisionDiagramRelation & inNonterminalSymbolsFollowedByEmpty,
+                     BinaryDecisionDiagramRelation & outFOLLOWsets,
                      TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) ;

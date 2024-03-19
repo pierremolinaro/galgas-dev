@@ -35,7 +35,7 @@ class cPureBNFproductionsList ;
 class HTMLString ;
 class GrammarVocabulary ;
 class Lexique ;
-class C_Relation ;
+class BinaryDecisionDiagramRelation ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -45,10 +45,10 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     const bool inPopulateHTMLHelperString,
                     const GrammarVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                    const C_Relation & inVocabularyDerivingToEmpty,
-                    const C_Relation & inUsefulSymbols,
+                    const BinaryDecisionDiagramRelation & inVocabularyDerivingToEmpty,
+                    const BinaryDecisionDiagramRelation & inUsefulSymbols,
                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
-                    C_Relation & outFIRSTsets,
+                    BinaryDecisionDiagramRelation & outFIRSTsets,
                     bool & outOk,
                     const bool inVerboseOptionOn) ;
 

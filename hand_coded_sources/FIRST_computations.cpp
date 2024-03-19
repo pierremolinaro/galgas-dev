@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
-#include "C_Relation.h"
+#include "BinaryDecisionDiagramRelation.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -34,25 +34,25 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static C_Relation
+static BinaryDecisionDiagramRelation
 computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
                   const TC_UniqueArray <bool> & inVocabularyDerivingInEmptyString,
                   const int32_t inTerminalSymbolsCount,
-                  const C_RelationConfiguration & inVocabularyConfiguration,
+                  const BinaryDecisionDiagramRelationConfiguration & inVocabularyConfiguration,
                   int32_t & outIterationsCount) {
-  C_RelationConfiguration vocabulary2Config = inVocabularyConfiguration ;
+  BinaryDecisionDiagramRelationConfiguration vocabulary2Config = inVocabularyConfiguration ;
   vocabulary2Config.appendConfiguration (inVocabularyConfiguration) ;
 //---------------------------------- Compute direct firsts with each production
-  C_Relation directFIRST (vocabulary2Config, false) ;
+  BinaryDecisionDiagramRelation directFIRST (vocabulary2Config, false) ;
   for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
     const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     const int32_t n = p.derivationLength () ;
     if (n > 0) {
-      const C_Relation left (vocabulary2Config, 0, BinaryDecisionDiagram::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ;
+      const BinaryDecisionDiagramRelation left (vocabulary2Config, 0, BinaryDecisionDiagram::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ;
       int32_t j = 0 ;
-      C_Relation right (vocabulary2Config, false) ;
+      BinaryDecisionDiagramRelation right (vocabulary2Config, false) ;
       do{
-        right.orWith (C_Relation (vocabulary2Config, 1, BinaryDecisionDiagram::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ;
+        right.orWith (BinaryDecisionDiagramRelation (vocabulary2Config, 1, BinaryDecisionDiagram::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ;
         j++ ;
       }while ((j<n) && inVocabularyDerivingInEmptyString (p.derivationAtIndex (j-1 COMMA_HERE) COMMA_HERE)) ;
       directFIRST.orWith (left.andOp (right COMMA_HERE) COMMA_HERE) ;
@@ -60,10 +60,10 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   }
 
 //---------------------------------- Perform transitive closure of 'directFIRST'
-  C_Relation FIRST = directFIRST.transitiveClosure (& outIterationsCount) ;
+  BinaryDecisionDiagramRelation FIRST = directFIRST.transitiveClosure (& outIterationsCount) ;
 
 //----------------------------------------- Delete nonterminal symbols in FIRST
-  FIRST.andWith (C_Relation (vocabulary2Config,
+  FIRST.andWith (BinaryDecisionDiagramRelation (vocabulary2Config,
                              1,
                              BinaryDecisionDiagram::kLowerOrEqual,
                              (uint64_t) (inTerminalSymbolsCount - 1)
@@ -79,25 +79,25 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 static bool
 displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
                           const bool inPopulateHTMLHelperString,
-                          const C_Relation & inVocabularyDerivingInEmptyString,
+                          const BinaryDecisionDiagramRelation & inVocabularyDerivingInEmptyString,
                           const GrammarVocabulary & inVocabulary,
-                          const C_Relation & inUsefulSymbols,
-                          const C_Relation & inFIRSTsets,
+                          const BinaryDecisionDiagramRelation & inUsefulSymbols,
+                          const BinaryDecisionDiagramRelation & inFIRSTsets,
                           TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
                           const int32_t inIterationsCount,
                           const bool inVerboseOptionOn) {
 //  const int32_t symbolsCountEX = inVocabulary.getAllSymbolsCount () ;
   const int32_t symbolsCount = (int32_t) inUsefulSymbols.configuration().constantCountForVariable (0 COMMA_HERE) ;
-  C_RelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
+  BinaryDecisionDiagramRelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
   vocabulary2Config.appendConfiguration (inUsefulSymbols.configuration()) ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
-  const C_Relation empty (vocabulary2Config, 1, BinaryDecisionDiagram::kEqual, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
-  C_Relation vocabularyDerivingInEmptyString = inVocabularyDerivingInEmptyString ;
+  const BinaryDecisionDiagramRelation empty (vocabulary2Config, 1, BinaryDecisionDiagram::kEqual, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
+  BinaryDecisionDiagramRelation vocabularyDerivingInEmptyString = inVocabularyDerivingInEmptyString ;
   vocabularyDerivingInEmptyString.appendConfiguration (inUsefulSymbols.configuration()) ;
-  const C_Relation nt_x_empty_relation = vocabularyDerivingInEmptyString.andOp (empty COMMA_HERE) ;
+  const BinaryDecisionDiagramRelation nt_x_empty_relation = vocabularyDerivingInEmptyString.andOp (empty COMMA_HERE) ;
 
 //--- FIRST union nt symbols deriring in empty string
-  const C_Relation FIRST_with_empty_relation = nt_x_empty_relation.orOp (inFIRSTsets COMMA_HERE) ;
+  const BinaryDecisionDiagramRelation FIRST_with_empty_relation = nt_x_empty_relation.orOp (inFIRSTsets COMMA_HERE) ;
 
 //--- Compute FIRST array
   FIRST_with_empty_relation.getArray (outFIRSTarray COMMA_HERE) ;
@@ -128,13 +128,13 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
     ioHTMLFileContents.addRawData ("</table>") ;
   }
 //----------------------------------------------- Check FIRST
-  const C_Relation ntToCheck_relation (inUsefulSymbols.configuration(),
+  const BinaryDecisionDiagramRelation ntToCheck_relation (inUsefulSymbols.configuration(),
                               0,
                               BinaryDecisionDiagram::kGreaterOrEqual,
                               (uint64_t) inVocabulary.getTerminalSymbolsCount ()
                               COMMA_HERE) ;
 //--- Get nonterminal symbols in error
-  const C_Relation ntInError_relation = ntToCheck_relation
+  const BinaryDecisionDiagramRelation ntInError_relation = ntToCheck_relation
     .andOp (inUsefulSymbols COMMA_HERE)
     .andOp (~(FIRST_with_empty_relation.relationByDeletingLastVariable (HERE)) COMMA_HERE)
   ;
@@ -193,13 +193,13 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     const bool inPopulateHTMLHelperString,
                     const GrammarVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                    const C_Relation & inVocabularyDerivingToEmpty,
-                    const C_Relation & inUsefulSymbols,
+                    const BinaryDecisionDiagramRelation & inVocabularyDerivingToEmpty,
+                    const BinaryDecisionDiagramRelation & inUsefulSymbols,
                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
-                    C_Relation & outFIRSTsets,
+                    BinaryDecisionDiagramRelation & outFIRSTsets,
                     bool & outOk,
                     const bool inVerboseOptionOn) {
-  const C_RelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
+  const BinaryDecisionDiagramRelationConfiguration vocabularyConfiguration = inUsefulSymbols.configuration () ;
 //--- Console display
   if (inVerboseOptionOn) {
     gCout.appendCString ("  FIRST sets... ") ;

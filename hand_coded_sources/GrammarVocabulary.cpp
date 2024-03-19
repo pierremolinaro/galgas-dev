@@ -166,7 +166,7 @@ void GrammarVocabulary::printInFile (AbstractOutputStream & inHTMLfile,
 
 //--------------------------------------------------------------------------------------------------
 
-C_RelationSingleType GrammarVocabulary::getVocabularyBDDType (void) const {
+BinaryDecisionDiagramRelationSingleType GrammarVocabulary::getVocabularyBDDType (void) const {
   TC_UniqueArray <String> constantNameArray ;
   for (int32_t i=0 ; i<mTerminalSymbolsCount ; i++) {
     constantNameArray.appendObject (String ("$") + mStringsArray (i COMMA_HERE) + "$") ;
@@ -174,7 +174,7 @@ C_RelationSingleType GrammarVocabulary::getVocabularyBDDType (void) const {
   for (int32_t i=mTerminalSymbolsCount ; i<mStringsArray.count () ; i++) {
     constantNameArray.appendObject (String ("<") + mStringsArray (i COMMA_HERE) + ">") ;
   }
-  return C_RelationSingleType (".vocabulary.", constantNameArray COMMA_HERE) ;
+  return BinaryDecisionDiagramRelationSingleType (".vocabulary.", constantNameArray COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------

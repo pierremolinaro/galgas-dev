@@ -28,7 +28,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "String-class.h"
-#include "C_RelationSingleType.h"
+#include "BinaryDecisionDiagramRelationSingleType.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -92,7 +92,7 @@ class GrammarVocabulary final {
                                      COMMA_LOCATION_ARGS) const ;
 
 //--- Get BDD type
-  public: C_RelationSingleType getVocabularyBDDType (void) const ;
+  public: BinaryDecisionDiagramRelationSingleType getVocabularyBDDType (void) const ;
 
 //--- No copy
   private: GrammarVocabulary (GrammarVocabulary &) = delete ;

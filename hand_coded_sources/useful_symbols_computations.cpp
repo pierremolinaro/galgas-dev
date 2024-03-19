@@ -24,8 +24,8 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
-#include "C_Relation.h"
-#include "C_RelationSingleType.h"
+#include "BinaryDecisionDiagramRelation.h"
+#include "BinaryDecisionDiagramRelationSingleType.h"
 #include "MF_MemoryControl.h"
 #include "Compiler.h"
 
@@ -40,30 +40,30 @@
 
 static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
-                      const C_RelationSingleType & inVocabularyBDDType,
-                      C_Relation & outUsefulSymbols,
+                      const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
+                      BinaryDecisionDiagramRelation & outUsefulSymbols,
                       const uint16_t inStartSymbolIndex,
                       int32_t & outIterationsCount) {
 //--- Traverse all productions for getting direct accessibility
-  C_RelationConfiguration vocabulary ;
+  BinaryDecisionDiagramRelationConfiguration vocabulary ;
   vocabulary.addVariable ("source", inVocabularyBDDType) ;
-  C_RelationConfiguration vocabulary2 = vocabulary ;
+  BinaryDecisionDiagramRelationConfiguration vocabulary2 = vocabulary ;
   vocabulary2.addVariable ("target", inVocabularyBDDType) ;
-  C_Relation accessibilityRelation (vocabulary2, false) ;
+  BinaryDecisionDiagramRelation accessibilityRelation (vocabulary2, false) ;
   for (int32_t i=0 ; i<inPureBNFproductions.mProductionArray.count () ; i++) {
     const cProduction & p = inPureBNFproductions.mProductionArray (i COMMA_HERE) ;
     if (p.derivationLength () > 0) {
-      C_Relation rightVocabularyRelation (vocabulary2, false) ;
+      BinaryDecisionDiagramRelation rightVocabularyRelation (vocabulary2, false) ;
       rightVocabularyRelation.setToEmpty () ;
       for (int32_t j=0 ; j<p.derivationLength () ; j++) {
-        rightVocabularyRelation.orWith (C_Relation (vocabulary2, 1, BinaryDecisionDiagram::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ; 
+        rightVocabularyRelation.orWith (BinaryDecisionDiagramRelation (vocabulary2, 1, BinaryDecisionDiagram::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ; 
       }
-      const C_Relation leftNonterminalRelation = C_Relation (vocabulary2, 0, BinaryDecisionDiagram::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ; 
+      const BinaryDecisionDiagramRelation leftNonterminalRelation = BinaryDecisionDiagramRelation (vocabulary2, 0, BinaryDecisionDiagram::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ; 
       accessibilityRelation.orWith (leftNonterminalRelation.andOp (rightVocabularyRelation COMMA_HERE) COMMA_HERE) ;
     }
   } 
 //--- Compute useful vocabulary
-  const C_Relation initialValueRelation (vocabulary, 0, BinaryDecisionDiagram::kEqual, inStartSymbolIndex COMMA_HERE) ;
+  const BinaryDecisionDiagramRelation initialValueRelation (vocabulary, 0, BinaryDecisionDiagram::kEqual, inStartSymbolIndex COMMA_HERE) ;
   outUsefulSymbols = accessibilityRelation.accessibleStatesFrom (initialValueRelation, & outIterationsCount COMMA_HERE) ;
 }
 
@@ -72,7 +72,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 static bool displayUnusefulSymbols (Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
                                     const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                                    const C_Relation & inUsefulSymbolsRelation,
+                                    const BinaryDecisionDiagramRelation & inUsefulSymbolsRelation,
                                     HTMLString & ioHTMLFileContents,
                                     const GrammarVocabulary & inVocabulary,
                                     const int32_t inIterationCount,
@@ -84,14 +84,14 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   ioHTMLFileContents.addRawData ("</p>") ;
 
 //------------------------------------------------------ Compute useless symbols
-  C_Relation uselessSymbols = ~ inUsefulSymbolsRelation ;
+  BinaryDecisionDiagramRelation uselessSymbols = ~ inUsefulSymbolsRelation ;
 //--- Remove augmented symbol '<>'
 //  const uint32_t lastNonterminalToCheck = (uint32_t) (inVocabulary.getAllSymbolsCount () - 2) ;
   const uint32_t lastNonterminalToCheck = (uint32_t) (inVocabulary.originalGrammarSymbolsCount () - 1) ;
-  uselessSymbols.andWith (C_Relation (uselessSymbols.configuration(), 0, BinaryDecisionDiagram::kLowerOrEqual, lastNonterminalToCheck COMMA_HERE) COMMA_HERE) ;
+  uselessSymbols.andWith (BinaryDecisionDiagramRelation (uselessSymbols.configuration(), 0, BinaryDecisionDiagram::kLowerOrEqual, lastNonterminalToCheck COMMA_HERE) COMMA_HERE) ;
 //--- Remove terminal symbol and 'empty string' symbol
-  uselessSymbols.andWith (C_Relation (uselessSymbols.configuration(), 0, BinaryDecisionDiagram::kStrictGreater, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) COMMA_HERE) ;
-  C_Relation uselessSymbolsForWarning = uselessSymbols ;
+  uselessSymbols.andWith (BinaryDecisionDiagramRelation (uselessSymbols.configuration(), 0, BinaryDecisionDiagram::kStrictGreater, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) COMMA_HERE) ;
+  BinaryDecisionDiagramRelation uselessSymbolsForWarning = uselessSymbols ;
 
 //--------------------- Compute array of used symbols declared as unused by user
   cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, kENUMERATION_UP) ;
@@ -99,7 +99,7 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   while (currentNT.hasCurrentObject ()) {
     const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
     if (uselessSymbols.containsValue (0, nt COMMA_HERE)) {
-      uselessSymbolsForWarning.andWith (~ C_Relation (uselessSymbols.configuration (), 0, BinaryDecisionDiagram::kEqual, nt COMMA_HERE) COMMA_HERE) ;
+      uselessSymbolsForWarning.andWith (~ BinaryDecisionDiagramRelation (uselessSymbols.configuration (), 0, BinaryDecisionDiagram::kEqual, nt COMMA_HERE) COMMA_HERE) ;
     }else{
       usedSymbolDeclaredAsUnusedArray.appendObject (uselessSymbols.configuration ().constantNameForVariableAndValue (0, nt COMMA_HERE)) ;
     }
@@ -188,11 +188,11 @@ void useful_symbols_computations (Compiler * inCompiler,
                                   const GALGAS_location & inErrorLocation,
                                   const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,
-                                  const C_RelationSingleType & inVocabularyBDDType,
+                                  const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
                                   const GrammarVocabulary & inVocabulary,
                                   HTMLString & ioHTMLFileContents,
                                   const bool inPopulateHTMLHelperString,
-                                  C_Relation & outUsefulSymbols,
+                                  BinaryDecisionDiagramRelation & outUsefulSymbols,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) {
 //--- Console display

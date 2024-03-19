@@ -37,7 +37,7 @@ class GrammarVocabulary ;
 class String ;
 class Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
-class C_Relation ;
+class BinaryDecisionDiagramRelation ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -47,8 +47,8 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   const bool inPopulateHTMLHelperString,
                   const GrammarVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const C_Relation & inFIRSTsets,
-                  const C_Relation & inFOLLOWsets,
+                  const BinaryDecisionDiagramRelation & inFIRSTsets,
+                  const BinaryDecisionDiagramRelation & inFOLLOWsets,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,

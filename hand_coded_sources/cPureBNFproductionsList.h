@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "C_Relation.h"
+#include "BinaryDecisionDiagramRelation.h"
 #include "String-class.h"
 #include "TF_Swap.h"
 
@@ -43,7 +43,7 @@ class cProduction {
   private: int32_t mColumnDefinition ;
   private: int32_t mLeftNonTerminalIndex ;
   private: TC_UniqueArray <int32_t> mDerivation ;
-  public: C_Relation mDerivationFirst ;
+  public: BinaryDecisionDiagramRelation mDerivationFirst ;
   private: uint32_t mProductionIndex ;
 
 //--- Constructor
@@ -65,7 +65,7 @@ class cProduction {
   public: inline int32_t columnDefinition (void) const { return mColumnDefinition ; }
   public: inline int32_t leftNonTerminalIndex (void) const { return mLeftNonTerminalIndex ; }
   public: inline uint32_t productionIndex (void) const { return mProductionIndex ; }
-  public: inline C_Relation derivationFirst (void) const {
+  public: inline BinaryDecisionDiagramRelation derivationFirst (void) const {
     return mDerivationFirst ;
   }
 

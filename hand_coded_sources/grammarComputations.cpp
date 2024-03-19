@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "FileManager.h"
-#include "C_Relation.h"
+#include "BinaryDecisionDiagramRelation.h"
 #include "MF_MemoryControl.h"
 #include "C_ConsoleOut.h"
 #include "C_galgas_CLI_Options.h"
@@ -394,7 +394,7 @@ analyzeGrammar (Compiler * inCompiler,
     }
   }
 //--- Define vocabulary BDD sets descriptor
-  const C_RelationSingleType vocabularyBDDType = vocabulary.getVocabularyBDDType () ;
+  const BinaryDecisionDiagramRelationSingleType vocabularyBDDType = vocabulary.getVocabularyBDDType () ;
 //--- Search for identical productions -----------------------------------------------------------
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
@@ -440,7 +440,7 @@ analyzeGrammar (Compiler * inCompiler,
     outHTMLHelperFileContents.addRawData ("</li>\n</ul>\n") ;
   }
 //--- Getting useful symbols ---------------------------------------------------------------------
-  C_Relation usefulSymbols ;
+  BinaryDecisionDiagramRelation usefulSymbols ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (inCompiler,
                                  inErrorLocation,
@@ -456,7 +456,7 @@ analyzeGrammar (Compiler * inCompiler,
   }
 //--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
-  C_Relation vocabularyDerivingToEmpty ;
+  BinaryDecisionDiagramRelation vocabularyDerivingToEmpty ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
                                                             outHTMLHelperFileContents,
@@ -467,7 +467,7 @@ analyzeGrammar (Compiler * inCompiler,
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
   TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTarray ;
-  C_Relation FIRSTsets ;
+  BinaryDecisionDiagramRelation FIRSTsets ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
@@ -486,7 +486,7 @@ analyzeGrammar (Compiler * inCompiler,
     }
   }
 //--- Calcul de l'ensemble des non-terminaux pouvant etre suivi du vide -------------------------------
-  C_Relation nonTerminalSymbolsFollowedByEmpty (usefulSymbols.configuration (), false) ;
+  BinaryDecisionDiagramRelation nonTerminalSymbolsFollowedByEmpty (usefulSymbols.configuration (), false) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     follow_by_empty_computations (pureBNFproductions,
                                   outHTMLHelperFileContents,
@@ -498,7 +498,7 @@ analyzeGrammar (Compiler * inCompiler,
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
   TC_UniqueArray <TC_UniqueArray <uint64_t> > FOLLOWarray ;
-  C_Relation FOLLOWsets ;
+  BinaryDecisionDiagramRelation FOLLOWsets ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
       (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations

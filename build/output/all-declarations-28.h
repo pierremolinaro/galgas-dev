@@ -418,14 +418,14 @@ void routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
 //--------------------------------------------------------------------------------------------------
 
 extern const char * gWrapperFileContent_289_libpmFileWrapper ;
-extern const char * gWrapperFileContent_296_libpmFileWrapper ;
-extern const char * gWrapperFileContent_291_libpmFileWrapper ;
 extern const char * gWrapperFileContent_295_libpmFileWrapper ;
-extern const char * gWrapperFileContent_290_libpmFileWrapper ;
-extern const char * gWrapperFileContent_294_libpmFileWrapper ;
+extern const char * gWrapperFileContent_291_libpmFileWrapper ;
+extern const char * gWrapperFileContent_296_libpmFileWrapper ;
 extern const char * gWrapperFileContent_297_libpmFileWrapper ;
-extern const char * gWrapperFileContent_292_libpmFileWrapper ;
+extern const char * gWrapperFileContent_294_libpmFileWrapper ;
 extern const char * gWrapperFileContent_293_libpmFileWrapper ;
+extern const char * gWrapperFileContent_290_libpmFileWrapper ;
+extern const char * gWrapperFileContent_292_libpmFileWrapper ;
 extern const char * gWrapperFileContent_280_libpmFileWrapper ;
 extern const char * gWrapperFileContent_271_libpmFileWrapper ;
 extern const char * gWrapperFileContent_282_libpmFileWrapper ;

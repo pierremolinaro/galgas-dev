@@ -710,12 +710,12 @@ proc updateGalgasTargets
       !groupName:"Binary Decision Diagrams"
       !groupPath:"bdd"
       !fileNames:{
-        !"C_RelationConfiguration.cpp",
-        !"C_RelationConfiguration.h",
-        !"C_Relation.cpp",
-        !"C_Relation.h",
-        !"C_RelationSingleType.cpp",
-        !"C_RelationSingleType.h",
+        !"BinaryDecisionDiagramRelationConfiguration.cpp",
+        !"BinaryDecisionDiagramRelationConfiguration.h",
+        !"BinaryDecisionDiagramRelation.cpp",
+        !"BinaryDecisionDiagramRelation.h",
+        !"BinaryDecisionDiagramRelationSingleType.cpp",
+        !"BinaryDecisionDiagramRelationSingleType.h",
         !"BinaryDecisionDiagram-node.h",
         !"BinaryDecisionDiagram.cpp",
         !"BinaryDecisionDiagram.h"

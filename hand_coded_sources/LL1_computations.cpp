@@ -26,7 +26,7 @@
 #include "HTMLString.h"
 #include "MF_MemoryControl.h"
 #include "Compiler.h"
-#include "C_Relation.h"
+#include "BinaryDecisionDiagramRelation.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -75,8 +75,8 @@ void cAffichagePremiersProduction::action (const bool * tableauDesValeurs,
 
 static bool
 check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
-                     const C_Relation & inFIRSTsets,
-                     const C_Relation & inFOLLOWsets,
+                     const BinaryDecisionDiagramRelation & inFIRSTsets,
+                     const BinaryDecisionDiagramRelation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const GrammarVocabulary & inVocabulary,
                      HTMLString & ioHTMLFileContents,
@@ -123,11 +123,11 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           }
           cProduction & p = inPureBNFproductions.mProductionArray (numeroProduction COMMA_HERE) ;
           if (p.derivationLength () == 0) {
-            C_Relation temp (inFOLLOWsets.configuration(), 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
+            BinaryDecisionDiagramRelation temp (inFOLLOWsets.configuration(), 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
             p.mDerivationFirst = temp.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
           }else{
             const uint32_t elementEnTete = (uint32_t) p.derivationAtIndex (0 COMMA_HERE) ;
-            C_Relation t (inFOLLOWsets.configuration(), 0, BinaryDecisionDiagram::kEqual, elementEnTete COMMA_HERE) ;
+            BinaryDecisionDiagramRelation t (inFOLLOWsets.configuration(), 0, BinaryDecisionDiagram::kEqual, elementEnTete COMMA_HERE) ;
             if (((int32_t) elementEnTete) < terminalSymbolsCount) {
               p.mDerivationFirst = t.relationByDeletingLastVariable (HERE) ;
             }else{
@@ -153,8 +153,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const int32_t numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
           for (int32_t k=pr1+1 ; k<=derniere ; k++) {
             const int32_t numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
-            const C_Relation rJ = inPureBNFproductions.mProductionArray (numeroProductionJ COMMA_HERE).derivationFirst () ;
-            const C_Relation rK = inPureBNFproductions.mProductionArray (numeroProductionK COMMA_HERE).derivationFirst () ;
+            const BinaryDecisionDiagramRelation rJ = inPureBNFproductions.mProductionArray (numeroProductionJ COMMA_HERE).derivationFirst () ;
+            const BinaryDecisionDiagramRelation rK = inPureBNFproductions.mProductionArray (numeroProductionK COMMA_HERE).derivationFirst () ;
             const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
             if (! ok) {
               nombreDeConflits ++ ;
@@ -1023,8 +1023,8 @@ LL1_computations (const cPureBNFproductionsList & inPureBNFproductions,
                   const bool inPopulateHTMLHelperString,
                   const GrammarVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const C_Relation & inFIRSTsets,
-                  const C_Relation & inFOLLOWsets,
+                  const BinaryDecisionDiagramRelation & inFIRSTsets,
+                  const BinaryDecisionDiagramRelation & inFOLLOWsets,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,

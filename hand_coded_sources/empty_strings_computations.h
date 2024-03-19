@@ -34,16 +34,16 @@
 class cPureBNFproductionsList ;
 class HTMLString ;
 class Lexique ;
-class C_Relation ;
-class C_RelationConfiguration ;
+class BinaryDecisionDiagramRelation ;
+class BinaryDecisionDiagramRelationConfiguration ;
 
 //--------------------------------------------------------------------------------------------------
 
-C_Relation empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
+BinaryDecisionDiagramRelation empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                        HTMLString & ioHTMLFileContents,
                                        const bool inPopulateHTMLstring,
                                        TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                                       const C_RelationConfiguration & inVocabularyConfiguration,
+                                       const BinaryDecisionDiagramRelationConfiguration & inVocabularyConfiguration,
                                        const bool inVerboseOptionOn) ;
 
 //--------------------------------------------------------------------------------------------------

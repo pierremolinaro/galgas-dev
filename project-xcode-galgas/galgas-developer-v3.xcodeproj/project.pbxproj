@@ -17,10 +17,10 @@
 		CF074C361000E29F00F45986 /* UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C2E1000E29F00F45986 /* UIntCommandLineOption.cpp */; };
 		CF074CA11000EFF500F45986 /* StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C9B1000EFF500F45986 /* StringCommandLineOption.cpp */; };
 		CF074CA31000EFF500F45986 /* StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C9B1000EFF500F45986 /* StringCommandLineOption.cpp */; };
-		CF079F9D192E418B008FEFF6 /* C_Relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F99192E418B008FEFF6 /* C_Relation.cpp */; };
-		CF079F9E192E418B008FEFF6 /* C_Relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F99192E418B008FEFF6 /* C_Relation.cpp */; };
-		CF079F9F192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F9B192E418B008FEFF6 /* C_RelationSingleType.cpp */; };
-		CF079FA0192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F9B192E418B008FEFF6 /* C_RelationSingleType.cpp */; };
+		CF079F9D192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F99192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp */; };
+		CF079F9E192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F99192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp */; };
+		CF079F9F192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F9B192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp */; };
+		CF079FA0192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F9B192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp */; };
 		CF12C0BE1D043E610060778F /* all-predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF12C0BD1D043E610060778F /* all-predefined-types.cpp */; };
 		CF12C0C01D043E8B0060778F /* all-predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF12C0BD1D043E610060778F /* all-predefined-types.cpp */; };
 		CF1A10A22724188400C765C6 /* AC_GALGAS_reference_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1A10A02724188400C765C6 /* AC_GALGAS_reference_class.cpp */; };
@@ -202,8 +202,8 @@
 		CF7FD6A40FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
 		CF7FD6A50FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
 		CF7FD6AE0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */; };
-		CF8224D11937A7B500942F69 /* C_RelationConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8224CF1937A7B500942F69 /* C_RelationConfiguration.cpp */; };
-		CF8224D21937A7B500942F69 /* C_RelationConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8224CF1937A7B500942F69 /* C_RelationConfiguration.cpp */; };
+		CF8224D11937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8224CF1937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp */; };
+		CF8224D21937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8224CF1937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp */; };
 		CF82F11210BEDAB200F40B32 /* AbstractCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82F10E10BEDAB200F40B32 /* AbstractCommandLineOption.cpp */; };
 		CF82F11310BEDAB200F40B32 /* AbstractCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82F10E10BEDAB200F40B32 /* AbstractCommandLineOption.cpp */; };
 		CF873F6A1A32333C0014C45A /* StringListCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF873F681A32333C0014C45A /* StringListCommandLineOption.cpp */; };
@@ -457,10 +457,10 @@
 		CF074C2E1000E29F00F45986 /* UIntCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = UIntCommandLineOption.cpp; sourceTree = "<group>"; };
 		CF074C9A1000EFF500F45986 /* StringCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = StringCommandLineOption.h; sourceTree = "<group>"; };
 		CF074C9B1000EFF500F45986 /* StringCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = StringCommandLineOption.cpp; sourceTree = "<group>"; };
-		CF079F99192E418B008FEFF6 /* C_Relation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Relation.cpp; sourceTree = "<group>"; };
-		CF079F9A192E418B008FEFF6 /* C_Relation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Relation.h; sourceTree = "<group>"; };
-		CF079F9B192E418B008FEFF6 /* C_RelationSingleType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_RelationSingleType.cpp; sourceTree = "<group>"; };
-		CF079F9C192E418B008FEFF6 /* C_RelationSingleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_RelationSingleType.h; sourceTree = "<group>"; };
+		CF079F99192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDecisionDiagramRelation.cpp; sourceTree = "<group>"; };
+		CF079F9A192E418B008FEFF6 /* BinaryDecisionDiagramRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryDecisionDiagramRelation.h; sourceTree = "<group>"; };
+		CF079F9B192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDecisionDiagramRelationSingleType.cpp; sourceTree = "<group>"; };
+		CF079F9C192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryDecisionDiagramRelationSingleType.h; sourceTree = "<group>"; };
 		CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_location.cpp; sourceTree = "<group>"; };
 		CF12C0BD1D043E610060778F /* all-predefined-types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
 		CF1A10A02724188400C765C6 /* AC_GALGAS_reference_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_reference_class.cpp; sourceTree = "<group>"; };
@@ -638,8 +638,8 @@
 		CF7FD69F0FF13C1C001EA1B7 /* unicode_character_implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = unicode_character_implementation.h; sourceTree = "<group>"; };
 		CF7FD6AB0FF13CFB001EA1B7 /* unicode_character_m.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = unicode_character_m.h; sourceTree = "<group>"; };
 		CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = unicode_character_m.m; sourceTree = "<group>"; };
-		CF8224CF1937A7B500942F69 /* C_RelationConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_RelationConfiguration.cpp; sourceTree = "<group>"; };
-		CF8224D01937A7B500942F69 /* C_RelationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_RelationConfiguration.h; sourceTree = "<group>"; };
+		CF8224CF1937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDecisionDiagramRelationConfiguration.cpp; sourceTree = "<group>"; };
+		CF8224D01937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryDecisionDiagramRelationConfiguration.h; sourceTree = "<group>"; };
 		CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = F_CocoaWrapperForGalgas.h; sourceTree = "<group>"; };
 		CF82596F08536A130077AEAF /* I_Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Stop.tiff; sourceTree = "<group>"; };
 		CF82597308536A130077AEAF /* OC_GGS_Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_Document.h; sourceTree = "<group>"; };
@@ -1494,12 +1494,12 @@
 				CFFC0F1511EDC44200C97B85 /* BinaryDecisionDiagram-node.h */,
 				CF9F4E36092A71F10055C8C3 /* BinaryDecisionDiagram.cpp */,
 				CF9F4E37092A71F10055C8C3 /* BinaryDecisionDiagram.h */,
-				CF079F99192E418B008FEFF6 /* C_Relation.cpp */,
-				CF079F9A192E418B008FEFF6 /* C_Relation.h */,
-				CF8224CF1937A7B500942F69 /* C_RelationConfiguration.cpp */,
-				CF8224D01937A7B500942F69 /* C_RelationConfiguration.h */,
-				CF079F9B192E418B008FEFF6 /* C_RelationSingleType.cpp */,
-				CF079F9C192E418B008FEFF6 /* C_RelationSingleType.h */,
+				CF079F99192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp */,
+				CF079F9A192E418B008FEFF6 /* BinaryDecisionDiagramRelation.h */,
+				CF8224CF1937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp */,
+				CF8224D01937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.h */,
+				CF079F9B192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp */,
+				CF079F9C192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.h */,
 			);
 			name = "Binary Decision Diagrams";
 			path = bdd;
@@ -1811,10 +1811,10 @@
 				CFB3190417B38D98009424C2 /* DirectedGraph.cpp in Sources */,
 				CFB3190817B3C553009424C2 /* UInt32Set.cpp in Sources */,
 				CF485326272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */,
-				CF079F9D192E418B008FEFF6 /* C_Relation.cpp in Sources */,
-				CF079F9F192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */,
+				CF079F9D192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp in Sources */,
+				CF079F9F192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */,
 				CF23747219967C4F0061D2D8 /* all-declarations-19.cpp in Sources */,
-				CF8224D11937A7B500942F69 /* C_RelationConfiguration.cpp in Sources */,
+				CF8224D11937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp in Sources */,
 				CFA113B12B31CBA400C17B20 /* String-class-getters.cpp in Sources */,
 				CFCEC3FB1B7FA158001D89B8 /* GALGAS_bigint.cpp in Sources */,
 			);
@@ -1992,10 +1992,10 @@
 				CFB3190517B38D98009424C2 /* DirectedGraph.cpp in Sources */,
 				CFB3190917B3C553009424C2 /* UInt32Set.cpp in Sources */,
 				CF485327272469250063154F /* cPtr_weakReference_proxy.cpp in Sources */,
-				CF079F9E192E418B008FEFF6 /* C_Relation.cpp in Sources */,
-				CF079FA0192E418B008FEFF6 /* C_RelationSingleType.cpp in Sources */,
+				CF079F9E192E418B008FEFF6 /* BinaryDecisionDiagramRelation.cpp in Sources */,
+				CF079FA0192E418B008FEFF6 /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */,
 				CF23747319967C4F0061D2D8 /* all-declarations-19.cpp in Sources */,
-				CF8224D21937A7B500942F69 /* C_RelationConfiguration.cpp in Sources */,
+				CF8224D21937A7B500942F69 /* BinaryDecisionDiagramRelationConfiguration.cpp in Sources */,
 				CFA113B22B31CBA400C17B20 /* String-class-getters.cpp in Sources */,
 				CFCEC3FC1B7FA158001D89B8 /* GALGAS_bigint.cpp in Sources */,
 			);

@@ -160,10 +160,10 @@
    <Unit filename="../libpm/big-integers/BigUnsigned-utilities.cpp" />
    <Unit filename="../libpm/big-integers/ChunkSharedArray.cpp" />
    <Unit filename="../libpm/big-integers/UInt128.cpp" />
-   <Unit filename="../libpm/bdd/C_BDD.cpp" />
-   <Unit filename="../libpm/bdd/C_RelationSingleType.cpp" />
-   <Unit filename="../libpm/bdd/C_RelationConfiguration.cpp" />
-   <Unit filename="../libpm/bdd/C_Relation.cpp" />
+   <Unit filename="../libpm/bdd/BinaryDecisionDiagram.cpp" />
+   <Unit filename="../libpm/bdd/BinaryDecisionDiagramRelationSingleType.cpp" />
+   <Unit filename="../libpm/bdd/BinaryDecisionDiagramRelationConfiguration.cpp" />
+   <Unit filename="../libpm/bdd/BinaryDecisionDiagramRelation.cpp" />
    <Unit filename="../libpm/files/FileManager.cpp" />
    <Unit filename="../libpm/files/AbstractFileHandle.cpp" />
    <Unit filename="../libpm/files/TextFileWrite.cpp" />

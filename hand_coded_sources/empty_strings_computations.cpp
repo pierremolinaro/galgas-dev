@@ -24,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "HTMLString.h"
-#include "C_Relation.h"
+#include "BinaryDecisionDiagramRelation.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -34,14 +34,14 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static C_Relation
+static BinaryDecisionDiagramRelation
 computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
-                                                const C_RelationConfiguration & inConfiguration) {
-  C_Relation nonterminalSymbolsHavingEmptyDerivation (inConfiguration, false) ;
+                                                const BinaryDecisionDiagramRelationConfiguration & inConfiguration) {
+  BinaryDecisionDiagramRelation nonterminalSymbolsHavingEmptyDerivation (inConfiguration, false) ;
   for (int32_t i=0 ; i<inProductionRules.mProductionArray.count () ; i++) {
     const cProduction & p = inProductionRules.mProductionArray (i COMMA_HERE) ;
     if (p.derivationLength () == 0) {
-      nonterminalSymbolsHavingEmptyDerivation.orWith (C_Relation (inConfiguration, 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) COMMA_HERE) ;
+      nonterminalSymbolsHavingEmptyDerivation.orWith (BinaryDecisionDiagramRelation (inConfiguration, 0, BinaryDecisionDiagram::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) COMMA_HERE) ;
     }
   }
 
@@ -51,7 +51,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
 //--------------------------------------------------------------------------------------------------
 
 static void
-printNonterminalSymbolsHavingEmptyDerivation (const C_Relation & inNonterminalSymbolsHavingEmptyDerivation,
+printNonterminalSymbolsHavingEmptyDerivation (const BinaryDecisionDiagramRelation & inNonterminalSymbolsHavingEmptyDerivation,
                                               HTMLString & inHTMLfile) {
   TC_UniqueArray <uint64_t> valueArray ;
   inNonterminalSymbolsHavingEmptyDerivation.getValueArray (valueArray) ;
@@ -81,9 +81,9 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_Relation & inNonterminalSy
 
 //--------------------------------------------------------------------------------------------------
 
-static C_Relation
+static BinaryDecisionDiagramRelation
 computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProductionRules,
-                                         const C_Relation & inNonTerminalHavingEmptyDerivation,
+                                         const BinaryDecisionDiagramRelation & inNonTerminalHavingEmptyDerivation,
                                          TC_UniqueArray <bool> & outVocabulaireSeDerivantEnVide,
                                          const uint32_t inAllSymbolsCount,
                                          int32_t & outIterationsCount) {
@@ -118,10 +118,10 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
   }
 
 //--- Contruire le bdd
-  C_Relation result = inNonTerminalHavingEmptyDerivation ;
+  BinaryDecisionDiagramRelation result = inNonTerminalHavingEmptyDerivation ;
   for (uint32_t i=0 ; i<inAllSymbolsCount ; i++) {
     if (outVocabulaireSeDerivantEnVide ((int32_t) i COMMA_HERE)) {
-      result.orWith (C_Relation (inNonTerminalHavingEmptyDerivation.configuration(), 0, BinaryDecisionDiagram::kEqual, i COMMA_HERE) COMMA_HERE) ;
+      result.orWith (BinaryDecisionDiagramRelation (inNonTerminalHavingEmptyDerivation.configuration(), 0, BinaryDecisionDiagram::kEqual, i COMMA_HERE) COMMA_HERE) ;
     }
   }
 
@@ -131,8 +131,8 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
 //--------------------------------------------------------------------------------------------------
 
 static void
-printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingToEmpty,
-                                       const C_Relation & inNonTerminalHavingEmptyDerivation,
+printNonterminalDerivingInEmptyString (const BinaryDecisionDiagramRelation & inVocabularyDerivingToEmpty,
+                                       const BinaryDecisionDiagramRelation & inNonTerminalHavingEmptyDerivation,
                                        HTMLString & ioHTMLFileContents,
                                        const bool inPopulateHTMLstring,
                                        const int32_t inIterationsCount,
@@ -144,7 +144,7 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
     ioHTMLFileContents.appendSigned (inIterationsCount) ;
     ioHTMLFileContents.appendCString (" iterations.\n") ;
     ioHTMLFileContents.addRawData ("</p>") ;
-    const C_Relation newNonterminal = inVocabularyDerivingToEmpty.andOp (~ inNonTerminalHavingEmptyDerivation COMMA_HERE) ;
+    const BinaryDecisionDiagramRelation newNonterminal = inVocabularyDerivingToEmpty.andOp (~ inNonTerminalHavingEmptyDerivation COMMA_HERE) ;
     const uint64_t n = newNonterminal.value64Count () ;
     if (n == 0) {
       ioHTMLFileContents.addRawData ("<p>") ;
@@ -181,12 +181,12 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
 
 //--------------------------------------------------------------------------------------------------
 
-C_Relation
+BinaryDecisionDiagramRelation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                             HTMLString & ioHTMLFileContents,
                             const bool inPopulateHTMLstring,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                            const C_RelationConfiguration & inVocabularyConfiguration,
+                            const BinaryDecisionDiagramRelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
@@ -198,7 +198,7 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
     ioHTMLFileContents.appendTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
   }
 
-  const C_Relation nonTerminalHavingEmptyDerivation
+  const BinaryDecisionDiagramRelation nonTerminalHavingEmptyDerivation
     = computeNonterminalSymbolsHavingEmptyDerivation (inPureBNFproductions,
                                                       inVocabularyConfiguration) ;
   if (inPopulateHTMLstring) {
@@ -209,7 +209,7 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
   const uint32_t allSymbolCount = inVocabularyConfiguration.constantCountForVariable (0 COMMA_HERE) ;
 
   int32_t iterationCount = 0 ;
-  const C_Relation vocabularyDerivingToEmpty
+  const BinaryDecisionDiagramRelation vocabularyDerivingToEmpty
      = computeNonterminalDerivingInEmptyString (inPureBNFproductions,
                                                 nonTerminalHavingEmptyDerivation,
                                                 outVocabularyDerivingToEmpty_Array,

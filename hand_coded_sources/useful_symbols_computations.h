@@ -32,8 +32,8 @@ class GrammarVocabulary ;
 class HTMLString ;
 class Compiler ;
 class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
-class C_RelationSingleType ;
-class C_Relation ;
+class BinaryDecisionDiagramRelationSingleType ;
+class BinaryDecisionDiagramRelation ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -41,11 +41,11 @@ void useful_symbols_computations (Compiler * inCompiler,
                                   const GALGAS_location & inErrorLocation,
                                   const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,
-                                  const C_RelationSingleType & inVocabularyBDDType,
+                                  const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
                                   const GrammarVocabulary & inVocabulary,
                                   HTMLString & ioHTMLFileContents,
                                   const bool inPopulateHTMLHelperString,
-                                  C_Relation & outUsefulSymbolsRelation,
+                                  BinaryDecisionDiagramRelation & outUsefulSymbolsRelation,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) ;
 
