@@ -1063,10 +1063,10 @@ proc updateGalgasTargets
         !"C_ErrorOut.h",
         !"AbstractOutputStream.cpp",
         !"AbstractOutputStream.h",
-        !"C_ConsoleOut.cpp",
-        !"C_ConsoleOut.h",
-        !"C_ColoredConsole.cpp",
-        !"C_ColoredConsole.h"
+        !"ConsoleOut.cpp",
+        !"ConsoleOut.h",
+        !"ColoredConsole.cpp",
+        !"ColoredConsole.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

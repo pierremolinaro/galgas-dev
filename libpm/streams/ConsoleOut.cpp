@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_ConsoleOut' : a class for console output                                                  
+//  'ConsoleOut' : a class for console output                                                  
 //
 //  This file is part of libpm library                                                           
 //
@@ -18,27 +18,44 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#pragma once
+#include "ConsoleOut.h"
+#include "unicode_character_cpp.h"
 
 //--------------------------------------------------------------------------------------------------
 
-#include "C_ColoredConsole.h"
+ConsoleOut::ConsoleOut (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                  Flush output                                                                 
+//
+//--------------------------------------------------------------------------------------------------
+
+void ConsoleOut::flush (void) {
+  ::fflush (stdout) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//                  Write a character string on the console                                      
+//
+//--------------------------------------------------------------------------------------------------
+
+void ConsoleOut::handleAppendUTF8Array (const char * inCharArray,
+                                        const int32_t inArrayCount) {
+  if (inArrayCount > 0) {
+    printf ("%.*s", (int) inArrayCount, inCharArray) ;
+  }
+}
 
 //--------------------------------------------------------------------------------------------------
 
-class C_ConsoleOut final : public C_ColoredConsole {
-//--- Constructor
-  public: C_ConsoleOut (void) ;
-
-//--- Flush output
-  public: virtual void flush (void) ;
-  
-//--- General stream method
-  protected: virtual void handleAppendUTF8Array (const char * inCharArray,
-                                                 const int32_t inArrayCount) ;
-
-  protected: virtual void handleAppendCharacter (const utf32 inCharacter) ;
-} ;
+void ConsoleOut::handleAppendCharacter (const utf32 inCharacter) {
+  char buffer [8] ;
+  UTF8StringFromUTF32Character (inCharacter, buffer) ;
+  printf ("%s", buffer) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -46,6 +63,6 @@ class C_ConsoleOut final : public C_ColoredConsole {
 //
 //--------------------------------------------------------------------------------------------------
 
-extern C_ConsoleOut gCout ;
+ConsoleOut gCout ;
 
 //--------------------------------------------------------------------------------------------------

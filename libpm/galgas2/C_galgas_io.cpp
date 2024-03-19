@@ -19,7 +19,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "C_galgas_io.h"
-#include "C_ConsoleOut.h"
+#include "ConsoleOut.h"
 #include "C_ErrorOut.h"
 #include "builtin-command-line-options.h"
 #include "analyzeCommandLineOptions.h"

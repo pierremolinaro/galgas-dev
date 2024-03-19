@@ -15,7 +15,7 @@
 
 class BinaryDecisionDiagramRelationSingleType final {
 //--- Internal class
-  public: class cType ;
+  public: class InternalType ;
 
 //--- Default constructor
   public: inline BinaryDecisionDiagramRelationSingleType (void) : mTypePtr (nullptr) {}
@@ -50,7 +50,7 @@ class BinaryDecisionDiagramRelationSingleType final {
   }
 
 //--- Private property
-  private: cType * mTypePtr ;
+  private: InternalType * mTypePtr ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

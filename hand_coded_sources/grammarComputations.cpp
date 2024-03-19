@@ -26,7 +26,7 @@
 #include "FileManager.h"
 #include "BinaryDecisionDiagramRelation.h"
 #include "MF_MemoryControl.h"
-#include "C_ConsoleOut.h"
+#include "ConsoleOut.h"
 #include "C_galgas_CLI_Options.h"
 #include "Compiler.h"
 #include "galgas_cli_options.h"

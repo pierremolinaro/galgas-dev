@@ -22,7 +22,7 @@
 #include "F_mainForLIBPM.h"
 #include "MF_MemoryControl.h"
 #include "F_DisplayException.h"
-#include "C_ConsoleOut.h"
+#include "ConsoleOut.h"
 #include "DateTime.h"
 #include "SharedObject.h"
 #include "cpp-allocation.h"

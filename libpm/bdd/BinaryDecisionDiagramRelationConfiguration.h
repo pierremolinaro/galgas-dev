@@ -64,7 +64,7 @@ class BinaryDecisionDiagramRelationConfiguration final {
   private: void insulate (LOCATION_ARGS) ;
 
 //--- Attributes
-  private: class cVariablesInRelationConfiguration * mVariablesPtr ; 
+  private: class PrivateVariablesInRelationConfiguration * mVariablesPtr ; 
 } ;
 
 //--------------------------------------------------------------------------------------------------

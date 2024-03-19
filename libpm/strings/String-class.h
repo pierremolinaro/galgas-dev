@@ -25,7 +25,7 @@
 #include "M_SourceLocation.h"
 #include "TC_UniqueArray.h"
 #include "M_machine.h"
-#include "C_ConsoleOut.h"
+#include "ConsoleOut.h"
 #include "U8Data.h"
 #include "TF_Swap.h"
 #include "DateTime.h"

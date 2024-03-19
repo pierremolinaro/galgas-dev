@@ -22,11 +22,11 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "C_ColoredConsole.h"
+#include "ColoredConsole.h"
 
 //--------------------------------------------------------------------------------------------------
 
-class C_ErrorOut : public C_ColoredConsole {
+class C_ErrorOut : public ColoredConsole {
 //--- Constructor
   public: C_ErrorOut (void) ;
 

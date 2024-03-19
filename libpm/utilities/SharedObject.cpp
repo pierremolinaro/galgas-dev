@@ -20,7 +20,7 @@
 
 #include "SharedObject.h"
 #include "MF_MemoryControl.h"
-#include "C_ConsoleOut.h"
+#include "ConsoleOut.h"
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------

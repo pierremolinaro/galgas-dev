@@ -24,7 +24,7 @@
 #include "StringCommandLineOption.h"
 #include "StringListCommandLineOption.h"
 #include "builtin-command-line-options.h"
-#include "C_ConsoleOut.h"
+#include "ConsoleOut.h"
 #include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -389,7 +389,7 @@ void analyzeCommandLineOptions (const int argv,
 //--- No colored output ?
   #if COMPILE_FOR_WINDOWS == 0
     if (gOption_generic_5F_cli_5F_options_no_5F_color.mValue) {
-      C_ColoredConsole::setUseTextAttributes (false) ;
+      ColoredConsole::setUseTextAttributes (false) ;
     }
   #endif
 //--- Print version ?

@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_ColoredConsole' : a class for colored console output                                      
+//  'ColoredConsole' : a class for colored console output                                      
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2011, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2011, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -68,7 +68,7 @@ typedef enum {
 
 //--------------------------------------------------------------------------------------------------
 
-class C_ColoredConsole : public AbstractOutputStream {
+class ColoredConsole : public AbstractOutputStream {
 //--- Set fore color
   public: void setForeColor (const consoleForeColorEnum inForeColor) ;
 
