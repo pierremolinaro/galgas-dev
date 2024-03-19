@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -406,7 +406,7 @@ GALGAS_lstring GALGAS_syntaxComponentListForGrammarAnalysis::getter_mSyntaxCompo
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_syntaxComponentListForGrammarAnalysis::cEnumerator_syntaxComponentListForGrammarAnalysis (const GALGAS_syntaxComponentListForGrammarAnalysis & inEnumeratedObject,
-                                                                                                      const typeEnumerationOrder inOrder) :
+                                                                                                      const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -591,7 +591,7 @@ GALGAS_terminalSymbolsMapForGrammarAnalysis GALGAS_terminalSymbolsMapForGrammarA
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_terminalSymbolsMapForGrammarAnalysis result = *this ;
-  cEnumerator_terminalSymbolsMapForGrammarAnalysis enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_terminalSymbolsMapForGrammarAnalysis enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mTerminalIndex (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -679,7 +679,7 @@ cMapElement_terminalSymbolsMapForGrammarAnalysis * GALGAS_terminalSymbolsMapForG
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_terminalSymbolsMapForGrammarAnalysis::cEnumerator_terminalSymbolsMapForGrammarAnalysis (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -819,7 +819,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GALGAS_syntaxInstructio
   }
   if (kBoolFalse == test_0) {
     const GALGAS_syntaxInstructionListForGrammarAnalysis temp_2 = inObject ;
-    cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_9488 (temp_2, kENUMERATION_UP) ;
+    cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_9488 (temp_2, EnumerationOrder::up) ;
     while (enumerator_9488.hasCurrentObject ()) {
       callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_9488.current_mInstruction (HERE).ptr (), ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, ioArgument_ioMaxUsedRowIndex, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 252)) ;
       enumerator_9488.gotoNextObject () ;
@@ -1169,7 +1169,7 @@ GALGAS__32_stringlist GALGAS_rowList::getter_columnsAtIndex (const GALGAS_uint &
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_rowList::cEnumerator_rowList (const GALGAS_rowList & inEnumeratedObject,
-                                          const typeEnumerationOrder inOrder) :
+                                          const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1256,7 +1256,7 @@ void extensionSetter_appendRow (GALGAS_rowList & ioObject,
   if (kBoolTrue == test_1) {
     test_1 = GALGAS_bool (kIsInfOrEqual, var_length_10257.objectCompare (constinArgument_inRow)).boolEnum () ;
     if (kBoolTrue == test_1) {
-      cEnumerator_range enumerator_10329 (GALGAS_range (var_length_10257, constinArgument_inRow.substract_operation (var_length_10257, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283)).add_operation (GALGAS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283))), kENUMERATION_UP) ;
+      cEnumerator_range enumerator_10329 (GALGAS_range (var_length_10257, constinArgument_inRow.substract_operation (var_length_10257, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283)).add_operation (GALGAS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283))), EnumerationOrder::up) ;
       while (enumerator_10329.hasCurrentObject ()) {
         ioObject.addAssign_operation (GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 284))  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 284)) ;
         enumerator_10329.gotoNextObject () ;
@@ -1269,7 +1269,7 @@ void extensionSetter_appendRow (GALGAS_rowList & ioObject,
   if (kBoolTrue == test_3) {
     test_3 = GALGAS_bool (kIsInfOrEqual, var_cols_10389.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 290)).objectCompare (constinArgument_inColumn)).boolEnum () ;
     if (kBoolTrue == test_3) {
-      cEnumerator_range enumerator_10518 (GALGAS_range (var_cols_10389.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), constinArgument_inColumn.substract_operation (var_cols_10389.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291)).add_operation (GALGAS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291))), kENUMERATION_UP) ;
+      cEnumerator_range enumerator_10518 (GALGAS_range (var_cols_10389.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), constinArgument_inColumn.substract_operation (var_cols_10389.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291)).add_operation (GALGAS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291))), EnumerationOrder::up) ;
       while (enumerator_10518.hasCurrentObject ()) {
         var_cols_10389.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 292)) ;
         enumerator_10518.gotoNextObject () ;
@@ -1321,7 +1321,7 @@ GALGAS_bool extensionGetter_displayVertically (const GALGAS_syntaxInstructionLis
   const GALGAS_syntaxInstructionListForGrammarAnalysis temp_0 = inObject ;
   result_result = GALGAS_bool (kIsStrictSup, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 547)).objectCompare (GALGAS_uint (uint32_t (4U)))) ;
   const GALGAS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
-  cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_18943 (temp_1, kENUMERATION_UP) ;
+  cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_18943 (temp_1, EnumerationOrder::up) ;
   bool bool_2 = result_result.isValidAndTrue () ;
   if (enumerator_18943.hasCurrentObject () && bool_2) {
     while (enumerator_18943.hasCurrentObject () && bool_2) {
@@ -1696,7 +1696,7 @@ GALGAS_semanticDeclarationForGeneration GALGAS_programListForGeneration::getter_
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_programListForGeneration::cEnumerator_programListForGeneration (const GALGAS_programListForGeneration & inEnumeratedObject,
-                                                                            const typeEnumerationOrder inOrder) :
+                                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1812,7 +1812,7 @@ GALGAS_lstringlist GALGAS_genericExtensionMethodListMap::getter_listForKey (cons
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_genericExtensionMethodListMap::cEnumerator_genericExtensionMethodListMap (const GALGAS_genericExtensionMethodListMap & inEnumeratedObject,
-                                                                                      const typeEnumerationOrder inOrder) :
+                                                                                      const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1976,7 +1976,7 @@ GALGAS_unifiedTypeMapEntryList GALGAS_descendantClassListMap::getter_listForKey 
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_descendantClassListMap::cEnumerator_descendantClassListMap (const GALGAS_descendantClassListMap & inEnumeratedObject,
-                                                                        const typeEnumerationOrder inOrder) :
+                                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2147,7 +2147,7 @@ GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCh
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_extensionMethodMapForGlobalCheckings result = *this ;
-  cEnumerator_extensionMethodMapForGlobalCheckings enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionMethodMapForGlobalCheckings enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -2183,7 +2183,7 @@ cMapElement_extensionMethodMapForGlobalCheckings * GALGAS_extensionMethodMapForG
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionMethodMapForGlobalCheckings::cEnumerator_extensionMethodMapForGlobalCheckings (const GALGAS_extensionMethodMapForGlobalCheckings & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2358,7 +2358,7 @@ GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCh
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_extensionSetterMapForGlobalCheckings result = *this ;
-  cEnumerator_extensionSetterMapForGlobalCheckings enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionSetterMapForGlobalCheckings enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -2394,7 +2394,7 @@ cMapElement_extensionSetterMapForGlobalCheckings * GALGAS_extensionSetterMapForG
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionSetterMapForGlobalCheckings::cEnumerator_extensionSetterMapForGlobalCheckings (const GALGAS_extensionSetterMapForGlobalCheckings & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2569,7 +2569,7 @@ GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCh
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_extensionGetterMapForGlobalCheckings result = *this ;
-  cEnumerator_extensionGetterMapForGlobalCheckings enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionGetterMapForGlobalCheckings enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -2605,7 +2605,7 @@ cMapElement_extensionGetterMapForGlobalCheckings * GALGAS_extensionGetterMapForG
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionGetterMapForGlobalCheckings::cEnumerator_extensionGetterMapForGlobalCheckings (const GALGAS_extensionGetterMapForGlobalCheckings & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3079,7 +3079,7 @@ GALGAS_lstring GALGAS_galgas_33_QualifiedFeatureList::getter_mFeatureValueAtInde
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_galgas_33_QualifiedFeatureList::cEnumerator_galgas_33_QualifiedFeatureList (const GALGAS_galgas_33_QualifiedFeatureList & inEnumeratedObject,
-                                                                                        const typeEnumerationOrder inOrder) :
+                                                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3527,7 +3527,7 @@ void extensionMethod_checkCompatibilityWithLet (const GALGAS_AccessControlAST in
     break ;
   case GALGAS_AccessControlAST::kEnum_protectedSetAccess:
     {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GALGAS_string ("'protected(set)' and 'let' are incompatible"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 155)) ;
     }
     break ;
@@ -3537,7 +3537,7 @@ void extensionMethod_checkCompatibilityWithLet (const GALGAS_AccessControlAST in
     break ;
   case GALGAS_AccessControlAST::kEnum_privateSetAccess:
     {
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GALGAS_string ("'private(set)' and 'let' are incompatible"), fixItArray2  COMMA_SOURCE_FILE ("accessControl.galgas", 158)) ;
     }
     break ;
@@ -3547,7 +3547,7 @@ void extensionMethod_checkCompatibilityWithLet (const GALGAS_AccessControlAST in
     break ;
   case GALGAS_AccessControlAST::kEnum_fileprivateSetAccess:
     {
-      TC_Array <C_FixItDescription> fixItArray3 ;
+      TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GALGAS_string ("'private(set)' and 'let' are incompatible"), fixItArray3  COMMA_SOURCE_FILE ("accessControl.galgas", 161)) ;
     }
     break ;
@@ -3645,7 +3645,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_none:
         {
-          TC_Array <C_FixItDescription> fixItArray1 ;
+          TC_Array <FixItDescription> fixItArray1 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 210)) ;
         }
         break ;
@@ -3674,7 +3674,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
           if (kBoolTrue == test_3) {
             test_3 = var_ok_7316.operator_not (SOURCE_FILE ("accessControl.galgas", 218)).boolEnum () ;
             if (kBoolTrue == test_3) {
-              TC_Array <C_FixItDescription> fixItArray4 ;
+              TC_Array <FixItDescription> fixItArray4 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray4  COMMA_SOURCE_FILE ("accessControl.galgas", 219)) ;
             }
           }
@@ -3692,7 +3692,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_none:
         {
-          TC_Array <C_FixItDescription> fixItArray5 ;
+          TC_Array <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.galgas", 225)) ;
         }
         break ;
@@ -3721,7 +3721,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
           if (kBoolTrue == test_7) {
             test_7 = var_ok_7993.operator_not (SOURCE_FILE ("accessControl.galgas", 233)).boolEnum () ;
             if (kBoolTrue == test_7) {
-              TC_Array <C_FixItDescription> fixItArray8 ;
+              TC_Array <FixItDescription> fixItArray8 ;
               inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray8  COMMA_SOURCE_FILE ("accessControl.galgas", 234)) ;
             }
           }
@@ -3739,7 +3739,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_none:
         {
-          TC_Array <C_FixItDescription> fixItArray9 ;
+          TC_Array <FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray9  COMMA_SOURCE_FILE ("accessControl.galgas", 240)) ;
         }
         break ;
@@ -3751,7 +3751,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
           if (kBoolTrue == test_10) {
             test_10 = GALGAS_bool (kIsNotEqual, extensionGetter_typeName (extractedValue_8437_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 242)).objectCompare (extensionGetter_typeName (extractedValue_8614_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 242)))).boolEnum () ;
             if (kBoolTrue == test_10) {
-              TC_Array <C_FixItDescription> fixItArray11 ;
+              TC_Array <FixItDescription> fixItArray11 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray11  COMMA_SOURCE_FILE ("accessControl.galgas", 243)) ;
             }
           }
@@ -3769,7 +3769,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_none:
         {
-          TC_Array <C_FixItDescription> fixItArray12 ;
+          TC_Array <FixItDescription> fixItArray12 ;
           inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray12  COMMA_SOURCE_FILE ("accessControl.galgas", 249)) ;
         }
         break ;
@@ -3781,7 +3781,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
           if (kBoolTrue == test_13) {
             test_13 = GALGAS_bool (kIsNotEqual, extensionGetter_typeName (extractedValue_8835_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 251)).objectCompare (extensionGetter_typeName (extractedValue_9020_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 251)))).boolEnum () ;
             if (kBoolTrue == test_13) {
-              TC_Array <C_FixItDescription> fixItArray14 ;
+              TC_Array <FixItDescription> fixItArray14 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray14  COMMA_SOURCE_FILE ("accessControl.galgas", 252)) ;
             }
           }
@@ -3798,7 +3798,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
       if (kBoolTrue == test_15) {
         test_15 = GALGAS_bool (kIsNotEqual, extensionGetter_sourceFile (extractedValue_9247_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 256)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 256)))).boolEnum () ;
         if (kBoolTrue == test_15) {
-          TC_Array <C_FixItDescription> fixItArray16 ;
+          TC_Array <FixItDescription> fixItArray16 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray16  COMMA_SOURCE_FILE ("accessControl.galgas", 257)) ;
         }
       }
@@ -3812,7 +3812,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
       if (kBoolTrue == test_17) {
         test_17 = GALGAS_bool (kIsNotEqual, extensionGetter_sourceFile (extractedValue_9475_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)))).boolEnum () ;
         if (kBoolTrue == test_17) {
-          TC_Array <C_FixItDescription> fixItArray18 ;
+          TC_Array <FixItDescription> fixItArray18 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'fileprivate(set)' qualifier)"), fixItArray18  COMMA_SOURCE_FILE ("accessControl.galgas", 261)) ;
         }
       }
@@ -3858,7 +3858,7 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_none:
         {
-          TC_Array <C_FixItDescription> fixItArray1 ;
+          TC_Array <FixItDescription> fixItArray1 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 277)) ;
         }
         break ;
@@ -3887,7 +3887,7 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
           if (kBoolTrue == test_3) {
             test_3 = var_ok_10273.operator_not (SOURCE_FILE ("accessControl.galgas", 285)).boolEnum () ;
             if (kBoolTrue == test_3) {
-              TC_Array <C_FixItDescription> fixItArray4 ;
+              TC_Array <FixItDescription> fixItArray4 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray4  COMMA_SOURCE_FILE ("accessControl.galgas", 286)) ;
             }
           }
@@ -3905,7 +3905,7 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_none:
         {
-          TC_Array <C_FixItDescription> fixItArray5 ;
+          TC_Array <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.galgas", 292)) ;
         }
         break ;
@@ -3917,7 +3917,7 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
           if (kBoolTrue == test_6) {
             test_6 = GALGAS_bool (kIsNotEqual, extensionGetter_typeName (extractedValue_10710_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 294)).objectCompare (extensionGetter_typeName (extractedValue_10887_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 294)))).boolEnum () ;
             if (kBoolTrue == test_6) {
-              TC_Array <C_FixItDescription> fixItArray7 ;
+              TC_Array <FixItDescription> fixItArray7 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray7  COMMA_SOURCE_FILE ("accessControl.galgas", 295)) ;
             }
           }
@@ -3934,7 +3934,7 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
       if (kBoolTrue == test_8) {
         test_8 = GALGAS_bool (kIsNotEqual, extensionGetter_sourceFile (extractedValue_11109_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)))).boolEnum () ;
         if (kBoolTrue == test_8) {
-          TC_Array <C_FixItDescription> fixItArray9 ;
+          TC_Array <FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray9  COMMA_SOURCE_FILE ("accessControl.galgas", 300)) ;
         }
       }
@@ -6229,7 +6229,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         if (kBoolTrue == test_1) {
           test_1 = GALGAS_bool (kIsNotEqual, var_selector_4397.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_1) {
-            TC_Array <C_FixItDescription> fixItArray2 ;
+            TC_Array <FixItDescription> fixItArray2 ;
             appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("\?")) ;
             inCompiler->emitSemanticError (var_selector_4397.readProperty_location (), GALGAS_string ("the selector should be '\?'"), fixItArray2  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 132)) ;
           }
@@ -6238,7 +6238,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         if (kBoolTrue == test_3) {
           test_3 = GALGAS_bool (kIsEqual, var_n_4766.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_3) {
-            TC_Array <C_FixItDescription> fixItArray4 ;
+            TC_Array <FixItDescription> fixItArray4 ;
             inCompiler->emitSemanticError (var_count_4736.readProperty_location (), GALGAS_string ("the count value should be > 0"), fixItArray4  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 135)) ;
           }
         }
@@ -6317,7 +6317,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         if (kBoolTrue == test_6) {
           test_6 = GALGAS_bool (kIsNotEqual, var_selector_5233.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_6) {
-            TC_Array <C_FixItDescription> fixItArray7 ;
+            TC_Array <FixItDescription> fixItArray7 ;
             appendFixItActions (fixItArray7, kFixItReplace, GALGAS_string ("!\?")) ;
             inCompiler->emitSemanticError (var_selector_5233.readProperty_location (), GALGAS_string ("the selector should be '!\?'"), fixItArray7  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 177)) ;
           }
@@ -6326,7 +6326,7 @@ void cParser_galgas_33_ParameterArgumentSyntax::rule_galgas_33_ParameterArgument
         if (kBoolTrue == test_8) {
           test_8 = GALGAS_bool (kIsEqual, var_n_6077.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_8) {
-            TC_Array <C_FixItDescription> fixItArray9 ;
+            TC_Array <FixItDescription> fixItArray9 ;
             inCompiler->emitSemanticError (var_count_6047.readProperty_location (), GALGAS_string ("the count value should be > 0"), fixItArray9  COMMA_SOURCE_FILE ("galgasParameterArgumentSyntax.galgas", 180)) ;
           }
         }
@@ -7026,7 +7026,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
           if (kBoolTrue == test_1) {
             test_1 = var_separator_3046.getter_containsCharacter (GALGAS_char (TO_UNICODE (10)) COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 61)).operator_not (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 61)).boolEnum () ;
             if (kBoolTrue == test_1) {
-              TC_Array <C_FixItDescription> fixItArray2 ;
+              TC_Array <FixItDescription> fixItArray2 ;
               inCompiler->emitSemanticError (GALGAS_location::class_func_separator (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 62)), GALGAS_string ("instructions on same line should be separated by ';'"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 62)) ;
             }
           }
@@ -7121,8 +7121,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_1) {
         test_1 = var_isOnce_3608.boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
-          fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray2 ;
+          fixItArray2.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 81)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 81)) ;
         }
       }
@@ -7134,8 +7134,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_3) {
         test_3 = var_isUsefull_3631.boolEnum () ;
         if (kBoolTrue == test_3) {
-          TC_Array <C_FixItDescription> fixItArray4 ;
-          fixItArray4.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray4 ;
+          fixItArray4.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 87)), GALGAS_string ("duplicate attribute"), fixItArray4  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 87)) ;
         }
       }
@@ -7157,7 +7157,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
     if (kBoolTrue == test_5) {
       test_5 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_4102.getter_count (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 93)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_5) {
-        TC_Array <C_FixItDescription> fixItArray6 ;
+        TC_Array <FixItDescription> fixItArray6 ;
         inCompiler->emitSemanticError (var_functionName_3971.readProperty_location (), GALGAS_string ("an 'once' function should has no argument"), fixItArray6  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 94)) ;
       }
     }
@@ -7286,8 +7286,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_1) {
         test_1 = var_isOnce_5607.boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
-          fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray2 ;
+          fixItArray2.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 145)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 145)) ;
         }
       }
@@ -7299,8 +7299,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_3) {
         test_3 = var_isUsefull_5630.boolEnum () ;
         if (kBoolTrue == test_3) {
-          TC_Array <C_FixItDescription> fixItArray4 ;
-          fixItArray4.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray4 ;
+          fixItArray4.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 151)), GALGAS_string ("duplicate attribute"), fixItArray4  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 151)) ;
         }
       }
@@ -7322,7 +7322,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
     if (kBoolTrue == test_5) {
       test_5 = GALGAS_bool (kIsStrictSup, var_formalInputParameterList_6101.getter_count (SOURCE_FILE ("galgasInstructionsSyntax.galgas", 157)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_5) {
-        TC_Array <C_FixItDescription> fixItArray6 ;
+        TC_Array <FixItDescription> fixItArray6 ;
         inCompiler->emitSemanticError (var_functionName_5970.readProperty_location (), GALGAS_string ("an 'once' function should has no argument"), fixItArray6  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 158)) ;
       }
     }
@@ -7451,8 +7451,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_1) {
         test_1 = var_isUsefull_7765.boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
-          fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray2 ;
+          fixItArray2.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 210)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("galgasInstructionsSyntax.galgas", 210)) ;
         }
       }
@@ -7809,8 +7809,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_1) {
         test_1 = var_isUsefull_1735.boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
-          fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray2 ;
+          fixItArray2.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 38)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 38)) ;
         }
       }
@@ -7878,8 +7878,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_1) {
         test_1 = var_isUsefull_1692.boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
-          fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray2 ;
+          fixItArray2.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 37)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 37)) ;
         }
       }
@@ -7957,8 +7957,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_dec
       if (kBoolTrue == test_1) {
         test_1 = var_isUsefull_2713.boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
-          fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+          TC_Array <FixItDescription> fixItArray2 ;
+          fixItArray2.appendObject (FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 68)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 68)) ;
         }
       }
@@ -8347,7 +8347,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDeclaration.readProperty_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticWarning (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 109)), GALGAS_string ("This instruction is not handled in GALGAS 4"), fixItArray1  COMMA_SOURCE_FILE ("instruction-cast.galgas", 109)) ;
     }
   }
@@ -8763,8 +8763,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_iss
         if (kBoolTrue == test_1) {
           test_1 = var_hasFixItRemove_2619.boolEnum () ;
           if (kBoolTrue == test_1) {
-            TC_Array <C_FixItDescription> fixItArray2 ;
-            fixItArray2.appendObject (C_FixItDescription (kFixItRemove, "")) ;
+            TC_Array <FixItDescription> fixItArray2 ;
+            fixItArray2.appendObject (FixItDescription (kFixItRemove, "")) ;
             inCompiler->emitSemanticWarning (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 64)), GALGAS_string ("duplicated action"), fixItArray2  COMMA_SOURCE_FILE ("instruction-error.galgas", 64)) ;
           }
         }
@@ -9000,7 +9000,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_for
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, var_n_4673.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_count_4651.readProperty_location (), GALGAS_string ("this value should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("instruction-for.galgas", 98)) ;
     }
   }
@@ -9909,7 +9909,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleCollectionInitializer.readProperty_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticWarning (var_instructionLocation_8692, GALGAS_string ("obsolete 'grammar' instruction syntax"), fixItArray1  COMMA_SOURCE_FILE ("instruction-grammar.galgas", 187)) ;
     }
   }
@@ -10592,7 +10592,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
             if (kBoolTrue == test_2) {
               test_2 = GALGAS_bool (kIsNotEqual, var_selector_6542.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
               if (kBoolTrue == test_2) {
-                TC_Array <C_FixItDescription> fixItArray3 ;
+                TC_Array <FixItDescription> fixItArray3 ;
                 appendFixItActions (fixItArray3, kFixItReplace, GALGAS_string ("\?")) ;
                 inCompiler->emitSemanticError (var_selector_6542.readProperty_location (), GALGAS_string ("the selector should be '\?'"), fixItArray3  COMMA_SOURCE_FILE ("instruction-if.galgas", 209)) ;
               }
@@ -10601,11 +10601,11 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
             if (kBoolTrue == test_4) {
               test_4 = GALGAS_bool (kIsEqual, var_repetitionCount_7735.readProperty_bigint ().objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 211)))).boolEnum () ;
               if (kBoolTrue == test_4) {
-                TC_Array <C_FixItDescription> fixItArray5 ;
+                TC_Array <FixItDescription> fixItArray5 ;
                 inCompiler->emitSemanticError (var_repetitionCount_7735.readProperty_location (), GALGAS_string ("the repetition count should be > 0"), fixItArray5  COMMA_SOURCE_FILE ("instruction-if.galgas", 212)) ;
               }
             }
-            cEnumerator_range enumerator_8090 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_repetitionCount_7735.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214))), kENUMERATION_UP) ;
+            cEnumerator_range enumerator_8090 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_repetitionCount_7735.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214))), EnumerationOrder::up) ;
             while (enumerator_8090.hasCurrentObject ()) {
               var_optionalMethodActualArgumentList_6079.addAssign_operation (var_selector_6542, GALGAS_optionalMethodActualArgument::class_func_actualInputJoker (GALGAS_bool (false), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 217)), enumerator_8090.current (HERE)  COMMA_SOURCE_FILE ("instruction-if.galgas", 217))  COMMA_SOURCE_FILE ("instruction-if.galgas", 215)) ;
               enumerator_8090.gotoNextObject () ;
@@ -11769,7 +11769,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_swi
         GALGAS_lbigint var_n_4108 = inCompiler->synthetizedAttribute_bigintValue () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_literalInt COMMA_SOURCE_FILE ("instruction-switch.galgas", 101)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("instruction-switch.galgas", 102)) ;
-        cEnumerator_range enumerator_4151 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_n_4108.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 103)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 103))), kENUMERATION_UP) ;
+        cEnumerator_range enumerator_4151 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_n_4108.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 103)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 103))), EnumerationOrder::up) ;
         while (enumerator_4151.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-switch.galgas", 104)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-switch.galgas", 104)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("instruction-switch.galgas", 104)) ;
           enumerator_4151.gotoNextObject () ;
@@ -12006,7 +12006,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration.readProperty_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("var @").add_operation (var_typeName_2230.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 49))) ;
       inCompiler->emitSemanticError (var_typeName_2230.readProperty_location (), GALGAS_string ("old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"), fixItArray1  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 48)) ;
     }
@@ -12143,7 +12143,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_errorOldStyleLocalVarDeclaration.readProperty_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("var @").add_operation (var_typeName_4320.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 111))) ;
       inCompiler->emitSemanticError (var_typeName_4320.readProperty_location (), GALGAS_string ("old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"), fixItArray1  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 110)) ;
     }
@@ -12320,7 +12320,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
     if (kBoolTrue == test_0) {
       test_0 = GALGAS_bool (kIsNotEqual, var_searchMethodNameForErrorSignaling_4267.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_0) {
-        TC_Array <C_FixItDescription> fixItArray1 ;
+        TC_Array <FixItDescription> fixItArray1 ;
         inCompiler->emitSemanticError (var_searchMethodNameForErrorSignaling_4267.readProperty_location (), GALGAS_string ("no 'else' branch if error on search is enabled"), fixItArray1  COMMA_SOURCE_FILE ("instruction-with.galgas", 105)) ;
       }
     }
@@ -12482,7 +12482,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_wit
     if (kBoolTrue == test_2) {
       test_2 = GALGAS_bool (kIsNotEqual, var_searchMethodNameForErrorSignaling_6681.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_2) {
-        TC_Array <C_FixItDescription> fixItArray3 ;
+        TC_Array <FixItDescription> fixItArray3 ;
         inCompiler->emitSemanticError (var_searchMethodNameForErrorSignaling_6681.readProperty_location (), GALGAS_string ("no 'else' branch if error on search is enabled"), fixItArray3  COMMA_SOURCE_FILE ("instruction-with.galgas", 179)) ;
       }
     }

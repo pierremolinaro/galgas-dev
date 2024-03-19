@@ -967,7 +967,7 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) :
+                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1061,7 +1061,7 @@ GALGAS_stringset GALGAS_stringset::class_func_setWithStringList (const GALGAS_st
   GALGAS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    cEnumerator_stringlist enumerator (inStringList, kENUMERATION_UP) ;
+    cEnumerator_stringlist enumerator (inStringList, EnumerationOrder::up) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
       enumerator.gotoNextObject () ;
@@ -1080,7 +1080,7 @@ GALGAS_stringset GALGAS_stringset::class_func_setWithLStringList (const GALGAS_l
   GALGAS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    cEnumerator_lstringlist enumerator (inStringList, kENUMERATION_UP) ;
+    cEnumerator_lstringlist enumerator (inStringList, EnumerationOrder::up) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
       enumerator.gotoNextObject () ;

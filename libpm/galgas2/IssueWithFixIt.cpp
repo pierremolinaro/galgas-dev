@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_IssueWithFixIt                                                                             
+//  IssueWithFixIt                                                                             
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2016, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2016, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -18,27 +18,27 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_IssueWithFixIt.h"
+#include "IssueWithFixIt.h"
 #include "all-predefined-types.h"
 
 //--------------------------------------------------------------------------------------------------
 
-C_FixItDescription::C_FixItDescription (void) :
+FixItDescription::FixItDescription (void) :
 mKind (kFixItRemove),
 mActionString ("") {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_FixItDescription::C_FixItDescription (const EnumFixItKind inKind,
-                                        const String & inActionString) :
+FixItDescription::FixItDescription (const EnumFixItKind inKind,
+                                    const String & inActionString) :
 mKind (inKind),
 mActionString (inActionString) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-C_IssueWithFixIt::C_IssueWithFixIt (void) :
+IssueWithFixIt::IssueWithFixIt (void) :
 mStartLocation (),
 mEndLocation (),
 mFixItArray () {
@@ -46,9 +46,9 @@ mFixItArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-C_IssueWithFixIt::C_IssueWithFixIt (const LocationInSource & inStartLocation,
+IssueWithFixIt::IssueWithFixIt (const LocationInSource & inStartLocation,
                                     const LocationInSource & inEndLocation,
-                                    const TC_Array <C_FixItDescription> & inFixItArray) :
+                                    const TC_Array <FixItDescription> & inFixItArray) :
 mStartLocation (inStartLocation),
 mEndLocation (inEndLocation),
 mFixItArray (inFixItArray) {
@@ -56,50 +56,50 @@ mFixItArray (inFixItArray) {
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_stringlist & inList) {
-  cEnumerator_stringlist enumerator (inList, kENUMERATION_UP) ;
+  cEnumerator_stringlist enumerator (inList, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     const String s = enumerator.current_mValue (HERE).stringValue () ;
-    ioArray.appendObject (C_FixItDescription (inKind, s)) ;
+    ioArray.appendObject (FixItDescription (inKind, s)) ;
     enumerator.gotoNextObject () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_lstringlist & inList) {
-  cEnumerator_lstringlist enumerator (inList, kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator (inList, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     const String s = enumerator.current_mValue (HERE).mProperty_string.stringValue () ;
-    ioArray.appendObject (C_FixItDescription (inKind, s)) ;
+    ioArray.appendObject (FixItDescription (inKind, s)) ;
     enumerator.gotoNextObject () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_stringset & inStringSet) {
-  cEnumerator_stringset enumerator (inStringSet, kENUMERATION_UP) ;
+  cEnumerator_stringset enumerator (inStringSet, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     const String s = enumerator.current_key (HERE).stringValue () ;
-    ioArray.appendObject (C_FixItDescription (inKind, s)) ;
+    ioArray.appendObject (FixItDescription (inKind, s)) ;
     enumerator.gotoNextObject () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_string & inString) {
   const String s = inString.stringValue () ;
-  ioArray.appendObject (C_FixItDescription (inKind, s)) ;
+  ioArray.appendObject (FixItDescription (inKind, s)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

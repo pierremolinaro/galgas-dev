@@ -10,6 +10,16 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'typeNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_typeNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'structGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------

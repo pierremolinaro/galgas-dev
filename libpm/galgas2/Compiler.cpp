@@ -22,7 +22,7 @@
 #include "TextFileWrite.h"
 #include "FileManager.h"
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
@@ -124,7 +124,7 @@ void Compiler::writeIssueJSONFile (const String & inFile) {
       fatalError (message, "", 0) ;
     }
   }else{
-    ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + inFile + "'.\n" COMMA_HERE) ;
+    ggs_printWarning (this, SourceTextInString (), IssueWithFixIt (), String ("Need to replace '") + inFile + "'.\n" COMMA_HERE) ;
   }
 }
 
@@ -189,7 +189,7 @@ void Compiler::onTheFlySemanticError (const String & inErrorMessage
                                         COMMA_LOCATION_ARGS) {
   signalSemanticError (this,
                        sourceText (),
-                       C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()),
+                       IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <FixItDescription> ()),
                        inErrorMessage
                        COMMA_THERE) ;
 }
@@ -206,7 +206,7 @@ void Compiler::onTheFlySemanticWarning (const String & inWarningMessage
                                           COMMA_LOCATION_ARGS) {
   signalSemanticWarning (this,
                          sourceText (),
-                         C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()),
+                         IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <FixItDescription> ()),
                          inWarningMessage
                          COMMA_THERE) ;
 }
@@ -287,7 +287,7 @@ void Compiler::castError (const String & inTargetTypeName,
 
 void Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
                                           const String & inErrorMessage,
-                                          const TC_Array <C_FixItDescription> & inFixItArray
+                                          const TC_Array <FixItDescription> & inFixItArray
                                           COMMA_LOCATION_ARGS) {
   if (inErrorLocation.isValid ()) { // No error raised if not built
     if (!inErrorLocation.sourceText ().isValid ()) {
@@ -295,7 +295,7 @@ void Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
     }else{
       signalSemanticError (this,
                            inErrorLocation.sourceText (),
-                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), inFixItArray),
+                           IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), inFixItArray),
                            inErrorMessage
                            COMMA_THERE) ;
     }
@@ -306,7 +306,7 @@ void Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
 
 void Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
                                     const GALGAS_string & inErrorMessage,
-                                    const TC_Array <C_FixItDescription> & inFixItArray
+                                    const TC_Array <FixItDescription> & inFixItArray
                                     COMMA_LOCATION_ARGS) {
   if (inErrorLocation.isValid () && inErrorMessage.isValid ()) {
     const String errorMessage = inErrorMessage.stringValue () ;
@@ -315,7 +315,7 @@ void Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
     }else{
       signalSemanticError (this,
                            inErrorLocation.sourceText (),
-                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), inFixItArray),
+                           IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), inFixItArray),
                            errorMessage
                            COMMA_THERE) ;
     }
@@ -348,9 +348,9 @@ void Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
     }
   }
 //--- Add nearest keys, if any
-  TC_Array <C_FixItDescription> fixItArray ;
+  TC_Array <FixItDescription> fixItArray ;
   for (int32_t i=0 ; i<ioNearestKeyArray.count () ; i++) {
-    fixItArray.appendObject (C_FixItDescription (kFixItReplace, ioNearestKeyArray (i COMMA_HERE))) ;
+    fixItArray.appendObject (FixItDescription (kFixItReplace, ioNearestKeyArray (i COMMA_HERE))) ;
   }
 //--- Emit error message
   const GALGAS_location key_location = inKey.mProperty_location ;
@@ -392,7 +392,7 @@ void Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
   }
 //--- Emit error message
   const GALGAS_location key_location = inKey.mProperty_location ;
-  semanticErrorAtLocation (key_location, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
+  semanticErrorAtLocation (key_location, message, TC_Array <FixItDescription> () COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -444,7 +444,7 @@ void Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLocat
     }else{
       signalSemanticWarning (this,
                              inWarningLocation.sourceText (),
-                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), TC_Array <C_FixItDescription> ()),
+                             IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), TC_Array <FixItDescription> ()),
                              inWarningMessage
                              COMMA_THERE) ;
     }
@@ -455,7 +455,7 @@ void Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLocat
 
 void Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
                                       const GALGAS_string & inWarningMessage,
-                                      const TC_Array <C_FixItDescription> & inFixItArray
+                                      const TC_Array <FixItDescription> & inFixItArray
                                       COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid () && inWarningMessage.isValid ()) {
     const String warningMessage = inWarningMessage.stringValue () ;
@@ -464,7 +464,7 @@ void Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
     }else{
       signalSemanticWarning (this,
                              inWarningLocation.sourceText (),
-                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), inFixItArray),
+                             IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), inFixItArray),
                              warningMessage
                              COMMA_THERE) ;
     }
@@ -583,7 +583,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
         ggs_printFileOperationSuccess (String ("Created '") + fileName + "'.\n") ;
       }
     }else{
-      ggs_printWarning (this, SourceTextInString(), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, SourceTextInString(), IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
     const String previousContents = FileManager::stringWithContentOfFile (fullPathName) ;
@@ -603,7 +603,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
           }
         }
       }else{
-        ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+        ggs_printWarning (this, SourceTextInString (), IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
       }
     }
   }
@@ -675,7 +675,7 @@ void Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, SourceTextInString (), IssueWithFixIt (), String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
     String firstUserPart ;
@@ -711,7 +711,7 @@ void Compiler::generateFileWithPatternFromPathes (
       secondGeneratedPart = stringArray (1 COMMA_HERE) ;
     }
     if (! ok) {
-      ggs_printError (this, SourceTextInString (), C_IssueWithFixIt (), String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printError (this, SourceTextInString (), IssueWithFixIt (), String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
     }else if ((header == inHeader) && (firstGeneratedPart == inGeneratedZone2) && (secondGeneratedPart == inGeneratedZone3)) {
     }else if (performGeneration ()) {
       TextFileWrite f (fullPathName) ;
@@ -743,7 +743,7 @@ void Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (this, SourceTextInString (), C_IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (this, SourceTextInString (), IssueWithFixIt (), String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
     }
   }
 }

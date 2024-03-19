@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -111,14 +111,9 @@ bool boolValueFromComparisonKindAndComparisonResult (const typeComparisonKind in
                                                      const typeComparisonResult inComparisonResult) ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//    typeEnumerationOrder                                                                       
-//
+//    EnumerationOrder                                                                       
 //--------------------------------------------------------------------------------------------------
 
-typedef enum {
-  kENUMERATION_DOWN,
-  kENUMERATION_UP
-} typeEnumerationOrder ;
+enum class EnumerationOrder { down, up } ;
 
 //--------------------------------------------------------------------------------------------------

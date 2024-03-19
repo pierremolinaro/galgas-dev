@@ -717,7 +717,7 @@ class GALGAS_castInstructionBranchListAST : public AC_GALGAS_list {
 
 class cEnumerator_castInstructionBranchListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_castInstructionBranchListAST (const GALGAS_castInstructionBranchListAST & inEnumeratedObject,
-                                                    const typeEnumerationOrder inOrder) ;
+                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mTypeName (LOCATION_ARGS) const ;
@@ -1194,7 +1194,7 @@ class GALGAS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
 
 class cEnumerator_castInstructionBranchListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_castInstructionBranchListForGeneration (const GALGAS_castInstructionBranchListForGeneration & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) ;
+                                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_dynamicTypeComparisonKind current_mTypeComparisonKind (LOCATION_ARGS) const ;
@@ -3096,7 +3096,7 @@ class GALGAS_fixitListAST : public AC_GALGAS_list {
 
 class cEnumerator_fixitListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_fixitListAST (const GALGAS_fixitListAST & inEnumeratedObject,
-                                    const typeEnumerationOrder inOrder) ;
+                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_fixitElementAST current_mElement (LOCATION_ARGS) const ;
@@ -3638,7 +3638,7 @@ class GALGAS_fixitListForGeneration : public AC_GALGAS_list {
 
 class cEnumerator_fixitListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_fixitListForGeneration (const GALGAS_fixitListForGeneration & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) ;
+                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_fixitElementForGeneration current_mElement (LOCATION_ARGS) const ;
@@ -4077,7 +4077,7 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_lis
 
 class cEnumerator_forInstructionEnumeratedObjectElementListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_forInstructionEnumeratedObjectElementListAST (const GALGAS_forInstructionEnumeratedObjectElementListAST & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) ;
+                                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mOptionalTypeName (LOCATION_ARGS) const ;
@@ -4962,7 +4962,7 @@ class GALGAS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list {
 
 class cEnumerator_forInstructionEnumeratedObjectListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_forInstructionEnumeratedObjectListAST (const GALGAS_forInstructionEnumeratedObjectListAST & inEnumeratedObject,
-                                                             const typeEnumerationOrder inOrder) ;
+                                                             const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_bool current_mAscending (LOCATION_ARGS) const ;
@@ -5458,7 +5458,7 @@ class GALGAS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_
 
 class cEnumerator_forInstructionEnumeratedObjectListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_forInstructionEnumeratedObjectListForGeneration (const GALGAS_forInstructionEnumeratedObjectListForGeneration & inEnumeratedObject,
-                                                                       const typeEnumerationOrder inOrder) ;
+                                                                       const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_string current_mEnumerationOrder (LOCATION_ARGS) const ;
@@ -8632,7 +8632,7 @@ class GALGAS_optionalMethodActualArgumentList : public AC_GALGAS_list {
 
 class cEnumerator_optionalMethodActualArgumentList : public cGenericAbstractEnumerator {
   public: cEnumerator_optionalMethodActualArgumentList (const GALGAS_optionalMethodActualArgumentList & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) ;
+                                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mSelector (LOCATION_ARGS) const ;
@@ -9118,7 +9118,7 @@ class GALGAS_ifExpressionList : public AC_GALGAS_list {
 
 class cEnumerator_ifExpressionList : public cGenericAbstractEnumerator {
   public: cEnumerator_ifExpressionList (const GALGAS_ifExpressionList & inEnumeratedObject,
-                                        const typeEnumerationOrder inOrder) ;
+                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_ifExpressionKind current_mExpression (LOCATION_ARGS) const ;
@@ -9610,7 +9610,7 @@ class GALGAS_optionalMethodActualArgumentListForGeneration : public AC_GALGAS_li
 
 class cEnumerator_optionalMethodActualArgumentListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_optionalMethodActualArgumentListForGeneration (const GALGAS_optionalMethodActualArgumentListForGeneration & inEnumeratedObject,
-                                                                     const typeEnumerationOrder inOrder) ;
+                                                                     const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_optionalMethodActualArgumentForGeneration current_mParameter (LOCATION_ARGS) const ;
@@ -10039,7 +10039,7 @@ class GALGAS_ifTestListForGeneration : public AC_GALGAS_list {
 
 class cEnumerator_ifTestListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_ifTestListForGeneration (const GALGAS_ifTestListForGeneration & inEnumeratedObject,
-                                               const typeEnumerationOrder inOrder) ;
+                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_ifTestForGeneration current_mExpression (LOCATION_ARGS) const ;

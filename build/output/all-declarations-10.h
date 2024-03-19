@@ -616,7 +616,7 @@ class GALGAS_logListAST : public AC_GALGAS_list {
 
 class cEnumerator_logListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_logListAST (const GALGAS_logListAST & inEnumeratedObject,
-                                  const typeEnumerationOrder inOrder) ;
+                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mLogMessage (LOCATION_ARGS) const ;
@@ -4453,7 +4453,7 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
 
 class cEnumerator_switchBranchesAST : public cGenericAbstractEnumerator {
   public: cEnumerator_switchBranchesAST (const GALGAS_switchBranchesAST & inEnumeratedObject,
-                                         const typeEnumerationOrder inOrder) ;
+                                         const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstringlist current_mSwitchConstantList (LOCATION_ARGS) const ;
@@ -4918,7 +4918,7 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
 
 class cEnumerator_switchBranchesForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_switchBranchesForGeneration (const GALGAS_switchBranchesForGeneration & inEnumeratedObject,
-                                                   const typeEnumerationOrder inOrder) ;
+                                                   const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstringlist current_mSwitchConstantList (LOCATION_ARGS) const ;
@@ -10035,7 +10035,7 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
 
 class cEnumerator_syntaxInstructionListForGrammarAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_syntaxInstructionListForGrammarAnalysis (const GALGAS_syntaxInstructionListForGrammarAnalysis & inEnumeratedObject,
-                                                               const typeEnumerationOrder inOrder) ;
+                                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_abstractSyntaxInstructionForGrammarAnalysis current_mInstruction (LOCATION_ARGS) const ;
@@ -10297,7 +10297,7 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
 
 class cEnumerator_productionRuleListForGrammarAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_productionRuleListForGrammarAnalysis (const GALGAS_productionRuleListForGrammarAnalysis & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
+                                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mLeftNonterminalSymbol (LOCATION_ARGS) const ;
@@ -10508,7 +10508,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 
 class cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis (const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) ;
+                                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -10723,7 +10723,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
 
 class cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inEnumeratedObject,
-                                                                     const typeEnumerationOrder inOrder) ;
+                                                                     const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mNonTerminalSymbol (LOCATION_ARGS) const ;
@@ -11063,7 +11063,7 @@ class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
 
 class cEnumerator_branchListForGrammarAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_branchListForGrammarAnalysis (const GALGAS_branchListForGrammarAnalysis & inEnumeratedObject,
-                                                    const typeEnumerationOrder inOrder) ;
+                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_syntaxInstructionListForGrammarAnalysis current_mSyntaxInstructionList (LOCATION_ARGS) const ;

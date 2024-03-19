@@ -22,7 +22,7 @@
 #include "capCollectionElement.h"
 #include "cCollectionElement.h"
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "unicode_character_cpp.h"
 #include "C_galgas_CLI_Options.h"
 #include "BinaryFileWrite.h"
@@ -278,7 +278,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
           }
         }
       }else{
-        ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + inFilePath.stringValue () + "'." COMMA_HERE) ;
+        ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + inFilePath.stringValue () + "'." COMMA_HERE) ;
       }
     }
   }
@@ -294,7 +294,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
     }else if (! Compiler::performGeneration ()) {
-      ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
+      ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
@@ -335,7 +335,7 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
     }else if (! Compiler::performGeneration ()) {
-      ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
+      ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = verboseOutput () ;
@@ -461,7 +461,7 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_data::cEnumerator_data (const GALGAS_data & inEnumeratedObject,
-                                    const typeEnumerationOrder inOrder) :
+                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }

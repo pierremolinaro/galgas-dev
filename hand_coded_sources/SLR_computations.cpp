@@ -859,7 +859,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents.appendCString ("\n} ;\n\n") ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
+  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::up) ;
   while (nonTerminal.hasCurrentObject ()) {
     ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
@@ -966,7 +966,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       }
     }
     ioCppFileContents.appendCString ("}\n\n") ;
-    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
+    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), EnumerationOrder::up) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents.appendCString ("void cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
@@ -975,7 +975,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       ioCppFileContents.appendCString ("_") ;
       ioCppFileContents.appendString (currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" (") ;
-      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
+      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
@@ -1133,7 +1133,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n") ;
-      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
+      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), EnumerationOrder::up) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
@@ -1149,7 +1149,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           ioCppFileContents.appendCString (",\n                                ") ;
         }
         ioCppFileContents.appendCString ("GALGAS_lstring inFilePath") ;
-        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
+        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
         int32_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
@@ -1233,7 +1233,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "        message.appendString (filePath) ;\n"
                              "        message.appendString (\"' file exists, but cannot be read\") ;\n"
                              "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
-                             "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
+                             "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
                              "      }\n"
                              "      macroDetachSharedObject (scanner) ;\n"
                              "    }else{\n"
@@ -1242,7 +1242,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "      message.appendString (filePath) ;\n"
                              "      message.appendString (\"' file does not exist\") ;\n"
                              "      const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
-                             "      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
+                             "      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
                              "    }\n"
                              "  }\n"
                              "}\n\n") ;

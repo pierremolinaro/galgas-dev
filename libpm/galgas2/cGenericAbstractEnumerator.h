@@ -30,10 +30,10 @@ class cGenericAbstractEnumerator {
 //--- Private data members
   protected: capCollectionElementArray mEnumerationArray ;
   private: uint32_t mIndex ;
-  public: const typeEnumerationOrder mOrder ;
+  public: const EnumerationOrder mOrder ;
 
 //--- Constructor
-  protected: inline cGenericAbstractEnumerator (const typeEnumerationOrder inOrder) :
+  protected: inline cGenericAbstractEnumerator (const EnumerationOrder inOrder) :
   mEnumerationArray (),
   mIndex (0),
   mOrder (inOrder) {

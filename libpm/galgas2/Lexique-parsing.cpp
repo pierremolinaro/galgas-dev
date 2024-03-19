@@ -332,7 +332,7 @@ static void indentForParseOnly (const int32_t inIndentation) {
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
-                                     const cProductionNameDescriptor * inProductionNameArray,
+                                     const ProductionNameDescriptor * inProductionNameArray,
                                      const int32_t * inProductionIndexArray,
                                      const int32_t * inFirstProductionIndexArray,
                                      const int32_t * inDecisionTableArray,

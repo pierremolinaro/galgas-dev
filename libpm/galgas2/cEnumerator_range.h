@@ -34,7 +34,7 @@ class GALGAS_uint ;
 class cEnumerator_range final {
 //--- Constructor
   public: cEnumerator_range (const GALGAS_range & inEnumeratedRange,
-                             const typeEnumerationOrder inOrder) ;
+                             const EnumerationOrder inOrder) ;
 
 //--- Virtual destructor
   public: ~ cEnumerator_range (void) ;

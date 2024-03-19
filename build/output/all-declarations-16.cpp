@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -9108,7 +9108,7 @@ void extensionMethod_analyzeRoutineArguments (const GALGAS_actualParameterListAS
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas", 38)).objectCompare (temp_1.getter_count (SOURCE_FILE ("actual-parameters.galgas", 38)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_actualParameterListAST temp_2 = inObject ;
-      TC_Array <C_FixItDescription> fixItArray3 ;
+      TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GALGAS_string ("the ").add_operation (constinArgument_inInvokedEntityName, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GALGAS_string (" defines "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (constinArgument_inRoutineSignature.getter_count (SOURCE_FILE ("actual-parameters.galgas", 40)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 40)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (GALGAS_string (" formal argument(s), but this invocation names "), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 40)).add_operation (temp_2.getter_count (SOURCE_FILE ("actual-parameters.galgas", 42)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 42)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 41)).add_operation (GALGAS_string (" argument(s)"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 42)), fixItArray3  COMMA_SOURCE_FILE ("actual-parameters.galgas", 39)) ;
       outArgument_outActualParameterListForGeneration.drop () ; // Release error dropped variable
     }
@@ -9117,8 +9117,8 @@ void extensionMethod_analyzeRoutineArguments (const GALGAS_actualParameterListAS
     outArgument_outActualParameterListForGeneration = GALGAS_actualParameterListForGeneration::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 45)) ;
     GALGAS_stringset var_exclusiveVariableSet_2683 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("actual-parameters.galgas", 46)) ;
     const GALGAS_actualParameterListAST temp_4 = inObject ;
-    cEnumerator_formalParameterSignature enumerator_2737 (constinArgument_inRoutineSignature, kENUMERATION_UP) ;
-    cEnumerator_actualParameterListAST enumerator_2758 (temp_4, kENUMERATION_UP) ;
+    cEnumerator_formalParameterSignature enumerator_2737 (constinArgument_inRoutineSignature, EnumerationOrder::up) ;
+    cEnumerator_actualParameterListAST enumerator_2758 (temp_4, EnumerationOrder::up) ;
     while (enumerator_2737.hasCurrentObject () && enumerator_2758.hasCurrentObject ()) {
       callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2758.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2737.current (HERE).readProperty_mFormalSelector (), enumerator_2737.current (HERE).readProperty_mFormalArgumentType (), enumerator_2737.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2683, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 48)) ;
       enumerator_2737.gotoNextObject () ;
@@ -14264,18 +14264,18 @@ void extensionMethod_searchKey (const GALGAS_routineMap inObject,
     if (kBoolTrue == test_0) {
       outArgument_outIsFilePrivate = GALGAS_bool (false) ;
       outArgument_outRoutineSignature = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("routineMap.galgas", 99)) ;
-      cEnumerator_routineArgumentMap enumerator_4208 (var_routineArgumentMap_4102, kENUMERATION_UP) ;
+      cEnumerator_routineArgumentMap enumerator_4208 (var_routineArgumentMap_4102, EnumerationOrder::up) ;
       while (enumerator_4208.hasCurrentObject ()) {
         outArgument_outIsFilePrivate = enumerator_4208.current (HERE).readProperty_mIsFilePrivate () ;
         outArgument_outRoutineSignature = enumerator_4208.current (HERE).readProperty_mRoutineSignature () ;
         enumerator_4208.gotoNextObject () ;
       }
       GALGAS_acceptableParameterList var_acceptableParameterList_4377 = GALGAS_acceptableParameterList::class_func_emptyList (SOURCE_FILE ("routineMap.galgas", 104)) ;
-      cEnumerator_routineArgumentMap enumerator_4425 (var_routineArgumentMap_4102, kENUMERATION_UP) ;
+      cEnumerator_routineArgumentMap enumerator_4425 (var_routineArgumentMap_4102, EnumerationOrder::up) ;
       while (enumerator_4425.hasCurrentObject ()) {
         GALGAS_bool var_accept_4459 = GALGAS_bool (kIsEqual, inArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4425.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
-        cEnumerator_formalParameterSignature enumerator_4572 (enumerator_4425.current (HERE).readProperty_mRoutineSignature (), kENUMERATION_UP) ;
-        cEnumerator_actualParameterListAST enumerator_4592 (inArgument_inActualParameterList, kENUMERATION_UP) ;
+        cEnumerator_formalParameterSignature enumerator_4572 (enumerator_4425.current (HERE).readProperty_mRoutineSignature (), EnumerationOrder::up) ;
+        cEnumerator_actualParameterListAST enumerator_4592 (inArgument_inActualParameterList, EnumerationOrder::up) ;
         bool bool_2 = var_accept_4459.isValidAndTrue () ;
         if (enumerator_4572.hasCurrentObject () && enumerator_4592.hasCurrentObject () && bool_2) {
           while (enumerator_4572.hasCurrentObject () && enumerator_4592.hasCurrentObject () && bool_2) {
@@ -14309,7 +14309,7 @@ void extensionMethod_searchKey (const GALGAS_routineMap inObject,
         if (kBoolTrue == test_5) {
           test_5 = GALGAS_bool (kIsEqual, var_acceptableParameterList_4377.getter_count (SOURCE_FILE ("routineMap.galgas", 120)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_5) {
-            TC_Array <C_FixItDescription> fixItArray6 ;
+            TC_Array <FixItDescription> fixItArray6 ;
             inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GALGAS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas", 121)) ;
             outArgument_outRoutineSignature.drop () ; // Release error dropped variable
             outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
@@ -14318,12 +14318,12 @@ void extensionMethod_searchKey (const GALGAS_routineMap inObject,
         }
         if (kBoolFalse == test_5) {
           GALGAS_string var_s_5427 = GALGAS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          cEnumerator_acceptableParameterList enumerator_5524 (var_acceptableParameterList_4377, kENUMERATION_UP) ;
+          cEnumerator_acceptableParameterList enumerator_5524 (var_acceptableParameterList_4377, EnumerationOrder::up) ;
           while (enumerator_5524.hasCurrentObject ()) {
             var_s_5427.plusAssign_operation(GALGAS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5524.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 127)) ;
             enumerator_5524.gotoNextObject () ;
           }
-          TC_Array <C_FixItDescription> fixItArray7 ;
+          TC_Array <FixItDescription> fixItArray7 ;
           inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5427, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
@@ -14333,7 +14333,7 @@ void extensionMethod_searchKey (const GALGAS_routineMap inObject,
     }
   }
   if (kBoolFalse == test_0) {
-    TC_Array <C_FixItDescription> fixItArray8 ;
+    TC_Array <FixItDescription> fixItArray8 ;
     inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GALGAS_string ("the '").add_operation (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 135)).add_operation (GALGAS_string ("' routine is not declared"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 135)), fixItArray8  COMMA_SOURCE_FILE ("routineMap.galgas", 134)) ;
     outArgument_outRoutineSignature.drop () ; // Release error dropped variable
     outArgument_outIsFilePrivate.drop () ; // Release error dropped variable

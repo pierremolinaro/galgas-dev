@@ -28,7 +28,7 @@ cGenericAbstractEnumerator::~ cGenericAbstractEnumerator (void) {
 //--------------------------------------------------------------------------------------------------
 
 const cCollectionElement * cGenericAbstractEnumerator::currentObjectPtr (LOCATION_ARGS) const {
-  const uint32_t idx = (mOrder == kENUMERATION_UP)
+  const uint32_t idx = (mOrder == EnumerationOrder::up)
     ? mIndex
     : mEnumerationArray.count () - 1 - mIndex
   ;

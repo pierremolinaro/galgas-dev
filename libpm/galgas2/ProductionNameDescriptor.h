@@ -31,7 +31,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class cProductionNameDescriptor final {
+class ProductionNameDescriptor final {
   public: const char * mName ;
   public: const char * mFileName ;
   public: const uint32_t mLineNumber ;

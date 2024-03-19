@@ -27,7 +27,7 @@
 #include "SharedObject.h"
 #include "LocationInSource.h"
 #include "SourceTextInString.h"
-#include "C_IssueWithFixIt.h"
+#include "IssueWithFixIt.h"
 #include "cIssueDescriptor.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ class Compiler : public SharedObject {
 //--- Print semantic error
   public: void semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
                                          const String & inErrorMessage,
-                                         const TC_Array <C_FixItDescription> & inFixItArray
+                                         const TC_Array <FixItDescription> & inFixItArray
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic warning
@@ -156,13 +156,13 @@ class Compiler : public SharedObject {
 //--- Emit a warning
   public: void emitSemanticWarning (const GALGAS_location & inWarningLocation,
                                      const GALGAS_string & inWarningMessage,
-                                     const TC_Array <C_FixItDescription> & inFixItArray
+                                     const TC_Array <FixItDescription> & inFixItArray
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error
   public: void emitSemanticError (const GALGAS_location & inErrorLocation,
                                    const GALGAS_string & inErrorMessage,
-                                   const TC_Array <C_FixItDescription> & inFixItArray
+                                   const TC_Array <FixItDescription> & inFixItArray
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error message with an error message that contains %K espace sequence

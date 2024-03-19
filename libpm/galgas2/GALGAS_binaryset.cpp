@@ -744,8 +744,8 @@ GALGAS_string GALGAS_binaryset::getter_print (const GALGAS_stringlist & inVariab
   if (isValid () && inVariableList.isValid () && inBDDCount.isValid ()) {
     TC_UniqueArray <String> variablesNames ;
     TC_UniqueArray <int32_t> bitCounts ;
-    cEnumerator_stringlist variableEnumerator (inVariableList, kENUMERATION_UP) ;
-    cEnumerator_uintlist bddCountEnumerator (inBDDCount, kENUMERATION_UP) ;
+    cEnumerator_stringlist variableEnumerator (inVariableList, EnumerationOrder::up) ;
+    cEnumerator_uintlist bddCountEnumerator (inBDDCount, EnumerationOrder::up) ;
     while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
       const String name = variableEnumerator.current_mValue (HERE).stringValue () ;
       variablesNames.appendObject (name) ;
@@ -769,7 +769,7 @@ GALGAS_binaryset GALGAS_binaryset::getter_transformedBy (const GALGAS_uintlist &
   if (isValid () && inTransformationArray.isValid ()) {
     uint32_t * substitutionArray = nullptr ;
     macroMyNewPODArray (substitutionArray, uint32_t, inTransformationArray.count ()) ;
-    cEnumerator_uintlist enumerator (inTransformationArray, kENUMERATION_UP) ;
+    cEnumerator_uintlist enumerator (inTransformationArray, EnumerationOrder::up) ;
     uint32_t idx = 0 ;
     while (enumerator.hasCurrentObject ()) {
       const uint32_t value = enumerator.current_mValue (HERE).uintValue () ;
@@ -800,7 +800,7 @@ GALGAS_string GALGAS_binaryset::getter_graphviz (const GALGAS_stringlist & inBit
   GALGAS_string result ;
   if (isValid () && inBitNameList.isValid ()) {
     TC_UniqueArray <String> bitNameArray ;
-    cEnumerator_stringlist variableEnumerator (inBitNameList, kENUMERATION_UP) ;
+    cEnumerator_stringlist variableEnumerator (inBitNameList, EnumerationOrder::up) ;
     while (variableEnumerator.hasCurrentObject ()) {
       const String name = variableEnumerator.current_mValue (HERE).stringValue () ;
       bitNameArray.appendObject (name) ;

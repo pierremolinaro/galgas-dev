@@ -20,7 +20,7 @@
 
 #include "all-predefined-types.h"
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "unicode_character_cpp.h"
 #include "galgas-random.h"
 

@@ -24,7 +24,7 @@
 #include "F_mainForLIBPM.h"
 #include "analyzeCommandLineOptions.h"
 #include "unicode_character_cpp.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "FileManager.h"
 #include "BinaryFileWrite.h"
 #include "F_verbose_output.h"
@@ -864,7 +864,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
         }else if (FileManager::fileExistsAtPath (name)) {
           const String extension = name.pathExtension () ;
           bool extensionFound = false ;
-          cEnumerator_stringlist currentExtension (inExtensionList, kENUMERATION_UP) ;
+          cEnumerator_stringlist currentExtension (inExtensionList, EnumerationOrder::up) ;
           while (currentExtension.hasCurrentObject () && ! extensionFound) {
             extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;
             currentExtension.gotoNextObject () ;
@@ -920,7 +920,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
         //--- Look for extension
           const String extension = name.pathExtension () ;
           bool extensionFound = false ;
-          cEnumerator_stringlist currentExtension (inExtensionList, kENUMERATION_UP) ;
+          cEnumerator_stringlist currentExtension (inExtensionList, EnumerationOrder::up) ;
           while (currentExtension.hasCurrentObject () && ! extensionFound) {
             extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;
             currentExtension.gotoNextObject () ;

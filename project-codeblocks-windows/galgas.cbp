@@ -172,7 +172,6 @@
    <Unit filename="../libpm/streams/AbstractOutputStream.cpp" />
    <Unit filename="../libpm/streams/ColoredConsole.cpp" />
    <Unit filename="../libpm/streams/ConsoleOut.cpp" />
-   <Unit filename="../libpm/streams/C_ErrorOut.cpp" />
    <Unit filename="../libpm/strings/unicode_character_cpp.cpp" />
    <Unit filename="../libpm/strings/String-class-getters.cpp" />
    <Unit filename="../libpm/strings/String-class.cpp" />
@@ -203,9 +202,9 @@
    <Unit filename="../libpm/galgas2/SourceTextInString.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_type_descriptor.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_function_descriptor.cpp" />
-   <Unit filename="../libpm/galgas2/C_galgas_io.cpp" />
+   <Unit filename="../libpm/galgas2/galgas-input-output.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_class_inspector.cpp" />
-   <Unit filename="../libpm/galgas2/C_IssueWithFixIt.cpp" />
+   <Unit filename="../libpm/galgas2/IssueWithFixIt.cpp" />
    <Unit filename="../libpm/galgas2/cObjectArray.cpp" />
    <Unit filename="../libpm/galgas2/cCollectionElement.cpp" />
    <Unit filename="../libpm/galgas2/capCollectionElement.cpp" />

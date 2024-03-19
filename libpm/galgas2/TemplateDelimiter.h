@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'cTemplateDelimiter' : a helper class for template scanner                                   
+//  'TemplateDelimiter' : a helper class for template scanner                                   
 //
 //  This file is part of libpm library                                                           
 //
@@ -34,7 +34,7 @@ class Lexique ;
 //
 //--------------------------------------------------------------------------------------------------
 
-class cTemplateDelimiter final {
+class TemplateDelimiter final {
   public: const std::initializer_list <utf32> mStartString ;
   public: const int32_t mStartStringLength ;
   public: const std::initializer_list <utf32> mEndString ;
@@ -43,7 +43,7 @@ class cTemplateDelimiter final {
   public: const bool mDiscardStartString ;
 
 //--- Constructor
-  public: cTemplateDelimiter (const std::initializer_list <utf32> & inStartString,
+  public: TemplateDelimiter (const std::initializer_list <utf32> & inStartString,
                               const int32_t inStartStringLength,
                               const std::initializer_list <utf32> & inEndString,
                               const int32_t inEndStringLength,
@@ -51,10 +51,10 @@ class cTemplateDelimiter final {
                               const bool inDiscardStartString) ;
 
 //--- Copy
-  public: cTemplateDelimiter (const cTemplateDelimiter & inOperand) ;
+  public: TemplateDelimiter (const TemplateDelimiter & inOperand) ;
 
 //--- No assignment
-  private: cTemplateDelimiter & operator = (const cTemplateDelimiter &) = delete ;
+  private: TemplateDelimiter & operator = (const TemplateDelimiter &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

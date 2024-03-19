@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -3199,7 +3199,7 @@ GALGAS_abstractInputParameter GALGAS_actualInputParameterListAST::getter_mInputP
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_actualInputParameterListAST::cEnumerator_actualInputParameterListAST (const GALGAS_actualInputParameterListAST & inEnumeratedObject,
-                                                                                  const typeEnumerationOrder inOrder) :
+                                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4037,7 +4037,7 @@ GALGAS_semanticDeclarationAST GALGAS_semanticDeclarationListAST::getter_mSemanti
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_semanticDeclarationListAST::cEnumerator_semanticDeclarationListAST (const GALGAS_semanticDeclarationListAST & inEnumeratedObject,
-                                                                                const typeEnumerationOrder inOrder) :
+                                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5477,7 +5477,7 @@ GALGAS_bool GALGAS_formalTemplateInputParameterListAST::getter_mIsUnusedAtIndex 
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_formalTemplateInputParameterListAST::cEnumerator_formalTemplateInputParameterListAST (const GALGAS_formalTemplateInputParameterListAST & inEnumeratedObject,
-                                                                                                  const typeEnumerationOrder inOrder) :
+                                                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -6025,7 +6025,7 @@ GALGAS_formalTemplateInputParameterListAST GALGAS_filewrapperTemplateListAST::ge
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_filewrapperTemplateListAST::cEnumerator_filewrapperTemplateListAST (const GALGAS_filewrapperTemplateListAST & inEnumeratedObject,
-                                                                                const typeEnumerationOrder inOrder) :
+                                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -6559,7 +6559,7 @@ GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionList::getter_mInstructionAtI
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_syntaxInstructionList::cEnumerator_syntaxInstructionList (const GALGAS_syntaxInstructionList & inEnumeratedObject,
-                                                                      const typeEnumerationOrder inOrder) :
+                                                                      const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7083,7 +7083,7 @@ GALGAS_location GALGAS_nonTerminalLabelListAST::getter_mEndOfArgumentLocationAtI
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_nonTerminalLabelListAST::cEnumerator_nonTerminalLabelListAST (const GALGAS_nonTerminalLabelListAST & inEnumeratedObject,
-                                                                          const typeEnumerationOrder inOrder) :
+                                                                          const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7565,7 +7565,7 @@ GALGAS_nonTerminalLabelListAST GALGAS_nonterminalDeclarationListAST::getter_mLab
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_nonterminalDeclarationListAST::cEnumerator_nonterminalDeclarationListAST (const GALGAS_nonterminalDeclarationListAST & inEnumeratedObject,
-                                                                                      const typeEnumerationOrder inOrder) :
+                                                                                      const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -8213,7 +8213,7 @@ GALGAS_location GALGAS_syntaxRuleLabelListAST::getter_mEndOfInstructionListAtInd
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_syntaxRuleLabelListAST::cEnumerator_syntaxRuleLabelListAST (const GALGAS_syntaxRuleLabelListAST & inEnumeratedObject,
-                                                                        const typeEnumerationOrder inOrder) :
+                                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -8711,7 +8711,7 @@ GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleListAST::getter_mLabelListAtIndex
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_syntaxRuleListAST::cEnumerator_syntaxRuleListAST (const GALGAS_syntaxRuleListAST & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) :
+                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -9185,7 +9185,7 @@ GALGAS_location GALGAS_listOfSyntaxInstructionList::getter_mEndOf_5F_instruction
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_listOfSyntaxInstructionList::cEnumerator_listOfSyntaxInstructionList (const GALGAS_listOfSyntaxInstructionList & inEnumeratedObject,
-                                                                                  const typeEnumerationOrder inOrder) :
+                                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10053,7 +10053,7 @@ GALGAS_bool GALGAS_galgas_33_SyntaxComponentListAST::getter_mHasTranslateFeature
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_galgas_33_SyntaxComponentListAST::cEnumerator_galgas_33_SyntaxComponentListAST (const GALGAS_galgas_33_SyntaxComponentListAST & inEnumeratedObject,
-                                                                                            const typeEnumerationOrder inOrder) :
+                                                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10609,7 +10609,7 @@ GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxExtensionListAST::getter_mRuleLi
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_galgas_33_SyntaxExtensionListAST::cEnumerator_galgas_33_SyntaxExtensionListAST (const GALGAS_galgas_33_SyntaxExtensionListAST & inEnumeratedObject,
-                                                                                            const typeEnumerationOrder inOrder) :
+                                                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10745,7 +10745,7 @@ GALGAS_galgas_33_SyntaxExtensionListAST GALGAS_syntaxExtensions::getter_listForK
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_syntaxExtensions::cEnumerator_syntaxExtensions (const GALGAS_syntaxExtensions & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) :
+                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -11215,7 +11215,7 @@ GALGAS_location GALGAS_prologueEpilogueList::getter_mEndOfInstructionListAtIndex
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_prologueEpilogueList::cEnumerator_prologueEpilogueList (const GALGAS_prologueEpilogueList & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) :
+                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -11979,7 +11979,7 @@ GALGAS_location GALGAS_programRuleList::getter_mEndOfInstructionListAtIndex (con
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_programRuleList::cEnumerator_programRuleList (const GALGAS_programRuleList & inEnumeratedObject,
-                                                          const typeEnumerationOrder inOrder) :
+                                                          const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -12727,7 +12727,7 @@ GALGAS_string GALGAS_functionSignature::getter_mFormalArgumentNameAtIndex (const
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_functionSignature::cEnumerator_functionSignature (const GALGAS_functionSignature & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) :
+                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -12940,7 +12940,7 @@ GALGAS_classFunctionMap GALGAS_classFunctionMap::add_operation (const GALGAS_cla
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_classFunctionMap result = *this ;
-  cEnumerator_classFunctionMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_classFunctionMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mArgumentTypeList (HERE), enumerator.current_mHasCompilerArgument (HERE), enumerator.current_mReturnedType (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -13109,7 +13109,7 @@ cMapElement_classFunctionMap * GALGAS_classFunctionMap::readWriteAccessForWithIn
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_classFunctionMap::cEnumerator_classFunctionMap (const GALGAS_classFunctionMap & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) :
+                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -14088,7 +14088,7 @@ GALGAS_string GALGAS_optionalMethodSignature::getter_mFormalArgumentNameAtIndex 
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_optionalMethodSignature::cEnumerator_optionalMethodSignature (const GALGAS_optionalMethodSignature & inEnumeratedObject,
-                                                                          const typeEnumerationOrder inOrder) :
+                                                                          const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -14289,7 +14289,7 @@ GALGAS_optionalMethodMap GALGAS_optionalMethodMap::add_operation (const GALGAS_o
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_optionalMethodMap result = *this ;
-  cEnumerator_optionalMethodMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_optionalMethodMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mArgumentTypeList (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -14377,7 +14377,7 @@ cMapElement_optionalMethodMap * GALGAS_optionalMethodMap::readWriteAccessForWith
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_optionalMethodMap::cEnumerator_optionalMethodMap (const GALGAS_optionalMethodMap & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) :
+                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -14633,7 +14633,7 @@ GALGAS_getterMap GALGAS_getterMap::add_operation (const GALGAS_getterMap & inOpe
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_getterMap result = *this ;
-  cEnumerator_getterMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_getterMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mKind (HERE), enumerator.current_mArgumentTypeList (HERE), enumerator.current_mDeclarationLocation (HERE), enumerator.current_mHasCompilerArgument (HERE), enumerator.current_mReturnedType (HERE), enumerator.current_mQualifier (HERE), enumerator.current_mGetterNameThatObsoletesInvokationName (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -14938,7 +14938,7 @@ cMapElement_getterMap * GALGAS_getterMap::readWriteAccessForWithInstruction (Com
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_getterMap::cEnumerator_getterMap (const GALGAS_getterMap & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) :
+                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -15605,7 +15605,7 @@ GALGAS_string GALGAS_formalParameterSignature::getter_mFormalArgumentNameAtIndex
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_formalParameterSignature::cEnumerator_formalParameterSignature (const GALGAS_formalParameterSignature & inEnumeratedObject,
-                                                                            const typeEnumerationOrder inOrder) :
+                                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }

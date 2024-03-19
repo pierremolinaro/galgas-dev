@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -13417,7 +13417,7 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
   GALGAS_string var_currentNode_6865 = GALGAS_string ("P0start") ;
   GALGAS_rowList var_rowArray_6904 = GALGAS_rowList::class_func_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 172)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_0 = inObject ;
-  cEnumerator_range enumerator_6963 (GALGAS_range (GALGAS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 173)).substract_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 173))), kENUMERATION_UP) ;
+  cEnumerator_range enumerator_6963 (GALGAS_range (GALGAS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 173)).substract_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 173))), EnumerationOrder::up) ;
   while (enumerator_6963.hasCurrentObject ()) {
     GALGAS__32_stringlist temp_1 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
     temp_1.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
@@ -13433,7 +13433,7 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_3 = inObject ;
   GALGAS_uint var_row_7161 = temp_3.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 180)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_4 = inObject ;
-  cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7204 (temp_4.readProperty_mInstructionList (), kENUMERATION_UP) ;
+  cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7204 (temp_4.readProperty_mInstructionList (), EnumerationOrder::up) ;
   while (enumerator_7204.hasCurrentObject ()) {
     var_row_7161.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 182)) ;
     GALGAS_uint var_column_7272 = GALGAS_uint (uint32_t (1U)) ;
@@ -13448,10 +13448,10 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_5 = inObject ;
   GALGAS_location var_loc_7757 = temp_5.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)).add_operation (function_escapeForTex (var_loc_7757.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 202)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).add_operation (function_escapeForTex (var_loc_7757.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GALGAS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GALGAS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 205)).add_operation (GALGAS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 206)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)) ;
-  cEnumerator_rowList enumerator_8179 (var_rowArray_6904, kENUMERATION_DOWN) ;
+  cEnumerator_rowList enumerator_8179 (var_rowArray_6904, EnumerationOrder::down) ;
   while (enumerator_8179.hasCurrentObject ()) {
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 209)) ;
-    cEnumerator__32_stringlist enumerator_8251 (enumerator_8179.current_columns (HERE), kENUMERATION_UP) ;
+    cEnumerator__32_stringlist enumerator_8251 (enumerator_8179.current_columns (HERE), EnumerationOrder::up) ;
     while (enumerator_8251.hasCurrentObject ()) {
       enumGalgasBool test_6 = kBoolTrue ;
       if (kBoolTrue == test_6) {
@@ -13785,7 +13785,7 @@ static const int32_t gProductions_galgas3ProjectGrammar [] = {
 //
 //--------------------------------------------------------------------------------------------------
 
-static const cProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [22] = {
+static const ProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [22] = {
  {"<project_header>", "galgas3ProjectSyntax", 0}, // at index 0
  {"<project_component_start_symbol>", "galgas3ProjectSyntax", 11}, // at index 1
  {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 16}, // at index 2
@@ -14015,7 +14015,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * i
         message.appendString (filePath) ;
         message.appendString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
-        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
+        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
@@ -14024,7 +14024,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * i
       message.appendString (filePath) ;
       message.appendString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
-      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
+      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
     }
   }
 }
@@ -53420,7 +53420,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompil
         message.appendString (filePath) ;
         message.appendString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
-        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
+        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
@@ -53429,7 +53429,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (Compiler * inCompil
       message.appendString (filePath) ;
       message.appendString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
-      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
+      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
     }
   }
 }

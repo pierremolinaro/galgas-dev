@@ -8928,7 +8928,7 @@ class GALGAS_collectionValueElementList : public AC_GALGAS_list {
 
 class cEnumerator_collectionValueElementList : public cGenericAbstractEnumerator {
   public: cEnumerator_collectionValueElementList (const GALGAS_collectionValueElementList & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) ;
+                                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_abstractCollectionValueElement current_mElement (LOCATION_ARGS) const ;
@@ -9774,7 +9774,7 @@ class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
 
 class cEnumerator_collectionValueElementListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_collectionValueElementListForGeneration (const GALGAS_collectionValueElementListForGeneration & inEnumeratedObject,
-                                                               const typeEnumerationOrder inOrder) ;
+                                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_abstractCollectionValueElementForGeneration current_mElement (LOCATION_ARGS) const ;

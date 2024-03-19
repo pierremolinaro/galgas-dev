@@ -30,7 +30,7 @@
 #include "C_galgas_CLI_Options.h"
 #include "Compiler.h"
 #include "galgas_cli_options.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "HTMLString.h"
 #include "F_verbose_output.h"
 
@@ -327,10 +327,10 @@ analyzeGrammar (Compiler * inCompiler,
   }else if (inGrammarClass.mProperty_string.stringValue ().compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
-    TC_Array <C_FixItDescription> fixItArray ;
-    fixItArray.appendObject (C_FixItDescription (kFixItReplace, "LL1")) ;
-    fixItArray.appendObject (C_FixItDescription (kFixItReplace, "SLR")) ;
-    fixItArray.appendObject (C_FixItDescription (kFixItReplace, "LR1")) ;
+    TC_Array <FixItDescription> fixItArray ;
+    fixItArray.appendObject (FixItDescription (kFixItReplace, "LL1")) ;
+    fixItArray.appendObject (FixItDescription (kFixItReplace, "SLR")) ;
+    fixItArray.appendObject (FixItDescription (kFixItReplace, "LR1")) ;
     inCompiler->semanticErrorAtLocation (inGrammarClass.mProperty_location, "Unknown grammar class", fixItArray COMMA_HERE) ;
   }
 
@@ -610,7 +610,7 @@ analyzeGrammar (Compiler * inCompiler,
       errorMessage.appendCString ("errors have been raised when analyzing the grammar:"
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging") ;
     }
-    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }else if (warningFlag) {
     String s ;
     s.appendCString ("OK ; no error, but warning(s) step(s)") ;

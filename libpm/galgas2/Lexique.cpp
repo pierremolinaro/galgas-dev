@@ -43,7 +43,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cTemplateDelimiter::cTemplateDelimiter (const std::initializer_list <utf32> & inStartString,
+TemplateDelimiter::TemplateDelimiter (const std::initializer_list <utf32> & inStartString,
     const int32_t inStartStringLength,
     const std::initializer_list <utf32> & inEndString,
     const int32_t inEndStringLength,
@@ -59,7 +59,7 @@ mDiscardStartString (inDiscardStartString) {
 
 //--------------------------------------------------------------------------------------------------
 
-cTemplateDelimiter::cTemplateDelimiter (const cTemplateDelimiter & inOperand) :
+TemplateDelimiter::TemplateDelimiter (const TemplateDelimiter & inOperand) :
 mStartString (inOperand.mStartString),
 mStartStringLength (inOperand.mStartStringLength),
 mEndString (inOperand.mEndString),
@@ -273,7 +273,7 @@ void Lexique::resetForSecondPass (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
+int32_t Lexique::findTemplateDelimiterIndex (const TemplateDelimiter * inTemplateDelimiterArray,
                                              const int32_t inTemplateDelimiterArrayLength) {
   int32_t templateIndex = 0 ;
   bool found = false ;
@@ -495,7 +495,7 @@ void Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
 
 void Lexique::lexicalError (const String & inLexicalErrorMessage
                             COMMA_LOCATION_ARGS) {
-  signalLexicalError (this, sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
+  signalLexicalError (this, sourceText (), IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
     signalLexicalErrorInLatexOutput () ;
   }
@@ -527,7 +527,7 @@ void Lexique::parsingError (const TC_UniqueArray <int32_t> & inExpectedTerminals
     this,
     sourceText (),
     (inPreviousTokenPtr == nullptr) ? LocationInSource () : inPreviousTokenPtr->mEndLocation,
-    C_IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <C_FixItDescription> ()),
+    IssueWithFixIt (inCurrentTokenPtr->mStartLocation, inCurrentTokenPtr->mEndLocation, TC_Array <FixItDescription> ()),
     foundTokenMessage,
     expectedTokenNames
     COMMA_THERE
@@ -547,7 +547,7 @@ void Lexique::lexicalWarning (const String & inLexicalWarningMessage
   signalLexicalWarning (
     this,
     sourceText (),
-    C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()),
+    IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <FixItDescription> ()),
     inLexicalWarningMessage
     COMMA_THERE
   ) ;

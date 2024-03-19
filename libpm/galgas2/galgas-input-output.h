@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_galgas_io'                                                                                
+//  'galgas-input-output'                                                                                
 //
 //  This file is part of libpm library                                                           
 //
@@ -26,7 +26,7 @@
 #include "TC_UniqueArray.h"
 #include "LocationInSource.h"
 #include "SourceTextInString.h"
-#include "C_IssueWithFixIt.h"
+#include "IssueWithFixIt.h"
 #include "SharedObject.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -150,21 +150,21 @@ int32_t totalWarningCount (void) ;
 void signalParsingError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
                          const LocationInSource & inPreviousTokenEndLocation,
-                         const C_IssueWithFixIt & inIssue,
+                         const IssueWithFixIt & inIssue,
                          const String & inFoundTokenMessage,
                          const TC_UniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) ;
 
 void signalExtractError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
-                         const C_IssueWithFixIt & inIssue,
+                         const IssueWithFixIt & inIssue,
                          const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
 
 void signalCastError (Compiler * inCompiler,
                       const SourceTextInString & inSourceText,
-                      const C_IssueWithFixIt & inIssue,
+                      const IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
                       const String & inActualFoundClassErrorString
@@ -172,25 +172,25 @@ void signalCastError (Compiler * inCompiler,
 
 void signalLexicalWarning (Compiler * inCompiler,
                            const SourceTextInString & inSourceText,
-                           const C_IssueWithFixIt & inIssue,
+                           const IssueWithFixIt & inIssue,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
 void signalLexicalError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
-                         const C_IssueWithFixIt & inIssue,
+                         const IssueWithFixIt & inIssue,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
 void signalSemanticWarning (Compiler * inCompiler,
                             const SourceTextInString & inSourceText,
-                            const C_IssueWithFixIt & inIssue,
+                            const IssueWithFixIt & inIssue,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) ;
 
 void signalSemanticError (Compiler * inCompiler,
                           const SourceTextInString & inSourceText,
-                          const C_IssueWithFixIt & inIssue,
+                          const IssueWithFixIt & inIssue,
                           const String & inErrorMessage
                           COMMA_LOCATION_ARGS) ;
 
@@ -204,13 +204,13 @@ void signalRunTimeWarning (Compiler * inCompiler,
 
 void ggs_printError (Compiler * inCompiler,
                      const SourceTextInString & inSourceText,
-                     const C_IssueWithFixIt & inIssue,
+                     const IssueWithFixIt & inIssue,
                      const String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
 void ggs_printWarning (Compiler * inCompiler,
                        const SourceTextInString & inSourceText,
-                       const C_IssueWithFixIt & inIssue,
+                       const IssueWithFixIt & inIssue,
                        const String & inMessage
                        COMMA_LOCATION_ARGS) ;
 

@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -340,7 +340,7 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui
           if (kBoolTrue == test_2) {
             test_2 = GALGAS_bool (kIsSupOrEqual, var_leadingStrip_10388.readProperty_bigint ().objectCompare (GALGAS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 320)))).boolEnum () ;
             if (kBoolTrue == test_2) {
-              TC_Array <C_FixItDescription> fixItArray3 ;
+              TC_Array <FixItDescription> fixItArray3 ;
               inCompiler->emitSemanticError (var_leadingStrip_10388.readProperty_location (), GALGAS_string ("leading strip should be < 15"), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas", 321)) ;
             }
           }
@@ -351,7 +351,7 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui
           if (kBoolTrue == test_4) {
             test_4 = GALGAS_bool (kIsSupOrEqual, var_endingStrip_10563.readProperty_bigint ().objectCompare (GALGAS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 325)))).boolEnum () ;
             if (kBoolTrue == test_4) {
-              TC_Array <C_FixItDescription> fixItArray5 ;
+              TC_Array <FixItDescription> fixItArray5 ;
               inCompiler->emitSemanticError (var_endingStrip_10563.readProperty_location (), GALGAS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 326)) ;
             }
           }
@@ -1057,7 +1057,7 @@ void cParser_galgas_34_SyntaxComponentSyntax::rule_galgas_34_SyntaxComponentSynt
           if (kBoolTrue == test_1) {
             test_1 = var_separator_15154.getter_containsCharacter (GALGAS_char (TO_UNICODE (10)) COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas", 389)).operator_not (SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas", 389)).boolEnum () ;
             if (kBoolTrue == test_1) {
-              TC_Array <C_FixItDescription> fixItArray2 ;
+              TC_Array <FixItDescription> fixItArray2 ;
               inCompiler->emitSemanticError (GALGAS_location::class_func_separator (inCompiler  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas", 390)), GALGAS_string ("instructions on same line should be separated by ';'"), fixItArray2  COMMA_SOURCE_FILE ("galgasSyntaxComponentSyntax.galgas", 390)) ;
             }
           }
@@ -2056,7 +2056,7 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
       if (kBoolTrue == test_1) {
         test_1 = var_argumentNameSet_10218.getter_hasKey (var_argumentName_10390.readProperty_string () COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 303)).boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
+          TC_Array <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (var_argumentName_10390.readProperty_location (), GALGAS_string ("there is already an argument named '").add_operation (var_argumentName_10390.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 304)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 304)), fixItArray2  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas", 304)) ;
         }
       }
@@ -2652,7 +2652,7 @@ void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_d
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsNotEqual, var_selector_6674.readProperty_string ().objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("\?sourceFilePath:")) ;
       inCompiler->emitSemanticError (var_selector_6674.readProperty_location (), GALGAS_string ("the selector should be '\?sourceFilePath:'"), fixItArray1  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas", 180)) ;
     }
@@ -2667,7 +2667,7 @@ void cParser_galgas_34_ProgramDeclarations::rule_galgas_34_ProgramDeclarations_d
     if (kBoolTrue == test_2) {
       test_2 = GALGAS_bool (kIsNotEqual, var_typeName_6880.readProperty_string ().objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
       if (kBoolTrue == test_2) {
-        TC_Array <C_FixItDescription> fixItArray3 ;
+        TC_Array <FixItDescription> fixItArray3 ;
         inCompiler->emitSemanticError (var_typeName_6880.readProperty_location (), GALGAS_string ("the only type allowed here is '@lstring'"), fixItArray3  COMMA_SOURCE_FILE ("galgasProgramDeclarations.galgas", 186)) ;
       }
     }
@@ -2904,7 +2904,7 @@ GALGAS_headerCompositionMap GALGAS_headerCompositionMap::add_operation (const GA
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_headerCompositionMap result = *this ;
-  cEnumerator_headerCompositionMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_headerCompositionMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mInclusion (HERE), enumerator.current_mHeaderString (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -3025,7 +3025,7 @@ cMapElement_headerCompositionMap * GALGAS_headerCompositionMap::readWriteAccessF
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_headerCompositionMap::cEnumerator_headerCompositionMap (const GALGAS_headerCompositionMap & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) :
+                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3232,7 +3232,7 @@ GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::add_operation (const GA
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_headerRepartitionMap result = *this ;
-  cEnumerator_headerRepartitionMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_headerRepartitionMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mHeaderFileName (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -3320,7 +3320,7 @@ cMapElement_headerRepartitionMap * GALGAS_headerRepartitionMap::readWriteAccessF
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_headerRepartitionMap::cEnumerator_headerRepartitionMap (const GALGAS_headerRepartitionMap & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) :
+                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3516,7 +3516,7 @@ GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::add_operati
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_projectQualifiedFeatureMap result = *this ;
-  cEnumerator_projectQualifiedFeatureMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_projectQualifiedFeatureMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFeatureValue (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -3604,7 +3604,7 @@ cMapElement_projectQualifiedFeatureMap * GALGAS_projectQualifiedFeatureMap::read
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_projectQualifiedFeatureMap::cEnumerator_projectQualifiedFeatureMap (const GALGAS_projectQualifiedFeatureMap & inEnumeratedObject,
-                                                                                const typeEnumerationOrder inOrder) :
+                                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4205,7 +4205,7 @@ GALGAS_stringlist GALGAS_XCodeGroupList::getter_mChildrenRefsAtIndex (const GALG
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_XCodeGroupList::cEnumerator_XCodeGroupList (const GALGAS_XCodeGroupList & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5217,7 +5217,7 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mFrameworkBuildPhaseRefAtIndex 
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_XCodeToolTargetList::cEnumerator_XCodeToolTargetList (const GALGAS_XCodeToolTargetList & inEnumeratedObject,
-                                                                  const typeEnumerationOrder inOrder) :
+                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -6459,7 +6459,7 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mResourceFileBuildRefsAtInde
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_XCodeAppTargetList::cEnumerator_XCodeAppTargetList (const GALGAS_XCodeAppTargetList & inEnumeratedObject,
-                                                                const typeEnumerationOrder inOrder) :
+                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7087,7 +7087,7 @@ GALGAS_string GALGAS_BuildFileList::getter_mBuildReferenceAtIndex (const GALGAS_
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_BuildFileList::cEnumerator_BuildFileList (const GALGAS_BuildFileList & inEnumeratedObject,
-                                                      const typeEnumerationOrder inOrder) :
+                                                      const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }

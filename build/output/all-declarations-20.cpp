@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -615,7 +615,7 @@ void extensionSetter_addAppTarget (GALGAS_XcodeProjectDescriptor & ioObject,
   extensionSetter_getReferenceKey (ioObject, var_resourceBuildRef_6910, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 175)) ;
   }
   GALGAS__32_stringlist var_dependentTargets_6947 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 176)) ;
-  cEnumerator_stringlist enumerator_6976 (constinArgument_inDependentTargetRefList, kENUMERATION_UP) ;
+  cEnumerator_stringlist enumerator_6976 (constinArgument_inDependentTargetRefList, EnumerationOrder::up) ;
   while (enumerator_6976.hasCurrentObject ()) {
     GALGAS_string var_dependencyBuildRef_7049 ;
     {
@@ -625,7 +625,7 @@ void extensionSetter_addAppTarget (GALGAS_XcodeProjectDescriptor & ioObject,
     enumerator_6976.gotoNextObject () ;
   }
   GALGAS_stringlist var_resourceFileBuildRefs_7142 = constinArgument_inResourceFileBuildRefs ;
-  cEnumerator__32_stringlist enumerator_7201 (constinArgument_inProductCopyList, kENUMERATION_UP) ;
+  cEnumerator__32_stringlist enumerator_7201 (constinArgument_inProductCopyList, EnumerationOrder::up) ;
   while (enumerator_7201.hasCurrentObject ()) {
     GALGAS_string var_buildRef_7306 ;
     {
@@ -743,7 +743,7 @@ void extensionSetter_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObject
   extensionSetter_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 246)) ;
   }
   GALGAS_stringlist var_childrenRefs_9496 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 248)) ;
-  cEnumerator_stringset enumerator_9521 (constinArgument_inFileNames, kENUMERATION_UP) ;
+  cEnumerator_stringset enumerator_9521 (constinArgument_inFileNames, EnumerationOrder::up) ;
   while (enumerator_9521.hasCurrentObject ()) {
     enumGalgasBool test_6 = kBoolTrue ;
     if (kBoolTrue == test_6) {
@@ -912,7 +912,7 @@ void extensionSetter_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObject
                           }
                         }
                         if (kBoolFalse == test_16) {
-                          TC_Array <C_FixItDescription> fixItArray17 ;
+                          TC_Array <FixItDescription> fixItArray17 ;
                           inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)), GALGAS_string ("unhandled extension for file '").add_operation (enumerator_9521.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)), fixItArray17  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)) ;
                         }
                       }

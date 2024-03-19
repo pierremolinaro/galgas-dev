@@ -23,9 +23,9 @@
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_range::cEnumerator_range (const GALGAS_range & inEnumeratedRange,
-                                      const typeEnumerationOrder inOrder) :
+                                      const EnumerationOrder inOrder) :
 mIsValid (inEnumeratedRange.isValid ()),
-mAscending (inOrder == kENUMERATION_UP),
+mAscending (inOrder == EnumerationOrder::up),
 mStart (inEnumeratedRange.mProperty_start.uintValue ()),
 mLength (inEnumeratedRange.mProperty_length.uintValue ()),
 mCurrent (0) {

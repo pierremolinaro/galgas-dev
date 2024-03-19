@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -645,18 +645,18 @@ static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner_
 //                           Template Delimiters
 //--------------------------------------------------------------------------------------------------
 
-static const cTemplateDelimiter galgasTemplateScanner_kTemplateDefinitionArray [1] = {
-  cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__25_, 1, kUnicodeString_galgasTemplateScanner__25_, 1, nullptr, true)
+static const TemplateDelimiter galgasTemplateScanner_kTemplateDefinitionArray [1] = {
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__25_, 1, kUnicodeString_galgasTemplateScanner__25_, 1, nullptr, true)
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //                           Template Replacements
 //--------------------------------------------------------------------------------------------------
 
-static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [3] = {
-  cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__25_, 2, kUnicodeString_galgasTemplateScanner__25_, 1, nullptr, true),
-  cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C_n, 2, kUnicodeString_galgasTemplateScanner__A_, 1, nullptr, true),
-  cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__5C_, 2, kUnicodeString_galgasTemplateScanner__5C_, 1, nullptr, true)
+static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [3] = {
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__25_, 2, kUnicodeString_galgasTemplateScanner__25_, 1, nullptr, true),
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C_n, 2, kUnicodeString_galgasTemplateScanner__A_, 1, nullptr, true),
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__5C_, 2, kUnicodeString_galgasTemplateScanner__5C_, 1, nullptr, true)
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4453,7 +4453,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsEqual, var_n_2555.objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_count_2533.readProperty_location (), GALGAS_string ("this value should be > 0"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 53)) ;
     }
   }
@@ -4634,7 +4634,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
     GALGAS_location var_startLocation_4438 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 113)) ;
     GALGAS_lstring var_prefixString_4502 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas", 114)) ;
-    TC_Array <C_FixItDescription> fixItArray1 ;
+    TC_Array <FixItDescription> fixItArray1 ;
     appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string::makeEmptyString ()) ;
     inCompiler->emitSemanticError (var_prefixString_4502.readProperty_location ().getter_union (var_startLocation_4438, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas", 115)), GALGAS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas", 115)) ;
   } break ;
@@ -5123,7 +5123,7 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS_lst
         GALGAS_lbigint var_n_3806 = inCompiler->synthetizedAttribute_bigintValue () ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_literalInt COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 93)) ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 94)) ;
-        cEnumerator_range enumerator_3849 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_n_3806.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95))), kENUMERATION_UP) ;
+        cEnumerator_range enumerator_3849 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_n_3806.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95))), EnumerationOrder::up) ;
         while (enumerator_3849.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 96)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-switch-instruction.galgas", 96)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 96)) ;
           enumerator_3849.gotoNextObject () ;

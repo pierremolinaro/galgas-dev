@@ -20,7 +20,7 @@
 
 #include "C_galgas_type_descriptor.h"
 #include "String-class.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 
 //--------------------------------------------------------------------------------------------------
 

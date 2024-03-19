@@ -429,7 +429,7 @@ class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_lis
 
 class cEnumerator_templateInstructionIfBranchListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_templateInstructionIfBranchListForGeneration (const GALGAS_templateInstructionIfBranchListForGeneration & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) ;
+                                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_semanticExpressionForGeneration current_mExpression (LOCATION_ARGS) const ;
@@ -788,7 +788,7 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
 
 class cEnumerator_templateVariableMap : public cGenericAbstractEnumerator {
   public: cEnumerator_templateVariableMap (const GALGAS_templateVariableMap & inEnumeratedObject,
-                                           const typeEnumerationOrder inOrder) ;
+                                           const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1422,7 +1422,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_map {
 
 class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
   public: cEnumerator_unifiedTypeMap (const GALGAS_unifiedTypeMap & inEnumeratedObject,
-                                      const typeEnumerationOrder inOrder) ;
+                                      const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1629,7 +1629,7 @@ class GALGAS_filewrapperMap : public AC_GALGAS_map {
 
 class cEnumerator_filewrapperMap : public cGenericAbstractEnumerator {
   public: cEnumerator_filewrapperMap (const GALGAS_filewrapperMap & inEnumeratedObject,
-                                      const typeEnumerationOrder inOrder) ;
+                                      const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1774,7 +1774,7 @@ class GALGAS_functionMap : public AC_GALGAS_map {
 
 class cEnumerator_functionMap : public cGenericAbstractEnumerator {
   public: cEnumerator_functionMap (const GALGAS_functionMap & inEnumeratedObject,
-                                   const typeEnumerationOrder inOrder) ;
+                                   const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1916,7 +1916,7 @@ class GALGAS_grammarMap : public AC_GALGAS_map {
 
 class cEnumerator_grammarMap : public cGenericAbstractEnumerator {
   public: cEnumerator_grammarMap (const GALGAS_grammarMap & inEnumeratedObject,
-                                  const typeEnumerationOrder inOrder) ;
+                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -2110,7 +2110,7 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 
 class cEnumerator_lexiqueComponentMapForSemanticAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_lexiqueComponentMapForSemanticAnalysis (const GALGAS_lexiqueComponentMapForSemanticAnalysis & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) ;
+                                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -2282,7 +2282,7 @@ class GALGAS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 
 class cEnumerator_optionComponentMapForSemanticAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_optionComponentMapForSemanticAnalysis (const GALGAS_optionComponentMapForSemanticAnalysis & inEnumeratedObject,
-                                                             const typeEnumerationOrder inOrder) ;
+                                                             const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -2439,7 +2439,7 @@ class GALGAS_syntaxComponentMap : public AC_GALGAS_map {
 
 class cEnumerator_syntaxComponentMap : public cGenericAbstractEnumerator {
   public: cEnumerator_syntaxComponentMap (const GALGAS_syntaxComponentMap & inEnumeratedObject,
-                                          const typeEnumerationOrder inOrder) ;
+                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -2560,7 +2560,7 @@ class GALGAS_internalRoutineMap : public AC_GALGAS_map {
 
 class cEnumerator_internalRoutineMap : public cGenericAbstractEnumerator {
   public: cEnumerator_internalRoutineMap (const GALGAS_internalRoutineMap & inEnumeratedObject,
-                                          const typeEnumerationOrder inOrder) ;
+                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -3740,7 +3740,7 @@ class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
 
 class cEnumerator_templateInstructionSwitchBranchListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_templateInstructionSwitchBranchListAST (const GALGAS_templateInstructionSwitchBranchListAST & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) ;
+                                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstringlist current_mConstantList (LOCATION_ARGS) const ;
@@ -3915,7 +3915,7 @@ class GALGAS_switchExtractedValuesListAST : public AC_GALGAS_list {
 
 class cEnumerator_switchExtractedValuesListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_switchExtractedValuesListAST (const GALGAS_switchExtractedValuesListAST & inEnumeratedObject,
-                                                    const typeEnumerationOrder inOrder) ;
+                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mExtractedValueTypeName (LOCATION_ARGS) const ;
@@ -4460,7 +4460,7 @@ class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS
 
 class cEnumerator_templateInstructionSwitchBranchListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_templateInstructionSwitchBranchListForGeneration (const GALGAS_templateInstructionSwitchBranchListForGeneration & inEnumeratedObject,
-                                                                        const typeEnumerationOrder inOrder) ;
+                                                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstringlist current_mConstantList (LOCATION_ARGS) const ;
@@ -4635,7 +4635,7 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 
 class cEnumerator_extractedAssociatedValuesForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_extractedAssociatedValuesForGeneration (const GALGAS_extractedAssociatedValuesForGeneration & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) ;
+                                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
@@ -5324,7 +5324,7 @@ class GALGAS_templateDelimitorListAST : public AC_GALGAS_list {
 
 class cEnumerator_templateDelimitorListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_templateDelimitorListAST (const GALGAS_templateDelimitorListAST & inEnumeratedObject,
-                                                const typeEnumerationOrder inOrder) ;
+                                                const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mStartString (LOCATION_ARGS) const ;
@@ -5615,7 +5615,7 @@ class GALGAS_templateReplacementListAST : public AC_GALGAS_list {
 
 class cEnumerator_templateReplacementListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_templateReplacementListAST (const GALGAS_templateReplacementListAST & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) ;
+                                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mMatchString (LOCATION_ARGS) const ;
@@ -5863,7 +5863,7 @@ class GALGAS_lexicalAttributeListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalAttributeListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalAttributeListAST (const GALGAS_lexicalAttributeListAST & inEnumeratedObject,
-                                               const typeEnumerationOrder inOrder) ;
+                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mTypeName (LOCATION_ARGS) const ;
@@ -6099,7 +6099,7 @@ class GALGAS_lexicalStyleListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalStyleListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalStyleListAST (const GALGAS_lexicalStyleListAST & inEnumeratedObject,
-                                           const typeEnumerationOrder inOrder) ;
+                                           const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mName (LOCATION_ARGS) const ;
@@ -6411,7 +6411,7 @@ class GALGAS_terminalDeclarationListAST : public AC_GALGAS_list {
 
 class cEnumerator_terminalDeclarationListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_terminalDeclarationListAST (const GALGAS_terminalDeclarationListAST & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) ;
+                                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mName (LOCATION_ARGS) const ;
@@ -6569,7 +6569,7 @@ class GALGAS_sentLexicalAttributeListAST : public AC_GALGAS_list {
 
 class cEnumerator_sentLexicalAttributeListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_sentLexicalAttributeListAST (const GALGAS_sentLexicalAttributeListAST & inEnumeratedObject,
-                                                   const typeEnumerationOrder inOrder) ;
+                                                   const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
@@ -6849,7 +6849,7 @@ class GALGAS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalMessageDeclarationListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalMessageDeclarationListAST (const GALGAS_lexicalMessageDeclarationListAST & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) ;
+                                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mMessageName (LOCATION_ARGS) const ;
@@ -7142,7 +7142,7 @@ class GALGAS_lexicalListDeclarationListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalListDeclarationListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalListDeclarationListAST (const GALGAS_lexicalListDeclarationListAST & inEnumeratedObject,
-                                                     const typeEnumerationOrder inOrder) ;
+                                                     const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mName (LOCATION_ARGS) const ;
@@ -7337,7 +7337,7 @@ class GALGAS_lexicalListEntryListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalListEntryListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalListEntryListAST (const GALGAS_lexicalListEntryListAST & inEnumeratedObject,
-                                               const typeEnumerationOrder inOrder) ;
+                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mEntrySpelling (LOCATION_ARGS) const ;
@@ -7589,7 +7589,7 @@ class GALGAS_lexicalRuleListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalRuleListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalRuleListAST (const GALGAS_lexicalRuleListAST & inEnumeratedObject,
-                                          const typeEnumerationOrder inOrder) ;
+                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_abstractLexicalRuleAST current_mLexicalRule (LOCATION_ARGS) const ;
@@ -7908,7 +7908,7 @@ class GALGAS_indexingListAST : public AC_GALGAS_list {
 
 class cEnumerator_indexingListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_indexingListAST (const GALGAS_indexingListAST & inEnumeratedObject,
-                                       const typeEnumerationOrder inOrder) ;
+                                       const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mIndexName (LOCATION_ARGS) const ;
@@ -8652,7 +8652,7 @@ class GALGAS_lexicalInstructionListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalInstructionListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalInstructionListAST (const GALGAS_lexicalInstructionListAST & inEnumeratedObject,
-                                                 const typeEnumerationOrder inOrder) ;
+                                                 const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lexicalInstructionAST current_mInstruction (LOCATION_ARGS) const ;
@@ -10391,7 +10391,7 @@ class GALGAS_lexicalSendSearchListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalSendSearchListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalSendSearchListAST (const GALGAS_lexicalSendSearchListAST & inEnumeratedObject,
-                                                const typeEnumerationOrder inOrder) ;
+                                                const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mAttributeName (LOCATION_ARGS) const ;
@@ -11075,7 +11075,7 @@ class GALGAS_lexicalWhileBranchListAST : public AC_GALGAS_list {
 
 class cEnumerator_lexicalWhileBranchListAST : public cGenericAbstractEnumerator {
   public: cEnumerator_lexicalWhileBranchListAST (const GALGAS_lexicalWhileBranchListAST & inEnumeratedObject,
-                                                 const typeEnumerationOrder inOrder) ;
+                                                 const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lexicalExpressionAST current_mWhileExpression (LOCATION_ARGS) const ;

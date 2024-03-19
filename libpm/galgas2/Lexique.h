@@ -24,9 +24,9 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "Compiler.h"
-#include "cProductionNameDescriptor.h"
-#include "cTemplateDelimiter.h"
-#include "C_galgas_io.h"
+#include "ProductionNameDescriptor.h"
+#include "TemplateDelimiter.h"
+#include "galgas-input-output.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -83,7 +83,7 @@ class Lexique : public Compiler {
   protected: cIndexingDictionary * mIndexingDictionary ;
 
 //--- Template String
-  protected: int32_t findTemplateDelimiterIndex (const cTemplateDelimiter * inTemplateDelimiterArray,
+  protected: int32_t findTemplateDelimiterIndex (const TemplateDelimiter * inTemplateDelimiterArray,
                                                  const int32_t inTemplateDelimiterArrayLength) ;
 
 //--- Token list
@@ -198,7 +198,7 @@ class Lexique : public Compiler {
 
 //--- Perform top down parsing (called by LL (1) parser)
   public: bool performTopDownParsing (const int32_t * inProductionArray,
-                                      const cProductionNameDescriptor * inProductionNameArray,
+                                      const ProductionNameDescriptor * inProductionNameArray,
                                       const int32_t * inProductionIndexnArray,
                                       const int32_t * inFirstProductionIndexArray,
                                       const int32_t * inDecisionTableArray,

@@ -20,7 +20,6 @@
 
 #include "F_DisplayException.h"
 #include "ConsoleOut.h"
-#include "C_ErrorOut.h"
 
 //--------------------------------------------------------------------------------------------------
 

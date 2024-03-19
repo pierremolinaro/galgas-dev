@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'C_galgas_io'
+//  'galgas-input-output'
 //
 //  This file is part of libpm library
 //
@@ -18,9 +18,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "ConsoleOut.h"
-#include "C_ErrorOut.h"
 #include "builtin-command-line-options.h"
 #include "analyzeCommandLineOptions.h"
 #include "C_galgas_CLI_Options.h"
@@ -83,7 +82,7 @@ const char * max_warning_count_reached_exception::what (void) const throw () {
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Class C_galgas_io
+  #pragma mark Class galgas-input-output
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -122,7 +121,7 @@ int32_t totalWarningCount (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-static String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
+static String errorOrWarningLocationString (const IssueWithFixIt & inIssue,
                                               const SourceTextInString & inSourceText) {
   String result ;
   if (inSourceText.isValid ()) {
@@ -142,7 +141,7 @@ static String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
 //--------------------------------------------------------------------------------------------------
 
 static String constructErrorOrWarningLocationMessage (const String & inMessage,
-                                                        const C_IssueWithFixIt & inIssue,
+                                                        const IssueWithFixIt & inIssue,
                                                         const SourceTextInString & inSourceText) {
   String result ;
   if (!inSourceText.isValid ()) {
@@ -166,7 +165,7 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
     //--- Add fix it suggestions
       const String ZeroWidthSpace = stringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
-        const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
+        const FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
         case kFixItRemove :
           result.appendCString ("Fix-it, remove\n") ;
@@ -204,7 +203,7 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
 
 void signalLexicalWarning (Compiler * inCompiler,
                            const SourceTextInString & inSourceText,
-                           const C_IssueWithFixIt & inIssue,
+                           const IssueWithFixIt & inIssue,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
@@ -234,7 +233,7 @@ void signalLexicalWarning (Compiler * inCompiler,
 
 void signalLexicalError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
-                         const C_IssueWithFixIt & inIssue,
+                         const IssueWithFixIt & inIssue,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
@@ -264,7 +263,7 @@ void signalLexicalError (Compiler * inCompiler,
 void signalParsingError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
                          const LocationInSource & inPreviousTokenEndLocation,
-                         const C_IssueWithFixIt & inIssue,
+                         const IssueWithFixIt & inIssue,
                          const String & inFoundTokenMessage,
                          const TC_UniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) {
@@ -306,7 +305,7 @@ void signalParsingError (Compiler * inCompiler,
 
 void signalExtractError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
-                         const C_IssueWithFixIt & inIssue,
+                         const IssueWithFixIt & inIssue,
                          const TC_UniqueArray <String> & inExpectedClassesErrorStringsArray,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) {
@@ -361,7 +360,7 @@ void signalExtractError (Compiler * inCompiler,
 
 void signalCastError (Compiler * inCompiler,
                       const SourceTextInString & inSourceText,
-                      const C_IssueWithFixIt & inIssue,
+                      const IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
                       const String & inActualFoundClassErrorString
@@ -444,7 +443,7 @@ void signalCastError (Compiler * inCompiler,
 
 void signalSemanticWarning (Compiler * inCompiler,
                             const SourceTextInString & inSourceText,
-                            const C_IssueWithFixIt & inIssue,
+                            const IssueWithFixIt & inIssue,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) {
 //--- Increment warning count
@@ -470,7 +469,7 @@ void signalSemanticWarning (Compiler * inCompiler,
 
 void signalSemanticError (Compiler * inCompiler,
                           const SourceTextInString & inSourceText,
-                          const C_IssueWithFixIt & inIssue,
+                          const IssueWithFixIt & inIssue,
                           const String & inErrorMessage
                           COMMA_LOCATION_ARGS) {
   const LocationInSource inEndErrorLocation = inIssue.mStartLocation ;
@@ -506,7 +505,7 @@ void signalRunTimeError (Compiler * inCompiler,
   errorMessage.appendString (inRunTimeErrorMessage) ;
   errorMessage.appendCString ("\n") ;
 //--- Print
-  ggs_printError (inCompiler, SourceTextInString (), C_IssueWithFixIt (), errorMessage COMMA_THERE) ;
+  ggs_printError (inCompiler, SourceTextInString (), IssueWithFixIt (), errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -527,7 +526,7 @@ void signalRunTimeWarning (Compiler * inCompiler,
   warningMessage.appendString (inWarningMessage) ;
   warningMessage.appendCString ("\n") ;
 //--- Print
-  ggs_printWarning (inCompiler, SourceTextInString (), C_IssueWithFixIt (), warningMessage COMMA_THERE) ;
+  ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
   if ((maxWarningCount () > 0) && (totalWarningCount () >= maxWarningCount ())) {
     throw max_warning_count_reached_exception () ;
@@ -553,7 +552,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 void ggs_printError (Compiler * inCompiler,
                      const SourceTextInString & inSourceText,
-                     const C_IssueWithFixIt & inIssue,
+                     const IssueWithFixIt & inIssue,
                      const String & inMessage
                      COMMA_LOCATION_ARGS) {
 //--- Append to issue array
@@ -613,7 +612,7 @@ void fatalError (const String & inErrorMessage,
   errorMessage.appendSigned (inSourceLine) ;
   errorMessage.appendCString ("\n") ;
 //----
-  String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), SourceTextInString ()) ;
+  String message = constructErrorOrWarningLocationMessage (errorMessage, IssueWithFixIt (), SourceTextInString ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       message.appendCString ("[Error raised from file '") ;
@@ -653,7 +652,7 @@ void fatalError (const String & inErrorMessage,
 
 void ggs_printWarning (Compiler * inCompiler,
                        const SourceTextInString & inSourceText,
-                       const C_IssueWithFixIt & inIssue,
+                       const IssueWithFixIt & inIssue,
                        const String & inMessage
                        COMMA_LOCATION_ARGS) {
 //--- Append to issue array

@@ -759,7 +759,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementAr
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }

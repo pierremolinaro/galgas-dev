@@ -139,7 +139,6 @@ end
    <Unit filename="%!LIBPM_PATH%/streams/AbstractOutputStream.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/ColoredConsole.cpp" />
    <Unit filename="%!LIBPM_PATH%/streams/ConsoleOut.cpp" />
-   <Unit filename="%!LIBPM_PATH%/streams/C_ErrorOut.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/unicode_character_cpp.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class-getters.cpp" />
    <Unit filename="%!LIBPM_PATH%/strings/String-class.cpp" />
@@ -170,9 +169,9 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas2/SourceTextInString.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_type_descriptor.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_function_descriptor.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_io.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/galgas-input-output.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_class_inspector.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas2/C_IssueWithFixIt.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas2/IssueWithFixIt.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/cObjectArray.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/cCollectionElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/capCollectionElement.cpp" />

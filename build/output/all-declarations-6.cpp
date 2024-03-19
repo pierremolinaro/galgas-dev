@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -157,7 +157,7 @@ GALGAS_setterMap GALGAS_setterMap::add_operation (const GALGAS_setterMap & inOpe
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_setterMap result = *this ;
-  cEnumerator_setterMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_setterMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mKind (HERE), enumerator.current_mParameterList (HERE), enumerator.current_mHasCompilerArgument (HERE), enumerator.current_mQualifier (HERE), enumerator.current_mErrorMessage (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -394,7 +394,7 @@ cMapElement_setterMap * GALGAS_setterMap::readWriteAccessForWithInstruction (Com
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_setterMap::cEnumerator_setterMap (const GALGAS_setterMap & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) :
+                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -684,7 +684,7 @@ GALGAS_instanceMethodMap GALGAS_instanceMethodMap::add_operation (const GALGAS_i
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_instanceMethodMap result = *this ;
-  cEnumerator_instanceMethodMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_instanceMethodMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mKind (HERE), enumerator.current_mParameterList (HERE), enumerator.current_mDeclarationLocation (HERE), enumerator.current_mHasCompilerArgument (HERE), enumerator.current_mQualifier (HERE), enumerator.current_mErrorMessage (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -974,7 +974,7 @@ cMapElement_instanceMethodMap * GALGAS_instanceMethodMap::readWriteAccessForWith
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_instanceMethodMap::cEnumerator_instanceMethodMap (const GALGAS_instanceMethodMap & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) :
+                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1235,7 +1235,7 @@ GALGAS_classMethodMap GALGAS_classMethodMap::add_operation (const GALGAS_classMe
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_classMethodMap result = *this ;
-  cEnumerator_classMethodMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_classMethodMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mParameterList (HERE), enumerator.current_mHasCompilerArgument (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -1370,7 +1370,7 @@ cMapElement_classMethodMap * GALGAS_classMethodMap::readWriteAccessForWithInstru
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_classMethodMap::cEnumerator_classMethodMap (const GALGAS_classMethodMap & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1866,7 +1866,7 @@ GALGAS_string GALGAS_enumerationDescriptorList::getter_mEnumerationNameAtIndex (
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_enumerationDescriptorList::cEnumerator_enumerationDescriptorList (const GALGAS_enumerationDescriptorList & inEnumeratedObject,
-                                                                              const typeEnumerationOrder inOrder) :
+                                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2857,7 +2857,7 @@ GALGAS_propertyMap GALGAS_propertyMap::add_operation (const GALGAS_propertyMap &
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_propertyMap result = *this ;
-  cEnumerator_propertyMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_propertyMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mAccessControl (HERE), enumerator.current_mIsConstant (HERE), enumerator.current_mPropertyType (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -3011,7 +3011,7 @@ cMapElement_propertyMap * GALGAS_propertyMap::readWriteAccessForWithInstruction 
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_propertyMap::cEnumerator_propertyMap (const GALGAS_propertyMap & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) :
+                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3955,7 +3955,7 @@ GALGAS_constantIndexMap GALGAS_constantIndexMap::add_operation (const GALGAS_con
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_constantIndexMap result = *this ;
-  cEnumerator_constantIndexMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_constantIndexMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mAssociatedTypeList (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -4076,7 +4076,7 @@ cMapElement_constantIndexMap * GALGAS_constantIndexMap::readWriteAccessForWithIn
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_constantIndexMap::cEnumerator_constantIndexMap (const GALGAS_constantIndexMap & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) :
+                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4283,7 +4283,7 @@ GALGAS_internalRoutineMap GALGAS_internalRoutineMap::add_operation (const GALGAS
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_internalRoutineMap result = *this ;
-  cEnumerator_internalRoutineMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_internalRoutineMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mArgumentMap (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -4384,7 +4384,7 @@ cMapElement_internalRoutineMap * GALGAS_internalRoutineMap::readWriteAccessForWi
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_internalRoutineMap::cEnumerator_internalRoutineMap (const GALGAS_internalRoutineMap & inEnumeratedObject,
-                                                                const typeEnumerationOrder inOrder) :
+                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4590,7 +4590,7 @@ GALGAS_routineArgumentMap GALGAS_routineArgumentMap::add_operation (const GALGAS
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_routineArgumentMap result = *this ;
-  cEnumerator_routineArgumentMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_routineArgumentMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mRoutineSignature (HERE), enumerator.current_mIsFilePrivate (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -4711,7 +4711,7 @@ cMapElement_routineArgumentMap * GALGAS_routineArgumentMap::readWriteAccessForWi
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_routineArgumentMap::cEnumerator_routineArgumentMap (const GALGAS_routineArgumentMap & inEnumeratedObject,
-                                                                const typeEnumerationOrder inOrder) :
+                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5207,7 +5207,7 @@ GALGAS_bool GALGAS_acceptableParameterList::getter_mIsFilePrivateAtIndex (const 
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_acceptableParameterList::cEnumerator_acceptableParameterList (const GALGAS_acceptableParameterList & inEnumeratedObject,
-                                                                          const typeEnumerationOrder inOrder) :
+                                                                          const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5376,7 +5376,7 @@ void extensionMethod_enterInstructionListInSemanticContext (const GALGAS_semanti
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticInstructionListAST temp_0 = inObject ;
-  cEnumerator_semanticInstructionListAST enumerator_2851 (temp_0, kENUMERATION_UP) ;
+  cEnumerator_semanticInstructionListAST enumerator_2851 (temp_0, EnumerationOrder::up) ;
   while (enumerator_2851.hasCurrentObject ()) {
     callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2851.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 65)) ;
     enumerator_2851.gotoNextObject () ;
@@ -5494,7 +5494,7 @@ GALGAS_grammarLabelMap GALGAS_grammarLabelMap::add_operation (const GALGAS_gramm
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   GALGAS_grammarLabelMap result = *this ;
-  cEnumerator_grammarLabelMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_grammarLabelMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLabelSignature (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -5582,7 +5582,7 @@ cMapElement_grammarLabelMap * GALGAS_grammarLabelMap::readWriteAccessForWithInst
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_grammarLabelMap::cEnumerator_grammarLabelMap (const GALGAS_grammarLabelMap & inEnumeratedObject,
-                                                          const typeEnumerationOrder inOrder) :
+                                                          const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5798,7 +5798,7 @@ GALGAS_grammarMap GALGAS_grammarMap::add_operation (const GALGAS_grammarMap & in
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_grammarMap result = *this ;
-  cEnumerator_grammarMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_grammarMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLabelMap (HERE), enumerator.current_mHasIndexing (HERE), enumerator.current_mHasTranslateFeature (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -5952,7 +5952,7 @@ cMapElement_grammarMap * GALGAS_grammarMap::readWriteAccessForWithInstruction (C
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_grammarMap::cEnumerator_grammarMap (const GALGAS_grammarMap & inEnumeratedObject,
-                                                const typeEnumerationOrder inOrder) :
+                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -6190,7 +6190,7 @@ GALGAS_functionMap GALGAS_functionMap::add_operation (const GALGAS_functionMap &
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_functionMap result = *this ;
-  cEnumerator_functionMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_functionMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFunctionSignature (HERE), enumerator.current_mResultType (HERE), enumerator.current_mIsInternal (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -6344,7 +6344,7 @@ cMapElement_functionMap * GALGAS_functionMap::readWriteAccessForWithInstruction 
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_functionMap::cEnumerator_functionMap (const GALGAS_functionMap & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) :
+                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -6592,7 +6592,7 @@ GALGAS_wrapperFileMap GALGAS_wrapperFileMap::add_operation (const GALGAS_wrapper
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_wrapperFileMap result = *this ;
-  cEnumerator_wrapperFileMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_wrapperFileMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mAbsoluteFilePath (HERE), enumerator.current_mIsTextFile (HERE), enumerator.current_mWrapperDirectoryIndex (HERE), enumerator.current_mWrapperFileIndex (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -6779,7 +6779,7 @@ cMapElement_wrapperFileMap * GALGAS_wrapperFileMap::readWriteAccessForWithInstru
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_wrapperFileMap::cEnumerator_wrapperFileMap (const GALGAS_wrapperFileMap & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7028,7 +7028,7 @@ GALGAS_wrapperDirectoryMap GALGAS_wrapperDirectoryMap::add_operation (const GALG
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_wrapperDirectoryMap result = *this ;
-  cEnumerator_wrapperDirectoryMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_wrapperDirectoryMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mRegularFileMap (HERE), enumerator.current_mDirectoryMap (HERE), enumerator.current_mWrapperDirectoryIndex (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -7182,7 +7182,7 @@ cMapElement_wrapperDirectoryMap * GALGAS_wrapperDirectoryMap::readWriteAccessFor
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_wrapperDirectoryMap::cEnumerator_wrapperDirectoryMap (const GALGAS_wrapperDirectoryMap & inEnumeratedObject,
-                                                                  const typeEnumerationOrder inOrder) :
+                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7410,7 +7410,7 @@ GALGAS_filewrapperTemplateMap GALGAS_filewrapperTemplateMap::add_operation (cons
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateMap result = *this ;
-  cEnumerator_filewrapperTemplateMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_filewrapperTemplateMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mTemplateSignature (HERE), enumerator.current_mFilewrapperTemplatePath (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -7531,7 +7531,7 @@ cMapElement_filewrapperTemplateMap * GALGAS_filewrapperTemplateMap::readWriteAcc
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_filewrapperTemplateMap::cEnumerator_filewrapperTemplateMap (const GALGAS_filewrapperTemplateMap & inEnumeratedObject,
-                                                                        const typeEnumerationOrder inOrder) :
+                                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7788,7 +7788,7 @@ GALGAS_filewrapperMap GALGAS_filewrapperMap::add_operation (const GALGAS_filewra
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperMap result = *this ;
-  cEnumerator_filewrapperMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_filewrapperMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFilewrapperPath (HERE), enumerator.current_mFilewrapperExtensionList (HERE), enumerator.current_mFilewrapperFileMap (HERE), enumerator.current_mFilewrapperDirectoryMap (HERE), enumerator.current_mFilewrapperTemplateMap (HERE), enumerator.current_mIsInternal (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -8041,7 +8041,7 @@ cMapElement_filewrapperMap * GALGAS_filewrapperMap::readWriteAccessForWithInstru
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_filewrapperMap::cEnumerator_filewrapperMap (const GALGAS_filewrapperMap & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -8332,7 +8332,7 @@ GALGAS_optionComponentMapForSemanticAnalysis GALGAS_optionComponentMapForSemanti
                                                                                                           Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_optionComponentMapForSemanticAnalysis result = *this ;
-  cEnumerator_optionComponentMapForSemanticAnalysis enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_optionComponentMapForSemanticAnalysis enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIsPredefined (HERE), enumerator.current_mBoolOptionMap (HERE), enumerator.current_mUIntOptionMap (HERE), enumerator.current_mStringOptionMap (HERE), enumerator.current_mStringListOptionMap (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -8552,7 +8552,7 @@ cMapElement_optionComponentMapForSemanticAnalysis * GALGAS_optionComponentMapFor
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_optionComponentMapForSemanticAnalysis::cEnumerator_optionComponentMapForSemanticAnalysis (const GALGAS_optionComponentMapForSemanticAnalysis & inEnumeratedObject,
-                                                                                                      const typeEnumerationOrder inOrder) :
+                                                                                                      const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -8852,7 +8852,7 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis GALGAS_lexiqueComponentMapForSeman
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_lexiqueComponentMapForSemanticAnalysis result = *this ;
-  cEnumerator_lexiqueComponentMapForSemanticAnalysis enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_lexiqueComponentMapForSemanticAnalysis enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIsTemplate (HERE), enumerator.current_mTerminalMap (HERE), enumerator.current_mIndexingListAST (HERE), enumerator.current_mTerminalListAST (HERE), enumerator.current_mLexicalAttributeListAST (HERE), enumerator.current_mLexicalStyleListAST (HERE), enumerator.current_mLexicalListDeclarationListAST (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -9138,7 +9138,7 @@ cMapElement_lexiqueComponentMapForSemanticAnalysis * GALGAS_lexiqueComponentMapF
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_lexiqueComponentMapForSemanticAnalysis::cEnumerator_lexiqueComponentMapForSemanticAnalysis (const GALGAS_lexiqueComponentMapForSemanticAnalysis & inEnumeratedObject,
-                                                                                                        const typeEnumerationOrder inOrder) :
+                                                                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -9430,7 +9430,7 @@ GALGAS_syntaxComponentMap GALGAS_syntaxComponentMap::add_operation (const GALGAS
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxComponentMap result = *this ;
-  cEnumerator_syntaxComponentMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_syntaxComponentMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLexiqueName (HERE), enumerator.current_mNonterminalDeclarationList (HERE), enumerator.current_mRuleList (HERE), enumerator.current_mHasTranslateFeature (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -9617,7 +9617,7 @@ cMapElement_syntaxComponentMap * GALGAS_syntaxComponentMap::readWriteAccessForWi
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_syntaxComponentMap::cEnumerator_syntaxComponentMap (const GALGAS_syntaxComponentMap & inEnumeratedObject,
-                                                                const typeEnumerationOrder inOrder) :
+                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -9856,7 +9856,7 @@ GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::add_operation
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_extensionMethodMapForType result = *this ;
-  cEnumerator_extensionMethodMapForType enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionMethodMapForType enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFormalParameterList (HERE), enumerator.current_mQualifier (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -9952,7 +9952,7 @@ cMapElement_extensionMethodMapForType * GALGAS_extensionMethodMapForType::readWr
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionMethodMapForType::cEnumerator_extensionMethodMapForType (const GALGAS_extensionMethodMapForType & inEnumeratedObject,
-                                                                              const typeEnumerationOrder inOrder) :
+                                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10159,7 +10159,7 @@ GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuilding
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_extensionMethodMapForBuildingContext result = *this ;
-  cEnumerator_extensionMethodMapForBuildingContext enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionMethodMapForBuildingContext enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mExtensionMethodMapForType (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -10247,7 +10247,7 @@ cMapElement_extensionMethodMapForBuildingContext * GALGAS_extensionMethodMapForB
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionMethodMapForBuildingContext::cEnumerator_extensionMethodMapForBuildingContext (const GALGAS_extensionMethodMapForBuildingContext & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10443,7 +10443,7 @@ GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::add_operation
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_extensionSetterMapForType result = *this ;
-  cEnumerator_extensionSetterMapForType enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionSetterMapForType enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFormalParameterList (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -10509,7 +10509,7 @@ cMapElement_extensionSetterMapForType * GALGAS_extensionSetterMapForType::readWr
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionSetterMapForType::cEnumerator_extensionSetterMapForType (const GALGAS_extensionSetterMapForType & inEnumeratedObject,
-                                                                              const typeEnumerationOrder inOrder) :
+                                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10705,7 +10705,7 @@ GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuilding
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_extensionSetterMapForBuildingContext result = *this ;
-  cEnumerator_extensionSetterMapForBuildingContext enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionSetterMapForBuildingContext enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mExtensionSetterMapForType (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -10793,7 +10793,7 @@ cMapElement_extensionSetterMapForBuildingContext * GALGAS_extensionSetterMapForB
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionSetterMapForBuildingContext::cEnumerator_extensionSetterMapForBuildingContext (const GALGAS_extensionSetterMapForBuildingContext & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -11009,7 +11009,7 @@ GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::add_operation
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_extensionGetterMapForType result = *this ;
-  cEnumerator_extensionGetterMapForType enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionGetterMapForType enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mResultTypeName (HERE), enumerator.current_mInputFormalParameterList (HERE), enumerator.current_mQualifier (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -11135,7 +11135,7 @@ cMapElement_extensionGetterMapForType * GALGAS_extensionGetterMapForType::readWr
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionGetterMapForType::cEnumerator_extensionGetterMapForType (const GALGAS_extensionGetterMapForType & inEnumeratedObject,
-                                                                              const typeEnumerationOrder inOrder) :
+                                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -11353,7 +11353,7 @@ GALGAS_extensionGetterMapForBuildingContext GALGAS_extensionGetterMapForBuilding
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_extensionGetterMapForBuildingContext result = *this ;
-  cEnumerator_extensionGetterMapForBuildingContext enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_extensionGetterMapForBuildingContext enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mExtensionGetterMapForType (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -11441,7 +11441,7 @@ cMapElement_extensionGetterMapForBuildingContext * GALGAS_extensionGetterMapForB
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_extensionGetterMapForBuildingContext::cEnumerator_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -11664,7 +11664,7 @@ GALGAS_wrapperExtensionMap GALGAS_wrapperExtensionMap::add_operation (const GALG
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_wrapperExtensionMap result = *this ;
-  cEnumerator_wrapperExtensionMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_wrapperExtensionMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -11700,7 +11700,7 @@ cMapElement_wrapperExtensionMap * GALGAS_wrapperExtensionMap::readWriteAccessFor
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_wrapperExtensionMap::cEnumerator_wrapperExtensionMap (const GALGAS_wrapperExtensionMap & inEnumeratedObject,
-                                                                  const typeEnumerationOrder inOrder) :
+                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -12451,7 +12451,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_semanticExpressionListForGeneratio
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_semanticExpressionListForGeneration::cEnumerator_semanticExpressionListForGeneration (const GALGAS_semanticExpressionListForGeneration & inEnumeratedObject,
-                                                                                                  const typeEnumerationOrder inOrder) :
+                                                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -14048,7 +14048,7 @@ GALGAS_actualParameterForGeneration GALGAS_actualParameterListForGeneration::get
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_actualParameterListForGeneration::cEnumerator_actualParameterListForGeneration (const GALGAS_actualParameterListForGeneration & inEnumeratedObject,
-                                                                                            const typeEnumerationOrder inOrder) :
+                                                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -14999,7 +14999,7 @@ GALGAS_location GALGAS_listOfSemanticInstructionListForGeneration::getter_mEndOf
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_listOfSemanticInstructionListForGeneration::cEnumerator_listOfSemanticInstructionListForGeneration (const GALGAS_listOfSemanticInstructionListForGeneration & inEnumeratedObject,
-                                                                                                                const typeEnumerationOrder inOrder) :
+                                                                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }

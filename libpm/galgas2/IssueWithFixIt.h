@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  C_IssueWithFixIt                                                                             
+//  IssueWithFixIt                                                                             
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2016, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2016, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -44,13 +44,13 @@ typedef enum {
 
 //--------------------------------------------------------------------------------------------------
 
-class C_FixItDescription final {
+class FixItDescription final {
 //--- Default constructor
-  public: C_FixItDescription (void) ;
+  public: FixItDescription (void) ;
 
 //--- Constructor
-  public: C_FixItDescription (const EnumFixItKind inKind,
-                               const String & inActionString) ;
+  public: FixItDescription (const EnumFixItKind inKind,
+                            const String & inActionString) ;
 
 //--- Accessors
   public: EnumFixItKind kind (void) const { return mKind ; }
@@ -63,42 +63,42 @@ class C_FixItDescription final {
 
 //--------------------------------------------------------------------------------------------------
 
-class C_IssueWithFixIt {
+class IssueWithFixIt final {
 //--- Default constructor
-  public: C_IssueWithFixIt (void) ;
+  public: IssueWithFixIt (void) ;
 
 //--- Constructor
-  public: C_IssueWithFixIt (const LocationInSource & inStartLocation,
-                             const LocationInSource & inEndLocation,
-                             const TC_Array <C_FixItDescription> & inFixItArray) ;
+  public: IssueWithFixIt (const LocationInSource & inStartLocation,
+                          const LocationInSource & inEndLocation,
+                          const TC_Array <FixItDescription> & inFixItArray) ;
 
 //--- Properties
   public: const LocationInSource mStartLocation ;
   public: const LocationInSource mEndLocation ;
-  public: const TC_Array <C_FixItDescription> mFixItArray ;
+  public: const TC_Array <FixItDescription> mFixItArray ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_stringlist & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_lstringlist & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_string & inString) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_stringset & inStringSet) ;
 

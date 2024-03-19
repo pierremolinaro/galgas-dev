@@ -1,5 +1,5 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
@@ -520,7 +520,7 @@ GALGAS_semanticDeclarationForGeneration GALGAS_semanticDeclarationListForGenerat
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_semanticDeclarationListForGeneration::cEnumerator_semanticDeclarationListForGeneration (const GALGAS_semanticDeclarationListForGeneration & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -994,7 +994,7 @@ GALGAS_lstring GALGAS_signatureForGrammarAnalysis::getter_mGalgasTypeNameForGram
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_signatureForGrammarAnalysis::cEnumerator_signatureForGrammarAnalysis (const GALGAS_signatureForGrammarAnalysis & inEnumeratedObject,
-                                                                                  const typeEnumerationOrder inOrder) :
+                                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1179,7 +1179,7 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis GALGAS_nonterminalSymbolLabel
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis result = *this ;
-  cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFormalParametersList (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -1267,7 +1267,7 @@ cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * GALGAS_nonterminalSymb
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis (const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & inEnumeratedObject,
-                                                                                                                  const typeEnumerationOrder inOrder) :
+                                                                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1473,7 +1473,7 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis GALGAS_nonTerminalSymbolMapForGram
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_nonTerminalSymbolMapForGrammarAnalysis result = *this ;
-  cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mNonTerminalIndex (HERE), enumerator.current_mNonterminalSymbolParametersMap (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -1594,7 +1594,7 @@ cMapElement_nonTerminalSymbolMapForGrammarAnalysis * GALGAS_nonTerminalSymbolMap
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator_nonTerminalSymbolMapForGrammarAnalysis (const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inEnumeratedObject,
-                                                                                                        const typeEnumerationOrder inOrder) :
+                                                                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2090,7 +2090,7 @@ GALGAS_uint GALGAS_nonTerminalToAddList::getter_mNonTerminalToAddCountAtIndex (c
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_nonTerminalToAddList::cEnumerator_nonTerminalToAddList (const GALGAS_nonTerminalToAddList & inEnumeratedObject,
-                                                                    const typeEnumerationOrder inOrder) :
+                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2622,7 +2622,7 @@ GALGAS_string GALGAS_terminalCheckAssignementList::getter_mSourceLexicalAttribut
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_terminalCheckAssignementList::cEnumerator_terminalCheckAssignementList (const GALGAS_terminalCheckAssignementList & inEnumeratedObject,
-                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3380,7 +3380,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_filewrapperTemplateListForGen
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_filewrapperTemplateListForGeneration::cEnumerator_filewrapperTemplateListForGeneration (const GALGAS_filewrapperTemplateListForGeneration & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4136,7 +4136,7 @@ GALGAS_string GALGAS_localConstantList::getter_mCppNameAtIndex (const GALGAS_uin
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_localConstantList::cEnumerator_localConstantList (const GALGAS_localConstantList & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) :
+                                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4684,7 +4684,7 @@ GALGAS_string GALGAS_localInitializedVariableList::getter_mCppNameAtIndex (const
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_localInitializedVariableList::cEnumerator_localInitializedVariableList (const GALGAS_localInitializedVariableList & inEnumeratedObject,
-                                                                                    const typeEnumerationOrder inOrder) :
+                                                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5035,7 +5035,7 @@ GALGAS_propertyIndexMap GALGAS_propertyIndexMap::add_operation (const GALGAS_pro
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_propertyIndexMap result = *this ;
-  cEnumerator_propertyIndexMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_propertyIndexMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mPropertyTypeIndex (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -5123,7 +5123,7 @@ cMapElement_propertyIndexMap * GALGAS_propertyIndexMap::readWriteAccessForWithIn
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_propertyIndexMap::cEnumerator_propertyIndexMap (const GALGAS_propertyIndexMap & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) :
+                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5339,7 +5339,7 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalLabelMap::add_operation (const GALG
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_nonterminalLabelMap result = *this ;
-  cEnumerator_nonterminalLabelMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_nonterminalLabelMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mSignatureForGeneration (HERE), enumerator.current_mSignature (HERE), enumerator.current_mEndOfArgumentLocation (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -5493,7 +5493,7 @@ cMapElement_nonterminalLabelMap * GALGAS_nonterminalLabelMap::readWriteAccessFor
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_nonterminalLabelMap::cEnumerator_nonterminalLabelMap (const GALGAS_nonterminalLabelMap & inEnumeratedObject,
-                                                                  const typeEnumerationOrder inOrder) :
+                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5711,7 +5711,7 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::add_operation (const GALGAS_nonterm
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_nonterminalMap result = *this ;
-  cEnumerator_nonterminalMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_nonterminalMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLabelMap (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -5799,7 +5799,7 @@ cMapElement_nonterminalMap * GALGAS_nonterminalMap::readWriteAccessForWithInstru
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_nonterminalMap::cEnumerator_nonterminalMap (const GALGAS_nonterminalMap & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -6458,7 +6458,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_ruleLabelImplementationList::
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_ruleLabelImplementationList::cEnumerator_ruleLabelImplementationList (const GALGAS_ruleLabelImplementationList & inEnumeratedObject,
-                                                                                  const typeEnumerationOrder inOrder) :
+                                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7014,7 +7014,7 @@ GALGAS_ruleLabelImplementationList GALGAS_ruleDeclarationList::getter_mLabelImpl
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_ruleDeclarationList::cEnumerator_ruleDeclarationList (const GALGAS_ruleDeclarationList & inEnumeratedObject,
-                                                                  const typeEnumerationOrder inOrder) :
+                                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -7867,7 +7867,7 @@ GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::add_operation (
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_uselessEntityLocationMap result = *this ;
-  cEnumerator_uselessEntityLocationMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_uselessEntityLocationMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLocation (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -7933,7 +7933,7 @@ cMapElement_uselessEntityLocationMap * GALGAS_uselessEntityLocationMap::readWrit
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_uselessEntityLocationMap::cEnumerator_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap & inEnumeratedObject,
-                                                                            const typeEnumerationOrder inOrder) :
+                                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -8708,7 +8708,7 @@ GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::add_operation (const GALGAS_sco
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_scopeLocalVarMap result = *this ;
-  cEnumerator_scopeLocalVarMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_scopeLocalVarMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mType (HERE), enumerator.current_mCppName (HERE), enumerator.current_mNameForCheckingFormalParameterUsing (HERE), enumerator.current_mAttributes (HERE), enumerator.current_mState (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -8958,7 +8958,7 @@ cMapElement_scopeLocalVarMap * GALGAS_scopeLocalVarMap::readWriteAccessForWithIn
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_scopeLocalVarMap::cEnumerator_scopeLocalVarMap (const GALGAS_scopeLocalVarMap & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) :
+                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -9429,7 +9429,7 @@ GALGAS_scopeLocalVarMap GALGAS_localVarMapListForLLVM::getter_mMapAtIndex (const
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_localVarMapListForLLVM::cEnumerator_localVarMapListForLLVM (const GALGAS_localVarMapListForLLVM & inEnumeratedObject,
-                                                                        const typeEnumerationOrder inOrder) :
+                                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10108,7 +10108,7 @@ GALGAS_overrideKind GALGAS_openedOverrideList::getter_mOverrideKindAtIndex (cons
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_openedOverrideList::cEnumerator_openedOverrideList (const GALGAS_openedOverrideList & inEnumeratedObject,
-                                                                const typeEnumerationOrder inOrder) :
+                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -10355,7 +10355,7 @@ void extensionSetter_neutralAccess (GALGAS_localVarMapListForLLVM & ioObject,
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 419)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 420)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -10428,7 +10428,7 @@ void extensionSetter_searchForDropAccess (GALGAS_currentVarManager & ioObject,
   if (kBoolFalse == test_0) {
     GALGAS_bool var_found_20094 = GALGAS_bool (false) ;
     const GALGAS_currentVarManager temp_2 = ioObject ;
-    cEnumerator_localVarMapListForLLVM enumerator_20117 (temp_2.readProperty_mSubMaps (), kENUMERATION_UP) ;
+    cEnumerator_localVarMapListForLLVM enumerator_20117 (temp_2.readProperty_mSubMaps (), EnumerationOrder::up) ;
     bool bool_3 = var_found_20094.operator_not (SOURCE_FILE ("variable-manager.galgas", 453)).isValidAndTrue () ;
     if (enumerator_20117.hasCurrentObject () && bool_3) {
       while (enumerator_20117.hasCurrentObject () && bool_3) {
@@ -10443,12 +10443,12 @@ void extensionSetter_searchForDropAccess (GALGAS_currentVarManager & ioObject,
     if (kBoolTrue == test_4) {
       test_4 = var_found_20094.boolEnum () ;
       if (kBoolTrue == test_4) {
-        TC_Array <C_FixItDescription> fixItArray5 ;
+        TC_Array <FixItDescription> fixItArray5 ;
         inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 457)).add_operation (GALGAS_string ("' is not declared in current scope, but in an overrided scope"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 457)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 457)) ;
       }
     }
     if (kBoolFalse == test_4) {
-      TC_Array <C_FixItDescription> fixItArray6 ;
+      TC_Array <FixItDescription> fixItArray6 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 459)).add_operation (GALGAS_string ("' is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 459)), fixItArray6  COMMA_SOURCE_FILE ("variable-manager.galgas", 459)) ;
     }
   }
@@ -10532,7 +10532,7 @@ void extensionSetter_writeAccessInSubMap (GALGAS_localVarMapListForLLVM & ioObje
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 513)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 514)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -10615,7 +10615,7 @@ void extensionSetter_writeTransition (GALGAS_localVarValuation & ioObject,
       if (kBoolTrue == test_1) {
         test_1 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 553)).boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
+          TC_Array <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 554)) ;
         }
       }
@@ -10623,7 +10623,7 @@ void extensionSetter_writeTransition (GALGAS_localVarValuation & ioObject,
       if (kBoolTrue == test_3) {
         test_3 = constinArgument_inAttributes.getter_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 556)).boolEnum () ;
         if (kBoolTrue == test_3) {
-          TC_Array <C_FixItDescription> fixItArray4 ;
+          TC_Array <FixItDescription> fixItArray4 ;
           inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 557)).add_operation (GALGAS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 557)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 557)) ;
           ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 558)) ;
         }
@@ -10637,7 +10637,7 @@ void extensionSetter_writeTransition (GALGAS_localVarValuation & ioObject,
           }
           test_5 = test_6.boolEnum () ;
           if (kBoolTrue == test_5) {
-            TC_Array <C_FixItDescription> fixItArray7 ;
+            TC_Array <FixItDescription> fixItArray7 ;
             inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 560)).add_operation (GALGAS_string ("' was written to, but never read"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 560)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 560)) ;
           }
         }
@@ -10653,7 +10653,7 @@ void extensionSetter_writeTransition (GALGAS_localVarValuation & ioObject,
       if (kBoolTrue == test_8) {
         test_8 = constinArgument_inAttributes.getter_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas", 565)).boolEnum () ;
         if (kBoolTrue == test_8) {
-          TC_Array <C_FixItDescription> fixItArray9 ;
+          TC_Array <FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 566)).add_operation (GALGAS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 566)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 566)) ;
           ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 567)) ;
         }
@@ -10748,7 +10748,7 @@ void extensionSetter_readAccess (GALGAS_localVarMapListForLLVM & ioObject,
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 623)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 624)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -10821,7 +10821,7 @@ void extensionSetter_readTransition (GALGAS_localVarValuation & ioObject,
     break ;
   case GALGAS_localVarValuation::kEnum_declared:
     {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 656)).add_operation (GALGAS_string ("' used before being initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 656)), fixItArray1  COMMA_SOURCE_FILE ("variable-manager.galgas", 656)) ;
       ioObject = GALGAS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas", 657)) ;
     }
@@ -10833,7 +10833,7 @@ void extensionSetter_readTransition (GALGAS_localVarValuation & ioObject,
       if (kBoolTrue == test_2) {
         test_2 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 660)).boolEnum () ;
         if (kBoolTrue == test_2) {
-          TC_Array <C_FixItDescription> fixItArray3 ;
+          TC_Array <FixItDescription> fixItArray3 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 661)) ;
         }
       }
@@ -10845,7 +10845,7 @@ void extensionSetter_readTransition (GALGAS_localVarValuation & ioObject,
       if (kBoolTrue == test_4) {
         test_4 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 664)).boolEnum () ;
         if (kBoolTrue == test_4) {
-          TC_Array <C_FixItDescription> fixItArray5 ;
+          TC_Array <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 665)) ;
         }
       }
@@ -10857,7 +10857,7 @@ void extensionSetter_readTransition (GALGAS_localVarValuation & ioObject,
       if (kBoolTrue == test_6) {
         test_6 = constinArgument_inAttributes.getter_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas", 668)).boolEnum () ;
         if (kBoolTrue == test_6) {
-          TC_Array <C_FixItDescription> fixItArray7 ;
+          TC_Array <FixItDescription> fixItArray7 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("formal parameter has been declared as unused"), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 669)) ;
         }
       }
@@ -10944,7 +10944,7 @@ void extensionSetter_readWriteAccess (GALGAS_localVarMapListForLLVM & ioObject,
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
     test_0 = GALGAS_bool (kIsSupOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 718)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 719)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
@@ -11051,7 +11051,7 @@ void extensionSetter_closeScope (GALGAS_currentVarManager & ioObject,
     const GALGAS_currentVarManager temp_2 = ioObject ;
     test_1 = GALGAS_bool (kIsEqual, temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 766)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_1) {
-      TC_Array <C_FixItDescription> fixItArray3 ;
+      TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("EMPTY SUBMAPS"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 767)) ;
     }
   }
@@ -11116,7 +11116,7 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
       if (kBoolTrue == test_1) {
         test_1 = constinArgument_inAttributes.getter_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 802)).boolEnum () ;
         if (kBoolTrue == test_1) {
-          TC_Array <C_FixItDescription> fixItArray2 ;
+          TC_Array <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 803)).add_operation (GALGAS_string ("' should be initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 803)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 803)) ;
         }
       }
@@ -11125,12 +11125,12 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
         if (kBoolTrue == test_3) {
           test_3 = extractedValue_35233_usedInOtherBlock.boolEnum () ;
           if (kBoolTrue == test_3) {
-            TC_Array <C_FixItDescription> fixItArray4 ;
+            TC_Array <FixItDescription> fixItArray4 ;
             inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 805)).add_operation (GALGAS_string ("' is only used  in sub scope; consider moving it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 805)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 805)) ;
           }
         }
         if (kBoolFalse == test_3) {
-          TC_Array <C_FixItDescription> fixItArray5 ;
+          TC_Array <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 807)).add_operation (GALGAS_string ("' was never used; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 807)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 807)) ;
         }
       }
@@ -11142,7 +11142,7 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
       if (kBoolTrue == test_6) {
         test_6 = constinArgument_inAttributes.getter_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 810)).boolEnum () ;
         if (kBoolTrue == test_6) {
-          TC_Array <C_FixItDescription> fixItArray7 ;
+          TC_Array <FixItDescription> fixItArray7 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("parameter '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 811)).add_operation (GALGAS_string ("' was never read; consider declaring it as unused"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 811)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 811)) ;
         }
       }
@@ -11151,7 +11151,7 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
         if (kBoolTrue == test_8) {
           test_8 = constinArgument_inAttributes.getter_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 812)).operator_not (SOURCE_FILE ("variable-manager.galgas", 812)).boolEnum () ;
           if (kBoolTrue == test_8) {
-            TC_Array <C_FixItDescription> fixItArray9 ;
+            TC_Array <FixItDescription> fixItArray9 ;
             inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 813)).add_operation (GALGAS_string ("' was never read; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 813)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 813)) ;
           }
         }
@@ -11164,7 +11164,7 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
       if (kBoolTrue == test_10) {
         test_10 = constinArgument_inAttributes.getter_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 816)).operator_not (SOURCE_FILE ("variable-manager.galgas", 816)).boolEnum () ;
         if (kBoolTrue == test_10) {
-          TC_Array <C_FixItDescription> fixItArray11 ;
+          TC_Array <FixItDescription> fixItArray11 ;
           inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 817)).add_operation (GALGAS_string ("' was never mutated; consider declaring it as 'let'"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 817)), fixItArray11  COMMA_SOURCE_FILE ("variable-manager.galgas", 817)) ;
         }
       }
@@ -11189,7 +11189,7 @@ void extensionMethod_checkFinalStates (const GALGAS_scopeLocalVarMap inObject,
                                        Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_scopeLocalVarMap temp_0 = inObject ;
-  cEnumerator_scopeLocalVarMap enumerator_36498 (temp_0, kENUMERATION_UP) ;
+  cEnumerator_scopeLocalVarMap enumerator_36498 (temp_0, EnumerationOrder::up) ;
   while (enumerator_36498.hasCurrentObject ()) {
     extensionMethod_checkFinalState (enumerator_36498.current_mState (HERE), enumerator_36498.current_lkey (HERE), enumerator_36498.current_mAttributes (HERE), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 828)) ;
     enumerator_36498.gotoNextObject () ;
@@ -11363,7 +11363,7 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
                                      Compiler * inCompiler
                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_scopeLocalVarMap temp_0 = ioObject ;
-  cEnumerator_scopeLocalVarMap enumerator_39011 (temp_0, kENUMERATION_UP) ;
+  cEnumerator_scopeLocalVarMap enumerator_39011 (temp_0, EnumerationOrder::up) ;
   while (enumerator_39011.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
@@ -11404,7 +11404,7 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
     }
     enumerator_39011.gotoNextObject () ;
   }
-  cEnumerator_scopeLocalVarMap enumerator_39615 (constinArgument_inOtherMap, kENUMERATION_UP) ;
+  cEnumerator_scopeLocalVarMap enumerator_39615 (constinArgument_inOtherMap, EnumerationOrder::up) ;
   while (enumerator_39615.hasCurrentObject ()) {
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
@@ -11446,8 +11446,8 @@ void extensionSetter_combineManagerWith (GALGAS_currentVarManager & ioObject,
   if (kBoolFalse == test_0) {
     GALGAS_localVarMapListForLLVM var_newSubMapList_40385 = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 933)) ;
     const GALGAS_currentVarManager temp_3 = ioObject ;
-    cEnumerator_localVarMapListForLLVM enumerator_40413 (temp_3.readProperty_mSubMaps (), kENUMERATION_UP) ;
-    cEnumerator_localVarMapListForLLVM enumerator_40440 (constinArgument_inOtherManager.readProperty_mSubMaps (), kENUMERATION_UP) ;
+    cEnumerator_localVarMapListForLLVM enumerator_40413 (temp_3.readProperty_mSubMaps (), EnumerationOrder::up) ;
+    cEnumerator_localVarMapListForLLVM enumerator_40440 (constinArgument_inOtherManager.readProperty_mSubMaps (), EnumerationOrder::up) ;
     while (enumerator_40413.hasCurrentObject () && enumerator_40440.hasCurrentObject ()) {
       GALGAS_scopeLocalVarMap var_mutableSubMap_40493 = enumerator_40413.current_mMap (HERE) ;
       {
@@ -11463,7 +11463,7 @@ void extensionSetter_combineManagerWith (GALGAS_currentVarManager & ioObject,
   if (kBoolTrue == test_4) {
     test_4 = GALGAS_bool (kIsNotEqual, var_s_40080.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_4) {
-      TC_Array <C_FixItDescription> fixItArray5 ;
+      TC_Array <FixItDescription> fixItArray5 ;
       inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("convergence error:").add_operation (var_s_40080, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 946)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 946)) ;
     }
   }
@@ -12209,7 +12209,7 @@ GALGAS_unifiedTypeMap GALGAS_unifiedTypeMap::add_operation (const GALGAS_unified
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap result = *this ;
-  cEnumerator_unifiedTypeMap enumerator (inOperand, kENUMERATION_UP) ;
+  cEnumerator_unifiedTypeMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mElement (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -12275,7 +12275,7 @@ cMapElement_unifiedTypeMap * GALGAS_unifiedTypeMap::readWriteAccessForWithInstru
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_unifiedTypeMap::cEnumerator_unifiedTypeMap (const GALGAS_unifiedTypeMap & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -12479,7 +12479,7 @@ GALGAS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GALGAS_uni
       }
     }
     if (kBoolFalse == test_1) {
-      TC_Array <C_FixItDescription> fixItArray3 ;
+      TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 78)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 78)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 78)) ;
       result_result.drop () ; // Release error dropped variable
     }
@@ -12516,7 +12516,7 @@ void extensionSetter_insertType (GALGAS_unifiedTypeMap & ioObject,
         break ;
       case GALGAS_typeDefinition::kEnum_solved:
         {
-          TC_Array <C_FixItDescription> fixItArray2 ;
+          TC_Array <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GALGAS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 88)) ;
         }
         break ;
@@ -12570,7 +12570,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_typeDefinition (const GALGAS_unifie
         break ;
       case GALGAS_typeDefinition::kEnum_unsolved:
         {
-          TC_Array <C_FixItDescription> fixItArray2 ;
+          TC_Array <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 112)) ;
           result_result.drop () ; // Release error dropped variable
         }
@@ -12579,7 +12579,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_typeDefinition (const GALGAS_unifie
     }
   }
   if (kBoolFalse == test_0) {
-    TC_Array <C_FixItDescription> fixItArray3 ;
+    TC_Array <FixItDescription> fixItArray3 ;
     inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GALGAS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 115)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 115)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 115)) ;
     result_result.drop () ; // Release error dropped variable
   }
@@ -12897,7 +12897,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
     break ;
   case GALGAS_unifiedTypeMapEntry::kEnum_null:
     {
-      TC_Array <C_FixItDescription> fixItArray1 ;
+      TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 182)), GALGAS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 182)) ;
       result_result.drop () ; // Release error dropped variable
     }
@@ -12918,7 +12918,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
             break ;
           case GALGAS_typeDefinition::kEnum_unsolved:
             {
-              TC_Array <C_FixItDescription> fixItArray3 ;
+              TC_Array <FixItDescription> fixItArray3 ;
               inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 187)), GALGAS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 187)) ;
               result_result.drop () ; // Release error dropped variable
             }
@@ -12934,7 +12934,7 @@ GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTyp
         }
       }
       if (kBoolFalse == test_2) {
-        TC_Array <C_FixItDescription> fixItArray4 ;
+        TC_Array <FixItDescription> fixItArray4 ;
         inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 192)), GALGAS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 192)) ;
         result_result.drop () ; // Release error dropped variable
       }
@@ -14861,7 +14861,7 @@ GALGAS_location GALGAS_actualOutputExpressionList::getter_mEndOfExpressionLocati
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_actualOutputExpressionList::cEnumerator_actualOutputExpressionList (const GALGAS_actualOutputExpressionList & inEnumeratedObject,
-                                                                                const typeEnumerationOrder inOrder) :
+                                                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -14955,7 +14955,7 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpression
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
-  cEnumerator_actualOutputExpressionList enumerator_5045 (temp_0, kENUMERATION_UP) ;
+  cEnumerator_actualOutputExpressionList enumerator_5045 (temp_0, EnumerationOrder::up) ;
   while (enumerator_5045.hasCurrentObject ()) {
     callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_5045.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 140)) ;
     enumerator_5045.gotoNextObject () ;

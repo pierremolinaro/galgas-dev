@@ -470,7 +470,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
   ioCppFileContents.appendCString ("static const int32_t gProductions_") ;
   ioCppFileContents.appendString (inTargetFileName) ;
   ioCppFileContents.appendCString (" [] = {\n") ;
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
+  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::up) ;
   int16_t productionIndex = 0 ;
   bool first = true ;
   while (nonTerminal.hasCurrentObject ()) {
@@ -494,7 +494,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
 
 //--- Generate productions names table
   ioCppFileContents.appendCppTitleComment ("P R O D U C T I O N    N A M E S") ;
-  ioCppFileContents.appendCString ("static const cProductionNameDescriptor gProductionNames_") ;
+  ioCppFileContents.appendCString ("static const ProductionNameDescriptor gProductionNames_") ;
   ioCppFileContents.appendString (inTargetFileName) ;
   ioCppFileContents.appendCString (" [") ;
   ioCppFileContents.appendSigned (productionRuleDescription.count ()) ;
@@ -631,7 +631,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                                      "indexing",
                                      "") ;
     ioCppFileContents.appendCString ("}\n\n") ;
-    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
+    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), EnumerationOrder::up) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       ioCppFileContents.appendCString ("void cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
@@ -640,7 +640,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
       ioCppFileContents.appendCString ("_") ;
       ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" (") ;
-      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
+      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
@@ -788,7 +788,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
           ioCppFileContents.appendCString (",\n                                ") ;
         }
         ioCppFileContents.appendCString ("GALGAS_lstring inFilePath") ;
-        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
+        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
         int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
@@ -881,7 +881,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                              "        message.appendString (filePath) ;\n"
                              "        message.appendString (\"' file exists, but cannot be read\") ;\n"
                              "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
-                             "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
+                             "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
                              "      }\n"
                              "      macroDetachSharedObject (scanner) ;\n"
                              "    }else{\n"
@@ -890,7 +890,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
                              "      message.appendString (filePath) ;\n"
                              "      message.appendString (\"' file does not exist\") ;\n"
                              "      const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
-                             "      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;\n"
+                             "      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
                              "    }\n"
                              "  }\n"
                              "}\n\n") ;

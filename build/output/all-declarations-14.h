@@ -793,7 +793,7 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
 
 class cEnumerator_headerCompositionMap : public cGenericAbstractEnumerator {
   public: cEnumerator_headerCompositionMap (const GALGAS_headerCompositionMap & inEnumeratedObject,
-                                            const typeEnumerationOrder inOrder) ;
+                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1031,7 +1031,7 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
 
 class cEnumerator_headerRepartitionMap : public cGenericAbstractEnumerator {
   public: cEnumerator_headerRepartitionMap (const GALGAS_headerRepartitionMap & inEnumeratedObject,
-                                            const typeEnumerationOrder inOrder) ;
+                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1255,7 +1255,7 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 
 class cEnumerator_projectQualifiedFeatureMap : public cGenericAbstractEnumerator {
   public: cEnumerator_projectQualifiedFeatureMap (const GALGAS_projectQualifiedFeatureMap & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) ;
+                                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1557,7 +1557,7 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
 
 class cEnumerator_XCodeGroupList : public cGenericAbstractEnumerator {
   public: cEnumerator_XCodeGroupList (const GALGAS_XCodeGroupList & inEnumeratedObject,
-                                      const typeEnumerationOrder inOrder) ;
+                                      const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_string current_mGroupReference (LOCATION_ARGS) const ;
@@ -1988,7 +1988,7 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
 
 class cEnumerator_XCodeToolTargetList : public cGenericAbstractEnumerator {
   public: cEnumerator_XCodeToolTargetList (const GALGAS_XCodeToolTargetList & inEnumeratedObject,
-                                           const typeEnumerationOrder inOrder) ;
+                                           const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_string current_mTargetRef (LOCATION_ARGS) const ;
@@ -2560,7 +2560,7 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
 
 class cEnumerator_XCodeAppTargetList : public cGenericAbstractEnumerator {
   public: cEnumerator_XCodeAppTargetList (const GALGAS_XCodeAppTargetList & inEnumeratedObject,
-                                          const typeEnumerationOrder inOrder) ;
+                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_string current_mTargetRef (LOCATION_ARGS) const ;
@@ -2959,7 +2959,7 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
 
 class cEnumerator_BuildFileList : public cGenericAbstractEnumerator {
   public: cEnumerator_BuildFileList (const GALGAS_BuildFileList & inEnumeratedObject,
-                                     const typeEnumerationOrder inOrder) ;
+                                     const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_string current_mFileReference (LOCATION_ARGS) const ;

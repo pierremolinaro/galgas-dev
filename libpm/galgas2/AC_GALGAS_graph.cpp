@@ -416,7 +416,7 @@ GALGAS_location cSharedGraph::locationForKey (const String & inKey,
   if (!ok) {
     inCompiler->emitSemanticError (GALGAS_location (),
                                    String ("graph locationForKey: node '") + inKey + String ("' is undefined"),
-                                   TC_Array <C_FixItDescription> ()
+                                   TC_Array <FixItDescription> ()
                                    COMMA_THERE) ;
   }
   return result ;
@@ -554,7 +554,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
                              COMMA_LOCATION_ARGS) const {
 //--- Build start node set
   UInt32Set startNodeSet ;
-  cEnumerator_lstringlist enumerator1 (inStartNodes, kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator1 (inStartNodes, EnumerationOrder::up) ;
   while (enumerator1.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
     if (nullptr == nodePtr) {
@@ -563,7 +563,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
       message.appendCString ("' is not a declared node, cannot start from it") ;
       inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mProperty_location,
                                      message,
-                                     TC_Array <C_FixItDescription> ()
+                                     TC_Array <FixItDescription> ()
                                      COMMA_THERE) ;
     }else{
       startNodeSet.add (nodePtr->mNodeID) ;
@@ -572,7 +572,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   }
 //--- Build node to exclude set
   UInt32Set nodesToExcludeSet ;
-  cEnumerator_stringset enumerator2 (inNodesToExclude, kENUMERATION_UP) ;
+  cEnumerator_stringset enumerator2 (inNodesToExclude, EnumerationOrder::up) ;
   while (enumerator2.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator2.current_key (THERE).stringValue(), root()) ;
     if (nullptr == nodePtr) {

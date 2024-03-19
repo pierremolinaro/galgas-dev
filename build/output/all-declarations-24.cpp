@@ -1,11 +1,50 @@
 #include "Compiler.h"
-#include "C_galgas_io.h"
+#include "galgas-input-output.h"
 #include "C_galgas_CLI_Options.h"
 #include "PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
 
 #include "all-declarations-24.h"
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@extensionSetterAST buildExtensionListMaps'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_extensionSetterAST::method_buildExtensionListMaps (GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionSetterListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & ioArgument_ioExtensionSetterListMap,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionSetterListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionSetterListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionMethodListMapAST */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionMethodListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionMethodListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionMethodListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionGetterListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionGetterListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionGetterListMap */,
+                                                             GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionGetterListMap */,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_extensionSetterAST temp_0 = this ;
+  const GALGAS_extensionSetterAST temp_1 = this ;
+  ioArgument_ioExtensionSetterListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mExtensionSetterName ()  COMMA_SOURCE_FILE ("extension-setter.galgas", 277)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@extensionSetterForGeneration headerKind'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_headerKind cPtr_extensionSetterForGeneration::getter_headerKind (Compiler */* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_headerKind result_result ; // Returned variable
+  result_result = GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("extension-setter.galgas", 298)) ;
+//---
+  return result_result ;
+}
+
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -47,7 +86,7 @@ void cPtr_extensionSetterForGeneration::method_appendSpecificImplementation (con
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_extensionSetterForGeneration temp_0 = this ;
-  cEnumerator_formalParameterListForGeneration enumerator_14618 (temp_0.readProperty_mExtensionSetterFormalParameterList (), kENUMERATION_UP) ;
+  cEnumerator_formalParameterListForGeneration enumerator_14618 (temp_0.readProperty_mExtensionSetterFormalParameterList (), EnumerationOrder::up) ;
   while (enumerator_14618.hasCurrentObject ()) {
     extensionMethod_addHeaderFileName (enumerator_14618.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("extension-setter.galgas", 329)) ;
     enumerator_14618.gotoNextObject () ;
@@ -228,7 +267,7 @@ void cPtr_overridingAbstractExtensionGetterAST::method_semanticAnalysis (GALGAS_
     test_2 = extensionGetter_definition (var_selfType_9335, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 217)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 217)).operator_not (SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 217)).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_overridingAbstractExtensionGetterAST temp_3 = this ;
-      TC_Array <C_FixItDescription> fixItArray4 ;
+      TC_Array <FixItDescription> fixItArray4 ;
       inCompiler->emitSemanticError (temp_3.readProperty_mAbstractExtensionGetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension getter: '@").add_operation (extensionGetter_definition (var_selfType_9335, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 218)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 218)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 218)), fixItArray4  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 218)) ;
     }
   }
@@ -238,7 +277,7 @@ void cPtr_overridingAbstractExtensionGetterAST::method_semanticAnalysis (GALGAS_
       test_5 = extensionGetter_definition (var_selfType_9335, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 219)).readProperty_mIsConcrete ().boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_overridingAbstractExtensionGetterAST temp_6 = this ;
-        TC_Array <C_FixItDescription> fixItArray7 ;
+        TC_Array <FixItDescription> fixItArray7 ;
         inCompiler->emitSemanticError (temp_6.readProperty_mAbstractExtensionGetterName ().readProperty_location (), GALGAS_string ("cannot declare an abstract extension getter: '@").add_operation (extensionGetter_definition (var_selfType_9335, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 220)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 220)).add_operation (GALGAS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 220)), fixItArray7  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 220)) ;
       }
     }
@@ -291,7 +330,7 @@ void cPtr_overridingAbstractExtensionGetterAST::method_semanticAnalysis (GALGAS_
     test_12 = GALGAS_bool (kIsEqual, var_baseTypeName_10016.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_12) {
       const GALGAS_overridingAbstractExtensionGetterAST temp_13 = this ;
-      TC_Array <C_FixItDescription> fixItArray14 ;
+      TC_Array <FixItDescription> fixItArray14 ;
       inCompiler->emitSemanticError (temp_13.readProperty_mAbstractExtensionGetterName ().readProperty_location (), GALGAS_string ("this getter is not declared by a super class"), fixItArray14  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 248)) ;
     }
   }
@@ -301,7 +340,7 @@ void cPtr_overridingAbstractExtensionGetterAST::method_semanticAnalysis (GALGAS_
     if (kBoolTrue == test_15) {
       GALGAS_formalInputParameterListForGeneration var_formalParameterListForGeneration_11093 = GALGAS_formalInputParameterListForGeneration::class_func_emptyList (SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 252)) ;
       const GALGAS_overridingAbstractExtensionGetterAST temp_16 = this ;
-      cEnumerator_formalInputParameterListAST enumerator_11241 (temp_16.readProperty_mAbstractExtensionGetterFormalInputParameterList (), kENUMERATION_UP) ;
+      cEnumerator_formalInputParameterListAST enumerator_11241 (temp_16.readProperty_mAbstractExtensionGetterFormalInputParameterList (), EnumerationOrder::up) ;
       while (enumerator_11241.hasCurrentObject ()) {
         var_formalParameterListForGeneration_11093.addAssign_operation (enumerator_11241.current_mFormalSelector (HERE), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_11241.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 256)), enumerator_11241.current_mFormalArgumentName (HERE).readProperty_string (), enumerator_11241.current_mFormalArgumentName (HERE), enumerator_11241.current_mIsConstant (HERE)  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 254)) ;
         enumerator_11241.gotoNextObject () ;
@@ -427,7 +466,7 @@ void cPtr_overridingAbstractExtensionMethodAST::method_semanticAnalysis (GALGAS_
     test_1 = extensionGetter_definition (var_selfType_8238, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 183)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 183)).operator_not (SOURCE_FILE ("extension-overriding-abstract-method.galgas", 183)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_overridingAbstractExtensionMethodAST temp_2 = this ;
-      TC_Array <C_FixItDescription> fixItArray3 ;
+      TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (temp_2.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GALGAS_string ("cannot declare a extension method: '@").add_operation (extensionGetter_definition (var_selfType_8238, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 184)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 184)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 184)), fixItArray3  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 184)) ;
     }
   }
@@ -437,7 +476,7 @@ void cPtr_overridingAbstractExtensionMethodAST::method_semanticAnalysis (GALGAS_
       test_4 = extensionGetter_definition (var_selfType_8238, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 185)).readProperty_mIsConcrete ().boolEnum () ;
       if (kBoolTrue == test_4) {
         const GALGAS_overridingAbstractExtensionMethodAST temp_5 = this ;
-        TC_Array <C_FixItDescription> fixItArray6 ;
+        TC_Array <FixItDescription> fixItArray6 ;
         inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GALGAS_string ("cannot declare an abstract extension method: '@").add_operation (extensionGetter_definition (var_selfType_8238, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 186)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 186)).add_operation (GALGAS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 186)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 186)) ;
       }
     }
@@ -489,7 +528,7 @@ void cPtr_overridingAbstractExtensionMethodAST::method_semanticAnalysis (GALGAS_
     test_11 = GALGAS_bool (kIsEqual, var_baseTypeName_8808.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_11) {
       const GALGAS_overridingAbstractExtensionMethodAST temp_12 = this ;
-      TC_Array <C_FixItDescription> fixItArray13 ;
+      TC_Array <FixItDescription> fixItArray13 ;
       inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GALGAS_string ("this getter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas", 212)) ;
     }
   }
@@ -603,7 +642,7 @@ void cPtr_overridingAbstractExtensionSetterAST::method_semanticAnalysis (GALGAS_
     test_1 = extensionGetter_definition (var_selfType_6005, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 124)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 124)).operator_not (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 124)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_overridingAbstractExtensionSetterAST temp_2 = this ;
-      TC_Array <C_FixItDescription> fixItArray3 ;
+      TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (temp_2.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension setter: '@").add_operation (extensionGetter_definition (var_selfType_6005, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 125)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 125)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 125)), fixItArray3  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 125)) ;
     }
   }
@@ -613,7 +652,7 @@ void cPtr_overridingAbstractExtensionSetterAST::method_semanticAnalysis (GALGAS_
       test_4 = extensionGetter_definition (var_selfType_6005, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 126)).readProperty_mIsConcrete ().boolEnum () ;
       if (kBoolTrue == test_4) {
         const GALGAS_overridingAbstractExtensionSetterAST temp_5 = this ;
-        TC_Array <C_FixItDescription> fixItArray6 ;
+        TC_Array <FixItDescription> fixItArray6 ;
         inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare an abstract extension setter: '@").add_operation (extensionGetter_definition (var_selfType_6005, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)).add_operation (GALGAS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)) ;
       }
     }
@@ -665,7 +704,7 @@ void cPtr_overridingAbstractExtensionSetterAST::method_semanticAnalysis (GALGAS_
     test_11 = GALGAS_bool (kIsEqual, var_baseTypeName_6575.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_11) {
       const GALGAS_overridingAbstractExtensionSetterAST temp_12 = this ;
-      TC_Array <C_FixItDescription> fixItArray13 ;
+      TC_Array <FixItDescription> fixItArray13 ;
       inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("this setter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 145)) ;
     }
   }
@@ -812,7 +851,7 @@ void cPtr_overridingExtensionGetterAST::method_semanticAnalysis (GALGAS_lstringl
     test_4 = extensionGetter_definition (var_selfType_10734, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 253)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-getter.galgas", 253)).operator_not (SOURCE_FILE ("extension-overriding-getter.galgas", 253)).boolEnum () ;
     if (kBoolTrue == test_4) {
       const GALGAS_overridingExtensionGetterAST temp_5 = this ;
-      TC_Array <C_FixItDescription> fixItArray6 ;
+      TC_Array <FixItDescription> fixItArray6 ;
       inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionGetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension getter: '@").add_operation (extensionGetter_definition (var_selfType_10734, inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 254)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 254)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 254)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 254)) ;
     }
   }
@@ -864,7 +903,7 @@ void cPtr_overridingExtensionGetterAST::method_semanticAnalysis (GALGAS_lstringl
     test_11 = GALGAS_bool (kIsEqual, var_baseTypeName_11083.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_11) {
       const GALGAS_overridingExtensionGetterAST temp_12 = this ;
-      TC_Array <C_FixItDescription> fixItArray13 ;
+      TC_Array <FixItDescription> fixItArray13 ;
       inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionGetterName ().readProperty_location (), GALGAS_string ("this getter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-getter.galgas", 282)) ;
     }
   }
@@ -1073,7 +1112,7 @@ void cPtr_overridingExtensionMethodAST::method_semanticAnalysis (GALGAS_lstringl
     test_4 = extensionGetter_definition (var_selfType_9489, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 209)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-method.galgas", 209)).operator_not (SOURCE_FILE ("extension-overriding-method.galgas", 209)).boolEnum () ;
     if (kBoolTrue == test_4) {
       const GALGAS_overridingExtensionMethodAST temp_5 = this ;
-      TC_Array <C_FixItDescription> fixItArray6 ;
+      TC_Array <FixItDescription> fixItArray6 ;
       inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GALGAS_string ("cannot declare a extension method: '@").add_operation (extensionGetter_definition (var_selfType_9489, inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 210)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 210)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 210)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 210)) ;
     }
   }
@@ -1124,7 +1163,7 @@ void cPtr_overridingExtensionMethodAST::method_semanticAnalysis (GALGAS_lstringl
     test_11 = GALGAS_bool (kIsEqual, var_baseTypeName_9838.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_11) {
       const GALGAS_overridingExtensionMethodAST temp_12 = this ;
-      TC_Array <C_FixItDescription> fixItArray13 ;
+      TC_Array <FixItDescription> fixItArray13 ;
       inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GALGAS_string ("this method is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-method.galgas", 236)) ;
     }
   }
@@ -1338,7 +1377,7 @@ void cPtr_overridingExtensionSetterAST::method_semanticAnalysis (GALGAS_lstringl
     test_4 = extensionGetter_definition (var_selfType_6965, inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 142)).readProperty_mTypeKindEnum ().getter_isClassType (SOURCE_FILE ("extension-overriding-setter.galgas", 142)).operator_not (SOURCE_FILE ("extension-overriding-setter.galgas", 142)).boolEnum () ;
     if (kBoolTrue == test_4) {
       const GALGAS_overridingExtensionSetterAST temp_5 = this ;
-      TC_Array <C_FixItDescription> fixItArray6 ;
+      TC_Array <FixItDescription> fixItArray6 ;
       inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension setter: '@").add_operation (extensionGetter_definition (var_selfType_6965, inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 143)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 143)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 143)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 143)) ;
     }
   }
@@ -1389,7 +1428,7 @@ void cPtr_overridingExtensionSetterAST::method_semanticAnalysis (GALGAS_lstringl
     test_11 = GALGAS_bool (kIsEqual, var_baseTypeName_7314.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_11) {
       const GALGAS_overridingExtensionSetterAST temp_12 = this ;
-      TC_Array <C_FixItDescription> fixItArray13 ;
+      TC_Array <FixItDescription> fixItArray13 ;
       inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("this setter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-setter.galgas", 161)) ;
     }
   }
@@ -5199,7 +5238,7 @@ void cPtr_outputActualParameterAST::method_checkAgainstFormalArgument (const GAL
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentIn (SOURCE_FILE ("actual-parameters.galgas", 151)))).operator_and (GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("actual-parameters.galgas", 152)))) COMMA_SOURCE_FILE ("actual-parameters.galgas", 151)).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_outputActualParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 154)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 154)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 154)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 156)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 155)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 156)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 153)) ;
     }
   }
@@ -5218,7 +5257,7 @@ void cPtr_outputActualParameterAST::method_checkAgainstFormalArgument (const GAL
         }
         GALGAS_string var_s_7978 = GALGAS_string ("!").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 159)) ;
         const GALGAS_outputActualParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_7978) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_7978, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 160)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 160)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 160)) ;
       }
@@ -5278,7 +5317,7 @@ void cPtr_outputInputActualParameterAST::method_enterInActualOutputParameterList
                                                                                   Compiler * inCompiler
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputActualParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support output/input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 215)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -5305,7 +5344,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("actual-parameters.galgas", 232)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_outputInputActualParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 234)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 234)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 234)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 236)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 235)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 236)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 233)) ;
     }
   }
@@ -5324,7 +5363,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
         }
         GALGAS_string var_s_11698 = GALGAS_string ("!\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 238)) ;
         const GALGAS_outputInputActualParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_11698) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_11698, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 239)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 239)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 239)) ;
       }
@@ -5339,7 +5378,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
   }
   GALGAS_unifiedTypeMapEntryList var_typeList_12112 = GALGAS_unifiedTypeMapEntryList::class_func_listWithValue (var_parameterType_12048  COMMA_SOURCE_FILE ("actual-parameters.galgas", 248)) ;
   const GALGAS_outputInputActualParameterAST temp_10 = this ;
-  cEnumerator_lstringlist enumerator_12188 (temp_10.readProperty_mStructAttributeList (), kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator_12188 (temp_10.readProperty_mStructAttributeList (), EnumerationOrder::up) ;
   while (enumerator_12188.hasCurrentObject ()) {
     GALGAS_propertyMap var_propertyMap_12237 = extensionGetter_definition (var_parameterType_12048, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 250)).readProperty_mPropertyMap () ;
     GALGAS_AccessControl var_accessControl_12348 ;
@@ -5350,7 +5389,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
     if (kBoolTrue == test_11) {
       test_11 = var_isConstant_12375.boolEnum () ;
       if (kBoolTrue == test_11) {
-        TC_Array <C_FixItDescription> fixItArray12 ;
+        TC_Array <FixItDescription> fixItArray12 ;
         inCompiler->emitSemanticError (enumerator_12188.current_mValue (HERE).readProperty_location (), GALGAS_string ("a constant property cannot be modified"), fixItArray12  COMMA_SOURCE_FILE ("actual-parameters.galgas", 262)) ;
       }
     }
@@ -5362,7 +5401,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
     test_13 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentType.objectCompare (var_parameterType_12048)).boolEnum () ;
     if (kBoolTrue == test_13) {
       const GALGAS_outputInputActualParameterAST temp_14 = this ;
-      TC_Array <C_FixItDescription> fixItArray15 ;
+      TC_Array <FixItDescription> fixItArray15 ;
       inCompiler->emitSemanticError (temp_14.readProperty_mOutputInputActualParameterName ().readProperty_location (), GALGAS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_parameterType_12048, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 269)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 269)).add_operation (GALGAS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 269)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 271)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 270)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 271)), fixItArray15  COMMA_SOURCE_FILE ("actual-parameters.galgas", 268)) ;
     }
   }
@@ -5372,7 +5411,7 @@ void cPtr_outputInputActualParameterAST::method_checkAgainstFormalArgument (cons
     test_16 = ioArgument_ioExclusiveVariableSet.getter_hasKey (temp_17.readProperty_mOutputInputActualParameterName ().readProperty_string () COMMA_SOURCE_FILE ("actual-parameters.galgas", 274)).boolEnum () ;
     if (kBoolTrue == test_16) {
       const GALGAS_outputInputActualParameterAST temp_18 = this ;
-      TC_Array <C_FixItDescription> fixItArray19 ;
+      TC_Array <FixItDescription> fixItArray19 ;
       inCompiler->emitSemanticError (temp_18.readProperty_mOutputInputActualParameterName ().readProperty_location (), GALGAS_string ("this variable is already named as input or output/input effective parameter"), fixItArray19  COMMA_SOURCE_FILE ("actual-parameters.galgas", 275)) ;
     }
   }
@@ -5426,7 +5465,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_enterInActualOutputParamete
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputSingleJokerParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support output/input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 315)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -5453,7 +5492,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_checkAgainstFormalArgument 
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("actual-parameters.galgas", 332)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_outputInputSingleJokerParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 334)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 334)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 334)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 336)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 335)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 336)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 333)) ;
     }
   }
@@ -5472,7 +5511,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_checkAgainstFormalArgument 
         }
         GALGAS_string var_s_16367 = GALGAS_string ("!\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 338)) ;
         const GALGAS_outputInputSingleJokerParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_16367) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_16367, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 339)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 339)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 339)) ;
       }
@@ -5482,7 +5521,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_checkAgainstFormalArgument 
   GALGAS_bool var_hasCompilerArgument_16698 = GALGAS_bool (false) ;
   GALGAS_string var_constructorName_16742 = GALGAS_string::makeEmptyString () ;
   GALGAS_bool var_found_16771 = GALGAS_bool (false) ;
-  cEnumerator_classFunctionMap enumerator_16798 (var_classFunctionMap_16613, kENUMERATION_UP) ;
+  cEnumerator_classFunctionMap enumerator_16798 (var_classFunctionMap_16613, EnumerationOrder::up) ;
   bool bool_9 = var_found_16771.operator_not (SOURCE_FILE ("actual-parameters.galgas", 346)).isValidAndTrue () ;
   if (enumerator_16798.hasCurrentObject () && bool_9) {
     while (enumerator_16798.hasCurrentObject () && bool_9) {
@@ -5510,7 +5549,7 @@ void cPtr_outputInputSingleJokerParameterAST::method_checkAgainstFormalArgument 
     test_12 = var_found_16771.operator_not (SOURCE_FILE ("actual-parameters.galgas", 353)).boolEnum () ;
     if (kBoolTrue == test_12) {
       const GALGAS_outputInputSingleJokerParameterAST temp_13 = this ;
-      TC_Array <C_FixItDescription> fixItArray14 ;
+      TC_Array <FixItDescription> fixItArray14 ;
       inCompiler->emitSemanticError (temp_13.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the '@").add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 355)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 355)).add_operation (GALGAS_string ("' has no initializer without argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 355)), fixItArray14  COMMA_SOURCE_FILE ("actual-parameters.galgas", 354)) ;
     }
   }
@@ -5565,7 +5604,7 @@ void cPtr_outputInputSelfParameterAST::method_enterInActualOutputParameterList (
                                                                                 Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputSelfParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support output/input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 400)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -5592,7 +5631,7 @@ void cPtr_outputInputSelfParameterAST::method_checkAgainstFormalArgument (const 
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("actual-parameters.galgas", 417)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_outputInputSelfParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 419)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 419)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 419)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 421)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 420)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 421)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 418)) ;
     }
   }
@@ -5611,7 +5650,7 @@ void cPtr_outputInputSelfParameterAST::method_checkAgainstFormalArgument (const 
         }
         GALGAS_string var_s_20547 = GALGAS_string ("!\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 423)) ;
         const GALGAS_outputInputSelfParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_20547) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_20547, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 424)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 424)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 424)) ;
       }
@@ -5632,7 +5671,7 @@ void cPtr_outputInputSelfParameterAST::method_checkAgainstFormalArgument (const 
         test_10 = var_selfIsMutable_21161.operator_not (SOURCE_FILE ("actual-parameters.galgas", 434)).boolEnum () ;
         if (kBoolTrue == test_10) {
           const GALGAS_outputInputSelfParameterAST temp_11 = this ;
-          TC_Array <C_FixItDescription> fixItArray12 ;
+          TC_Array <FixItDescription> fixItArray12 ;
           inCompiler->emitSemanticError (temp_11.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("'self' not mutable in this context"), fixItArray12  COMMA_SOURCE_FILE ("actual-parameters.galgas", 435)) ;
         }
       }
@@ -5641,7 +5680,7 @@ void cPtr_outputInputSelfParameterAST::method_checkAgainstFormalArgument (const 
         test_13 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentType.objectCompare (var_selfType_21138)).boolEnum () ;
         if (kBoolTrue == test_13) {
           const GALGAS_outputInputSelfParameterAST temp_14 = this ;
-          TC_Array <C_FixItDescription> fixItArray15 ;
+          TC_Array <FixItDescription> fixItArray15 ;
           inCompiler->emitSemanticError (temp_14.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_selfType_21138, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 440)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 440)).add_operation (GALGAS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 440)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 442)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 441)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 442)), fixItArray15  COMMA_SOURCE_FILE ("actual-parameters.galgas", 439)) ;
         }
       }
@@ -5650,7 +5689,7 @@ void cPtr_outputInputSelfParameterAST::method_checkAgainstFormalArgument (const 
   }
   if (kBoolFalse == test_9) {
     const GALGAS_outputInputSelfParameterAST temp_16 = this ;
-    TC_Array <C_FixItDescription> fixItArray17 ;
+    TC_Array <FixItDescription> fixItArray17 ;
     inCompiler->emitSemanticError (temp_16.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("'self' not available in this context"), fixItArray17  COMMA_SOURCE_FILE ("actual-parameters.galgas", 451)) ;
   }
 }
@@ -5691,7 +5730,7 @@ void cPtr_outputInputJokerParameterAST::method_enterInActualOutputParameterList 
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_outputInputJokerParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mQualifierLocation (), GALGAS_string ("a getter does not support output/input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 483)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -5718,7 +5757,7 @@ void cPtr_outputInputJokerParameterAST::method_checkAgainstFormalArgument (const
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("actual-parameters.galgas", 500)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_outputInputJokerParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mQualifierLocation (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 502)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 502)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 502)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 503)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 503)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 503)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 501)) ;
     }
   }
@@ -5726,7 +5765,7 @@ void cPtr_outputInputJokerParameterAST::method_checkAgainstFormalArgument (const
   GALGAS_bool var_hasCompilerArgument_24981 = GALGAS_bool (false) ;
   GALGAS_string var_constructorName_25027 = GALGAS_string::makeEmptyString () ;
   GALGAS_bool var_found_25058 = GALGAS_bool (false) ;
-  cEnumerator_classFunctionMap enumerator_25087 (var_classFunctionMap_24894, kENUMERATION_UP) ;
+  cEnumerator_classFunctionMap enumerator_25087 (var_classFunctionMap_24894, EnumerationOrder::up) ;
   bool bool_3 = var_found_25058.operator_not (SOURCE_FILE ("actual-parameters.galgas", 510)).isValidAndTrue () ;
   if (enumerator_25087.hasCurrentObject () && bool_3) {
     while (enumerator_25087.hasCurrentObject () && bool_3) {
@@ -5754,7 +5793,7 @@ void cPtr_outputInputJokerParameterAST::method_checkAgainstFormalArgument (const
     test_6 = var_found_25058.operator_not (SOURCE_FILE ("actual-parameters.galgas", 517)).boolEnum () ;
     if (kBoolTrue == test_6) {
       const GALGAS_outputInputJokerParameterAST temp_7 = this ;
-      TC_Array <C_FixItDescription> fixItArray8 ;
+      TC_Array <FixItDescription> fixItArray8 ;
       inCompiler->emitSemanticError (temp_7.readProperty_mQualifierLocation (), GALGAS_string ("the '@").add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 519)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 519)).add_operation (GALGAS_string ("' has no initializer without argument"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 519)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 518)) ;
     }
   }
@@ -5810,7 +5849,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_enterInActualOutputPar
                                                                                             Compiler * inCompiler
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualExistingVariableParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 565)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -5837,7 +5876,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 582)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_inputActualExistingVariableParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 584)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 584)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 584)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 585)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 585)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 585)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 583)) ;
     }
   }
@@ -5856,7 +5895,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
         }
         GALGAS_string var_s_28769 = GALGAS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 587)) ;
         const GALGAS_inputActualExistingVariableParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_28769) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_28769, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 588)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 588)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 588)) ;
       }
@@ -5874,7 +5913,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
     test_10 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentType.objectCompare (var_parameterType_29196)).boolEnum () ;
     if (kBoolTrue == test_10) {
       const GALGAS_inputActualExistingVariableParameterAST temp_11 = this ;
-      TC_Array <C_FixItDescription> fixItArray12 ;
+      TC_Array <FixItDescription> fixItArray12 ;
       inCompiler->emitSemanticError (temp_11.readProperty_mInputActualParameterName ().readProperty_location (), GALGAS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_parameterType_29196, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 600)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 600)).add_operation (GALGAS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 600)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 601)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 601)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 601)), fixItArray12  COMMA_SOURCE_FILE ("actual-parameters.galgas", 599)) ;
     }
   }
@@ -5884,7 +5923,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
     test_13 = ioArgument_ioExclusiveVariableSet.getter_hasKey (temp_14.readProperty_mInputActualParameterName ().readProperty_string () COMMA_SOURCE_FILE ("actual-parameters.galgas", 604)).boolEnum () ;
     if (kBoolTrue == test_13) {
       const GALGAS_inputActualExistingVariableParameterAST temp_15 = this ;
-      TC_Array <C_FixItDescription> fixItArray16 ;
+      TC_Array <FixItDescription> fixItArray16 ;
       inCompiler->emitSemanticError (temp_15.readProperty_mInputActualParameterName ().readProperty_location (), GALGAS_string ("this variable is already named as input or output/input effective parameter"), fixItArray16  COMMA_SOURCE_FILE ("actual-parameters.galgas", 605)) ;
     }
   }
@@ -5892,7 +5931,7 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
   ioArgument_ioExclusiveVariableSet.addAssign_operation (temp_17.readProperty_mInputActualParameterName ().readProperty_string ()  COMMA_SOURCE_FILE ("actual-parameters.galgas", 608)) ;
   GALGAS__32_stringlist var_poisonedVarCppNameList_29975 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 610)) ;
   const GALGAS_inputActualExistingVariableParameterAST temp_18 = this ;
-  cEnumerator_lstringlist enumerator_30012 (temp_18.readProperty_mPoisonedVarNameList (), kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator_30012 (temp_18.readProperty_mPoisonedVarNameList (), EnumerationOrder::up) ;
   while (enumerator_30012.hasCurrentObject ()) {
     GALGAS_string var_targetVariableCppName_30138 ;
     GALGAS_string var_nameForCheckingFormalParameterUsing_30173 ;
@@ -5950,7 +5989,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_enterInActualOutputParamet
                                                                                         Compiler * inCompiler
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualSelfPropertyParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 656)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -5977,7 +6016,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_checkAgainstFormalArgument
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 674)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_inputActualSelfPropertyParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 676)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 676)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 676)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 677)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 677)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 677)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 675)) ;
     }
   }
@@ -5996,7 +6035,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_checkAgainstFormalArgument
         }
         GALGAS_string var_s_32967 = GALGAS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 679)) ;
         const GALGAS_inputActualSelfPropertyParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_32967) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_32967, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 680)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 680)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 680)) ;
       }
@@ -6017,7 +6056,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_checkAgainstFormalArgument
         test_10 = var_selfIsMutable_33241.operator_not (SOURCE_FILE ("actual-parameters.galgas", 684)).boolEnum () ;
         if (kBoolTrue == test_10) {
           const GALGAS_inputActualSelfPropertyParameterAST temp_11 = this ;
-          TC_Array <C_FixItDescription> fixItArray12 ;
+          TC_Array <FixItDescription> fixItArray12 ;
           inCompiler->emitSemanticError (temp_11.readProperty_mInputActualSelfPropertyName ().readProperty_location (), GALGAS_string ("'self' not mutable in this context"), fixItArray12  COMMA_SOURCE_FILE ("actual-parameters.galgas", 685)) ;
         }
       }
@@ -6034,13 +6073,13 @@ void cPtr_inputActualSelfPropertyParameterAST::method_checkAgainstFormalArgument
         test_15 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentType.objectCompare (var_parameterType_33544)).boolEnum () ;
         if (kBoolTrue == test_15) {
           const GALGAS_inputActualSelfPropertyParameterAST temp_16 = this ;
-          TC_Array <C_FixItDescription> fixItArray17 ;
+          TC_Array <FixItDescription> fixItArray17 ;
           inCompiler->emitSemanticError (temp_16.readProperty_mInputActualSelfPropertyName ().readProperty_location (), GALGAS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_parameterType_33544, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 694)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 694)).add_operation (GALGAS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 694)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 695)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 695)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 695)), fixItArray17  COMMA_SOURCE_FILE ("actual-parameters.galgas", 693)) ;
         }
       }
       GALGAS__32_stringlist var_poisonedVarCppNameList_34157 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 698)) ;
       const GALGAS_inputActualSelfPropertyParameterAST temp_18 = this ;
-      cEnumerator_lstringlist enumerator_34196 (temp_18.readProperty_mPoisonedVarNameList (), kENUMERATION_UP) ;
+      cEnumerator_lstringlist enumerator_34196 (temp_18.readProperty_mPoisonedVarNameList (), EnumerationOrder::up) ;
       while (enumerator_34196.hasCurrentObject ()) {
         GALGAS_string var_targetVariableCppName_34330 ;
         GALGAS_string var_nameForCheckingFormalParameterUsing_34367 ;
@@ -6056,7 +6095,7 @@ void cPtr_inputActualSelfPropertyParameterAST::method_checkAgainstFormalArgument
   }
   if (kBoolFalse == test_9) {
     const GALGAS_inputActualSelfPropertyParameterAST temp_19 = this ;
-    TC_Array <C_FixItDescription> fixItArray20 ;
+    TC_Array <FixItDescription> fixItArray20 ;
     inCompiler->emitSemanticError (temp_19.readProperty_mInputActualSelfPropertyName ().readProperty_location (), GALGAS_string ("'self' not available in this context"), fixItArray20  COMMA_SOURCE_FILE ("actual-parameters.galgas", 715)) ;
   }
 }
@@ -6105,7 +6144,7 @@ void cPtr_inputActualSelfParameterAST::method_enterInActualOutputParameterList (
                                                                                 Compiler * inCompiler
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualSelfParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 748)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -6132,7 +6171,7 @@ void cPtr_inputActualSelfParameterAST::method_checkAgainstFormalArgument (const 
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 766)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_inputActualSelfParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 768)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 768)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 768)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 769)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 769)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 769)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 767)) ;
     }
   }
@@ -6151,7 +6190,7 @@ void cPtr_inputActualSelfParameterAST::method_checkAgainstFormalArgument (const 
         }
         GALGAS_string var_s_37260 = GALGAS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 771)) ;
         const GALGAS_inputActualSelfParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_37260) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_37260, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 772)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 772)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 772)) ;
       }
@@ -6172,7 +6211,7 @@ void cPtr_inputActualSelfParameterAST::method_checkAgainstFormalArgument (const 
         test_10 = var_selfIsMutable_37534.operator_not (SOURCE_FILE ("actual-parameters.galgas", 776)).boolEnum () ;
         if (kBoolTrue == test_10) {
           const GALGAS_inputActualSelfParameterAST temp_11 = this ;
-          TC_Array <C_FixItDescription> fixItArray12 ;
+          TC_Array <FixItDescription> fixItArray12 ;
           inCompiler->emitSemanticError (temp_11.readProperty_mSelfLocation (), GALGAS_string ("'self' not mutable in this context"), fixItArray12  COMMA_SOURCE_FILE ("actual-parameters.galgas", 777)) ;
         }
       }
@@ -6182,13 +6221,13 @@ void cPtr_inputActualSelfParameterAST::method_checkAgainstFormalArgument (const 
         test_13 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentType.objectCompare (var_selfType_37511)).boolEnum () ;
         if (kBoolTrue == test_13) {
           const GALGAS_inputActualSelfParameterAST temp_14 = this ;
-          TC_Array <C_FixItDescription> fixItArray15 ;
+          TC_Array <FixItDescription> fixItArray15 ;
           inCompiler->emitSemanticError (temp_14.readProperty_mSelfLocation (), GALGAS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_selfType_37511, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 786)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 786)).add_operation (GALGAS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 786)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 788)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 787)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 788)), fixItArray15  COMMA_SOURCE_FILE ("actual-parameters.galgas", 785)) ;
         }
       }
       GALGAS__32_stringlist var_poisonedVarCppNameList_38399 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 791)) ;
       const GALGAS_inputActualSelfParameterAST temp_16 = this ;
-      cEnumerator_lstringlist enumerator_38438 (temp_16.readProperty_mPoisonedVarNameList (), kENUMERATION_UP) ;
+      cEnumerator_lstringlist enumerator_38438 (temp_16.readProperty_mPoisonedVarNameList (), EnumerationOrder::up) ;
       while (enumerator_38438.hasCurrentObject ()) {
         GALGAS_string var_targetVariableCppName_38572 ;
         GALGAS_string var_nameForCheckingFormalParameterUsing_38609 ;
@@ -6204,7 +6243,7 @@ void cPtr_inputActualSelfParameterAST::method_checkAgainstFormalArgument (const 
   }
   if (kBoolFalse == test_9) {
     const GALGAS_inputActualSelfParameterAST temp_17 = this ;
-    TC_Array <C_FixItDescription> fixItArray18 ;
+    TC_Array <FixItDescription> fixItArray18 ;
     inCompiler->emitSemanticError (temp_17.readProperty_mSelfLocation (), GALGAS_string ("'self' not available in this context"), fixItArray18  COMMA_SOURCE_FILE ("actual-parameters.galgas", 808)) ;
   }
 }
@@ -6253,7 +6292,7 @@ void cPtr_inputActualNewVariableParameterAST::method_enterInActualOutputParamete
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualNewVariableParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 842)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -6280,7 +6319,7 @@ void cPtr_inputActualNewVariableParameterAST::method_checkAgainstFormalArgument 
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 861)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_inputActualNewVariableParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 863)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 863)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 863)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 865)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 864)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 865)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 862)) ;
     }
   }
@@ -6299,7 +6338,7 @@ void cPtr_inputActualNewVariableParameterAST::method_checkAgainstFormalArgument 
         }
         GALGAS_string var_s_41568 = GALGAS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 867)) ;
         const GALGAS_inputActualNewVariableParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_41568) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_41568, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 868)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 868)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 868)) ;
       }
@@ -6317,7 +6356,7 @@ void cPtr_inputActualNewVariableParameterAST::method_checkAgainstFormalArgument 
         test_12 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentType.objectCompare (var_parameterType_41856)).boolEnum () ;
         if (kBoolTrue == test_12) {
           const GALGAS_inputActualNewVariableParameterAST temp_13 = this ;
-          TC_Array <C_FixItDescription> fixItArray14 ;
+          TC_Array <FixItDescription> fixItArray14 ;
           inCompiler->emitSemanticError (temp_13.readProperty_mInputActualParameterName ().readProperty_location (), GALGAS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_parameterType_41856, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 875)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 875)).add_operation (GALGAS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 875)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 877)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 876)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 877)), fixItArray14  COMMA_SOURCE_FILE ("actual-parameters.galgas", 874)) ;
         }
       }
@@ -6337,7 +6376,7 @@ void cPtr_inputActualNewVariableParameterAST::method_checkAgainstFormalArgument 
     test_18 = ioArgument_ioExclusiveVariableSet.getter_hasKey (temp_19.readProperty_mInputActualParameterName ().readProperty_string () COMMA_SOURCE_FILE ("actual-parameters.galgas", 894)).boolEnum () ;
     if (kBoolTrue == test_18) {
       const GALGAS_inputActualNewVariableParameterAST temp_20 = this ;
-      TC_Array <C_FixItDescription> fixItArray21 ;
+      TC_Array <FixItDescription> fixItArray21 ;
       inCompiler->emitSemanticError (temp_20.readProperty_mInputActualParameterName ().readProperty_location (), GALGAS_string ("this variable is already named as input or output/input effective parameter"), fixItArray21  COMMA_SOURCE_FILE ("actual-parameters.galgas", 895)) ;
     }
   }
@@ -6345,7 +6384,7 @@ void cPtr_inputActualNewVariableParameterAST::method_checkAgainstFormalArgument 
   ioArgument_ioExclusiveVariableSet.addAssign_operation (temp_22.readProperty_mInputActualParameterName ().readProperty_string ()  COMMA_SOURCE_FILE ("actual-parameters.galgas", 898)) ;
   GALGAS__32_stringlist var_poisonedVarCppNameList_43260 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 900)) ;
   const GALGAS_inputActualNewVariableParameterAST temp_23 = this ;
-  cEnumerator_lstringlist enumerator_43297 (temp_23.readProperty_mPoisonedVarNameList (), kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator_43297 (temp_23.readProperty_mPoisonedVarNameList (), EnumerationOrder::up) ;
   while (enumerator_43297.hasCurrentObject ()) {
     GALGAS_string var_targetVariableCppName_43423 ;
     GALGAS_string var_nameForCheckingFormalParameterUsing_43458 ;
@@ -6403,7 +6442,7 @@ void cPtr_inputActualNewConstantParameterAST::method_enterInActualOutputParamete
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputActualNewConstantParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 948)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -6430,7 +6469,7 @@ void cPtr_inputActualNewConstantParameterAST::method_checkAgainstFormalArgument 
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 967)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_inputActualNewConstantParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 969)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 969)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 969)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 971)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 970)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 971)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 968)) ;
     }
   }
@@ -6449,7 +6488,7 @@ void cPtr_inputActualNewConstantParameterAST::method_checkAgainstFormalArgument 
         }
         GALGAS_string var_s_46389 = GALGAS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 973)) ;
         const GALGAS_inputActualNewConstantParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_46389) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_46389, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 974)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 974)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 974)) ;
       }
@@ -6467,7 +6506,7 @@ void cPtr_inputActualNewConstantParameterAST::method_checkAgainstFormalArgument 
         test_12 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentType.objectCompare (var_parameterType_46677)).boolEnum () ;
         if (kBoolTrue == test_12) {
           const GALGAS_inputActualNewConstantParameterAST temp_13 = this ;
-          TC_Array <C_FixItDescription> fixItArray14 ;
+          TC_Array <FixItDescription> fixItArray14 ;
           inCompiler->emitSemanticError (temp_13.readProperty_mInputActualParameterName ().readProperty_location (), GALGAS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_parameterType_46677, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 981)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 981)).add_operation (GALGAS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 981)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 982)).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 982)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 982)), fixItArray14  COMMA_SOURCE_FILE ("actual-parameters.galgas", 980)) ;
         }
       }
@@ -6500,7 +6539,7 @@ void cPtr_inputActualNewConstantParameterAST::method_checkAgainstFormalArgument 
     test_21 = ioArgument_ioExclusiveVariableSet.getter_hasKey (temp_22.readProperty_mInputActualParameterName ().readProperty_string () COMMA_SOURCE_FILE ("actual-parameters.galgas", 1008)).boolEnum () ;
     if (kBoolTrue == test_21) {
       const GALGAS_inputActualNewConstantParameterAST temp_23 = this ;
-      TC_Array <C_FixItDescription> fixItArray24 ;
+      TC_Array <FixItDescription> fixItArray24 ;
       inCompiler->emitSemanticError (temp_23.readProperty_mInputActualParameterName ().readProperty_location (), GALGAS_string ("this variable is already named as input or output/input effective parameter"), fixItArray24  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1009)) ;
     }
   }
@@ -6508,7 +6547,7 @@ void cPtr_inputActualNewConstantParameterAST::method_checkAgainstFormalArgument 
   ioArgument_ioExclusiveVariableSet.addAssign_operation (temp_25.readProperty_mInputActualParameterName ().readProperty_string ()  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1012)) ;
   GALGAS__32_stringlist var_poisonedVarCppNameList_48296 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 1014)) ;
   const GALGAS_inputActualNewConstantParameterAST temp_26 = this ;
-  cEnumerator_lstringlist enumerator_48333 (temp_26.readProperty_mPoisonedVarNameList (), kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator_48333 (temp_26.readProperty_mPoisonedVarNameList (), EnumerationOrder::up) ;
   while (enumerator_48333.hasCurrentObject ()) {
     GALGAS_string var_targetVariableCppName_48459 ;
     GALGAS_string var_nameForCheckingFormalParameterUsing_48494 ;
@@ -6566,7 +6605,7 @@ void cPtr_inputSingleJokerActualParameterAST::method_enterInActualOutputParamete
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputSingleJokerActualParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1059)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -6593,7 +6632,7 @@ void cPtr_inputSingleJokerActualParameterAST::method_checkAgainstFormalArgument 
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 1076)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_inputSingleJokerActualParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1078)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1078)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1078)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1080)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1079)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1080)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1077)) ;
     }
   }
@@ -6612,7 +6651,7 @@ void cPtr_inputSingleJokerActualParameterAST::method_checkAgainstFormalArgument 
         }
         GALGAS_string var_s_51284 = GALGAS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1082)) ;
         const GALGAS_inputSingleJokerActualParameterAST temp_7 = this ;
-        TC_Array <C_FixItDescription> fixItArray8 ;
+        TC_Array <FixItDescription> fixItArray8 ;
         appendFixItActions (fixItArray8, kFixItReplace, var_s_51284) ;
         inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_51284, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1083)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1083)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1083)) ;
       }
@@ -6622,7 +6661,7 @@ void cPtr_inputSingleJokerActualParameterAST::method_checkAgainstFormalArgument 
       GALGAS_string var_cppVarName_51485 = GALGAS_string ("joker_").add_operation (temp_9.readProperty_mActualSelector ().readProperty_location ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1085)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 1085)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1085)) ;
       GALGAS__32_stringlist var_poisonedVarCppNameList_51618 = GALGAS__32_stringlist::class_func_emptyList (SOURCE_FILE ("actual-parameters.galgas", 1087)) ;
       const GALGAS_inputSingleJokerActualParameterAST temp_10 = this ;
-      cEnumerator_lstringlist enumerator_51657 (temp_10.readProperty_mPoisonedVarNameList (), kENUMERATION_UP) ;
+      cEnumerator_lstringlist enumerator_51657 (temp_10.readProperty_mPoisonedVarNameList (), EnumerationOrder::up) ;
       while (enumerator_51657.hasCurrentObject ()) {
         GALGAS_string var_targetVariableCppName_51791 ;
         GALGAS_string var_nameForCheckingFormalParameterUsing_51828 ;
@@ -6674,7 +6713,7 @@ void cPtr_inputJokerActualParameterAST::method_enterInActualOutputParameterList 
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_inputJokerActualParameterAST temp_0 = this ;
-  TC_Array <C_FixItDescription> fixItArray1 ;
+  TC_Array <FixItDescription> fixItArray1 ;
   inCompiler->emitSemanticError (temp_0.readProperty_mQualifierLocation (), GALGAS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1133)) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -6701,7 +6740,7 @@ void cPtr_inputJokerActualParameterAST::method_checkAgainstFormalArgument (const
     test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 1150)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_inputJokerActualParameterAST temp_1 = this ;
-      TC_Array <C_FixItDescription> fixItArray2 ;
+      TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (temp_1.readProperty_mQualifierLocation (), GALGAS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1152)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1152)).add_operation (GALGAS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1152)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1153)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1153)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 1153)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1151)) ;
     }
   }
@@ -6740,7 +6779,7 @@ GALGAS_string cPtr_externProcedureDeclarationAST::getter_keyRepresentation (Comp
   const GALGAS_externProcedureDeclarationAST temp_0 = this ;
   result_result = GALGAS_string ("routine ").add_operation (temp_0.readProperty_mRoutineName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 114)).add_operation (GALGAS_string ("("), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 114)) ;
   const GALGAS_externProcedureDeclarationAST temp_1 = this ;
-  cEnumerator_formalParameterListAST enumerator_4850 (temp_1.readProperty_mFormalArgumentListAST (), kENUMERATION_UP) ;
+  cEnumerator_formalParameterListAST enumerator_4850 (temp_1.readProperty_mFormalArgumentListAST (), EnumerationOrder::up) ;
   while (enumerator_4850.hasCurrentObject ()) {
     switch (enumerator_4850.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
@@ -6789,7 +6828,7 @@ void cPtr_externProcedureDeclarationAST::method_enterDeclarationInSemanticContex
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature var_routineSignature_5833 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("extern-procedure-declaration.galgas", 141)) ;
   const GALGAS_externProcedureDeclarationAST temp_0 = this ;
-  cEnumerator_formalParameterListAST enumerator_5906 (temp_0.readProperty_mFormalArgumentListAST (), kENUMERATION_UP) ;
+  cEnumerator_formalParameterListAST enumerator_5906 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::up) ;
   while (enumerator_5906.hasCurrentObject ()) {
     GALGAS_unifiedTypeMapEntry var_parameterTypeIndex_6000 ;
     {
@@ -6822,7 +6861,7 @@ void cPtr_externProcedureDeclarationAST::method_semanticAnalysis (GALGAS_lstring
   GALGAS_formalParameterListForGeneration var_formalArgumentList_7070 = GALGAS_formalParameterListForGeneration::class_func_emptyList (SOURCE_FILE ("extern-procedure-declaration.galgas", 168)) ;
   GALGAS_formalParameterSignature var_routineSignature_7136 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("extern-procedure-declaration.galgas", 169)) ;
   const GALGAS_externProcedureDeclarationAST temp_0 = this ;
-  cEnumerator_formalParameterListAST enumerator_7209 (temp_0.readProperty_mFormalArgumentListAST (), kENUMERATION_UP) ;
+  cEnumerator_formalParameterListAST enumerator_7209 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::up) ;
   while (enumerator_7209.hasCurrentObject ()) {
     GALGAS_unifiedTypeMapEntry var_parameterType_7245 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_7209.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 171)) ;
     var_formalArgumentList_7070.addAssign_operation (enumerator_7209.current (HERE).readProperty_mFormalSelector (), enumerator_7209.current (HERE).readProperty_mFormalArgumentPassingMode (), var_parameterType_7245, enumerator_7209.current (HERE).readProperty_mFormalArgumentName (), enumerator_7209.current (HERE).readProperty_mFormalArgumentName ().readProperty_string ()  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 172)) ;
@@ -6889,7 +6928,7 @@ void cPtr_procDeclarationAST::method_enterDeclarationInSemanticContext (const GA
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature var_routineSignature_6936 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("procedure-declaration.galgas", 179)) ;
   const GALGAS_procDeclarationAST temp_0 = this ;
-  cEnumerator_formalParameterListAST enumerator_7009 (temp_0.readProperty_mFormalArgumentListAST (), kENUMERATION_UP) ;
+  cEnumerator_formalParameterListAST enumerator_7009 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::up) ;
   while (enumerator_7009.hasCurrentObject ()) {
     GALGAS_unifiedTypeMapEntry var_parameterTypeIndex_7103 ;
     {
@@ -6923,7 +6962,7 @@ void cPtr_procDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & ioAr
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_formalParameterSignature var_routineSignature_8284 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("procedure-declaration.galgas", 208)) ;
   const GALGAS_procDeclarationAST temp_0 = this ;
-  cEnumerator_formalParameterListAST enumerator_8357 (temp_0.readProperty_mFormalArgumentListAST (), kENUMERATION_UP) ;
+  cEnumerator_formalParameterListAST enumerator_8357 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::up) ;
   while (enumerator_8357.hasCurrentObject ()) {
     GALGAS_unifiedTypeMapEntry var_parameterType_8393 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_8357.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("procedure-declaration.galgas", 210)) ;
     var_routineSignature_8284.addAssign_operation (enumerator_8357.current (HERE).readProperty_mFormalSelector (), var_parameterType_8393, enumerator_8357.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_8357.current (HERE).readProperty_mFormalArgumentName ().readProperty_string ()  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 211)) ;
@@ -7778,31 +7817,6 @@ void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_arg
   var_argList_2595.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeMethods.galgas", 66)), var_argumentTypeIndex_33__3070, GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("semanticsTypeMethods.galgas", 66)), constinArgument_inArgumentName_33_  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 66)) ;
   {
   ioArgument_ioClassMethodMap.setter_insertOrReplace (GALGAS_lstring::class_func_new (constinArgument_inClassMethodName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 68)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 68)), var_argList_2595, constinArgument_inHasCompilerArgument COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 68)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (GALGAS_classMethodMap & ioArgument_ioClassMethodMap,
-                                                                                                       GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
-                                                                                                       const GALGAS_string constinArgument_inClassMethodName,
-                                                                                                       const GALGAS_string constinArgument_inStringArgumentName,
-                                                                                                       const GALGAS_bool constinArgument_inHasCompilerArgument,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_argumentTypeIndex_3702 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_argumentTypeIndex_3702, inCompiler COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 80)) ;
-  }
-  GALGAS_formalParameterSignature var_argList_3753 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("semanticsTypeMethods.galgas", 81)) ;
-  var_argList_3753.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeMethods.galgas", 82)), var_argumentTypeIndex_3702, GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("semanticsTypeMethods.galgas", 82)), constinArgument_inStringArgumentName  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 82)) ;
-  {
-  ioArgument_ioClassMethodMap.setter_insertOrReplace (GALGAS_lstring::class_func_new (constinArgument_inClassMethodName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 84)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 84)), var_argList_3753, constinArgument_inHasCompilerArgument COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 83)) ;
   }
 }
 

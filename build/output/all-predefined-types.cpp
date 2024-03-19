@@ -443,7 +443,7 @@ GALGAS_string GALGAS_stringlist::getter_mValueAtIndex (const GALGAS_uint & inInd
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_stringlist::cEnumerator_stringlist (const GALGAS_stringlist & inEnumeratedObject,
-                                                const typeEnumerationOrder inOrder) :
+                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -935,7 +935,7 @@ GALGAS_lstring GALGAS_lstringlist::getter_mValueAtIndex (const GALGAS_uint & inI
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_lstringlist::cEnumerator_lstringlist (const GALGAS_lstringlist & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) :
+                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -1643,7 +1643,7 @@ GALGAS_string GALGAS__32_stringlist::getter_mValue_31_AtIndex (const GALGAS_uint
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator__32_stringlist::cEnumerator__32_stringlist (const GALGAS__32_stringlist & inEnumeratedObject,
-                                                        const typeEnumerationOrder inOrder) :
+                                                        const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2563,7 +2563,7 @@ GALGAS_function GALGAS_functionlist::getter_mValueAtIndex (const GALGAS_uint & i
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_functionlist::cEnumerator_functionlist (const GALGAS_functionlist & inEnumeratedObject,
-                                                    const typeEnumerationOrder inOrder) :
+                                                    const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -2971,7 +2971,7 @@ GALGAS_luint GALGAS_luintlist::getter_mValueAtIndex (const GALGAS_uint & inIndex
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_luintlist::cEnumerator_luintlist (const GALGAS_luintlist & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) :
+                                              const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3495,7 +3495,7 @@ GALGAS_object GALGAS_objectlist::getter_mValueAtIndex (const GALGAS_uint & inInd
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_objectlist::cEnumerator_objectlist (const GALGAS_objectlist & inEnumeratedObject,
-                                                const typeEnumerationOrder inOrder) :
+                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -3903,7 +3903,7 @@ GALGAS_type GALGAS_typelist::getter_mValueAtIndex (const GALGAS_uint & inIndex,
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_typelist::cEnumerator_typelist (const GALGAS_typelist & inEnumeratedObject,
-                                            const typeEnumerationOrder inOrder) :
+                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4311,7 +4311,7 @@ GALGAS_uint GALGAS_uintlist::getter_mValueAtIndex (const GALGAS_uint & inIndex,
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_uintlist::cEnumerator_uintlist (const GALGAS_uintlist & inEnumeratedObject,
-                                            const typeEnumerationOrder inOrder) :
+                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -4719,7 +4719,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_list::getter_mValueAtIndex (const GALGAS_
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_uint_36__34_list::cEnumerator_uint_36__34_list (const GALGAS_uint_36__34_list & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) :
+                                                            const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5127,7 +5127,7 @@ GALGAS_bigint GALGAS_bigintlist::getter_mValueAtIndex (const GALGAS_uint & inInd
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_bigintlist::cEnumerator_bigintlist (const GALGAS_bigintlist & inEnumeratedObject,
-                                                const typeEnumerationOrder inOrder) :
+                                                const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
@@ -5535,7 +5535,7 @@ GALGAS_lbigint GALGAS_lbigintlist::getter_mValueAtIndex (const GALGAS_uint & inI
 //--------------------------------------------------------------------------------------------------
 
 cEnumerator_lbigintlist::cEnumerator_lbigintlist (const GALGAS_lbigintlist & inEnumeratedObject,
-                                                  const typeEnumerationOrder inOrder) :
+                                                  const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }

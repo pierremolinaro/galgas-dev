@@ -149,7 +149,7 @@ class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
 
 class cEnumerator_syntaxComponentListForGrammarAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_syntaxComponentListForGrammarAnalysis (const GALGAS_syntaxComponentListForGrammarAnalysis & inEnumeratedObject,
-                                                             const typeEnumerationOrder inOrder) ;
+                                                             const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_productionRuleListForGrammarAnalysis current_mProductionRulesList (LOCATION_ARGS) const ;
@@ -345,7 +345,7 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
 
 class cEnumerator_terminalSymbolsMapForGrammarAnalysis : public cGenericAbstractEnumerator {
   public: cEnumerator_terminalSymbolsMapForGrammarAnalysis (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
+                                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -622,7 +622,7 @@ class GALGAS_rowList : public AC_GALGAS_list {
 
 class cEnumerator_rowList : public cGenericAbstractEnumerator {
   public: cEnumerator_rowList (const GALGAS_rowList & inEnumeratedObject,
-                               const typeEnumerationOrder inOrder) ;
+                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS__32_stringlist current_columns (LOCATION_ARGS) const ;
@@ -879,7 +879,7 @@ class GALGAS_programListForGeneration : public AC_GALGAS_list {
 
 class cEnumerator_programListForGeneration : public cGenericAbstractEnumerator {
   public: cEnumerator_programListForGeneration (const GALGAS_programListForGeneration & inEnumeratedObject,
-                                                const typeEnumerationOrder inOrder) ;
+                                                const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_semanticDeclarationForGeneration current_mDeclaration (LOCATION_ARGS) const ;
@@ -1021,7 +1021,7 @@ class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
 
 class cEnumerator_genericExtensionMethodListMap : public cGenericAbstractEnumerator {
   public: cEnumerator_genericExtensionMethodListMap (const GALGAS_genericExtensionMethodListMap & inEnumeratedObject,
-                                                     const typeEnumerationOrder inOrder) ;
+                                                     const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_string current_key (LOCATION_ARGS) const ;
@@ -1197,7 +1197,7 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 
 class cEnumerator_descendantClassListMap : public cGenericAbstractEnumerator {
   public: cEnumerator_descendantClassListMap (const GALGAS_descendantClassListMap & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) ;
+                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_string current_key (LOCATION_ARGS) const ;
@@ -1372,7 +1372,7 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 
 class cEnumerator_extensionMethodMapForGlobalCheckings : public cGenericAbstractEnumerator {
   public: cEnumerator_extensionMethodMapForGlobalCheckings (const GALGAS_extensionMethodMapForGlobalCheckings & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
+                                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1561,7 +1561,7 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 class cEnumerator_extensionSetterMapForGlobalCheckings : public cGenericAbstractEnumerator {
   public: cEnumerator_extensionSetterMapForGlobalCheckings (const GALGAS_extensionSetterMapForGlobalCheckings & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
+                                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -1750,7 +1750,7 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 class cEnumerator_extensionGetterMapForGlobalCheckings : public cGenericAbstractEnumerator {
   public: cEnumerator_extensionGetterMapForGlobalCheckings (const GALGAS_extensionGetterMapForGlobalCheckings & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
+                                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -2000,7 +2000,7 @@ class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
 
 class cEnumerator_galgas_33_QualifiedFeatureList : public cGenericAbstractEnumerator {
   public: cEnumerator_galgas_33_QualifiedFeatureList (const GALGAS_galgas_33_QualifiedFeatureList & inEnumeratedObject,
-                                                      const typeEnumerationOrder inOrder) ;
+                                                      const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mFeatureName (LOCATION_ARGS) const ;
