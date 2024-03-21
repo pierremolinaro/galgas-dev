@@ -130,7 +130,7 @@ class cSharedSortedListRoot : public SharedObject {
   protected: virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--- Object Compare
-  protected: typeComparisonResult objectCompare (const cSharedSortedListRoot * inOperand) const ;
+  protected: ComparisonResult objectCompare (const cSharedSortedListRoot * inOperand) const ;
 
 //--- Adding an object
   protected: void appendObject (capSortedListElement & inAttributes) ;
@@ -312,18 +312,18 @@ void cSharedSortedListRoot::copyFrom (const cSharedSortedListRoot * inList) {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cSharedSortedListRoot::objectCompare (const cSharedSortedListRoot * inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult cSharedSortedListRoot::objectCompare (const cSharedSortedListRoot * inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (nullptr != inOperand) {
-    result = kOperandEqual ;
+    result = ComparisonResult::operandEqual ;
     if (mCount < inOperand->mCount) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (mCount > inOperand->mCount) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       cSortedListNode * p1 = mFirst ;
       cSortedListNode * p2 = inOperand->mFirst ;
-      while ((nullptr != p1) && (nullptr != p2) && (result == kOperandEqual)) {
+      while ((nullptr != p1) && (nullptr != p2) && (result == ComparisonResult::operandEqual)) {
         result = p1->mProperties.compare (p2->mProperties) ;
         p1 = p1->mNextPtr ;
         p2 = p1->mNextPtr ;
@@ -335,8 +335,8 @@ typeComparisonResult cSharedSortedListRoot::objectCompare (const cSharedSortedLi
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult AC_GALGAS_sortedlist::objectCompare (const AC_GALGAS_sortedlist & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult AC_GALGAS_sortedlist::objectCompare (const AC_GALGAS_sortedlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid ()) {
     result = mSharedRoot->objectCompare (inOperand.mSharedRoot) ;
   }
@@ -421,8 +421,8 @@ void cSharedSortedListRoot::addEntry (cSortedListNode * & ioRootPtr,
     mCount ++ ;
   }else{
     macroValidPointer (ioRootPtr) ;
-    const typeComparisonResult comparaison = ioRootPtr->mProperties.compareForSorting (inAttributes) ;
-    if (comparaison > kOperandEqual) {
+    const ComparisonResult comparaison = ioRootPtr->mProperties.compareForSorting (inAttributes) ;
+    if (comparaison > ComparisonResult::operandEqual) {
       addEntry (ioRootPtr->mInfPtr, inBeforeNode, inAttributes, ioExtension) ;
       if (ioExtension) {
         ioRootPtr->mBalance++;

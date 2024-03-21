@@ -301,12 +301,12 @@ override method @comparisonExpressionForGeneration generateExpression
 #--- Operator name
   let @string operatorName
   switch self.mComparison
-  case equal, sameInstance : operatorName = "kIsEqual"
-  case notEqual, differentInstances : operatorName = "kIsNotEqual"
-  case lowerOrEqual : operatorName = "kIsInfOrEqual"
-  case lowerThan : operatorName = "kIsStrictInf"
-  case greaterOrEqual : operatorName = "kIsSupOrEqual"
-  case greaterThan : operatorName = "kIsStrictSup"
+  case equal, sameInstance : operatorName = "ComparisonKind::equal"
+  case notEqual, differentInstances : operatorName = "ComparisonKind::notEqual"
+  case lowerOrEqual : operatorName = "ComparisonKind::lowerOrEqual"
+  case lowerThan : operatorName = "ComparisonKind::lowerThan"
+  case greaterOrEqual : operatorName = "ComparisonKind::greaterOrEqual"
+  case greaterThan : operatorName = "ComparisonKind::greaterThan"
   end
 #--- Generate Comparison
   outCppExpression = "GALGAS_bool (" + operatorName + ", " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"

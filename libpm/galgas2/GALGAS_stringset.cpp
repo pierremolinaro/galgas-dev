@@ -44,7 +44,7 @@ class cCollectionElement_stringset : public cCollectionElement {
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
@@ -69,7 +69,7 @@ bool cCollectionElement_stringset::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) const {
   const cCollectionElement_stringset * operand = (const cCollectionElement_stringset *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_stringset) ;
   return mProperty_key.objectCompare (operand->mProperty_key) ;
@@ -994,8 +994,8 @@ GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t count1 = (int32_t) mSharedRoot->count () ;
     const cStringsetNode * root1 = mSharedRoot->root () ;
@@ -1015,11 +1015,11 @@ typeComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & i
       }
     }
     if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

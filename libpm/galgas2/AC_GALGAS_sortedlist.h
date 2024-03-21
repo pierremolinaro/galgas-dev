@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AC_GALGAS_root.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Compare
-  public: typeComparisonResult objectCompare (const AC_GALGAS_sortedlist & inOperand) const ;
+  public: ComparisonResult objectCompare (const AC_GALGAS_sortedlist & inOperand) const ;
 
 //--------------------------------- Readers
   public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;

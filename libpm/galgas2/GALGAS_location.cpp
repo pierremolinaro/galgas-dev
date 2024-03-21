@@ -159,8 +159,8 @@ GALGAS_bool GALGAS_location::getter_isNowhere (UNUSED_LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     int32_t r = 0 ;
     if (ssize_t (mInternalLocation) != ssize_t (inOperand.mInternalLocation)) {
@@ -173,11 +173,11 @@ typeComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inO
       }
     }
     if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

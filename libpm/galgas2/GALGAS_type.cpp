@@ -116,16 +116,16 @@ GALGAS_type GALGAS_type::getter_superclass (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_type::objectCompare (const GALGAS_type & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_type::objectCompare (const GALGAS_type & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const ptrdiff_t diff = mTypeDescriptor - inOperand.mTypeDescriptor ;
     if (diff < 0) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (diff > 0) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

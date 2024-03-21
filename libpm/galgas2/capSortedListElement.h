@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "SharedObject.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -63,7 +63,7 @@ class capSortedListElement final {
   public: inline const cSortedListElement * ptr (void) const { return mPtr ; }
 
 //--- Method for comparing elements
-  public: typeComparisonResult compare (capSortedListElement & inOperand) ;
+  public: ComparisonResult compare (capSortedListElement & inOperand) ;
 
 //--- Method that returns a copy of current object
   public: capSortedListElement copy (void) ;
@@ -72,7 +72,7 @@ class capSortedListElement final {
  public: void description (String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
-  public: typeComparisonResult compareForSorting (const capSortedListElement & inOperand) ;
+  public: ComparisonResult compareForSorting (const capSortedListElement & inOperand) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

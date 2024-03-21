@@ -393,14 +393,14 @@ void capCollectionElementArray::appendObjects (const capCollectionElementArray i
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult capCollectionElementArray::compareCollectionElementArray (const capCollectionElementArray & inOperand) const {
-  typeComparisonResult result = kOperandEqual ;
+ComparisonResult capCollectionElementArray::compareCollectionElementArray (const capCollectionElementArray & inOperand) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
   if (count () < inOperand.count ()) {
-    result = kFirstOperandLowerThanSecond ;
+    result = ComparisonResult::firstOperandLowerThanSecond ;
   }else if (count () > inOperand.count ()) {
-    result = kFirstOperandGreaterThanSecond ;
+    result = ComparisonResult::firstOperandGreaterThanSecond ;
   }else{
-    for (uint32_t i=0 ; (i<count ()) && (result == kOperandEqual) ; i++) {
+    for (uint32_t i=0 ; (i<count ()) && (result == ComparisonResult::operandEqual) ; i++) {
       result = mSharedRoot->mArray [i].compare (inOperand.mSharedRoot->mArray [i]) ;
     }
   }

@@ -76,16 +76,16 @@ GALGAS_data GALGAS_data::class_func_dataWithContentsOfFile (const GALGAS_string 
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_data::objectCompare (const GALGAS_data & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_data::objectCompare (const GALGAS_data & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t r = mData.compareWithData (inOperand.mData) ;
     if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;
@@ -388,7 +388,7 @@ class cCollectionElement_data : public cCollectionElement {
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
@@ -413,7 +413,7 @@ bool cCollectionElement_data::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_data::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_data::compare (const cCollectionElement * inOperand) const {
   const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_data) ;
   return mProperty_data.objectCompare (operand->mProperty_data) ;

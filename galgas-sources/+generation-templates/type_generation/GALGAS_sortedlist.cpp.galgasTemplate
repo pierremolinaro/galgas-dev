@@ -23,13 +23,13 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   public: virtual cSortedListElement * copy (void) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
-  public: virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
+  public: virtual ComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (String & ioString, cons
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cSortedListElement_%!TYPE_IDENTIFIER% * operand = (cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
   macroValidSharedObject (operand, cSortedListElement_%!TYPE_IDENTIFIER%) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -97,12 +97,12 @@ AC_GALGAS_sortedlist () {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
-  typeComparisonResult result = kOperandEqual ;
+ComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
   const cSortedListElement_%!TYPE_IDENTIFIER% * operand = (const cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
   macroValidSharedObject (operand, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 % for (mAttributeTypeIndex mAttributeName mAscendingOrder) in SORT_ATTRIBUTE_LIST do
-    %  if (result == kOperandEqual) {\n%
+    %  if (result == ComparisonResult::operandEqual) {\n%
     %    result = %
     if mAscendingOrder then
       %mObject.mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mObject.mProperty_%![mAttributeName identifierRepresentation]%)%

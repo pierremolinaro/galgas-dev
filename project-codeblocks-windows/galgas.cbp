@@ -78,6 +78,7 @@
    <Add library="Comdlg32" />
   </Linker>
   <Unit filename="../libpm/galgas2/C_galgas_quiet_option.cpp" />
+  <Unit filename="../build/output/all-declarations-30.cpp" />
   <Unit filename="../build/output/all-declarations-29.cpp" />
   <Unit filename="../build/output/all-declarations-28.cpp" />
   <Unit filename="../build/output/all-declarations-27.cpp" />
@@ -194,7 +195,6 @@
    <Unit filename="../libpm/utilities/SHA256.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
    <Unit filename="../libpm/galgas2/C_galgas_CLI_Options.cpp" />
-   <Unit filename="../libpm/galgas2/typeComparisonResult.cpp" />
    <Unit filename="../libpm/galgas2/Compiler.cpp" />
    <Unit filename="../libpm/galgas2/Lexique.cpp" />
    <Unit filename="../libpm/galgas2/Lexique-parsing.cpp" />

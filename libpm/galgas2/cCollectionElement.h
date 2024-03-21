@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "SharedObject.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ class cCollectionElement : public SharedObject {
   public: virtual bool isValid (void) const = 0 ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const = 0 ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const = 0 ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) = 0 ;

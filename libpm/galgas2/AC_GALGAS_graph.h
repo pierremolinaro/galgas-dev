@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AC_GALGAS_root.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 #include "cCollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void setter_removeEdgesToDominators (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const AC_GALGAS_graph & inOperand) const ;
+  public: ComparisonResult objectCompare (const AC_GALGAS_graph & inOperand) const ;
 
 //--- introspection
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;

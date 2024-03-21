@@ -82,16 +82,16 @@ void GALGAS_object::description (String & /* ioString */,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_object::objectCompare (const GALGAS_object & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_object::objectCompare (const GALGAS_object & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const ptrdiff_t diff = mSharedObject - inOperand.mSharedObject ;
     if (diff < 0) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (diff > 0) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

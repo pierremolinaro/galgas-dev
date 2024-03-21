@@ -69,10 +69,10 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
+ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
 %for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST do
-  %  if (result == kOperandEqual) {\n%
+  %  if (result == ComparisonResult::operandEqual) {\n%
   %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (inOperand.mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
   %  }\n%
 end

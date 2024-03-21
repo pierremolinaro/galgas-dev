@@ -90,16 +90,16 @@ GALGAS_string GALGAS_string::makeEmptyString (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_string::objectCompare (const GALGAS_string & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_string::objectCompare (const GALGAS_string & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t r = mString.compare (inOperand.mString) ;
     if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

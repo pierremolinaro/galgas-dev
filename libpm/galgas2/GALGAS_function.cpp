@@ -211,16 +211,16 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_function::objectCompare (const GALGAS_function & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_function::objectCompare (const GALGAS_function & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const ptrdiff_t diff = mFunctionDescriptor - inOperand.mFunctionDescriptor ;
     if (diff < 0) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (diff > 0) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

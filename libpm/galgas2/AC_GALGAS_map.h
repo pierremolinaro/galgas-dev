@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AC_GALGAS_root.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -163,7 +163,7 @@ class AC_GALGAS_map : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const override ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const AC_GALGAS_map & inOperand) const ;
+  public: ComparisonResult objectCompare (const AC_GALGAS_map & inOperand) const ;
 
 //--------------------------------- Internal methods for enumeration
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;

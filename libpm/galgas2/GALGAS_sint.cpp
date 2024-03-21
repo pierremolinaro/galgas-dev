@@ -39,15 +39,15 @@ mSIntValue (inValue) {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_sint::objectCompare (const GALGAS_sint & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_sint::objectCompare (const GALGAS_sint & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     if (mSIntValue < inOperand.mSIntValue) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (mSIntValue > inOperand.mSIntValue) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

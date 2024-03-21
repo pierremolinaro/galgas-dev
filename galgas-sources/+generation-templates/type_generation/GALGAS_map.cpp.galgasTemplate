@@ -48,11 +48,11 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
+  ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
 %  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in ATTRIBUTE_LIST do
-     %  if (kOperandEqual == result) {\n%
+     %  if (ComparisonResult::operandEqual == result) {\n%
      %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (operand->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
      %  }\n%
    end

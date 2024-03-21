@@ -3,13 +3,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "String-class.h"
-#include "Timer.h"
 #include "AC_GALGAS_root.h"
 #include "C_galgas_type_descriptor.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
+#include "ComparisonKind.h"
+#include "EnumerationOrder.h"
 #include "cGenericAbstractEnumerator.h"
 #include "cEnumerator_range.h"
+#include "String-class.h"
+#include "Timer.h"
 #include "AC_GALGAS_list.h"
 #include "AC_GALGAS_sortedlist.h"
 #include "AC_GALGAS_map.h"

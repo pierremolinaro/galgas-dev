@@ -295,15 +295,15 @@ GALGAS_sint_36__34_ GALGAS_double::getter_sint_36__34_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_double::objectCompare (const GALGAS_double & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_double::objectCompare (const GALGAS_double & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     if (mDoubleValue < inOperand.mDoubleValue) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (mDoubleValue > inOperand.mDoubleValue) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

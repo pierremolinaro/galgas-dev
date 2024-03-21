@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "SharedObject.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -63,7 +63,7 @@ class capCollectionElement final {
   public: inline const cCollectionElement * ptr (void) const { return mPtr ; }
 
 //--- Method for comparing elements
-  public: typeComparisonResult compare (const capCollectionElement & inOperand) const ;
+  public: ComparisonResult compare (const capCollectionElement & inOperand) const ;
 
 //--- Method that returns a copy of current object
   public: capCollectionElement copy (void) ;

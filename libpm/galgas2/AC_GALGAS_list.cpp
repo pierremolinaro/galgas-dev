@@ -297,8 +297,8 @@ cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult AC_GALGAS_list::objectCompare (const AC_GALGAS_list & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult AC_GALGAS_list::objectCompare (const AC_GALGAS_list & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     result = mSharedArray.compareCollectionElementArray (inOperand.mSharedArray) ;
   }
@@ -397,7 +397,7 @@ class cSharedListMapRoot : public SharedObject {
 //--------------------------------- Support for enumeration
   public: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 //--------------------------------- Comparison
-  public: typeComparisonResult listmapCompare (const cSharedListMapRoot * inOperand) const ;
+  public: ComparisonResult listmapCompare (const cSharedListMapRoot * inOperand) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -526,16 +526,16 @@ GALGAS_stringlist AC_GALGAS_listmap::getter_keyList (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cSharedListMapRoot::listmapCompare (const cSharedListMapRoot * inOperand) const {
-  typeComparisonResult result = kOperandEqual ;
+ComparisonResult cSharedListMapRoot::listmapCompare (const cSharedListMapRoot * inOperand) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
   if (count () < inOperand->count ()) {
-    result = kFirstOperandLowerThanSecond ;
+    result = ComparisonResult::firstOperandLowerThanSecond ;
   }else if (count () > inOperand->count ()) {
-    result = kFirstOperandGreaterThanSecond ;
+    result = ComparisonResult::firstOperandGreaterThanSecond ;
   }else{
     capCollectionElementArray array ; populateEnumerationArray (array) ;
     capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray) ;
-    for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
+    for (uint32_t i=0 ; (i<array.count ()) && (ComparisonResult::operandEqual == result) ; i++) {
       result = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
   }
@@ -544,8 +544,8 @@ typeComparisonResult cSharedListMapRoot::listmapCompare (const cSharedListMapRoo
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult AC_GALGAS_listmap::objectCompare (const AC_GALGAS_listmap & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult AC_GALGAS_listmap::objectCompare (const AC_GALGAS_listmap & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     result = mSharedListMap->listmapCompare (inOperand.mSharedListMap) ;
   }
@@ -856,8 +856,8 @@ bool cListMapElement::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cListMapElement::compare (const cCollectionElement * /* inOperand */) const {
-  return kOperandNotValid ;
+ComparisonResult cListMapElement::compare (const cCollectionElement * /* inOperand */) const {
+  return ComparisonResult::invalid ;
 }
 
 

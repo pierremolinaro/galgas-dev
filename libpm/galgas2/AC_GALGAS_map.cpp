@@ -140,7 +140,7 @@ class cSharedMapRoot : public SharedObject {
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 
 //--------------------------------- Comparison
-  public: VIRTUAL_IN_DEBUG typeComparisonResult mapCompare (const cSharedMapRoot * inOperand) const ;
+  public: VIRTUAL_IN_DEBUG ComparisonResult mapCompare (const cSharedMapRoot * inOperand) const ;
 
 
 //--------------------------------- Check Map
@@ -1540,25 +1540,25 @@ void AC_GALGAS_map::performRemove (GALGAS_lstring & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cSharedMapRoot::mapCompare (const cSharedMapRoot * inOperand) const {
-  typeComparisonResult r = kOperandEqual ;
+ComparisonResult cSharedMapRoot::mapCompare (const cSharedMapRoot * inOperand) const {
+  ComparisonResult r = ComparisonResult::operandEqual ;
   if (count () < inOperand->count ()) {
-    r = kFirstOperandLowerThanSecond ;
+    r = ComparisonResult::firstOperandLowerThanSecond ;
   }else if (count () > inOperand->count ()) {
-    r = kFirstOperandGreaterThanSecond ;
+    r = ComparisonResult::firstOperandGreaterThanSecond ;
   }else{
     capCollectionElementArray array ; populateEnumerationArray (array) ;
     capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray) ;
-    for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == r) ; i++) {
+    for (uint32_t i=0 ; (i<array.count ()) && (ComparisonResult::operandEqual == r) ; i++) {
       r = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
-    if (kOperandEqual == r) {
+    if (ComparisonResult::operandEqual == r) {
       const int32_t n1 = (nullptr == mOverridenMap) ? 0 : (int32_t) mOverridenMap->count () ;
       const int32_t n2 = (nullptr == inOperand->mOverridenMap) ? 0 : (int32_t) inOperand->mOverridenMap->count () ;
       if (n1 < n2) {
-        r = kFirstOperandLowerThanSecond ;
+        r = ComparisonResult::firstOperandLowerThanSecond ;
       }else if (n1 > n2) {
-        r = kFirstOperandGreaterThanSecond ;
+        r = ComparisonResult::firstOperandGreaterThanSecond ;
       }else if ((nullptr != mOverridenMap) && (nullptr != inOperand->mOverridenMap)) {
         r = mOverridenMap->mapCompare (inOperand->mOverridenMap) ;
       }
@@ -1569,8 +1569,8 @@ typeComparisonResult cSharedMapRoot::mapCompare (const cSharedMapRoot * inOperan
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult AC_GALGAS_map::objectCompare (const AC_GALGAS_map & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult AC_GALGAS_map::objectCompare (const AC_GALGAS_map & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     result = mSharedMap->mapCompare (inOperand.mSharedMap) ;
   }

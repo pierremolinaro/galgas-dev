@@ -161,7 +161,6 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/SHA256.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_CLI_Options.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas2/typeComparisonResult.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/Compiler.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/Lexique.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas2/Lexique-parsing.cpp" />

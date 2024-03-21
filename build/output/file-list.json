@@ -13,6 +13,7 @@
                        "../libpm/utilities",
                        "../hand_coded_sources"],
     "SOURCES"  :  [
+        "all-declarations-30.cpp",
         "all-declarations-29.cpp",
         "all-declarations-28.cpp",
         "all-declarations-27.cpp",
@@ -130,7 +131,6 @@
        "SHA256.cpp",
        "galgas-random.cpp",
        "C_galgas_CLI_Options.cpp",
-       "typeComparisonResult.cpp",
        "Compiler.cpp",
        "Lexique.cpp",
        "Lexique-parsing.cpp",

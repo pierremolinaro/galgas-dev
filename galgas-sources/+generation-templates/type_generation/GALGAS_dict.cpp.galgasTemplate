@@ -125,8 +125,8 @@ end
       outEntryAlreadyPresent = false ;
     }else{
       macroValidPointer (ioRootPtr) ;
-      const typeComparisonResult comparaison = ioRootPtr->mProperty_key.objectCompare (inNewNode.mProperty_key) ;
-      if (comparaison == kFirstOperandGreaterThanSecond) {
+      const ComparisonResult comparaison = ioRootPtr->mProperty_key.objectCompare (inNewNode.mProperty_key) ;
+      if (comparaison == ComparisonResult::firstOperandGreaterThanSecond) {
         recursiveAddEntry (ioRootPtr->mInfPtr, inNewNode, outEntryAlreadyPresent, ioExtension, inEntryOverrideAllowed) ;
         if (ioExtension) {
           ioRootPtr->mBalance++;
@@ -140,7 +140,7 @@ end
             ioExtension = false;
           }
         }
-      }else if (comparaison == kFirstOperandLowerThanSecond) {
+      }else if (comparaison == ComparisonResult::firstOperandLowerThanSecond) {
         recursiveAddEntry (ioRootPtr->mSupPtr, inNewNode, outEntryAlreadyPresent, ioExtension, inEntryOverrideAllowed) ;
         if (ioExtension) {
           ioRootPtr->mBalance-- ;
@@ -173,10 +173,10 @@ end
     cNode_%!TYPE_IDENTIFIER% * currentNode = mRoot ;
     while ((currentNode != nullptr) && (nullptr == result)) {
       macroValidPointer (currentNode) ;
-      const typeComparisonResult comparaison = currentNode->mProperty_key.objectCompare (inKey) ;
-      if (comparaison == kFirstOperandGreaterThanSecond) {
+      const ComparisonResult comparaison = currentNode->mProperty_key.objectCompare (inKey) ;
+      if (comparaison == ComparisonResult::firstOperandGreaterThanSecond) {
         currentNode = currentNode->mInfPtr ;
-      }else if (comparaison == kFirstOperandLowerThanSecond) {
+      }else if (comparaison == ComparisonResult::firstOperandLowerThanSecond) {
         currentNode = currentNode->mSupPtr ;
       }else{ // Found
         result = currentNode ;
@@ -268,13 +268,13 @@ end
                                                      cNode_%!TYPE_IDENTIFIER% * & outRemovedNode,
                                                      bool & ioBranchHasBeenRemoved) {
     if (ioRoot != nullptr) {
-      const typeComparisonResult comparaison = ioRoot->mProperty_key.objectCompare (inKeyToRemove) ;
-      if (comparaison == kFirstOperandGreaterThanSecond) {
+      const ComparisonResult comparaison = ioRoot->mProperty_key.objectCompare (inKeyToRemove) ;
+      if (comparaison == ComparisonResult::firstOperandGreaterThanSecond) {
         internalRemoveRecursively (ioRoot->mInfPtr, inKeyToRemove, outRemovedNode, ioBranchHasBeenRemoved);
         if (ioBranchHasBeenRemoved) {
           infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
         }
-      }else if (comparaison == kFirstOperandLowerThanSecond) {
+      }else if (comparaison == ComparisonResult::firstOperandLowerThanSecond) {
         internalRemoveRecursively (ioRoot->mSupPtr, inKeyToRemove, outRemovedNode, ioBranchHasBeenRemoved);
         if (ioBranchHasBeenRemoved) {
           supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);
@@ -331,12 +331,12 @@ end
   #endif
 
 //--------------------------------- Compare Dictionaries
-  public: typeComparisonResult compare (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inOperand) const {
-    typeComparisonResult result = kOperandEqual ;
+  public: ComparisonResult compare (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inOperand) const {
+    ComparisonResult result = ComparisonResult::operandEqual ;
     if (mCount < inOperand->mCount) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (mCount > inOperand->mCount) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       capCollectionElementArray enumerationArray ;
       populateEnumerationArray (enumerationArray) ;
@@ -670,8 +670,8 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     result = mSharedDict->compare (inOperand.mSharedDict) ;
   }
@@ -703,7 +703,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public: virtual bool isValid (void) const { return mElement.isValid () ; }
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const {
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const {
     const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
     return mElement.objectCompare (p->mElement) ;
   }

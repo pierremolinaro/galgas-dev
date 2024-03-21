@@ -24,7 +24,7 @@
 
 #include "SharedObject.h"
 #include "AC_GALGAS_root.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ class cEnumAssociatedValues : public SharedObject {
 
   public: virtual void description (class String & ioString,
                                      const int32_t inIndentation) const = 0 ;
-  public: virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const = 0 ;
+  public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const = 0 ;
   
   public: virtual ~ cEnumAssociatedValues (void) {}
 } ;
@@ -60,7 +60,7 @@ class AC_GALGAS_enumAssociatedValues {
   public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const ;
 
 
-  public: VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_enumAssociatedValues & inOperand) const ;
+  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const AC_GALGAS_enumAssociatedValues & inOperand) const ;
 
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mSharedPtr ;

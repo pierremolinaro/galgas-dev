@@ -1042,8 +1042,9 @@ proc updateGalgasTargets
         !"GALGAS_uint.cpp",
         !"scanner_actions.cpp",
         !"scanner_actions.h",
-        !"typeComparisonResult.cpp",
-        !"typeComparisonResult.h"
+        !"ComparisonResult.h",
+        !"ComparisonKind.h",
+        !"EnumerationOrder.h"
       }
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool

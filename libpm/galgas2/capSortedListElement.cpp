@@ -66,7 +66,7 @@ bool capSortedListElement::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult capSortedListElement::compare (capSortedListElement & inOperand) {
+ComparisonResult capSortedListElement::compare (capSortedListElement & inOperand) {
   macroValidSharedObject (mPtr, cSortedListElement) ;
   macroValidSharedObject (inOperand.mPtr, cSortedListElement) ;
   return mPtr->compare (inOperand.mPtr) ;
@@ -112,8 +112,8 @@ void capSortedListElement::description (String & ioString, const int32_t inInden
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult capSortedListElement::compareForSorting (const capSortedListElement & inOperand) {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult capSortedListElement::compareForSorting (const capSortedListElement & inOperand) {
+  ComparisonResult result = ComparisonResult::invalid ;
   if ((nullptr != mPtr) && (nullptr != inOperand.mPtr)) {
     result = mPtr->compareForSorting (inOperand.mPtr) ;
   }

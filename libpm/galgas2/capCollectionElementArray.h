@@ -129,7 +129,7 @@ class capCollectionElementArray final {
                                   COMMA_LOCATION_ARGS) const ;
 
 //--- Compare
-  public: typeComparisonResult compareCollectionElementArray (const capCollectionElementArray & inOperand) const ;
+  public: ComparisonResult compareCollectionElementArray (const capCollectionElementArray & inOperand) const ;
 
 //--- Description
   public: void description (String & ioString,

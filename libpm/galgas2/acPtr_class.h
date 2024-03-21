@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "SharedObject.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ class acPtr_class : public SharedObject {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const = 0 ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
 

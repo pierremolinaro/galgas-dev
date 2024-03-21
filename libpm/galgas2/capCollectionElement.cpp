@@ -66,7 +66,7 @@ bool capCollectionElement::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult capCollectionElement::compare (const capCollectionElement & inOperand) const {
+ComparisonResult capCollectionElement::compare (const capCollectionElement & inOperand) const {
   macroValidSharedObject (mPtr, cCollectionElement) ;
   macroValidSharedObject (inOperand.mPtr, cCollectionElement) ;
   return mPtr->compare (inOperand.mPtr) ;

@@ -22,6 +22,24 @@
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
+
+static bool boolValueFromComparisonKindAndComparisonResult (const ComparisonKind inComparisonKind,
+                                                            const ComparisonResult inComparisonResult) {
+  bool result = false ;
+  if (ComparisonResult::invalid != inComparisonResult) {
+    switch (inComparisonKind) {
+    case ComparisonKind::equal          : result = inComparisonResult == ComparisonResult::operandEqual ; break ;
+    case ComparisonKind::notEqual       : result = inComparisonResult != ComparisonResult::operandEqual ; break ;
+    case ComparisonKind::greaterOrEqual : result = inComparisonResult >= ComparisonResult::operandEqual ; break ;
+    case ComparisonKind::lowerOrEqual   : result = inComparisonResult <= ComparisonResult::operandEqual ; break ;
+    case ComparisonKind::greaterThan    : result = inComparisonResult >  ComparisonResult::operandEqual ; break ;
+    case ComparisonKind::lowerThan      : result = inComparisonResult <  ComparisonResult::operandEqual ; break ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //                     'GALGAS_bool' class                                                       
 //
@@ -58,9 +76,9 @@ GALGAS_bool GALGAS_bool::class_func_default (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool::GALGAS_bool (const typeComparisonKind inComparisonKind,
-                          const typeComparisonResult inComparisonResult) :
-mIsValid (kOperandNotValid != inComparisonResult),
+GALGAS_bool::GALGAS_bool (const ComparisonKind inComparisonKind,
+                          const ComparisonResult inComparisonResult) :
+mIsValid (ComparisonResult::invalid != inComparisonResult),
 mBoolValue (boolValueFromComparisonKindAndComparisonResult (inComparisonKind, inComparisonResult)) {
 }
 
@@ -76,15 +94,15 @@ enumGalgasBool GALGAS_bool::boolEnum (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_bool::objectCompare (const GALGAS_bool & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_bool::objectCompare (const GALGAS_bool & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     if (mBoolValue < inOperand.mBoolValue) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (mBoolValue > inOperand.mBoolValue) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

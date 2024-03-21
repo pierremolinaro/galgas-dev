@@ -44,8 +44,8 @@ class cPtr_weakReference_proxy final : public acPtr_class {
 //--- Virtual methods from acPtr_class
   public: virtual void description (String &, const int32_t) const {} // Never invoked
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class *) const { // Never invoked
-    return typeComparisonResult::kOperandNotValid ;
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class *) const { // Never invoked
+    return ComparisonResult::invalid ;
   }
 
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;

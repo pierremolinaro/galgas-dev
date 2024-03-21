@@ -35,7 +35,7 @@ class cSortedListElement : public cCollectionElement {
   private: cSortedListElement & operator = (const cSortedListElement &) ;
 
 //--- Virtual method that comparing element for sorting
-  public: virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const = 0 ;
+  public: virtual ComparisonResult compareForSorting (const cSortedListElement * inOperand) const = 0 ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

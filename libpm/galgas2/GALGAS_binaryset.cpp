@@ -1069,15 +1069,15 @@ GALGAS_binaryset GALGAS_binaryset::right_shift_operation (const GALGAS_bigint in
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_binaryset::objectCompare (const GALGAS_binaryset & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
+ComparisonResult GALGAS_binaryset::objectCompare (const GALGAS_binaryset & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     if (mBDD.integerValue () < inOperand.mBDD.integerValue ()) {
-      result = kFirstOperandLowerThanSecond ;
+      result = ComparisonResult::firstOperandLowerThanSecond ;
     }else if (mBDD.integerValue () > inOperand.mBDD.integerValue ()) {
-      result = kFirstOperandGreaterThanSecond ;
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
+      result = ComparisonResult::operandEqual ;
     }
   }
   return result ;

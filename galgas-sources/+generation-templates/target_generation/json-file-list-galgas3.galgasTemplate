@@ -93,7 +93,6 @@ end
        "SHA256.cpp",
        "galgas-random.cpp",
        "C_galgas_CLI_Options.cpp",
-       "typeComparisonResult.cpp",
        "Compiler.cpp",
        "Lexique.cpp",
        "Lexique-parsing.cpp",

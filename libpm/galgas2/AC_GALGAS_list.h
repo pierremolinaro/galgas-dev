@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AC_GALGAS_root.h"
-#include "typeComparisonResult.h"
+#include "ComparisonResult.h"
 #include "cCollectionElement.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & outEnumerationArray) const ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const AC_GALGAS_list & inOperand) const ;
+  public: ComparisonResult objectCompare (const AC_GALGAS_list & inOperand) const ;
 
 //--- Readers
   public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
@@ -151,7 +151,7 @@ class cListMapElement : public cCollectionElement {
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
@@ -203,7 +203,7 @@ class AC_GALGAS_listmap : public AC_GALGAS_root {
   protected: virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const AC_GALGAS_listmap & inOperand) const ;
+  public: ComparisonResult objectCompare (const AC_GALGAS_listmap & inOperand) const ;
 
 //--------------------------------- Insulate
   private: VIRTUAL_IN_DEBUG void insulateListMap (LOCATION_ARGS) ;

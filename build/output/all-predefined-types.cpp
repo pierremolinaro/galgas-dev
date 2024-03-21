@@ -117,7 +117,7 @@ class cCollectionElement_stringlist : public cCollectionElement {
   public: cCollectionElement_stringlist (const GALGAS_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -169,7 +169,7 @@ void cCollectionElement_stringlist::description (String & ioString, const int32_
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_stringlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_stringlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_stringlist * operand = (cCollectionElement_stringlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_stringlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -609,7 +609,7 @@ class cCollectionElement_lstringlist : public cCollectionElement {
   public: cCollectionElement_lstringlist (const GALGAS_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -661,7 +661,7 @@ void cCollectionElement_lstringlist::description (String & ioString, const int32
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_lstringlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_lstringlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lstringlist * operand = (cCollectionElement_lstringlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_lstringlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -1163,12 +1163,12 @@ GALGAS_lbool GALGAS_lbool::class_func_new (const GALGAS_bool & in_bool,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lbool::objectCompare (const GALGAS_lbool & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lbool::objectCompare (const GALGAS_lbool & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_bool.objectCompare (inOperand.mProperty_bool) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -1260,7 +1260,7 @@ class cCollectionElement__32_stringlist : public cCollectionElement {
   public: cCollectionElement__32_stringlist (const GALGAS__32_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -1317,7 +1317,7 @@ void cCollectionElement__32_stringlist::description (String & ioString, const in
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement__32_stringlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement__32_stringlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement__32_stringlist * operand = (cCollectionElement__32_stringlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement__32_stringlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -2237,7 +2237,7 @@ class cCollectionElement_functionlist : public cCollectionElement {
   public: cCollectionElement_functionlist (const GALGAS_functionlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -2289,7 +2289,7 @@ void cCollectionElement_functionlist::description (String & ioString, const int3
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_functionlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_functionlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_functionlist * operand = (cCollectionElement_functionlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_functionlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -2645,7 +2645,7 @@ class cCollectionElement_luintlist : public cCollectionElement {
   public: cCollectionElement_luintlist (const GALGAS_luintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -2697,7 +2697,7 @@ void cCollectionElement_luintlist::description (String & ioString, const int32_t
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_luintlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_luintlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_luintlist * operand = (cCollectionElement_luintlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_luintlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -3073,12 +3073,12 @@ GALGAS_luint GALGAS_luint::class_func_new (const GALGAS_uint & in_uint,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_luint::objectCompare (const GALGAS_luint & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_luint::objectCompare (const GALGAS_luint & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_uint.objectCompare (inOperand.mProperty_uint) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -3169,7 +3169,7 @@ class cCollectionElement_objectlist : public cCollectionElement {
   public: cCollectionElement_objectlist (const GALGAS_objectlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -3221,7 +3221,7 @@ void cCollectionElement_objectlist::description (String & ioString, const int32_
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_objectlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_objectlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_objectlist * operand = (cCollectionElement_objectlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_objectlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -3577,7 +3577,7 @@ class cCollectionElement_typelist : public cCollectionElement {
   public: cCollectionElement_typelist (const GALGAS_typelist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -3629,7 +3629,7 @@ void cCollectionElement_typelist::description (String & ioString, const int32_t 
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_typelist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_typelist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_typelist * operand = (cCollectionElement_typelist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_typelist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -3985,7 +3985,7 @@ class cCollectionElement_uintlist : public cCollectionElement {
   public: cCollectionElement_uintlist (const GALGAS_uintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -4037,7 +4037,7 @@ void cCollectionElement_uintlist::description (String & ioString, const int32_t 
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_uintlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_uintlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_uintlist * operand = (cCollectionElement_uintlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_uintlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -4393,7 +4393,7 @@ class cCollectionElement_uint_36__34_list : public cCollectionElement {
   public: cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_list_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -4445,7 +4445,7 @@ void cCollectionElement_uint_36__34_list::description (String & ioString, const 
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_uint_36__34_list * operand = (cCollectionElement_uint_36__34_list *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_uint_36__34_list) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -4801,7 +4801,7 @@ class cCollectionElement_bigintlist : public cCollectionElement {
   public: cCollectionElement_bigintlist (const GALGAS_bigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -4853,7 +4853,7 @@ void cCollectionElement_bigintlist::description (String & ioString, const int32_
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_bigintlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_bigintlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_bigintlist * operand = (cCollectionElement_bigintlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_bigintlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -5209,7 +5209,7 @@ class cCollectionElement_lbigintlist : public cCollectionElement {
   public: cCollectionElement_lbigintlist (const GALGAS_lbigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -5261,7 +5261,7 @@ void cCollectionElement_lbigintlist::description (String & ioString, const int32
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionElement * inOperand) const {
+ComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lbigintlist * operand = (cCollectionElement_lbigintlist *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_lbigintlist) ;
   return mObject.objectCompare (operand->mObject) ;
@@ -5637,12 +5637,12 @@ GALGAS_lsint GALGAS_lsint::class_func_new (const GALGAS_sint & in_sint,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lsint::objectCompare (const GALGAS_lsint & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lsint::objectCompare (const GALGAS_lsint & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_sint.objectCompare (inOperand.mProperty_sint) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -5753,12 +5753,12 @@ GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::class_func_new (const GALGAS_sint_36_
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lsint_36__34_::objectCompare (const GALGAS_lsint_36__34_ & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lsint_36__34_::objectCompare (const GALGAS_lsint_36__34_ & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_sint_36__34_.objectCompare (inOperand.mProperty_sint_36__34_) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -5869,12 +5869,12 @@ GALGAS_luint_36__34_ GALGAS_luint_36__34_::class_func_new (const GALGAS_uint_36_
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_luint_36__34_::objectCompare (const GALGAS_luint_36__34_ & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_luint_36__34_::objectCompare (const GALGAS_luint_36__34_ & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_uint_36__34_.objectCompare (inOperand.mProperty_uint_36__34_) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -5985,12 +5985,12 @@ GALGAS_range GALGAS_range::class_func_new (const GALGAS_uint & in_start,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_range::objectCompare (const GALGAS_range & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_range::objectCompare (const GALGAS_range & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_start.objectCompare (inOperand.mProperty_start) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_length.objectCompare (inOperand.mProperty_length) ;
   }
   return result ;
@@ -6097,9 +6097,9 @@ GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::class_func_new (c
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_functionlist_2D_element::objectCompare (const GALGAS_functionlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_functionlist_2D_element::objectCompare (const GALGAS_functionlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6203,9 +6203,9 @@ GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::class_func_new (const G
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_luintlist_2D_element::objectCompare (const GALGAS_luintlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_luintlist_2D_element::objectCompare (const GALGAS_luintlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6309,9 +6309,9 @@ GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::class_func_new (const
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_objectlist_2D_element::objectCompare (const GALGAS_objectlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_objectlist_2D_element::objectCompare (const GALGAS_objectlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6415,9 +6415,9 @@ GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::class_func_new (const
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_stringlist_2D_element::objectCompare (const GALGAS_stringlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_stringlist_2D_element::objectCompare (const GALGAS_stringlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6521,9 +6521,9 @@ GALGAS_typelist_2D_element GALGAS_typelist_2D_element::class_func_new (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_typelist_2D_element::objectCompare (const GALGAS_typelist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_typelist_2D_element::objectCompare (const GALGAS_typelist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6627,9 +6627,9 @@ GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::class_func_new (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_uintlist_2D_element::objectCompare (const GALGAS_uintlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_uintlist_2D_element::objectCompare (const GALGAS_uintlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6733,9 +6733,9 @@ GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::class_fun
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_uint_36__34_list_2D_element::objectCompare (const GALGAS_uint_36__34_list_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_uint_36__34_list_2D_element::objectCompare (const GALGAS_uint_36__34_list_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6839,9 +6839,9 @@ GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::class_func_new (const
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_bigintlist_2D_element::objectCompare (const GALGAS_bigintlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_bigintlist_2D_element::objectCompare (const GALGAS_bigintlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -6949,12 +6949,12 @@ GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::class_func_ne
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS__32_stringlist_2D_element::objectCompare (const GALGAS__32_stringlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS__32_stringlist_2D_element::objectCompare (const GALGAS__32_stringlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue_30_.objectCompare (inOperand.mProperty_mValue_30_) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue_31_.objectCompare (inOperand.mProperty_mValue_31_) ;
   }
   return result ;
@@ -7065,12 +7065,12 @@ GALGAS_lstring GALGAS_lstring::class_func_new (const GALGAS_string & in_string,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lstring::objectCompare (const GALGAS_lstring & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lstring::objectCompare (const GALGAS_lstring & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_string.objectCompare (inOperand.mProperty_string) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -7181,12 +7181,12 @@ GALGAS_lbigint GALGAS_lbigint::class_func_new (const GALGAS_bigint & in_bigint,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lbigint::objectCompare (const GALGAS_lbigint & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lbigint::objectCompare (const GALGAS_lbigint & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_bigint.objectCompare (inOperand.mProperty_bigint) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -7297,12 +7297,12 @@ GALGAS_lchar GALGAS_lchar::class_func_new (const GALGAS_char & in_char,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lchar::objectCompare (const GALGAS_lchar & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lchar::objectCompare (const GALGAS_lchar & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_char.objectCompare (inOperand.mProperty_char) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -7413,12 +7413,12 @@ GALGAS_ldouble GALGAS_ldouble::class_func_new (const GALGAS_double & in_double,
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_ldouble::objectCompare (const GALGAS_ldouble & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_ldouble::objectCompare (const GALGAS_ldouble & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_double.objectCompare (inOperand.mProperty_double) ;
   }
-  if (result == kOperandEqual) {
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
@@ -7525,9 +7525,9 @@ GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::class_func_new (con
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lstringlist_2D_element::objectCompare (const GALGAS_lstringlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lstringlist_2D_element::objectCompare (const GALGAS_lstringlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
@@ -7631,9 +7631,9 @@ GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::class_func_new (con
 
 //--------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_lbigintlist_2D_element::objectCompare (const GALGAS_lbigintlist_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
+ComparisonResult GALGAS_lbigintlist_2D_element::objectCompare (const GALGAS_lbigintlist_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
     result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
