@@ -6401,7 +6401,7 @@
     path = "files";
     sourceTree = "<group>";
   };
-  EF330C13A05A3ED7E599D5F7 /* Galgas 2 */ = {
+  EF330C13A05A3ED7E599D5F7 /* Galgas */ = {
     isa = PBXGroup;
     children = (
       3333E6E143439161ADC2D82E, 
@@ -6504,8 +6504,8 @@
       4E7C05C16873B05EC425CBAD, 
       17B3847419BB3DE39A609AFE, 
     );
-    name = "Galgas 2";
-    path = "galgas2";
+    name = "Galgas";
+    path = "galgas";
     sourceTree = "<group>";
   };
   2A252123C40D2ADBA6A11D84 /* Streams */ = {

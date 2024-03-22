@@ -5,7 +5,7 @@
                        "%!LIBPM_DIRECTORY_PATH%/big-integers",
                        "%!LIBPM_DIRECTORY_PATH%/command_line_interface",
                        "%!LIBPM_DIRECTORY_PATH%/files",
-                       "%!LIBPM_DIRECTORY_PATH%/galgas2",
+                       "%!LIBPM_DIRECTORY_PATH%/galgas",
                        "%!LIBPM_DIRECTORY_PATH%/generic-arraies",
                        "%!LIBPM_DIRECTORY_PATH%/streams",
                        "%!LIBPM_DIRECTORY_PATH%/strings",

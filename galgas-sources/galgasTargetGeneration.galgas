@@ -943,8 +943,8 @@ proc updateGalgasTargets
     libpmReferenceGroupList += !groupRef
   #--- Add "Galgas 2" group
     [!?xcodeProject addGroupWithFiles
-      !groupName:"Galgas 2"
-      !groupPath:"galgas2"
+      !groupName:"Galgas"
+      !groupPath:"galgas"
       !fileNames:{
         !"AC_GALGAS_reference_class.cpp",
         !"AC_GALGAS_reference_class.h",

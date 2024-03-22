@@ -1114,7 +1114,7 @@
 			path = "big-integers";
 			sourceTree = "<group>";
 		};
-		CFA5890010D285C800B7E541 /* galgas2 */ = {
+		CFA5890010D285C800B7E541 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
 				CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */,
@@ -1217,7 +1217,7 @@
 				CF6CEB781278B57400E8F785 /* SourceTextInString.h */,
 				CF8A32121278D21600E3EDC9 /* TemplateDelimiter.h */,
 			);
-			path = galgas2;
+			path = galgas;
 			sourceTree = "<group>";
 		};
 		CFA5B1392B2F72A5009062AE /* Headers */ = {
@@ -1395,7 +1395,7 @@
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
 				CF31E0ED0598DF5400814123 /* command_line_interface */,
 				CFF538CC057A559D00854C83 /* files */,
-				CFA5890010D285C800B7E541 /* galgas2 */,
+				CFA5890010D285C800B7E541 /* galgas */,
 				CFB9E4850DF28AC500885084 /* Generic Arraies */,
 				CFF53851057A54FB00854C83 /* streams */,
 				CFD3E8510FA0C0F800C4995E /* strings */,
