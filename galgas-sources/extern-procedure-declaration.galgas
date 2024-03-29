@@ -101,6 +101,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -111,22 +112,22 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override getter keyRepresentation -> @string {
-    result = "routine " + self.mRoutineName + "("
-    for parameter in self.mFormalArgumentListAST
-    do
-      switch parameter.mFormalArgumentPassingMode
-      case argumentConstantIn, argumentIn :
-        result +="?"
-      case argumentInOut :
-        result +="?!"
-      case argumentOut :
-        result +="!"
-      end
-      result += parameter.mFormalSelector
-    between
-      result += ", "
-    end
-    result += ")"
+    result = "routine " + self.mRoutineName + [self.mFormalArgumentListAST keyRepresentation] // "("
+#    for parameter in self.mFormalArgumentListAST
+#    do
+#      switch parameter.mFormalArgumentPassingMode
+#      case argumentConstantIn, argumentIn :
+#        result +="?"
+#      case argumentInOut :
+#        result +="?!"
+#      case argumentOut :
+#        result +="!"
+#      end
+#      result += parameter.mFormalSelector
+#    between
+#      result += ", "
+#    end
+#    result += ")"
   }
 
   #·······························································································

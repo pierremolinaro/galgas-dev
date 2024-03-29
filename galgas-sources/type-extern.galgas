@@ -356,6 +356,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -460,21 +461,21 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mExternTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum. externType
-    !false # Does not support collection value
-    !{}
-    !{}
-    !{}
-    !classFunctionMap
+    !typeName: self.mExternTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .externType
+    !supportCollectionValue: false # Does not support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {}
+    !currentTypedPropertyList: {}
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap {}
-    !@optionalMethodMap {}
+    !classMethodMap: {}
+    !optionalMethodMap: {}
     !{}
     !.none
     !{}
@@ -488,7 +489,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     !"externtype-" + [self.mExternTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -535,21 +536,21 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
   !@string outHeader {
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mCppPreDeclarationCode
     !self.mCppClassCode
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments

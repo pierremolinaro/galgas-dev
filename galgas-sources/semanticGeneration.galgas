@@ -613,7 +613,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
                                 ?let @formalParameterListForGeneration inFormalArgumentList
                                 ?let @semanticInstructionListForGeneration inInstructionList
                                 !@string outGeneratedCode {
-  let className = [inReceiverType definition].mTypeName.string
+  let className = [inReceiverType definition].typeName.string
 #--- Build unused variable set
   var @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
@@ -639,9 +639,9 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
-    if not [[baseType definition].mSuperType isNull] then
-      if [[[baseType definition].mSuperType definition].mInstanceMethodMap hasKey !inMethodName] then
-        baseType = [baseType definition].mSuperType
+    if not [[baseType definition].superType isNull] then
+      if [[[baseType definition].superType definition].mInstanceMethodMap hasKey !inMethodName] then
+        baseType = [baseType definition].superType
       else
         searching = false
       end
@@ -649,7 +649,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
       searching = false
     end
   end
-  ioInclusionSet += !"method-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
+  ioInclusionSet += !"method-" + [[baseType definition].typeName.string fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -1116,13 +1116,13 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  if [selfTypeDefinition mTypeKindEnum] == .packageType then
+  if [selfTypeDefinition typeKind] == .packageType then
     result = ""
   else
     result = [filewrapper typeGenerationTemplate.genericTypeImplementation
-      !selfTypeDefinition.mTypeName.string
+      !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
-      !selfTypeDefinition.mSuperType
+      !selfTypeDefinition.superType
     ]
   end
 }
@@ -1536,22 +1536,22 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     if [self isPackage] then
       result += [filewrapper typeGenerationTemplate.unifiedClassBodyForPackage
-        !selfTypeDefinition.mTypeName.string
+        !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
-        !selfTypeDefinition.mClassFunctionMap
-        !selfTypeDefinition.mClassMethodMap
+        !selfTypeDefinition.classFunctionMap
+        !selfTypeDefinition.classMethodMap
       ]
     else
       result += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-        !selfTypeDefinition.mTypeName.string
+        !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
-        !selfTypeDefinition.mIsConcrete
-        !selfTypeDefinition.mClassFunctionMap
+        !selfTypeDefinition.isConcrete
+        !selfTypeDefinition.classFunctionMap
         !selfTypeDefinition.mGetterMap
         !selfTypeDefinition.mSetterMap
         !selfTypeDefinition.mInstanceMethodMap
-        !selfTypeDefinition.mClassMethodMap
-        !selfTypeDefinition.mOptionalMethodMap
+        !selfTypeDefinition.classMethodMap
+        !selfTypeDefinition.optionalMethodMap
         !selfTypeDefinition.mEnumerationDescriptor
         !selfTypeDefinition.mHandledOperatorFlags
         !selfTypeDefinition.mAddAssignOperatorArguments

@@ -131,6 +131,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
   var @semanticTypePrecedenceGraph semanticTypePrecedenceGraph = .emptyGraph
+  var @extensionInitializerForBuildingContext extensionInitializerForBuildingContext = {}
   var @extensionMethodMapForBuildingContext extensionMethodMapForBuildingContext = {}
   var @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = {}
   var @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = {}
@@ -138,6 +139,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
   for declaration in semanticDeclarationList do
     [declaration.mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
+      !?extensionInitializerForBuildingContext
       !?extensionMethodMapForBuildingContext
       !?extensionGetterMapForBuildingContext
       !?extensionSetterMapForBuildingContext

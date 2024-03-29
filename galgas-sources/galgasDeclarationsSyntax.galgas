@@ -50,7 +50,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
                          !@semanticExpressionAST outExpression
 
   #·······························································································
-  #    A T T R I B U T E    I N    C O L L E C T I O N
+  #    PROPERTY IN COLLECTION
   #·······························································································
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations

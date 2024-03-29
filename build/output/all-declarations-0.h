@@ -10543,54 +10543,54 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap ;
 
 class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS_lstring mProperty_mTypeName ;
-  public: inline GALGAS_lstring readProperty_mTypeName (void) const {
-    return mProperty_mTypeName ;
+  public: GALGAS_lstring mProperty_typeName ;
+  public: inline GALGAS_lstring readProperty_typeName (void) const {
+    return mProperty_typeName ;
   }
 
-  public: GALGAS_bool mProperty_mIsPredefined ;
-  public: inline GALGAS_bool readProperty_mIsPredefined (void) const {
-    return mProperty_mIsPredefined ;
+  public: GALGAS_bool mProperty_isPredefined ;
+  public: inline GALGAS_bool readProperty_isPredefined (void) const {
+    return mProperty_isPredefined ;
   }
 
-  public: GALGAS_bool mProperty_mIsConcrete ;
-  public: inline GALGAS_bool readProperty_mIsConcrete (void) const {
-    return mProperty_mIsConcrete ;
+  public: GALGAS_bool mProperty_isConcrete ;
+  public: inline GALGAS_bool readProperty_isConcrete (void) const {
+    return mProperty_isConcrete ;
   }
 
-  public: GALGAS_unifiedTypeMapEntry mProperty_mSuperType ;
-  public: inline GALGAS_unifiedTypeMapEntry readProperty_mSuperType (void) const {
-    return mProperty_mSuperType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_superType ;
+  public: inline GALGAS_unifiedTypeMapEntry readProperty_superType (void) const {
+    return mProperty_superType ;
   }
 
-  public: GALGAS_typeKindEnum mProperty_mTypeKindEnum ;
-  public: inline GALGAS_typeKindEnum readProperty_mTypeKindEnum (void) const {
-    return mProperty_mTypeKindEnum ;
+  public: GALGAS_typeKindEnum mProperty_typeKind ;
+  public: inline GALGAS_typeKindEnum readProperty_typeKind (void) const {
+    return mProperty_typeKind ;
   }
 
-  public: GALGAS_bool mProperty_mSupportCollectionValue ;
-  public: inline GALGAS_bool readProperty_mSupportCollectionValue (void) const {
-    return mProperty_mSupportCollectionValue ;
+  public: GALGAS_bool mProperty_supportCollectionValue ;
+  public: inline GALGAS_bool readProperty_supportCollectionValue (void) const {
+    return mProperty_supportCollectionValue ;
   }
 
-  public: GALGAS_typedPropertyList mProperty_mAllTypedPropertyList ;
-  public: inline GALGAS_typedPropertyList readProperty_mAllTypedPropertyList (void) const {
-    return mProperty_mAllTypedPropertyList ;
+  public: GALGAS_typedPropertyList mProperty_allTypedPropertyList ;
+  public: inline GALGAS_typedPropertyList readProperty_allTypedPropertyList (void) const {
+    return mProperty_allTypedPropertyList ;
   }
 
-  public: GALGAS_propertyMap mProperty_mPropertyMap ;
-  public: inline GALGAS_propertyMap readProperty_mPropertyMap (void) const {
-    return mProperty_mPropertyMap ;
+  public: GALGAS_propertyMap mProperty_propertyMap ;
+  public: inline GALGAS_propertyMap readProperty_propertyMap (void) const {
+    return mProperty_propertyMap ;
   }
 
-  public: GALGAS_typedPropertyList mProperty_mCurrentTypedPropertyList ;
-  public: inline GALGAS_typedPropertyList readProperty_mCurrentTypedPropertyList (void) const {
-    return mProperty_mCurrentTypedPropertyList ;
+  public: GALGAS_typedPropertyList mProperty_currentTypedPropertyList ;
+  public: inline GALGAS_typedPropertyList readProperty_currentTypedPropertyList (void) const {
+    return mProperty_currentTypedPropertyList ;
   }
 
-  public: GALGAS_classFunctionMap mProperty_mClassFunctionMap ;
-  public: inline GALGAS_classFunctionMap readProperty_mClassFunctionMap (void) const {
-    return mProperty_mClassFunctionMap ;
+  public: GALGAS_classFunctionMap mProperty_classFunctionMap ;
+  public: inline GALGAS_classFunctionMap readProperty_classFunctionMap (void) const {
+    return mProperty_classFunctionMap ;
   }
 
   public: GALGAS_getterMap mProperty_mGetterMap ;
@@ -10608,14 +10608,14 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_mInstanceMethodMap ;
   }
 
-  public: GALGAS_classMethodMap mProperty_mClassMethodMap ;
-  public: inline GALGAS_classMethodMap readProperty_mClassMethodMap (void) const {
-    return mProperty_mClassMethodMap ;
+  public: GALGAS_classMethodMap mProperty_classMethodMap ;
+  public: inline GALGAS_classMethodMap readProperty_classMethodMap (void) const {
+    return mProperty_classMethodMap ;
   }
 
-  public: GALGAS_optionalMethodMap mProperty_mOptionalMethodMap ;
-  public: inline GALGAS_optionalMethodMap readProperty_mOptionalMethodMap (void) const {
-    return mProperty_mOptionalMethodMap ;
+  public: GALGAS_optionalMethodMap mProperty_optionalMethodMap ;
+  public: inline GALGAS_optionalMethodMap readProperty_optionalMethodMap (void) const {
+    return mProperty_optionalMethodMap ;
   }
 
   public: GALGAS_enumerationDescriptorList mProperty_mEnumerationDescriptor ;
@@ -10686,44 +10686,44 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
   public: GALGAS_unifiedTypeDefinition (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTypeName = inValue ;
+  public: inline void setter_setTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_typeName = inValue ;
   }
 
-  public: inline void setter_setMIsPredefined (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIsPredefined = inValue ;
+  public: inline void setter_setIsPredefined (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_isPredefined = inValue ;
   }
 
-  public: inline void setter_setMIsConcrete (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIsConcrete = inValue ;
+  public: inline void setter_setIsConcrete (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_isConcrete = inValue ;
   }
 
-  public: inline void setter_setMSuperType (const GALGAS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSuperType = inValue ;
+  public: inline void setter_setSuperType (const GALGAS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_superType = inValue ;
   }
 
-  public: inline void setter_setMTypeKindEnum (const GALGAS_typeKindEnum & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTypeKindEnum = inValue ;
+  public: inline void setter_setTypeKind (const GALGAS_typeKindEnum & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_typeKind = inValue ;
   }
 
-  public: inline void setter_setMSupportCollectionValue (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSupportCollectionValue = inValue ;
+  public: inline void setter_setSupportCollectionValue (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_supportCollectionValue = inValue ;
   }
 
-  public: inline void setter_setMAllTypedPropertyList (const GALGAS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAllTypedPropertyList = inValue ;
+  public: inline void setter_setAllTypedPropertyList (const GALGAS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_allTypedPropertyList = inValue ;
   }
 
-  public: inline void setter_setMPropertyMap (const GALGAS_propertyMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPropertyMap = inValue ;
+  public: inline void setter_setPropertyMap (const GALGAS_propertyMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_propertyMap = inValue ;
   }
 
-  public: inline void setter_setMCurrentTypedPropertyList (const GALGAS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mCurrentTypedPropertyList = inValue ;
+  public: inline void setter_setCurrentTypedPropertyList (const GALGAS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_currentTypedPropertyList = inValue ;
   }
 
-  public: inline void setter_setMClassFunctionMap (const GALGAS_classFunctionMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mClassFunctionMap = inValue ;
+  public: inline void setter_setClassFunctionMap (const GALGAS_classFunctionMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_classFunctionMap = inValue ;
   }
 
   public: inline void setter_setMGetterMap (const GALGAS_getterMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -10738,12 +10738,12 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_mInstanceMethodMap = inValue ;
   }
 
-  public: inline void setter_setMClassMethodMap (const GALGAS_classMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mClassMethodMap = inValue ;
+  public: inline void setter_setClassMethodMap (const GALGAS_classMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_classMethodMap = inValue ;
   }
 
-  public: inline void setter_setMOptionalMethodMap (const GALGAS_optionalMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionalMethodMap = inValue ;
+  public: inline void setter_setOptionalMethodMap (const GALGAS_optionalMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_optionalMethodMap = inValue ;
   }
 
   public: inline void setter_setMEnumerationDescriptor (const GALGAS_enumerationDescriptorList & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -10798,21 +10798,21 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
   public: virtual ~ GALGAS_unifiedTypeDefinition (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_unifiedTypeDefinition (const GALGAS_lstring & in_mTypeName,
-                                        const GALGAS_bool & in_mIsPredefined,
-                                        const GALGAS_bool & in_mIsConcrete,
-                                        const GALGAS_unifiedTypeMapEntry & in_mSuperType,
-                                        const GALGAS_typeKindEnum & in_mTypeKindEnum,
-                                        const GALGAS_bool & in_mSupportCollectionValue,
-                                        const GALGAS_typedPropertyList & in_mAllTypedPropertyList,
-                                        const GALGAS_propertyMap & in_mPropertyMap,
-                                        const GALGAS_typedPropertyList & in_mCurrentTypedPropertyList,
-                                        const GALGAS_classFunctionMap & in_mClassFunctionMap,
+  public: GALGAS_unifiedTypeDefinition (const GALGAS_lstring & in_typeName,
+                                        const GALGAS_bool & in_isPredefined,
+                                        const GALGAS_bool & in_isConcrete,
+                                        const GALGAS_unifiedTypeMapEntry & in_superType,
+                                        const GALGAS_typeKindEnum & in_typeKind,
+                                        const GALGAS_bool & in_supportCollectionValue,
+                                        const GALGAS_typedPropertyList & in_allTypedPropertyList,
+                                        const GALGAS_propertyMap & in_propertyMap,
+                                        const GALGAS_typedPropertyList & in_currentTypedPropertyList,
+                                        const GALGAS_classFunctionMap & in_classFunctionMap,
                                         const GALGAS_getterMap & in_mGetterMap,
                                         const GALGAS_setterMap & in_mSetterMap,
                                         const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
-                                        const GALGAS_classMethodMap & in_mClassMethodMap,
-                                        const GALGAS_optionalMethodMap & in_mOptionalMethodMap,
+                                        const GALGAS_classMethodMap & in_classMethodMap,
+                                        const GALGAS_optionalMethodMap & in_optionalMethodMap,
                                         const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
                                         const GALGAS_operators & in_mHandledOperatorFlags,
                                         const GALGAS_functionSignature & in_mAddAssignOperatorArguments,

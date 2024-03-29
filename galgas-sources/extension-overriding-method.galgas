@@ -152,6 +152,7 @@ override getter @overridingExtensionMethodAST keyRepresentation -> @string {
 
 override method @overridingExtensionMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -206,12 +207,12 @@ override method @overridingExtensionMethodAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is a class
-  if not [[selfType definition].mTypeKindEnum isClassType] then
-    error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].mTypeName.string + "' is not a class"
+  if not [[selfType definition].typeKind isClassType] then
+    error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType definition].mSuperType
+  var @unifiedTypeMapEntry superType = [selfType definition].superType
   var inheritedSignature = @formalParameterSignature {}
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
@@ -227,10 +228,10 @@ override method @overridingExtensionMethodAST semanticAnalysis
         ?*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
-        baseTypeName = [superType definition].mTypeName.string
+        baseTypeName = [superType definition].typeName.string
       end
     end
-    superType = [superType definition].mSuperType
+    superType = [superType definition].superType
   end
   if baseTypeName == "" then
     error self.mOverridingExtensionMethodName:"this method is not declared by a super class"
@@ -245,18 +246,18 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isRefClass = false
-  if let [[selfType definition].mTypeKindEnum classType ?isReference: let reference] then
+  if let [[selfType definition].typeKind classType ?isReference: let reference] then
     isRefClass = reference
   end
   var mutableProperties = @typedPropertyList {}
   var nonMutableProperties = @typedPropertyList {}
-  if [selfType definition].mTypeKindEnum == .structType then
-    nonMutableProperties = [selfType definition].mAllTypedPropertyList
-  elsif let [[selfType definition].mTypeKindEnum classType ?isReference: let isReference] then
+  if [selfType definition].typeKind == .structType then
+    nonMutableProperties = [selfType definition].allTypedPropertyList
+  elsif let [[selfType definition].typeKind classType ?isReference: let isReference] then
     if isReference then
-      mutableProperties = [selfType definition].mAllTypedPropertyList
+      mutableProperties = [selfType definition].allTypedPropertyList
     else
-      nonMutableProperties = [selfType definition].mAllTypedPropertyList
+      nonMutableProperties = [selfType definition].allTypedPropertyList
     end
   end
   analyzeRoutineBody (
@@ -286,12 +287,12 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration.new {
       !generateHeader: false # Do not generate Cpp header file
-      !mImplementationCppFileName: "method-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
+      !mImplementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
       !selfType
       !baseTypeName
       !self.mOverridingExtensionMethodName.string
       !formalParameterListForGeneration
-      ![selfType definition].mAllTypedPropertyList
+      ![selfType definition].allTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }
@@ -352,7 +353,7 @@ override method @overridingExtensionMethodForGeneration appendSpecificImplementa
     ?let @string methodImplementation
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionMethodImplementation
-    ![self.mReceiverType definition].mTypeName.string
+    ![self.mReceiverType definition].typeName.string
     !self.mExtensionMethodName
     !methodImplementation
   ]

@@ -46,11 +46,12 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   #-----------------------------------------------------------------------------------------------
 
   override method enterDeclarationInGraph
-                              ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-                              ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-                              ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-                              ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                              ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+       ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+       ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+       ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+       ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+       ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+       ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring.new {!"@" + self.mPredefinedTypeName !@location.here}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
@@ -99,21 +100,21 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
     )
   #---
     let typeDefinition = @unifiedTypeDefinition.new {
-      !@lstring.new {!self.mPredefinedTypeName !.nowhere}
-      !self.isPredefined
-      !true # Concrete Type
-      !@unifiedTypeMapEntry.null
-      ![self typeKind]
-      ![self supportsCollectionValue]
-      !@typedPropertyList {}
-      !{}
-      !@typedPropertyList {}
-      !constructorMap
+      !typeName: @lstring.new {!self.mPredefinedTypeName !.nowhere}
+      !isPredefined: self.isPredefined
+      !isConcrete: true # Concrete Type
+      !superType: .null
+      !typeKind: [self typeKind]
+      !supportCollectionValue: [self supportsCollectionValue]
+      !allTypedPropertyList: {}
+      !propertyMap: {}
+      !currentTypedPropertyList: {}
+      !classFunctionMap: constructorMap
       !getterMap
       !setterMap
       !instanceMethodMap
-      !classMethodMap
-      !optionalMethodMap
+      !classMethodMap: classMethodMap
+      !optionalMethodMap: optionalMethodMap
       !enumerationList
       ![self getSupportedOperatorFlags]
       !addAssignArgumentList
@@ -127,7 +128,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !"predefined-types"
       !@headerKind.twoHeaders
     }
-    [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
   #-----------------------------------------------------------------------------------------------

@@ -39,6 +39,7 @@ override getter @weakReferenceDeclarationAST keyRepresentation -> @string {
 
 override method @weakReferenceDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -93,7 +94,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 #      ?4*
 #    ]
   #---
-    if not [superTypeDefinition.mTypeKindEnum isWeakReferenceType] then
+    if not [superTypeDefinition.typeKind isWeakReferenceType] then
       error self.mSuperWeakReferenceTypeName : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
     end
   end
@@ -139,21 +140,21 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 #--- Enter in type map
   [!?ioTypeMap makeEntry  !self.mClassTypeName ?let classIndex]
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mWeakReferenceTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !superClassIndex
-    !@typeKindEnum.weakReferenceType {!referenceType: classIndex}
-    !false # Does not support collection value
-    !{} # allTypedPropertyList
-    !{} # attributeMap
-    !{} # currentClassTypedPropertyList
-    !classFunctionMap
+    !typeName: self.mWeakReferenceTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: superClassIndex
+    !typeKind: .weakReferenceType {!referenceType: classIndex}
+    !supportCollectionValue: false # Does not support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {} # attributeMap
+    !currentTypedPropertyList: {}
+    !classFunctionMap: classFunctionMap
     !{} # getterMap
     !{} # setterMap
     !{} # instanceMethodMap
-    !{}
-    !@optionalMethodMap {}
+    !classMethodMap: {}
+    !optionalMethodMap: {}
     !{}
     !.isReferenceEquatable
     !{}
@@ -167,7 +168,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -217,7 +218,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #      end
 #    end
   else
-    allAttributeList = [superClassEntry definition].mAllTypedPropertyList
+    allAttributeList = [superClassEntry definition].allTypedPropertyList
     if self.mGenerateInSeparateFile then
       error self.mClassTypeName:"a class that has a super class does not accept any feature"
     end
@@ -262,7 +263,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mReferenceClassType
   private let @unifiedTypeMapEntry mSuperClass # Null if no super class
-  private let @typedPropertyList mAllTypedPropertyList # Inherited followed by current attributes
+  private let @typedPropertyList allTypedPropertyList # Inherited followed by current attributes
   private let @typedPropertyList mTypedAttributeList
   private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
 }
@@ -282,15 +283,15 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !typedefinition.mTypeName.string
-    ![typedefinition.mTypeName.string identifierRepresentation]
-    !typedefinition.mIsConcrete
-    !typedefinition.mClassFunctionMap
+    !typedefinition.typeName.string
+    ![typedefinition.typeName.string identifierRepresentation]
+    !typedefinition.isConcrete
+    !typedefinition.classFunctionMap
     !typedefinition.mGetterMap
     !typedefinition.mSetterMap
     !typedefinition.mInstanceMethodMap
-    !typedefinition.mClassMethodMap
-    !typedefinition.mOptionalMethodMap
+    !typedefinition.classMethodMap
+    !typedefinition.optionalMethodMap
     !typedefinition.mEnumerationDescriptor
     !typedefinition.mHandledOperatorFlags
     !typedefinition.mAddAssignOperatorArguments
@@ -309,11 +310,11 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
   let typedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper typeGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]
-    ![typedefinition.mTypeName.string identifierRepresentation]
+    ![typedefinition.typeName.string identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
-    !self.mAllTypedPropertyList
-    ![self.mAllTypedPropertyList subListWithRange !.new {!0 ![self.mAllTypedPropertyList count] - [self.mTypedAttributeList count]}]
+    !self.allTypedPropertyList
+    ![self.allTypedPropertyList subListWithRange !.new {!0 ![self.allTypedPropertyList count] - [self.mTypedAttributeList count]}]
   ]
 }
 

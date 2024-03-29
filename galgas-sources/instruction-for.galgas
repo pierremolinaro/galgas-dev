@@ -583,7 +583,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
   if [enumerationDescriptorList count] == 0 then
-    error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
+    error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   end
 #--- Declare implicit constants
   var suggestion = "("
@@ -631,7 +631,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
   if [enumerationDescriptorList count] == 0 then
-    error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
+    error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   else
 #--- Arguments
     if ([self.mElementList count] == 0) & not self.mEndsWithEllipsis then
@@ -646,14 +646,14 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       end
     elsif (not self.mEndsWithEllipsis) & ([self.mElementList count] != [enumerationDescriptorList count]) then
       error self.mEndOfEnumerationExpression
-      :"the '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' type requires "
+      :"the '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' type requires "
       + [[enumerationDescriptorList count] string] + " argument"
       + if ([enumerationDescriptorList count] > 1) then "s" else "" end
       + " for enumeration: this list provides "
       + [[self.mElementList count] string]
     elsif (self.mEndsWithEllipsis) & ([self.mElementList count] > [enumerationDescriptorList count]) then
       error self.mEndOfEnumerationExpression
-      :"the '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' type requires "
+      :"the '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' type requires "
       + [[enumerationDescriptorList count] string] + " argument"
       + if ([enumerationDescriptorList count] > 1) then "s" else "" end
       + " or less for enumeration: this list provides "
@@ -670,7 +670,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
           if mOptionalTypeName.string != "" then
             let foundType = [ioTypeMap typeMapEntryForLKey !mOptionalTypeName]
             if foundType != mEnumeratedType then
-              error mOptionalTypeName : "incorrect '@" + [foundType definition].mTypeName.string + "' type: '@" + [mEnumeratedType definition].mTypeName.string + "' type required here"
+              error mOptionalTypeName : "incorrect '@" + [foundType definition].typeName.string + "' type: '@" + [mEnumeratedType definition].typeName.string + "' type required here"
             end
           end
           ioLocalConstantListForDoBranch +=
@@ -709,15 +709,15 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
   let enumeratedElementType = [outEnumerationExpression.mResultType definition].mTypeForEnumeratedElement
   if [enumeratedElementType isNull] then
-    error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].mTypeName.string + "' object cannot be enumerated"
+    error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   elsif self.mEnumerationVariable.string != "" then
     ioLocalConstantListForDoBranch += !enumeratedElementType !self.mEnumerationVariable !false !outEnumeratorCppName + ".current (HERE)"
   end
 #--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
     let explicitType = [ioTypeMap typeMapEntryForLKey !self.mEnumerationOptionalTypeName]
-    if [enumeratedElementType definition].mTypeName.string != [explicitType definition].mTypeName.string then
-      error self.mEnumerationOptionalTypeName: "the '@" + [enumeratedElementType definition].mTypeName.string + "' type is expected here"
+    if [enumeratedElementType definition].typeName.string != [explicitType definition].typeName.string then
+      error self.mEnumerationOptionalTypeName: "the '@" + [enumeratedElementType definition].typeName.string + "' type is expected here"
     end
   end
 #---

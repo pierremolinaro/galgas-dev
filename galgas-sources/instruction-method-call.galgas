@@ -161,11 +161,11 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   var searching = true
   if @uint.errorCount == 0 then
     loop (@uint.max) while searching do
-      if [[baseType definition].mSuperType isNull] then
+      if [[baseType definition].superType isNull] then
         searching = false
       else
-        if [[[baseType definition].mSuperType definition].mInstanceMethodMap hasKey !self.mMethodName.string] then
-          baseType = [baseType definition].mSuperType
+        if [[[baseType definition].superType definition].mInstanceMethodMap hasKey !self.mMethodName.string] then
+          baseType = [baseType definition].superType
         else
           searching = false
         end
@@ -222,8 +222,8 @@ override method @methodCallInstructionForGeneration generateInstruction
 #--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"method-" + [[self.mMethodBaseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
-    if [[self.mReceiverType definition].mTypeKindEnum isClassType] then
+    ioInclusionSet += !"method-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
+    if [[self.mReceiverType definition].typeKind isClassType] then
       ioGeneratedCode += "callExtensionMethod_" + [self.mMethodName identifierRepresentation]
                       + " ((cPtr_" + [self.mReceiverExpression.mResultType identifierRepresentation]
                       + " *) " + receiverCppName + ".ptr (), "

@@ -127,6 +127,7 @@ override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationL
 
 override method @dictDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -320,21 +321,21 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mDictTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum.mapType
-    !true # Support collection value
-    !@typedPropertyList {}
-    !{}
-    !typedPropertyList
-    !classFunctionMap
+    !typeName: self.mDictTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .mapType
+    !supportCollectionValue: true # Support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {}
+    !currentTypedPropertyList: typedPropertyList
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !optionalMethodMap
+    !classMethodMap: {}
+    !optionalMethodMap: optionalMethodMap
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
     !argumentTypeListForAddAssignWithFieldExpressionList
@@ -348,7 +349,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !"dict-" + [self.mDictTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -466,20 +467,20 @@ override method @dictTypeForGeneration appendDeclaration1
 {
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.dictTypeHeader1
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments

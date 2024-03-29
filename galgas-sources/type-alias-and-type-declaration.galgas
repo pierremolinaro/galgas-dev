@@ -220,11 +220,12 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method enterDeclarationInGraph
-                                  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-                                  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-                                  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-                                  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                                  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let aliasKey = @lstring.new {!"@" + self.mAliasTypeName !self.mAliasTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !aliasKey !self]
     let referenceKey = @lstring.new {!"@" + self.mDefinedTypeName !self.mDefinedTypeName.location}
@@ -249,21 +250,21 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
         error self.mDefinedTypeName : "Undefined type"
       case solved (@unifiedTypeDefinition def) :
         let definition = @unifiedTypeDefinition.new {
-          !def.mTypeName
-          !false # Not predefined
-          !def.mIsConcrete # false if abstract class
-          !def.mSuperType
-          !def.mTypeKindEnum
-          !def.mSupportCollectionValue
-          !def.mAllTypedPropertyList
-          !def.mPropertyMap # struct, class
-          !def.mCurrentTypedPropertyList
-          !def.mClassFunctionMap
+          !typeName: def.typeName
+          !isPredefined: false # Not predefined
+          !isConcrete: def.isConcrete # false if abstract class
+          !superType: def.superType
+          !typeKind: def.typeKind
+          !supportCollectionValue: def.supportCollectionValue
+          !allTypedPropertyList: def.allTypedPropertyList
+          !propertyMap: def.propertyMap # struct, class
+          !currentTypedPropertyList: def.currentTypedPropertyList
+          !classFunctionMap: def.classFunctionMap
           !def.mGetterMap
           !def.mSetterMap
           !def.mInstanceMethodMap
-          !def.mClassMethodMap
-          !def.mOptionalMethodMap
+          !classMethodMap: def.classMethodMap
+          !optionalMethodMap: def.optionalMethodMap
           !def.mEnumerationDescriptor # Empty List if cannot be enumerated
           !def.mHandledOperatorFlags
           !def.mAddAssignOperatorArguments # Empty list if += operator is not supported

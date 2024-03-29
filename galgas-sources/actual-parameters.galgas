@@ -247,7 +247,7 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
     ]
     var typeList = @unifiedTypeMapEntryList.listWithValue {!parameterType}
     for (value) in self.mStructAttributeList do
-      let propertyMap = [parameterType definition].mPropertyMap
+      let propertyMap = [parameterType definition].propertyMap
       [propertyMap searchKey
         !value
         ?let accessControl
@@ -266,9 +266,9 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
   #--- Check type
     if inFormalArgumentType != parameterType then
       error self.mOutputInputActualParameterName
-      :"the parameter object has the '@" + [parameterType definition].mTypeName.string
+      :"the parameter object has the '@" + [parameterType definition].typeName.string
       + "', it should be the same as the corresponding formal argument: '@"
-      + [inFormalArgumentType definition].mTypeName.string + "'"
+      + [inFormalArgumentType definition].typeName.string + "'"
     end
   #--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mOutputInputActualParameterName.string] then
@@ -339,7 +339,7 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
   #--- Find a constructor without any argument
-    let classFunctionMap = [inFormalArgumentType definition].mClassFunctionMap
+    let classFunctionMap = [inFormalArgumentType definition].classFunctionMap
     var @bool hasCompilerArgument = false
     var @string constructorName = ""
     var found = false
@@ -352,7 +352,7 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
     end
     if not found then
       error self.mActualSelector
-      : "the '@" + [inFormalArgumentType definition].mTypeName + "' has no initializer without argument"
+      : "the '@" + [inFormalArgumentType definition].typeName + "' has no initializer without argument"
     end
   #--- Generate actual parameter
     let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
@@ -437,9 +437,9 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
     #--- Check type
       if inFormalArgumentType != selfType then
         error self.mActualSelector
-        :"the parameter object has the '@" + [selfType definition].mTypeName.string
+        :"the parameter object has the '@" + [selfType definition].typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + [inFormalArgumentType definition].mTypeName.string + "'"
+        + [inFormalArgumentType definition].typeName.string + "'"
     end
       ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
         !inFormalArgumentType
@@ -503,7 +503,7 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
         + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
       end
     #--- Find a constructor without any argument
-      let classFunctionMap = [inFormalArgumentType definition].mClassFunctionMap
+      let classFunctionMap = [inFormalArgumentType definition].classFunctionMap
       var @bool hasCompilerArgument = false
       var @string constructorName = ""
       var found = false
@@ -516,7 +516,7 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
       end
       if not found then
         error self.mQualifierLocation
-        : "the '@" + [inFormalArgumentType definition].mTypeName + "' has no initializer without argument"
+        : "the '@" + [inFormalArgumentType definition].typeName + "' has no initializer without argument"
       end
     #--- Generate actual parameter
       let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
@@ -597,8 +597,8 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
   #--- Check type
     if inFormalArgumentType != parameterType then
       error self.mInputActualParameterName
-      :"the parameter object has the '@" + [parameterType definition].mTypeName.string
-      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
+      :"the parameter object has the '@" + [parameterType definition].typeName.string
+      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].typeName.string + "'"
     end
   #--- Check for exclusive access
     if [ioExclusiveVariableSet hasKey !self.mInputActualParameterName.string] then
@@ -684,15 +684,15 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
       if not selfIsMutable then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].mPropertyMap
+      let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
       let targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
     #--- Check type
       if inFormalArgumentType != parameterType then
         error self.mInputActualSelfPropertyName
-        :"the parameter object has the '@" + [parameterType definition].mTypeName.string
-        + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
+        :"the parameter object has the '@" + [parameterType definition].typeName.string
+        + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].typeName.string + "'"
       end
     #--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = {}
@@ -776,16 +776,16 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
       if not selfIsMutable then
         error self.mSelfLocation : "'self' not mutable in this context"
       end
-  #    let propertyMap = [selfType definition].mPropertyMap
+  #    let propertyMap = [selfType definition].propertyMap
   #    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
       let targetVariableCppName = inAnalysisContext.mSelfObjectCppName
   #     + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
     #--- Check type
       if inFormalArgumentType != selfType then
         error self.mSelfLocation
-        :"the parameter object has the '@" + [selfType definition].mTypeName.string
+        :"the parameter object has the '@" + [selfType definition].typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + [inFormalArgumentType definition].mTypeName.string + "'"
+        + [inFormalArgumentType definition].typeName.string + "'"
       end
     #--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = {}
@@ -872,9 +872,9 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
       let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
-        :"the parameter object has the '@" + [parameterType definition].mTypeName.string
+        :"the parameter object has the '@" + [parameterType definition].typeName.string
         + "', it should be the same as the corresponding formal argument: '@"
-        + [inFormalArgumentType definition].mTypeName.string + "'"
+        + [inFormalArgumentType definition].typeName.string + "'"
       end
     end
   #--- Declare local variable
@@ -978,8 +978,8 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
       let parameterType = [ioTypeMap typeMapEntryForLKey !self.mInputOptionalActualTypeName]
       if inFormalArgumentType != parameterType then
         error self.mInputActualParameterName
-        :"the parameter object has the '@" + [parameterType definition].mTypeName.string
-        + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].mTypeName.string + "'"
+        :"the parameter object has the '@" + [parameterType definition].typeName.string
+        + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].typeName.string + "'"
       end
     end
   #--- Declare local constant

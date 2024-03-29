@@ -197,21 +197,21 @@ enum @unifiedTypeMapEntry {
   #-----------------------------------------------------------------------------------------------
 
   getter identifierRepresentation -> @string {
-    result = [[self definition].mTypeName.string identifierRepresentation]
+    result = [[self definition].typeName.string identifierRepresentation]
   }
 
   #-----------------------------------------------------------------------------------------------
 
   getter typeName -> @string {
-    result = [self definition].mTypeName.string
+    result = [self definition].typeName.string
   }
 
   #-----------------------------------------------------------------------------------------------
 
   getter baseType -> @unifiedTypeMapEntry outBaseType {
     outBaseType = self
-    loop while not [[outBaseType definition].mSuperType isNull] do
-      outBaseType = [outBaseType definition].mSuperType
+    loop while not [[outBaseType definition].superType isNull] do
+      outBaseType = [outBaseType definition].superType
     end
   }
 
@@ -219,7 +219,7 @@ enum @unifiedTypeMapEntry {
 
   method addHeaderFileName ?!@stringset ioInclusions {
     let typeDefinition = [self definition]
-    if (not typeDefinition.mIsPredefined) & (typeDefinition.mHeaderKind != .noHeader) then
+    if (not typeDefinition.isPredefined) & (typeDefinition.mHeaderKind != .noHeader) then
       ioInclusions += !typeDefinition.mHeaderFileName
     end
   }
@@ -228,7 +228,7 @@ enum @unifiedTypeMapEntry {
 
   method addHeaderFileName1 ?!@stringset ioInclusions {
     let typeDefinition = [self definition]
-    if not typeDefinition.mIsPredefined then
+    if not typeDefinition.isPredefined then
       switch typeDefinition.mHeaderKind
       case noHeader :
       case oneHeader :

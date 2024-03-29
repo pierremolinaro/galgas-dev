@@ -71,6 +71,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @abstractExtensionSetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
@@ -134,10 +135,10 @@ override method @abstractExtensionSetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is an abstract class
-  if not [[selfType definition].mTypeKindEnum isClassType] then
-    error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].mTypeName.string + "' is not a class"
-  elsif [selfType definition].mIsConcrete then
-    error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
+  if not [[selfType definition].typeKind isClassType] then
+    error self.mAbstractExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].typeName.string + "' is not a class"
+  elsif [selfType definition].isConcrete then
+    error self.mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
   end
 #--- Compute setter signature
   var formalParameterListForGeneration = @formalParameterListForGeneration {}
@@ -206,7 +207,7 @@ override method @abstractExtensionSetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterDeclaration
-    ![self.mReceiverType definition].mTypeName.string
+    ![self.mReceiverType definition].typeName.string
     !self.mAbstractExtensionSetterName
     !self.mAbstractExtensionSetterFormalParameterList
   ]
@@ -219,13 +220,13 @@ override method @abstractExtensionSetterForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"setter-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
+  ioInclusionSet += !"setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in self.mAbstractExtensionSetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterImplementation
-    ![self.mReceiverType definition].mTypeName.string
+    ![self.mReceiverType definition].typeName.string
     !self.mAbstractExtensionSetterName
     !self.mAbstractExtensionSetterFormalParameterList
   ]

@@ -131,9 +131,9 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   ]
 #--- Check field access availability
   let @unifiedTypeMapEntry expressionType = expression.mResultType
-  let propertyMap = [expressionType definition].mPropertyMap
+  let propertyMap = [expressionType definition].propertyMap
   if let [propertyMap searchKey !self.mPropertyName ?let accessControl ?* ?let type] then
-    if (not [[expressionType definition].mTypeKindEnum isStructType]) & (not [[expressionType definition].mTypeKindEnum isClassType]) then
+    if (not [[expressionType definition].typeKind isStructType]) & (not [[expressionType definition].typeKind isClassType]) then
       error self.mPropertyName: "the '.' operator requires the receiver to be a struct or a class"
     end
     [accessControl checkGetAccess !inAnalysisContext.selfType !self.mPropertyName]
@@ -241,7 +241,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #        error self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
 #      end
 #      if self.errorOnGetterCallInsteadOfPropertyRead
-#        && [[receiverType definition].mPropertyMap hasKey !self.mGetterName.string]
+#        && [[receiverType definition].propertyMap hasKey !self.mGetterName.string]
 #        && ([self.mActualArgumentList count] == 0) then
 #        error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
 #      end
@@ -287,7 +287,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #        end
 #      end
 #  #--------------------------------------- The getter does not exist, it is a property ?
-#    elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
+#    elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].propertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
 #      [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
 #  #    if not isPublic then
 #  #      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
@@ -304,7 +304,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #  #--------------------------------------- not found, old style search
 #    else
 #      var @uint matchingReaderCount = 0
-#      if [receiverType definition].mTypeKindEnum == .structType then
+#      if [receiverType definition].typeKind == .structType then
 #        var @functionSignature getterFormalArgumentTypeList = {}
 #        var hasCompilerArgument = true
 #        var returnedType = @unifiedTypeMapEntry.null

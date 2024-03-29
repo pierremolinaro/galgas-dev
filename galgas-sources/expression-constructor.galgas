@@ -207,7 +207,7 @@ private proc analyzeConstructorInvocation
     : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
   else
   #--- Get constructor map from type map
-    let @classFunctionMap classFunctionMap = [outConstructorType definition].mClassFunctionMap
+    let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
   #--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
     with inConstructorName.string in classFunctionMap  do
@@ -217,11 +217,11 @@ private proc analyzeConstructorInvocation
     else
       if [classFunctionMap count] == 0 then
         error inConstructorName
-        : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define any constructor"
+        : "the '@"+ [outConstructorType definition].typeName.string + "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       else
         error inConstructorName
-        : "the '@"+ [outConstructorType definition].mTypeName.string + "' type does not define the '" + inConstructorName + "' constructor"
+        : "the '@"+ [outConstructorType definition].typeName.string + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
         fixit { replace [classFunctionMap keyList] }
       end
@@ -229,7 +229,7 @@ private proc analyzeConstructorInvocation
   #--- Analysis arguments
     if [inInitializerEffectiveParameterExpressions count] != [constructorFormalArgumentTypeList count] then
       error inConstructorName
-      : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType definition].mTypeName.string + "' requires "
+      : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType definition].typeName.string + "' requires "
       + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
       + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
     end
@@ -291,9 +291,9 @@ override method @constructorExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     ?let @bool hasCompilerArgument
   )
-  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType definition].mTypeName.string !self.mTypeName})
+  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType definition].typeName.string !self.mTypeName})
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].mTypeName.string !self.mTypeName})
+  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].typeName.string !self.mTypeName})
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
 #---
   outExpression = @constructorExpressionForGeneration.new {

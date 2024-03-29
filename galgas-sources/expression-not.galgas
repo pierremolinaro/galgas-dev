@@ -100,7 +100,7 @@ override method @notExpressionAST analyzeSemanticExpression
     outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
   elsif not [[type definition].mHandledOperatorFlags prefixNotOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the 'not' operator"
+    : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'not' operator"
     :outExpression
   else
   #--- Generate expression

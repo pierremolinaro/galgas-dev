@@ -103,7 +103,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
     }
   elsif not [[type definition].mHandledOperatorFlags prefixMinusOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the prefix minus operator"
+    : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix minus operator"
     :outExpression
   else
   #--- Generate expression

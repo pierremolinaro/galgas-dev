@@ -154,6 +154,7 @@ override getter @abstractExtensionGetterAST keyRepresentation -> @string {
 
 override method @abstractExtensionGetterAST enterDeclarationInGraph
             ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+            ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
             ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
             ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
             ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -210,12 +211,12 @@ override method @abstractExtensionGetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is an abstract class
-  if not [[selfType definition].mTypeKindEnum isClassType] then
+  if not [[selfType definition].typeKind isClassType] then
     error self.mAbstractExtensionGetterName
-      : "cannot declare an extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
-  elsif [selfType definition].mIsConcrete then
+      : "cannot declare an extension getter: '@" + [selfType definition].typeName.string + "' is not a class"
+  elsif [selfType definition].isConcrete then
     error self.mAbstractExtensionGetterName
-      : "cannot declare an abstract extension getter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
+      : "cannot declare an abstract extension getter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
   end
 #--- Compute method signature
   var @formalInputParameterListForGeneration formalParameterListForGeneration = {}
@@ -285,7 +286,7 @@ override method @abstractExtensionGetterForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration
-    ![self.mReceiverType definition].mTypeName.string
+    ![self.mReceiverType definition].typeName.string
     !self.mAbstractExtensionGetterName
     !self.mAbstractExtensionGetterFormalParameterList
     !self.mResultType
@@ -300,7 +301,7 @@ override method @abstractExtensionGetterForGeneration appendSpecificImplementati
   !@string outImplementation
 {
   ioInclusionSet += !"getter-"
-    + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation]
+    + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
     + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
   [self.mResultType addHeaderFileName !?ioInclusionSet]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
@@ -308,7 +309,7 @@ override method @abstractExtensionGetterForGeneration appendSpecificImplementati
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation
-    ![self.mReceiverType definition].mTypeName.string
+    ![self.mReceiverType definition].typeName.string
     !self.mAbstractExtensionGetterName
     !self.mAbstractExtensionGetterFormalParameterList
     !self.mResultType

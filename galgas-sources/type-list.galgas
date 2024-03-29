@@ -114,6 +114,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -342,21 +343,21 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mListTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum.listType
-    !true # Support collection value
-    !typedAttributeList
-    !{}
-    !{}
-    !classFunctionMap
+    !typeName: self.mListTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .listType
+    !supportCollectionValue: true # Support collection value
+    !allTypedPropertyList: typedAttributeList
+    !propertyMap: {}
+    !currentTypedPropertyList: {}
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !@optionalMethodMap {}
+    !classMethodMap: {}
+    !optionalMethodMap: {}
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator | .isComparable
     !constructorAttributeTypeList
@@ -370,7 +371,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !"list-" + [self.mListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #·······················································································································
@@ -480,20 +481,20 @@ override method @listTypeForGeneration appendDeclaration1
 {
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper listGenerationTemplate.listTypeHeader1
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments
@@ -514,7 +515,7 @@ override method @listTypeForGeneration appendSpecificImplementation
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper listGenerationTemplate.listTypeSpecificImplementation
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
     ![[self.mSelfTypeEntry definition].mTypeForEnumeratedElement identifierRepresentation]

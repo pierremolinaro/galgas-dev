@@ -98,16 +98,16 @@ override method @bangExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if let [[type definition].mTypeKindEnum weakReferenceType ?referenceType: let classIndex] then
+  if let [[type definition].typeKind weakReferenceType ?referenceType: let classIndex] then
     outExpression = @bangExpressionForGeneration.new {
       !classIndex
       !self.mOperatorLocation
       !expression
-      ![type definition].mTypeName.string
+      ![type definition].typeName.string
     }
   else
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the '°' operator"
+    : "operand type is '@" + [type definition].typeName.string + "' and does not support the '°' operator"
     : outExpression
   end
 }

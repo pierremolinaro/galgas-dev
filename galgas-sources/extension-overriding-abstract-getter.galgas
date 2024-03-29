@@ -157,11 +157,12 @@ override getter @overridingAbstractExtensionGetterAST keyRepresentation  -> @str
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
-                                  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-                                  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-                                  ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
-                                  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                                  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
+      ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+      ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+      ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+      ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
+      ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+      ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
   ioExtensionOverrideDefinitionList += !self
 #---
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
@@ -214,14 +215,14 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #--- Return type
   let returnType = [ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
 #--- Check type is an abstract class
-  if not [[selfType definition].mTypeKindEnum isClassType] then
-    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
-  elsif [selfType definition].mIsConcrete then
-    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
+  if not [[selfType definition].typeKind isClassType] then
+    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].typeName.string + "' is not a class"
+  elsif [selfType definition].isConcrete then
+    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType definition].mSuperType
+  var @unifiedTypeMapEntry superType = [selfType definition].superType
   var @functionSignature inheritedSignature = {}
   var @unifiedTypeMapEntry inheritedReturnType = .null{}
   var @location inheritedDeclarationLocation = @location.here
@@ -239,10 +240,10 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
         ?*
       ]
       if qualifier <= @methodQualifier. isBasicFinal then
-        baseTypeName = [superType definition].mTypeName.string
+        baseTypeName = [superType definition].typeName.string
       end
     end
-    superType = [superType definition].mSuperType
+    superType = [superType definition].superType
   end
   if baseTypeName == "" then
     error self.mAbstractExtensionGetterName:"this getter is not declared by a super class"

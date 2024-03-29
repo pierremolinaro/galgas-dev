@@ -51,21 +51,21 @@ proc checkAssignmentTypes
 {
   var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == sourceType
-  loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
-    sourceType = [sourceType definition].mSuperType
+  loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
+    sourceType = [sourceType definition].superType
     ok = inTargetType == sourceType
   end
-  if not ok, let [[inTargetType definition].mTypeKindEnum weakReferenceType ?referenceType: let targetType] then
+  if not ok, let [[inTargetType definition].typeKind weakReferenceType ?referenceType: let targetType] then
     sourceType = inSourceType
     ok = targetType == sourceType
-    loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
-      sourceType = [sourceType definition].mSuperType
+    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
+      sourceType = [sourceType definition].superType
       ok = targetType == sourceType
     end
   end
   if not ok then
     error inErrorLocation
-     : "target object type is '@" + [inTargetType definition].mTypeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].mTypeName.string + "' object"
+     : "target object type is '@" + [inTargetType definition].typeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].typeName.string + "' object"
   end
 }
 
@@ -77,28 +77,28 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
                                                 ?!@semanticExpressionForGeneration ioExpression {
   var handled = false
   if let bigIntSource = ioExpression as @literalBigIntExpressionForGeneration then
-    if "uint" == [inTargetType definition].mTypeName then
+    if "uint" == [inTargetType definition].typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
       end
       ioExpression = @literalUIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
       handled = true
-    elsif "sint" == [inTargetType definition].mTypeName then
+    elsif "sint" == [inTargetType definition].typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
       end
       ioExpression = @literalSIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue sint]}
       handled = true
-    elsif "uint64" == [inTargetType definition].mTypeName then
+    elsif "uint64" == [inTargetType definition].typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
       end
       ioExpression = @literalUInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint64]}
       handled = true
-    elsif "sint64" == [inTargetType definition].mTypeName then
+    elsif "sint64" == [inTargetType definition].typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
@@ -110,20 +110,20 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   if not handled then
     var @unifiedTypeMapEntry sourceType = inSourceType
     var @bool ok = [inTargetType typeName] == [inSourceType typeName]
-    loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
-      sourceType = [sourceType definition].mSuperType
+    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
+      sourceType = [sourceType definition].superType
       ok = inTargetType == sourceType
     end
-    if not ok, let [[inTargetType definition].mTypeKindEnum weakReferenceType ?referenceType: let targetType] then
+    if not ok, let [[inTargetType definition].typeKind weakReferenceType ?referenceType: let targetType] then
       sourceType = inSourceType
       ok = [targetType typeName] == [sourceType typeName]
-      loop (@uint.max) while (not ok) & (not [[sourceType definition].mSuperType isNull]) do
-        sourceType = [sourceType definition].mSuperType
+      loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
+        sourceType = [sourceType definition].superType
         ok = [targetType typeName] == [sourceType typeName]
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inSourceType definition].mPropertyMap searchKey ![inTargetType definition].mTypeName.string ?let accessControl ?* ?let propertyType] then
+    if not ok, let [[inSourceType definition].propertyMap searchKey ![inTargetType definition].typeName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkSetAccess !.none !inErrorLocation]
 #      if not isPublic then
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
@@ -132,13 +132,13 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         !propertyType
         !inErrorLocation
         !ioExpression
-        ![inTargetType definition].mTypeName.string
+        ![inTargetType definition].typeName.string
       }
       ioExpression = conversionExpression
       ok = propertyType == inTargetType
-    elsif (not ok) && [[inSourceType definition].mGetterMap hasKey ![inTargetType definition].mTypeName.string] then
+    elsif (not ok) && [[inSourceType definition].mGetterMap hasKey ![inTargetType definition].typeName.string] then
       [[inSourceType definition].mGetterMap searchKey
-        ![inTargetType definition].mTypeName
+        ![inTargetType definition].typeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
@@ -154,7 +154,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         !kind
         !ioExpression
         !{}
-        ![inTargetType definition].mTypeName.string
+        ![inTargetType definition].typeName.string
         !{}
         !hasCompilerArgument
       }
@@ -162,9 +162,9 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
     end
     if not ok then
       error inErrorLocation
-       : "target object type is '@" + [inTargetType definition].mTypeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].mTypeName.string
+       : "target object type is '@" + [inTargetType definition].typeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].typeName.string
        + "' object; this type have no '"
-      + [inTargetType definition].mTypeName.string + "' getter without argument that returns a '@" + [inTargetType definition].mTypeName.string + "' object"
+      + [inTargetType definition].typeName.string + "' getter without argument that returns a '@" + [inTargetType definition].typeName.string + "' object"
     end
   end
 }
@@ -180,40 +180,40 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
   let rightType = ioRightExpression.mResultType
   if not inOperandIsHandled then
     error inErrorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not accept '"
+    : "left operand type is '@" + [leftType definition].typeName.string + "' and does not accept '"
       + inOperatorNameForErrorMessage
-      + "' operator (right operand type is '@" + [rightType definition].mTypeName.string + ")"
+      + "' operator (right operand type is '@" + [rightType definition].typeName.string + ")"
   else
     var @unifiedTypeMapEntry rightType = rightType
     var @bool ok = leftType == rightType
-    loop (@uint.max) while (not ok) & (not [[rightType definition].mSuperType isNull]) do
-      rightType = [rightType definition].mSuperType
+    loop (@uint.max) while (not ok) & (not [[rightType definition].superType isNull]) do
+      rightType = [rightType definition].superType
       ok = leftType == rightType
     end
   #---- convert right bigint ?
     if not ok, let bigIntSource = ioRightExpression as @literalBigIntExpressionForGeneration then
-      if "uint" == [leftType definition].mTypeName then
+      if "uint" == [leftType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
         end
         ioRightExpression = @literalUIntExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue uint]}
         ok = true
-      elsif "sint" == [leftType definition].mTypeName then
+      elsif "sint" == [leftType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
         end
         ioRightExpression = @literalSIntExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue sint]}
         ok = true
-      elsif "uint64" == [leftType definition].mTypeName then
+      elsif "uint64" == [leftType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
         end
         ioRightExpression = @literalUInt64ExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue uint64]}
         ok = true
-      elsif "sint64" == [leftType definition].mTypeName then
+      elsif "sint64" == [leftType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
@@ -224,28 +224,28 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
     end
   #---- convert left bigint ?
     if not ok, let bigIntSource = ioLeftExpression as @literalBigIntExpressionForGeneration then
-      if "uint" == [rightType definition].mTypeName then
+      if "uint" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
         end
         ioLeftExpression = @literalUIntExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue uint]}
         ok = true
-      elsif "sint" == [rightType definition].mTypeName then
+      elsif "sint" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
         end
         ioLeftExpression = @literalSIntExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue sint]}
         ok = true
-      elsif "uint64" == [rightType definition].mTypeName then
+      elsif "uint64" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
         end
         ioLeftExpression = @literalUInt64ExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue uint64]}
         ok = true
-      elsif "sint64" == [rightType definition].mTypeName then
+      elsif "sint64" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
@@ -255,7 +255,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[rightType definition].mPropertyMap searchKey ![leftType definition].mTypeName.string ?let accessControl ?* ?let propertyType] then
+    if not ok, let [[rightType definition].propertyMap searchKey ![leftType definition].typeName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkSetAccess !.none !inErrorLocation]
 #      if not isPublic then
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
@@ -264,13 +264,13 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
         !propertyType
         !inErrorLocation
         !ioRightExpression
-        ![leftType definition].mTypeName.string
+        ![leftType definition].typeName.string
       }
       ioRightExpression = conversionExpression
       ok = propertyType == leftType
-    elsif (not ok) && [[rightType definition].mGetterMap hasKey ![leftType definition].mTypeName.string] then
+    elsif (not ok) && [[rightType definition].mGetterMap hasKey ![leftType definition].typeName.string] then
       [[rightType definition].mGetterMap searchKey
-        ![leftType definition].mTypeName
+        ![leftType definition].typeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
@@ -286,7 +286,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
         !kind
         !ioRightExpression
         !{}
-        ![leftType definition].mTypeName.string
+        ![leftType definition].typeName.string
         !{}
         !hasCompilerArgument
       }
@@ -294,10 +294,10 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
     end
     if not ok then
       error inErrorLocation
-      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [leftType definition].mTypeName.string
-      + "', right operand type is '@" + [rightType definition].mTypeName.string
+      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [leftType definition].typeName.string
+      + "', right operand type is '@" + [rightType definition].typeName.string
       + "', it should be either the same, either inherits from left operand type, either have a '"
-      + [leftType definition].mTypeName.string + "' getter without argument that returns a '@" + [leftType definition].mTypeName.string + "' object"
+      + [leftType definition].typeName.string + "' getter without argument that returns a '@" + [leftType definition].typeName.string + "' object"
     end
   end
 }

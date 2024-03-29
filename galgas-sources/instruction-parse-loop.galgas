@@ -147,8 +147,8 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ]
   if variant_expression.mResultType != inAnalysisContext.mPredefinedTypes.mUIntType then
     error self.mEndOfVariantExpression
-    :"the variant expression type is '@" + [variant_expression.mResultType definition].mTypeName.string
-    + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType definition].mTypeName.string + "' type"
+    :"the variant expression type is '@" + [variant_expression.mResultType definition].typeName.string
+    + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType definition].typeName.string + "' type"
   end
 #--- While expression
   [self.mWhileExpression analyzeSemanticExpression
@@ -162,8 +162,8 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ]
   if while_expression.mResultType != inAnalysisContext.mPredefinedTypes.mBoolType then
     error self.mEndOfWhileExpression
-    :"the variant expression type is '@" + [variant_expression.mResultType definition].mTypeName.string
-    + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType definition].mTypeName.string + "' type"
+    :"the variant expression type is '@" + [variant_expression.mResultType definition].typeName.string
+    + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType definition].typeName.string + "' type"
   end
 #--- 'do' instructions
 #--- Begin block

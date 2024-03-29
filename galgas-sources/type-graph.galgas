@@ -110,6 +110,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @graphDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -460,21 +461,21 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mGraphTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum. graphType
-    !false # Does not support collection value
-    !@typedPropertyList {}
-    !{}
-    !@typedPropertyList {}
-    !classFunctionMap
+    !typeName: self.mGraphTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .graphType
+    !supportCollectionValue: false # Does not support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {}
+    !currentTypedPropertyList: {}
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap {}
-    !@optionalMethodMap {}
+    !classMethodMap: {}
+    !optionalMethodMap: {}
     !@enumerationDescriptorList {}
     !.doNotGenererateObjectCompare
     !@functionSignature {}
@@ -488,7 +489,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"graph-" + [self.mGraphTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -515,7 +516,7 @@ override method @graphDeclarationAST semanticAnalysis
   let associatedListElementTypeEntry = [ioTypeMap typeMapEntryForLKey
     !@lstring.new {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}
   ]
-  if [associatedListTypeEntry definition].mTypeKindEnum != @typeKindEnum. listType then
+  if [associatedListTypeEntry definition].typeKind != .listType then
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"
   end
 #--- Analyze insert methods
@@ -554,19 +555,19 @@ override method @graphDeclarationForGeneration appendDeclaration1
   !@string outHeader {
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.graphTypeHeader1
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments

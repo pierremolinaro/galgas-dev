@@ -226,11 +226,12 @@ override getter @templateLexiqueComponentAST keyRepresentation -> @string {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST enterDeclarationInGraph
-                                ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-                                ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-                                ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-                                ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                                ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   let superKey = @lstring.new {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}

@@ -233,7 +233,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
      }
   elsif not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
+    : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
   else
   #--- Generate expression
@@ -305,7 +305,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
      }
   elsif not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
+    : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
   else
   #--- Generate expression

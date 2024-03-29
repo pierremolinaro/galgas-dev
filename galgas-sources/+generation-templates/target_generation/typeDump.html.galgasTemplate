@@ -69,8 +69,8 @@ end
 <tr class="result_line">
   <td>Kind</td>
   <td>
-    %if not [element definition].mIsConcrete then%abstract %end
-    switch [element definition].mTypeKindEnum
+    %if not [element definition].isConcrete then%abstract %end
+    switch [element definition].typeKind
     case classType (*) : %class%
     case enumType : %enum%
     case listType : %list%
@@ -88,8 +88,8 @@ end
     case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>
-%if not [[element definition].mSuperType isNull] then
-%<tr class="result_line"><td>Superclass</td><td>%!linkForType (![[element definition].mSuperType definition].mTypeName.string)%</td></tr>% 
+%if not [[element definition].superType isNull] then
+%<tr class="result_line"><td>Superclass</td><td>%!linkForType (![[element definition].superType definition].typeName.string)%</td></tr>% 
 end%
 <tr class="result_line"><td>Operators</td>
   <td>
@@ -166,31 +166,31 @@ if [[element definition].mAddAssignOperatorArguments count] > 0 then
   %<tr class="result_line"><td>+= !... !...</td><td>%
   for (mFormalSelector mFormalArgumentType mFormalArgumentName) in [element definition].mAddAssignOperatorArguments do
     %<span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
-    !linkForType (![mFormalArgumentType definition].mTypeName.string)% % !mFormalArgumentName %<br>%
+    !linkForType (![mFormalArgumentType definition].typeName.string)% % !mFormalArgumentName %<br>%
   end
   %</td></tr>%
 end
 if [[element definition].mEnumerationDescriptor count] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
   for (mEnumeratedType mEnumerationName) in [element definition].mEnumerationDescriptor do
-    !linkForType (![mEnumeratedType definition].mTypeName.string)% %!mEnumerationName%<br>%
+    !linkForType (![mEnumeratedType definition].typeName.string)% %!mEnumerationName%<br>%
   end
   %</td></tr>%
 end
 if not [[element definition].mTypeForEnumeratedElement isNull] then
-  %<tr class="result_line"><td><b>for</b> enumeration type</td><td>%!linkForType (![[element definition].mTypeForEnumeratedElement definition].mTypeName.string)%</td></tr>%
+  %<tr class="result_line"><td><b>for</b> enumeration type</td><td>%!linkForType (![[element definition].mTypeForEnumeratedElement definition].typeName.string)%</td></tr>%
 end
 #--- Class functions
-if [[element definition].mClassFunctionMap count] > 0 then
+if [[element definition].classFunctionMap count] > 0 then
   %<tr class="result_line"><td>Class Functions</td><td>%
-  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in [element definition].mClassFunctionMap do
+  for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in [element definition].classFunctionMap do
     %<b>class function</b> %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % <span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end !%</span>%
-      linkForType (![mFormalArgumentType definition].mTypeName.string) % % !mFormalArgumentName
+      linkForType (![mFormalArgumentType definition].typeName.string) % % !mFormalArgumentName
     end
-    % &rarr; %!linkForType (![mReturnedType definition].mTypeName.string) %<br><br>%
+    % &rarr; %!linkForType (![mReturnedType definition].typeName.string) %<br><br>%
   end
 end
 #--- Readers
@@ -214,9 +214,9 @@ if [[element definition].mGetterMap count] > 0 then
     for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % ?<span class="selecteur">%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
-      !linkForType (![mFormalArgumentType definition].mTypeName.string) % % !mFormalArgumentName
+      !linkForType (![mFormalArgumentType definition].typeName.string) % % !mFormalArgumentName
     end
-    % &rarr; %!linkForType (![mReturnedType definition].mTypeName.string) %<br><br>%
+    % &rarr; %!linkForType (![mReturnedType definition].typeName.string) %<br><br>%
   end
   %</td></tr>%
 end
@@ -247,7 +247,7 @@ if [[element definition].mInstanceMethodMap count] > 0 then
       case argumentOut        : % <span class="selecteur">!%
       end
       if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
-      !linkForType (![mFormalArgumentType definition].mTypeName.string) % % !mFormalArgumentName
+      !linkForType (![mFormalArgumentType definition].typeName.string) % % !mFormalArgumentName
     end
     %<br><br>%
   end
@@ -280,16 +280,16 @@ if [[element definition].mSetterMap count] > 0 then
       case argumentOut        : % <span class="selecteur">!%
       end
       if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
-      !linkForType (![mFormalArgumentType definition].mTypeName.string) % % !mFormalArgumentName
+      !linkForType (![mFormalArgumentType definition].typeName.string) % % !mFormalArgumentName
     end
     %<br><br>%
   end
   %</td></tr>%
 end
 #--- type proc
-if [[element definition].mClassMethodMap count] > 0 then
+if [[element definition].classMethodMap count] > 0 then
   %<tr class="result_line"><td>Type procs</td><td>%
-  for (lkey mParameterList mHasCompilerArgument) in [element definition].mClassMethodMap do
+  for (lkey mParameterList mHasCompilerArgument) in [element definition].classMethodMap do
     %<b>proc</b> @%!lkey.string% %!lkey.string
     for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
@@ -300,7 +300,7 @@ if [[element definition].mClassMethodMap count] > 0 then
       case argumentOut        : % <span class="selecteur">!%
       end
       if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
-      !linkForType (![mFormalArgumentType definition].mTypeName.string) % % !mFormalArgumentName
+      !linkForType (![mFormalArgumentType definition].typeName.string) % % !mFormalArgumentName
     end
     %<br><br>%
   end

@@ -206,11 +206,11 @@ override method @collectionValueAST analyzeSemanticExpression
 #---
   if targetType == .null then
     error self.mTypeName : "Cannot infer type" : outExpression
-  elsif not [targetType definition].mSupportCollectionValue then
+  elsif not [targetType definition].supportCollectionValue then
     error self.mTypeName
-    : "the @" + [targetType definition].mTypeName.string + " type does not support collection value" : outExpression
+    : "the @" + [targetType definition].typeName.string + " type does not support collection value" : outExpression
   else
-    let classFunctionMap = [targetType definition].mClassFunctionMap
+    let classFunctionMap = [targetType definition].classFunctionMap
     var @bool hasCompilerArgument = false
     var @string constructorName = ""
     var found = false
@@ -223,10 +223,10 @@ override method @collectionValueAST analyzeSemanticExpression
     end
     if not found then
       error self.mTypeName
-      : "the '@" + [targetType definition].mTypeName + "' has no initializer without argument"
+      : "the '@" + [targetType definition].typeName + "' has no initializer without argument"
     end
     let usefulnessName = typeNameForUsefulEntitiesGraph (
-      !.new {![targetType definition].mTypeName.string
+      !.new {![targetType definition].typeName.string
       !self.mEndOfCollectionValue}
     )
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
@@ -326,7 +326,7 @@ override method @expressionListCollectionValue analyze
   let @functionSignature formalParameterTypeList = [inElementType definition].mAddAssignOperatorArguments
   var @semanticExpressionListForGeneration semanticExpressionListForGeneration
   if [formalParameterTypeList count] != [self.mExpressionList count] then
-    error self.mEndOfExpressionLocation: "element of of '@" + [inElementType definition].mTypeName.string + "' requires "
+    error self.mEndOfExpressionLocation: "element of of '@" + [inElementType definition].typeName.string + "' requires "
     + [formalParameterTypeList count] + " parameter(s), while this list has "
     + [self.mExpressionList count] + " element(s)" : semanticExpressionListForGeneration
   else

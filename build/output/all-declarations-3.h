@@ -3641,6 +3641,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
@@ -4494,6 +4495,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
@@ -4788,6 +4790,7 @@ class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
@@ -5049,6 +5052,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
@@ -7103,6 +7107,7 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,

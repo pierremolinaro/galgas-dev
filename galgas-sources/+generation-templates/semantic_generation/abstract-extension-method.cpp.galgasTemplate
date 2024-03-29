@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//%!"Abstract extension method '@" + [RECEIVER_TYPE definition].mTypeName.string + " " + METHOD_NAME + "'"%
+//%!"Abstract extension method '@" + [RECEIVER_TYPE definition].typeName.string + " " + METHOD_NAME + "'"%
 //
 //--------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]% * inObject%
+void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![[RECEIVER_TYPE definition].typeName.string identifierRepresentation]% * inObject%
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -28,7 +28,7 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![
   end
 %//--- Find method
   if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_%![[RECEIVER_TYPE definition].mTypeName.string identifierRepresentation]%) ;
+    macroValidSharedObject (inObject, cPtr_%![[RECEIVER_TYPE definition].typeName.string identifierRepresentation]%) ;
     inObject->method_%![METHOD_NAME identifierRepresentation]% (%
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

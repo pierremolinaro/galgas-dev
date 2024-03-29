@@ -141,6 +141,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -295,21 +296,21 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mSortedListTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum. sortedListType
-    !true # Support collection value
-    !typedAttributeList
-    !{}
-    !{}
-    !classFunctionMap
+    !typeName: self.mSortedListTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .sortedListType
+    !supportCollectionValue: true # Support collection value
+    !allTypedPropertyList: typedAttributeList
+    !propertyMap: {}
+    !currentTypedPropertyList: {}
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !optionalMethodMap
+    !classMethodMap: {}
+    !optionalMethodMap: optionalMethodMap
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression
     !constructorAttributeTypeList
@@ -323,7 +324,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !"-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -422,20 +423,20 @@ override method @sortedListTypeForGeneration appendDeclaration1
   !@string outHeader {
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper sortedListGenerationTemplate.sortedlistTypeHeader1
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments

@@ -168,22 +168,22 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 #--- Get type information
    let castType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is either a class
-  if [[expression.mResultType definition].mTypeKindEnum isClassType] then
+  if [[expression.mResultType definition].typeKind isClassType] then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
     loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].mSuperType isNull] do
-      t = [t definition].mSuperType
+    while (not found) & not [[t definition].superType isNull] do
+      t = [t definition].superType
       found = t == expression.mResultType
     end
     if not found then
       error self.mTypeName
-      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType definition].mTypeName.string + "' type of the cast expression"
+      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType definition].typeName.string + "' type of the cast expression"
     end
   else
     error expression.mLocation: "expression should be a class instance: it is an @"
-     +  [expression.mResultType definition].mTypeName.string + " instance"
+     +  [expression.mResultType definition].typeName.string + " instance"
   end
 #--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration.new {
@@ -226,27 +226,27 @@ override method @castInExpressionAST analyzeSemanticExpression
 #--- Get type information
    let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is an @object type
-  if [[expression.mResultType definition].mTypeKindEnum isClassType]then
+  if [[expression.mResultType definition].typeKind isClassType]then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == expression.mResultType
     loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].mSuperType isNull] do
-      t = [t definition].mSuperType
+    while (not found) & not [[t definition].superType isNull] do
+      t = [t definition].superType
       found = t == expression.mResultType
     end
     if not found then
       error self.mTypeName
       :"the '@" + self.mTypeName + "' is not a descendant of the '@"
-      + [expression.mResultType definition].mTypeName.string + "' type of the cast expression"
+      + [expression.mResultType definition].typeName.string + "' type of the cast expression"
     end
-  elsif [expression.mResultType definition].mTypeName.string != "object" then
+  elsif [expression.mResultType definition].typeName.string != "object" then
     error expression.mLocation:
       "cast expression should be a class instance or an @object instance: it is an @"
-     +  [expression.mResultType definition].mTypeName.string + " instance"
+     +  [expression.mResultType definition].typeName.string + " instance"
   end
 #--- Generate expression
-  if [expression.mResultType definition].mTypeName.string == "object" then
+  if [expression.mResultType definition].typeName.string == "object" then
     outExpression = @extractObjectInExpressionForGeneration.new {
       !type
       !self.mEndOfReceiverExpression
@@ -281,7 +281,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  let typeNameRepresentation = [[self.mCastType definition].mTypeName.string identifierRepresentation]
+  let typeNameRepresentation = [[self.mCastType definition].typeName.string identifierRepresentation]
 #--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode

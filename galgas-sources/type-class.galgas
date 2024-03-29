@@ -191,6 +191,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
 
   override method enterDeclarationInGraph
             ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+            ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
             ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
             ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
             ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -240,11 +241,11 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     else
       [!?ioTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
       let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperClassName]
-      inheritedTypedPropertyList = superTypeDefinition.mAllTypedPropertyList
-      attributeMap = superTypeDefinition.mPropertyMap
+      inheritedTypedPropertyList = superTypeDefinition.allTypedPropertyList
+      attributeMap = superTypeDefinition.propertyMap
       generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
     #---
-      if not [superTypeDefinition.mTypeKindEnum isClassType] then
+      if not [superTypeDefinition.typeKind isClassType] then
         error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
       end
     #--- Mark all setters as inherited
@@ -375,21 +376,21 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     end
   #--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition.new {
-      !self.mClassTypeName
-      !self.isPredefined
-      !not self.mIsAbstract # Concrete Type
-      !superClassIndex
-      !@typeKindEnum.classType {!isReference: self.mIsReference}
-      !false # Does not support collection value
-      !allTypedAttributeList
-      !attributeMap
-      !currentClassTypedPropertyList
-      !classFunctionMap
+      !typeName: self.mClassTypeName
+      !isPredefined: self.isPredefined
+      !isConcrete: not self.mIsAbstract # Concrete Type
+      !superType: superClassIndex
+      !typeKind: .classType {!isReference: self.mIsReference}
+      !supportCollectionValue: false # Does not support collection value
+      !allTypedPropertyList: allTypedAttributeList
+      !propertyMap: attributeMap
+      !currentTypedPropertyList: currentClassTypedPropertyList
+      !classFunctionMap: classFunctionMap
       !getterMap
       !setterMap
       !instanceMethodMap
-      !{}
-      !@optionalMethodMap {}
+      !classMethodMap: {}
+      !optionalMethodMap: {}
       !{}
       !if self.mIsReference then .isReferenceEquatable else .isComparable end
       !{}
@@ -403,7 +404,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !"class-" + [self.mClassTypeName fileNameRepresentation]
       !@headerKind.twoHeaders
     }
-    [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
   #·······························································································
@@ -437,7 +438,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   # a base class can be freely declared as shared or not
   # a class should the same 'reference' status as its super class
     if superClassEntry != .null then
-      [[superClassEntry definition].mTypeKindEnum classType ?isReference: let superClassIsReference]
+      [[superClassEntry definition].typeKind classType ?isReference: let superClassIsReference]
       if superClassIsReference & not self.mIsReference then
         error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
       elsif not superClassIsReference & self.mIsReference then
@@ -464,7 +465,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
 #        end
 #      end
     else
-      allAttributeList = [superClassEntry definition].mAllTypedPropertyList
+      allAttributeList = [superClassEntry definition].allTypedPropertyList
       if self.mGenerateInSeparateFile then
 #        for (mValue) in self.mClassFeatureList do
           error self.mClassTypeName : "a class that has a super class does not accept any feature"
@@ -534,7 +535,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
   if self.mIsReference then
     outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader1
-      !selfTypeDefinition.mTypeName.string
+      !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
@@ -542,7 +543,7 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
     ]
   else
     outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader1
-      !selfTypeDefinition.mTypeName.string
+      !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mIsAbstract
@@ -550,15 +551,15 @@ override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclus
     ]
   end
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypeDefinition.mTypeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypeDefinition.mIsConcrete
-    !selfTypeDefinition.mClassFunctionMap
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.classFunctionMap
     !selfTypeDefinition.mGetterMap
     !selfTypeDefinition.mSetterMap
     !selfTypeDefinition.mInstanceMethodMap
-    !selfTypeDefinition.mClassMethodMap
-    !selfTypeDefinition.mOptionalMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.mEnumerationDescriptor
     !selfTypeDefinition.mHandledOperatorFlags
     !selfTypeDefinition.mAddAssignOperatorArguments
@@ -578,7 +579,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
   if self.mIsReference then
     if self.mGenerateHeaderInSeparateFile then
       let @string part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -588,7 +589,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -610,7 +611,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
       outHeader = "#include \"" + headerFileName + "\"\n\n"
     else
       outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -620,7 +621,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -631,7 +632,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
   else
     if self.mGenerateHeaderInSeparateFile then
       let @string part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -641,7 +642,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       let @string part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -663,7 +664,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
       outHeader = "#include \"" + headerFileName + "\"\n\n"
     else
       outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -673,7 +674,7 @@ override method @classTypeForGeneration appendDeclaration2 ?let @string inOutput
         ![self.mSelfTypeEntry definition].mInstanceMethodMap
       ]
       outHeader += [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
-        !typedefinition.mTypeName.string
+        !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -696,7 +697,7 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
   ]
   if self.mIsReference then
     outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation
-      !typedefinition.mTypeName.string
+      !typedefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !currentPropertyList: self.mCurrentTypedAttributeList
@@ -706,7 +707,7 @@ override method @classTypeForGeneration appendSpecificImplementation ?let @unifi
     ]
   else
     outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
-      !typedefinition.mTypeName.string
+      !typedefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
       !self.mCurrentTypedAttributeList

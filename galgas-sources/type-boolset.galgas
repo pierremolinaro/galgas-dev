@@ -90,6 +90,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @boolsetDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -203,21 +204,21 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .isComparable
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mBoolsetTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !.null
-    !.boolsetType
-    !false # Does not support collection value
-    !{}
-    !{}
-    !{}
-    !classFunctionMap
+    !typeName: self.mBoolsetTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .boolsetType
+    !supportCollectionValue: false # Does not support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {}
+    !currentTypedPropertyList: {}
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !@optionalMethodMap {}
+    !classMethodMap: {}
+    !optionalMethodMap: {}
     !{}
     !operators
     !{}
@@ -231,7 +232,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 
@@ -297,20 +298,20 @@ override method @boolsetTypeForGeneration appendDeclaration1
 {
   let typedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
-    !typedefinition.mTypeName.string
-    ![typedefinition.mTypeName.string identifierRepresentation]
+    !typedefinition.typeName.string
+    ![typedefinition.typeName.string identifierRepresentation]
     !self.mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !typedefinition.mTypeName.string
-    ![typedefinition.mTypeName.string identifierRepresentation]
-    !typedefinition.mIsConcrete
-    !typedefinition.mClassFunctionMap
+    !typedefinition.typeName.string
+    ![typedefinition.typeName.string identifierRepresentation]
+    !typedefinition.isConcrete
+    !typedefinition.classFunctionMap
     !typedefinition.mGetterMap
     !typedefinition.mSetterMap
     !typedefinition.mInstanceMethodMap
-    !typedefinition.mClassMethodMap
-    !typedefinition.mOptionalMethodMap
+    !typedefinition.classMethodMap
+    !typedefinition.optionalMethodMap
     !typedefinition.mEnumerationDescriptor
     !typedefinition.mHandledOperatorFlags
     !typedefinition.mAddAssignOperatorArguments
@@ -327,7 +328,7 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
-    ![self.mSelfTypeEntry  definition].mTypeName.string
+    ![self.mSelfTypeEntry  definition].typeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mFlagList
     !(1 << [self.mFlagList count]) - 1

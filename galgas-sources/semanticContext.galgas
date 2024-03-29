@@ -218,7 +218,26 @@ struct @semanticContext {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#    E X T E N S I O N    M E T H O D    M A P
+#    EXTENSION INITIALIZER MAP
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @extensionInitializerMapForType {
+  public let @formalParameterListAST mFormalParameterList
+  insert insertKey error message "the '%K' initializer has been already declared in %L"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @extensionInitializerForBuildingContext {
+  public let @extensionInitializerMapForType mExtensionInitializerMapForType
+  insert insertKey error message "internal error"
+  search searchKey error message "internal error"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#    EXTENSION    M E T H O D    M A P
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -238,7 +257,7 @@ map @extensionMethodMapForBuildingContext {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#    E X T E N S I O N    M O D I F I E R    M A P
+#    EXTENSION    M O D I F I E R    M A P
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -257,7 +276,7 @@ map @extensionSetterMapForBuildingContext {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#    E X T E N S I O N    G E T T E R    M A P
+#    EXTENSION    G E T T E R    M A P
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -782,6 +801,7 @@ graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
 
 abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
@@ -791,6 +811,7 @@ abstract method @semanticDeclarationAST enterDeclarationInGraph
 
 override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -806,6 +827,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
 
 override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -829,6 +851,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
 
 override method @externFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -840,6 +863,7 @@ override method @externFunctionDeclarationAST enterDeclarationInGraph
 
 override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -851,6 +875,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInGraph
 
 override method @filewrapperDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext

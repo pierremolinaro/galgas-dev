@@ -23,21 +23,21 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @unifiedTypeDefinition {
-  public let @lstring mTypeName
-  public let @bool mIsPredefined
-  public let @bool mIsConcrete # false if abstract class
-  public let @unifiedTypeMapEntry mSuperType
-  public let @typeKindEnum mTypeKindEnum
-  public let @bool mSupportCollectionValue
-  public let @typedPropertyList mAllTypedPropertyList
-  public let @propertyMap mPropertyMap # struct, class
-  public let @typedPropertyList mCurrentTypedPropertyList
-  public let @classFunctionMap mClassFunctionMap
+  public let @lstring typeName %selector
+  public let @bool isPredefined %selector
+  public let @bool isConcrete %selector # false if abstract class
+  public let @unifiedTypeMapEntry superType %selector
+  public let @typeKindEnum typeKind %selector
+  public let @bool supportCollectionValue %selector
+  public let @typedPropertyList allTypedPropertyList %selector
+  public let @propertyMap propertyMap %selector # struct, class
+  public let @typedPropertyList currentTypedPropertyList %selector
+  public let @classFunctionMap classFunctionMap %selector
   public let @getterMap mGetterMap
   public let @setterMap mSetterMap
   public let @instanceMethodMap mInstanceMethodMap
-  public let @classMethodMap mClassMethodMap
-  public let @optionalMethodMap mOptionalMethodMap
+  public let @classMethodMap classMethodMap %selector
+  public let @optionalMethodMap optionalMethodMap %selector
   public let @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
   public let @operators mHandledOperatorFlags
   public let @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported

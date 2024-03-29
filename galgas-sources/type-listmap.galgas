@@ -108,6 +108,7 @@ override method @listmapDeclarationAST addAssociatedElement
 
 override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -129,8 +130,8 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
   let associatedTypeDefinition = [ioTypeMap typeDefinition !self.mAssociatedListTypeName]
-  var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.mAllTypedPropertyList
-  if associatedTypeDefinition.mTypeKindEnum != @typeKindEnum.listType then
+  var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.allTypedPropertyList
+  if associatedTypeDefinition.typeKind != @typeKindEnum.listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
     listTypedAttributeList = @typedPropertyList {}
   end
@@ -234,21 +235,21 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   ]
 #--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mListmapTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum.listMapType
-    !true # Support collection value
-    !@typedPropertyList {}
-    !{}
-    !listTypedAttributeList
-    !classFunctionMap
+    !typeName: self.mListmapTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .listMapType
+    !supportCollectionValue: true # Support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {}
+    !currentTypedPropertyList: listTypedAttributeList
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !@optionalMethodMap {}
+    !classMethodMap: {}
+    !optionalMethodMap: {}
     !enumeratorDescriptor
     !.doNotGenererateObjectCompare
     !addAssignOperatorDescription
@@ -262,7 +263,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -296,7 +297,7 @@ override method @listmapDeclarationAST semanticAnalysis
 #    ?20*
 #  ]
 #---
-  if associatedTypeDefinition.mTypeKindEnum != .listType then
+  if associatedTypeDefinition.typeKind != .listType then
     error self.mAssociatedListTypeName : "associated type should be a list type"
   end
 #---
@@ -305,7 +306,7 @@ override method @listmapDeclarationAST semanticAnalysis
     !@listmapTypeForGeneration.new {
       ![ioTypeMap typeMapEntryForLKey !self.mListmapTypeName]
       ![ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]
-      !associatedTypeDefinition.mAllTypedPropertyList
+      !associatedTypeDefinition.allTypedPropertyList
       ![ioTypeMap typeMapEntryForLKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
     }
 }
@@ -330,19 +331,19 @@ override method @listmapTypeForGeneration appendDeclaration1
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.listmapTypeHeader1
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments

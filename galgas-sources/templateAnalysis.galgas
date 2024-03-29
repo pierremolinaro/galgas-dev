@@ -85,11 +85,11 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     ?let receiverExpression
   ]
   let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
-  let receiverTypeName = [receiverType definition].mTypeName.string
+  let receiverTypeName = [receiverType definition].typeName.string
   #--------------------------------------- Property ?
-  if [[receiverType definition].mTypeKindEnum isStructType] || [[receiverType definition].mTypeKindEnum isClassType],
+  if [[receiverType definition].typeKind isStructType] || [[receiverType definition].typeKind isClassType],
      [self.mExpressionList count] == 0,
-     let [[receiverType definition].mPropertyMap searchKey !self.mGetterName ?let accessControl ?* ?let propertyType] then
+     let [[receiverType definition].propertyMap searchKey !self.mGetterName ?let accessControl ?* ?let propertyType] then
     if [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
@@ -128,12 +128,12 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       end
     else
       var @uint matchingReaderCount = 0
-      if [receiverType definition].mTypeKindEnum == @typeKindEnum.structType then
+      if [receiverType definition].typeKind == @typeKindEnum.structType then
         getterFormalArgumentTypeList ={}
         hasCompilerArgument = true
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
-        for (mPropertyTypeEntry mPropertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
+        for (mPropertyTypeEntry mPropertyName 2*) in [receiverType definition].currentTypedPropertyList do
           let @getterMap aMap = [mPropertyTypeEntry definition].mGetterMap
           with self.mGetterName.string in aMap  do
             matchingReaderCount += 1
@@ -227,7 +227,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
 {
   let @unifiedTypeMapEntry constructorType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Get class function map from type map
-  let @classFunctionMap classFunctionMap = [constructorType definition].mClassFunctionMap
+  let @classFunctionMap classFunctionMap = [constructorType definition].classFunctionMap
 #--- Search class function
   let @unifiedTypeMapEntry returnedType
   let @bool hasCompilerArgument
@@ -252,7 +252,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
   var @semanticExpressionListForGeneration classFunctionEffectiveParameterList
   if [self.mExpressionList count] != [classFuncFormalArgumentTypeList count] then
     error self.mClassFunctionName
-    : "calling the '" + self.mClassFunctionName + "' constructor of '@" + [constructorType definition].mTypeName.string + "' requires "
+    : "calling the '" + self.mClassFunctionName + "' constructor of '@" + [constructorType definition].typeName.string + "' requires "
     + [[classFuncFormalArgumentTypeList count] string] + " parameter(s), while this call has "
     + [[self.mExpressionList count] string] + " parameter(s)"
     : classFunctionEffectiveParameterList
@@ -579,7 +579,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [[type definition].mHandledOperatorFlags prefixNotOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the 'not' operator"
+    : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'not' operator"
     :outExpression
   else
   #--- Generate expression
@@ -612,7 +612,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [[type definition].mHandledOperatorFlags prefixTildeOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the '~' operator"
+    : "operand type is '@" + [type definition].typeName.string + "' and does not support the '~' operator"
     :outExpression
   else
   #--- Generate expression
@@ -643,22 +643,22 @@ override method @templateTestDynamicClassAST templateExpressionAnalysis
 #--- Get type information
    let castType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- This type is either a class
-  if [[expression.mResultType definition].mTypeKindEnum isClassType] then
+  if [[expression.mResultType definition].typeKind isClassType] then
   #--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
     loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].mSuperType isNull] do
-      t = [t definition].mSuperType
+    while (not found) & not [[t definition].superType isNull] do
+      t = [t definition].superType
       found = t == expression.mResultType
     end
     if not found then
       error self.mTypeName
-      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType definition].mTypeName.string + "' type of the cast expression"
+      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + [expression.mResultType definition].typeName.string + "' type of the cast expression"
     end
   else
     error expression.mLocation: "expression should be a class instance: it is an @"
-     +  [expression.mResultType definition].mTypeName.string + " instance"
+     +  [expression.mResultType definition].typeName.string + " instance"
   end
 #--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration.new {
@@ -1099,7 +1099,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [[type definition].mHandledOperatorFlags prefixMinusOperator] then
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].mTypeName.string + "' and does not support the prefix minus operator"
+    : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix minus operator"
     :outExpression
   else
   #--- Generate expression
@@ -1131,10 +1131,10 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   ]
 #--- Check field access availability
   var @unifiedTypeMapEntry type = expression.mResultType
-  if ([type definition].mTypeKindEnum != .structType) && not [[type definition].mTypeKindEnum isClassType] then
+  if ([type definition].typeKind != .structType) && not [[type definition].typeKind isClassType] then
     error self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class"
   end
-  let propertyMap = [type definition].mPropertyMap
+  let propertyMap = [type definition].propertyMap
   [propertyMap searchKey !self.mStructFieldName ?let accessControl ?* ?type]
   [accessControl checkSetAccess !.none !self.mStructFieldName]
 #  if not isPublic then
@@ -1439,11 +1439,11 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
+    : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
-  elsif [rightType definition].mTypeName.string != "uint" then
+  elsif [rightType definition].typeName.string != "uint" then
     error self.mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType definition].mTypeName.string + "'"
+    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType definition].typeName.string + "'"
     :outExpression
   else
   #--- Generate expression
@@ -1487,11 +1487,11 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
     error self.mOperatorLocation
-    : "left operand type is '@" + [leftType definition].mTypeName.string + "' and does not support a shift operator"
+    : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
-  elsif [rightType definition].mTypeName.string != "uint" then
+  elsif [rightType definition].typeName.string != "uint" then
     error self.mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType definition].mTypeName.string + "'"
+    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType definition].typeName.string + "'"
     :outExpression
   else
   #--- Generate expression
@@ -1567,8 +1567,8 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
     !?ioTypeMap
     ?let expression
   ]
-  if [expression.mResultType definition].mTypeName.string != "string" then
-    error self.mLocation:"expression type should be '@string' (it is '@" + [expression.mResultType definition].mTypeName.string + "')"
+  if [expression.mResultType definition].typeName.string != "string" then
+    error self.mLocation:"expression type should be '@string' (it is '@" + [expression.mResultType definition].typeName.string + "')"
   end
   ioInstructionList += !@templateInstructionExpressionForGeneration.new {!expression}
 }
@@ -1589,7 +1589,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
     !?ioTypeMap
     ?var expression
   ]
-  if [expression.mResultType definition].mTypeName.string == "bigint" then
+  if [expression.mResultType definition].typeName.string == "bigint" then
     let conversionExpression = @getterCallExpressionForGeneration.new {
       !expression.mResultType
       !expression.mLocation
@@ -1601,8 +1601,8 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
       !true
     }
     expression = conversionExpression
-  elsif [expression.mResultType definition].mTypeName.string != "uint" then
-    error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType definition].mTypeName.string + "')"
+  elsif [expression.mResultType definition].typeName.string != "uint" then
+    error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType definition].typeName.string + "')"
   end
   var blockInstructionList = @templateInstructionListForGeneration {}
   templateInstructionListAnalysis (
@@ -1659,8 +1659,8 @@ override method @templateInstructionIfAST templateInstructionAnalysis
       !?ioTypeMap
       ?let expression
     ]
-    if [expression.mResultType definition].mTypeName.string != "bool" then
-      error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + [expression.mResultType definition].mTypeName.string + "')"
+    if [expression.mResultType definition].typeName.string != "bool" then
+      error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + [expression.mResultType definition].typeName.string + "')"
     end
     var instructionList = @templateInstructionListForGeneration {}
     templateInstructionListAnalysis (

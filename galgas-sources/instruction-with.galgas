@@ -406,7 +406,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     end
     if not found then
       error self.mSearchMethodNameForErrorSignaling : "there is no '" + self.mSearchMethodNameForErrorSignaling
-          + "' search method declared in the '@" + [receiverType definition].mTypeName.string + "' map"
+          + "' search method declared in the '@" + [receiverType definition].typeName.string + "' map"
     end
   end
 #--- Analyze key expression
@@ -421,25 +421,25 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ]
 #--- Check key is an @lstring or @string object
   if self.mSearchMethodNameForErrorSignaling.string == "" then
-    if [keyExpression.mResultType definition].mTypeName.string != "string" then
+    if [keyExpression.mResultType definition].typeName.string != "string" then
       error self.mEndOfKeyExpression
-      : "the key type is '@" + [keyExpression.mResultType definition].mTypeName.string + "', it should be '@string'"
+      : "the key type is '@" + [keyExpression.mResultType definition].typeName.string + "', it should be '@string'"
     end
-  elsif [keyExpression.mResultType definition].mTypeName.string != "lstring" then
+  elsif [keyExpression.mResultType definition].typeName.string != "lstring" then
     error self.mEndOfKeyExpression
-    : "the key type is '@" + [keyExpression.mResultType definition].mTypeName.string + "', it should be @lstring"
+    : "the key type is '@" + [keyExpression.mResultType definition].typeName.string + "', it should be @lstring"
   end
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
 #--- Check this type handle 'with' access
   if not [[receiverType definition].mHandledOperatorFlags supportWithAccessor] then
-    error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
+    error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].typeName.string + "' type cannot be used in a 'with' instruction"
   end
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
   var localConstantList = @localConstantList {}
-  for (mPropertyTypeEntry mPropertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName 2*) in [receiverType definition].currentTypedPropertyList do
     localConstantList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
@@ -513,13 +513,13 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ]
 #--- Check key is an @lstring or @string object
   if self.mSearchMethodNameForErrorSignaling.string == "" then
-    if [keyExpression.mResultType definition].mTypeName.string != "string" then
+    if [keyExpression.mResultType definition].typeName.string != "string" then
       error self.mEndOfKeyExpression
-      : "the key type is '@" + [keyExpression.mResultType definition].mTypeName.string + "', it should be '@string'"
+      : "the key type is '@" + [keyExpression.mResultType definition].typeName.string + "', it should be '@string'"
     end
-  elsif [keyExpression.mResultType definition].mTypeName.string != "lstring" then
+  elsif [keyExpression.mResultType definition].typeName.string != "lstring" then
     error self.mEndOfKeyExpression
-    : "the key type is '@" + [keyExpression.mResultType definition].mTypeName.string + "', it should be @lstring"
+    : "the key type is '@" + [keyExpression.mResultType definition].typeName.string + "', it should be @lstring"
   end
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
@@ -535,7 +535,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
         receiverVariableCppName = inAnalysisContext.mSelfObjectCppName
         targetType = selfType
       else
-        let propertyMap = [selfType definition].mPropertyMap
+        let propertyMap = [selfType definition].propertyMap
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
         if isConstant then
           error self.mReceiverName: "a constant property cannot be modified"
@@ -557,7 +557,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     ]
   end
   for (value) in self.mFieldList do
-    let propertyMap = [targetType definition].mPropertyMap
+    let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
 #    if not isPublic then
@@ -569,7 +569,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   end
 #--- Check this type handle 'with' access
   if not [[targetType definition].mHandledOperatorFlags supportWithAccessor] then
-    error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].mTypeName.string + "' type cannot be used in a 'with' instruction"
+    error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].typeName.string + "' type cannot be used in a 'with' instruction"
   end
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
@@ -578,14 +578,14 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then
-      error self.mSearchMethodNameForErrorSignaling : "there is no '" + self.mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [targetType definition].mTypeName.string + "' map"
+      error self.mSearchMethodNameForErrorSignaling : "there is no '" + self.mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [targetType definition].typeName.string + "' map"
     end
   end
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch
   var @localInitializedVariableList localInitializedVariableList = {}
-  for (mPropertyTypeEntry mPropertyName 2*) in [targetType definition].mCurrentTypedPropertyList do
+  for (mPropertyTypeEntry mPropertyName 2*) in [targetType definition].currentTypedPropertyList do
     localInitializedVariableList +=
       !mPropertyTypeEntry
       !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}

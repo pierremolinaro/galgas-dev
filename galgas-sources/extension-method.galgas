@@ -16,21 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @extensionMethodAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %selector
-  private let @lstring mTypeName
-  private let @lstring mExtensionMethodName
-  private let @formalParameterListAST mExtensionMethodFormalParameterList
-  private let @semanticInstructionListAST mExtensionMethodInstructionList
-  private let @location mEndOfMethodLocation
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -136,144 +121,148 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @extensionMethodAST keyRepresentation
-  ->@string {
-  result = "extension method @" + self.mTypeName + " " + self.mExtensionMethodName
-}
+refclass @extensionMethodAST : @semanticDeclarationAST {
+  private let @bool requiresSelfForAccessingProperty %selector
+  private let @lstring mTypeName
+  private let @lstring mExtensionMethodName
+  private let @formalParameterListAST mExtensionMethodFormalParameterList
+  private let @semanticInstructionListAST mExtensionMethodInstructionList
+  private let @location mEndOfMethodLocation
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @extensionMethodAST enterDeclarationInGraph
-                                ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-                                ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-                                ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-                                ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                                ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {
-    !"extension method @" + self.mTypeName + " " + self.mExtensionMethodName
-    !self.mExtensionMethodName.location
+  override getter keyRepresentation -> @string {
+    result = "extension method @" + self.mTypeName + " " + self.mExtensionMethodName
   }
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
-#---
-  if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
-    [!?ioExtensionMethodMapForBuildingContext insertKey
-      ! self.mTypeName
-      !{}
-    ]
-  end
-  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
-    [!?mExtensionMethodMapForType insertKey
-      !self.mExtensionMethodName
-      ! self.mExtensionMethodFormalParameterList
-      !.isBasic
-    ]
-  end
-}
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @extensionMethodAST enterDeclarationInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap unused ioTypeMap
-  ?!@semanticContext unused ioSemanticContext
-{
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @extensionMethodAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
-#--- Useful entities graph
-  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionMethodName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
-#--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey ! self.mTypeName]
-  let @string selfObjectNameNew
-  let @string selfObjectAccessorNew
-  let @bool implementedAsFunction
-#--- Check self type is a class
-  var isReferenceClass = false
-  if let [[selfType definition].mTypeKindEnum classType ?isReference: let isReference] then
-    isReferenceClass = isReference
-    selfObjectNameNew = "this"
-    selfObjectAccessorNew = "this->"
-    implementedAsFunction = false
-  else
-    selfObjectNameNew = "inObject"
-    selfObjectAccessorNew = "inObject."
-    implementedAsFunction = true
-  end
-#--- Analyze instruction list
-  let analysisContextNew = @analysisContext.new {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfObjectNameNew
-    !selfType: .available {!type:  selfType !mutable: false !mutableproperties: isReferenceClass}
-    !selfObjectAccessorNew
-    !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
-  }
-  var isRefClass = false
-  if let [[selfType definition].mTypeKindEnum classType ?isReference: let reference] then
-    isRefClass = reference
-  end
-  var mutableProperties = @typedPropertyList {}
-  var nonMutableProperties = @typedPropertyList {}
-  if [selfType definition].mTypeKindEnum == .structType then
-    nonMutableProperties = [selfType definition].mAllTypedPropertyList
-  elsif let [[selfType definition].mTypeKindEnum classType ?isReference: let isReference] then
-    if isReference then
-      mutableProperties = [selfType definition].mAllTypedPropertyList
-    else
-      nonMutableProperties = [selfType definition].mAllTypedPropertyList
-    end
-  end
-  analyzeRoutineBody (
-    !nameForUsefulness
-    !?ioUsefulEntitiesGraph
-    !analysisContextNew
-    !?ioTypeMap
-    !self.mExtensionMethodFormalParameterList
-    !nonMutablePropertyList: nonMutableProperties
-    !mutablePropertyList: mutableProperties
-    !self.mExtensionMethodInstructionList
-    !self.mEndOfMethodLocation
-    ?let semanticInstructionListForGeneration
-    ?let formalParameterListForGeneration
-  )
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !infoMessage:"extension method " + self.mExtensionMethodName
-    !@extensionMethodForGeneration.new {
-      !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "method-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
-      !selfType
-      !self.mExtensionMethodName.string
-      !implementedAsFunction
-      !formalParameterListForGeneration
-      ![selfType definition].mAllTypedPropertyList
-      !semanticInstructionListForGeneration
+  override method enterDeclarationInGraph
+     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+     ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
+     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring.new {
+      !"extension method @" + self.mTypeName + " " + self.mExtensionMethodName
+      !self.mExtensionMethodName.location
     }
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
+  #---
+    if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
+      [!?ioExtensionMethodMapForBuildingContext insertKey
+        ! self.mTypeName
+        !{}
+      ]
+    end
+    with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+      [!?mExtensionMethodMapForType insertKey
+        !self.mExtensionMethodName
+        ! self.mExtensionMethodFormalParameterList
+        !.isBasic
+      ]
+    end
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInSemanticContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+                                  ?!@unifiedTypeMap unused ioTypeMap
+    ?!@semanticContext unused ioSemanticContext
+  {
+  }
+
+  #·······························································································
+
+  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities
+                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                   ?let @string unused inProductDirectory
+                                   ?let @semanticContext inSemanticContext
+                                   ?!@unifiedTypeMap ioTypeMap
+                                   ?let @predefinedTypes inPredefinedTypes
+                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  #--- Useful entities graph
+    let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionMethodName)
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+  #--- Self type
+    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey ! self.mTypeName]
+    let @string selfObjectNameNew
+    let @string selfObjectAccessorNew
+    let @bool implementedAsFunction
+  #--- Check self type is a class
+    var isReferenceClass = false
+    if let [[selfType definition].typeKind classType ?isReference: let isReference] then
+      isReferenceClass = isReference
+      selfObjectNameNew = "this"
+      selfObjectAccessorNew = "this->"
+      implementedAsFunction = false
+    else
+      selfObjectNameNew = "inObject"
+      selfObjectAccessorNew = "inObject."
+      implementedAsFunction = true
+    end
+  #--- Analyze instruction list
+    let analysisContextNew = @analysisContext.new {
+      !inSemanticContext
+      !inPredefinedTypes
+      !selfObjectNameNew
+      !selfType: .available {!type:  selfType !mutable: false !mutableproperties: isReferenceClass}
+      !selfObjectAccessorNew
+      !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
+    }
+    var isRefClass = false
+    if let [[selfType definition].typeKind classType ?isReference: let reference] then
+      isRefClass = reference
+    end
+    var mutableProperties = @typedPropertyList {}
+    var nonMutableProperties = @typedPropertyList {}
+    if [selfType definition].typeKind == .structType then
+      nonMutableProperties = [selfType definition].allTypedPropertyList
+    elsif let [[selfType definition].typeKind classType ?isReference: let isReference] then
+      if isReference then
+        mutableProperties = [selfType definition].allTypedPropertyList
+      else
+        nonMutableProperties = [selfType definition].allTypedPropertyList
+      end
+    end
+    analyzeRoutineBody (
+      !nameForUsefulness
+      !?ioUsefulEntitiesGraph
+      !analysisContextNew
+      !?ioTypeMap
+      !self.mExtensionMethodFormalParameterList
+      !nonMutablePropertyList: nonMutableProperties
+      !mutablePropertyList: mutableProperties
+      !self.mExtensionMethodInstructionList
+      !self.mEndOfMethodLocation
+      ?let semanticInstructionListForGeneration
+      ?let formalParameterListForGeneration
+    )
+  #---
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage:"extension method " + self.mExtensionMethodName
+      !@extensionMethodForGeneration.new {
+        !generateHeader: true # Generate Cpp header file
+        !mImplementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+        !selfType
+        !self.mExtensionMethodName.string
+        !implementedAsFunction
+        !formalParameterListForGeneration
+        ![selfType definition].allTypedPropertyList
+        !semanticInstructionListForGeneration
+      }
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -323,13 +312,13 @@ override method @extensionMethodForGeneration appendDeclaration1
   !@string outHeader {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionMethodName
       !self.mExtensionMethodFormalParameterList
     ]
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodDeclaration
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionMethodName
       !self.mExtensionMethodFormalParameterList
     ]
@@ -353,7 +342,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !"inObject"
       !0
     ]
-    ioInclusionSet += !"method-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+    ioInclusionSet += !"method-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateProcedure (
       !static:false
       !"extensionMethod_" + [self.mExtensionMethodName identifierRepresentation]
@@ -368,7 +357,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionMethodName
       !code
     ]
@@ -380,9 +369,9 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint.max) while searching do
-      if not [[baseType definition].mSuperType isNull] then
-        if [[[baseType definition].mSuperType definition].mInstanceMethodMap hasKey !self.mExtensionMethodName] then
-          baseType = [baseType definition].mSuperType
+      if not [[baseType definition].superType isNull] then
+        if [[[baseType definition].superType definition].mInstanceMethodMap hasKey !self.mExtensionMethodName] then
+          baseType = [baseType definition].superType
         else
           searching = false
         end
@@ -391,7 +380,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       end
     end
     ioInclusionSet +=
-      !"method-" + [[baseType definition].mTypeName.string fileNameRepresentation]
+      !"method-" + [[baseType definition].typeName.string fileNameRepresentation]
       + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateExtensionMethodNew (
       !self.mReceiverType
@@ -402,7 +391,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       ?let @string methodImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodImplementation
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionMethodName
       !self.mExtensionMethodFormalParameterList
       !methodImplementation

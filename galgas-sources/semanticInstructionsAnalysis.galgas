@@ -151,9 +151,9 @@ proc checkExpressionIsBoolean
   let boolType = inAnalysisContext.mPredefinedTypes.mBoolType
   if expressionType == boolType then
     outExpression = inExpression
-  elsif [expressionType definition].mTypeKindEnum == .structType then
-    if [[expressionType definition].mPropertyMap hasKey !"bool"] then
-      [[expressionType definition].mPropertyMap searchKey
+  elsif [expressionType definition].typeKind == .structType then
+    if [[expressionType definition].propertyMap hasKey !"bool"] then
+      [[expressionType definition].propertyMap searchKey
         !@lstring.new {!"bool" !inErrorLocation}
         ?let accessControl
         ?*
@@ -172,12 +172,12 @@ proc checkExpressionIsBoolean
         }
       else
         error inErrorLocation
-        : "the '@"+ [expressionType definition].mTypeName.string + "' struct type defines an attribute named 'bool', but its type is not '@bool'"
+        : "the '@"+ [expressionType definition].typeName.string + "' struct type defines an attribute named 'bool', but its type is not '@bool'"
         : outExpression
       end
     else
       error inErrorLocation
-      : "the '@"+ [expressionType definition].mTypeName.string + "' struct type does not define an attribute named 'bool'"
+      : "the '@"+ [expressionType definition].typeName.string + "' struct type does not define an attribute named 'bool'"
       : outExpression
     end
   else
@@ -201,11 +201,11 @@ proc checkExpressionIsBoolean
     else
       if [[expressionType definition].mGetterMap count] == 0 then
         error inErrorLocation
-        : "the expression type is not '@bool', but '@"+ [expressionType definition].mTypeName.string + "', and this type does not define the 'bool' getter"
+        : "the expression type is not '@bool', but '@"+ [expressionType definition].typeName.string + "', and this type does not define the 'bool' getter"
         : outExpression
       else
         error inErrorLocation
-        : "the expression type is not '@bool', but '@"+ [expressionType definition].mTypeName.string + "', and this type does not define the 'bool' getter "
+        : "the expression type is not '@bool', but '@"+ [expressionType definition].typeName.string + "', and this type does not define the 'bool' getter "
         : outExpression
         fixit { replace [[expressionType definition].mGetterMap keyList] }
       end

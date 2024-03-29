@@ -88,13 +88,14 @@ private func %once forbiddenKeysForStruct -> @stringset {
 
 refclass @structDeclarationAST : @semanticDeclarationAST {
   private let @lstring mStructTypeName
-  private let @propertyInCollectionListAST mStructurePropertyList
+  private let @propertyInCollectionListAST mStructurePropertyListAST
   private let @string mEnumeratedElementTypeName # Empty string if not enumerable
 
   #·······························································································
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -102,7 +103,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   {
     let key = @lstring.new {!"@" + self.mStructTypeName !self.mStructTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    for (* propertyTypeName 4*) in self.mStructurePropertyList do
+    for (* propertyTypeName 4*) in self.mStructurePropertyListAST do
       let propertyKey = @lstring.new {!"@" + propertyTypeName !propertyTypeName.location}
       [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
     end
@@ -121,19 +122,18 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext
-  {
+    ?!@semanticContext ioSemanticContext {
     let optionalMethodMap = @optionalMethodMap {}
   #--- Struct type index
-    [!?ioTypeMap makeEntry  !self.mStructTypeName ?let structTypeIndex]
+    [!?ioTypeMap makeEntry !self.mStructTypeName ?let structTypeIndex]
   #--- Class functions and property map
     var @propertyMap propertyMap = {}
     var @classFunctionMap classFunctionMap = {}
     var @functionSignature constructorPropertyTypeList = {}
     var @typedPropertyList typedPropertyList = {}
     var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
-    for (isConstant propertyTypeName propertyName accessControlAST hasSelector initExpression) in self.mStructurePropertyList do
-      [!?ioTypeMap makeEntry  !propertyTypeName ?let propertyTypeEntry]
+    for (isConstant propertyTypeName propertyName accessControlAST hasSelector initExpression) in self.mStructurePropertyListAST do
+      [!?ioTypeMap makeEntry !propertyTypeName ?let propertyTypeEntry]
       let @lstring selector = [if hasSelector then propertyName.string else "" end nowhere]
       if [initExpression isNone] then
         constructorPropertyTypeList += !selector !propertyTypeEntry !propertyName.string
@@ -186,27 +186,27 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   #--- Generate a "default" constructor ?
     var @string defaultConstructorName = "default"
     for (mPropertyTypeEntry 3*) in typedPropertyList while defaultConstructorName != "" do
-      if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].mIsConcrete then
+      if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].isConcrete then
         defaultConstructorName = ""
       end
     end
   #--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition.new {
-      !self.mStructTypeName
-      !self.isPredefined
-      !true # Concrete Type
-      !@unifiedTypeMapEntry.null
-      !@typeKindEnum.structType
-      !false # Does not support collection value
-      !typedPropertyList
-      !propertyMap
-      !typedPropertyList
-      !classFunctionMap
+      !typeName: self.mStructTypeName
+      !isPredefined: self.isPredefined
+      !isConcrete: true # Concrete Type
+      !superType: .null
+      !typeKind: .structType
+      !supportCollectionValue: false # Does not support collection value
+      !allTypedPropertyList: typedPropertyList
+      !propertyMap: propertyMap
+      !currentTypedPropertyList: typedPropertyList
+      !classFunctionMap: classFunctionMap
       !getterMap
       !setterMap
       !instanceMethodMap
-      !{}
-      !optionalMethodMap
+      !classMethodMap: {}
+      !optionalMethodMap: optionalMethodMap
       !@enumerationDescriptorList {}
       !.generateDescriptionGetterUtilityMethod | .isComparable
       !@functionSignature {}
@@ -220,7 +220,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !"struct-" + [self.mStructTypeName fileNameRepresentation]
       !@headerKind.oneHeader
     }
-    [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
   #·······························································································
@@ -238,13 +238,13 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mStructTypeName)
     [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
   #---
-    if [self.mStructurePropertyList count] == 0 then
+    if [self.mStructurePropertyListAST count] == 0 then
       error self.mStructTypeName: "a structure cannot be empty: it must have at least one property"
     end
     var @typedPropertyList typedPropertyList = {}
     var @typedPropertyList constructorArgumentList = {}
     var @propertyIndexMap propertyMap = {}
-    for (isConstant propertyTypeName mPropertyName * hasSelector initExpression) in self.mStructurePropertyList do
+    for (isConstant propertyTypeName mPropertyName * hasSelector initExpression) in self.mStructurePropertyListAST do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
       [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
       let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
@@ -277,8 +277,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     var inclusionSet = @stringset {}
     var @uint temporaryVariableIndex = 0
     var unusedVariableCppNameSet = @stringset {!compilerCppName ()}
-#    var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
-    for (* propertyTypeName propertyName 2* initExpression) in self.mStructurePropertyList do
+    for (* propertyTypeName propertyName 2* initExpression) in self.mStructurePropertyListAST do
      switch initExpression
       case none :
       case some (expressionAST) :
@@ -378,21 +377,21 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
     end
     let selfTypedefinition = [self.mSelfTypeEntry definition]
     outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1
-      !selfTypedefinition.mTypeName.string
+      !selfTypedefinition.typeName.string
       ![self.mSelfTypeEntry  identifierRepresentation]
       !self.mTypedPropertyList
       !self.mConstructorArgumentList
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-      !selfTypedefinition.mTypeName.string
+      !selfTypedefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
-      !selfTypedefinition.mIsConcrete
-      !selfTypedefinition.mClassFunctionMap
+      !selfTypedefinition.isConcrete
+      !selfTypedefinition.classFunctionMap
       !selfTypedefinition.mGetterMap
       !selfTypedefinition.mSetterMap
       !selfTypedefinition.mInstanceMethodMap
-      !selfTypedefinition.mClassMethodMap
-      !selfTypedefinition.mOptionalMethodMap
+      !selfTypedefinition.classMethodMap
+      !selfTypedefinition.optionalMethodMap
       !selfTypedefinition.mEnumerationDescriptor
       !selfTypedefinition.mHandledOperatorFlags
       !selfTypedefinition.mAddAssignOperatorArguments
@@ -410,7 +409,7 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let selfTypedefinition = [self.mSelfTypeEntry definition]
     outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation
-      !selfTypedefinition.mTypeName.string
+      !selfTypedefinition.typeName.string
       ![self.mSelfTypeEntry  identifierRepresentation]
       !self.mTypedPropertyList
       !self.mConstructorArgumentList

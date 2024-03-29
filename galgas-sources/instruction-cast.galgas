@@ -176,13 +176,13 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     var @unifiedTypeMapEntry t = type
     var @bool found = t == castExpression.mResultType
     loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].mSuperType isNull] do
-      t = [t definition].mSuperType
+    while (not found) & not [[t definition].superType isNull] do
+      t = [t definition].superType
       found = t == castExpression.mResultType
     end
     if not found then
       error mTypeName
-      :"the '@" + mTypeName + "' is not a descendant of the '@" + [castExpression.mResultType definition].mTypeName.string + "' type of the cast expression"
+      :"the '@" + mTypeName + "' is not a descendant of the '@" + [castExpression.mResultType definition].typeName.string + "' type of the cast expression"
     end
   #--- Declare a local constant ?
     let @string localConstantName

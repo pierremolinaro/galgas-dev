@@ -272,7 +272,7 @@ override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration isPredefined -> @bool {
-  result = [self.mSelfTypeEntry definition].mIsPredefined
+  result = [self.mSelfTypeEntry definition].isPredefined
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

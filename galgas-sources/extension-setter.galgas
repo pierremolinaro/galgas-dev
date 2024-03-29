@@ -150,6 +150,7 @@ override getter @extensionSetterAST keyRepresentation -> @string {
 
 override method @extensionSetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
@@ -211,7 +212,7 @@ override method @extensionSetterAST semanticAnalysis
   let @string selfObjectAccessor
   let @bool implementedAsFunction
 #--- Check self type is a class
-  if [[selfType definition].mTypeKindEnum isClassType] then
+  if [[selfType definition].typeKind isClassType] then
     selfObjectName = "object"
     selfObjectAccessor = "object->"
     implementedAsFunction = false
@@ -236,7 +237,7 @@ override method @extensionSetterAST semanticAnalysis
     !?ioTypeMap
     !self.mExtensionSetterFormalParameterList
     !nonMutablePropertyList: {}
-    !mutablePropertyList: [selfType definition].mAllTypedPropertyList
+    !mutablePropertyList: [selfType definition].allTypedPropertyList
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?let semanticInstructionListForGeneration
@@ -247,12 +248,12 @@ override method @extensionSetterAST semanticAnalysis
     !infoMessage:"extension setter " + self.mExtensionSetterName
     !@extensionSetterForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "setter-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
+      !mImplementationCppFileName: "setter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
       !selfType
       !self.mExtensionSetterName.string
       !implementedAsFunction
       !formalParameterListForGeneration
-      ![selfType definition].mAllTypedPropertyList
+      ![selfType definition].allTypedPropertyList
       !semanticInstructionListForGeneration}
 }
 
@@ -305,13 +306,13 @@ override method @extensionSetterForGeneration appendDeclaration1
   !@string outHeader {
   if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionSetterAsFunctionDeclaration
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionSetterName
       !self.mExtensionSetterFormalParameterList
     ]
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionSetterDeclaration
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionSetterName
       !self.mExtensionSetterFormalParameterList
     ]
@@ -338,7 +339,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       !"ioObject"
       !0
     ]
-    ioInclusionSet += !"setter-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
+    ioInclusionSet += !"setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
     generateProcedure (
       !static:false
       !"extensionSetter_" + [self.mExtensionSetterName identifierRepresentation]
@@ -353,7 +354,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionSetterName
       !code
     ]
@@ -361,9 +362,9 @@ override method @extensionSetterForGeneration appendSpecificImplementation
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint. max) while searching do
-      if not [[baseType definition].mSuperType isNull] then
-        if [[[baseType definition].mSuperType definition].mSetterMap hasKey !self.mExtensionSetterName] then
-          baseType = [baseType definition].mSuperType
+      if not [[baseType definition].superType isNull] then
+        if [[[baseType definition].superType definition].mSetterMap hasKey !self.mExtensionSetterName] then
+          baseType = [baseType definition].superType
         else
           searching = false
         end
@@ -371,10 +372,10 @@ override method @extensionSetterForGeneration appendSpecificImplementation
         searching = false
       end
     end
-    ioInclusionSet += !"setter-" + [[baseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
+    ioInclusionSet += !"setter-" + [[baseType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
     [baseType addHeaderFileName !?ioInclusionSet]
     generateExtensionSetter (
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !""
       !self.mExtensionSetterName
       !?ioInclusionSet
@@ -383,7 +384,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       ?let @string setterImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionsetterImplementation
-      ![self.mReceiverType definition].mTypeName.string
+      ![self.mReceiverType definition].typeName.string
       !self.mExtensionSetterName
       !self.mExtensionSetterFormalParameterList
       !setterImplementation

@@ -186,6 +186,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @overridingExtensionGetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -250,12 +251,12 @@ override method @overridingExtensionGetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is a class
-  if not [[selfType definition].mTypeKindEnum isClassType] then
-    error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].mTypeName.string + "' is not a class"
+  if not [[selfType definition].typeKind isClassType] then
+    error self.mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].typeName.string + "' is not a class"
   end
 #--- Find base type name
   var @string baseTypeName = ""
-  var @unifiedTypeMapEntry superType = [selfType definition].mSuperType
+  var @unifiedTypeMapEntry superType = [selfType definition].superType
   var @functionSignature inheritedSignature = {}
   var inheritedReturnType = @unifiedTypeMapEntry.null{}
   var @location inheritedDeclarationLocation = @location.here
@@ -273,10 +274,10 @@ override method @overridingExtensionGetterAST semanticAnalysis
         ?*
       ]
       if qualifier <= @methodQualifier.isBasicFinal then
-        baseTypeName = [superType definition].mTypeName.string
+        baseTypeName = [superType definition].typeName.string
       end
     end
-    superType = [superType definition].mSuperType
+    superType = [superType definition].superType
   end
   if baseTypeName == "" then
     error self.mOverridingExtensionGetterName: "this getter is not declared by a super class"
@@ -296,8 +297,8 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !self.mOverridingExtensionGetterFormalInputParameterList
-    !if [[selfType definition].mTypeKindEnum isClassType] | ([selfType definition].mTypeKindEnum == .structType)
-       then [selfType definition].mAllTypedPropertyList
+    !if [[selfType definition].typeKind isClassType] | ([selfType definition].typeKind == .structType)
+       then [selfType definition].allTypedPropertyList
        else {}
      end
     !"this->"
@@ -333,7 +334,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
-      ![selfType definition].mAllTypedPropertyList
+      ![selfType definition].allTypedPropertyList
       !semanticInstructionListForGeneration
     }
 }
@@ -387,9 +388,9 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
                                                               ?let @unifiedTypeMap unused inTypeMap
                                                               ?!@stringset ioInclusionSet
                                                               !@string outImplementation {
-  ioInclusionSet += !"class-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation]
+  ioInclusionSet += !"class-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
   generateExtensionGetterNew (
-    !"cPtr_" + [[self.mReceiverType definition].mTypeName.string identifierRepresentation] + "::getter_" + [self.mOverridingExtensionGetterName identifierRepresentation]
+    !"cPtr_" + [[self.mReceiverType definition].typeName.string identifierRepresentation] + "::getter_" + [self.mOverridingExtensionGetterName identifierRepresentation]
     !?ioInclusionSet
     !self.mOverridingExtensionGetterFormalParameterList
     !self.mSemanticInstructionListForGeneration
@@ -399,7 +400,7 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
     ?let @string extensionGetterCode
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionGetterImplementation
-    ![self.mReceiverType definition].mTypeName.string
+    ![self.mReceiverType definition].typeName.string
     !self.mOverridingExtensionGetterName
     !extensionGetterCode
     !self.mResultType

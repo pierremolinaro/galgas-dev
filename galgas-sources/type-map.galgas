@@ -293,6 +293,7 @@ override method @mapDeclarationAST addAssociatedElement
 
 override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -585,21 +586,21 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   ]
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mMapTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !.null
-    !.mapType
-    !true # Support collection value
-    !{}
-    !{}
-    !typedPropertyList
-    !classFunctionMap
+    !typeName: self.mMapTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .mapType
+    !supportCollectionValue: true # Support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {}
+    !currentTypedPropertyList: typedPropertyList
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !optionalMethodMap
+    !classMethodMap: {}
+    !optionalMethodMap: optionalMethodMap
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor | .isComparable | .infixAddOperator
     !argumentTypeListForAddAssignWithFieldExpressionList
@@ -613,7 +614,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !"map-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -736,21 +737,21 @@ override method @mapTypeForGeneration appendDeclaration1
 {
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader1
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
     !self.mSearchMethodList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments
@@ -769,7 +770,7 @@ override method @mapTypeForGeneration appendDeclaration2
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader2
-    !selfTypedefinition.mTypeName.string
+    !selfTypedefinition.typeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
   ]
@@ -785,7 +786,7 @@ override method @mapTypeForGeneration appendSpecificImplementation
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
-    ![selfTypedefinition.mTypeName.string identifierRepresentation]
+    ![selfTypedefinition.typeName.string identifierRepresentation]
     !self.mTypedAttributeList
     !self.mInsertMethodList
     !self.mSearchMethodList

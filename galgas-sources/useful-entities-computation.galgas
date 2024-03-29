@@ -92,6 +92,12 @@ func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMe
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @formalParameterListAST inParameterList -> @lstring {
+  result = .new {!"@" + inTypeName + " " + [inParameterList keyRepresentation] !inTypeName.location}
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 func lexiqueNameForUsefulEntitiesGraph ?let @lstring inLexiqueName -> @lstring {
   result = .new {!"lexique " + inLexiqueName !inLexiqueName.location}
 }

@@ -72,6 +72,26 @@ list @formalParameterListAST {
   public let @lstring mFormalArgumentTypeName
   public let @lstring mFormalArgumentName
   public let @bool mIsUnused
+  
+  getter keyRepresentation -> @string {
+    result = "("
+      for parameter in self
+    do
+      switch parameter.mFormalArgumentPassingMode
+      case argumentConstantIn, argumentIn :
+        result +="?"
+      case argumentInOut :
+        result +="?!"
+      case argumentOut :
+        result +="!"
+      end
+      result += parameter.mFormalSelector
+    between
+      result += ", "
+    end
+    result += ")"
+  }
+  
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

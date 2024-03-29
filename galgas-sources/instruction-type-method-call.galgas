@@ -102,7 +102,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
 #--- Get type method map for the named type
   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Get type method signature
-  [[type definition].mClassMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
+  [[type definition].classMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
 #--- Check effective parameters
   [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName

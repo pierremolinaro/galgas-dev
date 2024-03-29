@@ -112,11 +112,12 @@ syntax extension galgas4DeclarationsSyntax {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @abstractExtensionMethodAST enterDeclarationInGraph
-                                  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-                                  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-                                  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-                                  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-                                  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {
     !"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
     !self.mAbstractExtensionMethodName.location
@@ -178,10 +179,10 @@ override method @abstractExtensionMethodAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 #--- Check self type is an abstract class
-  if not [[selfType definition].mTypeKindEnum isClassType]then
-    error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].mTypeName.string + "' is not a class"
-  elsif [selfType definition].mIsConcrete then
-    error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].mTypeName.string + "' is not an abstract class"
+  if not [[selfType definition].typeKind isClassType]then
+    error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
+  elsif [selfType definition].isConcrete then
+    error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].typeName.string + "' is not an abstract class"
   end
 #--- Compute method signature
   var formalParameterListForGeneration = @formalParameterListForGeneration {}
@@ -198,7 +199,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
     !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
     !@abstractExtensionMethodForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "method-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+      !mImplementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionMethodName.string
       !formalParameterListForGeneration
@@ -243,7 +244,7 @@ override method @abstractExtensionMethodForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
-    ![self.mReceiverType definition].mTypeName.string
+    ![self.mReceiverType definition].typeName.string
     !self.mAbstractExtensionMethodName
     !self.mAbstractExtensionMethodFormalParameterList
   ]
@@ -261,7 +262,7 @@ override method @abstractExtensionMethodForGeneration appendSpecificImplementati
                                                                             ?let @unifiedTypeMap unused inTypeMap
                                                                             ?!@stringset ioInclusionSet
                                                                             !@string outImplementation {
-  ioInclusionSet += !"method-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation]+ "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+  ioInclusionSet += !"method-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation]+ "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
   for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]

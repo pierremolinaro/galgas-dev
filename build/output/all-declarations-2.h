@@ -9550,6 +9550,7 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
            class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,

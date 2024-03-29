@@ -112,6 +112,7 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/extension-getter.galgas"
   "galgas-sources/extension-method.galgas"
   "galgas-sources/extension-setter.galgas"
+  "galgas-sources/extension-initializer.galgas"
   "galgas-sources/extension-overriding-abstract-getter.galgas"
   "galgas-sources/extension-overriding-abstract-method.galgas"
   "galgas-sources/extension-overriding-abstract-setter.galgas"

@@ -129,6 +129,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
@@ -262,21 +263,21 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition.new {
-    !self.mEnumTypeName
-    !self.isPredefined
-    !true # Concrete Type
-    !@unifiedTypeMapEntry.null
-    !@typeKindEnum.enumType
-    !false # Does not support collection value
-    !{}
-    !{}
-    !{}
-    !classFunctionMap
+    !typeName: self.mEnumTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .enumType
+    !supportCollectionValue: false # Does not support collection value
+    !allTypedPropertyList: {}
+    !propertyMap: {}
+    !currentTypedPropertyList: {}
+    !classFunctionMap: classFunctionMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !optionalMethodMap
+    !classMethodMap: {}
+    !optionalMethodMap: optionalMethodMap
     !{}
     !.generateDescriptionGetterUtilityMethod | .isComparable
     !{}
@@ -290,7 +291,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !"enum-" + [self.mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
   }
-  [!?ioTypeMap insertType !typeDefinition.mTypeName !typeDefinition]
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -392,21 +393,21 @@ override method @enumTypeForGeneration appendDeclaration1
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
-    !selfTypedefinition.mTypeName.string
-    ![selfTypedefinition.mTypeName.string identifierRepresentation]
+    !selfTypedefinition.typeName.string
+    ![selfTypedefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.mTypeName.string
-    ![selfTypedefinition.mTypeName.string identifierRepresentation]
-    !selfTypedefinition.mIsConcrete
-    !selfTypedefinition.mClassFunctionMap
+    !selfTypedefinition.typeName.string
+    ![selfTypedefinition.typeName.string identifierRepresentation]
+    !selfTypedefinition.isConcrete
+    !selfTypedefinition.classFunctionMap
     !selfTypedefinition.mGetterMap
     !selfTypedefinition.mSetterMap
     !selfTypedefinition.mInstanceMethodMap
-    !selfTypedefinition.mClassMethodMap
-    !selfTypedefinition.mOptionalMethodMap
+    !selfTypedefinition.classMethodMap
+    !selfTypedefinition.optionalMethodMap
     !selfTypedefinition.mEnumerationDescriptor
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments
@@ -432,8 +433,8 @@ override method @enumTypeForGeneration appendDeclaration2
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader2
-    !selfTypedefinition.mTypeName.string
-    ![selfTypedefinition.mTypeName.string identifierRepresentation]
+    !selfTypedefinition.typeName.string
+    ![selfTypedefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
@@ -453,8 +454,8 @@ override method @enumTypeForGeneration appendSpecificImplementation
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let selfTypedefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
-    !selfTypedefinition.mTypeName.string
-    ![selfTypedefinition.mTypeName.string identifierRepresentation]
+    !selfTypedefinition.typeName.string
+    ![selfTypedefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]

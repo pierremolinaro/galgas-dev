@@ -209,7 +209,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].mPropertyMap
+      let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
 #      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
@@ -234,7 +234,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   end
 #---
   for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].mPropertyMap
+    let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
 #    if not isPublic then
@@ -247,7 +247,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 #--- Check target type accepts incrementation
   if not [[targetType definition].mHandledOperatorFlags incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '++', '--' operators"
+    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '++', '--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
@@ -273,7 +273,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMapEntry targetType
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?let targetVariableCppName ?*]
   for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].mPropertyMap
+    let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
 #    if not isPublic then
@@ -286,7 +286,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
 #--- Check target type accepts incrementation
   if not [[targetType definition].mHandledOperatorFlags incDecOperator] then
     error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].mTypeName.string + "' type, but this type does not support the '&++', '&--' operators"
+    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '&++', '&--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
@@ -315,7 +315,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   #--- Check target type accepts incrementation
     if not [[selfType definition].mHandledOperatorFlags incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfType definition].mTypeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
+      :"the target object has the '@" + [selfType definition].typeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
     end
   #--- Generate instruction
     ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
@@ -347,7 +347,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   #--- Check target type accepts incrementation
     if not [[selfType definition].mHandledOperatorFlags incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfType definition].mTypeName.string + "' type, but this type does not support the '++' and  '--' operators"
+      :"the target object has the '@" + [selfType definition].typeName.string + "' type, but this type does not support the '++' and  '--' operators"
     end
   #--- Generate instruction
     ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {

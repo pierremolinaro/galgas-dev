@@ -242,11 +242,11 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
                     ?type: let selfType
                     ?mutable: let selfIsMutable
                     ?mutableproperties: *] then
-      if let [[selfType definition].mTypeKindEnum classType ?isReference: let isReference], isReference then
+      if let [[selfType definition].typeKind classType ?isReference: let isReference], isReference then
       elsif not selfIsMutable then
         error self.mSetterName : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].mPropertyMap
+      let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
@@ -271,11 +271,11 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
   var ok = true
   var errorLocation = self.mReceiverName.location
   for (value) in self.mReceiverStructProperties while ok do
-    ok = [[receiverType definition].mTypeKindEnum isStructType]
+    ok = [[receiverType definition].typeKind isStructType]
     if not ok then
       error errorLocation : "a structure is required for '.' access"
     else
-      let propertyMap = [receiverType definition].mPropertyMap
+      let propertyMap = [receiverType definition].propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType]
       [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
       errorLocation = value.location
@@ -325,11 +325,11 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
   var searching = true
   if @uint.errorCount == 0 then
     loop (@uint.max) while searching do
-      if [[baseType definition].mSuperType isNull] then
+      if [[baseType definition].superType isNull] then
         searching = false
       else
-        if [[[baseType definition].mSuperType definition].mSetterMap hasKey !self.mSetterName.string] then
-          baseType = [baseType definition].mSuperType
+        if [[[baseType definition].superType definition].mSetterMap hasKey !self.mSetterName.string] then
+          baseType = [baseType definition].superType
         else
           searching = false
         end
@@ -460,22 +460,22 @@ override method @setterCallInstructionForGeneration generateInstruction
 #--- Generate method call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[self.mMethodBaseType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
-    if [[self.mReceiverType definition].mTypeKindEnum isClassType] then
-      if ([[self.mReceiverType definition].mAllTypedPropertyList count] > 0) then #  & [mReceiverType mIsConcrete] then
+    ioInclusionSet += !"setter-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    if [[self.mReceiverType definition].typeKind isClassType] then
+      if ([[self.mReceiverType definition].allTypedPropertyList count] > 0) then #  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
       end
       let pointerUniqueName = "ptr_" + [self.mInstructionLocation startLocationIndex]
       ioGeneratedCode += "cPtr_" + [self.mReceiverType identifierRepresentation] + " * " + pointerUniqueName
       ioGeneratedCode += " = (cPtr_" + [self.mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
-      if [self.mCastType definition].mTypeName.string != [self.mReceiverType definition].mTypeName.string then
-        ioInclusionSet += !"class-" + [[self.mCastType definition].mTypeName.string fileNameRepresentation]
+      if [self.mCastType definition].typeName.string != [self.mReceiverType definition].typeName.string then
+        ioInclusionSet += !"class-" + [[self.mCastType definition].typeName.string fileNameRepresentation]
         ioGeneratedCode += "if ((nullptr != " + pointerUniqueName
                         + ") && (dynamic_cast <cPtr_" + [self.mCastType identifierRepresentation] + " *> ("
                         + pointerUniqueName + ") == nullptr)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@"
-                        + [self.mCastType definition].mTypeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+                        + [self.mCastType definition].typeName.string + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
         ioGeneratedCode += "  " + pointerUniqueName + " = nullptr ;\n"
         ioGeneratedCode += "}\n"
       end
@@ -535,14 +535,14 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
 #--- Generate setter call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
-    if [[self.mReceiverType definition].mTypeKindEnum isClassType] then
+    ioInclusionSet += !"setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    if [[self.mReceiverType definition].typeKind isClassType] then
       ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
     else
       ioGeneratedCode += "extensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
     end
   case definedAsMember :
-    if [[self.mReceiverType definition].mTypeKindEnum isClassType] then
+    if [[self.mReceiverType definition].typeKind isClassType] then
       ioGeneratedCode += self.mSelfCppName + "->setter_" + [self.mSetterName identifierRepresentation] + " ("
     else
       ioGeneratedCode += self.mSelfCppName + ".setter_" + [self.mSetterName identifierRepresentation] + " ("
