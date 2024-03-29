@@ -268,8 +268,8 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !def.mEnumerationDescriptor # Empty List if cannot be enumerated
           !def.mHandledOperatorFlags
           !def.mAddAssignOperatorArguments # Empty list if += operator is not supported
-          !def.mEnumConstantMap
-          !def.mEnumConstantList
+          !enumConstantMap: def.enumConstantMap
+          !enumConstantList: def.enumConstantList
           !def.mMapSearchMethodList # For a map, the list of search methods
           !def.mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
           !def.mGenerateHeaderInSeparateFile # Significant only for classes

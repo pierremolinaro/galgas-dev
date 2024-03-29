@@ -3759,11 +3759,11 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GALGAS_bool & in_isConstant,
-                                                 const class GALGAS_lstring & in_mPropertyTypeName,
-                                                 const class GALGAS_lstring & in_mPropertyName,
-                                                 const class GALGAS_AccessControlAST & in_mAccessControl,
-                                                 const class GALGAS_bool & in_selector,
-                                                 const class GALGAS_propertyInCollectionInitializationAST & in_mInitialization
+                                                 const class GALGAS_lstring & in_propertyTypeName,
+                                                 const class GALGAS_lstring & in_propertyName,
+                                                 const class GALGAS_AccessControlAST & in_accessControl,
+                                                 const class GALGAS_bool & in_hasSelector,
+                                                 const class GALGAS_propertyInCollectionInitializationAST & in_initialization
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
@@ -3854,35 +3854,35 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
+  public: VIRTUAL_IN_DEBUG void setter_setAccessControlAtIndex (class GALGAS_AccessControlAST constinArgument0,
+                                                                class GALGAS_uint constinArgument1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setHasSelectorAtIndex (class GALGAS_bool constinArgument0,
+                                                              class GALGAS_uint constinArgument1,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setInitializationAtIndex (class GALGAS_propertyInCollectionInitializationAST constinArgument0,
+                                                                 class GALGAS_uint constinArgument1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
   public: VIRTUAL_IN_DEBUG void setter_setIsConstantAtIndex (class GALGAS_bool constinArgument0,
                                                              class GALGAS_uint constinArgument1,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMAccessControlAtIndex (class GALGAS_AccessControlAST constinArgument0,
-                                                                 class GALGAS_uint constinArgument1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setPropertyNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                               class GALGAS_uint constinArgument1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMInitializationAtIndex (class GALGAS_propertyInCollectionInitializationAST constinArgument0,
-                                                                  class GALGAS_uint constinArgument1,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMPropertyNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                                class GALGAS_uint constinArgument1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMPropertyTypeNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                                    class GALGAS_uint constinArgument1,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setSelectorAtIndex (class GALGAS_bool constinArgument0,
-                                                           class GALGAS_uint constinArgument1,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setPropertyTypeNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                                   class GALGAS_uint constinArgument1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -3907,29 +3907,29 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_AccessControlAST getter_accessControlAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_hasSelectorAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionInitializationAST getter_initializationAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isConstantAtIndex (const class GALGAS_uint & constinOperand0,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_AccessControlAST getter_mAccessControlAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_propertyNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionInitializationAST getter_mInitializationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPropertyNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPropertyTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_selectorAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_propertyTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                              Compiler * inCompiler
@@ -3964,11 +3964,11 @@ class cEnumerator_propertyInCollectionListAST : public cGenericAbstractEnumerato
 
 //--- Current element access
   public: class GALGAS_bool current_isConstant (LOCATION_ARGS) const ;
-  public: class GALGAS_lstring current_mPropertyTypeName (LOCATION_ARGS) const ;
-  public: class GALGAS_lstring current_mPropertyName (LOCATION_ARGS) const ;
-  public: class GALGAS_AccessControlAST current_mAccessControl (LOCATION_ARGS) const ;
-  public: class GALGAS_bool current_selector (LOCATION_ARGS) const ;
-  public: class GALGAS_propertyInCollectionInitializationAST current_mInitialization (LOCATION_ARGS) const ;
+  public: class GALGAS_lstring current_propertyTypeName (LOCATION_ARGS) const ;
+  public: class GALGAS_lstring current_propertyName (LOCATION_ARGS) const ;
+  public: class GALGAS_AccessControlAST current_accessControl (LOCATION_ARGS) const ;
+  public: class GALGAS_bool current_hasSelector (LOCATION_ARGS) const ;
+  public: class GALGAS_propertyInCollectionInitializationAST current_initialization (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_propertyInCollectionListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -4298,29 +4298,29 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
     return mProperty_isConstant ;
   }
 
-  public: GALGAS_lstring mProperty_mPropertyTypeName ;
-  public: inline GALGAS_lstring readProperty_mPropertyTypeName (void) const {
-    return mProperty_mPropertyTypeName ;
+  public: GALGAS_lstring mProperty_propertyTypeName ;
+  public: inline GALGAS_lstring readProperty_propertyTypeName (void) const {
+    return mProperty_propertyTypeName ;
   }
 
-  public: GALGAS_lstring mProperty_mPropertyName ;
-  public: inline GALGAS_lstring readProperty_mPropertyName (void) const {
-    return mProperty_mPropertyName ;
+  public: GALGAS_lstring mProperty_propertyName ;
+  public: inline GALGAS_lstring readProperty_propertyName (void) const {
+    return mProperty_propertyName ;
   }
 
-  public: GALGAS_AccessControlAST mProperty_mAccessControl ;
-  public: inline GALGAS_AccessControlAST readProperty_mAccessControl (void) const {
-    return mProperty_mAccessControl ;
+  public: GALGAS_AccessControlAST mProperty_accessControl ;
+  public: inline GALGAS_AccessControlAST readProperty_accessControl (void) const {
+    return mProperty_accessControl ;
   }
 
-  public: GALGAS_bool mProperty_selector ;
-  public: inline GALGAS_bool readProperty_selector (void) const {
-    return mProperty_selector ;
+  public: GALGAS_bool mProperty_hasSelector ;
+  public: inline GALGAS_bool readProperty_hasSelector (void) const {
+    return mProperty_hasSelector ;
   }
 
-  public: GALGAS_propertyInCollectionInitializationAST mProperty_mInitialization ;
-  public: inline GALGAS_propertyInCollectionInitializationAST readProperty_mInitialization (void) const {
-    return mProperty_mInitialization ;
+  public: GALGAS_propertyInCollectionInitializationAST mProperty_initialization ;
+  public: inline GALGAS_propertyInCollectionInitializationAST readProperty_initialization (void) const {
+    return mProperty_initialization ;
   }
 
 //--------------------------------- Accessors
@@ -4335,24 +4335,24 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
     mProperty_isConstant = inValue ;
   }
 
-  public: inline void setter_setMPropertyTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPropertyTypeName = inValue ;
+  public: inline void setter_setPropertyTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_propertyTypeName = inValue ;
   }
 
-  public: inline void setter_setMPropertyName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPropertyName = inValue ;
+  public: inline void setter_setPropertyName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_propertyName = inValue ;
   }
 
-  public: inline void setter_setMAccessControl (const GALGAS_AccessControlAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAccessControl = inValue ;
+  public: inline void setter_setAccessControl (const GALGAS_AccessControlAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_accessControl = inValue ;
   }
 
-  public: inline void setter_setSelector (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_selector = inValue ;
+  public: inline void setter_setHasSelector (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_hasSelector = inValue ;
   }
 
-  public: inline void setter_setMInitialization (const GALGAS_propertyInCollectionInitializationAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInitialization = inValue ;
+  public: inline void setter_setInitialization (const GALGAS_propertyInCollectionInitializationAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_initialization = inValue ;
   }
 
 //--------------------------------- Virtual destructor (in debug mode)
@@ -4360,11 +4360,11 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_bool & in_isConstant,
-                                                         const GALGAS_lstring & in_mPropertyTypeName,
-                                                         const GALGAS_lstring & in_mPropertyName,
-                                                         const GALGAS_AccessControlAST & in_mAccessControl,
-                                                         const GALGAS_bool & in_selector,
-                                                         const GALGAS_propertyInCollectionInitializationAST & in_mInitialization) ;
+                                                         const GALGAS_lstring & in_propertyTypeName,
+                                                         const GALGAS_lstring & in_propertyName,
+                                                         const GALGAS_AccessControlAST & in_accessControl,
+                                                         const GALGAS_bool & in_hasSelector,
+                                                         const GALGAS_propertyInCollectionInitializationAST & in_initialization) ;
 
 //-- Start of type generic part
 

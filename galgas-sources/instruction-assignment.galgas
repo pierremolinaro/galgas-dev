@@ -209,7 +209,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     ]
 #    let currentTargetType = targetType
     let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
+    [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType ?*]
     [accessControl checkSetAccess !inAnalysisContext.selfType !self.mOptionalProperty]
 #    if not isPublic then
 #      switch inAnalysisContext.selfType
@@ -286,7 +286,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' property not mutable in this context"
     end
     let propertyMap = [selfType definition].propertyMap
-    [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
+    [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType ?*]
     if isConstant then
       error self.mTargetSelfPropertyName : "a constant property cannot be modified"
     end
@@ -295,7 +295,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
   #--- Get target variable type
     if self.mOptionalProperty.string != "" then
       let propertyMap = [targetType definition].propertyMap
-      [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
+      [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType ?*]
       [accessControl checkSetAccess !inAnalysisContext.selfType !self.mOptionalProperty.location]
 #      if not isPublic then
 #        error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"

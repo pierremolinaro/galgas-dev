@@ -84,15 +84,15 @@ override method @listmapDeclarationAST addAssociatedElement
     !["string" nowhere]
     !["key" nowhere]
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   structAttributeList +=
     !isConstant: false
     !self.mAssociatedListTypeName
     !["mList" nowhere]
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
 #---
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !isPredefined: self.isPredefined
@@ -253,8 +253,8 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !enumeratorDescriptor
     !.doNotGenererateObjectCompare
     !addAssignOperatorDescription
-    !{}
-    !{}
+    !enumConstantMap: {}
+    !enumConstantList: {}
     !@mapSearchMethodListAST {}
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file

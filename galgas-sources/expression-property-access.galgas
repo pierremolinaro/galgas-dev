@@ -132,7 +132,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #--- Check field access availability
   let @unifiedTypeMapEntry expressionType = expression.mResultType
   let propertyMap = [expressionType definition].propertyMap
-  if let [propertyMap searchKey !self.mPropertyName ?let accessControl ?* ?let type] then
+  if let [propertyMap searchKey !self.mPropertyName ?let accessControl ?* ?let type ?*] then
     if (not [[expressionType definition].typeKind isStructType]) & (not [[expressionType definition].typeKind isClassType]) then
       error self.mPropertyName: "the '.' operator requires the receiver to be a struct or a class"
     end

@@ -144,89 +144,89 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     !?ioTypeMap
     ?let switchExpression
   ]
-  if [switchExpression.mResultType definition].typeKind != .enumType then
+  if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap ?constantList: *] then
+    var @stringset constantsNamedInSwitchInstruction = {}
+  #--- Analyze branches
+    var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
+    for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.mTemplateInstructionSwitchBranchList do
+      var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
+      var @bool firstConstant = true
+      var analysisContext = inAnalysisContext
+      for (mValue) in mConstantList do
+        if [enumConstantMap hasKey !mValue.string] then
+          if [constantsNamedInSwitchInstruction hasKey !mValue.string] then
+            error mValue
+            :"the '" + mValue + "' constant is already named in this switch instruction"
+          end
+          constantsNamedInSwitchInstruction += !mValue.string
+          [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapEntryList associatedTypeList]
+          if ([associatedTypeList count] > 0) & ([mAssociatedValuesExtraction count] == 0) then
+            error mValue
+              :"the associated values of '" + mValue + "' constant should be extracted"
+          elsif ([associatedTypeList count] == 0) & ([mAssociatedValuesExtraction count] > 0) then
+            error mValue
+              :"the '" + mValue + "' constant has no associated value"
+          elsif [associatedTypeList count]  != [mAssociatedValuesExtraction count] then
+            error mValue
+              :"the '" + mValue + "' constant requires " + [associatedTypeList count] + "  associated value"
+              + if [associatedTypeList count] > 1 then "s" else "" end
+          else
+            var associatedValueIndex = 0
+            for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do
+              if mExtractedValueTypeName.string != "" then # Explicit type ?
+                if [mType definition].typeName.string != mExtractedValueTypeName.string then
+                  error mExtractedValueTypeName : "the required type is '@" + [mType definition].typeName.string + "'"
+                end
+              end
+              if firstConstant & (mExtractedValueName.string != "") then
+                let cppName = "extractedValue_" + [mExtractedValueName.location startLocationIndex] + "_" + mExtractedValueName
+                extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
+                [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
+              end
+              associatedValueIndex += 1
+            end
+          end
+        else
+          error mValue
+          :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType definition].typeName.string + "' enumeration type"
+        end
+        firstConstant = false
+      end
+      var @templateInstructionListForGeneration instructionList = {}
+      templateInstructionListAnalysis (
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !analysisContext
+        !?ioTypeMap
+        !mInstructionList
+        !?instructionList
+      )
+      templateInstructionSwitchBranchList +=
+        !mConstantList
+        !extractedAssociatedValuesForGeneration
+        ![mEndOfBranch startLocationIndex]
+        !instructionList
+    end
+  #--- Check all constants have been named
+    let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
+    if [forgottenConstants count] > 0 then
+      var @string s = ""
+      for (key) in forgottenConstants do
+        s += "\n  - " + key
+      end
+      error self.mSwitchExpressionEndLocation
+      : "the switch instruction should name all enumeration constants; missing constants are:" + s
+    end
+  #---
+    ioInstructionList += !@templateInstructionSwitchForGeneration.new {
+      !switchExpression.mResultType
+      !switchExpression
+      !templateInstructionSwitchBranchList
+    }
+  else
     error switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
        + [switchExpression.mResultType definition].typeKind + " type)"
   end
-  let enumConstantMap = [switchExpression.mResultType definition].mEnumConstantMap
-  var @stringset constantsNamedInSwitchInstruction = {}
-#--- Analyze branches
-  var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
-  for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.mTemplateInstructionSwitchBranchList do
-    var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
-    var @bool firstConstant = true
-    var analysisContext = inAnalysisContext
-    for (mValue) in mConstantList do
-      if [enumConstantMap hasKey !mValue.string] then
-        if [constantsNamedInSwitchInstruction hasKey !mValue.string] then
-          error mValue
-          :"the '" + mValue + "' constant is already named in this switch instruction"
-        end
-        constantsNamedInSwitchInstruction += !mValue.string
-        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapEntryList associatedTypeList]
-        if ([associatedTypeList count] > 0) & ([mAssociatedValuesExtraction count] == 0) then
-          error mValue
-            :"the associated values of '" + mValue + "' constant should be extracted"
-        elsif ([associatedTypeList count] == 0) & ([mAssociatedValuesExtraction count] > 0) then
-          error mValue
-            :"the '" + mValue + "' constant has no associated value"
-        elsif [associatedTypeList count]  != [mAssociatedValuesExtraction count] then
-          error mValue
-            :"the '" + mValue + "' constant requires " + [associatedTypeList count] + "  associated value"
-            + if [associatedTypeList count] > 1 then "s" else "" end
-        else
-          var associatedValueIndex = 0
-          for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do
-            if mExtractedValueTypeName.string != "" then # Explicit type ?
-              if [mType definition].typeName.string != mExtractedValueTypeName.string then
-                error mExtractedValueTypeName : "the required type is '@" + [mType definition].typeName.string + "'"
-              end
-            end
-            if firstConstant & (mExtractedValueName.string != "") then
-              let cppName = "extractedValue_" + [mExtractedValueName.location startLocationIndex] + "_" + mExtractedValueName
-              extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
-              [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
-            end
-            associatedValueIndex += 1
-          end
-        end
-      else
-        error mValue
-        :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType definition].typeName.string + "' enumeration type"
-      end
-      firstConstant = false
-    end
-    var @templateInstructionListForGeneration instructionList = {}
-    templateInstructionListAnalysis (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !analysisContext
-      !?ioTypeMap
-      !mInstructionList
-      !?instructionList
-    )
-    templateInstructionSwitchBranchList +=
-      !mConstantList
-      !extractedAssociatedValuesForGeneration
-      ![mEndOfBranch startLocationIndex]
-      !instructionList
-  end
-#--- Check all constants have been named
-  let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
-  if [forgottenConstants count] > 0 then
-    var @string s = ""
-    for (key) in forgottenConstants do
-      s += "\n  - " + key
-    end
-    error self.mSwitchExpressionEndLocation
-    : "the switch instruction should name all enumeration constants; missing constants are:" + s
-  end
-#---
-  ioInstructionList += !@templateInstructionSwitchForGeneration.new {
-    !switchExpression.mResultType
-    !switchExpression
-    !templateInstructionSwitchBranchList
-  }
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -86,8 +86,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !propertyTypeName
       !propertyName
       !accessControl
-      !selector: selectorAttribute
-      !initialization
+      !hasSelector: selectorAttribute
+      !initialization: initialization
   }
 
   #·······························································································
@@ -116,8 +116,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !propertyTypeName
       !propertyName
       !.publicAccess
-      !selector: selectorAttribute
-      !initialization
+      !hasSelector: selectorAttribute
+      !initialization: initialization
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
       let errorLocation = [propertyTypeName.location union !propertyName.location]
       error errorLocation
@@ -328,8 +328,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !propertyTypeName
       !propertyName
       !accessControl
-      !selector: selectorAttribute
-      !initialization
+      !hasSelector: selectorAttribute
+      !initialization: initialization
   }
 
   #·······························································································

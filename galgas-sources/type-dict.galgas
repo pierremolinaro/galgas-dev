@@ -109,9 +109,21 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !isConstant: true !self.mKeyTypeName !["key" nowhere] !.publicAccess !selector: false !.none
+  structAttributeList +=
+    !isConstant: true
+    !self.mKeyTypeName
+    !["key" nowhere]
+    !.publicAccess
+    !hasSelector: false
+    !initialization: .none
   for (* qualifiedTypeAST mPropertyName * hasSelector *) in self.mPropertyList do
-    structAttributeList += !isConstant: true !qualifiedTypeAST !mPropertyName !.publicAccess !selector: hasSelector !.none
+    structAttributeList +=
+      !isConstant: true
+      !qualifiedTypeAST
+      !mPropertyName
+      !.publicAccess
+      !hasSelector: hasSelector
+      !initialization: .none
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !isPredefined: self.isPredefined
@@ -339,8 +351,8 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
     !argumentTypeListForAddAssignWithFieldExpressionList
-    !{}
-    !{}
+    !enumConstantMap: {}
+    !enumConstantList: {}
     !{}
     !{}
     !false # Do not generate header in separate file

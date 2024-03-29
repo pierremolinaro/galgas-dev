@@ -10909,11 +10909,11 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
 
 //--- Class functions
   public: cCollectionElement_propertyInCollectionListAST (const GALGAS_bool & in_isConstant,
-                                                          const GALGAS_lstring & in_mPropertyTypeName,
-                                                          const GALGAS_lstring & in_mPropertyName,
-                                                          const GALGAS_AccessControlAST & in_mAccessControl,
-                                                          const GALGAS_bool & in_selector,
-                                                          const GALGAS_propertyInCollectionInitializationAST & in_mInitialization
+                                                          const GALGAS_lstring & in_propertyTypeName,
+                                                          const GALGAS_lstring & in_propertyName,
+                                                          const GALGAS_AccessControlAST & in_accessControl,
+                                                          const GALGAS_bool & in_hasSelector,
+                                                          const GALGAS_propertyInCollectionInitializationAST & in_initialization
                                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_propertyInCollectionListAST (const GALGAS_propertyInCollectionListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -10933,21 +10933,21 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GALGAS_bool & in_isConstant,
-                                                                                                const GALGAS_lstring & in_mPropertyTypeName,
-                                                                                                const GALGAS_lstring & in_mPropertyName,
-                                                                                                const GALGAS_AccessControlAST & in_mAccessControl,
-                                                                                                const GALGAS_bool & in_selector,
-                                                                                                const GALGAS_propertyInCollectionInitializationAST & in_mInitialization
+                                                                                                const GALGAS_lstring & in_propertyTypeName,
+                                                                                                const GALGAS_lstring & in_propertyName,
+                                                                                                const GALGAS_AccessControlAST & in_accessControl,
+                                                                                                const GALGAS_bool & in_hasSelector,
+                                                                                                const GALGAS_propertyInCollectionInitializationAST & in_initialization
                                                                                                 COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mAccessControl, in_selector, in_mInitialization) {
+mObject (in_isConstant, in_propertyTypeName, in_propertyName, in_accessControl, in_hasSelector, in_initialization) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GALGAS_propertyInCollectionListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_isConstant, inElement.mProperty_mPropertyTypeName, inElement.mProperty_mPropertyName, inElement.mProperty_mAccessControl, inElement.mProperty_selector, inElement.mProperty_mInitialization) {
+mObject (inElement.mProperty_isConstant, inElement.mProperty_propertyTypeName, inElement.mProperty_propertyName, inElement.mProperty_accessControl, inElement.mProperty_hasSelector, inElement.mProperty_initialization) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10960,7 +10960,7 @@ bool cCollectionElement_propertyInCollectionListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_propertyInCollectionListAST::copy (void) {
   cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_isConstant, mObject.mProperty_mPropertyTypeName, mObject.mProperty_mPropertyName, mObject.mProperty_mAccessControl, mObject.mProperty_selector, mObject.mProperty_mInitialization COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_isConstant, mObject.mProperty_propertyTypeName, mObject.mProperty_propertyName, mObject.mProperty_accessControl, mObject.mProperty_hasSelector, mObject.mProperty_initialization COMMA_HERE)) ;
   return result ;
 }
 
@@ -10973,24 +10973,24 @@ void cCollectionElement_propertyInCollectionListAST::description (String & ioStr
   mObject.mProperty_isConstant.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mPropertyTypeName" ":") ;
-  mObject.mProperty_mPropertyTypeName.description (ioString, inIndentation) ;
+  ioString.appendCString ("propertyTypeName" ":") ;
+  mObject.mProperty_propertyTypeName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mPropertyName" ":") ;
-  mObject.mProperty_mPropertyName.description (ioString, inIndentation) ;
+  ioString.appendCString ("propertyName" ":") ;
+  mObject.mProperty_propertyName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mAccessControl" ":") ;
-  mObject.mProperty_mAccessControl.description (ioString, inIndentation) ;
+  ioString.appendCString ("accessControl" ":") ;
+  mObject.mProperty_accessControl.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("selector" ":") ;
-  mObject.mProperty_selector.description (ioString, inIndentation) ;
+  ioString.appendCString ("hasSelector" ":") ;
+  mObject.mProperty_hasSelector.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mInitialization" ":") ;
-  mObject.mProperty_mInitialization.description (ioString, inIndentation) ;
+  ioString.appendCString ("initialization" ":") ;
+  mObject.mProperty_initialization.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11042,19 +11042,19 @@ GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::class_fun
 
 void GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                     const GALGAS_bool & in_isConstant,
-                                                                    const GALGAS_lstring & in_mPropertyTypeName,
-                                                                    const GALGAS_lstring & in_mPropertyName,
-                                                                    const GALGAS_AccessControlAST & in_mAccessControl,
-                                                                    const GALGAS_bool & in_selector,
-                                                                    const GALGAS_propertyInCollectionInitializationAST & in_mInitialization
+                                                                    const GALGAS_lstring & in_propertyTypeName,
+                                                                    const GALGAS_lstring & in_propertyName,
+                                                                    const GALGAS_AccessControlAST & in_accessControl,
+                                                                    const GALGAS_bool & in_hasSelector,
+                                                                    const GALGAS_propertyInCollectionInitializationAST & in_initialization
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_propertyInCollectionListAST * p = nullptr ;
   macroMyNew (p, cCollectionElement_propertyInCollectionListAST (in_isConstant,
-                                                                 in_mPropertyTypeName,
-                                                                 in_mPropertyName,
-                                                                 in_mAccessControl,
-                                                                 in_selector,
-                                                                 in_mInitialization COMMA_THERE)) ;
+                                                                 in_propertyTypeName,
+                                                                 in_propertyName,
+                                                                 in_accessControl,
+                                                                 in_hasSelector,
+                                                                 in_initialization COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -11150,11 +11150,11 @@ void GALGAS_propertyInCollectionListAST::setter_removeAtIndex (GALGAS_bool & out
       }else{
         macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
         outOperand0 = p->mObject.mProperty_isConstant ;
-        outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
-        outOperand2 = p->mObject.mProperty_mPropertyName ;
-        outOperand3 = p->mObject.mProperty_mAccessControl ;
-        outOperand4 = p->mObject.mProperty_selector ;
-        outOperand5 = p->mObject.mProperty_mInitialization ;
+        outOperand1 = p->mObject.mProperty_propertyTypeName ;
+        outOperand2 = p->mObject.mProperty_propertyName ;
+        outOperand3 = p->mObject.mProperty_accessControl ;
+        outOperand4 = p->mObject.mProperty_hasSelector ;
+        outOperand5 = p->mObject.mProperty_initialization ;
       }
     }else{
       outOperand0.drop () ;
@@ -11198,11 +11198,11 @@ void GALGAS_propertyInCollectionListAST::setter_popFirst (GALGAS_bool & outOpera
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_isConstant ;
-    outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
-    outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mAccessControl ;
-    outOperand4 = p->mObject.mProperty_selector ;
-    outOperand5 = p->mObject.mProperty_mInitialization ;
+    outOperand1 = p->mObject.mProperty_propertyTypeName ;
+    outOperand2 = p->mObject.mProperty_propertyName ;
+    outOperand3 = p->mObject.mProperty_accessControl ;
+    outOperand4 = p->mObject.mProperty_hasSelector ;
+    outOperand5 = p->mObject.mProperty_initialization ;
   }
 }
 
@@ -11229,11 +11229,11 @@ void GALGAS_propertyInCollectionListAST::setter_popLast (GALGAS_bool & outOperan
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_isConstant ;
-    outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
-    outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mAccessControl ;
-    outOperand4 = p->mObject.mProperty_selector ;
-    outOperand5 = p->mObject.mProperty_mInitialization ;
+    outOperand1 = p->mObject.mProperty_propertyTypeName ;
+    outOperand2 = p->mObject.mProperty_propertyName ;
+    outOperand3 = p->mObject.mProperty_accessControl ;
+    outOperand4 = p->mObject.mProperty_hasSelector ;
+    outOperand5 = p->mObject.mProperty_initialization ;
   }
 }
 
@@ -11260,11 +11260,11 @@ void GALGAS_propertyInCollectionListAST::method_first (GALGAS_bool & outOperand0
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_isConstant ;
-    outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
-    outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mAccessControl ;
-    outOperand4 = p->mObject.mProperty_selector ;
-    outOperand5 = p->mObject.mProperty_mInitialization ;
+    outOperand1 = p->mObject.mProperty_propertyTypeName ;
+    outOperand2 = p->mObject.mProperty_propertyName ;
+    outOperand3 = p->mObject.mProperty_accessControl ;
+    outOperand4 = p->mObject.mProperty_hasSelector ;
+    outOperand5 = p->mObject.mProperty_initialization ;
   }
 }
 
@@ -11291,11 +11291,11 @@ void GALGAS_propertyInCollectionListAST::method_last (GALGAS_bool & outOperand0,
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_isConstant ;
-    outOperand1 = p->mObject.mProperty_mPropertyTypeName ;
-    outOperand2 = p->mObject.mProperty_mPropertyName ;
-    outOperand3 = p->mObject.mProperty_mAccessControl ;
-    outOperand4 = p->mObject.mProperty_selector ;
-    outOperand5 = p->mObject.mProperty_mInitialization ;
+    outOperand1 = p->mObject.mProperty_propertyTypeName ;
+    outOperand2 = p->mObject.mProperty_propertyName ;
+    outOperand3 = p->mObject.mProperty_accessControl ;
+    outOperand4 = p->mObject.mProperty_hasSelector ;
+    outOperand5 = p->mObject.mProperty_initialization ;
   }
 }
 
@@ -11381,36 +11381,65 @@ GALGAS_bool GALGAS_propertyInCollectionListAST::getter_isConstantAtIndex (const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyInCollectionListAST::setter_setMPropertyTypeNameAtIndex (GALGAS_lstring inOperand,
-                                                                             GALGAS_uint inIndex,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_propertyInCollectionListAST::setter_setPropertyTypeNameAtIndex (GALGAS_lstring inOperand,
+                                                                            GALGAS_uint inIndex,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mPropertyTypeName = inOperand ;
+    p->mObject.mProperty_propertyTypeName = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_propertyInCollectionListAST::getter_mPropertyTypeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_propertyInCollectionListAST::getter_propertyTypeNameAtIndex (const GALGAS_uint & inIndex,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_mPropertyTypeName ;
+    result = p->mObject.mProperty_propertyTypeName ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyInCollectionListAST::setter_setMPropertyNameAtIndex (GALGAS_lstring inOperand,
+void GALGAS_propertyInCollectionListAST::setter_setPropertyNameAtIndex (GALGAS_lstring inOperand,
+                                                                        GALGAS_uint inIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_propertyName = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_propertyInCollectionListAST::getter_propertyNameAtIndex (const GALGAS_uint & inIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
+  GALGAS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    result = p->mObject.mProperty_propertyName ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_propertyInCollectionListAST::setter_setAccessControlAtIndex (GALGAS_AccessControlAST inOperand,
                                                                          GALGAS_uint inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
@@ -11418,28 +11447,57 @@ void GALGAS_propertyInCollectionListAST::setter_setMPropertyNameAtIndex (GALGAS_
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mPropertyName = inOperand ;
+    p->mObject.mProperty_accessControl = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_propertyInCollectionListAST::getter_mPropertyNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const {
+GALGAS_AccessControlAST GALGAS_propertyInCollectionListAST::getter_accessControlAtIndex (const GALGAS_uint & inIndex,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
-  GALGAS_lstring result ;
+  GALGAS_AccessControlAST result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_mPropertyName ;
+    result = p->mObject.mProperty_accessControl ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyInCollectionListAST::setter_setMAccessControlAtIndex (GALGAS_AccessControlAST inOperand,
+void GALGAS_propertyInCollectionListAST::setter_setHasSelectorAtIndex (GALGAS_bool inOperand,
+                                                                       GALGAS_uint inIndex,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_hasSelector = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_propertyInCollectionListAST::getter_hasSelectorAtIndex (const GALGAS_uint & inIndex,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
+  GALGAS_bool result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
+    result = p->mObject.mProperty_hasSelector ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_propertyInCollectionListAST::setter_setInitializationAtIndex (GALGAS_propertyInCollectionInitializationAST inOperand,
                                                                           GALGAS_uint inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
@@ -11447,79 +11505,21 @@ void GALGAS_propertyInCollectionListAST::setter_setMAccessControlAtIndex (GALGAS
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mAccessControl = inOperand ;
+    p->mObject.mProperty_initialization = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_AccessControlAST GALGAS_propertyInCollectionListAST::getter_mAccessControlAtIndex (const GALGAS_uint & inIndex,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
-  GALGAS_AccessControlAST result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_mAccessControl ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_propertyInCollectionListAST::setter_setSelectorAtIndex (GALGAS_bool inOperand,
-                                                                    GALGAS_uint inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_selector = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_propertyInCollectionListAST::getter_selectorAtIndex (const GALGAS_uint & inIndex,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
-  GALGAS_bool result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_selector ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_propertyInCollectionListAST::setter_setMInitializationAtIndex (GALGAS_propertyInCollectionInitializationAST inOperand,
-                                                                           GALGAS_uint inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mInitialization = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyInCollectionInitializationAST GALGAS_propertyInCollectionListAST::getter_mInitializationAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) const {
+GALGAS_propertyInCollectionInitializationAST GALGAS_propertyInCollectionListAST::getter_initializationAtIndex (const GALGAS_uint & inIndex,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
   GALGAS_propertyInCollectionInitializationAST result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_mInitialization ;
+    result = p->mObject.mProperty_initialization ;
   }
   return result ;
 }
@@ -11553,42 +11553,42 @@ GALGAS_bool cEnumerator_propertyInCollectionListAST::current_isConstant (LOCATIO
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_mPropertyTypeName (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_propertyTypeName (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_mPropertyTypeName ;
+  return p->mObject.mProperty_propertyTypeName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_mPropertyName (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_propertyName (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_mPropertyName ;
+  return p->mObject.mProperty_propertyName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_AccessControlAST cEnumerator_propertyInCollectionListAST::current_mAccessControl (LOCATION_ARGS) const {
+GALGAS_AccessControlAST cEnumerator_propertyInCollectionListAST::current_accessControl (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_mAccessControl ;
+  return p->mObject.mProperty_accessControl ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cEnumerator_propertyInCollectionListAST::current_selector (LOCATION_ARGS) const {
+GALGAS_bool cEnumerator_propertyInCollectionListAST::current_hasSelector (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_selector ;
+  return p->mObject.mProperty_hasSelector ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_propertyInCollectionInitializationAST cEnumerator_propertyInCollectionListAST::current_mInitialization (LOCATION_ARGS) const {
+GALGAS_propertyInCollectionInitializationAST cEnumerator_propertyInCollectionListAST::current_initialization (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_mInitialization ;
+  return p->mObject.mProperty_initialization ;
 }
 
 

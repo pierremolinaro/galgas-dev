@@ -361,8 +361,8 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator | .isComparable
     !constructorAttributeTypeList
-    !{}
-    !{}
+    !enumConstantMap: {}
+    !enumConstantList: {}
     !@mapSearchMethodListAST {}
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file
@@ -386,8 +386,8 @@ override method @listDeclarationAST addAssociatedElement
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess
-      !selector: hasSelector
-      !initExpression
+      !hasSelector: hasSelector
+      !initialization: initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !isPredefined: self.isPredefined

@@ -222,11 +222,11 @@ refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 
 list @propertyInCollectionListAST {
   public let @bool isConstant %selector
-  public let @lstring mPropertyTypeName
-  public let @lstring mPropertyName
-  public let @AccessControlAST mAccessControl
-  public let @bool selector %selector
-  public let @propertyInCollectionInitializationAST mInitialization
+  public let @lstring propertyTypeName
+  public let @lstring propertyName
+  public let @AccessControlAST accessControl
+  public let @bool hasSelector %selector
+  public let @propertyInCollectionInitializationAST initialization %selector
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

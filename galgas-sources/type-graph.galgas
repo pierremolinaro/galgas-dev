@@ -479,8 +479,8 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !@enumerationDescriptorList {}
     !.doNotGenererateObjectCompare
     !@functionSignature {}
-    !{}
-    !{}
+    !enumConstantMap: {}
+    !enumConstantList: {}
     !@mapSearchMethodListAST {}
     !@mapSearchMethodListAST {}
     !false # Do not generate header in separate file

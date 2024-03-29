@@ -253,6 +253,7 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
         ?let accessControl
         ?let isConstant
         ?parameterType
+        ?*
       ]
       [accessControl checkSetAccess !inAnalysisContext.selfType !value]
   #    if not isPublic then
@@ -685,7 +686,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
-      [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
+      [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType ?*]
       let targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
     #--- Check type

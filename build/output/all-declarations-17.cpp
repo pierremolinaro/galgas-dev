@@ -3784,8 +3784,8 @@ mProperty_optionalMethodMap (),
 mProperty_mEnumerationDescriptor (),
 mProperty_mHandledOperatorFlags (),
 mProperty_mAddAssignOperatorArguments (),
-mProperty_mEnumConstantMap (),
-mProperty_mEnumConstantList (),
+mProperty_enumConstantMap (),
+mProperty_enumConstantList (),
 mProperty_mMapSearchMethodList (),
 mProperty_mMapEntrySearchConstructorList (),
 mProperty_mGenerateHeaderInSeparateFile (),
@@ -3847,8 +3847,8 @@ mProperty_optionalMethodMap (inOperand14),
 mProperty_mEnumerationDescriptor (inOperand15),
 mProperty_mHandledOperatorFlags (inOperand16),
 mProperty_mAddAssignOperatorArguments (inOperand17),
-mProperty_mEnumConstantMap (inOperand18),
-mProperty_mEnumConstantList (inOperand19),
+mProperty_enumConstantMap (inOperand18),
+mProperty_enumConstantList (inOperand19),
 mProperty_mMapSearchMethodList (inOperand20),
 mProperty_mMapEntrySearchConstructorList (inOperand21),
 mProperty_mGenerateHeaderInSeparateFile (inOperand22),
@@ -3878,8 +3878,8 @@ GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::class_func_new (const
                                                                            const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
                                                                            const GALGAS_operators & in_mHandledOperatorFlags,
                                                                            const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
-                                                                           const GALGAS_constantIndexMap & in_mEnumConstantMap,
-                                                                           const GALGAS_enumConstantList & in_mEnumConstantList,
+                                                                           const GALGAS_constantIndexMap & in_enumConstantMap,
+                                                                           const GALGAS_enumConstantList & in_enumConstantList,
                                                                            const GALGAS_mapSearchMethodListAST & in_mMapSearchMethodList,
                                                                            const GALGAS_mapSearchMethodListAST & in_mMapEntrySearchConstructorList,
                                                                            const GALGAS_bool & in_mGenerateHeaderInSeparateFile,
@@ -3890,8 +3890,8 @@ GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::class_func_new (const
                                                                            Compiler * /* inCompiler */
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeDefinition result ;
-  if (in_typeName.isValid () && in_isPredefined.isValid () && in_isConcrete.isValid () && in_superType.isValid () && in_typeKind.isValid () && in_supportCollectionValue.isValid () && in_allTypedPropertyList.isValid () && in_propertyMap.isValid () && in_currentTypedPropertyList.isValid () && in_classFunctionMap.isValid () && in_mGetterMap.isValid () && in_mSetterMap.isValid () && in_mInstanceMethodMap.isValid () && in_classMethodMap.isValid () && in_optionalMethodMap.isValid () && in_mEnumerationDescriptor.isValid () && in_mHandledOperatorFlags.isValid () && in_mAddAssignOperatorArguments.isValid () && in_mEnumConstantMap.isValid () && in_mEnumConstantList.isValid () && in_mMapSearchMethodList.isValid () && in_mMapEntrySearchConstructorList.isValid () && in_mGenerateHeaderInSeparateFile.isValid () && in_mTypeForEnumeratedElement.isValid () && in_defaultConstructorName.isValid () && in_mHeaderFileName.isValid () && in_mHeaderKind.isValid ()) {
-    result = GALGAS_unifiedTypeDefinition (in_typeName, in_isPredefined, in_isConcrete, in_superType, in_typeKind, in_supportCollectionValue, in_allTypedPropertyList, in_propertyMap, in_currentTypedPropertyList, in_classFunctionMap, in_mGetterMap, in_mSetterMap, in_mInstanceMethodMap, in_classMethodMap, in_optionalMethodMap, in_mEnumerationDescriptor, in_mHandledOperatorFlags, in_mAddAssignOperatorArguments, in_mEnumConstantMap, in_mEnumConstantList, in_mMapSearchMethodList, in_mMapEntrySearchConstructorList, in_mGenerateHeaderInSeparateFile, in_mTypeForEnumeratedElement, in_defaultConstructorName, in_mHeaderFileName, in_mHeaderKind) ;
+  if (in_typeName.isValid () && in_isPredefined.isValid () && in_isConcrete.isValid () && in_superType.isValid () && in_typeKind.isValid () && in_supportCollectionValue.isValid () && in_allTypedPropertyList.isValid () && in_propertyMap.isValid () && in_currentTypedPropertyList.isValid () && in_classFunctionMap.isValid () && in_mGetterMap.isValid () && in_mSetterMap.isValid () && in_mInstanceMethodMap.isValid () && in_classMethodMap.isValid () && in_optionalMethodMap.isValid () && in_mEnumerationDescriptor.isValid () && in_mHandledOperatorFlags.isValid () && in_mAddAssignOperatorArguments.isValid () && in_enumConstantMap.isValid () && in_enumConstantList.isValid () && in_mMapSearchMethodList.isValid () && in_mMapEntrySearchConstructorList.isValid () && in_mGenerateHeaderInSeparateFile.isValid () && in_mTypeForEnumeratedElement.isValid () && in_defaultConstructorName.isValid () && in_mHeaderFileName.isValid () && in_mHeaderKind.isValid ()) {
+    result = GALGAS_unifiedTypeDefinition (in_typeName, in_isPredefined, in_isConcrete, in_superType, in_typeKind, in_supportCollectionValue, in_allTypedPropertyList, in_propertyMap, in_currentTypedPropertyList, in_classFunctionMap, in_mGetterMap, in_mSetterMap, in_mInstanceMethodMap, in_classMethodMap, in_optionalMethodMap, in_mEnumerationDescriptor, in_mHandledOperatorFlags, in_mAddAssignOperatorArguments, in_enumConstantMap, in_enumConstantList, in_mMapSearchMethodList, in_mMapEntrySearchConstructorList, in_mGenerateHeaderInSeparateFile, in_mTypeForEnumeratedElement, in_defaultConstructorName, in_mHeaderFileName, in_mHeaderKind) ;
   }
   return result ;
 }
@@ -3955,10 +3955,10 @@ ComparisonResult GALGAS_unifiedTypeDefinition::objectCompare (const GALGAS_unifi
     result = mProperty_mAddAssignOperatorArguments.objectCompare (inOperand.mProperty_mAddAssignOperatorArguments) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mEnumConstantMap.objectCompare (inOperand.mProperty_mEnumConstantMap) ;
+    result = mProperty_enumConstantMap.objectCompare (inOperand.mProperty_enumConstantMap) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mEnumConstantList.objectCompare (inOperand.mProperty_mEnumConstantList) ;
+    result = mProperty_enumConstantList.objectCompare (inOperand.mProperty_enumConstantList) ;
   }
   if (result == ComparisonResult::operandEqual) {
     result = mProperty_mMapSearchMethodList.objectCompare (inOperand.mProperty_mMapSearchMethodList) ;
@@ -3987,7 +3987,7 @@ ComparisonResult GALGAS_unifiedTypeDefinition::objectCompare (const GALGAS_unifi
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_unifiedTypeDefinition::isValid (void) const {
-  return mProperty_typeName.isValid () && mProperty_isPredefined.isValid () && mProperty_isConcrete.isValid () && mProperty_superType.isValid () && mProperty_typeKind.isValid () && mProperty_supportCollectionValue.isValid () && mProperty_allTypedPropertyList.isValid () && mProperty_propertyMap.isValid () && mProperty_currentTypedPropertyList.isValid () && mProperty_classFunctionMap.isValid () && mProperty_mGetterMap.isValid () && mProperty_mSetterMap.isValid () && mProperty_mInstanceMethodMap.isValid () && mProperty_classMethodMap.isValid () && mProperty_optionalMethodMap.isValid () && mProperty_mEnumerationDescriptor.isValid () && mProperty_mHandledOperatorFlags.isValid () && mProperty_mAddAssignOperatorArguments.isValid () && mProperty_mEnumConstantMap.isValid () && mProperty_mEnumConstantList.isValid () && mProperty_mMapSearchMethodList.isValid () && mProperty_mMapEntrySearchConstructorList.isValid () && mProperty_mGenerateHeaderInSeparateFile.isValid () && mProperty_mTypeForEnumeratedElement.isValid () && mProperty_defaultConstructorName.isValid () && mProperty_mHeaderFileName.isValid () && mProperty_mHeaderKind.isValid () ;
+  return mProperty_typeName.isValid () && mProperty_isPredefined.isValid () && mProperty_isConcrete.isValid () && mProperty_superType.isValid () && mProperty_typeKind.isValid () && mProperty_supportCollectionValue.isValid () && mProperty_allTypedPropertyList.isValid () && mProperty_propertyMap.isValid () && mProperty_currentTypedPropertyList.isValid () && mProperty_classFunctionMap.isValid () && mProperty_mGetterMap.isValid () && mProperty_mSetterMap.isValid () && mProperty_mInstanceMethodMap.isValid () && mProperty_classMethodMap.isValid () && mProperty_optionalMethodMap.isValid () && mProperty_mEnumerationDescriptor.isValid () && mProperty_mHandledOperatorFlags.isValid () && mProperty_mAddAssignOperatorArguments.isValid () && mProperty_enumConstantMap.isValid () && mProperty_enumConstantList.isValid () && mProperty_mMapSearchMethodList.isValid () && mProperty_mMapEntrySearchConstructorList.isValid () && mProperty_mGenerateHeaderInSeparateFile.isValid () && mProperty_mTypeForEnumeratedElement.isValid () && mProperty_defaultConstructorName.isValid () && mProperty_mHeaderFileName.isValid () && mProperty_mHeaderKind.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4011,8 +4011,8 @@ void GALGAS_unifiedTypeDefinition::drop (void) {
   mProperty_mEnumerationDescriptor.drop () ;
   mProperty_mHandledOperatorFlags.drop () ;
   mProperty_mAddAssignOperatorArguments.drop () ;
-  mProperty_mEnumConstantMap.drop () ;
-  mProperty_mEnumConstantList.drop () ;
+  mProperty_enumConstantMap.drop () ;
+  mProperty_enumConstantList.drop () ;
   mProperty_mMapSearchMethodList.drop () ;
   mProperty_mMapEntrySearchConstructorList.drop () ;
   mProperty_mGenerateHeaderInSeparateFile.drop () ;
@@ -4066,9 +4066,9 @@ void GALGAS_unifiedTypeDefinition::description (String & ioString,
     ioString.appendCString (", ") ;
     mProperty_mAddAssignOperatorArguments.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mEnumConstantMap.description (ioString, inIndentation+1) ;
+    mProperty_enumConstantMap.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mEnumConstantList.description (ioString, inIndentation+1) ;
+    mProperty_enumConstantList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mMapSearchMethodList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;

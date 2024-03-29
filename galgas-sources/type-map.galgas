@@ -268,16 +268,16 @@ override method @mapDeclarationAST addAssociatedElement
     !["lstring" nowhere]
     !["lkey" nowhere]
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   for (* qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: false
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess
-      !selector: hasSelector
-      !initExpression
+      !hasSelector: hasSelector
+      !initialization: initExpression
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !isPredefined: self.isPredefined
@@ -604,8 +604,8 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor | .isComparable | .infixAddOperator
     !argumentTypeListForAddAssignWithFieldExpressionList
-    !{}
-    !{}
+    !enumConstantMap: {}
+    !enumConstantList: {}
     !self.mSearchMethodList
     !{}
     !false # Do not generate header in separate file

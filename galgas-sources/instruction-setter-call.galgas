@@ -247,7 +247,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
         error self.mSetterName : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType ?*]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
       end
@@ -276,7 +276,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
       error errorLocation : "a structure is required for '.' access"
     else
       let propertyMap = [receiverType definition].propertyMap
-      [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType]
+      [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType ?*]
       [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
       errorLocation = value.location
 #      if not isPublic then

@@ -257,10 +257,10 @@ syntax extension galgas4InstructionsSyntax {
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
-      else_instructionList = @semanticInstructionListAST {}
+      else_instructionList = {}
     or
       $else$
-      <semantic_instruction_list> !?ioDeclarations ? else_instructionList
+      <semantic_instruction_list> !?ioDeclarations ?else_instructionList
     or
       $elsif$
       <if_instruction_core> !?ioDeclarations ?let instruction
@@ -272,7 +272,7 @@ syntax extension galgas4InstructionsSyntax {
       !then_instructionList
       !endOf_then_branchLocation
       !else_instructionList
-      !@location.here
+      !.here
     }
   }
 

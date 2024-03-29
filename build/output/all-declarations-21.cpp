@@ -7859,11 +7859,11 @@ GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST
 
 GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (void) :
 mProperty_isConstant (),
-mProperty_mPropertyTypeName (),
-mProperty_mPropertyName (),
-mProperty_mAccessControl (),
-mProperty_selector (),
-mProperty_mInitialization () {
+mProperty_propertyTypeName (),
+mProperty_propertyName (),
+mProperty_accessControl (),
+mProperty_hasSelector (),
+mProperty_initialization () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7880,26 +7880,26 @@ GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAS
                                                                                               const GALGAS_bool & inOperand4,
                                                                                               const GALGAS_propertyInCollectionInitializationAST & inOperand5) :
 mProperty_isConstant (inOperand0),
-mProperty_mPropertyTypeName (inOperand1),
-mProperty_mPropertyName (inOperand2),
-mProperty_mAccessControl (inOperand3),
-mProperty_selector (inOperand4),
-mProperty_mInitialization (inOperand5) {
+mProperty_propertyTypeName (inOperand1),
+mProperty_propertyName (inOperand2),
+mProperty_accessControl (inOperand3),
+mProperty_hasSelector (inOperand4),
+mProperty_initialization (inOperand5) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionListAST_2D_element GALGAS_propertyInCollectionListAST_2D_element::class_func_new (const GALGAS_bool & in_isConstant,
-                                                                                                             const GALGAS_lstring & in_mPropertyTypeName,
-                                                                                                             const GALGAS_lstring & in_mPropertyName,
-                                                                                                             const GALGAS_AccessControlAST & in_mAccessControl,
-                                                                                                             const GALGAS_bool & in_selector,
-                                                                                                             const GALGAS_propertyInCollectionInitializationAST & in_mInitialization,
+                                                                                                             const GALGAS_lstring & in_propertyTypeName,
+                                                                                                             const GALGAS_lstring & in_propertyName,
+                                                                                                             const GALGAS_AccessControlAST & in_accessControl,
+                                                                                                             const GALGAS_bool & in_hasSelector,
+                                                                                                             const GALGAS_propertyInCollectionInitializationAST & in_initialization,
                                                                                                              Compiler * /* inCompiler */
                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST_2D_element result ;
-  if (in_isConstant.isValid () && in_mPropertyTypeName.isValid () && in_mPropertyName.isValid () && in_mAccessControl.isValid () && in_selector.isValid () && in_mInitialization.isValid ()) {
-    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_mPropertyTypeName, in_mPropertyName, in_mAccessControl, in_selector, in_mInitialization) ;
+  if (in_isConstant.isValid () && in_propertyTypeName.isValid () && in_propertyName.isValid () && in_accessControl.isValid () && in_hasSelector.isValid () && in_initialization.isValid ()) {
+    result = GALGAS_propertyInCollectionListAST_2D_element (in_isConstant, in_propertyTypeName, in_propertyName, in_accessControl, in_hasSelector, in_initialization) ;
   }
   return result ;
 }
@@ -7912,19 +7912,19 @@ ComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompare (c
     result = mProperty_isConstant.objectCompare (inOperand.mProperty_isConstant) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mPropertyTypeName.objectCompare (inOperand.mProperty_mPropertyTypeName) ;
+    result = mProperty_propertyTypeName.objectCompare (inOperand.mProperty_propertyTypeName) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mPropertyName.objectCompare (inOperand.mProperty_mPropertyName) ;
+    result = mProperty_propertyName.objectCompare (inOperand.mProperty_propertyName) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mAccessControl.objectCompare (inOperand.mProperty_mAccessControl) ;
+    result = mProperty_accessControl.objectCompare (inOperand.mProperty_accessControl) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_selector.objectCompare (inOperand.mProperty_selector) ;
+    result = mProperty_hasSelector.objectCompare (inOperand.mProperty_hasSelector) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mInitialization.objectCompare (inOperand.mProperty_mInitialization) ;
+    result = mProperty_initialization.objectCompare (inOperand.mProperty_initialization) ;
   }
   return result ;
 }
@@ -7932,18 +7932,18 @@ ComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompare (c
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyInCollectionListAST_2D_element::isValid (void) const {
-  return mProperty_isConstant.isValid () && mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mAccessControl.isValid () && mProperty_selector.isValid () && mProperty_mInitialization.isValid () ;
+  return mProperty_isConstant.isValid () && mProperty_propertyTypeName.isValid () && mProperty_propertyName.isValid () && mProperty_accessControl.isValid () && mProperty_hasSelector.isValid () && mProperty_initialization.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_propertyInCollectionListAST_2D_element::drop (void) {
   mProperty_isConstant.drop () ;
-  mProperty_mPropertyTypeName.drop () ;
-  mProperty_mPropertyName.drop () ;
-  mProperty_mAccessControl.drop () ;
-  mProperty_selector.drop () ;
-  mProperty_mInitialization.drop () ;
+  mProperty_propertyTypeName.drop () ;
+  mProperty_propertyName.drop () ;
+  mProperty_accessControl.drop () ;
+  mProperty_hasSelector.drop () ;
+  mProperty_initialization.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7956,15 +7956,15 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (String & ioStri
   }else{
     mProperty_isConstant.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mPropertyTypeName.description (ioString, inIndentation+1) ;
+    mProperty_propertyTypeName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mPropertyName.description (ioString, inIndentation+1) ;
+    mProperty_propertyName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mAccessControl.description (ioString, inIndentation+1) ;
+    mProperty_accessControl.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_selector.description (ioString, inIndentation+1) ;
+    mProperty_hasSelector.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mInitialization.description (ioString, inIndentation+1) ;
+    mProperty_initialization.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
@@ -10631,7 +10631,8 @@ GALGAS_propertyMap_2D_element::GALGAS_propertyMap_2D_element (void) :
 mProperty_lkey (),
 mProperty_mAccessControl (),
 mProperty_mIsConstant (),
-mProperty_mPropertyType () {
+mProperty_mPropertyType (),
+mProperty_initialization () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10644,11 +10645,13 @@ GALGAS_propertyMap_2D_element::~ GALGAS_propertyMap_2D_element (void) {
 GALGAS_propertyMap_2D_element::GALGAS_propertyMap_2D_element (const GALGAS_lstring & inOperand0,
                                                               const GALGAS_AccessControl & inOperand1,
                                                               const GALGAS_bool & inOperand2,
-                                                              const GALGAS_unifiedTypeMapEntry & inOperand3) :
+                                                              const GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                              const GALGAS_propertyInCollectionInitializationAST & inOperand4) :
 mProperty_lkey (inOperand0),
 mProperty_mAccessControl (inOperand1),
 mProperty_mIsConstant (inOperand2),
-mProperty_mPropertyType (inOperand3) {
+mProperty_mPropertyType (inOperand3),
+mProperty_initialization (inOperand4) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10657,11 +10660,12 @@ GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::class_func_new (con
                                                                              const GALGAS_AccessControl & in_mAccessControl,
                                                                              const GALGAS_bool & in_mIsConstant,
                                                                              const GALGAS_unifiedTypeMapEntry & in_mPropertyType,
+                                                                             const GALGAS_propertyInCollectionInitializationAST & in_initialization,
                                                                              Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_propertyMap_2D_element result ;
-  if (in_lkey.isValid () && in_mAccessControl.isValid () && in_mIsConstant.isValid () && in_mPropertyType.isValid ()) {
-    result = GALGAS_propertyMap_2D_element (in_lkey, in_mAccessControl, in_mIsConstant, in_mPropertyType) ;
+  if (in_lkey.isValid () && in_mAccessControl.isValid () && in_mIsConstant.isValid () && in_mPropertyType.isValid () && in_initialization.isValid ()) {
+    result = GALGAS_propertyMap_2D_element (in_lkey, in_mAccessControl, in_mIsConstant, in_mPropertyType, in_initialization) ;
   }
   return result ;
 }
@@ -10682,13 +10686,16 @@ ComparisonResult GALGAS_propertyMap_2D_element::objectCompare (const GALGAS_prop
   if (result == ComparisonResult::operandEqual) {
     result = mProperty_mPropertyType.objectCompare (inOperand.mProperty_mPropertyType) ;
   }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_initialization.objectCompare (inOperand.mProperty_initialization) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mAccessControl.isValid () && mProperty_mIsConstant.isValid () && mProperty_mPropertyType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mAccessControl.isValid () && mProperty_mIsConstant.isValid () && mProperty_mPropertyType.isValid () && mProperty_initialization.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10698,6 +10705,7 @@ void GALGAS_propertyMap_2D_element::drop (void) {
   mProperty_mAccessControl.drop () ;
   mProperty_mIsConstant.drop () ;
   mProperty_mPropertyType.drop () ;
+  mProperty_initialization.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10715,6 +10723,8 @@ void GALGAS_propertyMap_2D_element::description (String & ioString,
     mProperty_mIsConstant.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mPropertyType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_initialization.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }

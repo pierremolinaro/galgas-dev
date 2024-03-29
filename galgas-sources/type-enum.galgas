@@ -267,7 +267,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
     !superType: .null
-    !typeKind: .enumType
+    !typeKind: .enumType {!constantMap: constantMap !constantList: self.mConstantList}
     !supportCollectionValue: false # Does not support collection value
     !allTypedPropertyList: {}
     !propertyMap: {}
@@ -281,8 +281,8 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !{}
     !.generateDescriptionGetterUtilityMethod | .isComparable
     !{}
-    !constantMap
-    !self.mConstantList
+    !enumConstantMap: constantMap
+    !enumConstantList: self.mConstantList
     !{}
     !{}
     !false # Do not generate header in separate file

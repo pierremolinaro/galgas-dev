@@ -118,8 +118,8 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !enumerationList
       ![self getSupportedOperatorFlags]
       !addAssignArgumentList
-      !{}
-      !{}
+      !enumConstantMap: {}
+      !enumConstantList: {}
       !@mapSearchMethodListAST {}
       !@mapSearchMethodListAST {}
       !false # Do not generate header in separate file
@@ -239,8 +239,8 @@ private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclara
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!"mValue" !@location.here}
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !isPredefined: true # Is predefined
     !@lstring.new {!inElementTypeName + "list" !@location.here}
@@ -260,15 +260,15 @@ private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST io
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   attributeList +=
     !isConstant: false
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
 
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !isPredefined: true # Is predefined
@@ -290,15 +290,15 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!inElementTypeName !@location.here}
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   attributeList +=
     !isConstant: false
     !@lstring.new {!"location" !@location.here}
     !@lstring.new {!"location" !@location.here}
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !isPredefined: true # Is prefined
     !@lstring.new {!"l" + inElementTypeName !@location.here}
@@ -318,15 +318,15 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"start" !@location.here}
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   attributeList +=
     !isConstant: false
     ! @lstring.new {!"uint" !@location.here}
     !@lstring.new {!"length" !@location.here}
     !.publicAccess
-    !selector: false
-    !.none
+    !hasSelector: false
+    !initialization: .none
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !isPredefined: true # Is prefined
     !@lstring.new {!"range" !@location.here}

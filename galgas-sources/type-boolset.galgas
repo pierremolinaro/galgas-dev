@@ -222,8 +222,8 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !{}
     !operators
     !{}
-    !{}
-    !{}
+    !enumConstantMap: {}
+    !enumConstantList: {}
     !{}
     !{}
     !false # Do not generate header in separate file

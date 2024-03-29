@@ -210,7 +210,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType ?*]
 #      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
       targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
@@ -235,7 +235,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 #---
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType ?*]
     [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"
@@ -274,7 +274,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?let targetVariableCppName ?*]
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType ?*]
     [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"

@@ -247,6 +247,7 @@ map @propertyMap {
   public let @AccessControl mAccessControl
   public let @bool mIsConstant
   public let @unifiedTypeMapEntry mPropertyType
+  public let @propertyInCollectionInitializationAST initialization
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"
 }

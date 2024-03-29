@@ -704,12 +704,14 @@ class cMapElement_propertyMap : public cMapElement {
   public: GALGAS_AccessControl mProperty_mAccessControl ;
   public: GALGAS_bool mProperty_mIsConstant ;
   public: GALGAS_unifiedTypeMapEntry mProperty_mPropertyType ;
+  public: GALGAS_propertyInCollectionInitializationAST mProperty_initialization ;
 
 //--- Constructor
   public: cMapElement_propertyMap (const GALGAS_lstring & inKey,
                                    const GALGAS_AccessControl & in_mAccessControl,
                                    const GALGAS_bool & in_mIsConstant,
-                                   const GALGAS_unifiedTypeMapEntry & in_mPropertyType
+                                   const GALGAS_unifiedTypeMapEntry & in_mPropertyType,
+                                   const GALGAS_propertyInCollectionInitializationAST & in_initialization
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -753,6 +755,11 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
     return mProperty_mPropertyType ;
   }
 
+  public: GALGAS_propertyInCollectionInitializationAST mProperty_initialization ;
+  public: inline GALGAS_propertyInCollectionInitializationAST readProperty_initialization (void) const {
+    return mProperty_initialization ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -777,6 +784,10 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
     mProperty_mPropertyType = inValue ;
   }
 
+  public: inline void setter_setInitialization (const GALGAS_propertyInCollectionInitializationAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_initialization = inValue ;
+  }
+
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_propertyMap_2D_element (void) ;
 
@@ -784,7 +795,8 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
   public: GALGAS_propertyMap_2D_element (const GALGAS_lstring & in_lkey,
                                          const GALGAS_AccessControl & in_mAccessControl,
                                          const GALGAS_bool & in_mIsConstant,
-                                         const GALGAS_unifiedTypeMapEntry & in_mPropertyType) ;
+                                         const GALGAS_unifiedTypeMapEntry & in_mPropertyType,
+                                         const GALGAS_propertyInCollectionInitializationAST & in_initialization) ;
 
 //-- Start of type generic part
 
@@ -801,6 +813,7 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
                                                                      const class GALGAS_AccessControl & inOperand1,
                                                                      const class GALGAS_bool & inOperand2,
                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                     const class GALGAS_propertyInCollectionInitializationAST & inOperand4,
                                                                      class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 

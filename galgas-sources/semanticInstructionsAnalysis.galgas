@@ -158,6 +158,7 @@ proc checkExpressionIsBoolean
         ?let accessControl
         ?*
         ?let @unifiedTypeMapEntry attributeType
+        ?*
       ]
       [accessControl checkSetAccess !inAnalysisContext.selfType !inErrorLocation]
 #      if not isPublic then

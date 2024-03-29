@@ -314,6 +314,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         ![accessControlAST accessControl !forDeclaringType: classIndex]
         !isConstant
         !attributeTypeIndex
+        !initExpression
       ]
       if [getterMap hasKey !propertyName.string] then
         error propertyName: "'" + propertyName + "' is the name of a prefefined or a user defined getter"
@@ -394,8 +395,8 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !{}
       !if self.mIsReference then .isReferenceEquatable else .isComparable end
       !{}
-      !{}
-      !{}
+      !enumConstantMap: {}
+      !enumConstantList: {}
       !{}
       !{}
       !generateHeaderInSeparateFile

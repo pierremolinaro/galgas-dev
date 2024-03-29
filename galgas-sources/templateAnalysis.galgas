@@ -89,7 +89,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   #--------------------------------------- Property ?
   if [[receiverType definition].typeKind isStructType] || [[receiverType definition].typeKind isClassType],
      [self.mExpressionList count] == 0,
-     let [[receiverType definition].propertyMap searchKey !self.mGetterName ?let accessControl ?* ?let propertyType] then
+     let [[receiverType definition].propertyMap searchKey !self.mGetterName ?let accessControl ?* ?let propertyType ?*] then
     if [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
@@ -1135,7 +1135,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
     error self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class"
   end
   let propertyMap = [type definition].propertyMap
-  [propertyMap searchKey !self.mStructFieldName ?let accessControl ?* ?type]
+  [propertyMap searchKey !self.mStructFieldName ?let accessControl ?* ?type ?*]
   [accessControl checkSetAccess !.none !self.mStructFieldName]
 #  if not isPublic then
 #    error self.self.mStructFieldName : " inaccessible property (due to its 'private' qualifier)"

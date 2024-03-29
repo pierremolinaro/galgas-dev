@@ -536,7 +536,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
         targetType = selfType
       else
         let propertyMap = [selfType definition].propertyMap
-        [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+        [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType ?*]
         if isConstant then
           error self.mReceiverName: "a constant property cannot be modified"
         elsif not propertiesAreMutable then
@@ -558,7 +558,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   end
   for (value) in self.mFieldList do
     let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType ?*]
     [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
 #    if not isPublic then
 #      error value : "inaccessible property (due to 'private' qualifier)"
