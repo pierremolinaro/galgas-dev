@@ -5071,8 +5071,8 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_protectedAccess:
     {
-      const cEnumAssociatedValues_AccessControl_protectedAccess * extractPtr_7752 = (const cEnumAssociatedValues_AccessControl_protectedAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_7089_declaringType = extractPtr_7752->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_protectedAccess * extractPtr_7751 = (const cEnumAssociatedValues_AccessControl_protectedAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapEntry extractedValue_7089_declaringType = extractPtr_7751->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GALGAS_selfAvailability::kNotBuilt:
         break ;
@@ -5084,28 +5084,28 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_available:
         {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_7713 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_7268_t = extractPtr_7713->mAssociatedValue0 ;
-          GALGAS_unifiedTypeMapEntry var_currentType_7288 = extractedValue_7268_t ;
-          GALGAS_bool var_ok_7316 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7089_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 213)).objectCompare (extensionGetter_typeName (var_currentType_7288, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 213)))) ;
-          bool loop_7380 = true ;
-          while (loop_7380) {
-            GALGAS_bool test_2 = var_ok_7316.operator_not (SOURCE_FILE ("accessControl.galgas", 214)) ;
+          const cEnumAssociatedValues_selfAvailability_available * extractPtr_7712 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
+          const GALGAS_unifiedTypeMapEntry extractedValue_7268_t = extractPtr_7712->mAssociatedValue0 ;
+          GALGAS_unifiedTypeMapEntry var_currentType_7287 = extractedValue_7268_t ;
+          GALGAS_bool var_ok_7315 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7089_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 213)).objectCompare (extensionGetter_typeName (var_currentType_7287, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 213)))) ;
+          bool loop_7379 = true ;
+          while (loop_7379) {
+            GALGAS_bool test_2 = var_ok_7315.operator_not (SOURCE_FILE ("accessControl.galgas", 214)) ;
             if (kBoolTrue == test_2.boolEnum ()) {
-              test_2 = extensionGetter_definition (var_currentType_7288, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 214)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.galgas", 214)).operator_not (SOURCE_FILE ("accessControl.galgas", 214)) ;
+              test_2 = extensionGetter_definition (var_currentType_7287, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 214)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.galgas", 214)).operator_not (SOURCE_FILE ("accessControl.galgas", 214)) ;
             }
-            loop_7380 = test_2.isValid () ;
-            if (loop_7380) {
-              loop_7380 = test_2.boolValue () ;
+            loop_7379 = test_2.isValid () ;
+            if (loop_7379) {
+              loop_7379 = test_2.boolValue () ;
             }
-            if (loop_7380) {
-              var_currentType_7288 = extensionGetter_definition (var_currentType_7288, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 215)).readProperty_superType () ;
-              var_ok_7316 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7089_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 216)).objectCompare (extensionGetter_typeName (var_currentType_7288, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 216)))) ;
+            if (loop_7379) {
+              var_currentType_7287 = extensionGetter_definition (var_currentType_7287, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 215)).readProperty_superType () ;
+              var_ok_7315 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7089_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 216)).objectCompare (extensionGetter_typeName (var_currentType_7287, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 216)))) ;
             }
           }
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = var_ok_7316.operator_not (SOURCE_FILE ("accessControl.galgas", 218)).boolEnum () ;
+            test_3 = var_ok_7315.operator_not (SOURCE_FILE ("accessControl.galgas", 218)).boolEnum () ;
             if (kBoolTrue == test_3) {
               TC_Array <FixItDescription> fixItArray4 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray4  COMMA_SOURCE_FILE ("accessControl.galgas", 219)) ;
@@ -5122,8 +5122,8 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_protectedSetAccess:
     {
-      const cEnumAssociatedValues_AccessControl_protectedSetAccess * extractPtr_8463 = (const cEnumAssociatedValues_AccessControl_protectedSetAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_7785_declaringType = extractPtr_8463->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_protectedSetAccess * extractPtr_8461 = (const cEnumAssociatedValues_AccessControl_protectedSetAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapEntry extractedValue_7784_declaringType = extractPtr_8461->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GALGAS_selfAvailability::kNotBuilt:
         break ;
@@ -5135,28 +5135,28 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_available:
         {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_8424 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_7972_t = extractPtr_8424->mAssociatedValue0 ;
-          GALGAS_unifiedTypeMapEntry var_currentType_7992 = extractedValue_7972_t ;
-          GALGAS_bool var_ok_8020 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7785_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 229)).objectCompare (extensionGetter_typeName (var_currentType_7992, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 229)))) ;
-          bool loop_8084 = true ;
-          while (loop_8084) {
-            GALGAS_bool test_6 = var_ok_8020.operator_not (SOURCE_FILE ("accessControl.galgas", 230)) ;
+          const cEnumAssociatedValues_selfAvailability_available * extractPtr_8422 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
+          const GALGAS_unifiedTypeMapEntry extractedValue_7971_t = extractPtr_8422->mAssociatedValue0 ;
+          GALGAS_unifiedTypeMapEntry var_currentType_7990 = extractedValue_7971_t ;
+          GALGAS_bool var_ok_8018 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7784_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 229)).objectCompare (extensionGetter_typeName (var_currentType_7990, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 229)))) ;
+          bool loop_8082 = true ;
+          while (loop_8082) {
+            GALGAS_bool test_6 = var_ok_8018.operator_not (SOURCE_FILE ("accessControl.galgas", 230)) ;
             if (kBoolTrue == test_6.boolEnum ()) {
-              test_6 = extensionGetter_definition (var_currentType_7992, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 230)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.galgas", 230)).operator_not (SOURCE_FILE ("accessControl.galgas", 230)) ;
+              test_6 = extensionGetter_definition (var_currentType_7990, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 230)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.galgas", 230)).operator_not (SOURCE_FILE ("accessControl.galgas", 230)) ;
             }
-            loop_8084 = test_6.isValid () ;
-            if (loop_8084) {
-              loop_8084 = test_6.boolValue () ;
+            loop_8082 = test_6.isValid () ;
+            if (loop_8082) {
+              loop_8082 = test_6.boolValue () ;
             }
-            if (loop_8084) {
-              var_currentType_7992 = extensionGetter_definition (var_currentType_7992, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 231)).readProperty_superType () ;
-              var_ok_8020 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7785_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 232)).objectCompare (extensionGetter_typeName (var_currentType_7992, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 232)))) ;
+            if (loop_8082) {
+              var_currentType_7990 = extensionGetter_definition (var_currentType_7990, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 231)).readProperty_superType () ;
+              var_ok_8018 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_7784_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 232)).objectCompare (extensionGetter_typeName (var_currentType_7990, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 232)))) ;
             }
           }
           enumGalgasBool test_7 = kBoolTrue ;
           if (kBoolTrue == test_7) {
-            test_7 = var_ok_8020.operator_not (SOURCE_FILE ("accessControl.galgas", 234)).boolEnum () ;
+            test_7 = var_ok_8018.operator_not (SOURCE_FILE ("accessControl.galgas", 234)).boolEnum () ;
             if (kBoolTrue == test_7) {
               TC_Array <FixItDescription> fixItArray8 ;
               inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray8  COMMA_SOURCE_FILE ("accessControl.galgas", 235)) ;
@@ -5173,8 +5173,8 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_privateAccess:
     {
-      const cEnumAssociatedValues_AccessControl_privateAccess * extractPtr_8887 = (const cEnumAssociatedValues_AccessControl_privateAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_8491_declaringType = extractPtr_8887->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_privateAccess * extractPtr_8884 = (const cEnumAssociatedValues_AccessControl_privateAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapEntry extractedValue_8489_declaringType = extractPtr_8884->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GALGAS_selfAvailability::kNotBuilt:
         break ;
@@ -5186,11 +5186,11 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_available:
         {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_8848 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_8668_currentType = extractPtr_8848->mAssociatedValue0 ;
+          const cEnumAssociatedValues_selfAvailability_available * extractPtr_8845 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
+          const GALGAS_unifiedTypeMapEntry extractedValue_8666_currentType = extractPtr_8845->mAssociatedValue0 ;
           enumGalgasBool test_10 = kBoolTrue ;
           if (kBoolTrue == test_10) {
-            test_10 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8491_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 244)).objectCompare (extensionGetter_typeName (extractedValue_8668_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 244)))).boolEnum () ;
+            test_10 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8489_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 244)).objectCompare (extensionGetter_typeName (extractedValue_8666_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 244)))).boolEnum () ;
             if (kBoolTrue == test_10) {
               TC_Array <FixItDescription> fixItArray11 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray11  COMMA_SOURCE_FILE ("accessControl.galgas", 245)) ;
@@ -5207,8 +5207,8 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_privateSetAccess:
     {
-      const cEnumAssociatedValues_AccessControl_privateSetAccess * extractPtr_9327 = (const cEnumAssociatedValues_AccessControl_privateSetAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_8918_declaringType = extractPtr_9327->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_privateSetAccess * extractPtr_9323 = (const cEnumAssociatedValues_AccessControl_privateSetAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapEntry extractedValue_8915_declaringType = extractPtr_9323->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GALGAS_selfAvailability::kNotBuilt:
         break ;
@@ -5220,11 +5220,11 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_available:
         {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_9288 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_9103_currentType = extractPtr_9288->mAssociatedValue0 ;
+          const cEnumAssociatedValues_selfAvailability_available * extractPtr_9284 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
+          const GALGAS_unifiedTypeMapEntry extractedValue_9100_currentType = extractPtr_9284->mAssociatedValue0 ;
           enumGalgasBool test_13 = kBoolTrue ;
           if (kBoolTrue == test_13) {
-            test_13 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8918_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 254)).objectCompare (extensionGetter_typeName (extractedValue_9103_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 254)))).boolEnum () ;
+            test_13 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_8915_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 254)).objectCompare (extensionGetter_typeName (extractedValue_9100_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 254)))).boolEnum () ;
             if (kBoolTrue == test_13) {
               TC_Array <FixItDescription> fixItArray14 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray14  COMMA_SOURCE_FILE ("accessControl.galgas", 255)) ;
@@ -5241,11 +5241,11 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_fileprivateAccess:
     {
-      const cEnumAssociatedValues_AccessControl_fileprivateAccess * extractPtr_9552 = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_location extractedValue_9359_declaringLocation = extractPtr_9552->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_fileprivateAccess * extractPtr_9548 = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_location extractedValue_9355_declaringLocation = extractPtr_9548->mAssociatedValue0 ;
       enumGalgasBool test_15 = kBoolTrue ;
       if (kBoolTrue == test_15) {
-        test_15 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9359_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)))).boolEnum () ;
+        test_15 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9355_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 260)))).boolEnum () ;
         if (kBoolTrue == test_15) {
           TC_Array <FixItDescription> fixItArray16 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray16  COMMA_SOURCE_FILE ("accessControl.galgas", 261)) ;
@@ -5255,11 +5255,11 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_fileprivateSetAccess:
     {
-      const cEnumAssociatedValues_AccessControl_fileprivateSetAccess * extractPtr_9785 = (const cEnumAssociatedValues_AccessControl_fileprivateSetAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_location extractedValue_9587_declaringLocation = extractPtr_9785->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_fileprivateSetAccess * extractPtr_9781 = (const cEnumAssociatedValues_AccessControl_fileprivateSetAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_location extractedValue_9583_declaringLocation = extractPtr_9781->mAssociatedValue0 ;
       enumGalgasBool test_17 = kBoolTrue ;
       if (kBoolTrue == test_17) {
-        test_17 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9587_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 264)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 264)))).boolEnum () ;
+        test_17 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_9583_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 264)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 264)))).boolEnum () ;
         if (kBoolTrue == test_17) {
           TC_Array <FixItDescription> fixItArray18 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'fileprivate(set)' qualifier)"), fixItArray18  COMMA_SOURCE_FILE ("accessControl.galgas", 265)) ;
@@ -5300,8 +5300,8 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_protectedAccess:
     {
-      const cEnumAssociatedValues_AccessControl_protectedAccess * extractPtr_10821 = (const cEnumAssociatedValues_AccessControl_protectedAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_10160_declaringType = extractPtr_10821->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_protectedAccess * extractPtr_10816 = (const cEnumAssociatedValues_AccessControl_protectedAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapEntry extractedValue_10156_declaringType = extractPtr_10816->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GALGAS_selfAvailability::kNotBuilt:
         break ;
@@ -5313,28 +5313,28 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_available:
         {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_10782 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_10337_t = extractPtr_10782->mAssociatedValue0 ;
-          GALGAS_unifiedTypeMapEntry var_currentType_10357 = extractedValue_10337_t ;
-          GALGAS_bool var_ok_10385 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10160_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 284)).objectCompare (extensionGetter_typeName (var_currentType_10357, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 284)))) ;
-          bool loop_10449 = true ;
-          while (loop_10449) {
-            GALGAS_bool test_2 = var_ok_10385.operator_not (SOURCE_FILE ("accessControl.galgas", 285)) ;
+          const cEnumAssociatedValues_selfAvailability_available * extractPtr_10777 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
+          const GALGAS_unifiedTypeMapEntry extractedValue_10333_t = extractPtr_10777->mAssociatedValue0 ;
+          GALGAS_unifiedTypeMapEntry var_currentType_10352 = extractedValue_10333_t ;
+          GALGAS_bool var_ok_10380 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10156_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 284)).objectCompare (extensionGetter_typeName (var_currentType_10352, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 284)))) ;
+          bool loop_10444 = true ;
+          while (loop_10444) {
+            GALGAS_bool test_2 = var_ok_10380.operator_not (SOURCE_FILE ("accessControl.galgas", 285)) ;
             if (kBoolTrue == test_2.boolEnum ()) {
-              test_2 = extensionGetter_definition (var_currentType_10357, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 285)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.galgas", 285)).operator_not (SOURCE_FILE ("accessControl.galgas", 285)) ;
+              test_2 = extensionGetter_definition (var_currentType_10352, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 285)).readProperty_superType ().getter_isNull (SOURCE_FILE ("accessControl.galgas", 285)).operator_not (SOURCE_FILE ("accessControl.galgas", 285)) ;
             }
-            loop_10449 = test_2.isValid () ;
-            if (loop_10449) {
-              loop_10449 = test_2.boolValue () ;
+            loop_10444 = test_2.isValid () ;
+            if (loop_10444) {
+              loop_10444 = test_2.boolValue () ;
             }
-            if (loop_10449) {
-              var_currentType_10357 = extensionGetter_definition (var_currentType_10357, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 286)).readProperty_superType () ;
-              var_ok_10385 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10160_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 287)).objectCompare (extensionGetter_typeName (var_currentType_10357, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 287)))) ;
+            if (loop_10444) {
+              var_currentType_10352 = extensionGetter_definition (var_currentType_10352, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 286)).readProperty_superType () ;
+              var_ok_10380 = GALGAS_bool (ComparisonKind::equal, extensionGetter_typeName (extractedValue_10156_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 287)).objectCompare (extensionGetter_typeName (var_currentType_10352, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 287)))) ;
             }
           }
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = var_ok_10385.operator_not (SOURCE_FILE ("accessControl.galgas", 289)).boolEnum () ;
+            test_3 = var_ok_10380.operator_not (SOURCE_FILE ("accessControl.galgas", 289)).boolEnum () ;
             if (kBoolTrue == test_3) {
               TC_Array <FixItDescription> fixItArray4 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray4  COMMA_SOURCE_FILE ("accessControl.galgas", 290)) ;
@@ -5351,8 +5351,8 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_privateAccess:
     {
-      const cEnumAssociatedValues_AccessControl_privateAccess * extractPtr_11245 = (const cEnumAssociatedValues_AccessControl_privateAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapEntry extractedValue_10849_declaringType = extractPtr_11245->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_privateAccess * extractPtr_11239 = (const cEnumAssociatedValues_AccessControl_privateAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_unifiedTypeMapEntry extractedValue_10844_declaringType = extractPtr_11239->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
       case GALGAS_selfAvailability::kNotBuilt:
         break ;
@@ -5364,11 +5364,11 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
         break ;
       case GALGAS_selfAvailability::kEnum_available:
         {
-          const cEnumAssociatedValues_selfAvailability_available * extractPtr_11206 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
-          const GALGAS_unifiedTypeMapEntry extractedValue_11026_currentType = extractPtr_11206->mAssociatedValue0 ;
+          const cEnumAssociatedValues_selfAvailability_available * extractPtr_11200 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
+          const GALGAS_unifiedTypeMapEntry extractedValue_11021_currentType = extractPtr_11200->mAssociatedValue0 ;
           enumGalgasBool test_6 = kBoolTrue ;
           if (kBoolTrue == test_6) {
-            test_6 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_10849_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)).objectCompare (extensionGetter_typeName (extractedValue_11026_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)))).boolEnum () ;
+            test_6 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_typeName (extractedValue_10844_declaringType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)).objectCompare (extensionGetter_typeName (extractedValue_11021_currentType, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 299)))).boolEnum () ;
             if (kBoolTrue == test_6) {
               TC_Array <FixItDescription> fixItArray7 ;
               inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray7  COMMA_SOURCE_FILE ("accessControl.galgas", 300)) ;
@@ -5385,11 +5385,11 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
     break ;
   case GALGAS_AccessControl::kEnum_fileprivateAccess:
     {
-      const cEnumAssociatedValues_AccessControl_fileprivateAccess * extractPtr_11470 = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) (temp_0.unsafePointer ()) ;
-      const GALGAS_location extractedValue_11277_declaringLocation = extractPtr_11470->mAssociatedValue0 ;
+      const cEnumAssociatedValues_AccessControl_fileprivateAccess * extractPtr_11464 = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) (temp_0.unsafePointer ()) ;
+      const GALGAS_location extractedValue_11271_declaringLocation = extractPtr_11464->mAssociatedValue0 ;
       enumGalgasBool test_8 = kBoolTrue ;
       if (kBoolTrue == test_8) {
-        test_8 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_11277_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 305)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 305)))).boolEnum () ;
+        test_8 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_sourceFile (extractedValue_11271_declaringLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 305)).objectCompare (extensionGetter_sourceFile (constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("accessControl.galgas", 305)))).boolEnum () ;
         if (kBoolTrue == test_8) {
           TC_Array <FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'fileprivate' qualifier)"), fixItArray9  COMMA_SOURCE_FILE ("accessControl.galgas", 306)) ;

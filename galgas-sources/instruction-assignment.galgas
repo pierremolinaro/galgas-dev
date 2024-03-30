@@ -280,7 +280,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
                         ?!@unifiedTypeMap ioTypeMap
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                         ?!@localVarManager ioVariableMap {
-  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
     if not [selfMutability propertiesAreMutable] then
       error self.mInstructionLocation : "'self' property not mutable in this context"
     end

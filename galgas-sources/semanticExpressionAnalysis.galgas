@@ -31,12 +31,16 @@ enum @selfMutability {
   case propertiesAreMutableSelfIsNot
   case selfAndPropertiesAreMutable
   
+  #·······························································································
+
   getter propertiesAreMutable -> @bool {
     switch self
     case none : result = false
     case propertiesAreMutableSelfIsNot, selfAndPropertiesAreMutable : result = true
     end
   }
+
+  #·······························································································
   
   getter selfIsMutable -> @bool {
     switch self
@@ -44,14 +48,16 @@ enum @selfMutability {
     case selfAndPropertiesAreMutable : result = true
     end
   }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @selfAvailability {
   case none
-  case available (@unifiedTypeMapEntry type @selfMutability selfMutability
-                  @bool selfIsMutable2 @bool propertiesAreMutable2)
+  case available (@unifiedTypeMapEntry type @selfMutability selfMutability)
   case initializer (@typedPropertyList allTypedPropertyList)
 }
 

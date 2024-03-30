@@ -208,7 +208,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
-      case available (t 3*) :
+      case available (t *) :
         var currentType = t
         var ok = [declaringType typeName] == [currentType typeName]
         loop while (not ok) && (not [[currentType definition].superType isNull]) do
@@ -224,7 +224,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
          warning inErrorLocation : "inaccessible property (due to 'protected(set)' qualifier)"
-      case available (t 3*) :
+      case available (t *) :
         var currentType = t
         var ok = [declaringType typeName] == [currentType typeName]
         loop while (not ok) && (not [[currentType definition].superType isNull]) do
@@ -240,7 +240,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
-      case available (currentType 3*) :
+      case available (currentType *) :
         if [declaringType typeName] != [currentType typeName] then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end
@@ -250,7 +250,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
          warning inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
-      case available (currentType 3*) :
+      case available (currentType *) :
         if [declaringType typeName] != [currentType typeName] then
           error inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
         end
@@ -279,7 +279,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
-      case available (t 3*) :
+      case available (t *) :
         var currentType = t
         var ok = [declaringType typeName] == [currentType typeName]
         loop while (not ok) && (not [[currentType definition].superType isNull]) do
@@ -295,7 +295,7 @@ enum @AccessControl {
       switch inOptionalCurrentType
       case none :
         error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
-      case available (currentType 3*) :
+      case available (currentType *) :
         if [declaringType typeName] != [currentType typeName] then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end

@@ -1344,15 +1344,11 @@ GALGAS_bool extensionGetter_selfIsMutable (const GALGAS_selfMutability & inObjec
 //--------------------------------------------------------------------------------------------------
 
 cEnumAssociatedValues_selfAvailability_available::cEnumAssociatedValues_selfAvailability_available (const GALGAS_unifiedTypeMapEntry inAssociatedValue0,
-                                                                                                    const GALGAS_selfMutability inAssociatedValue1,
-                                                                                                    const GALGAS_bool inAssociatedValue2,
-                                                                                                    const GALGAS_bool inAssociatedValue3
+                                                                                                    const GALGAS_selfMutability inAssociatedValue1
                                                                                                     COMMA_LOCATION_ARGS) :
 cEnumAssociatedValues (THERE),
 mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1),
-mAssociatedValue2 (inAssociatedValue2),
-mAssociatedValue3 (inAssociatedValue3) {
+mAssociatedValue1 (inAssociatedValue1) {
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1362,8 +1358,6 @@ void cEnumAssociatedValues_selfAvailability_available::description (String & ioS
   ioString.appendCString ("(\n") ;
   mAssociatedValue0.description (ioString, inIndentation) ;
   mAssociatedValue1.description (ioString, inIndentation) ;
-  mAssociatedValue2.description (ioString, inIndentation) ;
-  mAssociatedValue3.description (ioString, inIndentation) ;
   ioString.appendCString (")") ;
 }
 
@@ -1378,12 +1372,6 @@ ComparisonResult cEnumAssociatedValues_selfAvailability_available::compare (cons
   }
   if (result == ComparisonResult::operandEqual) {
     result = mAssociatedValue1.objectCompare (ptr->mAssociatedValue1) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue2.objectCompare (ptr->mAssociatedValue2) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue3.objectCompare (ptr->mAssociatedValue3) ;
   }
   return result ;
 }
@@ -1435,15 +1423,13 @@ GALGAS_selfAvailability GALGAS_selfAvailability::class_func_none (UNUSED_LOCATIO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_selfAvailability GALGAS_selfAvailability::class_func_available (const GALGAS_unifiedTypeMapEntry & inAssociatedValue0,
-                                                                       const GALGAS_selfMutability & inAssociatedValue1,
-                                                                       const GALGAS_bool & inAssociatedValue2,
-                                                                       const GALGAS_bool & inAssociatedValue3
+                                                                       const GALGAS_selfMutability & inAssociatedValue1
                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_selfAvailability result ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid () && inAssociatedValue3.isValid ()) {
+  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
     result.mEnum = kEnum_available ;
     cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_selfAvailability_available (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2, inAssociatedValue3 COMMA_THERE)) ;
+    macroMyNew (ptr, cEnumAssociatedValues_selfAvailability_available (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
     macroDetachSharedObject (ptr) ;
   }
@@ -1469,15 +1455,11 @@ GALGAS_selfAvailability GALGAS_selfAvailability::class_func_initializer (const G
 
 void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
                                                 GALGAS_selfMutability & outAssociatedValue1,
-                                                GALGAS_bool & outAssociatedValue2,
-                                                GALGAS_bool & outAssociatedValue3,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_available) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
-    outAssociatedValue2.drop () ;
-    outAssociatedValue3.drop () ;
     String s ;
     s.appendCString ("method @selfAvailability available invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
@@ -1485,8 +1467,6 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
     const cEnumAssociatedValues_selfAvailability_available * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
-    outAssociatedValue2 = ptr->mAssociatedValue2 ;
-    outAssociatedValue3 = ptr->mAssociatedValue3 ;
   }
 }
 
@@ -1516,16 +1496,12 @@ bool GALGAS_selfAvailability::optional_none () const {
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_selfAvailability::optional_available (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
-                                                  GALGAS_selfMutability & outAssociatedValue1,
-                                                  GALGAS_bool & outAssociatedValue2,
-                                                  GALGAS_bool & outAssociatedValue3) const {
+                                                  GALGAS_selfMutability & outAssociatedValue1) const {
   const bool ok = mEnum == kEnum_available ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
-    outAssociatedValue2 = ptr->mAssociatedValue2 ;
-    outAssociatedValue3 = ptr->mAssociatedValue3 ;
   }
   return ok ;
 }

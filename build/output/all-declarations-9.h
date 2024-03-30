@@ -1098,14 +1098,10 @@ class GALGAS_bool extensionGetter_selfIsMutable (const class GALGAS_selfMutabili
 class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedValues {
   public: const GALGAS_unifiedTypeMapEntry mAssociatedValue0 ;
   public: const GALGAS_selfMutability mAssociatedValue1 ;
-  public: const GALGAS_bool mAssociatedValue2 ;
-  public: const GALGAS_bool mAssociatedValue3 ;
 
 //--- Constructor
   public: cEnumAssociatedValues_selfAvailability_available (const GALGAS_unifiedTypeMapEntry inAssociatedValue0,
-                                                            const GALGAS_selfMutability inAssociatedValue1,
-                                                            const GALGAS_bool inAssociatedValue2,
-                                                            const GALGAS_bool inAssociatedValue3
+                                                            const GALGAS_selfMutability inAssociatedValue1
                                                             COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (String & ioString,

@@ -254,9 +254,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfMutability: let selfMutability
-      ?selfIsMutable2: *
-      ?propertiesAreMutable2: *] then
+      ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -326,9 +324,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfMutability: let selfMutability
-      ?selfIsMutable2: *
-      ?propertiesAreMutable2: *] then
+      ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -378,9 +374,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfMutability: let selfMutability
-      ?selfIsMutable2: *
-      ?propertiesAreMutable2: *] then
+      ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -437,9 +431,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfMutability: let selfMutability
-      ?selfIsMutable2: *
-      ?propertiesAreMutable2: *] then
+      ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -489,9 +481,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfMutability: let selfMutability
-      ?selfIsMutable2: *
-      ?propertiesAreMutable2: *] then
+      ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end

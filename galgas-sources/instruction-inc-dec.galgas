@@ -205,7 +205,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
 #  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
       if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -308,7 +308,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -340,7 +340,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
