@@ -347,8 +347,8 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?1* ?propertiesAreMutable: let mutableProperties] then
-      if not mutableProperties then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?1* ?propertiesAreMutable2: *] then
+      if not [selfMutability propertiesAreMutable] then
         error self.mInstructionLocation : "property not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
@@ -358,9 +358,6 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
-      end
-      if not mutableProperties then
-        error self.mReceiverName : "the property is not mutable in this context"
       end
     else
       error self.mInstructionLocation : "'self' not available in this context"
@@ -429,8 +426,8 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: let mutableProperties] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+      if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
@@ -441,7 +438,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not mutableProperties then
+      if not [selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property is not mutable in this context"
       end
     else
@@ -511,8 +508,8 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: let mutableProperties] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+      if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
@@ -523,7 +520,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not mutableProperties then
+      if not [selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property is not mutable in this context"
       end
     else
@@ -594,8 +591,8 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: let mutableProperties] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+      if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
@@ -606,7 +603,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not mutableProperties then
+      if not [selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property is not mutable in this context"
       end
     else
@@ -677,10 +674,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: * ?propertiesAreMutable: let mutableProperties] then
-      if not mutableProperties then
-        error self.mInstructionLocation : "'self' not mutable in this context"
-      end
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
@@ -689,7 +683,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not mutableProperties then
+      if not [selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property cannot be mutated in this context"
       end
     else

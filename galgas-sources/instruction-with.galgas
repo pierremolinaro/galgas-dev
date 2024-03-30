@@ -529,8 +529,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   if self.mReceiverIsPrefixedBySelf then
     if let [inAnalysisContext.selfType available
                         ?type:  let selfType
-                        ?selfIsMutable: *
-                        ?propertiesAreMutable: let propertiesAreMutable] then
+                        ?selfMutability: let selfMutability
+                        ?selfIsMutable2: *
+                        ?propertiesAreMutable2: *] then
       if self.mReceiverName.string == "" then
         receiverVariableCppName = inAnalysisContext.selfObjectCppName
         targetType = selfType
@@ -539,7 +540,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
         [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
         if isConstant then
           error self.mReceiverName: "a constant property cannot be modified"
-        elsif not propertiesAreMutable then
+        elsif not [selfMutability propertiesAreMutable] then
           error self.mReceiverName: "the property cannot be modified in this context"
         end
         receiverVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty

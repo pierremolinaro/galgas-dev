@@ -8195,9 +8195,10 @@ void cPtr_selfInExpressionAST::method_analyzeSemanticExpression (const GALGAS_ls
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     GALGAS_unifiedTypeMapEntry var_selfType_3544 ;
-    GALGAS_bool var_unused_0_3555 ;
+    GALGAS_selfMutability var_unused_0_3555 ;
     GALGAS_bool var_unused_1_3555 ;
-    const bool optionalResult3523 = constinArgument_inAnalysisContext.readProperty_selfType ().optional_available (var_selfType_3544, var_unused_0_3555, var_unused_1_3555) ;
+    GALGAS_bool var_unused_2_3555 ;
+    const bool optionalResult3523 = constinArgument_inAnalysisContext.readProperty_selfType ().optional_available (var_selfType_3544, var_unused_0_3555, var_unused_1_3555, var_unused_2_3555) ;
     if (!optionalResult3523) {
       test_0 = kBoolFalse ;
     }

@@ -205,8 +205,8 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
 #  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: let mutableProperties] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+      if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
@@ -217,7 +217,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not mutableProperties then
+      if not [selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property cannot be mutated in this constant"
       end
     else
@@ -308,8 +308,8 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: *] then
-    if not selfIsMutable then
+  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+    if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation
@@ -340,8 +340,8 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: *] then
-    if not selfIsMutable then
+  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+    if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation

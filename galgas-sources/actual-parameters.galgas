@@ -430,8 +430,8 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
   #    + " should support the default constructor"
   #  end
   #--- Analyze self
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable:*] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2:*] then
+      if not [selfMutability selfIsMutable] then
         error self.mActualSelector : "'self' not mutable in this context"
       end
     #--- Check type
@@ -680,8 +680,8 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
 
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: *] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+      if not [selfMutability selfIsMutable] then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap
@@ -772,8 +772,8 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
 
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: *] then
-      if not selfIsMutable then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability ?selfIsMutable2: * ?propertiesAreMutable2: *] then
+      if not [selfMutability selfIsMutable] then
         error self.mSelfLocation : "'self' not mutable in this context"
       end
   #    let propertyMap = [selfType definition].propertyMap

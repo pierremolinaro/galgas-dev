@@ -254,9 +254,10 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfIsMutable: let selfIsMutable
-      ?propertiesAreMutable: *] then
-    if not selfIsMutable then
+      ?selfMutability: let selfMutability
+      ?selfIsMutable2: *
+      ?propertiesAreMutable2: *] then
+    if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
 
@@ -325,9 +326,10 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfIsMutable: let selfIsMutable
-      ?propertiesAreMutable: *] then
-    if not selfIsMutable then
+      ?selfMutability: let selfMutability
+      ?selfIsMutable2: *
+      ?propertiesAreMutable2: *] then
+    if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target variable type support '+= exp' operator
@@ -376,9 +378,10 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfIsMutable: let selfIsMutable
-      ?propertiesAreMutable: *] then
-    if not selfIsMutable then
+      ?selfMutability: let selfMutability
+      ?selfIsMutable2: *
+      ?propertiesAreMutable2: *] then
+    if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
 
@@ -434,9 +437,10 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfIsMutable: let selfIsMutable
-      ?propertiesAreMutable: *] then
-    if not selfIsMutable then
+      ?selfMutability: let selfMutability
+      ?selfIsMutable2: *
+      ?propertiesAreMutable2: *] then
+    if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target variable type support '*= exp' operator
@@ -485,9 +489,10 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
 #  var @string selfObjectCppName
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?selfIsMutable: let selfIsMutable
-      ?propertiesAreMutable: *] then
-    if not selfIsMutable then
+      ?selfMutability: let selfMutability
+      ?selfIsMutable2: *
+      ?propertiesAreMutable2: *] then
+    if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target variable type support '/= exp' operator

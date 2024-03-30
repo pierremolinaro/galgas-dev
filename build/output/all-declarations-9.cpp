@@ -1165,14 +1165,194 @@ GALGAS_andShortExpressionForGeneration_2D_weak GALGAS_andShortExpressionForGener
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_selfMutability::GALGAS_selfMutability (void) :
+mEnum (kNotBuilt) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_selfMutability GALGAS_selfMutability::class_func_none (UNUSED_LOCATION_ARGS) {
+  GALGAS_selfMutability result ;
+  result.mEnum = kEnum_none ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_selfMutability GALGAS_selfMutability::class_func_propertiesAreMutableSelfIsNot (UNUSED_LOCATION_ARGS) {
+  GALGAS_selfMutability result ;
+  result.mEnum = kEnum_propertiesAreMutableSelfIsNot ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_selfMutability GALGAS_selfMutability::class_func_selfAndPropertiesAreMutable (UNUSED_LOCATION_ARGS) {
+  GALGAS_selfMutability result ;
+  result.mEnum = kEnum_selfAndPropertiesAreMutable ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_selfMutability::optional_none () const {
+  const bool ok = mEnum == kEnum_none ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_selfMutability::optional_propertiesAreMutableSelfIsNot () const {
+  const bool ok = mEnum == kEnum_propertiesAreMutableSelfIsNot ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_selfMutability::optional_selfAndPropertiesAreMutable () const {
+  const bool ok = mEnum == kEnum_selfAndPropertiesAreMutable ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_selfMutability [4] = {
+  "(not built)",
+  "none",
+  "propertiesAreMutableSelfIsNot",
+  "selfAndPropertiesAreMutable"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_selfMutability::getter_isNone (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_none == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_selfMutability::getter_isPropertiesAreMutableSelfIsNot (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_propertiesAreMutableSelfIsNot == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_selfMutability::getter_isSelfAndPropertiesAreMutable (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_selfAndPropertiesAreMutable == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_selfMutability::description (String & ioString,
+                                         const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<enum @selfMutability: ") ;
+  ioString.appendCString (gEnumNameArrayFor_selfMutability [mEnum]) ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_selfMutability::objectCompare (const GALGAS_selfMutability & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @selfMutability generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMutability ("selfMutability",
+                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_selfMutability::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfMutability ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_selfMutability::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_selfMutability (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_selfMutability GALGAS_selfMutability::extractObject (const GALGAS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_selfMutability result ;
+  const GALGAS_selfMutability * p = (const GALGAS_selfMutability *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_selfMutability *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("selfMutability", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@selfMutability selfIsMutable'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool extensionGetter_selfIsMutable (const GALGAS_selfMutability & inObject,
+                                           Compiler *
+                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bool result_result ; // Returned variable
+  const GALGAS_selfMutability temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GALGAS_selfMutability::kNotBuilt:
+    break ;
+  case GALGAS_selfMutability::kEnum_none:
+  case GALGAS_selfMutability::kEnum_propertiesAreMutableSelfIsNot:
+    {
+      result_result = GALGAS_bool (false) ;
+    }
+    break ;
+  case GALGAS_selfMutability::kEnum_selfAndPropertiesAreMutable:
+    {
+      result_result = GALGAS_bool (true) ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+
 cEnumAssociatedValues_selfAvailability_available::cEnumAssociatedValues_selfAvailability_available (const GALGAS_unifiedTypeMapEntry inAssociatedValue0,
-                                                                                                    const GALGAS_bool inAssociatedValue1,
-                                                                                                    const GALGAS_bool inAssociatedValue2
+                                                                                                    const GALGAS_selfMutability inAssociatedValue1,
+                                                                                                    const GALGAS_bool inAssociatedValue2,
+                                                                                                    const GALGAS_bool inAssociatedValue3
                                                                                                     COMMA_LOCATION_ARGS) :
 cEnumAssociatedValues (THERE),
 mAssociatedValue0 (inAssociatedValue0),
 mAssociatedValue1 (inAssociatedValue1),
-mAssociatedValue2 (inAssociatedValue2) {
+mAssociatedValue2 (inAssociatedValue2),
+mAssociatedValue3 (inAssociatedValue3) {
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1183,6 +1363,7 @@ void cEnumAssociatedValues_selfAvailability_available::description (String & ioS
   mAssociatedValue0.description (ioString, inIndentation) ;
   mAssociatedValue1.description (ioString, inIndentation) ;
   mAssociatedValue2.description (ioString, inIndentation) ;
+  mAssociatedValue3.description (ioString, inIndentation) ;
   ioString.appendCString (")") ;
 }
 
@@ -1200,6 +1381,9 @@ ComparisonResult cEnumAssociatedValues_selfAvailability_available::compare (cons
   }
   if (result == ComparisonResult::operandEqual) {
     result = mAssociatedValue2.objectCompare (ptr->mAssociatedValue2) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mAssociatedValue3.objectCompare (ptr->mAssociatedValue3) ;
   }
   return result ;
 }
@@ -1251,14 +1435,15 @@ GALGAS_selfAvailability GALGAS_selfAvailability::class_func_none (UNUSED_LOCATIO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_selfAvailability GALGAS_selfAvailability::class_func_available (const GALGAS_unifiedTypeMapEntry & inAssociatedValue0,
-                                                                       const GALGAS_bool & inAssociatedValue1,
-                                                                       const GALGAS_bool & inAssociatedValue2
+                                                                       const GALGAS_selfMutability & inAssociatedValue1,
+                                                                       const GALGAS_bool & inAssociatedValue2,
+                                                                       const GALGAS_bool & inAssociatedValue3
                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_selfAvailability result ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
+  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid () && inAssociatedValue3.isValid ()) {
     result.mEnum = kEnum_available ;
     cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_selfAvailability_available (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
+    macroMyNew (ptr, cEnumAssociatedValues_selfAvailability_available (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2, inAssociatedValue3 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
     macroDetachSharedObject (ptr) ;
   }
@@ -1283,14 +1468,16 @@ GALGAS_selfAvailability GALGAS_selfAvailability::class_func_initializer (const G
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
-                                                GALGAS_bool & outAssociatedValue1,
+                                                GALGAS_selfMutability & outAssociatedValue1,
                                                 GALGAS_bool & outAssociatedValue2,
+                                                GALGAS_bool & outAssociatedValue3,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_available) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
+    outAssociatedValue3.drop () ;
     String s ;
     s.appendCString ("method @selfAvailability available invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
@@ -1299,6 +1486,7 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
+    outAssociatedValue3 = ptr->mAssociatedValue3 ;
   }
 }
 
@@ -1328,14 +1516,16 @@ bool GALGAS_selfAvailability::optional_none () const {
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_selfAvailability::optional_available (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
-                                                  GALGAS_bool & outAssociatedValue1,
-                                                  GALGAS_bool & outAssociatedValue2) const {
+                                                  GALGAS_selfMutability & outAssociatedValue1,
+                                                  GALGAS_bool & outAssociatedValue2,
+                                                  GALGAS_bool & outAssociatedValue3) const {
   const bool ok = mEnum == kEnum_available ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
     outAssociatedValue2 = ptr->mAssociatedValue2 ;
+    outAssociatedValue3 = ptr->mAssociatedValue3 ;
   }
   return ok ;
 }

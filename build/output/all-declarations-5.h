@@ -719,8 +719,9 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_selfAvailability class_func_available (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                     const class GALGAS_bool & inOperand1,
-                                                                     const class GALGAS_bool & inOperand2
+                                                                     const class GALGAS_selfMutability & inOperand1,
+                                                                     const class GALGAS_bool & inOperand2,
+                                                                     const class GALGAS_bool & inOperand3
                                                                      COMMA_LOCATION_ARGS) ;
 
   public: static class GALGAS_selfAvailability class_func_initializer (const class GALGAS_typedPropertyList & inOperand0
@@ -738,8 +739,9 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
 
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_available (class GALGAS_unifiedTypeMapEntry & outArgument0,
-                                                  class GALGAS_bool & outArgument1,
+                                                  class GALGAS_selfMutability & outArgument1,
                                                   class GALGAS_bool & outArgument2,
+                                                  class GALGAS_bool & outArgument3,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
@@ -759,8 +761,9 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_available (class GALGAS_unifiedTypeMapEntry & outOperand0,
-                                                    class GALGAS_bool & outOperand1,
-                                                    class GALGAS_bool & outOperand2) const ;
+                                                    class GALGAS_selfMutability & outOperand1,
+                                                    class GALGAS_bool & outOperand2,
+                                                    class GALGAS_bool & outOperand3) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_initializer (class GALGAS_typedPropertyList & outOperand0) const ;
 

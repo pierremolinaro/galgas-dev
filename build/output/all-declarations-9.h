@@ -1001,19 +1001,111 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionF
 
 //--------------------------------------------------------------------------------------------------
 //
+//                                            Phase 1: @selfMutability enum                                            *
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_selfMutability : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_selfMutability (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_none,
+    kEnum_propertiesAreMutableSelfIsNot,
+    kEnum_selfAndPropertiesAreMutable
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of type generic part
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selfMutability extractObject (const GALGAS_object & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_selfMutability class_func_none (LOCATION_ARGS) ;
+
+  public: static class GALGAS_selfMutability class_func_propertiesAreMutableSelfIsNot (LOCATION_ARGS) ;
+
+  public: static class GALGAS_selfMutability class_func_selfAndPropertiesAreMutable (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_selfMutability & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isPropertiesAreMutableSelfIsNot (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSelfAndPropertiesAreMutable (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_none () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_propertiesAreMutableSelfIsNot () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_selfAndPropertiesAreMutable () const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_selfMutability class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMutability ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@selfMutability selfIsMutable' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_bool extensionGetter_selfIsMutable (const class GALGAS_selfMutability & inObject,
+                                                 class Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 2: @selfAvailability enum, associated values
 //
 //--------------------------------------------------------------------------------------------------
 
 class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedValues {
   public: const GALGAS_unifiedTypeMapEntry mAssociatedValue0 ;
-  public: const GALGAS_bool mAssociatedValue1 ;
+  public: const GALGAS_selfMutability mAssociatedValue1 ;
   public: const GALGAS_bool mAssociatedValue2 ;
+  public: const GALGAS_bool mAssociatedValue3 ;
 
 //--- Constructor
   public: cEnumAssociatedValues_selfAvailability_available (const GALGAS_unifiedTypeMapEntry inAssociatedValue0,
-                                                            const GALGAS_bool inAssociatedValue1,
-                                                            const GALGAS_bool inAssociatedValue2
+                                                            const GALGAS_selfMutability inAssociatedValue1,
+                                                            const GALGAS_bool inAssociatedValue2,
+                                                            const GALGAS_bool inAssociatedValue3
                                                             COMMA_LOCATION_ARGS) ;
 
   public: virtual void description (String & ioString,
