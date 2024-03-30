@@ -200,10 +200,10 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   var @formalParameterSignature setterFormalOutputArgumentList = {}
   var @formalParameterSignature setterFormalInputArgumentList = {}
   var @typedPropertyList typedAttributeList = {}
-  for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
+  for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
     let hasSelector = false
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector: hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
@@ -346,7 +346,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Attribute
   var typedAttributeList = @typedPropertyList {}
   var @propertyIndexMap attributeMap = {}
-  for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
+  for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
@@ -354,6 +354,7 @@ override method @sortedListDeclarationAST semanticAnalysis
     typedAttributeList +=
       !t
       !mPropertyName
+      !initExpression
       !hasSetter: true
       !hasSelector: hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
@@ -448,7 +449,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  for (t 3*) in self.mTypedAttributeList do
+  for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]

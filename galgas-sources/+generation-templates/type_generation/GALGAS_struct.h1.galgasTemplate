@@ -7,7 +7,7 @@
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
-for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in PROPERTY_LIST do
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
   %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %  public: inline GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
   %    return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -22,7 +22,7 @@ end
 
 //--------------------------------- Property setters
 %
-for (mPropertyTypeEntry mPropertyName * *) in PROPERTY_LIST do
+for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
   %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
   %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
   %  }\n\n%
@@ -31,7 +31,7 @@ end%//--------------------------------- Virtual destructor (in debug mode)
 
 //--------------------------------- Native constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (%?^
-for (mPropertyTypeEntry mPropertyName * *) in PROPERTY_LIST
+for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
   do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   between %,\n%!^
 end%) ;

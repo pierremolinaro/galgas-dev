@@ -29,6 +29,7 @@
 enum @selfAvailability {
   case none
   case available (@unifiedTypeMapEntry type @bool mutable @bool mutableproperties)
+#  case initializer (@typedPropertyList allTypedPropertyList)
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -123,7 +124,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inSourceType definition].propertyMap searchKey ![inTargetType definition].typeName.string ?let accessControl ?* ?let propertyType ?*] then
+    if not ok, let [[inSourceType definition].propertyMap searchKey ![inTargetType definition].typeName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkSetAccess !.none !inErrorLocation]
 #      if not isPublic then
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
@@ -255,7 +256,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[rightType definition].propertyMap searchKey ![leftType definition].typeName.string ?let accessControl ?* ?let propertyType ?*] then
+    if not ok, let [[rightType definition].propertyMap searchKey ![leftType definition].typeName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkSetAccess !.none !inErrorLocation]
 #      if not isPublic then
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"

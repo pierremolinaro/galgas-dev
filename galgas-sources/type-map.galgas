@@ -452,7 +452,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 #      end
 #    end
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector: hasSelector
+    typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertMethodFormalArgumentList +=
@@ -648,7 +648,7 @@ override method @mapDeclarationAST semanticAnalysis
 #------ Enter property
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
+  for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
@@ -656,6 +656,7 @@ override method @mapDeclarationAST semanticAnalysis
     typedAttributeList +=
       !t
       !mPropertyName
+      !initExpression
       !hasSetter: true
       !hasSelector: hasSelector
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
@@ -763,7 +764,7 @@ override method @mapTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  for (t 3*) in self.mTypedAttributeList do
+  for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypedefinition = [self.mSelfTypeEntry definition]

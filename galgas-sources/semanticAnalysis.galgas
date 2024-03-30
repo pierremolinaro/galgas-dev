@@ -210,7 +210,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
   var variableMap = @localVarManager.new
 #--- Enter non mutable instance attributes
   if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for (mPropertyTypeEntry mPropertyName 2*) in inNonMutableTypedAttributeList do
+    for (mPropertyTypeEntry mPropertyName 3*) in inNonMutableTypedAttributeList do
       [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
@@ -221,7 +221,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
   end
 #--- Enter mutable instance attributes
   if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for (mPropertyTypeEntry mPropertyName 2*) in inMutableTypedAttributeList do
+    for (mPropertyTypeEntry mPropertyName 3*) in inMutableTypedAttributeList do
       [!?variableMap insertMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
@@ -315,7 +315,7 @@ proc analyzeFunctionBody
 #--- Enter instance attributes
 #  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
   if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for (mPropertyTypeEntry mPropertyName 2*) in inTypedAttributeList do
+    for (mPropertyTypeEntry mPropertyName 3*) in inTypedAttributeList do
       [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry

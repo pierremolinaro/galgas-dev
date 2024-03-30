@@ -3338,14 +3338,12 @@ GALGAS_operators GALGAS_operators::extractObject (const GALGAS_object & inObject
 cMapElement_propertyMap::cMapElement_propertyMap (const GALGAS_lstring & inKey,
                                                   const GALGAS_AccessControl & in_mAccessControl,
                                                   const GALGAS_bool & in_mIsConstant,
-                                                  const GALGAS_unifiedTypeMapEntry & in_mPropertyType,
-                                                  const GALGAS_propertyInCollectionInitializationAST & in_initialization
+                                                  const GALGAS_unifiedTypeMapEntry & in_mPropertyType
                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mProperty_mAccessControl (in_mAccessControl),
 mProperty_mIsConstant (in_mIsConstant),
-mProperty_mPropertyType (in_mPropertyType),
-mProperty_initialization (in_initialization) {
+mProperty_mPropertyType (in_mPropertyType) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3358,7 +3356,7 @@ bool cMapElement_propertyMap::isValid (void) const {
 
 cMapElement * cMapElement_propertyMap::copy (void) {
   cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_propertyMap (mProperty_lkey, mProperty_mAccessControl, mProperty_mIsConstant, mProperty_mPropertyType, mProperty_initialization COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_propertyMap (mProperty_lkey, mProperty_mAccessControl, mProperty_mIsConstant, mProperty_mPropertyType COMMA_HERE)) ;
   return result ;
 }
 
@@ -3377,10 +3375,6 @@ void cMapElement_propertyMap::description (String & ioString, const int32_t inIn
   ioString.appendStringMultiple ("| ", inIndentation) ;
   ioString.appendCString ("mPropertyType" ":") ;
   mProperty_mPropertyType.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("initialization" ":") ;
-  mProperty_initialization.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3396,9 +3390,6 @@ ComparisonResult cMapElement_propertyMap::compare (const cCollectionElement * in
   }
   if (ComparisonResult::operandEqual == result) {
     result = mProperty_mPropertyType.objectCompare (operand->mProperty_mPropertyType) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_initialization.objectCompare (operand->mProperty_initialization) ;
   }
   return result ;
 }
@@ -3454,11 +3445,10 @@ void GALGAS_propertyMap::addAssign_operation (const GALGAS_lstring & inKey,
                                               const GALGAS_AccessControl & inArgument0,
                                               const GALGAS_bool & inArgument1,
                                               const GALGAS_unifiedTypeMapEntry & inArgument2,
-                                              const GALGAS_propertyInCollectionInitializationAST & inArgument3,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   cMapElement_propertyMap * p = nullptr ;
-  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -3475,7 +3465,7 @@ GALGAS_propertyMap GALGAS_propertyMap::add_operation (const GALGAS_propertyMap &
   GALGAS_propertyMap result = *this ;
   cEnumerator_propertyMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mAccessControl (HERE), enumerator.current_mIsConstant (HERE), enumerator.current_mPropertyType (HERE), enumerator.current_initialization (HERE), inCompiler COMMA_THERE) ;
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mAccessControl (HERE), enumerator.current_mIsConstant (HERE), enumerator.current_mPropertyType (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
   }
   return result ;
@@ -3487,11 +3477,10 @@ void GALGAS_propertyMap::setter_insertKey (GALGAS_lstring inKey,
                                            GALGAS_AccessControl inArgument0,
                                            GALGAS_bool inArgument1,
                                            GALGAS_unifiedTypeMapEntry inArgument2,
-                                           GALGAS_propertyInCollectionInitializationAST inArgument3,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
   cMapElement_propertyMap * p = nullptr ;
-  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -3510,7 +3499,6 @@ void GALGAS_propertyMap::method_searchKey (GALGAS_lstring inKey,
                                            GALGAS_AccessControl & outArgument0,
                                            GALGAS_bool & outArgument1,
                                            GALGAS_unifiedTypeMapEntry & outArgument2,
-                                           GALGAS_propertyInCollectionInitializationAST & outArgument3,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
   const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) performSearch (inKey,
@@ -3521,13 +3509,11 @@ void GALGAS_propertyMap::method_searchKey (GALGAS_lstring inKey,
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
-    outArgument3.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_propertyMap) ;
     outArgument0 = p->mProperty_mAccessControl ;
     outArgument1 = p->mProperty_mIsConstant ;
     outArgument2 = p->mProperty_mPropertyType ;
-    outArgument3 = p->mProperty_initialization ;
   }
 }
 
@@ -3578,21 +3564,6 @@ GALGAS_unifiedTypeMapEntry GALGAS_propertyMap::getter_mPropertyTypeForKey (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_propertyInCollectionInitializationAST GALGAS_propertyMap::getter_initializationForKey (const GALGAS_string & inKey,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) attributes ;
-  GALGAS_propertyInCollectionInitializationAST result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_propertyMap) ;
-    result = p->mProperty_initialization ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GALGAS_propertyMap::setter_setMAccessControlForKey (GALGAS_AccessControl inAttributeValue,
                                                          GALGAS_string inKey,
                                                          Compiler * inCompiler
@@ -3635,20 +3606,6 @@ void GALGAS_propertyMap::setter_setMPropertyTypeForKey (GALGAS_unifiedTypeMapEnt
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_propertyMap::setter_setInitializationForKey (GALGAS_propertyInCollectionInitializationAST inAttributeValue,
-                                                         GALGAS_string inKey,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_propertyMap * p = (cMapElement_propertyMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_propertyMap) ;
-    p->mProperty_initialization = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 cMapElement_propertyMap * GALGAS_propertyMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
                                                                                  const GALGAS_string & inKey
                                                                                  COMMA_LOCATION_ARGS) {
@@ -3670,7 +3627,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_propertyMap_2D_element cEnumerator_propertyMap::current (LOCATION_ARGS) const {
   const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_propertyMap) ;
-  return GALGAS_propertyMap_2D_element (p->mProperty_lkey, p->mProperty_mAccessControl, p->mProperty_mIsConstant, p->mProperty_mPropertyType, p->mProperty_initialization) ;
+  return GALGAS_propertyMap_2D_element (p->mProperty_lkey, p->mProperty_mAccessControl, p->mProperty_mIsConstant, p->mProperty_mPropertyType) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3707,19 +3664,10 @@ GALGAS_unifiedTypeMapEntry cEnumerator_propertyMap::current_mPropertyType (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_propertyInCollectionInitializationAST cEnumerator_propertyMap::current_initialization (LOCATION_ARGS) const {
-  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_propertyMap) ;
-  return p->mProperty_initialization ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GALGAS_propertyMap::optional_searchKey (const GALGAS_string & inKey,
                                              GALGAS_AccessControl & outArgument0,
                                              GALGAS_bool & outArgument1,
-                                             GALGAS_unifiedTypeMapEntry & outArgument2,
-                                             GALGAS_propertyInCollectionInitializationAST & outArgument3) const {
+                                             GALGAS_unifiedTypeMapEntry & outArgument2) const {
   const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) searchForKey (inKey) ;
   const bool result = nullptr != p ;
   if (result) {
@@ -3727,12 +3675,10 @@ bool GALGAS_propertyMap::optional_searchKey (const GALGAS_string & inKey,
     outArgument0 = p->mProperty_mAccessControl ;
     outArgument1 = p->mProperty_mIsConstant ;
     outArgument2 = p->mProperty_mPropertyType ;
-    outArgument3 = p->mProperty_initialization ;
   }else{
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
-    outArgument3.drop () ;
   }
   return result ;
 }

@@ -4623,6 +4623,11 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
     return mProperty_mPropertyName ;
   }
 
+  public: GALGAS_propertyInCollectionInitializationAST mProperty_initialization ;
+  public: inline GALGAS_propertyInCollectionInitializationAST readProperty_initialization (void) const {
+    return mProperty_initialization ;
+  }
+
   public: GALGAS_bool mProperty_hasSetter ;
   public: inline GALGAS_bool readProperty_hasSetter (void) const {
     return mProperty_hasSetter ;
@@ -4649,6 +4654,10 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
     mProperty_mPropertyName = inValue ;
   }
 
+  public: inline void setter_setInitialization (const GALGAS_propertyInCollectionInitializationAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_initialization = inValue ;
+  }
+
   public: inline void setter_setHasSetter (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_hasSetter = inValue ;
   }
@@ -4663,6 +4672,7 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
                                                const GALGAS_lstring & in_mPropertyName,
+                                               const GALGAS_propertyInCollectionInitializationAST & in_initialization,
                                                const GALGAS_bool & in_hasSetter,
                                                const GALGAS_bool & in_hasSelector) ;
 
@@ -4679,8 +4689,9 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_typedPropertyList_2D_element class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                            const class GALGAS_lstring & inOperand1,
-                                                                           const class GALGAS_bool & inOperand2,
+                                                                           const class GALGAS_propertyInCollectionInitializationAST & inOperand2,
                                                                            const class GALGAS_bool & inOperand3,
+                                                                           const class GALGAS_bool & inOperand4,
                                                                            class Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
@@ -7173,203 +7184,4 @@ class GALGAS_externTypeMethodList_2D_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodList_2D_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @externTypeDeclarationAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
-//--------------------------------- Default constructor
-  public: GALGAS_externTypeDeclarationAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_externTypeDeclarationAST (const class cPtr_externTypeDeclarationAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mExternTypeName (void) const ;
-
-  public: class GALGAS_string readProperty_mCppPreDeclarationCode (void) const ;
-
-  public: class GALGAS_string readProperty_mCppClassCode (void) const ;
-
-  public: class GALGAS_externTypeConstructorList readProperty_mExternTypeConstructorList (void) const ;
-
-  public: class GALGAS_externTypeGetterList readProperty_mExternTypeGetterList (void) const ;
-
-  public: class GALGAS_externTypeSetterList readProperty_mExternTypeSetterList (void) const ;
-
-  public: class GALGAS_externTypeMethodList readProperty_mExternTypeMethodList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_externTypeDeclarationAST extractObject (const GALGAS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_externTypeDeclarationAST class_func_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_string & inOperand2,
-                                                                       const class GALGAS_string & inOperand3,
-                                                                       const class GALGAS_externTypeConstructorList & inOperand4,
-                                                                       const class GALGAS_externTypeGetterList & inOperand5,
-                                                                       const class GALGAS_externTypeSetterList & inOperand6,
-                                                                       const class GALGAS_externTypeMethodList & inOperand7
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_externTypeDeclarationAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_externTypeDeclarationAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @externTypeDeclarationAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension getter keyRepresentation
-  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mExternTypeName ;
-  public: GALGAS_string mProperty_mCppPreDeclarationCode ;
-  public: GALGAS_string mProperty_mCppClassCode ;
-  public: GALGAS_externTypeConstructorList mProperty_mExternTypeConstructorList ;
-  public: GALGAS_externTypeGetterList mProperty_mExternTypeGetterList ;
-  public: GALGAS_externTypeSetterList mProperty_mExternTypeSetterList ;
-  public: GALGAS_externTypeMethodList mProperty_mExternTypeMethodList ;
-
-//--- Constructor
-  public: cPtr_externTypeDeclarationAST (const GALGAS_bool & in_isPredefined,
-                                         const GALGAS_lstring & in_mExternTypeName,
-                                         const GALGAS_string & in_mCppPreDeclarationCode,
-                                         const GALGAS_string & in_mCppClassCode,
-                                         const GALGAS_externTypeConstructorList & in_mExternTypeConstructorList,
-                                         const GALGAS_externTypeGetterList & in_mExternTypeGetterList,
-                                         const GALGAS_externTypeSetterList & in_mExternTypeSetterList,
-                                         const GALGAS_externTypeMethodList & in_mExternTypeMethodList
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @externTypeDeclarationAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_externTypeDeclarationAST_2D_weak : public GALGAS_semanticDeclarationAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_externTypeDeclarationAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_externTypeDeclarationAST_2D_weak (const class GALGAS_externTypeDeclarationAST & inSource) ;
-
-  public: GALGAS_externTypeDeclarationAST_2D_weak & operator = (const class GALGAS_externTypeDeclarationAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_externTypeDeclarationAST bang_externTypeDeclarationAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_externTypeDeclarationAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_externTypeDeclarationAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_externTypeDeclarationAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_externTypeDeclarationAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2D_weak ;
 

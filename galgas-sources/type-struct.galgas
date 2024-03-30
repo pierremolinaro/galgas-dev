@@ -142,6 +142,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       typedPropertyList +=
         !propertyTypeEntry
         !property.propertyName
+        !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
       [!?propertyMap insertKey
@@ -149,7 +150,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         ![property.accessControl accessControl !forDeclaringType: structTypeIndex]
         !property.isConstant
         !propertyTypeEntry
-        !property.initialization
+#        !property.initialization
       ]
     end
     [!?classFunctionMap insertKey
@@ -190,7 +191,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     end
   #--- Generate a "default" constructor ?
     var @string defaultConstructorName = "default"
-    for (mPropertyTypeEntry 3*) in typedPropertyList while defaultConstructorName != "" do
+    for (mPropertyTypeEntry 4*) in typedPropertyList while defaultConstructorName != "" do
       if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].isConcrete then
         defaultConstructorName = ""
       end
@@ -264,6 +265,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         constructorArgumentList +=
           !t
           !propertyName
+          !initExpression
           !hasSetter: not isConstant
           !hasSelector: hasSelector
       case some (*) :
@@ -271,6 +273,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       typedPropertyList +=
         !t
         !propertyName
+        !initExpression
         !hasSetter: not isConstant
         !hasSelector: hasSelector
     end
@@ -374,7 +377,7 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
     ?!@stringset ioInclusionSet
     !@string outHeader
   {
-    for (t 3*) in self.mTypedPropertyList do
+    for (t 4*) in self.mTypedPropertyList do
       [t addHeaderFileName1 !?ioInclusionSet]
     end
     let selfTypedefinition = [self.mSelfTypeEntry definition]

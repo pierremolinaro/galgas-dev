@@ -220,12 +220,12 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
-  for (* typeName mPropertyName 3*) in self.mPropertyList do
+  for (* typeName mPropertyName 2* initExpression) in self.mPropertyList do
     [!?ioTypeMap makeEntry !typeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: hasSetter !hasSelector: hasSelector
+    typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: hasSetter !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     insertSetterFormalArgumentList +=
@@ -426,7 +426,7 @@ override method @dictDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = {}
   var @propertyIndexMap attributeMap = {}
-  for (* typeName mPropertyName * hasSelector *) in self.mPropertyList do
+  for (* typeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !typeName]
@@ -434,6 +434,7 @@ override method @dictDeclarationAST semanticAnalysis
     typedAttributeList +=
       !t
       !mPropertyName
+      !initExpression
       !hasSetter: hasSetter
       !hasSelector: hasSelector
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then

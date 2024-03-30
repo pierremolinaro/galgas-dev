@@ -15,18 +15,18 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATI
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & inKey%
-  for (mPropertyTypeEntry 3*) in CURRENT_PROPERTY_LIST do (IDX)
+  for (mPropertyTypeEntry 4*) in CURRENT_PROPERTY_LIST do (IDX)
     %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()%
-  for (4*) in CURRENT_PROPERTY_LIST do (IDX)
+  for (5*) in CURRENT_PROPERTY_LIST do (IDX)
     % && inOperand%![IDX string]%.isValid ()%
   end
   %) {
     capCollectionElement attributes ;
     GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
-    for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
+    for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
     do (IDX) %, inOperand%![IDX string]
     end
     % COMMA_THERE) ;
@@ -37,19 +37,19 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & i
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_insert (%?^%const GALGAS_string inKey%
-  for (mPropertyTypeEntry 3*) in CURRENT_PROPERTY_LIST do (IDX)
+  for (mPropertyTypeEntry 4*) in CURRENT_PROPERTY_LIST do (IDX)
     %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inOperand%![IDX string]
   end
   %,\n%!^%Compiler * /* inCompiler */
   %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()%
-  for (mPropertyTypeEntry mPropertyName mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do (IDX)
     % && inOperand%![IDX string]%.isValid ()%
   end
   %) {
     capCollectionElement attributes ;
     GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
-    for (4*) in CURRENT_PROPERTY_LIST
+    for (5*) in CURRENT_PROPERTY_LIST
     do (IDX) %, inOperand%![IDX string]
     end
     % COMMA_THERE) ;

@@ -144,7 +144,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         end
       end
   #--------------------------------------- The getter does not exist, it is a property ?
-    elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].propertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType ?*] then
+    elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].propertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
   #    if not isPublic then
   #      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
@@ -168,7 +168,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         var kind = @methodKind.definedAsExtension
         let @stringlist fieldList = {}
         var obsoletedByGetter = ""
-        for (propertyTypeEntry propertyName 2*) in [receiverType definition].currentTypedPropertyList do
+        for (propertyTypeEntry propertyName 3*) in [receiverType definition].currentTypedPropertyList do
           let propertyType = [ioTypeMap typeMapEntryForLKey !.new {![propertyTypeEntry definition].typeName.string !.here}]
           let aMap = [propertyType definition].getterMap
           with self.mGetterName.string in aMap do

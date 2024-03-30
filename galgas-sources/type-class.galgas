@@ -292,7 +292,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap makeEntry !self.mClassTypeName ?let @unifiedTypeMapEntry classIndex]
   #--- Build attribute Map and constructor argument list
     var @functionSignature constructorPropertyTypeList = {}
-    for (mPropertyTypeEntry mPropertyName * mHasSelector) in inheritedTypedPropertyList do
+    for (mPropertyTypeEntry mPropertyName 2* mHasSelector) in inheritedTypedPropertyList do
       constructorPropertyTypeList +=
         !if mHasSelector then mPropertyName else ["" nowhere] end
         !mPropertyTypeEntry
@@ -312,7 +312,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         ![property.accessControl accessControl !forDeclaringType: classIndex]
         !property.isConstant
         !attributeTypeIndex
-        !property.initialization
+#        !property.initialization
       ]
       if [getterMap hasKey !property.propertyName.string] then
         error property.propertyName
@@ -340,11 +340,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       currentClassTypedPropertyList +=
         !attributeTypeIndex
         !property.propertyName
+        !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
       allTypedAttributeList +=
         !attributeTypeIndex
         !property.propertyName
+        !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
     end
@@ -377,7 +379,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     )
   #--- Generate a "default" constructor ?
     var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
-    for (propertyTypeEntry 3*) in allTypedAttributeList while defaultConstructorName != "" do
+    for (propertyTypeEntry 4*) in allTypedAttributeList while defaultConstructorName != "" do
       if [propertyTypeEntry definition].defaultConstructorName == "" then
         defaultConstructorName = ""
       end
@@ -491,11 +493,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       typedAttributeList +=
         !t
         !mPropertyName
+        !initExpression
         !hasSetter: not isConstant
         !hasSelector: hasSelector
       allAttributeList +=
         !t
         !mPropertyName
+        !initExpression
         !hasSetter: not isConstant
         !hasSelector: hasSelector
       [!?attributeMap insertKey !mPropertyName !t]
@@ -577,7 +581,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   override method appendDeclaration2 ?let @string inOutputDirectory
                                      ?!@stringset ioInclusionSet
                                      !@string outHeader {
-    for (t 3*) in self.mCurrentTypedAttributeList do
+    for (t 4*) in self.mCurrentTypedAttributeList do
       [t addHeaderFileName !?ioInclusionSet]
     end
     let typedefinition = [self.mSelfTypeEntry definition]

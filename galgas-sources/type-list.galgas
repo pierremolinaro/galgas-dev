@@ -144,7 +144,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       error mPropertyName : "property initialization is not handled for a list"
     end
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: true !hasSelector: hasSelector
+    typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
   end
 #--- uint type index
   [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
@@ -160,7 +160,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   var @functionSignature constructorAttributeTypeList = {}
   var @formalParameterSignature setterOutputFormalArgumentList = {}
   var @formalParameterSignature setterInputFormalArgumentList = {}
-  for (mPropertyTypeEntry @lstring mPropertyName * mHasSelector) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName * * mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
     constructorAttributeTypeList +=
@@ -235,7 +235,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:self.mListTypeName.string
     !hasCompilerArgument:true
   )
-  for (mPropertyTypeEntry mPropertyName 2*) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName 3*) in typedAttributeList do
     [!?getterMap insertOrReplace
       !@lstring.new {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
@@ -302,7 +302,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-  for (mPropertyTypeEntry mPropertyName mHasSetter *) in typedAttributeList do
+  for (mPropertyTypeEntry mPropertyName * mHasSetter *) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList = @formalParameterSignature {}
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
@@ -430,6 +430,7 @@ override method @listDeclarationAST semanticAnalysis
     typedAttributeList +=
       !t
       !propertyName
+      !initExpression
       !hasSetter: true # not isConstant
       !hasSelector: hasSelector
     [!?attributeMap insertKey !propertyName !t]
@@ -506,7 +507,7 @@ override method @listTypeForGeneration appendSpecificImplementation
                                         ?let @unifiedTypeMap unused inTypeMap
                                         ?!@stringset ioInclusionSet
                                         !@string outImplementation {
-  for (t 3*) in self.mTypedAttributeList do
+  for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
