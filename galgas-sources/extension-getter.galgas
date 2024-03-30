@@ -215,10 +215,11 @@ override method @extensionGetterAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionGetterAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext unused ioSemanticContext
 {
 }

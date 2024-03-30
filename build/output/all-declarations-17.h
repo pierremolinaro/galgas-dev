@@ -10,6 +10,53 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension method '@routineMap searchKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_searchKey (const class GALGAS_routineMap inObject,
+                                const class GALGAS_lstring constin_inRoutineName,
+                                class GALGAS_actualParameterListAST in_inActualParameterList,
+                                class GALGAS_formalParameterSignature & out_outRoutineSignature,
+                                class GALGAS_bool & out_outIsFilePrivate,
+                                class GALGAS_lstring & out_outRoutineMangledName,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'routineArgumentFromFormalParameters'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_routineArgumentFromFormalParameters (const class GALGAS_formalParameterSignature & constinArgument0,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'routineMangledName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_routineMangledName (const class GALGAS_lstring & constinArgument0,
+                                                  const class GALGAS_formalParameterSignature & constinArgument1,
+                                                  class Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@routineMap locationForKey' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_location extensionGetter_locationForKey (const class GALGAS_routineMap & inObject,
+                                                      const class GALGAS_string & constinArgument0,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @lexiqueDeclarationForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -37,6 +84,8 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
   public: class GALGAS_string readProperty_mSwiftCocoaImplementation (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -166,6 +215,8 @@ class GALGAS_lexiqueDeclarationForGeneration_2D_weak : public GALGAS_semanticDec
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -230,6 +281,8 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
   public: class GALGAS_string readProperty_mCppFileContents (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -365,6 +418,8 @@ class GALGAS_grammarForGeneration_2D_weak : public GALGAS_semanticDeclarationWit
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -419,6 +474,8 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
   public: class GALGAS_unifiedTypeMapEntry readProperty_mReturnType (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -524,6 +581,8 @@ class GALGAS_functionPrototypeDeclarationForGeneration_2D_weak : public GALGAS_s
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -576,6 +635,8 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mFunctionInstructionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -682,6 +743,8 @@ class GALGAS_functionImplementationForGeneration_2D_weak : public GALGAS_functio
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -738,6 +801,8 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mFunctionInstructionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -852,6 +917,8 @@ class GALGAS_onceFunctionDeclarationForGeneration_2D_weak : public GALGAS_semant
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -910,6 +977,8 @@ class GALGAS_filewrapperDeclarationForGeneration : public GALGAS_semanticDeclara
   public: class GALGAS_filewrapperTemplateListForGeneration readProperty_mFilewrapperTemplateListForGeneration (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1027,6 +1096,8 @@ class GALGAS_filewrapperDeclarationForGeneration_2D_weak : public GALGAS_semanti
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1079,6 +1150,8 @@ class GALGAS_programComponentForGeneration : public GALGAS_semanticDeclarationWi
   public: class GALGAS_string readProperty_mImplementationString (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1182,6 +1255,8 @@ class GALGAS_programComponentForGeneration_2D_weak : public GALGAS_semanticDecla
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1252,6 +1327,8 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
   public: class GALGAS_bool readProperty_isPackage (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1353,6 +1430,8 @@ class GALGAS_primitiveTypeForGeneration_2D_weak : public GALGAS_semanticTypeForG
   public: GALGAS_primitiveTypeForGeneration bang_primitiveTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

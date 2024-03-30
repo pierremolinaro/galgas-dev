@@ -118,11 +118,12 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method enterDeclarationInSemanticContext
-                ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-                ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-                ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-                ?!@unifiedTypeMap ioTypeMap
-                ?!@semanticContext ioSemanticContext {
+    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext ioSemanticContext {
     let optionalMethodMap = @optionalMethodMap {}
   #--- Struct type index
     [!?ioTypeMap makeEntry !self.mStructTypeName ?let structTypeIndex]
@@ -150,7 +151,6 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         ![property.accessControl accessControl !forDeclaringType: structTypeIndex]
         !property.isConstant
         !propertyTypeEntry
-#        !property.initialization
       ]
     end
     [!?classFunctionMap insertKey
@@ -161,12 +161,12 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     ]
   #--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
-  #--- Setters
-    var @setterMap setterMap = {}
-  #--- Instance methods
-    var @instanceMethodMap instanceMethodMap = {}
   #--- Add Extensions
+    var @setterMap setterMap = {}
+    var @initializerMap initializerMap = {}
+    var @instanceMethodMap instanceMethodMap = {}
     addExtensions (
+      !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
       !inExtensionGetterMapForBuildingContext
       !inExtensionSetterMapForBuildingContext
@@ -174,6 +174,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap
       !self.mStructTypeName
       !isClass: false
+      !?initializerMap
       !?getterMap
       !?setterMap
       !?instanceMethodMap
@@ -207,6 +208,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !allTypedPropertyList: typedPropertyList
       !propertyMap: propertyMap
       !currentTypedPropertyList: typedPropertyList
+      !initializerMap: initializerMap
       !classFunctionMap: classFunctionMap
       !getterMap: getterMap
       !setterMap: setterMap
@@ -247,37 +249,37 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList typedPropertyList = {}
     var @typedPropertyList constructorArgumentList = {}
     var @propertyIndexMap propertyMap = {}
-    for (isConstant propertyTypeName propertyName * hasSelector initExpression) in self.mStructurePropertyListAST do
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+    for property in self.mStructurePropertyListAST do
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.propertyTypeName)
       [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
-      if [forbiddenKeysForStruct () hasKey !propertyName.string] then
+      let t = [ioTypeMap typeMapEntryForLKey !property.propertyTypeName]
+      if [forbiddenKeysForStruct () hasKey !property.propertyName.string] then
         var @string m = "an property cannot be named:"
         for s in forbiddenKeysForStruct () do
           m+= " " + s
         end
         m += "; theses names are reserved"
-        error propertyName : m
+        error property.propertyName : m
       end
-      [!?propertyMap insertKey !propertyName !t]
-      switch initExpression
+      [!?propertyMap insertKey !property.propertyName !t]
+      switch property.initialization
       case none :
         constructorArgumentList +=
           !t
-          !propertyName
-          !initExpression
-          !hasSetter: not isConstant
-          !hasSelector: hasSelector
+          !property.propertyName
+          !property.initialization
+          !hasSetter: not property.isConstant
+          !hasSelector: property.hasSelector
       case some (*) :
       end
       typedPropertyList +=
         !t
-        !propertyName
-        !initExpression
-        !hasSetter: not isConstant
-        !hasSelector: hasSelector
+        !property.propertyName
+        !property.initialization
+        !hasSetter: not property.isConstant
+        !hasSelector: property.hasSelector
     end
-  #--- Build property initialzation code
+  #--- Build property initialization code
     var initializationCode = ""
     var inclusionSet = @stringset {}
     var @uint temporaryVariableIndex = 0
@@ -319,10 +321,8 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
           !?unusedVariableCppNameSet
           ?let sourceVar
         ]
-        initializationCode += "  const GALGAS_" + [propertyType identifierRepresentation]
-        initializationCode += " in_" + [propertyName string] + " = " + sourceVar + " ;\n"
+        initializationCode += "  mProperty_" + [propertyName identifierRepresentation] + " = " + sourceVar + " ;\n"
       end
-
     end
   #---
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
@@ -380,27 +380,28 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
     for (t 4*) in self.mTypedPropertyList do
       [t addHeaderFileName1 !?ioInclusionSet]
     end
-    let selfTypedefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
     outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1
-      !selfTypedefinition.typeName.string
+      !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry  identifierRepresentation]
       !self.mTypedPropertyList
       !self.mConstructorArgumentList
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-      !selfTypedefinition.typeName.string
+      !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
-      !selfTypedefinition.isConcrete
-      !selfTypedefinition.classFunctionMap
-      !selfTypedefinition.getterMap
-      !selfTypedefinition.setterMap
-      !selfTypedefinition.instanceMethodMap
-      !selfTypedefinition.classMethodMap
-      !selfTypedefinition.optionalMethodMap
-      !selfTypedefinition.enumerationDescriptorList
-      !selfTypedefinition.mHandledOperatorFlags
-      !selfTypedefinition.mAddAssignOperatorArguments
-      !selfTypedefinition.mTypeForEnumeratedElement
+      !selfTypeDefinition.isConcrete
+      !selfTypeDefinition.initializerMap
+      !selfTypeDefinition.classFunctionMap
+      !selfTypeDefinition.getterMap
+      !selfTypeDefinition.setterMap
+      !selfTypeDefinition.instanceMethodMap
+      !selfTypeDefinition.classMethodMap
+      !selfTypeDefinition.optionalMethodMap
+      !selfTypeDefinition.enumerationDescriptorList
+      !selfTypeDefinition.mHandledOperatorFlags
+      !selfTypeDefinition.mAddAssignOperatorArguments
+      !selfTypeDefinition.mTypeForEnumeratedElement
     ]
   }
 
@@ -412,9 +413,9 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
     !@string outImplementation
   {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    let selfTypedefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
     outImplementation = [filewrapper structureGenerationTemplate.structTypeSpecificImplementation
-      !selfTypedefinition.typeName.string
+      !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry  identifierRepresentation]
       !self.mTypedPropertyList
       !self.mConstructorArgumentList

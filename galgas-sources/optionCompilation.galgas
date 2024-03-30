@@ -190,10 +190,11 @@ override method @optionComponentDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap unused ioTypeMap
+  ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
   var @commandLineOptionMap boolOptionMap = {}

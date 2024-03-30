@@ -38,6 +38,8 @@ class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSynta
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -96,6 +98,8 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -128,26 +132,4 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@productionRuleListForGrammarAnalysis-element displayRuleVertically'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_displayRuleVertically (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
-                                            const class GALGAS_string constin_inSyntaxComponentName,
-                                            class GALGAS_string & io_ioGeneratedCode,
-                                            class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'escapeForTex'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_string function_escapeForTex (const class GALGAS_string & constinArgument0,
-                                           class Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
 

@@ -168,6 +168,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @enumDeclarationAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -248,7 +249,9 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     )
   end
 #--- Add Extensions
+  var @initializerMap initializerMap = {}
   addExtensions (
+    !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
@@ -256,6 +259,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !?ioTypeMap
     !self.mEnumTypeName
     !isClass: false
+    !?initializerMap
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -272,6 +276,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !allTypedPropertyList: {}
     !propertyMap: {}
     !currentTypedPropertyList: {}
+    !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
@@ -389,27 +394,28 @@ override method @enumTypeForGeneration appendDeclaration1
   for (* mAssociatedValueTypeList) in self.mConstantList while not hasAssociatedValues do
     hasAssociatedValues = [mAssociatedValueTypeList count] > 0
   end
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
-    !selfTypedefinition.typeName.string
-    ![selfTypedefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.typeName.string
+    ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.typeName.string
-    ![selfTypedefinition.typeName.string identifierRepresentation]
-    !selfTypedefinition.isConcrete
-    !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.getterMap
-    !selfTypedefinition.setterMap
-    !selfTypedefinition.instanceMethodMap
-    !selfTypedefinition.classMethodMap
-    !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.enumerationDescriptorList
-    !selfTypedefinition.mHandledOperatorFlags
-    !selfTypedefinition.mAddAssignOperatorArguments
-    !selfTypedefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.typeName.string
+    ![selfTypeDefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.mHandledOperatorFlags
+    !selfTypeDefinition.mAddAssignOperatorArguments
+    !selfTypeDefinition.mTypeForEnumeratedElement
   ]
  }
 
@@ -429,10 +435,10 @@ override method @enumTypeForGeneration appendDeclaration2
       [mType addHeaderFileName1 !?ioInclusionSet]
     end
   end
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader2
-    !selfTypedefinition.typeName.string
-    ![selfTypedefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.typeName.string
+    ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]
@@ -450,10 +456,10 @@ override method @enumTypeForGeneration appendSpecificImplementation
     hasAssociatedValues = [mAssociatedValueTypeList count] > 0
   end
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
-    !selfTypedefinition.typeName.string
-    ![selfTypedefinition.typeName.string identifierRepresentation]
+    !selfTypeDefinition.typeName.string
+    ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
   ]

@@ -370,6 +370,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -470,6 +471,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     !allTypedPropertyList: {}
     !propertyMap: {}
     !currentTypedPropertyList: {}
+    !initializerMap: {}
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
@@ -532,27 +534,28 @@ refclass @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
 override method @externTypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
-    !selfTypedefinition.typeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mCppPreDeclarationCode
     !self.mCppClassCode
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.typeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.isConcrete
-    !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.getterMap
-    !selfTypedefinition.setterMap
-    !selfTypedefinition.instanceMethodMap
-    !selfTypedefinition.classMethodMap
-    !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.enumerationDescriptorList
-    !selfTypedefinition.mHandledOperatorFlags
-    !selfTypedefinition.mAddAssignOperatorArguments
-    !selfTypedefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.mHandledOperatorFlags
+    !selfTypeDefinition.mAddAssignOperatorArguments
+    !selfTypeDefinition.mTypeForEnumeratedElement
   ]
 }
 

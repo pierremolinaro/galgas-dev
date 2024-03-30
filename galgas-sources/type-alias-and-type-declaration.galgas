@@ -235,11 +235,12 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method enterDeclarationInSemanticContext
-                              ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-                              ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-                              ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                              ?!@unifiedTypeMap ioTypeMap
-                              ?!@semanticContext unused ioSemanticContext {
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext unused ioSemanticContext {
     [!?ioTypeMap makeEntryFromString !self.mDefinedTypeName ?let definedTypeEntry]
     switch definedTypeEntry
     case null :
@@ -259,6 +260,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !allTypedPropertyList: def.allTypedPropertyList
           !propertyMap: def.propertyMap # struct, class
           !currentTypedPropertyList: def.currentTypedPropertyList
+          !initializerMap: def.initializerMap
           !classFunctionMap: def.classFunctionMap
           !getterMap: def.getterMap
           !setterMap: def.setterMap

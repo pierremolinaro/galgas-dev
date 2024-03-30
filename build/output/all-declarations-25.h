@@ -10,6 +10,41 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'generateExtensionMethodNew?&???!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                                                 class GALGAS_stringset & ioArgument1,
+                                                                 const class GALGAS_string constinArgument2,
+                                                                 const class GALGAS_formalParameterListForGeneration constinArgument3,
+                                                                 const class GALGAS_semanticInstructionListForGeneration constinArgument4,
+                                                                 class GALGAS_string & outArgument5,
+                                                                 class Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateProcedure?static?&???????!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_ (const class GALGAS_bool constinArgument0,
+                                                                                  const class GALGAS_string constinArgument1,
+                                                                                  class GALGAS_stringset & ioArgument2,
+                                                                                  const class GALGAS_formalParameterListForGeneration constinArgument3,
+                                                                                  const class GALGAS_semanticInstructionListForGeneration constinArgument4,
+                                                                                  const class GALGAS_bool constinArgument5,
+                                                                                  const class GALGAS_string constinArgument6,
+                                                                                  const class GALGAS_bool constinArgument7,
+                                                                                  const class GALGAS_bool constinArgument8,
+                                                                                  const class GALGAS_bool constinArgument9,
+                                                                                  class GALGAS_string & outArgument10,
+                                                                                  class Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'setterNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
@@ -42,9 +77,42 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GA
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_initializerNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                     const class GALGAS_formalParameterListAST & constinArgument1,
+                                                                     const class GALGAS_formalInputParameterListAST & constinArgument1,
                                                                      class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeInitializerBody?&?&???!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeInitializerBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class GALGAS_lstring constinArgument0,
+                                                                         class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                         const class GALGAS_analysisContext constinArgument2,
+                                                                         class GALGAS_unifiedTypeMap & ioArgument3,
+                                                                         const class GALGAS_formalInputParameterListAST constinArgument4,
+                                                                         const class GALGAS_semanticInstructionListAST constinArgument5,
+                                                                         const class GALGAS_location constinArgument6,
+                                                                         class GALGAS_semanticInstructionListForGeneration & outArgument7,
+                                                                         class GALGAS_formalInputParameterListForGeneration & outArgument8,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateInitializer??&??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateInitializer_3F__3F__26__3F__3F__21_ (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                                          const class GALGAS_string constinArgument1,
+                                                          class GALGAS_stringset & ioArgument2,
+                                                          const class GALGAS_formalInputParameterListForGeneration constinArgument3,
+                                                          const class GALGAS_semanticInstructionListForGeneration constinArgument4,
+                                                          class GALGAS_string & outArgument5,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

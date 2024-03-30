@@ -11351,6 +11351,13 @@ GALGAS_currentVarManager::~ GALGAS_currentVarManager (void) {
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_currentVarManager::setInitializedProperties (Compiler * /* inCompiler */) {
+  mProperty_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 407)) ;
+  mProperty_mSubMaps = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 408)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_currentVarManager::GALGAS_currentVarManager (const GALGAS_scopeLocalVarMap & inOperand0,
                                                     const GALGAS_localVarMapListForLLVM & inOperand1) :
 mProperty_mLocalVarMap (inOperand0),
@@ -11359,14 +11366,10 @@ mProperty_mSubMaps (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_currentVarManager GALGAS_currentVarManager::class_func_new (Compiler * /* inCompiler */
+GALGAS_currentVarManager GALGAS_currentVarManager::class_func_new (Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_scopeLocalVarMap in_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 407)) ;
-  const GALGAS_localVarMapListForLLVM in_mSubMaps = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 408)) ;
   GALGAS_currentVarManager result ;
-  if (in_mLocalVarMap.isValid () && in_mSubMaps.isValid ()) {
-    result = GALGAS_currentVarManager (in_mLocalVarMap, in_mSubMaps) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
   return result ;
 }
 
@@ -13227,10 +13230,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_4008 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_3927_isReference = extractPtr_4008->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_4062 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_3981_isReference = extractPtr_4062->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_3927_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_3981_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {

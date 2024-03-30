@@ -26,8 +26,11 @@ for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
   %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
   %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
   %  }\n\n%
-end%//--------------------------------- Virtual destructor (in debug mode)
+end%//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_%!TYPE_IDENTIFIER% (%?^

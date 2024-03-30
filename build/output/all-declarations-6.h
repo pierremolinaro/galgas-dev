@@ -60,8 +60,11 @@ class GALGAS_formalParameterSignature_2D_element : public AC_GALGAS_root {
     mProperty_mFormalArgumentName = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_formalParameterSignature_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_formalParameterSignature_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -70,6 +73,8 @@ class GALGAS_formalParameterSignature_2D_element : public AC_GALGAS_root {
                                                       const GALGAS_string & in_mFormalArgumentName) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -182,8 +187,11 @@ class GALGAS_setterMap_2D_element : public AC_GALGAS_root {
     mProperty_mErrorMessage = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_setterMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_setterMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -194,6 +202,8 @@ class GALGAS_setterMap_2D_element : public AC_GALGAS_root {
                                        const GALGAS_string & in_mErrorMessage) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -317,8 +327,11 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
     mProperty_mErrorMessage = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_instanceMethodMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_instanceMethodMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -330,6 +343,8 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
                                                const GALGAS_string & in_mErrorMessage) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -418,8 +433,11 @@ class GALGAS_classMethodMap_2D_element : public AC_GALGAS_root {
     mProperty_mHasCompilerArgument = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_classMethodMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_classMethodMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -427,6 +445,8 @@ class GALGAS_classMethodMap_2D_element : public AC_GALGAS_root {
                                             const GALGAS_bool & in_mHasCompilerArgument) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -502,14 +522,19 @@ class GALGAS_enumerationDescriptorList_2D_element : public AC_GALGAS_root {
     mProperty_mEnumerationName = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_enumerationDescriptorList_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_enumerationDescriptorList_2D_element (const GALGAS_unifiedTypeMapEntry & in_mEnumeratedType,
                                                        const GALGAS_string & in_mEnumerationName) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -586,6 +611,8 @@ class GALGAS_AccessControl : public AC_GALGAS_root {
   public: inline enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -777,8 +804,11 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
     mProperty_mPropertyType = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_propertyMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_propertyMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -787,6 +817,8 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
                                          const GALGAS_unifiedTypeMapEntry & in_mPropertyType) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -952,6 +984,8 @@ class GALGAS_constantIndexMap : public AC_GALGAS_map {
   public: GALGAS_constantIndexMap & operator = (const GALGAS_constantIndexMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1130,8 +1164,11 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
     mProperty_mAssociatedTypeList = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_constantIndexMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_constantIndexMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -1139,6 +1176,8 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
                                               const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1203,6 +1242,8 @@ class GALGAS_routineArgumentMap : public AC_GALGAS_map {
   public: GALGAS_routineArgumentMap & operator = (const GALGAS_routineArgumentMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1370,14 +1411,19 @@ class GALGAS_internalRoutineMap_2D_element : public AC_GALGAS_root {
     mProperty_mArgumentMap = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_internalRoutineMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_internalRoutineMap_2D_element (const GALGAS_lstring & in_lkey,
                                                 const GALGAS_routineArgumentMap & in_mArgumentMap) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1491,8 +1537,11 @@ class GALGAS_routineArgumentMap_2D_element : public AC_GALGAS_root {
     mProperty_mIsFilePrivate = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_routineArgumentMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_routineArgumentMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -1500,6 +1549,8 @@ class GALGAS_routineArgumentMap_2D_element : public AC_GALGAS_root {
                                                 const GALGAS_bool & in_mIsFilePrivate) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1561,6 +1612,8 @@ class GALGAS_acceptableParameterList : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1729,14 +1782,19 @@ class GALGAS_acceptableParameterList_2D_element : public AC_GALGAS_root {
     mProperty_mIsFilePrivate = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_acceptableParameterList_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_acceptableParameterList_2D_element (const GALGAS_formalParameterSignature & in_mRoutineSignature,
                                                      const GALGAS_bool & in_mIsFilePrivate) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1853,6 +1911,8 @@ class GALGAS_grammarLabelMap : public AC_GALGAS_map {
   public: GALGAS_grammarLabelMap & operator = (const GALGAS_grammarLabelMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2006,14 +2066,19 @@ class GALGAS_grammarLabelMap_2D_element : public AC_GALGAS_root {
     mProperty_mLabelSignature = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_grammarLabelMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_grammarLabelMap_2D_element (const GALGAS_lstring & in_lkey,
                                              const GALGAS_formalParameterSignature & in_mLabelSignature) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2138,8 +2203,11 @@ class GALGAS_grammarMap_2D_element : public AC_GALGAS_root {
     mProperty_mHasTranslateFeature = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_grammarMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_grammarMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2148,6 +2216,8 @@ class GALGAS_grammarMap_2D_element : public AC_GALGAS_root {
                                         const GALGAS_bool & in_mHasTranslateFeature) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2274,8 +2344,11 @@ class GALGAS_functionMap_2D_element : public AC_GALGAS_root {
     mProperty_mIsInternal = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_functionMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_functionMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2284,6 +2357,8 @@ class GALGAS_functionMap_2D_element : public AC_GALGAS_root {
                                          const GALGAS_bool & in_mIsInternal) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2349,6 +2424,8 @@ class GALGAS_wrapperFileMap : public AC_GALGAS_map {
   public: GALGAS_wrapperFileMap & operator = (const GALGAS_wrapperFileMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2577,8 +2654,11 @@ class GALGAS_wrapperFileMap_2D_element : public AC_GALGAS_root {
     mProperty_mWrapperFileIndex = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_wrapperFileMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_wrapperFileMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2588,6 +2668,8 @@ class GALGAS_wrapperFileMap_2D_element : public AC_GALGAS_root {
                                             const GALGAS_uint & in_mWrapperFileIndex) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2654,6 +2736,8 @@ class GALGAS_wrapperDirectoryMap : public AC_GALGAS_map {
   public: GALGAS_wrapperDirectoryMap & operator = (const GALGAS_wrapperDirectoryMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2857,8 +2941,11 @@ class GALGAS_wrapperDirectoryMap_2D_element : public AC_GALGAS_root {
     mProperty_mWrapperDirectoryIndex = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_wrapperDirectoryMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_wrapperDirectoryMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2867,6 +2954,8 @@ class GALGAS_wrapperDirectoryMap_2D_element : public AC_GALGAS_root {
                                                  const GALGAS_uint & in_mWrapperDirectoryIndex) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2932,6 +3021,8 @@ class GALGAS_filewrapperTemplateMap : public AC_GALGAS_map {
   public: GALGAS_filewrapperTemplateMap & operator = (const GALGAS_filewrapperTemplateMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3110,8 +3201,11 @@ class GALGAS_filewrapperTemplateMap_2D_element : public AC_GALGAS_root {
     mProperty_mFilewrapperTemplatePath = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_filewrapperTemplateMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_filewrapperTemplateMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3119,6 +3213,8 @@ class GALGAS_filewrapperTemplateMap_2D_element : public AC_GALGAS_root {
                                                     const GALGAS_lstring & in_mFilewrapperTemplatePath) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3277,8 +3373,11 @@ class GALGAS_filewrapperMap_2D_element : public AC_GALGAS_root {
     mProperty_mIsInternal = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_filewrapperMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_filewrapperMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3290,6 +3389,8 @@ class GALGAS_filewrapperMap_2D_element : public AC_GALGAS_root {
                                             const GALGAS_bool & in_mIsInternal) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3441,8 +3542,11 @@ class GALGAS_optionComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS
     mProperty_mStringListOptionMap = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_optionComponentMapForSemanticAnalysis_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_optionComponentMapForSemanticAnalysis_2D_element (const GALGAS_lstring & in_lkey,
@@ -3453,6 +3557,8 @@ class GALGAS_optionComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS
                                                                    const GALGAS_commandLineOptionMap & in_mStringListOptionMap) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3625,8 +3731,11 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
     mProperty_mLexicalListDeclarationListAST = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (const GALGAS_lstring & in_lkey,
@@ -3639,6 +3748,8 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
                                                                     const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3780,8 +3891,11 @@ class GALGAS_syntaxComponentMap_2D_element : public AC_GALGAS_root {
     mProperty_mHasTranslateFeature = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_syntaxComponentMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_syntaxComponentMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3791,6 +3905,8 @@ class GALGAS_syntaxComponentMap_2D_element : public AC_GALGAS_root {
                                                 const GALGAS_bool & in_mHasTranslateFeature) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3854,6 +3970,8 @@ class GALGAS_extensionInitializerMapForType : public AC_GALGAS_map {
   
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3870,7 +3988,7 @@ class GALGAS_extensionInitializerMapForType : public AC_GALGAS_map {
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_formalParameterListAST & inOperand1,
+                                                     const class GALGAS_formalInputParameterListAST & inOperand1,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3881,11 +3999,11 @@ class GALGAS_extensionInitializerMapForType : public AC_GALGAS_map {
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  class GALGAS_formalParameterListAST constinArgument1,
+                                                  class GALGAS_formalInputParameterListAST constinArgument1,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMFormalParameterListForKey (class GALGAS_formalParameterListAST constinArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_setMFormalParameterListForKey (class GALGAS_formalInputParameterListAST constinArgument0,
                                                                       class GALGAS_string constinArgument1,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
@@ -3895,9 +4013,9 @@ class GALGAS_extensionInitializerMapForType : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mFormalParameterListForKey (const class GALGAS_string & constinOperand0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_formalInputParameterListAST getter_mFormalParameterListForKey (const class GALGAS_string & constinOperand0,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_extensionInitializerMapForType getter_overriddenMap (Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
@@ -3905,7 +4023,7 @@ class GALGAS_extensionInitializerMapForType : public AC_GALGAS_map {
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_formalParameterListAST & outOperand1) const ;
+                                                    class GALGAS_formalInputParameterListAST & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -3930,7 +4048,7 @@ class cEnumerator_extensionInitializerMapForType : public cGenericAbstractEnumer
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GALGAS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
+  public: class GALGAS_formalInputParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_extensionInitializerMapForType_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -3947,11 +4065,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitialize
 
 class cMapElement_extensionInitializerMapForType : public cMapElement {
 //--- Map attributes
-  public: GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
+  public: GALGAS_formalInputParameterListAST mProperty_mFormalParameterList ;
 
 //--- Constructor
   public: cMapElement_extensionInitializerMapForType (const GALGAS_lstring & inKey,
-                                                      const GALGAS_formalParameterListAST & in_mFormalParameterList
+                                                      const GALGAS_formalInputParameterListAST & in_mFormalParameterList
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -3980,8 +4098,8 @@ class GALGAS_extensionInitializerMapForType_2D_element : public AC_GALGAS_root {
     return mProperty_lkey ;
   }
 
-  public: GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
-  public: inline GALGAS_formalParameterListAST readProperty_mFormalParameterList (void) const {
+  public: GALGAS_formalInputParameterListAST mProperty_mFormalParameterList ;
+  public: inline GALGAS_formalInputParameterListAST readProperty_mFormalParameterList (void) const {
     return mProperty_mFormalParameterList ;
   }
 
@@ -3997,18 +4115,23 @@ class GALGAS_extensionInitializerMapForType_2D_element : public AC_GALGAS_root {
     mProperty_lkey = inValue ;
   }
 
-  public: inline void setter_setMFormalParameterList (const GALGAS_formalParameterListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMFormalParameterList (const GALGAS_formalInputParameterListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mFormalParameterList = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionInitializerMapForType_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionInitializerMapForType_2D_element (const GALGAS_lstring & in_lkey,
-                                                            const GALGAS_formalParameterListAST & in_mFormalParameterList) ;
+                                                            const GALGAS_formalInputParameterListAST & in_mFormalParameterList) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4020,7 +4143,7 @@ class GALGAS_extensionInitializerMapForType_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_extensionInitializerMapForType_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                                        const class GALGAS_formalParameterListAST & inOperand1,
+                                                                                        const class GALGAS_formalInputParameterListAST & inOperand1,
                                                                                         class Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -4072,6 +4195,8 @@ class GALGAS_extensionInitializerForBuildingContext : public AC_GALGAS_map {
   public: GALGAS_extensionInitializerForBuildingContext & operator = (const GALGAS_extensionInitializerForBuildingContext & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4225,14 +4350,19 @@ class GALGAS_extensionInitializerForBuildingContext_2D_element : public AC_GALGA
     mProperty_mExtensionInitializerMapForType = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionInitializerForBuildingContext_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionInitializerForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
                                                                     const GALGAS_extensionInitializerMapForType & in_mExtensionInitializerMapForType) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4292,6 +4422,8 @@ class GALGAS_extensionMethodMapForType : public AC_GALGAS_map {
   public: GALGAS_extensionMethodMapForType & operator = (const GALGAS_extensionMethodMapForType & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4464,8 +4596,11 @@ class GALGAS_extensionMethodMapForType_2D_element : public AC_GALGAS_root {
     mProperty_mQualifier = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionMethodMapForType_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionMethodMapForType_2D_element (const GALGAS_lstring & in_lkey,
@@ -4473,6 +4608,8 @@ class GALGAS_extensionMethodMapForType_2D_element : public AC_GALGAS_root {
                                                        const GALGAS_methodQualifier & in_mQualifier) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4537,6 +4674,8 @@ class GALGAS_extensionMethodMapForBuildingContext : public AC_GALGAS_map {
   public: GALGAS_extensionMethodMapForBuildingContext & operator = (const GALGAS_extensionMethodMapForBuildingContext & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4690,14 +4829,19 @@ class GALGAS_extensionMethodMapForBuildingContext_2D_element : public AC_GALGAS_
     mProperty_mExtensionMethodMapForType = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionMethodMapForBuildingContext_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionMethodMapForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
                                                                   const GALGAS_extensionMethodMapForType & in_mExtensionMethodMapForType) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4757,6 +4901,8 @@ class GALGAS_extensionSetterMapForType : public AC_GALGAS_map {
   public: GALGAS_extensionSetterMapForType & operator = (const GALGAS_extensionSetterMapForType & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4905,14 +5051,19 @@ class GALGAS_extensionSetterMapForType_2D_element : public AC_GALGAS_root {
     mProperty_mFormalParameterList = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionSetterMapForType_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionSetterMapForType_2D_element (const GALGAS_lstring & in_lkey,
                                                        const GALGAS_formalParameterListAST & in_mFormalParameterList) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4976,6 +5127,8 @@ class GALGAS_extensionSetterMapForBuildingContext : public AC_GALGAS_map {
   public: GALGAS_extensionSetterMapForBuildingContext & operator = (const GALGAS_extensionSetterMapForBuildingContext & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5129,14 +5282,19 @@ class GALGAS_extensionSetterMapForBuildingContext_2D_element : public AC_GALGAS_
     mProperty_mExtensionSetterMapForType = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionSetterMapForBuildingContext_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionSetterMapForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
                                                                   const GALGAS_extensionSetterMapForType & in_mExtensionSetterMapForType) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5196,6 +5354,8 @@ class GALGAS_extensionGetterMapForType : public AC_GALGAS_map {
   public: GALGAS_extensionGetterMapForType & operator = (const GALGAS_extensionGetterMapForType & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5392,8 +5552,11 @@ class GALGAS_extensionGetterMapForType_2D_element : public AC_GALGAS_root {
     mProperty_mQualifier = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionGetterMapForType_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionGetterMapForType_2D_element (const GALGAS_lstring & in_lkey,
@@ -5402,6 +5565,8 @@ class GALGAS_extensionGetterMapForType_2D_element : public AC_GALGAS_root {
                                                        const GALGAS_methodQualifier & in_mQualifier) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5467,6 +5632,8 @@ class GALGAS_extensionGetterMapForBuildingContext : public AC_GALGAS_map {
   public: GALGAS_extensionGetterMapForBuildingContext & operator = (const GALGAS_extensionGetterMapForBuildingContext & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5620,14 +5787,19 @@ class GALGAS_extensionGetterMapForBuildingContext_2D_element : public AC_GALGAS_
     mProperty_mExtensionGetterMapForType = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_extensionGetterMapForBuildingContext_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_extensionGetterMapForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
                                                                   const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5685,6 +5857,7 @@ class GALGAS_string callExtensionGetter_keyRepresentation (const class cPtr_sema
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticDeclarationAST * inObject,
+                                                            const class GALGAS_extensionInitializerForBuildingContext constin_inExtensionInitializerMapForBuildingContext,
                                                             const class GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
                                                             const class GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
                                                             const class GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
@@ -5712,6 +5885,8 @@ class GALGAS_wrapperExtensionMap : public AC_GALGAS_map {
   public: GALGAS_wrapperExtensionMap & operator = (const GALGAS_wrapperExtensionMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5836,13 +6011,18 @@ class GALGAS_wrapperExtensionMap_2D_element : public AC_GALGAS_root {
     mProperty_lkey = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_wrapperExtensionMap_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_wrapperExtensionMap_2D_element (const GALGAS_lstring & in_lkey) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5893,6 +6073,8 @@ class GALGAS_semanticTypePrecedenceGraph : public AC_GALGAS_graph {
   public: GALGAS_semanticTypePrecedenceGraph (void) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6017,6 +6199,8 @@ class GALGAS_semanticExpressionForGeneration_2D_weak : public AC_GALGAS_weak_ref
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6069,6 +6253,8 @@ class GALGAS_semanticExpressionListForGeneration : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6209,13 +6395,18 @@ class GALGAS_semanticExpressionListForGeneration_2D_element : public AC_GALGAS_r
     mProperty_mExpression = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_semanticExpressionListForGeneration_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_semanticExpressionListForGeneration_2D_element (const GALGAS_semanticExpressionForGeneration & in_mExpression) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6276,6 +6467,8 @@ class GALGAS_castInExpressionForGeneration : public GALGAS_semanticExpressionFor
   public: class GALGAS_unifiedTypeMapEntry readProperty_mCastType (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6381,6 +6574,8 @@ class GALGAS_castInExpressionForGeneration_2D_weak : public GALGAS_semanticExpre
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6431,6 +6626,8 @@ class GALGAS_actualParameterForGeneration : public AC_GALGAS_reference_class {
   public: class GALGAS_unifiedTypeMapEntry readProperty_mFormalArgumentType (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6526,6 +6723,8 @@ class GALGAS_actualParameterForGeneration_2D_weak : public AC_GALGAS_weak_refere
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6605,6 +6804,8 @@ class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterF
   public: class GALGAS_semanticExpressionForGeneration readProperty_mOutputActualParameterExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6709,6 +6910,8 @@ class GALGAS_outputActualParameterForGeneration_2D_weak : public GALGAS_actualPa
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6763,6 +6966,8 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
   public: class GALGAS_unifiedTypeMapEntryList readProperty_mTypeList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6873,6 +7078,8 @@ class GALGAS_outputInputActualParameterForGeneration_2D_weak : public GALGAS_act
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6925,6 +7132,8 @@ class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterFo
   public: class GALGAS__32_stringlist readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7032,6 +7241,8 @@ class GALGAS_inputActualParameterForGeneration_2D_weak : public GALGAS_actualPar
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7084,6 +7295,8 @@ class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterFor
   public: class GALGAS__32_stringlist readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7191,6 +7404,8 @@ class GALGAS_inputJokerParameterForGeneration_2D_weak : public GALGAS_actualPara
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7249,13 +7464,18 @@ class GALGAS_actualParameterListForGeneration_2D_element : public AC_GALGAS_root
     mProperty_mActualParameter = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_actualParameterListForGeneration_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_actualParameterListForGeneration_2D_element (const GALGAS_actualParameterForGeneration & in_mActualParameter) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

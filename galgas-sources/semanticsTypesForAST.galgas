@@ -106,6 +106,17 @@ list @formalInputParameterListAST {
   public let @lstring mFormalArgumentName
   public let @bool mIsUnused
   public let @bool mIsConstant
+
+  getter keyRepresentation -> @string {
+    result = "("
+    for parameter in self
+    do
+      result += parameter.mFormalSelector
+    between
+      result += ","
+    end
+    result += ")"
+  }
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

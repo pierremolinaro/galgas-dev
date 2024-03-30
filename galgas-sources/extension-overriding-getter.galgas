@@ -223,6 +223,7 @@ override getter @overridingExtensionGetterAST keyRepresentation -> @string {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionGetterAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext

@@ -32,6 +32,7 @@ struct @unifiedTypeDefinition {
   public let @typedPropertyList allTypedPropertyList %selector
   public let @propertyMap propertyMap %selector # struct, class
   public let @typedPropertyList currentTypedPropertyList %selector
+  public let @initializerMap initializerMap %selector
   public let @classFunctionMap classFunctionMap %selector
   public let @getterMap getterMap %selector
   public let @setterMap setterMap %selector

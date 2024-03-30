@@ -231,8 +231,11 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
     mProperty_mProjectName = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_XcodeProjectDescriptor (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_XcodeProjectDescriptor (const GALGAS_uint & in_mSequenceNumber,
@@ -260,6 +263,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                          const GALGAS_string & in_mProjectName) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

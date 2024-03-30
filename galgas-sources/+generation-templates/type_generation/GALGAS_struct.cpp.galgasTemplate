@@ -15,6 +15,17 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_%!TYPE_IDENTIFIER%::setInitializedProperties (%
+if CONSTRUCTOR_NEEDS_COMPILER_VAR then
+  %Compiler * inCompiler%
+else
+ %Compiler * /* inCompiler */%
+end
+%) {
+%!CONSTRUCTOR_INITIALIZATION_CODE%}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
   do (IDX) %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
@@ -31,40 +42,23 @@ end
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_new (%?^
 if [CONSTRUCTOR_ARGUMENT_LIST count] == 0 then
-if CONSTRUCTOR_NEEDS_COMPILER_VAR then
   %Compiler * inCompiler\n%
-else
- %Compiler * /* inCompiler */\n%
-end
   !^%COMMA_UNUSED_LOCATION_ARGS) {
 %else
 for (propertyTypeEntry propertyName 3*) in CONSTRUCTOR_ARGUMENT_LIST
   do %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName string]%,\n%!^
 end
-if CONSTRUCTOR_NEEDS_COMPILER_VAR then
   %Compiler * inCompiler\n%
-else
- %Compiler * /* inCompiler */\n%
-end
   !^%COMMA_UNUSED_LOCATION_ARGS) {
 %
 end
-!CONSTRUCTOR_INITIALIZATION_CODE
 %  GALGAS_%!TYPE_IDENTIFIER% result ;
-  if (%
-for (* propertyName 3*) in PROPERTY_LIST
-  do %in_%![propertyName string]%.isValid ()%
-  between % && %
-end
-%) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (%
-for (mPropertyTypeEntry propertyName 3*) in PROPERTY_LIST
-  do %in_%![propertyName string]
-  between %, %
-end
-%) ;
-  }
-  return result ;
+  result.setInitializedProperties (inCompiler) ;
+%
+for (mPropertyTypeEntry propertyName 3*) in CONSTRUCTOR_ARGUMENT_LIST do
+   %  result.mProperty_%![propertyName identifierRepresentation]% = in_%![propertyName string]% ;
+%end
+%  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

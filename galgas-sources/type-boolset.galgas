@@ -124,10 +124,11 @@ private func %once forbiddenKeysForBoolset -> @stringset {
 #·······················································································································
 
 override method @boolsetDeclarationAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap ioTypeMap
+  ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
 #--- Check unicity of slot names
@@ -181,12 +182,12 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
       )
     end
   end
-#--- Setters
+#--- Add extensions
   var @setterMap setterMap = {}
-#--- Instance methods
   var @instanceMethodMap instanceMethodMap = {}
-#--- Add Categories
+  var @initializerMap initializerMap = {}
   addExtensions (
+    !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
@@ -194,6 +195,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !?ioTypeMap
     !self.mBoolsetTypeName
     !isClass: false
+    !?initializerMap
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -214,6 +216,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !allTypedPropertyList: {}
     !propertyMap: {}
     !currentTypedPropertyList: {}
+    !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
@@ -305,6 +308,7 @@ override method @boolsetTypeForGeneration appendDeclaration1
     !typedefinition.typeName.string
     ![typedefinition.typeName.string identifierRepresentation]
     !typedefinition.isConcrete
+    !typedefinition.initializerMap
     !typedefinition.classFunctionMap
     !typedefinition.getterMap
     !typedefinition.setterMap

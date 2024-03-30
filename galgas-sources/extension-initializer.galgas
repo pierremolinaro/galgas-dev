@@ -24,7 +24,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $init$
     $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     $}$
@@ -43,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <method_declaration_ggs3> ?let @lstring inClassName
                                  ?!@galgasDeclarationAST ioDeclarations {
     $init$
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     $}$
@@ -70,7 +70,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $init$
     $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
-    <formal_parameter_list> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
     $}$
@@ -89,7 +89,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <method_declaration> ?let @lstring inClassName
                             ?!@galgasDeclarationAST ioDeclarations {
     $init$
-    <formal_parameter_list> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
     $}$
@@ -113,7 +113,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 refclass @initializerAST : @semanticDeclarationAST {
   private let @lstring mTypeName
-  private let @formalParameterListAST mFormalParameterList
+  private let @formalInputParameterListAST mFormalParameterList
   private let @semanticInstructionListAST mInstructionList
   private let @location mEndOfInitializerLocation
 
@@ -138,13 +138,13 @@ refclass @initializerAST : @semanticDeclarationAST {
   #---
     if not [ioExtensionInitializerForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionInitializerForBuildingContext insertKey
-        ! self.mTypeName
+        !self.mTypeName
         !{}
       ]
     end
     with self.mTypeName in !?ioExtensionInitializerForBuildingContext error message searchKey  do
       [!?mExtensionInitializerMapForType insertKey
-        !key
+        !@lstring.new {![self.mFormalParameterList keyRepresentation] !self.mTypeName.location}
         !self.mFormalParameterList
       ]
     end
@@ -153,6 +153,7 @@ refclass @initializerAST : @semanticDeclarationAST {
   #·······························································································
 
   override method enterDeclarationInSemanticContext
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
     ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
     ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
@@ -169,7 +170,7 @@ refclass @initializerAST : @semanticDeclarationAST {
                 ?let @semanticContext inSemanticContext
                 ?!@unifiedTypeMap ioTypeMap
                 ?let @predefinedTypes inPredefinedTypes
-                ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration {
+                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   #--- Useful entities graph
     let nameForUsefulness = initializerNameForUsefulEntitiesGraph (!self.mTypeName !self.mFormalParameterList)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -186,25 +187,9 @@ refclass @initializerAST : @semanticDeclarationAST {
       selfObjectNameString = "this"
       selfObjectAccessorString = "this->"
     else
-      selfObjectNameString = "inObject"
-      selfObjectAccessorString = "inObject."
+      selfObjectNameString = "result"
+      selfObjectAccessorString = "result."
     end
-  #---
-#    for (isConstant propertyTypeName propertyName accessControlAST hasSelector initExpression) in [selfType definition].allTypedPropertyList do
-#      [!?ioTypeMap makeEntry !propertyTypeName ?let propertyTypeEntry]
-#      let @lstring selector = [if hasSelector then propertyName.string else "" end nowhere]
-#      if [initExpression isNone] then
-#        constructorPropertyTypeList += !selector !propertyTypeEntry !propertyName.string
-#      end
-#      typesToIncludeInHeaderCompilation += !propertyTypeEntry
-#      typedPropertyList += !propertyTypeEntry !propertyName !hasSetter: not isConstant !hasSelector: hasSelector
-#      [!?propertyMap insertKey
-#        !propertyName
-#        ![accessControlAST accessControl !forDeclaringType: structTypeIndex]
-#        !isConstant
-#        !propertyTypeEntry
-#      ]
-#    end
   #--- Analyze instruction list
     let analysisContextNew = @analysisContext.new {
       !inSemanticContext
@@ -214,47 +199,30 @@ refclass @initializerAST : @semanticDeclarationAST {
       !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
       !requiresSelfForAccessingProperty: true
     }
-#    var isRefClass = false
-#    if let [[selfType definition].typeKind classType ?isReference: let reference] then
-#      isRefClass = reference
-#    end
-#    var mutableProperties = @typedPropertyList {}
-#    var nonMutableProperties = @typedPropertyList {}
-#    if [selfType definition].typeKind == .structType then
-#      nonMutableProperties = [selfType definition].allTypedPropertyList
-#    elsif let [[selfType definition].typeKind classType ?isReference: let isReference] then
-#      if isReference then
-#        mutableProperties = [selfType definition].allTypedPropertyList
-#      else
-#        nonMutableProperties = [selfType definition].allTypedPropertyList
-#      end
-#    end
-    analyzeRoutineBody (
+    analyzeInitializerBody (
       !nameForUsefulness
       !?ioUsefulEntitiesGraph
       !analysisContextNew
       !?ioTypeMap
       !self.mFormalParameterList
-      !nonMutablePropertyList: {}
-      !mutablePropertyList: [selfType definition].allTypedPropertyList
       !self.mInstructionList
       !self.mEndOfInitializerLocation
-      ?let unused semanticInstructionListForGeneration
-      ?let unused formalParameterListForGeneration
+      ?let semanticInstructionListForGeneration
+      ?let formalParameterListForGeneration
     )
   #---
-#    ioSemanticDeclarationListForGeneration +=
-#      !infoMessage:"extension method " + self.mExtensionMethodName
-#      !@extensionMethodForGeneration.new {
-#        !generateHeader: true # Generate Cpp header file
-#        !mImplementationCppFileName: "method-" + [[selfType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
-#        !selfType
-#        !self.mExtensionMethodName.string
-#        !implementedAsFunction
-#        !formalParameterListForGeneration
-#        ![selfType definition].allTypedPropertyList
-#        !semanticInstructionListForGeneration
-#      }
+    let initializerName = [self.mFormalParameterList keyRepresentation]
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "initializer @" + self.mTypeName + initializerName
+      !@extensionInitializerForGeneration.new {
+        !generateHeader: true # Generate Cpp header file
+        !mImplementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
+        !selfType
+        !initializerName
+        !formalParameterListForGeneration
+        ![selfType definition].allTypedPropertyList
+        !semanticInstructionListForGeneration
+      }
   }
 
   #·······························································································
@@ -286,82 +254,48 @@ refclass @initializerAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-#refclass @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-#  private let @unifiedTypeMapEntry mReceiverType
-#  private let @string mExtensionMethodName
-#  private let @bool mImplementedAsFunction
-#  private let @formalParameterListForGeneration mExtensionMethodFormalParameterList
-#  private let @typedPropertyList mTypedAttributeList
-#  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-#}
+refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  private let @unifiedTypeMapEntry mReceiverType
+  private let @string initializerName
+  private let @formalInputParameterListForGeneration formalParameterList
+  private let @typedPropertyList mTypedAttributeList
+  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 
-#·······················································································································
+  #·······························································································
 
-#override getter @extensionMethodForGeneration headerKind ->@headerKind {
-#  result = @headerKind.oneHeader
-#}
+  override getter headerKind ->@headerKind {
+    result = @headerKind.oneHeader
+  }
 
-#·······················································································································
+  #·······························································································
 
-#override method @extensionMethodForGeneration appendDeclaration1
-#  ?!@stringset unused ioInclusionSet
-#  !@string outHeader {
-#  if self.mImplementedAsFunction then
-#    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
-#      ![self.mReceiverType definition].mTypeName.string
-#      !self.mExtensionMethodName
-#      !self.mExtensionMethodFormalParameterList
-#    ]
-#  else
-#    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodDeclaration
-#      ![self.mReceiverType definition].mTypeName.string
-#      !self.mExtensionMethodName
-#      !self.mExtensionMethodFormalParameterList
-#    ]
-#  end
-#}
-
-#·······················································································································
-
-#override method @extensionMethodForGeneration appendSpecificImplementation
-#  ?let @unifiedTypeMap unused inTypeMap
-#  ?!@stringset ioInclusionSet
-#  !@string outImplementation
-#{
-#  if self.mImplementedAsFunction then
-#    var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
-#    [!?extensionMethodFormalParameterList insertAtIndex
-#      !["" nowhere]
-#      !@formalArgumentPassingModeAST.argumentConstantIn
-#      !self.mReceiverType
-#      !@lstring.new {!"self" !@location.here}
-#      !"inObject"
-#      !0
-#    ]
-#    ioInclusionSet += !"method-" + [[self.mReceiverType definition].mTypeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
-#    generateProcedure (
-#      !static:false
-#      !"extensionMethod_" + [self.mExtensionMethodName identifierRepresentation]
-#      !?ioInclusionSet
-#      !extensionMethodFormalParameterList
-#      !self.mSemanticInstructionListForGeneration
-#      !false # is not const
-#      !"Compiler"
-#      !true # Generate location Argument
-#      !false # Do not generate 'resetTemplateString'
-#      !false # Do not generate syntaxDirectedTranslationString argument
-#      ?let @string code
-#    )
-#    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
-#      ![self.mReceiverType definition].mTypeName.string
-#      !self.mExtensionMethodName
-#      !code
-#    ]
-#  else
-#    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-#    for (* * mFormalArgumentType * *) in self.mExtensionMethodFormalParameterList do
-#      [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+                                     !@string outHeader {
+    outHeader = ""
+#    if self.mImplementedAsFunction then
+#      outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
+#        ![self.mReceiverType definition].typeName.string
+#        !self.mExtensionMethodName
+#        !self.mExtensionMethodFormalParameterList
+#      ]
+#    else
+#      outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodDeclaration
+#        ![self.mReceiverType definition].typeName.string
+#        !self.mExtensionMethodName
+#        !self.mExtensionMethodFormalParameterList
+#      ]
 #    end
+  }
+
+  #·······························································································
+
+  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+                                                ?!@stringset ioInclusionSet
+                                                !@string outImplementation {
+    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+    for formalArg in self.formalParameterList do
+      [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+    end
 #    var @unifiedTypeMapEntry baseType = self.mReceiverType
 #    var @bool searching = true
 #    loop (@uint.max) while searching do
@@ -375,25 +309,28 @@ refclass @initializerAST : @semanticDeclarationAST {
 #        searching = false
 #      end
 #    end
-#    ioInclusionSet +=
-#      !"method-" + [[baseType definition].mTypeName.string fileNameRepresentation]
+    ioInclusionSet += !self.mImplementationCppFileName
+#      !"method-" + [[baseType definition].typeName.string fileNameRepresentation]
 #      + "-" + [self.mExtensionMethodName fileNameRepresentation]
-#    generateExtensionMethodNew (
-#      !self.mReceiverType
-#      !?ioInclusionSet
-#      !self.mExtensionMethodName
-#      !self.mExtensionMethodFormalParameterList
-#      !self.mSemanticInstructionListForGeneration
-#      ?let @string methodImplementation
-#    )
-#    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodImplementation
-#      ![self.mReceiverType definition].mTypeName.string
-#      !self.mExtensionMethodName
-#      !self.mExtensionMethodFormalParameterList
-#      !methodImplementation
-#    ]
-#  end
-#}
+    generateInitializer (
+      !self.mReceiverType
+      !self.initializerName
+      !?ioInclusionSet
+      !self.formalParameterList
+      !self.mSemanticInstructionListForGeneration
+      ?let @string methodImplementation
+    )
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.initializerImplementation
+      ![self.mReceiverType definition].typeName.string
+      !self.initializerName
+      !self.formalParameterList
+      !methodImplementation
+    ]
+  }
+
+  #·······························································································
+
+}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

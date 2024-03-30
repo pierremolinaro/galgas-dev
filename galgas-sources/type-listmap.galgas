@@ -123,6 +123,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listmapDeclarationAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -215,7 +216,9 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !""
   ]
 #--- Add extensions
+  var @initializerMap initializerMap = {}
   addExtensions (
+    !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
@@ -223,6 +226,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !?ioTypeMap
     !self.mListmapTypeName
     !isClass: false
+    !?initializerMap
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -244,6 +248,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !allTypedPropertyList: {}
     !propertyMap: {}
     !currentTypedPropertyList: listTypedAttributeList
+    !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
@@ -327,25 +332,26 @@ override method @listmapTypeForGeneration appendDeclaration1
   for (t 4*) in self.mAssociatedListTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.listmapTypeHeader1
-    !selfTypedefinition.typeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.typeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.isConcrete
-    !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.getterMap
-    !selfTypedefinition.setterMap
-    !selfTypedefinition.instanceMethodMap
-    !selfTypedefinition.classMethodMap
-    !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.enumerationDescriptorList
-    !selfTypedefinition.mHandledOperatorFlags
-    !selfTypedefinition.mAddAssignOperatorArguments
-    !selfTypedefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.mHandledOperatorFlags
+    !selfTypeDefinition.mAddAssignOperatorArguments
+    !selfTypeDefinition.mTypeForEnumeratedElement
   ]
  }
 

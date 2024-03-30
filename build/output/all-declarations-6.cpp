@@ -10345,7 +10345,7 @@ GALGAS_syntaxComponentMap GALGAS_syntaxComponentMap::extractObject (const GALGAS
 //--------------------------------------------------------------------------------------------------
 
 cMapElement_extensionInitializerMapForType::cMapElement_extensionInitializerMapForType (const GALGAS_lstring & inKey,
-                                                                                        const GALGAS_formalParameterListAST & in_mFormalParameterList
+                                                                                        const GALGAS_formalInputParameterListAST & in_mFormalParameterList
                                                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mProperty_mFormalParameterList (in_mFormalParameterList) {
@@ -10433,7 +10433,7 @@ GALGAS_extensionInitializerMapForType GALGAS_extensionInitializerMapForType::get
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_extensionInitializerMapForType::addAssign_operation (const GALGAS_lstring & inKey,
-                                                                 const GALGAS_formalParameterListAST & inArgument0,
+                                                                 const GALGAS_formalInputParameterListAST & inArgument0,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   cMapElement_extensionInitializerMapForType * p = nullptr ;
@@ -10463,7 +10463,7 @@ GALGAS_extensionInitializerMapForType GALGAS_extensionInitializerMapForType::add
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_extensionInitializerMapForType::setter_insertKey (GALGAS_lstring inKey,
-                                                              GALGAS_formalParameterListAST inArgument0,
+                                                              GALGAS_formalInputParameterListAST inArgument0,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   cMapElement_extensionInitializerMapForType * p = nullptr ;
@@ -10478,12 +10478,12 @@ void GALGAS_extensionInitializerMapForType::setter_insertKey (GALGAS_lstring inK
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_extensionInitializerMapForType::getter_mFormalParameterListForKey (const GALGAS_string & inKey,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_extensionInitializerMapForType::getter_mFormalParameterListForKey (const GALGAS_string & inKey,
+                                                                                                             Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_extensionInitializerMapForType * p = (const cMapElement_extensionInitializerMapForType *) attributes ;
-  GALGAS_formalParameterListAST result ;
+  GALGAS_formalInputParameterListAST result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cMapElement_extensionInitializerMapForType) ;
     result = p->mProperty_mFormalParameterList ;
@@ -10493,7 +10493,7 @@ GALGAS_formalParameterListAST GALGAS_extensionInitializerMapForType::getter_mFor
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionInitializerMapForType::setter_setMFormalParameterListForKey (GALGAS_formalParameterListAST inAttributeValue,
+void GALGAS_extensionInitializerMapForType::setter_setMFormalParameterListForKey (GALGAS_formalInputParameterListAST inAttributeValue,
                                                                                   GALGAS_string inKey,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
@@ -10541,7 +10541,7 @@ GALGAS_lstring cEnumerator_extensionInitializerMapForType::current_lkey (LOCATIO
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST cEnumerator_extensionInitializerMapForType::current_mFormalParameterList (LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST cEnumerator_extensionInitializerMapForType::current_mFormalParameterList (LOCATION_ARGS) const {
   const cMapElement_extensionInitializerMapForType * p = (const cMapElement_extensionInitializerMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionInitializerMapForType) ;
   return p->mProperty_mFormalParameterList ;
@@ -10550,7 +10550,7 @@ GALGAS_formalParameterListAST cEnumerator_extensionInitializerMapForType::curren
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_extensionInitializerMapForType::optional_searchKey (const GALGAS_string & inKey,
-                                                                GALGAS_formalParameterListAST & outArgument0) const {
+                                                                GALGAS_formalInputParameterListAST & outArgument0) const {
   const cMapElement_extensionInitializerMapForType * p = (const cMapElement_extensionInitializerMapForType *) searchForKey (inKey) ;
   const bool result = nullptr != p ;
   if (result) {
@@ -12702,6 +12702,7 @@ GALGAS_string callExtensionGetter_keyRepresentation (const cPtr_semanticDeclarat
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterDeclarationInSemanticContext (cPtr_semanticDeclarationAST * inObject,
+                                                            const GALGAS_extensionInitializerForBuildingContext constin_inExtensionInitializerMapForBuildingContext,
                                                             const GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
                                                             const GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
                                                             const GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
@@ -12713,7 +12714,7 @@ void callExtensionMethod_enterDeclarationInSemanticContext (cPtr_semanticDeclara
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_enterDeclarationInSemanticContext (constin_inExtensionMethodMapForBuildingContext, constin_inExtensionGetterMapForBuildingContext, constin_inExtensionSetterMapForBuildingContext, io_ioTypeMap, io_ioSemanticContext, inCompiler COMMA_THERE) ;
+    inObject->method_enterDeclarationInSemanticContext (constin_inExtensionInitializerMapForBuildingContext, constin_inExtensionMethodMapForBuildingContext, constin_inExtensionGetterMapForBuildingContext, constin_inExtensionSetterMapForBuildingContext, io_ioTypeMap, io_ioSemanticContext, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------

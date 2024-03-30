@@ -1896,6 +1896,11 @@ GALGAS_predefinedTypes::~ GALGAS_predefinedTypes (void) {
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_predefinedTypes::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_predefinedTypes::GALGAS_predefinedTypes (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                 const GALGAS_unifiedTypeMapEntry & inOperand1,
                                                 const GALGAS_unifiedTypeMapEntry & inOperand2,
@@ -1966,12 +1971,32 @@ GALGAS_predefinedTypes GALGAS_predefinedTypes::class_func_new (const GALGAS_unif
                                                                const GALGAS_unifiedTypeMapEntry & in_mBigIntType,
                                                                const GALGAS_unifiedTypeMapEntry & in_mStringSetType,
                                                                const GALGAS_unifiedTypeMapEntry & in_mLStringListType,
-                                                               Compiler * /* inCompiler */
+                                                               Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result ;
-  if (in_mLocationType.isValid () && in_mBoolType.isValid () && in_mCharType.isValid () && in_mStringType.isValid () && in_mUIntType.isValid () && in_mSIntType.isValid () && in_mUInt64Type.isValid () && in_mSInt64Type.isValid () && in_mDoubleType.isValid () && in_mLBoolType.isValid () && in_mLCharType.isValid () && in_mLStringType.isValid () && in_mLUIntType.isValid () && in_mLSIntType.isValid () && in_mLUInt64Type.isValid () && in_mLSInt64Type.isValid () && in_mLDoubleType.isValid () && in_mStringListType.isValid () && in_mLBigIntType.isValid () && in_mBigIntType.isValid () && in_mStringSetType.isValid () && in_mLStringListType.isValid ()) {
-    result = GALGAS_predefinedTypes (in_mLocationType, in_mBoolType, in_mCharType, in_mStringType, in_mUIntType, in_mSIntType, in_mUInt64Type, in_mSInt64Type, in_mDoubleType, in_mLBoolType, in_mLCharType, in_mLStringType, in_mLUIntType, in_mLSIntType, in_mLUInt64Type, in_mLSInt64Type, in_mLDoubleType, in_mStringListType, in_mLBigIntType, in_mBigIntType, in_mStringSetType, in_mLStringListType) ;
-  }
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mLocationType = in_mLocationType ;
+  result.mProperty_mBoolType = in_mBoolType ;
+  result.mProperty_mCharType = in_mCharType ;
+  result.mProperty_mStringType = in_mStringType ;
+  result.mProperty_mUIntType = in_mUIntType ;
+  result.mProperty_mSIntType = in_mSIntType ;
+  result.mProperty_mUInt_36__34_Type = in_mUInt64Type ;
+  result.mProperty_mSInt_36__34_Type = in_mSInt64Type ;
+  result.mProperty_mDoubleType = in_mDoubleType ;
+  result.mProperty_mLBoolType = in_mLBoolType ;
+  result.mProperty_mLCharType = in_mLCharType ;
+  result.mProperty_mLStringType = in_mLStringType ;
+  result.mProperty_mLUIntType = in_mLUIntType ;
+  result.mProperty_mLSIntType = in_mLSIntType ;
+  result.mProperty_mLUInt_36__34_Type = in_mLUInt64Type ;
+  result.mProperty_mLSInt_36__34_Type = in_mLSInt64Type ;
+  result.mProperty_mLDoubleType = in_mLDoubleType ;
+  result.mProperty_mStringListType = in_mStringListType ;
+  result.mProperty_mLBigIntType = in_mLBigIntType ;
+  result.mProperty_mBigIntType = in_mBigIntType ;
+  result.mProperty_mStringSetType = in_mStringSetType ;
+  result.mProperty_mLStringListType = in_mLStringListType ;
   return result ;
 }
 

@@ -241,11 +241,12 @@ override method @templateLexiqueComponentAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
-                              ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-                              ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-                              ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                              ?!@unifiedTypeMap unused ioTypeMap
-                              ?!@semanticContext ioSemanticContext {
+  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap unused ioTypeMap
+  ?!@semanticContext ioSemanticContext {
 #--------------------------------------- Get super lexique features
   [ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
      !self.mLexiqueSuperComponentName

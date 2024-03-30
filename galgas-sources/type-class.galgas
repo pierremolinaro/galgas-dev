@@ -217,11 +217,12 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method enterDeclarationInSemanticContext
-          ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-          ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-          ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-          ?!@unifiedTypeMap ioTypeMap
-          ?!@semanticContext ioSemanticContext {
+    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext ioSemanticContext {
     var @getterMap getterMap
     var @setterMap setterMap
     var @instanceMethodMap instanceMethodMap
@@ -364,7 +365,9 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       end
     end
   #--- Add Extensions
+    var @initializerMap initializerMap = {}
     addExtensions (
+      !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
       !inExtensionGetterMapForBuildingContext
       !inExtensionSetterMapForBuildingContext
@@ -372,6 +375,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap
       !self.mClassTypeName
       !isClass: true
+      !?initializerMap
       !?getterMap
       !?setterMap
       !?instanceMethodMap
@@ -395,6 +399,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !allTypedPropertyList: allTypedAttributeList
       !propertyMap: attributeMap
       !currentTypedPropertyList: currentClassTypedPropertyList
+      !initializerMap: initializerMap
       !classFunctionMap: classFunctionMap
       !getterMap: getterMap
       !setterMap: setterMap
@@ -563,6 +568,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       !selfTypeDefinition.isConcrete
+      !selfTypeDefinition.initializerMap
       !selfTypeDefinition.classFunctionMap
       !selfTypeDefinition.getterMap
       !selfTypeDefinition.setterMap

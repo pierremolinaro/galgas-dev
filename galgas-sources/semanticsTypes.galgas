@@ -35,9 +35,7 @@ list @functionSignature {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  C O N S T R U C T O R    M A P
-#
+#  CLASS FUNCTION MAP
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @classFunctionMap {
@@ -45,8 +43,18 @@ map @classFunctionMap {
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType
   insert or replace
-  insert insertKey error message "the '%K' constructor has been already defined"
-  search searchKey error message "the '%K' constuctor is not declared"
+  insert insertKey error message "the '%K' class function has been already defined"
+  search searchKey error message "the '%K' class function is not declared"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#  INITIALIZER MAP
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @initializerMap { // Key is argument signature
+  public let @functionSignature mArgumentTypeList
+  insert insertKey error message "the '%K' initializer has been already defined"
+  search searchKey error message "the '%K' initializer is not declared"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

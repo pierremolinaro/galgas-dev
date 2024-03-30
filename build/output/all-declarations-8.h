@@ -26,6 +26,8 @@ class GALGAS_unaryMinusExpressionForGeneration : public GALGAS_semanticExpressio
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -124,6 +126,8 @@ class GALGAS_unaryMinusExpressionForGeneration_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -174,6 +178,8 @@ class GALGAS_varInExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_lstring readProperty_mVarName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -275,6 +281,8 @@ class GALGAS_varInExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -327,6 +335,8 @@ class GALGAS_varInExpressionForGeneration : public GALGAS_semanticExpressionForG
   public: class GALGAS_string readProperty_mNameForCheckingFormalParameterUsing (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -429,6 +439,8 @@ class GALGAS_varInExpressionForGeneration_2D_weak : public GALGAS_semanticExpres
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -505,8 +517,11 @@ class GALGAS_actualOutputExpressionList_2D_element : public AC_GALGAS_root {
     mProperty_mEndOfExpressionLocation = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_actualOutputExpressionList_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_actualOutputExpressionList_2D_element (const GALGAS_lstring & in_mActualSelector,
@@ -514,6 +529,8 @@ class GALGAS_actualOutputExpressionList_2D_element : public AC_GALGAS_root {
                                                         const GALGAS_location & in_mEndOfExpressionLocation) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -583,6 +600,8 @@ class GALGAS_trueExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -684,6 +703,8 @@ class GALGAS_trueExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -734,6 +755,8 @@ class GALGAS_falseExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -835,6 +858,8 @@ class GALGAS_falseExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -883,6 +908,8 @@ class GALGAS_trueExpressionForGeneration : public GALGAS_semanticExpressionForGe
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -982,6 +1009,8 @@ class GALGAS_trueExpressionForGeneration_2D_weak : public GALGAS_semanticExpress
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1030,6 +1059,8 @@ class GALGAS_falseExpressionForGeneration : public GALGAS_semanticExpressionForG
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1126,6 +1157,8 @@ class GALGAS_falseExpressionForGeneration_2D_weak : public GALGAS_semanticExpres
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1178,6 +1211,8 @@ class GALGAS_literalStringExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_stringlist readProperty_mStringSequence (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1282,6 +1317,8 @@ class GALGAS_literalStringExpressionAST_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1332,6 +1369,8 @@ class GALGAS_literalStringExpressionForGeneration : public GALGAS_semanticExpres
   public: class GALGAS_string readProperty_mString (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1431,6 +1470,8 @@ class GALGAS_literalStringExpressionForGeneration_2D_weak : public GALGAS_semant
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1481,6 +1522,8 @@ class GALGAS_literalCharExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_lchar readProperty_mCharacter (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1582,6 +1625,8 @@ class GALGAS_literalCharExpressionAST_2D_weak : public GALGAS_semanticExpression
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1632,6 +1677,8 @@ class GALGAS_literalCharExpressionForGeneration : public GALGAS_semanticExpressi
   public: class GALGAS_char readProperty_mCharacter (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1731,6 +1778,8 @@ class GALGAS_literalCharExpressionForGeneration_2D_weak : public GALGAS_semantic
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1781,6 +1830,8 @@ class GALGAS_literalDoubleExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_ldouble readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1882,6 +1933,8 @@ class GALGAS_literalDoubleExpressionAST_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1932,6 +1985,8 @@ class GALGAS_literalDoubleExpressionForGeneration : public GALGAS_semanticExpres
   public: class GALGAS_double readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2031,6 +2086,8 @@ class GALGAS_literalDoubleExpressionForGeneration_2D_weak : public GALGAS_semant
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2081,6 +2138,8 @@ class GALGAS_literalBigIntExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_lbigint readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2182,6 +2241,8 @@ class GALGAS_literalBigIntExpressionAST_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2232,6 +2293,8 @@ class GALGAS_literalUIntExpressionForGeneration : public GALGAS_semanticExpressi
   public: class GALGAS_uint readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2331,6 +2394,8 @@ class GALGAS_literalUIntExpressionForGeneration_2D_weak : public GALGAS_semantic
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2381,6 +2446,8 @@ class GALGAS_literalUInt_36__34_ExpressionForGeneration : public GALGAS_semantic
   public: class GALGAS_uint_36__34_ readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2480,6 +2547,8 @@ class GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak : public GALGAS_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2530,6 +2599,8 @@ class GALGAS_literalSIntExpressionForGeneration : public GALGAS_semanticExpressi
   public: class GALGAS_sint readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2629,6 +2700,8 @@ class GALGAS_literalSIntExpressionForGeneration_2D_weak : public GALGAS_semantic
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2679,6 +2752,8 @@ class GALGAS_literalSInt_36__34_ExpressionForGeneration : public GALGAS_semantic
   public: class GALGAS_sint_36__34_ readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2778,6 +2853,8 @@ class GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak : public GALGAS_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2828,6 +2905,8 @@ class GALGAS_literalBigIntExpressionForGeneration : public GALGAS_semanticExpres
   public: class GALGAS_bigint readProperty_mValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2927,6 +3006,8 @@ class GALGAS_literalBigIntExpressionForGeneration_2D_weak : public GALGAS_semant
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2992,6 +3073,8 @@ class GALGAS_comparison : public AC_GALGAS_root {
   public: inline enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3098,6 +3181,8 @@ class GALGAS_comparisonExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3208,6 +3293,8 @@ class GALGAS_comparisonExpressionAST_2D_weak : public GALGAS_semanticExpressionA
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3262,6 +3349,8 @@ class GALGAS_comparisonExpressionForGeneration : public GALGAS_semanticExpressio
   public: class GALGAS_semanticExpressionForGeneration readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3367,6 +3456,8 @@ class GALGAS_comparisonExpressionForGeneration_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3421,6 +3512,8 @@ class GALGAS_rightShiftExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3528,6 +3621,8 @@ class GALGAS_rightShiftExpressionAST_2D_weak : public GALGAS_semanticExpressionA
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3582,6 +3677,8 @@ class GALGAS_leftShiftExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3689,6 +3786,8 @@ class GALGAS_leftShiftExpressionAST_2D_weak : public GALGAS_semanticExpressionAS
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3743,6 +3842,8 @@ class GALGAS_addExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3850,6 +3951,8 @@ class GALGAS_addExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_w
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3904,6 +4007,8 @@ class GALGAS_addExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4011,6 +4116,8 @@ class GALGAS_addExpressionNoOverflowAST_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4065,6 +4172,8 @@ class GALGAS_subExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4172,6 +4281,8 @@ class GALGAS_subExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_w
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4226,6 +4337,8 @@ class GALGAS_subExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4333,6 +4446,8 @@ class GALGAS_subExpressionNoOverflowAST_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4404,6 +4519,8 @@ class GALGAS_binaryOperator : public AC_GALGAS_root {
   public: inline enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4545,6 +4662,8 @@ class GALGAS_binaryOperatorExpressionForGeneration : public GALGAS_semanticExpre
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4649,6 +4768,8 @@ class GALGAS_binaryOperatorExpressionForGeneration_2D_weak : public GALGAS_seman
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4703,6 +4824,8 @@ class GALGAS_multiplicationExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4810,6 +4933,8 @@ class GALGAS_multiplicationExpressionAST_2D_weak : public GALGAS_semanticExpress
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4864,6 +4989,8 @@ class GALGAS_multiplicationExpressionNoOverflowAST : public GALGAS_semanticExpre
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4971,6 +5098,8 @@ class GALGAS_multiplicationExpressionNoOverflowAST_2D_weak : public GALGAS_seman
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5025,6 +5154,8 @@ class GALGAS_divisionExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5132,6 +5263,8 @@ class GALGAS_divisionExpressionAST_2D_weak : public GALGAS_semanticExpressionAST
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5186,6 +5319,8 @@ class GALGAS_divisionExpressionNoOverflowAST : public GALGAS_semanticExpressionA
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5293,6 +5428,8 @@ class GALGAS_divisionExpressionNoOverflowAST_2D_weak : public GALGAS_semanticExp
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5347,6 +5484,8 @@ class GALGAS_moduloExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5454,6 +5593,8 @@ class GALGAS_moduloExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5510,6 +5651,8 @@ class GALGAS_testDynamicClassInExpressionAST : public GALGAS_semanticExpressionA
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5620,6 +5763,8 @@ class GALGAS_testDynamicClassInExpressionAST_2D_weak : public GALGAS_semanticExp
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5674,6 +5819,8 @@ class GALGAS_castInExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5781,6 +5928,8 @@ class GALGAS_castInExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5835,6 +5984,8 @@ class GALGAS_testDynamicClassInExpressionForGeneration : public GALGAS_semanticE
   public: class GALGAS_unifiedTypeMapEntry readProperty_mCastType (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5940,6 +6091,8 @@ class GALGAS_testDynamicClassInExpressionForGeneration_2D_weak : public GALGAS_s
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5992,6 +6145,8 @@ class GALGAS_extractObjectInExpressionForGeneration : public GALGAS_semanticExpr
   public: class GALGAS_string readProperty_mTypeName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6094,6 +6249,8 @@ class GALGAS_extractObjectInExpressionForGeneration_2D_weak : public GALGAS_sema
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6148,6 +6305,8 @@ class GALGAS_optionExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_lstring readProperty_mOptionGetterName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6255,6 +6414,8 @@ class GALGAS_optionExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6309,6 +6470,8 @@ class GALGAS_optionValueExpressionForGeneration : public GALGAS_semanticExpressi
   public: class GALGAS_string readProperty_mOptionEntryName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6414,6 +6577,8 @@ class GALGAS_optionValueExpressionForGeneration_2D_weak : public GALGAS_semantic
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6468,6 +6633,8 @@ class GALGAS_optionCharExpressionForGeneration : public GALGAS_semanticExpressio
   public: class GALGAS_string readProperty_mOptionEntryName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6573,6 +6740,8 @@ class GALGAS_optionCharExpressionForGeneration_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6627,6 +6796,8 @@ class GALGAS_optionStringExpressionForGeneration : public GALGAS_semanticExpress
   public: class GALGAS_string readProperty_mOptionEntryName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6732,6 +6903,8 @@ class GALGAS_optionStringExpressionForGeneration_2D_weak : public GALGAS_semanti
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6786,6 +6959,8 @@ class GALGAS_optionCommentExpressionForGeneration : public GALGAS_semanticExpres
   public: class GALGAS_string readProperty_mOptionEntryName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6891,6 +7066,8 @@ class GALGAS_optionCommentExpressionForGeneration_2D_weak : public GALGAS_semant
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6943,6 +7120,8 @@ class GALGAS_lexiqueIntrospectionExpressionAST : public GALGAS_semanticExpressio
   public: class GALGAS_lstring readProperty_mLexiqueGetterName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7047,6 +7226,8 @@ class GALGAS_lexiqueIntrospectionExpressionAST_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7099,6 +7280,8 @@ class GALGAS_lexiqueIntrospectionForGeneration : public GALGAS_semanticExpressio
   public: class GALGAS_string readProperty_mLexiqueGetterName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7201,6 +7384,8 @@ class GALGAS_lexiqueIntrospectionForGeneration_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7251,6 +7436,8 @@ class GALGAS_filewrapperObjectInstanciationInExpressionAST : public GALGAS_seman
   public: class GALGAS_lstring readProperty_mFilewrapperName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7352,6 +7539,8 @@ class GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak : public GALG
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7404,6 +7593,8 @@ class GALGAS_filewrapperInExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_lstring readProperty_mFilewrapperPath (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7508,6 +7699,8 @@ class GALGAS_filewrapperInExpressionAST_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7562,6 +7755,8 @@ class GALGAS_filewrapperTemplateInExpressionAST : public GALGAS_semanticExpressi
   public: class GALGAS_actualOutputExpressionList readProperty_mExpressions (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7669,6 +7864,8 @@ class GALGAS_filewrapperTemplateInExpressionAST_2D_weak : public GALGAS_semantic
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7721,6 +7918,8 @@ class GALGAS_filewrapperInExpressionForGeneration : public GALGAS_semanticExpres
   public: class GALGAS_string readProperty_mFilewrapperPath (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7823,6 +8022,8 @@ class GALGAS_filewrapperInExpressionForGeneration_2D_weak : public GALGAS_semant
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -7877,6 +8078,8 @@ class GALGAS_filewrapperTemplateInExpressionForGeneration : public GALGAS_semant
   public: class GALGAS_semanticExpressionListForGeneration readProperty_mActualOutputParameterList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7982,6 +8185,8 @@ class GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak : public GALGA
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -8036,6 +8241,8 @@ class GALGAS_filewrapperStaticPathInExpressionForGeneration : public GALGAS_sema
   public: class GALGAS_bool readProperty_mIsTextFile (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8141,6 +8348,8 @@ class GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak : public GAL
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -8199,6 +8408,8 @@ class GALGAS_getterCallExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_location readProperty_mExpressionLocation (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8312,6 +8523,8 @@ class GALGAS_getterCallExpressionAST_2D_weak : public GALGAS_semanticExpressionA
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -8372,6 +8585,8 @@ class GALGAS_getterCallExpressionForGeneration : public GALGAS_semanticExpressio
   public: class GALGAS_bool readProperty_mHasCompilerArgument (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8486,6 +8701,8 @@ class GALGAS_getterCallExpressionForGeneration_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -8542,6 +8759,8 @@ class GALGAS_constructorExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_location readProperty_locationForOldStyleCollectionInitializerError (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8652,6 +8871,8 @@ class GALGAS_constructorExpressionAST_2D_weak : public GALGAS_semanticExpression
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -8708,6 +8929,8 @@ class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressi
   public: class GALGAS_bool readProperty_mHasCompilerArgument (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8816,6 +9039,8 @@ class GALGAS_constructorExpressionForGeneration_2D_weak : public GALGAS_semantic
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -8868,6 +9093,8 @@ class GALGAS_defaultConstructorExpressionForGeneration : public GALGAS_semanticE
   public: class GALGAS_bool readProperty_mHasCompilerArgument (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8970,6 +9197,8 @@ class GALGAS_defaultConstructorExpressionForGeneration_2D_weak : public GALGAS_s
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -9022,6 +9251,8 @@ class GALGAS_functionCallExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_actualOutputExpressionList readProperty_mExpressionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9126,6 +9357,8 @@ class GALGAS_functionCallExpressionAST_2D_weak : public GALGAS_semanticExpressio
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -9178,6 +9411,8 @@ class GALGAS_functionCallExpressionForGeneration : public GALGAS_semanticExpress
   public: class GALGAS_semanticExpressionListForGeneration readProperty_mExpressions (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9280,6 +9515,8 @@ class GALGAS_functionCallExpressionForGeneration_2D_weak : public GALGAS_semanti
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -9330,6 +9567,8 @@ class GALGAS_literalTypeInExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_lstring readProperty_mLiteralTypeName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9431,6 +9670,8 @@ class GALGAS_literalTypeInExpressionAST_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -9481,6 +9722,8 @@ class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpres
   public: class GALGAS_unifiedTypeMapEntry readProperty_mLiteralType (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9580,6 +9823,8 @@ class GALGAS_literalTypeInExpressionForGeneration_2D_weak : public GALGAS_semant
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -9632,6 +9877,8 @@ class GALGAS_collectionValueElementList : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9763,6 +10010,8 @@ class GALGAS_abstractCollectionValueElement : public AC_GALGAS_reference_class {
 //--------------------------------- Property read access
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -9859,13 +10108,18 @@ class GALGAS_collectionValueElementList_2D_element : public AC_GALGAS_root {
     mProperty_mElement = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_collectionValueElementList_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_collectionValueElementList_2D_element (const GALGAS_abstractCollectionValueElement & in_mElement) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9925,6 +10179,8 @@ class GALGAS_abstractCollectionValueElement_2D_weak : public AC_GALGAS_weak_refe
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -9977,6 +10233,8 @@ class GALGAS_expressionCollectionValue : public GALGAS_abstractCollectionValueEl
   public: class GALGAS_location readProperty_mExpressionLocation (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10081,6 +10339,8 @@ class GALGAS_expressionCollectionValue_2D_weak : public GALGAS_abstractCollectio
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -10133,6 +10393,8 @@ class GALGAS_expressionListCollectionValue : public GALGAS_abstractCollectionVal
   public: class GALGAS_location readProperty_mEndOfExpressionLocation (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10237,6 +10499,8 @@ class GALGAS_expressionListCollectionValue_2D_weak : public GALGAS_abstractColle
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -10291,6 +10555,8 @@ class GALGAS_collectionValueAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_location readProperty_mEndOfCollectionValue (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10398,6 +10664,8 @@ class GALGAS_collectionValueAST_2D_weak : public GALGAS_semanticExpressionAST_2D
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -10478,6 +10746,8 @@ class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10611,6 +10881,8 @@ class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_refe
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -10704,13 +10976,18 @@ class GALGAS_collectionValueElementListForGeneration_2D_element : public AC_GALG
     mProperty_mElement = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_collectionValueElementListForGeneration_2D_element (void) ;
+
+//--------------------------------- set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_collectionValueElementListForGeneration_2D_element (const GALGAS_abstractCollectionValueElementForGeneration & in_mElement) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10769,6 +11046,8 @@ class GALGAS_abstractCollectionValueElementForGeneration_2D_weak : public AC_GAL
   public: GALGAS_abstractCollectionValueElementForGeneration bang_abstractCollectionValueElementForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10836,6 +11115,8 @@ class GALGAS_expressionCollectionValueForGeneration : public GALGAS_abstractColl
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10934,6 +11215,8 @@ class GALGAS_expressionCollectionValueForGeneration_2D_weak : public GALGAS_abst
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -10984,6 +11267,8 @@ class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractColle
   public: class GALGAS_semanticExpressionListForGeneration readProperty_mExpressionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11082,6 +11367,8 @@ class GALGAS_expressionListCollectionForGeneration_2D_weak : public GALGAS_abstr
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -11132,6 +11419,8 @@ class GALGAS_expressionCollectionForGeneration : public GALGAS_semanticExpressio
   public: class GALGAS_collectionValueElementListForGeneration readProperty_mElementList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11231,6 +11520,8 @@ class GALGAS_expressionCollectionForGeneration_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -11281,6 +11572,8 @@ class GALGAS_selfInExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_location readProperty_mSelfLocation (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11382,6 +11675,8 @@ class GALGAS_selfInExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -11432,6 +11727,8 @@ class GALGAS_selfInExpressionForGeneration : public GALGAS_semanticExpressionFor
   public: class GALGAS_string readProperty_mSelfCppName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11531,6 +11828,8 @@ class GALGAS_selfInExpressionForGeneration_2D_weak : public GALGAS_semanticExpre
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -11585,6 +11884,8 @@ class GALGAS_structPropertyAccessExpressionAST : public GALGAS_semanticExpressio
   public: class GALGAS_lstring readProperty_mPropertyName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11692,6 +11993,8 @@ class GALGAS_structPropertyAccessExpressionAST_2D_weak : public GALGAS_semanticE
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -11744,6 +12047,8 @@ class GALGAS_structPropertyAccessExpressionForGeneration : public GALGAS_semanti
   public: class GALGAS_string readProperty_mStructFieldName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11846,6 +12151,8 @@ class GALGAS_structPropertyAccessExpressionForGeneration_2D_weak : public GALGAS
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -11898,6 +12205,8 @@ class GALGAS_notExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12002,6 +12311,8 @@ class GALGAS_notExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_w
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -12052,6 +12363,8 @@ class GALGAS_notExpressionForGeneration : public GALGAS_semanticExpressionForGen
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12151,6 +12464,8 @@ class GALGAS_notExpressionForGeneration_2D_weak : public GALGAS_semanticExpressi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -12203,6 +12518,8 @@ class GALGAS_tildeExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12307,6 +12624,8 @@ class GALGAS_tildeExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -12357,6 +12676,8 @@ class GALGAS_tildeExpressionForGeneration : public GALGAS_semanticExpressionForG
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12456,6 +12777,8 @@ class GALGAS_tildeExpressionForGeneration_2D_weak : public GALGAS_semanticExpres
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -12508,6 +12831,8 @@ class GALGAS_bangExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12612,6 +12937,8 @@ class GALGAS_bangExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -12664,6 +12991,8 @@ class GALGAS_bangExpressionForGeneration : public GALGAS_semanticExpressionForGe
   public: class GALGAS_string readProperty_mReceiverTypeName (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12766,6 +13095,8 @@ class GALGAS_bangExpressionForGeneration_2D_weak : public GALGAS_semanticExpress
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -12818,6 +13149,8 @@ class GALGAS_unaryWrappingMinusExpressionAST : public GALGAS_semanticExpressionA
   public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12922,6 +13255,8 @@ class GALGAS_unaryWrappingMinusExpressionAST_2D_weak : public GALGAS_semanticExp
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -12972,6 +13307,8 @@ class GALGAS_unaryWrappingMinusExpressionForGeneration : public GALGAS_semanticE
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -13071,6 +13408,8 @@ class GALGAS_unaryWrappingMinusExpressionForGeneration_2D_weak : public GALGAS_s
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -13125,6 +13464,8 @@ class GALGAS_orExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -13232,6 +13573,8 @@ class GALGAS_orExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_we
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -13286,6 +13629,8 @@ class GALGAS_orShortExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -13393,6 +13738,8 @@ class GALGAS_orShortExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -13447,6 +13794,8 @@ class GALGAS_xorExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -13554,6 +13903,8 @@ class GALGAS_xorExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_w
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -13608,6 +13959,8 @@ class GALGAS_closedSliceExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -13715,6 +14068,8 @@ class GALGAS_closedSliceExpressionAST_2D_weak : public GALGAS_semanticExpression
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -13769,6 +14124,8 @@ class GALGAS_openedSliceExpressionAST : public GALGAS_semanticExpressionAST {
   public: class GALGAS_semanticExpressionAST readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

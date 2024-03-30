@@ -170,11 +170,12 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
   #·······························································································
 
   override method enterDeclarationInSemanticContext
-                          ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-                          ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-                          ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-                          ?!@unifiedTypeMap ioTypeMap
-                          ?!@semanticContext ioSemanticContext {
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext ioSemanticContext {
   #--- Build signature
     var routineSignature = @formalParameterSignature {}
     for argument in self.mFormalArgumentListAST do

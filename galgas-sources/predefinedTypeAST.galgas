@@ -59,11 +59,12 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   #-----------------------------------------------------------------------------------------------
 
   override method enterDeclarationInSemanticContext
-                                  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-                                  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-                                  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-                                  ?!@unifiedTypeMap ioTypeMap
-                                  ?!@semanticContext ioSemanticContext {
+    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext ioSemanticContext {
     [self getOptionalMethodMap !?ioTypeMap ?let @optionalMethodMap optionalMethodMap]
     [self getClassFunctionMap !?ioTypeMap ?let @classFunctionMap constructorMap]
     [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
@@ -85,7 +86,9 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       [!?ioTypeMap makeEntryFromString !enumeratedTypeName ?enumeratedTypeEntry]
     end
   #--- Add Extensions
+    var @initializerMap initializerMap = {}
     addExtensions (
+      !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
       !inExtensionGetterMapForBuildingContext
       !inExtensionSetterMapForBuildingContext
@@ -93,6 +96,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !?ioTypeMap
       !@lstring.new {!self.mPredefinedTypeName !@location.here}
       !isClass: false
+      !?initializerMap
       !?getterMap
       !?setterMap
       !?instanceMethodMap
@@ -109,6 +113,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !allTypedPropertyList: {}
       !propertyMap: {}
       !currentTypedPropertyList: {}
+      !initializerMap: initializerMap
       !classFunctionMap: constructorMap
       !getterMap: getterMap
       !setterMap: setterMap

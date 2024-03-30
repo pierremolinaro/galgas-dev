@@ -332,11 +332,88 @@ override method @externFunctionDeclarationAST semanticAnalysis
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                        ?let @analysisContext inAnalysisContext
+                        ?!@unifiedTypeMap ioTypeMap
+                        ?let @formalInputParameterListAST inFormalArgumentListAST
+                        ?let @semanticInstructionListAST inInstructionList
+                        ?let @location inEndOfMethodLocation
+                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+                        !@formalInputParameterListForGeneration outSignatureForGeneration {
+  var variableMap = @localVarManager.new
+#--- Enter properties that should be explicitly initialized
+  if let [inAnalysisContext.selfAvailability available ?type: let type ?selfMutability: let selfMutability] then
+    for property in [type definition].allTypedPropertyList do
+      let initialized = if selfMutability == .initializer
+        then property.initialization != .none
+        else true
+      end
+      [!?variableMap insertInitializerSelfProperty
+        !property.name.string
+        !inEndOfMethodLocation
+        !property.typeEntry
+        !"<< unused >>"
+        !"self." + property.name
+        !initialized
+      ]
+    end
+  end
+#--- Enter formal parameters
+  outSignatureForGeneration = @formalInputParameterListForGeneration {}
+  for formalArg in inFormalArgumentListAST do
+    let parameterType = [ioTypeMap typeMapEntryForLKey !formalArg.mFormalArgumentTypeName]
+    if formalArg.mIsConstant then
+      let @string cppName = "constinArgument_" + [formalArg.mFormalArgumentName.string identifierRepresentation]
+      outSignatureForGeneration +=
+        !formalArg.mFormalSelector
+        !parameterType
+        !cppName
+        !formalArg.mFormalArgumentName
+        !formalArg.mIsConstant
+      if formalArg.mIsUnused then
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
+      else
+        [!?variableMap insertConstantInputFormalArgument !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
+      end
+    else
+      let @string cppName = "inArgument_" + [formalArg.mFormalArgumentName.string identifierRepresentation]
+      outSignatureForGeneration +=
+        !formalArg.mFormalSelector
+        !parameterType
+        !cppName
+        !formalArg.mFormalArgumentName
+        !formalArg.mIsConstant
+      if formalArg.mIsUnused then
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
+      else
+        [!?variableMap insertInputFormalArgument !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
+      end
+    end
+  end
+#---  Analyze instruction list
+  outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration {}
+  for (mInstruction) in inInstructionList do
+    [mInstruction analyzeSemanticInstruction
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !?ioTypeMap
+      !?outSemanticInstructionListForGeneration
+      !?variableMap
+    ]
+   end
+#---
+  [variableMap checkAutomatonStates !inEndOfMethodLocation]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 proc analyzeFunctionBody
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
+  ?!@unifiedTypeMap ioTypeMap
   ?let @formalInputParameterListAST inFunctionSignature
   ?let @typedPropertyList inTypedAttributeList
   ?let @string inAttributeVariableNamePrefix
@@ -350,7 +427,7 @@ proc analyzeFunctionBody
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 {
   var variableMap = @localVarManager.new
-#--- Enter instance attributes
+#--- Enter instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (typeEntry name 3*) in inTypedAttributeList do
       [!?variableMap insertNonMutableProperty
@@ -363,33 +440,33 @@ proc analyzeFunctionBody
   end
 #--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration {}
-  for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName mIsUnused mIsConstant) in inFunctionSignature do
-    let parameterType = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
-    if mIsConstant then
-      let @string cppName = "constinArgument_" + [mFormalArgumentName.string identifierRepresentation]
+  for formalArg in inFunctionSignature do
+    let parameterType = [ioTypeMap typeMapEntryForLKey !formalArg.mFormalArgumentTypeName]
+    if formalArg.mIsConstant then
+      let @string cppName = "constinArgument_" + [formalArg.mFormalArgumentName.string identifierRepresentation]
       outSignatureForGeneration +=
-        !mFormalSelector
+        !formalArg.mFormalSelector
         !parameterType
         !cppName
-        !mFormalArgumentName
-        !mIsConstant
-      if mIsUnused then
-        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName !cppName]
+        !formalArg.mFormalArgumentName
+        !formalArg.mIsConstant
+      if formalArg.mIsUnused then
+        [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
       else
-        [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !cppName !cppName]
+        [!?variableMap insertConstantInputFormalArgument !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
       end
     else
-      let @string cppName = "inArgument_" + [mFormalArgumentName.string identifierRepresentation]
+      let @string cppName = "inArgument_" + [formalArg.mFormalArgumentName.string identifierRepresentation]
       outSignatureForGeneration +=
-        !mFormalSelector
+        !formalArg.mFormalSelector
         !parameterType
         !cppName
-        !mFormalArgumentName
-        !mIsConstant
-      if mIsUnused then
-        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName !cppName]
+        !formalArg.mFormalArgumentName
+        !formalArg.mIsConstant
+      if formalArg.mIsUnused then
+        [!?variableMap insertInputFormalArgumentDeclaredAsUnused !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
       else
-        [!?variableMap insertInputFormalArgument !mFormalArgumentName !parameterType !cppName !cppName]
+        [!?variableMap insertInputFormalArgument !formalArg.mFormalArgumentName !parameterType !cppName !cppName]
       end
     end
   end

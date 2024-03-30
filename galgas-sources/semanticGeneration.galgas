@@ -602,9 +602,7 @@ proc generateExtensionSetter
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#
 # E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N
-#
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
@@ -695,6 +693,91 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
+# INITIALIZER    IMPLEMENTATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
+                         ?let @string inInitializerName
+                         ?!@stringset ioInclusionSet
+                          ?let @formalInputParameterListForGeneration inFormalArgumentList
+                          ?let @semanticInstructionListForGeneration inInstructionList
+                          !@string outGeneratedCode {
+  let className = [inReceiverType definition].typeName.string
+#--- Build unused variable set
+  var @stringset unusedVariableCppNameSet = {}
+  unusedVariableCppNameSet += !compilerCppName ()
+  unusedVariableCppNameSet += !"object"
+  for formalArg in inFormalArgumentList do
+    unusedVariableCppNameSet += !formalArg.mFormalArgumentCppName
+  end
+#--- Generate body
+  var @uint temporaryVariableIndex = 0
+  var @string routineBody = ""
+  [!?routineBody incIndentation !2]
+  for (mInstruction) in inInstructionList do
+    [mInstruction generateInstruction
+      !?ioInclusionSet
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !false # inGenerateSyntaxDirectedTranslationString
+      !?routineBody
+    ]
+  end
+  [!?routineBody decIndentation !2]
+#--- Generate inclusions
+#  var @unifiedTypeMapEntry baseType = inReceiverType
+#  var @bool searching = true
+#  loop (@uint. max) while searching do
+#    if not [[baseType definition].superType isNull] then
+#      if [[[baseType definition].superType definition].instanceMethodMap hasKey !inMethodName] then
+#        baseType = [baseType definition].superType
+#      else
+#        searching = false
+#      end
+#    else
+#      searching = false
+#    end
+#  end
+#  ioInclusionSet += !"method-" + [[baseType definition].typeName.string fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
+  [inReceiverType addHeaderFileName !?ioInclusionSet]
+  for formalArg in inFormalArgumentList do
+    [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  end
+#--- Generate header
+  outGeneratedCode = "GALGAS_" + [className identifierRepresentation]
+     + " GALGAS_" + [className identifierRepresentation] 
+     + "::init" + [inInitializerName identifierRepresentation] + " ("
+  let @uint colRef = [outGeneratedCode currentColumn]
+#---
+  for formalArg in inFormalArgumentList do
+    if formalArg.mIsConstant then
+      outGeneratedCode += "const GALGAS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+    else
+      outGeneratedCode += "GALGAS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+    end
+    if [unusedVariableCppNameSet hasKey !formalArg.mFormalArgumentCppName] then
+      outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
+    else
+      outGeneratedCode +=  formalArg.mFormalArgumentCppName
+    end
+    outGeneratedCode += ",\n"
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+  end
+#--- Compiler argument
+  outGeneratedCode += "Compiler * " + compilerCppName () + "\n"
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef]
+  outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
+  outGeneratedCode += ") {\n"
+#--- Generate routine body
+  outGeneratedCode += "  GALGAS_" + [className identifierRepresentation] + " result ;\n"
+  outGeneratedCode += "  result.setInitializedProperties (" + compilerCppName () + ") ;\n"
+  outGeneratedCode += routineBody
+#---
+  outGeneratedCode += "  return result ;\n"
+  outGeneratedCode += "}"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation Filewrappers
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -706,6 +789,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
+    ?@initializerMap INITIALIZER_MAP
     ?@classFunctionMap CLASS_FUNC_MAP
     ?@getterMap GETTER_MAP
     ?@setterMap MODIFIER_MAP
@@ -902,6 +986,13 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
 filewrapper semanticComponentGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
 }{
+#------------ initializer
+  template initializerImplementation "initializer.cpp.galgasTemplate"
+    ?@string CLASS_NAME
+    ?@string INITIALIZER_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@string INITIALIZER_IMPLEMENTATION
+
 #------------ Extension getter
   template abstractExtensionGetterDeclaration "abstract-extension-getter.h.galgasTemplate"
     ?@string CLASS_NAME
@@ -1546,6 +1637,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !selfTypeDefinition.isConcrete
+        !selfTypeDefinition.initializerMap
         !selfTypeDefinition.classFunctionMap
         !selfTypeDefinition.getterMap
         !selfTypeDefinition.setterMap

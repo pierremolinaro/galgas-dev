@@ -131,6 +131,7 @@ override method @listDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -328,7 +329,9 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #--- Add extensions
+  var @initializerMap initializerMap = {}
   addExtensions (
+    !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
@@ -336,6 +339,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?ioTypeMap
     !self.mListTypeName
     !isClass: false
+    !?initializerMap
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -352,6 +356,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !allTypedPropertyList: typedAttributeList
     !propertyMap: {}
     !currentTypedPropertyList: {}
+    !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
@@ -478,26 +483,27 @@ override method @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper listGenerationTemplate.listTypeHeader1
-    !selfTypedefinition.typeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypedefinition.typeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypedefinition.isConcrete
-    !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.getterMap
-    !selfTypedefinition.setterMap
-    !selfTypedefinition.instanceMethodMap
-    !selfTypedefinition.classMethodMap
-    !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.enumerationDescriptorList
-    !selfTypedefinition.mHandledOperatorFlags
-    !selfTypedefinition.mAddAssignOperatorArguments
-    !selfTypedefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.mHandledOperatorFlags
+    !selfTypeDefinition.mAddAssignOperatorArguments
+    !selfTypeDefinition.mTypeForEnumeratedElement
   ]
 }
 
@@ -512,9 +518,9 @@ override method @listTypeForGeneration appendSpecificImplementation
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-  let selfTypedefinition = [self.mSelfTypeEntry definition]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper listGenerationTemplate.listTypeSpecificImplementation
-    !selfTypedefinition.typeName.string
+    !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
     ![[self.mSelfTypeEntry definition].mTypeForEnumeratedElement identifierRepresentation]

@@ -289,7 +289,7 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind {
 
 abstract refclass @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
   public let @bool generateHeader %selector
-  private let @string mImplementationCppFileName %selector
+  public let @string mImplementationCppFileName %selector
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -182,6 +182,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
     #--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
         [declaration.mSemanticDeclaration enterDeclarationInSemanticContext
+          !extensionInitializerForBuildingContext
           !extensionMethodMapForBuildingContext
           !extensionGetterMapForBuildingContext
           !extensionSetterMapForBuildingContext

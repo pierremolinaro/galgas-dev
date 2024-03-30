@@ -1,5 +1,14 @@
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+% for (lkey formalArgumentList) in INITIALIZER_MAP do
+%  public: static GALGAS_%!TYPE_IDENTIFIER% init%![lkey identifierRepresentation]% (%?^
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in formalArgumentList do (IDX)
+      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
+    end
+    %Compiler * inCompiler
+    %!^%COMMA_LOCATION_ARGS) ;
+%end%
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 

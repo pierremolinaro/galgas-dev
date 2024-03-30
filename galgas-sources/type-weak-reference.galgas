@@ -64,6 +64,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
@@ -115,7 +116,9 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   var @getterMap getterMap = {}
   var @setterMap setterMap = {}
   var @instanceMethodMap instanceMethodMap = {}
+  var @initializerMap initializerMap = {}
   addExtensions (
+    !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
@@ -123,6 +126,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !?ioTypeMap
     !self.mWeakReferenceTypeName
     !isClass: false
+    !?initializerMap
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -149,6 +153,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !allTypedPropertyList: {}
     !propertyMap: {} # attributeMap
     !currentTypedPropertyList: {}
+    !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: {}
     !setterMap: {}
@@ -276,26 +281,27 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end
   [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
-  let typedefinition = [self.mSelfTypeEntry definition]
+  let typeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader1
     ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !typedefinition.typeName.string
-    ![typedefinition.typeName.string identifierRepresentation]
-    !typedefinition.isConcrete
-    !typedefinition.classFunctionMap
-    !typedefinition.getterMap
-    !typedefinition.setterMap
-    !typedefinition.instanceMethodMap
-    !typedefinition.classMethodMap
-    !typedefinition.optionalMethodMap
-    !typedefinition.enumerationDescriptorList
-    !typedefinition.mHandledOperatorFlags
-    !typedefinition.mAddAssignOperatorArguments
-    !typedefinition.mTypeForEnumeratedElement
+    !typeDefinition.typeName.string
+    ![typeDefinition.typeName.string identifierRepresentation]
+    !typeDefinition.isConcrete
+    !typeDefinition.initializerMap
+    !typeDefinition.classFunctionMap
+    !typeDefinition.getterMap
+    !typeDefinition.setterMap
+    !typeDefinition.instanceMethodMap
+    !typeDefinition.classMethodMap
+    !typeDefinition.optionalMethodMap
+    !typeDefinition.enumerationDescriptorList
+    !typeDefinition.mHandledOperatorFlags
+    !typeDefinition.mAddAssignOperatorArguments
+    !typeDefinition.mTypeForEnumeratedElement
   ]
  }
 
@@ -307,10 +313,10 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
   !@string outImplementation
 {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-  let typedefinition = [self.mSelfTypeEntry definition]
+  let typeDefinition = [self.mSelfTypeEntry definition]
   outImplementation = [filewrapper typeGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]
-    ![typedefinition.typeName.string identifierRepresentation]
+    ![typeDefinition.typeName.string identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
     !self.allTypedPropertyList
