@@ -1,13 +1,16 @@
 
-
 struct @structTest {
-  public let @string mString
-  public let @uint mInt
+  public var @string mString
+  public let @uint mInt = 34
+  
+  init (?let @string inString) {
+    self.mString = inString
+  }
 }
 
 proc testsuite_struct() {
   println ("*************************************** begin of struct logging")
-  let s = @structTest.new (!"az", !34)
+  let s = @structTest.new (!"az")
   log s
 }
 

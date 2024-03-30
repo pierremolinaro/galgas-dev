@@ -693,7 +693,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-# INITIALIZER    IMPLEMENTATION
+# INITIALIZER IMPLEMENTATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType

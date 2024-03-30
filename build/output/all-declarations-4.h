@@ -3431,7 +3431,7 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
   public: GALGAS_structDeclarationAST (const class cPtr_structDeclarationAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mStructTypeName (void) const ;
+  public: class GALGAS_lstring readProperty_structTypeName (void) const ;
 
   public: class GALGAS_propertyInCollectionListAST readProperty_mStructurePropertyListAST (void) const ;
 
@@ -3521,13 +3521,13 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_lstring mProperty_mStructTypeName ;
+  public: GALGAS_lstring mProperty_structTypeName ;
   public: GALGAS_propertyInCollectionListAST mProperty_mStructurePropertyListAST ;
   public: GALGAS_string mProperty_mEnumeratedElementTypeName ;
 
 //--- Constructor
   public: cPtr_structDeclarationAST (const GALGAS_bool & in_isPredefined,
-                                     const GALGAS_lstring & in_mStructTypeName,
+                                     const GALGAS_lstring & in_structTypeName,
                                      const GALGAS_propertyInCollectionListAST & in_mStructurePropertyListAST,
                                      const GALGAS_string & in_mEnumeratedElementTypeName
                                      COMMA_LOCATION_ARGS) ;

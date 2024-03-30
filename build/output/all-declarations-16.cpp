@@ -2201,7 +2201,7 @@ GALGAS_sortedListTypeForGeneration_2D_weak GALGAS_sortedListTypeForGeneration_2D
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_structDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mStructTypeName.printNonNullClassInstanceProperties ("mStructTypeName") ;
+    mProperty_structTypeName.printNonNullClassInstanceProperties ("structTypeName") ;
     mProperty_mStructurePropertyListAST.printNonNullClassInstanceProperties ("mStructurePropertyListAST") ;
     mProperty_mEnumeratedElementTypeName.printNonNullClassInstanceProperties ("mEnumeratedElementTypeName") ;
   }
@@ -2217,7 +2217,7 @@ ComparisonResult cPtr_structDeclarationAST::dynamicObjectCompare (const acPtr_cl
     result = mProperty_isPredefined.objectCompare (p->mProperty_isPredefined) ;
   }
   if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mStructTypeName.objectCompare (p->mProperty_mStructTypeName) ;
+    result = mProperty_structTypeName.objectCompare (p->mProperty_structTypeName) ;
   }
   if (ComparisonResult::operandEqual == result) {
     result = mProperty_mStructurePropertyListAST.objectCompare (p->mProperty_mStructurePropertyListAST) ;
@@ -2262,26 +2262,26 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structDeclarationAST GALGAS_structDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                         const GALGAS_lstring & inAttribute_mStructTypeName,
+                                                                         const GALGAS_lstring & inAttribute_structTypeName,
                                                                          const GALGAS_propertyInCollectionListAST & inAttribute_mStructurePropertyListAST,
                                                                          const GALGAS_string & inAttribute_mEnumeratedElementTypeName
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_structDeclarationAST result ;
-  if (inAttribute_isPredefined.isValid () && inAttribute_mStructTypeName.isValid () && inAttribute_mStructurePropertyListAST.isValid () && inAttribute_mEnumeratedElementTypeName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_structDeclarationAST (inAttribute_isPredefined, inAttribute_mStructTypeName, inAttribute_mStructurePropertyListAST, inAttribute_mEnumeratedElementTypeName COMMA_THERE)) ;
+  if (inAttribute_isPredefined.isValid () && inAttribute_structTypeName.isValid () && inAttribute_mStructurePropertyListAST.isValid () && inAttribute_mEnumeratedElementTypeName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_structDeclarationAST (inAttribute_isPredefined, inAttribute_structTypeName, inAttribute_mStructurePropertyListAST, inAttribute_mEnumeratedElementTypeName COMMA_THERE)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_structDeclarationAST::readProperty_mStructTypeName (void) const {
+GALGAS_lstring GALGAS_structDeclarationAST::readProperty_structTypeName (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
     cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    return p->mProperty_mStructTypeName ;
+    return p->mProperty_structTypeName ;
   }
 }
 
@@ -2314,12 +2314,12 @@ GALGAS_string GALGAS_structDeclarationAST::readProperty_mEnumeratedElementTypeNa
 //--------------------------------------------------------------------------------------------------
 
 cPtr_structDeclarationAST::cPtr_structDeclarationAST (const GALGAS_bool & in_isPredefined,
-                                                      const GALGAS_lstring & in_mStructTypeName,
+                                                      const GALGAS_lstring & in_structTypeName,
                                                       const GALGAS_propertyInCollectionListAST & in_mStructurePropertyListAST,
                                                       const GALGAS_string & in_mEnumeratedElementTypeName
                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
-mProperty_mStructTypeName (in_mStructTypeName),
+mProperty_structTypeName (in_structTypeName),
 mProperty_mStructurePropertyListAST (in_mStructurePropertyListAST),
 mProperty_mEnumeratedElementTypeName (in_mEnumeratedElementTypeName) {
 }
@@ -2335,7 +2335,7 @@ void cPtr_structDeclarationAST::description (String & ioString,
   ioString.appendCString ("[@structDeclarationAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mStructTypeName.description (ioString, inIndentation+1) ;
+  mProperty_structTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mStructurePropertyListAST.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -2347,7 +2347,7 @@ void cPtr_structDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_mStructTypeName, mProperty_mStructurePropertyListAST, mProperty_mEnumeratedElementTypeName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_structTypeName, mProperty_mStructurePropertyListAST, mProperty_mEnumeratedElementTypeName COMMA_THERE)) ;
   return ptr ;
 }
 

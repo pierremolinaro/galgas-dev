@@ -215,7 +215,7 @@ refclass @initializerAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "initializer @" + self.mTypeName + initializerName
       !@extensionInitializerForGeneration.new {
-        !generateHeader: true # Generate Cpp header file
+        !generateHeader: false # Generate Cpp header file
         !mImplementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
         !selfType
         !initializerName
@@ -263,28 +263,8 @@ refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForG
 
   #·······························································································
 
-  override getter headerKind ->@headerKind {
-    result = @headerKind.oneHeader
-  }
-
-  #·······························································································
-
-  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
-                                     !@string outHeader {
-    outHeader = ""
-#    if self.mImplementedAsFunction then
-#      outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
-#        ![self.mReceiverType definition].typeName.string
-#        !self.mExtensionMethodName
-#        !self.mExtensionMethodFormalParameterList
-#      ]
-#    else
-#      outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodDeclaration
-#        ![self.mReceiverType definition].typeName.string
-#        !self.mExtensionMethodName
-#        !self.mExtensionMethodFormalParameterList
-#      ]
-#    end
+  override getter headerKind -> @headerKind {
+    result = .noHeader
   }
 
   #·······························································································
@@ -292,7 +272,7 @@ refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForG
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
-    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+#    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     for formalArg in self.formalParameterList do
       [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
@@ -309,7 +289,7 @@ refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForG
 #        searching = false
 #      end
 #    end
-    ioInclusionSet += !self.mImplementationCppFileName
+#    ioInclusionSet += !self.mImplementationCppFileName
 #      !"method-" + [[baseType definition].typeName.string fileNameRepresentation]
 #      + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateInitializer (
