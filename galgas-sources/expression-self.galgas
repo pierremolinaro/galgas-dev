@@ -78,7 +78,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   if let [inAnalysisContext.selfType available ?type: let selfType ?2*] then
-    let @string selfCppName = inAnalysisContext.mSelfObjectCppName
+    let @string selfCppName = inAnalysisContext.selfObjectCppName
     outExpression = @selfInExpressionForGeneration.new {!selfType !self.mSelfLocation !selfCppName}
   else
     error self.mSelfLocation : "'self' not available in this context" : outExpression

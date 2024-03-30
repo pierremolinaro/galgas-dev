@@ -266,7 +266,7 @@ proc analyzeErrorOrWarningInstruction
   [inLocationExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: inAnalysisContext.mPredefinedTypes.mLocationType
+    !inferenceType: inAnalysisContext.predefinedTypes.mLocationType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -274,7 +274,7 @@ proc analyzeErrorOrWarningInstruction
   ]
 #--- Check type
   checkAssignmentTypeWithImplicitGetterCall (
-    !inAnalysisContext.mPredefinedTypes.mLocationType
+    !inAnalysisContext.predefinedTypes.mLocationType
     !outLocationExpression.mResultType
     !inErrorLocation
     !?outLocationExpression
@@ -299,16 +299,16 @@ proc analyzeErrorOrWarningInstruction
       [exp analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
+        !inferenceType: inAnalysisContext.predefinedTypes.mStringListType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?let expression
       ]
-      if (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringListType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringListType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringSetType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType) then
+      if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
         error errorLocation : "expression type is @" + [expression.mResultType definition].typeName.string
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
@@ -317,16 +317,16 @@ proc analyzeErrorOrWarningInstruction
       [exp analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
+        !inferenceType: inAnalysisContext.predefinedTypes.mStringListType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?let expression
       ]
-      if (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringListType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringListType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringSetType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType) then
+      if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
         error errorLocation : "expression type is @" + [expression.mResultType definition].typeName.string
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
@@ -335,16 +335,16 @@ proc analyzeErrorOrWarningInstruction
       [exp analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inferenceType: inAnalysisContext.mPredefinedTypes.mStringListType
+        !inferenceType: inAnalysisContext.predefinedTypes.mStringListType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?let expression
       ]
-      if (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringListType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringListType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringSetType)
-       && (expression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType) then
+      if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
         error errorLocation : "expression type is @" + [expression.mResultType definition].typeName.string
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
@@ -352,7 +352,7 @@ proc analyzeErrorOrWarningInstruction
     end
   end
 #--- Check message expression type is @string
-  if outMessageExpression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType then
+  if outMessageExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error inErrorLocation
     :"the " + inErrorOrWarningString + " message expression type is '@" + [outMessageExpression.mResultType definition].typeName.string
      + "'; it should be of the '@string' type"

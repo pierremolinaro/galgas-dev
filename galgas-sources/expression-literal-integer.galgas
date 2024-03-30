@@ -101,7 +101,7 @@ syntax extension galgas4ExpressionSyntax {
 #  !@semanticExpressionForGeneration outExpression
 #{
 #  outExpression = @literalUInt64ExpressionForGeneration.new {
-#    !inAnalysisContext.mPredefinedTypes.mUInt64Type
+#    !inAnalysisContext.predefinedTypes.mUInt64Type
 #    !self.mValue.location
 #    !self.mValue.uint64
 #  }
@@ -124,7 +124,7 @@ syntax extension galgas4ExpressionSyntax {
 #  ?!@localVarManager unused ioVariableMap
 #  !@semanticExpressionForGeneration outExpression
 #{
-#  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
+#  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
 #}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -145,7 +145,7 @@ syntax extension galgas4ExpressionSyntax {
 #  !@semanticExpressionForGeneration outExpression
 #{
 #  outExpression = @literalSInt64ExpressionForGeneration.new {
-#    !inAnalysisContext.mPredefinedTypes.mSInt64Type
+#    !inAnalysisContext.predefinedTypes.mSInt64Type
 #    !self.mValue.location
 #    !self.mValue.sint64
 #  }
@@ -170,7 +170,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalBigIntExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mBigIntType
+    !inAnalysisContext.predefinedTypes.mBigIntType
     !self.mValue.location
     !self.mValue.bigint
   }

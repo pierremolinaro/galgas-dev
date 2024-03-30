@@ -142,7 +142,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Search for filewrapper name in filewrapper map
-  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+  [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
     !self.mFilewrapperName
     ?let @lstring filewrapperPath
     ?4*
@@ -150,7 +150,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   ]
 #--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
+    let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
     if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
       error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
     end
@@ -187,7 +187,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName !self.mFilewrapperTemplateName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
-  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+  [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
      !self.mFilewrapperName
      ?4*
      ?let @filewrapperTemplateMap filewrapperTemplateMap
@@ -195,7 +195,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
    ]
 #--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
+    let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
     if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
       error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
     end
@@ -232,7 +232,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   end
 #---
   outExpression = @filewrapperTemplateInExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mStringType
+    !inAnalysisContext.predefinedTypes.mStringType
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
     !self.mFilewrapperTemplateName.string
@@ -271,7 +271,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     [!?directoryList popLast ?fileName]
   end
 #--- Get filewrapper features
-  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+  [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
     !self.mFilewrapperName
     ?*
     ?*
@@ -282,7 +282,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   ]
 #--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
+    let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
     if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
       error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
     end
@@ -317,7 +317,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 #---
   outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
     !if isTextFile
-      then inAnalysisContext.mPredefinedTypes.mStringType
+      then inAnalysisContext.predefinedTypes.mStringType
       else [ioTypeMap typeMapEntryForLKey !@lstring.new {!"data" !@location.here}]
      end
     !self.mFilewrapperName.location

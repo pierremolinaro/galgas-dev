@@ -262,8 +262,8 @@ override method @overridingExtensionGetterAST semanticAnalysis
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType definition].mGetterMap hasKey !self.mOverridingExtensionGetterName.string] then
-      [[superType definition].mGetterMap searchKey
+    if [[superType definition].getterMap hasKey !self.mOverridingExtensionGetterName.string] then
+      [[superType definition].getterMap searchKey
         !self.mOverridingExtensionGetterName
         ?*
         ?inheritedSignature
@@ -286,9 +286,9 @@ override method @overridingExtensionGetterAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !"this"
+    !selfObjectCppName: "this"
     !selfType: .available {!type: selfType !mutable: false !mutableproperties: true}
-    !"object."
+    !selfObjectCppPrefixForAccessingProperty: "object."
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (

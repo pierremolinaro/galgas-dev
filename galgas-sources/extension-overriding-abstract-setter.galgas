@@ -134,8 +134,8 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   let inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType definition].mSetterMap hasKey !self.mOverridingExtensionSetterName.string] then
-      [[superType definition].mSetterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
+    if [[superType definition].setterMap hasKey !self.mOverridingExtensionSetterName.string] then
+      [[superType definition].setterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
       if qualifier <= @methodQualifier.isBasicFinal then
         baseTypeName = [superType definition].typeName.string
       end

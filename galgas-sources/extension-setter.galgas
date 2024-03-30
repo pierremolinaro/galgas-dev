@@ -225,9 +225,9 @@ override method @extensionSetterAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfObjectName
+    !selfObjectCppName: selfObjectName
     !selfType: .available {!type:  selfType !mutable: true !mutableproperties: true}
-    !selfObjectAccessor
+    !selfObjectCppPrefixForAccessingProperty: selfObjectAccessor
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeRoutineBody (
@@ -363,7 +363,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
     var @bool searching = true
     loop (@uint. max) while searching do
       if not [[baseType definition].superType isNull] then
-        if [[[baseType definition].superType definition].mSetterMap hasKey !self.mExtensionSetterName] then
+        if [[[baseType definition].superType definition].setterMap hasKey !self.mExtensionSetterName] then
           baseType = [baseType definition].superType
         else
           searching = false

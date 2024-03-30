@@ -99,7 +99,7 @@ override method @trueExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
+  outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -120,7 +120,7 @@ override method @falseExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mLocation}
+  outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

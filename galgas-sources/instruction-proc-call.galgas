@@ -85,7 +85,7 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
                                               ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                               ?!@localVarManager ioVariableMap  {
    #--- Get routine signature
-    [inAnalysisContext.mSemanticContext.mRoutineMap searchKey
+    [inAnalysisContext.semanticContext.routineMap searchKey
        !self.mRoutineName
        !actualParameters: self.mActualParameterList
        ?let @formalParameterSignature routineSignature
@@ -97,7 +97,7 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
   #--- Check internal
     if isFilePrivate then
-      let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mRoutineMap locationForKey !self.mRoutineName.string]
+      let procDeclarationLocation = [inAnalysisContext.semanticContext.routineMap locationForKey !self.mRoutineName.string]
       if [self.mRoutineName.location file] != [procDeclarationLocation file] then
         error self.mRoutineName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
       end

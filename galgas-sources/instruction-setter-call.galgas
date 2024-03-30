@@ -251,8 +251,8 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
       end
-      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
     else
       error self.mSetterName
@@ -296,7 +296,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
     castType = receiverType
   end
 #--- Get setter signature
-  [[castType definition].mSetterMap searchKey
+  [[castType definition].setterMap searchKey
     !self.mSetterName
     ?let kind
     ?let routineSignature
@@ -328,7 +328,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
       if [[baseType definition].superType isNull] then
         searching = false
       else
-        if [[[baseType definition].superType definition].mSetterMap hasKey !self.mSetterName.string] then
+        if [[[baseType definition].superType definition].setterMap hasKey !self.mSetterName.string] then
           baseType = [baseType definition].superType
         else
           searching = false
@@ -370,7 +370,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
       error self.mSetterName : "'self' not mutable in this context"
     end
   #--- Get setter signature
-    [[selfType definition].mSetterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
+    [[selfType definition].setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
   #--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
@@ -386,7 +386,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
     ]
   #--- Generate instructions
     ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration.new {
-      !inAnalysisContext.mSelfObjectCppName
+      !inAnalysisContext.selfObjectCppName
       !selfType
       !self.mSetterName
       !kind

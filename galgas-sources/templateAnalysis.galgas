@@ -102,7 +102,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     }
   else
   #--- Get getter map
-    let @getterMap getterMap = [receiverType definition].mGetterMap
+    let @getterMap getterMap = [receiverType definition].getterMap
   #--- Search contructor
     var @functionSignature getterFormalArgumentTypeList
     var @methodKind kind
@@ -134,7 +134,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
         for (mPropertyTypeEntry mPropertyName 2*) in [receiverType definition].currentTypedPropertyList do
-          let @getterMap aMap = [mPropertyTypeEntry definition].mGetterMap
+          let @getterMap aMap = [mPropertyTypeEntry definition].getterMap
           with self.mGetterName.string in aMap  do
             matchingReaderCount += 1
             getterFormalArgumentTypeList = mArgumentTypeList

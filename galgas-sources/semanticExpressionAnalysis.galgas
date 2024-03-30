@@ -34,11 +34,11 @@ enum @selfAvailability {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @analysisContext {
-  public let @semanticContext mSemanticContext
-  public let @predefinedTypes mPredefinedTypes
-  public let @string mSelfObjectCppName
+  public let @semanticContext semanticContext
+  public let @predefinedTypes predefinedTypes
+  public let @string selfObjectCppName %selector
   public let @selfAvailability selfType %selector
-  public let @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
+  public let @string selfObjectCppPrefixForAccessingProperty %selector # i.e. "ioObject->", ...
   public let @bool requiresSelfForAccessingProperty %selector
 }
 
@@ -136,8 +136,8 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       }
       ioExpression = conversionExpression
       ok = propertyType == inTargetType
-    elsif (not ok) && [[inSourceType definition].mGetterMap hasKey ![inTargetType definition].typeName.string] then
-      [[inSourceType definition].mGetterMap searchKey
+    elsif (not ok) && [[inSourceType definition].getterMap hasKey ![inTargetType definition].typeName.string] then
+      [[inSourceType definition].getterMap searchKey
         ![inTargetType definition].typeName
         ?let kind
         ?let @functionSignature argumentTypeList
@@ -268,8 +268,8 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
       }
       ioRightExpression = conversionExpression
       ok = propertyType == leftType
-    elsif (not ok) && [[rightType definition].mGetterMap hasKey ![leftType definition].typeName.string] then
-      [[rightType definition].mGetterMap searchKey
+    elsif (not ok) && [[rightType definition].getterMap hasKey ![leftType definition].typeName.string] then
+      [[rightType definition].getterMap searchKey
         ![leftType definition].typeName
         ?let kind
         ?let @functionSignature argumentTypeList

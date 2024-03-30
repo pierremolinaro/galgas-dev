@@ -468,19 +468,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAvailability ;
 
 class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS_semanticContext mProperty_mSemanticContext ;
-  public: inline GALGAS_semanticContext readProperty_mSemanticContext (void) const {
-    return mProperty_mSemanticContext ;
+  public: GALGAS_semanticContext mProperty_semanticContext ;
+  public: inline GALGAS_semanticContext readProperty_semanticContext (void) const {
+    return mProperty_semanticContext ;
   }
 
-  public: GALGAS_predefinedTypes mProperty_mPredefinedTypes ;
-  public: inline GALGAS_predefinedTypes readProperty_mPredefinedTypes (void) const {
-    return mProperty_mPredefinedTypes ;
+  public: GALGAS_predefinedTypes mProperty_predefinedTypes ;
+  public: inline GALGAS_predefinedTypes readProperty_predefinedTypes (void) const {
+    return mProperty_predefinedTypes ;
   }
 
-  public: GALGAS_string mProperty_mSelfObjectCppName ;
-  public: inline GALGAS_string readProperty_mSelfObjectCppName (void) const {
-    return mProperty_mSelfObjectCppName ;
+  public: GALGAS_string mProperty_selfObjectCppName ;
+  public: inline GALGAS_string readProperty_selfObjectCppName (void) const {
+    return mProperty_selfObjectCppName ;
   }
 
   public: GALGAS_selfAvailability mProperty_selfType ;
@@ -488,9 +488,9 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
     return mProperty_selfType ;
   }
 
-  public: GALGAS_string mProperty_mSelfObjectCppPrefixForAccessingProperty ;
-  public: inline GALGAS_string readProperty_mSelfObjectCppPrefixForAccessingProperty (void) const {
-    return mProperty_mSelfObjectCppPrefixForAccessingProperty ;
+  public: GALGAS_string mProperty_selfObjectCppPrefixForAccessingProperty ;
+  public: inline GALGAS_string readProperty_selfObjectCppPrefixForAccessingProperty (void) const {
+    return mProperty_selfObjectCppPrefixForAccessingProperty ;
   }
 
   public: GALGAS_bool mProperty_requiresSelfForAccessingProperty ;
@@ -506,24 +506,24 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
   public: GALGAS_analysisContext (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMSemanticContext (const GALGAS_semanticContext & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSemanticContext = inValue ;
+  public: inline void setter_setSemanticContext (const GALGAS_semanticContext & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_semanticContext = inValue ;
   }
 
-  public: inline void setter_setMPredefinedTypes (const GALGAS_predefinedTypes & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPredefinedTypes = inValue ;
+  public: inline void setter_setPredefinedTypes (const GALGAS_predefinedTypes & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_predefinedTypes = inValue ;
   }
 
-  public: inline void setter_setMSelfObjectCppName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSelfObjectCppName = inValue ;
+  public: inline void setter_setSelfObjectCppName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_selfObjectCppName = inValue ;
   }
 
   public: inline void setter_setSelfType (const GALGAS_selfAvailability & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_selfType = inValue ;
   }
 
-  public: inline void setter_setMSelfObjectCppPrefixForAccessingProperty (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSelfObjectCppPrefixForAccessingProperty = inValue ;
+  public: inline void setter_setSelfObjectCppPrefixForAccessingProperty (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_selfObjectCppPrefixForAccessingProperty = inValue ;
   }
 
   public: inline void setter_setRequiresSelfForAccessingProperty (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -534,11 +534,11 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
   public: virtual ~ GALGAS_analysisContext (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_analysisContext (const GALGAS_semanticContext & in_mSemanticContext,
-                                  const GALGAS_predefinedTypes & in_mPredefinedTypes,
-                                  const GALGAS_string & in_mSelfObjectCppName,
+  public: GALGAS_analysisContext (const GALGAS_semanticContext & in_semanticContext,
+                                  const GALGAS_predefinedTypes & in_predefinedTypes,
+                                  const GALGAS_string & in_selfObjectCppName,
                                   const GALGAS_selfAvailability & in_selfType,
-                                  const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty,
+                                  const GALGAS_string & in_selfObjectCppPrefixForAccessingProperty,
                                   const GALGAS_bool & in_requiresSelfForAccessingProperty) ;
 
 //-- Start of type generic part

@@ -245,19 +245,17 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !propertyMap: {}
     !currentTypedPropertyList: listTypedAttributeList
     !classFunctionMap: classFunctionMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
     !classMethodMap: {}
     !optionalMethodMap: {}
-    !enumeratorDescriptor
+    !enumerationDescriptorList: enumeratorDescriptor
     !.doNotGenererateObjectCompare
     !addAssignOperatorDescription
-    !enumConstantMap: {}
-    !enumConstantList: {}
     !@mapSearchMethodListAST {}
     !@mapSearchMethodListAST {}
-    !false # Do not generate header in separate file
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyMap" # Default constructor
     !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
@@ -339,12 +337,12 @@ override method @listmapTypeForGeneration appendDeclaration1
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.isConcrete
     !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.mGetterMap
-    !selfTypedefinition.mSetterMap
-    !selfTypedefinition.mInstanceMethodMap
+    !selfTypedefinition.getterMap
+    !selfTypedefinition.setterMap
+    !selfTypedefinition.instanceMethodMap
     !selfTypedefinition.classMethodMap
     !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.mEnumerationDescriptor
+    !selfTypedefinition.enumerationDescriptorList
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments
     !selfTypedefinition.mTypeForEnumeratedElement

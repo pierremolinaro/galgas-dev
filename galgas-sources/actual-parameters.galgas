@@ -687,7 +687,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
       end
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType ?*]
-      let targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+      let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
     #--- Check type
       if inFormalArgumentType != parameterType then
@@ -779,7 +779,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
       end
   #    let propertyMap = [selfType definition].propertyMap
   #    [propertyMap searchKey !self.mInputActualSelfPropertyName ?2* ?let parameterType]
-      let targetVariableCppName = inAnalysisContext.mSelfObjectCppName
+      let targetVariableCppName = inAnalysisContext.selfObjectCppName
   #     + "mProperty_"+ [self.mInputActualSelfPropertyName.string identifierRepresentation]
     #--- Check type
       if inFormalArgumentType != selfType then

@@ -1010,7 +1010,7 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_typedPropertyList readProperty_mCurrentTypedAttributeList (void) const ;
 
-  public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const ;
+  public: class GALGAS_bool readProperty_generateHeaderInSeparateFile (void) const ;
 
 //-- Start of type generic part
 
@@ -1088,7 +1088,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_unifiedTypeMapEntry mProperty_mSuperClass ;
   public: GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
   public: GALGAS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
-  public: GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
+  public: GALGAS_bool mProperty_generateHeaderInSeparateFile ;
 
 //--- Constructor
   public: cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
@@ -1097,7 +1097,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                        const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
                                        const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                        const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
-                                       const GALGAS_bool & in_mGenerateHeaderInSeparateFile
+                                       const GALGAS_bool & in_generateHeaderInSeparateFile
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1189,7 +1189,7 @@ class GALGAS_weakReferenceTypeForGeneration : public GALGAS_semanticTypeForGener
 
   public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
 
-  public: class GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const ;
+  public: class GALGAS_bool readProperty_generateHeaderInSeparateFile (void) const ;
 
 //-- Start of type generic part
 
@@ -1259,7 +1259,7 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   public: GALGAS_unifiedTypeMapEntry mProperty_mSuperClass ;
   public: GALGAS_typedPropertyList mProperty_allTypedPropertyList ;
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
-  public: GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
+  public: GALGAS_bool mProperty_generateHeaderInSeparateFile ;
 
 //--- Constructor
   public: cPtr_weakReferenceTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
@@ -1267,7 +1267,7 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
                                                const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
                                                const GALGAS_typedPropertyList & in_allTypedPropertyList,
                                                const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                               const GALGAS_bool & in_mGenerateHeaderInSeparateFile
+                                               const GALGAS_bool & in_generateHeaderInSeparateFile
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

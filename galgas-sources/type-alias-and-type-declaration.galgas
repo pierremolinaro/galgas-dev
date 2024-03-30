@@ -260,19 +260,17 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !propertyMap: def.propertyMap # struct, class
           !currentTypedPropertyList: def.currentTypedPropertyList
           !classFunctionMap: def.classFunctionMap
-          !def.mGetterMap
-          !def.mSetterMap
-          !def.mInstanceMethodMap
+          !getterMap: def.getterMap
+          !setterMap: def.setterMap
+          !instanceMethodMap: def.instanceMethodMap
           !classMethodMap: def.classMethodMap
           !optionalMethodMap: def.optionalMethodMap
-          !def.mEnumerationDescriptor # Empty List if cannot be enumerated
+          !enumerationDescriptorList: def.enumerationDescriptorList
           !def.mHandledOperatorFlags
           !def.mAddAssignOperatorArguments # Empty list if += operator is not supported
-          !enumConstantMap: def.enumConstantMap
-          !enumConstantList: def.enumConstantList
           !def.mMapSearchMethodList # For a map, the list of search methods
           !def.mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
-          !def.mGenerateHeaderInSeparateFile # Significant only for classes
+          !generateHeaderInSeparateFile: def.generateHeaderInSeparateFile
           !def.mTypeForEnumeratedElement
           !defaultConstructorName: def.defaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
           !"typealias-" + [self.mAliasTypeName fileNameRepresentation]

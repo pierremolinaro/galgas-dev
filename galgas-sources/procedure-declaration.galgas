@@ -188,7 +188,7 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
   #--- Enter types for instruction list
     [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   #--- Enter routine in routine map
-    [!?ioSemanticContext.mRoutineMap insertKey
+    [!?ioSemanticContext.routineMap insertKey
       !self.mRoutineName
       !routineSignature
       !isFilePrivate: self.isFilePrivate
@@ -225,9 +225,9 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
     let analysisContext = @analysisContext.new {
       !inSemanticContext
       !inPredefinedTypes
-      !""
+      !selfObjectCppName: ""
       !selfType: .none
-      !""
+      !selfObjectCppPrefixForAccessingProperty: ""
       !requiresSelfForAccessingProperty: true
     }
     analyzeRoutineBody (

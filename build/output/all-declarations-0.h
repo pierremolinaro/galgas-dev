@@ -8336,8 +8336,7 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
   public: static class GALGAS_typeKindEnum class_func_classType (const class GALGAS_bool & inOperand0
                                                                  COMMA_LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeKindEnum class_func_enumType (const class GALGAS_constantIndexMap & inOperand0,
-                                                                const class GALGAS_enumConstantList & inOperand1
+  public: static class GALGAS_typeKindEnum class_func_enumType (const class GALGAS_constantIndexMap & inOperand0
                                                                 COMMA_LOCATION_ARGS) ;
 
   public: static class GALGAS_typeKindEnum class_func_externType (LOCATION_ARGS) ;
@@ -8379,7 +8378,6 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_enumType (class GALGAS_constantIndexMap & outArgument0,
-                                                 class GALGAS_enumConstantList & outArgument1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
 
@@ -8426,8 +8424,7 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG bool optional_classType (class GALGAS_bool & outOperand0) const ;
 
-  public: VIRTUAL_IN_DEBUG bool optional_enumType (class GALGAS_constantIndexMap & outOperand0,
-                                                   class GALGAS_enumConstantList & outOperand1) const ;
+  public: VIRTUAL_IN_DEBUG bool optional_enumType (class GALGAS_constantIndexMap & outOperand0) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_externType () const ;
 
@@ -8463,160 +8460,6 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @enumConstantList list
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_enumConstantList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GALGAS_enumConstantList (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GALGAS_enumConstantList (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS_lstring & in_mConstantName,
-                                                 const class GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_enumConstantList extractObject (const GALGAS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_enumConstantList class_func_emptyList (LOCATION_ARGS) ;
-
-  public: static class GALGAS_enumConstantList class_func_listWithValue (const class GALGAS_lstring & inOperand0,
-                                                                         const class GALGAS__32_lstringlist & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_enumConstantList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS__32_lstringlist & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_enumConstantList add_operation (const GALGAS_enumConstantList & inOperand,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
-                                               class GALGAS__32_lstringlist constinArgument1,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
-                                                      class GALGAS__32_lstringlist constinArgument1,
-                                                      class GALGAS_uint constinArgument2,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
-                                                 class GALGAS__32_lstringlist & outArgument1,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
-                                                class GALGAS__32_lstringlist & outArgument1,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
-                                                      class GALGAS__32_lstringlist & outArgument1,
-                                                      class GALGAS_uint constinArgument2,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedValueDefinitionListAtIndex (class GALGAS__32_lstringlist constinArgument0,
-                                                                                 class GALGAS_uint constinArgument1,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMConstantNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                                class GALGAS_uint constinArgument1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
-                                              class GALGAS__32_lstringlist & outArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
-                                             class GALGAS__32_lstringlist & outArgument1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS__32_lstringlist getter_mAssociatedValueDefinitionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mConstantNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_enumConstantList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_enumConstantList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_enumConstantList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-
-  friend class cEnumerator_enumConstantList ;
- 
-} ; // End of GALGAS_enumConstantList class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_enumConstantList : public cGenericAbstractEnumerator {
-  public: cEnumerator_enumConstantList (const GALGAS_enumConstantList & inEnumeratedObject,
-                                        const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_mConstantName (LOCATION_ARGS) const ;
-  public: class GALGAS__32_lstringlist current_mAssociatedValueDefinitionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_enumConstantList_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9577,134 +9420,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @constantIndexMap map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_constantIndexMap ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_constantIndexMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_constantIndexMap : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public: GALGAS_constantIndexMap (void) ;
-
-//--------------------------------- Handle copy
-  public: GALGAS_constantIndexMap (const GALGAS_constantIndexMap & inSource) ;
-  public: GALGAS_constantIndexMap & operator = (const GALGAS_constantIndexMap & inSource) ;
-  
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_constantIndexMap extractObject (const GALGAS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_constantIndexMap class_func_emptyMap (LOCATION_ARGS) ;
-
-  public: static class GALGAS_constantIndexMap class_func_mapWithMapToOverride (const class GALGAS_constantIndexMap & inOperand0
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_uint & inOperand1,
-                                                     const class GALGAS_unifiedTypeMapEntryList & inOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_constantIndexMap add_operation (const GALGAS_constantIndexMap & inOperand,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  class GALGAS_uint constinArgument1,
-                                                  class GALGAS_unifiedTypeMapEntryList constinArgument2,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedTypeListForKey (class GALGAS_unifiedTypeMapEntryList constinArgument0,
-                                                                     class GALGAS_string constinArgument1,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMIndexForKey (class GALGAS_uint constinArgument0,
-                                                        class GALGAS_string constinArgument1,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                  class GALGAS_uint & outArgument1,
-                                                  class GALGAS_unifiedTypeMapEntryList & outArgument2,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntryList getter_mAssociatedTypeListForKey (const class GALGAS_string & constinOperand0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_mIndexForKey (const class GALGAS_string & constinOperand0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_constantIndexMap getter_overriddenMap (Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_uint & outOperand1,
-                                                    class GALGAS_unifiedTypeMapEntryList & outOperand2) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_constantIndexMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                             const GALGAS_string & inKey
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-
-  friend class cEnumerator_constantIndexMap ;
- 
-} ; // End of GALGAS_constantIndexMap class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_constantIndexMap : public cGenericAbstractEnumerator {
-  public: cEnumerator_constantIndexMap (const GALGAS_constantIndexMap & inEnumeratedObject,
-                                        const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GALGAS_uint current_mIndex (LOCATION_ARGS) const ;
-  public: class GALGAS_unifiedTypeMapEntryList current_mAssociatedTypeList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_constantIndexMap_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantIndexMap ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @getterMap map
 //
 //--------------------------------------------------------------------------------------------------
@@ -10615,19 +10330,19 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_classFunctionMap ;
   }
 
-  public: GALGAS_getterMap mProperty_mGetterMap ;
-  public: inline GALGAS_getterMap readProperty_mGetterMap (void) const {
-    return mProperty_mGetterMap ;
+  public: GALGAS_getterMap mProperty_getterMap ;
+  public: inline GALGAS_getterMap readProperty_getterMap (void) const {
+    return mProperty_getterMap ;
   }
 
-  public: GALGAS_setterMap mProperty_mSetterMap ;
-  public: inline GALGAS_setterMap readProperty_mSetterMap (void) const {
-    return mProperty_mSetterMap ;
+  public: GALGAS_setterMap mProperty_setterMap ;
+  public: inline GALGAS_setterMap readProperty_setterMap (void) const {
+    return mProperty_setterMap ;
   }
 
-  public: GALGAS_instanceMethodMap mProperty_mInstanceMethodMap ;
-  public: inline GALGAS_instanceMethodMap readProperty_mInstanceMethodMap (void) const {
-    return mProperty_mInstanceMethodMap ;
+  public: GALGAS_instanceMethodMap mProperty_instanceMethodMap ;
+  public: inline GALGAS_instanceMethodMap readProperty_instanceMethodMap (void) const {
+    return mProperty_instanceMethodMap ;
   }
 
   public: GALGAS_classMethodMap mProperty_classMethodMap ;
@@ -10640,9 +10355,9 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_optionalMethodMap ;
   }
 
-  public: GALGAS_enumerationDescriptorList mProperty_mEnumerationDescriptor ;
-  public: inline GALGAS_enumerationDescriptorList readProperty_mEnumerationDescriptor (void) const {
-    return mProperty_mEnumerationDescriptor ;
+  public: GALGAS_enumerationDescriptorList mProperty_enumerationDescriptorList ;
+  public: inline GALGAS_enumerationDescriptorList readProperty_enumerationDescriptorList (void) const {
+    return mProperty_enumerationDescriptorList ;
   }
 
   public: GALGAS_operators mProperty_mHandledOperatorFlags ;
@@ -10655,16 +10370,6 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_mAddAssignOperatorArguments ;
   }
 
-  public: GALGAS_constantIndexMap mProperty_enumConstantMap ;
-  public: inline GALGAS_constantIndexMap readProperty_enumConstantMap (void) const {
-    return mProperty_enumConstantMap ;
-  }
-
-  public: GALGAS_enumConstantList mProperty_enumConstantList ;
-  public: inline GALGAS_enumConstantList readProperty_enumConstantList (void) const {
-    return mProperty_enumConstantList ;
-  }
-
   public: GALGAS_mapSearchMethodListAST mProperty_mMapSearchMethodList ;
   public: inline GALGAS_mapSearchMethodListAST readProperty_mMapSearchMethodList (void) const {
     return mProperty_mMapSearchMethodList ;
@@ -10675,9 +10380,9 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_mMapEntrySearchConstructorList ;
   }
 
-  public: GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
-  public: inline GALGAS_bool readProperty_mGenerateHeaderInSeparateFile (void) const {
-    return mProperty_mGenerateHeaderInSeparateFile ;
+  public: GALGAS_bool mProperty_generateHeaderInSeparateFile ;
+  public: inline GALGAS_bool readProperty_generateHeaderInSeparateFile (void) const {
+    return mProperty_generateHeaderInSeparateFile ;
   }
 
   public: GALGAS_unifiedTypeMapEntry mProperty_mTypeForEnumeratedElement ;
@@ -10748,16 +10453,16 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_classFunctionMap = inValue ;
   }
 
-  public: inline void setter_setMGetterMap (const GALGAS_getterMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mGetterMap = inValue ;
+  public: inline void setter_setGetterMap (const GALGAS_getterMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_getterMap = inValue ;
   }
 
-  public: inline void setter_setMSetterMap (const GALGAS_setterMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSetterMap = inValue ;
+  public: inline void setter_setSetterMap (const GALGAS_setterMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_setterMap = inValue ;
   }
 
-  public: inline void setter_setMInstanceMethodMap (const GALGAS_instanceMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstanceMethodMap = inValue ;
+  public: inline void setter_setInstanceMethodMap (const GALGAS_instanceMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_instanceMethodMap = inValue ;
   }
 
   public: inline void setter_setClassMethodMap (const GALGAS_classMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -10768,8 +10473,8 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_optionalMethodMap = inValue ;
   }
 
-  public: inline void setter_setMEnumerationDescriptor (const GALGAS_enumerationDescriptorList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mEnumerationDescriptor = inValue ;
+  public: inline void setter_setEnumerationDescriptorList (const GALGAS_enumerationDescriptorList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_enumerationDescriptorList = inValue ;
   }
 
   public: inline void setter_setMHandledOperatorFlags (const GALGAS_operators & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -10780,14 +10485,6 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_mAddAssignOperatorArguments = inValue ;
   }
 
-  public: inline void setter_setEnumConstantMap (const GALGAS_constantIndexMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_enumConstantMap = inValue ;
-  }
-
-  public: inline void setter_setEnumConstantList (const GALGAS_enumConstantList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_enumConstantList = inValue ;
-  }
-
   public: inline void setter_setMMapSearchMethodList (const GALGAS_mapSearchMethodListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mMapSearchMethodList = inValue ;
   }
@@ -10796,8 +10493,8 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_mMapEntrySearchConstructorList = inValue ;
   }
 
-  public: inline void setter_setMGenerateHeaderInSeparateFile (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mGenerateHeaderInSeparateFile = inValue ;
+  public: inline void setter_setGenerateHeaderInSeparateFile (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_generateHeaderInSeparateFile = inValue ;
   }
 
   public: inline void setter_setMTypeForEnumeratedElement (const GALGAS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -10830,19 +10527,17 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
                                         const GALGAS_propertyMap & in_propertyMap,
                                         const GALGAS_typedPropertyList & in_currentTypedPropertyList,
                                         const GALGAS_classFunctionMap & in_classFunctionMap,
-                                        const GALGAS_getterMap & in_mGetterMap,
-                                        const GALGAS_setterMap & in_mSetterMap,
-                                        const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
+                                        const GALGAS_getterMap & in_getterMap,
+                                        const GALGAS_setterMap & in_setterMap,
+                                        const GALGAS_instanceMethodMap & in_instanceMethodMap,
                                         const GALGAS_classMethodMap & in_classMethodMap,
                                         const GALGAS_optionalMethodMap & in_optionalMethodMap,
-                                        const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
+                                        const GALGAS_enumerationDescriptorList & in_enumerationDescriptorList,
                                         const GALGAS_operators & in_mHandledOperatorFlags,
                                         const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
-                                        const GALGAS_constantIndexMap & in_enumConstantMap,
-                                        const GALGAS_enumConstantList & in_enumConstantList,
                                         const GALGAS_mapSearchMethodListAST & in_mMapSearchMethodList,
                                         const GALGAS_mapSearchMethodListAST & in_mMapEntrySearchConstructorList,
-                                        const GALGAS_bool & in_mGenerateHeaderInSeparateFile,
+                                        const GALGAS_bool & in_generateHeaderInSeparateFile,
                                         const GALGAS_unifiedTypeMapEntry & in_mTypeForEnumeratedElement,
                                         const GALGAS_string & in_defaultConstructorName,
                                         const GALGAS_string & in_mHeaderFileName,
@@ -10877,15 +10572,13 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
                                                                     const class GALGAS_enumerationDescriptorList & inOperand15,
                                                                     const class GALGAS_operators & inOperand16,
                                                                     const class GALGAS_functionSignature & inOperand17,
-                                                                    const class GALGAS_constantIndexMap & inOperand18,
-                                                                    const class GALGAS_enumConstantList & inOperand19,
-                                                                    const class GALGAS_mapSearchMethodListAST & inOperand20,
-                                                                    const class GALGAS_mapSearchMethodListAST & inOperand21,
-                                                                    const class GALGAS_bool & inOperand22,
-                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand23,
-                                                                    const class GALGAS_string & inOperand24,
-                                                                    const class GALGAS_string & inOperand25,
-                                                                    const class GALGAS_headerKind & inOperand26,
+                                                                    const class GALGAS_mapSearchMethodListAST & inOperand18,
+                                                                    const class GALGAS_mapSearchMethodListAST & inOperand19,
+                                                                    const class GALGAS_bool & inOperand20,
+                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand21,
+                                                                    const class GALGAS_string & inOperand22,
+                                                                    const class GALGAS_string & inOperand23,
+                                                                    const class GALGAS_headerKind & inOperand24,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 

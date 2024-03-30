@@ -131,7 +131,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration receiverExpression
   ]
 #--- Get type method signature
-  [[receiverExpression.mResultType definition].mInstanceMethodMap searchKey
+  [[receiverExpression.mResultType definition].instanceMethodMap searchKey
     !self.mMethodName
     ?let kind
     ?let routineSignature
@@ -164,7 +164,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
       if [[baseType definition].superType isNull] then
         searching = false
       else
-        if [[[baseType definition].superType definition].mInstanceMethodMap hasKey !self.mMethodName.string] then
+        if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mMethodName.string] then
           baseType = [baseType definition].superType
         else
           searching = false

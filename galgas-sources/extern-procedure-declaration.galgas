@@ -149,7 +149,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
         !argument.mFormalArgumentName.string
     end
   #--- Enter routine in routine map
-    [!?ioSemanticContext.mRoutineMap insertKey
+    [!?ioSemanticContext.routineMap insertKey
       !self.mRoutineName
       !routineSignature
       !isFilePrivate: self.isFilePrivate

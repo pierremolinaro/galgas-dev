@@ -290,7 +290,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     if isConstant then
       error self.mTargetSelfPropertyName : "a constant property cannot be modified"
     end
-    let targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+    let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
      + "mProperty_"+ [self.mTargetSelfPropertyName.string identifierRepresentation]
   #--- Get target variable type
     if self.mOptionalProperty.string != "" then
@@ -320,7 +320,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
       !targetType
       !targetVariableCppName
-      !inAnalysisContext.mSelfObjectCppName
+      !inAnalysisContext.selfObjectCppName
       !self.mOptionalProperty
       !expression
       !self.mTargetSelfPropertyName.location

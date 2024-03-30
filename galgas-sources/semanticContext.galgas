@@ -206,10 +206,10 @@ map @syntaxComponentMap {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
-  public var @routineMap mRoutineMap %selector = .new
+  public var @routineMap routineMap %selector = .new
   public var @functionMap mFunctionMap %selector = {}
   public var @filewrapperMap mFilewrapperMap %selector = {}
-  public var @grammarMap mGrammarMap %selector  = {}
+  public var @grammarMap grammarMap %selector  = {}
   public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis %selector = {}
   public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis %selector = {}
   public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis %selector = {}
@@ -775,7 +775,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
     ]
   end
 #--- Insert grammar in grammar map
-  [!?ioSemanticContext.mGrammarMap insertGrammar
+  [!?ioSemanticContext.grammarMap insertGrammar
     !self.mGrammarComponentName
     !grammarLabelMap
     !self.mHasIndexing.bool

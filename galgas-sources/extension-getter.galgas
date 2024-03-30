@@ -260,9 +260,9 @@ override method @extensionGetterAST semanticAnalysis
   let analysisContextNew = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !selfObjectNameNew
+    !selfObjectCppName: selfObjectNameNew
     !selfType: .available {!type: selfType !mutable: false !mutableproperties: false}
-    !selfObjectAccessorNew
+    !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorNew
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
@@ -412,7 +412,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
     var @bool searching = true
     loop (@uint. max) while searching do
       if not [[baseType definition].superType isNull] then
-        if [[[baseType definition].superType definition].mGetterMap hasKey !self.mExtensionGetterName] then
+        if [[[baseType definition].superType definition].getterMap hasKey !self.mExtensionGetterName] then
           baseType = [baseType definition].superType
         else
           searching = false

@@ -144,7 +144,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     !?ioTypeMap
     ?let switchExpression
   ]
-  if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap ?constantList: *] then
+  if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap] then
     var @stringset constantsNamedInSwitchInstruction = {}
   #--- Analyze branches
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}

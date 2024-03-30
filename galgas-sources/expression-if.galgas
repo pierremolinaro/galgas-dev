@@ -132,7 +132,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   [self.mIfExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: inAnalysisContext.mPredefinedTypes.mBoolType
+    !inferenceType: inAnalysisContext.predefinedTypes.mBoolType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap

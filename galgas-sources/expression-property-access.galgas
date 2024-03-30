@@ -150,7 +150,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
       !self.mPropertyName.string
     }
   else
-    let getterMap = [expressionType definition].mGetterMap
+    let getterMap = [expressionType definition].getterMap
     if let [getterMap searchKey
         !self.mPropertyName
         ?let kind
@@ -228,7 +228,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #    ]
 #    let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
 #  #--------------------------------------- Search getter
-#    if let [[receiverType definition].mGetterMap searchKey
+#    if let [[receiverType definition].getterMap searchKey
 #        !self.mGetterName.string
 #        ?let kind
 #        ?let getterFormalArgumentTypeList
@@ -313,7 +313,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #        var obsoletedByGetter = ""
 #        for (propertyTypeEntry propertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
 #          let propertyType = [ioTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
-#          let aMap = [propertyType definition].mGetterMap
+#          let aMap = [propertyType definition].getterMap
 #          with self.mGetterName.string in aMap do
 #            if [propertyType definition].mTypeName.string == propertyName.string then
 #              matchingReaderCount += 1
@@ -386,7 +386,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #            !hasCompilerArgument
 #          }
 #        end
-#      elsif [[receiverType definition].mGetterMap count] == 0 then
+#      elsif [[receiverType definition].getterMap count] == 0 then
 #        error self.mGetterName
 #        : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define any getter"
 #        : outExpression
@@ -394,7 +394,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #        error self.mGetterName
 #        : "the '@"+ [receiverType definition].mTypeName.string + "' type does not define the '" + self.mGetterName + "' getter "
 #        : outExpression
-#        fixit { replace [[receiverType definition].mGetterMap keyList] }
+#        fixit { replace [[receiverType definition].getterMap keyList] }
 #      end
 #    end
 #  }

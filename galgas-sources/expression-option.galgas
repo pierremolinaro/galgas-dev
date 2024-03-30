@@ -120,7 +120,7 @@ override method @optionExpressionAST analyzeSemanticExpression
   let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
-  [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
+  [inAnalysisContext.semanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !self.mOptionComponentName
     ?let @bool optionComponentIsPredefined
     ?let @commandLineOptionMap boolOptionMap
@@ -129,18 +129,18 @@ override method @optionExpressionAST analyzeSemanticExpression
     ?let @commandLineOptionMap stringListOptionMap
   ]
   var @bool found = [boolOptionMap hasKey !self.mOptionEntryName.string]
-  var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+  var @unifiedTypeMapEntry returnedType = inAnalysisContext.predefinedTypes.mBoolType
   if not found then
     found = [uintOptionMap hasKey !self.mOptionEntryName.string]
-    returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
+    returnedType = inAnalysisContext.predefinedTypes.mUIntType
   end
   if not found then
     found = [stringOptionMap hasKey !self.mOptionEntryName.string]
-    returnedType = inAnalysisContext.mPredefinedTypes.mStringType
+    returnedType = inAnalysisContext.predefinedTypes.mStringType
   end
   if not found then
     found = [stringListOptionMap hasKey !self.mOptionEntryName.string]
-    returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
+    returnedType = inAnalysisContext.predefinedTypes.mStringListType
   end
   if found then
     if self.mOptionGetterName.string == "value" then
@@ -152,21 +152,21 @@ override method @optionExpressionAST analyzeSemanticExpression
         !self.mOptionEntryName.string}
     elsif self.mOptionGetterName.string == "char" then
       outExpression = @optionCharExpressionForGeneration.new {
-        !inAnalysisContext.mPredefinedTypes.mCharType
+        !inAnalysisContext.predefinedTypes.mCharType
         !self.mOptionComponentName.location
         !optionComponentIsPredefined
         !self.mOptionComponentName.string
         !self.mOptionEntryName.string}
     elsif self.mOptionGetterName.string == "string" then
       outExpression = @optionStringExpressionForGeneration.new {
-        !inAnalysisContext.mPredefinedTypes.mStringType
+        !inAnalysisContext.predefinedTypes.mStringType
         !self.mOptionComponentName.location
         !optionComponentIsPredefined
         !self.mOptionComponentName.string
         !self.mOptionEntryName.string}
     elsif self.mOptionGetterName.string == "comment" then
       outExpression = @optionCommentExpressionForGeneration.new {
-        !inAnalysisContext.mPredefinedTypes.mStringType
+        !inAnalysisContext.predefinedTypes.mStringType
         !self.mOptionComponentName.location
         !optionComponentIsPredefined
         !self.mOptionComponentName.string

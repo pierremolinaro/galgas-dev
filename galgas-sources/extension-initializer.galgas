@@ -40,6 +40,25 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
+  rule <method_declaration_ggs3> ?let @lstring inClassName
+                                 ?!@galgasDeclarationAST ioDeclarations {
+    $init$
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
+    ${$
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
+    let endOfMethodLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@initializerAST.new {
+      !isPredefined: false # Is not predefined
+      !inClassName
+      !formalParameterList
+      !routineInstructionList
+      !endOfMethodLocation
+    }
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -113,10 +132,7 @@ refclass @initializerAST : @semanticDeclarationAST {
           ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
           ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring.new {
-      ![self keyRepresentation]
-      !self.mTypeName.location
-    }
+    let key = @lstring.new {![self keyRepresentation] !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !key !.new {!"@" + self.mTypeName !self.mTypeName.location}]
   #---
@@ -161,19 +177,19 @@ refclass @initializerAST : @semanticDeclarationAST {
     [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
   #--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-    let @string selfObjectNameNew
-    let @string selfObjectAccessorNew
+    let @string selfObjectNameString
+    let @string selfObjectAccessorString
 #    let @bool implementedAsFunction
   #--- Check self type is a class
     var isReferenceClass = false
     if let [[selfType definition].typeKind classType ?isReference: let isReference] then
       isReferenceClass = isReference
-      selfObjectNameNew = "this"
-      selfObjectAccessorNew = "this->"
+      selfObjectNameString = "this"
+      selfObjectAccessorString = "this->"
 #      implementedAsFunction = false
     else
-      selfObjectNameNew = "inObject"
-      selfObjectAccessorNew = "inObject."
+      selfObjectNameString = "inObject"
+      selfObjectAccessorString = "inObject."
 #      implementedAsFunction = true
     end
   #---
@@ -196,9 +212,9 @@ refclass @initializerAST : @semanticDeclarationAST {
     let analysisContextNew = @analysisContext.new {
       !inSemanticContext
       !inPredefinedTypes
-      !selfObjectNameNew
+      !selfObjectCppName: selfObjectNameString
       !selfType: .available {!type: selfType !mutable: true !mutableproperties: true}
-      !selfObjectAccessorNew
+      !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
       !requiresSelfForAccessingProperty: true
     }
 #    var isRefClass = false

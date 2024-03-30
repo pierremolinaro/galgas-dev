@@ -148,7 +148,7 @@ proc checkExpressionIsBoolean
   !@semanticExpressionForGeneration outExpression {
   let expressionType = inExpression.mResultType
 #--- Boolean type
-  let boolType = inAnalysisContext.mPredefinedTypes.mBoolType
+  let boolType = inAnalysisContext.predefinedTypes.mBoolType
   if expressionType == boolType then
     outExpression = inExpression
   elsif [expressionType definition].typeKind == .structType then
@@ -182,7 +182,7 @@ proc checkExpressionIsBoolean
       : outExpression
     end
   else
-    with "bool" in [expressionType definition].mGetterMap do
+    with "bool" in [expressionType definition].getterMap do
       if mReturnedType != boolType then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter, but it does not return a '@bool' value" : outExpression
       elsif [mArgumentTypeList count] > 0 then
@@ -200,7 +200,7 @@ proc checkExpressionIsBoolean
         }
       end
     else
-      if [[expressionType definition].mGetterMap count] == 0 then
+      if [[expressionType definition].getterMap count] == 0 then
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ [expressionType definition].typeName.string + "', and this type does not define the 'bool' getter"
         : outExpression
@@ -208,7 +208,7 @@ proc checkExpressionIsBoolean
         error inErrorLocation
         : "the expression type is not '@bool', but '@"+ [expressionType definition].typeName.string + "', and this type does not define the 'bool' getter "
         : outExpression
-        fixit { replace [[expressionType definition].mGetterMap keyList] }
+        fixit { replace [[expressionType definition].getterMap keyList] }
       end
     end
   end
@@ -262,7 +262,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
     error self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?let @string cppName ?*]
-  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
@@ -286,7 +286,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalVariable !self.mActualParameterName !warnsIfNotMutated: true !type !cppName !cppName]
-  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
@@ -310,7 +310,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
-  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]

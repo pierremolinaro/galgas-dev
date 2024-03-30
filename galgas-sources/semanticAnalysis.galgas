@@ -214,8 +214,8 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
       [!?variableMap insertNonMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
-        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
-        !inAnalysisContext.mSelfObjectCppName
+        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
+        !inAnalysisContext.selfObjectCppName
       ]
     end
   end
@@ -225,14 +225,14 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
       [!?variableMap insertMutableProperty
         !mPropertyName
         !mPropertyTypeEntry
-        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
-        !inAnalysisContext.mSelfObjectCppName
+        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
+        !inAnalysisContext.selfObjectCppName
       ]
     end
   end
 #--- Enter formal arguments
   buildLocalVariableMapAndSignature (
-    !inAnalysisContext.mSemanticContext
+    !inAnalysisContext.semanticContext
     !?ioTypeMap
     !inRoutineSignatureAST
     !?variableMap
@@ -320,7 +320,7 @@ proc analyzeFunctionBody
         !mPropertyName
         !mPropertyTypeEntry
         !inAttributeVariableNamePrefix + "mProperty_"+ [mPropertyName.string identifierRepresentation]
-        !inAnalysisContext.mSelfObjectCppName
+        !inAnalysisContext.selfObjectCppName
       ]
     end
   end
@@ -397,9 +397,9 @@ override method @functionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !""
+    !selfObjectCppName: ""
     !selfType: .none
-    !""
+    !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
@@ -453,9 +453,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !""
+    !selfObjectCppName: ""
     !selfType: .none
-    !""
+    !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
@@ -1099,14 +1099,14 @@ override method @inputParameterVariable analyzeInputParameter
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?let @string cppName ?*]
   let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
-  case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
-  case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
-  case lexicalType_uint : expectedType = inAnalysisContext.mPredefinedTypes.mLUIntType
-  case lexicalType_uint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLUInt64Type
-  case lexicalType_sint : expectedType = inAnalysisContext.mPredefinedTypes.mLSIntType
-  case lexicalType_sint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLSInt64Type
-  case lexicalType_double : expectedType = inAnalysisContext.mPredefinedTypes.mLDoubleType
-  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigIntType
+  case lexicalType_string : expectedType = inAnalysisContext.predefinedTypes.mLStringType
+  case lexicalType_char : expectedType = inAnalysisContext.predefinedTypes.mLCharType
+  case lexicalType_uint : expectedType = inAnalysisContext.predefinedTypes.mLUIntType
+  case lexicalType_uint64 : expectedType = inAnalysisContext.predefinedTypes.mLUInt64Type
+  case lexicalType_sint : expectedType = inAnalysisContext.predefinedTypes.mLSIntType
+  case lexicalType_sint64 : expectedType = inAnalysisContext.predefinedTypes.mLSInt64Type
+  case lexicalType_double : expectedType = inAnalysisContext.predefinedTypes.mLDoubleType
+  case lexicalType_bigint : expectedType = inAnalysisContext.predefinedTypes.mLBigIntType
   end
   if expectedType != type then
     error self.mActualParameterName
@@ -1131,14 +1131,14 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
 #--- Expected type
   let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
-  case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
-  case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
-  case lexicalType_uint : expectedType = inAnalysisContext.mPredefinedTypes.mLUIntType
-  case lexicalType_uint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLUInt64Type
-  case lexicalType_sint : expectedType = inAnalysisContext.mPredefinedTypes.mLSIntType
-  case lexicalType_sint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLSInt64Type
-  case lexicalType_double : expectedType = inAnalysisContext.mPredefinedTypes.mLDoubleType
-  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigIntType
+  case lexicalType_string : expectedType = inAnalysisContext.predefinedTypes.mLStringType
+  case lexicalType_char : expectedType = inAnalysisContext.predefinedTypes.mLCharType
+  case lexicalType_uint : expectedType = inAnalysisContext.predefinedTypes.mLUIntType
+  case lexicalType_uint64 : expectedType = inAnalysisContext.predefinedTypes.mLUInt64Type
+  case lexicalType_sint : expectedType = inAnalysisContext.predefinedTypes.mLSIntType
+  case lexicalType_sint64 : expectedType = inAnalysisContext.predefinedTypes.mLSInt64Type
+  case lexicalType_double : expectedType = inAnalysisContext.predefinedTypes.mLDoubleType
+  case lexicalType_bigint : expectedType = inAnalysisContext.predefinedTypes.mLBigIntType
   end
 #--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
@@ -1176,14 +1176,14 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
 #--- Expected type
   let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
-  case lexicalType_string : expectedType = inAnalysisContext.mPredefinedTypes.mLStringType
-  case lexicalType_char : expectedType = inAnalysisContext.mPredefinedTypes.mLCharType
-  case lexicalType_uint : expectedType = inAnalysisContext.mPredefinedTypes.mLUIntType
-  case lexicalType_uint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLUInt64Type
-  case lexicalType_sint : expectedType = inAnalysisContext.mPredefinedTypes.mLSIntType
-  case lexicalType_sint64 : expectedType = inAnalysisContext.mPredefinedTypes.mLSInt64Type
-  case lexicalType_double : expectedType = inAnalysisContext.mPredefinedTypes.mLDoubleType
-  case lexicalType_bigint : expectedType = inAnalysisContext.mPredefinedTypes.mLBigIntType
+  case lexicalType_string : expectedType = inAnalysisContext.predefinedTypes.mLStringType
+  case lexicalType_char : expectedType = inAnalysisContext.predefinedTypes.mLCharType
+  case lexicalType_uint : expectedType = inAnalysisContext.predefinedTypes.mLUIntType
+  case lexicalType_uint64 : expectedType = inAnalysisContext.predefinedTypes.mLUInt64Type
+  case lexicalType_sint : expectedType = inAnalysisContext.predefinedTypes.mLSIntType
+  case lexicalType_sint64 : expectedType = inAnalysisContext.predefinedTypes.mLSInt64Type
+  case lexicalType_double : expectedType = inAnalysisContext.predefinedTypes.mLDoubleType
+  case lexicalType_bigint : expectedType = inAnalysisContext.predefinedTypes.mLBigIntType
   end
 #--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
@@ -1244,7 +1244,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
     error self.mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
   [!?ioVariableMap searchForWriteAccess !self.mActualParameterName ?let @unifiedTypeMapEntry type ?* ?*]
-  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
@@ -1271,7 +1271,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     !cppName
     !cppName
   ]
-  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
@@ -1292,7 +1292,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
   let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !type !cppName !cppName]
-  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
@@ -1433,7 +1433,7 @@ proc semanticAnalysisOfRuleLabel
 {
   var variableMap = @localVarManager.new
   buildLocalVariableMapAndSignature (
-    !inAnalysisContext.mSemanticContext
+    !inAnalysisContext.semanticContext
     !?ioTypeMap
     !inFormalArguments
     !?variableMap
@@ -1521,9 +1521,9 @@ private proc semanticAnalysisOfSyntaxComponent
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !""
+    !selfObjectCppName: ""
     !selfType: .none
-    !""
+    !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: false
   }
 #--- Rule list

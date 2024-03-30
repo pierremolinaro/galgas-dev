@@ -92,7 +92,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   for (mValue) in self.mStringSequence do
     s += mValue
   end
-  outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !self.mLocation !s}
+  outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mStringType !self.mLocation !s}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -211,9 +211,9 @@ proc compileProgramComponentGalgas3
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !buildPredefinedTypes (!ioTypeMap)
-    !""
+    !selfObjectCppName: ""
     !selfType: .none
-    !""
+    !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: false # self.requiresSelfForAccessingProperty
   }
 #--- Analyse 'before' instructions

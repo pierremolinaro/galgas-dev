@@ -398,7 +398,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   let usefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Search grammar in grammar map
-  [inAnalysisContext.mSemanticContext.mGrammarMap searchKey
+  [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName
     ?let @grammarLabelMap grammarLabelMap
     ?*
@@ -433,7 +433,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration sourceExpression
   ]
 #--- Check source expression type: @lstring for file, @string for source string itself
-  if sourceExpression.mResultType != inAnalysisContext.mPredefinedTypes.mLStringType then
+  if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mLStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source file path and its type should be '@lstring', but it is '@"
      + [sourceExpression.mResultType definition].typeName.string + "'"
@@ -475,7 +475,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !grammarUsefulnessName]
 #--- Search grammar in grammar map
-  [inAnalysisContext.mSemanticContext.mGrammarMap searchKey
+  [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName
     ?let @grammarLabelMap grammarLabelMap
     ?*
@@ -510,7 +510,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration sourceExpression
   ]
 #--- Check source expression type: @string
-  if sourceExpression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType then
+  if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source string and its type should be '@string', but it is '@"
      + [sourceExpression.mResultType definition].typeName.string + "'"
@@ -526,7 +526,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration nameExpression
   ]
 #--- Check name expression type: @string
-  if nameExpression.mResultType != inAnalysisContext.mPredefinedTypes.mStringType then
+  if nameExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mEndOfNameExpression
     :"this expression is the name string and its type should be '@string', but it is '@"
      + [sourceExpression.mResultType definition].typeName.string + "'"

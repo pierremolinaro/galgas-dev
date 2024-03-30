@@ -471,19 +471,17 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     !propertyMap: {}
     !currentTypedPropertyList: {}
     !classFunctionMap: classFunctionMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
     !classMethodMap: {}
     !optionalMethodMap: {}
-    !{}
+    !enumerationDescriptorList: {}
     !.none
     !{}
-    !enumConstantMap: {}
-    !enumConstantList: {}
     !{}
     !{}
-    !false # Do not generate header in separate file
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName: "default" # Default constructor
     !"externtype-" + [self.mExternTypeName fileNameRepresentation]
@@ -546,12 +544,12 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.isConcrete
     !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.mGetterMap
-    !selfTypedefinition.mSetterMap
-    !selfTypedefinition.mInstanceMethodMap
+    !selfTypedefinition.getterMap
+    !selfTypedefinition.setterMap
+    !selfTypedefinition.instanceMethodMap
     !selfTypedefinition.classMethodMap
     !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.mEnumerationDescriptor
+    !selfTypedefinition.enumerationDescriptorList
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments
     !selfTypedefinition.mTypeForEnumeratedElement

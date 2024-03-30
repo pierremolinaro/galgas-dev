@@ -532,7 +532,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                         ?mutable: *
                         ?mutableproperties: let propertiesAreMutable] then
       if self.mReceiverName.string == "" then
-        receiverVariableCppName = inAnalysisContext.mSelfObjectCppName
+        receiverVariableCppName = inAnalysisContext.selfObjectCppName
         targetType = selfType
       else
         let propertyMap = [selfType definition].propertyMap
@@ -542,7 +542,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
         elsif not propertiesAreMutable then
           error self.mReceiverName: "the property cannot be modified in this context"
         end
-        receiverVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+        receiverVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
        end
     else

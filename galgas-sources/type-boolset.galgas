@@ -200,13 +200,14 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Operators
-  let operators = @operators.infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
+  let operators = @operators.infixAndOperator | .infixOrOperator | .infixXorOperator
+    | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .isComparable
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
     !typeName: self.mBoolsetTypeName
     !isPredefined: self.isPredefined
-    !isConcrete: true # Concrete Type
+    !isConcrete: true
     !superType: .null
     !typeKind: .boolsetType
     !supportCollectionValue: false # Does not support collection value
@@ -214,19 +215,17 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !propertyMap: {}
     !currentTypedPropertyList: {}
     !classFunctionMap: classFunctionMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
     !classMethodMap: {}
     !optionalMethodMap: {}
-    !{}
+    !enumerationDescriptorList: {}
     !operators
     !{}
-    !enumConstantMap: {}
-    !enumConstantList: {}
     !{}
     !{}
-    !false # Do not generate header in separate file
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !.null # No type for enumerated element for "for" instruction
     !defaultConstructorName: "none" # Default constructor name
     !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
@@ -307,12 +306,12 @@ override method @boolsetTypeForGeneration appendDeclaration1
     ![typedefinition.typeName.string identifierRepresentation]
     !typedefinition.isConcrete
     !typedefinition.classFunctionMap
-    !typedefinition.mGetterMap
-    !typedefinition.mSetterMap
-    !typedefinition.mInstanceMethodMap
+    !typedefinition.getterMap
+    !typedefinition.setterMap
+    !typedefinition.instanceMethodMap
     !typedefinition.classMethodMap
     !typedefinition.optionalMethodMap
-    !typedefinition.mEnumerationDescriptor
+    !typedefinition.enumerationDescriptorList
     !typedefinition.mHandledOperatorFlags
     !typedefinition.mAddAssignOperatorArguments
     !typedefinition.mTypeForEnumeratedElement

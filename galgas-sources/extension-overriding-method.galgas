@@ -217,8 +217,8 @@ override method @overridingExtensionMethodAST semanticAnalysis
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType definition].mInstanceMethodMap hasKey !self.mOverridingExtensionMethodName.string] then
-      [[superType definition].mInstanceMethodMap searchKey
+    if [[superType definition].instanceMethodMap hasKey !self.mOverridingExtensionMethodName.string] then
+      [[superType definition].instanceMethodMap searchKey
         !self.mOverridingExtensionMethodName
         ?*
         ?inheritedSignature
@@ -240,9 +240,9 @@ override method @overridingExtensionMethodAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !"this"
+    !selfObjectCppName: "this"
     !selfType: .available {!type: selfType !mutable: false !mutableproperties: true}
-    !"this->"
+    !selfObjectCppPrefixForAccessingProperty: "this->"
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isRefClass = false

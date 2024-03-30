@@ -581,7 +581,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration startLocationIndex]
-  let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
+  let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
   if [enumerationDescriptorList count] == 0 then
     error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   end
@@ -629,13 +629,13 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
-  let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
+  let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
   if [enumerationDescriptorList count] == 0 then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   else
 #--- Arguments
     if ([self.mElementList count] == 0) & not self.mEndsWithEllipsis then
-      let currentTypedAttributeList = [outEnumerationExpression.mResultType definition].mEnumerationDescriptor
+      let currentTypedAttributeList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
        [!?ioVariableMap insertUsedLocalConstant
          !@lstring.new {!mEnumerationName !self.mEndOfEnumerationExpression}
@@ -841,7 +841,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   if self.mIndexVariableName.string != "" then
     indexCppName = "index_" + [self.mInstructionLocation startLocationIndex]
     localConstantListForDoBranch +=
-      !inAnalysisContext.mPredefinedTypes.mUIntType
+      !inAnalysisContext.predefinedTypes.mUIntType
       !self.mIndexVariableName
       !false # Warns if unused
       !indexCppName

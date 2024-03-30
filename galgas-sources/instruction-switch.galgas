@@ -258,7 +258,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     ?let switchExpression
   ]
 #--- Check switch expression type is and enum instance
-  if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap ?constantList: *] then
+  if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap] then
   #--- Enum constant map
 //    let enumConstantMap = [switchExpression.mResultType definition].enumConstantMap
     var @stringset constantsNamedInSwitchInstruction = {}

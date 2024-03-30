@@ -110,19 +110,17 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !propertyMap: {}
       !currentTypedPropertyList: {}
       !classFunctionMap: constructorMap
-      !getterMap
-      !setterMap
-      !instanceMethodMap
+      !getterMap: getterMap
+      !setterMap: setterMap
+      !instanceMethodMap: instanceMethodMap
       !classMethodMap: classMethodMap
       !optionalMethodMap: optionalMethodMap
-      !enumerationList
+      !enumerationDescriptorList: enumerationList
       ![self getSupportedOperatorFlags]
       !addAssignArgumentList
-      !enumConstantMap: {}
-      !enumConstantList: {}
       !@mapSearchMethodListAST {}
       !@mapSearchMethodListAST {}
-      !false # Do not generate header in separate file
+      !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !enumeratedTypeEntry
       !defaultConstructorName: [self defaultInitializerName]
       !"predefined-types"

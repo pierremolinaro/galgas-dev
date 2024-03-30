@@ -228,8 +228,8 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType definition].mGetterMap hasKey !self.mAbstractExtensionGetterName.string] then
-      [[superType definition].mGetterMap searchKey
+    if [[superType definition].getterMap hasKey !self.mAbstractExtensionGetterName.string] then
+      [[superType definition].getterMap searchKey
         !self.mAbstractExtensionGetterName
         ?*
         ?inheritedSignature

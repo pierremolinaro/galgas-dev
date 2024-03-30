@@ -254,7 +254,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   )
 #--- Generate expression
   outExpression = @comparisonExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !inAnalysisContext.predefinedTypes.mBoolType
     !self.mOperatorLocation
     !leftExpression
     !self.mComparison

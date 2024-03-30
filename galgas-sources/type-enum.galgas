@@ -267,25 +267,23 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
     !superType: .null
-    !typeKind: .enumType {!constantMap: constantMap !constantList: self.mConstantList}
+    !typeKind: .enumType {!constantMap: constantMap}
     !supportCollectionValue: false # Does not support collection value
     !allTypedPropertyList: {}
     !propertyMap: {}
     !currentTypedPropertyList: {}
     !classFunctionMap: classFunctionMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
     !classMethodMap: {}
     !optionalMethodMap: optionalMethodMap
-    !{}
+    !enumerationDescriptorList: {}
     !.generateDescriptionGetterUtilityMethod | .isComparable
     !{}
-    !enumConstantMap: constantMap
-    !enumConstantList: self.mConstantList
     !{}
     !{}
-    !false # Do not generate header in separate file
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName: ""
     !"enum-" + [self.mEnumTypeName fileNameRepresentation]
@@ -403,12 +401,12 @@ override method @enumTypeForGeneration appendDeclaration1
     ![selfTypedefinition.typeName.string identifierRepresentation]
     !selfTypedefinition.isConcrete
     !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.mGetterMap
-    !selfTypedefinition.mSetterMap
-    !selfTypedefinition.mInstanceMethodMap
+    !selfTypedefinition.getterMap
+    !selfTypedefinition.setterMap
+    !selfTypedefinition.instanceMethodMap
     !selfTypedefinition.classMethodMap
     !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.mEnumerationDescriptor
+    !selfTypedefinition.enumerationDescriptorList
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments
     !selfTypedefinition.mTypeForEnumeratedElement

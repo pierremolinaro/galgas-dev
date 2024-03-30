@@ -78,7 +78,7 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalDoubleExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mDoubleType
+    !inAnalysisContext.predefinedTypes.mDoubleType
     !self.mValue.location
     !self.mValue.double
   }

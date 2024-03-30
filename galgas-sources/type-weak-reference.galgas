@@ -84,7 +84,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   else
     [!?ioTypeMap makeEntry !self.mSuperWeakReferenceTypeName ?superClassIndex]
     let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperWeakReferenceTypeName]
-    generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
+    generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
 #    [ioTypeMap searchKey
 #      !self.mSuperWeakReferenceTypeName
 #      ?3*
@@ -150,19 +150,17 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !propertyMap: {} # attributeMap
     !currentTypedPropertyList: {}
     !classFunctionMap: classFunctionMap
-    !{} # getterMap
-    !{} # setterMap
-    !{} # instanceMethodMap
+    !getterMap: {}
+    !setterMap: {}
+    !instanceMethodMap: {}
     !classMethodMap: {}
     !optionalMethodMap: {}
-    !{}
+    !enumerationDescriptorList: {}
     !.isReferenceEquatable
     !{}
-    !enumConstantMap: {}
-    !enumConstantList: {}
     !{}
     !{}
-    !generateHeaderInSeparateFile
+    !generateHeaderInSeparateFile: generateHeaderInSeparateFile
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName: "nil" # Default constructor
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
@@ -252,7 +250,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       !superClassEntry
       !allAttributeList
       !typedAttributeList
-      ![selfType definition].mGenerateHeaderInSeparateFile
+      ![selfType definition].generateHeaderInSeparateFile
     }
 }
 
@@ -265,7 +263,7 @@ refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mSuperClass # Null if no super class
   private let @typedPropertyList allTypedPropertyList # Inherited followed by current attributes
   private let @typedPropertyList mTypedAttributeList
-  private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
+  private let @bool generateHeaderInSeparateFile # Significant only for classes
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -287,12 +285,12 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     ![typedefinition.typeName.string identifierRepresentation]
     !typedefinition.isConcrete
     !typedefinition.classFunctionMap
-    !typedefinition.mGetterMap
-    !typedefinition.mSetterMap
-    !typedefinition.mInstanceMethodMap
+    !typedefinition.getterMap
+    !typedefinition.setterMap
+    !typedefinition.instanceMethodMap
     !typedefinition.classMethodMap
     !typedefinition.optionalMethodMap
-    !typedefinition.mEnumerationDescriptor
+    !typedefinition.enumerationDescriptorList
     !typedefinition.mHandledOperatorFlags
     !typedefinition.mAddAssignOperatorArguments
     !typedefinition.mTypeForEnumeratedElement

@@ -91,7 +91,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
  let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Check  lexique is declared
-  [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
+  [inAnalysisContext.semanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !self.mLexiqueComponentName
     ?7*
   ]

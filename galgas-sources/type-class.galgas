@@ -231,8 +231,8 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry superClassIndex
     let @bool generateHeaderInSeparateFile
     if self.mSuperClassName.string == "" then
-      superClassIndex = @unifiedTypeMapEntry.null
-      commonGetterMapForAllTypes (!?ioTypeMap ?getterMap )
+      superClassIndex = .null
+      commonGetterMapForAllTypes (!?ioTypeMap ?getterMap)
       setterMap = {}
       instanceMethodMap = {}
       inheritedTypedPropertyList = {}
@@ -243,14 +243,14 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperClassName]
       inheritedTypedPropertyList = superTypeDefinition.allTypedPropertyList
       attributeMap = superTypeDefinition.propertyMap
-      generateHeaderInSeparateFile = superTypeDefinition.mGenerateHeaderInSeparateFile
+      generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
     #---
       if not [superTypeDefinition.typeKind isClassType] then
         error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
       end
     #--- Mark all setters as inherited
       setterMap = {}
-      for (lkey mKind mParameterList mHasCompilerArgument * *) in superTypeDefinition.mSetterMap do
+      for (lkey mKind mParameterList mHasCompilerArgument * *) in superTypeDefinition.setterMap do
         [!?setterMap insertKey
           !lkey
           !mKind
@@ -262,31 +262,29 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       end
     #--- Mark all getters as inherited
       getterMap = {}
-      for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType * replacementGetter)
-            in superTypeDefinition.mGetterMap do
+      for theGetter in superTypeDefinition.getterMap do
         [!?getterMap insertKey
-          !lkey
-          !mKind
-          !mArgumentTypeList
-          !mDeclarationLocation
-          !mHasCompilerArgument
-          !mReturnedType
+          !theGetter.lkey
+          !theGetter.mKind
+          !theGetter.mArgumentTypeList
+          !theGetter.mDeclarationLocation
+          !theGetter.mHasCompilerArgument
+          !theGetter.mReturnedType
           !.isInherited
-          !replacementGetter
+          !theGetter.mGetterNameThatObsoletesInvokationName
         ]
       end
     #--- Mark all methods as inherited
       instanceMethodMap = {}
-      for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument * mErrorMessage)
-        in superTypeDefinition.mInstanceMethodMap do
+      for instanceMethod in superTypeDefinition.instanceMethodMap do
         [!?instanceMethodMap insertKey
-          !lkey
-          !mKind
-          !mParameterList
-          !mDeclarationLocation
-          !mHasCompilerArgument
+          !instanceMethod.lkey
+          !instanceMethod.mKind
+          !instanceMethod.mParameterList
+          !instanceMethod.mDeclarationLocation
+          !instanceMethod.mHasCompilerArgument
           !.isInherited
-          !mErrorMessage
+          !instanceMethod.mErrorMessage
         ]
       end
     end
@@ -300,24 +298,25 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !mPropertyTypeEntry
         !mPropertyName.string
     end
-    for (isConstant propertyTypeName propertyName accessControlAST hasSelector initExpression) in self.mPropertyList do
-      if [initExpression isSome] then
-        error propertyName : "property initialization is not handled for a class"
+    for property in self.mPropertyList do
+      if [property.initialization isSome] then
+        error property.propertyName : "property initialization is not handled for a class"
       end
-      [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
+      [!?ioTypeMap makeEntry !property.propertyTypeName ?let attributeTypeIndex]
       constructorPropertyTypeList +=
-        !if hasSelector then propertyName else ["" nowhere] end
+        !if property.hasSelector then property.propertyName else ["" nowhere] end
         !attributeTypeIndex
-        !propertyName.string
+        !property.propertyName.string
       [!?attributeMap insertKey
-        !propertyName
-        ![accessControlAST accessControl !forDeclaringType: classIndex]
-        !isConstant
+        !property.propertyName
+        ![property.accessControl accessControl !forDeclaringType: classIndex]
+        !property.isConstant
         !attributeTypeIndex
-        !initExpression
+        !property.initialization
       ]
-      if [getterMap hasKey !propertyName.string] then
-        error propertyName: "'" + propertyName + "' is the name of a prefefined or a user defined getter"
+      if [getterMap hasKey !property.propertyName.string] then
+        error property.propertyName
+        : "'" + property.propertyName + "' is the name of a prefefined or a user defined getter"
       end
     end
   #--- Class functions
@@ -333,21 +332,29 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Typed attribute list
     var @typedPropertyList currentClassTypedPropertyList = {}
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
-    for (isConstant propertyTypeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
-      if [initExpression isSome] then
-        error mPropertyName : "property initialization is not handled for a class"
+    for property in self.mPropertyList do
+      if [property.initialization isSome] then
+        error property.propertyName : "property initialization is not handled for a class"
       end
-      [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-      currentClassTypedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector: hasSelector
-      allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter: not isConstant !hasSelector: hasSelector
+      [!?ioTypeMap makeEntry !property.propertyTypeName ?let attributeTypeIndex]
+      currentClassTypedPropertyList +=
+        !attributeTypeIndex
+        !property.propertyName
+        !hasSetter: not property.isConstant
+        !hasSelector: property.hasSelector
+      allTypedAttributeList +=
+        !attributeTypeIndex
+        !property.propertyName
+        !hasSetter: not property.isConstant
+        !hasSelector: property.hasSelector
     end
   #--- set...attribute setter
-    for (mPropertyTypeEntry mPropertyName mHasSetter *) in currentClassTypedPropertyList do
-      if mHasSetter then
+    for property in currentClassTypedPropertyList do
+      if property.hasSetter then
         [!?setterMap insertKey
-          !@lstring.new {!"set"+ [mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
+          !@lstring.new {!"set"+ [property.mPropertyName.string stringByCapitalizingFirstCharacter] !@location.here}
           !@methodKind.definedAsMember
-          !{!["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
+          !{!["" nowhere] !property.mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentIn !property.mPropertyName.string}
           !false # Compiler argument
           !@methodQualifier.isBasicFinal
           !"" # No error message
@@ -387,19 +394,17 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !propertyMap: attributeMap
       !currentTypedPropertyList: currentClassTypedPropertyList
       !classFunctionMap: classFunctionMap
-      !getterMap
-      !setterMap
-      !instanceMethodMap
+      !getterMap: getterMap
+      !setterMap: setterMap
+      !instanceMethodMap: instanceMethodMap
       !classMethodMap: {}
       !optionalMethodMap: {}
-      !{}
+      !enumerationDescriptorList: {}
       !if self.mIsReference then .isReferenceEquatable else .isComparable end
       !{}
-      !enumConstantMap: {}
-      !enumConstantList: {}
       !{}
       !{}
-      !generateHeaderInSeparateFile
+      !generateHeaderInSeparateFile: generateHeaderInSeparateFile
       !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
       !defaultConstructorName: defaultConstructorName # Default constructor name
       !"class-" + [self.mClassTypeName fileNameRepresentation]
@@ -411,12 +416,12 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities
-                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                    ?let @string unused inProductDirectory
-                                    ?let @semanticContext unused inSemanticContext
-                                    ?!@unifiedTypeMap ioTypeMap
-                                    ?let @predefinedTypes unused inPredefinedTypes
-                                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                ?let @string unused inProductDirectory
+                ?let @semanticContext unused inSemanticContext
+                ?!@unifiedTypeMap ioTypeMap
+                ?let @predefinedTypes unused inPredefinedTypes
+                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   #--- Useful entities graph
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
     [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
@@ -505,7 +510,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !superClassEntry
         !allAttributeList
         !typedAttributeList
-        ![selfType definition].mGenerateHeaderInSeparateFile
+        ![selfType definition].generateHeaderInSeparateFile
       }
   }
 
@@ -523,200 +528,203 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mSuperClass # Null if no super class
   private let @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   private let @typedPropertyList mCurrentTypedAttributeList
-  private let @bool mGenerateHeaderInSeparateFile # Significant only for classes
-}
+  private let @bool generateHeaderInSeparateFile # Significant only for classes
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @classTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
-                                                           !@string outHeader {
-  if not [self.mSuperClass isNull] then
-    [self.mSuperClass addHeaderFileName !?ioInclusionSet]
-  end
-  let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  if self.mIsReference then
-    outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader1
-      !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mIsAbstract
-      !self.mCurrentTypedAttributeList
-    ]
-  else
-    outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader1
-      !selfTypeDefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mIsAbstract
-      !self.mCurrentTypedAttributeList
-    ]
-  end
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !selfTypeDefinition.typeName.string
-    ![self.mSelfTypeEntry identifierRepresentation]
-    !selfTypeDefinition.isConcrete
-    !selfTypeDefinition.classFunctionMap
-    !selfTypeDefinition.mGetterMap
-    !selfTypeDefinition.mSetterMap
-    !selfTypeDefinition.mInstanceMethodMap
-    !selfTypeDefinition.classMethodMap
-    !selfTypeDefinition.optionalMethodMap
-    !selfTypeDefinition.mEnumerationDescriptor
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
-  ]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @classTypeForGeneration appendDeclaration2 ?let @string inOutputDirectory
-                                                           ?!@stringset ioInclusionSet
-                                                           !@string outHeader {
-  for (t 3*) in self.mCurrentTypedAttributeList do
-    [t addHeaderFileName !?ioInclusionSet]
-  end
-  let typedefinition = [self.mSelfTypeEntry definition]
-  if self.mIsReference then
-    if self.mGenerateHeaderInSeparateFile then
-      let @string part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
-        !typedefinition.typeName.string
+  override method appendDeclaration1 ?!@stringset ioInclusionSet
+                                     !@string outHeader {
+    if not [self.mSuperClass isNull] then
+      [self.mSuperClass addHeaderFileName !?ioInclusionSet]
+    end
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    if self.mIsReference then
+      outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader1
+        !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
         !self.mIsAbstract
-        ![self.mSelfTypeEntry definition].mGetterMap
-        ![self.mSelfTypeEntry definition].mInstanceMethodMap
-      ]
-      let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
-        !typedefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
       ]
-      let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
-      [@string generateFileWithPattern
-        !startPath:inOutputDirectory + "/../user-headers"
-        !fileName:headerFileName
-        !lineComment:"//"
-        !header:"" # Header
-        !defaultUserZone1:"\n\n" # Defaut user zone1
-        !generatedZone2:part1
-        !defaultUserZone2:"\n\n" # Defaut user zone2
-        !generatedZone3:part2
-        !makeExecutable:false
-      ]
-      outHeader = "#include \"" + headerFileName + "\"\n\n"
     else
-      outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
-        !typedefinition.typeName.string
+      outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader1
+        !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
         !self.mIsAbstract
-        ![self.mSelfTypeEntry definition].mGetterMap
-        ![self.mSelfTypeEntry definition].mInstanceMethodMap
+        !self.mCurrentTypedAttributeList
       ]
-      outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+    end
+    outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+      !selfTypeDefinition.typeName.string
+      ![self.mSelfTypeEntry identifierRepresentation]
+      !selfTypeDefinition.isConcrete
+      !selfTypeDefinition.classFunctionMap
+      !selfTypeDefinition.getterMap
+      !selfTypeDefinition.setterMap
+      !selfTypeDefinition.instanceMethodMap
+      !selfTypeDefinition.classMethodMap
+      !selfTypeDefinition.optionalMethodMap
+      !selfTypeDefinition.enumerationDescriptorList
+      !selfTypeDefinition.mHandledOperatorFlags
+      !selfTypeDefinition.mAddAssignOperatorArguments
+      !selfTypeDefinition.mTypeForEnumeratedElement
+    ]
+  }
+
+  #·······························································································
+
+  override method appendDeclaration2 ?let @string inOutputDirectory
+                                     ?!@stringset ioInclusionSet
+                                     !@string outHeader {
+    for (t 3*) in self.mCurrentTypedAttributeList do
+      [t addHeaderFileName !?ioInclusionSet]
+    end
+    let typedefinition = [self.mSelfTypeEntry definition]
+    if self.mIsReference then
+      if self.generateHeaderInSeparateFile then
+        let @string part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+          ![self.mSelfTypeEntry definition].getterMap
+          ![self.mSelfTypeEntry definition].instanceMethodMap
+        ]
+        let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+        ]
+        let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
+        [@string generateFileWithPattern
+          !startPath:inOutputDirectory + "/../user-headers"
+          !fileName:headerFileName
+          !lineComment:"//"
+          !header:"" # Header
+          !defaultUserZone1:"\n\n" # Defaut user zone1
+          !generatedZone2:part1
+          !defaultUserZone2:"\n\n" # Defaut user zone2
+          !generatedZone3:part2
+          !makeExecutable:false
+        ]
+        outHeader = "#include \"" + headerFileName + "\"\n\n"
+      else
+        outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+          ![self.mSelfTypeEntry definition].getterMap
+          ![self.mSelfTypeEntry definition].instanceMethodMap
+        ]
+        outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+        ]
+      end
+    else
+      if self.generateHeaderInSeparateFile then
+        let @string part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+          ![self.mSelfTypeEntry definition].getterMap
+          ![self.mSelfTypeEntry definition].instanceMethodMap
+        ]
+        let @string part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+        ]
+        let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
+        [@string generateFileWithPattern
+          !startPath:inOutputDirectory + "/../user-headers"
+          !fileName:headerFileName
+          !lineComment:"//"
+          !header:"" # Header
+          !defaultUserZone1:"\n\n" # Defaut user zone1
+          !generatedZone2:part1
+          !defaultUserZone2:"\n\n" # Defaut user zone2
+          !generatedZone3:part2
+          !makeExecutable:false
+        ]
+        outHeader = "#include \"" + headerFileName + "\"\n\n"
+      else
+        outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+          ![self.mSelfTypeEntry definition].getterMap
+          ![self.mSelfTypeEntry definition].instanceMethodMap
+        ]
+        outHeader += [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
+          !typedefinition.typeName.string
+          ![self.mSelfTypeEntry identifierRepresentation]
+          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !self.mCurrentTypedAttributeList
+          !self.mAllTypedAttributeList
+          !self.mIsAbstract
+        ]
+      end
+    end
+  }
+
+  #·······························································································
+
+  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+                                               ?!@stringset ioInclusionSet
+                                               !@string outImplementation {
+    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    let typedefinition = [self.mSelfTypeEntry definition]
+    let at = [self.mAllTypedAttributeList subListWithRange
+      !.new {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
+    ]
+    if self.mIsReference then
+      outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation
+        !typedefinition.typeName.string
+        ![self.mSelfTypeEntry identifierRepresentation]
+        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !currentPropertyList: self.mCurrentTypedAttributeList
+        !allPropertyList: self.mAllTypedAttributeList
+        !inheritedPropertyList: at
+        !self.mIsAbstract
+      ]
+    else
+      outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
         !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
+        !at
         !self.mIsAbstract
       ]
     end
-  else
-    if self.mGenerateHeaderInSeparateFile then
-      let @string part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
-        !typedefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-        ![self.mSelfTypeEntry definition].mGetterMap
-        ![self.mSelfTypeEntry definition].mInstanceMethodMap
-      ]
-      let @string part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
-        !typedefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-      ]
-      let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
-      [@string generateFileWithPattern
-        !startPath:inOutputDirectory + "/../user-headers"
-        !fileName:headerFileName
-        !lineComment:"//"
-        !header:"" # Header
-        !defaultUserZone1:"\n\n" # Defaut user zone1
-        !generatedZone2:part1
-        !defaultUserZone2:"\n\n" # Defaut user zone2
-        !generatedZone3:part2
-        !makeExecutable:false
-      ]
-      outHeader = "#include \"" + headerFileName + "\"\n\n"
-    else
-      outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
-        !typedefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-        ![self.mSelfTypeEntry definition].mGetterMap
-        ![self.mSelfTypeEntry definition].mInstanceMethodMap
-      ]
-      outHeader += [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
-        !typedefinition.typeName.string
-        ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-        !self.mCurrentTypedAttributeList
-        !self.mAllTypedAttributeList
-        !self.mIsAbstract
-      ]
-    end
-  end
- }
+  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @classTypeForGeneration appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
-                                                                     ?!@stringset ioInclusionSet
-                                                                     !@string outImplementation {
-  [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-  let typedefinition = [self.mSelfTypeEntry definition]
-  let at = [self.mAllTypedAttributeList subListWithRange
-    !.new {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
-  ]
-  if self.mIsReference then
-    outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation
-      !typedefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !currentPropertyList: self.mCurrentTypedAttributeList
-      !allPropertyList: self.mAllTypedAttributeList
-      !inheritedPropertyList: at
-      !self.mIsAbstract
-    ]
-  else
-    outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
-      !typedefinition.typeName.string
-      ![self.mSelfTypeEntry identifierRepresentation]
-      !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-      !self.mCurrentTypedAttributeList
-      !self.mAllTypedAttributeList
-      !at
-      !self.mIsAbstract
-    ]
-  end
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

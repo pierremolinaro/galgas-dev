@@ -353,8 +353,8 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
       end
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType ?*]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
@@ -435,8 +435,8 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       end
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType ?*]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
@@ -517,8 +517,8 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
       end
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType ?*]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
@@ -600,8 +600,8 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
       end
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType ?*]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
@@ -683,8 +683,8 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
       end
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType ?*]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
-      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
         + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"

@@ -72,7 +72,7 @@ end
     %if not [element definition].isConcrete then%abstract %end
     switch [element definition].typeKind
     case classType (*) : %class%
-    case enumType (**) : %enum%
+    case enumType (*) : %enum%
     case listType : %list%
     case sortedListType : %sorted list%
     case mapType : %map%
@@ -170,9 +170,9 @@ if [[element definition].mAddAssignOperatorArguments count] > 0 then
   end
   %</td></tr>%
 end
-if [[element definition].mEnumerationDescriptor count] > 0 then
+if [[element definition].enumerationDescriptorList count] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
-  for (mEnumeratedType mEnumerationName) in [element definition].mEnumerationDescriptor do
+  for (mEnumeratedType mEnumerationName) in [element definition].enumerationDescriptorList do
     !linkForType (![mEnumeratedType definition].typeName.string)% %!mEnumerationName%<br>%
   end
   %</td></tr>%
@@ -194,9 +194,9 @@ if [[element definition].classFunctionMap count] > 0 then
   end
 end
 #--- Readers
-if [[element definition].mGetterMap count] > 0 then
+if [[element definition].getterMap count] > 0 then
   %<tr class="result_line"><td>Getters</td><td>%
-  for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier replacementGetter) in [element definition].mGetterMap do
+  for (lkey mKind mArgumentTypeList mDeclarationLocation mHasCompilerArgument mReturnedType mQualifier replacementGetter) in [element definition].getterMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -221,9 +221,9 @@ if [[element definition].mGetterMap count] > 0 then
   %</td></tr>%
 end
 #--- Methods
-if [[element definition].mInstanceMethodMap count] > 0 then
+if [[element definition].instanceMethodMap count] > 0 then
   %<tr class="result_line"><td>Methods</td><td>%
-  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in [element definition].mInstanceMethodMap do
+  for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualifier mErrorMessage) in [element definition].instanceMethodMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %
@@ -254,9 +254,9 @@ if [[element definition].mInstanceMethodMap count] > 0 then
   %</td></tr>%
 end
 #--- Modifiers
-if [[element definition].mSetterMap count] > 0 then
+if [[element definition].setterMap count] > 0 then
   %<tr class="result_line"><td>Setters</td><td>%
-  for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in [element definition].mSetterMap do
+  for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in [element definition].setterMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %

@@ -347,7 +347,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.mPredefinedTypes.mUIntType
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -357,7 +357,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.mPredefinedTypes.mUIntType
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -404,7 +404,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.mPredefinedTypes.mUIntType
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -414,7 +414,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType:  inAnalysisContext.mPredefinedTypes.mUIntType
+    !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -422,7 +422,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkAssignmentTypeWithImplicitGetterCall (
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    !inAnalysisContext.predefinedTypes.mUIntType
     !leftExpression.mResultType
     !leftExpression.mLocation
     !?leftExpression
@@ -432,7 +432,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 #    error leftExpression.mLocation : "the left expression of '..<' operator should an @uint"
 #  end
   checkAssignmentTypeWithImplicitGetterCall (
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    !inAnalysisContext.predefinedTypes.mUIntType
     !rightExpression.mResultType
     !rightExpression.mLocation
     !?rightExpression

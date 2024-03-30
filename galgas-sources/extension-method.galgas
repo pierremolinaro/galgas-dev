@@ -194,28 +194,28 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
     [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
   #--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey ! self.mTypeName]
-    let @string selfObjectNameNew
-    let @string selfObjectAccessorNew
+    let @string selfObjectNameString
+    let @string selfObjectPropertyAccessorString
     let @bool implementedAsFunction
   #--- Check self type is a class
     var isReferenceClass = false
     if let [[selfType definition].typeKind classType ?isReference: let isReference] then
       isReferenceClass = isReference
-      selfObjectNameNew = "this"
-      selfObjectAccessorNew = "this->"
+      selfObjectNameString = "this"
+      selfObjectPropertyAccessorString = "this->"
       implementedAsFunction = false
     else
-      selfObjectNameNew = "inObject"
-      selfObjectAccessorNew = "inObject."
+      selfObjectNameString = "inObject"
+      selfObjectPropertyAccessorString = "inObject."
       implementedAsFunction = true
     end
   #--- Analyze instruction list
     let analysisContextNew = @analysisContext.new {
       !inSemanticContext
       !inPredefinedTypes
-      !selfObjectNameNew
+      !selfObjectCppName: selfObjectNameString
       !selfType: .available {!type:  selfType !mutable: false !mutableproperties: isReferenceClass}
-      !selfObjectAccessorNew
+      !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
       !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
     }
     var isRefClass = false
@@ -370,7 +370,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
     var @bool searching = true
     loop (@uint.max) while searching do
       if not [[baseType definition].superType isNull] then
-        if [[[baseType definition].superType definition].mInstanceMethodMap hasKey !self.mExtensionMethodName] then
+        if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mExtensionMethodName] then
           baseType = [baseType definition].superType
         else
           searching = false

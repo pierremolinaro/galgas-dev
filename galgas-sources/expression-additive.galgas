@@ -209,7 +209,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: inAnalysisContext.mPredefinedTypes.mBigIntType
+    !inferenceType: inAnalysisContext.predefinedTypes.mBigIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -220,14 +220,14 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
-       !inAnalysisContext.mPredefinedTypes.mBigIntType
+       !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue >> right.mValue
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
-       !inAnalysisContext.mPredefinedTypes.mBigIntType
+       !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue >> [right.mValue uint]
      }
@@ -281,7 +281,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType: inAnalysisContext.mPredefinedTypes.mBigIntType
+    !inferenceType: inAnalysisContext.predefinedTypes.mBigIntType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -292,14 +292,14 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
-       !inAnalysisContext.mPredefinedTypes.mBigIntType
+       !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue << right.mValue
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
-       !inAnalysisContext.mPredefinedTypes.mBigIntType
+       !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue << [right.mValue uint]
      }
@@ -371,7 +371,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue + rightBigint.mValue
     }
@@ -437,7 +437,7 @@ override method @addExpressionAST analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue + rightBigint.mValue
     }
@@ -504,7 +504,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue - rightBigint.mValue
     }
@@ -570,7 +570,7 @@ override method @subExpressionAST analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue - rightBigint.mValue
     }

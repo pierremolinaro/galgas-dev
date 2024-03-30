@@ -640,7 +640,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
     if not [[baseType definition].superType isNull] then
-      if [[[baseType definition].superType definition].mInstanceMethodMap hasKey !inMethodName] then
+      if [[[baseType definition].superType definition].instanceMethodMap hasKey !inMethodName] then
         baseType = [baseType definition].superType
       else
         searching = false
@@ -1547,12 +1547,12 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
         ![self.mSelfTypeEntry identifierRepresentation]
         !selfTypeDefinition.isConcrete
         !selfTypeDefinition.classFunctionMap
-        !selfTypeDefinition.mGetterMap
-        !selfTypeDefinition.mSetterMap
-        !selfTypeDefinition.mInstanceMethodMap
+        !selfTypeDefinition.getterMap
+        !selfTypeDefinition.setterMap
+        !selfTypeDefinition.instanceMethodMap
         !selfTypeDefinition.classMethodMap
         !selfTypeDefinition.optionalMethodMap
-        !selfTypeDefinition.mEnumerationDescriptor
+        !selfTypeDefinition.enumerationDescriptorList
         !selfTypeDefinition.mHandledOperatorFlags
         !selfTypeDefinition.mAddAssignOperatorArguments
         !selfTypeDefinition.mTypeForEnumeratedElement

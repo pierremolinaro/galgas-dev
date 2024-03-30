@@ -207,19 +207,17 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !propertyMap: propertyMap
       !currentTypedPropertyList: typedPropertyList
       !classFunctionMap: classFunctionMap
-      !getterMap
-      !setterMap
-      !instanceMethodMap
+      !getterMap: getterMap
+      !setterMap: setterMap
+      !instanceMethodMap: instanceMethodMap
       !classMethodMap: {}
       !optionalMethodMap: optionalMethodMap
-      !@enumerationDescriptorList {}
+      !enumerationDescriptorList: {}
       !.generateDescriptionGetterUtilityMethod | .isComparable
       !@functionSignature {}
-      !enumConstantMap: {}
-      !enumConstantList: {}
       !@mapSearchMethodListAST {}
       !@mapSearchMethodListAST {}
-      !false # Do not generate header in separate file
+      !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !enumeratedType # Type for enumerated element for "for" instruction
       !defaultConstructorName: defaultConstructorName # Default constructor
       !"struct-" + [self.mStructTypeName fileNameRepresentation]
@@ -289,9 +287,9 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         let @analysisContext analysisContext = .new {
           !inSemanticContext
           !inPredefinedTypes
-          !""
+          !selfObjectCppName: ""
           !selfType: .none
-          !""
+          !selfObjectCppPrefixForAccessingProperty: ""
           !requiresSelfForAccessingProperty: true
         }
         let propertyType = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
@@ -391,12 +389,12 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       ![self.mSelfTypeEntry identifierRepresentation]
       !selfTypedefinition.isConcrete
       !selfTypedefinition.classFunctionMap
-      !selfTypedefinition.mGetterMap
-      !selfTypedefinition.mSetterMap
-      !selfTypedefinition.mInstanceMethodMap
+      !selfTypedefinition.getterMap
+      !selfTypedefinition.setterMap
+      !selfTypedefinition.instanceMethodMap
       !selfTypedefinition.classMethodMap
       !selfTypedefinition.optionalMethodMap
-      !selfTypedefinition.mEnumerationDescriptor
+      !selfTypedefinition.enumerationDescriptorList
       !selfTypedefinition.mHandledOperatorFlags
       !selfTypedefinition.mAddAssignOperatorArguments
       !selfTypedefinition.mTypeForEnumeratedElement

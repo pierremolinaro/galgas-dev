@@ -93,7 +93,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Retrieve function features
-  [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
+  [inAnalysisContext.semanticContext.mFunctionMap searchKey
     !self.mFunctionName
     ?let @functionSignature functionSignature
     ?let @unifiedTypeMapEntry resultType
@@ -101,7 +101,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   ]
 #--- Check internal
   if isInternal then
-    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
+    let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
     if [self.mFunctionName.location file] != [procDeclarationLocation file] then
       error self.mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
     end

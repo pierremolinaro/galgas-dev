@@ -10318,7 +10318,7 @@ void cPtr_predefinedTypeAST::method_getClassFunctionMap (GALGAS_unifiedTypeMap &
                                                          GALGAS_classFunctionMap & outArgument_outClassFunctionMap,
                                                          Compiler * /* inCompiler */
                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outClassFunctionMap = GALGAS_classFunctionMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 161)) ;
+  outArgument_outClassFunctionMap = GALGAS_classFunctionMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 159)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10344,7 +10344,7 @@ void cPtr_predefinedTypeAST::method_getGetterMap (GALGAS_unifiedTypeMap & /* ioA
                                                   GALGAS_getterMap & outArgument_outGetterMap,
                                                   Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outGetterMap = GALGAS_getterMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 168)) ;
+  outArgument_outGetterMap = GALGAS_getterMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 166)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10370,7 +10370,7 @@ void cPtr_predefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap & /* ioA
                                                   GALGAS_setterMap & outArgument_outSetterMap,
                                                   Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outSetterMap = GALGAS_setterMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 175)) ;
+  outArgument_outSetterMap = GALGAS_setterMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 173)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10396,7 +10396,7 @@ void cPtr_predefinedTypeAST::method_getInstanceMethodMap (GALGAS_unifiedTypeMap 
                                                           GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
                                                           Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 182)) ;
+  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 180)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10422,7 +10422,7 @@ void cPtr_predefinedTypeAST::method_getClassMethodMap (GALGAS_unifiedTypeMap & /
                                                        GALGAS_classMethodMap & outArgument_outClassMethodMap,
                                                        Compiler * /* inCompiler */
                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outClassMethodMap = GALGAS_classMethodMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 189)) ;
+  outArgument_outClassMethodMap = GALGAS_classMethodMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 187)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10448,7 +10448,7 @@ void cPtr_predefinedTypeAST::method_getOptionalMethodMap (GALGAS_unifiedTypeMap 
                                                           GALGAS_optionalMethodMap & outArgument_outMap,
                                                           Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outMap = GALGAS_optionalMethodMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 196)) ;
+  outArgument_outMap = GALGAS_optionalMethodMap::class_func_emptyMap (SOURCE_FILE ("predefinedTypeAST.galgas", 194)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10473,7 +10473,7 @@ void callExtensionMethod_getOptionalMethodMap (cPtr_predefinedTypeAST * inObject
 GALGAS_operators cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (Compiler */* inCompiler */
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_operators result_outFlags ; // Returned variable
-  result_outFlags = GALGAS_operators::class_func_none (SOURCE_FILE ("predefinedTypeAST.galgas", 202)) ;
+  result_outFlags = GALGAS_operators::class_func_none (SOURCE_FILE ("predefinedTypeAST.galgas", 200)) ;
 //---
   return result_outFlags ;
 }
@@ -10530,7 +10530,7 @@ void cPtr_predefinedTypeAST::method_getAddAssignArgumentList (GALGAS_unifiedType
                                                               GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                               Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("predefinedTypeAST.galgas", 215)) ;
+  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::class_func_emptyList (SOURCE_FILE ("predefinedTypeAST.galgas", 213)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10557,7 +10557,7 @@ void cPtr_predefinedTypeAST::method_getEnumerationList (GALGAS_unifiedTypeMap & 
                                                         GALGAS_string & outArgument_outEnumeratedType,
                                                         Compiler * /* inCompiler */
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::class_func_emptyList (SOURCE_FILE ("predefinedTypeAST.galgas", 223)) ;
+  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::class_func_emptyList (SOURCE_FILE ("predefinedTypeAST.galgas", 221)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 

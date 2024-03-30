@@ -95,9 +95,9 @@ override method @notExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if expression is == @trueExpressionForGeneration then
-    outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
+    outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mBoolType !self.mOperatorLocation}
   elsif expression is == @falseExpressionForGeneration then
-    outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
+    outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mBoolType !self.mOperatorLocation}
   elsif not [[type definition].mHandledOperatorFlags prefixNotOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'not' operator"

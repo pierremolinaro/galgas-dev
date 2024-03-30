@@ -596,19 +596,17 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !propertyMap: {}
     !currentTypedPropertyList: typedPropertyList
     !classFunctionMap: classFunctionMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
     !classMethodMap: {}
     !optionalMethodMap: optionalMethodMap
-    !enumerationDescriptor
+    !enumerationDescriptorList: enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor | .isComparable | .infixAddOperator
     !argumentTypeListForAddAssignWithFieldExpressionList
-    !enumConstantMap: {}
-    !enumConstantList: {}
     !self.mSearchMethodList
     !{}
-    !false # Do not generate header in separate file
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !elementTypeEntry # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyMap"
     !"map-" + [self.mMapTypeName fileNameRepresentation]
@@ -747,12 +745,12 @@ override method @mapTypeForGeneration appendDeclaration1
     ![self.mSelfTypeEntry identifierRepresentation]
     !selfTypedefinition.isConcrete
     !selfTypedefinition.classFunctionMap
-    !selfTypedefinition.mGetterMap
-    !selfTypedefinition.mSetterMap
-    !selfTypedefinition.mInstanceMethodMap
+    !selfTypedefinition.getterMap
+    !selfTypedefinition.setterMap
+    !selfTypedefinition.instanceMethodMap
     !selfTypedefinition.classMethodMap
     !selfTypedefinition.optionalMethodMap
-    !selfTypedefinition.mEnumerationDescriptor
+    !selfTypedefinition.enumerationDescriptorList
     !selfTypedefinition.mHandledOperatorFlags
     !selfTypedefinition.mAddAssignOperatorArguments
     !selfTypedefinition.mTypeForEnumeratedElement
