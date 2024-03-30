@@ -205,7 +205,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
 #  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
       if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -236,7 +236,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"
 #    end
@@ -275,7 +275,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"
 #    end
@@ -308,7 +308,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+  if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -340,7 +340,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+  if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end

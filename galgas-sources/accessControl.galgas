@@ -218,7 +218,6 @@ enum @AccessControl {
         if not ok then
           error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
         end
-      case initializer (*) :
       end
     case protectedSetAccess (declaringType) :
       switch inOptionalCurrentType
@@ -234,7 +233,6 @@ enum @AccessControl {
         if not ok then
           warning inErrorLocation : "inaccessible property (due to 'protected(set)' qualifier)"
         end
-      case initializer (*) :
       end
     case privateAccess (declaringType) :
       switch inOptionalCurrentType
@@ -244,7 +242,6 @@ enum @AccessControl {
         if [declaringType typeName] != [currentType typeName] then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end
-      case initializer (*) :
       end
     case privateSetAccess (declaringType) :
       switch inOptionalCurrentType
@@ -254,7 +251,6 @@ enum @AccessControl {
         if [declaringType typeName] != [currentType typeName] then
           error inErrorLocation : "inaccessible property (due to 'private(set)' qualifier)"
         end
-      case initializer (*) :
       end
     case fileprivateAccess (declaringLocation) :
       if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then
@@ -289,7 +285,6 @@ enum @AccessControl {
         if not ok then
           error inErrorLocation : "inaccessible property (due to 'protected' qualifier)"
         end
-      case initializer (*) :
       end
     case privateAccess (declaringType) :
       switch inOptionalCurrentType
@@ -299,7 +294,6 @@ enum @AccessControl {
         if [declaringType typeName] != [currentType typeName] then
           error inErrorLocation : "inaccessible property (due to 'private' qualifier)"
         end
-      case initializer (*) :
       end
     case fileprivateAccess (declaringLocation) :
       if [declaringLocation sourceFile] != [inErrorLocation sourceFile] then

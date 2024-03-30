@@ -291,7 +291,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
           !inSemanticContext
           !inPredefinedTypes
           !selfObjectCppName: ""
-          !selfType: .none
+          !selfAvailability: .none
           !selfObjectCppPrefixForAccessingProperty: ""
           !requiresSelfForAccessingProperty: true
         }

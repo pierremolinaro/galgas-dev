@@ -668,8 +668,8 @@ template <typename TYPE> void TC_Array <TYPE>::unionOfOrderedArraies (const TC_A
 //
 //--------------------------------------------------------------------------------------------------
 
-template <typename TYPE> void TC_Array <TYPE>::subtractOfOrderedArraies (const TC_Array<TYPE> & inSubstractedSet,
-                                                                         TC_Array<TYPE> & outResult) const {
+template <typename TYPE> void TC_Array <TYPE>::subtractOfOrderedArraies (const TC_Array <TYPE> & inSubstractedSet,
+                                                                         TC_Array <TYPE> & outResult) const {
   outResult.removeAllKeepingCapacity () ;
   if (count () > 0) {
     if (inSubstractedSet.count () == 0) {

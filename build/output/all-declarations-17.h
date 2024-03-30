@@ -1572,6 +1572,22 @@ void extensionSetter_insertMutableProperty (class GALGAS_localVarManager & ioObj
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension setter '@localVarManager insertInitializerSelfProperty'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertInitializerSelfProperty (class GALGAS_localVarManager & ioObject,
+                                                    const class GALGAS_string constin_inPropertyName,
+                                                    const class GALGAS_location constin_inErrorLocation,
+                                                    const class GALGAS_unifiedTypeMapEntry constin_inType,
+                                                    const class GALGAS_string constin_inCppName,
+                                                    const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                                    const class GALGAS_bool constin_inInitialized,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension setter '@localVarManager openOverrideForSelectBlock'
 //
 //--------------------------------------------------------------------------------------------------

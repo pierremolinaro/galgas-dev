@@ -252,7 +252,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
 #  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
-  if let [inAnalysisContext.selfType available
+  if let [inAnalysisContext.selfAvailability available
       ?type: let selfType
       ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
@@ -322,7 +322,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #--- Analyze "self", as receiver expression
 #  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
-  if let [inAnalysisContext.selfType available
+  if let [inAnalysisContext.selfAvailability available
       ?type: let selfType
       ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
@@ -370,9 +370,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMapEntry selfTypeEntry
-#  var @string selfObjectCppName
-  if let [inAnalysisContext.selfType available
+  if let [inAnalysisContext.selfAvailability available
       ?type: let selfType
       ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
@@ -427,9 +425,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMapEntry selfTypeEntry
-#  var @string selfObjectCppName
-  if let [inAnalysisContext.selfType available
+  if let [inAnalysisContext.selfAvailability available
       ?type: let selfType
       ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
@@ -479,7 +475,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
 #  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
-  if let [inAnalysisContext.selfType available
+  if let [inAnalysisContext.selfAvailability available
       ?type: let selfType
       ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then

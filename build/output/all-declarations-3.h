@@ -4613,14 +4613,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST
 
 class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS_unifiedTypeMapEntry mProperty_mPropertyTypeEntry ;
-  public: inline GALGAS_unifiedTypeMapEntry readProperty_mPropertyTypeEntry (void) const {
-    return mProperty_mPropertyTypeEntry ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_typeEntry ;
+  public: inline GALGAS_unifiedTypeMapEntry readProperty_typeEntry (void) const {
+    return mProperty_typeEntry ;
   }
 
-  public: GALGAS_lstring mProperty_mPropertyName ;
-  public: inline GALGAS_lstring readProperty_mPropertyName (void) const {
-    return mProperty_mPropertyName ;
+  public: GALGAS_lstring mProperty_name ;
+  public: inline GALGAS_lstring readProperty_name (void) const {
+    return mProperty_name ;
   }
 
   public: GALGAS_propertyInCollectionInitializationAST mProperty_initialization ;
@@ -4646,12 +4646,12 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
   public: GALGAS_typedPropertyList_2D_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMPropertyTypeEntry (const GALGAS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPropertyTypeEntry = inValue ;
+  public: inline void setter_setTypeEntry (const GALGAS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_typeEntry = inValue ;
   }
 
-  public: inline void setter_setMPropertyName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPropertyName = inValue ;
+  public: inline void setter_setName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_name = inValue ;
   }
 
   public: inline void setter_setInitialization (const GALGAS_propertyInCollectionInitializationAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -4670,8 +4670,8 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
   public: virtual ~ GALGAS_typedPropertyList_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeEntry,
-                                               const GALGAS_lstring & in_mPropertyName,
+  public: GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMapEntry & in_typeEntry,
+                                               const GALGAS_lstring & in_name,
                                                const GALGAS_propertyInCollectionInitializationAST & in_initialization,
                                                const GALGAS_bool & in_hasSetter,
                                                const GALGAS_bool & in_hasSelector) ;

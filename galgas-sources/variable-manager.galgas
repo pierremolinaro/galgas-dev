@@ -218,7 +218,8 @@ setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState | .suggestDeclareUnusedParameterAsUnused
+    !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
+       | .suggestDeclareUnusedParameterAsUnused
     !.initialized
   ]
 }
@@ -236,7 +237,8 @@ setter @localVarManager insertNonMutableProperty ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.rejectWriteInInitializedAndReadStates | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
+    !.rejectWriteInInitializedAndReadStates
+          | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
   ]
 }
@@ -254,6 +256,29 @@ setter @localVarManager insertMutableProperty ?let @lstring inVarName
     !inNameForCheckingFormalParameterUsing
     !.acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
     !.initialized
+  ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! PROPERTY IN INITIALIZER
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+setter @localVarManager insertInitializerSelfProperty
+                              ?let @string inPropertyName
+                              ?let @location inErrorLocation
+                              ?let @unifiedTypeMapEntry inType
+                              ?let @string inCppName
+                              ?let @string inNameForCheckingFormalParameterUsing
+                              ?let @bool inInitialized {
+  let varName = @lstring.new {!"self." + inPropertyName !inErrorLocation}
+  [!?self.mCurrentManager insertKey
+    !varName
+    !inType
+    !inCppName
+    !inNameForCheckingFormalParameterUsing
+    !.rejectDeclaredStateAsFinalState
+      | .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState
+    !if inInitialized then .initialized else .declared {!usedInSubscope: false} end
   ]
 }
 
@@ -391,7 +416,12 @@ setter @localVarManager neutralAccess ?let @lstring inVarName
                                       !@unifiedTypeMapEntry outType
                                       !@string outCppName
                                       !@string outNameForCheckingFormalParameterUsing {
-  [!?self.mCurrentManager neutralAccess !inVarName ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+  [!?self.mCurrentManager neutralAccess
+    !inVarName
+    ?outType
+    ?outCppName
+    ?outNameForCheckingFormalParameterUsing
+  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -405,7 +435,13 @@ setter @currentVarManager neutralAccess ?let @lstring inVarName
     outCppName = cppName
     outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
   else
-    [!?self.mSubMaps neutralAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
+    [!?self.mSubMaps neutralAccess
+      !inVarName
+      !0
+      ?outType
+      ?outCppName
+      ?outNameForCheckingFormalParameterUsing
+    ]
   end
 }
 

@@ -228,17 +228,18 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
-                                                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                                          ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-                                                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                                                          ?!@localVarManager ioVariableMap {
+override method @setterCallInstructionAST analyzeSemanticInstruction
+                        ?let @lstring inUsefulnessCallerEntityName
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                        ?let @analysisContext inAnalysisContext
+                        ?!@unifiedTypeMap ioTypeMap
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                        ?!@localVarManager ioVariableMap {
   var @unifiedTypeMapEntry receiverType
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available
+    if let [inAnalysisContext.selfAvailability available
                     ?type: let selfType
                     ?selfMutability: let selfMutability] then
       if let [[selfType definition].typeKind classType ?isReference: let isReference], isReference then
@@ -276,7 +277,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
     else
       let propertyMap = [receiverType definition].propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType]
-      [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
       errorLocation = value.location
 #      if not isPublic then
 #        error value : " inaccessible property (due to its 'private' qualifier)"
@@ -361,7 +362,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  if let [inAnalysisContext.selfType available
+  if let [inAnalysisContext.selfAvailability available
       ?type: let selfType
       ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then

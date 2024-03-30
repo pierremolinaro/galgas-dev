@@ -1014,7 +1014,8 @@ class GALGAS_selfMutability : public AC_GALGAS_root {
     kNotBuilt,
     kEnum_none,
     kEnum_propertiesAreMutableSelfIsNot,
-    kEnum_selfAndPropertiesAreMutable
+    kEnum_selfAndPropertiesAreMutable,
+    kEnum_initializer
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -1036,6 +1037,8 @@ class GALGAS_selfMutability : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
+  public: static class GALGAS_selfMutability class_func_initializer (LOCATION_ARGS) ;
+
   public: static class GALGAS_selfMutability class_func_none (LOCATION_ARGS) ;
 
   public: static class GALGAS_selfMutability class_func_propertiesAreMutableSelfIsNot (LOCATION_ARGS) ;
@@ -1054,6 +1057,8 @@ class GALGAS_selfMutability : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isInitializer (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isPropertiesAreMutableSelfIsNot (LOCATION_ARGS) const ;
@@ -1062,6 +1067,8 @@ class GALGAS_selfMutability : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_initializer () const ;
+
   public: VIRTUAL_IN_DEBUG bool optional_none () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_propertiesAreMutableSelfIsNot () const ;
@@ -1109,22 +1116,6 @@ class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedV
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
   public: virtual ~ cEnumAssociatedValues_selfAvailability_available (void) {}
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class cEnumAssociatedValues_selfAvailability_initializer : public cEnumAssociatedValues {
-  public: const GALGAS_typedPropertyList mAssociatedValue0 ;
-
-//--- Constructor
-  public: cEnumAssociatedValues_selfAvailability_initializer (const GALGAS_typedPropertyList inAssociatedValue0
-                                                              COMMA_LOCATION_ARGS) ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const ;
-  public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
-
-  public: virtual ~ cEnumAssociatedValues_selfAvailability_initializer (void) {}
 } ;
 
 //--------------------------------------------------------------------------------------------------

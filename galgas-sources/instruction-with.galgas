@@ -527,7 +527,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMapEntry targetType
   let @string receiverVariableCppName
   if self.mReceiverIsPrefixedBySelf then
-    if let [inAnalysisContext.selfType available
+    if let [inAnalysisContext.selfAvailability available
                         ?type:  let selfType
                         ?selfMutability: let selfMutability] then
       if self.mReceiverName.string == "" then
@@ -558,7 +558,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   for (value) in self.mFieldList do
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 #    if not isPublic then
 #      error value : "inaccessible property (due to 'private' qualifier)"
 #    end

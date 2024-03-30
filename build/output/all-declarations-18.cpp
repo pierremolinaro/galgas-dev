@@ -400,6 +400,7 @@ GALGAS_bool extensionGetter_propertiesAreMutable (const GALGAS_selfMutability & 
     break ;
   case GALGAS_selfMutability::kEnum_propertiesAreMutableSelfIsNot:
   case GALGAS_selfMutability::kEnum_selfAndPropertiesAreMutable:
+  case GALGAS_selfMutability::kEnum_initializer:
     {
       result_result = GALGAS_bool (true) ;
     }

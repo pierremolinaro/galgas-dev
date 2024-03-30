@@ -347,7 +347,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
       if not [selfMutability propertiesAreMutable] then
         error self.mInstructionLocation : "property not mutable in this context"
       end
@@ -374,7 +374,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"
 #    end
@@ -426,7 +426,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
       if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -456,7 +456,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"
 #    end
@@ -508,7 +508,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
       if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -539,7 +539,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"
 #    end
@@ -591,7 +591,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
       if not [selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -622,7 +622,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   for (value) in self.mStructAttributeList do
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value.location]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
 #    if not isPublic then
 #      error mValue : " inaccessible property (due to its 'private' qualifier)"
 #    end
@@ -674,7 +674,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?selfMutability: let selfMutability] then
+    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
       let propertyMap = [selfType definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
@@ -703,7 +703,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
     let propertyMap = [targetType definition].propertyMap
 #    let previousTargetType = targetType
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfType !value]
+    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
 #    if not isPublic  then
 #      switch inAnalysisContext.selfType
 #      case none :

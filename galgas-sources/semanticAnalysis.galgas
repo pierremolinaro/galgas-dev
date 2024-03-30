@@ -141,56 +141,75 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
                                        ?!@localVarManager ioVariableMap
                                        !@formalParameterListForGeneration outRoutineSignature {
   outRoutineSignature = @formalParameterListForGeneration {}
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName mIsUnused) in inRoutineSignatureAST do
-    let type = [ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
+  for formalArgument in inRoutineSignatureAST do
+    let type = [ioTypeMap typeMapEntryForLKey !formalArgument.mFormalArgumentTypeName]
     let @string formalArgumentCppName
-    switch mFormalArgumentPassingMode
+    switch formalArgument.mFormalArgumentPassingMode
     case argumentIn :
-      formalArgumentCppName = "inArgument_" + [mFormalArgumentName.string identifierRepresentation]
-      if mIsUnused then
-        [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
+      formalArgumentCppName = "inArgument_"
+         + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+      if formalArgument.mIsUnused then
+        [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused
+          !formalArgument.mFormalArgumentName
+          !type
+          !formalArgumentCppName
+          !formalArgumentCppName
+        ]
       else
-        [!?ioVariableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
+        [!?ioVariableMap insertInputFormalArgument
+          !formalArgument.mFormalArgumentName
+          !type
+          !formalArgumentCppName
+          !formalArgumentCppName
+        ]
       end
     case argumentOut :
-      formalArgumentCppName = "outArgument_" + [mFormalArgumentName.string identifierRepresentation]
-      [!?ioVariableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName]
+      formalArgumentCppName = "outArgument_"
+        + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+      [!?ioVariableMap insertOutputFormalArgument
+        !formalArgument.mFormalArgumentName
+        !type
+        !formalArgumentCppName
+        !formalArgumentCppName
+      ]
     case argumentInOut :
-      formalArgumentCppName = "ioArgument_" + [mFormalArgumentName.string identifierRepresentation]
-      if mIsUnused then
+      formalArgumentCppName = "ioArgument_"
+         + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+      if formalArgument.mIsUnused then
         [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused
-          !mFormalArgumentName
+          !formalArgument.mFormalArgumentName
           !type
           !formalArgumentCppName
           !formalArgumentCppName
         ]
       else
         [!?ioVariableMap insertInputOutputFormalArgument
-          !mFormalArgumentName
+          !formalArgument.mFormalArgumentName
           !type
           !formalArgumentCppName
           !formalArgumentCppName
         ]
       end
     case argumentConstantIn :
-      formalArgumentCppName = "constinArgument_" + [mFormalArgumentName.string identifierRepresentation]
-      if mIsUnused then
+      formalArgumentCppName = "constinArgument_"
+        + [formalArgument.mFormalArgumentName.string identifierRepresentation]
+      if formalArgument.mIsUnused then
         [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused
-          !mFormalArgumentName
+          !formalArgument.mFormalArgumentName
           !type
           !formalArgumentCppName
           !formalArgumentCppName
         ]
       else
         [!?ioVariableMap insertConstantInputFormalArgument
-          !mFormalArgumentName
+          !formalArgument.mFormalArgumentName
           !type
           !formalArgumentCppName
           !formalArgumentCppName
         ]
       end
     end
-    outRoutineSignature += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName
+    outRoutineSignature += !formalArgument.mFormalSelector !formalArgument.mFormalArgumentPassingMode !type !formalArgument.mFormalArgumentName !formalArgumentCppName
   end
 }
 
@@ -208,25 +227,44 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
                         !@formalParameterListForGeneration outRoutineSignature {
   var variableMap = @localVarManager.new
-#--- Enter non mutable instance attributes
+#--- Enter non mutable instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for (mPropertyTypeEntry mPropertyName 3*) in inNonMutableTypedAttributeList do
+    for property in inNonMutableTypedAttributeList do
       [!?variableMap insertNonMutableProperty
-        !mPropertyName
-        !mPropertyTypeEntry
-        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
+        !property.name
+        !property.typeEntry
+        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty
+           + "mProperty_" + [property.name.string identifierRepresentation]
         !inAnalysisContext.selfObjectCppName
       ]
     end
   end
-#--- Enter mutable instance attributes
+#--- Enter mutable instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for (mPropertyTypeEntry mPropertyName 3*) in inMutableTypedAttributeList do
+    for property in inMutableTypedAttributeList do
       [!?variableMap insertMutableProperty
-        !mPropertyName
-        !mPropertyTypeEntry
-        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty + "mProperty_"+ [mPropertyName.string identifierRepresentation]
+        !property.name
+        !property.typeEntry
+        !inAnalysisContext.selfObjectCppPrefixForAccessingProperty
+           + "mProperty_" + [property.name.string identifierRepresentation]
         !inAnalysisContext.selfObjectCppName
+      ]
+    end
+  end
+#--- Enter properties that should be explicitly initialized
+  if let [inAnalysisContext.selfAvailability available ?type: let type ?selfMutability: let selfMutability] then
+    for property in [type definition].allTypedPropertyList do
+      let initialized = if selfMutability == .initializer
+        then property.initialization != .none
+        else true
+      end
+      [!?variableMap insertInitializerSelfProperty
+        !property.name.string
+        !inEndOfMethodLocation
+        !property.typeEntry
+        !"<< unused >>"
+        !"self." + property.name
+        !initialized
       ]
     end
   end
@@ -313,13 +351,12 @@ proc analyzeFunctionBody
 {
   var variableMap = @localVarManager.new
 #--- Enter instance attributes
-#  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
   if not inAnalysisContext.requiresSelfForAccessingProperty then
-    for (mPropertyTypeEntry mPropertyName 3*) in inTypedAttributeList do
+    for (typeEntry name 3*) in inTypedAttributeList do
       [!?variableMap insertNonMutableProperty
-        !mPropertyName
-        !mPropertyTypeEntry
-        !inAttributeVariableNamePrefix + "mProperty_"+ [mPropertyName.string identifierRepresentation]
+        !name
+        !typeEntry
+        !inAttributeVariableNamePrefix + "mProperty_"+ [name.string identifierRepresentation]
         !inAnalysisContext.selfObjectCppName
       ]
     end
@@ -360,6 +397,19 @@ proc analyzeFunctionBody
   outReturnedType = [ioTypeMap typeMapEntryForLKey !inResultTypeName]
   outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
+#--- Enter properties that should be explicitly initialized
+  if let [inAnalysisContext.selfAvailability available ?type: let type ?selfMutability: *] then
+    for property in [type definition].allTypedPropertyList do
+      [!?variableMap insertInitializerSelfProperty
+        !property.name.string
+        !inEndOfFunctionLocation
+        !property.typeEntry
+        !"<< unused >>"
+        !"self." + property.name
+        !true
+      ]
+    end
+  end
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration {}
   for (mInstruction) in inInstructionList do
@@ -398,7 +448,7 @@ override method @functionDeclarationAST semanticAnalysis
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: ""
-    !selfType: .none
+    !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
@@ -454,7 +504,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: ""
-    !selfType: .none
+    !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
   }
@@ -1522,7 +1572,7 @@ private proc semanticAnalysisOfSyntaxComponent
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: ""
-    !selfType: .none
+    !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: false
   }

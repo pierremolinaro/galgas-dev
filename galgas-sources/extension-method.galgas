@@ -214,7 +214,7 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: selfObjectNameString
-      !selfType: .available {!type: selfType !selfMutability: if isReferenceClass then .propertiesAreMutableSelfIsNot else .none end}
+      !selfAvailability: .available {!type: selfType !selfMutability: if isReferenceClass then .propertiesAreMutableSelfIsNot else .none end}
       !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
       !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
     }

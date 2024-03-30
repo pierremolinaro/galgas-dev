@@ -159,7 +159,7 @@ proc checkExpressionIsBoolean
         ?*
         ?let @unifiedTypeMapEntry attributeType
       ]
-      [accessControl checkSetAccess !inAnalysisContext.selfType !inErrorLocation]
+      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !inErrorLocation]
 #      if not isPublic then
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
 #      end

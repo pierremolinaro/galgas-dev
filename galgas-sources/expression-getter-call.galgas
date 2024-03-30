@@ -145,7 +145,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
       end
   #--------------------------------------- The getter does not exist, it is a property ?
     elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].propertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
-      [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
+      [accessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
   #    if not isPublic then
   #      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
   #    end

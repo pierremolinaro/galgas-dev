@@ -187,8 +187,8 @@ list @enumerationDescriptorList {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typedPropertyList {
-  public let @unifiedTypeMapEntry mPropertyTypeEntry
-  public let @lstring mPropertyName
+  public let @unifiedTypeMapEntry typeEntry
+  public let @lstring name
   public let @propertyInCollectionInitializationAST initialization
   public let @bool hasSetter %selector
   public let @bool hasSelector %selector

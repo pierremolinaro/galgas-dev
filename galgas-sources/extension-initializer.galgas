@@ -27,8 +27,8 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
-    let endOfMethodLocation = @location.here
     $}$
+    let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST.new {
       !isPredefined: false # Is not predefined
       !className
@@ -46,8 +46,8 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
-    let endOfMethodLocation = @location.here
     $}$
+    let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST.new {
       !isPredefined: false # Is not predefined
       !inClassName
@@ -73,8 +73,8 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
-    let endOfMethodLocation = @location.here
     $}$
+    let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST.new {
       !isPredefined: false # Is not predefined
       !className
@@ -92,8 +92,8 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
-    let endOfMethodLocation = @location.here
     $}$
+    let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST.new {
       !isPredefined: false # Is not predefined
       !inClassName
@@ -179,18 +179,15 @@ refclass @initializerAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
     let @string selfObjectNameString
     let @string selfObjectAccessorString
-#    let @bool implementedAsFunction
   #--- Check self type is a class
     var isReferenceClass = false
     if let [[selfType definition].typeKind classType ?isReference: let isReference] then
       isReferenceClass = isReference
       selfObjectNameString = "this"
       selfObjectAccessorString = "this->"
-#      implementedAsFunction = false
     else
       selfObjectNameString = "inObject"
       selfObjectAccessorString = "inObject."
-#      implementedAsFunction = true
     end
   #---
 #    for (isConstant propertyTypeName propertyName accessControlAST hasSelector initExpression) in [selfType definition].allTypedPropertyList do
@@ -213,7 +210,7 @@ refclass @initializerAST : @semanticDeclarationAST {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: selfObjectNameString
-      !selfType: .initializer {!allTypedPropertyList: [selfType definition].allTypedPropertyList}
+      !selfAvailability: .available {!type: selfType !selfMutability: .initializer}
       !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
       !requiresSelfForAccessingProperty: true
     }
@@ -238,8 +235,8 @@ refclass @initializerAST : @semanticDeclarationAST {
       !analysisContextNew
       !?ioTypeMap
       !self.mFormalParameterList
-      !nonMutablePropertyList: {} // nonMutableProperties
-      !mutablePropertyList: [selfType definition].allTypedPropertyList // mutableProperties
+      !nonMutablePropertyList: {}
+      !mutablePropertyList: [selfType definition].allTypedPropertyList
       !self.mInstructionList
       !self.mEndOfInitializerLocation
       ?let unused semanticInstructionListForGeneration

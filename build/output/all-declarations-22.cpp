@@ -9565,7 +9565,7 @@ GALGAS_analysisContext::GALGAS_analysisContext (void) :
 mProperty_semanticContext (),
 mProperty_predefinedTypes (),
 mProperty_selfObjectCppName (),
-mProperty_selfType (),
+mProperty_selfAvailability (),
 mProperty_selfObjectCppPrefixForAccessingProperty (),
 mProperty_requiresSelfForAccessingProperty () {
 }
@@ -9586,7 +9586,7 @@ GALGAS_analysisContext::GALGAS_analysisContext (const GALGAS_semanticContext & i
 mProperty_semanticContext (inOperand0),
 mProperty_predefinedTypes (inOperand1),
 mProperty_selfObjectCppName (inOperand2),
-mProperty_selfType (inOperand3),
+mProperty_selfAvailability (inOperand3),
 mProperty_selfObjectCppPrefixForAccessingProperty (inOperand4),
 mProperty_requiresSelfForAccessingProperty (inOperand5) {
 }
@@ -9596,14 +9596,14 @@ mProperty_requiresSelfForAccessingProperty (inOperand5) {
 GALGAS_analysisContext GALGAS_analysisContext::class_func_new (const GALGAS_semanticContext & in_semanticContext,
                                                                const GALGAS_predefinedTypes & in_predefinedTypes,
                                                                const GALGAS_string & in_selfObjectCppName,
-                                                               const GALGAS_selfAvailability & in_selfType,
+                                                               const GALGAS_selfAvailability & in_selfAvailability,
                                                                const GALGAS_string & in_selfObjectCppPrefixForAccessingProperty,
                                                                const GALGAS_bool & in_requiresSelfForAccessingProperty,
                                                                Compiler * /* inCompiler */
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_analysisContext result ;
-  if (in_semanticContext.isValid () && in_predefinedTypes.isValid () && in_selfObjectCppName.isValid () && in_selfType.isValid () && in_selfObjectCppPrefixForAccessingProperty.isValid () && in_requiresSelfForAccessingProperty.isValid ()) {
-    result = GALGAS_analysisContext (in_semanticContext, in_predefinedTypes, in_selfObjectCppName, in_selfType, in_selfObjectCppPrefixForAccessingProperty, in_requiresSelfForAccessingProperty) ;
+  if (in_semanticContext.isValid () && in_predefinedTypes.isValid () && in_selfObjectCppName.isValid () && in_selfAvailability.isValid () && in_selfObjectCppPrefixForAccessingProperty.isValid () && in_requiresSelfForAccessingProperty.isValid ()) {
+    result = GALGAS_analysisContext (in_semanticContext, in_predefinedTypes, in_selfObjectCppName, in_selfAvailability, in_selfObjectCppPrefixForAccessingProperty, in_requiresSelfForAccessingProperty) ;
   }
   return result ;
 }
@@ -9622,7 +9622,7 @@ ComparisonResult GALGAS_analysisContext::objectCompare (const GALGAS_analysisCon
     result = mProperty_selfObjectCppName.objectCompare (inOperand.mProperty_selfObjectCppName) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_selfType.objectCompare (inOperand.mProperty_selfType) ;
+    result = mProperty_selfAvailability.objectCompare (inOperand.mProperty_selfAvailability) ;
   }
   if (result == ComparisonResult::operandEqual) {
     result = mProperty_selfObjectCppPrefixForAccessingProperty.objectCompare (inOperand.mProperty_selfObjectCppPrefixForAccessingProperty) ;
@@ -9636,7 +9636,7 @@ ComparisonResult GALGAS_analysisContext::objectCompare (const GALGAS_analysisCon
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_analysisContext::isValid (void) const {
-  return mProperty_semanticContext.isValid () && mProperty_predefinedTypes.isValid () && mProperty_selfObjectCppName.isValid () && mProperty_selfType.isValid () && mProperty_selfObjectCppPrefixForAccessingProperty.isValid () && mProperty_requiresSelfForAccessingProperty.isValid () ;
+  return mProperty_semanticContext.isValid () && mProperty_predefinedTypes.isValid () && mProperty_selfObjectCppName.isValid () && mProperty_selfAvailability.isValid () && mProperty_selfObjectCppPrefixForAccessingProperty.isValid () && mProperty_requiresSelfForAccessingProperty.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9645,7 +9645,7 @@ void GALGAS_analysisContext::drop (void) {
   mProperty_semanticContext.drop () ;
   mProperty_predefinedTypes.drop () ;
   mProperty_selfObjectCppName.drop () ;
-  mProperty_selfType.drop () ;
+  mProperty_selfAvailability.drop () ;
   mProperty_selfObjectCppPrefixForAccessingProperty.drop () ;
   mProperty_requiresSelfForAccessingProperty.drop () ;
 }
@@ -9664,7 +9664,7 @@ void GALGAS_analysisContext::description (String & ioString,
     ioString.appendCString (", ") ;
     mProperty_selfObjectCppName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_selfType.description (ioString, inIndentation+1) ;
+    mProperty_selfAvailability.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_selfObjectCppPrefixForAccessingProperty.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
@@ -10521,7 +10521,7 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
           var_kind_4924 = GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("templateAnalysis.galgas", 135)) ;
           cEnumerator_typedPropertyList enumerator_5980 (extensionGetter_definition (var_receiverType_3856, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 136)).readProperty_currentTypedPropertyList (), EnumerationOrder::up) ;
           while (enumerator_5980.hasCurrentObject ()) {
-            GALGAS_getterMap var_aMap_6065 = extensionGetter_definition (enumerator_5980.current_mPropertyTypeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 137)).readProperty_getterMap () ;
+            GALGAS_getterMap var_aMap_6065 = extensionGetter_definition (enumerator_5980.current_typeEntry (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 137)).readProperty_getterMap () ;
             const GALGAS_templateGetterCallInExpressionAST temp_20 = this ;
             const cMapElement_getterMap * objectArray_6124 = (const cMapElement_getterMap *) var_aMap_6065.readAccessForWithInstruction (temp_20.readProperty_mGetterName ().readProperty_string ()) ;
             if (nullptr != objectArray_6124) {
@@ -10538,7 +10538,7 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
                   var_actualGetterName_5048 = objectArray_6124->mProperty_mGetterNameThatObsoletesInvokationName ;
                 }
               }
-              var_fieldList_5013.addAssign_operation (enumerator_5980.current_mPropertyName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 147)) ;
+              var_fieldList_5013.addAssign_operation (enumerator_5980.current_name (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 147)) ;
             }
             enumerator_5980.gotoNextObject () ;
           }

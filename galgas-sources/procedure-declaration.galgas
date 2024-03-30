@@ -226,7 +226,7 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: ""
-      !selfType: .none
+      !selfAvailability: .none
       !selfObjectCppPrefixForAccessingProperty: ""
       !requiresSelfForAccessingProperty: true
     }

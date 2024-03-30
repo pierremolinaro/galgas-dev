@@ -690,8 +690,7 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
   public: typedef enum {
     kNotBuilt,
     kEnum_none,
-    kEnum_available,
-    kEnum_initializer
+    kEnum_available
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -722,9 +721,6 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
                                                                      const class GALGAS_selfMutability & inOperand1
                                                                      COMMA_LOCATION_ARGS) ;
 
-  public: static class GALGAS_selfAvailability class_func_initializer (const class GALGAS_typedPropertyList & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
-
   public: static class GALGAS_selfAvailability class_func_none (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -741,16 +737,10 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG void method_initializer (class GALGAS_typedPropertyList & outArgument0,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isAvailable (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isInitializer (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
 
@@ -758,8 +748,6 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_available (class GALGAS_unifiedTypeMapEntry & outOperand0,
                                                     class GALGAS_selfMutability & outOperand1) const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_initializer (class GALGAS_typedPropertyList & outOperand0) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_none () const ;
 
@@ -797,9 +785,9 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
     return mProperty_selfObjectCppName ;
   }
 
-  public: GALGAS_selfAvailability mProperty_selfType ;
-  public: inline GALGAS_selfAvailability readProperty_selfType (void) const {
-    return mProperty_selfType ;
+  public: GALGAS_selfAvailability mProperty_selfAvailability ;
+  public: inline GALGAS_selfAvailability readProperty_selfAvailability (void) const {
+    return mProperty_selfAvailability ;
   }
 
   public: GALGAS_string mProperty_selfObjectCppPrefixForAccessingProperty ;
@@ -832,8 +820,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
     mProperty_selfObjectCppName = inValue ;
   }
 
-  public: inline void setter_setSelfType (const GALGAS_selfAvailability & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_selfType = inValue ;
+  public: inline void setter_setSelfAvailability (const GALGAS_selfAvailability & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_selfAvailability = inValue ;
   }
 
   public: inline void setter_setSelfObjectCppPrefixForAccessingProperty (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -851,7 +839,7 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
   public: GALGAS_analysisContext (const GALGAS_semanticContext & in_semanticContext,
                                   const GALGAS_predefinedTypes & in_predefinedTypes,
                                   const GALGAS_string & in_selfObjectCppName,
-                                  const GALGAS_selfAvailability & in_selfType,
+                                  const GALGAS_selfAvailability & in_selfAvailability,
                                   const GALGAS_string & in_selfObjectCppPrefixForAccessingProperty,
                                   const GALGAS_bool & in_requiresSelfForAccessingProperty) ;
 

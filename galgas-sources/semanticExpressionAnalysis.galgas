@@ -30,13 +30,14 @@ enum @selfMutability {
   case none
   case propertiesAreMutableSelfIsNot
   case selfAndPropertiesAreMutable
+  case initializer
   
   #·······························································································
 
   getter propertiesAreMutable -> @bool {
     switch self
     case none : result = false
-    case propertiesAreMutableSelfIsNot, selfAndPropertiesAreMutable : result = true
+    case propertiesAreMutableSelfIsNot, selfAndPropertiesAreMutable, initializer : result = true
     end
   }
 
@@ -45,7 +46,7 @@ enum @selfMutability {
   getter selfIsMutable -> @bool {
     switch self
     case none, propertiesAreMutableSelfIsNot : result = false
-    case selfAndPropertiesAreMutable : result = true
+    case selfAndPropertiesAreMutable, initializer : result = true
     end
   }
 
@@ -58,7 +59,6 @@ enum @selfMutability {
 enum @selfAvailability {
   case none
   case available (@unifiedTypeMapEntry type @selfMutability selfMutability)
-  case initializer (@typedPropertyList allTypedPropertyList)
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -67,7 +67,7 @@ struct @analysisContext {
   public let @semanticContext semanticContext
   public let @predefinedTypes predefinedTypes
   public let @string selfObjectCppName %selector
-  public let @selfAvailability selfType %selector
+  public let @selfAvailability selfAvailability %selector
   public let @string selfObjectCppPrefixForAccessingProperty %selector # i.e. "ioObject->", ...
   public let @bool requiresSelfForAccessingProperty %selector
 }

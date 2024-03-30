@@ -1195,6 +1195,14 @@ GALGAS_selfMutability GALGAS_selfMutability::class_func_selfAndPropertiesAreMuta
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_selfMutability GALGAS_selfMutability::class_func_initializer (UNUSED_LOCATION_ARGS) {
+  GALGAS_selfMutability result ;
+  result.mEnum = kEnum_initializer ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 bool GALGAS_selfMutability::optional_none () const {
   const bool ok = mEnum == kEnum_none ;
   return ok ;
@@ -1216,11 +1224,19 @@ bool GALGAS_selfMutability::optional_selfAndPropertiesAreMutable () const {
 
 //--------------------------------------------------------------------------------------------------
 
-static const char * gEnumNameArrayFor_selfMutability [4] = {
+bool GALGAS_selfMutability::optional_initializer () const {
+  const bool ok = mEnum == kEnum_initializer ;
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_selfMutability [5] = {
   "(not built)",
   "none",
   "propertiesAreMutableSelfIsNot",
-  "selfAndPropertiesAreMutable"
+  "selfAndPropertiesAreMutable",
+  "initializer"
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1239,6 +1255,12 @@ GALGAS_bool GALGAS_selfMutability::getter_isPropertiesAreMutableSelfIsNot (UNUSE
 
 GALGAS_bool GALGAS_selfMutability::getter_isSelfAndPropertiesAreMutable (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_selfAndPropertiesAreMutable == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_selfMutability::getter_isInitializer (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_initializer == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1329,6 +1351,7 @@ GALGAS_bool extensionGetter_selfIsMutable (const GALGAS_selfMutability & inObjec
     }
     break ;
   case GALGAS_selfMutability::kEnum_selfAndPropertiesAreMutable:
+  case GALGAS_selfMutability::kEnum_initializer:
     {
       result_result = GALGAS_bool (true) ;
     }
@@ -1378,35 +1401,6 @@ ComparisonResult cEnumAssociatedValues_selfAvailability_available::compare (cons
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_selfAvailability_initializer::cEnumAssociatedValues_selfAvailability_initializer (const GALGAS_typedPropertyList inAssociatedValue0
-                                                                                                        COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_selfAvailability_initializer::description (String & ioString,
-                                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_selfAvailability_initializer::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_selfAvailability_initializer * ptr = dynamic_cast<const cEnumAssociatedValues_selfAvailability_initializer *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_selfAvailability::GALGAS_selfAvailability (void) :
 mAssociatedValues (),
 mEnum (kNotBuilt) {
@@ -1438,21 +1432,6 @@ GALGAS_selfAvailability GALGAS_selfAvailability::class_func_available (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfAvailability GALGAS_selfAvailability::class_func_initializer (const GALGAS_typedPropertyList & inAssociatedValue0
-                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_selfAvailability result ;
-  if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_initializer ;
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_selfAvailability_initializer (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
                                                 GALGAS_selfMutability & outAssociatedValue1,
                                                 Compiler * inCompiler
@@ -1467,22 +1446,6 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
     const cEnumAssociatedValues_selfAvailability_available * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_selfAvailability::method_initializer (GALGAS_typedPropertyList & outAssociatedValue0,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_initializer) {
-    outAssociatedValue0.drop () ;
-    String s ;
-    s.appendCString ("method @selfAvailability initializer invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_selfAvailability_initializer * ptr = (const cEnumAssociatedValues_selfAvailability_initializer *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
 }
 
@@ -1508,22 +1471,10 @@ bool GALGAS_selfAvailability::optional_available (GALGAS_unifiedTypeMapEntry & o
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_selfAvailability::optional_initializer (GALGAS_typedPropertyList & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_initializer ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_selfAvailability_initializer *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_selfAvailability [4] = {
+static const char * gEnumNameArrayFor_selfAvailability [3] = {
   "(not built)",
   "none",
-  "available",
-  "initializer"
+  "available"
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1536,12 +1487,6 @@ GALGAS_bool GALGAS_selfAvailability::getter_isNone (UNUSED_LOCATION_ARGS) const 
 
 GALGAS_bool GALGAS_selfAvailability::getter_isAvailable (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_available == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_selfAvailability::getter_isInitializer (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_initializer == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
