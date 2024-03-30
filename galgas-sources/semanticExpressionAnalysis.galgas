@@ -28,8 +28,8 @@
 
 enum @selfAvailability {
   case none
-  case available (@unifiedTypeMapEntry type @bool mutable @bool mutableproperties)
-#  case initializer (@typedPropertyList allTypedPropertyList)
+  case available (@unifiedTypeMapEntry type @bool selfIsMutable @bool propertiesAreMutable)
+  case initializer (@typedPropertyList allTypedPropertyList)
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -274,14 +274,13 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-  if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: * ?mutableproperties: let mutableProperties] then
+                        ?let @lstring inUsefulnessCallerEntityName
+                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                        ?let @analysisContext inAnalysisContext
+                        ?!@unifiedTypeMap ioTypeMap
+                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                        ?!@localVarManager ioVariableMap {
+  if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: * ?propertiesAreMutable: let mutableProperties] then
     if not mutableProperties then
       error self.mInstructionLocation : "'self' property not mutable in this context"
     end

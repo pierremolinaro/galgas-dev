@@ -240,8 +240,8 @@ override method @setterCallInstructionAST analyzeSemanticInstruction ?let @lstri
   if self.mPrefixedBySelf then
     if let [inAnalysisContext.selfType available
                     ?type: let selfType
-                    ?mutable: let selfIsMutable
-                    ?mutableproperties: *] then
+                    ?selfIsMutable: let selfIsMutable
+                    ?propertiesAreMutable: *] then
       if let [[selfType definition].typeKind classType ?isReference: let isReference], isReference then
       elsif not selfIsMutable then
         error self.mSetterName : "'self' not mutable in this context"
@@ -364,8 +364,8 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   if let [inAnalysisContext.selfType available
       ?type: let selfType
-      ?mutable: let selfIsMutable
-      ?mutableproperties: *] then
+      ?selfIsMutable: let selfIsMutable
+      ?propertiesAreMutable: *] then
     if not selfIsMutable then
       error self.mSetterName : "'self' not mutable in this context"
     end

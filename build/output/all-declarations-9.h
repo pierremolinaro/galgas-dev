@@ -1024,6 +1024,22 @@ class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedV
 } ;
 
 //--------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_selfAvailability_initializer : public cEnumAssociatedValues {
+  public: const GALGAS_typedPropertyList mAssociatedValue0 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_selfAvailability_initializer (const GALGAS_typedPropertyList inAssociatedValue0
+                                                              COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_selfAvailability_initializer (void) {}
+} ;
+
+//--------------------------------------------------------------------------------------------------
 //
 //Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'
 //

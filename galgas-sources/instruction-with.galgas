@@ -529,8 +529,8 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   if self.mReceiverIsPrefixedBySelf then
     if let [inAnalysisContext.selfType available
                         ?type:  let selfType
-                        ?mutable: *
-                        ?mutableproperties: let propertiesAreMutable] then
+                        ?selfIsMutable: *
+                        ?propertiesAreMutable: let propertiesAreMutable] then
       if self.mReceiverName.string == "" then
         receiverVariableCppName = inAnalysisContext.selfObjectCppName
         targetType = selfType

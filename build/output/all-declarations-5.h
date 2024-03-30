@@ -690,7 +690,8 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
   public: typedef enum {
     kNotBuilt,
     kEnum_none,
-    kEnum_available
+    kEnum_available,
+    kEnum_initializer
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -722,6 +723,9 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
                                                                      const class GALGAS_bool & inOperand2
                                                                      COMMA_LOCATION_ARGS) ;
 
+  public: static class GALGAS_selfAvailability class_func_initializer (const class GALGAS_typedPropertyList & inOperand0
+                                                                       COMMA_LOCATION_ARGS) ;
+
   public: static class GALGAS_selfAvailability class_func_none (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -739,10 +743,16 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG void method_initializer (class GALGAS_typedPropertyList & outArgument0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isAvailable (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isInitializer (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
 
@@ -751,6 +761,8 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG bool optional_available (class GALGAS_unifiedTypeMapEntry & outOperand0,
                                                     class GALGAS_bool & outOperand1,
                                                     class GALGAS_bool & outOperand2) const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_initializer (class GALGAS_typedPropertyList & outOperand0) const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_none () const ;
 

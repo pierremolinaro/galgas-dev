@@ -347,7 +347,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?1* ?mutableproperties: let mutableProperties] then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?1* ?propertiesAreMutable: let mutableProperties] then
       if not mutableProperties then
         error self.mInstructionLocation : "property not mutable in this context"
       end
@@ -429,7 +429,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: let mutableProperties] then
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -511,7 +511,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: let mutableProperties] then
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -594,7 +594,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: let selfIsMutable ?mutableproperties: let mutableProperties] then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: let selfIsMutable ?propertiesAreMutable: let mutableProperties] then
       if not selfIsMutable then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -677,7 +677,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfType available ?type: let selfType ?mutable: * ?mutableproperties: let mutableProperties] then
+    if let [inAnalysisContext.selfType available ?type: let selfType ?selfIsMutable: * ?propertiesAreMutable: let mutableProperties] then
       if not mutableProperties then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end

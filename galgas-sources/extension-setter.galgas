@@ -226,7 +226,7 @@ override method @extensionSetterAST semanticAnalysis
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: selfObjectName
-    !selfType: .available {!type:  selfType !mutable: true !mutableproperties: true}
+    !selfType: .available {!type:  selfType !selfIsMutable: true !propertiesAreMutable: true}
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessor
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }

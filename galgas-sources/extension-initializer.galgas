@@ -213,7 +213,7 @@ refclass @initializerAST : @semanticDeclarationAST {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: selfObjectNameString
-      !selfType: .available {!type: selfType !mutable: true !mutableproperties: true}
+      !selfType: .initializer {!allTypedPropertyList: [selfType definition].allTypedPropertyList}
       !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
       !requiresSelfForAccessingProperty: true
     }
