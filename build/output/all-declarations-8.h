@@ -8738,16 +8738,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressio
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @constructorExpressionAST reference class
+// Phase 1: @classFuncExpressionAST reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_constructorExpressionAST : public GALGAS_semanticExpressionAST {
+class GALGAS_classFuncExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
-  public: GALGAS_constructorExpressionAST (void) ;
+  public: GALGAS_classFuncExpressionAST (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GALGAS_constructorExpressionAST (const class cPtr_constructorExpressionAST * inSourcePtr) ;
+  public: GALGAS_classFuncExpressionAST (const class cPtr_classFuncExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property read access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
@@ -8766,19 +8766,19 @@ class GALGAS_constructorExpressionAST : public GALGAS_semanticExpressionAST {
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_constructorExpressionAST extractObject (const GALGAS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classFuncExpressionAST extractObject (const GALGAS_object & inObject,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_constructorExpressionAST class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_actualOutputExpressionList & inOperand2,
-                                                                       const class GALGAS_location & inOperand3
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_classFuncExpressionAST class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     const class GALGAS_actualOutputExpressionList & inOperand2,
+                                                                     const class GALGAS_location & inOperand3
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_constructorExpressionAST & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_classFuncExpressionAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -8792,20 +8792,20 @@ class GALGAS_constructorExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_constructorExpressionAST class
+} ; // End of GALGAS_classFuncExpressionAST class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorExpressionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 2: pointer class for @constructorExpressionAST class
+// Phase 2: pointer class for @classFuncExpressionAST class
 //
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_constructorExpressionAST : public cPtr_semanticExpressionAST {
+class cPtr_classFuncExpressionAST : public cPtr_semanticExpressionAST {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -8831,11 +8831,11 @@ class cPtr_constructorExpressionAST : public cPtr_semanticExpressionAST {
   public: GALGAS_location mProperty_locationForOldStyleCollectionInitializerError ;
 
 //--- Constructor
-  public: cPtr_constructorExpressionAST (const GALGAS_lstring & in_mTypeName,
-                                         const GALGAS_lstring & in_mConstructorName,
-                                         const GALGAS_actualOutputExpressionList & in_mExpressions,
-                                         const GALGAS_location & in_locationForOldStyleCollectionInitializerError
-                                         COMMA_LOCATION_ARGS) ;
+  public: cPtr_classFuncExpressionAST (const GALGAS_lstring & in_mTypeName,
+                                       const GALGAS_lstring & in_mConstructorName,
+                                       const GALGAS_actualOutputExpressionList & in_mExpressions,
+                                       const GALGAS_location & in_locationForOldStyleCollectionInitializerError
+                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
@@ -8853,21 +8853,21 @@ class cPtr_constructorExpressionAST : public cPtr_semanticExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @constructorExpressionAST_2D_weak weak reference class
+// Phase 1: @classFuncExpressionAST_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_constructorExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_weak {
+class GALGAS_classFuncExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_constructorExpressionAST_2D_weak (void) ;
+  public: GALGAS_classFuncExpressionAST_2D_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_constructorExpressionAST_2D_weak (const class GALGAS_constructorExpressionAST & inSource) ;
+  public: GALGAS_classFuncExpressionAST_2D_weak (const class GALGAS_classFuncExpressionAST & inSource) ;
 
-  public: GALGAS_constructorExpressionAST_2D_weak & operator = (const class GALGAS_constructorExpressionAST & inSource) ;
+  public: GALGAS_classFuncExpressionAST_2D_weak & operator = (const class GALGAS_classFuncExpressionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_constructorExpressionAST bang_constructorExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_classFuncExpressionAST bang_classFuncExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -8877,15 +8877,15 @@ class GALGAS_constructorExpressionAST_2D_weak : public GALGAS_semanticExpression
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_constructorExpressionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classFuncExpressionAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_constructorExpressionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_classFuncExpressionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_constructorExpressionAST_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_classFuncExpressionAST_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -8899,25 +8899,25 @@ class GALGAS_constructorExpressionAST_2D_weak : public GALGAS_semanticExpression
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_constructorExpressionAST_2D_weak class
+} ; // End of GALGAS_classFuncExpressionAST_2D_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorExpressionAST_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST_2D_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @constructorExpressionForGeneration reference class
+// Phase 1: @classFuncExpressionForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
+class GALGAS_classFuncExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--------------------------------- Default constructor
-  public: GALGAS_constructorExpressionForGeneration (void) ;
+  public: GALGAS_classFuncExpressionForGeneration (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GALGAS_constructorExpressionForGeneration (const class cPtr_constructorExpressionForGeneration * inSourcePtr) ;
+  public: GALGAS_classFuncExpressionForGeneration (const class cPtr_classFuncExpressionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property read access
   public: class GALGAS_unifiedTypeMapEntry readProperty_mConstructorType (void) const ;
@@ -8936,21 +8936,21 @@ class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressi
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_constructorExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classFuncExpressionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_constructorExpressionForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                 const class GALGAS_location & inOperand1,
-                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                 const class GALGAS_string & inOperand3,
-                                                                                 const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                                 const class GALGAS_bool & inOperand5
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_classFuncExpressionForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                               const class GALGAS_string & inOperand3,
+                                                                               const class GALGAS_semanticExpressionListForGeneration & inOperand4,
+                                                                               const class GALGAS_bool & inOperand5
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_constructorExpressionForGeneration & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_classFuncExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -8964,20 +8964,20 @@ class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressi
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_constructorExpressionForGeneration class
+} ; // End of GALGAS_classFuncExpressionForGeneration class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorExpressionForGeneration ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 2: pointer class for @constructorExpressionForGeneration class
+// Phase 2: pointer class for @classFuncExpressionForGeneration class
 //
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_constructorExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
+class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
@@ -8997,13 +8997,13 @@ class cPtr_constructorExpressionForGeneration : public cPtr_semanticExpressionFo
   public: GALGAS_bool mProperty_mHasCompilerArgument ;
 
 //--- Constructor
-  public: cPtr_constructorExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                   const GALGAS_location & in_mLocation,
-                                                   const GALGAS_unifiedTypeMapEntry & in_mConstructorType,
-                                                   const GALGAS_string & in_mConstructorName,
-                                                   const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
-                                                   const GALGAS_bool & in_mHasCompilerArgument
-                                                   COMMA_LOCATION_ARGS) ;
+  public: cPtr_classFuncExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                 const GALGAS_location & in_mLocation,
+                                                 const GALGAS_unifiedTypeMapEntry & in_mConstructorType,
+                                                 const GALGAS_string & in_mConstructorName,
+                                                 const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
+                                                 const GALGAS_bool & in_mHasCompilerArgument
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
@@ -9021,21 +9021,21 @@ class cPtr_constructorExpressionForGeneration : public cPtr_semanticExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @constructorExpressionForGeneration_2D_weak weak reference class
+// Phase 1: @classFuncExpressionForGeneration_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_constructorExpressionForGeneration_2D_weak : public GALGAS_semanticExpressionForGeneration_2D_weak {
+class GALGAS_classFuncExpressionForGeneration_2D_weak : public GALGAS_semanticExpressionForGeneration_2D_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_constructorExpressionForGeneration_2D_weak (void) ;
+  public: GALGAS_classFuncExpressionForGeneration_2D_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_constructorExpressionForGeneration_2D_weak (const class GALGAS_constructorExpressionForGeneration & inSource) ;
+  public: GALGAS_classFuncExpressionForGeneration_2D_weak (const class GALGAS_classFuncExpressionForGeneration & inSource) ;
 
-  public: GALGAS_constructorExpressionForGeneration_2D_weak & operator = (const class GALGAS_constructorExpressionForGeneration & inSource) ;
+  public: GALGAS_classFuncExpressionForGeneration_2D_weak & operator = (const class GALGAS_classFuncExpressionForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_constructorExpressionForGeneration bang_constructorExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_classFuncExpressionForGeneration bang_classFuncExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -9045,15 +9045,15 @@ class GALGAS_constructorExpressionForGeneration_2D_weak : public GALGAS_semantic
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_constructorExpressionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classFuncExpressionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_constructorExpressionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_classFuncExpressionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_constructorExpressionForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_classFuncExpressionForGeneration_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -9067,12 +9067,12 @@ class GALGAS_constructorExpressionForGeneration_2D_weak : public GALGAS_semantic
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_constructorExpressionForGeneration_2D_weak class
+} ; // End of GALGAS_classFuncExpressionForGeneration_2D_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorExpressionForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2D_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //

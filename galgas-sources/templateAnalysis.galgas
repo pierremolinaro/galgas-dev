@@ -275,7 +275,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     end
   end
 #---
-  outExpression = @constructorExpressionForGeneration.new {
+  outExpression = @classFuncExpressionForGeneration.new {
     !returnedType
     !self.mClassFunctionName.location
     !constructorType
