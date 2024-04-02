@@ -234,7 +234,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 //--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_XcodeProjectDescriptor (void) ;
 
-//--------------------------------- set initialized properties
+//--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor

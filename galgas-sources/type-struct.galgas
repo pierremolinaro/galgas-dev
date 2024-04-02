@@ -135,7 +135,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = {}
     for property in self.mStructurePropertyListAST do
       [!?ioTypeMap makeEntry !property.propertyTypeName ?let propertyTypeEntry]
-      let @lstring selector = [if property.hasSelector then property.propertyName.string else "" end nowhere]
+      let selector = [if property.hasSelector then property.propertyName.string else "" end nowhere]
       if [property.initialization isNone] then
         constructorPropertyTypeList += !selector !propertyTypeEntry !property.propertyName.string
       end
@@ -180,8 +180,10 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: true
     )
-  #--- Add an initializer, if the structure defines none
+  #--- Synthetize an initializer, if the structure defines none
+    var features = @operators.generateDescriptionGetterUtilityMethod | .isComparable
     if [initializerMap count] == 0 then
+      features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
         !.new {![constructorPropertyTypeList signature] !self.structTypeName}
         !constructorPropertyTypeList
@@ -208,10 +210,10 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     let typeDefinition = @unifiedTypeDefinition.new {
       !typeName: self.structTypeName
       !isPredefined: self.isPredefined
-      !isConcrete: true # Concrete Type
+      !isConcrete: true
       !superType: .null
       !typeKind: .structType
-      !supportCollectionValue: false # Does not support collection value
+      !supportCollectionValue: false
       !allTypedPropertyList: typedPropertyList
       !propertyMap: propertyMap
       !currentTypedPropertyList: typedPropertyList
@@ -223,15 +225,15 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: {}
       !optionalMethodMap: optionalMethodMap
       !enumerationDescriptorList: {}
-      !.generateDescriptionGetterUtilityMethod | .isComparable
+      !features
       !@functionSignature {}
       !@mapSearchMethodListAST {}
       !@mapSearchMethodListAST {}
-      !generateHeaderInSeparateFile: false # Do not generate header in separate file
+      !generateHeaderInSeparateFile: false
       !enumeratedType # Type for enumerated element for "for" instruction
       !defaultConstructorName: defaultConstructorName # Default constructor
       !"struct-" + [self.structTypeName fileNameRepresentation]
-      !@headerKind.oneHeader
+      !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
@@ -263,7 +265,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       if [forbiddenKeysForStruct () hasKey !property.propertyName.string] then
         var @string m = "an property cannot be named:"
         for s in forbiddenKeysForStruct () do
-          m+= " " + s
+          m += " " + s
         end
         m += "; theses names are reserved"
         error property.propertyName : m
@@ -334,14 +336,16 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     end
   #---
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
+    let structType = [ioTypeMap typeMapEntryForLKey !self.structTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "struct " + self.structTypeName
       !@structTypeForGeneration.new {
-        ![ioTypeMap typeMapEntryForLKey !self.structTypeName]
+        !structType
         !typedPropertyList
         !constructorArgumentList
         !initializationCode
         !constructorNeedsCompilerVar
+        ![[structType definition].mHandledOperatorFlags generateSynthetizedInitializer]
       }
   }
 
@@ -353,31 +357,12 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-filewrapper structureGenerationTemplate in "+generation-templates/type_generation" {
-}{
-}{
-  template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList PROPERTY_LIST
-    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
-
-  template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList PROPERTY_LIST
-    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
-    ?@string CONSTRUCTOR_INITIALIZATION_CODE
-    ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 refclass @structTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mTypedPropertyList
   private let @typedPropertyList mConstructorArgumentList
   private let @string mConstructorInitializationCode
   private let @bool mConstructorNeedsCompilerVar
+  private let @bool synthetizeAnInitializer
 
   #·······························································································
 
@@ -393,7 +378,6 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry  identifierRepresentation]
       !self.mTypedPropertyList
-      !self.mConstructorArgumentList
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
@@ -429,11 +413,32 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       !self.mConstructorArgumentList
       !self.mConstructorInitializationCode
       !self.mConstructorNeedsCompilerVar
+      !self.synthetizeAnInitializer
     ]
   }
 
   #·······························································································
 
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper structureGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList PROPERTY_LIST
+
+  template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList PROPERTY_LIST
+    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
+    ?@string CONSTRUCTOR_INITIALIZATION_CODE
+    ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
+    ?@bool GENERATE_SYNTHETIZED_INITIALIZER
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

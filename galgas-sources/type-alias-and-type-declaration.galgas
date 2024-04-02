@@ -276,7 +276,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !def.mTypeForEnumeratedElement
           !defaultConstructorName: def.defaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
           !"typealias-" + [self.mAliasTypeName fileNameRepresentation]
-          !.oneHeader
+          !headerKind: .oneHeader
         }
         [!?ioTypeMap insertType !self.mAliasTypeName !definition]
       end

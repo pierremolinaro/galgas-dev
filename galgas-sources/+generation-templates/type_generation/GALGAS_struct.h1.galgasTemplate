@@ -29,7 +29,7 @@ for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
 end%//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
-//--------------------------------- set initialized properties
+//--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor

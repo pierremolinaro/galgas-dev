@@ -362,7 +362,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !elementTypeEntry # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyDict"
     !"dict-" + [self.mDictTypeName fileNameRepresentation]
-    !@headerKind.oneHeader
+    !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }

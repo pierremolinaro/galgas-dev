@@ -13,7 +13,27 @@ end% {
 GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 }
 
-//--------------------------------------------------------------------------------------------------
+%
+if GENERATE_SYNTHETIZED_INITIALIZER then
+%//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init%![[CONSTRUCTOR_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+  for (typeEntry name 3*) in CONSTRUCTOR_ARGUMENT_LIST do
+    %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
+  end
+          %Compiler * inCompiler
+          %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.setInitializedProperties (inCompiler) ;
+%
+  for (* name 3*) in CONSTRUCTOR_ARGUMENT_LIST do
+    %  result.mProperty_%![name identifierRepresentation]% = in_%![name identifierRepresentation]% ;\n%
+  end
+%  return result ;
+}
+
+%end
+%//--------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::setInitializedProperties (%
 if CONSTRUCTOR_NEEDS_COMPILER_VAR then

@@ -615,7 +615,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !elementTypeEntry # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyMap"
     !"map-" + [self.mMapTypeName fileNameRepresentation]
-    !@headerKind.twoHeaders
+    !headerKind: .twoHeaders
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }

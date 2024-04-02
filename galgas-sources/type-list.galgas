@@ -372,7 +372,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyList" # Default constructor
     !"list-" + [self.mListTypeName fileNameRepresentation]
-    !@headerKind.oneHeader
+    !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }

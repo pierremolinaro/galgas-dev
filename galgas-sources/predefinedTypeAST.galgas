@@ -129,7 +129,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !enumeratedTypeEntry
       !defaultConstructorName: [self defaultInitializerName]
       !"predefined-types"
-      !@headerKind.twoHeaders
+      !headerKind: .twoHeaders
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }

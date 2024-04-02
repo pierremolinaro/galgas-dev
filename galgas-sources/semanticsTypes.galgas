@@ -211,6 +211,24 @@ list @typedPropertyList {
   public let @propertyInCollectionInitializationAST initialization
   public let @bool hasSetter %selector
   public let @bool hasSelector %selector
+  
+  getter signature -> @string {
+    result = "("
+    var first = true
+    for property in self do
+      if property.initialization == .none then
+        if first then
+          first = false
+        else
+          result += ","
+        end
+        if property.hasSelector then
+          result += property.name
+        end
+      end
+    end
+    result += ")"
+  }
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -258,7 +276,8 @@ boolset @operators {
   generateEnumerationHelperMethods,
   doNotGenererateObjectCompare,
   generateDescriptionGetterUtilityMethod,
-  generateCopyConstructorAndAssignmentOperator
+  generateCopyConstructorAndAssignmentOperator,
+  generateSynthetizedInitializer
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -267,7 +286,6 @@ map @propertyMap {
   public let @AccessControl mAccessControl
   public let @bool mIsConstant
   public let @unifiedTypeMapEntry mPropertyType
-#  public let @propertyInCollectionInitializationAST initialization
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"
 }

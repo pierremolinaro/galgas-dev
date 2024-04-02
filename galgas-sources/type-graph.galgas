@@ -490,7 +490,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !.null # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyGraph" # Default constructor
     !"graph-" + [self.mGraphTypeName fileNameRepresentation]
-    !@headerKind.oneHeader
+    !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }

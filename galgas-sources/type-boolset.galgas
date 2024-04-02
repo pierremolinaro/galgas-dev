@@ -232,7 +232,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !.null # No type for enumerated element for "for" instruction
     !defaultConstructorName: "none" # Default constructor name
     !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
-    !.oneHeader
+    !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }

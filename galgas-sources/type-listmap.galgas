@@ -264,7 +264,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyMap" # Default constructor
     !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
-    !@headerKind.oneHeader
+    !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }

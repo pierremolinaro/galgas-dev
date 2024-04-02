@@ -278,7 +278,7 @@ override getter @semanticTypeForGeneration isPredefined -> @bool {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration headerKind -> @headerKind {
-  result = [self.mSelfTypeEntry definition].mHeaderKind
+  result = [self.mSelfTypeEntry definition].headerKind
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

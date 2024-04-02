@@ -169,7 +169,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName: "nil" # Default constructor
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
-    !@headerKind.oneHeader
+    !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }

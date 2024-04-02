@@ -48,7 +48,7 @@ struct @unifiedTypeDefinition {
   public let @unifiedTypeMapEntry mTypeForEnumeratedElement
   public let @string defaultConstructorName %selector # Used in [@xxx default] (empty string if no default initializer)
   public let @string mHeaderFileName # Name of C++ header file that contains type declaration
-  public let @headerKind mHeaderKind
+  public let @headerKind headerKind %selector
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

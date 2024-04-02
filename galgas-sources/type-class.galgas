@@ -415,7 +415,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
       !defaultConstructorName: defaultConstructorName # Default constructor name
       !"class-" + [self.mClassTypeName fileNameRepresentation]
-      !@headerKind.twoHeaders
+      !headerKind: .twoHeaders
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
