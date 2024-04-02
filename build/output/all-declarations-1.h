@@ -658,6 +658,10 @@ class GALGAS_templateInstructionIfBranchListForGeneration_2D_element : public AC
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateInstructionIfBranchListForGeneration_2D_element init_28__2C__29_ (const class GALGAS_semanticExpressionForGeneration & inOperand0,
+                                                                                                  const class GALGAS_templateInstructionListForGeneration & inOperand1,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1069,6 +1073,11 @@ class GALGAS_templateVariableMap_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateVariableMap_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                             const class GALGAS_string & inOperand2,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1357,6 +1366,30 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_predefinedTypes init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand5,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand6,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand7,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand8,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand9,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand10,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand11,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand12,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand13,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand14,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand15,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand16,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand17,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand18,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand19,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand20,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand21,
+                                                                                                                                          Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2818,6 +2851,8 @@ class GALGAS_routineMap : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_routineMap init_28__29_ (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2963,6 +2998,9 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_semanticContext init_28_galgas_34__29_ (const class GALGAS_bool & inOperand0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3059,6 +3097,11 @@ class GALGAS_templateAnalysisContext : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateAnalysisContext init_28__2C__2C__29_ (const class GALGAS_semanticContext & inOperand0,
+                                                                      const class GALGAS_predefinedTypes & inOperand1,
+                                                                      const class GALGAS_templateVariableMap & inOperand2,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4237,6 +4280,12 @@ class GALGAS_templateInstructionSwitchBranchListAST_2D_element : public AC_GALGA
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateInstructionSwitchBranchListAST_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstringlist & inOperand0,
+                                                                                                    const class GALGAS_switchExtractedValuesListAST & inOperand1,
+                                                                                                    const class GALGAS_templateInstructionListAST & inOperand2,
+                                                                                                    const class GALGAS_location & inOperand3,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4336,6 +4385,11 @@ class GALGAS_switchExtractedValuesListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_switchExtractedValuesListAST_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                      const class GALGAS_lstring & inOperand1,
+                                                                                      const class GALGAS_bool & inOperand2,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4975,6 +5029,12 @@ class GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element : publi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstringlist & inOperand0,
+                                                                                                              const class GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                                              const class GALGAS_uint & inOperand2,
+                                                                                                              const class GALGAS_templateInstructionListForGeneration & inOperand3,
+                                                                                                              Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5074,6 +5134,11 @@ class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGA
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_extractedAssociatedValuesForGeneration_2D_element init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                const class GALGAS_string & inOperand1,
+                                                                                                const class GALGAS_uint & inOperand2,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5696,6 +5761,13 @@ class GALGAS_templateDelimitorListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateDelimitorListAST_2D_element init_28__2C_nonAtomicSelection_2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                                            const class GALGAS_bool & inOperand1,
+                                                                                                            const class GALGAS_bool & inOperand2,
+                                                                                                            const class GALGAS_bool & inOperand3,
+                                                                                                            const class GALGAS_lstring & inOperand4,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5972,6 +6044,11 @@ class GALGAS_templateReplacementListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateReplacementListAST_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                    const class GALGAS_lstring & inOperand1,
+                                                                                    const class GALGAS_lstring & inOperand2,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6216,6 +6293,10 @@ class GALGAS_lexicalAttributeListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalAttributeListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6459,6 +6540,10 @@ class GALGAS_lexicalStyleListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalStyleListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6978,6 +7063,14 @@ class GALGAS_terminalDeclarationListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_terminalDeclarationListAST_2D_element init_28__2C__2C__2C__2C_nonAtomicSelection_2C_isEndOfTemplateMark_29_ (const class GALGAS_lstring & inOperand0,
+                                                                                                                                     const class GALGAS_sentLexicalAttributeListAST & inOperand1,
+                                                                                                                                     const class GALGAS_lstring & inOperand2,
+                                                                                                                                     const class GALGAS_lstring & inOperand3,
+                                                                                                                                     const class GALGAS_bool & inOperand4,
+                                                                                                                                     const class GALGAS_bool & inOperand5,
+                                                                                                                                     Compiler * inCompiler
+                                                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7225,6 +7318,10 @@ class GALGAS_lexicalMessageDeclarationListAST_2D_element : public AC_GALGAS_root
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalMessageDeclarationListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                      const class GALGAS_lstring & inOperand1,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7754,6 +7851,13 @@ class GALGAS_lexicalListDeclarationListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalListDeclarationListAST_2D_element init_28__2C__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                               const class GALGAS_lstring & inOperand1,
+                                                                                               const class GALGAS_lstring & inOperand2,
+                                                                                               const class GALGAS_sentLexicalAttributeListAST & inOperand3,
+                                                                                               const class GALGAS_lexicalListEntryListAST & inOperand4,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8067,6 +8171,9 @@ class GALGAS_lexicalRuleListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalRuleListAST_2D_element init_28__29_ (const class GALGAS_abstractLexicalRuleAST & inOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8309,6 +8416,10 @@ class GALGAS_indexingListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_indexingListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9065,6 +9176,9 @@ class GALGAS_lexicalInstructionListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalInstructionListAST_2D_element init_28__29_ (const class GALGAS_lexicalInstructionAST & inOperand0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9557,6 +9671,10 @@ class GALGAS_sentLexicalAttributeListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_sentLexicalAttributeListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                 const class GALGAS_lstring & inOperand1,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9664,6 +9782,12 @@ class GALGAS_lexicalListEntryListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalListEntryListAST_2D_element init_28__2C__2C_nonAtomicSelection_2C_isEndOfTemplateMark_29_ (const class GALGAS_lstring & inOperand0,
+                                                                                                                          const class GALGAS_lstring & inOperand1,
+                                                                                                                          const class GALGAS_bool & inOperand2,
+                                                                                                                          const class GALGAS_bool & inOperand3,
+                                                                                                                          Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10866,6 +10990,10 @@ class GALGAS_lexicalSendSearchListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalSendSearchListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                              const class GALGAS_lstring & inOperand1,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

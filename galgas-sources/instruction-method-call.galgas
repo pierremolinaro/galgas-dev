@@ -16,16 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @methodCallInstructionAST : @semanticInstructionAST {
-  private let @semanticExpressionAST mReceiverExpression
-  private let @lstring mMethodName
-  private let @actualParameterListAST mActualParameterList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -96,93 +86,102 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @methodCallInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for (mActualParameter) in self.mActualParameterList do
-    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
-  end
-}
+refclass @methodCallInstructionAST : @semanticInstructionAST {
+  private let @semanticExpressionAST mReceiverExpression
+  private let @lstring mMethodName
+  private let @actualParameterListAST mActualParameterList
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @methodCallInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-#--- Analyze receiver expression
-  [self.mReceiverExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: .null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration receiverExpression
-  ]
-#--- Get type method signature
-  [[receiverExpression.mResultType definition].instanceMethodMap searchKey
-    !self.mMethodName
-    ?let kind
-    ?let routineSignature
-    ?*
-    ?let hasCompilerArgument
-    ?*
-    ?let errorMessage
-  ]
-  if errorMessage != "" then
-    error self.mMethodName : errorMessage
-  end
-#--- Check effective parameters
-  [self.mActualParameterList analyzeRoutineArguments
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inAnalysisContext
-    !?ioTypeMap
-    !self.mMethodName
-    !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance method header"
-    !routineSignature
-    !?ioVariableMap
-    !?ioInstructionListForGeneration
-    ?let @actualParameterListForGeneration actualParameterListForGeneration
-  ]
-#--- Search base type that declares the method
-  var baseType = receiverExpression.mResultType
-  var searching = true
-  if @uint.errorCount == 0 then
-    loop (@uint.max) while searching do
-      if [[baseType definition].superType isNull] then
-        searching = false
-      else
-        if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mMethodName.string] then
-          baseType = [baseType definition].superType
-        else
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+    for (mActualParameter) in self.mActualParameterList do
+      [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+    end
+  }
+
+  #·······························································································
+
+  override method analyzeSemanticInstruction
+    ?let @lstring inUsefulnessCallerEntityName
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@localVarManager ioVariableMap
+  {
+  #--- Check self is not inkoed before full initialization
+    if self.mReceiverExpression is @selfInExpressionAST then
+      [ioVariableMap checkSelfObjectIsFullyInitialized !self.mMethodName.location]
+    end
+  #--- Analyze receiver expression
+    [self.mReceiverExpression analyzeSemanticExpression
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: .null
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration receiverExpression
+    ]
+  #--- Get type method signature
+    [[receiverExpression.mResultType definition].instanceMethodMap searchKey
+      !self.mMethodName
+      ?let kind
+      ?let routineSignature
+      ?*
+      ?let hasCompilerArgument
+      ?*
+      ?let errorMessage
+    ]
+    if errorMessage != "" then
+      error self.mMethodName : errorMessage
+    end
+  #--- Check effective parameters
+    [self.mActualParameterList analyzeRoutineArguments
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !?ioTypeMap
+      !self.mMethodName
+      !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance method header"
+      !routineSignature
+      !?ioVariableMap
+      !?ioInstructionListForGeneration
+      ?let @actualParameterListForGeneration actualParameterListForGeneration
+    ]
+  #--- Search base type that declares the method
+    var baseType = receiverExpression.mResultType
+    var searching = true
+    if @uint.errorCount == 0 then
+      loop (@uint.max) while searching do
+        if [[baseType definition].superType isNull] then
           searching = false
+        else
+          if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mMethodName.string] then
+            baseType = [baseType definition].superType
+          else
+            searching = false
+          end
         end
       end
     end
-  end
-#--- Generate instructions
-  ioInstructionListForGeneration += !@methodCallInstructionForGeneration.new {
-    !self.mInstructionLocation
-    !receiverExpression.mResultType
-    !receiverExpression
-    !self.mMethodName.string
-    !kind
-    !actualParameterListForGeneration
-    !hasCompilerArgument
-    !baseType
+  #--- Generate instructions
+    ioInstructionListForGeneration += !@methodCallInstructionForGeneration.new {
+      !self.mInstructionLocation
+      !receiverExpression.mResultType
+      !receiverExpression
+      !self.mMethodName.string
+      !kind
+      !actualParameterListForGeneration
+      !hasCompilerArgument
+      !baseType
+    }
   }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

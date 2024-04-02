@@ -10,6 +10,16 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension getter '@functionSignature signature' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_signature (const class GALGAS_functionSignature & inObject,
+                                               class Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension method '@routineMap searchKey'
 //
 //--------------------------------------------------------------------------------------------------
@@ -1719,6 +1729,17 @@ void extensionSetter_closeBranch (class GALGAS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension method '@localVarManager checkSelfObjectIsFullyInitialized'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkSelfObjectIsFullyInitialized (const class GALGAS_localVarManager inObject,
+                                                        const class GALGAS_location constin_inErrorLocation,
+                                                        class Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension setter '@localVarManager neutralAccess'
 //
 //--------------------------------------------------------------------------------------------------
@@ -1814,6 +1835,16 @@ class GALGAS_lstringlist extensionGetter_unsolvedEntryList (const class GALGAS_u
 class GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
                                                                    class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@actualOutputExpressionList keyRepresentation' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_keyRepresentation (const class GALGAS_actualOutputExpressionList & inObject,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

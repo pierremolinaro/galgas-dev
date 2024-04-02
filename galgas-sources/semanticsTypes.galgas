@@ -32,6 +32,17 @@ list @functionSignature {
   public let @lstring mFormalSelector
   public let @unifiedTypeMapEntry mFormalArgumentType
   public let @string mFormalArgumentName
+
+  getter signature -> @string {
+    result = "("
+    for parameter in self
+    do
+      result += parameter.mFormalSelector
+    between
+      result += ","
+    end
+    result += ")"
+  }
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

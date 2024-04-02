@@ -205,22 +205,20 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc analyzeConstructorInvocation
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMapEntry inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
-  ?let @lstring inTypeName
-  ?let @lstring inConstructorName
-  ?let @actualOutputExpressionList inInitializerEffectiveParameterExpressions
-  ?let @location inLocationForOldStyleCollectionInitializerError
-  !@unifiedTypeMapEntry outReturnedType
-  !@unifiedTypeMapEntry outConstructorType
-  !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
-  !@bool outHasCompilerArgument
-{
+private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntityName
+                      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                      ?let @unifiedTypeMapEntry inType
+                      ?let @analysisContext inAnalysisContext
+                      ?!@unifiedTypeMap ioTypeMap
+                      ?!@localVarManager ioVariableMap
+                      ?let @lstring inTypeName
+                      ?let @lstring inConstructorName
+                      ?let @actualOutputExpressionList inInitializerEffectiveParameterExpressions
+                      ?let @location inLocationForOldStyleCollectionInitializerError
+                      !@unifiedTypeMapEntry outReturnedType
+                      !@unifiedTypeMapEntry outConstructorType
+                      !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
+                      !@bool outHasCompilerArgument {
   outConstructorType = inType
   if inTypeName.string != "" then
     outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
@@ -232,6 +230,16 @@ private proc analyzeConstructorInvocation
   else
   #--- Get constructor map from type map
     let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
+  #--- Search initializer
+    if (inConstructorName.string == "new") && ([outConstructorType definition].typeKind == .structType) then
+      let initializerSignature = [inInitializerEffectiveParameterExpressions keyRepresentation]
+      let initializerMap = [outConstructorType definition].initializerMap
+      if not [initializerMap hasKey !initializerSignature] then
+        warning inConstructorName
+        : "initializer @" + [outConstructorType definition].typeName
+        + initializerSignature + " does not exist"
+      end
+    end
   #--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
     with inConstructorName.string in classFunctionMap  do
@@ -241,11 +249,13 @@ private proc analyzeConstructorInvocation
     else
       if [classFunctionMap count] == 0 then
         error inConstructorName
-        : "the '@"+ [outConstructorType definition].typeName.string + "' type does not define any constructor"
+        : "the '@"+ [outConstructorType definition].typeName.string 
+        + "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       else
         error inConstructorName
-        : "the '@"+ [outConstructorType definition].typeName.string + "' type does not define the '" + inConstructorName + "' constructor"
+        : "the '@"+ [outConstructorType definition].typeName.string
+        + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
         fixit { replace [classFunctionMap keyList] }
       end
@@ -253,32 +263,43 @@ private proc analyzeConstructorInvocation
   #--- Analysis arguments
     if [inInitializerEffectiveParameterExpressions count] != [constructorFormalArgumentTypeList count] then
       error inConstructorName
-      : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType definition].typeName.string + "' requires "
+      : "calling the '" + inConstructorName + "' constructor of '@"
+      + [outConstructorType definition].typeName.string + "' requires "
       + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
       + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
     end
     outConstructorEffectiveParameterList = {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in inInitializerEffectiveParameterExpressions,
-        (mFormalSelector mFormalArgumentType *) in constructorFormalArgumentTypeList do
-      [mExpression analyzeSemanticExpression
+    for effectiveParameter in inInitializerEffectiveParameterExpressions,
+        formalArg in constructorFormalArgumentTypeList do
+      [effectiveParameter.mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inferenceType: mFormalArgumentType
+        !inferenceType: formalArg.mFormalArgumentType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration exp
       ]
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !mEndOfExpressionLocation !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (
+        !formalArg.mFormalArgumentType
+        !exp.mResultType
+        !effectiveParameter.mEndOfExpressionLocation
+        !?exp
+      )
       outConstructorEffectiveParameterList += !exp
-      if mFormalSelector.string != mActualSelector.string then
-        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+      if formalArg.mFormalSelector.string != effectiveParameter.mActualSelector.string then
+        let @string s = "!" + if formalArg.mFormalSelector.string != ""
+          then formalArg.mFormalSelector.string + ":"
+          else ""
+        end
+        error effectiveParameter.mActualSelector
+        : "the selector should be '" + s + "'" fixit { replace s }
       end
     end
   end
 #---
-  if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && ([inInitializerEffectiveParameterExpressions count] == 0) then
+  if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && 
+     ([inInitializerEffectiveParameterExpressions count] == 0) then
     let oldInitializers = @stringset {!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"}
     if [oldInitializers hasKey !inConstructorName.string] then
       error inLocationForOldStyleCollectionInitializerError

@@ -23,6 +23,20 @@ list @actualOutputExpressionList {
   public let @lstring mActualSelector
   public let @semanticExpressionAST mExpression
   public let @location mEndOfExpressionLocation
+
+  #·······························································································
+  
+  getter keyRepresentation -> @string {
+    result = "("
+    for effectiveParameter in self
+    do result += effectiveParameter.mActualSelector
+    between result += ","
+    end
+    result += ")"
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

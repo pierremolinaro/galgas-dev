@@ -45,6 +45,9 @@ class GALGAS_optionalMethodActualArgumentListForGeneration_2D_element : public A
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_optionalMethodActualArgumentListForGeneration_2D_element init_28__29_ (const class GALGAS_optionalMethodActualArgumentForGeneration & inOperand0,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -257,6 +260,9 @@ class GALGAS_ifTestListForGeneration_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_ifTestListForGeneration_2D_element init_28__29_ (const class GALGAS_ifTestForGeneration & inOperand0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1474,6 +1480,10 @@ class GALGAS_logListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_logListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5428,6 +5438,12 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_switchBranchesAST_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstringlist & inOperand0,
+                                                                               const class GALGAS_switchExtractedValuesListAST & inOperand1,
+                                                                               const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                                               const class GALGAS_location & inOperand3,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5904,6 +5920,12 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_switchBranchesForGeneration_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstringlist & inOperand0,
+                                                                                         const class GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                         const class GALGAS_uint & inOperand2,
+                                                                                         const class GALGAS_semanticInstructionListForGeneration & inOperand3,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11111,6 +11133,9 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element : public AC_GALG
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element init_28__29_ (const class GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand0,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11413,6 +11438,12 @@ class GALGAS_productionRuleListForGrammarAnalysis_2D_element : public AC_GALGAS_
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_productionRuleListForGrammarAnalysis_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                                  const class GALGAS_uint & inOperand1,
+                                                                                                  const class GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand2,
+                                                                                                  const class GALGAS_uint & inOperand3,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11637,6 +11668,10 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element : public AC
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                                  const class GALGAS_uint & inOperand1,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

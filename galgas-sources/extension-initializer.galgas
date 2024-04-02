@@ -120,7 +120,7 @@ refclass @initializerAST : @semanticDeclarationAST {
   #·······························································································
 
   override getter keyRepresentation -> @string {
-    result = "initializer @" + self.mTypeName + [self.mFormalParameterList keyRepresentation]
+    result = "initializer @" + self.mTypeName + [self.mFormalParameterList signature]
   }
 
   #·······························································································
@@ -144,7 +144,7 @@ refclass @initializerAST : @semanticDeclarationAST {
     end
     with self.mTypeName in !?ioExtensionInitializerForBuildingContext error message searchKey  do
       [!?mExtensionInitializerMapForType insertKey
-        !@lstring.new {![self.mFormalParameterList keyRepresentation] !self.mTypeName.location}
+        !@lstring.new {![self.mFormalParameterList signature] !self.mTypeName.location}
         !self.mFormalParameterList
       ]
     end
@@ -211,7 +211,7 @@ refclass @initializerAST : @semanticDeclarationAST {
       ?let formalParameterListForGeneration
     )
   #---
-    let initializerName = [self.mFormalParameterList keyRepresentation]
+    let initializerName = [self.mFormalParameterList signature]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "initializer @" + self.mTypeName + initializerName
       !@extensionInitializerForGeneration.new {

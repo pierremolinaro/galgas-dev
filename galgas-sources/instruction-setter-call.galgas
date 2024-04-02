@@ -242,6 +242,10 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     if let [inAnalysisContext.selfAvailability available
                     ?type: let selfType
                     ?selfMutability: let selfMutability] then
+    #--- Check self is not inkoed before full initialization
+#      if self.mReceiverExpression is @selfInExpressionAST then
+#        [ioVariableMap checkSelfObjectIsFullyInitialized !mSetterName.location]
+#      end
       if let [[selfType definition].typeKind classType ?isReference: let isReference], isReference then
       elsif not [selfMutability selfIsMutable] then
         error self.mSetterName : "'self' not mutable in this context"
@@ -279,9 +283,6 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?receiverType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
       errorLocation = value.location
-#      if not isPublic then
-#        error value : " inaccessible property (due to its 'private' qualifier)"
-#      end
       if isConstant then
         error value : "a constant property cannot be modified"
       end
@@ -368,6 +369,10 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
     if not [selfMutability selfIsMutable] then
       error self.mSetterName : "'self' not mutable in this context"
     end
+    #--- Check self is not inkoed before full initialization
+#      if self.mReceiverExpression is @selfInExpressionAST then
+      [ioVariableMap checkSelfObjectIsFullyInitialized !self.mSetterName.location]
+#      end
   #--- Get setter signature
     [[selfType definition].setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
   #--- Check effective parameters

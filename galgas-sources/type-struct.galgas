@@ -180,6 +180,13 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: true
     )
+  #--- Add an initializer, if the structure defines none
+    if [initializerMap count] == 0 then
+      [!?initializerMap insertKey
+        !.new {![constructorPropertyTypeList signature] !self.structTypeName}
+        !constructorPropertyTypeList
+      ]
+    end
   #--- Enumeration by "for" instruction
     let @unifiedTypeMapEntry enumeratedType
     if self.mEnumeratedElementTypeName == "" then
@@ -192,8 +199,8 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     end
   #--- Generate a "default" constructor ?
     var @string defaultConstructorName = "default"
-    for (mPropertyTypeEntry 4*) in typedPropertyList while defaultConstructorName != "" do
-      if ([mPropertyTypeEntry definition].defaultConstructorName == "") | not [mPropertyTypeEntry definition].isConcrete then
+    for property in typedPropertyList while defaultConstructorName != "" do
+      if ([property.typeEntry definition].defaultConstructorName == "") | not [property.typeEntry definition].isConcrete then
         defaultConstructorName = ""
       end
     end
@@ -321,7 +328,8 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
           !?unusedVariableCppNameSet
           ?let sourceVar
         ]
-        initializationCode += "  mProperty_" + [propertyName identifierRepresentation] + " = " + sourceVar + " ;\n"
+        initializationCode += "  mProperty_" + [propertyName identifierRepresentation]
+            + " = " + sourceVar + " ;\n"
       end
     end
   #---

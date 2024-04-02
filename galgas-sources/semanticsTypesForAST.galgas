@@ -107,7 +107,7 @@ list @formalInputParameterListAST {
   public let @bool mIsUnused
   public let @bool mIsConstant
 
-  getter keyRepresentation -> @string {
+  getter signature -> @string {
     result = "("
     for parameter in self
     do

@@ -2677,23 +2677,23 @@ GALGAS_string extensionGetter_keyRepresentation (const GALGAS_formalParameterLis
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension Getter '@formalInputParameterListAST keyRepresentation'
+//Extension Getter '@formalInputParameterListAST signature'
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string extensionGetter_keyRepresentation (const GALGAS_formalInputParameterListAST & inObject,
-                                                 Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_signature (const GALGAS_formalInputParameterListAST & inObject,
+                                         Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("(") ;
   const GALGAS_formalInputParameterListAST temp_0 = inObject ;
-  cEnumerator_formalInputParameterListAST enumerator_4103 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_4103.hasCurrentObject ()) {
-    result_result.plusAssign_operation(enumerator_4103.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 114)) ;
-    if (enumerator_4103.hasNextObject ()) {
+  cEnumerator_formalInputParameterListAST enumerator_4095 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_4095.hasCurrentObject ()) {
+    result_result.plusAssign_operation(enumerator_4095.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 114)) ;
+    if (enumerator_4095.hasNextObject ()) {
       result_result.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 116)) ;
     }
-    enumerator_4103.gotoNextObject () ;
+    enumerator_4095.gotoNextObject () ;
   }
   result_result.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 118)) ;
 //---

@@ -409,6 +409,29 @@ struct @currentVarManager {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
+#! checkSelfObjectIsFullyInitialized
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+method @localVarManager checkSelfObjectIsFullyInitialized ?let @location inErrorLocation {
+  [self.mCurrentManager checkSelfObjectIsFullyInitialized !inErrorLocation]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+method @currentVarManager checkSelfObjectIsFullyInitialized ?let @location inErrorLocation {
+  var fullyInitialized = true
+  for entry in self.mLocalVarMap while fullyInitialized do
+    let keyComponents = [entry.lkey.string componentsSeparatedByString !"."]
+    if ([keyComponents count] == 2) && ([keyComponents mValueAtIndex !0] == "self") then
+      fullyInitialized = not [entry.mState isDeclared]
+    end
+  end
+  if not fullyInitialized then
+    error inErrorLocation : "invalid call, self is not fully initialized"
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! NEUTRAL ACCESS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

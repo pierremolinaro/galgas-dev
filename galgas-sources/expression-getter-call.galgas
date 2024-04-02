@@ -66,13 +66,18 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
 
   #·······························································································
 
-  override method analyzeSemanticExpression ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                            ?inferenceType: let @unifiedTypeMapEntry unused inType
-                                            ?let @analysisContext inAnalysisContext
-                                            ?!@unifiedTypeMap ioTypeMap
-                                            ?!@localVarManager ioVariableMap
-                                            !@semanticExpressionForGeneration outExpression {
+  override method analyzeSemanticExpression
+                          ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                          ?inferenceType: let @unifiedTypeMapEntry unused inType
+                          ?let @analysisContext inAnalysisContext
+                          ?!@unifiedTypeMap ioTypeMap
+                          ?!@localVarManager ioVariableMap
+                          !@semanticExpressionForGeneration outExpression {
+  #--- Check self is not inkoed before full initialization
+    if self.mReceiver is @selfInExpressionAST then
+      [ioVariableMap checkSelfObjectIsFullyInitialized !self.mGetterName.location]
+    end
   #--------------------------------------- Expression analysis
     [self.mReceiver analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -146,9 +151,6 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
   #--------------------------------------- The getter does not exist, it is a property ?
     elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].propertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
-  #    if not isPublic then
-  #      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
-  #    end
       outExpression = @structPropertyAccessExpressionForGeneration.new {
         !propertyType
         !self.mGetterName.location

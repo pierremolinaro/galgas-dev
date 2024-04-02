@@ -270,9 +270,6 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                         ?!@localVarManager ioVariableMap {
   if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-    [!?ioVariableMap searchForWriteAccess 
-      !.new {!"self." + mTargetSelfPropertyName !mTargetSelfPropertyName} ?3*
-    ]
     if not [selfMutability propertiesAreMutable] then
       error self.mInstructionLocation : "'self' property not mutable in this context"
     end
@@ -301,6 +298,10 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
       !?ioTypeMap
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
+    ]
+  #---
+    [!?ioVariableMap searchForWriteAccess 
+      !.new {!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
     ]
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
