@@ -50,6 +50,10 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public: GALGAS_branchListForGrammarAnalysis mProperty_mRepeatBranchList ;
   public: GALGAS_uint mProperty_mAddedNonTerminalSymbolIndex ;
 
+
+//--- Default constructor
+  public: cPtr_repeatInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_repeatInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,
                                                     const GALGAS_branchListForGrammarAnalysis & in_mRepeatBranchList,

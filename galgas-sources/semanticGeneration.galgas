@@ -699,9 +699,9 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
 proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
                          ?let @string inInitializerName
                          ?!@stringset ioInclusionSet
-                          ?let @formalInputParameterListForGeneration inFormalArgumentList
-                          ?let @semanticInstructionListForGeneration inInstructionList
-                          !@string outGeneratedCode {
+                         ?let @formalInputParameterListForGeneration inFormalArgumentList
+                         ?let @semanticInstructionListForGeneration inInstructionList
+                         !@string outGeneratedCode {
   let className = [inReceiverType definition].typeName.string
 #--- Build unused variable set
   var @stringset unusedVariableCppNameSet = {}
@@ -725,25 +725,12 @@ proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   end
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
-#  var @unifiedTypeMapEntry baseType = inReceiverType
-#  var @bool searching = true
-#  loop (@uint. max) while searching do
-#    if not [[baseType definition].superType isNull] then
-#      if [[[baseType definition].superType definition].instanceMethodMap hasKey !inMethodName] then
-#        baseType = [baseType definition].superType
-#      else
-#        searching = false
-#      end
-#    else
-#      searching = false
-#    end
-#  end
-#  ioInclusionSet += !"method-" + [[baseType definition].typeName.string fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for formalArg in inFormalArgumentList do
     [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
+  let isStruct = [inReceiverType definition].typeKind == .structType
   outGeneratedCode = "GALGAS_" + [className identifierRepresentation]
      + " GALGAS_" + [className identifierRepresentation] 
      + "::init" + [inInitializerName identifierRepresentation] + " ("
@@ -769,11 +756,18 @@ proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   outGeneratedCode += ") {\n"
 #--- Generate routine body
-  outGeneratedCode += "  GALGAS_" + [className identifierRepresentation] + " result ;\n"
-  outGeneratedCode += "  result.setInitializedProperties (" + compilerCppName () + ") ;\n"
-  outGeneratedCode += routineBody
-#---
-  outGeneratedCode += "  return result ;\n"
+  if isStruct then
+    outGeneratedCode += "  GALGAS_" + [className identifierRepresentation] + " result ;\n"
+    outGeneratedCode += "  result.setInitializedProperties (" + compilerCppName () + ") ;\n"
+    outGeneratedCode += routineBody
+    outGeneratedCode += "  return result ;\n"
+  else
+    outGeneratedCode += "  cPtr_" + [className identifierRepresentation] + " * object = nullptr ;\n"
+    outGeneratedCode += "  macroMyNew (object, cPtr_" + [className identifierRepresentation] + " ()) ;\n"
+    outGeneratedCode += "  object->setInitializedProperties (" + compilerCppName () + ") ;\n"
+    outGeneratedCode += routineBody
+    outGeneratedCode += "  return result ;\n"
+  end
   outGeneratedCode += "}"
 }
 
@@ -955,6 +949,8 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?allPropertyList: @typedPropertyList ALL_PROPERTY_LIST
     ?inheritedPropertyList: @typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
+    ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
+    ?@string CONSTRUCTOR_INITIALIZATION_CODE
 
 #---------- Weak Reference Class
   template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"

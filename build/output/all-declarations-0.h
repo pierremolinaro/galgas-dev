@@ -688,6 +688,10 @@ class cPtr_templateInstructionAST : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionAST (LOCATION_ARGS) ;
 
@@ -1040,6 +1044,10 @@ class cPtr_templateExpressionAST : public acStrongPtr_class {
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_templateExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateExpressionAST (LOCATION_ARGS) ;
@@ -1473,6 +1481,10 @@ class cPtr_templateClassFunctionAST : public cPtr_templateExpressionAST {
   public: GALGAS_lstring mProperty_mClassFunctionName ;
   public: GALGAS_templateExpressionListAST mProperty_mExpressionList ;
 
+
+//--- Default constructor
+  public: cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateClassFunctionAST (const GALGAS_lstring & in_mTypeName,
                                          const GALGAS_lstring & in_mClassFunctionName,
@@ -1631,6 +1643,10 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
   public: GALGAS_lstring mProperty_mFileWrapperName ;
   public: GALGAS_lstring mProperty_mTemplateName ;
   public: GALGAS_templateExpressionListAST mProperty_mOutExpressionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateFileWrapperTemplateCallAST (const GALGAS_lstring & in_mFileWrapperName,
@@ -1791,6 +1807,10 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
   public: GALGAS_lstring mProperty_mTemplateName ;
   public: GALGAS_templateExpressionListAST mProperty_mOutExpressionList ;
 
+
+//--- Default constructor
+  public: cPtr_templateExtensionTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateExtensionTemplateCallAST (const GALGAS_templateExpressionAST & in_mExpressionValue,
                                                  const GALGAS_lstring & in_mTemplateName,
@@ -1949,6 +1969,10 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateAndOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateAndOperationAST (const GALGAS_location & in_mOperatorLocation,
@@ -2109,6 +2133,10 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateOrOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateOrOperationAST (const GALGAS_location & in_mOperatorLocation,
                                        const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -2268,6 +2296,10 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateXorOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateXorOperationAST (const GALGAS_location & in_mOperatorLocation,
                                         const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -2419,6 +2451,10 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
 
+
+//--- Default constructor
+  public: cPtr_templateTrueBoolAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateTrueBoolAST (const GALGAS_location & in_mLocation
                                     COMMA_LOCATION_ARGS) ;
@@ -2567,6 +2603,10 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
 
 //--- Properties
   public: GALGAS_location mProperty_mLocation ;
+
+
+//--- Default constructor
+  public: cPtr_templateFalseBoolAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateFalseBoolAST (const GALGAS_location & in_mLocation
@@ -2721,6 +2761,10 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
   public: GALGAS_stringlist mProperty_mLiteralStringList ;
   public: GALGAS_location mProperty_mLocation ;
 
+
+//--- Default constructor
+  public: cPtr_templateLiteralStringExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateLiteralStringExpressionAST (const GALGAS_stringlist & in_mLiteralStringList,
                                                    const GALGAS_location & in_mLocation
@@ -2871,6 +2915,10 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
 //--- Properties
   public: GALGAS_lbigint mProperty_mLiteralInt ;
 
+
+//--- Default constructor
+  public: cPtr_templateLiteralUIntExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateLiteralUIntExpressionAST (const GALGAS_lbigint & in_mLiteralInt
                                                  COMMA_LOCATION_ARGS) ;
@@ -3020,6 +3068,10 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
 //--- Properties
   public: GALGAS_lchar mProperty_mLiteralChar ;
 
+
+//--- Default constructor
+  public: cPtr_templateLiteralCharExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateLiteralCharExpressionAST (const GALGAS_lchar & in_mLiteralChar
                                                  COMMA_LOCATION_ARGS) ;
@@ -3168,6 +3220,10 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
 
 //--- Properties
   public: GALGAS_ldouble mProperty_mLiteralDouble ;
+
+
+//--- Default constructor
+  public: cPtr_templateLiteralDoubleExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateLiteralDoubleExpressionAST (const GALGAS_ldouble & in_mLiteralDouble
@@ -3326,6 +3382,10 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
   public: GALGAS_lstring mProperty_mStructFieldName ;
 
+
+//--- Default constructor
+  public: cPtr_structFieldAccessTemplateExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_structFieldAccessTemplateExpressionAST (const GALGAS_location & in_mOperatorLocation,
                                                        const GALGAS_templateExpressionAST & in_mExpression,
@@ -3481,6 +3541,10 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateNotOperatorAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateNotOperatorAST (const GALGAS_location & in_mOperatorLocation,
                                        const GALGAS_templateExpressionAST & in_mExpression
@@ -3634,6 +3698,10 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateLogicalNegateAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateLogicalNegateAST (const GALGAS_location & in_mOperatorLocation,
@@ -3792,6 +3860,10 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
   public: GALGAS_lstring mProperty_mOptionComponentName ;
   public: GALGAS_lstring mProperty_mOptionName ;
   public: GALGAS_lstring mProperty_mGetterName ;
+
+
+//--- Default constructor
+  public: cPtr_templateOptionAccessAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateOptionAccessAST (const GALGAS_lstring & in_mOptionComponentName,
@@ -4038,6 +4110,10 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
   public: GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
   public: GALGAS_lstring mProperty_mTypeName ;
 
+
+//--- Default constructor
+  public: cPtr_templateTestDynamicClassAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateTestDynamicClassAST (const GALGAS_templateExpressionAST & in_mReceiverExpression,
                                             const GALGAS_location & in_mEndOfReceiverExpression,
@@ -4194,6 +4270,10 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_templateExpressionListAST mProperty_mExpressionList ;
 
+
+//--- Default constructor
+  public: cPtr_templateFunctionCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateFunctionCallAST (const GALGAS_lstring & in_mFunctionName,
                                         const GALGAS_templateExpressionListAST & in_mExpressionList
@@ -4343,6 +4423,10 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
 
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
+
+
+//--- Default constructor
+  public: cPtr_templateVarInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateVarInExpressionAST (const GALGAS_lstring & in_mVarName
@@ -4500,6 +4584,10 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateAddOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateAddOperationAST (const GALGAS_location & in_mOperatorLocation,
@@ -4660,6 +4748,10 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateSubOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateSubOperationAST (const GALGAS_location & in_mOperatorLocation,
                                         const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -4818,6 +4910,10 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateMultiplyOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateMultiplyOperationAST (const GALGAS_location & in_mOperatorLocation,
@@ -4978,6 +5074,10 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateDivideOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateDivideOperationAST (const GALGAS_location & in_mOperatorLocation,
                                            const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -5137,6 +5237,10 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateModuloOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateModuloOperationAST (const GALGAS_location & in_mOperatorLocation,
                                            const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -5291,6 +5395,10 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
 //--- Properties
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateUnaryMinusOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateUnaryMinusOperationAST (const GALGAS_location & in_mOperatorLocation,
@@ -5449,6 +5557,10 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateEqualTestAST (const GALGAS_location & in_mOperatorLocation,
@@ -5609,6 +5721,10 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateNonEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateNonEqualTestAST (const GALGAS_location & in_mOperatorLocation,
                                         const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -5767,6 +5883,10 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateStrictInfTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateStrictInfTestAST (const GALGAS_location & in_mOperatorLocation,
@@ -5927,6 +6047,10 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateInfOrEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInfOrEqualTestAST (const GALGAS_location & in_mOperatorLocation,
                                           const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -6085,6 +6209,10 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateStrictSupTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateStrictSupTestAST (const GALGAS_location & in_mOperatorLocation,
@@ -6245,6 +6373,10 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateSupOrEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateSupOrEqualTestAST (const GALGAS_location & in_mOperatorLocation,
                                           const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -6403,6 +6535,10 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_location mProperty_mOperatorLocation ;
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateLeftShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateLeftShiftOperationAST (const GALGAS_location & in_mOperatorLocation,
@@ -6563,6 +6699,10 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
   public: GALGAS_templateExpressionAST mProperty_mLeftExpression ;
   public: GALGAS_templateExpressionAST mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_templateRightShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateRightShiftOperationAST (const GALGAS_location & in_mOperatorLocation,
                                                const GALGAS_templateExpressionAST & in_mLeftExpression,
@@ -6713,6 +6853,10 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
 
 //--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionStringAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionStringAST (const GALGAS_string & in_mTemplateString
@@ -6866,6 +7010,10 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
 //--- Properties
   public: GALGAS_templateExpressionAST mProperty_mExpression ;
   public: GALGAS_location mProperty_mLocation ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionExpressionAST (const GALGAS_templateExpressionAST & in_mExpression,
@@ -7025,6 +7173,10 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
   public: GALGAS_location mProperty_mLocation ;
   public: GALGAS_templateInstructionListAST mProperty_mBlockInstructionList ;
 
+
+//--- Default constructor
+  public: cPtr_templateBlockInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateBlockInstructionAST (const GALGAS_templateExpressionAST & in_mExpression,
                                             const GALGAS_location & in_mLocation,
@@ -7172,6 +7324,10 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionGetColumnLocationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionGetColumnLocationAST (LOCATION_ARGS) ;
 
@@ -7315,6 +7471,10 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionGotoColumnLocationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionGotoColumnLocationAST (LOCATION_ARGS) ;
@@ -7715,6 +7875,10 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
   public: GALGAS_templateInstructionIfBranchListAST mProperty_mTemplateInstructionIfBranchList ;
   public: GALGAS_templateInstructionListAST mProperty_mElseInstructionList ;
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionIfAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionIfAST (const GALGAS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
                                          const GALGAS_templateInstructionListAST & in_mElseInstructionList
@@ -7857,6 +8021,10 @@ class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionForGeneration (LOCATION_ARGS) ;
@@ -11064,6 +11232,10 @@ class cPtr_unifiedTypeMapElementClass : public acStrongPtr_class {
 //--- Properties
   public: GALGAS_typeDefinition mProperty_mDefinition ;
 
+
+//--- Default constructor
+  public: cPtr_unifiedTypeMapElementClass (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_unifiedTypeMapElementClass (const GALGAS_typeDefinition & in_mDefinition
                                            COMMA_LOCATION_ARGS) ;
@@ -11183,6 +11355,10 @@ class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
   public: GALGAS_unifiedTypeMapEntry mProperty_mResultType ;
   public: GALGAS_location mProperty_mLocation ;
 
+
+//--- Default constructor
+  public: cPtr_semanticExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_semanticExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                 const GALGAS_location & in_mLocation
@@ -11274,6 +11450,10 @@ class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInst
 
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionExpressionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression

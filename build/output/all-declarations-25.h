@@ -19,15 +19,6 @@ class GALGAS_stringset function_forbiddenKeysForStruct (class Compiler * inCompi
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'compilerCppName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_string function_compilerCppName (class Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'structureGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------

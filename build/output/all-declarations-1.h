@@ -92,6 +92,10 @@ class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructi
   public: GALGAS_location mProperty_mLocation ;
   public: GALGAS_templateInstructionListForGeneration mProperty_mBlockInstructionList ;
 
+
+//--- Default constructor
+  public: cPtr_templateBlockInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateBlockInstructionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
                                                       const GALGAS_location & in_mLocation,
@@ -239,6 +243,10 @@ class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templ
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionGetColumnLocationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionGetColumnLocationForGeneration (LOCATION_ARGS) ;
 
@@ -382,6 +390,10 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionGotoColumnLocationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionGotoColumnLocationForGeneration (LOCATION_ARGS) ;
@@ -781,6 +793,10 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
 //--- Properties
   public: GALGAS_templateInstructionIfBranchListForGeneration mProperty_mTemplateInstructionIfBranchList ;
   public: GALGAS_templateInstructionListForGeneration mProperty_mElseInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionIfForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionIfForGeneration (const GALGAS_templateInstructionIfBranchListForGeneration & in_mTemplateInstructionIfBranchList,
@@ -3231,6 +3247,10 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
   public: GALGAS_templateExpressionListAST mProperty_mExpressionList ;
   public: GALGAS_location mProperty_mExpressionLocation ;
 
+
+//--- Default constructor
+  public: cPtr_templateGetterCallInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateGetterCallInExpressionAST (const GALGAS_templateExpressionAST & in_mReceiverExpression,
                                                   const GALGAS_lstring & in_mGetterName,
@@ -3577,6 +3597,10 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
   public: GALGAS_templateInstructionListAST mProperty_mBetweenInstructionList ;
   public: GALGAS_templateInstructionListAST mProperty_mAfterInstructionList ;
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionForeachAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionForeachAST (const GALGAS_bool & in_mIsAscending,
                                               const GALGAS_templateExpressionAST & in_mExpression,
@@ -3760,6 +3784,10 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
   public: GALGAS_string mProperty_mIndexCppName ;
   public: GALGAS_templateInstructionListForGeneration mProperty_mBetweenInstructionList ;
   public: GALGAS_templateInstructionListForGeneration mProperty_mAfterInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionForeachForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_templateInstructionForeachForGeneration (const GALGAS_bool & in_mIsAscending,
@@ -4515,6 +4543,10 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
   public: GALGAS_location mProperty_mSwitchExpressionEndLocation ;
   public: GALGAS_templateInstructionSwitchBranchListAST mProperty_mTemplateInstructionSwitchBranchList ;
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionSwitchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionSwitchAST (const GALGAS_templateExpressionAST & in_mSwitchExpression,
                                              const GALGAS_location & in_mSwitchExpressionEndLocation,
@@ -5264,6 +5296,10 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
   public: GALGAS_semanticExpressionForGeneration mProperty_mSwitchExpression ;
   public: GALGAS_templateInstructionSwitchBranchListForGeneration mProperty_mTemplateInstructionSwitchBranchList ;
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionSwitchForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionSwitchForGeneration (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
                                                        const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
@@ -5452,6 +5488,10 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
 
 //--- Properties
   public: GALGAS_bool mProperty_isPredefined ;
+
+
+//--- Default constructor
+  public: cPtr_semanticDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_semanticDeclarationAST (const GALGAS_bool & in_isPredefined
@@ -8120,6 +8160,10 @@ class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_abstractLexicalRuleAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_abstractLexicalRuleAST (LOCATION_ARGS) ;
 
@@ -8627,6 +8671,10 @@ class cPtr_templateLexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_templateDelimitorListAST mProperty_mTemplateDelimitorList ;
   public: GALGAS_templateReplacementListAST mProperty_mTemplateReplacementList ;
 
+
+//--- Default constructor
+  public: cPtr_templateLexiqueComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateLexiqueComponentAST (const GALGAS_bool & in_isPredefined,
                                             const GALGAS_lstring & in_mLexiqueComponentName,
@@ -8781,6 +8829,10 @@ class cPtr_lexicalExpressionAST : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_lexicalExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_lexicalExpressionAST (LOCATION_ARGS) ;
 
@@ -8933,6 +8985,10 @@ class cPtr_lexicalInstructionAST : public acStrongPtr_class {
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_lexicalInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_lexicalInstructionAST (LOCATION_ARGS) ;
@@ -9383,6 +9439,10 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mListName ;
 
+
+//--- Default constructor
+  public: cPtr_lexicalImplicitRuleAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_lexicalImplicitRuleAST (const GALGAS_lstring & in_mListName
                                        COMMA_LOCATION_ARGS) ;
@@ -9549,6 +9609,10 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //--- Properties
   public: GALGAS_lexicalExpressionAST mProperty_mLexicalRuleExpression ;
   public: GALGAS_lexicalInstructionListAST mProperty_mInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_lexicalExplicitRuleAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_lexicalExplicitRuleAST (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
@@ -9918,6 +9982,10 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
   public: GALGAS_lexicalExpressionAST mProperty_mLeftOperand ;
   public: GALGAS_lexicalExpressionAST mProperty_mRightOperand ;
 
+
+//--- Default constructor
+  public: cPtr_lexicalOrExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_lexicalOrExpressionAST (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
                                        const GALGAS_lexicalExpressionAST & in_mRightOperand
@@ -10076,6 +10144,10 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mCharacterSetName ;
 
+
+//--- Default constructor
+  public: cPtr_lexicalCharacterSetMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_lexicalCharacterSetMatchAST (const GALGAS_lstring & in_mCharacterSetName
                                             COMMA_LOCATION_ARGS) ;
@@ -10232,6 +10304,10 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Properties
   public: GALGAS_lchar mProperty_mCharacter ;
+
+
+//--- Default constructor
+  public: cPtr_lexicalCharacterMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_lexicalCharacterMatchAST (const GALGAS_lchar & in_mCharacter
@@ -10394,6 +10470,10 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
   public: GALGAS_lchar mProperty_mLowerBound ;
   public: GALGAS_lchar mProperty_mUpperBound ;
 
+
+//--- Default constructor
+  public: cPtr_lexicalCharacterIntervalMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_lexicalCharacterIntervalMatchAST (const GALGAS_lchar & in_mLowerBound,
                                                  const GALGAS_lchar & in_mUpperBound
@@ -10551,6 +10631,10 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
 
 //--- Properties
   public: GALGAS_lstring mProperty_mString ;
+
+
+//--- Default constructor
+  public: cPtr_lexicalStringMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_lexicalStringMatchAST (const GALGAS_lstring & in_mString
@@ -10712,6 +10796,10 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mString ;
   public: GALGAS_lstring mProperty_mErrorMessage ;
+
+
+//--- Default constructor
+  public: cPtr_lexicalStringNotMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_lexicalStringNotMatchAST (const GALGAS_lstring & in_mString,
@@ -11111,6 +11199,10 @@ class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_lexicalSendDefaultActionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_lexicalSendDefaultActionAST (LOCATION_ARGS) ;
 
@@ -11179,161 +11271,4 @@ class GALGAS_lexicalSendDefaultActionAST_2D_weak : public AC_GALGAS_weak_referen
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalSendTerminalByDefaultAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultActionAST {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalSendTerminalByDefaultAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_lexicalSendTerminalByDefaultAST (const class cPtr_lexicalSendTerminalByDefaultAST * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_lstring readProperty_mDefaultSentTerminal (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalSendTerminalByDefaultAST extractObject (const GALGAS_object & inObject,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalSendTerminalByDefaultAST class_func_new (const class GALGAS_lstring & inOperand0
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalSendTerminalByDefaultAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @lexicalSendTerminalByDefaultAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension getter generateDefaultSendCode
-  public: virtual class GALGAS_string getter_generateDefaultSendCode (const class GALGAS_string inScannerClassName,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaDefaultSendCode
-  public: virtual class GALGAS_string getter_generateObjcCocoaDefaultSendCode (const class GALGAS_string inScannerClassName,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateSwiftCocoaDefaultSendCode
-  public: virtual class GALGAS_string getter_generateSwiftCocoaDefaultSendCode (const class GALGAS_string inScannerClassName,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkLexicalDefaultAction
-  public: virtual void method_checkLexicalDefaultAction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mDefaultSentTerminal ;
-
-//--- Constructor
-  public: cPtr_lexicalSendTerminalByDefaultAST (const GALGAS_lstring & in_mDefaultSentTerminal
-                                                COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalSendTerminalByDefaultAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalSendTerminalByDefaultAST_2D_weak : public GALGAS_lexicalSendDefaultActionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalSendTerminalByDefaultAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_lexicalSendTerminalByDefaultAST_2D_weak (const class GALGAS_lexicalSendTerminalByDefaultAST & inSource) ;
-
-  public: GALGAS_lexicalSendTerminalByDefaultAST_2D_weak & operator = (const class GALGAS_lexicalSendTerminalByDefaultAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_lexicalSendTerminalByDefaultAST bang_lexicalSendTerminalByDefaultAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalSendTerminalByDefaultAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalSendTerminalByDefaultAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalSendTerminalByDefaultAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST_2D_weak ;
 

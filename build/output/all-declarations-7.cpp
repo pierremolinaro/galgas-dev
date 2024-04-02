@@ -231,6 +231,14 @@ GALGAS_inputActualParameterForGeneration_2D_weak GALGAS_inputActualParameterForG
 // @inputJokerParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (inCompiler COMMA_THERE),
+mProperty_mInputActualCppName (),
+mProperty_mPoisonedVarNameList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputJokerParameterForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
@@ -928,6 +936,12 @@ GALGAS_actualParameterListForGeneration GALGAS_actualParameterListForGeneration:
 // @semanticInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_semanticInstructionForGeneration::cPtr_semanticInstructionForGeneration (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -1150,6 +1164,13 @@ void callExtensionMethod_generateInstruction (cPtr_semanticInstructionForGenerat
 }
 //--------------------------------------------------------------------------------------------------
 // @semanticBlockInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticBlockInstructionForGeneration::cPtr_semanticBlockInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mInstructionList () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -1885,6 +1906,12 @@ GALGAS_listOfSemanticInstructionListForGeneration GALGAS_listOfSemanticInstructi
 
 //--------------------------------------------------------------------------------------------------
 // @semanticDeclarationForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticDeclarationForGeneration::cPtr_semanticDeclarationForGeneration (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -4788,6 +4815,13 @@ GALGAS_terminalCheckAssignementList GALGAS_terminalCheckAssignementList::extract
 // @syntaxInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_syntaxInstructionForGeneration::cPtr_syntaxInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mInstructionLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_syntaxInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
@@ -6890,6 +6924,12 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
 
 //--------------------------------------------------------------------------------------------------
 // @abstractGrammarInstructionSyntaxDirectedTranslationResult reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -9178,6 +9218,19 @@ GALGAS_ruleDeclarationList GALGAS_ruleDeclarationList::extractObject (const GALG
 
 //--------------------------------------------------------------------------------------------------
 // @syntaxDeclarationForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_syntaxDeclarationForGeneration::cPtr_syntaxDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
+mProperty_mSyntaxComponentName (),
+mProperty_mLexiqueName (),
+mProperty_mNonterminalDeclarationMap (),
+mProperty_mRuleDeclarationList (),
+mProperty_mSelectMethodCount (),
+mProperty_mHasIndexing (),
+mProperty_mHasTranslateFeature () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -15072,71 +15125,4 @@ GALGAS_unifiedTypeMapElementClass_2D_weak GALGAS_unifiedTypeMapElementClass_2D_w
   }
   return result ;
 }
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMapEntry definition'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeDefinition extensionGetter_definition (const GALGAS_unifiedTypeMapEntry & inObject,
-                                                         Compiler * inCompiler
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeDefinition result_result ; // Returned variable
-  const GALGAS_unifiedTypeMapEntry temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GALGAS_unifiedTypeMapEntry::kNotBuilt:
-    break ;
-  case GALGAS_unifiedTypeMapEntry::kEnum_null:
-    {
-      TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 182)), GALGAS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 182)) ;
-      result_result.drop () ; // Release error dropped variable
-    }
-    break ;
-  case GALGAS_unifiedTypeMapEntry::kEnum_element:
-    {
-      const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_7481 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (temp_0.unsafePointer ()) ;
-      const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_7182_weakElement = extractPtr_7481->mAssociatedValue0 ;
-      enumGalgasBool test_2 = kBoolTrue ;
-      if (kBoolTrue == test_2) {
-        GALGAS_unifiedTypeMapElementClass var_type_7210 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_7182_weakElement.ptr ())) ;
-        if (nullptr == var_type_7210.ptr ()) {
-          test_2 = kBoolFalse ;
-        }
-        if (kBoolTrue == test_2) {
-          switch (var_type_7210.readProperty_mDefinition ().enumValue ()) {
-          case GALGAS_typeDefinition::kNotBuilt:
-            break ;
-          case GALGAS_typeDefinition::kEnum_unsolved:
-            {
-              TC_Array <FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 187)), GALGAS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 187)) ;
-              result_result.drop () ; // Release error dropped variable
-            }
-            break ;
-          case GALGAS_typeDefinition::kEnum_solved:
-            {
-              const cEnumAssociatedValues_typeDefinition_solved * extractPtr_7396 = (const cEnumAssociatedValues_typeDefinition_solved *) (var_type_7210.readProperty_mDefinition ().unsafePointer ()) ;
-              const GALGAS_unifiedTypeDefinition extractedValue_7363_definition = extractPtr_7396->mAssociatedValue0 ;
-              result_result = extractedValue_7363_definition ;
-            }
-            break ;
-          }
-        }
-      }
-      if (kBoolFalse == test_2) {
-        TC_Array <FixItDescription> fixItArray4 ;
-        inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 192)), GALGAS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 192)) ;
-        result_result.drop () ; // Release error dropped variable
-      }
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
 

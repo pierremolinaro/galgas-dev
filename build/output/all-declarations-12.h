@@ -1403,6 +1403,10 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lexicalRuleListAST mProperty_mLexicalRuleListAST ;
   public: GALGAS_indexingListAST mProperty_mIndexingListAST ;
 
+
+//--- Default constructor
+  public: cPtr_lexiqueComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_lexiqueComponentAST (const GALGAS_bool & in_isPredefined,
                                     const GALGAS_lstring & in_mLexiqueComponentName,

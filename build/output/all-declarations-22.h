@@ -371,6 +371,10 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   public: GALGAS_commandLineOptionSortedList mProperty_mStringOptionSortedList ;
   public: GALGAS_commandLineOptionSortedList mProperty_mStringListSortedList ;
 
+
+//--- Default constructor
+  public: cPtr_optionComponentForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_optionComponentForGeneration (const GALGAS_bool & in_generateHeader,
                                              const GALGAS_string & in_mImplementationCppFileName,
@@ -530,6 +534,10 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GALGAS_lstringlist mProperty_mFlagList ;
+
+
+//--- Default constructor
+  public: cPtr_boolsetTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
@@ -780,31 +788,4 @@ void routine_performProjectCreation_3F_ (const class GALGAS_string constinArgume
 void routine_projectCreation_3F_ (const class GALGAS_string constinArgument0,
                                   class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkAssignmentTypeWithImplicitGetterCall???&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const class GALGAS_unifiedTypeMapEntry constinArgument0,
-                                                                        const class GALGAS_unifiedTypeMapEntry constinArgument1,
-                                                                        const class GALGAS_location constinArgument2,
-                                                                        class GALGAS_semanticExpressionForGeneration & ioArgument3,
-                                                                        class Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkDiadicOperator???&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkDiadicOperator_3F__3F__3F__26__26_ (const class GALGAS_bool constinArgument0,
-                                                      const class GALGAS_string constinArgument1,
-                                                      const class GALGAS_location constinArgument2,
-                                                      class GALGAS_semanticExpressionForGeneration & ioArgument3,
-                                                      class GALGAS_semanticExpressionForGeneration & ioArgument4,
-                                                      class Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
 

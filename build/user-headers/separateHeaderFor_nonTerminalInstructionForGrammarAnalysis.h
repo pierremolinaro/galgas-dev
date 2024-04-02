@@ -50,6 +50,10 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
   public: GALGAS_lstring mProperty_mNonterminalSymbolName ;
   public: GALGAS_uint mProperty_mNonterminalSymbolIndex ;
 
+
+//--- Default constructor
+  public: cPtr_nonTerminalInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_nonTerminalInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,
                                                          const GALGAS_lstring & in_mNonterminalSymbolName,

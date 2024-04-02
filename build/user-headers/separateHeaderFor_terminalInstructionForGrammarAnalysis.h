@@ -49,6 +49,10 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
   public: GALGAS_lstring mProperty_mTerminalSymbolName ;
   public: GALGAS_uint mProperty_mTerminalSymbolIndex ;
 
+
+//--- Default constructor
+  public: cPtr_terminalInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_terminalInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,
                                                       const GALGAS_lstring & in_mTerminalSymbolName,

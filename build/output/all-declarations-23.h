@@ -10,6 +10,20 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'checkDiadicOperator???&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkDiadicOperator_3F__3F__3F__26__26_ (const class GALGAS_bool constinArgument0,
+                                                      const class GALGAS_string constinArgument1,
+                                                      const class GALGAS_location constinArgument2,
+                                                      class GALGAS_semanticExpressionForGeneration & ioArgument3,
+                                                      class GALGAS_semanticExpressionForGeneration & ioArgument4,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'optionNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

@@ -151,6 +151,10 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
   public: GALGAS_string mProperty_mInputActualCppName ;
   public: GALGAS__32_stringlist mProperty_mPoisonedVarNameList ;
 
+
+//--- Default constructor
+  public: cPtr_inputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_inputActualParameterForGeneration (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                   const GALGAS_string & in_mInputActualCppName,
@@ -313,6 +317,10 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 //--- Properties
   public: GALGAS_string mProperty_mInputActualCppName ;
   public: GALGAS__32_stringlist mProperty_mPoisonedVarNameList ;
+
+
+//--- Default constructor
+  public: cPtr_inputJokerParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputJokerParameterForGeneration (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
@@ -613,6 +621,10 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
 
 //--- Properties
   public: GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_semanticBlockInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_semanticBlockInstructionForGeneration (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
@@ -1039,6 +1051,10 @@ class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_semanticDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_semanticDeclarationForGeneration (LOCATION_ARGS) ;
@@ -2752,6 +2768,10 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
 
+
+//--- Default constructor
+  public: cPtr_syntaxInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_syntaxInstructionForGeneration (const GALGAS_location & in_mInstructionLocation
                                                COMMA_LOCATION_ARGS) ;
@@ -3861,6 +3881,10 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) ;
@@ -5390,6 +5414,10 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
   public: GALGAS_uint mProperty_mSelectMethodCount ;
   public: GALGAS_bool mProperty_mHasIndexing ;
   public: GALGAS_bool mProperty_mHasTranslateFeature ;
+
+
+//--- Default constructor
+  public: cPtr_syntaxDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_syntaxDeclarationForGeneration (const GALGAS_string & in_mSyntaxComponentName,
@@ -6934,17 +6962,6 @@ void extensionSetter_makeEntryFromString (class GALGAS_unifiedTypeMap & ioObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension getter '@unifiedTypeMap typeMapEntryForLKey' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const class GALGAS_unifiedTypeMap & inObject,
-                                                                      const class GALGAS_lstring & constinArgument0,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension setter '@unifiedTypeMap insertType'
 //
 //--------------------------------------------------------------------------------------------------
@@ -6965,14 +6982,4 @@ class GALGAS_unifiedTypeDefinition extensionGetter_typeDefinition (const class G
                                                                    const class GALGAS_lstring & constinArgument0,
                                                                    class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapEntry definition' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeDefinition extensionGetter_definition (const class GALGAS_unifiedTypeMapEntry & inObject,
-                                                               class Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
 

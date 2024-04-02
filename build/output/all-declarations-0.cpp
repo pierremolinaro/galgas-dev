@@ -5157,6 +5157,12 @@ String Lexique_galgasScanner_33_::styleNameForIndex (const uint32_t inStyleIndex
 // @templateInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateInstructionAST::cPtr_templateInstructionAST (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionAST::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -5766,6 +5772,12 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::extractObje
 
 //--------------------------------------------------------------------------------------------------
 // @templateExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateExpressionAST::cPtr_templateExpressionAST (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -6841,6 +6853,15 @@ GALGAS_templateExtensionTemplateCallAST_2D_weak GALGAS_templateExtensionTemplate
 // @templateAndOperationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateAndOperationAST::cPtr_templateAndOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateAndOperationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -7142,6 +7163,15 @@ GALGAS_templateAndOperationAST_2D_weak GALGAS_templateAndOperationAST_2D_weak::e
 
 //--------------------------------------------------------------------------------------------------
 // @templateOrOperationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateOrOperationAST::cPtr_templateOrOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -7447,6 +7477,15 @@ GALGAS_templateOrOperationAST_2D_weak GALGAS_templateOrOperationAST_2D_weak::ext
 // @templateXorOperationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateXorOperationAST::cPtr_templateXorOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateXorOperationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -7750,6 +7789,13 @@ GALGAS_templateXorOperationAST_2D_weak GALGAS_templateXorOperationAST_2D_weak::e
 // @templateTrueBoolAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateTrueBoolAST::cPtr_templateTrueBoolAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateTrueBoolAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -8009,6 +8055,13 @@ GALGAS_templateTrueBoolAST_2D_weak GALGAS_templateTrueBoolAST_2D_weak::extractOb
 
 //--------------------------------------------------------------------------------------------------
 // @templateFalseBoolAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFalseBoolAST::cPtr_templateFalseBoolAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mLocation () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -8822,6 +8875,14 @@ GALGAS_structFieldAccessTemplateExpressionAST_2D_weak GALGAS_structFieldAccessTe
 // @templateNotOperatorAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateNotOperatorAST::cPtr_templateNotOperatorAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateNotOperatorAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -9102,6 +9163,14 @@ GALGAS_templateNotOperatorAST_2D_weak GALGAS_templateNotOperatorAST_2D_weak::ext
 
 //--------------------------------------------------------------------------------------------------
 // @templateLogicalNegateAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateLogicalNegateAST::cPtr_templateLogicalNegateAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -9971,6 +10040,15 @@ GALGAS_templateVarInExpressionAST_2D_weak GALGAS_templateVarInExpressionAST_2D_w
 // @templateAddOperationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateAddOperationAST::cPtr_templateAddOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateAddOperationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -10272,6 +10350,15 @@ GALGAS_templateAddOperationAST_2D_weak GALGAS_templateAddOperationAST_2D_weak::e
 
 //--------------------------------------------------------------------------------------------------
 // @templateSubOperationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateSubOperationAST::cPtr_templateSubOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -10577,6 +10664,15 @@ GALGAS_templateSubOperationAST_2D_weak GALGAS_templateSubOperationAST_2D_weak::e
 // @templateMultiplyOperationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateMultiplyOperationAST::cPtr_templateMultiplyOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateMultiplyOperationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -10878,6 +10974,15 @@ GALGAS_templateMultiplyOperationAST_2D_weak GALGAS_templateMultiplyOperationAST_
 
 //--------------------------------------------------------------------------------------------------
 // @templateDivideOperationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateDivideOperationAST::cPtr_templateDivideOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -11183,6 +11288,15 @@ GALGAS_templateDivideOperationAST_2D_weak GALGAS_templateDivideOperationAST_2D_w
 // @templateModuloOperationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateModuloOperationAST::cPtr_templateModuloOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateModuloOperationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -11486,6 +11600,14 @@ GALGAS_templateModuloOperationAST_2D_weak GALGAS_templateModuloOperationAST_2D_w
 // @templateUnaryMinusOperationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateUnaryMinusOperationAST::cPtr_templateUnaryMinusOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateUnaryMinusOperationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -11766,6 +11888,15 @@ GALGAS_templateUnaryMinusOperationAST_2D_weak GALGAS_templateUnaryMinusOperation
 
 //--------------------------------------------------------------------------------------------------
 // @templateEqualTestAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateEqualTestAST::cPtr_templateEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -12071,6 +12202,15 @@ GALGAS_templateEqualTestAST_2D_weak GALGAS_templateEqualTestAST_2D_weak::extract
 // @templateNonEqualTestAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateNonEqualTestAST::cPtr_templateNonEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateNonEqualTestAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -12372,6 +12512,15 @@ GALGAS_templateNonEqualTestAST_2D_weak GALGAS_templateNonEqualTestAST_2D_weak::e
 
 //--------------------------------------------------------------------------------------------------
 // @templateStrictInfTestAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateStrictInfTestAST::cPtr_templateStrictInfTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -12677,6 +12826,15 @@ GALGAS_templateStrictInfTestAST_2D_weak GALGAS_templateStrictInfTestAST_2D_weak:
 // @templateInfOrEqualTestAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateInfOrEqualTestAST::cPtr_templateInfOrEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInfOrEqualTestAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -12978,6 +13136,15 @@ GALGAS_templateInfOrEqualTestAST_2D_weak GALGAS_templateInfOrEqualTestAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 // @templateStrictSupTestAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateStrictSupTestAST::cPtr_templateStrictSupTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -13283,6 +13450,15 @@ GALGAS_templateStrictSupTestAST_2D_weak GALGAS_templateStrictSupTestAST_2D_weak:
 // @templateSupOrEqualTestAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateSupOrEqualTestAST::cPtr_templateSupOrEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateSupOrEqualTestAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -13586,6 +13762,15 @@ GALGAS_templateSupOrEqualTestAST_2D_weak GALGAS_templateSupOrEqualTestAST_2D_wea
 // @templateLeftShiftOperationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateLeftShiftOperationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
@@ -13887,6 +14072,15 @@ GALGAS_templateLeftShiftOperationAST_2D_weak GALGAS_templateLeftShiftOperationAS
 
 //--------------------------------------------------------------------------------------------------
 // @templateRightShiftOperationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateRightShiftOperationAST::cPtr_templateRightShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -14302,6 +14496,14 @@ GALGAS_templateInstructionStringAST_2D_weak GALGAS_templateInstructionStringAST_
 // @templateInstructionExpressionAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateInstructionExpressionAST::cPtr_templateInstructionExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (inCompiler COMMA_THERE),
+mProperty_mExpression (),
+mProperty_mLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionExpressionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
@@ -14582,6 +14784,15 @@ GALGAS_templateInstructionExpressionAST_2D_weak GALGAS_templateInstructionExpres
 
 //--------------------------------------------------------------------------------------------------
 // @templateBlockInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateBlockInstructionAST::cPtr_templateBlockInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (inCompiler COMMA_THERE),
+mProperty_mExpression (),
+mProperty_mLocation (),
+mProperty_mBlockInstructionList () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -14887,6 +15098,12 @@ GALGAS_templateBlockInstructionAST_2D_weak GALGAS_templateBlockInstructionAST_2D
 // @templateInstructionGetColumnLocationAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateInstructionGetColumnLocationAST::cPtr_templateInstructionGetColumnLocationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionGetColumnLocationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
@@ -15120,6 +15337,12 @@ GALGAS_templateInstructionGetColumnLocationAST_2D_weak GALGAS_templateInstructio
 
 //--------------------------------------------------------------------------------------------------
 // @templateInstructionGotoColumnLocationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionGotoColumnLocationAST::cPtr_templateInstructionGotoColumnLocationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (inCompiler COMMA_THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -15831,6 +16054,14 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 // @templateInstructionIfAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateInstructionAST (inCompiler COMMA_THERE),
+mProperty_mTemplateInstructionIfBranchList (),
+mProperty_mElseInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionIfAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
@@ -16111,6 +16342,12 @@ GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 // @templateInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionForGeneration::cPtr_templateInstructionForGeneration (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS

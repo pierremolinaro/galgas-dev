@@ -8,6 +8,116 @@
 #include "all-declarations-5.h"
 
 //--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::objectCompare (const GALGAS_uint_36__34_PredefinedTypeAST_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::GALGAS_uint_36__34_PredefinedTypeAST_2D_weak (void) :
+GALGAS_predefinedTypeAST_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint_36__34_PredefinedTypeAST_2D_weak & GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::operator = (const GALGAS_uint_36__34_PredefinedTypeAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::GALGAS_uint_36__34_PredefinedTypeAST_2D_weak (const GALGAS_uint_36__34_PredefinedTypeAST & inSource) :
+GALGAS_predefinedTypeAST_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint_36__34_PredefinedTypeAST_2D_weak GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_uint_36__34_PredefinedTypeAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint_36__34_PredefinedTypeAST GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::bang_uint_36__34_PredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_uint_36__34_PredefinedTypeAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_uint_36__34_PredefinedTypeAST) ;
+      result = GALGAS_uint_36__34_PredefinedTypeAST ((cPtr_uint_36__34_PredefinedTypeAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @uint64PredefinedTypeAST-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2D_weak ("uint64PredefinedTypeAST-weak",
+                                                                                             & kTypeDescriptor_GALGAS_predefinedTypeAST_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_uint_36__34_PredefinedTypeAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint_36__34_PredefinedTypeAST_2D_weak GALGAS_uint_36__34_PredefinedTypeAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_uint_36__34_PredefinedTypeAST_2D_weak result ;
+  const GALGAS_uint_36__34_PredefinedTypeAST_2D_weak * p = (const GALGAS_uint_36__34_PredefinedTypeAST_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_uint_36__34_PredefinedTypeAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("uint64PredefinedTypeAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //Class for element of '@actualParameterListAST' list
 //
@@ -419,6 +529,12 @@ GALGAS_actualParameterListAST GALGAS_actualParameterListAST::extractObject (cons
 // @actualParameterAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_actualParameterAST::cPtr_actualParameterAST (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_actualParameterAST::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -699,6 +815,12 @@ GALGAS_actualParameterAST_2D_weak GALGAS_actualParameterAST_2D_weak::extractObje
 
 //--------------------------------------------------------------------------------------------------
 // @semanticExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticExpressionAST::cPtr_semanticExpressionAST (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -1232,6 +1354,14 @@ GALGAS_outputInputSelfParameterAST_2D_weak GALGAS_outputInputSelfParameterAST_2D
 
 //--------------------------------------------------------------------------------------------------
 // @outputInputJokerParameterAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mQualifierLocation (),
+mProperty_mJokerIndex () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -2176,6 +2306,14 @@ GALGAS_inputSingleJokerActualParameterAST_2D_weak GALGAS_inputSingleJokerActualP
 // @inputJokerActualParameterAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_inputJokerActualParameterAST::cPtr_inputJokerActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mQualifierLocation (),
+mProperty_mJokerIndex () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_inputJokerActualParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
@@ -3115,6 +3253,12 @@ GALGAS_string extensionGetter_signature (const GALGAS_formalInputParameterListAS
 // @abstractInputParameter reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractInputParameter::cPtr_abstractInputParameter (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_abstractInputParameter::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -3316,6 +3460,12 @@ GALGAS_abstractInputParameter_2D_weak GALGAS_abstractInputParameter_2D_weak::ext
 
 //--------------------------------------------------------------------------------------------------
 // @inputParameterAnonymousVariable reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterAnonymousVariable::cPtr_inputParameterAnonymousVariable (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -4357,6 +4507,13 @@ GALGAS_actualInputParameterListAST GALGAS_actualInputParameterListAST::extractOb
 // @syntaxInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_syntaxInstructionAST::cPtr_syntaxInstructionAST (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE),
+mProperty_mInstructionLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_syntaxInstructionAST::printNonNullClassInstanceProperties (void) const {
     acStrongPtr_class::printNonNullClassInstanceProperties () ;
@@ -4573,6 +4730,12 @@ GALGAS_syntaxInstructionAST_2D_weak GALGAS_syntaxInstructionAST_2D_weak::extract
 
 //--------------------------------------------------------------------------------------------------
 // @semanticInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticInstructionAST::cPtr_semanticInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (inCompiler COMMA_THERE) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -5512,6 +5675,64 @@ GALGAS_onceFunctionDeclarationAST_2D_weak GALGAS_onceFunctionDeclarationAST_2D_w
   }
   return result ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@propertyInCollectionListAST buildPropertyInitializationCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_buildPropertyInitializationCode (const GALGAS_propertyInCollectionListAST inObject,
+                                                      const GALGAS_lstring constinArgument_inTypeNameForUsefulness,
+                                                      const GALGAS_semanticContext constinArgument_inSemanticContext,
+                                                      const GALGAS_predefinedTypes constinArgument_inPredefinedTypes,
+                                                      GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                      GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                      GALGAS_stringset & outArgument_outUnusedVariableCppNameSet,
+                                                      GALGAS_string & outArgument_outInitializationCode,
+                                                      Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outUnusedVariableCppNameSet.drop () ; // Release 'out' argument
+  outArgument_outInitializationCode.drop () ; // Release 'out' argument
+  outArgument_outInitializationCode = GALGAS_string::makeEmptyString () ;
+  GALGAS_stringset var_inclusionSet_9179 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 250)) ;
+  GALGAS_uint var_temporaryVariableIndex_9222 = GALGAS_uint (uint32_t (0U)) ;
+  GALGAS_stringset temp_0 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 252)) ;
+  temp_0.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 252))  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 252)) ;
+  outArgument_outUnusedVariableCppNameSet = temp_0 ;
+  const GALGAS_propertyInCollectionListAST temp_1 = inObject ;
+  cEnumerator_propertyInCollectionListAST enumerator_9360 (temp_1, EnumerationOrder::up) ;
+  while (enumerator_9360.hasCurrentObject ()) {
+    switch (enumerator_9360.current_initialization (HERE).enumValue ()) {
+    case GALGAS_propertyInCollectionInitializationAST::kNotBuilt:
+      break ;
+    case GALGAS_propertyInCollectionInitializationAST::kEnum_none:
+      {
+      }
+      break ;
+    case GALGAS_propertyInCollectionInitializationAST::kEnum_some:
+      {
+        const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * extractPtr_10789 = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) (enumerator_9360.current_initialization (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_9449_expressionAST = extractPtr_10789->mAssociatedValue0 ;
+        GALGAS_localVarManager var_variableMap_9478 = GALGAS_localVarManager::class_func_new (inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 257)) ;
+        GALGAS_analysisContext var_analysisContext_9545 = GALGAS_analysisContext::class_func_new (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GALGAS_string::makeEmptyString (), GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticsTypesForAST.galgas", 262)), GALGAS_string::makeEmptyString (), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 258)) ;
+        GALGAS_unifiedTypeMapEntry var_propertyType_9823 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_9360.current_propertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 266)) ;
+        GALGAS_semanticExpressionForGeneration var_expression_10194 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_9449_expressionAST.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9823, var_analysisContext_9545, ioArgument_ioTypeMap, var_variableMap_9478, var_expression_10194, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 267)) ;
+        {
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9823, var_expression_10194.readProperty_mResultType (), enumerator_9360.current_propertyName (HERE).readProperty_location (), var_expression_10194, inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 277)) ;
+        }
+        GALGAS_string var_sourceVar_10626 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_10194.ptr (), outArgument_outInitializationCode, var_inclusionSet_9179, var_temporaryVariableIndex_9222, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10626, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 283)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string ("  mProperty_").add_operation (enumerator_9360.current_propertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticsTypesForAST.galgas", 290)), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 290)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 290)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string (" = ").add_operation (var_sourceVar_10626, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 291)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 291)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 291)) ;
+      }
+      break ;
+    }
+    enumerator_9360.gotoNextObject () ;
+  }
+}
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13203,14 +13424,14 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::init_28__29_ (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_galgasDeclarationAST::setInitializedProperties (Compiler * /* inCompiler */) {
-  mProperty_mDeclarationList = GALGAS_semanticDeclarationListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 407)) ;
-  mProperty_mImplicitTypeDeclarationSet = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 408)) ;
-  mProperty_mSyntaxComponentList = GALGAS_galgas_33_SyntaxComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 409)) ;
-  mProperty_mSyntaxExtensions = GALGAS_syntaxExtensions::class_func_emptyMap (SOURCE_FILE ("semanticsTypesForAST.galgas", 410)) ;
-  mProperty_mGUIComponentList = GALGAS_galgasGUIComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 411)) ;
-  mProperty_mPrologueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 412)) ;
-  mProperty_mSourceRuleList = GALGAS_programRuleList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 413)) ;
-  mProperty_mEpilogueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 414)) ;
+  mProperty_mDeclarationList = GALGAS_semanticDeclarationListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 462)) ;
+  mProperty_mImplicitTypeDeclarationSet = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 463)) ;
+  mProperty_mSyntaxComponentList = GALGAS_galgas_33_SyntaxComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 464)) ;
+  mProperty_mSyntaxExtensions = GALGAS_syntaxExtensions::class_func_emptyMap (SOURCE_FILE ("semanticsTypesForAST.galgas", 465)) ;
+  mProperty_mGUIComponentList = GALGAS_galgasGUIComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 466)) ;
+  mProperty_mPrologueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 467)) ;
+  mProperty_mSourceRuleList = GALGAS_programRuleList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 468)) ;
+  mProperty_mEpilogueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 469)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

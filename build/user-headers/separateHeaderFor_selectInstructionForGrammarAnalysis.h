@@ -50,6 +50,10 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public: GALGAS_branchListForGrammarAnalysis mProperty_mSelectBranchList ;
   public: GALGAS_uint mProperty_mAddedNonTerminalSymbolIndex ;
 
+
+//--- Default constructor
+  public: cPtr_selectInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_selectInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,
                                                     const GALGAS_branchListForGrammarAnalysis & in_mSelectBranchList,

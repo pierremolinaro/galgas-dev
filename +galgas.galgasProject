@@ -185,6 +185,7 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/expression-lexique.galgas"
   "galgas-sources/expression-filewrapper.galgas"
   "galgas-sources/expression-getter-call.galgas"
+#  "galgas-sources/expression-initializer.galgas"
   "galgas-sources/expression-constructor.galgas"
   "galgas-sources/expression-function-call.galgas"
   "galgas-sources/expression-literal-type.galgas"

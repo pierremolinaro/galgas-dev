@@ -51,6 +51,10 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
 //--- Properties
   public: GALGAS_location mProperty_mStartLocation ;
 
+
+//--- Default constructor
+  public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation
                                                             COMMA_LOCATION_ARGS) ;

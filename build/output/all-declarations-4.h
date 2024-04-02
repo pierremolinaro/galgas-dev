@@ -132,6 +132,10 @@ class cPtr_externTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_externTypeSetterList mProperty_mExternTypeSetterList ;
   public: GALGAS_externTypeMethodList mProperty_mExternTypeMethodList ;
 
+
+//--- Default constructor
+  public: cPtr_externTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_externTypeDeclarationAST (const GALGAS_bool & in_isPredefined,
                                          const GALGAS_lstring & in_mExternTypeName,
@@ -886,6 +890,10 @@ class cPtr_graphDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mAssociatedListTypeName ;
   public: GALGAS_graphInsertModifierList mProperty_mInsertModifierList ;
 
+
+//--- Default constructor
+  public: cPtr_graphDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_graphDeclarationAST (const GALGAS_bool & in_isPredefined,
                                     const GALGAS_lstring & in_mGraphTypeName,
@@ -1074,6 +1082,10 @@ class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
   public: GALGAS_bool mProperty_usefullList ;
 
+
+//--- Default constructor
+  public: cPtr_listDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_listDeclarationAST (const GALGAS_bool & in_isPredefined,
                                    const GALGAS_lstring & in_mListTypeName,
@@ -1257,6 +1269,10 @@ class cPtr_listmapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mListmapTypeName ;
   public: GALGAS_lstring mProperty_mAssociatedListTypeName ;
+
+
+//--- Default constructor
+  public: cPtr_listmapDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_listmapDeclarationAST (const GALGAS_bool & in_isPredefined,
@@ -1444,6 +1460,10 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mDictTypeName ;
   public: GALGAS_lstring mProperty_mKeyTypeName ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
+
+
+//--- Default constructor
+  public: cPtr_dictDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_dictDeclarationAST (const GALGAS_bool & in_isPredefined,
@@ -2477,6 +2497,10 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_mapRemoveMethodListAST mProperty_mRemoveMethodList ;
   public: GALGAS_insertOrReplaceDeclarationListAST mProperty_mInsertOrReplaceDeclarationListAST ;
 
+
+//--- Default constructor
+  public: cPtr_mapDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_mapDeclarationAST (const GALGAS_bool & in_isPredefined,
                                   const GALGAS_lstring & in_mMapTypeName,
@@ -3313,6 +3337,10 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
   public: GALGAS_sortedListSortDescriptorListAST mProperty_mSortDescriptorList ;
 
+
+//--- Default constructor
+  public: cPtr_sortedListDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_sortedListDeclarationAST (const GALGAS_bool & in_isPredefined,
                                          const GALGAS_lstring & in_mSortedListTypeName,
@@ -3776,6 +3804,10 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_propertyInCollectionListAST mProperty_mStructurePropertyListAST ;
   public: GALGAS_string mProperty_mEnumeratedElementTypeName ;
 
+
+//--- Default constructor
+  public: cPtr_structDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_structDeclarationAST (const GALGAS_bool & in_isPredefined,
                                      const GALGAS_lstring & in_structTypeName,
@@ -3959,6 +3991,10 @@ class cPtr_typealiasDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mAliasTypeName ;
   public: GALGAS_lstring mProperty_mDefinedTypeName ;
+
+
+//--- Default constructor
+  public: cPtr_typealiasDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_typealiasDeclarationAST (const GALGAS_bool & in_isPredefined,
@@ -4505,6 +4541,10 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_formalInputParameterListAST mProperty_mAbstractExtensionGetterFormalInputParameterList ;
   public: GALGAS_lstring mProperty_mAbstractExtensionGetterReturnedTypeName ;
 
+
+//--- Default constructor
+  public: cPtr_abstractExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_abstractExtensionGetterAST (const GALGAS_bool & in_isPredefined,
                                            const GALGAS_lstring & in_mTypeName,
@@ -5048,6 +5088,10 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mAbstractExtensionMethodName ;
   public: GALGAS_formalParameterListAST mProperty_mAbstractExtensionMethodFormalParameterList ;
 
+
+//--- Default constructor
+  public: cPtr_abstractExtensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_abstractExtensionMethodAST (const GALGAS_bool & in_isPredefined,
                                            const GALGAS_lstring & in_mTypeName,
@@ -5590,6 +5634,10 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mAbstractExtensionSetterName ;
   public: GALGAS_formalParameterListAST mProperty_mAbstractExtensionSetterFormalParameterList ;
 
+
+//--- Default constructor
+  public: cPtr_abstractExtensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_abstractExtensionSetterAST (const GALGAS_bool & in_isPredefined,
                                            const GALGAS_lstring & in_mTypeName,
@@ -5889,6 +5937,10 @@ class cPtr_syntaxInstructionAST : public acStrongPtr_class {
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
 
+
+//--- Default constructor
+  public: cPtr_syntaxInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_syntaxInstructionAST (const GALGAS_location & in_mInstructionLocation
                                      COMMA_LOCATION_ARGS) ;
@@ -6000,6 +6052,10 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_semanticInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_semanticInstructionAST (const GALGAS_location & in_mInstructionLocation
@@ -6237,6 +6293,10 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mExtensionGetterReturnedVariableName ;
   public: GALGAS_semanticInstructionListAST mProperty_mExtensionGetterInstructionList ;
   public: GALGAS_location mProperty_mEndOfReaderLocation ;
+
+
+//--- Default constructor
+  public: cPtr_extensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_extensionGetterAST (const GALGAS_bool & in_isPredefined,
@@ -6533,6 +6593,10 @@ class cPtr_semanticInstructionForGeneration : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_semanticInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_semanticInstructionForGeneration (LOCATION_ARGS) ;
 
@@ -6761,6 +6825,10 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_semanticInstructionListAST mProperty_mExtensionMethodInstructionList ;
   public: GALGAS_location mProperty_mEndOfMethodLocation ;
 
+
+//--- Default constructor
+  public: cPtr_extensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_extensionMethodAST (const GALGAS_bool & in_isPredefined,
                                    const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -6975,6 +7043,10 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_semanticInstructionListAST mProperty_mExtensionSetterInstructionList ;
   public: GALGAS_location mProperty_mEndOfSetterDeclarationLocation ;
 
+
+//--- Default constructor
+  public: cPtr_extensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_extensionSetterAST (const GALGAS_bool & in_isPredefined,
                                    const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -7165,6 +7237,10 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_formalInputParameterListAST mProperty_mFormalParameterList ;
   public: GALGAS_semanticInstructionListAST mProperty_mInstructionList ;
   public: GALGAS_location mProperty_mEndOfInitializerLocation ;
+
+
+//--- Default constructor
+  public: cPtr_initializerAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_initializerAST (const GALGAS_bool & in_isPredefined,
@@ -7370,6 +7446,10 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
   public: GALGAS_formalInputParameterListAST mProperty_mAbstractExtensionGetterFormalInputParameterList ;
   public: GALGAS_lstring mProperty_mAbstractExtensionGetterReturnedTypeName ;
 
+
+//--- Default constructor
+  public: cPtr_overridingAbstractExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_overridingAbstractExtensionGetterAST (const GALGAS_bool & in_isPredefined,
                                                      const GALGAS_lstring & in_mTypeName,
@@ -7570,6 +7650,10 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
   public: GALGAS_lstring mProperty_mOverridingExtensionMethodName ;
   public: GALGAS_formalParameterListAST mProperty_mOverridingExtensionMethodFormalParameterList ;
 
+
+//--- Default constructor
+  public: cPtr_overridingAbstractExtensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_overridingAbstractExtensionMethodAST (const GALGAS_bool & in_isPredefined,
                                                      const GALGAS_lstring & in_mTypeName,
@@ -7768,6 +7852,10 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
   public: GALGAS_lstring mProperty_mTypeName ;
   public: GALGAS_lstring mProperty_mOverridingExtensionSetterName ;
   public: GALGAS_formalParameterListAST mProperty_mOverridingExtensionSetterFormalParameterList ;
+
+
+//--- Default constructor
+  public: cPtr_overridingAbstractExtensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_overridingAbstractExtensionSetterAST (const GALGAS_bool & in_isPredefined,
@@ -7988,6 +8076,10 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_semanticInstructionListAST mProperty_mOverridingExtensionGetterInstructionList ;
   public: GALGAS_location mProperty_mEndOfReaderLocation ;
 
+
+//--- Default constructor
+  public: cPtr_overridingExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_overridingExtensionGetterAST (const GALGAS_bool & in_isPredefined,
                                              const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -8204,6 +8296,10 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_semanticInstructionListAST mProperty_mOverridingExtensionMethodInstructionList ;
   public: GALGAS_location mProperty_mEndOfMethodLocation ;
 
+
+//--- Default constructor
+  public: cPtr_overridingExtensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_overridingExtensionMethodAST (const GALGAS_bool & in_isPredefined,
                                              const GALGAS_bool & in_requiresSelfForAccessingProperty,
@@ -8417,6 +8513,10 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_formalParameterListAST mProperty_mOverridingExtensionSetterFormalParameterList ;
   public: GALGAS_semanticInstructionListAST mProperty_mOverridingExtensionSetterInstructionList ;
   public: GALGAS_location mProperty_mEndOfSetterDeclarationLocation ;
+
+
+//--- Default constructor
+  public: cPtr_overridingExtensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_overridingExtensionSetterAST (const GALGAS_bool & in_isPredefined,
@@ -8647,6 +8747,10 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
 
 //--- Properties
   public: GALGAS_string mProperty_mPredefinedTypeName ;
+
+
+//--- Default constructor
+  public: cPtr_predefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_predefinedTypeAST (const GALGAS_bool & in_isPredefined,
@@ -9725,6 +9829,10 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_applicationPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_applicationPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                              const GALGAS_string & in_mPredefinedTypeName
@@ -9894,6 +10002,10 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_bigintPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_bigintPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                         const GALGAS_string & in_mPredefinedTypeName
@@ -10058,6 +10170,10 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_binarysetPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_binarysetPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                            const GALGAS_string & in_mPredefinedTypeName
@@ -10217,6 +10333,10 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_boolPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_boolPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                       const GALGAS_string & in_mPredefinedTypeName
@@ -10375,6 +10495,10 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_charPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_charPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
@@ -10551,6 +10675,10 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_dataPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_dataPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                       const GALGAS_string & in_mPredefinedTypeName
@@ -10709,6 +10837,10 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_doublePredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_doublePredefinedTypeAST (const GALGAS_bool & in_isPredefined,
@@ -10869,6 +11001,10 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_filewrapperPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_filewrapperPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                              const GALGAS_string & in_mPredefinedTypeName
@@ -11027,6 +11163,10 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_functionPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_functionPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
@@ -11187,6 +11327,10 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_locationPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_locationPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                           const GALGAS_string & in_mPredefinedTypeName
@@ -11340,6 +11484,10 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_objectPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_objectPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
@@ -11519,6 +11667,10 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_stringsetPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_stringsetPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                            const GALGAS_string & in_mPredefinedTypeName
@@ -11678,6 +11830,10 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_sintPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_sintPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                       const GALGAS_string & in_mPredefinedTypeName
@@ -11836,6 +11992,10 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_sint_36__34_PredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_sint_36__34_PredefinedTypeAST (const GALGAS_bool & in_isPredefined,
@@ -12016,6 +12176,10 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_stringPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_stringPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                         const GALGAS_string & in_mPredefinedTypeName
@@ -12180,6 +12344,10 @@ class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_timerPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_timerPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                        const GALGAS_string & in_mPredefinedTypeName
@@ -12338,6 +12506,10 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_typePredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_typePredefinedTypeAST (const GALGAS_bool & in_isPredefined,
@@ -12503,6 +12675,10 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_uintPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_uintPredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                       const GALGAS_string & in_mPredefinedTypeName
@@ -12662,6 +12838,10 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_uint_36__34_PredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_uint_36__34_PredefinedTypeAST (const GALGAS_bool & in_isPredefined,
                                               const GALGAS_string & in_mPredefinedTypeName
@@ -12680,59 +12860,4 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @uint_36__34_PredefinedTypeAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_uint_36__34_PredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_uint_36__34_PredefinedTypeAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_uint_36__34_PredefinedTypeAST_2D_weak (const class GALGAS_uint_36__34_PredefinedTypeAST & inSource) ;
-
-  public: GALGAS_uint_36__34_PredefinedTypeAST_2D_weak & operator = (const class GALGAS_uint_36__34_PredefinedTypeAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_uint_36__34_PredefinedTypeAST bang_uint_36__34_PredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_uint_36__34_PredefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_uint_36__34_PredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_uint_36__34_PredefinedTypeAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_uint_36__34_PredefinedTypeAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2D_weak ;
 

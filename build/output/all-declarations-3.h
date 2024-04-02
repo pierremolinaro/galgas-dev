@@ -3817,6 +3817,10 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mBoolsetTypeName ;
   public: GALGAS_lstringlist mProperty_mFlagList ;
 
+
+//--- Default constructor
+  public: cPtr_boolsetDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_boolsetDeclarationAST (const GALGAS_bool & in_isPredefined,
                                       const GALGAS_lstring & in_mBoolsetTypeName,
@@ -4701,6 +4705,10 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_bool mProperty_mGenerateInSeparateFile ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
 
+
+//--- Default constructor
+  public: cPtr_classDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_classDeclarationAST (const GALGAS_bool & in_isPredefined,
                                     const GALGAS_bool & in_mIsAbstract,
@@ -5022,6 +5030,10 @@ class cPtr_weakReferenceDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mSuperWeakReferenceTypeName ;
   public: GALGAS_bool mProperty_mGenerateInSeparateFile ;
   public: GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
+
+
+//--- Default constructor
+  public: cPtr_weakReferenceDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_weakReferenceDeclarationAST (const GALGAS_bool & in_isPredefined,
@@ -5451,6 +5463,10 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mEnumTypeName ;
   public: GALGAS_enumConstantList mProperty_mConstantList ;
+
+
+//--- Default constructor
+  public: cPtr_enumDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_enumDeclarationAST (const GALGAS_bool & in_isPredefined,

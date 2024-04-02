@@ -300,9 +300,6 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !property.name.string
     end
     for property in self.mPropertyList do
-      if [property.initialization isSome] then
-        error property.propertyName : "property initialization is not handled for a class"
-      end
       [!?ioTypeMap makeEntry !property.propertyTypeName ?let attributeTypeIndex]
       constructorPropertyTypeList +=
         !if property.hasSelector then property.propertyName else ["" nowhere] end
@@ -313,7 +310,6 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         ![property.accessControl accessControl !forDeclaringType: classIndex]
         !property.isConstant
         !attributeTypeIndex
-#        !property.initialization
       ]
       if [getterMap hasKey !property.propertyName.string] then
         error property.propertyName
@@ -334,9 +330,6 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList currentClassTypedPropertyList = {}
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
     for property in self.mPropertyList do
-      if [property.initialization isSome] then
-        error property.propertyName : "property initialization is not handled for a class"
-      end
       [!?ioTypeMap makeEntry !property.propertyTypeName ?let attributeTypeIndex]
       currentClassTypedPropertyList +=
         !attributeTypeIndex
@@ -425,9 +418,9 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                 ?let @string unused inProductDirectory
-                ?let @semanticContext unused inSemanticContext
+                ?let @semanticContext inSemanticContext
                 ?!@unifiedTypeMap ioTypeMap
-                ?let @predefinedTypes unused inPredefinedTypes
+                ?let @predefinedTypes inPredefinedTypes
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   #--- Useful entities graph
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
@@ -464,52 +457,45 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList allAttributeList
     if superClassEntry == .null then
       allAttributeList = {}
-#      var @bool generatedInSeparateFileFeature = self.mGenerateInSeparateFile
-#      if [self.mClassFeatureList count] > 0 then
-#        for (mValue) in self.mClassFeatureList do
-#          if mValue.string == "generatedInSeparateFile" then
-#            if generatedInSeparateFileFeature then
-#              error mValue:"the 'generatedInSeparateFile' is already named"
-#            end
-#            generatedInSeparateFileFeature = true
-#          else
-#            error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
-#          end
-#        end
-#      end
     else
       allAttributeList = [superClassEntry definition].allTypedPropertyList
       if self.mGenerateInSeparateFile then
-#        for (mValue) in self.mClassFeatureList do
-          error self.mClassTypeName : "a class that has a super class does not accept any feature"
-#        end
+        error self.mClassTypeName : "a class that has a super class does not accept any feature"
       end
     end
   #------ Enter attributes
     var @typedPropertyList typedAttributeList = {}
     var @propertyIndexMap attributeMap = {}
-    for (isConstant propertyTypeName name unused accessControl hasSelector initExpression) in self.mPropertyList do
-      if [initExpression isSome] then
-        error name : "property initialization is not handled for a class"
-      end
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+    for property in self.mPropertyList do
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.propertyTypeName)
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
+      let t = [ioTypeMap typeMapEntryForLKey !property.propertyTypeName]
       typedAttributeList +=
         !t
-        !name
-        !initExpression
-        !hasSetter: not isConstant
-        !hasSelector: hasSelector
+        !property.propertyName
+        !property.initialization
+        !hasSetter: not property.isConstant
+        !hasSelector: property.hasSelector
       allAttributeList +=
         !t
-        !name
-        !initExpression
-        !hasSetter: not isConstant
-        !hasSelector: hasSelector
-      [!?attributeMap insertKey !name !t]
+        !property.propertyName
+        !property.initialization
+        !hasSetter: not property.isConstant
+        !hasSelector: property.hasSelector
+      [!?attributeMap insertKey !property.propertyName !t]
     end
+  #--- Build property initialization code
+    [self.mPropertyList buildPropertyInitializationCode
+      !classTypeNameForUsefulness
+      !inSemanticContext
+      !inPredefinedTypes
+      !?ioUsefulEntitiesGraph
+      !?ioTypeMap
+      ?let unusedVariableCppNameSet
+      ?let initializationCode
+    ]
   #------
+    let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "class " + self.mClassTypeName
       !@classTypeForGeneration.new {
@@ -520,6 +506,8 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !allAttributeList
         !typedAttributeList
         ![selfType definition].generateHeaderInSeparateFile
+        !constructorNeedsCompilerVar
+        !initializationCode
       }
   }
 
@@ -538,6 +526,8 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   private let @typedPropertyList mCurrentTypedAttributeList
   private let @bool generateHeaderInSeparateFile # Significant only for classes
+  private let @bool initializerNeedsCompilerVariable
+  private let @string propertyInitializationCode
 
   #·······························································································
 
@@ -719,6 +709,8 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !allPropertyList: self.mAllTypedAttributeList
         !inheritedPropertyList: at
         !self.mIsAbstract
+        !self.initializerNeedsCompilerVariable
+        !self.propertyInitializationCode
       ]
     else
       outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation

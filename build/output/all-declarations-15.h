@@ -573,6 +573,10 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
 //--- Properties
   public: GALGAS_string mProperty_mTemplateString ;
 
+
+//--- Default constructor
+  public: cPtr_templateInstructionStringForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_templateInstructionStringForGeneration (const GALGAS_string & in_mTemplateString
                                                        COMMA_LOCATION_ARGS) ;
@@ -780,6 +784,10 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
   public: GALGAS_bool mProperty_generateHeader ;
   public: GALGAS_string mProperty_mImplementationCppFileName ;
 
+
+//--- Default constructor
+  public: cPtr_semanticDeclarationWithHeaderForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_semanticDeclarationWithHeaderForGeneration (const GALGAS_bool & in_generateHeader,
                                                            const GALGAS_string & in_mImplementationCppFileName
@@ -930,6 +938,10 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mSelfTypeEntry ;
 
+
+//--- Default constructor
+  public: cPtr_semanticTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_semanticTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry
                                           COMMA_LOCATION_ARGS) ;
@@ -1026,6 +1038,10 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_bool readProperty_generateHeaderInSeparateFile (void) const ;
 
+  public: class GALGAS_bool readProperty_initializerNeedsCompilerVariable (void) const ;
+
+  public: class GALGAS_string readProperty_propertyInitializationCode (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1045,7 +1061,9 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand3,
                                                                      const class GALGAS_typedPropertyList & inOperand4,
                                                                      const class GALGAS_typedPropertyList & inOperand5,
-                                                                     const class GALGAS_bool & inOperand6
+                                                                     const class GALGAS_bool & inOperand6,
+                                                                     const class GALGAS_bool & inOperand7,
+                                                                     const class GALGAS_string & inOperand8
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1105,6 +1123,12 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
   public: GALGAS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
   public: GALGAS_bool mProperty_generateHeaderInSeparateFile ;
+  public: GALGAS_bool mProperty_initializerNeedsCompilerVariable ;
+  public: GALGAS_string mProperty_propertyInitializationCode ;
+
+
+//--- Default constructor
+  public: cPtr_classTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
@@ -1113,7 +1137,9 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                        const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
                                        const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                        const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
-                                       const GALGAS_bool & in_generateHeaderInSeparateFile
+                                       const GALGAS_bool & in_generateHeaderInSeparateFile,
+                                       const GALGAS_bool & in_initializerNeedsCompilerVariable,
+                                       const GALGAS_string & in_propertyInitializationCode
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1281,6 +1307,10 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
   public: GALGAS_bool mProperty_generateHeaderInSeparateFile ;
 
+
+//--- Default constructor
+  public: cPtr_weakReferenceTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_weakReferenceTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                const GALGAS_unifiedTypeMapEntry & in_mReferenceClassType,
@@ -1445,6 +1475,10 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Properties
   public: GALGAS_enumConstantListForGeneration mProperty_mConstantList ;
 
+
+//--- Default constructor
+  public: cPtr_enumTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                       const GALGAS_enumConstantListForGeneration & in_mConstantList
@@ -1463,59 +1497,4 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @enumTypeForGeneration_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_enumTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_enumTypeForGeneration_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_enumTypeForGeneration_2D_weak (const class GALGAS_enumTypeForGeneration & inSource) ;
-
-  public: GALGAS_enumTypeForGeneration_2D_weak & operator = (const class GALGAS_enumTypeForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_enumTypeForGeneration bang_enumTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_enumTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_enumTypeForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_enumTypeForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_enumTypeForGeneration_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGeneration_2D_weak ;
 

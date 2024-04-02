@@ -10,6 +10,61 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @uint_36__34_PredefinedTypeAST_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_uint_36__34_PredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_uint_36__34_PredefinedTypeAST_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_uint_36__34_PredefinedTypeAST_2D_weak (const class GALGAS_uint_36__34_PredefinedTypeAST & inSource) ;
+
+  public: GALGAS_uint_36__34_PredefinedTypeAST_2D_weak & operator = (const class GALGAS_uint_36__34_PredefinedTypeAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_uint_36__34_PredefinedTypeAST bang_uint_36__34_PredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_uint_36__34_PredefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_uint_36__34_PredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_uint_36__34_PredefinedTypeAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_uint_36__34_PredefinedTypeAST_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @actualParameterListAST list
 //
 //--------------------------------------------------------------------------------------------------
@@ -231,6 +286,10 @@ class cPtr_actualParameterAST : public acStrongPtr_class {
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_actualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_actualParameterAST (LOCATION_ARGS) ;
@@ -1628,6 +1687,10 @@ class cPtr_semanticExpressionAST : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_semanticExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_semanticExpressionAST (LOCATION_ARGS) ;
 
@@ -1744,6 +1807,10 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_semanticExpressionAST mProperty_mOutputActualParameterExpression ;
   public: GALGAS_location mProperty_mEndOfExpressionLocation ;
+
+
+//--- Default constructor
+  public: cPtr_outputActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_outputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -1923,6 +1990,10 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_lstring mProperty_mOutputInputActualParameterName ;
   public: GALGAS_lstringlist mProperty_mStructAttributeList ;
 
+
+//--- Default constructor
+  public: cPtr_outputInputActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_outputInputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
                                               const GALGAS_lstring & in_mOutputInputActualParameterName,
@@ -2093,6 +2164,10 @@ class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
 
+
+//--- Default constructor
+  public: cPtr_outputInputSingleJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_outputInputSingleJokerParameterAST (const GALGAS_lstring & in_mActualSelector
                                                    COMMA_LOCATION_ARGS) ;
@@ -2260,6 +2335,10 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
+
+
+//--- Default constructor
+  public: cPtr_outputInputSelfParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_outputInputSelfParameterAST (const GALGAS_lstring & in_mActualSelector
@@ -2432,6 +2511,10 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
 //--- Properties
   public: GALGAS_location mProperty_mQualifierLocation ;
   public: GALGAS_uint mProperty_mJokerIndex ;
+
+
+//--- Default constructor
+  public: cPtr_outputInputJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_outputInputJokerParameterAST (const GALGAS_location & in_mQualifierLocation,
@@ -2609,6 +2692,10 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstring mProperty_mInputActualParameterName ;
   public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
+
+
+//--- Default constructor
+  public: cPtr_inputActualExistingVariableParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputActualExistingVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -2788,6 +2875,10 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
   public: GALGAS_lstring mProperty_mInputActualSelfPropertyName ;
   public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
+
+//--- Default constructor
+  public: cPtr_inputActualSelfPropertyParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_inputActualSelfPropertyParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                     const GALGAS_lstring & in_mInputActualSelfPropertyName,
@@ -2965,6 +3056,10 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_location mProperty_mSelfLocation ;
   public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
+
+
+//--- Default constructor
+  public: cPtr_inputActualSelfParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputActualSelfParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -3147,6 +3242,10 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
   public: GALGAS_lstring mProperty_mInputActualParameterName ;
   public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
+
+
+//--- Default constructor
+  public: cPtr_inputActualNewVariableParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -3335,6 +3434,10 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_bool mProperty_mMarkedAsUnused ;
   public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
+
+//--- Default constructor
+  public: cPtr_inputActualNewConstantParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                    const GALGAS_lstring & in_mInputOptionalActualTypeName,
@@ -3511,6 +3614,10 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
   public: GALGAS_lstring mProperty_mActualSelector ;
   public: GALGAS_lstringlist mProperty_mPoisonedVarNameList ;
 
+
+//--- Default constructor
+  public: cPtr_inputSingleJokerActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_inputSingleJokerActualParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                    const GALGAS_lstringlist & in_mPoisonedVarNameList
@@ -3683,6 +3790,10 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
 //--- Properties
   public: GALGAS_location mProperty_mQualifierLocation ;
   public: GALGAS_uint mProperty_mJokerIndex ;
+
+
+//--- Default constructor
+  public: cPtr_inputJokerActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputJokerActualParameterAST (const GALGAS_location & in_mQualifierLocation,
@@ -3870,6 +3981,10 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_formalParameterListAST mProperty_mFormalArgumentListAST ;
   public: GALGAS_bool mProperty_usefullProcedure ;
 
+
+//--- Default constructor
+  public: cPtr_externProcedureDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_externProcedureDeclarationAST (const GALGAS_bool & in_isPredefined,
                                               const GALGAS_bool & in_isFilePrivate,
@@ -4042,6 +4157,10 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
 //--- Properties
   public: GALGAS_semanticInstructionListAST mProperty_mRoutineInstructionList ;
   public: GALGAS_location mProperty_mEndOfRoutineInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_procDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_procDeclarationAST (const GALGAS_bool & in_isPredefined,
@@ -4287,6 +4406,10 @@ class cPtr_abstractInputParameter : public acStrongPtr_class {
 
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_abstractInputParameter (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_abstractInputParameter (LOCATION_ARGS) ;
 
@@ -4428,6 +4551,10 @@ class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter 
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
+
+
+//--- Default constructor
+  public: cPtr_inputParameterAnonymousVariable (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputParameterAnonymousVariable (LOCATION_ARGS) ;
@@ -4577,6 +4704,10 @@ class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterName ;
+
+
+//--- Default constructor
+  public: cPtr_inputParameterVariable (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputParameterVariable (const GALGAS_lstring & in_mActualParameterName
@@ -4732,6 +4863,10 @@ class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
   public: GALGAS_lstring mProperty_mActualParameterName ;
 
+
+//--- Default constructor
+  public: cPtr_inputParameterDeclaredVariable (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_inputParameterDeclaredVariable (const GALGAS_lstring & in_mActualParameterTypeName,
                                                const GALGAS_lstring & in_mActualParameterName
@@ -4886,6 +5021,10 @@ class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
 //--- Properties
   public: GALGAS_lstring mProperty_mActualParameterTypeName ;
   public: GALGAS_lstring mProperty_mActualParameterName ;
+
+
+//--- Default constructor
+  public: cPtr_inputParameterDeclaredConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_inputParameterDeclaredConstant (const GALGAS_lstring & in_mActualParameterTypeName,
@@ -5645,6 +5784,10 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_mResultTypeName ;
   public: GALGAS_bool mProperty_usefullFunc ;
 
+
+//--- Default constructor
+  public: cPtr_externFunctionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_externFunctionDeclarationAST (const GALGAS_bool & in_isPredefined,
                                              const GALGAS_lstring & in_mFunctionName,
@@ -5816,6 +5959,10 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
   public: GALGAS_semanticInstructionListAST mProperty_mFunctionInstructionList ;
   public: GALGAS_location mProperty_mEndOfFunctionInstructionList ;
   public: GALGAS_bool mProperty_mIsInternal ;
+
+
+//--- Default constructor
+  public: cPtr_functionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_functionDeclarationAST (const GALGAS_bool & in_isPredefined,
@@ -6022,6 +6169,10 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_bool mProperty_mIsInternal ;
   public: GALGAS_bool mProperty_mIsUsefull ;
 
+
+//--- Default constructor
+  public: cPtr_onceFunctionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_onceFunctionDeclarationAST (const GALGAS_bool & in_isPredefined,
                                            const GALGAS_lstring & in_mFunctionName,
@@ -6101,6 +6252,199 @@ class GALGAS_onceFunctionDeclarationAST_2D_weak : public GALGAS_semanticDeclarat
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@propertyInCollectionListAST buildPropertyInitializationCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_buildPropertyInitializationCode (const class GALGAS_propertyInCollectionListAST inObject,
+                                                      const class GALGAS_lstring constin_inTypeNameForUsefulness,
+                                                      const class GALGAS_semanticContext constin_inSemanticContext,
+                                                      const class GALGAS_predefinedTypes constin_inPredefinedTypes,
+                                                      class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                      class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                      class GALGAS_stringset & out_outUnusedVariableCppNameSet,
+                                                      class GALGAS_string & out_outInitializationCode,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                                            Phase 1: @selfMutability enum                                            *
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_selfMutability : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_selfMutability (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_none,
+    kEnum_propertiesAreMutableSelfIsNot,
+    kEnum_selfAndPropertiesAreMutable,
+    kEnum_initializer
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selfMutability extractObject (const GALGAS_object & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_selfMutability class_func_initializer (LOCATION_ARGS) ;
+
+  public: static class GALGAS_selfMutability class_func_none (LOCATION_ARGS) ;
+
+  public: static class GALGAS_selfMutability class_func_propertiesAreMutableSelfIsNot (LOCATION_ARGS) ;
+
+  public: static class GALGAS_selfMutability class_func_selfAndPropertiesAreMutable (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_selfMutability & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isInitializer (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isPropertiesAreMutableSelfIsNot (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSelfAndPropertiesAreMutable (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_initializer () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_none () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_propertiesAreMutableSelfIsNot () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_selfAndPropertiesAreMutable () const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_selfMutability class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMutability ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: @selfAvailability enum, associated values
+//
+//--------------------------------------------------------------------------------------------------
+
+class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedValues {
+  public: const GALGAS_unifiedTypeMapEntry mAssociatedValue0 ;
+  public: const GALGAS_selfMutability mAssociatedValue1 ;
+
+//--- Constructor
+  public: cEnumAssociatedValues_selfAvailability_available (const GALGAS_unifiedTypeMapEntry inAssociatedValue0,
+                                                            const GALGAS_selfMutability inAssociatedValue1
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const ;
+  public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public: virtual ~ cEnumAssociatedValues_selfAvailability_available (void) {}
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'compilerCppName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_compilerCppName (class Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@unifiedTypeMap typeMapEntryForLKey' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const class GALGAS_unifiedTypeMap & inObject,
+                                                                      const class GALGAS_lstring & constinArgument0,
+                                                                      class Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeSemanticExpression (class cPtr_semanticExpressionAST * inObject,
+                                                    const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                    class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                    const class GALGAS_unifiedTypeMapEntry constin_inType,
+                                                    const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                    class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                    class GALGAS_localVarManager & io_ioVariableMap,
+                                                    class GALGAS_semanticExpressionForGeneration & out_outExpression,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@semanticExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateExpression (class cPtr_semanticExpressionForGeneration * inObject,
+                                             class GALGAS_string & io_ioGeneratedCode,
+                                             class GALGAS_stringset & io_ioInclusionSet,
+                                             class GALGAS_uint & io_ioTemporaryVariableIndex,
+                                             class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                             class GALGAS_string & out_outCppExpression,
+                                             class Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkAssignmentTypeWithImplicitGetterCall???&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const class GALGAS_unifiedTypeMapEntry constinArgument0,
+                                                                        const class GALGAS_unifiedTypeMapEntry constinArgument1,
+                                                                        const class GALGAS_location constinArgument2,
+                                                                        class GALGAS_semanticExpressionForGeneration & ioArgument3,
+                                                                        class Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6815,6 +7159,10 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstringlist mProperty_mFilewrapperTextFileExtensionList ;
   public: GALGAS_lstringlist mProperty_mFilewrapperBinaryFileExtensionList ;
   public: GALGAS_filewrapperTemplateListAST mProperty_mFilewrapperTemplateList ;
+
+
+//--- Default constructor
+  public: cPtr_filewrapperDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_filewrapperDeclarationAST (const GALGAS_bool & in_isPredefined,
@@ -8590,6 +8938,10 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_syntaxRuleListAST mProperty_mRuleList ;
   public: GALGAS_bool mProperty_mHasTranslateFeature ;
 
+
+//--- Default constructor
+  public: cPtr_galgas_33_SyntaxComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_galgas_33_SyntaxComponentAST (const GALGAS_bool & in_isPredefined,
                                              const GALGAS_lstring & in_mSyntaxComponentName,
@@ -8795,6 +9147,10 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_nonTerminalLabelListAST mProperty_mStartSymbolLabelList ;
   public: GALGAS_lstringlist mProperty_mUnusedNonterminalList ;
   public: GALGAS_bool mProperty_mHasTranslateFeature ;
+
+
+//--- Default constructor
+  public: cPtr_galgas_33_GrammarComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_galgas_33_GrammarComponentAST (const GALGAS_bool & in_isPredefined,

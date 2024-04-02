@@ -6961,6 +6961,10 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
   public: GALGAS_string mProperty_mTypeName ;
   public: GALGAS_unifiedTypeMapEntry mProperty_mCastType ;
 
+
+//--- Default constructor
+  public: cPtr_castInExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                               const GALGAS_location & in_mLocation,
@@ -7116,6 +7120,10 @@ class cPtr_actualParameterForGeneration : public acStrongPtr_class {
 
 //--- Properties
   public: GALGAS_unifiedTypeMapEntry mProperty_mFormalArgumentType ;
+
+
+//--- Default constructor
+  public: cPtr_actualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_actualParameterForGeneration (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType
@@ -7300,6 +7308,10 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
 //--- Properties
   public: GALGAS_semanticExpressionForGeneration mProperty_mOutputActualParameterExpression ;
 
+
+//--- Default constructor
+  public: cPtr_outputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_outputActualParameterForGeneration (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                    const GALGAS_semanticExpressionForGeneration & in_mOutputActualParameterExpression
@@ -7465,6 +7477,10 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
   public: GALGAS_string mProperty_mOutputInputVariableCppName ;
   public: GALGAS_lstringlist mProperty_mStructAttributeList ;
   public: GALGAS_unifiedTypeMapEntryList mProperty_mTypeList ;
+
+
+//--- Default constructor
+  public: cPtr_outputInputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
   public: cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
