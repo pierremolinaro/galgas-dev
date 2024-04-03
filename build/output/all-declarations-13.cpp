@@ -11390,58 +11390,58 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_declaration_i8_ (GALGAS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
-  GALGAS_bool var_isAbstract_3808 ;
+  GALGAS_bool var_isAbstract_3807 ;
   switch (select_galgas_34_DeclarationsSyntax_14 (inCompiler)) {
   case 1: {
-    var_isAbstract_3808 = GALGAS_bool (false) ;
+    var_isAbstract_3807 = GALGAS_bool (false) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("type-class.galgas", 113)) ;
-    var_isAbstract_3808 = GALGAS_bool (true) ;
+    var_isAbstract_3807 = GALGAS_bool (true) ;
   } break ;
   default:
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_class COMMA_SOURCE_FILE ("type-class.galgas", 116)) ;
-  GALGAS_lstring var_className_3949 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_className_3948 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_classDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("type-class.galgas", 117)) ;
-  GALGAS_lstring var_superClassName_4001 ;
+  GALGAS_lstring var_superClassName_4000 ;
   switch (select_galgas_34_DeclarationsSyntax_15 (inCompiler)) {
   case 1: {
-    var_superClassName_4001 = GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-class.galgas", 120)) ;
+    var_superClassName_4000 = GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-class.galgas", 120)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("type-class.galgas", 122)) ;
-    var_superClassName_4001 = inCompiler->synthetizedAttribute_tokenString () ;
+    var_superClassName_4000 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_classReferencedAsSuperClass, "") ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("type-class.galgas", 123)) ;
   } break ;
   default:
     break ;
   }
-  GALGAS_bool var_generateInSeparateFile_4196 ;
+  GALGAS_bool var_generateInSeparateFile_4195 ;
   switch (select_galgas_34_DeclarationsSyntax_16 (inCompiler)) {
   case 1: {
-    var_generateInSeparateFile_4196 = GALGAS_bool (false) ;
+    var_generateInSeparateFile_4195 = GALGAS_bool (false) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__25_generatedInSeparateFile COMMA_SOURCE_FILE ("type-class.galgas", 129)) ;
-    var_generateInSeparateFile_4196 = GALGAS_bool (true) ;
+    var_generateInSeparateFile_4195 = GALGAS_bool (true) ;
   } break ;
   default:
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("type-class.galgas", 132)) ;
-  GALGAS_propertyInCollectionListAST var_propertyList_4420 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 134)) ;
+  GALGAS_propertyInCollectionListAST var_propertyList_4419 = GALGAS_propertyInCollectionListAST::class_func_emptyList (SOURCE_FILE ("type-class.galgas", 134)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_DeclarationsSyntax_17 (inCompiler)) {
     case 2: {
-      nt_property_5F_declaration_ (ioArgument_ioDeclarations, var_propertyList_4420, inCompiler) ;
+      nt_property_5F_declaration_ (ioArgument_ioDeclarations, var_propertyList_4419, inCompiler) ;
     } break ;
     case 3: {
-      nt_method_5F_declaration_ (var_className_3949, ioArgument_ioDeclarations, inCompiler) ;
+      nt_method_5F_declaration_ (var_className_3948, ioArgument_ioDeclarations, inCompiler) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -11449,15 +11449,15 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("type-class.galgas", 141)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_classDeclarationAST::class_func_new (GALGAS_bool (false), var_isAbstract_3808, GALGAS_bool (true), var_className_3949, var_superClassName_4001, var_generateInSeparateFile_4196, var_propertyList_4420  COMMA_SOURCE_FILE ("type-class.galgas", 142))  COMMA_SOURCE_FILE ("type-class.galgas", 142)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_classDeclarationAST::class_func_new (GALGAS_bool (false), var_isAbstract_3807, GALGAS_bool (true), var_className_3948, var_superClassName_4000, var_generateInSeparateFile_4195, var_propertyList_4419  COMMA_SOURCE_FILE ("type-class.galgas", 142))  COMMA_SOURCE_FILE ("type-class.galgas", 142)) ;
   GALGAS_lstring temp_1 ;
-  const enumGalgasBool test_2 = GALGAS_bool (ComparisonKind::equal, var_superClassName_4001.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  const enumGalgasBool test_2 = GALGAS_bool (ComparisonKind::equal, var_superClassName_4000.readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_2) {
-    temp_1 = var_superClassName_4001 ;
+    temp_1 = var_superClassName_4000 ;
   }else if (kBoolFalse == test_2) {
-    temp_1 = GALGAS_lstring::class_func_new (var_superClassName_4001.readProperty_string ().add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 158)), var_superClassName_4001.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 158)) ;
+    temp_1 = GALGAS_lstring::class_func_new (var_superClassName_4000.readProperty_string ().add_operation (GALGAS_string ("-weak"), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 158)), var_superClassName_4000.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 158)) ;
   }
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_weakReferenceDeclarationAST::class_func_new (GALGAS_bool (false), var_className_3949, GALGAS_lstring::class_func_new (var_className_3949.readProperty_string ().add_operation (function_weakSuffix (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 155)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 155)), var_className_3949.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 155)), temp_1, var_generateInSeparateFile_4196, var_propertyList_4420  COMMA_SOURCE_FILE ("type-class.galgas", 152))  COMMA_SOURCE_FILE ("type-class.galgas", 152)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_weakReferenceDeclarationAST::class_func_new (GALGAS_bool (false), var_className_3948, GALGAS_lstring::class_func_new (var_className_3948.readProperty_string ().add_operation (function_weakSuffix (inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 155)), inCompiler COMMA_SOURCE_FILE ("type-class.galgas", 155)), var_className_3948.readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("type-class.galgas", 155)), temp_1, var_generateInSeparateFile_4195, var_propertyList_4419  COMMA_SOURCE_FILE ("type-class.galgas", 152))  COMMA_SOURCE_FILE ("type-class.galgas", 152)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

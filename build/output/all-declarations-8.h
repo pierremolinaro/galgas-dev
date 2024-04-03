@@ -489,17 +489,17 @@ class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -669,11 +669,11 @@ class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGenerati
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -835,17 +835,17 @@ class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1003,17 +1003,17 @@ class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1171,11 +1171,11 @@ class cPtr_unaryMinusExpressionForGeneration : public cPtr_semanticExpressionFor
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1329,17 +1329,17 @@ class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1499,11 +1499,11 @@ class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGener
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1773,17 +1773,17 @@ class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1935,17 +1935,17 @@ class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2100,11 +2100,11 @@ class cPtr_trueExpressionForGeneration : public cPtr_semanticExpressionForGenera
   public: virtual class GALGAS_bool getter_isTrueExpression (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2256,11 +2256,11 @@ class cPtr_falseExpressionForGeneration : public cPtr_semanticExpressionForGener
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2416,17 +2416,17 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2584,11 +2584,11 @@ class cPtr_literalStringExpressionForGeneration : public cPtr_semanticExpression
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2742,17 +2742,17 @@ class cPtr_literalCharExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2908,11 +2908,11 @@ class cPtr_literalCharExpressionForGeneration : public cPtr_semanticExpressionFo
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3066,17 +3066,17 @@ class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3232,11 +3232,11 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3390,17 +3390,17 @@ class cPtr_literalBigIntExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3556,11 +3556,11 @@ class cPtr_literalUIntExpressionForGeneration : public cPtr_semanticExpressionFo
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3718,11 +3718,11 @@ class cPtr_literalUInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3880,11 +3880,11 @@ class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionFo
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4042,11 +4042,11 @@ class cPtr_literalSInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4204,11 +4204,11 @@ class cPtr_literalBigIntExpressionForGeneration : public cPtr_semanticExpression
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4491,17 +4491,17 @@ class cPtr_comparisonExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4671,11 +4671,11 @@ class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionFor
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4841,17 +4841,17 @@ class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5015,17 +5015,17 @@ class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5189,17 +5189,17 @@ class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5363,17 +5363,17 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5537,17 +5537,17 @@ class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5711,17 +5711,17 @@ class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6048,11 +6048,11 @@ class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressio
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6218,17 +6218,17 @@ class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6392,17 +6392,17 @@ class cPtr_multiplicationExpressionNoOverflowAST : public cPtr_semanticExpressio
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6566,17 +6566,17 @@ class cPtr_divisionExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6740,17 +6740,17 @@ class cPtr_divisionExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6914,17 +6914,17 @@ class cPtr_moduloExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7092,17 +7092,17 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7268,17 +7268,17 @@ class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7446,11 +7446,11 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7616,11 +7616,11 @@ class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressi
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7784,17 +7784,17 @@ class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7962,11 +7962,11 @@ class cPtr_optionValueExpressionForGeneration : public cPtr_semanticExpressionFo
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8136,11 +8136,11 @@ class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionFor
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8310,11 +8310,11 @@ class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionF
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8484,11 +8484,11 @@ class cPtr_optionCommentExpressionForGeneration : public cPtr_semanticExpression
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8650,17 +8650,17 @@ class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8822,11 +8822,11 @@ class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionFor
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8982,17 +8982,17 @@ class cPtr_filewrapperObjectInstanciationInExpressionAST : public cPtr_semanticE
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9148,17 +9148,17 @@ class cPtr_filewrapperInExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9320,17 +9320,17 @@ class cPtr_filewrapperTemplateInExpressionAST : public cPtr_semanticExpressionAS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9494,11 +9494,11 @@ class cPtr_filewrapperInExpressionForGeneration : public cPtr_semanticExpression
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9666,11 +9666,11 @@ class cPtr_filewrapperTemplateInExpressionForGeneration : public cPtr_semanticEx
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9840,11 +9840,11 @@ class cPtr_filewrapperStaticPathInExpressionForGeneration : public cPtr_semantic
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10018,17 +10018,17 @@ class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10212,11 +10212,11 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10392,17 +10392,17 @@ class cPtr_classFuncExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10576,11 +10576,11 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10748,11 +10748,11 @@ class cPtr_defaultConstructorExpressionForGeneration : public cPtr_semanticExpre
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10912,17 +10912,17 @@ class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -11084,11 +11084,11 @@ class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionF
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -11244,17 +11244,17 @@ class cPtr_literalTypeInExpressionAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -11410,11 +11410,11 @@ class cPtr_literalTypeInExpressionForGeneration : public cPtr_semanticExpression
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -11697,17 +11697,17 @@ class cPtr_abstractCollectionValueElement : public acStrongPtr_class {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyze
-  public: virtual void method_analyze (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_unifiedTypeMapEntry inElementType,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_collectionValueElementListForGeneration & ioCollectionValueElementListForGeneration,
+  public: virtual void method_analyze (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_unifiedTypeMapEntry arg_inElementType,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_collectionValueElementListForGeneration & arg_ioCollectionValueElementListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterInSemanticContext
-  public: virtual void method_enterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -11937,17 +11937,17 @@ class cPtr_expressionCollectionValue : public cPtr_abstractCollectionValueElemen
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyze
-  public: virtual void method_analyze (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_unifiedTypeMapEntry inElementType,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_collectionValueElementListForGeneration & ioCollectionValueElementListForGeneration,
+  public: virtual void method_analyze (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_unifiedTypeMapEntry arg_inElementType,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_collectionValueElementListForGeneration & arg_ioCollectionValueElementListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInSemanticContext
-  public: virtual void method_enterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -12105,17 +12105,17 @@ class cPtr_expressionListCollectionValue : public cPtr_abstractCollectionValueEl
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyze
-  public: virtual void method_analyze (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_unifiedTypeMapEntry inElementType,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_collectionValueElementListForGeneration & ioCollectionValueElementListForGeneration,
+  public: virtual void method_analyze (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_unifiedTypeMapEntry arg_inElementType,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_collectionValueElementListForGeneration & arg_ioCollectionValueElementListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInSemanticContext
-  public: virtual void method_enterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -12277,17 +12277,17 @@ class cPtr_collectionValueAST : public cPtr_semanticExpressionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -12603,12 +12603,12 @@ class cPtr_abstractCollectionValueElementForGeneration : public acStrongPtr_clas
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateCollectionElementCode
-  public: virtual void method_generateCollectionElementCode (const class GALGAS_unifiedTypeMapEntry inTargetType,
-           class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_string inCppTargetVar,
+  public: virtual void method_generateCollectionElementCode (const class GALGAS_unifiedTypeMapEntry arg_inTargetType,
+           class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_string arg_inCppTargetVar,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties

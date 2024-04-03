@@ -566,11 +566,11 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties

@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @bool isReference
     select
       $class$
-      isReference = false
+      isReference = true
     or
       $valueclass$
       isReference = false
@@ -847,7 +847,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
       case argumentIn :
         result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
       end
-      result += " " + formalArgument.mFormalArgumentName
+      result += " arg_" + formalArgument.mFormalArgumentName
     end
     if inHasCompilerArgument then
       if not first then

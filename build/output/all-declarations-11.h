@@ -146,26 +146,26 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_terminalMap inTerminalMap,
-           const class GALGAS_string inLexiqueName,
-           const class GALGAS_nonterminalMap inNonterminalMap,
-           const class GALGAS_string inComponentName,
-           const class GALGAS_stringset inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_uint & ioSelectMethodCount,
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-           class GALGAS_uint & ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -346,16 +346,16 @@ class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGene
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GALGAS_string arg_inPosfix,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -522,26 +522,26 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_terminalMap inTerminalMap,
-           const class GALGAS_string inLexiqueName,
-           const class GALGAS_nonterminalMap inNonterminalMap,
-           const class GALGAS_string inComponentName,
-           const class GALGAS_stringset inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_uint & ioSelectMethodCount,
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-           class GALGAS_uint & ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -710,16 +710,16 @@ class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGene
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GALGAS_string arg_inPosfix,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -894,26 +894,26 @@ class cPtr_terminalCheckInstructionAST : public cPtr_syntaxInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_terminalMap inTerminalMap,
-           const class GALGAS_string inLexiqueName,
-           const class GALGAS_nonterminalMap inNonterminalMap,
-           const class GALGAS_string inComponentName,
-           const class GALGAS_stringset inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_uint & ioSelectMethodCount,
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-           class GALGAS_uint & ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1210,16 +1210,16 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GALGAS_string arg_inPosfix,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1404,26 +1404,26 @@ class cPtr_parseLoopInstruction : public cPtr_syntaxInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_terminalMap inTerminalMap,
-           const class GALGAS_string inLexiqueName,
-           const class GALGAS_nonterminalMap inNonterminalMap,
-           const class GALGAS_string inComponentName,
-           const class GALGAS_stringset inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_uint & ioSelectMethodCount,
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-           class GALGAS_uint & ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1596,16 +1596,16 @@ class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForG
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GALGAS_string arg_inPosfix,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1768,26 +1768,26 @@ class cPtr_parseRewindInstruction : public cPtr_syntaxInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_terminalMap inTerminalMap,
-           const class GALGAS_string inLexiqueName,
-           const class GALGAS_nonterminalMap inNonterminalMap,
-           const class GALGAS_string inComponentName,
-           const class GALGAS_stringset inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_uint & ioSelectMethodCount,
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-           class GALGAS_uint & ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1944,16 +1944,16 @@ class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionFo
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GALGAS_string arg_inPosfix,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2128,26 +2128,26 @@ class cPtr_parseWhenInstruction : public cPtr_syntaxInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_terminalMap inTerminalMap,
-           const class GALGAS_string inLexiqueName,
-           const class GALGAS_nonterminalMap inNonterminalMap,
-           const class GALGAS_string inComponentName,
-           const class GALGAS_stringset inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_uint & ioSelectMethodCount,
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-           class GALGAS_uint & ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2320,16 +2320,16 @@ class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForG
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GALGAS_string inPosfix,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GALGAS_string arg_inPosfix,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2488,26 +2488,26 @@ class cPtr_syntaxSendInstructionAST : public cPtr_syntaxInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_terminalMap inTerminalMap,
-           const class GALGAS_string inLexiqueName,
-           const class GALGAS_nonterminalMap inNonterminalMap,
-           const class GALGAS_string inComponentName,
-           const class GALGAS_stringset inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_uint & ioSelectMethodCount,
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-           class GALGAS_uint & ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & ioSyntaxInstructionList,
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2662,11 +2662,11 @@ class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionFor
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties

@@ -70,11 +70,11 @@ class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -3408,11 +3408,11 @@ class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
   public: virtual class GALGAS_bool getter_isTrueExpression (Compiler * COMMA_LOCATION_ARGS) const ;
 
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -3508,11 +3508,11 @@ class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInst
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3887,11 +3887,11 @@ class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructi
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4043,11 +4043,11 @@ class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templ
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4193,11 +4193,11 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4598,11 +4598,11 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7055,11 +7055,11 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateExpressionAnalysis
-  public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_templateAnalysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_templateAnalysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7411,11 +7411,11 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateInstructionAnalysis
-  public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_templateAnalysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_templateInstructionListForGeneration & ioInstructionList,
+  public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_templateAnalysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_templateInstructionListForGeneration & arg_ioInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7609,11 +7609,11 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8377,11 +8377,11 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateInstructionAnalysis
-  public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_templateAnalysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_templateInstructionListForGeneration & ioInstructionList,
+  public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_templateAnalysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_templateInstructionListForGeneration & arg_ioInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9135,11 +9135,11 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_bool & ioUseColumnMarker,
+  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_bool & arg_ioUseColumnMarker,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9294,50 +9294,50 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method buildExtensionListMaps
-  public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionSetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionMethodListMapAST,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionMethodListMap,
-           class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionMethodListMap,
-           class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionMethodListMap,
-           class GALGAS_genericExtensionMethodListMap & ioAbstractExtensionGetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioExtensionGetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioOverridingExtensionGetterListMap,
-           class GALGAS_genericExtensionMethodListMap & ioOverridingAbstractExtensionGetterListMap,
+  public: virtual void method_buildExtensionListMaps (class GALGAS_genericExtensionMethodListMap & arg_ioAbstractExtensionSetterListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioExtensionSetterListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioOverridingExtensionSetterListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioOverridingAbstractExtensionSetterListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioAbstractExtensionMethodListMapAST,
+           class GALGAS_genericExtensionMethodListMap & arg_ioExtensionMethodListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioOverridingExtensionMethodListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioOverridingAbstractExtensionMethodListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioAbstractExtensionGetterListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioExtensionGetterListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioOverridingExtensionGetterListMap,
+           class GALGAS_genericExtensionMethodListMap & arg_ioOverridingAbstractExtensionGetterListMap,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -12011,7 +12011,7 @@ class cPtr_abstractLexicalRuleAST : public acStrongPtr_class {
   public: virtual class GALGAS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method checkLexicalRule
-  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -12501,31 +12501,31 @@ class cPtr_templateLexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -12689,7 +12689,7 @@ class cPtr_lexicalExpressionAST : public acStrongPtr_class {
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -12847,8 +12847,8 @@ class cPtr_lexicalInstructionAST : public acStrongPtr_class {
   public: virtual class GALGAS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method checkLexicalInstruction
-  public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
-           class GALGAS_lexicalTagMap & ioTagMap,
+  public: virtual void method_checkLexicalInstruction (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
+           class GALGAS_lexicalTagMap & arg_ioTagMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -13303,7 +13303,7 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
   public: virtual class GALGAS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalRule
-  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -13477,7 +13477,7 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
   public: virtual class GALGAS_bool getter_lexicalRuleUsesLoopLocalVar (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalRule
-  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalRule (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -13853,7 +13853,7 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -14019,7 +14019,7 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -14183,7 +14183,7 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -14351,7 +14351,7 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & ioLexiqueAnalysisContext,
+  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties

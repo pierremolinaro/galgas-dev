@@ -701,11 +701,11 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GALGAS_string & ioGeneratedCode,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppExpression,
+  public: virtual void method_generateExpression (class GALGAS_string & arg_ioGeneratedCode,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -859,18 +859,18 @@ class cPtr_actualParameterForGeneration : public acStrongPtr_class {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateActualParameter
-  public: virtual void method_generateActualParameter (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_string & ioImplementation,
-           class GALGAS_stringlist & ioJokerParametersToReleaseList,
-           class GALGAS_stringlist & ioOutputVariableList,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppName,
+  public: virtual void method_generateActualParameter (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringlist & arg_ioJokerParametersToReleaseList,
+           class GALGAS_stringlist & arg_ioOutputVariableList,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method generatePoisonedVariables
-  public: virtual void method_generatePoisonedVariables (class GALGAS_string & ioImplementation,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+  public: virtual void method_generatePoisonedVariables (class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -1050,18 +1050,18 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateActualParameter
-  public: virtual void method_generateActualParameter (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_string & ioImplementation,
-           class GALGAS_stringlist & ioJokerParametersToReleaseList,
-           class GALGAS_stringlist & ioOutputVariableList,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppName,
+  public: virtual void method_generateActualParameter (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringlist & arg_ioJokerParametersToReleaseList,
+           class GALGAS_stringlist & arg_ioOutputVariableList,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generatePoisonedVariables
-  public: virtual void method_generatePoisonedVariables (class GALGAS_string & ioImplementation,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+  public: virtual void method_generatePoisonedVariables (class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1224,18 +1224,18 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateActualParameter
-  public: virtual void method_generateActualParameter (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_string & ioImplementation,
-           class GALGAS_stringlist & ioJokerParametersToReleaseList,
-           class GALGAS_stringlist & ioOutputVariableList,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppName,
+  public: virtual void method_generateActualParameter (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringlist & arg_ioJokerParametersToReleaseList,
+           class GALGAS_stringlist & arg_ioOutputVariableList,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generatePoisonedVariables
-  public: virtual void method_generatePoisonedVariables (class GALGAS_string & ioImplementation,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+  public: virtual void method_generatePoisonedVariables (class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1398,18 +1398,18 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateActualParameter
-  public: virtual void method_generateActualParameter (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_string & ioImplementation,
-           class GALGAS_stringlist & ioJokerParametersToReleaseList,
-           class GALGAS_stringlist & ioOutputVariableList,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppName,
+  public: virtual void method_generateActualParameter (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringlist & arg_ioJokerParametersToReleaseList,
+           class GALGAS_stringlist & arg_ioOutputVariableList,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generatePoisonedVariables
-  public: virtual void method_generatePoisonedVariables (class GALGAS_string & ioImplementation,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+  public: virtual void method_generatePoisonedVariables (class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1570,18 +1570,18 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateActualParameter
-  public: virtual void method_generateActualParameter (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_string & ioImplementation,
-           class GALGAS_stringlist & ioJokerParametersToReleaseList,
-           class GALGAS_stringlist & ioOutputVariableList,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & outCppName,
+  public: virtual void method_generateActualParameter (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringlist & arg_ioJokerParametersToReleaseList,
+           class GALGAS_stringlist & arg_ioOutputVariableList,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method generatePoisonedVariables
-  public: virtual void method_generatePoisonedVariables (class GALGAS_string & ioImplementation,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
+  public: virtual void method_generatePoisonedVariables (class GALGAS_string & arg_ioImplementation,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1885,11 +1885,11 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method generateInstruction
-  public: virtual void method_generateInstruction (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_uint & ioTemporaryVariableIndex,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2299,30 +2299,30 @@ class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
   public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outHeader,
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendDeclaration2
-  public: virtual void method_appendDeclaration_32_ (const class GALGAS_string inOutputDirectory,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outHeader,
+  public: virtual void method_appendDeclaration_32_ (const class GALGAS_string arg_inOutputDirectory,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendPrimitiveTypePreDeclaration
-  public: virtual void method_appendPrimitiveTypePreDeclaration (class GALGAS_string & ioHeader,
+  public: virtual void method_appendPrimitiveTypePreDeclaration (class GALGAS_string & arg_ioHeader,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendSpecificFiles
-  public: virtual void method_appendSpecificFiles (const class GALGAS_string inProductDirectory,
-           class GALGAS_stringset & ioAllProductFileSet,
-           class GALGAS_stringlist & ioCocoaProductFileList,
+  public: virtual void method_appendSpecificFiles (const class GALGAS_string arg_inProductDirectory,
+           class GALGAS_stringset & arg_ioAllProductFileSet,
+           class GALGAS_stringlist & arg_ioCocoaProductFileList,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outImplementation,
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap arg_inUnifiedTypeMap,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outImplementation,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Properties
@@ -5138,26 +5138,26 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeGrammarInstructionSDT
-  public: virtual void method_analyzeGrammarInstructionSDT (const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           const class GALGAS_string inSyntaxDirectedTranslationResultVarName,
-           class GALGAS_stringlist & ioAssignementList,
-           class GALGAS_localVarManager & ioVariableMap,
+  public: virtual void method_analyzeGrammarInstructionSDT (const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_string arg_inSyntaxDirectedTranslationResultVarName,
+           class GALGAS_stringlist & arg_ioAssignementList,
+           class GALGAS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method analyzeSDT
-  public: virtual void method_analyzeSDT (const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_bool inHasTranslateFeature,
-           class GALGAS_localVarManager & ioVariableMap,
+  public: virtual void method_analyzeSDT (const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           class GALGAS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method generateCode
-  public: virtual void method_generateCode (const class GALGAS_bool inGenerateSyntaxDirectedTranslationString,
-           const class GALGAS_string inAccessMethodName,
-           class GALGAS_stringset & ioUnusedVariableCppNameSet,
-           class GALGAS_string & ioGeneratedCode,
+  public: virtual void method_generateCode (const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           const class GALGAS_string arg_inAccessMethodName,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GALGAS_string & arg_ioGeneratedCode,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -6685,14 +6685,14 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
   public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outHeader,
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outImplementation,
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap arg_inUnifiedTypeMap,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outImplementation,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties

@@ -2348,31 +2348,31 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties

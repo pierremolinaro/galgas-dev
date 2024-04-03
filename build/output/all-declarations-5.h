@@ -141,33 +141,33 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
-  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_classFunctionMap & outClassFunctionMap,
+  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getClassMethodMap
-  public: virtual void method_getClassMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_classMethodMap & outClassMethodMap,
+  public: virtual void method_getClassMethodMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_classMethodMap & arg_outClassMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
-  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_getterMap & outGetterMap,
+  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getInstanceMethodMap
-  public: virtual void method_getInstanceMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_instanceMethodMap & outInstanceMethodMap,
+  public: virtual void method_getInstanceMethodMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_instanceMethodMap & arg_outInstanceMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getOptionalMethodMap
-  public: virtual void method_getOptionalMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_optionalMethodMap & outMap,
+  public: virtual void method_getOptionalMethodMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_optionalMethodMap & arg_outMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
-  public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_setterMap & outSetterMap,
+  public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_setterMap & arg_outSetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -328,18 +328,18 @@ class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
-  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_classFunctionMap & outClassFunctionMap,
+  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
-  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_getterMap & outGetterMap,
+  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getSetterMap
-  public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_setterMap & outSetterMap,
+  public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_setterMap & arg_outSetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -500,13 +500,13 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
-  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_classFunctionMap & outClassFunctionMap,
+  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
-  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_getterMap & outGetterMap,
+  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -667,18 +667,18 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
-  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_classFunctionMap & outClassFunctionMap,
+  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getClassMethodMap
-  public: virtual void method_getClassMethodMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_classMethodMap & outClassMethodMap,
+  public: virtual void method_getClassMethodMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_classMethodMap & arg_outClassMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
-  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_getterMap & outGetterMap,
+  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -839,13 +839,13 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
-  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_classFunctionMap & outClassFunctionMap,
+  public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_classFunctionMap & arg_outClassFunctionMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method getGetterMap
-  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & ioUnifiedTypeMap,
-           class GALGAS_getterMap & outGetterMap,
+  public: virtual void method_getGetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
+           class GALGAS_getterMap & arg_outGetterMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1131,25 +1131,25 @@ class cPtr_actualParameterAST : public acStrongPtr_class {
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -2539,17 +2539,17 @@ class cPtr_semanticExpressionAST : public acStrongPtr_class {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeSemanticExpression
-  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_unifiedTypeMapEntry inType,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_semanticExpressionForGeneration & outExpression,
+  public: virtual void method_analyzeSemanticExpression (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_unifiedTypeMapEntry arg_inType,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_semanticExpressionForGeneration & arg_outExpression,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method enterExpressionInSemanticContext
-  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterExpressionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -2654,25 +2654,25 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2841,25 +2841,25 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3020,25 +3020,25 @@ class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3195,25 +3195,25 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3374,25 +3374,25 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3559,25 +3559,25 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3746,25 +3746,25 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -3933,25 +3933,25 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4124,25 +4124,25 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4321,25 +4321,25 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4508,25 +4508,25 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4689,25 +4689,25 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method checkAgainstFormalArgument
-  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lstring inFormalSelector,
-           const class GALGAS_unifiedTypeMapEntry inFormalArgumentType,
-           const class GALGAS_formalArgumentPassingModeAST inFormalArgumentPassingMode,
-           class GALGAS_localVarManager & ioVariableMap,
-           class GALGAS_actualParameterListForGeneration & ioActualParameterListForGeneration,
-           class GALGAS_stringset & ioExclusiveVariableSet,
-           class GALGAS_semanticInstructionListForGeneration & ioInstructionListForGeneration,
+  public: virtual void method_checkAgainstFormalArgument (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lstring arg_inFormalSelector,
+           const class GALGAS_unifiedTypeMapEntry arg_inFormalArgumentType,
+           const class GALGAS_formalArgumentPassingModeAST arg_inFormalArgumentPassingMode,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_actualParameterListForGeneration & arg_ioActualParameterListForGeneration,
+           class GALGAS_stringset & arg_ioExclusiveVariableSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterInActualOutputParameterList
-  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & ioActualOutputArgumentList,
+  public: virtual void method_enterInActualOutputParameterList (class GALGAS_actualOutputExpressionList & arg_ioActualOutputArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterParameterInSemanticContext
-  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & ioTypeMap,
+  public: virtual void method_enterParameterInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -4878,31 +4878,31 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5075,22 +5075,22 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5337,12 +5337,12 @@ class cPtr_abstractInputParameter : public acStrongPtr_class {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeInputParameter
-  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
-           const class GALGAS_string inLexicalAttributeName,
-           class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
-           class GALGAS_localVarManager & ioVariableMap,
+  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GALGAS_string arg_inLexicalAttributeName,
+           class GALGAS_terminalCheckAssignementList & arg_ioTerminalCheckAssignementList,
+           class GALGAS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -5485,12 +5485,12 @@ class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter 
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeInputParameter
-  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
-           const class GALGAS_string inLexicalAttributeName,
-           class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
-           class GALGAS_localVarManager & ioVariableMap,
+  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GALGAS_string arg_inLexicalAttributeName,
+           class GALGAS_terminalCheckAssignementList & arg_ioTerminalCheckAssignementList,
+           class GALGAS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5640,12 +5640,12 @@ class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeInputParameter
-  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
-           const class GALGAS_string inLexicalAttributeName,
-           class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
-           class GALGAS_localVarManager & ioVariableMap,
+  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GALGAS_string arg_inLexicalAttributeName,
+           class GALGAS_terminalCheckAssignementList & arg_ioTerminalCheckAssignementList,
+           class GALGAS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5801,12 +5801,12 @@ class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeInputParameter
-  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
-           const class GALGAS_string inLexicalAttributeName,
-           class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
-           class GALGAS_localVarManager & ioVariableMap,
+  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GALGAS_string arg_inLexicalAttributeName,
+           class GALGAS_terminalCheckAssignementList & arg_ioTerminalCheckAssignementList,
+           class GALGAS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -5964,12 +5964,12 @@ class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method analyzeInputParameter
-  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext inAnalysisContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_lexicalTypeEnum inRequiredLexicalType,
-           const class GALGAS_string inLexicalAttributeName,
-           class GALGAS_terminalCheckAssignementList & ioTerminalCheckAssignementList,
-           class GALGAS_localVarManager & ioVariableMap,
+  public: virtual void method_analyzeInputParameter (const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GALGAS_string arg_inLexicalAttributeName,
+           class GALGAS_terminalCheckAssignementList & arg_ioTerminalCheckAssignementList,
+           class GALGAS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6712,31 +6712,31 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -6917,13 +6917,13 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -7115,31 +7115,31 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8116,31 +8116,31 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -9904,31 +9904,31 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10122,31 +10122,31 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & ioSemanticTypePrecedenceGraph,
-           class GALGAS_extensionInitializerForBuildingContext & ioExtensionInitializerForBuildingContext,
-           class GALGAS_extensionMethodMapForBuildingContext & ioExtensionMethodMapForBuildingContext,
-           class GALGAS_extensionGetterMapForBuildingContext & ioExtensionGetterMapForBuildingContext,
-           class GALGAS_extensionSetterMapForBuildingContext & ioExtensionSetterMapForBuildingContext,
-           class GALGAS_semanticDeclarationListAST & ioExtensionOverrideDefinitionList,
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-           const class GALGAS_extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-           const class GALGAS_extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-           const class GALGAS_extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           class GALGAS_semanticContext & ioSemanticContext,
+  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & ioUsefulnessRootEntities,
-           class GALGAS_usefulEntitiesGraph & ioUsefulEntitiesGraph,
-           const class GALGAS_string inProductDirectory,
-           const class GALGAS_semanticContext inSemanticContext,
-           class GALGAS_unifiedTypeMap & ioTypeMap,
-           const class GALGAS_predefinedTypes inPredefinedTypes,
-           class GALGAS_semanticDeclarationListForGeneration & ioSemanticDeclarationListForGeneration,
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties

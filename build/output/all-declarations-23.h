@@ -357,20 +357,20 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outHeader,
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificFiles
-  public: virtual void method_appendSpecificFiles (const class GALGAS_string inProductDirectory,
-           class GALGAS_stringset & ioAllProductFileSet,
-           class GALGAS_stringlist & ioCocoaProductFileList,
+  public: virtual void method_appendSpecificFiles (const class GALGAS_string arg_inProductDirectory,
+           class GALGAS_stringset & arg_ioAllProductFileSet,
+           class GALGAS_stringlist & arg_ioCocoaProductFileList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outImplementation,
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap arg_inUnifiedTypeMap,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outImplementation,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -536,14 +536,14 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 //--- Extension method appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outHeader,
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outHeader,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
-           class GALGAS_stringset & ioInclusionSet,
-           class GALGAS_string & outImplementation,
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap arg_inUnifiedTypeMap,
+           class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outImplementation,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties

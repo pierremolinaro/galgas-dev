@@ -17,14 +17,14 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public: virtual class GALGAS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method tikzNodeForSyntaxInstruction
-  public: virtual void method_tikzNodeForSyntaxInstruction (class GALGAS_rowList & ioRowList,
-           const class GALGAS_uint inRow,
-           class GALGAS_uint & ioColumn,
-           class GALGAS_string & ioCurrentNode,
-           class GALGAS_string & ioArrowShape,
-           class GALGAS_string & ioArrows,
-           class GALGAS_uint & ioMaxUsedRowIndex,
-           const class GALGAS_bool inDebug,
+  public: virtual void method_tikzNodeForSyntaxInstruction (class GALGAS_rowList & arg_ioRowList,
+           const class GALGAS_uint arg_inRow,
+           class GALGAS_uint & arg_ioColumn,
+           class GALGAS_string & arg_ioCurrentNode,
+           class GALGAS_string & arg_ioArrowShape,
+           class GALGAS_string & arg_ioArrows,
+           class GALGAS_uint & arg_ioMaxUsedRowIndex,
+           const class GALGAS_bool arg_inDebug,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- START OF USER ZONE 2
