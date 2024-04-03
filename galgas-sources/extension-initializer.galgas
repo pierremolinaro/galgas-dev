@@ -184,8 +184,8 @@ refclass @initializerAST : @semanticDeclarationAST {
     var isReferenceClass = false
     if let [[selfType definition].typeKind classType ?isReference: let isReference] then
       isReferenceClass = isReference
-      selfObjectNameString = "this"
-      selfObjectAccessorString = "this->"
+      selfObjectNameString = "object"
+      selfObjectAccessorString = "object->"
     else
       selfObjectNameString = "result"
       selfObjectAccessorString = "result."
@@ -272,26 +272,9 @@ refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForG
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
-#    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
     for formalArg in self.formalParameterList do
       [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
-#    var @unifiedTypeMapEntry baseType = self.mReceiverType
-#    var @bool searching = true
-#    loop (@uint.max) while searching do
-#      if not [[baseType definition].mSuperType isNull] then
-#        if [[[baseType definition].mSuperType definition].mInstanceMethodMap hasKey !self.mExtensionMethodName] then
-#          baseType = [baseType definition].mSuperType
-#        else
-#          searching = false
-#        end
-#      else
-#        searching = false
-#      end
-#    end
-#    ioInclusionSet += !self.mImplementationCppFileName
-#      !"method-" + [[baseType definition].typeName.string fileNameRepresentation]
-#      + "-" + [self.mExtensionMethodName fileNameRepresentation]
     generateInitializer (
       !self.mReceiverType
       !self.initializerName

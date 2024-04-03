@@ -87,7 +87,29 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
   end% () {
 }
 
-//--------------------------------------------------------------------------------------------------
+%
+if GENERATE_SYNTHETIZED_INITIALIZER then
+%//--- Synthetized initializer ----------------------------------------------------------------------
+
+/* GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init%![[CONSTRUCTOR_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+  for (typeEntry name 3*) in CONSTRUCTOR_ARGUMENT_LIST do
+    %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
+  end
+          %Compiler * inCompiler
+          %!^%COMMA_LOCATION_ARGS) {
+  cPtr_%!TYPE_IDENTIFIER% * object = nullptr ;
+  macroMyNew (object, cPtr_%!TYPE_IDENTIFIER% (inCompiler COMMA_THERE)) ;
+%
+  for (* name 3*) in CONSTRUCTOR_ARGUMENT_LIST do
+    %  object->mProperty_%![name identifierRepresentation]% = in_%![name identifierRepresentation]% ;\n%
+  end
+%  const GALGAS_%!TYPE_IDENTIFIER% result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+} */
+
+%end
+%//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
 % if SUPER_TYPE_IDENTIFIER == ""

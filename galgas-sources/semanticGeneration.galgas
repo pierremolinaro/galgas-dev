@@ -34,7 +34,6 @@ override method @grammarForGeneration appendDeclaration1
     ![self.mLexiqueName identifierRepresentation]
     !self.mNonTerminalMapForGrammarAnalysis
     !self.mNonTerminalToAddList
-#    !self.mHasIndexing
     !self.mStartSymbolName
     !self.mHasTranslateFeature
     !self.mGrammarName
@@ -753,19 +752,23 @@ proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
 #--- Compiler argument
   outGeneratedCode += "Compiler * " + compilerCppName () + "\n"
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
-  outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
-  outGeneratedCode += ") {\n"
 #--- Generate routine body
   if isStruct then
+    outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
+    outGeneratedCode += ") {\n"
     outGeneratedCode += "  GALGAS_" + [className identifierRepresentation] + " result ;\n"
     outGeneratedCode += "  result.setInitializedProperties (" + compilerCppName () + ") ;\n"
     outGeneratedCode += routineBody
     outGeneratedCode += "  return result ;\n"
   else
+    outGeneratedCode += "COMMA_LOCATION_ARGS"
+    outGeneratedCode += ") {\n"
     outGeneratedCode += "  cPtr_" + [className identifierRepresentation] + " * object = nullptr ;\n"
-    outGeneratedCode += "  macroMyNew (object, cPtr_" + [className identifierRepresentation] + " ()) ;\n"
-    outGeneratedCode += "  object->setInitializedProperties (" + compilerCppName () + ") ;\n"
+    outGeneratedCode += "  macroMyNew (object, cPtr_" + [className identifierRepresentation]
+    outGeneratedCode += " (" + compilerCppName () + " COMMA_THERE)) ;\n"
     outGeneratedCode += routineBody
+    outGeneratedCode += "  const GALGAS_" + [className identifierRepresentation] + " result (object) ;\n"
+    outGeneratedCode += "  macroDetachSharedObject (object) ;\n"
     outGeneratedCode += "  return result ;\n"
   end
   outGeneratedCode += "}"
@@ -951,6 +954,8 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool IS_ABSTRACT
     ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
     ?@string CONSTRUCTOR_INITIALIZATION_CODE
+    ?@bool GENERATE_SYNTHETIZED_INITIALIZER
+    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
 
 #---------- Weak Reference Class
   template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"

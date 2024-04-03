@@ -184,7 +184,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override getter keyRepresentation -> @string {
-    result = "valueclass @" + self.mClassTypeName
+    result = "class @" + self.mClassTypeName
   }
 
   #·······························································································
@@ -374,6 +374,15 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: not self.mIsReference
     )
+  #--- Synthetize an initializer, if the structure defines none
+    var @operators features = if self.mIsReference then .isReferenceEquatable else .isComparable end
+    if [initializerMap count] == 0 then
+      features = features | .generateSynthetizedInitializer
+      [!?initializerMap insertKey
+        !.new {![constructorPropertyTypeList signature] !self.mClassTypeName}
+        !constructorPropertyTypeList
+      ]
+    end
   #--- Generate a "default" constructor ?
     var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
     for (propertyTypeEntry 4*) in allTypedAttributeList while defaultConstructorName != "" do
@@ -400,7 +409,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: {}
       !optionalMethodMap: {}
       !enumerationDescriptorList: {}
-      !if self.mIsReference then .isReferenceEquatable else .isComparable end
+      !features
       !{}
       !{}
       !{}
@@ -485,7 +494,18 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       [!?attributeMap insertKey !property.propertyName !t]
     end
   #--- Build property initialization code
-    [self.mPropertyList buildPropertyInitializationCode
+    var @typedPropertyList synthetizedInitialzerArgumentList = {}
+    for property in [selfType definition].allTypedPropertyList do
+    if property.initialization == .none then
+      synthetizedInitialzerArgumentList +=
+        !property.typeEntry
+        !property.name
+        !property.initialization
+        !hasSetter: property.hasSetter
+        !hasSelector: property.hasSelector
+     end
+   end
+   [self.mPropertyList buildPropertyInitializationCode
       !classTypeNameForUsefulness
       !inSemanticContext
       !inPredefinedTypes
@@ -508,6 +528,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         ![selfType definition].generateHeaderInSeparateFile
         !constructorNeedsCompilerVar
         !initializationCode
+        !synthetizedInitialzerArgumentList
       }
   }
 
@@ -528,6 +549,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool generateHeaderInSeparateFile # Significant only for classes
   private let @bool initializerNeedsCompilerVariable
   private let @string propertyInitializationCode
+  private let @typedPropertyList synthetizedInitializerArgumentList
 
   #·······························································································
 
@@ -711,6 +733,8 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.mIsAbstract
         !self.initializerNeedsCompilerVariable
         !self.propertyInitializationCode
+        ![typedefinition.mHandledOperatorFlags generateSynthetizedInitializer]
+        !self.synthetizedInitializerArgumentList
       ]
     else
       outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation

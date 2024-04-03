@@ -10,6 +10,795 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @overrideExtensionGetterForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_overrideExtensionGetterForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_overrideExtensionGetterForGeneration (const class cPtr_overrideExtensionGetterForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
+
+  public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
+
+  public: class GALGAS_string readProperty_mOverridingExtensionGetterName (void) const ;
+
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
+
+  public: class GALGAS_string readProperty_mResultVarCppName (void) const ;
+
+  public: class GALGAS_formalInputParameterListForGeneration readProperty_mOverridingExtensionGetterFormalParameterList (void) const ;
+
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+
+  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_overrideExtensionGetterForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                                       const class GALGAS_string & inOperand1,
+                                                                                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                                                                                       const class GALGAS_string & inOperand3,
+                                                                                                                                                       const class GALGAS_string & inOperand4,
+                                                                                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand5,
+                                                                                                                                                       const class GALGAS_string & inOperand6,
+                                                                                                                                                       const class GALGAS_formalInputParameterListForGeneration & inOperand7,
+                                                                                                                                                       const class GALGAS_typedPropertyList & inOperand8,
+                                                                                                                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand9,
+                                                                                                                                                       Compiler * inCompiler
+                                                                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overrideExtensionGetterForGeneration extractObject (const GALGAS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_overrideExtensionGetterForGeneration class_func_new (const class GALGAS_bool & inOperand0,
+                                                                                   const class GALGAS_string & inOperand1,
+                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                   const class GALGAS_string & inOperand3,
+                                                                                   const class GALGAS_string & inOperand4,
+                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand5,
+                                                                                   const class GALGAS_string & inOperand6,
+                                                                                   const class GALGAS_formalInputParameterListForGeneration & inOperand7,
+                                                                                   const class GALGAS_typedPropertyList & inOperand8,
+                                                                                   const class GALGAS_semanticInstructionListForGeneration & inOperand9
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_overrideExtensionGetterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overrideExtensionGetterForGeneration class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @overrideExtensionGetterForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+//--- Extension getter headerKind
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
+  public: GALGAS_string mProperty_mBaseTypeName ;
+  public: GALGAS_string mProperty_mOverridingExtensionGetterName ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mResultType ;
+  public: GALGAS_string mProperty_mResultVarCppName ;
+  public: GALGAS_formalInputParameterListForGeneration mProperty_mOverridingExtensionGetterFormalParameterList ;
+  public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
+
+
+//--- Default constructor
+  public: cPtr_overrideExtensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_overrideExtensionGetterForGeneration (const GALGAS_bool & in_generateHeader,
+                                                     const GALGAS_string & in_mImplementationCppFileName,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                     const GALGAS_string & in_mBaseTypeName,
+                                                     const GALGAS_string & in_mOverridingExtensionGetterName,
+                                                     const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                     const GALGAS_string & in_mResultVarCppName,
+                                                     const GALGAS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
+                                                     const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @overrideExtensionGetterForGeneration_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_overrideExtensionGetterForGeneration_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_overrideExtensionGetterForGeneration_2D_weak (const class GALGAS_overrideExtensionGetterForGeneration & inSource) ;
+
+  public: GALGAS_overrideExtensionGetterForGeneration_2D_weak & operator = (const class GALGAS_overrideExtensionGetterForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_overrideExtensionGetterForGeneration bang_overrideExtensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overrideExtensionGetterForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_overrideExtensionGetterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_overrideExtensionGetterForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overrideExtensionGetterForGeneration_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @overridingExtensionMethodForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_overridingExtensionMethodForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_overridingExtensionMethodForGeneration (const class cPtr_overridingExtensionMethodForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
+
+  public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
+
+  public: class GALGAS_string readProperty_mExtensionMethodName (void) const ;
+
+  public: class GALGAS_formalParameterListForGeneration readProperty_mExtensionMethodFormalParameterList (void) const ;
+
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+
+  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_overridingExtensionMethodForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                                 const class GALGAS_string & inOperand1,
+                                                                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                                                                                 const class GALGAS_string & inOperand3,
+                                                                                                                                                 const class GALGAS_string & inOperand4,
+                                                                                                                                                 const class GALGAS_formalParameterListForGeneration & inOperand5,
+                                                                                                                                                 const class GALGAS_typedPropertyList & inOperand6,
+                                                                                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand7,
+                                                                                                                                                 Compiler * inCompiler
+                                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overridingExtensionMethodForGeneration extractObject (const GALGAS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_overridingExtensionMethodForGeneration class_func_new (const class GALGAS_bool & inOperand0,
+                                                                                     const class GALGAS_string & inOperand1,
+                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                     const class GALGAS_string & inOperand3,
+                                                                                     const class GALGAS_string & inOperand4,
+                                                                                     const class GALGAS_formalParameterListForGeneration & inOperand5,
+                                                                                     const class GALGAS_typedPropertyList & inOperand6,
+                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand7
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionMethodForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overridingExtensionMethodForGeneration class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @overridingExtensionMethodForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+//--- Extension getter headerKind
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
+  public: GALGAS_string mProperty_mBaseTypeName ;
+  public: GALGAS_string mProperty_mExtensionMethodName ;
+  public: GALGAS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
+  public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
+
+
+//--- Default constructor
+  public: cPtr_overridingExtensionMethodForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_overridingExtensionMethodForGeneration (const GALGAS_bool & in_generateHeader,
+                                                       const GALGAS_string & in_mImplementationCppFileName,
+                                                       const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                       const GALGAS_string & in_mBaseTypeName,
+                                                       const GALGAS_string & in_mExtensionMethodName,
+                                                       const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
+                                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                       const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @overridingExtensionMethodForGeneration_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overridingExtensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_overridingExtensionMethodForGeneration_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_overridingExtensionMethodForGeneration_2D_weak (const class GALGAS_overridingExtensionMethodForGeneration & inSource) ;
+
+  public: GALGAS_overridingExtensionMethodForGeneration_2D_weak & operator = (const class GALGAS_overridingExtensionMethodForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_overridingExtensionMethodForGeneration bang_overridingExtensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overridingExtensionMethodForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_overridingExtensionMethodForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionMethodForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overridingExtensionMethodForGeneration_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @overridingExtensionSetterForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_overridingExtensionSetterForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_overridingExtensionSetterForGeneration (const class cPtr_overridingExtensionSetterForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
+
+  public: class GALGAS_string readProperty_mBaseTypeName (void) const ;
+
+  public: class GALGAS_string readProperty_mExtensionSetterName (void) const ;
+
+  public: class GALGAS_formalParameterListForGeneration readProperty_mExtensionSetterFormalParameterList (void) const ;
+
+  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+
+  public: class GALGAS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_overridingExtensionSetterForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                                 const class GALGAS_string & inOperand1,
+                                                                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                                                                                 const class GALGAS_string & inOperand3,
+                                                                                                                                                 const class GALGAS_string & inOperand4,
+                                                                                                                                                 const class GALGAS_formalParameterListForGeneration & inOperand5,
+                                                                                                                                                 const class GALGAS_typedPropertyList & inOperand6,
+                                                                                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand7,
+                                                                                                                                                 Compiler * inCompiler
+                                                                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overridingExtensionSetterForGeneration extractObject (const GALGAS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_overridingExtensionSetterForGeneration class_func_new (const class GALGAS_bool & inOperand0,
+                                                                                     const class GALGAS_string & inOperand1,
+                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                     const class GALGAS_string & inOperand3,
+                                                                                     const class GALGAS_string & inOperand4,
+                                                                                     const class GALGAS_formalParameterListForGeneration & inOperand5,
+                                                                                     const class GALGAS_typedPropertyList & inOperand6,
+                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand7
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionSetterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overridingExtensionSetterForGeneration class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @overridingExtensionSetterForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+//--- Extension getter headerKind
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap inUnifiedTypeMap,
+           class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outImplementation,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_unifiedTypeMapEntry mProperty_mReceiverType ;
+  public: GALGAS_string mProperty_mBaseTypeName ;
+  public: GALGAS_string mProperty_mExtensionSetterName ;
+  public: GALGAS_formalParameterListForGeneration mProperty_mExtensionSetterFormalParameterList ;
+  public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
+
+
+//--- Default constructor
+  public: cPtr_overridingExtensionSetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_overridingExtensionSetterForGeneration (const GALGAS_bool & in_generateHeader,
+                                                       const GALGAS_string & in_mImplementationCppFileName,
+                                                       const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                       const GALGAS_string & in_mBaseTypeName,
+                                                       const GALGAS_string & in_mExtensionSetterName,
+                                                       const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
+                                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                       const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @overridingExtensionSetterForGeneration_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overridingExtensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_overridingExtensionSetterForGeneration_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_overridingExtensionSetterForGeneration_2D_weak (const class GALGAS_overridingExtensionSetterForGeneration & inSource) ;
+
+  public: GALGAS_overridingExtensionSetterForGeneration_2D_weak & operator = (const class GALGAS_overridingExtensionSetterForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_overridingExtensionSetterForGeneration bang_overridingExtensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overridingExtensionSetterForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_overridingExtensionSetterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionSetterForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overridingExtensionSetterForGeneration_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@predefinedTypeAST typeKind'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_typeKindEnum callExtensionGetter_typeKind (const cPtr_predefinedTypeAST * inObject,
+                                                        class Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@actualParameterListAST analyzeRoutineArguments'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_analyzeRoutineArguments (const class GALGAS_actualParameterListAST inObject,
+                                              const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                              class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                              const class GALGAS_analysisContext constin_inAnalysisContext,
+                                              class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                              const class GALGAS_lstring constin_inRoutineName,
+                                              const class GALGAS_string constin_inInvokedEntityName,
+                                              const class GALGAS_formalParameterSignature constin_inRoutineSignature,
+                                              class GALGAS_localVarManager & io_ioVariableMap,
+                                              class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                              class GALGAS_actualParameterListForGeneration & out_outActualParameterListForGeneration,
+                                              class Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @routinePrototypeDeclarationForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_routinePrototypeDeclarationForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_routinePrototypeDeclarationForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_routinePrototypeDeclarationForGeneration (const class cPtr_routinePrototypeDeclarationForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_string readProperty_routineMangledName (void) const ;
+
+  public: class GALGAS_formalParameterListForGeneration readProperty_mFormalArgumentList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_routinePrototypeDeclarationForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C_routineMangledName_2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                                     const class GALGAS_string & inOperand1,
+                                                                                                                                                     const class GALGAS_string & inOperand2,
+                                                                                                                                                     const class GALGAS_formalParameterListForGeneration & inOperand3,
+                                                                                                                                                     Compiler * inCompiler
+                                                                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_routinePrototypeDeclarationForGeneration extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_routinePrototypeDeclarationForGeneration class_func_new (const class GALGAS_bool & inOperand0,
+                                                                                       const class GALGAS_string & inOperand1,
+                                                                                       const class GALGAS_string & inOperand2,
+                                                                                       const class GALGAS_formalParameterListForGeneration & inOperand3
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_routinePrototypeDeclarationForGeneration class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @routinePrototypeDeclarationForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+//--- Extension getter headerKind
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & ioInclusionSet,
+           class GALGAS_string & outHeader,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_string mProperty_routineMangledName ;
+  public: GALGAS_formalParameterListForGeneration mProperty_mFormalArgumentList ;
+
+
+//--- Default constructor
+  public: cPtr_routinePrototypeDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_generateHeader,
+                                                         const GALGAS_string & in_mImplementationCppFileName,
+                                                         const GALGAS_string & in_routineMangledName,
+                                                         const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @routinePrototypeDeclarationForGeneration_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
+
+  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & operator = (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_routinePrototypeDeclarationForGeneration bang_routinePrototypeDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_routinePrototypeDeclarationForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_routinePrototypeDeclarationForGeneration_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @routineImplementationForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -29,6 +818,14 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_routineImplementationForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C_routineMangledName_2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                                       const class GALGAS_string & inOperand1,
+                                                                                                                                                       const class GALGAS_string & inOperand2,
+                                                                                                                                                       const class GALGAS_formalParameterListForGeneration & inOperand3,
+                                                                                                                                                       const class GALGAS_bool & inOperand4,
+                                                                                                                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand5,
+                                                                                                                                                       Compiler * inCompiler
+                                                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -260,6 +1057,17 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexiqueDeclarationForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                              const class GALGAS_string & inOperand1,
+                                                                                                                                              const class GALGAS_string & inOperand2,
+                                                                                                                                              const class GALGAS_string & inOperand3,
+                                                                                                                                              const class GALGAS_string & inOperand4,
+                                                                                                                                              const class GALGAS_string & inOperand5,
+                                                                                                                                              const class GALGAS_string & inOperand6,
+                                                                                                                                              const class GALGAS_string & inOperand7,
+                                                                                                                                              const class GALGAS_string & inOperand8,
+                                                                                                                                              Compiler * inCompiler
+                                                                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -461,6 +1269,18 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_grammarForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                       const class GALGAS_string & inOperand1,
+                                                                                                                                       const class GALGAS_string & inOperand2,
+                                                                                                                                       const class GALGAS_string & inOperand3,
+                                                                                                                                       const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inOperand4,
+                                                                                                                                       const class GALGAS_nonTerminalToAddList & inOperand5,
+                                                                                                                                       const class GALGAS_lstringlist & inOperand6,
+                                                                                                                                       const class GALGAS_string & inOperand7,
+                                                                                                                                       const class GALGAS_bool & inOperand8,
+                                                                                                                                       const class GALGAS_string & inOperand9,
+                                                                                                                                       Compiler * inCompiler
+                                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -658,6 +1478,13 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_functionPrototypeDeclarationForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                        const class GALGAS_string & inOperand1,
+                                                                                                                                        const class GALGAS_string & inOperand2,
+                                                                                                                                        const class GALGAS_formalInputParameterListForGeneration & inOperand3,
+                                                                                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                                                                        Compiler * inCompiler
+                                                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -823,6 +1650,15 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_functionImplementationForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                          const class GALGAS_string & inOperand1,
+                                                                                                                                          const class GALGAS_string & inOperand2,
+                                                                                                                                          const class GALGAS_formalInputParameterListForGeneration & inOperand3,
+                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                                                                          const class GALGAS_string & inOperand5,
+                                                                                                                                          const class GALGAS_semanticInstructionListForGeneration & inOperand6,
+                                                                                                                                          Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -993,6 +1829,14 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_onceFunctionDeclarationForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                       const class GALGAS_string & inOperand1,
+                                                                                                                                       const class GALGAS_string & inOperand2,
+                                                                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                                                                                       const class GALGAS_string & inOperand4,
+                                                                                                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand5,
+                                                                                                                                       Compiler * inCompiler
+                                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1173,6 +2017,15 @@ class GALGAS_filewrapperDeclarationForGeneration : public GALGAS_semanticDeclara
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_filewrapperDeclarationForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                          const class GALGAS_string & inOperand1,
+                                                                                                                                          const class GALGAS_string & inOperand2,
+                                                                                                                                          const class GALGAS_string & inOperand3,
+                                                                                                                                          const class GALGAS_wrapperFileMap & inOperand4,
+                                                                                                                                          const class GALGAS_wrapperDirectoryMap & inOperand5,
+                                                                                                                                          const class GALGAS_filewrapperTemplateListForGeneration & inOperand6,
+                                                                                                                                          Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1350,6 +2203,12 @@ class GALGAS_programComponentForGeneration : public GALGAS_semanticDeclarationWi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_programComponentForGeneration init_28_generateHeader_2C_mImplementationCppFileName_2C__2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                        const class GALGAS_string & inOperand1,
+                                                                                                                        const class GALGAS_stringset & inOperand2,
+                                                                                                                        const class GALGAS_string & inOperand3,
+                                                                                                                        Compiler * inCompiler
+                                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1531,6 +2390,12 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_primitiveTypeForGeneration init_28__2C__2C__2C_isPackage_29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                      const class GALGAS_string & inOperand1,
+                                                                                      const class GALGAS_string & inOperand2,
+                                                                                      const class GALGAS_bool & inOperand3,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2021,34 +2886,4 @@ void extensionMethod_checkAutomatonStates (const class GALGAS_localVarManager in
 class GALGAS_lstringlist extensionGetter_unsolvedEntryList (const class GALGAS_unifiedTypeMap & inObject,
                                                             class Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@unifiedTypeMapElementClass definition'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@actualOutputExpressionList keyRepresentation' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_string extensionGetter_keyRepresentation (const class GALGAS_actualOutputExpressionList & inObject,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@semanticExpressionForGeneration isTrueExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
 
