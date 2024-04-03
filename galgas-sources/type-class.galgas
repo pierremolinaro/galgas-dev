@@ -38,16 +38,13 @@ syntax extension galgas3DeclarationsSyntax {
     let @bool isReference
     select
       $class$
-      if [option galgas_cli_options.errorClassDeclaration value] then
-        error .here : "'class' declaration is obsolete, use 'valueclass'"
-      end
+      isReference = false
+    or
+      $valueclass$
       isReference = false
     or
       $refclass$
       isReference = true
-    end
-    if not isReference && [option galgas_cli_options.errorValueClassDeclaration value] then
-      error .here : "'value class' is obsolete, use 'refclass'"
     end
     $@type$ ?let @lstring className indexing classDefinition
     let @lstring superClassName # Empty if no super class

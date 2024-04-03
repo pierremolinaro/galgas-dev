@@ -16,15 +16,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   OC_GGS_CommandLineOption * option ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorClassDeclaration"
-    commandChar:0
-    commandString:@"error-class-declaration"
-    comment:@"'class' declaration is obsolete use 'valueclass'"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
     identifier:@"propertyAccessRequiresSelf"
     commandChar:0
     commandString:@"error-property-access-without-self"
@@ -65,15 +56,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     commandChar:0
     commandString:@"emit-syntax-diagrams"
     comment:@"Emit grammar syntax diagrams in TEX files"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"errorValueClassDeclaration"
-    commandChar:0
-    commandString:@"error-value-class-declaration"
-    comment:@"Error on 'value class' declaration"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;

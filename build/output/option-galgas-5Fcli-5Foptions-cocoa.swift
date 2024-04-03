@@ -11,14 +11,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
                    _ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    identifier: "errorClassDeclaration",
-    commandChar: "",
-    commandString: "error-class-declaration",
-    comment: "'class' declaration is obsolete use 'valueclass'",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
     identifier: "propertyAccessRequiresSelf",
     commandChar: "",
     commandString: "error-property-access-without-self",
@@ -55,14 +47,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     commandChar: "",
     commandString: "emit-syntax-diagrams",
     comment: "Emit grammar syntax diagrams in TEX files",
-    defaultValue: ""
-  ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
-    identifier: "errorValueClassDeclaration",
-    commandChar: "",
-    commandString: "error-value-class-declaration",
-    comment: "Error on 'value class' declaration",
     defaultValue: ""
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (

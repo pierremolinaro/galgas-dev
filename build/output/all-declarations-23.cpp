@@ -13430,12 +13430,6 @@ GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::extractObject (co
 //
 //--------------------------------------------------------------------------------------------------
 
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ("galgas_cli_options",
-                                         "errorClassDeclaration",
-                                         0,
-                                         "error-class-declaration",
-                                         "'class' declaration is obsolete use 'valueclass'") ;
-
 BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ("galgas_cli_options",
                                          "propertyAccessRequiresSelf",
                                          0,
@@ -13465,12 +13459,6 @@ BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("galg
                                          0,
                                          "emit-syntax-diagrams",
                                          "Emit grammar syntax diagrams in TEX files") ;
-
-BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ("galgas_cli_options",
-                                         "errorValueClassDeclaration",
-                                         0,
-                                         "error-value-class-declaration",
-                                         "Error on 'value class' declaration") ;
 
 BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ("galgas_cli_options",
                                          "errorAnomynousForInstructionEnumeratedObject",

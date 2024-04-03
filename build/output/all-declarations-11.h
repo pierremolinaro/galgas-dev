@@ -7211,8 +7211,6 @@ class cParser_galgas_33_ExpressionSyntax {
 //
 //--------------------------------------------------------------------------------------------------
 
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorClassDeclaration ;
-
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
 
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
@@ -7222,8 +7220,6 @@ extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexi
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ;
 
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
-
-extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorValueClassDeclaration ;
 
 extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorAnomynousForInstructionEnumeratedObject ;
 
