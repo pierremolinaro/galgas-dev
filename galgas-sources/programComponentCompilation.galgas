@@ -83,7 +83,7 @@ proc compileBeforeClauseGalgas3
   ioDecoratedDeclarationListForGeneration +=
     !@routineImplementationForGeneration.new {
       !generateHeader: false # Has no header
-      !mImplementationCppFileName: "proc-before"
+      !implementationCppFileName: "proc-before"
       !routineMangledName:"before"
       !@formalParameterListForGeneration {}
       !true # Generate static
@@ -133,7 +133,7 @@ private proc compileProgramRulesGalgas3
     ioDecoratedDeclarationListForGeneration +=
       !@routineImplementationForGeneration.new {
         !generateHeader: false # Has no header
-        !mImplementationCppFileName: "proc-programrule"
+        !implementationCppFileName: "proc-programrule"
         !routineMangledName: "programRule_" + [ruleIndex string]
         !routineSignature
         !true # Generate static
@@ -182,7 +182,7 @@ proc compileAfterClauseGalgas3
 #---
   ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration.new {
     !generateHeader: false # Has no header
-    !mImplementationCppFileName: "proc-after"
+    !implementationCppFileName: "proc-after"
     !routineMangledName: "after"
     !@formalParameterListForGeneration {}
     !true # Generate static
@@ -267,7 +267,7 @@ proc compileProgramComponentGalgas3
 #---
   outProgramComponentForGeneration = @programComponentForGeneration.new {
     !generateHeader: false # No header
-    !mImplementationCppFileName: "program"
+    !implementationCppFileName: "program"
     !inclusionSet
     !cppContents
   }

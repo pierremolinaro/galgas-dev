@@ -150,7 +150,7 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
       !self.mExtensionMethodName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !.new {!"@" + self.mTypeName !self.mTypeName.location}]
   #---
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionMethodMapForBuildingContext insertKey
@@ -252,7 +252,7 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
       !infoMessage:"extension method " + self.mExtensionMethodName
       !@extensionMethodForGeneration.new {
         !generateHeader: true # Generate Cpp header file
-        !mImplementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
+        !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
         !selfType
         !self.mExtensionMethodName.string
         !implementedAsFunction

@@ -328,7 +328,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !infoMessage: "override extension getter " + self.mOverridingExtensionGetterName
     !@overrideExtensionGetterForGeneration.new {
       !generateHeader: false # Do not generate Cpp header file
-      !mImplementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionGetterName fileNameRepresentation]
+      !implementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionGetterName fileNameRepresentation]
       !selfType
       !baseTypeName
       !self.mOverridingExtensionGetterName.string

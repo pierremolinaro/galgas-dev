@@ -288,7 +288,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration.new {
       !generateHeader: false # Do not generate Cpp header file
-      !mImplementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
+      !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
       !selfType
       !baseTypeName
       !self.mOverridingExtensionMethodName.string

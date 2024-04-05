@@ -24,200 +24,224 @@
 #! Grammar
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @grammarForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
-  for (s) in self.mSyntaxComponents do
-    ioInclusionSet += !"syntax-" + [s fileNameRepresentation]
-  end
-  outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
-    ![self.mLexiqueName identifierRepresentation]
-    !self.mNonTerminalMapForGrammarAnalysis
-    !self.mNonTerminalToAddList
-    !self.mStartSymbolName
-    !self.mHasTranslateFeature
-    !self.mGrammarName
-    !self.mSyntaxComponents
-   ]
-}
+refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  public let @string mGrammarName
+  public let @string mLexiqueName
+  public let @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
+  public let @nonTerminalToAddList mNonTerminalToAddList
+  public let @lstringlist mSyntaxComponents
+  public let @string mStartSymbolName
+  public let @bool mHasTranslateFeature
+  public let @string mCppFileContents
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @grammarForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap inUnifiedTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation
-{
-  ioInclusionSet += !"grammar-" + [self.mGrammarName fileNameRepresentation]
-  for nonTerminal in self.mNonTerminalMapForGrammarAnalysis do
-    for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
-      for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
-        switch mFormalArgumentPassingModeForGrammarAnalysis
-        case argumentConstantIn, argumentIn :
-          let t = [inUnifiedTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
-          [t addHeaderFileName !?ioInclusionSet]
-        case argumentInOut, argumentOut :
+  override method appendDeclaration1 ?!@stringset ioInclusionSet
+                                     !@string outHeader {
+    for (s) in self.mSyntaxComponents do
+      ioInclusionSet += !"syntax-" + [s fileNameRepresentation]
+    end
+    outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
+      ![self.mLexiqueName identifierRepresentation]
+      !self.mNonTerminalMapForGrammarAnalysis
+      !self.mNonTerminalToAddList
+      !self.mStartSymbolName
+      !self.mHasTranslateFeature
+      !self.mGrammarName
+      !self.mSyntaxComponents
+     ]
+  }
+
+  #·······························································································
+
+  override method appendSpecificImplementation ?let @unifiedTypeMap inUnifiedTypeMap
+                                                ?!@stringset ioInclusionSet
+                                                !@string outImplementation {
+    ioInclusionSet += !"grammar-" + [self.mGrammarName fileNameRepresentation]
+    for nonTerminal in self.mNonTerminalMapForGrammarAnalysis do
+      for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
+        for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
+          switch mFormalArgumentPassingModeForGrammarAnalysis
+          case argumentConstantIn, argumentIn :
+            let t = [inUnifiedTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
+            [t addHeaderFileName !?ioInclusionSet]
+          case argumentInOut, argumentOut :
+          end
         end
       end
     end
-  end
-  outImplementation = self.mCppFileContents
+    outImplementation = self.mCppFileContents
+  }
+
+  #·······························································································
+
+  override getter getImplementationCppFileName -> @string {
+    result = "grammar-" + [self.mGrammarName fileNameRepresentation]
+  }
+
+  #·······························································································
+
+  override getter hasCppHeaderFile -> @bool {
+    result = false
+  }
+
+  #·······························································································
+
+  override getter headerKind -> @headerKind {
+    result = @headerKind.oneHeader
+  }
+
+  #·······························································································
+
+  override getter isPredefined -> @bool {
+    result = false
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @grammarForGeneration implementationCppFileName -> @string {
-  result = "grammar-" + [self.mGrammarName fileNameRepresentation]
-}
+refclass @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
+  public let @string mSyntaxComponentName
+  public let @string mLexiqueName
+  public let @nonterminalMap mNonterminalDeclarationMap
+  public let @ruleDeclarationList mRuleDeclarationList
+  public let @uint mSelectMethodCount
+  public let @bool mHasIndexing
+  public let @bool mHasTranslateFeature
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override getter @grammarForGeneration hasCppHeaderFile -> @bool {
-  result = false
-}
+  override getter getImplementationCppFileName -> @string {
+    result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
+  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override getter @grammarForGeneration headerKind -> @headerKind {
-  result = @headerKind.oneHeader
-}
+  override getter hasCppHeaderFile -> @bool {
+    result = false
+  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override getter @grammarForGeneration isPredefined -> @bool {
-  result = false
-}
+  override getter headerKind -> @headerKind {
+    result = .oneHeader
+  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! Syntax
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string {
-  result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
-}
+  override getter isPredefined -> @bool {
+    result = false
+  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override getter @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool {
-  result = false
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @syntaxDeclarationForGeneration headerKind -> @headerKind {
-  result = @headerKind.oneHeader
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @syntaxDeclarationForGeneration isPredefined -> @bool {
-  result = false
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @syntaxDeclarationForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
-                                                                   !@string outHeader {
-  ioInclusionSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation]
-  var selectMethodList = @uintlist {}
-  var @uint idx = 0
-  loop (self.mSelectMethodCount + 1)
-  while idx < self.mSelectMethodCount do
-    selectMethodList += !idx
-    idx += 1
-  end
-  outHeader = [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
-    !self.mSyntaxComponentName
-    ![self.mLexiqueName identifierRepresentation]
-    !self.mNonterminalDeclarationMap
-    !self.mRuleDeclarationList
-    !selectMethodList
-    !self.mHasIndexing
-    !self.mHasTranslateFeature
-  ]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @syntaxDeclarationForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation
-{
-  ioInclusionSet += !"syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
-  outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
-    !{}
-  ]
-#---
-  let lexiqueCppName = "Lexique_" + [self.mLexiqueName identifierRepresentation]
-  for (mNonterminalName mRuleIndex mLabelImplementationList) in self.mRuleDeclarationList do
-  #--- Generate rule label implementation
-    for (mLabelName mSignatureForGeneration * * mInstructionListForGeneration) in mLabelImplementationList do
-      let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
-        + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
-        + [mNonterminalName identifierRepresentation]
-        + "_i" + [mRuleIndex string] + "_" + [mLabelName identifierRepresentation]
-      outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
-      generateProcedure (
-        !static:false
-        !ruleName
-        !?ioInclusionSet
-        !mSignatureForGeneration
-        !mInstructionListForGeneration
-        !false
-        !lexiqueCppName
-        !false # Do not generate location Argument
-        !false # Do not generate 'resetTemplateString'
-        !self.mHasTranslateFeature
-        ?let @string code
-      )
-      outImplementation += code
+  override method appendDeclaration1 ?!@stringset ioInclusionSet
+                                     !@string outHeader {
+    ioInclusionSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation]
+    var selectMethodList = @uintlist {}
+    var @uint idx = 0
+    loop (self.mSelectMethodCount + 1)
+    while idx < self.mSelectMethodCount do
+      selectMethodList += !idx
+      idx += 1
     end
-  #--- Generate "parse" label
-    [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
-    let @string parseRuleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
-    + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
-    + [mNonterminalName identifierRepresentation]
-    + "_i" + [mRuleIndex string] + "_parse"
-    outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
-    generateProcedure (
-      !static:false
-      !parseRuleName
-      !?ioInclusionSet
-      !@formalParameterListForGeneration {}
-      !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
-      !false
-      !lexiqueCppName
-      !false # Do not generate location Argument
-      !true # Generate 'resetTemplateString'
+    outHeader = [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
+      !self.mSyntaxComponentName
+      ![self.mLexiqueName identifierRepresentation]
+      !self.mNonterminalDeclarationMap
+      !self.mRuleDeclarationList
+      !selectMethodList
+      !self.mHasIndexing
       !self.mHasTranslateFeature
-      ?let @string parseCode
-    )
-    outImplementation += parseCode
-  #--- Generate indexing code
-    if self.mHasIndexing then
-      [mLabelImplementationList first ?* ?* ?* ?* ?let instructionList]
-      let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
+    ]
+  }
+
+  #·······························································································
+
+  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+                                              ?!@stringset ioInclusionSet
+                                              !@string outImplementation {
+    ioInclusionSet += !"syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
+    outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
+      !{}
+    ]
+  #---
+    let lexiqueCppName = "Lexique_" + [self.mLexiqueName identifierRepresentation]
+    for (mNonterminalName mRuleIndex mLabelImplementationList) in self.mRuleDeclarationList do
+    #--- Generate rule label implementation
+      for (mLabelName mSignatureForGeneration * * mInstructionListForGeneration) in mLabelImplementationList do
+        let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
+          + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
+          + [mNonterminalName identifierRepresentation]
+          + "_i" + [mRuleIndex string] + "_" + [mLabelName identifierRepresentation]
+        outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
+        generateProcedure (
+          !static:false
+          !ruleName
+          !?ioInclusionSet
+          !mSignatureForGeneration
+          !mInstructionListForGeneration
+          !false
+          !lexiqueCppName
+          !false # Do not generate location Argument
+          !false # Do not generate 'resetTemplateString'
+          !self.mHasTranslateFeature
+          ?let @string code
+        )
+        outImplementation += code
+      end
+    #--- Generate "parse" label
+      [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
+      let @string parseRuleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
       + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
       + [mNonterminalName identifierRepresentation]
-      + "_i" + [mRuleIndex string] + "_indexing"
-      outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+      + "_i" + [mRuleIndex string] + "_parse"
+      outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
       generateProcedure (
         !static:false
-        !ruleName
+        !parseRuleName
         !?ioInclusionSet
         !@formalParameterListForGeneration {}
-        !syntaxSignatureOfInstructionList (!"indexing" !instructionList)
+        !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
         !false
         !lexiqueCppName
         !false # Do not generate location Argument
-        !false # Do not generate 'resetTemplateString'
-        !false # Do not generate syntaxDirectedTranslationString argument
-        ?let @string code
+        !true # Generate 'resetTemplateString'
+        !self.mHasTranslateFeature
+        ?let @string parseCode
       )
-      outImplementation += code
+      outImplementation += parseCode
+    #--- Generate indexing code
+      if self.mHasIndexing then
+        [mLabelImplementationList first ?* ?* ?* ?* ?let instructionList]
+        let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
+        + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
+        + [mNonterminalName identifierRepresentation]
+        + "_i" + [mRuleIndex string] + "_indexing"
+        outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
+        generateProcedure (
+          !static:false
+          !ruleName
+          !?ioInclusionSet
+          !@formalParameterListForGeneration {}
+          !syntaxSignatureOfInstructionList (!"indexing" !instructionList)
+          !false
+          !lexiqueCppName
+          !false # Do not generate location Argument
+          !false # Do not generate 'resetTemplateString'
+          !false # Do not generate syntaxDirectedTranslationString argument
+          ?let @string code
+        )
+        outImplementation += code
+      end
     end
-  end
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

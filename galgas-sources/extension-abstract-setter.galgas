@@ -156,7 +156,7 @@ override method @abstractExtensionSetterAST semanticAnalysis
     !infoMessage: " abstract extension setter " + self.mAbstractExtensionSetterName
     !@abstractExtensionSetterForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
+      !implementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionSetterName.string
       !formalParameterListForGeneration

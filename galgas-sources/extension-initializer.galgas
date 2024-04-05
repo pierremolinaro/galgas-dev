@@ -216,7 +216,7 @@ refclass @initializerAST : @semanticDeclarationAST {
       !infoMessage: "initializer @" + self.mTypeName + initializerName
       !@extensionInitializerForGeneration.new {
         !generateHeader: false # Generate Cpp header file
-        !mImplementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
+        !implementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
         !selfType
         !initializerName
         !formalParameterListForGeneration
@@ -259,7 +259,7 @@ refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForG
   private let @string initializerName
   private let @formalInputParameterListForGeneration formalParameterList
   private let @typedPropertyList mTypedAttributeList
-  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let @semanticInstructionListForGeneration semanticInstructionListForGeneration
 
   #·······························································································
 
@@ -280,7 +280,7 @@ refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForG
       !self.initializerName
       !?ioInclusionSet
       !self.formalParameterList
-      !self.mSemanticInstructionListForGeneration
+      !self.semanticInstructionListForGeneration
       ?let @string methodImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.initializerImplementation

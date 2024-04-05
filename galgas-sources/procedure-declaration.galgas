@@ -248,7 +248,7 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
       !infoMessage: "proc " + mangledName
       !@routineImplementationForGeneration.new {
         !generateHeader: true # Generate Cpp header file
-        !mImplementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
+        !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
         !routineMangledName: mangledName.string
         !formalArgumentList
         !false # Do not generate static

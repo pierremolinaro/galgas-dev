@@ -234,7 +234,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
     !infoMessage: "abstract extension getter " + self.mAbstractExtensionGetterName
     !@abstractExtensionGetterForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
+      !implementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionGetterName.string
       ![ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]

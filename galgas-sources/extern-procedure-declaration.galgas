@@ -195,7 +195,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
       !infoMessage: "proc " + mangledName
       !@routinePrototypeDeclarationForGeneration.new {
         !generateHeader: true # Generate Cpp header file
-        !mImplementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
+        !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
         !routineMangledName: mangledName.string # self.mRoutineName.string
         !formalArgumentList
        }

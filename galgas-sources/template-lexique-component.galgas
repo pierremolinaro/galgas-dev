@@ -436,7 +436,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !infoMessage: ""
       !@lexiqueDeclarationForGeneration.new {
         !generateHeader: true # has header
-        !mImplementationCppFileName: "lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
+        !implementationCppFileName: "lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
         !self.mLexiqueComponentName.string
         !self.mLexiqueSuperComponentName.string
         !headerContents

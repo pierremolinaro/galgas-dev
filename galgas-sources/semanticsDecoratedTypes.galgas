@@ -226,7 +226,7 @@ method @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@st
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract getter @semanticDeclarationForGeneration implementationCppFileName -> @string
+abstract getter @semanticDeclarationForGeneration getImplementationCppFileName -> @string
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -259,7 +259,7 @@ abstract refclass @semanticTypeForGeneration : @semanticDeclarationForGeneration
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticTypeForGeneration implementationCppFileName -> @string {
+override getter @semanticTypeForGeneration getImplementationCppFileName -> @string {
   result = [self.mSelfTypeEntry definition].mHeaderFileName
 }
 
@@ -289,13 +289,13 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind {
 
 abstract refclass @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
   public let @bool generateHeader %selector
-  public let @string mImplementationCppFileName %selector
+  public let @string implementationCppFileName %selector
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @semanticDeclarationWithHeaderForGeneration implementationCppFileName -> @string {
-  result = self.mImplementationCppFileName
+override getter @semanticDeclarationWithHeaderForGeneration getImplementationCppFileName -> @string {
+  result = self.implementationCppFileName
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -375,20 +375,6 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
 list @nonTerminalToAddList {
   public let @string mSyntaxComponentName
   public let @uint mNonTerminalToAddCount
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public let @string mGrammarName
-  public let @string mLexiqueName
-  public let @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
-  public let @nonTerminalToAddList mNonTerminalToAddList
-#  public let @bool mHasIndexing
-  public let @lstringlist mSyntaxComponents
-  public let @string mStartSymbolName
-  public let @bool mHasTranslateFeature
-  public let @string mCppFileContents
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

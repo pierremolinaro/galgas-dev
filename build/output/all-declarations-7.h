@@ -2286,14 +2286,14 @@ class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
 //--- Extension getter appendTypeGenericImplementation
   public: virtual class GALGAS_string getter_appendTypeGenericImplementation (Compiler * COMMA_LOCATION_ARGS) const ;
 
+//--- Extension getter getImplementationCppFileName
+  public: virtual class GALGAS_string getter_getImplementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
 //--- Extension getter hasCppHeaderFile
   public: virtual class GALGAS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
-
-//--- Extension getter implementationCppFileName
-  public: virtual class GALGAS_string getter_implementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension getter isPredefined
   public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
@@ -2423,13 +2423,13 @@ void callExtensionMethod_appendPrimitiveTypePreDeclaration (class cPtr_semanticD
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension getter '@semanticDeclarationForGeneration implementationCppFileName'
+//Abstract extension getter '@semanticDeclarationForGeneration getImplementationCppFileName'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_string callExtensionGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+class GALGAS_string callExtensionGetter_getImplementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                      class Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6582,6 +6582,73 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleDeclarationList
 
 //--------------------------------------------------------------------------------------------------
 //
+//Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionAST * inObject,
+                                                   const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                   class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                   const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                   class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                   const class GALGAS_bool constin_inHasTranslateFeature,
+                                                   const class GALGAS_terminalMap constin_inTerminalMap,
+                                                   const class GALGAS_string constin_inLexiqueName,
+                                                   const class GALGAS_nonterminalMap constin_inNonterminalMap,
+                                                   const class GALGAS_string constin_inComponentName,
+                                                   const class GALGAS_stringset constin_inIndexNameSet,
+                                                   class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                   class GALGAS_localVarManager & io_ioVariableMap,
+                                                   class GALGAS_uint & io_ioSelectMethodCount,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractInputParameter analyzeInputParameter'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParameter * inObject,
+                                                const class GALGAS_analysisContext constin_inAnalysisContext,
+                                                class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                const class GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
+                                                const class GALGAS_string constin_inLexicalAttributeName,
+                                                class GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
+                                                class GALGAS_localVarManager & io_ioVariableMap,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+                                     const class GALGAS_analysisContext constin_inAnalysisContext,
+                                     class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                     const class GALGAS_bool constin_inHasTranslateFeature,
+                                     class GALGAS_localVarManager & io_ioVariableMap,
+                                     class Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateCode (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+                                       const class GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
+                                       const class GALGAS_string constin_inAccessMethodName,
+                                       class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                       class GALGAS_string & io_ioGeneratedCode,
+                                       class Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @syntaxDeclarationForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -6672,14 +6739,14 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+//--- Extension getter getImplementationCppFileName
+  public: virtual class GALGAS_string getter_getImplementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
+
 //--- Extension getter hasCppHeaderFile
   public: virtual class GALGAS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter headerKind
   public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter implementationCppFileName
-  public: virtual class GALGAS_string getter_implementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter isPredefined
   public: virtual class GALGAS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -6786,73 +6853,6 @@ class GALGAS_syntaxDeclarationForGeneration_2D_weak : public GALGAS_semanticDecl
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionAST * inObject,
-                                                   const class GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                   class GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                   const class GALGAS_analysisContext constin_inAnalysisContext,
-                                                   class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                   const class GALGAS_bool constin_inHasTranslateFeature,
-                                                   const class GALGAS_terminalMap constin_inTerminalMap,
-                                                   const class GALGAS_string constin_inLexiqueName,
-                                                   const class GALGAS_nonterminalMap constin_inNonterminalMap,
-                                                   const class GALGAS_string constin_inComponentName,
-                                                   const class GALGAS_stringset constin_inIndexNameSet,
-                                                   class GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                   class GALGAS_localVarManager & io_ioVariableMap,
-                                                   class GALGAS_uint & io_ioSelectMethodCount,
-                                                   class Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractInputParameter analyzeInputParameter'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParameter * inObject,
-                                                const class GALGAS_analysisContext constin_inAnalysisContext,
-                                                class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                const class GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
-                                                const class GALGAS_string constin_inLexicalAttributeName,
-                                                class GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
-                                                class GALGAS_localVarManager & io_ioVariableMap,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                     const class GALGAS_analysisContext constin_inAnalysisContext,
-                                     class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                     const class GALGAS_bool constin_inHasTranslateFeature,
-                                     class GALGAS_localVarManager & io_ioVariableMap,
-                                     class Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_generateCode (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                       const class GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
-                                       const class GALGAS_string constin_inAccessMethodName,
-                                       class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                       class GALGAS_string & io_ioGeneratedCode,
-                                       class Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

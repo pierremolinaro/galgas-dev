@@ -291,7 +291,7 @@ override method @extensionGetterAST semanticAnalysis
     !infoMessage:"extension getter " + self.mExtensionGetterName
     !@extensionGetterForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "getter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
+      !implementationCppFileName: "getter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mExtensionGetterName.string
       !implementedAsFunctionNew

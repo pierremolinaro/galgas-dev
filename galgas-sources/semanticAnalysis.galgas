@@ -323,7 +323,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
     !infoMessage: "extern func " + self.mFunctionName
     !@functionPrototypeDeclarationForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
+      !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !formalArgumentList
       ![ioTypeMap typeMapEntryForLKey !self.mResultTypeName]
@@ -551,7 +551,7 @@ override method @functionDeclarationAST semanticAnalysis
     !infoMessage: "function " + self.mFunctionName
     !@functionImplementationForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
+      !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !formalInputParameterList
       !returnType
@@ -607,7 +607,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !infoMessage: "once function " + self.mFunctionName
     !@onceFunctionDeclarationForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
+      !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !returnType
       !resultVariableCppName
@@ -703,7 +703,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       !infoMessage: "filewrapper " + self.mFilewrapperName
       !@filewrapperDeclarationForGeneration.new {
         !generateHeader: true # Generate Cpp header file
-        !mImplementationCppFileName: "filewrapper-" + self.mFilewrapperName
+        !implementationCppFileName: "filewrapper-" + self.mFilewrapperName
         !self.mFilewrapperName.string
         !self.mFilewrapperPath.string
         !wrapperFileMap
@@ -950,7 +950,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     !infoMessage: ""
     !@grammarForGeneration.new {
       !generateHeader:  true # has header
-      !mImplementationCppFileName: "grammar-" + [self.mGrammarComponentName fileNameRepresentation]
+      !implementationCppFileName: "grammar-" + [self.mGrammarComponentName fileNameRepresentation]
       !self.mGrammarComponentName.string
       !lexiqueComponentName.string
       !nonTerminalMapForGrammarAnalysis
@@ -1034,18 +1034,6 @@ list @ruleDeclarationList {
   public let @string mNonterminalName
   public let @uint mRuleIndex
   public let @ruleLabelImplementationList mLabelImplementationList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
-  public let @string mSyntaxComponentName
-  public let @string mLexiqueName
-  public let @nonterminalMap mNonterminalDeclarationMap
-  public let @ruleDeclarationList mRuleDeclarationList
-  public let @uint mSelectMethodCount
-  public let @bool mHasIndexing
-  public let @bool mHasTranslateFeature
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

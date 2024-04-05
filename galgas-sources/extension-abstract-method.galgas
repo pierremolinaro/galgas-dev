@@ -200,7 +200,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
     !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
     !@abstractExtensionMethodForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+      !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
       !selfType
       !self.mAbstractExtensionMethodName.string
       !formalParameterListForGeneration

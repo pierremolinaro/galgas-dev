@@ -332,7 +332,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
     !infoMessage: "option " + self.mOptionComponentName
     !@optionComponentForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
+      !implementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
       !optionIsPredefined
       !self.mOptionComponentName.string
       !boolOptionSortedList

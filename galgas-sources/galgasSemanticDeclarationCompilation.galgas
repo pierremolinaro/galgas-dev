@@ -304,7 +304,7 @@ private proc generateManyHeaders
       [declaration.mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
       var headerIncludes1 = ""
       if [inclusionSet1 hasKey !""] then
-        println (!"Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + "headers 1")
+        println (!"Empty inclusion in " + [declaration.mDeclaration getImplementationCppFileName] + "headers 1")
       end
       for (s) in inclusionSet1 do
         headerIncludes1 += "#include \"" + s + ".h\"\n"
@@ -314,7 +314,7 @@ private proc generateManyHeaders
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerDef2]
       var headerIncludes2 = ""
       if [inclusionSet2 hasKey !""] then
-        println (!"Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + "headers 2")
+        println (!"Empty inclusion in " + [declaration.mDeclaration getImplementationCppFileName] + "headers 2")
       end
       for (s) in inclusionSet2 do
         headerIncludes2 += "#include \"" + s + ".h\"\n"
@@ -359,7 +359,7 @@ private proc generateManyHeaders
         headerString += headerIncludes1
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
-        let headerFileName = [declaration.mDeclaration implementationCppFileName]
+        let headerFileName = [declaration.mDeclaration getImplementationCppFileName]
            + if [declaration.mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
         ioAllProductFileSet += !headerFileName + ".h"
@@ -372,21 +372,21 @@ private proc generateManyHeaders
       end
     #--- Header 2
       if [declaration.mDeclaration headerKind] == @headerKind.twoHeaders then
-        var headerString = "#ifndef " + [[declaration.mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n"
-        headerString += "#define " + [[declaration.mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
+        var headerString = "#ifndef " + [[declaration.mDeclaration getImplementationCppFileName] identifierRepresentation] + "_DEFINED\n"
+        headerString += "#define " + [[declaration.mDeclaration getImplementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
-        headerString += "#include \"" + [declaration.mDeclaration implementationCppFileName] + "-1.h\"\n"
+        headerString += "#include \"" + [declaration.mDeclaration getImplementationCppFileName] + "-1.h\"\n"
         headerString += "\n//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += headerIncludes2
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#endif\n\n"
-        headerInclusionList2 += ![declaration.mDeclaration implementationCppFileName]
-        ioAllProductFileSet += ![declaration.mDeclaration implementationCppFileName] + ".h"
-        ioToolHeaderFileList += ![declaration.mDeclaration implementationCppFileName] + ".h"
+        headerInclusionList2 += ![declaration.mDeclaration getImplementationCppFileName]
+        ioAllProductFileSet += ![declaration.mDeclaration getImplementationCppFileName] + ".h"
+        ioToolHeaderFileList += ![declaration.mDeclaration getImplementationCppFileName] + ".h"
         [@string generateFile
           !inProductDirectory
-          ![declaration.mDeclaration implementationCppFileName] + ".h"
+          ![declaration.mDeclaration getImplementationCppFileName] + ".h"
           !headerString
         ]
       end
@@ -516,7 +516,7 @@ private proc generateFewImplementationFiles
     if not [declaration.mDeclaration isPredefined] then
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
       if [inclusionSet hasKey !""] then
-        println (!"Empty inclusion in " + [declaration.mDeclaration implementationCppFileName] + " cpp headers")
+        println (!"Empty inclusion in " + [declaration.mDeclaration getImplementationCppFileName] + " cpp headers")
       end
       implementationString += code
       implementationString += [declaration.mDeclaration appendTypeGenericImplementation]
@@ -579,7 +579,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       var @stringset inclusionSet2 = {}
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerString2]
       if [declaration.mDeclaration headerKind] != .noHeader then
-        let headerFileName = [declaration.mDeclaration implementationCppFileName] + if [declaration.mDeclaration headerKind] == .twoHeaders then "-1" else "" end
+        let headerFileName = [declaration.mDeclaration getImplementationCppFileName] + if [declaration.mDeclaration headerKind] == .twoHeaders then "-1" else "" end
         [!?headerCompositionMap insertKey
           ![headerFileName nowhere]
           !inclusionSet1
@@ -588,8 +588,8 @@ private proc generateFewImplementationFilesWithFewHeaders
       end
       if [declaration.mDeclaration headerKind] == .twoHeaders then
         [!?headerCompositionMap insertKey
-          ![[declaration.mDeclaration implementationCppFileName] nowhere]
-          !inclusionSet2 | @stringset {![declaration.mDeclaration implementationCppFileName] + "-1"}
+          ![[declaration.mDeclaration getImplementationCppFileName] nowhere]
+          !inclusionSet2 | @stringset {![declaration.mDeclaration getImplementationCppFileName] + "-1"}
           !headerString2
         ]
       end
@@ -605,10 +605,10 @@ private proc generateFewImplementationFilesWithFewHeaders
     if not [declaration.mDeclaration isPredefined] then
       if not [declaration.mDeclaration isPredefined] then
         if [declaration.mDeclaration headerKind] == .twoHeaders then
-          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration implementationCppFileName] +"-1" !?headerRepartitionMap !?headerString)
-          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString)
+          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration getImplementationCppFileName] +"-1" !?headerRepartitionMap !?headerString)
+          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration getImplementationCppFileName] !?headerRepartitionMap !?headerString)
         elsif [declaration.mDeclaration headerKind] == .oneHeader then
-          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString)
+          buildHeader (!headerCompositionMap !headerFileName ![declaration.mDeclaration getImplementationCppFileName] !?headerRepartitionMap !?headerString)
         end
       end
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
@@ -707,7 +707,7 @@ private proc generateManyImplementationFiles
     if not [declaration.mDeclaration isPredefined] then
       [declaration.mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?var @string implementationString]
       if [declaration.mDeclaration hasCppHeaderFile] then
-       inclusionSet += ![declaration.mDeclaration implementationCppFileName]
+       inclusionSet += ![declaration.mDeclaration getImplementationCppFileName]
       end
       if useOneHugeHeader then
         inclusionSet = {!"all-declarations"}
@@ -716,7 +716,7 @@ private proc generateManyImplementationFiles
         ![inclusionSet stringList]
       ]
       implementationString += [declaration.mDeclaration appendTypeGenericImplementation]
-      let fileName = [declaration.mDeclaration implementationCppFileName] + ".cpp"
+      let fileName = [declaration.mDeclaration getImplementationCppFileName] + ".cpp"
       ioAllProductFileSet += !fileName
       [@string generateFile
         !inProductDirectory

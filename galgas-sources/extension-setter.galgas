@@ -249,7 +249,7 @@ override method @extensionSetterAST semanticAnalysis
     !infoMessage:"extension setter " + self.mExtensionSetterName
     !@extensionSetterForGeneration.new {
       !generateHeader: true # Generate Cpp header file
-      !mImplementationCppFileName: "setter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
+      !implementationCppFileName: "setter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
       !selfType
       !self.mExtensionSetterName.string
       !implementedAsFunction

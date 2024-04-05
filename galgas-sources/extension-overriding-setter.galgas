@@ -198,7 +198,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !infoMessage: " overriding extension setter " + self.mOverridingExtensionSetterName
     !@overridingExtensionSetterForGeneration.new {
       !generateHeader: false # Do not generate Cpp header file
-      !mImplementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionSetterName fileNameRepresentation]
+      !implementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionSetterName fileNameRepresentation]
       !selfType
       !baseTypeName
       !self.mOverridingExtensionSetterName.string
