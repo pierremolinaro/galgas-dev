@@ -299,7 +299,7 @@ refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForG
 # INITIALIZER IMPLEMENTATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
+private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
                          ?let @string inInitializerName
                          ?!@stringset ioInclusionSet
                          ?let @formalInputParameterListForGeneration inFormalArgumentList

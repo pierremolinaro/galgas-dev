@@ -11859,6 +11859,11 @@ class GALGAS_functionSignature_2D_element : public AC_GALGAS_root {
     return mProperty_mFormalArgumentName ;
   }
 
+  public: GALGAS_bool mProperty_isConstant ;
+  public: inline GALGAS_bool readProperty_isConstant (void) const {
+    return mProperty_isConstant ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -11879,6 +11884,10 @@ class GALGAS_functionSignature_2D_element : public AC_GALGAS_root {
     mProperty_mFormalArgumentName = inValue ;
   }
 
+  public: inline void setter_setIsConstant (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_isConstant = inValue ;
+  }
+
 //--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_functionSignature_2D_element (void) ;
 
@@ -11888,16 +11897,18 @@ class GALGAS_functionSignature_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_functionSignature_2D_element (const GALGAS_lstring & in_mFormalSelector,
                                                const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                               const GALGAS_string & in_mFormalArgumentName) ;
+                                               const GALGAS_string & in_mFormalArgumentName,
+                                               const GALGAS_bool & in_isConstant) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_functionSignature_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                           const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                           const class GALGAS_string & inOperand2,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_functionSignature_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                               const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                               const class GALGAS_string & inOperand2,
+                                                                               const class GALGAS_bool & inOperand3,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11911,6 +11922,7 @@ class GALGAS_functionSignature_2D_element : public AC_GALGAS_root {
   public: static class GALGAS_functionSignature_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand1,
                                                                            const class GALGAS_string & inOperand2,
+                                                                           const class GALGAS_bool & inOperand3,
                                                                            class Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 

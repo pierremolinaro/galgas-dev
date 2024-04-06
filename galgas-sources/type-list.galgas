@@ -168,6 +168,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       ![selector nowhere]
       !mPropertyTypeEntry
       !mPropertyName.string
+      !true
     setterOutputFormalArgumentList +=
       ![selector nowhere]
       !mPropertyTypeEntry
@@ -240,7 +241,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !@lstring.new {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
-      !@functionSignature {!["" nowhere] !uintType !"inIndex"}
+      !@functionSignature {!["" nowhere] !uintType !"inIndex"  !true}
       !@location.here
       !true
       !mPropertyTypeEntry

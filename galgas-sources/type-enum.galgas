@@ -190,7 +190,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     var @functionSignature argumentTypeList = {}
     for (typeName selectorName) in mAssociatedValueDefinitionList do
       [!?ioTypeMap makeEntry  !typeName ?let associatedTypeEntry]
-      argumentTypeList += !selectorName !associatedTypeEntry !typeName.string
+      argumentTypeList += !selectorName !associatedTypeEntry !typeName.string !true
       associatedTypeList += !associatedTypeEntry
       hasAssociatedValues = true
     end

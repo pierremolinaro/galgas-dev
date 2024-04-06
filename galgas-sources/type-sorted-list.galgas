@@ -206,7 +206,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     let hasSelector = false
     typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
-    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
     setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
     setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentIn !mPropertyName.string
   end

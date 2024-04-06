@@ -115,7 +115,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     : outExpression
   else
     var semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for (mFormalSelector mFormalArgumentType *) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
+    for (mFormalSelector mFormalArgumentType 2*) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

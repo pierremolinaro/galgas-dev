@@ -439,7 +439,11 @@ proc addExtensions
       var @functionSignature formalArgumentList = {}
       for formalInputArgument in mInputFormalParameterList do
         [!?ioTypeMap makeEntry !formalInputArgument.mFormalArgumentTypeName ?let typeIndex]
-        formalArgumentList += !formalInputArgument.mFormalSelector !typeIndex !formalInputArgument.mFormalArgumentName.string
+        formalArgumentList +=
+          !formalInputArgument.mFormalSelector
+          !typeIndex
+          !formalInputArgument.mFormalArgumentName.string
+          !formalInputArgument.mIsConstant
       end
       [!?ioTypeMap makeEntry !mResultTypeName ?let returnedType]
       if qualifier == .isVirtualOverriding then
@@ -553,9 +557,9 @@ proc addExtensions
     [inExtensionInitializerMapForBuildingContext searchKey !inTypeName ?let initializerMapForType]
     for (lkey mFormalParameterList) in initializerMapForType do
       var @functionSignature formalArgumentList = {}
-     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * *) in mFormalParameterList do
+     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * isConstant) in mFormalParameterList do
         [!?ioTypeMap makeEntry !mFormalArgumentTypeName ?let typeIndex]
-        formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
+        formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string !isConstant
       end
 #      for parameter in mFormalParameterList do
 #        [!?ioTypeMap makeEntry !parameter.mFormalArgumentTypeName ?let typeIndex]
@@ -674,9 +678,9 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   var @filewrapperTemplateMap filewrapperTemplateMap = {}
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
     var @functionSignature templateSignature = {}
-    for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
+    for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName isConstant) in mFilewrapperTemplateFormalInputParameters do
       [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
-      templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
+      templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string !isConstant
     end
     [!?filewrapperTemplateMap insertKey
       !mFilewrapperTemplateName
@@ -748,9 +752,9 @@ override method @externFunctionDeclarationAST enterDeclarationInSemanticContext 
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var functionSignature = @functionSignature {}
-  for (mFormalSelector mFormalArgumentTypeName * * *) in self.mFormalArgumentList do
+  for (mFormalSelector mFormalArgumentTypeName * * isConstant) in self.mFormalArgumentList do
     [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
-    functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
+    functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string !isConstant
   end
 #--- Result type
   [!?ioTypeMap makeEntry  !self.mResultTypeName ?let resultTypeIndex]

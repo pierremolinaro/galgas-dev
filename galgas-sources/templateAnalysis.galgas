@@ -182,7 +182,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     else
       var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList,
-          (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+          (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
         if mFormalSelector.string != mActualSelector.string then
           let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
           error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -258,7 +258,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     : classFunctionEffectiveParameterList
   else
     classFunctionEffectiveParameterList = @semanticExpressionListForGeneration {}
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType *) in classFuncFormalArgumentTypeList do
+    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType 2*) in classFuncFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -792,7 +792,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
     : outExpression
   else
     var semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for (mFormalSelector mFormalArgumentType *) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
+    for (mFormalSelector mFormalArgumentType 2*) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression templateExpressionAnalysis
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

@@ -388,7 +388,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     var @functionSignature arguments = {}
     for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
       [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
-      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
+      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
     end
   #---
     [!?classFunctionMap insertKey
@@ -405,7 +405,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     var @functionSignature arguments = {}
     for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
       [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
-      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string
+      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
     end
   #---
     [!?getterMap insertKey

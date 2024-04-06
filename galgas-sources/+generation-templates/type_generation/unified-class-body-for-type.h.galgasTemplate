@@ -3,8 +3,9 @@
 //--------------------------------- Initializers
 % for (lkey formalArgumentList) in INITIALIZER_MAP do
 %  public: static GALGAS_%!TYPE_IDENTIFIER% init%![lkey identifierRepresentation]% (%?^
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in formalArgumentList do (IDX)
-      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName isConstant) in formalArgumentList do (IDX)
+      if isConstant then %const % else end
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
     end
     %Compiler * inCompiler
     %!^%COMMA_LOCATION_ARGS) ;
@@ -22,7 +23,7 @@ if [CLASS_FUNC_MAP count] > 0 then
   %//--------------------------------- GALGAS class functions\n%
   for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CLASS_FUNC_MAP do
     %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% class_func_%![lkey.string identifierRepresentation]% (%?^
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in mArgumentTypeList
       do (IDX) %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
@@ -93,7 +94,7 @@ end
 if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (%?^
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName) in ADD_ASSIGN_ARGUMENT_LIST
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in ADD_ASSIGN_ARGUMENT_LIST
   do (IDX) %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
@@ -341,7 +342,7 @@ for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier rep
     case definedAsMember :
       if (qualifier == [@methodQualifier isVirtualAbstract]) | (qualifier == [@methodQualifier isBasic]) | (qualifier == [@methodQualifier isBasicFinal]) then
         %  public: VIRTUAL_IN_DEBUG class GALGAS_% ![returnedType identifierRepresentation] % getter_% ![lkey.string identifierRepresentation] % (%?^
-        for (mFormalSelector mFormalArgumentType mFormalArgumentName) in argumentTypeList
+        for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in argumentTypeList
           do (IDX) %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
           between %,\n% !^
         end

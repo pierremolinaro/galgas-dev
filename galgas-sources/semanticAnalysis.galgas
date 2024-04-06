@@ -90,7 +90,7 @@ proc checkGetterSignatures
     + " formal parameter(s), but overriden getter declares " + [[inReferenceSignature count] string]
     error inReferenceLocation:"overriden getter is declared here"
   else
-    for (ref_mFormalSelector ref_mFormalArgumentType *) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
+    for (ref_mFormalSelector ref_mFormalArgumentType 2*) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
         let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
         error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }

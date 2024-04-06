@@ -3083,15 +3083,15 @@ GALGAS_string extensionGetter_signature (const GALGAS_functionSignature & inObje
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("(") ;
   const GALGAS_functionSignature temp_0 = inObject ;
-  cEnumerator_functionSignature enumerator_1764 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_1764.hasCurrentObject ()) {
-    result_result.plusAssign_operation(enumerator_1764.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)) ;
-    if (enumerator_1764.hasNextObject ()) {
-      result_result.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 42)) ;
+  cEnumerator_functionSignature enumerator_1794 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_1794.hasCurrentObject ()) {
+    result_result.plusAssign_operation(enumerator_1794.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 41)) ;
+    if (enumerator_1794.hasNextObject ()) {
+      result_result.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 43)) ;
     }
-    enumerator_1764.gotoNextObject () ;
+    enumerator_1794.gotoNextObject () ;
   }
-  result_result.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 44)) ;
+  result_result.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 45)) ;
 //---
   return result_result ;
 }

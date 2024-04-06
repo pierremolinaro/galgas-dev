@@ -202,7 +202,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   var @formalParameterSignature insertSetterFormalArgumentList = {}
   var @typedPropertyList typedPropertyList = {}
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
-  argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key"
+  argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key" !true
   insertSetterFormalArgumentList +=
     !["" nowhere]
     !keyTypeIndex
@@ -225,7 +225,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     [!?ioTypeMap makeEntry !typeName ?let attributeTypeIndex]
     let hasSetter = true
     let hasSelector = false
-    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
     typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: hasSetter !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
@@ -280,7 +280,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
-      !@functionSignature {!["" nowhere] !keyTypeIndex !"inKey"}
+      !@functionSignature {!["" nowhere] !keyTypeIndex !"inKey" !true}
       !@location.here
       !true
       !attributeTypeIndex

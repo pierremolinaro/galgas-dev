@@ -5122,36 +5122,36 @@ GALGAS_string extensionGetter_signature (const GALGAS_typedPropertyList & inObje
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("(") ;
-  GALGAS_bool var_first_8313 = GALGAS_bool (true) ;
+  GALGAS_bool var_first_8343 = GALGAS_bool (true) ;
   const GALGAS_typedPropertyList temp_0 = inObject ;
-  cEnumerator_typedPropertyList enumerator_8346 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_8346.hasCurrentObject ()) {
+  cEnumerator_typedPropertyList enumerator_8376 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_8376.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8346.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 219)))).boolEnum () ;
+      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8376.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 220)))).boolEnum () ;
       if (kBoolTrue == test_1) {
         enumGalgasBool test_2 = kBoolTrue ;
         if (kBoolTrue == test_2) {
-          test_2 = var_first_8313.boolEnum () ;
+          test_2 = var_first_8343.boolEnum () ;
           if (kBoolTrue == test_2) {
-            var_first_8313 = GALGAS_bool (false) ;
+            var_first_8343 = GALGAS_bool (false) ;
           }
         }
         if (kBoolFalse == test_2) {
-          result_result.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 223)) ;
+          result_result.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 224)) ;
         }
         enumGalgasBool test_3 = kBoolTrue ;
         if (kBoolTrue == test_3) {
-          test_3 = enumerator_8346.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_3 = enumerator_8376.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (kBoolTrue == test_3) {
-            result_result.plusAssign_operation(enumerator_8346.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 226)) ;
+            result_result.plusAssign_operation(enumerator_8376.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 227)) ;
           }
         }
       }
     }
-    enumerator_8346.gotoNextObject () ;
+    enumerator_8376.gotoNextObject () ;
   }
-  result_result.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 230)) ;
+  result_result.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 231)) ;
 //---
   return result_result ;
 }

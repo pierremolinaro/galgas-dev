@@ -134,7 +134,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
   override method getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
                                            !@functionSignature outAddAssignArgumentList {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringTypeIndex]
-    outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
+    outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString" !true}
   }
 
   #-----------------------------------------------------------------------------------------------

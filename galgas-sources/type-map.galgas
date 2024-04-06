@@ -425,7 +425,11 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !stringTypeIndex
     !"inKey"
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
-  argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !lstringTypeIndex !"lkey"
+  argumentTypeListForAddAssignWithFieldExpressionList +=
+    !["" nowhere]
+    !lstringTypeIndex
+    !"lkey"
+    !true
   insertMethodFormalArgumentList +=
     !["" nowhere]
     !lstringTypeIndex
@@ -443,16 +447,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       error mPropertyName : "property initialization is not handled for a map"
     end
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-#    var hasSelector = false
-#    for (attribute) in mAttributeList do
-#      if attribute.string == "selector" then
-#        hasSelector = true
-##        if hasSelector && usesSelectorsInInsertAndSearch then
-##          warning attribute : "%selector useless, map has %selectors attributes"
-##        end
-#      end
-#    end
-    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
     typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
@@ -521,7 +516,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
-      !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
+      !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey" !true}
       !.here
       !true
       !attributeTypeIndex

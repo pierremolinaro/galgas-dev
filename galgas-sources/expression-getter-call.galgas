@@ -115,7 +115,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
       else
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
-            (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+            (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
           [mExpression analyzeSemanticExpression
             !usefulnessCallerEntityName: inUsefulnessCallerEntityName
             !?ioUsefulEntitiesGraph
@@ -214,7 +214,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         else
           var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
-              (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
+              (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
             [mExpression analyzeSemanticExpression
               !usefulnessCallerEntityName: inUsefulnessCallerEntityName
               !?ioUsefulEntitiesGraph

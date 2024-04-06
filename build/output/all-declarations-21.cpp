@@ -10609,7 +10609,8 @@ GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::extractObje
 GALGAS_functionSignature_2D_element::GALGAS_functionSignature_2D_element (void) :
 mProperty_mFormalSelector (),
 mProperty_mFormalArgumentType (),
-mProperty_mFormalArgumentName () {
+mProperty_mFormalArgumentName (),
+mProperty_isConstant () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10619,16 +10620,18 @@ GALGAS_functionSignature_2D_element::~ GALGAS_functionSignature_2D_element (void
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::init_28__2C__2C__29_ (const GALGAS_lstring & in_mFormalSelector,
-                                                                                               const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                                               const GALGAS_string & in_mFormalArgumentName,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                   const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                   const GALGAS_string & in_mFormalArgumentName,
+                                                                                                   const GALGAS_bool & in_isConstant,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionSignature_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mFormalSelector = in_mFormalSelector ;
   result.mProperty_mFormalArgumentType = in_mFormalArgumentType ;
   result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  result.mProperty_isConstant = in_isConstant ;
   return result ;
 }
 
@@ -10641,10 +10644,12 @@ void GALGAS_functionSignature_2D_element::setInitializedProperties (Compiler * /
 
 GALGAS_functionSignature_2D_element::GALGAS_functionSignature_2D_element (const GALGAS_lstring & inOperand0,
                                                                           const GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                          const GALGAS_string & inOperand2) :
+                                                                          const GALGAS_string & inOperand2,
+                                                                          const GALGAS_bool & inOperand3) :
 mProperty_mFormalSelector (inOperand0),
 mProperty_mFormalArgumentType (inOperand1),
-mProperty_mFormalArgumentName (inOperand2) {
+mProperty_mFormalArgumentName (inOperand2),
+mProperty_isConstant (inOperand3) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10652,6 +10657,7 @@ mProperty_mFormalArgumentName (inOperand2) {
 GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::class_func_new (const GALGAS_lstring & in_mFormalSelector,
                                                                                          const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                                                          const GALGAS_string & in_mFormalArgumentName,
+                                                                                         const GALGAS_bool & in_isConstant,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionSignature_2D_element result ;
@@ -10659,6 +10665,7 @@ GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::class_f
   result.mProperty_mFormalSelector = in_mFormalSelector ;
   result.mProperty_mFormalArgumentType = in_mFormalArgumentType ;
   result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  result.mProperty_isConstant = in_isConstant ;
   return result ;
 }
 
@@ -10675,13 +10682,16 @@ ComparisonResult GALGAS_functionSignature_2D_element::objectCompare (const GALGA
   if (result == ComparisonResult::operandEqual) {
     result = mProperty_mFormalArgumentName.objectCompare (inOperand.mProperty_mFormalArgumentName) ;
   }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_isConstant.objectCompare (inOperand.mProperty_isConstant) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_functionSignature_2D_element::isValid (void) const {
-  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentType.isValid () && mProperty_mFormalArgumentName.isValid () ;
+  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentType.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_isConstant.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10690,6 +10700,7 @@ void GALGAS_functionSignature_2D_element::drop (void) {
   mProperty_mFormalSelector.drop () ;
   mProperty_mFormalArgumentType.drop () ;
   mProperty_mFormalArgumentName.drop () ;
+  mProperty_isConstant.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10705,6 +10716,8 @@ void GALGAS_functionSignature_2D_element::description (String & ioString,
     mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_isConstant.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
@@ -14703,140 +14716,6 @@ GALGAS_syntaxComponentMap_2D_element GALGAS_syntaxComponentMap_2D_element::extra
       result = *p ;
     }else{
       inCompiler->castError ("syntaxComponentMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element::GALGAS_extensionInitializerMapForType_2D_element (void) :
-mProperty_lkey (),
-mProperty_mFormalParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element::~ GALGAS_extensionInitializerMapForType_2D_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element GALGAS_extensionInitializerMapForType_2D_element::init_28__2C__29_ (const GALGAS_lstring & in_lkey,
-                                                                                                                     const GALGAS_formalInputParameterListAST & in_mFormalParameterList,
-                                                                                                                     Compiler * inCompiler
-                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionInitializerMapForType_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mFormalParameterList = in_mFormalParameterList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerMapForType_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element::GALGAS_extensionInitializerMapForType_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                    const GALGAS_formalInputParameterListAST & inOperand1) :
-mProperty_lkey (inOperand0),
-mProperty_mFormalParameterList (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element GALGAS_extensionInitializerMapForType_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                                                                   const GALGAS_formalInputParameterListAST & in_mFormalParameterList,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionInitializerMapForType_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mFormalParameterList = in_mFormalParameterList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_extensionInitializerMapForType_2D_element::objectCompare (const GALGAS_extensionInitializerMapForType_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mFormalParameterList.objectCompare (inOperand.mProperty_mFormalParameterList) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_extensionInitializerMapForType_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mFormalParameterList.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerMapForType_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mFormalParameterList.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerMapForType_2D_element::description (String & ioString,
-                                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @extensionInitializerMapForType-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalParameterList.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @extensionInitializerMapForType-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType_2D_element ("extensionInitializerMapForType-element",
-                                                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_extensionInitializerMapForType_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionInitializerMapForType_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_extensionInitializerMapForType_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionInitializerMapForType_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element GALGAS_extensionInitializerMapForType_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_extensionInitializerMapForType_2D_element result ;
-  const GALGAS_extensionInitializerMapForType_2D_element * p = (const GALGAS_extensionInitializerMapForType_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_extensionInitializerMapForType_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionInitializerMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

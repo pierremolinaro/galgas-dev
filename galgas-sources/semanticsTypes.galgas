@@ -32,6 +32,7 @@ list @functionSignature {
   public let @lstring mFormalSelector
   public let @unifiedTypeMapEntry mFormalArgumentType
   public let @string mFormalArgumentName
+  public let @bool isConstant
 
   getter signature -> @string {
     result = "("

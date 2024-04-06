@@ -100,7 +100,7 @@ proc enterInheritedGetterWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
-  argList += !["" nowhere] !t !inArgument1Name
+  argList += !["" nowhere] !t !inArgument1Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -129,9 +129,9 @@ proc enterInheritedGetterWith2Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
-  argList += !["" nowhere] !t !inArgument1Name
+  argList += !["" nowhere] !t !inArgument1Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argList += !["" nowhere] !t !inArgument2Name
+  argList += !["" nowhere] !t !inArgument2Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -192,7 +192,7 @@ proc enterBaseGetterWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
-  argList += ![inArgument1Selector nowhere] !t !inArgument1Name
+  argList += ![inArgument1Selector nowhere] !t !inArgument1Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -219,7 +219,7 @@ proc enterBaseFinalGetterWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
-  argList += !["" nowhere] !t !inArgument1Name
+  argList += !["" nowhere] !t !inArgument1Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -250,9 +250,9 @@ proc enterBaseGetterWith2Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
-  argList += ![inArgument1Selector nowhere] !t !inArgument1Name
+  argList += ![inArgument1Selector nowhere] !t !inArgument1Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argList += ![inArgument2Selector nowhere] !t !inArgument2Name
+  argList += ![inArgument2Selector nowhere] !t !inArgument2Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -281,9 +281,9 @@ proc enterBaseFinalGetterWith2Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
-  argList += !["" nowhere] !t !inArgument1Name
+  argList += !["" nowhere] !t !inArgument1Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argList += !["" nowhere] !t !inArgument2Name
+  argList += !["" nowhere] !t !inArgument2Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -314,11 +314,11 @@ proc enterBaseFinalGetterWith3Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   var @functionSignature argList = {}
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?@unifiedTypeMapEntry t]
-  argList += !["" nowhere] !t !inArgument1Name
+  argList += !["" nowhere] !t !inArgument1Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
-  argList += !["" nowhere] !t !inArgument2Name
+  argList += !["" nowhere] !t !inArgument2Name !true
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument3TypeName ?t]
-  argList += !["" nowhere] !t !inArgument3Name
+  argList += !["" nowhere] !t !inArgument3Name !true
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember

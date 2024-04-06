@@ -15010,7 +15010,8 @@ class cCollectionElement_functionSignature : public cCollectionElement {
 //--- Class functions
   public: cCollectionElement_functionSignature (const GALGAS_lstring & in_mFormalSelector,
                                                 const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                const GALGAS_string & in_mFormalArgumentName
+                                                const GALGAS_string & in_mFormalArgumentName,
+                                                const GALGAS_bool & in_isConstant
                                                 COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_functionSignature (const GALGAS_functionSignature_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -15031,17 +15032,18 @@ class cCollectionElement_functionSignature : public cCollectionElement {
 
 cCollectionElement_functionSignature::cCollectionElement_functionSignature (const GALGAS_lstring & in_mFormalSelector,
                                                                             const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                            const GALGAS_string & in_mFormalArgumentName
+                                                                            const GALGAS_string & in_mFormalArgumentName,
+                                                                            const GALGAS_bool & in_isConstant
                                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentName) {
+mObject (in_mFormalSelector, in_mFormalArgumentType, in_mFormalArgumentName, in_isConstant) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement_functionSignature::cCollectionElement_functionSignature (const GALGAS_functionSignature_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumentType, inElement.mProperty_mFormalArgumentName) {
+mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalArgumentType, inElement.mProperty_mFormalArgumentName, inElement.mProperty_isConstant) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15054,7 +15056,7 @@ bool cCollectionElement_functionSignature::isValid (void) const {
 
 cCollectionElement * cCollectionElement_functionSignature::copy (void) {
   cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_functionSignature (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentType, mObject.mProperty_mFormalArgumentName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_functionSignature (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalArgumentType, mObject.mProperty_mFormalArgumentName, mObject.mProperty_isConstant COMMA_HERE)) ;
   return result ;
 }
 
@@ -15073,6 +15075,10 @@ void cCollectionElement_functionSignature::description (String & ioString, const
   ioString.appendStringMultiple ("| ", inIndentation) ;
   ioString.appendCString ("mFormalArgumentName" ":") ;
   mObject.mProperty_mFormalArgumentName.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("isConstant" ":") ;
+  mObject.mProperty_isConstant.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15105,13 +15111,14 @@ GALGAS_functionSignature GALGAS_functionSignature::class_func_emptyList (UNUSED_
 
 GALGAS_functionSignature GALGAS_functionSignature::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                              const GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                             const GALGAS_string & inOperand2
+                                                                             const GALGAS_string & inOperand2,
+                                                                             const GALGAS_bool & inOperand3
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_functionSignature result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     result = GALGAS_functionSignature (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_functionSignature::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    GALGAS_functionSignature::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -15122,12 +15129,14 @@ GALGAS_functionSignature GALGAS_functionSignature::class_func_listWithValue (con
 void GALGAS_functionSignature::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                           const GALGAS_lstring & in_mFormalSelector,
                                                           const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                          const GALGAS_string & in_mFormalArgumentName
+                                                          const GALGAS_string & in_mFormalArgumentName,
+                                                          const GALGAS_bool & in_isConstant
                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_functionSignature * p = nullptr ;
   macroMyNew (p, cCollectionElement_functionSignature (in_mFormalSelector,
                                                        in_mFormalArgumentType,
-                                                       in_mFormalArgumentName COMMA_THERE)) ;
+                                                       in_mFormalArgumentName,
+                                                       in_isConstant COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -15136,11 +15145,12 @@ void GALGAS_functionSignature::makeAttributesFromObjects (capCollectionElement &
 
 void GALGAS_functionSignature::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                     const GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                    const GALGAS_string & inOperand2
+                                                    const GALGAS_string & inOperand2,
+                                                    const GALGAS_bool & inOperand3
                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_functionSignature (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_functionSignature (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -15153,11 +15163,12 @@ void GALGAS_functionSignature::addAssign_operation (const GALGAS_lstring & inOpe
 void GALGAS_functionSignature::setter_append (const GALGAS_lstring inOperand0,
                                               const GALGAS_unifiedTypeMapEntry inOperand1,
                                               const GALGAS_string inOperand2,
+                                              const GALGAS_bool inOperand3,
                                               Compiler * /* inCompiler */
                                               COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_functionSignature (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_functionSignature (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -15170,13 +15181,14 @@ void GALGAS_functionSignature::setter_append (const GALGAS_lstring inOperand0,
 void GALGAS_functionSignature::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                      const GALGAS_unifiedTypeMapEntry inOperand1,
                                                      const GALGAS_string inOperand2,
+                                                     const GALGAS_bool inOperand3,
                                                      const GALGAS_uint inInsertionIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_functionSignature (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_functionSignature (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -15192,6 +15204,7 @@ void GALGAS_functionSignature::setter_insertAtIndex (const GALGAS_lstring inOper
 void GALGAS_functionSignature::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                      GALGAS_unifiedTypeMapEntry & outOperand1,
                                                      GALGAS_string & outOperand2,
+                                                     GALGAS_bool & outOperand3,
                                                      const GALGAS_uint inRemoveIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
@@ -15204,23 +15217,27 @@ void GALGAS_functionSignature::setter_removeAtIndex (GALGAS_lstring & outOperand
         outOperand0.drop () ;
         outOperand1.drop () ;
         outOperand2.drop () ;
+        outOperand3.drop () ;
         drop () ;
       }else{
         macroValidSharedObject (p, cCollectionElement_functionSignature) ;
         outOperand0 = p->mObject.mProperty_mFormalSelector ;
         outOperand1 = p->mObject.mProperty_mFormalArgumentType ;
         outOperand2 = p->mObject.mProperty_mFormalArgumentName ;
+        outOperand3 = p->mObject.mProperty_isConstant ;
       }
     }else{
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
+      outOperand3.drop () ;
       drop () ;    
     }
   }else{
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }
 }
 
@@ -15229,6 +15246,7 @@ void GALGAS_functionSignature::setter_removeAtIndex (GALGAS_lstring & outOperand
 void GALGAS_functionSignature::setter_popFirst (GALGAS_lstring & outOperand0,
                                                 GALGAS_unifiedTypeMapEntry & outOperand1,
                                                 GALGAS_string & outOperand2,
+                                                GALGAS_bool & outOperand3,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -15238,11 +15256,13 @@ void GALGAS_functionSignature::setter_popFirst (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionSignature) ;
     outOperand0 = p->mObject.mProperty_mFormalSelector ;
     outOperand1 = p->mObject.mProperty_mFormalArgumentType ;
     outOperand2 = p->mObject.mProperty_mFormalArgumentName ;
+    outOperand3 = p->mObject.mProperty_isConstant ;
   }
 }
 
@@ -15251,6 +15271,7 @@ void GALGAS_functionSignature::setter_popFirst (GALGAS_lstring & outOperand0,
 void GALGAS_functionSignature::setter_popLast (GALGAS_lstring & outOperand0,
                                                GALGAS_unifiedTypeMapEntry & outOperand1,
                                                GALGAS_string & outOperand2,
+                                               GALGAS_bool & outOperand3,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -15260,11 +15281,13 @@ void GALGAS_functionSignature::setter_popLast (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionSignature) ;
     outOperand0 = p->mObject.mProperty_mFormalSelector ;
     outOperand1 = p->mObject.mProperty_mFormalArgumentType ;
     outOperand2 = p->mObject.mProperty_mFormalArgumentName ;
+    outOperand3 = p->mObject.mProperty_isConstant ;
   }
 }
 
@@ -15273,6 +15296,7 @@ void GALGAS_functionSignature::setter_popLast (GALGAS_lstring & outOperand0,
 void GALGAS_functionSignature::method_first (GALGAS_lstring & outOperand0,
                                              GALGAS_unifiedTypeMapEntry & outOperand1,
                                              GALGAS_string & outOperand2,
+                                             GALGAS_bool & outOperand3,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -15282,11 +15306,13 @@ void GALGAS_functionSignature::method_first (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionSignature) ;
     outOperand0 = p->mObject.mProperty_mFormalSelector ;
     outOperand1 = p->mObject.mProperty_mFormalArgumentType ;
     outOperand2 = p->mObject.mProperty_mFormalArgumentName ;
+    outOperand3 = p->mObject.mProperty_isConstant ;
   }
 }
 
@@ -15295,6 +15321,7 @@ void GALGAS_functionSignature::method_first (GALGAS_lstring & outOperand0,
 void GALGAS_functionSignature::method_last (GALGAS_lstring & outOperand0,
                                             GALGAS_unifiedTypeMapEntry & outOperand1,
                                             GALGAS_string & outOperand2,
+                                            GALGAS_bool & outOperand3,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -15304,11 +15331,13 @@ void GALGAS_functionSignature::method_last (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionSignature) ;
     outOperand0 = p->mObject.mProperty_mFormalSelector ;
     outOperand1 = p->mObject.mProperty_mFormalArgumentType ;
     outOperand2 = p->mObject.mProperty_mFormalArgumentName ;
+    outOperand3 = p->mObject.mProperty_isConstant ;
   }
 }
 
@@ -15450,6 +15479,35 @@ GALGAS_string GALGAS_functionSignature::getter_mFormalArgumentNameAtIndex (const
   return result ;
 }
 
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_functionSignature::setter_setIsConstantAtIndex (GALGAS_bool inOperand,
+                                                            GALGAS_uint inIndex,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement_functionSignature * p = (cCollectionElement_functionSignature *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_functionSignature) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_isConstant = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_functionSignature::getter_isConstantAtIndex (const GALGAS_uint & inIndex,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_functionSignature * p = (cCollectionElement_functionSignature *) attributes.ptr () ;
+  GALGAS_bool result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_functionSignature) ;
+    result = p->mObject.mProperty_isConstant ;
+  }
+  return result ;
+}
+
 
 
 //--------------------------------------------------------------------------------------------------
@@ -15491,6 +15549,14 @@ GALGAS_string cEnumerator_functionSignature::current_mFormalArgumentName (LOCATI
   const cCollectionElement_functionSignature * p = (const cCollectionElement_functionSignature *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_functionSignature) ;
   return p->mObject.mProperty_mFormalArgumentName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool cEnumerator_functionSignature::current_isConstant (LOCATION_ARGS) const {
+  const cCollectionElement_functionSignature * p = (const cCollectionElement_functionSignature *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_functionSignature) ;
+  return p->mObject.mProperty_isConstant ;
 }
 
 

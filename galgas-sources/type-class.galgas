@@ -289,19 +289,25 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Current class Index
     [!?ioTypeMap makeEntry !self.mClassTypeName ?let @unifiedTypeMapEntry classIndex]
   #--- Build attribute Map and constructor argument list
-    var @functionSignature constructorPropertyTypeList = {}
+    var @functionSignature synthetizedInitializerArgumentList = {}
     for property in inheritedTypedPropertyList do
-      constructorPropertyTypeList +=
-        !if property.hasSelector then property.name else ["" nowhere] end
-        !property.typeEntry
-        !property.name.string
+      if property.initialization == .none then
+        synthetizedInitializerArgumentList +=
+          !if property.hasSelector then property.name else ["" nowhere] end
+          !property.typeEntry
+          !property.name.string
+          !true
+      end
     end
     for property in self.mPropertyList do
       [!?ioTypeMap makeEntry !property.propertyTypeName ?let attributeTypeIndex]
-      constructorPropertyTypeList +=
-        !if property.hasSelector then property.propertyName else ["" nowhere] end
-        !attributeTypeIndex
-        !property.propertyName.string
+      if property.initialization == .none then
+        synthetizedInitializerArgumentList +=
+          !if property.hasSelector then property.propertyName else ["" nowhere] end
+          !attributeTypeIndex
+          !property.propertyName.string
+          !true
+      end
       [!?attributeMap insertKey
         !property.propertyName
         ![property.accessControl accessControl !forDeclaringType: classIndex]
@@ -318,7 +324,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     if not self.mIsAbstract then
       [!?classFunctionMap insertKey
         !@lstring.new {!"new" !@location.here}
-        !constructorPropertyTypeList
+        !synthetizedInitializerArgumentList
         !false
         !classIndex
       ]
@@ -378,8 +384,8 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !.new {![constructorPropertyTypeList signature] !self.mClassTypeName}
-        !constructorPropertyTypeList
+        !.new {![synthetizedInitializerArgumentList signature] !self.mClassTypeName}
+        !synthetizedInitializerArgumentList
       ]
     end
   #--- Generate a "default" constructor ?

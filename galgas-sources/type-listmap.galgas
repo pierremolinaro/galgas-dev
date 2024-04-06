@@ -198,9 +198,9 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !.argumentConstantIn
     !"inKey"
   var addAssignOperatorDescription = @functionSignature {}
-  addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
+  addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey" !true
   for (mPropertyTypeEntry mPropertyName 3*) in listTypedAttributeList do
-    addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string
+    addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string !true
    insertSetterFormalArgumentList +=
       !["" nowhere]
       !mPropertyTypeEntry
