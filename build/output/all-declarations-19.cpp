@@ -8,249 +8,6 @@
 #include "all-declarations-19.h"
 
 //--------------------------------------------------------------------------------------------------
-// @localVariableOrConstantDeclarationWithSourceExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mTargetType (),
-mProperty_mIsConstant (),
-mProperty_mCppVariableName (),
-mProperty_mSourceExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mTargetType.printNonNullClassInstanceProperties ("mTargetType") ;
-    mProperty_mIsConstant.printNonNullClassInstanceProperties ("mIsConstant") ;
-    mProperty_mCppVariableName.printNonNullClassInstanceProperties ("mCppVariableName") ;
-    mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * p = (const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mTargetType.objectCompare (p->mProperty_mTargetType) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mIsConstant.objectCompare (p->mProperty_mIsConstant) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mCppVariableName.objectCompare (p->mProperty_mCppVariableName) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mSourceExpression.objectCompare (p->mProperty_mSourceExpression) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-ComparisonResult GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::objectCompare (const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (void) :
-GALGAS_semanticInstructionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mTargetType,
-                                                                                                                                                                                 const GALGAS_bool & in_mIsConstant,
-                                                                                                                                                                                 const GALGAS_string & in_mCppVariableName,
-                                                                                                                                                                                 const GALGAS_semanticExpressionForGeneration & in_mSourceExpression,
-                                                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                                                 COMMA_LOCATION_ARGS) {
-  cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->mProperty_mTargetType = in_mTargetType ;
-  object->mProperty_mIsConstant = in_mIsConstant ;
-  object->mProperty_mCppVariableName = in_mCppVariableName ;
-  object->mProperty_mSourceExpression = in_mSourceExpression ;
-  const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mTargetType,
-                                                                                                                                                                       const GALGAS_bool & inAttribute_mIsConstant,
-                                                                                                                                                                       const GALGAS_string & inAttribute_mCppVariableName,
-                                                                                                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mSourceExpression
-                                                                                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration result ;
-  if (inAttribute_mTargetType.isValid () && inAttribute_mIsConstant.isValid () && inAttribute_mCppVariableName.isValid () && inAttribute_mSourceExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (inAttribute_mTargetType, inAttribute_mIsConstant, inAttribute_mCppVariableName, inAttribute_mSourceExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapEntry GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::readProperty_mTargetType (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * p = (cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
-    return p->mProperty_mTargetType ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::readProperty_mIsConstant (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_bool () ;
-  }else{
-    cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * p = (cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
-    return p->mProperty_mIsConstant ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::readProperty_mCppVariableName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_string () ;
-  }else{
-    cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * p = (cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
-    return p->mProperty_mCppVariableName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_semanticExpressionForGeneration GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::readProperty_mSourceExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_semanticExpressionForGeneration () ;
-  }else{
-    cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * p = (cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
-    return p->mProperty_mSourceExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mTargetType,
-                                                                                                                                                    const GALGAS_bool & in_mIsConstant,
-                                                                                                                                                    const GALGAS_string & in_mCppVariableName,
-                                                                                                                                                    const GALGAS_semanticExpressionForGeneration & in_mSourceExpression
-                                                                                                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mTargetType (in_mTargetType),
-mProperty_mIsConstant (in_mIsConstant),
-mProperty_mCppVariableName (in_mCppVariableName),
-mProperty_mSourceExpression (in_mSourceExpression) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ;
-}
-
-void cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::description (String & ioString,
-                                                                                            const int32_t inIndentation) const {
-  ioString.appendCString ("[@localVariableOrConstantDeclarationWithSourceExpressionForGeneration:") ;
-  mProperty_mTargetType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mIsConstant.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mCppVariableName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (mProperty_mTargetType, mProperty_mIsConstant, mProperty_mCppVariableName, mProperty_mSourceExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ("localVariableOrConstantDeclarationWithSourceExpressionForGeneration",
-                                                                                                                           & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                                      Compiler * inCompiler
-                                                                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration result ;
-  const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * p = (const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("localVariableOrConstantDeclarationWithSourceExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @logInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -333,13 +90,11 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_logInstructionForGeneration GALGAS_logInstructionForGeneration::class_func_new (const GALGAS_lstring & inAttribute_mLogMessage,
-                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mLogExpression
+GALGAS_logInstructionForGeneration GALGAS_logInstructionForGeneration::class_func_new (const GALGAS_lstring & in_mLogMessage,
+                                                                                       const GALGAS_semanticExpressionForGeneration & in_mLogExpression
                                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_logInstructionForGeneration result ;
-  if (inAttribute_mLogMessage.isValid () && inAttribute_mLogExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_logInstructionForGeneration (inAttribute_mLogMessage, inAttribute_mLogExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_logInstructionForGeneration (in_mLogMessage, in_mLogExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -375,8 +130,10 @@ cPtr_logInstructionForGeneration::cPtr_logInstructionForGeneration (const GALGAS
                                                                     const GALGAS_semanticExpressionForGeneration & in_mLogExpression
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mLogMessage (in_mLogMessage),
-mProperty_mLogExpression (in_mLogExpression) {
+mProperty_mLogMessage (),
+mProperty_mLogExpression () {
+  mProperty_mLogMessage = in_mLogMessage ;
+  mProperty_mLogExpression = in_mLogExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -549,16 +306,14 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_loopInstructionWithVariantForGeneration GALGAS_loopInstructionWithVariantForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mVariantExpression,
-                                                                                                               const GALGAS_semanticInstructionListForGeneration & inAttribute_mFirstInstructions,
-                                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mLoopExpression,
-                                                                                                               const GALGAS_semanticInstructionListForGeneration & inAttribute_mSecondInstructions
+GALGAS_loopInstructionWithVariantForGeneration GALGAS_loopInstructionWithVariantForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                               const GALGAS_semanticExpressionForGeneration & in_mVariantExpression,
+                                                                                                               const GALGAS_semanticInstructionListForGeneration & in_mFirstInstructions,
+                                                                                                               const GALGAS_semanticExpressionForGeneration & in_mLoopExpression,
+                                                                                                               const GALGAS_semanticInstructionListForGeneration & in_mSecondInstructions
                                                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_loopInstructionWithVariantForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mVariantExpression.isValid () && inAttribute_mFirstInstructions.isValid () && inAttribute_mLoopExpression.isValid () && inAttribute_mSecondInstructions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_loopInstructionWithVariantForGeneration (inAttribute_mInstructionLocation, inAttribute_mVariantExpression, inAttribute_mFirstInstructions, inAttribute_mLoopExpression, inAttribute_mSecondInstructions COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_loopInstructionWithVariantForGeneration (in_mInstructionLocation, in_mVariantExpression, in_mFirstInstructions, in_mLoopExpression, in_mSecondInstructions COMMA_THERE)) ;
   return result ;
 }
 
@@ -633,11 +388,16 @@ cPtr_loopInstructionWithVariantForGeneration::cPtr_loopInstructionWithVariantFor
                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mSecondInstructions
                                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mInstructionLocation (in_mInstructionLocation),
-mProperty_mVariantExpression (in_mVariantExpression),
-mProperty_mFirstInstructions (in_mFirstInstructions),
-mProperty_mLoopExpression (in_mLoopExpression),
-mProperty_mSecondInstructions (in_mSecondInstructions) {
+mProperty_mInstructionLocation (),
+mProperty_mVariantExpression (),
+mProperty_mFirstInstructions (),
+mProperty_mLoopExpression (),
+mProperty_mSecondInstructions () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mVariantExpression = in_mVariantExpression ;
+  mProperty_mFirstInstructions = in_mFirstInstructions ;
+  mProperty_mLoopExpression = in_mLoopExpression ;
+  mProperty_mSecondInstructions = in_mSecondInstructions ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -809,15 +569,13 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_loopInstructionWithoutVariantForGeneration GALGAS_loopInstructionWithoutVariantForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                                     const GALGAS_semanticInstructionListForGeneration & inAttribute_mFirstInstructions,
-                                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mLoopExpression,
-                                                                                                                     const GALGAS_semanticInstructionListForGeneration & inAttribute_mSecondInstructions
+GALGAS_loopInstructionWithoutVariantForGeneration GALGAS_loopInstructionWithoutVariantForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mFirstInstructions,
+                                                                                                                     const GALGAS_semanticExpressionForGeneration & in_mLoopExpression,
+                                                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSecondInstructions
                                                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_loopInstructionWithoutVariantForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mFirstInstructions.isValid () && inAttribute_mLoopExpression.isValid () && inAttribute_mSecondInstructions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_loopInstructionWithoutVariantForGeneration (inAttribute_mInstructionLocation, inAttribute_mFirstInstructions, inAttribute_mLoopExpression, inAttribute_mSecondInstructions COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_loopInstructionWithoutVariantForGeneration (in_mInstructionLocation, in_mFirstInstructions, in_mLoopExpression, in_mSecondInstructions COMMA_THERE)) ;
   return result ;
 }
 
@@ -879,10 +637,14 @@ cPtr_loopInstructionWithoutVariantForGeneration::cPtr_loopInstructionWithoutVari
                                                                                                   const GALGAS_semanticInstructionListForGeneration & in_mSecondInstructions
                                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mInstructionLocation (in_mInstructionLocation),
-mProperty_mFirstInstructions (in_mFirstInstructions),
-mProperty_mLoopExpression (in_mLoopExpression),
-mProperty_mSecondInstructions (in_mSecondInstructions) {
+mProperty_mInstructionLocation (),
+mProperty_mFirstInstructions (),
+mProperty_mLoopExpression (),
+mProperty_mSecondInstructions () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mFirstInstructions = in_mFirstInstructions ;
+  mProperty_mLoopExpression = in_mLoopExpression ;
+  mProperty_mSecondInstructions = in_mSecondInstructions ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1038,13 +800,11 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_messageInstructionForGeneration GALGAS_messageInstructionForGeneration::class_func_new (const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression,
-                                                                                               const GALGAS_location & inAttribute_mInstructionLocation
+GALGAS_messageInstructionForGeneration GALGAS_messageInstructionForGeneration::class_func_new (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                                                               const GALGAS_location & in_mInstructionLocation
                                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_messageInstructionForGeneration result ;
-  if (inAttribute_mExpression.isValid () && inAttribute_mInstructionLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_messageInstructionForGeneration (inAttribute_mExpression, inAttribute_mInstructionLocation COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_messageInstructionForGeneration (in_mExpression, in_mInstructionLocation COMMA_THERE)) ;
   return result ;
 }
 
@@ -1080,8 +840,10 @@ cPtr_messageInstructionForGeneration::cPtr_messageInstructionForGeneration (cons
                                                                             const GALGAS_location & in_mInstructionLocation
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mExpression (in_mExpression),
-mProperty_mInstructionLocation (in_mInstructionLocation) {
+mProperty_mExpression (),
+mProperty_mInstructionLocation () {
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1245,15 +1007,13 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_methodCallInstructionAST GALGAS_methodCallInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                 const GALGAS_semanticExpressionAST & inAttribute_mReceiverExpression,
-                                                                                 const GALGAS_lstring & inAttribute_mMethodName,
-                                                                                 const GALGAS_actualParameterListAST & inAttribute_mActualParameterList
+GALGAS_methodCallInstructionAST GALGAS_methodCallInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                 const GALGAS_semanticExpressionAST & in_mReceiverExpression,
+                                                                                 const GALGAS_lstring & in_mMethodName,
+                                                                                 const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_methodCallInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mMethodName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_methodCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mMethodName, inAttribute_mActualParameterList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_methodCallInstructionAST (in_mInstructionLocation, in_mReceiverExpression, in_mMethodName, in_mActualParameterList COMMA_THERE)) ;
   return result ;
 }
 
@@ -1303,9 +1063,13 @@ cPtr_methodCallInstructionAST::cPtr_methodCallInstructionAST (const GALGAS_locat
                                                               const GALGAS_actualParameterListAST & in_mActualParameterList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mReceiverExpression (in_mReceiverExpression),
-mProperty_mMethodName (in_mMethodName),
-mProperty_mActualParameterList (in_mActualParameterList) {
+mProperty_mReceiverExpression (),
+mProperty_mMethodName (),
+mProperty_mActualParameterList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mMethodName = in_mMethodName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1503,19 +1267,17 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_methodCallInstructionForGeneration GALGAS_methodCallInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                     const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
-                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                                     const GALGAS_string & inAttribute_mMethodName,
-                                                                                                     const GALGAS_methodKind & inAttribute_mKind,
-                                                                                                     const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList,
-                                                                                                     const GALGAS_bool & inAttribute_mHasCompilerArgument,
-                                                                                                     const GALGAS_unifiedTypeMapEntry & inAttribute_mMethodBaseType
+GALGAS_methodCallInstructionForGeneration GALGAS_methodCallInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                     const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                                                                     const GALGAS_string & in_mMethodName,
+                                                                                                     const GALGAS_methodKind & in_mKind,
+                                                                                                     const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                                                                     const GALGAS_bool & in_mHasCompilerArgument,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mMethodBaseType
                                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_methodCallInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mMethodName.isValid () && inAttribute_mKind.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid () && inAttribute_mMethodBaseType.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_methodCallInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverType, inAttribute_mReceiverExpression, inAttribute_mMethodName, inAttribute_mKind, inAttribute_mActualParameterList, inAttribute_mHasCompilerArgument, inAttribute_mMethodBaseType COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_methodCallInstructionForGeneration (in_mInstructionLocation, in_mReceiverType, in_mReceiverExpression, in_mMethodName, in_mKind, in_mActualParameterList, in_mHasCompilerArgument, in_mMethodBaseType COMMA_THERE)) ;
   return result ;
 }
 
@@ -1629,14 +1391,22 @@ cPtr_methodCallInstructionForGeneration::cPtr_methodCallInstructionForGeneration
                                                                                   const GALGAS_unifiedTypeMapEntry & in_mMethodBaseType
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mInstructionLocation (in_mInstructionLocation),
-mProperty_mReceiverType (in_mReceiverType),
-mProperty_mReceiverExpression (in_mReceiverExpression),
-mProperty_mMethodName (in_mMethodName),
-mProperty_mKind (in_mKind),
-mProperty_mActualParameterList (in_mActualParameterList),
-mProperty_mHasCompilerArgument (in_mHasCompilerArgument),
-mProperty_mMethodBaseType (in_mMethodBaseType) {
+mProperty_mInstructionLocation (),
+mProperty_mReceiverType (),
+mProperty_mReceiverExpression (),
+mProperty_mMethodName (),
+mProperty_mKind (),
+mProperty_mActualParameterList (),
+mProperty_mHasCompilerArgument (),
+mProperty_mMethodBaseType () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mReceiverType = in_mReceiverType ;
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mMethodName = in_mMethodName ;
+  mProperty_mKind = in_mKind ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  mProperty_mMethodBaseType = in_mMethodBaseType ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1805,14 +1575,12 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_procCallInstructionAST GALGAS_procCallInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                             const GALGAS_lstring & inAttribute_mRoutineName,
-                                                                             const GALGAS_actualParameterListAST & inAttribute_mActualParameterList
+GALGAS_procCallInstructionAST GALGAS_procCallInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                             const GALGAS_lstring & in_mRoutineName,
+                                                                             const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_procCallInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_procCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mRoutineName, inAttribute_mActualParameterList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_procCallInstructionAST (in_mInstructionLocation, in_mRoutineName, in_mActualParameterList COMMA_THERE)) ;
   return result ;
 }
 
@@ -1849,8 +1617,11 @@ cPtr_procCallInstructionAST::cPtr_procCallInstructionAST (const GALGAS_location 
                                                           const GALGAS_actualParameterListAST & in_mActualParameterList
                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mRoutineName (in_mRoutineName),
-mProperty_mActualParameterList (in_mActualParameterList) {
+mProperty_mRoutineName (),
+mProperty_mActualParameterList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mRoutineName = in_mRoutineName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2004,13 +1775,11 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_procCallInstructionForGeneration GALGAS_procCallInstructionForGeneration::class_func_new (const GALGAS_lstring & inAttribute_routineMangledName,
-                                                                                                 const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList
+GALGAS_procCallInstructionForGeneration GALGAS_procCallInstructionForGeneration::class_func_new (const GALGAS_lstring & in_routineMangledName,
+                                                                                                 const GALGAS_actualParameterListForGeneration & in_mActualParameterList
                                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_procCallInstructionForGeneration result ;
-  if (inAttribute_routineMangledName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_procCallInstructionForGeneration (inAttribute_routineMangledName, inAttribute_mActualParameterList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_procCallInstructionForGeneration (in_routineMangledName, in_mActualParameterList COMMA_THERE)) ;
   return result ;
 }
 
@@ -2046,8 +1815,10 @@ cPtr_procCallInstructionForGeneration::cPtr_procCallInstructionForGeneration (co
                                                                               const GALGAS_actualParameterListForGeneration & in_mActualParameterList
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_routineMangledName (in_routineMangledName),
-mProperty_mActualParameterList (in_mActualParameterList) {
+mProperty_routineMangledName (),
+mProperty_mActualParameterList () {
+  mProperty_routineMangledName = in_routineMangledName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2232,18 +2003,16 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_setterCallInstructionAST GALGAS_setterCallInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                 const GALGAS_bool & inAttribute_mPrefixedBySelf,
-                                                                                 const GALGAS_lstring & inAttribute_mReceiverName,
-                                                                                 const GALGAS_lstringlist & inAttribute_mReceiverStructProperties,
-                                                                                 const GALGAS_lstring & inAttribute_mTypeNameForCasting,
-                                                                                 const GALGAS_lstring & inAttribute_mSetterName,
-                                                                                 const GALGAS_actualParameterListAST & inAttribute_mActualParameterList
+GALGAS_setterCallInstructionAST GALGAS_setterCallInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                 const GALGAS_bool & in_mPrefixedBySelf,
+                                                                                 const GALGAS_lstring & in_mReceiverName,
+                                                                                 const GALGAS_lstringlist & in_mReceiverStructProperties,
+                                                                                 const GALGAS_lstring & in_mTypeNameForCasting,
+                                                                                 const GALGAS_lstring & in_mSetterName,
+                                                                                 const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_setterCallInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mPrefixedBySelf.isValid () && inAttribute_mReceiverName.isValid () && inAttribute_mReceiverStructProperties.isValid () && inAttribute_mTypeNameForCasting.isValid () && inAttribute_mSetterName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mPrefixedBySelf, inAttribute_mReceiverName, inAttribute_mReceiverStructProperties, inAttribute_mTypeNameForCasting, inAttribute_mSetterName, inAttribute_mActualParameterList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionAST (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mReceiverStructProperties, in_mTypeNameForCasting, in_mSetterName, in_mActualParameterList COMMA_THERE)) ;
   return result ;
 }
 
@@ -2332,12 +2101,19 @@ cPtr_setterCallInstructionAST::cPtr_setterCallInstructionAST (const GALGAS_locat
                                                               const GALGAS_actualParameterListAST & in_mActualParameterList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mPrefixedBySelf (in_mPrefixedBySelf),
-mProperty_mReceiverName (in_mReceiverName),
-mProperty_mReceiverStructProperties (in_mReceiverStructProperties),
-mProperty_mTypeNameForCasting (in_mTypeNameForCasting),
-mProperty_mSetterName (in_mSetterName),
-mProperty_mActualParameterList (in_mActualParameterList) {
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mReceiverStructProperties (),
+mProperty_mTypeNameForCasting (),
+mProperty_mSetterName (),
+mProperty_mActualParameterList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mReceiverStructProperties = in_mReceiverStructProperties ;
+  mProperty_mTypeNameForCasting = in_mTypeNameForCasting ;
+  mProperty_mSetterName = in_mSetterName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2504,14 +2280,12 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfSetterCallInstructionAST GALGAS_selfSetterCallInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                         const GALGAS_lstring & inAttribute_mSetterName,
-                                                                                         const GALGAS_actualParameterListAST & inAttribute_mActualParameterList
+GALGAS_selfSetterCallInstructionAST GALGAS_selfSetterCallInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                         const GALGAS_lstring & in_mSetterName,
+                                                                                         const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_selfSetterCallInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mSetterName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_selfSetterCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mSetterName, inAttribute_mActualParameterList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_selfSetterCallInstructionAST (in_mInstructionLocation, in_mSetterName, in_mActualParameterList COMMA_THERE)) ;
   return result ;
 }
 
@@ -2548,8 +2322,11 @@ cPtr_selfSetterCallInstructionAST::cPtr_selfSetterCallInstructionAST (const GALG
                                                                       const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mSetterName (in_mSetterName),
-mProperty_mActualParameterList (in_mActualParameterList) {
+mProperty_mSetterName (),
+mProperty_mActualParameterList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mSetterName = in_mSetterName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2766,22 +2543,20 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_setterCallInstructionForGeneration GALGAS_setterCallInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                     const GALGAS_string & inAttribute_mReceiverCppName,
-                                                                                                     const GALGAS_string & inAttribute_mReceiverBaseName,
-                                                                                                     const GALGAS_lstringlist & inAttribute_mReceiverStructAttributes,
-                                                                                                     const GALGAS_unifiedTypeMapEntry & inAttribute_mCastType,
-                                                                                                     const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
-                                                                                                     const GALGAS_lstring & inAttribute_mSetterName,
-                                                                                                     const GALGAS_methodKind & inAttribute_mKind,
-                                                                                                     const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList,
-                                                                                                     const GALGAS_bool & inAttribute_mHasCompilerArgument,
-                                                                                                     const GALGAS_unifiedTypeMapEntry & inAttribute_mMethodBaseType
+GALGAS_setterCallInstructionForGeneration GALGAS_setterCallInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                     const GALGAS_string & in_mReceiverCppName,
+                                                                                                     const GALGAS_string & in_mReceiverBaseName,
+                                                                                                     const GALGAS_lstringlist & in_mReceiverStructAttributes,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mCastType,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                     const GALGAS_lstring & in_mSetterName,
+                                                                                                     const GALGAS_methodKind & in_mKind,
+                                                                                                     const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                                                                     const GALGAS_bool & in_mHasCompilerArgument,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mMethodBaseType
                                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_setterCallInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverCppName.isValid () && inAttribute_mReceiverBaseName.isValid () && inAttribute_mReceiverStructAttributes.isValid () && inAttribute_mCastType.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mSetterName.isValid () && inAttribute_mKind.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid () && inAttribute_mMethodBaseType.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverCppName, inAttribute_mReceiverBaseName, inAttribute_mReceiverStructAttributes, inAttribute_mCastType, inAttribute_mReceiverType, inAttribute_mSetterName, inAttribute_mKind, inAttribute_mActualParameterList, inAttribute_mHasCompilerArgument, inAttribute_mMethodBaseType COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionForGeneration (in_mInstructionLocation, in_mReceiverCppName, in_mReceiverBaseName, in_mReceiverStructAttributes, in_mCastType, in_mReceiverType, in_mSetterName, in_mKind, in_mActualParameterList, in_mHasCompilerArgument, in_mMethodBaseType COMMA_THERE)) ;
   return result ;
 }
 
@@ -2934,17 +2709,28 @@ cPtr_setterCallInstructionForGeneration::cPtr_setterCallInstructionForGeneration
                                                                                   const GALGAS_unifiedTypeMapEntry & in_mMethodBaseType
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mInstructionLocation (in_mInstructionLocation),
-mProperty_mReceiverCppName (in_mReceiverCppName),
-mProperty_mReceiverBaseName (in_mReceiverBaseName),
-mProperty_mReceiverStructAttributes (in_mReceiverStructAttributes),
-mProperty_mCastType (in_mCastType),
-mProperty_mReceiverType (in_mReceiverType),
-mProperty_mSetterName (in_mSetterName),
-mProperty_mKind (in_mKind),
-mProperty_mActualParameterList (in_mActualParameterList),
-mProperty_mHasCompilerArgument (in_mHasCompilerArgument),
-mProperty_mMethodBaseType (in_mMethodBaseType) {
+mProperty_mInstructionLocation (),
+mProperty_mReceiverCppName (),
+mProperty_mReceiverBaseName (),
+mProperty_mReceiverStructAttributes (),
+mProperty_mCastType (),
+mProperty_mReceiverType (),
+mProperty_mSetterName (),
+mProperty_mKind (),
+mProperty_mActualParameterList (),
+mProperty_mHasCompilerArgument (),
+mProperty_mMethodBaseType () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mReceiverCppName = in_mReceiverCppName ;
+  mProperty_mReceiverBaseName = in_mReceiverBaseName ;
+  mProperty_mReceiverStructAttributes = in_mReceiverStructAttributes ;
+  mProperty_mCastType = in_mCastType ;
+  mProperty_mReceiverType = in_mReceiverType ;
+  mProperty_mSetterName = in_mSetterName ;
+  mProperty_mKind = in_mKind ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  mProperty_mMethodBaseType = in_mMethodBaseType ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3142,17 +2928,15 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfSetterCallInstructionForGeneration GALGAS_selfSetterCallInstructionForGeneration::class_func_new (const GALGAS_string & inAttribute_mSelfCppName,
-                                                                                                             const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
-                                                                                                             const GALGAS_lstring & inAttribute_mSetterName,
-                                                                                                             const GALGAS_methodKind & inAttribute_mKind,
-                                                                                                             const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList,
-                                                                                                             const GALGAS_bool & inAttribute_mHasCompilerArgument
+GALGAS_selfSetterCallInstructionForGeneration GALGAS_selfSetterCallInstructionForGeneration::class_func_new (const GALGAS_string & in_mSelfCppName,
+                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                             const GALGAS_lstring & in_mSetterName,
+                                                                                                             const GALGAS_methodKind & in_mKind,
+                                                                                                             const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                                                                             const GALGAS_bool & in_mHasCompilerArgument
                                                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_selfSetterCallInstructionForGeneration result ;
-  if (inAttribute_mSelfCppName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mSetterName.isValid () && inAttribute_mKind.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_selfSetterCallInstructionForGeneration (inAttribute_mSelfCppName, inAttribute_mReceiverType, inAttribute_mSetterName, inAttribute_mKind, inAttribute_mActualParameterList, inAttribute_mHasCompilerArgument COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_selfSetterCallInstructionForGeneration (in_mSelfCppName, in_mReceiverType, in_mSetterName, in_mKind, in_mActualParameterList, in_mHasCompilerArgument COMMA_THERE)) ;
   return result ;
 }
 
@@ -3240,12 +3024,18 @@ cPtr_selfSetterCallInstructionForGeneration::cPtr_selfSetterCallInstructionForGe
                                                                                           const GALGAS_bool & in_mHasCompilerArgument
                                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mSelfCppName (in_mSelfCppName),
-mProperty_mReceiverType (in_mReceiverType),
-mProperty_mSetterName (in_mSetterName),
-mProperty_mKind (in_mKind),
-mProperty_mActualParameterList (in_mActualParameterList),
-mProperty_mHasCompilerArgument (in_mHasCompilerArgument) {
+mProperty_mSelfCppName (),
+mProperty_mReceiverType (),
+mProperty_mSetterName (),
+mProperty_mKind (),
+mProperty_mActualParameterList (),
+mProperty_mHasCompilerArgument () {
+  mProperty_mSelfCppName = in_mSelfCppName ;
+  mProperty_mReceiverType = in_mReceiverType ;
+  mProperty_mSetterName = in_mSetterName ;
+  mProperty_mKind = in_mKind ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3412,14 +3202,12 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_switchInstructionForGeneration GALGAS_switchInstructionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & inAttribute_mEnumType,
-                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mSwitchExpression,
-                                                                                             const GALGAS_switchBranchesForGeneration & inAttribute_mBranches
+GALGAS_switchInstructionForGeneration GALGAS_switchInstructionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
+                                                                                             const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
+                                                                                             const GALGAS_switchBranchesForGeneration & in_mBranches
                                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_switchInstructionForGeneration result ;
-  if (inAttribute_mEnumType.isValid () && inAttribute_mSwitchExpression.isValid () && inAttribute_mBranches.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_switchInstructionForGeneration (inAttribute_mEnumType, inAttribute_mSwitchExpression, inAttribute_mBranches COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_switchInstructionForGeneration (in_mEnumType, in_mSwitchExpression, in_mBranches COMMA_THERE)) ;
   return result ;
 }
 
@@ -3468,9 +3256,12 @@ cPtr_switchInstructionForGeneration::cPtr_switchInstructionForGeneration (const 
                                                                           const GALGAS_switchBranchesForGeneration & in_mBranches
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mEnumType (in_mEnumType),
-mProperty_mSwitchExpression (in_mSwitchExpression),
-mProperty_mBranches (in_mBranches) {
+mProperty_mEnumType (),
+mProperty_mSwitchExpression (),
+mProperty_mBranches () {
+  mProperty_mEnumType = in_mEnumType ;
+  mProperty_mSwitchExpression = in_mSwitchExpression ;
+  mProperty_mBranches = in_mBranches ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3636,15 +3427,13 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeMethodCallInstructionAST GALGAS_typeMethodCallInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                         const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                         const GALGAS_lstring & inAttribute_mMethodName,
-                                                                                         const GALGAS_actualParameterListAST & inAttribute_mActualParameterList
+GALGAS_typeMethodCallInstructionAST GALGAS_typeMethodCallInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                         const GALGAS_lstring & in_mTypeName,
+                                                                                         const GALGAS_lstring & in_mMethodName,
+                                                                                         const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_typeMethodCallInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mMethodName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_typeMethodCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mTypeName, inAttribute_mMethodName, inAttribute_mActualParameterList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_typeMethodCallInstructionAST (in_mInstructionLocation, in_mTypeName, in_mMethodName, in_mActualParameterList COMMA_THERE)) ;
   return result ;
 }
 
@@ -3694,9 +3483,13 @@ cPtr_typeMethodCallInstructionAST::cPtr_typeMethodCallInstructionAST (const GALG
                                                                       const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mTypeName (in_mTypeName),
-mProperty_mMethodName (in_mMethodName),
-mProperty_mActualParameterList (in_mActualParameterList) {
+mProperty_mTypeName (),
+mProperty_mMethodName (),
+mProperty_mActualParameterList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mMethodName = in_mMethodName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3866,15 +3659,13 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeMethodCallInstructionForGeneration GALGAS_typeMethodCallInstructionForGeneration::class_func_new (const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                                             const GALGAS_lstring & inAttribute_mMethodName,
-                                                                                                             const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList,
-                                                                                                             const GALGAS_bool & inAttribute_mHasCompilerArgument
+GALGAS_typeMethodCallInstructionForGeneration GALGAS_typeMethodCallInstructionForGeneration::class_func_new (const GALGAS_lstring & in_mTypeName,
+                                                                                                             const GALGAS_lstring & in_mMethodName,
+                                                                                                             const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                                                                             const GALGAS_bool & in_mHasCompilerArgument
                                                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_typeMethodCallInstructionForGeneration result ;
-  if (inAttribute_mTypeName.isValid () && inAttribute_mMethodName.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_typeMethodCallInstructionForGeneration (inAttribute_mTypeName, inAttribute_mMethodName, inAttribute_mActualParameterList, inAttribute_mHasCompilerArgument COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_typeMethodCallInstructionForGeneration (in_mTypeName, in_mMethodName, in_mActualParameterList, in_mHasCompilerArgument COMMA_THERE)) ;
   return result ;
 }
 
@@ -3936,10 +3727,14 @@ cPtr_typeMethodCallInstructionForGeneration::cPtr_typeMethodCallInstructionForGe
                                                                                           const GALGAS_bool & in_mHasCompilerArgument
                                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mTypeName (in_mTypeName),
-mProperty_mMethodName (in_mMethodName),
-mProperty_mActualParameterList (in_mActualParameterList),
-mProperty_mHasCompilerArgument (in_mHasCompilerArgument) {
+mProperty_mTypeName (),
+mProperty_mMethodName (),
+mProperty_mActualParameterList (),
+mProperty_mHasCompilerArgument () {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mMethodName = in_mMethodName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4100,14 +3895,12 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_localVariableDeclarationWithAssignmentAST GALGAS_localVariableDeclarationWithAssignmentAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                                   const GALGAS_lstring & inAttribute_mVariableName,
-                                                                                                                   const GALGAS_semanticExpressionAST & inAttribute_mSourceExpression
+GALGAS_localVariableDeclarationWithAssignmentAST GALGAS_localVariableDeclarationWithAssignmentAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                                   const GALGAS_lstring & in_mVariableName,
+                                                                                                                   const GALGAS_semanticExpressionAST & in_mSourceExpression
                                                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_localVariableDeclarationWithAssignmentAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mVariableName.isValid () && inAttribute_mSourceExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_localVariableDeclarationWithAssignmentAST (inAttribute_mInstructionLocation, inAttribute_mVariableName, inAttribute_mSourceExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_localVariableDeclarationWithAssignmentAST (in_mInstructionLocation, in_mVariableName, in_mSourceExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -4144,8 +3937,11 @@ cPtr_localVariableDeclarationWithAssignmentAST::cPtr_localVariableDeclarationWit
                                                                                                 const GALGAS_semanticExpressionAST & in_mSourceExpression
                                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mVariableName (in_mVariableName),
-mProperty_mSourceExpression (in_mSourceExpression) {
+mProperty_mVariableName (),
+mProperty_mSourceExpression () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mVariableName = in_mVariableName ;
+  mProperty_mSourceExpression = in_mSourceExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4304,14 +4100,12 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_localVariableDeclarationNoAssignmentAST GALGAS_localVariableDeclarationNoAssignmentAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                               const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                                               const GALGAS_lstring & inAttribute_mVariableName
+GALGAS_localVariableDeclarationNoAssignmentAST GALGAS_localVariableDeclarationNoAssignmentAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                               const GALGAS_lstring & in_mTypeName,
+                                                                                                               const GALGAS_lstring & in_mVariableName
                                                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_localVariableDeclarationNoAssignmentAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mVariableName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_localVariableDeclarationNoAssignmentAST (inAttribute_mInstructionLocation, inAttribute_mTypeName, inAttribute_mVariableName COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_localVariableDeclarationNoAssignmentAST (in_mInstructionLocation, in_mTypeName, in_mVariableName COMMA_THERE)) ;
   return result ;
 }
 
@@ -4348,8 +4142,11 @@ cPtr_localVariableDeclarationNoAssignmentAST::cPtr_localVariableDeclarationNoAss
                                                                                             const GALGAS_lstring & in_mVariableName
                                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mTypeName (in_mTypeName),
-mProperty_mVariableName (in_mVariableName) {
+mProperty_mTypeName (),
+mProperty_mVariableName () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mVariableName = in_mVariableName ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4517,15 +4314,13 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_warningInstructionForGeneration GALGAS_warningInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mWarningExpression,
-                                                                                               const GALGAS_fixitListForGeneration & inAttribute_mFixitListForGeneration
+GALGAS_warningInstructionForGeneration GALGAS_warningInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                               const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                                                               const GALGAS_semanticExpressionForGeneration & in_mWarningExpression,
+                                                                                               const GALGAS_fixitListForGeneration & in_mFixitListForGeneration
                                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_warningInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mWarningExpression.isValid () && inAttribute_mFixitListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_warningInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mWarningExpression, inAttribute_mFixitListForGeneration COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_warningInstructionForGeneration (in_mInstructionLocation, in_mReceiverExpression, in_mWarningExpression, in_mFixitListForGeneration COMMA_THERE)) ;
   return result ;
 }
 
@@ -4587,10 +4382,14 @@ cPtr_warningInstructionForGeneration::cPtr_warningInstructionForGeneration (cons
                                                                             const GALGAS_fixitListForGeneration & in_mFixitListForGeneration
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mInstructionLocation (in_mInstructionLocation),
-mProperty_mReceiverExpression (in_mReceiverExpression),
-mProperty_mWarningExpression (in_mWarningExpression),
-mProperty_mFixitListForGeneration (in_mFixitListForGeneration) {
+mProperty_mInstructionLocation (),
+mProperty_mReceiverExpression (),
+mProperty_mWarningExpression (),
+mProperty_mFixitListForGeneration () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mWarningExpression = in_mWarningExpression ;
+  mProperty_mFixitListForGeneration = in_mFixitListForGeneration ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4807,22 +4606,20 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_readAccessWithInstructionAST GALGAS_readAccessWithInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                         const GALGAS_lstring & inAttribute_mPrefix,
-                                                                                         const GALGAS_semanticExpressionAST & inAttribute_mReceiverExpression,
-                                                                                         const GALGAS_location & inAttribute_mEndOfReceiverExpression,
-                                                                                         const GALGAS_semanticExpressionAST & inAttribute_mKeyExpression,
-                                                                                         const GALGAS_location & inAttribute_mEndOfKeyExpression,
-                                                                                         const GALGAS_lstring & inAttribute_mSearchMethodNameForErrorSignaling,
-                                                                                         const GALGAS_semanticInstructionListAST & inAttribute_mDoBranchInstructions,
-                                                                                         const GALGAS_location & inAttribute_mEndOf_5F_do_5F_instructions,
-                                                                                         const GALGAS_semanticInstructionListAST & inAttribute_mElseBranchInstructions,
-                                                                                         const GALGAS_location & inAttribute_mEndOf_5F_else_5F_instructions
+GALGAS_readAccessWithInstructionAST GALGAS_readAccessWithInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                         const GALGAS_lstring & in_mPrefix,
+                                                                                         const GALGAS_semanticExpressionAST & in_mReceiverExpression,
+                                                                                         const GALGAS_location & in_mEndOfReceiverExpression,
+                                                                                         const GALGAS_semanticExpressionAST & in_mKeyExpression,
+                                                                                         const GALGAS_location & in_mEndOfKeyExpression,
+                                                                                         const GALGAS_lstring & in_mSearchMethodNameForErrorSignaling,
+                                                                                         const GALGAS_semanticInstructionListAST & in_mDoBranchInstructions,
+                                                                                         const GALGAS_location & in_mEndOf_5F_do_5F_instructions,
+                                                                                         const GALGAS_semanticInstructionListAST & in_mElseBranchInstructions,
+                                                                                         const GALGAS_location & in_mEndOf_5F_else_5F_instructions
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_readAccessWithInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mPrefix.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mEndOfReceiverExpression.isValid () && inAttribute_mKeyExpression.isValid () && inAttribute_mEndOfKeyExpression.isValid () && inAttribute_mSearchMethodNameForErrorSignaling.isValid () && inAttribute_mDoBranchInstructions.isValid () && inAttribute_mEndOf_5F_do_5F_instructions.isValid () && inAttribute_mElseBranchInstructions.isValid () && inAttribute_mEndOf_5F_else_5F_instructions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_readAccessWithInstructionAST (inAttribute_mInstructionLocation, inAttribute_mPrefix, inAttribute_mReceiverExpression, inAttribute_mEndOfReceiverExpression, inAttribute_mKeyExpression, inAttribute_mEndOfKeyExpression, inAttribute_mSearchMethodNameForErrorSignaling, inAttribute_mDoBranchInstructions, inAttribute_mEndOf_5F_do_5F_instructions, inAttribute_mElseBranchInstructions, inAttribute_mEndOf_5F_else_5F_instructions COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_readAccessWithInstructionAST (in_mInstructionLocation, in_mPrefix, in_mReceiverExpression, in_mEndOfReceiverExpression, in_mKeyExpression, in_mEndOfKeyExpression, in_mSearchMethodNameForErrorSignaling, in_mDoBranchInstructions, in_mEndOf_5F_do_5F_instructions, in_mElseBranchInstructions, in_mEndOf_5F_else_5F_instructions COMMA_THERE)) ;
   return result ;
 }
 
@@ -4963,16 +4760,27 @@ cPtr_readAccessWithInstructionAST::cPtr_readAccessWithInstructionAST (const GALG
                                                                       const GALGAS_location & in_mEndOf_5F_else_5F_instructions
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mPrefix (in_mPrefix),
-mProperty_mReceiverExpression (in_mReceiverExpression),
-mProperty_mEndOfReceiverExpression (in_mEndOfReceiverExpression),
-mProperty_mKeyExpression (in_mKeyExpression),
-mProperty_mEndOfKeyExpression (in_mEndOfKeyExpression),
-mProperty_mSearchMethodNameForErrorSignaling (in_mSearchMethodNameForErrorSignaling),
-mProperty_mDoBranchInstructions (in_mDoBranchInstructions),
-mProperty_mEndOf_5F_do_5F_instructions (in_mEndOf_5F_do_5F_instructions),
-mProperty_mElseBranchInstructions (in_mElseBranchInstructions),
-mProperty_mEndOf_5F_else_5F_instructions (in_mEndOf_5F_else_5F_instructions) {
+mProperty_mPrefix (),
+mProperty_mReceiverExpression (),
+mProperty_mEndOfReceiverExpression (),
+mProperty_mKeyExpression (),
+mProperty_mEndOfKeyExpression (),
+mProperty_mSearchMethodNameForErrorSignaling (),
+mProperty_mDoBranchInstructions (),
+mProperty_mEndOf_5F_do_5F_instructions (),
+mProperty_mElseBranchInstructions (),
+mProperty_mEndOf_5F_else_5F_instructions () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefix = in_mPrefix ;
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
+  mProperty_mKeyExpression = in_mKeyExpression ;
+  mProperty_mEndOfKeyExpression = in_mEndOfKeyExpression ;
+  mProperty_mSearchMethodNameForErrorSignaling = in_mSearchMethodNameForErrorSignaling ;
+  mProperty_mDoBranchInstructions = in_mDoBranchInstructions ;
+  mProperty_mEndOf_5F_do_5F_instructions = in_mEndOf_5F_do_5F_instructions ;
+  mProperty_mElseBranchInstructions = in_mElseBranchInstructions ;
+  mProperty_mEndOf_5F_else_5F_instructions = in_mEndOf_5F_else_5F_instructions ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5217,24 +5025,22 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_readWriteAccessWithInstructionAST GALGAS_readWriteAccessWithInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                   const GALGAS_lstring & inAttribute_mPrefix,
-                                                                                                   const GALGAS_lstring & inAttribute_mReceiverName,
-                                                                                                   const GALGAS_bool & inAttribute_mReceiverIsPrefixedBySelf,
-                                                                                                   const GALGAS_lstringlist & inAttribute_mFieldList,
-                                                                                                   const GALGAS_location & inAttribute_mEndOfReceiverExpression,
-                                                                                                   const GALGAS_semanticExpressionAST & inAttribute_mKeyExpression,
-                                                                                                   const GALGAS_location & inAttribute_mEndOfKeyExpression,
-                                                                                                   const GALGAS_lstring & inAttribute_mSearchMethodNameForErrorSignaling,
-                                                                                                   const GALGAS_semanticInstructionListAST & inAttribute_m_5F_do_5F_Instructions,
-                                                                                                   const GALGAS_location & inAttribute_mEndOf_5F_do_5F_instructions,
-                                                                                                   const GALGAS_semanticInstructionListAST & inAttribute_m_5F_else_5F_Instructions,
-                                                                                                   const GALGAS_location & inAttribute_mEndOf_5F_else_5F_instructions
+GALGAS_readWriteAccessWithInstructionAST GALGAS_readWriteAccessWithInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                   const GALGAS_lstring & in_mPrefix,
+                                                                                                   const GALGAS_lstring & in_mReceiverName,
+                                                                                                   const GALGAS_bool & in_mReceiverIsPrefixedBySelf,
+                                                                                                   const GALGAS_lstringlist & in_mFieldList,
+                                                                                                   const GALGAS_location & in_mEndOfReceiverExpression,
+                                                                                                   const GALGAS_semanticExpressionAST & in_mKeyExpression,
+                                                                                                   const GALGAS_location & in_mEndOfKeyExpression,
+                                                                                                   const GALGAS_lstring & in_mSearchMethodNameForErrorSignaling,
+                                                                                                   const GALGAS_semanticInstructionListAST & in_m_5F_do_5F_Instructions,
+                                                                                                   const GALGAS_location & in_mEndOf_5F_do_5F_instructions,
+                                                                                                   const GALGAS_semanticInstructionListAST & in_m_5F_else_5F_Instructions,
+                                                                                                   const GALGAS_location & in_mEndOf_5F_else_5F_instructions
                                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_readWriteAccessWithInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mPrefix.isValid () && inAttribute_mReceiverName.isValid () && inAttribute_mReceiverIsPrefixedBySelf.isValid () && inAttribute_mFieldList.isValid () && inAttribute_mEndOfReceiverExpression.isValid () && inAttribute_mKeyExpression.isValid () && inAttribute_mEndOfKeyExpression.isValid () && inAttribute_mSearchMethodNameForErrorSignaling.isValid () && inAttribute_m_5F_do_5F_Instructions.isValid () && inAttribute_mEndOf_5F_do_5F_instructions.isValid () && inAttribute_m_5F_else_5F_Instructions.isValid () && inAttribute_mEndOf_5F_else_5F_instructions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_readWriteAccessWithInstructionAST (inAttribute_mInstructionLocation, inAttribute_mPrefix, inAttribute_mReceiverName, inAttribute_mReceiverIsPrefixedBySelf, inAttribute_mFieldList, inAttribute_mEndOfReceiverExpression, inAttribute_mKeyExpression, inAttribute_mEndOfKeyExpression, inAttribute_mSearchMethodNameForErrorSignaling, inAttribute_m_5F_do_5F_Instructions, inAttribute_mEndOf_5F_do_5F_instructions, inAttribute_m_5F_else_5F_Instructions, inAttribute_mEndOf_5F_else_5F_instructions COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_readWriteAccessWithInstructionAST (in_mInstructionLocation, in_mPrefix, in_mReceiverName, in_mReceiverIsPrefixedBySelf, in_mFieldList, in_mEndOfReceiverExpression, in_mKeyExpression, in_mEndOfKeyExpression, in_mSearchMethodNameForErrorSignaling, in_m_5F_do_5F_Instructions, in_mEndOf_5F_do_5F_instructions, in_m_5F_else_5F_Instructions, in_mEndOf_5F_else_5F_instructions COMMA_THERE)) ;
   return result ;
 }
 
@@ -5401,18 +5207,31 @@ cPtr_readWriteAccessWithInstructionAST::cPtr_readWriteAccessWithInstructionAST (
                                                                                 const GALGAS_location & in_mEndOf_5F_else_5F_instructions
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mPrefix (in_mPrefix),
-mProperty_mReceiverName (in_mReceiverName),
-mProperty_mReceiverIsPrefixedBySelf (in_mReceiverIsPrefixedBySelf),
-mProperty_mFieldList (in_mFieldList),
-mProperty_mEndOfReceiverExpression (in_mEndOfReceiverExpression),
-mProperty_mKeyExpression (in_mKeyExpression),
-mProperty_mEndOfKeyExpression (in_mEndOfKeyExpression),
-mProperty_mSearchMethodNameForErrorSignaling (in_mSearchMethodNameForErrorSignaling),
-mProperty_m_5F_do_5F_Instructions (in_m_5F_do_5F_Instructions),
-mProperty_mEndOf_5F_do_5F_instructions (in_mEndOf_5F_do_5F_instructions),
-mProperty_m_5F_else_5F_Instructions (in_m_5F_else_5F_Instructions),
-mProperty_mEndOf_5F_else_5F_instructions (in_mEndOf_5F_else_5F_instructions) {
+mProperty_mPrefix (),
+mProperty_mReceiverName (),
+mProperty_mReceiverIsPrefixedBySelf (),
+mProperty_mFieldList (),
+mProperty_mEndOfReceiverExpression (),
+mProperty_mKeyExpression (),
+mProperty_mEndOfKeyExpression (),
+mProperty_mSearchMethodNameForErrorSignaling (),
+mProperty_m_5F_do_5F_Instructions (),
+mProperty_mEndOf_5F_do_5F_instructions (),
+mProperty_m_5F_else_5F_Instructions (),
+mProperty_mEndOf_5F_else_5F_instructions () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefix = in_mPrefix ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mReceiverIsPrefixedBySelf = in_mReceiverIsPrefixedBySelf ;
+  mProperty_mFieldList = in_mFieldList ;
+  mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
+  mProperty_mKeyExpression = in_mKeyExpression ;
+  mProperty_mEndOfKeyExpression = in_mEndOfKeyExpression ;
+  mProperty_mSearchMethodNameForErrorSignaling = in_mSearchMethodNameForErrorSignaling ;
+  mProperty_m_5F_do_5F_Instructions = in_m_5F_do_5F_Instructions ;
+  mProperty_mEndOf_5F_do_5F_instructions = in_mEndOf_5F_do_5F_instructions ;
+  mProperty_m_5F_else_5F_Instructions = in_m_5F_else_5F_Instructions ;
+  mProperty_mEndOf_5F_else_5F_instructions = in_mEndOf_5F_else_5F_instructions ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5621,18 +5440,16 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_readOnlyWithInstructionForGeneration GALGAS_readOnlyWithInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                         const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                                         const GALGAS_string & inAttribute_mObjectArrayCppName,
-                                                                                                         const GALGAS_semanticExpressionForGeneration & inAttribute_mKeyExpression,
-                                                                                                         const GALGAS_string & inAttribute_mSearchMethodNameForErrorSignaling,
-                                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mDoBranchInstructions,
-                                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mElseBranchInstructions
+GALGAS_readOnlyWithInstructionForGeneration GALGAS_readOnlyWithInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                         const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                                                                         const GALGAS_string & in_mObjectArrayCppName,
+                                                                                                         const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
+                                                                                                         const GALGAS_string & in_mSearchMethodNameForErrorSignaling,
+                                                                                                         const GALGAS_semanticInstructionListForGeneration & in_mDoBranchInstructions,
+                                                                                                         const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
                                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_readOnlyWithInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mObjectArrayCppName.isValid () && inAttribute_mKeyExpression.isValid () && inAttribute_mSearchMethodNameForErrorSignaling.isValid () && inAttribute_mDoBranchInstructions.isValid () && inAttribute_mElseBranchInstructions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_readOnlyWithInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mObjectArrayCppName, inAttribute_mKeyExpression, inAttribute_mSearchMethodNameForErrorSignaling, inAttribute_mDoBranchInstructions, inAttribute_mElseBranchInstructions COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_readOnlyWithInstructionForGeneration (in_mInstructionLocation, in_mReceiverExpression, in_mObjectArrayCppName, in_mKeyExpression, in_mSearchMethodNameForErrorSignaling, in_mDoBranchInstructions, in_mElseBranchInstructions COMMA_THERE)) ;
   return result ;
 }
 
@@ -5733,13 +5550,20 @@ cPtr_readOnlyWithInstructionForGeneration::cPtr_readOnlyWithInstructionForGenera
                                                                                       const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mInstructionLocation (in_mInstructionLocation),
-mProperty_mReceiverExpression (in_mReceiverExpression),
-mProperty_mObjectArrayCppName (in_mObjectArrayCppName),
-mProperty_mKeyExpression (in_mKeyExpression),
-mProperty_mSearchMethodNameForErrorSignaling (in_mSearchMethodNameForErrorSignaling),
-mProperty_mDoBranchInstructions (in_mDoBranchInstructions),
-mProperty_mElseBranchInstructions (in_mElseBranchInstructions) {
+mProperty_mInstructionLocation (),
+mProperty_mReceiverExpression (),
+mProperty_mObjectArrayCppName (),
+mProperty_mKeyExpression (),
+mProperty_mSearchMethodNameForErrorSignaling (),
+mProperty_mDoBranchInstructions (),
+mProperty_mElseBranchInstructions () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mReceiverExpression = in_mReceiverExpression ;
+  mProperty_mObjectArrayCppName = in_mObjectArrayCppName ;
+  mProperty_mKeyExpression = in_mKeyExpression ;
+  mProperty_mSearchMethodNameForErrorSignaling = in_mSearchMethodNameForErrorSignaling ;
+  mProperty_mDoBranchInstructions = in_mDoBranchInstructions ;
+  mProperty_mElseBranchInstructions = in_mElseBranchInstructions ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5950,20 +5774,18 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_readWriteWithInstructionForGeneration GALGAS_readWriteWithInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                           const GALGAS_string & inAttribute_mReceiverVariableCppName,
-                                                                                                           const GALGAS_unifiedTypeMapEntry & inAttribute_mReceiverType,
-                                                                                                           const GALGAS_lstringlist & inAttribute_mStructAttributeList,
-                                                                                                           const GALGAS_string & inAttribute_mObjectArrayCppName,
-                                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mKeyExpression,
-                                                                                                           const GALGAS_string & inAttribute_mSearchMethodNameForErrorSignaling,
-                                                                                                           const GALGAS_semanticInstructionListForGeneration & inAttribute_mDoBranchInstructions,
-                                                                                                           const GALGAS_semanticInstructionListForGeneration & inAttribute_mElseBranchInstructions
+GALGAS_readWriteWithInstructionForGeneration GALGAS_readWriteWithInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                           const GALGAS_string & in_mReceiverVariableCppName,
+                                                                                                           const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                           const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                                           const GALGAS_string & in_mObjectArrayCppName,
+                                                                                                           const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
+                                                                                                           const GALGAS_string & in_mSearchMethodNameForErrorSignaling,
+                                                                                                           const GALGAS_semanticInstructionListForGeneration & in_mDoBranchInstructions,
+                                                                                                           const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
                                                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_readWriteWithInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverVariableCppName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mStructAttributeList.isValid () && inAttribute_mObjectArrayCppName.isValid () && inAttribute_mKeyExpression.isValid () && inAttribute_mSearchMethodNameForErrorSignaling.isValid () && inAttribute_mDoBranchInstructions.isValid () && inAttribute_mElseBranchInstructions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_readWriteWithInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverVariableCppName, inAttribute_mReceiverType, inAttribute_mStructAttributeList, inAttribute_mObjectArrayCppName, inAttribute_mKeyExpression, inAttribute_mSearchMethodNameForErrorSignaling, inAttribute_mDoBranchInstructions, inAttribute_mElseBranchInstructions COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_readWriteWithInstructionForGeneration (in_mInstructionLocation, in_mReceiverVariableCppName, in_mReceiverType, in_mStructAttributeList, in_mObjectArrayCppName, in_mKeyExpression, in_mSearchMethodNameForErrorSignaling, in_mDoBranchInstructions, in_mElseBranchInstructions COMMA_THERE)) ;
   return result ;
 }
 
@@ -6090,15 +5912,24 @@ cPtr_readWriteWithInstructionForGeneration::cPtr_readWriteWithInstructionForGene
                                                                                         const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
                                                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mProperty_mInstructionLocation (in_mInstructionLocation),
-mProperty_mReceiverVariableCppName (in_mReceiverVariableCppName),
-mProperty_mReceiverType (in_mReceiverType),
-mProperty_mStructAttributeList (in_mStructAttributeList),
-mProperty_mObjectArrayCppName (in_mObjectArrayCppName),
-mProperty_mKeyExpression (in_mKeyExpression),
-mProperty_mSearchMethodNameForErrorSignaling (in_mSearchMethodNameForErrorSignaling),
-mProperty_mDoBranchInstructions (in_mDoBranchInstructions),
-mProperty_mElseBranchInstructions (in_mElseBranchInstructions) {
+mProperty_mInstructionLocation (),
+mProperty_mReceiverVariableCppName (),
+mProperty_mReceiverType (),
+mProperty_mStructAttributeList (),
+mProperty_mObjectArrayCppName (),
+mProperty_mKeyExpression (),
+mProperty_mSearchMethodNameForErrorSignaling (),
+mProperty_mDoBranchInstructions (),
+mProperty_mElseBranchInstructions () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mReceiverVariableCppName = in_mReceiverVariableCppName ;
+  mProperty_mReceiverType = in_mReceiverType ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mObjectArrayCppName = in_mObjectArrayCppName ;
+  mProperty_mKeyExpression = in_mKeyExpression ;
+  mProperty_mSearchMethodNameForErrorSignaling = in_mSearchMethodNameForErrorSignaling ;
+  mProperty_mDoBranchInstructions = in_mDoBranchInstructions ;
+  mProperty_mElseBranchInstructions = in_mElseBranchInstructions ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6283,16 +6114,14 @@ GALGAS_syntaxInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalCallInstruction GALGAS_nonterminalCallInstruction::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                     const GALGAS_lstring & inAttribute_mNonterminalName,
-                                                                                     const GALGAS_lstring & inAttribute_mLabelName,
-                                                                                     const GALGAS_actualParameterListAST & inAttribute_mActualParameterList,
-                                                                                     const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationResult
+GALGAS_nonterminalCallInstruction GALGAS_nonterminalCallInstruction::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                     const GALGAS_lstring & in_mNonterminalName,
+                                                                                     const GALGAS_lstring & in_mLabelName,
+                                                                                     const GALGAS_actualParameterListAST & in_mActualParameterList,
+                                                                                     const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult
                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_nonterminalCallInstruction result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mNonterminalName.isValid () && inAttribute_mLabelName.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mGrammarInstructionSyntaxDirectedTranslationResult.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_nonterminalCallInstruction (inAttribute_mInstructionLocation, inAttribute_mNonterminalName, inAttribute_mLabelName, inAttribute_mActualParameterList, inAttribute_mGrammarInstructionSyntaxDirectedTranslationResult COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_nonterminalCallInstruction (in_mInstructionLocation, in_mNonterminalName, in_mLabelName, in_mActualParameterList, in_mGrammarInstructionSyntaxDirectedTranslationResult COMMA_THERE)) ;
   return result ;
 }
 
@@ -6355,10 +6184,15 @@ cPtr_nonterminalCallInstruction::cPtr_nonterminalCallInstruction (const GALGAS_l
                                                                   const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mNonterminalName (in_mNonterminalName),
-mProperty_mLabelName (in_mLabelName),
-mProperty_mActualParameterList (in_mActualParameterList),
-mProperty_mGrammarInstructionSyntaxDirectedTranslationResult (in_mGrammarInstructionSyntaxDirectedTranslationResult) {
+mProperty_mNonterminalName (),
+mProperty_mLabelName (),
+mProperty_mActualParameterList (),
+mProperty_mGrammarInstructionSyntaxDirectedTranslationResult () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mNonterminalName = in_mNonterminalName ;
+  mProperty_mLabelName = in_mLabelName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationResult = in_mGrammarInstructionSyntaxDirectedTranslationResult ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6542,17 +6376,15 @@ GALGAS_syntaxInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalCheckInstructionAST GALGAS_terminalCheckInstructionAST::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                       const GALGAS_lstring & inAttribute_mTerminalName,
-                                                                                       const GALGAS_actualInputParameterListAST & inAttribute_mActualInputParameterList,
-                                                                                       const GALGAS__32_lstringlist & inAttribute_mIndexingKeyList,
-                                                                                       const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
-                                                                                       const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken
+GALGAS_terminalCheckInstructionAST GALGAS_terminalCheckInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                       const GALGAS_lstring & in_mTerminalName,
+                                                                                       const GALGAS_actualInputParameterListAST & in_mActualInputParameterList,
+                                                                                       const GALGAS__32_lstringlist & in_mIndexingKeyList,
+                                                                                       const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+                                                                                       const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
                                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_terminalCheckInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mTerminalName.isValid () && inAttribute_mActualInputParameterList.isValid () && inAttribute_mIndexingKeyList.isValid () && inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.isValid () && inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_terminalCheckInstructionAST (inAttribute_mInstructionLocation, inAttribute_mTerminalName, inAttribute_mActualInputParameterList, inAttribute_mIndexingKeyList, inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_terminalCheckInstructionAST (in_mInstructionLocation, in_mTerminalName, in_mActualInputParameterList, in_mIndexingKeyList, in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, in_mGrammarInstructionSyntaxDirectedTranslationToken COMMA_THERE)) ;
   return result ;
 }
 
@@ -6628,11 +6460,17 @@ cPtr_terminalCheckInstructionAST::cPtr_terminalCheckInstructionAST (const GALGAS
                                                                     const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
-mProperty_mTerminalName (in_mTerminalName),
-mProperty_mActualInputParameterList (in_mActualInputParameterList),
-mProperty_mIndexingKeyList (in_mIndexingKeyList),
-mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor),
-mProperty_mGrammarInstructionSyntaxDirectedTranslationToken (in_mGrammarInstructionSyntaxDirectedTranslationToken) {
+mProperty_mTerminalName (),
+mProperty_mActualInputParameterList (),
+mProperty_mIndexingKeyList (),
+mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (),
+mProperty_mGrammarInstructionSyntaxDirectedTranslationToken () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mTerminalName = in_mTerminalName ;
+  mProperty_mActualInputParameterList = in_mActualInputParameterList ;
+  mProperty_mIndexingKeyList = in_mIndexingKeyList ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationToken = in_mGrammarInstructionSyntaxDirectedTranslationToken ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6797,14 +6635,12 @@ GALGAS_abstractSyntaxInstructionForGrammarAnalysis (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGrammarAnalysis::class_func_new (const GALGAS_location & inAttribute_mStartLocation,
-                                                                                                           const GALGAS_lstring & inAttribute_mTerminalSymbolName,
-                                                                                                           const GALGAS_uint & inAttribute_mTerminalSymbolIndex
+GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGrammarAnalysis::class_func_new (const GALGAS_location & in_mStartLocation,
+                                                                                                           const GALGAS_lstring & in_mTerminalSymbolName,
+                                                                                                           const GALGAS_uint & in_mTerminalSymbolIndex
                                                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_terminalInstructionForGrammarAnalysis result ;
-  if (inAttribute_mStartLocation.isValid () && inAttribute_mTerminalSymbolName.isValid () && inAttribute_mTerminalSymbolIndex.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_terminalInstructionForGrammarAnalysis (inAttribute_mStartLocation, inAttribute_mTerminalSymbolName, inAttribute_mTerminalSymbolIndex COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_terminalInstructionForGrammarAnalysis (in_mStartLocation, in_mTerminalSymbolName, in_mTerminalSymbolIndex COMMA_THERE)) ;
   return result ;
 }
 
@@ -6841,8 +6677,11 @@ cPtr_terminalInstructionForGrammarAnalysis::cPtr_terminalInstructionForGrammarAn
                                                                                         const GALGAS_uint & in_mTerminalSymbolIndex
                                                                                         COMMA_LOCATION_ARGS) :
 cPtr_abstractSyntaxInstructionForGrammarAnalysis (in_mStartLocation COMMA_THERE),
-mProperty_mTerminalSymbolName (in_mTerminalSymbolName),
-mProperty_mTerminalSymbolIndex (in_mTerminalSymbolIndex) {
+mProperty_mTerminalSymbolName (),
+mProperty_mTerminalSymbolIndex () {
+  mProperty_mStartLocation = in_mStartLocation ;
+  mProperty_mTerminalSymbolName = in_mTerminalSymbolName ;
+  mProperty_mTerminalSymbolIndex = in_mTerminalSymbolIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7139,18 +6978,16 @@ GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalCheckInstructionForGeneration GALGAS_terminalCheckInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                           const GALGAS_lstring & inAttribute_mTerminalName,
-                                                                                                           const GALGAS_string & inAttribute_mLexiqueIdentifier,
-                                                                                                           const GALGAS_terminalCheckAssignementList & inAttribute_mTerminalCheckAssignementList,
-                                                                                                           const GALGAS__32_lstringlist & inAttribute_mIndexingKeyList,
-                                                                                                           const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
-                                                                                                           const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken
+GALGAS_terminalCheckInstructionForGeneration GALGAS_terminalCheckInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                           const GALGAS_lstring & in_mTerminalName,
+                                                                                                           const GALGAS_string & in_mLexiqueIdentifier,
+                                                                                                           const GALGAS_terminalCheckAssignementList & in_mTerminalCheckAssignementList,
+                                                                                                           const GALGAS__32_lstringlist & in_mIndexingKeyList,
+                                                                                                           const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
+                                                                                                           const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
                                                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_terminalCheckInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mTerminalName.isValid () && inAttribute_mLexiqueIdentifier.isValid () && inAttribute_mTerminalCheckAssignementList.isValid () && inAttribute_mIndexingKeyList.isValid () && inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.isValid () && inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_terminalCheckInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mTerminalName, inAttribute_mLexiqueIdentifier, inAttribute_mTerminalCheckAssignementList, inAttribute_mIndexingKeyList, inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_terminalCheckInstructionForGeneration (in_mInstructionLocation, in_mTerminalName, in_mLexiqueIdentifier, in_mTerminalCheckAssignementList, in_mIndexingKeyList, in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, in_mGrammarInstructionSyntaxDirectedTranslationToken COMMA_THERE)) ;
   return result ;
 }
 
@@ -7239,12 +7076,19 @@ cPtr_terminalCheckInstructionForGeneration::cPtr_terminalCheckInstructionForGene
                                                                                         const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
                                                                                         COMMA_LOCATION_ARGS) :
 cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
-mProperty_mTerminalName (in_mTerminalName),
-mProperty_mLexiqueIdentifier (in_mLexiqueIdentifier),
-mProperty_mTerminalCheckAssignementList (in_mTerminalCheckAssignementList),
-mProperty_mIndexingKeyList (in_mIndexingKeyList),
-mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor),
-mProperty_mGrammarInstructionSyntaxDirectedTranslationToken (in_mGrammarInstructionSyntaxDirectedTranslationToken) {
+mProperty_mTerminalName (),
+mProperty_mLexiqueIdentifier (),
+mProperty_mTerminalCheckAssignementList (),
+mProperty_mIndexingKeyList (),
+mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (),
+mProperty_mGrammarInstructionSyntaxDirectedTranslationToken () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mTerminalName = in_mTerminalName ;
+  mProperty_mLexiqueIdentifier = in_mLexiqueIdentifier ;
+  mProperty_mTerminalCheckAssignementList = in_mTerminalCheckAssignementList ;
+  mProperty_mIndexingKeyList = in_mIndexingKeyList ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationToken = in_mGrammarInstructionSyntaxDirectedTranslationToken ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7418,15 +7262,13 @@ GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_parseLoopInstructionForGeneration GALGAS_parseLoopInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mVariantExpression,
-                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mWhileExpression,
-                                                                                                   const GALGAS_semanticInstructionListForGeneration & inAttribute_mInstructionList
+GALGAS_parseLoopInstructionForGeneration GALGAS_parseLoopInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                   const GALGAS_semanticExpressionForGeneration & in_mVariantExpression,
+                                                                                                   const GALGAS_semanticExpressionForGeneration & in_mWhileExpression,
+                                                                                                   const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
                                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_parseLoopInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mVariantExpression.isValid () && inAttribute_mWhileExpression.isValid () && inAttribute_mInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_parseLoopInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mVariantExpression, inAttribute_mWhileExpression, inAttribute_mInstructionList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_parseLoopInstructionForGeneration (in_mInstructionLocation, in_mVariantExpression, in_mWhileExpression, in_mInstructionList COMMA_THERE)) ;
   return result ;
 }
 
@@ -7476,9 +7318,13 @@ cPtr_parseLoopInstructionForGeneration::cPtr_parseLoopInstructionForGeneration (
                                                                                 const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
-mProperty_mVariantExpression (in_mVariantExpression),
-mProperty_mWhileExpression (in_mWhileExpression),
-mProperty_mInstructionList (in_mInstructionList) {
+mProperty_mVariantExpression (),
+mProperty_mWhileExpression (),
+mProperty_mInstructionList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mVariantExpression = in_mVariantExpression ;
+  mProperty_mWhileExpression = in_mWhileExpression ;
+  mProperty_mInstructionList = in_mInstructionList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7646,15 +7492,13 @@ GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_parseWhenInstructionForGeneration GALGAS_parseWhenInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mWhenExpression,
-                                                                                                   const GALGAS_semanticInstructionListForGeneration & inAttribute_mInstructionList,
-                                                                                                   const GALGAS_semanticInstructionListForGeneration & inAttribute_mElseInstructionList
+GALGAS_parseWhenInstructionForGeneration GALGAS_parseWhenInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                   const GALGAS_semanticExpressionForGeneration & in_mWhenExpression,
+                                                                                                   const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                                                                   const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
                                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_parseWhenInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mWhenExpression.isValid () && inAttribute_mInstructionList.isValid () && inAttribute_mElseInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_parseWhenInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mWhenExpression, inAttribute_mInstructionList, inAttribute_mElseInstructionList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_parseWhenInstructionForGeneration (in_mInstructionLocation, in_mWhenExpression, in_mInstructionList, in_mElseInstructionList COMMA_THERE)) ;
   return result ;
 }
 
@@ -7704,9 +7548,13 @@ cPtr_parseWhenInstructionForGeneration::cPtr_parseWhenInstructionForGeneration (
                                                                                 const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
-mProperty_mWhenExpression (in_mWhenExpression),
-mProperty_mInstructionList (in_mInstructionList),
-mProperty_mElseInstructionList (in_mElseInstructionList) {
+mProperty_mWhenExpression (),
+mProperty_mInstructionList (),
+mProperty_mElseInstructionList () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mWhenExpression = in_mWhenExpression ;
+  mProperty_mInstructionList = in_mInstructionList ;
+  mProperty_mElseInstructionList = in_mElseInstructionList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7860,13 +7708,11 @@ GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxSendInstructionForGeneration GALGAS_syntaxSendInstructionForGeneration::class_func_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
+GALGAS_syntaxSendInstructionForGeneration GALGAS_syntaxSendInstructionForGeneration::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                     const GALGAS_semanticExpressionForGeneration & in_mExpression
                                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_syntaxSendInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_syntaxSendInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_syntaxSendInstructionForGeneration (in_mInstructionLocation, in_mExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -7890,7 +7736,9 @@ cPtr_syntaxSendInstructionForGeneration::cPtr_syntaxSendInstructionForGeneration
                                                                                   const GALGAS_semanticExpressionForGeneration & in_mExpression
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
-mProperty_mExpression (in_mExpression) {
+mProperty_mExpression () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mExpression = in_mExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8047,14 +7895,12 @@ GALGAS_abstractSyntaxInstructionForGrammarAnalysis (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonTerminalInstructionForGrammarAnalysis GALGAS_nonTerminalInstructionForGrammarAnalysis::class_func_new (const GALGAS_location & inAttribute_mStartLocation,
-                                                                                                                 const GALGAS_lstring & inAttribute_mNonterminalSymbolName,
-                                                                                                                 const GALGAS_uint & inAttribute_mNonterminalSymbolIndex
+GALGAS_nonTerminalInstructionForGrammarAnalysis GALGAS_nonTerminalInstructionForGrammarAnalysis::class_func_new (const GALGAS_location & in_mStartLocation,
+                                                                                                                 const GALGAS_lstring & in_mNonterminalSymbolName,
+                                                                                                                 const GALGAS_uint & in_mNonterminalSymbolIndex
                                                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_nonTerminalInstructionForGrammarAnalysis result ;
-  if (inAttribute_mStartLocation.isValid () && inAttribute_mNonterminalSymbolName.isValid () && inAttribute_mNonterminalSymbolIndex.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_nonTerminalInstructionForGrammarAnalysis (inAttribute_mStartLocation, inAttribute_mNonterminalSymbolName, inAttribute_mNonterminalSymbolIndex COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_nonTerminalInstructionForGrammarAnalysis (in_mStartLocation, in_mNonterminalSymbolName, in_mNonterminalSymbolIndex COMMA_THERE)) ;
   return result ;
 }
 
@@ -8091,8 +7937,11 @@ cPtr_nonTerminalInstructionForGrammarAnalysis::cPtr_nonTerminalInstructionForGra
                                                                                               const GALGAS_uint & in_mNonterminalSymbolIndex
                                                                                               COMMA_LOCATION_ARGS) :
 cPtr_abstractSyntaxInstructionForGrammarAnalysis (in_mStartLocation COMMA_THERE),
-mProperty_mNonterminalSymbolName (in_mNonterminalSymbolName),
-mProperty_mNonterminalSymbolIndex (in_mNonterminalSymbolIndex) {
+mProperty_mNonterminalSymbolName (),
+mProperty_mNonterminalSymbolIndex () {
+  mProperty_mStartLocation = in_mStartLocation ;
+  mProperty_mNonterminalSymbolName = in_mNonterminalSymbolName ;
+  mProperty_mNonterminalSymbolIndex = in_mNonterminalSymbolIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------

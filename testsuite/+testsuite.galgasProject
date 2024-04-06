@@ -8,6 +8,7 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_syntax.ggs"
   "galgas-sources/testsuite_cocoa.ggs"
   "galgas-sources/testsuite_grammar.ggs"
+  "galgas-sources/testsuite_reference-classes.ggs"
   "galgas-sources/testsuite_foreach_instruction.ggs"
   "galgas-sources/testsuite_for_instruction.ggs"
   "galgas-sources/testsuite_sortedlist.ggs"

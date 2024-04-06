@@ -269,7 +269,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     end
     let propertyMap = [selfType definition].propertyMap
     [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
-    if isConstant then
+    if isConstant & not [selfMutability isInitializer] then
       error self.mTargetSelfPropertyName : "a constant property cannot be modified"
     end
     let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty

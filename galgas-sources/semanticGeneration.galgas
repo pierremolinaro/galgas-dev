@@ -884,6 +884,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
+    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
 
   template referenceClassTypeSpecificImplementation "GALGAS_reference_class.cpp.galgasTemplate"
     ?@string TYPE_NAME

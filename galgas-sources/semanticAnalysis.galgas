@@ -264,7 +264,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
         !property.typeEntry
         !"<< unused >>"
         !"self." + property.name
-        !initialized
+        !initialized: initialized
       ]
     end
   end
@@ -355,7 +355,7 @@ proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
         !property.typeEntry
         !"<< unused >>"
         !"self." + property.name
-        !initialized
+        !initialized: initialized
       ]
     end
   end
@@ -483,7 +483,7 @@ proc analyzeFunctionBody
         !property.typeEntry
         !"<< unused >>"
         !"self." + property.name
-        !true
+        !initialized: true
       ]
     end
   end

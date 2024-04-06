@@ -269,7 +269,7 @@ setter @localVarManager insertInitializerSelfProperty
                               ?let @unifiedTypeMapEntry inType
                               ?let @string inCppName
                               ?let @string inNameForCheckingFormalParameterUsing
-                              ?let @bool inInitialized {
+                              ?initialized: let @bool inInitialized {
   let varName = @lstring.new {!"self." + inPropertyName !inErrorLocation}
   [!?self.mCurrentManager insertKey
     !varName

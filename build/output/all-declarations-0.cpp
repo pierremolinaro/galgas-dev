@@ -6963,14 +6963,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_templateAndOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateAndOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateAndOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -7019,9 +7017,12 @@ cPtr_templateAndOperationAST::cPtr_templateAndOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7292,14 +7293,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                             const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                             const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                             const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_templateOrOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateOrOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateOrOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -7348,9 +7347,12 @@ cPtr_templateOrOperationAST::cPtr_templateOrOperationAST (const GALGAS_location 
                                                           const GALGAS_templateExpressionAST & in_mRightExpression
                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7621,14 +7623,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_templateXorOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateXorOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateXorOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -7677,9 +7677,12 @@ cPtr_templateXorOperationAST::cPtr_templateXorOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7936,12 +7939,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST::class_func_new (const GALGAS_location & inAttribute_mLocation
+GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST::class_func_new (const GALGAS_location & in_mLocation
                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_templateTrueBoolAST result ;
-  if (inAttribute_mLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateTrueBoolAST (inAttribute_mLocation COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateTrueBoolAST (in_mLocation COMMA_THERE)) ;
   return result ;
 }
 
@@ -7964,7 +7965,8 @@ GALGAS_location GALGAS_templateTrueBoolAST::readProperty_mLocation (void) const 
 cPtr_templateTrueBoolAST::cPtr_templateTrueBoolAST (const GALGAS_location & in_mLocation
                                                     COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mLocation (in_mLocation) {
+mProperty_mLocation () {
+  mProperty_mLocation = in_mLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8217,12 +8219,10 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST::class_func_new (const GALGAS_location & inAttribute_mLocation
+GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST::class_func_new (const GALGAS_location & in_mLocation
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_templateFalseBoolAST result ;
-  if (inAttribute_mLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateFalseBoolAST (inAttribute_mLocation COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateFalseBoolAST (in_mLocation COMMA_THERE)) ;
   return result ;
 }
 
@@ -8245,7 +8245,8 @@ GALGAS_location GALGAS_templateFalseBoolAST::readProperty_mLocation (void) const
 cPtr_templateFalseBoolAST::cPtr_templateFalseBoolAST (const GALGAS_location & in_mLocation
                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mLocation (in_mLocation) {
+mProperty_mLocation () {
+  mProperty_mLocation = in_mLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9055,13 +9056,11 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                             const GALGAS_templateExpressionAST & inAttribute_mExpression
+GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                             const GALGAS_templateExpressionAST & in_mExpression
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_templateNotOperatorAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateNotOperatorAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateNotOperatorAST (in_mOperatorLocation, in_mExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -9097,8 +9096,10 @@ cPtr_templateNotOperatorAST::cPtr_templateNotOperatorAST (const GALGAS_location 
                                                           const GALGAS_templateExpressionAST & in_mExpression
                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mExpression (in_mExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9360,13 +9361,11 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                 const GALGAS_templateExpressionAST & inAttribute_mExpression
+GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                 const GALGAS_templateExpressionAST & in_mExpression
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_templateLogicalNegateAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateLogicalNegateAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateLogicalNegateAST (in_mOperatorLocation, in_mExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -9402,8 +9401,10 @@ cPtr_templateLogicalNegateAST::cPtr_templateLogicalNegateAST (const GALGAS_locat
                                                               const GALGAS_templateExpressionAST & in_mExpression
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mExpression (in_mExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10257,14 +10258,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_templateAddOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateAddOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateAddOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -10313,9 +10312,12 @@ cPtr_templateAddOperationAST::cPtr_templateAddOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10586,14 +10588,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_templateSubOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateSubOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateSubOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -10642,9 +10642,12 @@ cPtr_templateSubOperationAST::cPtr_templateSubOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10915,14 +10918,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                         const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                         const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                         const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                         const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_templateMultiplyOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateMultiplyOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateMultiplyOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -10971,9 +10972,12 @@ cPtr_templateMultiplyOperationAST::cPtr_templateMultiplyOperationAST (const GALG
                                                                       const GALGAS_templateExpressionAST & in_mRightExpression
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11244,14 +11248,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                     const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                     const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                     const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                     const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_templateDivideOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateDivideOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateDivideOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -11300,9 +11302,12 @@ cPtr_templateDivideOperationAST::cPtr_templateDivideOperationAST (const GALGAS_l
                                                                   const GALGAS_templateExpressionAST & in_mRightExpression
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11573,14 +11578,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                     const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                     const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                     const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                     const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_templateModuloOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateModuloOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateModuloOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -11629,9 +11632,12 @@ cPtr_templateModuloOperationAST::cPtr_templateModuloOperationAST (const GALGAS_l
                                                                   const GALGAS_templateExpressionAST & in_mRightExpression
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11895,13 +11901,11 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                             const GALGAS_templateExpressionAST & inAttribute_mExpression
+GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                             const GALGAS_templateExpressionAST & in_mExpression
                                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_templateUnaryMinusOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateUnaryMinusOperationAST (inAttribute_mOperatorLocation, inAttribute_mExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateUnaryMinusOperationAST (in_mOperatorLocation, in_mExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -11937,8 +11941,10 @@ cPtr_templateUnaryMinusOperationAST::cPtr_templateUnaryMinusOperationAST (const 
                                                                           const GALGAS_templateExpressionAST & in_mExpression
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mExpression (in_mExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12207,14 +12213,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                         const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                         const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                         const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                         const GALGAS_templateExpressionAST & in_mRightExpression
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_templateEqualTestAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateEqualTestAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -12263,9 +12267,12 @@ cPtr_templateEqualTestAST::cPtr_templateEqualTestAST (const GALGAS_location & in
                                                       const GALGAS_templateExpressionAST & in_mRightExpression
                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12536,14 +12543,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                               const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                               const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_templateNonEqualTestAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateNonEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateNonEqualTestAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -12592,9 +12597,12 @@ cPtr_templateNonEqualTestAST::cPtr_templateNonEqualTestAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12865,14 +12873,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                 const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                 const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                 const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                 const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictInfTestAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateStrictInfTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateStrictInfTestAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -12921,9 +12927,12 @@ cPtr_templateStrictInfTestAST::cPtr_templateStrictInfTestAST (const GALGAS_locat
                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13194,14 +13203,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                   const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                   const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                   const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                   const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_templateInfOrEqualTestAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateInfOrEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateInfOrEqualTestAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -13250,9 +13257,12 @@ cPtr_templateInfOrEqualTestAST::cPtr_templateInfOrEqualTestAST (const GALGAS_loc
                                                                 const GALGAS_templateExpressionAST & in_mRightExpression
                                                                 COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13523,14 +13533,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                 const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                 const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                 const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                 const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_templateStrictSupTestAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateStrictSupTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateStrictSupTestAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -13579,9 +13587,12 @@ cPtr_templateStrictSupTestAST::cPtr_templateStrictSupTestAST (const GALGAS_locat
                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13852,14 +13863,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                   const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                   const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                   const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                   const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_templateSupOrEqualTestAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateSupOrEqualTestAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateSupOrEqualTestAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -13908,9 +13917,12 @@ cPtr_templateSupOrEqualTestAST::cPtr_templateSupOrEqualTestAST (const GALGAS_loc
                                                                 const GALGAS_templateExpressionAST & in_mRightExpression
                                                                 COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14181,14 +14193,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                           const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                           const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                           const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                           const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_templateLeftShiftOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateLeftShiftOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateLeftShiftOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -14237,9 +14247,12 @@ cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (const GA
                                                                         const GALGAS_templateExpressionAST & in_mRightExpression
                                                                         COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14510,14 +14523,12 @@ GALGAS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST::class_func_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                             const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
-                                                                                             const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                                             const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_templateRightShiftOperationAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateRightShiftOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateRightShiftOperationAST (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
   return result ;
 }
 
@@ -14566,9 +14577,12 @@ cPtr_templateRightShiftOperationAST::cPtr_templateRightShiftOperationAST (const 
                                                                           const GALGAS_templateExpressionAST & in_mRightExpression
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mProperty_mOperatorLocation (in_mOperatorLocation),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mLeftExpression = in_mLeftExpression ;
+  mProperty_mRightExpression = in_mRightExpression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14942,13 +14956,11 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST::class_func_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
-                                                                                                 const GALGAS_location & inAttribute_mLocation
+GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST::class_func_new (const GALGAS_templateExpressionAST & in_mExpression,
+                                                                                                 const GALGAS_location & in_mLocation
                                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionExpressionAST result ;
-  if (inAttribute_mExpression.isValid () && inAttribute_mLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateInstructionExpressionAST (inAttribute_mExpression, inAttribute_mLocation COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateInstructionExpressionAST (in_mExpression, in_mLocation COMMA_THERE)) ;
   return result ;
 }
 
@@ -14984,8 +14996,10 @@ cPtr_templateInstructionExpressionAST::cPtr_templateInstructionExpressionAST (co
                                                                               const GALGAS_location & in_mLocation
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mProperty_mExpression (in_mExpression),
-mProperty_mLocation (in_mLocation) {
+mProperty_mExpression (),
+mProperty_mLocation () {
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mLocation = in_mLocation ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15254,14 +15268,12 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST::class_func_new (const GALGAS_templateExpressionAST & inAttribute_mExpression,
-                                                                                       const GALGAS_location & inAttribute_mLocation,
-                                                                                       const GALGAS_templateInstructionListAST & inAttribute_mBlockInstructionList
+GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST::class_func_new (const GALGAS_templateExpressionAST & in_mExpression,
+                                                                                       const GALGAS_location & in_mLocation,
+                                                                                       const GALGAS_templateInstructionListAST & in_mBlockInstructionList
                                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_templateBlockInstructionAST result ;
-  if (inAttribute_mExpression.isValid () && inAttribute_mLocation.isValid () && inAttribute_mBlockInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateBlockInstructionAST (inAttribute_mExpression, inAttribute_mLocation, inAttribute_mBlockInstructionList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateBlockInstructionAST (in_mExpression, in_mLocation, in_mBlockInstructionList COMMA_THERE)) ;
   return result ;
 }
 
@@ -15310,9 +15322,12 @@ cPtr_templateBlockInstructionAST::cPtr_templateBlockInstructionAST (const GALGAS
                                                                     const GALGAS_templateInstructionListAST & in_mBlockInstructionList
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mProperty_mExpression (in_mExpression),
-mProperty_mLocation (in_mLocation),
-mProperty_mBlockInstructionList (in_mBlockInstructionList) {
+mProperty_mExpression (),
+mProperty_mLocation (),
+mProperty_mBlockInstructionList () {
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mBlockInstructionList = in_mBlockInstructionList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16554,13 +16569,11 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::class_func_new (const GALGAS_templateInstructionIfBranchListAST & inAttribute_mTemplateInstructionIfBranchList,
-                                                                                 const GALGAS_templateInstructionListAST & inAttribute_mElseInstructionList
+GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::class_func_new (const GALGAS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
+                                                                                 const GALGAS_templateInstructionListAST & in_mElseInstructionList
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfAST result ;
-  if (inAttribute_mTemplateInstructionIfBranchList.isValid () && inAttribute_mElseInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_templateInstructionIfAST (inAttribute_mTemplateInstructionIfBranchList, inAttribute_mElseInstructionList COMMA_THERE)) ;
-  }
+  macroMyNew (result.mObjectPtr, cPtr_templateInstructionIfAST (in_mTemplateInstructionIfBranchList, in_mElseInstructionList COMMA_THERE)) ;
   return result ;
 }
 
@@ -16596,8 +16609,10 @@ cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (const GALGAS_templ
                                                               const GALGAS_templateInstructionListAST & in_mElseInstructionList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mProperty_mTemplateInstructionIfBranchList (in_mTemplateInstructionIfBranchList),
-mProperty_mElseInstructionList (in_mElseInstructionList) {
+mProperty_mTemplateInstructionIfBranchList (),
+mProperty_mElseInstructionList () {
+  mProperty_mTemplateInstructionIfBranchList = in_mTemplateInstructionIfBranchList ;
+  mProperty_mElseInstructionList = in_mElseInstructionList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16771,6 +16786,105 @@ GALGAS_templateInstructionIfAST_2D_weak GALGAS_templateInstructionIfAST_2D_weak:
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionIfAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionForGeneration::cPtr_templateInstructionForGeneration (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+
+
+ComparisonResult GALGAS_templateInstructionForGeneration::objectCompare (const GALGAS_templateInstructionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionForGeneration::GALGAS_templateInstructionForGeneration (void) :
+AC_GALGAS_reference_class () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionForGeneration::GALGAS_templateInstructionForGeneration (const cPtr_templateInstructionForGeneration * inSourcePtr) :
+AC_GALGAS_reference_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateInstructionForGeneration::cPtr_templateInstructionForGeneration (LOCATION_ARGS) :
+acStrongPtr_class (THERE) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @templateInstructionForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ("templateInstructionForGeneration",
+                                                                                        nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionForGeneration GALGAS_templateInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionForGeneration result ;
+  const GALGAS_templateInstructionForGeneration * p = (const GALGAS_templateInstructionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

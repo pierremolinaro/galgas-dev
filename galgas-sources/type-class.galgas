@@ -627,6 +627,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
+          !self.synthetizedInitializerArgumentList
         ]
         let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
         [@string generateFileWithPattern
@@ -659,6 +660,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
+          !self.synthetizedInitializerArgumentList
         ]
       end
     else

@@ -1,0 +1,24 @@
+
+
+class @classeA {
+  private let @uint x
+}
+
+
+class @classeB {
+  private let @uint x
+  
+  init (?@uint inX) { self.x = inX }
+  init (?x: let @uint inX) { self.x = inX }
+}
+
+class @classeC {
+  private var @uint x = 7
+}
+
+class @classeS {
+  private var @uint x = 9
+  
+  init (?@uint inX) { self.x = inX }
+  init (?x: let @uint inX) { self.x = inX }
+}
