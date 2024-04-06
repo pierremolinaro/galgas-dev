@@ -58,45 +58,45 @@ syntax extension galgas3DeclarationsSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $abstract$
-    $mutating$
-    $proc$
-    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
-    $.$
-    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
-      !isPredefined: false # Is not predefined
-      !className
-      !setterName
-      !formalParameterList
-    }
-  }
-
-  #·······························································································
-
-  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
-    $abstract$
-    $mutating$
-    $proc$
-    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
-      !isPredefined: false # Is not predefined
-      !inClassName
-      !setterName
-      !formalParameterList
-    }
-  }
-
-  #·······························································································
-
-}
+#syntax extension galgas4DeclarationsSyntax {
+#
+#  #·······························································································
+#
+#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+#    $abstract$
+#    $mutating$
+#    $proc$
+#    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
+#    $.$
+#    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
+#    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
+#      !isPredefined: false # Is not predefined
+#      !className
+#      !setterName
+#      !formalParameterList
+#    }
+#  }
+#
+#  #·······························································································
+#
+#  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+#    $abstract$
+#    $mutating$
+#    $proc$
+#    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
+#    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
+#      !isPredefined: false # Is not predefined
+#      !inClassName
+#      !setterName
+#      !formalParameterList
+#    }
+#  }
+#
+#  #·······························································································
+#
+#}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
