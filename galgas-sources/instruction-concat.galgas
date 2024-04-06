@@ -23,7 +23,7 @@ refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
-  private let @actualOutputExpressionList mExpressions
+  private let @actualOutputArgumentList mExpressions
 }
 
 #······················································································································
@@ -111,7 +111,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $+=$
       select
-        <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+        <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
         outInstruction = @plusEqualElementsInstructionAST.new {
           !instructionLocation
           !inHasSelfPrefix
@@ -155,7 +155,7 @@ syntax extension galgas3InstructionsSyntax {
   #·······························································································
 
   rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                               !@actualOutputExpressionList outExpressionList {
+                                               !@actualOutputArgumentList outExpressionList {
     outExpressionList = {}
     repeat
       let @lstring selector

@@ -81,7 +81,7 @@ abstract refclass @actualParameterAST {
 
   #·······························································································
 
-  abstract method enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList
+  abstract method enterInActualOutputParameterList ?!@actualOutputArgumentList ioActualOutputArgumentList
 
   #·······························································································
 
@@ -127,7 +127,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList ioActualOutputArgumentList {
     ioActualOutputArgumentList +=
       !self.mActualSelector
       !self.mOutputActualParameterExpression
@@ -211,7 +211,7 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
@@ -311,7 +311,7 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
@@ -396,7 +396,7 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support output/input parameter"
   }
 
@@ -479,7 +479,7 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mQualifierLocation : "a getter does not support output/input parameter"
   }
 
@@ -561,7 +561,7 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
@@ -652,7 +652,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
@@ -744,7 +744,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
@@ -838,7 +838,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
@@ -944,7 +944,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
@@ -1055,7 +1055,7 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mActualSelector : "a getter does not support input parameter"
   }
 
@@ -1129,7 +1129,7 @@ refclass @inputJokerActualParameterAST : @actualParameterAST {
 
   #·······························································································
 
-  override method enterInActualOutputParameterList ?!@actualOutputExpressionList unused ioActualOutputArgumentList {
+  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
     error self.mQualifierLocation : "a getter does not support input parameter"
   }
 

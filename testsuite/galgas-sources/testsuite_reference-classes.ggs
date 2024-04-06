@@ -24,7 +24,7 @@ class @classeC {
 class @classeD {
   private var @uint x = 9
   
-  init (?@uint inX) { self.x = inX }
+  init (?let @uint inX) { self.x = inX }
   init (?x: let @uint inX) { self.x = inX }
 }
 
@@ -49,12 +49,13 @@ class @classeG : @classeC {
 
 //-----------------------------------------------------------------------------------------------
 
-//class @classeH : @classeA {
-//  private let @uint y
-//  
-//  init (?let @uint inY) {
-//    self.y = inY
-//  }
-//}
+class @classeH : @classeA {
+  private let @uint y
+  
+  init (?let @uint inX, ?let @uint inY) {
+    self.y = inY
+    super.init (inX)
+  }
+}
 
 //-----------------------------------------------------------------------------------------------

@@ -91,7 +91,8 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 if (not IS_ABSTRACT) & GENERATE_SYNTHETIZED_INITIALIZER then
 %//--- Synthetized initializer ----------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::
+init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
   for (typeEntry name 3*) in INITIALIZER_ARGUMENT_LIST do
     %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
   end
@@ -99,14 +100,29 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init%![[INITIALIZER_ARGUMEN
           %!^%COMMA_LOCATION_ARGS) {
   cPtr_%!TYPE_IDENTIFIER% * object = nullptr ;
   macroMyNew (object, cPtr_%!TYPE_IDENTIFIER% (inCompiler COMMA_THERE)) ;
-%
+  object->%!TYPE_IDENTIFIER%_init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%
   for (* name 3*) in INITIALIZER_ARGUMENT_LIST do
-    %  object->mProperty_%![name identifierRepresentation]% = in_%![name identifierRepresentation]% ;\n%
+    %in_%![name identifierRepresentation]%, %
   end
-%  const GALGAS_%!TYPE_IDENTIFIER% result (object) ;
+ %inCompiler) ;
+  const GALGAS_%!TYPE_IDENTIFIER% result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_%!TYPE_IDENTIFIER%::
+%!TYPE_IDENTIFIER%_init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+  for (typeEntry name 3*) in INITIALIZER_ARGUMENT_LIST do
+    %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
+  end
+          %Compiler * /* inCompiler */) {
+%
+  for (* name 3*) in INITIALIZER_ARGUMENT_LIST do
+    %  mProperty_%![name identifierRepresentation]% = in_%![name identifierRepresentation]% ;\n%
+  end
+%}
 
 %end
 %//--------------------------------------------------------------------------------------------------

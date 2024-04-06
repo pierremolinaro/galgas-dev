@@ -35,7 +35,7 @@ refclass @filewrapperInExpressionAST : @semanticExpressionAST {
 refclass @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperTemplateName
-  public let @actualOutputExpressionList mExpressions
+  public let @actualOutputArgumentList mExpressions
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -65,7 +65,7 @@ syntax extension galgas3ExpressionSyntax {
         }
       or
         $identifier$ ?let @lstring filewrapperTemplateName
-        <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+        <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
         outExpression = @filewrapperTemplateInExpressionAST.new {
           !filewrapperName
           !filewrapperTemplateName
@@ -104,7 +104,7 @@ syntax extension galgas4ExpressionSyntax {
       or
         $identifier$ ?let @lstring filewrapperTemplateName
         $:$
-        <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+        <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
         outExpression = @filewrapperTemplateInExpressionAST.new {
           !filewrapperName
           !filewrapperTemplateName

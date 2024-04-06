@@ -13,6 +13,14 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void repeatInstructionForGrammarAnalysis_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_branchListForGrammarAnalysis & inOperand1,
+                                                                         const class GALGAS_uint & inOperand2,
+                                                                         Compiler * inCompiler) ;
+
+
 //--- Extension getter isLinear
   public: virtual class GALGAS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const override ;
 

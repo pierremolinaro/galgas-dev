@@ -1,0 +1,201 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions
+# of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3InstructionsSyntax {
+
+  #·······························································································
+
+  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticInstructionAST outInstruction {
+    $[$
+    let instructionLocation = @location.here
+    $super$
+    $init$
+    <output_expression_list_ggs3> !?ioDeclarations ?let actualParameterList
+    $]$
+    outInstruction = @superInitInstructionAST.new {
+      !instructionLocation
+      !actualParameterList
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4InstructionsSyntax {
+
+  #·······························································································
+
+  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
+                              !@semanticInstructionAST outInstruction {
+    $super$
+    $.$
+    $init$
+    let instructionLocation = @location.here
+    $($
+    <output_expression_list> !?ioDeclarations ?let actualParameterList
+    $)$
+    outInstruction = @superInitInstructionAST.new {
+      !instructionLocation
+      !actualParameterList
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @superInitInstructionAST : @semanticInstructionAST {
+  private let @actualOutputArgumentList mActualParameterList
+
+  #·······························································································
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    for expression in self.mActualParameterList do
+      [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    end
+  }
+
+  #·······························································································
+
+  override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
+                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                          ?let @analysisContext inAnalysisContext
+                          ?!@unifiedTypeMap ioTypeMap
+                          ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                          ?!@localVarManager ioVariableMap {
+  #--- Check the call occurs in an class initializer
+   if let [inAnalysisContext.selfAvailability available ?type: let selfType
+                                                        ?selfMutability: let selfMutability],
+        selfMutability == .initializer,
+        [[selfType definition].typeKind isClassType] then
+      switch [selfType definition].superType
+      case element (superType) :
+        let superTypeDefinition = [superType.bang definition]
+      #--- Check super initializer is defined
+        let superClassInitializerMap = superTypeDefinition.initializerMap
+        let signature = @lstring.new {![self.mActualParameterList signature] !self.mInstructionLocation}
+        [superClassInitializerMap searchKey !signature ?let formalSignature]
+      #--- Mark all super properties are defined
+        for superProperty in superTypeDefinition.allTypedPropertyList do
+          if superProperty.initialization == .none then
+            [!?ioVariableMap searchForWriteAccess 
+              !.new {!"self." + superProperty.name !self.mInstructionLocation}
+              ?3*
+            ]
+          end
+        end
+        [ioVariableMap checkSelfObjectIsFullyInitialized !self.mInstructionLocation]
+     #--- Analyze argument list
+        var actualParameterListForGeneration = @semanticExpressionListForGeneration {}
+        for formalArg in formalSignature, actualArg in self.mActualParameterList do
+          [actualArg.mExpression analyzeSemanticExpression
+            !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+            !?ioUsefulEntitiesGraph
+            !inferenceType: formalArg.mFormalArgumentType
+            !inAnalysisContext
+            !?ioTypeMap
+            !?ioVariableMap
+            ?@semanticExpressionForGeneration expression
+          ]
+          checkAssignmentTypeWithImplicitGetterCall (
+            !formalArg.mFormalArgumentType
+            !expression.mResultType
+            !actualArg.mEndOfExpressionLocation
+            !?expression
+          )
+          if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
+            let @string s = "!" + if formalArg.mFormalSelector.string != ""
+              then formalArg.mFormalSelector.string + ":"
+              else ""
+            end
+            error actualArg.mActualSelector : "the selector should be '" + s + "'"
+            fixit { replace s }
+          end
+          actualParameterListForGeneration += !expression
+        end
+      #--- Generate instructions
+        ioInstructionListForGeneration += !@superInitInstructionForGeneration.new {
+          !self.mInstructionLocation
+          ![formalSignature signature]
+          !actualParameterListForGeneration
+          !superTypeDefinition.typeName
+        }
+     case null :
+       error self.mInstructionLocation : "super.init is not available, current class has no super class"
+     end
+   else
+     error self.mInstructionLocation : "super.init should be call in a class initializer"
+   end
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @superInitInstructionForGeneration : @semanticInstructionForGeneration {
+  private let @location mInstructionLocation
+  private let @string mSuperInitializerSignature
+  private let @semanticExpressionListForGeneration mActualParameterList
+  private let @string mSuperTypeName
+
+  #·······························································································
+
+  override method generateInstruction ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
+                                      ?!@string ioGeneratedCode {
+    var @stringlist getterArgumentCppNameList = {}
+    for (mExpression) in self.mActualParameterList do
+      [mExpression generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let argumentCppName
+      ]
+      getterArgumentCppNameList += !argumentCppName
+    end
+    ioGeneratedCode += [self.mSuperTypeName identifierRepresentation] + "_init"
+    ioGeneratedCode += [self.mSuperInitializerSignature identifierRepresentation]
+    ioGeneratedCode += " (" 
+    for (mValue) in getterArgumentCppNameList do
+      ioGeneratedCode += mValue + ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode += compilerCppName () + ") ; \n" 
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————

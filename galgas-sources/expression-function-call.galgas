@@ -21,7 +21,7 @@
 
 refclass @functionCallExpressionAST : @semanticExpressionAST {
   private let @lstring mFunctionName
-  private let @actualOutputExpressionList mExpressionList
+  private let @actualOutputArgumentList mExpressionList
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36,7 +36,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
-    <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+    <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
     $)$
     outExpression = @functionCallExpressionAST.new {
       !functionName
@@ -58,7 +58,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
-    <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+    <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
     $)$
     outExpression = @functionCallExpressionAST.new {!functionName !expressionList}
   }
@@ -74,8 +74,8 @@ syntax extension galgas4ExpressionSyntax {
 override method @functionCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for (* mExpression *) in self.mExpressionList do
-    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for expression in self.mExpressionList do
+    [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
 }
 
@@ -115,25 +115,28 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     : outExpression
   else
     var semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for (mFormalSelector mFormalArgumentType 2*) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
-      [mExpression analyzeSemanticExpression
+    for formalArg in functionSignature, actualArg in self.mExpressionList do
+      [actualArg.mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
-        !inferenceType: mFormalArgumentType
+        !inferenceType: formalArg.mFormalArgumentType
         !inAnalysisContext
         !?ioTypeMap
         !?ioVariableMap
         ?@semanticExpressionForGeneration expression
       ]
       checkAssignmentTypeWithImplicitGetterCall (
-        !mFormalArgumentType
+        !formalArg.mFormalArgumentType
         !expression.mResultType
-        !mEndOfExpressionLocation
+        !actualArg.mEndOfExpressionLocation
         !?expression
       )
-      if mFormalSelector.string != mActualSelector.string then
-        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'"
+      if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
+        let @string s = "!" + if formalArg.mFormalSelector.string != ""
+          then formalArg.mFormalSelector.string + ":"
+          else ""
+        end
+        error actualArg.mActualSelector : "the selector should be '" + s + "'"
         fixit { replace s }
       end
       semanticExpressionListForGeneration += !expression
@@ -142,7 +145,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       !resultType
       !self.mFunctionName.location
       !self.mFunctionName.string
-      !semanticExpressionListForGeneration}
+      !semanticExpressionListForGeneration
+    }
   end
 }
 
@@ -153,33 +157,35 @@ override method @functionCallExpressionAST analyzeSemanticExpression
 refclass @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mFunctionName
   private let @semanticExpressionListForGeneration mExpressions
-}
 
-#·····················································································································
+  #·······························································································
 
-override method @functionCallExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-#--- Add return type header
-  [self.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Add function header
-  ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
-#---
-  var parameterList = @stringlist {}
-  for (mExpression) in self.mExpressions do
-    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let parameter]
-    parameterList += !parameter
-  end
-  outCppExpression = "function_" + [self.mFunctionName identifierRepresentation] + " ("
-  for (mValue) in parameterList
-    do outCppExpression += mValue + ", "
-  end
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  outCppExpression += compilerCppName ()
-  outCppExpression += [self.mLocation commaSourceFile] + ")"
+  override method generateExpression ?!@string ioGeneratedCode
+                                      ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      !@string outCppExpression {
+  #--- Add return type header
+    [self.mResultType addHeaderFileName !?ioInclusionSet]
+  #--- Add function header
+    ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
+  #---
+    var parameterList = @stringlist {}
+    for (mExpression) in self.mExpressions do
+      [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let parameter]
+      parameterList += !parameter
+    end
+    outCppExpression = "function_" + [self.mFunctionName identifierRepresentation] + " ("
+    for (mValue) in parameterList
+      do outCppExpression += mValue + ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    outCppExpression += compilerCppName ()
+    outCppExpression += [self.mLocation commaSourceFile] + ")"
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

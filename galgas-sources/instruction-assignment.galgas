@@ -107,7 +107,7 @@ syntax extension galgas4InstructionsSyntax {
       $[$
       <non_empty_output_expression_list>
          !?ioDeclarations
-         ?let @actualOutputExpressionList unused outExpressionList
+         ?let @actualOutputArgumentList unused outExpressionList
       $]$
       error .here : "not handled yet" : optionalProperty
     or
@@ -139,7 +139,7 @@ syntax extension galgas4InstructionsSyntax {
       $[$
       <non_empty_output_expression_list>
          !?ioDeclarations
-         ?let @actualOutputExpressionList unused outExpressionList
+         ?let @actualOutputArgumentList unused outExpressionList
       $]$
       error .here : "not handled yet" : optionalProperty
     or

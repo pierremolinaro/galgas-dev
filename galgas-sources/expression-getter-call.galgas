@@ -32,7 +32,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Get getter name
     $identifier$ ?let @lstring getterName
   #--- Actual parameters
-    <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+    <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
     $]$
     let endLocation = @location.here
     outExpression = @getterCallExpressionAST.new {
@@ -54,7 +54,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
   private let @bool errorOnGetterCallInsteadOfPropertyRead %selector
   private let @semanticExpressionAST mReceiver
   private let @lstring mGetterName
-  private let @actualOutputExpressionList mActualArgumentList
+  private let @actualOutputArgumentList mActualArgumentList
   private let @location mExpressionLocation
 
   #·······························································································

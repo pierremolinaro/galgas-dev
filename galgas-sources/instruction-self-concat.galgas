@@ -20,7 +20,7 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
-  private let @actualOutputExpressionList mExpressions
+  private let @actualOutputArgumentList mExpressions
 }
 
 #·····················································································································*
@@ -60,7 +60,7 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     let instructionLocation = @location.here
     $+=$
-    <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+    <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
     outInstruction = @selfPlusEqualElementsInstructionAST.new {
       !instructionLocation
       !expressionList
@@ -139,7 +139,7 @@ syntax extension galgas4InstructionsSyntax {
 #    let instructionLocation = @location.here
 #    $+=$
 #    error .here : "obsolete"
-#    <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+#    <non_empty_output_expression_list> ?let @actualOutputArgumentList expressionList
 #    outInstruction = @selfPlusEqualElementsInstructionAST.new {
 #      !instructionLocation
 #      !expressionList
@@ -250,21 +250,12 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-#  var @unifiedTypeMapEntry selfTypeEntry
-#  var @string selfObjectCppName
   if let [inAnalysisContext.selfAvailability available
       ?type: let selfType
       ?selfMutability: let selfMutability] then
     if not [selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
-
-#  if [inAnalysisContext.mutableSelfType isNull] then
-#    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeEntry
-#  else
-#    selfObjectCppName = inAnalysisContext.selfObjectCppName
-#    selfTypeEntry = inAnalysisContext.mutableSelfType
-#  end
   #--- Check target variable type support '+=' operator
     let addAssignOperatorArguments= [selfType definition].mAddAssignOperatorArguments # Empty list if += operator is not supported
     if [addAssignOperatorArguments count] == 0 then

@@ -93,19 +93,9 @@ syntax extension galgas4ExpressionSyntax {
     select
       expressionList = {}
     or
-      ${$
-      error .here : "'{' is obsolete here, use '('" #GGS4
-      <output_expression_list> !?ioDeclarations ?expressionList
-      $}$
-    or
       $($
       <output_expression_list> !?ioDeclarations ?expressionList
-      select
-        $)$
-      or
-        $}$
-        error .here : "'}' is obsolete here, use ')'" #GGS4
-      end
+      $)$
     end
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST.new {

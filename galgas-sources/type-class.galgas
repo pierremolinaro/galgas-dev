@@ -546,6 +546,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !initializationCode
         !synthetizedInitialzerArgumentList
         !synthetizedInheritedInitializerArgumentList
+        ![selfType definition].initializerMap
       }
   }
 
@@ -568,6 +569,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @string propertyInitializationCode
   private let @typedPropertyList synthetizedInitializerArgumentList
   private let @typedPropertyList inheritedSynthetizedInitializerArgumentList
+  private let @initializerMap initializerMap
 
   #·······························································································
 
@@ -632,6 +634,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.mIsAbstract
           ![self.mSelfTypeEntry definition].getterMap
           ![self.mSelfTypeEntry definition].instanceMethodMap
+          !self.initializerMap
         ]
         let @string part2 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !typedefinition.typeName.string
@@ -665,6 +668,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.mIsAbstract
           ![self.mSelfTypeEntry definition].getterMap
           ![self.mSelfTypeEntry definition].instanceMethodMap
+          !self.initializerMap
         ]
         outHeader += [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !typedefinition.typeName.string
@@ -756,6 +760,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         ![typedefinition.mHandledOperatorFlags generateSynthetizedInitializer]
         !self.synthetizedInitializerArgumentList
         !inheritedSynthetizedInitializerArgumentList
+        !typedefinition.initializerMap
       ]
     else
       outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
@@ -947,6 +952,7 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool IS_ABSTRACT
     ?@getterMap GETTER_MAP
     ?@instanceMethodMap INSTANCE_METHOD_MAP
+    ?@initializerMap INITIALIZER_MAP
 
   template referenceClassTypeHeader2part2 "GALGAS_reference_class.h2-part2.galgasTemplate"
     ?@string TYPE_NAME
@@ -970,6 +976,7 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool GENERATE_SYNTHETIZED_INITIALIZER
     ?@typedPropertyList INITIALIZER_ARGUMENT_LIST
     ?@typedPropertyList INHERITED_INITIALIZER_ARGUMENT_LIST
+    ?@initializerMap INITIALIZER_MAP
 
 #---------- Weak Reference Class
   template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"

@@ -9,6 +9,17 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acS
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+% for (lkey formalArgumentList) in INITIALIZER_MAP do
+%  public: void %!TYPE_IDENTIFIER%_init%![lkey identifierRepresentation]% (%?^
+    for (mFormalSelector mFormalArgumentType mFormalArgumentName isConstant) in formalArgumentList do (IDX)
+      if isConstant then %const % else end
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
+    end
+    %Compiler * inCompiler) ;
+%end%
+
 %
 for (lkey * argumentTypeList * hasCompilerArgument returnedType qualifier replacementGetter) in GETTER_MAP do
   if replacementGetter == "" then

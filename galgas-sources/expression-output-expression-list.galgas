@@ -19,20 +19,28 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @actualOutputExpressionList {
+list @actualOutputArgumentList {
   public let @lstring mActualSelector
   public let @semanticExpressionAST mExpression
   public let @location mEndOfExpressionLocation
 
   #·······························································································
   
-  getter keyRepresentation -> @string {
+  getter signature -> @string {
     result = "("
     for effectiveParameter in self
     do result += effectiveParameter.mActualSelector
     between result += ","
     end
     result += ")"
+  }
+
+  #·······························································································
+
+  method enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    for (* mExpression *) in self do
+      [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    end
   }
 
   #·······························································································
@@ -48,7 +56,7 @@ syntax extension galgas3ExpressionSyntax {
   #·······························································································
 
   rule <output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                     !@actualOutputExpressionList outExpressionList {
+                                     !@actualOutputArgumentList outExpressionList {
     outExpressionList = {}
     repeat
     while
@@ -66,7 +74,7 @@ syntax extension galgas3ExpressionSyntax {
   #·······························································································
 
 #  rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                                                !@actualOutputExpressionList outExpressionList {
+#                                                !@actualOutputArgumentList outExpressionList {
 #    outExpressionList = {}
 #    repeat
 #      let @lstring selector
@@ -95,7 +103,7 @@ syntax extension galgas4ExpressionSyntax {
   #·······························································································
 
   rule <output_expression_list> ?!@galgasDeclarationAST ioDeclarations
-                                !@actualOutputExpressionList outExpressionList {
+                                !@actualOutputArgumentList outExpressionList {
     outExpressionList = {}
     select
       repeat
@@ -120,7 +128,7 @@ syntax extension galgas4ExpressionSyntax {
   #·······························································································
 
   rule <non_empty_output_expression_list> ?!@galgasDeclarationAST ioDeclarations
-                                          !@actualOutputExpressionList outExpressionList {
+                                          !@actualOutputArgumentList outExpressionList {
     outExpressionList = {}
     repeat
       let @lstring selector
@@ -141,18 +149,6 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @actualOutputExpressionList enterInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  for (* mExpression *) in self do
-    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
-  end
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

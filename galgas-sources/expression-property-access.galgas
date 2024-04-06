@@ -39,7 +39,7 @@ syntax extension galgas3ExpressionSyntax {
     repeat
 #    while 
 #      $[$
-#      <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+#      <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
 #      $]$
     while
       $.$
@@ -66,7 +66,7 @@ syntax extension galgas4ExpressionSyntax {
       $[$
       <non_empty_output_expression_list>
         !?ioDeclarations
-        ?let @actualOutputExpressionList unused expressionList
+        ?let @actualOutputArgumentList unused expressionList
       error .here : "not handled yet"
       $]$
     while
@@ -82,7 +82,7 @@ syntax extension galgas4ExpressionSyntax {
         let getterName = structFieldName
         let startLocation = @location.next
         $($
-        <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
+        <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
         $)$
         let endLocation = @location.here
         outExpression = @getterCallExpressionAST.new {
@@ -213,7 +213,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #                                            ?!@localVarManager ioVariableMap
 #                                            !@semanticExpressionForGeneration outExpression {
 #  #--------------------------------------- Translate actual argument list to actual output argument list
-#    var @actualOutputExpressionList actualOutputArgumentList = {}
+#    var @actualOutputArgumentList actualOutputArgumentList = {}
 #    for (mActualParameter) in self.mActualArgumentList do
 #      [mActualParameter enterInActualOutputParameterList !?actualOutputArgumentList]
 #    end

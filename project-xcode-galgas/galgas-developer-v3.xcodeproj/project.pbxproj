@@ -287,6 +287,8 @@
 		CFBBAAA62BAC98EC00F945E8 /* all-declarations-30.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBBAAA42BAC985500F945E8 /* all-declarations-30.cpp */; };
 		CFBBAAA72BAC98ED00F945E8 /* all-declarations-30.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBBAAA42BAC985500F945E8 /* all-declarations-30.cpp */; };
 		CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7005179ACAD400789D8A /* PMUndoManager.m */; };
+		CFC707F02BC1E3A800214F0F /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC707EE2BC1E3A800214F0F /* all-declarations-32.cpp */; };
+		CFC707F12BC1E3A800214F0F /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC707EE2BC1E3A800214F0F /* all-declarations-32.cpp */; };
 		CFC89AB11BAF10D6002AF9C2 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-big-integer.cpp */; };
 		CFC89AB21BAF10D6002AF9C2 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-big-integer.cpp */; };
 		CFCA2EA11C331E8500AB04B8 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
@@ -750,6 +752,8 @@
 		CFBF7004179ACAD400789D8A /* PMUndoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUndoManager.h; sourceTree = "<group>"; };
 		CFBF7005179ACAD400789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
 		CFC51EEE10D3BBB4008BF80F /* GALGAS_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_type.cpp; sourceTree = "<group>"; };
+		CFC707EE2BC1E3A800214F0F /* all-declarations-32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
+		CFC707EF2BC1E3A800214F0F /* all-declarations-32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
 		CFC89AB01BAF10D6002AF9C2 /* check-big-integer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "check-big-integer.cpp"; sourceTree = "<group>"; };
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
 		CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_enumAssociatedValues.cpp; sourceTree = "<group>"; };
@@ -965,6 +969,8 @@
 		CF23743419967BEF0061D2D8 /* C++ files */ = {
 			isa = PBXGroup;
 			children = (
+				CFC707EE2BC1E3A800214F0F /* all-declarations-32.cpp */,
+				CFC707EF2BC1E3A800214F0F /* all-declarations-32.h */,
 				CFAAA4392BC1A74200D97E46 /* all-declarations-31.cpp */,
 				CFAAA4382BC1A74200D97E46 /* all-declarations-31.h */,
 				CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */,
@@ -1694,6 +1700,7 @@
 				CFCB7A412B2DAECF008DD653 /* BigSigned-add.cpp in Sources */,
 				CFD396F9110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF2382A7124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,
+				CFC707F02BC1E3A800214F0F /* all-declarations-32.cpp in Sources */,
 				CF23746819967C4F0061D2D8 /* all-declarations-14.cpp in Sources */,
 				CF387D4D2B39C577007B2D12 /* all-declarations-29.cpp in Sources */,
 				CF23746A19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
@@ -1875,6 +1882,7 @@
 				CFD396F0110E1EAF001549E6 /* cpp-allocation.cpp in Sources */,
 				CFBA37792B12982A00DBD02B /* md5.cpp in Sources */,
 				CFD396F8110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
+				CFC707F12BC1E3A800214F0F /* all-declarations-32.cpp in Sources */,
 				CFCB7A322B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */,
 				CF387D4E2B39C577007B2D12 /* all-declarations-29.cpp in Sources */,
 				CF2382A8124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,

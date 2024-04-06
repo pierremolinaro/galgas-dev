@@ -681,6 +681,11 @@ class cPtr_templateInstructionAST : public acStrongPtr_class {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionAST_init_28__29_ (Compiler * inCompiler) ;
+
+
 //--- Extension method templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -1040,6 +1045,11 @@ class cPtr_templateExpressionAST : public acStrongPtr_class {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateExpressionAST_init_28__29_ (Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -1478,6 +1488,14 @@ class cPtr_templateClassFunctionAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateClassFunctionAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                              const class GALGAS_lstring & inOperand1,
+                                                              const class GALGAS_templateExpressionListAST & inOperand2,
+                                                              Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -1646,6 +1664,14 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateFileWrapperTemplateCallAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                        const class GALGAS_lstring & inOperand1,
+                                                                        const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                        Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -1814,6 +1840,14 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateExtensionTemplateCallAST_init_28__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                      const class GALGAS_lstring & inOperand1,
+                                                                      const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                      Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -1982,6 +2016,14 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateAndOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_templateExpressionAST & inOperand1,
+                                                             const class GALGAS_templateExpressionAST & inOperand2,
+                                                             Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -2150,6 +2192,14 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateOrOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                            const class GALGAS_templateExpressionAST & inOperand1,
+                                                            const class GALGAS_templateExpressionAST & inOperand2,
+                                                            Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -2318,6 +2368,14 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateXorOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_templateExpressionAST & inOperand1,
+                                                             const class GALGAS_templateExpressionAST & inOperand2,
+                                                             Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -2478,6 +2536,12 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateTrueBoolAST_init_28__29_ (const class GALGAS_location & inOperand0,
+                                                 Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -2634,6 +2698,12 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateFalseBoolAST_init_28__29_ (const class GALGAS_location & inOperand0,
+                                                  Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -2794,6 +2864,13 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateLiteralStringExpressionAST_init_28__2C__29_ (const class GALGAS_stringlist & inOperand0,
+                                                                    const class GALGAS_location & inOperand1,
+                                                                    Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -2952,6 +3029,12 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateLiteralUIntExpressionAST_init_28__29_ (const class GALGAS_lbigint & inOperand0,
+                                                              Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -3108,6 +3191,12 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateLiteralCharExpressionAST_init_28__29_ (const class GALGAS_lchar & inOperand0,
+                                                              Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -3264,6 +3353,12 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateLiteralDoubleExpressionAST_init_28__29_ (const class GALGAS_ldouble & inOperand0,
+                                                                Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -3428,6 +3523,14 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void structFieldAccessTemplateExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                            const class GALGAS_templateExpressionAST & inOperand1,
+                                                                            const class GALGAS_lstring & inOperand2,
+                                                                            Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -3592,6 +3695,13 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateNotOperatorAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
+                                                        const class GALGAS_templateExpressionAST & inOperand1,
+                                                        Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -3754,6 +3864,13 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateLogicalNegateAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
+                                                          const class GALGAS_templateExpressionAST & inOperand1,
+                                                          Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -3920,6 +4037,14 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateOptionAccessAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                             const class GALGAS_lstring & inOperand1,
+                                                             const class GALGAS_lstring & inOperand2,
+                                                             Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -4174,6 +4299,15 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateTestDynamicClassAST_init_28__2C__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                     const class GALGAS_location & inOperand1,
+                                                                     const class GALGAS_dynamicTypeComparisonKind & inOperand2,
+                                                                     const class GALGAS_lstring & inOperand3,
+                                                                     Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -4340,6 +4474,13 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateFunctionCallAST_init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                         const class GALGAS_templateExpressionListAST & inOperand1,
+                                                         Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -4498,6 +4639,12 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateVarInExpressionAST_init_28__29_ (const class GALGAS_lstring & inOperand0,
+                                                        Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -4662,6 +4809,14 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateAddOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_templateExpressionAST & inOperand1,
+                                                             const class GALGAS_templateExpressionAST & inOperand2,
+                                                             Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -4830,6 +4985,14 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateSubOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_templateExpressionAST & inOperand1,
+                                                             const class GALGAS_templateExpressionAST & inOperand2,
+                                                             Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -4998,6 +5161,14 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateMultiplyOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_templateExpressionAST & inOperand1,
+                                                                  const class GALGAS_templateExpressionAST & inOperand2,
+                                                                  Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -5166,6 +5337,14 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateDivideOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                const class GALGAS_templateExpressionAST & inOperand1,
+                                                                const class GALGAS_templateExpressionAST & inOperand2,
+                                                                Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -5334,6 +5513,14 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateModuloOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                const class GALGAS_templateExpressionAST & inOperand1,
+                                                                const class GALGAS_templateExpressionAST & inOperand2,
+                                                                Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -5498,6 +5685,13 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateUnaryMinusOperationAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                const class GALGAS_templateExpressionAST & inOperand1,
+                                                                Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -5664,6 +5858,14 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                          const class GALGAS_templateExpressionAST & inOperand1,
+                                                          const class GALGAS_templateExpressionAST & inOperand2,
+                                                          Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -5832,6 +6034,14 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateNonEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_templateExpressionAST & inOperand1,
+                                                             const class GALGAS_templateExpressionAST & inOperand2,
+                                                             Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -6000,6 +6210,14 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateStrictInfTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_templateExpressionAST & inOperand1,
+                                                              const class GALGAS_templateExpressionAST & inOperand2,
+                                                              Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -6168,6 +6386,14 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateInfOrEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_templateExpressionAST & inOperand1,
+                                                               const class GALGAS_templateExpressionAST & inOperand2,
+                                                               Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -6336,6 +6562,14 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateStrictSupTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_templateExpressionAST & inOperand1,
+                                                              const class GALGAS_templateExpressionAST & inOperand2,
+                                                              Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -6504,6 +6738,14 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateSupOrEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_templateExpressionAST & inOperand1,
+                                                               const class GALGAS_templateExpressionAST & inOperand2,
+                                                               Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -6672,6 +6914,14 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateLeftShiftOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_templateExpressionAST & inOperand1,
+                                                                   const class GALGAS_templateExpressionAST & inOperand2,
+                                                                   Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -6840,6 +7090,14 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateRightShiftOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_templateExpressionAST & inOperand1,
+                                                                    const class GALGAS_templateExpressionAST & inOperand2,
+                                                                    Compiler * inCompiler) ;
+
+
 //--- Extension method templateExpressionAnalysis
   public: virtual void method_templateExpressionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -7000,6 +7258,12 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionStringAST_init_28__29_ (const class GALGAS_string & inOperand0,
+                                                          Compiler * inCompiler) ;
+
+
 //--- Extension method templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -7160,6 +7424,13 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionExpressionAST_init_28__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                  const class GALGAS_location & inOperand1,
+                                                                  Compiler * inCompiler) ;
+
+
 //--- Extension method templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -7326,6 +7597,14 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateBlockInstructionAST_init_28__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                 const class GALGAS_location & inOperand1,
+                                                                 const class GALGAS_templateInstructionListAST & inOperand2,
+                                                                 Compiler * inCompiler) ;
+
+
 //--- Extension method templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -7482,6 +7761,11 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionGetColumnLocationAST_init_28__29_ (Compiler * inCompiler) ;
+
+
 //--- Extension method templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -7632,6 +7916,11 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionGotoColumnLocationAST_init_28__29_ (Compiler * inCompiler) ;
+
+
 //--- Extension method templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -8037,6 +8326,13 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionIfAST_init_28__2C__29_ (const class GALGAS_templateInstructionIfBranchListAST & inOperand0,
+                                                          const class GALGAS_templateInstructionListAST & inOperand1,
+                                                          Compiler * inCompiler) ;
+
+
 //--- Extension method templateInstructionAnalysis
   public: virtual void method_templateInstructionAnalysis (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
            class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
@@ -8069,150 +8365,6 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
   public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionIfAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_templateInstructionIfAST_2D_weak : public GALGAS_templateInstructionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_templateInstructionIfAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_templateInstructionIfAST_2D_weak (const class GALGAS_templateInstructionIfAST & inSource) ;
-
-  public: GALGAS_templateInstructionIfAST_2D_weak & operator = (const class GALGAS_templateInstructionIfAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_templateInstructionIfAST bang_templateInstructionIfAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_templateInstructionIfAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_templateInstructionIfAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_templateInstructionIfAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_templateInstructionIfAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionForGeneration reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_templateInstructionForGeneration : public AC_GALGAS_reference_class {
-//--------------------------------- Default constructor
-  public: GALGAS_templateInstructionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_templateInstructionForGeneration (const class cPtr_templateInstructionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_templateInstructionForGeneration init_28__29_ (Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_templateInstructionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_templateInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_templateInstructionForGeneration class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @templateInstructionForGeneration class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-//--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GALGAS_string & arg_ioGeneratedCode,
-           class GALGAS_stringset & arg_ioInclusionSet,
-           class GALGAS_uint & arg_ioTemporaryVariableIndex,
-           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
-           class GALGAS_bool & arg_ioUseColumnMarker,
-           Compiler * COMMA_LOCATION_ARGS) = 0 ;
-
-//--- Properties
-
-
-//--- Default constructor
-  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_templateInstructionForGeneration (LOCATION_ARGS) ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override = 0 ;
-
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override = 0 ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 

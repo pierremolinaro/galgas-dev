@@ -43,7 +43,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Constructor name
     $identifier$ ?let @lstring constructorName
   #--- Actual arguments
-    let @actualOutputExpressionList expressionList
+    let @actualOutputArgumentList expressionList
     select
       expressionList = {}
     or
@@ -89,23 +89,13 @@ syntax extension galgas4ExpressionSyntax {
   #--- Constructor name
     $identifier$ ?let @lstring constructorName
   #--- Actual arguments
-    let @actualOutputExpressionList expressionList
+    let @actualOutputArgumentList expressionList
     select
       expressionList = {}
     or
-      ${$
-      error .here : "'{' is obsolete here, use '('" #GGS4
-      <output_expression_list> !?ioDeclarations ?expressionList
-      $}$
-    or
       $($
       <output_expression_list> !?ioDeclarations ?expressionList
-      select
-        $)$
-      or
-        $}$
-        error .here : "'}' is obsolete here, use ')'" #GGS4
-      end
+      $)$
     end
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST.new {
@@ -124,7 +114,7 @@ syntax extension galgas4ExpressionSyntax {
     $@type$ ?let typeName indexing typeReferenceInConstructor
     let startOfExpression = @location.here
   #--- Actual arguments
-    let @actualOutputExpressionList expressionList
+    let @actualOutputArgumentList expressionList
     $($
     <output_expression_list> !?ioDeclarations ?expressionList
     $)$
@@ -146,7 +136,7 @@ syntax extension galgas4ExpressionSyntax {
 refclass @classFuncExpressionAST : @semanticExpressionAST {
   private let @lstring mTypeName
   private let @lstring mConstructorName
-  private let @actualOutputExpressionList mExpressions
+  private let @actualOutputArgumentList mExpressions
   private let @location locationForOldStyleCollectionInitializerError
 
   #·······························································································
@@ -214,7 +204,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
                       ?!@localVarManager ioVariableMap
                       ?let @lstring inTypeName
                       ?let @lstring inConstructorName
-                      ?let @actualOutputExpressionList inInitializerEffectiveParameterExpressions
+                      ?let @actualOutputArgumentList inInitializerEffectiveParameterExpressions
                       ?let @location inLocationForOldStyleCollectionInitializerError
                       !@unifiedTypeMapEntry outReturnedType
                       !@unifiedTypeMapEntry outConstructorType
@@ -233,7 +223,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
     let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
   #--- Search initializer
     if (inConstructorName.string == "new") && ([outConstructorType definition].typeKind == .structType) then
-      let initializerSignature = [inInitializerEffectiveParameterExpressions keyRepresentation]
+      let initializerSignature = [inInitializerEffectiveParameterExpressions signature]
       let initializerMap = [outConstructorType definition].initializerMap
       if not [initializerMap hasKey !initializerSignature] then
         warning inConstructorName

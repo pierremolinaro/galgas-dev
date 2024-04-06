@@ -37,7 +37,7 @@ refclass @expressionCollectionValue : @abstractCollectionValueElement {
 #·····················································································································
 
 refclass @expressionListCollectionValue : @abstractCollectionValueElement {
-  public let @actualOutputExpressionList mExpressionList
+  public let @actualOutputArgumentList mExpressionList
   public let @location mEndOfExpressionLocation
 }
 
@@ -83,7 +83,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
                                   !@abstractCollectionValueElement outValueElement {
-    var @actualOutputExpressionList expressionList = {}
+    var @actualOutputArgumentList expressionList = {}
     repeat
       let @lstring selector
       select
@@ -143,7 +143,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
                                   !@abstractCollectionValueElement outValueElement {
-    var @actualOutputExpressionList expressionList = {}
+    var @actualOutputArgumentList expressionList = {}
     repeat
       select
         $!selector:$ ?let selector

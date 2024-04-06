@@ -16,6 +16,12 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void abstractSyntaxInstructionForGrammarAnalysis_init_28__29_ (const class GALGAS_location & inOperand0,
+                                                                         Compiler * inCompiler) ;
+
+
 //--- Extension getter isLinear
   public: virtual class GALGAS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
