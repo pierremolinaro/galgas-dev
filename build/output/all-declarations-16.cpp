@@ -8,234 +8,6 @@
 #include "all-declarations-16.h"
 
 //--------------------------------------------------------------------------------------------------
-// @listDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_listDeclarationAST::cPtr_listDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mListTypeName (),
-mProperty_mPropertyList (),
-mProperty_usefullList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_listDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mListTypeName.printNonNullClassInstanceProperties ("mListTypeName") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_usefullList.printNonNullClassInstanceProperties ("usefullList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cPtr_listDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  const cPtr_listDeclarationAST * p = (const cPtr_listDeclarationAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_isPredefined.objectCompare (p->mProperty_isPredefined) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mListTypeName.objectCompare (p->mProperty_mListTypeName) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_usefullList.objectCompare (p->mProperty_usefullList) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-ComparisonResult GALGAS_listDeclarationAST::objectCompare (const GALGAS_listDeclarationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_listDeclarationAST::GALGAS_listDeclarationAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_listDeclarationAST GALGAS_listDeclarationAST::init_28_isPredefined_2C__2C__2C_usefullList_29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                         const GALGAS_lstring & in_mListTypeName,
-                                                                                                         const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                                                                                         const GALGAS_bool & in_usefullList,
-                                                                                                         Compiler * inCompiler
-                                                                                                         COMMA_LOCATION_ARGS) {
-  cPtr_listDeclarationAST * object = nullptr ;
-  macroMyNew (object, cPtr_listDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->mProperty_isPredefined = in_isPredefined ;
-  object->mProperty_mListTypeName = in_mListTypeName ;
-  object->mProperty_mPropertyList = in_mPropertyList ;
-  object->mProperty_usefullList = in_usefullList ;
-  const GALGAS_listDeclarationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_listDeclarationAST::GALGAS_listDeclarationAST (const cPtr_listDeclarationAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_listDeclarationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_listDeclarationAST GALGAS_listDeclarationAST::class_func_new (const GALGAS_bool & inAttribute_isPredefined,
-                                                                     const GALGAS_lstring & inAttribute_mListTypeName,
-                                                                     const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList,
-                                                                     const GALGAS_bool & inAttribute_usefullList
-                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_listDeclarationAST result ;
-  if (inAttribute_isPredefined.isValid () && inAttribute_mListTypeName.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_usefullList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_listDeclarationAST (inAttribute_isPredefined, inAttribute_mListTypeName, inAttribute_mPropertyList, inAttribute_usefullList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_listDeclarationAST::readProperty_mListTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    return p->mProperty_mListTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyInCollectionListAST GALGAS_listDeclarationAST::readProperty_mPropertyList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_propertyInCollectionListAST () ;
-  }else{
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    return p->mProperty_mPropertyList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_listDeclarationAST::readProperty_usefullList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_bool () ;
-  }else{
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    return p->mProperty_usefullList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @listDeclarationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_listDeclarationAST::cPtr_listDeclarationAST (const GALGAS_bool & in_isPredefined,
-                                                  const GALGAS_lstring & in_mListTypeName,
-                                                  const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                                  const GALGAS_bool & in_usefullList
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
-mProperty_mListTypeName (in_mListTypeName),
-mProperty_mPropertyList (in_mPropertyList),
-mProperty_usefullList (in_usefullList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_listDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listDeclarationAST ;
-}
-
-void cPtr_listDeclarationAST::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@listDeclarationAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mListTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_usefullList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_listDeclarationAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_isPredefined, mProperty_mListTypeName, mProperty_mPropertyList, mProperty_usefullList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @listDeclarationAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST ("listDeclarationAST",
-                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_listDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_listDeclarationAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_listDeclarationAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_listDeclarationAST GALGAS_listDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_listDeclarationAST result ;
-  const GALGAS_listDeclarationAST * p = (const GALGAS_listDeclarationAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_listDeclarationAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("listDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @listTypeForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -300,11 +72,11 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                    const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                 const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
+                                                                                 const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_listTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_listTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -313,7 +85,7 @@ GALGAS_semanticTypeForGeneration () {
   const GALGAS_listTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -614,11 +386,11 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_listmapDeclarationAST GALGAS_listmapDeclarationAST::init_28_isPredefined_2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                const GALGAS_lstring & in_mListmapTypeName,
-                                                                                                const GALGAS_lstring & in_mAssociatedListTypeName,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_listmapDeclarationAST GALGAS_listmapDeclarationAST::init_28_isPredefined_2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                             const GALGAS_lstring & in_mListmapTypeName,
+                                                                                             const GALGAS_lstring & in_mAssociatedListTypeName,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_listmapDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_listmapDeclarationAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -627,7 +399,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_listmapDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -823,12 +595,12 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration::init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                              const GALGAS_unifiedTypeMapEntry & in_mAssociatedListTypeIndex,
-                                                                                              const GALGAS_typedPropertyList & in_mAssociatedListTypedAttributeList,
-                                                                                              const GALGAS_unifiedTypeMapEntry & in_mAssociatedListMapElementTypeIndex,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration::init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                           const GALGAS_unifiedTypeMapEntry & in_mAssociatedListTypeIndex,
+                                                                                           const GALGAS_typedPropertyList & in_mAssociatedListTypedAttributeList,
+                                                                                           const GALGAS_unifiedTypeMapEntry & in_mAssociatedListMapElementTypeIndex,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_listmapTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_listmapTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -838,7 +610,7 @@ GALGAS_semanticTypeForGeneration () {
   const GALGAS_listmapTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1161,12 +933,12 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                              const GALGAS_lstring & in_mDictTypeName,
-                                                                                              const GALGAS_lstring & in_mKeyTypeName,
-                                                                                              const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                           const GALGAS_lstring & in_mDictTypeName,
+                                                                                           const GALGAS_lstring & in_mKeyTypeName,
+                                                                                           const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_dictDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_dictDeclarationAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -1176,7 +948,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_dictDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1394,13 +1166,13 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration::init_28__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                            const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                                                                            const GALGAS_lstring & in_mDictTypeName,
-                                                                                            const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                            const GALGAS_lstring & in_mKeyTypeName,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration::init_28__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                         const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                                                         const GALGAS_lstring & in_mDictTypeName,
+                                                                                         const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                         const GALGAS_lstring & in_mKeyTypeName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_dictTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_dictTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -1411,7 +1183,7 @@ GALGAS_semanticTypeForGeneration () {
   const GALGAS_dictTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1766,15 +1538,15 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::init_28_isPredefined_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                        const GALGAS_lstring & in_mMapTypeName,
-                                                                                                        const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                                                                                        const GALGAS_insertMethodListAST & in_mInsertMethodList,
-                                                                                                        const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                                                        const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                                                                        const GALGAS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::init_28_isPredefined_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                     const GALGAS_lstring & in_mMapTypeName,
+                                                                                                     const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                                                     const GALGAS_insertMethodListAST & in_mInsertMethodList,
+                                                                                                     const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                                                                     const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                                                                                     const GALGAS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_mapDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_mapDeclarationAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -1787,7 +1559,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_mapDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2071,16 +1843,16 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                                      const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                                                                                      const GALGAS_lstring & in_mMapTypeName,
-                                                                                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                      const GALGAS_insertMethodListAST & in_mInsertMethodList,
-                                                                                                      const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                                                                      const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                                                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                                   const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                                                                   const GALGAS_lstring & in_mMapTypeName,
+                                                                                                   const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                   const GALGAS_insertMethodListAST & in_mInsertMethodList,
+                                                                                                   const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                                                                   const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                                                                                   const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_mapTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_mapTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -2094,7 +1866,7 @@ GALGAS_semanticTypeForGeneration () {
   const GALGAS_mapTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2485,12 +2257,12 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                          const GALGAS_lstring & in_mSortedListTypeName,
-                                                                                                          const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                                                                                          const GALGAS_sortedListSortDescriptorListAST & in_mSortDescriptorList,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                       const GALGAS_lstring & in_mSortedListTypeName,
+                                                                                                       const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                                                       const GALGAS_sortedListSortDescriptorListAST & in_mSortDescriptorList,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_sortedListDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_sortedListDeclarationAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -2500,7 +2272,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_sortedListDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2713,12 +2485,12 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration::init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                                    const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                    const GALGAS_sortDescriptorListForGeneration & in_mSortDescriptorList,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration::init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
+                                                                                                 const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                 const GALGAS_sortDescriptorListForGeneration & in_mSortDescriptorList,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_sortedListTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_sortedListTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -2728,7 +2500,7 @@ GALGAS_semanticTypeForGeneration () {
   const GALGAS_sortedListTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3051,12 +2823,12 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_structDeclarationAST GALGAS_structDeclarationAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                  const GALGAS_lstring & in_structTypeName,
-                                                                                                  const GALGAS_propertyInCollectionListAST & in_mStructurePropertyListAST,
-                                                                                                  const GALGAS_string & in_mEnumeratedElementTypeName,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_structDeclarationAST GALGAS_structDeclarationAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                               const GALGAS_lstring & in_structTypeName,
+                                                                                               const GALGAS_propertyInCollectionListAST & in_mStructurePropertyListAST,
+                                                                                               const GALGAS_string & in_mEnumeratedElementTypeName,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) {
   cPtr_structDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_structDeclarationAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -3066,7 +2838,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_structDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3289,14 +3061,14 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::init_28__2C__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                                    const GALGAS_typedPropertyList & in_mTypedPropertyList,
-                                                                                                    const GALGAS_typedPropertyList & in_mConstructorArgumentList,
-                                                                                                    const GALGAS_string & in_mConstructorInitializationCode,
-                                                                                                    const GALGAS_bool & in_mConstructorNeedsCompilerVar,
-                                                                                                    const GALGAS_bool & in_synthetizeAnInitializer,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::init_28__2C__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                                 const GALGAS_typedPropertyList & in_mTypedPropertyList,
+                                                                                                 const GALGAS_typedPropertyList & in_mConstructorArgumentList,
+                                                                                                 const GALGAS_string & in_mConstructorInitializationCode,
+                                                                                                 const GALGAS_bool & in_mConstructorNeedsCompilerVar,
+                                                                                                 const GALGAS_bool & in_synthetizeAnInitializer,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_structTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_structTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -3308,7 +3080,7 @@ GALGAS_semanticTypeForGeneration () {
   const GALGAS_structTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3660,11 +3432,11 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::init_28_isPredefined_2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                    const GALGAS_lstring & in_mAliasTypeName,
-                                                                                                    const GALGAS_lstring & in_mDefinedTypeName,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_typealiasDeclarationAST GALGAS_typealiasDeclarationAST::init_28_isPredefined_2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                 const GALGAS_lstring & in_mAliasTypeName,
+                                                                                                 const GALGAS_lstring & in_mDefinedTypeName,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_typealiasDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_typealiasDeclarationAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -3673,7 +3445,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_typealiasDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3864,11 +3636,11 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration::init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                      const GALGAS_string & in_mAliasTypeName,
-                                                                                      const GALGAS_unifiedTypeMapEntry & in_mReferencedType,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_aliasTypeForGeneration GALGAS_aliasTypeForGeneration::init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                   const GALGAS_string & in_mAliasTypeName,
+                                                                                   const GALGAS_unifiedTypeMapEntry & in_mReferencedType,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_aliasTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_aliasTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -3877,7 +3649,7 @@ GALGAS_semanticTypeForGeneration () {
   const GALGAS_aliasTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4188,13 +3960,13 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                  const GALGAS_lstring & in_mTypeName,
-                                                                                                                  const GALGAS_lstring & in_mAbstractExtensionGetterName,
-                                                                                                                  const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                                                                                                  const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                               const GALGAS_lstring & in_mTypeName,
+                                                                                                               const GALGAS_lstring & in_mAbstractExtensionGetterName,
+                                                                                                               const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
+                                                                                                               const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) {
   cPtr_abstractExtensionGetterAST * object = nullptr ;
   macroMyNew (object, cPtr_abstractExtensionGetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -4205,7 +3977,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_abstractExtensionGetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4443,14 +4215,14 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                     const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                     const GALGAS_string & in_mAbstractExtensionGetterName,
-                                                                                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList,
-                                                                                                                                                                     Compiler * inCompiler
-                                                                                                                                                                     COMMA_LOCATION_ARGS) {
+GALGAS_abstractExtensionGetterForGeneration GALGAS_abstractExtensionGetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                                  const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                                  const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                                  const GALGAS_string & in_mAbstractExtensionGetterName,
+                                                                                                                                                                  const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                                                                                                                                  const GALGAS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList,
+                                                                                                                                                                  Compiler * inCompiler
+                                                                                                                                                                  COMMA_LOCATION_ARGS) {
   cPtr_abstractExtensionGetterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_abstractExtensionGetterForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -4462,7 +4234,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_abstractExtensionGetterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4806,12 +4578,12 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                              const GALGAS_lstring & in_mTypeName,
-                                                                                                              const GALGAS_lstring & in_mAbstractExtensionMethodName,
-                                                                                                              const GALGAS_formalParameterListAST & in_mAbstractExtensionMethodFormalParameterList,
-                                                                                                              Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                           const GALGAS_lstring & in_mTypeName,
+                                                                                                           const GALGAS_lstring & in_mAbstractExtensionMethodName,
+                                                                                                           const GALGAS_formalParameterListAST & in_mAbstractExtensionMethodFormalParameterList,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_abstractExtensionMethodAST * object = nullptr ;
   macroMyNew (object, cPtr_abstractExtensionMethodAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -4821,7 +4593,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_abstractExtensionMethodAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5037,13 +4809,13 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                 const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                 const GALGAS_string & in_mAbstractExtensionMethodName,
-                                                                                                                                                                 const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList,
-                                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                                 COMMA_LOCATION_ARGS) {
+GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                              const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                              const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                              const GALGAS_string & in_mAbstractExtensionMethodName,
+                                                                                                                                                              const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList,
+                                                                                                                                                              Compiler * inCompiler
+                                                                                                                                                              COMMA_LOCATION_ARGS) {
   cPtr_abstractExtensionMethodForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_abstractExtensionMethodForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -5054,7 +4826,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_abstractExtensionMethodForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5381,12 +5153,12 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                              const GALGAS_lstring & in_mTypeName,
-                                                                                                              const GALGAS_lstring & in_mAbstractExtensionSetterName,
-                                                                                                              const GALGAS_formalParameterListAST & in_mAbstractExtensionSetterFormalParameterList,
-                                                                                                              Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_abstractExtensionSetterAST GALGAS_abstractExtensionSetterAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                           const GALGAS_lstring & in_mTypeName,
+                                                                                                           const GALGAS_lstring & in_mAbstractExtensionSetterName,
+                                                                                                           const GALGAS_formalParameterListAST & in_mAbstractExtensionSetterFormalParameterList,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_abstractExtensionSetterAST * object = nullptr ;
   macroMyNew (object, cPtr_abstractExtensionSetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -5396,7 +5168,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_abstractExtensionSetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5612,13 +5384,13 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                 const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                 const GALGAS_string & in_mAbstractExtensionSetterName,
-                                                                                                                                                                 const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList,
-                                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                                 COMMA_LOCATION_ARGS) {
+GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                              const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                              const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                              const GALGAS_string & in_mAbstractExtensionSetterName,
+                                                                                                                                                              const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList,
+                                                                                                                                                              Compiler * inCompiler
+                                                                                                                                                              COMMA_LOCATION_ARGS) {
   cPtr_abstractExtensionSetterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_abstractExtensionSetterForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -5629,7 +5401,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_abstractExtensionSetterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5981,17 +5753,17 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_extensionGetterAST GALGAS_extensionGetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                                  const GALGAS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                                                                  const GALGAS_lstring & in_mTypeName,
-                                                                                                                                                  const GALGAS_lstring & in_mExtensionGetterName,
-                                                                                                                                                  const GALGAS_formalInputParameterListAST & in_mExtensionGetterFormalInputParameterList,
-                                                                                                                                                  const GALGAS_lstring & in_mExtensionGetterReturnedTypeName,
-                                                                                                                                                  const GALGAS_lstring & in_mExtensionGetterReturnedVariableName,
-                                                                                                                                                  const GALGAS_semanticInstructionListAST & in_mExtensionGetterInstructionList,
-                                                                                                                                                  const GALGAS_location & in_mEndOfReaderLocation,
-                                                                                                                                                  Compiler * inCompiler
-                                                                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_extensionGetterAST GALGAS_extensionGetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                               const GALGAS_bool & in_requiresSelfForAccessingProperty,
+                                                                                                                                               const GALGAS_lstring & in_mTypeName,
+                                                                                                                                               const GALGAS_lstring & in_mExtensionGetterName,
+                                                                                                                                               const GALGAS_formalInputParameterListAST & in_mExtensionGetterFormalInputParameterList,
+                                                                                                                                               const GALGAS_lstring & in_mExtensionGetterReturnedTypeName,
+                                                                                                                                               const GALGAS_lstring & in_mExtensionGetterReturnedVariableName,
+                                                                                                                                               const GALGAS_semanticInstructionListAST & in_mExtensionGetterInstructionList,
+                                                                                                                                               const GALGAS_location & in_mEndOfReaderLocation,
+                                                                                                                                               Compiler * inCompiler
+                                                                                                                                               COMMA_LOCATION_ARGS) {
   cPtr_extensionGetterAST * object = nullptr ;
   macroMyNew (object, cPtr_extensionGetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -6006,7 +5778,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_extensionGetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6332,18 +6104,18 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                     const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                     const GALGAS_string & in_mExtensionGetterName,
-                                                                                                                                                                     const GALGAS_bool & in_mImplementedAsFunction,
-                                                                                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                                                                                     const GALGAS_string & in_mResultVarCppName,
-                                                                                                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
-                                                                                                                                                                     const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                                                                                                                     Compiler * inCompiler
-                                                                                                                                                                     COMMA_LOCATION_ARGS) {
+GALGAS_extensionGetterForGeneration GALGAS_extensionGetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                                  const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                                  const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                                  const GALGAS_string & in_mExtensionGetterName,
+                                                                                                                                                                  const GALGAS_bool & in_mImplementedAsFunction,
+                                                                                                                                                                  const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                                                                                                                                  const GALGAS_string & in_mResultVarCppName,
+                                                                                                                                                                  const GALGAS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
+                                                                                                                                                                  const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                                                  const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                                                                                                  Compiler * inCompiler
+                                                                                                                                                                  COMMA_LOCATION_ARGS) {
   cPtr_extensionGetterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_extensionGetterForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -6359,7 +6131,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_extensionGetterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6786,15 +6558,15 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_extensionMethodAST GALGAS_extensionMethodAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                          const GALGAS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                                                          const GALGAS_lstring & in_mTypeName,
-                                                                                                                                          const GALGAS_lstring & in_mExtensionMethodName,
-                                                                                                                                          const GALGAS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
-                                                                                                                                          const GALGAS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
-                                                                                                                                          const GALGAS_location & in_mEndOfMethodLocation,
-                                                                                                                                          Compiler * inCompiler
-                                                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_extensionMethodAST GALGAS_extensionMethodAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                       const GALGAS_bool & in_requiresSelfForAccessingProperty,
+                                                                                                                                       const GALGAS_lstring & in_mTypeName,
+                                                                                                                                       const GALGAS_lstring & in_mExtensionMethodName,
+                                                                                                                                       const GALGAS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
+                                                                                                                                       const GALGAS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
+                                                                                                                                       const GALGAS_location & in_mEndOfMethodLocation,
+                                                                                                                                       Compiler * inCompiler
+                                                                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_extensionMethodAST * object = nullptr ;
   macroMyNew (object, cPtr_extensionMethodAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -6807,7 +6579,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_extensionMethodAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7089,16 +6861,16 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                             const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                             const GALGAS_string & in_mExtensionMethodName,
-                                                                                                                                                             const GALGAS_bool & in_mImplementedAsFunction,
-                                                                                                                                                             const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                                                                                                             const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                                                                                                             Compiler * inCompiler
-                                                                                                                                                             COMMA_LOCATION_ARGS) {
+GALGAS_extensionMethodForGeneration GALGAS_extensionMethodForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                          const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                          const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                          const GALGAS_string & in_mExtensionMethodName,
+                                                                                                                                                          const GALGAS_bool & in_mImplementedAsFunction,
+                                                                                                                                                          const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
+                                                                                                                                                          const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                                          const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                                                                                          Compiler * inCompiler
+                                                                                                                                                          COMMA_LOCATION_ARGS) {
   cPtr_extensionMethodForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_extensionMethodForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -7112,7 +6884,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_extensionMethodForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7505,15 +7277,15 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_extensionSetterAST GALGAS_extensionSetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                          const GALGAS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                                                          const GALGAS_lstring & in_mTypeName,
-                                                                                                                                          const GALGAS_lstring & in_mExtensionSetterName,
-                                                                                                                                          const GALGAS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
-                                                                                                                                          const GALGAS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
-                                                                                                                                          const GALGAS_location & in_mEndOfSetterDeclarationLocation,
-                                                                                                                                          Compiler * inCompiler
-                                                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_extensionSetterAST GALGAS_extensionSetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                       const GALGAS_bool & in_requiresSelfForAccessingProperty,
+                                                                                                                                       const GALGAS_lstring & in_mTypeName,
+                                                                                                                                       const GALGAS_lstring & in_mExtensionSetterName,
+                                                                                                                                       const GALGAS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
+                                                                                                                                       const GALGAS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
+                                                                                                                                       const GALGAS_location & in_mEndOfSetterDeclarationLocation,
+                                                                                                                                       Compiler * inCompiler
+                                                                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_extensionSetterAST * object = nullptr ;
   macroMyNew (object, cPtr_extensionSetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -7526,7 +7298,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_extensionSetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7808,16 +7580,16 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                             const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                             const GALGAS_string & in_mExtensionSetterName,
-                                                                                                                                                             const GALGAS_bool & in_mImplementedAsFunction,
-                                                                                                                                                             const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                                                                                                             const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                                                                                                             Compiler * inCompiler
-                                                                                                                                                             COMMA_LOCATION_ARGS) {
+GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                          const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                          const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                          const GALGAS_string & in_mExtensionSetterName,
+                                                                                                                                                          const GALGAS_bool & in_mImplementedAsFunction,
+                                                                                                                                                          const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
+                                                                                                                                                          const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                                          const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                                                                                          Compiler * inCompiler
+                                                                                                                                                          COMMA_LOCATION_ARGS) {
   cPtr_extensionSetterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_extensionSetterForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -7831,7 +7603,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_extensionSetterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8214,13 +7986,13 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_initializerAST GALGAS_initializerAST::init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                          const GALGAS_lstring & in_mTypeName,
-                                                                                          const GALGAS_formalInputParameterListAST & in_mFormalParameterList,
-                                                                                          const GALGAS_semanticInstructionListAST & in_mInstructionList,
-                                                                                          const GALGAS_location & in_mEndOfInitializerLocation,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_initializerAST GALGAS_initializerAST::init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                       const GALGAS_lstring & in_mTypeName,
+                                                                                       const GALGAS_formalInputParameterListAST & in_mFormalParameterList,
+                                                                                       const GALGAS_semanticInstructionListAST & in_mInstructionList,
+                                                                                       const GALGAS_location & in_mEndOfInitializerLocation,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_initializerAST * object = nullptr ;
   macroMyNew (object, cPtr_initializerAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -8231,7 +8003,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_initializerAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8474,15 +8246,15 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_extensionInitializerForGeneration GALGAS_extensionInitializerForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                   const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                   const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                   const GALGAS_string & in_initializerName,
-                                                                                                                                                                   const GALGAS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                                                                                                                   const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                                                                                   const GALGAS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
-                                                                                                                                                                   Compiler * inCompiler
-                                                                                                                                                                   COMMA_LOCATION_ARGS) {
+GALGAS_extensionInitializerForGeneration GALGAS_extensionInitializerForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                                const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                                const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                                const GALGAS_string & in_initializerName,
+                                                                                                                                                                const GALGAS_formalInputParameterListForGeneration & in_formalParameterList,
+                                                                                                                                                                const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                                                const GALGAS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
+                                                                                                                                                                Compiler * inCompiler
+                                                                                                                                                                COMMA_LOCATION_ARGS) {
   cPtr_extensionInitializerForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_extensionInitializerForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -8495,7 +8267,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_extensionInitializerForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8861,13 +8633,13 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                      const GALGAS_lstring & in_mTypeName,
-                                                                                                                                      const GALGAS_lstring & in_mAbstractExtensionGetterName,
-                                                                                                                                      const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                                                                                                                      const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
-                                                                                                                                      Compiler * inCompiler
-                                                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                   const GALGAS_lstring & in_mTypeName,
+                                                                                                                                   const GALGAS_lstring & in_mAbstractExtensionGetterName,
+                                                                                                                                   const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
+                                                                                                                                   const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
+                                                                                                                                   Compiler * inCompiler
+                                                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_overridingAbstractExtensionGetterAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingAbstractExtensionGetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -8878,7 +8650,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_overridingAbstractExtensionGetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9108,12 +8880,12 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                  const GALGAS_lstring & in_mTypeName,
-                                                                                                                                  const GALGAS_lstring & in_mOverridingExtensionMethodName,
-                                                                                                                                  const GALGAS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList,
-                                                                                                                                  Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                               const GALGAS_lstring & in_mTypeName,
+                                                                                                                               const GALGAS_lstring & in_mOverridingExtensionMethodName,
+                                                                                                                               const GALGAS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) {
   cPtr_overridingAbstractExtensionMethodAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingAbstractExtensionMethodAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -9123,7 +8895,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_overridingAbstractExtensionMethodAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9336,12 +9108,12 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                  const GALGAS_lstring & in_mTypeName,
-                                                                                                                                  const GALGAS_lstring & in_mOverridingExtensionSetterName,
-                                                                                                                                  const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
-                                                                                                                                  Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::init_28_isPredefined_2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                               const GALGAS_lstring & in_mTypeName,
+                                                                                                                               const GALGAS_lstring & in_mOverridingExtensionSetterName,
+                                                                                                                               const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) {
   cPtr_overridingAbstractExtensionSetterAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingAbstractExtensionSetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -9351,7 +9123,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_overridingAbstractExtensionSetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9589,17 +9361,17 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                                                      const GALGAS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                                                                                      const GALGAS_lstring & in_mTypeName,
-                                                                                                                                                                      const GALGAS_lstring & in_mOverridingExtensionGetterName,
-                                                                                                                                                                      const GALGAS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
-                                                                                                                                                                      const GALGAS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
-                                                                                                                                                                      const GALGAS_lstring & in_mOverridingExtensionGetterReturnedVariableName,
-                                                                                                                                                                      const GALGAS_semanticInstructionListAST & in_mOverridingExtensionGetterInstructionList,
-                                                                                                                                                                      const GALGAS_location & in_mEndOfReaderLocation,
-                                                                                                                                                                      Compiler * inCompiler
-                                                                                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionGetterAST GALGAS_overridingExtensionGetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                                                   const GALGAS_bool & in_requiresSelfForAccessingProperty,
+                                                                                                                                                                   const GALGAS_lstring & in_mTypeName,
+                                                                                                                                                                   const GALGAS_lstring & in_mOverridingExtensionGetterName,
+                                                                                                                                                                   const GALGAS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
+                                                                                                                                                                   const GALGAS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
+                                                                                                                                                                   const GALGAS_lstring & in_mOverridingExtensionGetterReturnedVariableName,
+                                                                                                                                                                   const GALGAS_semanticInstructionListAST & in_mOverridingExtensionGetterInstructionList,
+                                                                                                                                                                   const GALGAS_location & in_mEndOfReaderLocation,
+                                                                                                                                                                   Compiler * inCompiler
+                                                                                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_overridingExtensionGetterAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingExtensionGetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -9614,7 +9386,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_overridingExtensionGetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9940,18 +9712,18 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                                     const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                                     const GALGAS_string & in_mBaseTypeName,
-                                                                                                                                                                                     const GALGAS_string & in_mOverridingExtensionGetterName,
-                                                                                                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                                                                                                     const GALGAS_string & in_mResultVarCppName,
-                                                                                                                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
-                                                                                                                                                                                     const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                                                                                                                                     Compiler * inCompiler
-                                                                                                                                                                                     COMMA_LOCATION_ARGS) {
+GALGAS_overrideExtensionGetterForGeneration GALGAS_overrideExtensionGetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                                                  const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                                                  const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                                                  const GALGAS_string & in_mBaseTypeName,
+                                                                                                                                                                                  const GALGAS_string & in_mOverridingExtensionGetterName,
+                                                                                                                                                                                  const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                                                                                                                                                  const GALGAS_string & in_mResultVarCppName,
+                                                                                                                                                                                  const GALGAS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
+                                                                                                                                                                                  const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                                                                  const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                                                                                                                  Compiler * inCompiler
+                                                                                                                                                                                  COMMA_LOCATION_ARGS) {
   cPtr_overrideExtensionGetterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_overrideExtensionGetterForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -9967,7 +9739,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_overrideExtensionGetterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10394,15 +10166,15 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                                              const GALGAS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                                                                              const GALGAS_lstring & in_mTypeName,
-                                                                                                                                                              const GALGAS_lstring & in_mOverridingExtensionMethodName,
-                                                                                                                                                              const GALGAS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList,
-                                                                                                                                                              const GALGAS_semanticInstructionListAST & in_mOverridingExtensionMethodInstructionList,
-                                                                                                                                                              const GALGAS_location & in_mEndOfMethodLocation,
-                                                                                                                                                              Compiler * inCompiler
-                                                                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionMethodAST GALGAS_overridingExtensionMethodAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                                           const GALGAS_bool & in_requiresSelfForAccessingProperty,
+                                                                                                                                                           const GALGAS_lstring & in_mTypeName,
+                                                                                                                                                           const GALGAS_lstring & in_mOverridingExtensionMethodName,
+                                                                                                                                                           const GALGAS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList,
+                                                                                                                                                           const GALGAS_semanticInstructionListAST & in_mOverridingExtensionMethodInstructionList,
+                                                                                                                                                           const GALGAS_location & in_mEndOfMethodLocation,
+                                                                                                                                                           Compiler * inCompiler
+                                                                                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_overridingExtensionMethodAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingExtensionMethodAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -10415,7 +10187,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_overridingExtensionMethodAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10697,16 +10469,16 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                                 const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                                 const GALGAS_string & in_mBaseTypeName,
-                                                                                                                                                                                 const GALGAS_string & in_mExtensionMethodName,
-                                                                                                                                                                                 const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                                                                                                                                 const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                                                                                                 const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                                                 COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionMethodForGeneration GALGAS_overridingExtensionMethodForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                                              const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                                              const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                                              const GALGAS_string & in_mBaseTypeName,
+                                                                                                                                                                              const GALGAS_string & in_mExtensionMethodName,
+                                                                                                                                                                              const GALGAS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
+                                                                                                                                                                              const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                                                              const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                                                                                                              Compiler * inCompiler
+                                                                                                                                                                              COMMA_LOCATION_ARGS) {
   cPtr_overridingExtensionMethodForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_overridingExtensionMethodForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -10720,7 +10492,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_overridingExtensionMethodForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11113,15 +10885,15 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                                              const GALGAS_bool & in_requiresSelfForAccessingProperty,
-                                                                                                                                                              const GALGAS_lstring & in_mTypeName,
-                                                                                                                                                              const GALGAS_lstring & in_mOverridingExtensionSetterName,
-                                                                                                                                                              const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
-                                                                                                                                                              const GALGAS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
-                                                                                                                                                              const GALGAS_location & in_mEndOfSetterDeclarationLocation,
-                                                                                                                                                              Compiler * inCompiler
-                                                                                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::init_28_isPredefined_2C_requiresSelfForAccessingProperty_2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                                           const GALGAS_bool & in_requiresSelfForAccessingProperty,
+                                                                                                                                                           const GALGAS_lstring & in_mTypeName,
+                                                                                                                                                           const GALGAS_lstring & in_mOverridingExtensionSetterName,
+                                                                                                                                                           const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
+                                                                                                                                                           const GALGAS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
+                                                                                                                                                           const GALGAS_location & in_mEndOfSetterDeclarationLocation,
+                                                                                                                                                           Compiler * inCompiler
+                                                                                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_overridingExtensionSetterAST * object = nullptr ;
   macroMyNew (object, cPtr_overridingExtensionSetterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -11134,7 +10906,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_overridingExtensionSetterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11416,16 +11188,16 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
-                                                                                                                                                                                 const GALGAS_string & in_implementationCppFileName,
-                                                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                                                                                                 const GALGAS_string & in_mBaseTypeName,
-                                                                                                                                                                                 const GALGAS_string & in_mExtensionSetterName,
-                                                                                                                                                                                 const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                                                                                                                                 const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                                                                                                 const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                                                 COMMA_LOCATION_ARGS) {
+GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                                              const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                                              const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                                                                                              const GALGAS_string & in_mBaseTypeName,
+                                                                                                                                                                              const GALGAS_string & in_mExtensionSetterName,
+                                                                                                                                                                              const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
+                                                                                                                                                                              const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                                                              const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                                                                                                              Compiler * inCompiler
+                                                                                                                                                                              COMMA_LOCATION_ARGS) {
   cPtr_overridingExtensionSetterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_overridingExtensionSetterForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_generateHeader = in_generateHeader ;
@@ -11439,7 +11211,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration () {
   const GALGAS_overridingExtensionSetterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11888,11 +11660,11 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                          const GALGAS_semanticExpressionAST & in_mOutputActualParameterExpression,
-                                                                                          const GALGAS_location & in_mEndOfExpressionLocation,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_outputActualParameterAST GALGAS_outputActualParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                       const GALGAS_semanticExpressionAST & in_mOutputActualParameterExpression,
+                                                                                       const GALGAS_location & in_mEndOfExpressionLocation,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_outputActualParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_outputActualParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -11901,7 +11673,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_outputActualParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12107,11 +11879,11 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                    const GALGAS_lstring & in_mOutputInputActualParameterName,
-                                                                                                    const GALGAS_lstringlist & in_mStructAttributeList,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                                 const GALGAS_lstring & in_mOutputInputActualParameterName,
+                                                                                                 const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_outputInputActualParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_outputInputActualParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -12120,7 +11892,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_outputInputActualParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12316,16 +12088,16 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::init_28__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::init_28__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_outputInputSingleJokerParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_outputInputSingleJokerParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
   const GALGAS_outputInputSingleJokerParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12487,16 +12259,16 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::init_28__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_outputInputSelfParameterAST GALGAS_outputInputSelfParameterAST::init_28__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_outputInputSelfParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_outputInputSelfParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
   const GALGAS_outputInputSelfParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12668,11 +12440,11 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                                        const GALGAS_lstring & in_mInputActualParameterName,
-                                                                                                                        const GALGAS_lstringlist & in_mPoisonedVarNameList,
-                                                                                                                        Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_inputActualExistingVariableParameterAST GALGAS_inputActualExistingVariableParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                                                     const GALGAS_lstring & in_mInputActualParameterName,
+                                                                                                                     const GALGAS_lstringlist & in_mPoisonedVarNameList,
+                                                                                                                     Compiler * inCompiler
+                                                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_inputActualExistingVariableParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputActualExistingVariableParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -12681,7 +12453,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_inputActualExistingVariableParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12887,11 +12659,11 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                                const GALGAS_lstring & in_mInputActualSelfPropertyName,
-                                                                                                                const GALGAS_lstringlist & in_mPoisonedVarNameList,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_inputActualSelfPropertyParameterAST GALGAS_inputActualSelfPropertyParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                                             const GALGAS_lstring & in_mInputActualSelfPropertyName,
+                                                                                                             const GALGAS_lstringlist & in_mPoisonedVarNameList,
+                                                                                                             Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_inputActualSelfPropertyParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputActualSelfPropertyParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -12900,7 +12672,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_inputActualSelfPropertyParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13106,11 +12878,11 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                const GALGAS_location & in_mSelfLocation,
-                                                                                                const GALGAS_lstringlist & in_mPoisonedVarNameList,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_inputActualSelfParameterAST GALGAS_inputActualSelfParameterAST::init_28__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                             const GALGAS_location & in_mSelfLocation,
+                                                                                             const GALGAS_lstringlist & in_mPoisonedVarNameList,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_inputActualSelfParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputActualSelfParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -13119,7 +12891,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_inputActualSelfParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13330,12 +13102,12 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                                  const GALGAS_lstring & in_mInputOptionalActualTypeName,
-                                                                                                                  const GALGAS_lstring & in_mInputActualParameterName,
-                                                                                                                  const GALGAS_lstringlist & in_mPoisonedVarNameList,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_inputActualNewVariableParameterAST GALGAS_inputActualNewVariableParameterAST::init_28__2C__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                                               const GALGAS_lstring & in_mInputOptionalActualTypeName,
+                                                                                                               const GALGAS_lstring & in_mInputActualParameterName,
+                                                                                                               const GALGAS_lstringlist & in_mPoisonedVarNameList,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) {
   cPtr_inputActualNewVariableParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputActualNewVariableParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -13345,7 +13117,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_inputActualNewVariableParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13578,13 +13350,13 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::init_28__2C__2C__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                                      const GALGAS_lstring & in_mInputOptionalActualTypeName,
-                                                                                                                      const GALGAS_lstring & in_mInputActualParameterName,
-                                                                                                                      const GALGAS_bool & in_mMarkedAsUnused,
-                                                                                                                      const GALGAS_lstringlist & in_mPoisonedVarNameList,
-                                                                                                                      Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_inputActualNewConstantParameterAST GALGAS_inputActualNewConstantParameterAST::init_28__2C__2C__2C__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                                                   const GALGAS_lstring & in_mInputOptionalActualTypeName,
+                                                                                                                   const GALGAS_lstring & in_mInputActualParameterName,
+                                                                                                                   const GALGAS_bool & in_mMarkedAsUnused,
+                                                                                                                   const GALGAS_lstringlist & in_mPoisonedVarNameList,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_inputActualNewConstantParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputActualNewConstantParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -13595,7 +13367,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_inputActualNewConstantParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13830,10 +13602,10 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST::init_28__2C__29_ (const GALGAS_lstring & in_mActualSelector,
-                                                                                                          const GALGAS_lstringlist & in_mPoisonedVarNameList,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_inputSingleJokerActualParameterAST GALGAS_inputSingleJokerActualParameterAST::init_28__2C__29_ (const GALGAS_lstring & in_mActualSelector,
+                                                                                                       const GALGAS_lstringlist & in_mPoisonedVarNameList,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_inputSingleJokerActualParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputSingleJokerActualParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mActualSelector = in_mActualSelector ;
@@ -13841,7 +13613,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_inputSingleJokerActualParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14038,13 +13810,13 @@ GALGAS_semanticDeclarationAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::init_28_isPredefined_2C_isFilePrivate_2C__2C__2C_usefullProcedure_29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                                                                     const GALGAS_bool & in_isFilePrivate,
-                                                                                                                                                     const GALGAS_lstring & in_mRoutineName,
-                                                                                                                                                     const GALGAS_formalParameterListAST & in_mFormalArgumentListAST,
-                                                                                                                                                     const GALGAS_bool & in_usefullProcedure,
-                                                                                                                                                     Compiler * inCompiler
-                                                                                                                                                     COMMA_LOCATION_ARGS) {
+GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::init_28_isPredefined_2C_isFilePrivate_2C__2C__2C_usefullProcedure_29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                                                                  const GALGAS_bool & in_isFilePrivate,
+                                                                                                                                                  const GALGAS_lstring & in_mRoutineName,
+                                                                                                                                                  const GALGAS_formalParameterListAST & in_mFormalArgumentListAST,
+                                                                                                                                                  const GALGAS_bool & in_usefullProcedure,
+                                                                                                                                                  Compiler * inCompiler
+                                                                                                                                                  COMMA_LOCATION_ARGS) {
   cPtr_externProcedureDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_externProcedureDeclarationAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -14055,7 +13827,7 @@ GALGAS_semanticDeclarationAST () {
   const GALGAS_externProcedureDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14210,6 +13982,219 @@ GALGAS_externProcedureDeclarationAST GALGAS_externProcedureDeclarationAST::extra
       result = *p ;
     }else{
       inCompiler->castError ("externProcedureDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @routinePrototypeDeclarationForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_routinePrototypeDeclarationForGeneration::cPtr_routinePrototypeDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
+mProperty_routineMangledName (),
+mProperty_mFormalArgumentList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_routinePrototypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_routineMangledName.printNonNullClassInstanceProperties ("routineMangledName") ;
+    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties ("mFormalArgumentList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cPtr_routinePrototypeDeclarationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
+  const cPtr_routinePrototypeDeclarationForGeneration * p = (const cPtr_routinePrototypeDeclarationForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_generateHeader.objectCompare (p->mProperty_generateHeader) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_implementationCppFileName.objectCompare (p->mProperty_implementationCppFileName) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_routineMangledName.objectCompare (p->mProperty_routineMangledName) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mFormalArgumentList.objectCompare (p->mProperty_mFormalArgumentList) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+ComparisonResult GALGAS_routinePrototypeDeclarationForGeneration::objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_routinePrototypeDeclarationForGeneration::GALGAS_routinePrototypeDeclarationForGeneration (void) :
+GALGAS_semanticDeclarationWithHeaderForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::init_28_generateHeader_2C_implementationCppFileName_2C_routineMangledName_2C__29_ (const GALGAS_bool & in_generateHeader,
+                                                                                                                                                                                    const GALGAS_string & in_implementationCppFileName,
+                                                                                                                                                                                    const GALGAS_string & in_routineMangledName,
+                                                                                                                                                                                    const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList,
+                                                                                                                                                                                    Compiler * inCompiler
+                                                                                                                                                                                    COMMA_LOCATION_ARGS) {
+  cPtr_routinePrototypeDeclarationForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_routinePrototypeDeclarationForGeneration (inCompiler COMMA_THERE)) ;
+  object->mProperty_generateHeader = in_generateHeader ;
+  object->mProperty_implementationCppFileName = in_implementationCppFileName ;
+  object->mProperty_routineMangledName = in_routineMangledName ;
+  object->mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  const GALGAS_routinePrototypeDeclarationForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_routinePrototypeDeclarationForGeneration::GALGAS_routinePrototypeDeclarationForGeneration (const cPtr_routinePrototypeDeclarationForGeneration * inSourcePtr) :
+GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_routinePrototypeDeclarationForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::class_func_new (const GALGAS_bool & inAttribute_generateHeader,
+                                                                                                                 const GALGAS_string & inAttribute_implementationCppFileName,
+                                                                                                                 const GALGAS_string & inAttribute_routineMangledName,
+                                                                                                                 const GALGAS_formalParameterListForGeneration & inAttribute_mFormalArgumentList
+                                                                                                                 COMMA_LOCATION_ARGS) {
+  GALGAS_routinePrototypeDeclarationForGeneration result ;
+  if (inAttribute_generateHeader.isValid () && inAttribute_implementationCppFileName.isValid () && inAttribute_routineMangledName.isValid () && inAttribute_mFormalArgumentList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_routinePrototypeDeclarationForGeneration (inAttribute_generateHeader, inAttribute_implementationCppFileName, inAttribute_routineMangledName, inAttribute_mFormalArgumentList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_routinePrototypeDeclarationForGeneration::readProperty_routineMangledName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
+    return p->mProperty_routineMangledName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_formalParameterListForGeneration GALGAS_routinePrototypeDeclarationForGeneration::readProperty_mFormalArgumentList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_formalParameterListForGeneration () ;
+  }else{
+    cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
+    return p->mProperty_mFormalArgumentList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @routinePrototypeDeclarationForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_routinePrototypeDeclarationForGeneration::cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_generateHeader,
+                                                                                              const GALGAS_string & in_implementationCppFileName,
+                                                                                              const GALGAS_string & in_routineMangledName,
+                                                                                              const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList
+                                                                                              COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
+mProperty_routineMangledName (in_routineMangledName),
+mProperty_mFormalArgumentList (in_mFormalArgumentList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_routinePrototypeDeclarationForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
+}
+
+void cPtr_routinePrototypeDeclarationForGeneration::description (String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("[@routinePrototypeDeclarationForGeneration:") ;
+  mProperty_generateHeader.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_implementationCppFileName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_routineMangledName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_routinePrototypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_routinePrototypeDeclarationForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_routineMangledName, mProperty_mFormalArgumentList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @routinePrototypeDeclarationForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ("routinePrototypeDeclarationForGeneration",
+                                                                                                & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_routinePrototypeDeclarationForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_routinePrototypeDeclarationForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_routinePrototypeDeclarationForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_routinePrototypeDeclarationForGeneration result ;
+  const GALGAS_routinePrototypeDeclarationForGeneration * p = (const GALGAS_routinePrototypeDeclarationForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_routinePrototypeDeclarationForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("routinePrototypeDeclarationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

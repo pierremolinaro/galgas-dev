@@ -9,61 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@currentVarManager searchForReadWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForReadWriteAccess (GALGAS_currentVarManager & ioObject,
-                                               const GALGAS_lstring constinArgument_inVarName,
-                                               GALGAS_unifiedTypeMapEntry & outArgument_outType,
-                                               GALGAS_string & outArgument_outCppName,
-                                               GALGAS_string & outArgument_outNameForCheckingFormalParameterUsing,
-                                               Compiler * inCompiler
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outType.drop () ; // Release 'out' argument
-  outArgument_outCppName.drop () ; // Release 'out' argument
-  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_currentVarManager temp_1 = ioObject ;
-    GALGAS_unifiedTypeMapEntry var_type_32900 ;
-    GALGAS_string var_cppName_32921 ;
-    GALGAS_string var_nameForCheckingFormalParameterUsing_32945 ;
-    GALGAS_localVariableAttributes var_inAttributes_32997 ;
-    GALGAS_localVarValuation var_valuation_33026 ;
-    const bool optionalResult32852 = temp_1.readProperty_mLocalVarMap ().optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_32900, var_cppName_32921, var_nameForCheckingFormalParameterUsing_32945, var_inAttributes_32997, var_valuation_33026) ;
-    if (!optionalResult32852) {
-      test_0 = kBoolFalse ;
-    }
-    if (kBoolTrue == test_0) {
-      GALGAS_localVarValuation var_newValuation_33050 = var_valuation_33026 ;
-      {
-      extensionSetter_readWriteTransition (var_newValuation_33050, constinArgument_inVarName, GALGAS_bool (false), var_inAttributes_32997, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 758)) ;
-      }
-      enumGalgasBool test_2 = kBoolTrue ;
-      if (kBoolTrue == test_2) {
-        test_2 = GALGAS_bool (ComparisonKind::notEqual, var_newValuation_33050.objectCompare (var_valuation_33026)).boolEnum () ;
-        if (kBoolTrue == test_2) {
-          {
-          ioObject.mProperty_mLocalVarMap.setter_setMStateForKey (var_newValuation_33050, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 760)) ;
-          }
-        }
-      }
-      outArgument_outType = var_type_32900 ;
-      outArgument_outCppName = var_cppName_32921 ;
-      outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_32945 ;
-    }
-  }
-  if (kBoolFalse == test_0) {
-    {
-    extensionSetter_readWriteAccess (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GALGAS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 766)) ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension method '@localVarMapListForLLVM readWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
@@ -82,10 +27,10 @@ void extensionSetter_readWriteAccess (GALGAS_localVarMapListForLLVM & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_localVarMapListForLLVM temp_1 = ioObject ;
-    test_0 = GALGAS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 777)))).boolEnum () ;
+    test_0 = GALGAS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas", 780)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("Undefined variable"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 778)) ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("'").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 781)).add_operation (GALGAS_string ("' variable is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 781)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 781)) ;
       outArgument_outType.drop () ; // Release error dropped variable
       outArgument_outCppName.drop () ; // Release error dropped variable
       outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release error dropped variable
@@ -93,43 +38,43 @@ void extensionSetter_readWriteAccess (GALGAS_localVarMapListForLLVM & ioObject,
   }
   if (kBoolFalse == test_0) {
     const GALGAS_localVarMapListForLLVM temp_3 = ioObject ;
-    GALGAS_scopeLocalVarMap var_localMap_34165 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 780)) ;
+    GALGAS_scopeLocalVarMap var_localMap_34285 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 784)) ;
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      GALGAS_unifiedTypeMapEntry var_type_34279 ;
-      GALGAS_string var_cppName_34303 ;
-      GALGAS_string var_nameForCheckingFormalParameterUsing_34330 ;
-      GALGAS_localVariableAttributes var_inAttributes_34385 ;
-      GALGAS_localVarValuation var_valuation_34417 ;
-      const bool optionalResult34225 = var_localMap_34165.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_34279, var_cppName_34303, var_nameForCheckingFormalParameterUsing_34330, var_inAttributes_34385, var_valuation_34417) ;
-      if (!optionalResult34225) {
+      GALGAS_unifiedTypeMapEntry var_type_34399 ;
+      GALGAS_string var_cppName_34423 ;
+      GALGAS_string var_nameForCheckingFormalParameterUsing_34450 ;
+      GALGAS_localVariableAttributes var_inAttributes_34505 ;
+      GALGAS_localVarValuation var_valuation_34537 ;
+      const bool optionalResult34345 = var_localMap_34285.optional_searchKey (constinArgument_inVarName.readProperty_string (), var_type_34399, var_cppName_34423, var_nameForCheckingFormalParameterUsing_34450, var_inAttributes_34505, var_valuation_34537) ;
+      if (!optionalResult34345) {
         test_4 = kBoolFalse ;
       }
       if (kBoolTrue == test_4) {
-        GALGAS_localVarValuation var_newValuation_34443 = var_valuation_34417 ;
+        GALGAS_localVarValuation var_newValuation_34563 = var_valuation_34537 ;
         {
-        extensionSetter_readWriteTransition (var_newValuation_34443, constinArgument_inVarName, GALGAS_bool (true), var_inAttributes_34385, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 789)) ;
+        extensionSetter_readWriteTransition (var_newValuation_34563, constinArgument_inVarName, GALGAS_bool (true), var_inAttributes_34505, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 793)) ;
         }
         enumGalgasBool test_5 = kBoolTrue ;
         if (kBoolTrue == test_5) {
-          test_5 = GALGAS_bool (ComparisonKind::notEqual, var_newValuation_34443.objectCompare (var_valuation_34417)).boolEnum () ;
+          test_5 = GALGAS_bool (ComparisonKind::notEqual, var_newValuation_34563.objectCompare (var_valuation_34537)).boolEnum () ;
           if (kBoolTrue == test_5) {
             {
-            var_localMap_34165.setter_setMStateForKey (var_newValuation_34443, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 791)) ;
+            var_localMap_34285.setter_setMStateForKey (var_newValuation_34563, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 795)) ;
             }
             {
-            ioObject.setter_setMMapAtIndex (var_localMap_34165, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 792)) ;
+            ioObject.setter_setMMapAtIndex (var_localMap_34285, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 796)) ;
             }
           }
         }
-        outArgument_outType = var_type_34279 ;
-        outArgument_outCppName = var_cppName_34303 ;
-        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_34330 ;
+        outArgument_outType = var_type_34399 ;
+        outArgument_outCppName = var_cppName_34423 ;
+        outArgument_outNameForCheckingFormalParameterUsing = var_nameForCheckingFormalParameterUsing_34450 ;
       }
     }
     if (kBoolFalse == test_4) {
       {
-      extensionSetter_readWriteAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 798)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 798)) ;
+      extensionSetter_readWriteAccess (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 802)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 802)) ;
       }
     }
   }
@@ -149,10 +94,10 @@ void extensionSetter_readWriteTransition (GALGAS_localVarValuation & ioObject,
                                           Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   {
-  extensionSetter_readTransition (ioObject, constinArgument_inVarName, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 808)) ;
+  extensionSetter_readTransition (ioObject, constinArgument_inVarName, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 812)) ;
   }
   {
-  extensionSetter_writeTransition (ioObject, constinArgument_inVarName, constinArgument_inOverridenMap, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 809)) ;
+  extensionSetter_writeTransition (ioObject, constinArgument_inVarName, constinArgument_inOverridenMap, constinArgument_inAttributes, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 813)) ;
   }
 }
 
@@ -168,9 +113,9 @@ void extensionSetter_openScope (GALGAS_currentVarManager & ioObject,
                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
   const GALGAS_currentVarManager temp_0 = ioObject ;
-  ioObject.mProperty_mSubMaps.setter_insertAtIndex (temp_0.readProperty_mLocalVarMap (), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 817)) ;
+  ioObject.mProperty_mSubMaps.setter_insertAtIndex (temp_0.readProperty_mLocalVarMap (), GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 821)) ;
   }
-  ioObject.mProperty_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 818)) ;
+  ioObject.mProperty_mLocalVarMap = GALGAS_scopeLocalVarMap::class_func_emptyMap (SOURCE_FILE ("variable-manager.galgas", 822)) ;
 }
 
 
@@ -185,23 +130,23 @@ void extensionSetter_closeScope (GALGAS_currentVarManager & ioObject,
                                  Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_currentVarManager temp_0 = ioObject ;
-  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 824)) ;
+  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 828)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
     const GALGAS_currentVarManager temp_2 = ioObject ;
-    test_1 = GALGAS_bool (ComparisonKind::equal, temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 825)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_1 = GALGAS_bool (ComparisonKind::equal, temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 829)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("EMPTY SUBMAPS"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 826)) ;
+      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("EMPTY SUBMAPS"), fixItArray3  COMMA_SOURCE_FILE ("variable-manager.galgas", 830)) ;
     }
   }
   enumGalgasBool test_4 = kBoolTrue ;
   if (kBoolTrue == test_4) {
     const GALGAS_currentVarManager temp_5 = ioObject ;
-    test_4 = GALGAS_bool (ComparisonKind::greaterThan, temp_5.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 828)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_4 = GALGAS_bool (ComparisonKind::greaterThan, temp_5.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 832)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_4) {
       {
-      ioObject.mProperty_mSubMaps.setter_popFirst (ioObject.mProperty_mLocalVarMap, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 829)) ;
+      ioObject.mProperty_mSubMaps.setter_popFirst (ioObject.mProperty_mLocalVarMap, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 833)) ;
       }
     }
   }
@@ -224,7 +169,7 @@ void extensionSetter_insertKey (GALGAS_currentVarManager & ioObject,
                                 Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   {
-  ioObject.mProperty_mLocalVarMap.setter_insertKey (constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, constinArgument_inAttributes, constinArgument_inState, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 843)) ;
+  ioObject.mProperty_mLocalVarMap.setter_insertKey (constinArgument_inVarName, constinArgument_inType, constinArgument_inCppName, constinArgument_inNameForCheckingFormalParameterUsing, constinArgument_inAttributes, constinArgument_inState, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 847)) ;
   }
 }
 
@@ -250,28 +195,28 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
     break ;
   case GALGAS_localVarValuation::kEnum_declared:
     {
-      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_37818 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_37391_usedInOtherBlock = extractPtr_37818->mAssociatedValue0 ;
+      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_37938 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_37511_usedInOtherBlock = extractPtr_37938->mAssociatedValue0 ;
       enumGalgasBool test_1 = kBoolTrue ;
       if (kBoolTrue == test_1) {
-        test_1 = constinArgument_inAttributes.getter_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 861)).boolEnum () ;
+        test_1 = constinArgument_inAttributes.getter_rejectDeclaredStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 865)).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 862)).add_operation (GALGAS_string ("' should be initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 862)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 862)) ;
+          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 866)).add_operation (GALGAS_string ("' should be initialized"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 866)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas", 866)) ;
         }
       }
       if (kBoolFalse == test_1) {
         enumGalgasBool test_3 = kBoolTrue ;
         if (kBoolTrue == test_3) {
-          test_3 = extractedValue_37391_usedInOtherBlock.boolEnum () ;
+          test_3 = extractedValue_37511_usedInOtherBlock.boolEnum () ;
           if (kBoolTrue == test_3) {
             TC_Array <FixItDescription> fixItArray4 ;
-            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 864)).add_operation (GALGAS_string ("' is only used  in sub scope; consider moving it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 864)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 864)) ;
+            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 868)).add_operation (GALGAS_string ("' is only used  in sub scope; consider moving it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 868)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas", 868)) ;
           }
         }
         if (kBoolFalse == test_3) {
           TC_Array <FixItDescription> fixItArray5 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 866)).add_operation (GALGAS_string ("' was never used; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 866)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 866)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 870)).add_operation (GALGAS_string ("' was never used; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 870)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 870)) ;
         }
       }
     }
@@ -280,19 +225,19 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
     {
       enumGalgasBool test_6 = kBoolTrue ;
       if (kBoolTrue == test_6) {
-        test_6 = constinArgument_inAttributes.getter_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 869)).boolEnum () ;
+        test_6 = constinArgument_inAttributes.getter_suggestDeclareUnusedParameterAsUnused (SOURCE_FILE ("variable-manager.galgas", 873)).boolEnum () ;
         if (kBoolTrue == test_6) {
           TC_Array <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("parameter '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 870)).add_operation (GALGAS_string ("' was never read; consider declaring it as unused"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 870)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 870)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("parameter '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 874)).add_operation (GALGAS_string ("' was never read; consider declaring it as unused"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 874)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas", 874)) ;
         }
       }
       if (kBoolFalse == test_6) {
         enumGalgasBool test_8 = kBoolTrue ;
         if (kBoolTrue == test_8) {
-          test_8 = constinArgument_inAttributes.getter_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 871)).operator_not (SOURCE_FILE ("variable-manager.galgas", 871)).boolEnum () ;
+          test_8 = constinArgument_inAttributes.getter_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 875)).operator_not (SOURCE_FILE ("variable-manager.galgas", 875)).boolEnum () ;
           if (kBoolTrue == test_8) {
             TC_Array <FixItDescription> fixItArray9 ;
-            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 872)).add_operation (GALGAS_string ("' was never read; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 872)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 872)) ;
+            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 876)).add_operation (GALGAS_string ("' was never read; consider removing it"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 876)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas", 876)) ;
           }
         }
       }
@@ -302,10 +247,10 @@ void extensionMethod_checkFinalState (const GALGAS_localVarValuation inObject,
     {
       enumGalgasBool test_10 = kBoolTrue ;
       if (kBoolTrue == test_10) {
-        test_10 = constinArgument_inAttributes.getter_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 875)).operator_not (SOURCE_FILE ("variable-manager.galgas", 875)).boolEnum () ;
+        test_10 = constinArgument_inAttributes.getter_acceptReadStateAsFinalState (SOURCE_FILE ("variable-manager.galgas", 879)).operator_not (SOURCE_FILE ("variable-manager.galgas", 879)).boolEnum () ;
         if (kBoolTrue == test_10) {
           TC_Array <FixItDescription> fixItArray11 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 876)).add_operation (GALGAS_string ("' was never mutated; consider declaring it as 'let'"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 876)), fixItArray11  COMMA_SOURCE_FILE ("variable-manager.galgas", 876)) ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GALGAS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 880)).add_operation (GALGAS_string ("' was never mutated; consider declaring it as 'let'"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 880)), fixItArray11  COMMA_SOURCE_FILE ("variable-manager.galgas", 880)) ;
         }
       }
     }
@@ -329,10 +274,10 @@ void extensionMethod_checkFinalStates (const GALGAS_scopeLocalVarMap inObject,
                                        Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_scopeLocalVarMap temp_0 = inObject ;
-  cEnumerator_scopeLocalVarMap enumerator_38656 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_38656.hasCurrentObject ()) {
-    extensionMethod_checkFinalState (enumerator_38656.current_mState (HERE), enumerator_38656.current_lkey (HERE), enumerator_38656.current_mAttributes (HERE), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 887)) ;
-    enumerator_38656.gotoNextObject () ;
+  cEnumerator_scopeLocalVarMap enumerator_38776 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_38776.hasCurrentObject ()) {
+    extensionMethod_checkFinalState (enumerator_38776.current_mState (HERE), enumerator_38776.current_lkey (HERE), enumerator_38776.current_mAttributes (HERE), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 891)) ;
+    enumerator_38776.gotoNextObject () ;
   }
 }
 
@@ -348,7 +293,7 @@ void extensionMethod_checkAutomatonStates (const GALGAS_currentVarManager inObje
                                            Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_currentVarManager temp_0 = inObject ;
-  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 900)) ;
+  extensionMethod_checkFinalStates (temp_0.readProperty_mLocalVarMap (), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 904)) ;
 }
 
 
@@ -377,8 +322,8 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
     break ;
   case GALGAS_localVarValuation::kEnum_declared:
     {
-      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_40050 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_39748_usedInSubscope = extractPtr_40050->mAssociatedValue0 ;
+      const cEnumAssociatedValues_localVarValuation_declared * extractPtr_40170 = (const cEnumAssociatedValues_localVarValuation_declared *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_39868_usedInSubscope = extractPtr_40170->mAssociatedValue0 ;
       switch (constinArgument_inOther.enumValue ()) {
       case GALGAS_localVarValuation::kNotBuilt:
         break ;
@@ -389,16 +334,16 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_39954 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
-          const GALGAS_bool extractedValue_39849_otherUsedInSubscope = extractPtr_39954->mAssociatedValue0 ;
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_39748_usedInSubscope.operator_or (extractedValue_39849_otherUsedInSubscope COMMA_SOURCE_FILE ("variable-manager.galgas", 918))  COMMA_SOURCE_FILE ("variable-manager.galgas", 918)) ;
+          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_40074 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
+          const GALGAS_bool extractedValue_39969_otherUsedInSubscope = extractPtr_40074->mAssociatedValue0 ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_39868_usedInSubscope.operator_or (extractedValue_39969_otherUsedInSubscope COMMA_SOURCE_FILE ("variable-manager.galgas", 922))  COMMA_SOURCE_FILE ("variable-manager.galgas", 922)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
       case GALGAS_localVarValuation::kEnum_read:
       case GALGAS_localVarValuation::kEnum_mutated:
         {
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 920)) ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 924)) ;
         }
         break ;
       }
@@ -416,9 +361,9 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_40246 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
-          const GALGAS_bool extractedValue_40158_otherUsedInSubscope = extractPtr_40246->mAssociatedValue0 ;
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_40158_otherUsedInSubscope  COMMA_SOURCE_FILE ("variable-manager.galgas", 927)) ;
+          const cEnumAssociatedValues_localVarValuation_declared * extractPtr_40366 = (const cEnumAssociatedValues_localVarValuation_declared *) (constinArgument_inOther.unsafePointer ()) ;
+          const GALGAS_bool extractedValue_40278_otherUsedInSubscope = extractPtr_40366->mAssociatedValue0 ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (extractedValue_40278_otherUsedInSubscope  COMMA_SOURCE_FILE ("variable-manager.galgas", 931)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
@@ -443,7 +388,7 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 936)) ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 940)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
@@ -473,7 +418,7 @@ void extensionMethod_combineValuationWith (const GALGAS_localVarValuation inObje
         break ;
       case GALGAS_localVarValuation::kEnum_declared:
         {
-          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 947)) ;
+          outArgument_outResult = GALGAS_localVarValuation::class_func_declared (GALGAS_bool (true)  COMMA_SOURCE_FILE ("variable-manager.galgas", 951)) ;
         }
         break ;
       case GALGAS_localVarValuation::kEnum_initialized:
@@ -503,36 +448,36 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
                                      Compiler * inCompiler
                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_scopeLocalVarMap temp_0 = ioObject ;
-  cEnumerator_scopeLocalVarMap enumerator_41169 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_41169.hasCurrentObject ()) {
+  cEnumerator_scopeLocalVarMap enumerator_41289 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_41289.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      GALGAS_unifiedTypeMapEntry var_unused_0_41234 ;
-      GALGAS_string var_otherCppName_41241 ;
-      GALGAS_string var_unused_0_41256 ;
-      GALGAS_localVariableAttributes var_unused_1_41256 ;
-      GALGAS_localVarValuation var_otherValuation_41263 ;
-      const bool optionalResult41214 = constinArgument_inOtherMap.optional_searchKey (enumerator_41169.current_lkey (HERE).readProperty_string (), var_unused_0_41234, var_otherCppName_41241, var_unused_0_41256, var_unused_1_41256, var_otherValuation_41263) ;
-      if (!optionalResult41214) {
+      GALGAS_unifiedTypeMapEntry var_unused_0_41354 ;
+      GALGAS_string var_otherCppName_41361 ;
+      GALGAS_string var_unused_0_41376 ;
+      GALGAS_localVariableAttributes var_unused_1_41376 ;
+      GALGAS_localVarValuation var_otherValuation_41383 ;
+      const bool optionalResult41334 = constinArgument_inOtherMap.optional_searchKey (enumerator_41289.current_lkey (HERE).readProperty_string (), var_unused_0_41354, var_otherCppName_41361, var_unused_0_41376, var_unused_1_41376, var_otherValuation_41383) ;
+      if (!optionalResult41334) {
         test_1 = kBoolFalse ;
       }
       if (kBoolTrue == test_1) {
         enumGalgasBool test_2 = kBoolTrue ;
         if (kBoolTrue == test_2) {
-          test_2 = GALGAS_bool (ComparisonKind::notEqual, enumerator_41169.current_mCppName (HERE).objectCompare (var_otherCppName_41241)).boolEnum () ;
+          test_2 = GALGAS_bool (ComparisonKind::notEqual, enumerator_41289.current_mCppName (HERE).objectCompare (var_otherCppName_41361)).boolEnum () ;
           if (kBoolTrue == test_2) {
-            ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 1 for '").add_operation (enumerator_41169.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 961)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 961)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 961)) ;
+            ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 1 for '").add_operation (enumerator_41289.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 965)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 965)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 965)) ;
           }
         }
         if (kBoolFalse == test_2) {
-          GALGAS_localVarValuation var_newValuation_41488 ;
-          extensionMethod_combineValuationWith (enumerator_41169.current_mState (HERE), var_otherValuation_41263, var_newValuation_41488, ioArgument_ioErrorMessage, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 963)) ;
+          GALGAS_localVarValuation var_newValuation_41608 ;
+          extensionMethod_combineValuationWith (enumerator_41289.current_mState (HERE), var_otherValuation_41383, var_newValuation_41608, ioArgument_ioErrorMessage, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 967)) ;
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = GALGAS_bool (ComparisonKind::notEqual, var_newValuation_41488.objectCompare (enumerator_41169.current_mState (HERE))).boolEnum () ;
+            test_3 = GALGAS_bool (ComparisonKind::notEqual, var_newValuation_41608.objectCompare (enumerator_41289.current_mState (HERE))).boolEnum () ;
             if (kBoolTrue == test_3) {
               {
-              ioObject.setter_setMStateForKey (var_newValuation_41488, enumerator_41169.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 965)) ;
+              ioObject.setter_setMStateForKey (var_newValuation_41608, enumerator_41289.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 969)) ;
               }
             }
           }
@@ -540,21 +485,21 @@ void extensionSetter_combineMapWith (GALGAS_scopeLocalVarMap & ioObject,
       }
     }
     if (kBoolFalse == test_1) {
-      ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 2 for '").add_operation (enumerator_41169.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 969)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 969)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 969)) ;
+      ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 2 for '").add_operation (enumerator_41289.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 973)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 973)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 973)) ;
     }
-    enumerator_41169.gotoNextObject () ;
+    enumerator_41289.gotoNextObject () ;
   }
-  cEnumerator_scopeLocalVarMap enumerator_41773 (constinArgument_inOtherMap, EnumerationOrder::up) ;
-  while (enumerator_41773.hasCurrentObject ()) {
+  cEnumerator_scopeLocalVarMap enumerator_41893 (constinArgument_inOtherMap, EnumerationOrder::up) ;
+  while (enumerator_41893.hasCurrentObject ()) {
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
       const GALGAS_scopeLocalVarMap temp_5 = ioObject ;
-      test_4 = temp_5.getter_hasKey (enumerator_41773.current_lkey (HERE).readProperty_string () COMMA_SOURCE_FILE ("variable-manager.galgas", 974)).operator_not (SOURCE_FILE ("variable-manager.galgas", 974)).boolEnum () ;
+      test_4 = temp_5.getter_hasKey (enumerator_41893.current_lkey (HERE).readProperty_string () COMMA_SOURCE_FILE ("variable-manager.galgas", 978)).operator_not (SOURCE_FILE ("variable-manager.galgas", 978)).boolEnum () ;
       if (kBoolTrue == test_4) {
-        ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 3 for '").add_operation (enumerator_41773.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 975)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 975)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 975)) ;
+        ioArgument_ioErrorMessage.plusAssign_operation(GALGAS_string ("\n  - 'internal error type 3 for '").add_operation (enumerator_41893.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 979)).add_operation (GALGAS_string ("' local variable"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 979)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 979)) ;
       }
     }
-    enumerator_41773.gotoNextObject () ;
+    enumerator_41893.gotoNextObject () ;
   }
 }
 
@@ -570,41 +515,41 @@ void extensionSetter_combineManagerWith (GALGAS_currentVarManager & ioObject,
                                          const GALGAS_location constinArgument_inErrorLocation,
                                          Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s_42238 = GALGAS_string::makeEmptyString () ;
+  GALGAS_string var_s_42358 = GALGAS_string::makeEmptyString () ;
   {
-  extensionSetter_combineMapWith (ioObject.mProperty_mLocalVarMap, constinArgument_inOtherManager.readProperty_mLocalVarMap (), var_s_42238, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 985)) ;
+  extensionSetter_combineMapWith (ioObject.mProperty_mLocalVarMap, constinArgument_inOtherManager.readProperty_mLocalVarMap (), var_s_42358, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 989)) ;
   }
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_currentVarManager temp_1 = ioObject ;
-    test_0 = GALGAS_bool (ComparisonKind::notEqual, temp_1.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 989)).objectCompare (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 989)))).boolEnum () ;
+    test_0 = GALGAS_bool (ComparisonKind::notEqual, temp_1.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 993)).objectCompare (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 993)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_currentVarManager temp_2 = ioObject ;
-      var_s_42238.plusAssign_operation(GALGAS_string ("Scope deepth error, ").add_operation (temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 990)).getter_string (SOURCE_FILE ("variable-manager.galgas", 990)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 990)).add_operation (GALGAS_string (" != "), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 990)).add_operation (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 990)).getter_string (SOURCE_FILE ("variable-manager.galgas", 990)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 990)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 990)) ;
+      var_s_42358.plusAssign_operation(GALGAS_string ("Scope deepth error, ").add_operation (temp_2.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 994)).getter_string (SOURCE_FILE ("variable-manager.galgas", 994)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 994)).add_operation (GALGAS_string (" != "), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 994)).add_operation (constinArgument_inOtherManager.readProperty_mSubMaps ().getter_count (SOURCE_FILE ("variable-manager.galgas", 994)).getter_string (SOURCE_FILE ("variable-manager.galgas", 994)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 994)), inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 994)) ;
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_localVarMapListForLLVM var_newSubMapList_42543 = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 992)) ;
+    GALGAS_localVarMapListForLLVM var_newSubMapList_42663 = GALGAS_localVarMapListForLLVM::class_func_emptyList (SOURCE_FILE ("variable-manager.galgas", 996)) ;
     const GALGAS_currentVarManager temp_3 = ioObject ;
-    cEnumerator_localVarMapListForLLVM enumerator_42571 (temp_3.readProperty_mSubMaps (), EnumerationOrder::up) ;
-    cEnumerator_localVarMapListForLLVM enumerator_42598 (constinArgument_inOtherManager.readProperty_mSubMaps (), EnumerationOrder::up) ;
-    while (enumerator_42571.hasCurrentObject () && enumerator_42598.hasCurrentObject ()) {
-      GALGAS_scopeLocalVarMap var_mutableSubMap_42651 = enumerator_42571.current_mMap (HERE) ;
+    cEnumerator_localVarMapListForLLVM enumerator_42691 (temp_3.readProperty_mSubMaps (), EnumerationOrder::up) ;
+    cEnumerator_localVarMapListForLLVM enumerator_42718 (constinArgument_inOtherManager.readProperty_mSubMaps (), EnumerationOrder::up) ;
+    while (enumerator_42691.hasCurrentObject () && enumerator_42718.hasCurrentObject ()) {
+      GALGAS_scopeLocalVarMap var_mutableSubMap_42771 = enumerator_42691.current_mMap (HERE) ;
       {
-      extensionSetter_combineMapWith (var_mutableSubMap_42651, enumerator_42598.current_mMap (HERE), var_s_42238, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 995)) ;
+      extensionSetter_combineMapWith (var_mutableSubMap_42771, enumerator_42718.current_mMap (HERE), var_s_42358, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 999)) ;
       }
-      var_newSubMapList_42543.addAssign_operation (var_mutableSubMap_42651  COMMA_SOURCE_FILE ("variable-manager.galgas", 999)) ;
-      enumerator_42571.gotoNextObject () ;
-      enumerator_42598.gotoNextObject () ;
+      var_newSubMapList_42663.addAssign_operation (var_mutableSubMap_42771  COMMA_SOURCE_FILE ("variable-manager.galgas", 1003)) ;
+      enumerator_42691.gotoNextObject () ;
+      enumerator_42718.gotoNextObject () ;
     }
-    ioObject.mProperty_mSubMaps = var_newSubMapList_42543 ;
+    ioObject.mProperty_mSubMaps = var_newSubMapList_42663 ;
   }
   enumGalgasBool test_4 = kBoolTrue ;
   if (kBoolTrue == test_4) {
-    test_4 = GALGAS_bool (ComparisonKind::notEqual, var_s_42238.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    test_4 = GALGAS_bool (ComparisonKind::notEqual, var_s_42358.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_4) {
       TC_Array <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("convergence error:").add_operation (var_s_42238, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 1005)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 1005)) ;
+      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("convergence error:").add_operation (var_s_42358, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 1009)), fixItArray5  COMMA_SOURCE_FILE ("variable-manager.galgas", 1009)) ;
     }
   }
 }
@@ -2344,12 +2289,12 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_ifExpressionAST GALGAS_ifExpressionAST::init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                            const GALGAS_semanticExpressionAST & in_mIfExpression,
-                                                                            const GALGAS_semanticExpressionAST & in_mThenExpression,
-                                                                            const GALGAS_semanticExpressionAST & in_mElseExpression,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_ifExpressionAST GALGAS_ifExpressionAST::init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                         const GALGAS_semanticExpressionAST & in_mIfExpression,
+                                                                         const GALGAS_semanticExpressionAST & in_mThenExpression,
+                                                                         const GALGAS_semanticExpressionAST & in_mElseExpression,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   cPtr_ifExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_ifExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -2359,7 +2304,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_ifExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2797,10 +2742,10 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_unaryPlusExpressionAST GALGAS_unaryPlusExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                  const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_unaryPlusExpressionAST GALGAS_unaryPlusExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                               const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
   cPtr_unaryPlusExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_unaryPlusExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -2808,7 +2753,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_unaryPlusExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3102,10 +3047,10 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_unaryMinusExpressionAST GALGAS_unaryMinusExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                    const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_unaryMinusExpressionAST GALGAS_unaryMinusExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                 const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_unaryMinusExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_unaryMinusExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -3113,7 +3058,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_unaryMinusExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4291,16 +4236,16 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_trueExpressionAST GALGAS_trueExpressionAST::init_28__29_ (const GALGAS_location & in_mLocation,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_trueExpressionAST GALGAS_trueExpressionAST::init_28__29_ (const GALGAS_location & in_mLocation,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
   cPtr_trueExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_trueExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mLocation = in_mLocation ;
   const GALGAS_trueExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4572,16 +4517,16 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_falseExpressionAST GALGAS_falseExpressionAST::init_28__29_ (const GALGAS_location & in_mLocation,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_falseExpressionAST GALGAS_falseExpressionAST::init_28__29_ (const GALGAS_location & in_mLocation,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   cPtr_falseExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_falseExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mLocation = in_mLocation ;
   const GALGAS_falseExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5078,10 +5023,10 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mLocation,
-                                                                                          const GALGAS_stringlist & in_mStringSequence,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mLocation,
+                                                                                       const GALGAS_stringlist & in_mStringSequence,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_literalStringExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_literalStringExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mLocation = in_mLocation ;
@@ -5089,7 +5034,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_literalStringExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6858,12 +6803,12 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST::init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                            const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                            const GALGAS_comparison & in_mComparison,
-                                                                                            const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST::init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                         const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                         const GALGAS_comparison & in_mComparison,
+                                                                                         const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_comparisonExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_comparisonExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -6873,7 +6818,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_comparisonExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7316,11 +7261,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                        const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                        const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                     const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                     const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_rightShiftExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_rightShiftExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -7329,7 +7274,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_rightShiftExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7645,11 +7590,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                   const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                   const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_leftShiftExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_leftShiftExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -7658,7 +7603,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_leftShiftExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7974,11 +7919,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_addExpressionAST GALGAS_addExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_addExpressionAST GALGAS_addExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cPtr_addExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_addExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -7987,7 +7932,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_addExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8303,11 +8248,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                              const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                              const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                           const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                           const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_addExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_addExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -8316,7 +8261,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_addExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8632,11 +8577,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_subExpressionAST GALGAS_subExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_subExpressionAST GALGAS_subExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cPtr_subExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_subExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -8645,7 +8590,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_subExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8961,11 +8906,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                              const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                              const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                           const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                           const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_subExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_subExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -8974,7 +8919,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_subExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9787,11 +9732,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                                const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                                const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                             const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                             const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_multiplicationExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_multiplicationExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -9800,7 +9745,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_multiplicationExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10116,11 +10061,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                                                    const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                                                    const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                                                    Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                                                 const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                                                 const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_multiplicationExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_multiplicationExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -10129,7 +10074,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_multiplicationExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10445,11 +10390,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                    const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                    const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                 const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                 const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_divisionExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_divisionExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -10458,7 +10403,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_divisionExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10774,11 +10719,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                                        const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                                        const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                                     const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                                     const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_divisionExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_divisionExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -10787,7 +10732,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_divisionExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11103,11 +11048,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                             const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                             const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
   cPtr_moduloExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_moduloExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -11116,7 +11061,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_moduloExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14675,17 +14620,6 @@ GALGAS_abstractCollectionValueElement::GALGAS_abstractCollectionValueElement (vo
 AC_GALGAS_reference_class () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_abstractCollectionValueElement GALGAS_abstractCollectionValueElement::init_28__29_ (Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  cPtr_abstractCollectionValueElement * object = nullptr ;
-  macroMyNew (object, cPtr_abstractCollectionValueElement (inCompiler COMMA_THERE)) ;
-  const GALGAS_abstractCollectionValueElement result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractCollectionValueElement::GALGAS_abstractCollectionValueElement (const cPtr_abstractCollectionValueElement * inSourcePtr) :
@@ -14915,10 +14849,10 @@ GALGAS_abstractCollectionValueElement () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::init_28__2C__29_ (const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                                        const GALGAS_location & in_mExpressionLocation,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::init_28__2C__29_ (const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                                     const GALGAS_location & in_mExpressionLocation,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_expressionCollectionValue * object = nullptr ;
   macroMyNew (object, cPtr_expressionCollectionValue (inCompiler COMMA_THERE)) ;
   object->mProperty_mExpression = in_mExpression ;
@@ -14926,7 +14860,7 @@ GALGAS_abstractCollectionValueElement () {
   const GALGAS_expressionCollectionValue result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15220,10 +15154,10 @@ GALGAS_abstractCollectionValueElement () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::init_28__2C__29_ (const GALGAS_actualOutputExpressionList & in_mExpressionList,
-                                                                                                const GALGAS_location & in_mEndOfExpressionLocation,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::init_28__2C__29_ (const GALGAS_actualOutputExpressionList & in_mExpressionList,
+                                                                                             const GALGAS_location & in_mEndOfExpressionLocation,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_expressionListCollectionValue * object = nullptr ;
   macroMyNew (object, cPtr_expressionListCollectionValue (inCompiler COMMA_THERE)) ;
   object->mProperty_mExpressionList = in_mExpressionList ;
@@ -15231,7 +15165,7 @@ GALGAS_abstractCollectionValueElement () {
   const GALGAS_expressionListCollectionValue result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16065,19 +15999,6 @@ GALGAS_abstractCollectionValueElementForGeneration::GALGAS_abstractCollectionVal
 AC_GALGAS_reference_class () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_abstractCollectionValueElementForGeneration GALGAS_abstractCollectionValueElementForGeneration::init_28__29_ (const GALGAS_location & in_mExpressionLocation,
-                                                                                                                        Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) {
-  cPtr_abstractCollectionValueElementForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_abstractCollectionValueElementForGeneration (inCompiler COMMA_THERE)) ;
-  object->mProperty_mExpressionLocation = in_mExpressionLocation ;
-  const GALGAS_abstractCollectionValueElementForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractCollectionValueElementForGeneration::GALGAS_abstractCollectionValueElementForGeneration (const cPtr_abstractCollectionValueElementForGeneration * inSourcePtr) :
@@ -16254,6 +16175,138 @@ GALGAS_abstractCollectionValueElementForGeneration_2D_weak GALGAS_abstractCollec
       result = *p ;
     }else{
       inCompiler->castError ("abstractCollectionValueElementForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateCollectionElementCode (cPtr_abstractCollectionValueElementForGeneration * inObject,
+                                                        const GALGAS_unifiedTypeMapEntry constin_inTargetType,
+                                                        GALGAS_string & io_ioGeneratedCode,
+                                                        GALGAS_stringset & io_ioInclusionSet,
+                                                        GALGAS_uint & io_ioTemporaryVariableIndex,
+                                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                                        const GALGAS_string constin_inCppTargetVar,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find method
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_abstractCollectionValueElementForGeneration) ;
+    inObject->method_generateCollectionElementCode (constin_inTargetType, io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, constin_inCppTargetVar, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_expressionCollectionValueForGeneration_2D_weak::objectCompare (const GALGAS_expressionCollectionValueForGeneration_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_expressionCollectionValueForGeneration_2D_weak::GALGAS_expressionCollectionValueForGeneration_2D_weak (void) :
+GALGAS_abstractCollectionValueElementForGeneration_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_expressionCollectionValueForGeneration_2D_weak & GALGAS_expressionCollectionValueForGeneration_2D_weak::operator = (const GALGAS_expressionCollectionValueForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_expressionCollectionValueForGeneration_2D_weak::GALGAS_expressionCollectionValueForGeneration_2D_weak (const GALGAS_expressionCollectionValueForGeneration & inSource) :
+GALGAS_abstractCollectionValueElementForGeneration_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_expressionCollectionValueForGeneration_2D_weak GALGAS_expressionCollectionValueForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_expressionCollectionValueForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_expressionCollectionValueForGeneration GALGAS_expressionCollectionValueForGeneration_2D_weak::bang_expressionCollectionValueForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_expressionCollectionValueForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_expressionCollectionValueForGeneration) ;
+      result = GALGAS_expressionCollectionValueForGeneration ((cPtr_expressionCollectionValueForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @expressionCollectionValueForGeneration-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration_2D_weak ("expressionCollectionValueForGeneration-weak",
+                                                                                                      & kTypeDescriptor_GALGAS_abstractCollectionValueElementForGeneration_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_expressionCollectionValueForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_expressionCollectionValueForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_expressionCollectionValueForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_expressionCollectionValueForGeneration_2D_weak GALGAS_expressionCollectionValueForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                            Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_expressionCollectionValueForGeneration_2D_weak result ;
+  const GALGAS_expressionCollectionValueForGeneration_2D_weak * p = (const GALGAS_expressionCollectionValueForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_expressionCollectionValueForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("expressionCollectionValueForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

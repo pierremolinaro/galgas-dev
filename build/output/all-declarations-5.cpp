@@ -175,10 +175,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_stringPredefinedTypeAST GALGAS_stringPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_stringPredefinedTypeAST GALGAS_stringPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                             const GALGAS_string & in_mPredefinedTypeName,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_stringPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_stringPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -186,7 +186,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_stringPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -450,10 +450,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_timerPredefinedTypeAST GALGAS_timerPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                              const GALGAS_string & in_mPredefinedTypeName,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_timerPredefinedTypeAST GALGAS_timerPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                           const GALGAS_string & in_mPredefinedTypeName,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_timerPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_timerPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -461,7 +461,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_timerPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -725,10 +725,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_typePredefinedTypeAST GALGAS_typePredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_typePredefinedTypeAST GALGAS_typePredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_typePredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_typePredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -736,7 +736,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_typePredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1000,10 +1000,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_uintPredefinedTypeAST GALGAS_uintPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_uintPredefinedTypeAST GALGAS_uintPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_uintPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_uintPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -1011,7 +1011,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_uintPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1275,10 +1275,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_uint_36__34_PredefinedTypeAST GALGAS_uint_36__34_PredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                            Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_uint_36__34_PredefinedTypeAST GALGAS_uint_36__34_PredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_uint_36__34_PredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_uint_36__34_PredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -1286,7 +1286,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_uint_36__34_PredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1942,17 +1942,6 @@ GALGAS_actualParameterAST::GALGAS_actualParameterAST (void) :
 AC_GALGAS_reference_class () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_actualParameterAST GALGAS_actualParameterAST::init_28__29_ (Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  cPtr_actualParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_actualParameterAST (inCompiler COMMA_THERE)) ;
-  const GALGAS_actualParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_actualParameterAST::GALGAS_actualParameterAST (const cPtr_actualParameterAST * inSourcePtr) :
@@ -2240,17 +2229,6 @@ ComparisonResult GALGAS_semanticExpressionAST::objectCompare (const GALGAS_seman
 GALGAS_semanticExpressionAST::GALGAS_semanticExpressionAST (void) :
 AC_GALGAS_reference_class () {
 }
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_semanticExpressionAST GALGAS_semanticExpressionAST::init_28__29_ (Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  cPtr_semanticExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_semanticExpressionAST (inCompiler COMMA_THERE)) ;
-  const GALGAS_semanticExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2811,10 +2789,10 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
-                                                                                              const GALGAS_uint & in_mJokerIndex,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
+                                                                                           const GALGAS_uint & in_mJokerIndex,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_outputInputJokerParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_outputInputJokerParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mQualifierLocation = in_mQualifierLocation ;
@@ -2822,7 +2800,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_outputInputJokerParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3776,10 +3754,10 @@ GALGAS_actualParameterAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST::init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
-                                                                                              const GALGAS_uint & in_mJokerIndex,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST::init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
+                                                                                           const GALGAS_uint & in_mJokerIndex,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
   cPtr_inputJokerActualParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputJokerActualParameterAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mQualifierLocation = in_mQualifierLocation ;
@@ -3787,7 +3765,7 @@ GALGAS_actualParameterAST () {
   const GALGAS_inputJokerActualParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4718,17 +4696,6 @@ GALGAS_abstractInputParameter::GALGAS_abstractInputParameter (void) :
 AC_GALGAS_reference_class () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_abstractInputParameter GALGAS_abstractInputParameter::init_28__29_ (Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  cPtr_abstractInputParameter * object = nullptr ;
-  macroMyNew (object, cPtr_abstractInputParameter (inCompiler COMMA_THERE)) ;
-  const GALGAS_abstractInputParameter result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractInputParameter::GALGAS_abstractInputParameter (const cPtr_abstractInputParameter * inSourcePtr) :
@@ -4945,14 +4912,14 @@ GALGAS_abstractInputParameter () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable::init_28__29_ (Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable::init_28__29_ (Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_inputParameterAnonymousVariable * object = nullptr ;
   macroMyNew (object, cPtr_inputParameterAnonymousVariable (inCompiler COMMA_THERE)) ;
   const GALGAS_inputParameterAnonymousVariable result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5996,19 +5963,6 @@ GALGAS_syntaxInstructionAST::GALGAS_syntaxInstructionAST (void) :
 AC_GALGAS_reference_class () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_syntaxInstructionAST GALGAS_syntaxInstructionAST::init_28__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  cPtr_syntaxInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_syntaxInstructionAST (inCompiler COMMA_THERE)) ;
-  object->mProperty_mInstructionLocation = in_mInstructionLocation ;
-  const GALGAS_syntaxInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxInstructionAST::GALGAS_syntaxInstructionAST (const cPtr_syntaxInstructionAST * inSourcePtr) :
@@ -6231,19 +6185,6 @@ ComparisonResult GALGAS_semanticInstructionAST::objectCompare (const GALGAS_sema
 GALGAS_semanticInstructionAST::GALGAS_semanticInstructionAST (void) :
 GALGAS_syntaxInstructionAST () {
 }
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_semanticInstructionAST GALGAS_semanticInstructionAST::init_28__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  cPtr_semanticInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_semanticInstructionAST (inCompiler COMMA_THERE)) ;
-  object->mProperty_mInstructionLocation = in_mInstructionLocation ;
-  const GALGAS_semanticInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
 
 //--------------------------------------------------------------------------------------------------
 

@@ -369,10 +369,8 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
     if not [selfMutability selfIsMutable] then
       error self.mSetterName : "'self' not mutable in this context"
     end
-    #--- Check self is not inkoed before full initialization
-#      if self.mReceiverExpression is @selfInExpressionAST then
-      [ioVariableMap checkSelfObjectIsFullyInitialized !self.mSetterName.location]
-#      end
+  #--- Check self is not invoked before full initialization
+    [ioVariableMap checkSelfObjectIsFullyInitialized !self.mSetterName.location]
   #--- Get setter signature
     [[selfType definition].setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
   #--- Check effective parameters

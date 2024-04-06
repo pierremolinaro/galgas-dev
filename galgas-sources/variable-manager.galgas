@@ -476,7 +476,8 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
                                              !@string outCppName
                                              !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= [self count] then
-    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     let localMap = [self mMapAtIndex !inIndex]
     if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
@@ -570,7 +571,8 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
                                                    !@string outCppName
                                                    !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= [self count] then
-    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let [localMap searchKey
@@ -680,7 +682,8 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
                                           !@string outCppName
                                           !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= [self count] then
-    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let [localMap searchKey
@@ -775,7 +778,8 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
                                                !@string outCppName
                                                !@string outNameForCheckingFormalParameterUsing {
   if inIndex >= [self count] then
-    error inVarName : "Undefined variable" : outType, outCppName, outNameForCheckingFormalParameterUsing
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let [localMap searchKey

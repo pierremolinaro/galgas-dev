@@ -11335,21 +11335,6 @@ GALGAS_predefinedTypeAST::GALGAS_predefinedTypeAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_predefinedTypeAST GALGAS_predefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                    const GALGAS_string & in_mPredefinedTypeName,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  cPtr_predefinedTypeAST * object = nullptr ;
-  macroMyNew (object, cPtr_predefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->mProperty_isPredefined = in_isPredefined ;
-  object->mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
-  const GALGAS_predefinedTypeAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_predefinedTypeAST::GALGAS_predefinedTypeAST (const cPtr_predefinedTypeAST * inSourcePtr) :
@@ -11890,10 +11875,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                          const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                       const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_applicationPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_applicationPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -11901,7 +11886,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_applicationPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12165,10 +12150,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_bigintPredefinedTypeAST GALGAS_bigintPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_bigintPredefinedTypeAST GALGAS_bigintPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                             const GALGAS_string & in_mPredefinedTypeName,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_bigintPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_bigintPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -12176,7 +12161,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_bigintPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12440,10 +12425,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_binarysetPredefinedTypeAST GALGAS_binarysetPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                      const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_binarysetPredefinedTypeAST GALGAS_binarysetPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                   const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_binarysetPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_binarysetPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -12451,7 +12436,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_binarysetPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12715,10 +12700,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_boolPredefinedTypeAST GALGAS_boolPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_boolPredefinedTypeAST GALGAS_boolPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_boolPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_boolPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -12726,7 +12711,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_boolPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12990,10 +12975,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_charPredefinedTypeAST GALGAS_charPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_charPredefinedTypeAST GALGAS_charPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_charPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_charPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -13001,7 +12986,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_charPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13265,10 +13250,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_dataPredefinedTypeAST GALGAS_dataPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_dataPredefinedTypeAST GALGAS_dataPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_dataPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_dataPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -13276,7 +13261,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_dataPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13540,10 +13525,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_doublePredefinedTypeAST GALGAS_doublePredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_doublePredefinedTypeAST GALGAS_doublePredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                             const GALGAS_string & in_mPredefinedTypeName,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_doublePredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_doublePredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -13551,7 +13536,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_doublePredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13815,10 +13800,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_filewrapperPredefinedTypeAST GALGAS_filewrapperPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                          const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_filewrapperPredefinedTypeAST GALGAS_filewrapperPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                       const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_filewrapperPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_filewrapperPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -13826,7 +13811,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_filewrapperPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14090,10 +14075,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_functionPredefinedTypeAST GALGAS_functionPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                    const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_functionPredefinedTypeAST GALGAS_functionPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                 const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_functionPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_functionPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -14101,7 +14086,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_functionPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14365,10 +14350,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_locationPredefinedTypeAST GALGAS_locationPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                    const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_locationPredefinedTypeAST GALGAS_locationPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                 const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_locationPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_locationPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -14376,7 +14361,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_locationPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14640,10 +14625,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_objectPredefinedTypeAST GALGAS_objectPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_objectPredefinedTypeAST GALGAS_objectPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                             const GALGAS_string & in_mPredefinedTypeName,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_objectPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_objectPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -14651,7 +14636,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_objectPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14915,10 +14900,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_stringsetPredefinedTypeAST GALGAS_stringsetPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                      const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_stringsetPredefinedTypeAST GALGAS_stringsetPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                   const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_stringsetPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_stringsetPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -14926,7 +14911,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_stringsetPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15190,10 +15175,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_sintPredefinedTypeAST GALGAS_sintPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_sintPredefinedTypeAST GALGAS_sintPredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_sintPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_sintPredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -15201,7 +15186,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_sintPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15465,10 +15450,10 @@ GALGAS_predefinedTypeAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_sint_36__34_PredefinedTypeAST GALGAS_sint_36__34_PredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                                                                            Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_sint_36__34_PredefinedTypeAST GALGAS_sint_36__34_PredefinedTypeAST::init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
+                                                                                                         const GALGAS_string & in_mPredefinedTypeName,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_sint_36__34_PredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_sint_36__34_PredefinedTypeAST (inCompiler COMMA_THERE)) ;
   object->mProperty_isPredefined = in_isPredefined ;
@@ -15476,7 +15461,7 @@ GALGAS_predefinedTypeAST () {
   const GALGAS_sint_36__34_PredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 

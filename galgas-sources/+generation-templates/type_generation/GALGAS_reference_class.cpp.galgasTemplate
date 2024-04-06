@@ -88,10 +88,10 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 }
 
 %
-if GENERATE_SYNTHETIZED_INITIALIZER then
+if (not IS_ABSTRACT) & GENERATE_SYNTHETIZED_INITIALIZER then
 %//--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init%![[CONSTRUCTOR_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init%![[CONSTRUCTOR_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
   for (typeEntry name 3*) in CONSTRUCTOR_ARGUMENT_LIST do
     %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
   end
@@ -106,7 +106,7 @@ if GENERATE_SYNTHETIZED_INITIALIZER then
 %  const GALGAS_%!TYPE_IDENTIFIER% result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 %end
 %//--------------------------------------------------------------------------------------------------

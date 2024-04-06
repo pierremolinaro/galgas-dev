@@ -681,7 +681,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
     end
 
     if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-      if not [selfMutability selfIsMutable] then
+      if not [selfMutability propertiesAreMutable] then
         error self.mInputActualSelfPropertyName : "'self' not mutable in this context"
       end
       let propertyMap = [selfType definition].propertyMap

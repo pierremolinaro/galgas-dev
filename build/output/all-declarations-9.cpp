@@ -8,138 +8,6 @@
 #include "all-declarations-9.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_generateCollectionElementCode (cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                        const GALGAS_unifiedTypeMapEntry constin_inTargetType,
-                                                        GALGAS_string & io_ioGeneratedCode,
-                                                        GALGAS_stringset & io_ioInclusionSet,
-                                                        GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                        const GALGAS_string constin_inCppTargetVar,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractCollectionValueElementForGeneration) ;
-    inObject->method_generateCollectionElementCode (constin_inTargetType, io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, constin_inCppTargetVar, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_expressionCollectionValueForGeneration_2D_weak::objectCompare (const GALGAS_expressionCollectionValueForGeneration_2D_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_expressionCollectionValueForGeneration_2D_weak::GALGAS_expressionCollectionValueForGeneration_2D_weak (void) :
-GALGAS_abstractCollectionValueElementForGeneration_2D_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_expressionCollectionValueForGeneration_2D_weak & GALGAS_expressionCollectionValueForGeneration_2D_weak::operator = (const GALGAS_expressionCollectionValueForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_expressionCollectionValueForGeneration_2D_weak::GALGAS_expressionCollectionValueForGeneration_2D_weak (const GALGAS_expressionCollectionValueForGeneration & inSource) :
-GALGAS_abstractCollectionValueElementForGeneration_2D_weak (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_expressionCollectionValueForGeneration_2D_weak GALGAS_expressionCollectionValueForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_expressionCollectionValueForGeneration_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_expressionCollectionValueForGeneration GALGAS_expressionCollectionValueForGeneration_2D_weak::bang_expressionCollectionValueForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_expressionCollectionValueForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_expressionCollectionValueForGeneration) ;
-      result = GALGAS_expressionCollectionValueForGeneration ((cPtr_expressionCollectionValueForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @expressionCollectionValueForGeneration-weak generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration_2D_weak ("expressionCollectionValueForGeneration-weak",
-                                                                                                      & kTypeDescriptor_GALGAS_abstractCollectionValueElementForGeneration_2D_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_expressionCollectionValueForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration_2D_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_expressionCollectionValueForGeneration_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_expressionCollectionValueForGeneration_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_expressionCollectionValueForGeneration_2D_weak GALGAS_expressionCollectionValueForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                            Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_expressionCollectionValueForGeneration_2D_weak result ;
-  const GALGAS_expressionCollectionValueForGeneration_2D_weak * p = (const GALGAS_expressionCollectionValueForGeneration_2D_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_expressionCollectionValueForGeneration_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("expressionCollectionValueForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @expressionListCollectionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -199,10 +67,10 @@ GALGAS_abstractCollectionValueElementForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_expressionListCollectionForGeneration GALGAS_expressionListCollectionForGeneration::init_28__2C__29_ (const GALGAS_location & in_mExpressionLocation,
-                                                                                                                const GALGAS_semanticExpressionListForGeneration & in_mExpressionList,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
+GALGAS_expressionListCollectionForGeneration GALGAS_expressionListCollectionForGeneration::init_28__2C__29_ (const GALGAS_location & in_mExpressionLocation,
+                                                                                                             const GALGAS_semanticExpressionListForGeneration & in_mExpressionList,
+                                                                                                             Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) {
   cPtr_expressionListCollectionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_expressionListCollectionForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mExpressionLocation = in_mExpressionLocation ;
@@ -210,7 +78,7 @@ GALGAS_abstractCollectionValueElementForGeneration () {
   const GALGAS_expressionListCollectionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -596,16 +464,16 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_selfInExpressionAST GALGAS_selfInExpressionAST::init_28__29_ (const GALGAS_location & in_mSelfLocation,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_selfInExpressionAST GALGAS_selfInExpressionAST::init_28__29_ (const GALGAS_location & in_mSelfLocation,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   cPtr_selfInExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_selfInExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfLocation = in_mSelfLocation ;
   const GALGAS_selfInExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1212,10 +1080,10 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_notExpressionAST GALGAS_notExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                      const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_notExpressionAST GALGAS_notExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                   const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   cPtr_notExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_notExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -1223,7 +1091,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_notExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1627,10 +1495,10 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_tildeExpressionAST GALGAS_tildeExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                          const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_tildeExpressionAST GALGAS_tildeExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                       const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cPtr_tildeExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_tildeExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -1638,7 +1506,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_tildeExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2042,10 +1910,10 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_bangExpressionAST GALGAS_bangExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                        const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_bangExpressionAST GALGAS_bangExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                     const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   cPtr_bangExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_bangExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -2053,7 +1921,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_bangExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2457,10 +2325,10 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_unaryWrappingMinusExpressionAST GALGAS_unaryWrappingMinusExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                                    const GALGAS_semanticExpressionAST & in_mExpression,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_unaryWrappingMinusExpressionAST GALGAS_unaryWrappingMinusExpressionAST::init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                                 const GALGAS_semanticExpressionAST & in_mExpression,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_unaryWrappingMinusExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_unaryWrappingMinusExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -2468,7 +2336,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_unaryWrappingMinusExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2877,11 +2745,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_orExpressionAST GALGAS_orExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                        const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                        const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_orExpressionAST GALGAS_orExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                     const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                     const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   cPtr_orExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_orExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -2890,7 +2758,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_orExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3206,11 +3074,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                  const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                               const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                               const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
   cPtr_orShortExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_orShortExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -3219,7 +3087,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_orShortExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3535,11 +3403,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_xorExpressionAST GALGAS_xorExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_xorExpressionAST GALGAS_xorExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cPtr_xorExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_xorExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -3548,7 +3416,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_xorExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3864,11 +3732,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_closedSliceExpressionAST GALGAS_closedSliceExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_closedSliceExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_closedSliceExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -3877,7 +3745,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_closedSliceExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4193,11 +4061,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_openedSliceExpressionAST GALGAS_openedSliceExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_openedSliceExpressionAST GALGAS_openedSliceExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_openedSliceExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_openedSliceExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -4206,7 +4074,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_openedSliceExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4852,11 +4720,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                                    const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                                    const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                                 const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                                 const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
   cPtr_andShortExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_andShortExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -4865,7 +4733,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_andShortExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -5181,11 +5049,11 @@ GALGAS_semanticExpressionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_andExpressionAST GALGAS_andExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_andExpressionAST GALGAS_andExpressionAST::init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
+                                                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cPtr_andExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_andExpressionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mOperatorLocation = in_mOperatorLocation ;
@@ -5194,7 +5062,7 @@ GALGAS_semanticExpressionAST () {
   const GALGAS_andExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7048,13 +6916,13 @@ GALGAS_semanticInstructionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_structuredCastInstructionAST GALGAS_structuredCastInstructionAST::init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                                                                          const GALGAS_semanticExpressionAST & in_mCastExpression,
-                                                                                                          const GALGAS_castInstructionBranchListAST & in_mCastInstructionBranchList,
-                                                                                                          const GALGAS_semanticInstructionListAST & in_mElseInstructionList,
-                                                                                                          const GALGAS_location & in_mEndOfCastInstruction,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_structuredCastInstructionAST GALGAS_structuredCastInstructionAST::init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
+                                                                                                       const GALGAS_semanticExpressionAST & in_mCastExpression,
+                                                                                                       const GALGAS_castInstructionBranchListAST & in_mCastInstructionBranchList,
+                                                                                                       const GALGAS_semanticInstructionListAST & in_mElseInstructionList,
+                                                                                                       const GALGAS_location & in_mEndOfCastInstruction,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) {
   cPtr_structuredCastInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_structuredCastInstructionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -7065,7 +6933,7 @@ GALGAS_semanticInstructionAST () {
   const GALGAS_structuredCastInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8683,14 +8551,14 @@ GALGAS_semanticInstructionForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_plusEqualnstructionForGeneration GALGAS_plusEqualnstructionForGeneration::init_28__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mReceiverCppName,
-                                                                                                                      const GALGAS_unifiedTypeMapEntry & in_mTargetType,
-                                                                                                                      const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                                                                      const GALGAS_location & in_mInstructionLocation,
-                                                                                                                      const GALGAS_lstringlist & in_mStructAttributeList,
-                                                                                                                      const GALGAS_semanticExpressionListForGeneration & in_mExpressionList,
-                                                                                                                      Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) {
+GALGAS_plusEqualnstructionForGeneration GALGAS_plusEqualnstructionForGeneration::init_28__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mReceiverCppName,
+                                                                                                                   const GALGAS_unifiedTypeMapEntry & in_mTargetType,
+                                                                                                                   const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                                                                                                   const GALGAS_location & in_mInstructionLocation,
+                                                                                                                   const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                                                   const GALGAS_semanticExpressionListForGeneration & in_mExpressionList,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_plusEqualnstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_plusEqualnstructionForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mReceiverCppName = in_mReceiverCppName ;
@@ -8702,7 +8570,7 @@ GALGAS_semanticInstructionForGeneration () {
   const GALGAS_plusEqualnstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9172,10 +9040,10 @@ GALGAS_semanticInstructionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_dropInstructionAST GALGAS_dropInstructionAST::init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                                          const GALGAS_lstringlist & in_mDropList,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+GALGAS_dropInstructionAST GALGAS_dropInstructionAST::init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
+                                                                       const GALGAS_lstringlist & in_mDropList,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cPtr_dropInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_dropInstructionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -9183,7 +9051,7 @@ GALGAS_semanticInstructionAST () {
   const GALGAS_dropInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10258,13 +10126,13 @@ GALGAS_semanticInstructionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_errorInstructionAST GALGAS_errorInstructionAST::init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                                                        const GALGAS_semanticExpressionAST & in_mLocationExpression,
-                                                                                        const GALGAS_semanticExpressionAST & in_mMessageExpression,
-                                                                                        const GALGAS_lstringlist & in_mBuiltVariableList,
-                                                                                        const GALGAS_fixitListAST & in_mFixitListAST,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
+GALGAS_errorInstructionAST GALGAS_errorInstructionAST::init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
+                                                                                     const GALGAS_semanticExpressionAST & in_mLocationExpression,
+                                                                                     const GALGAS_semanticExpressionAST & in_mMessageExpression,
+                                                                                     const GALGAS_lstringlist & in_mBuiltVariableList,
+                                                                                     const GALGAS_fixitListAST & in_mFixitListAST,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
   cPtr_errorInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_errorInstructionAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -10275,7 +10143,7 @@ GALGAS_semanticInstructionAST () {
   const GALGAS_errorInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12092,17 +11960,6 @@ GALGAS_abstractEnumeratedCollectionAST::GALGAS_abstractEnumeratedCollectionAST (
 AC_GALGAS_reference_class () {
 }
 
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-/* GALGAS_abstractEnumeratedCollectionAST GALGAS_abstractEnumeratedCollectionAST::init_28__29_ (Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  cPtr_abstractEnumeratedCollectionAST * object = nullptr ;
-  macroMyNew (object, cPtr_abstractEnumeratedCollectionAST (inCompiler COMMA_THERE)) ;
-  const GALGAS_abstractEnumeratedCollectionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-} */
-
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_abstractEnumeratedCollectionAST::GALGAS_abstractEnumeratedCollectionAST (const cPtr_abstractEnumeratedCollectionAST * inSourcePtr) :
@@ -12562,12 +12419,12 @@ GALGAS_abstractEnumeratedCollectionAST () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInExpAST::init_28__2C_mEndsWithEllipsis_2C__2C__29_ (const GALGAS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
-                                                                                                                                     const GALGAS_bool & in_mEndsWithEllipsis,
-                                                                                                                                     const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
-                                                                                                                                     const GALGAS_location & in_mEndOfEnumerationExpression,
-                                                                                                                                     Compiler * inCompiler
-                                                                                                                                     COMMA_LOCATION_ARGS) {
+GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInExpAST::init_28__2C_mEndsWithEllipsis_2C__2C__29_ (const GALGAS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
+                                                                                                                                  const GALGAS_bool & in_mEndsWithEllipsis,
+                                                                                                                                  const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
+                                                                                                                                  const GALGAS_location & in_mEndOfEnumerationExpression,
+                                                                                                                                  Compiler * inCompiler
+                                                                                                                                  COMMA_LOCATION_ARGS) {
   cPtr_enumeratedCollectionCstListInExpAST * object = nullptr ;
   macroMyNew (object, cPtr_enumeratedCollectionCstListInExpAST (inCompiler COMMA_THERE)) ;
   object->mProperty_mElementList = in_mElementList ;
@@ -12577,7 +12434,7 @@ GALGAS_abstractEnumeratedCollectionAST () {
   const GALGAS_enumeratedCollectionCstListInExpAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14279,14 +14136,14 @@ GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::init_28__29_ (Compiler * inCompiler
-                                                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::init_28__29_ (Compiler * inCompiler
+                                                                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_grammarInstructionSyntaxDirectedTranslationResultNone * object = nullptr ;
   macroMyNew (object, cPtr_grammarInstructionSyntaxDirectedTranslationResultNone (inCompiler COMMA_THERE)) ;
   const GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14539,16 +14396,16 @@ GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-/* GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult::init_28__29_ (const GALGAS_location & in_mLocation,
-                                                                                                                                            Compiler * inCompiler
-                                                                                                                                            COMMA_LOCATION_ARGS) {
+GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult::init_28__29_ (const GALGAS_location & in_mLocation,
+                                                                                                                                         Compiler * inCompiler
+                                                                                                                                         COMMA_LOCATION_ARGS) {
   cPtr_grammarInstructionSyntaxDirectedTranslationDropResult * object = nullptr ;
   macroMyNew (object, cPtr_grammarInstructionSyntaxDirectedTranslationDropResult (inCompiler COMMA_THERE)) ;
   object->mProperty_mLocation = in_mLocation ;
   const GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
-} */
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15308,6 +15165,226 @@ GALGAS_grammarInStringInstructionAST_2D_weak GALGAS_grammarInStringInstructionAS
       result = *p ;
     }else{
       inCompiler->castError ("grammarInStringInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::objectCompare (const GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak (void) :
+GALGAS_semanticInstructionForGeneration_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak & GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::operator = (const GALGAS_grammarInstructionWithSourceFileForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak (const GALGAS_grammarInstructionWithSourceFileForGeneration & inSource) :
+GALGAS_semanticInstructionForGeneration_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceFileForGeneration GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::bang_grammarInstructionWithSourceFileForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_grammarInstructionWithSourceFileForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_grammarInstructionWithSourceFileForGeneration) ;
+      result = GALGAS_grammarInstructionWithSourceFileForGeneration ((cPtr_grammarInstructionWithSourceFileForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @grammarInstructionWithSourceFileForGeneration-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak ("grammarInstructionWithSourceFileForGeneration-weak",
+                                                                                                             & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                                          Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak result ;
+  const GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak * p = (const GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("grammarInstructionWithSourceFileForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::objectCompare (const GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak (void) :
+GALGAS_semanticInstructionForGeneration_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak & GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::operator = (const GALGAS_grammarInstructionWithSourceExpressionForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak (const GALGAS_grammarInstructionWithSourceExpressionForGeneration & inSource) :
+GALGAS_semanticInstructionForGeneration_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceExpressionForGeneration GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::bang_grammarInstructionWithSourceExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_grammarInstructionWithSourceExpressionForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_grammarInstructionWithSourceExpressionForGeneration) ;
+      result = GALGAS_grammarInstructionWithSourceExpressionForGeneration ((cPtr_grammarInstructionWithSourceExpressionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @grammarInstructionWithSourceExpressionForGeneration-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak ("grammarInstructionWithSourceExpressionForGeneration-weak",
+                                                                                                                   & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                                                      Compiler * inCompiler
+                                                                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak result ;
+  const GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak * p = (const GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("grammarInstructionWithSourceExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
