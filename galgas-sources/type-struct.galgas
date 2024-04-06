@@ -399,7 +399,7 @@ filewrapper structureGenerationTemplate in "+generation-templates/type_generatio
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList PROPERTY_LIST
-    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
+    ?@typedPropertyList INITIALIZER_ARGUMENT_LIST
     ?@string CONSTRUCTOR_INITIALIZATION_CODE
     ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
     ?@bool GENERATE_SYNTHETIZED_INITIALIZER

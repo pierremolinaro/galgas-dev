@@ -309,7 +309,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (92 types)
+--- Type list (98 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -344,8 +344,14 @@ LOGGING r: <@uint:5>
   @classeB-weak
   @classeC
   @classeC-weak
-  @classeS
-  @classeS-weak
+  @classeD
+  @classeD-weak
+  @classeE
+  @classeE-weak
+  @classeF
+  @classeF-weak
+  @classeG
+  @classeG-weak
   @complex
   @data
   @double

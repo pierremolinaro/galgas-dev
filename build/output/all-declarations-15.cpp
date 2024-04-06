@@ -12046,7 +12046,8 @@ mProperty_mCurrentTypedAttributeList (),
 mProperty_generateHeaderInSeparateFile (),
 mProperty_initializerNeedsCompilerVariable (),
 mProperty_propertyInitializationCode (),
-mProperty_synthetizedInitializerArgumentList () {
+mProperty_synthetizedInitializerArgumentList (),
+mProperty_inheritedSynthetizedInitializerArgumentList () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12063,6 +12064,7 @@ mProperty_synthetizedInitializerArgumentList () {
     mProperty_initializerNeedsCompilerVariable.printNonNullClassInstanceProperties ("initializerNeedsCompilerVariable") ;
     mProperty_propertyInitializationCode.printNonNullClassInstanceProperties ("propertyInitializationCode") ;
     mProperty_synthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("synthetizedInitializerArgumentList") ;
+    mProperty_inheritedSynthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("inheritedSynthetizedInitializerArgumentList") ;
   }
 #endif
 
@@ -12102,6 +12104,9 @@ ComparisonResult cPtr_classTypeForGeneration::dynamicObjectCompare (const acPtr_
   if (ComparisonResult::operandEqual == result) {
     result = mProperty_synthetizedInitializerArgumentList.objectCompare (p->mProperty_synthetizedInitializerArgumentList) ;
   }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_inheritedSynthetizedInitializerArgumentList.objectCompare (p->mProperty_inheritedSynthetizedInitializerArgumentList) ;
+  }
   return result ;
 }
 
@@ -12132,18 +12137,19 @@ GALGAS_semanticTypeForGeneration () {
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                                               const GALGAS_bool & in_mIsAbstract,
-                                                                                                               const GALGAS_bool & in_mIsReference,
-                                                                                                               const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
-                                                                                                               const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
-                                                                                                               const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
-                                                                                                               const GALGAS_bool & in_generateHeaderInSeparateFile,
-                                                                                                               const GALGAS_bool & in_initializerNeedsCompilerVariable,
-                                                                                                               const GALGAS_string & in_propertyInitializationCode,
-                                                                                                               const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_LOCATION_ARGS) {
+GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                                                   const GALGAS_bool & in_mIsAbstract,
+                                                                                                                   const GALGAS_bool & in_mIsReference,
+                                                                                                                   const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
+                                                                                                                   const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
+                                                                                                                   const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                                                                                   const GALGAS_bool & in_generateHeaderInSeparateFile,
+                                                                                                                   const GALGAS_bool & in_initializerNeedsCompilerVariable,
+                                                                                                                   const GALGAS_string & in_propertyInitializationCode,
+                                                                                                                   const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                                                                                                   const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) {
   cPtr_classTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_classTypeForGeneration (inCompiler COMMA_THERE)) ;
   object->mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -12156,6 +12162,7 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::init_28__2C__2C__2C
   object->mProperty_initializerNeedsCompilerVariable = in_initializerNeedsCompilerVariable ;
   object->mProperty_propertyInitializationCode = in_propertyInitializationCode ;
   object->mProperty_synthetizedInitializerArgumentList = in_synthetizedInitializerArgumentList ;
+  object->mProperty_inheritedSynthetizedInitializerArgumentList = in_inheritedSynthetizedInitializerArgumentList ;
   const GALGAS_classTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12178,10 +12185,11 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::class_func_new (con
                                                                              const GALGAS_bool & in_generateHeaderInSeparateFile,
                                                                              const GALGAS_bool & in_initializerNeedsCompilerVariable,
                                                                              const GALGAS_string & in_propertyInitializationCode,
-                                                                             const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList
+                                                                             const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                                                             const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_classTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList COMMA_THERE)) ;
   return result ;
 }
 
@@ -12294,6 +12302,18 @@ GALGAS_typedPropertyList GALGAS_classTypeForGeneration::readProperty_synthetized
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_typedPropertyList GALGAS_classTypeForGeneration::readProperty_inheritedSynthetizedInitializerArgumentList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_typedPropertyList () ;
+  }else{
+    cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
+    return p->mProperty_inheritedSynthetizedInitializerArgumentList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @classTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
@@ -12306,7 +12326,8 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GALGAS_unifiedTy
                                                           const GALGAS_bool & in_generateHeaderInSeparateFile,
                                                           const GALGAS_bool & in_initializerNeedsCompilerVariable,
                                                           const GALGAS_string & in_propertyInitializationCode,
-                                                          const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList
+                                                          const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                                          const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList
                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_mIsAbstract (),
@@ -12317,7 +12338,8 @@ mProperty_mCurrentTypedAttributeList (),
 mProperty_generateHeaderInSeparateFile (),
 mProperty_initializerNeedsCompilerVariable (),
 mProperty_propertyInitializationCode (),
-mProperty_synthetizedInitializerArgumentList () {
+mProperty_synthetizedInitializerArgumentList (),
+mProperty_inheritedSynthetizedInitializerArgumentList () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mIsAbstract = in_mIsAbstract ;
   mProperty_mIsReference = in_mIsReference ;
@@ -12328,6 +12350,7 @@ mProperty_synthetizedInitializerArgumentList () {
   mProperty_initializerNeedsCompilerVariable = in_initializerNeedsCompilerVariable ;
   mProperty_propertyInitializationCode = in_propertyInitializationCode ;
   mProperty_synthetizedInitializerArgumentList = in_synthetizedInitializerArgumentList ;
+  mProperty_inheritedSynthetizedInitializerArgumentList = in_inheritedSynthetizedInitializerArgumentList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12358,6 +12381,8 @@ void cPtr_classTypeForGeneration::description (String & ioString,
   mProperty_propertyInitializationCode.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_synthetizedInitializerArgumentList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_inheritedSynthetizedInitializerArgumentList.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -12365,7 +12390,7 @@ void cPtr_classTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList COMMA_THERE)) ;
   return ptr ;
 }
 

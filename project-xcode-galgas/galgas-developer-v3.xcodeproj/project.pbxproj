@@ -257,6 +257,8 @@
 		CFA1756B1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */; };
 		CFA1756C1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */; };
 		CFA941E0272040EC00B52A16 /* OC_GGS_ColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA941DF272040EC00B52A16 /* OC_GGS_ColorTransformer.m */; };
+		CFAAA43A2BC1A75100D97E46 /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAAA4392BC1A74200D97E46 /* all-declarations-31.cpp */; };
+		CFAAA43B2BC1A75100D97E46 /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAAA4392BC1A74200D97E46 /* all-declarations-31.cpp */; };
 		CFAC1A0B1C3318B800465212 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
@@ -714,6 +716,8 @@
 		CFA5B1402B2F72E8009062AE /* galgas_cli_options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
 		CFA941DE272040EC00B52A16 /* OC_GGS_ColorTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OC_GGS_ColorTransformer.h; sourceTree = "<group>"; };
 		CFA941DF272040EC00B52A16 /* OC_GGS_ColorTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_ColorTransformer.m; sourceTree = "<group>"; };
+		CFAAA4382BC1A74200D97E46 /* all-declarations-31.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-31.h"; sourceTree = "<group>"; };
+		CFAAA4392BC1A74200D97E46 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_quiet_option.cpp; sourceTree = "<group>"; };
 		CFAC1A0A1C3318B800465212 /* C_galgas_quiet_option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_quiet_option.h; sourceTree = "<group>"; };
 		CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_CommandLineOption.h; sourceTree = "<group>"; };
@@ -961,6 +965,8 @@
 		CF23743419967BEF0061D2D8 /* C++ files */ = {
 			isa = PBXGroup;
 			children = (
+				CFAAA4392BC1A74200D97E46 /* all-declarations-31.cpp */,
+				CFAAA4382BC1A74200D97E46 /* all-declarations-31.h */,
 				CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */,
 				CF4C996827301EDB000A6A07 /* all-declarations-0.h */,
 				CF23743919967C4F0061D2D8 /* all-declarations-1.cpp */,
@@ -1693,6 +1699,7 @@
 				CF23746A19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
 				CF12C0BE1D043E610060778F /* all-predefined-types.cpp in Sources */,
 				CF23746419967C4F0061D2D8 /* all-declarations-12.cpp in Sources */,
+				CFAAA43A2BC1A75100D97E46 /* all-declarations-31.cpp in Sources */,
 				CFCB7A312B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */,
 				CF2382D3124D126000A57965 /* C_galgas_function_descriptor.cpp in Sources */,
 				CF3D9FD61257733E0037D473 /* capCollectionElement.cpp in Sources */,
@@ -1873,6 +1880,7 @@
 				CF2382A8124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,
 				CFCDC7EF2AB358C800FD6CB0 /* print.cpp in Sources */,
 				CF23746919967C4F0061D2D8 /* all-declarations-14.cpp in Sources */,
+				CFAAA43B2BC1A75100D97E46 /* all-declarations-31.cpp in Sources */,
 				CFCB7A2E2B2DAECF008DD653 /* BigSigned.cpp in Sources */,
 				CF23746B19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
 				CF23746519967C4F0061D2D8 /* all-declarations-12.cpp in Sources */,

@@ -282,7 +282,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
   end
   [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
   let typeDefinition = [self.mSelfTypeEntry definition]
-  outHeader = [filewrapper typeGenerationTemplate.weakReferenceClassTypeHeader1
+  outHeader = [filewrapper classGenerationTemplate.weakReferenceClassTypeHeader1
     ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -314,7 +314,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let typeDefinition = [self.mSelfTypeEntry definition]
-  outImplementation = [filewrapper typeGenerationTemplate.weakReferenceClassTypeSpecificImplementation
+  outImplementation = [filewrapper classGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]
     ![typeDefinition.typeName.string identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end

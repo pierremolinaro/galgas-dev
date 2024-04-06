@@ -10,6 +10,75 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (class GALGAS_classMethodMap & ioArgument0,
+                                                                                                       class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                       const class GALGAS_string constinArgument2,
+                                                                                                       const class GALGAS_string constinArgument3,
+                                                                                                       const class GALGAS_bool constinArgument4,
+                                                                                                       class Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInstanceMethodWithoutArgument&?methodName?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GALGAS_instanceMethodMap & ioArgument0,
+                                                                       const class GALGAS_string constinArgument1,
+                                                                       const class GALGAS_bool constinArgument2,
+                                                                       class Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithOutputAndInputArguments&&?outputArgTypeName?outputArgName?inputArgTypeName?inputArgName?setterName?compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWithOutputAndInputArguments_26__26__3F_outputArgTypeName_3F_outputArgName_3F_inputArgTypeName_3F_inputArgName_3F_setterName_3F_compilerArg (class GALGAS_setterMap & ioArgument0,
+                                                                                                                                                                      class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                                      const class GALGAS_string constinArgument2,
+                                                                                                                                                                      const class GALGAS_string constinArgument3,
+                                                                                                                                                                      const class GALGAS_string constinArgument4,
+                                                                                                                                                                      const class GALGAS_string constinArgument5,
+                                                                                                                                                                      const class GALGAS_string constinArgument6,
+                                                                                                                                                                      const class GALGAS_bool constinArgument7,
+                                                                                                                                                                      class Compiler * inCompiler
+                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseOptionalMethodWithArgument&&?optionalMethodName??'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterBaseOptionalMethodWithArgument_26__26__3F_optionalMethodName_3F__3F_ (class GALGAS_optionalMethodMap & ioArgument0,
+                                                                                        class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                        const class GALGAS_string constinArgument2,
+                                                                                        const class GALGAS_string constinArgument3,
+                                                                                        const class GALGAS_string constinArgument4,
+                                                                                        class Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterModifierWithoutArgument&??compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GALGAS_setterMap & ioArgument0,
+                                                                  const class GALGAS_string constinArgument1,
+                                                                  const class GALGAS_bool constinArgument2,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'procedureNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
@@ -439,16 +508,5 @@ GALGAS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_Heade
                                                                                              const class GALGAS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
                                                                                              const class GALGAS_string & in_GRAMMAR_5F_NAME,
                                                                                              const class GALGAS_lstringlist & in_SYNTAX_5F_COMPONENTS
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'syntaxSignatureOfInstructionList'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructionList (const class GALGAS_string & constinArgument0,
-                                                                                             const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
-                                                                                             class Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) ;
 

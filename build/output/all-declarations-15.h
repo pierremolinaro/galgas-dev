@@ -1009,21 +1009,24 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_typedPropertyList readProperty_synthetizedInitializerArgumentList (void) const ;
 
+  public: class GALGAS_typedPropertyList readProperty_inheritedSynthetizedInitializerArgumentList (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_classTypeForGeneration init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                 const class GALGAS_bool & inOperand1,
-                                                                                                 const class GALGAS_bool & inOperand2,
-                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand3,
-                                                                                                 const class GALGAS_typedPropertyList & inOperand4,
-                                                                                                 const class GALGAS_typedPropertyList & inOperand5,
-                                                                                                 const class GALGAS_bool & inOperand6,
-                                                                                                 const class GALGAS_bool & inOperand7,
-                                                                                                 const class GALGAS_string & inOperand8,
-                                                                                                 const class GALGAS_typedPropertyList & inOperand9,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classTypeForGeneration init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                     const class GALGAS_bool & inOperand1,
+                                                                                                     const class GALGAS_bool & inOperand2,
+                                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                                                     const class GALGAS_typedPropertyList & inOperand4,
+                                                                                                     const class GALGAS_typedPropertyList & inOperand5,
+                                                                                                     const class GALGAS_bool & inOperand6,
+                                                                                                     const class GALGAS_bool & inOperand7,
+                                                                                                     const class GALGAS_string & inOperand8,
+                                                                                                     const class GALGAS_typedPropertyList & inOperand9,
+                                                                                                     const class GALGAS_typedPropertyList & inOperand10,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1043,7 +1046,8 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                      const class GALGAS_bool & inOperand6,
                                                                      const class GALGAS_bool & inOperand7,
                                                                      const class GALGAS_string & inOperand8,
-                                                                     const class GALGAS_typedPropertyList & inOperand9
+                                                                     const class GALGAS_typedPropertyList & inOperand9,
+                                                                     const class GALGAS_typedPropertyList & inOperand10
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1106,6 +1110,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_bool mProperty_initializerNeedsCompilerVariable ;
   public: GALGAS_string mProperty_propertyInitializationCode ;
   public: GALGAS_typedPropertyList mProperty_synthetizedInitializerArgumentList ;
+  public: GALGAS_typedPropertyList mProperty_inheritedSynthetizedInitializerArgumentList ;
 
 
 //--- Default constructor
@@ -1121,7 +1126,8 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                        const GALGAS_bool & in_generateHeaderInSeparateFile,
                                        const GALGAS_bool & in_initializerNeedsCompilerVariable,
                                        const GALGAS_string & in_propertyInitializationCode,
-                                       const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList
+                                       const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                       const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

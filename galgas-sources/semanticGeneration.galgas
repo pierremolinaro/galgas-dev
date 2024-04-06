@@ -768,20 +768,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@unifiedTypeMapEntry ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
 
-#---------- Array
-#  template arrayTypeHeader1 "GALGAS_array.h1.galgasTemplate"
-#    ?@string TYPE_NAME
-#    ?@string TYPE_IDENTIFIER
-#    ?@string ELEMENT_TYPE_IDENTIFIER
-#    ?@uint DIMENSION
-#
-#  template arrayTypeSpecificImplementation "GALGAS_array.cpp.galgasTemplate"
-#    ?@string TYPE_NAME
-#    ?@string TYPE_IDENTIFIER
-#    ?@string ELEMENT_TYPE_IDENTIFIER
-#    ?@uint DIMENSION
-#    ?@stringlist DIMENSION_LIST
-
 #---------- LIST MAP
   template listmapTypeHeader1 "GALGAS_listmap.h1.galgasTemplate"
     ?@string TYPE_NAME
@@ -822,97 +808,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@string KEY_TYPE_IDENTIFIER
-
-#---------- Value Class
-  template valueClassTypeHeader1 "GALGAS_value_class.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@bool IS_ABSTRACT
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-
-  template valueClassTypeHeader2part1 "GALGAS_value_class.h2-part1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@bool IS_ABSTRACT
-    ?@getterMap GETTER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-
-  template valueClassTypeHeader2part2 "GALGAS_value_class.h2-part2.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@bool IS_ABSTRACT
-
-  template valueClassTypeSpecificImplementation "GALGAS_value_class.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
-    ?@bool IS_ABSTRACT
-
-
-#---------- Reference Class
-  template referenceClassTypeHeader1 "GALGAS_reference_class.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@bool IS_ABSTRACT
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-
-  template referenceClassTypeHeader2part1 "GALGAS_reference_class.h2-part1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@bool IS_ABSTRACT
-    ?@getterMap GETTER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-
-  template referenceClassTypeHeader2part2 "GALGAS_reference_class.h2-part2.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@bool IS_ABSTRACT
-    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
-
-  template referenceClassTypeSpecificImplementation "GALGAS_reference_class.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string SUPER_TYPE_IDENTIFIER
-    ?currentPropertyList: @typedPropertyList CURRENT_PROPERTY_LIST
-    ?allPropertyList: @typedPropertyList ALL_PROPERTY_LIST
-    ?inheritedPropertyList: @typedPropertyList INHERITED_ATTRIBUTE_LIST
-    ?@bool IS_ABSTRACT
-    ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
-    ?@string CONSTRUCTOR_INITIALIZATION_CODE
-    ?@bool GENERATE_SYNTHETIZED_INITIALIZER
-    ?@typedPropertyList CONSTRUCTOR_ARGUMENT_LIST
-
-#---------- Weak Reference Class
-  template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"
-    ?@string CLASS_TYPE_IDENTIFIER
-    ?@string WEAK_REF_TYPE_IDENTIFIER
-    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
-
-  template weakReferenceClassTypeSpecificImplementation "GALGAS_weak_reference_class.cpp.galgasTemplate"
-    ?@string CLASS_TYPE_IDENTIFIER
-    ?@string WEAK_REF_TYPE_IDENTIFIER
-    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
-
 
 #---------- Type alias
   template typeAliasTypeHeader1 "GALGAS_type_alias.h1.galgasTemplate"

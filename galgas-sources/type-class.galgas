@@ -477,7 +477,18 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         error self.mClassTypeName : "a class that has a super class does not accept any feature"
       end
     end
-  #------ Enter attributes
+    var @typedPropertyList synthetizedInheritedInitializerArgumentList = {}
+    for property in allAttributeList do
+      if property.initialization == .none then
+        synthetizedInheritedInitializerArgumentList +=
+          !property.typeEntry
+          !property.name
+          !property.initialization
+          !hasSetter: property.hasSetter
+          !hasSelector: property.hasSelector
+      end
+    end
+  #------ Enter properties
     var @typedPropertyList typedAttributeList = {}
     var @propertyIndexMap attributeMap = {}
     for property in self.mPropertyList do
@@ -534,6 +545,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !constructorNeedsCompilerVar
         !initializationCode
         !synthetizedInitialzerArgumentList
+        !synthetizedInheritedInitializerArgumentList
       }
   }
 
@@ -555,6 +567,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool initializerNeedsCompilerVariable
   private let @string propertyInitializationCode
   private let @typedPropertyList synthetizedInitializerArgumentList
+  private let @typedPropertyList inheritedSynthetizedInitializerArgumentList
 
   #·······························································································
 
@@ -565,7 +578,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
     end
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     if self.mIsReference then
-      outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader1
+      outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader1
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -573,7 +586,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.mCurrentTypedAttributeList
       ]
     else
-      outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader1
+      outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader1
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -610,7 +623,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
     let typedefinition = [self.mSelfTypeEntry definition]
     if self.mIsReference then
       if self.generateHeaderInSeparateFile then
-        let @string part1 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
+        let @string part1 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -620,7 +633,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           ![self.mSelfTypeEntry definition].getterMap
           ![self.mSelfTypeEntry definition].instanceMethodMap
         ]
-        let @string part2 = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+        let @string part2 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -643,7 +656,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         ]
         outHeader = "#include \"" + headerFileName + "\"\n\n"
       else
-        outHeader = [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part1
+        outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -653,7 +666,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           ![self.mSelfTypeEntry definition].getterMap
           ![self.mSelfTypeEntry definition].instanceMethodMap
         ]
-        outHeader += [filewrapper typeGenerationTemplate.referenceClassTypeHeader2part2
+        outHeader += [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -665,7 +678,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       end
     else
       if self.generateHeaderInSeparateFile then
-        let @string part1 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
+        let part1 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -675,7 +688,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           ![self.mSelfTypeEntry definition].getterMap
           ![self.mSelfTypeEntry definition].instanceMethodMap
         ]
-        let @string part2 = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
+        let part2 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -697,7 +710,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         ]
         outHeader = "#include \"" + headerFileName + "\"\n\n"
       else
-        outHeader = [filewrapper typeGenerationTemplate.valueClassTypeHeader2part1
+        outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -707,7 +720,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           ![self.mSelfTypeEntry definition].getterMap
           ![self.mSelfTypeEntry definition].instanceMethodMap
         ]
-        outHeader += [filewrapper typeGenerationTemplate.valueClassTypeHeader2part2
+        outHeader += [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
           !typedefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -730,7 +743,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       !.new {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
     ]
     if self.mIsReference then
-      outImplementation = [filewrapper typeGenerationTemplate.referenceClassTypeSpecificImplementation
+      outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation
         !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -742,9 +755,10 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.propertyInitializationCode
         ![typedefinition.mHandledOperatorFlags generateSynthetizedInitializer]
         !self.synthetizedInitializerArgumentList
+        !inheritedSynthetizedInitializerArgumentList
       ]
     else
-      outImplementation = [filewrapper typeGenerationTemplate.valueClassTypeSpecificImplementation
+      outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
         !typedefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -869,6 +883,107 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
     result += if first then "LOCATION_ARGS" else " COMMA_LOCATION_ARGS" end + ")"
     result += suffix + " ;\n\n"
   end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! Generation Filewrappers
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
+  "ggs"
+}{
+}{
+
+#---------- Value Class
+  template valueClassTypeHeader1 "GALGAS_value_class.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@bool IS_ABSTRACT
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+
+  template valueClassTypeHeader2part1 "GALGAS_value_class.h2-part1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
+    ?@bool IS_ABSTRACT
+    ?@getterMap GETTER_MAP
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
+
+  template valueClassTypeHeader2part2 "GALGAS_value_class.h2-part2.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
+    ?@bool IS_ABSTRACT
+
+  template valueClassTypeSpecificImplementation "GALGAS_value_class.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
+    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+
+
+#---------- Reference Class
+  template referenceClassTypeHeader1 "GALGAS_reference_class.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@bool IS_ABSTRACT
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+
+  template referenceClassTypeHeader2part1 "GALGAS_reference_class.h2-part1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
+    ?@bool IS_ABSTRACT
+    ?@getterMap GETTER_MAP
+    ?@instanceMethodMap INSTANCE_METHOD_MAP
+
+  template referenceClassTypeHeader2part2 "GALGAS_reference_class.h2-part2.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
+    ?@bool IS_ABSTRACT
+    ?@typedPropertyList INITIALIZER_ARGUMENT_LIST
+
+  template referenceClassTypeSpecificImplementation "GALGAS_reference_class.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?currentPropertyList: @typedPropertyList CURRENT_PROPERTY_LIST
+    ?allPropertyList: @typedPropertyList ALL_PROPERTY_LIST
+    ?inheritedPropertyList: @typedPropertyList INHERITED_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+    ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
+    ?@string CONSTRUCTOR_INITIALIZATION_CODE
+    ?@bool GENERATE_SYNTHETIZED_INITIALIZER
+    ?@typedPropertyList INITIALIZER_ARGUMENT_LIST
+    ?@typedPropertyList INHERITED_INITIALIZER_ARGUMENT_LIST
+
+#---------- Weak Reference Class
+  template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"
+    ?@string CLASS_TYPE_IDENTIFIER
+    ?@string WEAK_REF_TYPE_IDENTIFIER
+    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
+
+  template weakReferenceClassTypeSpecificImplementation "GALGAS_weak_reference_class.cpp.galgasTemplate"
+    ?@string CLASS_TYPE_IDENTIFIER
+    ?@string WEAK_REF_TYPE_IDENTIFIER
+    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@typedPropertyList ALL_PROPERTY_LIST
+    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

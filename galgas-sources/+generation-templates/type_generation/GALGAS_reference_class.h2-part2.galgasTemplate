@@ -10,11 +10,11 @@
 
 //--- Constructor
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CONSTRUCTOR_ARGUMENT_LIST
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in INITIALIZER_ARGUMENT_LIST
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
-  if [CONSTRUCTOR_ARGUMENT_LIST count] > 0 then
+  if [INITIALIZER_ARGUMENT_LIST count] > 0 then
     %\n%!^%COMMA_LOCATION_ARGS%
   else
     %LOCATION_ARGS%

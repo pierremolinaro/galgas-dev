@@ -10,6 +10,81 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'enterClassFunctionWithArgument&&?name?argTypeName?argName?resultTypeName?hasLexiqueArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (class GALGAS_classFunctionMap & ioArgument0,
+                                                                                                                          class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                          const class GALGAS_string constinArgument2,
+                                                                                                                          const class GALGAS_string constinArgument3,
+                                                                                                                          const class GALGAS_string constinArgument4,
+                                                                                                                          const class GALGAS_string constinArgument5,
+                                                                                                                          const class GALGAS_bool constinArgument6,
+                                                                                                                          class Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInheritedGetterWith2Arguments&&??????returnedTypeName?hasCompilerArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterInheritedGetterWith_32_Arguments_26__26__3F__3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (class GALGAS_getterMap & ioArgument0,
+                                                                                                                           class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                           const class GALGAS_string constinArgument2,
+                                                                                                                           const class GALGAS_string constinArgument3,
+                                                                                                                           const class GALGAS_string constinArgument4,
+                                                                                                                           const class GALGAS_string constinArgument5,
+                                                                                                                           const class GALGAS_string constinArgument6,
+                                                                                                                           const class GALGAS_string constinArgument7,
+                                                                                                                           const class GALGAS_bool constinArgument8,
+                                                                                                                           class Compiler * inCompiler
+                                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'sortedListGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                     const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                                     const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'forbiddenKeysForStruct'
 //
 //--------------------------------------------------------------------------------------------------
@@ -56,7 +131,7 @@ GALGAS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecific
                                                                                                 const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                 const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                 const class GALGAS_typedPropertyList & in_PROPERTY_5F_LIST,
-                                                                                                const class GALGAS_typedPropertyList & in_CONSTRUCTOR_5F_ARGUMENT_5F_LIST,
+                                                                                                const class GALGAS_typedPropertyList & in_INITIALIZER_5F_ARGUMENT_5F_LIST,
                                                                                                 const class GALGAS_string & in_CONSTRUCTOR_5F_INITIALIZATION_5F_CODE,
                                                                                                 const class GALGAS_bool & in_CONSTRUCTOR_5F_NEEDS_5F_COMPILER_5F_VAR,
                                                                                                 const class GALGAS_bool & in_GENERATE_5F_SYNTHETIZED_5F_INITIALIZER
@@ -1158,73 +1233,4 @@ void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F
                                                                                                                  const class GALGAS_bool constinArgument5,
                                                                                                                  class Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (class GALGAS_classMethodMap & ioArgument0,
-                                                                                                       class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                       const class GALGAS_string constinArgument2,
-                                                                                                       const class GALGAS_string constinArgument3,
-                                                                                                       const class GALGAS_bool constinArgument4,
-                                                                                                       class Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterInstanceMethodWithoutArgument&?methodName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GALGAS_instanceMethodMap & ioArgument0,
-                                                                       const class GALGAS_string constinArgument1,
-                                                                       const class GALGAS_bool constinArgument2,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterModifierWithOutputAndInputArguments&&?outputArgTypeName?outputArgName?inputArgTypeName?inputArgName?setterName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterModifierWithOutputAndInputArguments_26__26__3F_outputArgTypeName_3F_outputArgName_3F_inputArgTypeName_3F_inputArgName_3F_setterName_3F_compilerArg (class GALGAS_setterMap & ioArgument0,
-                                                                                                                                                                      class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                      const class GALGAS_string constinArgument2,
-                                                                                                                                                                      const class GALGAS_string constinArgument3,
-                                                                                                                                                                      const class GALGAS_string constinArgument4,
-                                                                                                                                                                      const class GALGAS_string constinArgument5,
-                                                                                                                                                                      const class GALGAS_string constinArgument6,
-                                                                                                                                                                      const class GALGAS_bool constinArgument7,
-                                                                                                                                                                      class Compiler * inCompiler
-                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterBaseOptionalMethodWithArgument&&?optionalMethodName??'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseOptionalMethodWithArgument_26__26__3F_optionalMethodName_3F__3F_ (class GALGAS_optionalMethodMap & ioArgument0,
-                                                                                        class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                        const class GALGAS_string constinArgument2,
-                                                                                        const class GALGAS_string constinArgument3,
-                                                                                        const class GALGAS_string constinArgument4,
-                                                                                        class Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterModifierWithoutArgument&??compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GALGAS_setterMap & ioArgument0,
-                                                                  const class GALGAS_string constinArgument1,
-                                                                  const class GALGAS_bool constinArgument2,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
 
