@@ -22,6 +22,7 @@ before {
 #  testsuite_array ()
   testsuite_extern_type ()
   testsuite_bigint_type ()
+  testsuite_reference_class ()
   bugMap ()
 }
 

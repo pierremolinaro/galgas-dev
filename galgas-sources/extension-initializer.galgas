@@ -441,7 +441,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     outGeneratedCode += routineBody
     outGeneratedCode += "  return result ;\n"
     outGeneratedCode += "}"
-  else
+  else # class
     outGeneratedCode = "GALGAS_" + [className identifierRepresentation]
        + " GALGAS_" + [className identifierRepresentation] 
        + "::init" + [inInitializerName identifierRepresentation] + " ("
@@ -460,8 +460,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   #--- Compiler argument
     outGeneratedCode += "Compiler * " + compilerCppName () + "\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
-    outGeneratedCode += "COMMA_LOCATION_ARGS"
-    outGeneratedCode += ") {\n"
+    outGeneratedCode += "COMMA_LOCATION_ARGS) {\n"
     outGeneratedCode += "  cPtr_" + [className identifierRepresentation] + " * object = nullptr ;\n"
     outGeneratedCode += "  macroMyNew (object, cPtr_" + [className identifierRepresentation]
     outGeneratedCode += " (" + compilerCppName () + " COMMA_THERE)) ;\n"
@@ -499,8 +498,6 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     else
       outGeneratedCode += compilerCppName ()
     end
-    outGeneratedCode += "\n"
-    [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     outGeneratedCode += ") {\n"
     outGeneratedCode += routineBody
     outGeneratedCode += "}"

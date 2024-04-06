@@ -99,6 +99,10 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
         let superClassInitializerMap = superTypeDefinition.initializerMap
         let signature = @lstring.new {![self.mActualParameterList signature] !self.mInstructionLocation}
         [superClassInitializerMap searchKey !signature ?let formalSignature]
+        println (!"CLASS " + superTypeDefinition.typeName)
+        for initializer in superClassInitializerMap do
+          println (!"  - " + initializer.lkey)
+        end
       #--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
