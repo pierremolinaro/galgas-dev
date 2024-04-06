@@ -763,7 +763,7 @@ class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_externTypeDeclarationAST (const class cPtr_externTypeDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mExternTypeName (void) const ;
 
   public: class GALGAS_string readProperty_mCppPreDeclarationCode (void) const ;
@@ -1547,7 +1547,7 @@ class GALGAS_graphDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_graphDeclarationAST (const class cPtr_graphDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mGraphTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mAssociatedListTypeName (void) const ;
@@ -1741,7 +1741,7 @@ class GALGAS_listDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_listDeclarationAST (const class cPtr_listDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mListTypeName (void) const ;
 
   public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
@@ -1939,7 +1939,7 @@ class GALGAS_listmapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_listmapDeclarationAST (const class cPtr_listmapDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mListmapTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mAssociatedListTypeName (void) const ;
@@ -2131,7 +2131,7 @@ class GALGAS_dictDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_dictDeclarationAST (const class cPtr_dictDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mDictTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mKeyTypeName (void) const ;
@@ -3161,7 +3161,7 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_mapDeclarationAST (const class cPtr_mapDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mMapTypeName (void) const ;
 
   public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
@@ -4022,7 +4022,7 @@ class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_sortedListDeclarationAST (const class cPtr_sortedListDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mSortedListTypeName (void) const ;
 
   public: class GALGAS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
@@ -4499,7 +4499,7 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_structDeclarationAST (const class cPtr_structDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_structTypeName (void) const ;
 
   public: class GALGAS_propertyInCollectionListAST readProperty_mStructurePropertyListAST (void) const ;
@@ -4693,7 +4693,7 @@ class GALGAS_typealiasDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_typealiasDeclarationAST (const class cPtr_typealiasDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mAliasTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mDefinedTypeName (void) const ;
@@ -5228,7 +5228,7 @@ class GALGAS_abstractExtensionGetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractExtensionGetterAST (const class cPtr_abstractExtensionGetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mAbstractExtensionGetterName (void) const ;
@@ -5786,7 +5786,7 @@ class GALGAS_abstractExtensionMethodAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractExtensionMethodAST (const class cPtr_abstractExtensionMethodAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mAbstractExtensionMethodName (void) const ;
@@ -6338,7 +6338,7 @@ class GALGAS_abstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractExtensionSetterAST (const class cPtr_abstractExtensionSetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mAbstractExtensionSetterName (void) const ;
@@ -6683,7 +6683,7 @@ class GALGAS_syntaxInstructionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_syntaxInstructionAST (const class cPtr_syntaxInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mInstructionLocation (void) const ;
 
 //-- Start of type generic part
@@ -6792,7 +6792,7 @@ class GALGAS_semanticInstructionAST : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticInstructionAST (const class cPtr_semanticInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6990,7 +6990,7 @@ class GALGAS_extensionGetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_extensionGetterAST (const class cPtr_extensionGetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
 
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
@@ -7365,7 +7365,7 @@ class GALGAS_semanticInstructionForGeneration : public AC_GALGAS_reference_class
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticInstructionForGeneration (const class cPtr_semanticInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7542,7 +7542,7 @@ class GALGAS_extensionMethodAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_extensionMethodAST (const class cPtr_extensionMethodAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
 
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
@@ -7769,7 +7769,7 @@ class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_extensionSetterAST (const class cPtr_extensionSetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
 
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
@@ -7996,7 +7996,7 @@ class GALGAS_initializerAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_initializerAST (const class cPtr_initializerAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_formalInputParameterListAST readProperty_mFormalParameterList (void) const ;
@@ -8196,7 +8196,7 @@ class GALGAS_overridingAbstractExtensionGetterAST : public GALGAS_semanticDeclar
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingAbstractExtensionGetterAST (const class cPtr_overridingAbstractExtensionGetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mAbstractExtensionGetterName (void) const ;
@@ -8411,7 +8411,7 @@ class GALGAS_overridingAbstractExtensionMethodAST : public GALGAS_semanticDeclar
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingAbstractExtensionMethodAST (const class cPtr_overridingAbstractExtensionMethodAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mOverridingExtensionMethodName (void) const ;
@@ -8620,7 +8620,7 @@ class GALGAS_overridingAbstractExtensionSetterAST : public GALGAS_semanticDeclar
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingAbstractExtensionSetterAST (const class cPtr_overridingAbstractExtensionSetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mOverridingExtensionSetterName (void) const ;
@@ -8829,7 +8829,7 @@ class GALGAS_overridingExtensionGetterAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionGetterAST (const class cPtr_overridingExtensionGetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
 
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
@@ -9068,7 +9068,7 @@ class GALGAS_overridingExtensionMethodAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionMethodAST (const class cPtr_overridingExtensionMethodAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
 
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
@@ -9295,7 +9295,7 @@ class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_overridingExtensionSetterAST (const class cPtr_overridingExtensionSetterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_requiresSelfForAccessingProperty (void) const ;
 
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
@@ -9522,7 +9522,7 @@ class GALGAS_predefinedTypeAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_predefinedTypeAST (const class cPtr_predefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mPredefinedTypeName (void) const ;
 
 //-- Start of type generic part
@@ -10670,7 +10670,7 @@ class GALGAS_applicationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_applicationPredefinedTypeAST (const class cPtr_applicationPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10840,7 +10840,7 @@ class GALGAS_bigintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_bigintPredefinedTypeAST (const class cPtr_bigintPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11017,7 +11017,7 @@ class GALGAS_binarysetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_binarysetPredefinedTypeAST (const class cPtr_binarysetPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11189,7 +11189,7 @@ class GALGAS_boolPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_boolPredefinedTypeAST (const class cPtr_boolPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11356,7 +11356,7 @@ class GALGAS_charPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_charPredefinedTypeAST (const class cPtr_charPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11523,7 +11523,7 @@ class GALGAS_dataPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_dataPredefinedTypeAST (const class cPtr_dataPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11706,7 +11706,7 @@ class GALGAS_doublePredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_doublePredefinedTypeAST (const class cPtr_doublePredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -11873,7 +11873,7 @@ class GALGAS_filewrapperPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperPredefinedTypeAST (const class cPtr_filewrapperPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12040,7 +12040,7 @@ class GALGAS_functionPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionPredefinedTypeAST (const class cPtr_functionPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12207,7 +12207,7 @@ class GALGAS_locationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_locationPredefinedTypeAST (const class cPtr_locationPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12374,7 +12374,7 @@ class GALGAS_objectPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_objectPredefinedTypeAST (const class cPtr_objectPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12536,7 +12536,7 @@ class GALGAS_stringsetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_stringsetPredefinedTypeAST (const class cPtr_stringsetPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12722,7 +12722,7 @@ class GALGAS_sintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_sintPredefinedTypeAST (const class cPtr_sintPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12889,7 +12889,7 @@ class GALGAS_sint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_sint_36__34_PredefinedTypeAST (const class cPtr_sint_36__34_PredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers

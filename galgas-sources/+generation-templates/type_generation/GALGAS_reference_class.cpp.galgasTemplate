@@ -174,7 +174,7 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROP
 end
 
 
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
+for (mPropertyTypeEntry mPropertyName * mHasSetter *) in CURRENT_PROPERTY_LIST do
 %//--------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
     %  if (nullptr == mObjectPtr) {\n%
@@ -185,6 +185,16 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROP
     %    return p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     %  }\n%
   %}\n\n%
+  if mHasSetter then
+  %//--------------------------------------------------------------------------------------------------\n
+void GALGAS_%!TYPE_IDENTIFIER%::setProperty_%![mPropertyName identifierRepresentation]% (const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inValue) {\n%
+      %  if (nullptr != mObjectPtr) {\n%
+      %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
+      %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
+      %    p->mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
+      %  }\n%
+    %}\n\n%
+  end
 end
 
 %//--------------------------------------------------------------------------------------------------

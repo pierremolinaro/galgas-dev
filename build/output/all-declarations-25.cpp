@@ -1443,35 +1443,35 @@ void cPtr_abstractExtensionSetterAST::method_enterDeclarationInGraph (GALGAS_sem
   const GALGAS_abstractExtensionSetterAST temp_0 = this ;
   const GALGAS_abstractExtensionSetterAST temp_1 = this ;
   const GALGAS_abstractExtensionSetterAST temp_2 = this ;
-  GALGAS_lstring var_key_3910 = GALGAS_lstring::class_func_new (GALGAS_string ("extension setter @").add_operation (temp_0.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 80)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 80)).add_operation (temp_1.readProperty_mAbstractExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 80)), temp_2.readProperty_mAbstractExtensionSetterName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 80)) ;
+  GALGAS_lstring var_key_5200 = GALGAS_lstring::class_func_new (GALGAS_string ("extension setter @").add_operation (temp_0.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 118)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 118)).add_operation (temp_1.readProperty_mAbstractExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 118)), temp_2.readProperty_mAbstractExtensionSetterName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 118)) ;
   {
   const GALGAS_abstractExtensionSetterAST temp_3 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_3910, temp_3, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 81)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_5200, temp_3, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 119)) ;
   }
   {
   const GALGAS_abstractExtensionSetterAST temp_4 = this ;
   const GALGAS_abstractExtensionSetterAST temp_5 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_3910, GALGAS_lstring::class_func_new (GALGAS_string ("@").add_operation (temp_4.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 82)), temp_5.readProperty_mTypeName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 82)) COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 82)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_5200, GALGAS_lstring::class_func_new (GALGAS_string ("@").add_operation (temp_4.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 120)), temp_5.readProperty_mTypeName ().readProperty_location (), inCompiler  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 120)) COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 120)) ;
   }
   enumGalgasBool test_6 = kBoolTrue ;
   if (kBoolTrue == test_6) {
     const GALGAS_abstractExtensionSetterAST temp_7 = this ;
-    test_6 = ioArgument_ioExtensionSetterMapForBuildingContext.getter_hasKey (temp_7.readProperty_mTypeName ().readProperty_string () COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 84)).operator_not (SOURCE_FILE ("extension-abstract-setter.galgas", 84)).boolEnum () ;
+    test_6 = ioArgument_ioExtensionSetterMapForBuildingContext.getter_hasKey (temp_7.readProperty_mTypeName ().readProperty_string () COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 122)).operator_not (SOURCE_FILE ("extension-abstract-setter.galgas", 122)).boolEnum () ;
     if (kBoolTrue == test_6) {
       {
       const GALGAS_abstractExtensionSetterAST temp_8 = this ;
-      ioArgument_ioExtensionSetterMapForBuildingContext.setter_insertKey (temp_8.readProperty_mTypeName (), GALGAS_extensionSetterMapForType::class_func_emptyMap (SOURCE_FILE ("extension-abstract-setter.galgas", 87)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 85)) ;
+      ioArgument_ioExtensionSetterMapForBuildingContext.setter_insertKey (temp_8.readProperty_mTypeName (), GALGAS_extensionSetterMapForType::class_func_emptyMap (SOURCE_FILE ("extension-abstract-setter.galgas", 125)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 123)) ;
       }
     }
   }
   const GALGAS_abstractExtensionSetterAST temp_9 = this ;
-  cMapElement_extensionSetterMapForBuildingContext * objectArray_4415 = (cMapElement_extensionSetterMapForBuildingContext *) ioArgument_ioExtensionSetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_9.readProperty_mTypeName (), kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 90)) ;
-  if (nullptr != objectArray_4415) {
-    macroValidSharedObject (objectArray_4415, cMapElement_extensionSetterMapForBuildingContext) ;
+  cMapElement_extensionSetterMapForBuildingContext * objectArray_5725 = (cMapElement_extensionSetterMapForBuildingContext *) ioArgument_ioExtensionSetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, temp_9.readProperty_mTypeName (), kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 128)) ;
+  if (nullptr != objectArray_5725) {
+    macroValidSharedObject (objectArray_5725, cMapElement_extensionSetterMapForBuildingContext) ;
     {
     const GALGAS_abstractExtensionSetterAST temp_10 = this ;
     const GALGAS_abstractExtensionSetterAST temp_11 = this ;
-    objectArray_4415->mProperty_mExtensionSetterMapForType.setter_insertKey (temp_10.readProperty_mAbstractExtensionSetterName (), temp_11.readProperty_mAbstractExtensionSetterFormalParameterList (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 91)) ;
+    objectArray_5725->mProperty_mExtensionSetterMapForType.setter_insertKey (temp_10.readProperty_mAbstractExtensionSetterName (), temp_11.readProperty_mAbstractExtensionSetterFormalParameterList (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 129)) ;
     }
   }
 }
@@ -1486,7 +1486,7 @@ GALGAS_string cPtr_abstractExtensionSetterAST::getter_keyRepresentation (Compile
   GALGAS_string result_result ; // Returned variable
   const GALGAS_abstractExtensionSetterAST temp_0 = this ;
   const GALGAS_abstractExtensionSetterAST temp_1 = this ;
-  result_result = GALGAS_string ("abstract extension setter @").add_operation (temp_0.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 103)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 103)).add_operation (temp_1.readProperty_mAbstractExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 103)) ;
+  result_result = GALGAS_string ("abstract extension setter @").add_operation (temp_0.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 139)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 139)).add_operation (temp_1.readProperty_mAbstractExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 139)) ;
 //---
   return result_result ;
 }
@@ -1523,39 +1523,39 @@ void cPtr_abstractExtensionSetterAST::method_semanticAnalysis (GALGAS_lstringlis
                                                                Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_abstractExtensionSetterAST temp_0 = this ;
-  GALGAS_unifiedTypeMapEntry var_selfType_6744 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 137)) ;
+  GALGAS_unifiedTypeMapEntry var_selfType_7671 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 169)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = extensionGetter_definition (var_selfType_6744, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 139)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("extension-abstract-setter.galgas", 139)).operator_not (SOURCE_FILE ("extension-abstract-setter.galgas", 139)).boolEnum () ;
+    test_1 = extensionGetter_definition (var_selfType_7671, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 171)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("extension-abstract-setter.galgas", 171)).operator_not (SOURCE_FILE ("extension-abstract-setter.galgas", 171)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_abstractExtensionSetterAST temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mAbstractExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension setter: '@").add_operation (extensionGetter_definition (var_selfType_6744, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 140)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 140)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 140)), fixItArray3  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 140)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mAbstractExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension setter: '@").add_operation (extensionGetter_definition (var_selfType_7671, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 172)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 172)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 172)), fixItArray3  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 172)) ;
     }
   }
   if (kBoolFalse == test_1) {
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      test_4 = extensionGetter_definition (var_selfType_6744, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 141)).readProperty_isConcrete ().boolEnum () ;
+      test_4 = extensionGetter_definition (var_selfType_7671, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 173)).readProperty_isConcrete ().boolEnum () ;
       if (kBoolTrue == test_4) {
         const GALGAS_abstractExtensionSetterAST temp_5 = this ;
         TC_Array <FixItDescription> fixItArray6 ;
-        inCompiler->emitSemanticError (temp_5.readProperty_mAbstractExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare an abstract extension setter: '@").add_operation (extensionGetter_definition (var_selfType_6744, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 142)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 142)).add_operation (GALGAS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 142)), fixItArray6  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 142)) ;
+        inCompiler->emitSemanticError (temp_5.readProperty_mAbstractExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare an abstract extension setter: '@").add_operation (extensionGetter_definition (var_selfType_7671, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 174)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 174)).add_operation (GALGAS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 174)), fixItArray6  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 174)) ;
       }
     }
   }
-  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_7304 = GALGAS_formalParameterListForGeneration::class_func_emptyList (SOURCE_FILE ("extension-abstract-setter.galgas", 145)) ;
+  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_8247 = GALGAS_formalParameterListForGeneration::class_func_emptyList (SOURCE_FILE ("extension-abstract-setter.galgas", 177)) ;
   const GALGAS_abstractExtensionSetterAST temp_7 = this ;
-  cEnumerator_formalParameterListAST enumerator_7470 (temp_7.readProperty_mAbstractExtensionSetterFormalParameterList (), EnumerationOrder::up) ;
-  while (enumerator_7470.hasCurrentObject ()) {
-    var_formalParameterListForGeneration_7304.addAssign_operation (enumerator_7470.current_mFormalSelector (HERE), enumerator_7470.current_mFormalArgumentPassingMode (HERE), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_7470.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 150)), enumerator_7470.current_mFormalArgumentName (HERE), enumerator_7470.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 147)) ;
-    enumerator_7470.gotoNextObject () ;
+  cEnumerator_formalParameterListAST enumerator_8415 (temp_7.readProperty_mAbstractExtensionSetterFormalParameterList (), EnumerationOrder::up) ;
+  while (enumerator_8415.hasCurrentObject ()) {
+    var_formalParameterListForGeneration_8247.addAssign_operation (enumerator_8415.current_mFormalSelector (HERE), enumerator_8415.current_mFormalArgumentPassingMode (HERE), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_8415.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 182)), enumerator_8415.current_mFormalArgumentName (HERE), enumerator_8415.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 179)) ;
+    enumerator_8415.gotoNextObject () ;
   }
   const GALGAS_abstractExtensionSetterAST temp_8 = this ;
   const GALGAS_abstractExtensionSetterAST temp_9 = this ;
   const GALGAS_abstractExtensionSetterAST temp_10 = this ;
   const GALGAS_abstractExtensionSetterAST temp_11 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string (" abstract extension setter ").add_operation (temp_8.readProperty_mAbstractExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 156)), GALGAS_abstractExtensionSetterForGeneration::class_func_new (GALGAS_bool (true), GALGAS_string ("setter-").add_operation (temp_9.readProperty_mTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 159)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 159)).add_operation (temp_10.readProperty_mAbstractExtensionSetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 159)), var_selfType_6744, temp_11.readProperty_mAbstractExtensionSetterName ().readProperty_string (), var_formalParameterListForGeneration_7304  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 157))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 155)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string (" abstract extension setter ").add_operation (temp_8.readProperty_mAbstractExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 188)), GALGAS_abstractExtensionSetterForGeneration::class_func_new (GALGAS_bool (true), GALGAS_string ("setter-").add_operation (temp_9.readProperty_mTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 191)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 191)).add_operation (temp_10.readProperty_mAbstractExtensionSetterName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 191)), var_selfType_7671, temp_11.readProperty_mAbstractExtensionSetterName ().readProperty_string (), var_formalParameterListForGeneration_8247  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 189))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 187)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -1579,7 +1579,7 @@ void cPtr_abstractExtensionSetterAST::method_buildExtensionListMaps (GALGAS_gene
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_abstractExtensionSetterAST temp_0 = this ;
   const GALGAS_abstractExtensionSetterAST temp_1 = this ;
-  ioArgument_ioAbstractExtensionSetterListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mAbstractExtensionSetterName ()  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 184)) ;
+  ioArgument_ioAbstractExtensionSetterListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mAbstractExtensionSetterName ()  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 214)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -1590,7 +1590,7 @@ void cPtr_abstractExtensionSetterAST::method_buildExtensionListMaps (GALGAS_gene
 GALGAS_headerKind cPtr_abstractExtensionSetterForGeneration::getter_headerKind (Compiler */* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_headerKind result_result ; // Returned variable
-  result_result = GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("extension-abstract-setter.galgas", 202)) ;
+  result_result = GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("extension-abstract-setter.galgas", 235)) ;
 //---
   return result_result ;
 }
@@ -1609,7 +1609,7 @@ void cPtr_abstractExtensionSetterForGeneration::method_appendDeclaration_31_ (GA
   const GALGAS_abstractExtensionSetterForGeneration temp_0 = this ;
   const GALGAS_abstractExtensionSetterForGeneration temp_1 = this ;
   const GALGAS_abstractExtensionSetterForGeneration temp_2 = this ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterDeclaration (inCompiler, extensionGetter_definition (temp_0.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 211)).readProperty_typeName ().readProperty_string (), temp_1.readProperty_mAbstractExtensionSetterName (), temp_2.readProperty_mAbstractExtensionSetterFormalParameterList () COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 210))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterDeclaration (inCompiler, extensionGetter_definition (temp_0.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 243)).readProperty_typeName ().readProperty_string (), temp_1.readProperty_mAbstractExtensionSetterName (), temp_2.readProperty_mAbstractExtensionSetterFormalParameterList () COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 242))) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -1624,19 +1624,19 @@ void cPtr_abstractExtensionSetterForGeneration::method_appendSpecificImplementat
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_abstractExtensionSetterForGeneration temp_0 = this ;
   const GALGAS_abstractExtensionSetterForGeneration temp_1 = this ;
-  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("setter-").add_operation (extensionGetter_definition (temp_0.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 224)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 224)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 224)).add_operation (temp_1.readProperty_mAbstractExtensionSetterName ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 224))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 224)) ;
+  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("setter-").add_operation (extensionGetter_definition (temp_0.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 256)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 256)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 256)).add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 256)).add_operation (temp_1.readProperty_mAbstractExtensionSetterName ().getter_fileNameRepresentation (SOURCE_FILE ("extension-abstract-setter.galgas", 256)), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 256))  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 256)) ;
   const GALGAS_abstractExtensionSetterForGeneration temp_2 = this ;
-  extensionMethod_addHeaderFileName (temp_2.readProperty_mReceiverType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 225)) ;
+  extensionMethod_addHeaderFileName (temp_2.readProperty_mReceiverType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 257)) ;
   const GALGAS_abstractExtensionSetterForGeneration temp_3 = this ;
-  cEnumerator_formalParameterListForGeneration enumerator_11389 (temp_3.readProperty_mAbstractExtensionSetterFormalParameterList (), EnumerationOrder::up) ;
-  while (enumerator_11389.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName (enumerator_11389.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 227)) ;
-    enumerator_11389.gotoNextObject () ;
+  cEnumerator_formalParameterListForGeneration enumerator_12246 (temp_3.readProperty_mAbstractExtensionSetterFormalParameterList (), EnumerationOrder::up) ;
+  while (enumerator_12246.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName (enumerator_12246.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 259)) ;
+    enumerator_12246.gotoNextObject () ;
   }
   const GALGAS_abstractExtensionSetterForGeneration temp_4 = this ;
   const GALGAS_abstractExtensionSetterForGeneration temp_5 = this ;
   const GALGAS_abstractExtensionSetterForGeneration temp_6 = this ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterImplementation (inCompiler, extensionGetter_definition (temp_4.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 230)).readProperty_typeName ().readProperty_string (), temp_5.readProperty_mAbstractExtensionSetterName (), temp_6.readProperty_mAbstractExtensionSetterFormalParameterList () COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 229))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterImplementation (inCompiler, extensionGetter_definition (temp_4.readProperty_mReceiverType (), inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 262)).readProperty_typeName ().readProperty_string (), temp_5.readProperty_mAbstractExtensionSetterName (), temp_6.readProperty_mAbstractExtensionSetterFormalParameterList () COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 261))) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3347,7 +3347,7 @@ GALGAS_string cPtr_overridingAbstractExtensionSetterAST::getter_keyRepresentatio
   GALGAS_string result_result ; // Returned variable
   const GALGAS_overridingAbstractExtensionSetterAST temp_0 = this ;
   const GALGAS_overridingAbstractExtensionSetterAST temp_1 = this ;
-  result_result = GALGAS_string ("overriding extension setter @").add_operation (temp_0.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 75)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 75)).add_operation (temp_1.readProperty_mOverridingExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 75)) ;
+  result_result = GALGAS_string ("overriding extension setter @").add_operation (temp_0.readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 116)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 116)).add_operation (temp_1.readProperty_mOverridingExtensionSetterName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 116)) ;
 //---
   return result_result ;
 }
@@ -3368,7 +3368,7 @@ void cPtr_overridingAbstractExtensionSetterAST::method_enterDeclarationInGraph (
                                                                                 Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_overridingAbstractExtensionSetterAST temp_0 = this ;
-  ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 90)) ;
+  ioArgument_ioExtensionOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 129)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3401,91 +3401,91 @@ void cPtr_overridingAbstractExtensionSetterAST::method_semanticAnalysis (GALGAS_
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_overridingAbstractExtensionSetterAST temp_0 = this ;
-  GALGAS_unifiedTypeMapEntry var_selfType_6165 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 124)) ;
+  GALGAS_unifiedTypeMapEntry var_selfType_7202 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 159)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = extensionGetter_definition (var_selfType_6165, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 126)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 126)).operator_not (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 126)).boolEnum () ;
+    test_1 = extensionGetter_definition (var_selfType_7202, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 161)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 161)).operator_not (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 161)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_overridingAbstractExtensionSetterAST temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension setter: '@").add_operation (extensionGetter_definition (var_selfType_6165, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)), fixItArray3  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 127)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare a extension setter: '@").add_operation (extensionGetter_definition (var_selfType_7202, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 162)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 162)).add_operation (GALGAS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 162)), fixItArray3  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 162)) ;
     }
   }
   if (kBoolFalse == test_1) {
     enumGalgasBool test_4 = kBoolTrue ;
     if (kBoolTrue == test_4) {
-      test_4 = extensionGetter_definition (var_selfType_6165, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 128)).readProperty_isConcrete ().boolEnum () ;
+      test_4 = extensionGetter_definition (var_selfType_7202, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 163)).readProperty_isConcrete ().boolEnum () ;
       if (kBoolTrue == test_4) {
         const GALGAS_overridingAbstractExtensionSetterAST temp_5 = this ;
         TC_Array <FixItDescription> fixItArray6 ;
-        inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare an abstract extension setter: '@").add_operation (extensionGetter_definition (var_selfType_6165, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 129)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 129)).add_operation (GALGAS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 129)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 129)) ;
+        inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("cannot declare an abstract extension setter: '@").add_operation (extensionGetter_definition (var_selfType_7202, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 164)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 164)).add_operation (GALGAS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 164)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 164)) ;
       }
     }
   }
-  GALGAS_string var_baseTypeName_6727 = GALGAS_string::makeEmptyString () ;
-  GALGAS_unifiedTypeMapEntry var_superType_6772 = extensionGetter_definition (var_selfType_6165, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 133)).readProperty_superType () ;
-  GALGAS_formalParameterSignature var_inheritedSignature_6822 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 134)) ;
-  GALGAS_location var_inheritedDeclarationLocation_6878 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 135)) ;
-  if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 136)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 136)).isValid ()) {
-    uint32_t variant_6926 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 136)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 136)).uintValue () ;
-    bool loop_6926 = true ;
-    while (loop_6926) {
-      loop_6926 = var_superType_6772.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 137)).operator_not (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 137)).operator_and (GALGAS_bool (ComparisonKind::equal, var_baseTypeName_6727.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 137)).isValid () ;
-      if (loop_6926) {
-        loop_6926 = var_superType_6772.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 137)).operator_not (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 137)).operator_and (GALGAS_bool (ComparisonKind::equal, var_baseTypeName_6727.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 137)).boolValue () ;
+  GALGAS_string var_baseTypeName_7780 = GALGAS_string::makeEmptyString () ;
+  GALGAS_unifiedTypeMapEntry var_superType_7827 = extensionGetter_definition (var_selfType_7202, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 168)).readProperty_superType () ;
+  GALGAS_formalParameterSignature var_inheritedSignature_7879 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 169)) ;
+  GALGAS_location var_inheritedDeclarationLocation_7937 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 170)) ;
+  if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 171)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 171)).isValid ()) {
+    uint32_t variant_7987 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 171)).add_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 171)).uintValue () ;
+    bool loop_7987 = true ;
+    while (loop_7987) {
+      loop_7987 = var_superType_7827.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 172)).operator_not (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 172)).operator_and (GALGAS_bool (ComparisonKind::equal, var_baseTypeName_7780.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 172)).isValid () ;
+      if (loop_7987) {
+        loop_7987 = var_superType_7827.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 172)).operator_not (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 172)).operator_and (GALGAS_bool (ComparisonKind::equal, var_baseTypeName_7780.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 172)).boolValue () ;
       }
-      if (loop_6926 && (0 == variant_6926)) {
-        loop_6926 = false ;
-        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 136)) ;
+      if (loop_7987 && (0 == variant_7987)) {
+        loop_7987 = false ;
+        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 171)) ;
       }
-      if (loop_6926) {
-        variant_6926 -- ;
+      if (loop_7987) {
+        variant_7987 -- ;
         enumGalgasBool test_7 = kBoolTrue ;
         if (kBoolTrue == test_7) {
           const GALGAS_overridingAbstractExtensionSetterAST temp_8 = this ;
-          test_7 = extensionGetter_definition (var_superType_6772, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 138)).readProperty_setterMap ().getter_hasKey (temp_8.readProperty_mOverridingExtensionSetterName ().readProperty_string () COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 138)).boolEnum () ;
+          test_7 = extensionGetter_definition (var_superType_7827, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 173)).readProperty_setterMap ().getter_hasKey (temp_8.readProperty_mOverridingExtensionSetterName ().readProperty_string () COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 173)).boolEnum () ;
           if (kBoolTrue == test_7) {
-            GALGAS_methodQualifier var_qualifier_7230 ;
+            GALGAS_methodQualifier var_qualifier_8297 ;
             const GALGAS_overridingAbstractExtensionSetterAST temp_9 = this ;
-            GALGAS_methodKind joker_7199 ; // Joker input parameter
-            GALGAS_bool joker_7222 ; // Joker input parameter
-            GALGAS_string joker_7240 ; // Joker input parameter
-            extensionGetter_definition (var_superType_6772, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 139)).readProperty_setterMap ().method_searchKey (temp_9.readProperty_mOverridingExtensionSetterName (), joker_7199, var_inheritedSignature_6822, joker_7222, var_qualifier_7230, joker_7240, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 139)) ;
+            GALGAS_methodKind joker_8266 ; // Joker input parameter
+            GALGAS_bool joker_8289 ; // Joker input parameter
+            GALGAS_string joker_8307 ; // Joker input parameter
+            extensionGetter_definition (var_superType_7827, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 174)).readProperty_setterMap ().method_searchKey (temp_9.readProperty_mOverridingExtensionSetterName (), joker_8266, var_inheritedSignature_7879, joker_8289, var_qualifier_8297, joker_8307, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 174)) ;
             enumGalgasBool test_10 = kBoolTrue ;
             if (kBoolTrue == test_10) {
-              test_10 = GALGAS_bool (ComparisonKind::lowerOrEqual, var_qualifier_7230.objectCompare (GALGAS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 140)))).boolEnum () ;
+              test_10 = GALGAS_bool (ComparisonKind::lowerOrEqual, var_qualifier_8297.objectCompare (GALGAS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 175)))).boolEnum () ;
               if (kBoolTrue == test_10) {
-                var_baseTypeName_6727 = extensionGetter_definition (var_superType_6772, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 141)).readProperty_typeName ().readProperty_string () ;
+                var_baseTypeName_7780 = extensionGetter_definition (var_superType_7827, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 176)).readProperty_typeName ().readProperty_string () ;
               }
             }
           }
         }
-        var_superType_6772 = extensionGetter_definition (var_superType_6772, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 144)).readProperty_superType () ;
+        var_superType_7827 = extensionGetter_definition (var_superType_7827, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 179)).readProperty_superType () ;
       }
     }
   }
   enumGalgasBool test_11 = kBoolTrue ;
   if (kBoolTrue == test_11) {
-    test_11 = GALGAS_bool (ComparisonKind::equal, var_baseTypeName_6727.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    test_11 = GALGAS_bool (ComparisonKind::equal, var_baseTypeName_7780.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_11) {
       const GALGAS_overridingAbstractExtensionSetterAST temp_12 = this ;
       TC_Array <FixItDescription> fixItArray13 ;
-      inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("this setter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 147)) ;
+      inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionSetterName ().readProperty_location (), GALGAS_string ("this setter is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 182)) ;
     }
   }
-  GALGAS_localVarManager var_variableMap_7604 = GALGAS_localVarManager::class_func_new (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 150)) ;
-  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_7799 ;
+  GALGAS_localVarManager var_variableMap_8693 = GALGAS_localVarManager::class_func_new (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 185)) ;
+  GALGAS_formalParameterListForGeneration var_formalParameterListForGeneration_8900 ;
   {
   const GALGAS_overridingAbstractExtensionSetterAST temp_14 = this ;
-  routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (constinArgument_inSemanticContext, ioArgument_ioTypeMap, temp_14.readProperty_mOverridingExtensionSetterFormalParameterList (), var_variableMap_7604, var_formalParameterListForGeneration_7799, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 151)) ;
+  routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (constinArgument_inSemanticContext, ioArgument_ioTypeMap, temp_14.readProperty_mOverridingExtensionSetterFormalParameterList (), var_variableMap_8693, var_formalParameterListForGeneration_8900, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 186)) ;
   }
   enumGalgasBool test_15 = kBoolTrue ;
   if (kBoolTrue == test_15) {
-    test_15 = GALGAS_bool (ComparisonKind::notEqual, var_baseTypeName_6727.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    test_15 = GALGAS_bool (ComparisonKind::notEqual, var_baseTypeName_7780.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_15) {
       {
       const GALGAS_overridingAbstractExtensionSetterAST temp_16 = this ;
-      routine_checkMethodSignatures_3F__3F__3F__3F_ (var_formalParameterListForGeneration_7799, temp_16.readProperty_mOverridingExtensionSetterName ().readProperty_location (), var_inheritedSignature_6822, var_inheritedDeclarationLocation_6878, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 160)) ;
+      routine_checkMethodSignatures_3F__3F__3F__3F_ (var_formalParameterListForGeneration_8900, temp_16.readProperty_mOverridingExtensionSetterName ().readProperty_location (), var_inheritedSignature_7879, var_inheritedDeclarationLocation_7937, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 195)) ;
       }
     }
   }
@@ -3512,7 +3512,7 @@ void cPtr_overridingAbstractExtensionSetterAST::method_buildExtensionListMaps (G
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_overridingAbstractExtensionSetterAST temp_0 = this ;
   const GALGAS_overridingAbstractExtensionSetterAST temp_1 = this ;
-  ioArgument_ioOverridingAbstractExtensionSetterListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mOverridingExtensionSetterName ()  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 186)) ;
+  ioArgument_ioOverridingAbstractExtensionSetterListMap.addAssign_operation (temp_0.readProperty_mTypeName ().readProperty_string (), temp_1.readProperty_mOverridingExtensionSetterName ()  COMMA_SOURCE_FILE ("extension-overriding-abstract-setter.galgas", 219)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //

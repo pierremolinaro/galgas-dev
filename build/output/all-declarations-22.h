@@ -271,7 +271,7 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionComponentForGeneration (const class cPtr_optionComponentForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_mIsPredefined (void) const ;
 
   public: class GALGAS_string readProperty_mOptionComponentName (void) const ;
@@ -478,7 +478,7 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 //--------------------------------- Constructor from pointer
   public: GALGAS_boolsetTypeForGeneration (const class cPtr_boolsetTypeForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
 
 //-- Start of type generic part

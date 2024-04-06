@@ -76,7 +76,7 @@ class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionFor
 //--------------------------------- Constructor from pointer
   public: GALGAS_repeatInstructionForGeneration (const class cPtr_repeatInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mSyntaxComponentName (void) const ;
 
   public: class GALGAS_uint readProperty_mChoiceIndex (void) const ;
@@ -268,7 +268,7 @@ class GALGAS_selectInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_selectInstruction (const class cPtr_selectInstruction * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_listOfSyntaxInstructionList readProperty_mSelectBranchList (void) const ;
 
   public: class GALGAS_location readProperty_mEndOf_5F_select_5F_instruction (void) const ;
@@ -448,7 +448,7 @@ class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionFor
 //--------------------------------- Constructor from pointer
   public: GALGAS_selectInstructionForGeneration (const class cPtr_selectInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mSyntaxComponentName (void) const ;
 
   public: class GALGAS_uint readProperty_mChoiceIndex (void) const ;
@@ -628,7 +628,7 @@ class GALGAS_terminalCheckInstructionAST : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_terminalCheckInstructionAST (const class cPtr_terminalCheckInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTerminalName (void) const ;
 
   public: class GALGAS_actualInputParameterListAST readProperty_mActualInputParameterList (void) const ;
@@ -826,7 +826,7 @@ class GALGAS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_refe
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractSyntaxInstructionForGrammarAnalysis (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mStartLocation (void) const ;
 
 //-- Start of type generic part
@@ -936,7 +936,7 @@ class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstruc
 //--------------------------------- Constructor from pointer
   public: GALGAS_terminalCheckInstructionForGeneration (const class cPtr_terminalCheckInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTerminalName (void) const ;
 
   public: class GALGAS_string readProperty_mLexiqueIdentifier (void) const ;
@@ -1134,7 +1134,7 @@ class GALGAS_parseLoopInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_parseLoopInstruction (const class cPtr_parseLoopInstruction * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionAST readProperty_mVariantExpression (void) const ;
 
   public: class GALGAS_location readProperty_mEndOfVariantExpression (void) const ;
@@ -1338,7 +1338,7 @@ class GALGAS_parseLoopInstructionForGeneration : public GALGAS_syntaxInstruction
 //--------------------------------- Constructor from pointer
   public: GALGAS_parseLoopInstructionForGeneration (const class cPtr_parseLoopInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionForGeneration readProperty_mVariantExpression (void) const ;
 
   public: class GALGAS_semanticExpressionForGeneration readProperty_mWhileExpression (void) const ;
@@ -1514,7 +1514,7 @@ class GALGAS_parseRewindInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_parseRewindInstruction (const class cPtr_parseRewindInstruction * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_listOfSyntaxInstructionList readProperty_mParseRewindBranchList (void) const ;
 
   public: class GALGAS_location readProperty_mEndOfParseDoInstruction (void) const ;
@@ -1694,7 +1694,7 @@ class GALGAS_parseRewindInstructionForGeneration : public GALGAS_syntaxInstructi
 //--------------------------------- Constructor from pointer
   public: GALGAS_parseRewindInstructionForGeneration (const class cPtr_parseRewindInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_listOfSemanticInstructionListForGeneration readProperty_mListOfSemanticInstructionListForGeneration (void) const ;
 
 //-- Start of type generic part
@@ -1858,7 +1858,7 @@ class GALGAS_parseWhenInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_parseWhenInstruction (const class cPtr_parseWhenInstruction * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionAST readProperty_mWhenExpression (void) const ;
 
   public: class GALGAS_location readProperty_mEndOfWhenExpression (void) const ;
@@ -2062,7 +2062,7 @@ class GALGAS_parseWhenInstructionForGeneration : public GALGAS_syntaxInstruction
 //--------------------------------- Constructor from pointer
   public: GALGAS_parseWhenInstructionForGeneration (const class cPtr_parseWhenInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionForGeneration readProperty_mWhenExpression (void) const ;
 
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mInstructionList (void) const ;
@@ -2238,7 +2238,7 @@ class GALGAS_syntaxSendInstructionAST : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_syntaxSendInstructionAST (const class cPtr_syntaxSendInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
@@ -2412,7 +2412,7 @@ class GALGAS_syntaxSendInstructionForGeneration : public GALGAS_syntaxInstructio
 //--------------------------------- Constructor from pointer
   public: GALGAS_syntaxSendInstructionForGeneration (const class cPtr_syntaxSendInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
@@ -3557,7 +3557,7 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSy
 //--------------------------------- Constructor from pointer
   public: GALGAS_nonTerminalInstructionForGrammarAnalysis (const class cPtr_nonTerminalInstructionForGrammarAnalysis * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mNonterminalSymbolName (void) const ;
 
   public: class GALGAS_uint readProperty_mNonterminalSymbolIndex (void) const ;
@@ -3892,7 +3892,7 @@ class GALGAS_selectInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 //--------------------------------- Constructor from pointer
   public: GALGAS_selectInstructionForGrammarAnalysis (const class cPtr_selectInstructionForGrammarAnalysis * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_branchListForGrammarAnalysis readProperty_mSelectBranchList (void) const ;
 
   public: class GALGAS_uint readProperty_mAddedNonTerminalSymbolIndex (void) const ;
@@ -4012,7 +4012,7 @@ class GALGAS_repeatInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 //--------------------------------- Constructor from pointer
   public: GALGAS_repeatInstructionForGrammarAnalysis (const class cPtr_repeatInstructionForGrammarAnalysis * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_branchListForGrammarAnalysis readProperty_mRepeatBranchList (void) const ;
 
   public: class GALGAS_uint readProperty_mAddedNonTerminalSymbolIndex (void) const ;

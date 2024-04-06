@@ -1276,7 +1276,7 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexiqueComponentAST (const class cPtr_lexiqueComponentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mLexiqueComponentName (void) const ;
 
   public: class GALGAS_bool readProperty_mIsTemplate (void) const ;

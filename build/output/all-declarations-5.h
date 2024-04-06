@@ -76,7 +76,7 @@ class GALGAS_stringPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_stringPredefinedTypeAST (const class cPtr_stringPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -263,7 +263,7 @@ class GALGAS_timerPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_timerPredefinedTypeAST (const class cPtr_timerPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -435,7 +435,7 @@ class GALGAS_typePredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_typePredefinedTypeAST (const class cPtr_typePredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -602,7 +602,7 @@ class GALGAS_uintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_uintPredefinedTypeAST (const class cPtr_uintPredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -774,7 +774,7 @@ class GALGAS_uint_36__34_PredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_uint_36__34_PredefinedTypeAST (const class cPtr_uint_36__34_PredefinedTypeAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1077,7 +1077,7 @@ class GALGAS_actualParameterAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_actualParameterAST (const class cPtr_actualParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2585,7 +2585,7 @@ class GALGAS_outputActualParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputActualParameterAST (const class cPtr_outputActualParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_semanticExpressionAST readProperty_mOutputActualParameterExpression (void) const ;
@@ -2772,7 +2772,7 @@ class GALGAS_outputInputActualParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputInputActualParameterAST (const class cPtr_outputInputActualParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_lstring readProperty_mOutputInputActualParameterName (void) const ;
@@ -2959,7 +2959,7 @@ class GALGAS_outputInputSingleJokerParameterAST : public GALGAS_actualParameterA
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputInputSingleJokerParameterAST (const class cPtr_outputInputSingleJokerParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
 //-- Start of type generic part
@@ -3134,7 +3134,7 @@ class GALGAS_outputInputSelfParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputInputSelfParameterAST (const class cPtr_outputInputSelfParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
 //-- Start of type generic part
@@ -3309,7 +3309,7 @@ class GALGAS_outputInputJokerParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputInputJokerParameterAST (const class cPtr_outputInputJokerParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mQualifierLocation (void) const ;
 
   public: class GALGAS_uint readProperty_mJokerIndex (void) const ;
@@ -3490,7 +3490,7 @@ class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParam
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputActualExistingVariableParameterAST (const class cPtr_inputActualExistingVariableParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_lstring readProperty_mInputActualParameterName (void) const ;
@@ -3677,7 +3677,7 @@ class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameter
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputActualSelfPropertyParameterAST (const class cPtr_inputActualSelfPropertyParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_lstring readProperty_mInputActualSelfPropertyName (void) const ;
@@ -3864,7 +3864,7 @@ class GALGAS_inputActualSelfParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputActualSelfParameterAST (const class cPtr_inputActualSelfParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_location readProperty_mSelfLocation (void) const ;
@@ -4051,7 +4051,7 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputActualNewVariableParameterAST (const class cPtr_inputActualNewVariableParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_lstring readProperty_mInputOptionalActualTypeName (void) const ;
@@ -4244,7 +4244,7 @@ class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterA
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputActualNewConstantParameterAST (const class cPtr_inputActualNewConstantParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_lstring readProperty_mInputOptionalActualTypeName (void) const ;
@@ -4443,7 +4443,7 @@ class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterA
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputSingleJokerActualParameterAST (const class cPtr_inputSingleJokerActualParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
   public: class GALGAS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
@@ -4624,7 +4624,7 @@ class GALGAS_inputJokerActualParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputJokerActualParameterAST (const class cPtr_inputJokerActualParameterAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mQualifierLocation (void) const ;
 
   public: class GALGAS_uint readProperty_mJokerIndex (void) const ;
@@ -4805,7 +4805,7 @@ class GALGAS_externProcedureDeclarationAST : public GALGAS_semanticDeclarationAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_externProcedureDeclarationAST (const class cPtr_externProcedureDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_isFilePrivate (void) const ;
 
   public: class GALGAS_lstring readProperty_mRoutineName (void) const ;
@@ -5005,7 +5005,7 @@ class GALGAS_procDeclarationAST : public GALGAS_externProcedureDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_procDeclarationAST (const class cPtr_procDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticInstructionListAST readProperty_mRoutineInstructionList (void) const ;
 
   public: class GALGAS_location readProperty_mEndOfRoutineInstructionList (void) const ;
@@ -5288,7 +5288,7 @@ class GALGAS_abstractInputParameter : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractInputParameter (const class cPtr_abstractInputParameter * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5433,7 +5433,7 @@ class GALGAS_inputParameterAnonymousVariable : public GALGAS_abstractInputParame
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputParameterAnonymousVariable (const class cPtr_inputParameterAnonymousVariable * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5584,7 +5584,7 @@ class GALGAS_inputParameterVariable : public GALGAS_abstractInputParameter {
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputParameterVariable (const class cPtr_inputParameterVariable * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualParameterName (void) const ;
 
 //-- Start of type generic part
@@ -5741,7 +5741,7 @@ class GALGAS_inputParameterDeclaredVariable : public GALGAS_abstractInputParamet
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputParameterDeclaredVariable (const class cPtr_inputParameterDeclaredVariable * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualParameterTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mActualParameterName (void) const ;
@@ -5904,7 +5904,7 @@ class GALGAS_inputParameterDeclaredConstant : public GALGAS_abstractInputParamet
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputParameterDeclaredConstant (const class cPtr_inputParameterDeclaredConstant * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualParameterTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mActualParameterName (void) const ;
@@ -6639,7 +6639,7 @@ class GALGAS_externFunctionDeclarationAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_externFunctionDeclarationAST (const class cPtr_externFunctionDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mFunctionName (void) const ;
 
   public: class GALGAS_formalInputParameterListAST readProperty_mFormalArgumentList (void) const ;
@@ -6839,7 +6839,7 @@ class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionDeclarationAST (const class cPtr_functionDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mResultVariableName (void) const ;
 
   public: class GALGAS_semanticInstructionListAST readProperty_mFunctionInstructionList (void) const ;
@@ -7030,7 +7030,7 @@ class GALGAS_onceFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_onceFunctionDeclarationAST (const class cPtr_onceFunctionDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mFunctionName (void) const ;
 
   public: class GALGAS_lstring readProperty_mResultTypeName (void) const ;
@@ -8031,7 +8031,7 @@ class GALGAS_filewrapperDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperDeclarationAST (const class cPtr_filewrapperDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_mIsInternal (void) const ;
 
   public: class GALGAS_string readProperty_mSourceFileAbsolutePath (void) const ;
@@ -9827,7 +9827,7 @@ class GALGAS_galgas_33_SyntaxComponentAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_galgas_33_SyntaxComponentAST (const class cPtr_galgas_33_SyntaxComponentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mSyntaxComponentName (void) const ;
 
   public: class GALGAS_lstring readProperty_mLexiqueName (void) const ;
@@ -10033,7 +10033,7 @@ class GALGAS_galgas_33_GrammarComponentAST : public GALGAS_semanticDeclarationAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_galgas_33_GrammarComponentAST (const class cPtr_galgas_33_GrammarComponentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lbool readProperty_mHasIndexing (void) const ;
 
   public: class GALGAS_lstring readProperty_mGrammarComponentName (void) const ;

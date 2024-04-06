@@ -10,6 +10,119 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @routinePrototypeDeclarationForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_routinePrototypeDeclarationForGeneration : public GALGAS_semanticDeclarationWithHeaderForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_routinePrototypeDeclarationForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_routinePrototypeDeclarationForGeneration (const class cPtr_routinePrototypeDeclarationForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_string readProperty_routineMangledName (void) const ;
+
+  public: class GALGAS_formalParameterListForGeneration readProperty_mFormalArgumentList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_routinePrototypeDeclarationForGeneration init_28_generateHeader_2C_implementationCppFileName_2C_routineMangledName_2C__29_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                                    const class GALGAS_string & inOperand1,
+                                                                                                                                                    const class GALGAS_string & inOperand2,
+                                                                                                                                                    const class GALGAS_formalParameterListForGeneration & inOperand3,
+                                                                                                                                                    Compiler * inCompiler
+                                                                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_routinePrototypeDeclarationForGeneration extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_routinePrototypeDeclarationForGeneration class_func_new (const class GALGAS_bool & inOperand0,
+                                                                                       const class GALGAS_string & inOperand1,
+                                                                                       const class GALGAS_string & inOperand2,
+                                                                                       const class GALGAS_formalParameterListForGeneration & inOperand3
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_routinePrototypeDeclarationForGeneration class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @routinePrototypeDeclarationForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+//--- Extension getter headerKind
+  public: virtual class GALGAS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method appendDeclaration1
+  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_string & arg_outHeader,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_string mProperty_routineMangledName ;
+  public: GALGAS_formalParameterListForGeneration mProperty_mFormalArgumentList ;
+
+
+//--- Default constructor
+  public: cPtr_routinePrototypeDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_generateHeader,
+                                                         const GALGAS_string & in_implementationCppFileName,
+                                                         const GALGAS_string & in_routineMangledName,
+                                                         const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
+
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @routinePrototypeDeclarationForGeneration_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -76,7 +189,7 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
 //--------------------------------- Constructor from pointer
   public: GALGAS_routineImplementationForGeneration (const class cPtr_routineImplementationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_mGenerateStatic (void) const ;
 
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mRoutineInstructionList (void) const ;
@@ -305,7 +418,7 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexiqueDeclarationForGeneration (const class cPtr_lexiqueDeclarationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mLexiqueName (void) const ;
 
   public: class GALGAS_string readProperty_mSuperLexiqueName (void) const ;
@@ -515,7 +628,7 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionPrototypeDeclarationForGeneration (const class cPtr_functionPrototypeDeclarationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mFunctionName (void) const ;
 
   public: class GALGAS_formalInputParameterListForGeneration readProperty_mFormalArgumentList (void) const ;
@@ -689,7 +802,7 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
 //--------------------------------- Constructor from pointer
   public: GALGAS_functionImplementationForGeneration (const class cPtr_functionImplementationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mResultVariableCppName (void) const ;
 
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mFunctionInstructionList (void) const ;
@@ -864,7 +977,7 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Constructor from pointer
   public: GALGAS_onceFunctionDeclarationForGeneration (const class cPtr_onceFunctionDeclarationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mFunctionName (void) const ;
 
   public: class GALGAS_unifiedTypeMapEntry readProperty_mReturnType (void) const ;
@@ -1050,7 +1163,7 @@ class GALGAS_filewrapperDeclarationForGeneration : public GALGAS_semanticDeclara
 //--------------------------------- Constructor from pointer
   public: GALGAS_filewrapperDeclarationForGeneration (const class cPtr_filewrapperDeclarationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mFilewrapperName (void) const ;
 
   public: class GALGAS_string readProperty_mFilewrapperAbsolutePath (void) const ;
@@ -1242,7 +1355,7 @@ class GALGAS_programComponentForGeneration : public GALGAS_semanticDeclarationWi
 //--------------------------------- Constructor from pointer
   public: GALGAS_programComponentForGeneration (const class cPtr_programComponentForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_stringset readProperty_mInclusionSet (void) const ;
 
   public: class GALGAS_string readProperty_mImplementationString (void) const ;
@@ -1427,7 +1540,7 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
 //--------------------------------- Constructor from pointer
   public: GALGAS_grammarForGeneration (const class cPtr_grammarForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mGrammarName (void) const ;
 
   public: class GALGAS_string readProperty_mLexiqueName (void) const ;
@@ -1646,7 +1759,7 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
 //--------------------------------- Constructor from pointer
   public: GALGAS_primitiveTypeForGeneration (const class cPtr_primitiveTypeForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mPredefinedTypeName (void) const ;
 
   public: class GALGAS_string readProperty_mCppDeclarationString (void) const ;

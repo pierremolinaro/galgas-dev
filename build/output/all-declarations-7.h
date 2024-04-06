@@ -633,7 +633,7 @@ class GALGAS_castInExpressionForGeneration : public GALGAS_semanticExpressionFor
 //--------------------------------- Constructor from pointer
   public: GALGAS_castInExpressionForGeneration (const class cPtr_castInExpressionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionForGeneration readProperty_mReceiverExpression (void) const ;
 
   public: class GALGAS_string readProperty_mTypeName (void) const ;
@@ -807,7 +807,7 @@ class GALGAS_actualParameterForGeneration : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_actualParameterForGeneration (const class cPtr_actualParameterForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_unifiedTypeMapEntry readProperty_mFormalArgumentType (void) const ;
 
 //-- Start of type generic part
@@ -992,7 +992,7 @@ class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterF
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputActualParameterForGeneration (const class cPtr_outputActualParameterForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionForGeneration readProperty_mOutputActualParameterExpression (void) const ;
 
 //-- Start of type generic part
@@ -1158,7 +1158,7 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
 //--------------------------------- Constructor from pointer
   public: GALGAS_outputInputActualParameterForGeneration (const class cPtr_outputInputActualParameterForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mOutputInputVariableCppName (void) const ;
 
   public: class GALGAS_lstringlist readProperty_mStructAttributeList (void) const ;
@@ -1336,7 +1336,7 @@ class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterFo
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputActualParameterForGeneration (const class cPtr_inputActualParameterForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mInputActualCppName (void) const ;
 
   public: class GALGAS__32_stringlist readProperty_mPoisonedVarNameList (void) const ;
@@ -1508,7 +1508,7 @@ class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterFor
 //--------------------------------- Constructor from pointer
   public: GALGAS_inputJokerParameterForGeneration (const class cPtr_inputJokerParameterForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mInputActualCppName (void) const ;
 
   public: class GALGAS__32_stringlist readProperty_mPoisonedVarNameList (void) const ;
@@ -1829,7 +1829,7 @@ class GALGAS_semanticBlockInstructionForGeneration : public GALGAS_semanticInstr
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticBlockInstructionForGeneration (const class cPtr_semanticBlockInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticInstructionListForGeneration readProperty_mInstructionList (void) const ;
 
 //-- Start of type generic part
@@ -2232,7 +2232,7 @@ class GALGAS_semanticDeclarationForGeneration : public AC_GALGAS_reference_class
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticDeclarationForGeneration (const class cPtr_semanticDeclarationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3992,7 +3992,7 @@ class GALGAS_syntaxInstructionForGeneration : public GALGAS_semanticInstructionF
 //--------------------------------- Constructor from pointer
   public: GALGAS_syntaxInstructionForGeneration (const class cPtr_syntaxInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mInstructionLocation (void) const ;
 
 //-- Start of type generic part
@@ -5089,7 +5089,7 @@ class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult : public 
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -6660,7 +6660,7 @@ class GALGAS_syntaxDeclarationForGeneration : public GALGAS_semanticDeclarationF
 //--------------------------------- Constructor from pointer
   public: GALGAS_syntaxDeclarationForGeneration (const class cPtr_syntaxDeclarationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mSyntaxComponentName (void) const ;
 
   public: class GALGAS_string readProperty_mLexiqueName (void) const ;

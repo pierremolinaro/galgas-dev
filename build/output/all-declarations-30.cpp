@@ -3616,8 +3616,8 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       GALGAS_string var_newIntermediateFilePath_26506 = constinArgument_inAbsoluteBuildDirectory.add_operation (GALGAS_string ("/output/file-list-for-xcode-project.txt"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 539)) ;
       ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list-for-xcode-project.txt")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 540)) ;
       GALGAS_XcodeProjectDescriptor var_xcodeProject_26760 = GALGAS_XcodeProjectDescriptor::class_func_new (inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 542)) ;
-      var_xcodeProject_26760.setter_setMApplicationBundleName (var_applicationBundleBase_24931 COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 543)) ;
-      var_xcodeProject_26760.setter_setMProjectName (constinArgument_inTargetName COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 544)) ;
+      var_xcodeProject_26760.mProperty_mApplicationBundleName = var_applicationBundleBase_24931 ;
+      var_xcodeProject_26760.mProperty_mProjectName = constinArgument_inTargetName ;
       GALGAS_string var_headerSearchPaths_26920 = GALGAS_string ("HEADER_SEARCH_PATHS = (\"../").add_operation (constinArgument_inBuildDirectoryName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 545)).add_operation (GALGAS_string ("/output\", \"../"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 546)).add_operation (constinArgument_inBuildDirectoryName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 546)).add_operation (GALGAS_string ("/libpm\", \"../"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 546)).add_operation (constinArgument_inBuildDirectoryName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 547)).add_operation (GALGAS_string ("/user-headers\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 548)) ;
       cEnumerator_stringset enumerator_27140 (constinArgument_inHandCodedSourceDirectorySet, EnumerationOrder::up) ;
       while (enumerator_27140.hasCurrentObject ()) {

@@ -21,7 +21,7 @@ class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalStringMatchAST (const class cPtr_lexicalStringMatchAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mString (void) const ;
 
 //-- Start of type generic part
@@ -185,7 +185,7 @@ class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalStringNotMatchAST (const class cPtr_lexicalStringNotMatchAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mString (void) const ;
 
   public: class GALGAS_lstring readProperty_mErrorMessage (void) const ;
@@ -602,7 +602,7 @@ class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSendDefaultActionAST (const class cPtr_lexicalSendDefaultActionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -754,7 +754,7 @@ class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultA
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSendTerminalByDefaultAST (const class cPtr_lexicalSendTerminalByDefaultAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mDefaultSentTerminal (void) const ;
 
 //-- Start of type generic part
@@ -918,7 +918,7 @@ class GALGAS_lexicalErrorByDefaultAST : public GALGAS_lexicalSendDefaultActionAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalErrorByDefaultAST (const class cPtr_lexicalErrorByDefaultAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mDefaultErrorMessageName (void) const ;
 
 //-- Start of type generic part
@@ -1576,7 +1576,7 @@ class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_r
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1946,7 +1946,7 @@ class GALGAS_lexicalAttributeInputArgumentAST : public GALGAS_lexicalRoutineOrFu
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalAttributeInputArgumentAST (const class cPtr_lexicalAttributeInputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mAttributeName (void) const ;
 
 //-- Start of type generic part
@@ -2113,7 +2113,7 @@ class GALGAS_lexicalCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFu
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterInputArgumentAST (const class cPtr_lexicalCharacterInputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lchar readProperty_mCharacter (void) const ;
 
 //-- Start of type generic part
@@ -2280,7 +2280,7 @@ class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFun
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalUnsignedInputArgumentAST (const class cPtr_lexicalUnsignedInputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lbigint readProperty_mUnsigned (void) const ;
 
 //-- Start of type generic part
@@ -2447,7 +2447,7 @@ class GALGAS_lexicalCurrentCharacterInputArgumentAST : public GALGAS_lexicalRout
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCurrentCharacterInputArgumentAST (const class cPtr_lexicalCurrentCharacterInputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of type generic part
@@ -2614,7 +2614,7 @@ class GALGAS_lexicalFunctionInputArgumentAST : public GALGAS_lexicalRoutineOrFun
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFunctionInputArgumentAST (const class cPtr_lexicalFunctionInputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mFunctionName (void) const ;
 
   public: class GALGAS_lexicalFunctionCallActualArgumentListAST readProperty_mFunctionActualArgumentList (void) const ;
@@ -7897,7 +7897,7 @@ class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstruct
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalStructuredSendInstructionAST (const class cPtr_lexicalStructuredSendInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lexicalSendSearchListAST readProperty_mLexicalSendSearchList (void) const ;
 
   public: class GALGAS_lexicalSendDefaultActionAST readProperty_mLexicalSendDefaultAction (void) const ;
@@ -8074,7 +8074,7 @@ class GALGAS_lexicalDropInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalDropInstructionAST (const class cPtr_lexicalDropInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTerminalName (void) const ;
 
 //-- Start of type generic part
@@ -8245,7 +8245,7 @@ class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalErrorInstructionAST (const class cPtr_lexicalErrorInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mErrorMessageName (void) const ;
 
 //-- Start of type generic part
@@ -8416,7 +8416,7 @@ class GALGAS_lexicalLogInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalLogInstructionAST (const class cPtr_lexicalLogInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -8581,7 +8581,7 @@ class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRepeatInstructionAST (const class cPtr_lexicalRepeatInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lexicalInstructionListAST readProperty_mRepeatedInstructionList (void) const ;
 
   public: class GALGAS_lexicalWhileBranchListAST readProperty_mLexicalWhileBranchList (void) const ;
@@ -8764,7 +8764,7 @@ class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRewindInstructionAST (const class cPtr_lexicalRewindInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mLexicalTagName (void) const ;
 
   public: class GALGAS_lstring readProperty_mTerminalName (void) const ;
@@ -8941,7 +8941,7 @@ class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_referenc
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractLexicalRoutineActualArgumentAST (const class cPtr_abstractLexicalRoutineActualArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mActualPassingModeLocation (void) const ;
 
 //-- Start of type generic part
@@ -9099,7 +9099,7 @@ class GALGAS_lexicalAttributeInputOutputArgumentAST : public GALGAS_abstractLexi
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalAttributeInputOutputArgumentAST (const class cPtr_lexicalAttributeInputOutputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mAttributeName (void) const ;
 
 //-- Start of type generic part
@@ -9267,7 +9267,7 @@ class GALGAS_lexicalFormalInputArgumentAST : public GALGAS_abstractLexicalRoutin
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalFormalInputArgumentAST (const class cPtr_lexicalFormalInputArgumentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST readProperty_mRoutineOrFunctionFormalInputArgument (void) const ;
 
 //-- Start of type generic part
@@ -9650,7 +9650,7 @@ class GALGAS_lexicalRoutineCallInstructionAST : public GALGAS_lexicalInstruction
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalRoutineCallInstructionAST (const class cPtr_lexicalRoutineCallInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mRoutineName (void) const ;
 
   public: class GALGAS_lexicalRoutineCallActualArgumentListAST readProperty_mActualArgumentList (void) const ;
@@ -9878,7 +9878,7 @@ class GALGAS_lexicalSelectInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSelectInstructionAST (const class cPtr_lexicalSelectInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lexicalSelectBranchListAST readProperty_mLexicalSelectBranchList (void) const ;
 
   public: class GALGAS_lexicalInstructionListAST readProperty_mDefaultInstructionList (void) const ;
@@ -10055,7 +10055,7 @@ class GALGAS_lexicalSimpleSendInstructionAST : public GALGAS_lexicalInstructionA
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalSimpleSendInstructionAST (const class cPtr_lexicalSimpleSendInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mSentTerminal (void) const ;
 
 //-- Start of type generic part
@@ -10226,7 +10226,7 @@ class GALGAS_lexicalTagInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalTagInstructionAST (const class cPtr_lexicalTagInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mLexicalTagName (void) const ;
 
 //-- Start of type generic part
@@ -10397,7 +10397,7 @@ class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalWarningInstructionAST (const class cPtr_lexicalWarningInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mWarningMessageName (void) const ;
 
 //-- Start of type generic part
@@ -11057,7 +11057,7 @@ class GALGAS_optionComponentDeclarationAST : public GALGAS_semanticDeclarationAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_optionComponentDeclarationAST (const class cPtr_optionComponentDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mOptionComponentName (void) const ;
 
   public: class GALGAS_commandLineOptionListAST readProperty_mOptions (void) const ;

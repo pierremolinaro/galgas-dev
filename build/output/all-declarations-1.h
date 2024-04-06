@@ -21,7 +21,7 @@ class GALGAS_templateInstructionForGeneration : public AC_GALGAS_reference_class
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionForGeneration (const class cPtr_templateInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -165,7 +165,7 @@ class GALGAS_semanticExpressionForGeneration : public AC_GALGAS_reference_class 
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticExpressionForGeneration (const class cPtr_semanticExpressionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
 
   public: class GALGAS_location readProperty_mLocation (void) const ;
@@ -306,8 +306,10 @@ class GALGAS_unifiedTypeMapElementClass : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_unifiedTypeMapElementClass (const class cPtr_unifiedTypeMapElementClass * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_typeDefinition readProperty_mDefinition (void) const ;
+
+  public: void setProperty_mDefinition (const class GALGAS_typeDefinition & inValue) ;
 
 //-- Start of type generic part
 
@@ -3452,7 +3454,7 @@ class GALGAS_templateInstructionExpressionForGeneration : public GALGAS_template
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionExpressionForGeneration (const class cPtr_templateInstructionExpressionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
@@ -3823,7 +3825,7 @@ class GALGAS_templateBlockInstructionForGeneration : public GALGAS_templateInstr
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateBlockInstructionForGeneration (const class cPtr_templateBlockInstructionForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
 
   public: class GALGAS_location readProperty_mLocation (void) const ;
@@ -3991,7 +3993,7 @@ class GALGAS_templateInstructionGetColumnLocationForGeneration : public GALGAS_t
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionGetColumnLocationForGeneration (const class cPtr_templateInstructionGetColumnLocationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4141,7 +4143,7 @@ class GALGAS_templateInstructionGotoColumnLocationForGeneration : public GALGAS_
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionGotoColumnLocationForGeneration (const class cPtr_templateInstructionGotoColumnLocationForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -4538,7 +4540,7 @@ class GALGAS_templateInstructionIfForGeneration : public GALGAS_templateInstruct
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionIfForGeneration (const class cPtr_templateInstructionIfForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateInstructionIfBranchListForGeneration readProperty_mTemplateInstructionIfBranchList (void) const ;
 
   public: class GALGAS_templateInstructionListForGeneration readProperty_mElseInstructionList (void) const ;
@@ -6987,7 +6989,7 @@ class GALGAS_templateGetterCallInExpressionAST : public GALGAS_templateExpressio
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateGetterCallInExpressionAST (const class cPtr_templateGetterCallInExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateExpressionAST readProperty_mReceiverExpression (void) const ;
 
   public: class GALGAS_lstring readProperty_mGetterName (void) const ;
@@ -7327,7 +7329,7 @@ class GALGAS_templateInstructionForeachAST : public GALGAS_templateInstructionAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionForeachAST (const class cPtr_templateInstructionForeachAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_mIsAscending (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
@@ -7525,7 +7527,7 @@ class GALGAS_templateInstructionForeachForGeneration : public GALGAS_templateIns
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionForeachForGeneration (const class cPtr_templateInstructionForeachForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_mIsAscending (void) const ;
 
   public: class GALGAS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
@@ -8313,7 +8315,7 @@ class GALGAS_templateInstructionSwitchAST : public GALGAS_templateInstructionAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionSwitchAST (const class cPtr_templateInstructionSwitchAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateExpressionAST readProperty_mSwitchExpression (void) const ;
 
   public: class GALGAS_location readProperty_mSwitchExpressionEndLocation (void) const ;
@@ -9071,7 +9073,7 @@ class GALGAS_templateInstructionSwitchForGeneration : public GALGAS_templateInst
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionSwitchForGeneration (const class cPtr_templateInstructionSwitchForGeneration * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_unifiedTypeMapEntry readProperty_mEnumType (void) const ;
 
   public: class GALGAS_semanticExpressionForGeneration readProperty_mSwitchExpression (void) const ;
@@ -9239,7 +9241,7 @@ class GALGAS_semanticDeclarationAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticDeclarationAST (const class cPtr_semanticDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_isPredefined (void) const ;
 
 //-- Start of type generic part
@@ -11944,7 +11946,7 @@ class GALGAS_abstractLexicalRuleAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_abstractLexicalRuleAST (const class cPtr_abstractLexicalRuleAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12428,7 +12430,7 @@ class GALGAS_templateLexiqueComponentAST : public GALGAS_semanticDeclarationAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateLexiqueComponentAST (const class cPtr_templateLexiqueComponentAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mLexiqueComponentName (void) const ;
 
   public: class GALGAS_lstring readProperty_mLexiqueSuperComponentName (void) const ;
@@ -12628,7 +12630,7 @@ class GALGAS_lexicalExpressionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalExpressionAST (const class cPtr_lexicalExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -12780,7 +12782,7 @@ class GALGAS_lexicalInstructionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalInstructionAST (const class cPtr_lexicalInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -13229,7 +13231,7 @@ class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalImplicitRuleAST (const class cPtr_lexicalImplicitRuleAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mListName (void) const ;
 
 //-- Start of type generic part
@@ -13399,7 +13401,7 @@ class GALGAS_lexicalExplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalExplicitRuleAST (const class cPtr_lexicalExplicitRuleAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lexicalExpressionAST readProperty_mLexicalRuleExpression (void) const ;
 
   public: class GALGAS_lexicalInstructionListAST readProperty_mInstructionList (void) const ;
@@ -13781,7 +13783,7 @@ class GALGAS_lexicalOrExpressionAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalOrExpressionAST (const class cPtr_lexicalOrExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lexicalExpressionAST readProperty_mLeftOperand (void) const ;
 
   public: class GALGAS_lexicalExpressionAST readProperty_mRightOperand (void) const ;
@@ -13951,7 +13953,7 @@ class GALGAS_lexicalCharacterSetMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterSetMatchAST (const class cPtr_lexicalCharacterSetMatchAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mCharacterSetName (void) const ;
 
 //-- Start of type generic part
@@ -14115,7 +14117,7 @@ class GALGAS_lexicalCharacterMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterMatchAST (const class cPtr_lexicalCharacterMatchAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lchar readProperty_mCharacter (void) const ;
 
 //-- Start of type generic part
@@ -14279,7 +14281,7 @@ class GALGAS_lexicalCharacterIntervalMatchAST : public GALGAS_lexicalExpressionA
 //--------------------------------- Constructor from pointer
   public: GALGAS_lexicalCharacterIntervalMatchAST (const class cPtr_lexicalCharacterIntervalMatchAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lchar readProperty_mLowerBound (void) const ;
 
   public: class GALGAS_lchar readProperty_mUpperBound (void) const ;

@@ -345,11 +345,11 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     for property in currentClassTypedPropertyList do
       if property.hasSetter then
         [!?setterMap insertKey
-          !@lstring.new {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !@location.here}
+          !.new {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
           !@methodKind.definedAsMember
-          !{!["" nowhere] !property.typeEntry !@formalArgumentPassingModeAST.argumentIn !property.name.string}
+          !{!["" nowhere] !property.typeEntry !.argumentIn !property.name.string}
           !false # Compiler argument
-          !@methodQualifier.isBasicFinal
+          !.isBasicFinal
           !"" # No error message
         ]
       end

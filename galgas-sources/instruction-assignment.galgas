@@ -192,21 +192,14 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Get target variable type
-  var @unifiedTypeMapEntry targetType
-  if self.mOptionalProperty.string == "" then
-    [!?ioVariableMap neutralAccess
-      !self.mTargetVariableName
-      ?targetType
-      ?*
-      ?*
-    ]
-  else
-    [!?ioVariableMap neutralAccess
-      !self.mTargetVariableName
-      ?targetType
-      ?*
-      ?*
-    ]
+  [!?ioVariableMap neutralAccess
+    !self.mTargetVariableName
+    ?let receiverType
+    ?*
+    ?*
+  ]
+  var targetType = receiverType
+  if self.mOptionalProperty.string != "" then
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !self.mOptionalProperty ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfAvailability !self.mOptionalProperty]
@@ -218,7 +211,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   [self.mSourceExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inferenceType:  targetType
+    !inferenceType: targetType
     !inAnalysisContext
     !?ioTypeMap
     !?ioVariableMap
@@ -251,6 +244,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+    !receiverType
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
@@ -293,7 +287,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     [self.mSourceExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
-      !inferenceType:  targetType
+      !inferenceType: targetType
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
@@ -307,6 +301,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
     ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+      !selfType
       !targetType
       !targetVariableCppName
       !inAnalysisContext.selfObjectCppName
@@ -324,43 +319,47 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
+  private let @unifiedTypeMapEntry mReceiverType
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetCppName
   private let @string mNameForCheckingFormalParameterUsing
   private let @string mOptionalProperty
   private let @semanticExpressionForGeneration mSourceExpression
   private let @location mSourceLocation
-}
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @assignmentInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-{
-  [self.mSourceExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let sourceVar
-  ]
-  [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
-#---
-  [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  if self.mOptionalProperty == "" then
-    ioGeneratedCode += self.mTargetCppName + " = " + sourceVar + " ;\n"
-  else
-    ioGeneratedCode += self.mTargetCppName + ".setter_set"
-    ioGeneratedCode += [[self.mOptionalProperty stringByCapitalizingFirstCharacter] identifierRepresentation]
-    ioGeneratedCode += " (" + sourceVar + " COMMA_" + [self.mSourceLocation sourceFile] + ") ;\n"
-  end
-  [!?ioUnusedVariableCppNameSet removeKey !self.mTargetCppName]
+  override method generateInstruction ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      ?let @bool unused inGenerateSyntaxDirectedTranslationString
+                                      ?!@string ioGeneratedCode {
+    [self.mSourceExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let sourceVar
+    ]
+    [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+  #---
+    [self.mTargetType addHeaderFileName !?ioInclusionSet]
+    if self.mOptionalProperty == "" then
+      ioGeneratedCode += self.mTargetCppName + " = " + sourceVar + " ;\n"
+    elsif [[self.mReceiverType definition].typeKind isClassType] then
+      ioGeneratedCode += self.mTargetCppName + ".setProperty_"
+      ioGeneratedCode += [self.mOptionalProperty identifierRepresentation]
+      ioGeneratedCode += " (" + sourceVar + ") ;\n"
+    else
+      ioGeneratedCode += self.mTargetCppName + ".mProperty_"
+      ioGeneratedCode += [self.mOptionalProperty identifierRepresentation]
+      ioGeneratedCode += " = " + sourceVar + " ;\n"
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !self.mTargetCppName]
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

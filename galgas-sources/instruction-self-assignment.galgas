@@ -110,6 +110,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   #--- Generate instruction
     ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
       !selfType
+      !selfType
       !inAnalysisContext.selfObjectCppName
       !inAnalysisContext.selfObjectCppName
       !["" nowhere]

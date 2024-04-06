@@ -21,7 +21,7 @@ class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSynta
 //--------------------------------- Constructor from pointer
   public: GALGAS_terminalInstructionForGrammarAnalysis (const class cPtr_terminalInstructionForGrammarAnalysis * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTerminalSymbolName (void) const ;
 
   public: class GALGAS_uint readProperty_mTerminalSymbolIndex (void) const ;

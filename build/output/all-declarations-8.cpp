@@ -1664,7 +1664,7 @@ void extensionSetter_insertType (GALGAS_unifiedTypeMap & ioObject,
       case GALGAS_typeDefinition::kEnum_unsolved:
         {
           GALGAS_unifiedTypeMapElementClass var_e_3937 = var_element_3782 ;
-          var_e_3937.setter_setMDefinition (GALGAS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 91)) COMMA_SOURCE_FILE ("unified-type-map.galgas", 91)) ;
+          var_e_3937.setProperty_mDefinition (GALGAS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 91))) ;
         }
         break ;
       }

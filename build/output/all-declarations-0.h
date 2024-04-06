@@ -633,7 +633,7 @@ class GALGAS_templateInstructionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionAST (const class cPtr_templateInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -992,7 +992,7 @@ class GALGAS_templateExpressionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateExpressionAST (const class cPtr_templateExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1415,7 +1415,7 @@ class GALGAS_templateClassFunctionAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateClassFunctionAST (const class cPtr_templateClassFunctionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mClassFunctionName (void) const ;
@@ -1583,7 +1583,7 @@ class GALGAS_templateFileWrapperTemplateCallAST : public GALGAS_templateExpressi
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateFileWrapperTemplateCallAST (const class cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mFileWrapperName (void) const ;
 
   public: class GALGAS_lstring readProperty_mTemplateName (void) const ;
@@ -1751,7 +1751,7 @@ class GALGAS_templateExtensionTemplateCallAST : public GALGAS_templateExpression
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateExtensionTemplateCallAST (const class cPtr_templateExtensionTemplateCallAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateExpressionAST readProperty_mExpressionValue (void) const ;
 
   public: class GALGAS_lstring readProperty_mTemplateName (void) const ;
@@ -1919,7 +1919,7 @@ class GALGAS_templateAndOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateAndOperationAST (const class cPtr_templateAndOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -2087,7 +2087,7 @@ class GALGAS_templateOrOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateOrOperationAST (const class cPtr_templateOrOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -2255,7 +2255,7 @@ class GALGAS_templateXorOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateXorOperationAST (const class cPtr_templateXorOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -2423,7 +2423,7 @@ class GALGAS_templateTrueBoolAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateTrueBoolAST (const class cPtr_templateTrueBoolAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of type generic part
@@ -2579,7 +2579,7 @@ class GALGAS_templateFalseBoolAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateFalseBoolAST (const class cPtr_templateFalseBoolAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of type generic part
@@ -2735,7 +2735,7 @@ class GALGAS_templateLiteralStringExpressionAST : public GALGAS_templateExpressi
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateLiteralStringExpressionAST (const class cPtr_templateLiteralStringExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_stringlist readProperty_mLiteralStringList (void) const ;
 
   public: class GALGAS_location readProperty_mLocation (void) const ;
@@ -2897,7 +2897,7 @@ class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpression
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateLiteralUIntExpressionAST (const class cPtr_templateLiteralUIntExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lbigint readProperty_mLiteralInt (void) const ;
 
 //-- Start of type generic part
@@ -3053,7 +3053,7 @@ class GALGAS_templateLiteralCharExpressionAST : public GALGAS_templateExpression
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateLiteralCharExpressionAST (const class cPtr_templateLiteralCharExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lchar readProperty_mLiteralChar (void) const ;
 
 //-- Start of type generic part
@@ -3209,7 +3209,7 @@ class GALGAS_templateLiteralDoubleExpressionAST : public GALGAS_templateExpressi
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateLiteralDoubleExpressionAST (const class cPtr_templateLiteralDoubleExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_ldouble readProperty_mLiteralDouble (void) const ;
 
 //-- Start of type generic part
@@ -3365,7 +3365,7 @@ class GALGAS_structFieldAccessTemplateExpressionAST : public GALGAS_templateExpr
 //--------------------------------- Constructor from pointer
   public: GALGAS_structFieldAccessTemplateExpressionAST (const class cPtr_structFieldAccessTemplateExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
@@ -3533,7 +3533,7 @@ class GALGAS_templateNotOperatorAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateNotOperatorAST (const class cPtr_templateNotOperatorAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
@@ -3695,7 +3695,7 @@ class GALGAS_templateLogicalNegateAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateLogicalNegateAST (const class cPtr_templateLogicalNegateAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
@@ -3857,7 +3857,7 @@ class GALGAS_templateOptionAccessAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateOptionAccessAST (const class cPtr_templateOptionAccessAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mOptionComponentName (void) const ;
 
   public: class GALGAS_lstring readProperty_mOptionName (void) const ;
@@ -4107,7 +4107,7 @@ class GALGAS_templateTestDynamicClassAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateTestDynamicClassAST (const class cPtr_templateTestDynamicClassAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateExpressionAST readProperty_mReceiverExpression (void) const ;
 
   public: class GALGAS_location readProperty_mEndOfReceiverExpression (void) const ;
@@ -4281,7 +4281,7 @@ class GALGAS_templateFunctionCallAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateFunctionCallAST (const class cPtr_templateFunctionCallAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mFunctionName (void) const ;
 
   public: class GALGAS_templateExpressionListAST readProperty_mExpressionList (void) const ;
@@ -4443,7 +4443,7 @@ class GALGAS_templateVarInExpressionAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateVarInExpressionAST (const class cPtr_templateVarInExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mVarName (void) const ;
 
 //-- Start of type generic part
@@ -4599,7 +4599,7 @@ class GALGAS_templateAddOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateAddOperationAST (const class cPtr_templateAddOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -4767,7 +4767,7 @@ class GALGAS_templateSubOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateSubOperationAST (const class cPtr_templateSubOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -4935,7 +4935,7 @@ class GALGAS_templateMultiplyOperationAST : public GALGAS_templateExpressionAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateMultiplyOperationAST (const class cPtr_templateMultiplyOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -5103,7 +5103,7 @@ class GALGAS_templateDivideOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateDivideOperationAST (const class cPtr_templateDivideOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -5271,7 +5271,7 @@ class GALGAS_templateModuloOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateModuloOperationAST (const class cPtr_templateModuloOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -5439,7 +5439,7 @@ class GALGAS_templateUnaryMinusOperationAST : public GALGAS_templateExpressionAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateUnaryMinusOperationAST (const class cPtr_templateUnaryMinusOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
@@ -5601,7 +5601,7 @@ class GALGAS_templateEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateEqualTestAST (const class cPtr_templateEqualTestAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -5769,7 +5769,7 @@ class GALGAS_templateNonEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateNonEqualTestAST (const class cPtr_templateNonEqualTestAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -5937,7 +5937,7 @@ class GALGAS_templateStrictInfTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateStrictInfTestAST (const class cPtr_templateStrictInfTestAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -6105,7 +6105,7 @@ class GALGAS_templateInfOrEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInfOrEqualTestAST (const class cPtr_templateInfOrEqualTestAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -6273,7 +6273,7 @@ class GALGAS_templateStrictSupTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateStrictSupTestAST (const class cPtr_templateStrictSupTestAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -6441,7 +6441,7 @@ class GALGAS_templateSupOrEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateSupOrEqualTestAST (const class cPtr_templateSupOrEqualTestAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -6609,7 +6609,7 @@ class GALGAS_templateLeftShiftOperationAST : public GALGAS_templateExpressionAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateLeftShiftOperationAST (const class cPtr_templateLeftShiftOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -6777,7 +6777,7 @@ class GALGAS_templateRightShiftOperationAST : public GALGAS_templateExpressionAS
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateRightShiftOperationAST (const class cPtr_templateRightShiftOperationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
 
   public: class GALGAS_templateExpressionAST readProperty_mLeftExpression (void) const ;
@@ -6945,7 +6945,7 @@ class GALGAS_templateInstructionStringAST : public GALGAS_templateInstructionAST
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionStringAST (const class cPtr_templateInstructionStringAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_string readProperty_mTemplateString (void) const ;
 
 //-- Start of type generic part
@@ -7101,7 +7101,7 @@ class GALGAS_templateInstructionExpressionAST : public GALGAS_templateInstructio
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionExpressionAST (const class cPtr_templateInstructionExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
   public: class GALGAS_location readProperty_mLocation (void) const ;
@@ -7263,7 +7263,7 @@ class GALGAS_templateBlockInstructionAST : public GALGAS_templateInstructionAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateBlockInstructionAST (const class cPtr_templateBlockInstructionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateExpressionAST readProperty_mExpression (void) const ;
 
   public: class GALGAS_location readProperty_mLocation (void) const ;
@@ -7431,7 +7431,7 @@ class GALGAS_templateInstructionGetColumnLocationAST : public GALGAS_templateIns
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionGetColumnLocationAST (const class cPtr_templateInstructionGetColumnLocationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7581,7 +7581,7 @@ class GALGAS_templateInstructionGotoColumnLocationAST : public GALGAS_templateIn
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionGotoColumnLocationAST (const class cPtr_templateInstructionGotoColumnLocationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -7978,7 +7978,7 @@ class GALGAS_templateInstructionIfAST : public GALGAS_templateInstructionAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_templateInstructionIfAST (const class cPtr_templateInstructionIfAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_templateInstructionIfBranchListAST readProperty_mTemplateInstructionIfBranchList (void) const ;
 
   public: class GALGAS_templateInstructionListAST readProperty_mElseInstructionList (void) const ;

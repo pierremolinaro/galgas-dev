@@ -4543,7 +4543,7 @@ class GALGAS_boolsetDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_boolsetDeclarationAST (const class cPtr_boolsetDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mBoolsetTypeName (void) const ;
 
   public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
@@ -5128,7 +5128,7 @@ class GALGAS_semanticExpressionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Constructor from pointer
   public: GALGAS_semanticExpressionAST (const class cPtr_semanticExpressionAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5422,7 +5422,7 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_classDeclarationAST (const class cPtr_classDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_bool readProperty_mIsAbstract (void) const ;
 
   public: class GALGAS_bool readProperty_mIsReference (void) const ;
@@ -5761,7 +5761,7 @@ class GALGAS_weakReferenceDeclarationAST : public GALGAS_semanticDeclarationAST 
 //--------------------------------- Constructor from pointer
   public: GALGAS_weakReferenceDeclarationAST (const class cPtr_weakReferenceDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mClassTypeName (void) const ;
 
   public: class GALGAS_lstring readProperty_mWeakReferenceTypeName (void) const ;
@@ -6214,7 +6214,7 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public: GALGAS_enumDeclarationAST (const class cPtr_enumDeclarationAST * inSourcePtr) ;
 
-//--------------------------------- Property read access
+//--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mEnumTypeName (void) const ;
 
   public: class GALGAS_enumConstantList readProperty_mConstantList (void) const ;
