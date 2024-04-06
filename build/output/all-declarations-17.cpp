@@ -10296,17 +10296,6 @@ GALGAS_unifiedTypeMapElementClass GALGAS_unifiedTypeMapElementClass::class_func_
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMapElementClass::setter_setMDefinition (GALGAS_typeDefinition inValue
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (nullptr != mObjectPtr) {
-    cPtr_unifiedTypeMapElementClass * p = (cPtr_unifiedTypeMapElementClass *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_unifiedTypeMapElementClass) ;
-    p->mProperty_mDefinition = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_typeDefinition GALGAS_unifiedTypeMapElementClass::readProperty_mDefinition (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_typeDefinition () ;

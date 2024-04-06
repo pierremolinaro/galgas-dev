@@ -342,16 +342,18 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !hasSelector: property.hasSelector
     end
   #--- set...attribute setter
-    for property in currentClassTypedPropertyList do
-      if property.hasSetter then
-        [!?setterMap insertKey
-          !.new {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
-          !@methodKind.definedAsMember
-          !{!["" nowhere] !property.typeEntry !.argumentIn !property.name.string}
-          !false # Compiler argument
-          !.isBasicFinal
-          !"" # No error message
-        ]
+    if not self.mIsReference then
+      for property in currentClassTypedPropertyList do
+        if property.hasSetter then
+          [!?setterMap insertKey
+            !.new {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
+            !@methodKind.definedAsMember
+            !{!["" nowhere] !property.typeEntry !.argumentIn !property.name.string}
+            !false # Compiler argument
+            !.isBasicFinal
+            !"" # No error message
+          ]
+        end
       end
     end
   #--- Add Extensions

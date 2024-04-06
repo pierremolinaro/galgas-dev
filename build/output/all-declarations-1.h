@@ -334,9 +334,6 @@ class GALGAS_unifiedTypeMapElementClass : public AC_GALGAS_reference_class {
   public: ComparisonResult objectCompare (const GALGAS_unifiedTypeMapElementClass & inOperand) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMDefinition (class GALGAS_typeDefinition inArgument0
-                                                       COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
