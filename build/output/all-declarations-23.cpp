@@ -13572,6 +13572,12 @@ BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorOldStylePropertyDecl
                                          "error-old-style-property-declaration",
                                          "Error on old style property declaration") ;
 
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_errorUsingNewInsteadOfInit ("galgas_cli_options",
+                                         "errorUsingNewInsteadOfInit",
+                                         0,
+                                         "error-using-new-instead-of-init",
+                                         "GGS3: error on using 'new' instead of 'init'") ;
+
 BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
                                          "generateManyFiles",
                                          0,

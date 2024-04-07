@@ -92,6 +92,9 @@ option galgas_cli_options {
   @bool errorOldStyleCollectionInitializer : '\0', "error-old-syle-collection-initializer"
     -> "Error on old style collection initializer"
 
+  @bool errorUsingNewInsteadOfInit : '\0', "error-using-new-instead-of-init"
+    -> "GGS3: error on using 'new' instead of 'init'"
+
   @bool warningNotGalgas4Feature : '\0', "warns-on-feature-not-handled-in-galgas4"
     -> "Warns on feature not handled in galgas 4"
 

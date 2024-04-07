@@ -42,6 +42,21 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
+    <optional_type_ggs3> ?let @lstring typeName
+    $.$
+    $init$
+    let endOfExpression = @location.here
+    outExpression = @initializerCallAST {
+      !typeName
+      !§[]
+      !endOfExpression
+    }
+  }
+
+  #·······························································································
+
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
     $@type$ ?let typeName indexing typeReferenceInConstructor
@@ -78,6 +93,21 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @initializerCallAST {
       !typeName
       !expressionList
+      !endOfExpression
+    }
+  }
+
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
+    <optional_type> ?let @lstring typeName
+    $.$
+    $init$
+    let endOfExpression = @location.here
+    outExpression = @initializerCallAST {
+      !typeName
+      !§[]
       !endOfExpression
     }
   }

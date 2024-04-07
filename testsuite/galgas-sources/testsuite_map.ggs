@@ -10,18 +10,18 @@ map @aMap {
 proc testsuite_map() {
   println ("*************************************** begin of map")
   var @aMap m = []
-  !?m.insertKey (.new (!"g", !.here), !37)
+  !?m.insertKey (.init (!"g", !.here), !37)
   log m
   !?m.setValueForKey (!56, !"g")
   log m
   var mm = @aMap.mapWithMapToOverride (!m)
   log mm
   var @uint v
-  mm.searchKey (@lstring.new (!"g", !.here), ?v)
+  mm.searchKey (@lstring.init (!"g", !.here), ?v)
   log v # Displays 56
-  !?mm.insertKey (.new (!"g", !.here), !11)
+  !?mm.insertKey (.init (!"g", !.here), !11)
   log mm
-  mm.searchKey (@lstring.new (!"g", !.here), ?v)
+  mm.searchKey (@lstring.init (!"g", !.here), ?v)
   log v # Displays 11
   m = mm.overriddenMap
   log m

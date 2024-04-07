@@ -115,6 +115,14 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   ))
   ioBoolOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
+    identifier: "errorUsingNewInsteadOfInit",
+    commandChar: "",
+    commandString: "error-using-new-instead-of-init",
+    comment: "GGS3: error on using 'new' instead of 'init'",
+    defaultValue: ""
+  ))
+  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
     identifier: "generateManyFiles",
     commandChar: "",
     commandString: "generate-many-cpp-files",

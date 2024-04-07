@@ -5,11 +5,11 @@ syntax logo_syntax (logo_lexique) {
   rule <pen_direction> ?!@instructionList il {
     select
       $UP$
-      let @instruction ins = @penUp.new
+      let @instruction ins = @penUp.init
       il += !ins
     or
       $DOWN$
-      let @instruction ins = @penDown.new
+      let @instruction ins = @penDown.init
       il += !ins
     end
   }

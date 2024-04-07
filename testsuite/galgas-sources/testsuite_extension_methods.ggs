@@ -1,6 +1,6 @@
 
 
-class @TestExtensionMethod §[]
+class @TestExtensionMethod { }
 
 proc @TestExtensionMethod.method1() {
 }
@@ -15,7 +15,7 @@ proc @TestExtensionMethod.method2 (!@uint result) {
 
 proc testsuite_extension_methods () {
   println ("*************************************** begin of extension procs")
-  let c = @TestExtensionMethod.new
+  let c = @TestExtensionMethod.init
   c.method1 ()
   c.method2 (?let v)
   println (v.string)

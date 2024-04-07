@@ -277,8 +277,8 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       fixit { replace " §[]" }
     end
   end
-  if inConstructorName.string == "new" then
-    warning inConstructorName : "old style constructor, use initilizer '.init {}'"
+  if [option galgas_cli_options.errorUsingNewInsteadOfInit value] && (inConstructorName.string == "new") then
+    error inConstructorName : "old style constructor, use initializer '.init {}'"
   end
 }
 

@@ -18,7 +18,7 @@ extern @complex {
 
 proc testsuite_extern_type() {
   println ("*************************************** begin of extern type test")
-  let complex = @complex.new(!1.0, !-1.0)
+  let complex = @complex.init(!1.0, !-1.0)
   log complex
   log "real" : complex.real
   log "imaginary" : complex.imaginary
