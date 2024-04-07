@@ -287,16 +287,16 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionComponentForGeneration init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
-                                                                                                                                      const class GALGAS_string & inOperand1,
-                                                                                                                                      const class GALGAS_bool & inOperand2,
-                                                                                                                                      const class GALGAS_string & inOperand3,
-                                                                                                                                      const class GALGAS_commandLineOptionSortedList & inOperand4,
-                                                                                                                                      const class GALGAS_commandLineOptionSortedList & inOperand5,
-                                                                                                                                      const class GALGAS_commandLineOptionSortedList & inOperand6,
-                                                                                                                                      const class GALGAS_commandLineOptionSortedList & inOperand7,
-                                                                                                                                      Compiler * inCompiler
-                                                                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionComponentForGeneration init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const class GALGAS_bool & inOperand0,
+                                                                                                                                  const class GALGAS_string & inOperand1,
+                                                                                                                                  const class GALGAS_bool & inOperand2,
+                                                                                                                                  const class GALGAS_string & inOperand3,
+                                                                                                                                  const class GALGAS_commandLineOptionSortedList & inOperand4,
+                                                                                                                                  const class GALGAS_commandLineOptionSortedList & inOperand5,
+                                                                                                                                  const class GALGAS_commandLineOptionSortedList & inOperand6,
+                                                                                                                                  const class GALGAS_commandLineOptionSortedList & inOperand7,
+                                                                                                                                  Compiler * inCompiler
+                                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -352,15 +352,15 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   #endif
 
 //--------------------------------- Initializers
-  public: void optionComponentForGeneration_init_28_generateHeader_2C_implementationCppFileName_2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
-                                                                                                                             const class GALGAS_string & inOperand1,
-                                                                                                                             const class GALGAS_bool & inOperand2,
-                                                                                                                             const class GALGAS_string & inOperand3,
-                                                                                                                             const class GALGAS_commandLineOptionSortedList & inOperand4,
-                                                                                                                             const class GALGAS_commandLineOptionSortedList & inOperand5,
-                                                                                                                             const class GALGAS_commandLineOptionSortedList & inOperand6,
-                                                                                                                             const class GALGAS_commandLineOptionSortedList & inOperand7,
-                                                                                                                             Compiler * inCompiler) ;
+  public: void optionComponentForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const class GALGAS_bool & inOperand0,
+                                                                                                                         const class GALGAS_string & inOperand1,
+                                                                                                                         const class GALGAS_bool & inOperand2,
+                                                                                                                         const class GALGAS_string & inOperand3,
+                                                                                                                         const class GALGAS_commandLineOptionSortedList & inOperand4,
+                                                                                                                         const class GALGAS_commandLineOptionSortedList & inOperand5,
+                                                                                                                         const class GALGAS_commandLineOptionSortedList & inOperand6,
+                                                                                                                         const class GALGAS_commandLineOptionSortedList & inOperand7,
+                                                                                                                         Compiler * inCompiler) ;
 
 
 //--- Extension getter headerKind
@@ -497,10 +497,10 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_boolsetTypeForGeneration init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                   const class GALGAS_lstringlist & inOperand1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_boolsetTypeForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                               const class GALGAS_lstringlist & inOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -550,9 +550,9 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void boolsetTypeForGeneration_init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                          const class GALGAS_lstringlist & inOperand1,
-                                                          Compiler * inCompiler) ;
+  public: void boolsetTypeForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                      const class GALGAS_lstringlist & inOperand1,
+                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1

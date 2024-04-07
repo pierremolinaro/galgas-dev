@@ -2541,15 +2541,15 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_ifExpressionAST GALGAS_ifExpressionAST::
-init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                          const GALGAS_semanticExpressionAST & in_mIfExpression,
-                          const GALGAS_semanticExpressionAST & in_mThenExpression,
-                          const GALGAS_semanticExpressionAST & in_mElseExpression,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                      const GALGAS_semanticExpressionAST & in_mIfExpression,
+                      const GALGAS_semanticExpressionAST & in_mThenExpression,
+                      const GALGAS_semanticExpressionAST & in_mElseExpression,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_ifExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_ifExpressionAST (inCompiler COMMA_THERE)) ;
-  object->ifExpressionAST_init_28__2C__2C__2C__29_ (in_mOperatorLocation, in_mIfExpression, in_mThenExpression, in_mElseExpression, inCompiler) ;
+  object->ifExpressionAST_init_21__21__21__21_ (in_mOperatorLocation, in_mIfExpression, in_mThenExpression, in_mElseExpression, inCompiler) ;
   const GALGAS_ifExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2558,11 +2558,11 @@ init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_ifExpressionAST::
-ifExpressionAST_init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                          const GALGAS_semanticExpressionAST & in_mIfExpression,
-                                          const GALGAS_semanticExpressionAST & in_mThenExpression,
-                                          const GALGAS_semanticExpressionAST & in_mElseExpression,
-                                          Compiler * /* inCompiler */) {
+ifExpressionAST_init_21__21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                      const GALGAS_semanticExpressionAST & in_mIfExpression,
+                                      const GALGAS_semanticExpressionAST & in_mThenExpression,
+                                      const GALGAS_semanticExpressionAST & in_mElseExpression,
+                                      Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mIfExpression = in_mIfExpression ;
   mProperty_mThenExpression = in_mThenExpression ;
@@ -3008,13 +3008,13 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_unaryPlusExpressionAST GALGAS_unaryPlusExpressionAST::
-init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                  const GALGAS_semanticExpressionAST & in_mExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mOperatorLocation,
+              const GALGAS_semanticExpressionAST & in_mExpression,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_unaryPlusExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_unaryPlusExpressionAST (inCompiler COMMA_THERE)) ;
-  object->unaryPlusExpressionAST_init_28__2C__29_ (in_mOperatorLocation, in_mExpression, inCompiler) ;
+  object->unaryPlusExpressionAST_init_21__21_ (in_mOperatorLocation, in_mExpression, inCompiler) ;
   const GALGAS_unaryPlusExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3023,9 +3023,9 @@ init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryPlusExpressionAST::
-unaryPlusExpressionAST_init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                         const GALGAS_semanticExpressionAST & in_mExpression,
-                                         Compiler * /* inCompiler */) {
+unaryPlusExpressionAST_init_21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                     const GALGAS_semanticExpressionAST & in_mExpression,
+                                     Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mExpression = in_mExpression ;
 }
@@ -3323,13 +3323,13 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_unaryMinusExpressionAST GALGAS_unaryMinusExpressionAST::
-init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                  const GALGAS_semanticExpressionAST & in_mExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mOperatorLocation,
+              const GALGAS_semanticExpressionAST & in_mExpression,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_unaryMinusExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_unaryMinusExpressionAST (inCompiler COMMA_THERE)) ;
-  object->unaryMinusExpressionAST_init_28__2C__29_ (in_mOperatorLocation, in_mExpression, inCompiler) ;
+  object->unaryMinusExpressionAST_init_21__21_ (in_mOperatorLocation, in_mExpression, inCompiler) ;
   const GALGAS_unaryMinusExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3338,9 +3338,9 @@ init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_unaryMinusExpressionAST::
-unaryMinusExpressionAST_init_28__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                          const GALGAS_semanticExpressionAST & in_mExpression,
-                                          Compiler * /* inCompiler */) {
+unaryMinusExpressionAST_init_21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                      const GALGAS_semanticExpressionAST & in_mExpression,
+                                      Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mExpression = in_mExpression ;
 }
@@ -4456,10 +4456,10 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputArgumentLi
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputArgumentList temp_0 = inObject ;
-  cEnumerator_actualOutputArgumentList enumerator_1924 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_1924.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_1924.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 42)) ;
-    enumerator_1924.gotoNextObject () ;
+  cEnumerator_actualOutputArgumentList enumerator_1902 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_1902.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_1902.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 40)) ;
+    enumerator_1902.gotoNextObject () ;
   }
 }
 
@@ -4522,12 +4522,12 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_trueExpressionAST GALGAS_trueExpressionAST::
-init_28__29_ (const GALGAS_location & in_mLocation,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_location & in_mLocation,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_trueExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_trueExpressionAST (inCompiler COMMA_THERE)) ;
-  object->trueExpressionAST_init_28__29_ (in_mLocation, inCompiler) ;
+  object->trueExpressionAST_init_21_ (in_mLocation, inCompiler) ;
   const GALGAS_trueExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4536,8 +4536,8 @@ init_28__29_ (const GALGAS_location & in_mLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_trueExpressionAST::
-trueExpressionAST_init_28__29_ (const GALGAS_location & in_mLocation,
-                                Compiler * /* inCompiler */) {
+trueExpressionAST_init_21_ (const GALGAS_location & in_mLocation,
+                            Compiler * /* inCompiler */) {
   mProperty_mLocation = in_mLocation ;
 }
 
@@ -4811,12 +4811,12 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_falseExpressionAST GALGAS_falseExpressionAST::
-init_28__29_ (const GALGAS_location & in_mLocation,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_location & in_mLocation,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_falseExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_falseExpressionAST (inCompiler COMMA_THERE)) ;
-  object->falseExpressionAST_init_28__29_ (in_mLocation, inCompiler) ;
+  object->falseExpressionAST_init_21_ (in_mLocation, inCompiler) ;
   const GALGAS_falseExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4825,8 +4825,8 @@ init_28__29_ (const GALGAS_location & in_mLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_falseExpressionAST::
-falseExpressionAST_init_28__29_ (const GALGAS_location & in_mLocation,
-                                 Compiler * /* inCompiler */) {
+falseExpressionAST_init_21_ (const GALGAS_location & in_mLocation,
+                             Compiler * /* inCompiler */) {
   mProperty_mLocation = in_mLocation ;
 }
 
@@ -5325,13 +5325,13 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST::
-init_28__2C__29_ (const GALGAS_location & in_mLocation,
-                  const GALGAS_stringlist & in_mStringSequence,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mLocation,
+              const GALGAS_stringlist & in_mStringSequence,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_literalStringExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_literalStringExpressionAST (inCompiler COMMA_THERE)) ;
-  object->literalStringExpressionAST_init_28__2C__29_ (in_mLocation, in_mStringSequence, inCompiler) ;
+  object->literalStringExpressionAST_init_21__21_ (in_mLocation, in_mStringSequence, inCompiler) ;
   const GALGAS_literalStringExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5340,9 +5340,9 @@ init_28__2C__29_ (const GALGAS_location & in_mLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalStringExpressionAST::
-literalStringExpressionAST_init_28__2C__29_ (const GALGAS_location & in_mLocation,
-                                             const GALGAS_stringlist & in_mStringSequence,
-                                             Compiler * /* inCompiler */) {
+literalStringExpressionAST_init_21__21_ (const GALGAS_location & in_mLocation,
+                                         const GALGAS_stringlist & in_mStringSequence,
+                                         Compiler * /* inCompiler */) {
   mProperty_mLocation = in_mLocation ;
   mProperty_mStringSequence = in_mStringSequence ;
 }
@@ -7115,15 +7115,15 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST::
-init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                          const GALGAS_comparison & in_mComparison,
-                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                      const GALGAS_comparison & in_mComparison,
+                      const GALGAS_semanticExpressionAST & in_mRightExpression,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_comparisonExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_comparisonExpressionAST (inCompiler COMMA_THERE)) ;
-  object->comparisonExpressionAST_init_28__2C__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mComparison, in_mRightExpression, inCompiler) ;
+  object->comparisonExpressionAST_init_21__21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mComparison, in_mRightExpression, inCompiler) ;
   const GALGAS_comparisonExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7132,11 +7132,11 @@ init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_comparisonExpressionAST::
-comparisonExpressionAST_init_28__2C__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                  const GALGAS_comparison & in_mComparison,
-                                                  const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                  Compiler * /* inCompiler */) {
+comparisonExpressionAST_init_21__21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                              const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                              const GALGAS_comparison & in_mComparison,
+                                              const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                              Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mComparison = in_mComparison ;
@@ -7587,14 +7587,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_rightShiftExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_rightShiftExpressionAST (inCompiler COMMA_THERE)) ;
-  object->rightShiftExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->rightShiftExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_rightShiftExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7603,10 +7603,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_rightShiftExpressionAST::
-rightShiftExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                              const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                              const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                              Compiler * /* inCompiler */) {
+rightShiftExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                          Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -7928,14 +7928,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_leftShiftExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_leftShiftExpressionAST (inCompiler COMMA_THERE)) ;
-  object->leftShiftExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->leftShiftExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_leftShiftExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7944,10 +7944,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_leftShiftExpressionAST::
-leftShiftExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                             const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                             const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                             Compiler * /* inCompiler */) {
+leftShiftExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                         const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                         const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                         Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -8269,14 +8269,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_addExpressionAST GALGAS_addExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_addExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_addExpressionAST (inCompiler COMMA_THERE)) ;
-  object->addExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->addExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_addExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -8285,10 +8285,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_addExpressionAST::
-addExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                       Compiler * /* inCompiler */) {
+addExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                   const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                   const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                   Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -8610,14 +8610,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_addExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_addExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
-  object->addExpressionNoOverflowAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->addExpressionNoOverflowAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_addExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -8626,10 +8626,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_addExpressionNoOverflowAST::
-addExpressionNoOverflowAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                 const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                 const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                 Compiler * /* inCompiler */) {
+addExpressionNoOverflowAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                             const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                             const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                             Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -8951,14 +8951,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_subExpressionAST GALGAS_subExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_subExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_subExpressionAST (inCompiler COMMA_THERE)) ;
-  object->subExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->subExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_subExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -8967,10 +8967,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subExpressionAST::
-subExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                       const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                       Compiler * /* inCompiler */) {
+subExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                   const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                   const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                   Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -9292,14 +9292,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_subExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_subExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
-  object->subExpressionNoOverflowAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->subExpressionNoOverflowAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_subExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -9308,10 +9308,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subExpressionNoOverflowAST::
-subExpressionNoOverflowAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                 const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                 const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                 Compiler * /* inCompiler */) {
+subExpressionNoOverflowAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                             const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                             const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                             Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -10130,14 +10130,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_multiplicationExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_multiplicationExpressionAST (inCompiler COMMA_THERE)) ;
-  object->multiplicationExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->multiplicationExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_multiplicationExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -10146,10 +10146,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_multiplicationExpressionAST::
-multiplicationExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                  const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                  Compiler * /* inCompiler */) {
+multiplicationExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                              const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                              const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                              Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -10471,14 +10471,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_multiplicationExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_multiplicationExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
-  object->multiplicationExpressionNoOverflowAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->multiplicationExpressionNoOverflowAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_multiplicationExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -10487,10 +10487,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_multiplicationExpressionNoOverflowAST::
-multiplicationExpressionNoOverflowAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                            const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                            const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                            Compiler * /* inCompiler */) {
+multiplicationExpressionNoOverflowAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                                        const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                        const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                        Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -10812,14 +10812,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_divisionExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_divisionExpressionAST (inCompiler COMMA_THERE)) ;
-  object->divisionExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->divisionExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_divisionExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -10828,10 +10828,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_divisionExpressionAST::
-divisionExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                            const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                            const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                            Compiler * /* inCompiler */) {
+divisionExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                        const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                        const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                        Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -11153,14 +11153,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_divisionExpressionNoOverflowAST * object = nullptr ;
   macroMyNew (object, cPtr_divisionExpressionNoOverflowAST (inCompiler COMMA_THERE)) ;
-  object->divisionExpressionNoOverflowAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->divisionExpressionNoOverflowAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_divisionExpressionNoOverflowAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11169,10 +11169,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_divisionExpressionNoOverflowAST::
-divisionExpressionNoOverflowAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                                      Compiler * /* inCompiler */) {
+divisionExpressionNoOverflowAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                                  Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -11494,14 +11494,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                      const GALGAS_semanticExpressionAST & in_mRightExpression,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                  const GALGAS_semanticExpressionAST & in_mRightExpression,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_moduloExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_moduloExpressionAST (inCompiler COMMA_THERE)) ;
-  object->moduloExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
+  object->moduloExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
   const GALGAS_moduloExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11510,10 +11510,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_moduloExpressionAST::
-moduloExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                          const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                          const GALGAS_semanticExpressionAST & in_mRightExpression,
-                                          Compiler * /* inCompiler */) {
+moduloExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                      const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                      const GALGAS_semanticExpressionAST & in_mRightExpression,
+                                      Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mLeftExpression = in_mLeftExpression ;
   mProperty_mRightExpression = in_mRightExpression ;
@@ -15307,13 +15307,13 @@ GALGAS_abstractCollectionValueElement () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::
-init_28__2C__29_ (const GALGAS_semanticExpressionAST & in_mExpression,
-                  const GALGAS_location & in_mExpressionLocation,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_semanticExpressionAST & in_mExpression,
+              const GALGAS_location & in_mExpressionLocation,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_expressionCollectionValue * object = nullptr ;
   macroMyNew (object, cPtr_expressionCollectionValue (inCompiler COMMA_THERE)) ;
-  object->expressionCollectionValue_init_28__2C__29_ (in_mExpression, in_mExpressionLocation, inCompiler) ;
+  object->expressionCollectionValue_init_21__21_ (in_mExpression, in_mExpressionLocation, inCompiler) ;
   const GALGAS_expressionCollectionValue result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -15322,9 +15322,9 @@ init_28__2C__29_ (const GALGAS_semanticExpressionAST & in_mExpression,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_expressionCollectionValue::
-expressionCollectionValue_init_28__2C__29_ (const GALGAS_semanticExpressionAST & in_mExpression,
-                                            const GALGAS_location & in_mExpressionLocation,
-                                            Compiler * /* inCompiler */) {
+expressionCollectionValue_init_21__21_ (const GALGAS_semanticExpressionAST & in_mExpression,
+                                        const GALGAS_location & in_mExpressionLocation,
+                                        Compiler * /* inCompiler */) {
   mProperty_mExpression = in_mExpression ;
   mProperty_mExpressionLocation = in_mExpressionLocation ;
 }
@@ -15622,13 +15622,13 @@ GALGAS_abstractCollectionValueElement () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::
-init_28__2C__29_ (const GALGAS_actualOutputArgumentList & in_mExpressionList,
-                  const GALGAS_location & in_mEndOfExpressionLocation,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_actualOutputArgumentList & in_mExpressionList,
+              const GALGAS_location & in_mEndOfExpressionLocation,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_expressionListCollectionValue * object = nullptr ;
   macroMyNew (object, cPtr_expressionListCollectionValue (inCompiler COMMA_THERE)) ;
-  object->expressionListCollectionValue_init_28__2C__29_ (in_mExpressionList, in_mEndOfExpressionLocation, inCompiler) ;
+  object->expressionListCollectionValue_init_21__21_ (in_mExpressionList, in_mEndOfExpressionLocation, inCompiler) ;
   const GALGAS_expressionListCollectionValue result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -15637,9 +15637,9 @@ init_28__2C__29_ (const GALGAS_actualOutputArgumentList & in_mExpressionList,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_expressionListCollectionValue::
-expressionListCollectionValue_init_28__2C__29_ (const GALGAS_actualOutputArgumentList & in_mExpressionList,
-                                                const GALGAS_location & in_mEndOfExpressionLocation,
-                                                Compiler * /* inCompiler */) {
+expressionListCollectionValue_init_21__21_ (const GALGAS_actualOutputArgumentList & in_mExpressionList,
+                                            const GALGAS_location & in_mEndOfExpressionLocation,
+                                            Compiler * /* inCompiler */) {
   mProperty_mExpressionList = in_mExpressionList ;
   mProperty_mEndOfExpressionLocation = in_mEndOfExpressionLocation ;
 }

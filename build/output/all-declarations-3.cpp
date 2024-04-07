@@ -7022,8 +7022,8 @@ GALGAS_guiAnalysisContext::~ GALGAS_guiAnalysisContext (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::init_28__29_ (Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::init (Compiler * inCompiler
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiAnalysisContext result ;
   result.setInitializedProperties (inCompiler) ;
   return result ;

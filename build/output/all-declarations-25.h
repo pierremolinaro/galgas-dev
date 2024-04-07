@@ -920,3 +920,12 @@ void routine_check_5F_K_5F_escapeCharacters_3F_ (const class GALGAS_lstring cons
                                                  class Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'forbiddenKeysForMapAndDict'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_stringset function_forbiddenKeysForMapAndDict (class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+

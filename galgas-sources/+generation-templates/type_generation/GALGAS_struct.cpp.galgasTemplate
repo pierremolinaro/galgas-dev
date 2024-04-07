@@ -17,7 +17,7 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 if GENERATE_SYNTHETIZED_INITIALIZER then
 %//---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::%![[INITIALIZER_ARGUMENT_LIST initializerSignature] identifierRepresentation]% (%?^
   for (typeEntry name 3*) in INITIALIZER_ARGUMENT_LIST do
     %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
   end

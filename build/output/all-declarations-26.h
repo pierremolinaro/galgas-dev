@@ -10,15 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'forbiddenKeysForMapAndDict'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_stringset function_forbiddenKeysForMapAndDict (class Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'enterClassFunctionWithArgument&&?name?argTypeName?argName?resultTypeName?hasLexiqueArg'
 //
 //--------------------------------------------------------------------------------------------------

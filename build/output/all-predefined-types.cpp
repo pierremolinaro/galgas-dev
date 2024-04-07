@@ -1142,10 +1142,10 @@ GALGAS_lbool::~ GALGAS_lbool (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lbool GALGAS_lbool::init_28__2C__29_ (const GALGAS_bool & in_bool,
-                                             const GALGAS_location & in_location,
-                                             Compiler * inCompiler
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbool GALGAS_lbool::init_21__21_ (const GALGAS_bool & in_bool,
+                                         const GALGAS_location & in_location,
+                                         Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbool result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_bool = in_bool ;
@@ -3070,10 +3070,10 @@ GALGAS_luint::~ GALGAS_luint (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_luint GALGAS_luint::init_28__2C__29_ (const GALGAS_uint & in_uint,
-                                             const GALGAS_location & in_location,
-                                             Compiler * inCompiler
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luint GALGAS_luint::init_21__21_ (const GALGAS_uint & in_uint,
+                                         const GALGAS_location & in_location,
+                                         Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_uint = in_uint ;
@@ -5652,10 +5652,10 @@ GALGAS_lsint::~ GALGAS_lsint (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lsint GALGAS_lsint::init_28__2C__29_ (const GALGAS_sint & in_sint,
-                                             const GALGAS_location & in_location,
-                                             Compiler * inCompiler
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lsint GALGAS_lsint::init_21__21_ (const GALGAS_sint & in_sint,
+                                         const GALGAS_location & in_location,
+                                         Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_sint = in_sint ;
@@ -5786,10 +5786,10 @@ GALGAS_lsint_36__34_::~ GALGAS_lsint_36__34_ (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::init_28__2C__29_ (const GALGAS_sint_36__34_ & in_sint_36__34_,
-                                                             const GALGAS_location & in_location,
-                                                             Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::init_21__21_ (const GALGAS_sint_36__34_ & in_sint_36__34_,
+                                                         const GALGAS_location & in_location,
+                                                         Compiler * inCompiler
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lsint_36__34_ result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_sint_36__34_ = in_sint_36__34_ ;
@@ -5920,10 +5920,10 @@ GALGAS_luint_36__34_::~ GALGAS_luint_36__34_ (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_luint_36__34_ GALGAS_luint_36__34_::init_28__2C__29_ (const GALGAS_uint_36__34_ & in_uint_36__34_,
-                                                             const GALGAS_location & in_location,
-                                                             Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luint_36__34_ GALGAS_luint_36__34_::init_21__21_ (const GALGAS_uint_36__34_ & in_uint_36__34_,
+                                                         const GALGAS_location & in_location,
+                                                         Compiler * inCompiler
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luint_36__34_ result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_uint_36__34_ = in_uint_36__34_ ;
@@ -6054,10 +6054,10 @@ GALGAS_range::~ GALGAS_range (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_range GALGAS_range::init_28__2C__29_ (const GALGAS_uint & in_start,
-                                             const GALGAS_uint & in_length,
-                                             Compiler * inCompiler
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_range GALGAS_range::init_21__21_ (const GALGAS_uint & in_start,
+                                         const GALGAS_uint & in_length,
+                                         Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_range result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_start = in_start ;
@@ -6187,9 +6187,9 @@ GALGAS_functionlist_2D_element::~ GALGAS_functionlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::init_28__29_ (const GALGAS_function & in_mValue,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::init_21_ (const GALGAS_function & in_mValue,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -6308,9 +6308,9 @@ GALGAS_luintlist_2D_element::~ GALGAS_luintlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::init_28__29_ (const GALGAS_luint & in_mValue,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::init_21_ (const GALGAS_luint & in_mValue,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_luintlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -6429,9 +6429,9 @@ GALGAS_objectlist_2D_element::~ GALGAS_objectlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::init_28__29_ (const GALGAS_object & in_mValue,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::init_21_ (const GALGAS_object & in_mValue,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_objectlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -6550,9 +6550,9 @@ GALGAS_stringlist_2D_element::~ GALGAS_stringlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::init_28__29_ (const GALGAS_string & in_mValue,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::init_21_ (const GALGAS_string & in_mValue,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -6671,9 +6671,9 @@ GALGAS_typelist_2D_element::~ GALGAS_typelist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_typelist_2D_element GALGAS_typelist_2D_element::init_28__29_ (const GALGAS_type & in_mValue,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_typelist_2D_element GALGAS_typelist_2D_element::init_21_ (const GALGAS_type & in_mValue,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typelist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -6792,9 +6792,9 @@ GALGAS_uintlist_2D_element::~ GALGAS_uintlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::init_28__29_ (const GALGAS_uint & in_mValue,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::init_21_ (const GALGAS_uint & in_mValue,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uintlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -6913,9 +6913,9 @@ GALGAS_uint_36__34_list_2D_element::~ GALGAS_uint_36__34_list_2D_element (void) 
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::init_28__29_ (const GALGAS_uint_36__34_ & in_mValue,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::init_21_ (const GALGAS_uint_36__34_ & in_mValue,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint_36__34_list_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -7034,9 +7034,9 @@ GALGAS_bigintlist_2D_element::~ GALGAS_bigintlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::init_28__29_ (const GALGAS_bigint & in_mValue,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::init_21_ (const GALGAS_bigint & in_mValue,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bigintlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -7156,10 +7156,10 @@ GALGAS__32_stringlist_2D_element::~ GALGAS__32_stringlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::init_28__2C__29_ (const GALGAS_string & in_mValue_30_,
-                                                                                     const GALGAS_string & in_mValue_31_,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::init_21__21_ (const GALGAS_string & in_mValue_30_,
+                                                                                 const GALGAS_string & in_mValue_31_,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS__32_stringlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue_30_ = in_mValue_30_ ;
@@ -7290,10 +7290,10 @@ GALGAS_lstring::~ GALGAS_lstring (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_lstring::init_28__2C__29_ (const GALGAS_string & in_string,
-                                                 const GALGAS_location & in_location,
-                                                 Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lstring GALGAS_lstring::init_21__21_ (const GALGAS_string & in_string,
+                                             const GALGAS_location & in_location,
+                                             Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_string = in_string ;
@@ -7424,10 +7424,10 @@ GALGAS_lbigint::~ GALGAS_lbigint (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lbigint GALGAS_lbigint::init_28__2C__29_ (const GALGAS_bigint & in_bigint,
-                                                 const GALGAS_location & in_location,
-                                                 Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbigint GALGAS_lbigint::init_21__21_ (const GALGAS_bigint & in_bigint,
+                                             const GALGAS_location & in_location,
+                                             Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigint result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_bigint = in_bigint ;
@@ -7558,10 +7558,10 @@ GALGAS_lchar::~ GALGAS_lchar (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lchar GALGAS_lchar::init_28__2C__29_ (const GALGAS_char & in_char,
-                                             const GALGAS_location & in_location,
-                                             Compiler * inCompiler
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lchar GALGAS_lchar::init_21__21_ (const GALGAS_char & in_char,
+                                         const GALGAS_location & in_location,
+                                         Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lchar result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_char = in_char ;
@@ -7692,10 +7692,10 @@ GALGAS_ldouble::~ GALGAS_ldouble (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_ldouble GALGAS_ldouble::init_28__2C__29_ (const GALGAS_double & in_double,
-                                                 const GALGAS_location & in_location,
-                                                 Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ldouble GALGAS_ldouble::init_21__21_ (const GALGAS_double & in_double,
+                                             const GALGAS_location & in_location,
+                                             Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ldouble result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_double = in_double ;
@@ -7825,9 +7825,9 @@ GALGAS_lstringlist_2D_element::~ GALGAS_lstringlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::init_28__29_ (const GALGAS_lstring & in_mValue,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::init_21_ (const GALGAS_lstring & in_mValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;
@@ -7946,9 +7946,9 @@ GALGAS_lbigintlist_2D_element::~ GALGAS_lbigintlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::init_28__29_ (const GALGAS_lbigint & in_mValue,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::init_21_ (const GALGAS_lbigint & in_mValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lbigintlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mValue = in_mValue ;

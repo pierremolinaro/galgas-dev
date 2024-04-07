@@ -66,13 +66,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_stringsetPredefinedTypeAST GALGAS_stringsetPredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_stringsetPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_stringsetPredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->stringsetPredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->stringsetPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_stringsetPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -81,9 +81,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringsetPredefinedTypeAST::
-stringsetPredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                         const GALGAS_string & in_mPredefinedTypeName,
-                                                         Compiler * /* inCompiler */) {
+stringsetPredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                     const GALGAS_string & in_mPredefinedTypeName,
+                                                     Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -351,13 +351,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_sintPredefinedTypeAST GALGAS_sintPredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_sintPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_sintPredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->sintPredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->sintPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_sintPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -366,9 +366,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_sintPredefinedTypeAST::
-sintPredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                    const GALGAS_string & in_mPredefinedTypeName,
-                                                    Compiler * /* inCompiler */) {
+sintPredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                const GALGAS_string & in_mPredefinedTypeName,
+                                                Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -636,13 +636,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_sint_36__34_PredefinedTypeAST GALGAS_sint_36__34_PredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_sint_36__34_PredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_sint_36__34_PredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->sint_36__34_PredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->sint_36__34_PredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_sint_36__34_PredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -651,9 +651,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_sint_36__34_PredefinedTypeAST::
-sint_36__34_PredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                            Compiler * /* inCompiler */) {
+sint_36__34_PredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                        const GALGAS_string & in_mPredefinedTypeName,
+                                                        Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -921,13 +921,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_stringPredefinedTypeAST GALGAS_stringPredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_stringPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_stringPredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->stringPredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->stringPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_stringPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -936,9 +936,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_stringPredefinedTypeAST::
-stringPredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                      const GALGAS_string & in_mPredefinedTypeName,
-                                                      Compiler * /* inCompiler */) {
+stringPredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                  const GALGAS_string & in_mPredefinedTypeName,
+                                                  Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -1206,13 +1206,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_timerPredefinedTypeAST GALGAS_timerPredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_timerPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_timerPredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->timerPredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->timerPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_timerPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1221,9 +1221,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_timerPredefinedTypeAST::
-timerPredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                     const GALGAS_string & in_mPredefinedTypeName,
-                                                     Compiler * /* inCompiler */) {
+timerPredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                 const GALGAS_string & in_mPredefinedTypeName,
+                                                 Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -1491,13 +1491,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_typePredefinedTypeAST GALGAS_typePredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_typePredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_typePredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->typePredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->typePredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_typePredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1506,9 +1506,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_typePredefinedTypeAST::
-typePredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                    const GALGAS_string & in_mPredefinedTypeName,
-                                                    Compiler * /* inCompiler */) {
+typePredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                const GALGAS_string & in_mPredefinedTypeName,
+                                                Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -1776,13 +1776,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_uintPredefinedTypeAST GALGAS_uintPredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_uintPredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_uintPredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->uintPredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->uintPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_uintPredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1791,9 +1791,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_uintPredefinedTypeAST::
-uintPredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                    const GALGAS_string & in_mPredefinedTypeName,
-                                                    Compiler * /* inCompiler */) {
+uintPredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                const GALGAS_string & in_mPredefinedTypeName,
+                                                Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -2061,13 +2061,13 @@ GALGAS_predefinedTypeAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_uint_36__34_PredefinedTypeAST GALGAS_uint_36__34_PredefinedTypeAST::
-init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_string & in_mPredefinedTypeName,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                          const GALGAS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_uint_36__34_PredefinedTypeAST * object = nullptr ;
   macroMyNew (object, cPtr_uint_36__34_PredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->uint_36__34_PredefinedTypeAST_init_28_isPredefined_2C__29_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  object->uint_36__34_PredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
   const GALGAS_uint_36__34_PredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2076,9 +2076,9 @@ init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_uint_36__34_PredefinedTypeAST::
-uint_36__34_PredefinedTypeAST_init_28_isPredefined_2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                            const GALGAS_string & in_mPredefinedTypeName,
-                                                            Compiler * /* inCompiler */) {
+uint_36__34_PredefinedTypeAST_init_21_isPredefined_21_ (const GALGAS_bool & in_isPredefined,
+                                                        const GALGAS_string & in_mPredefinedTypeName,
+                                                        Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
@@ -3585,13 +3585,13 @@ GALGAS_actualParameterAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::
-init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
-                  const GALGAS_uint & in_mJokerIndex,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mQualifierLocation,
+              const GALGAS_uint & in_mJokerIndex,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_outputInputJokerParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_outputInputJokerParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputInputJokerParameterAST_init_28__2C__29_ (in_mQualifierLocation, in_mJokerIndex, inCompiler) ;
+  object->outputInputJokerParameterAST_init_21__21_ (in_mQualifierLocation, in_mJokerIndex, inCompiler) ;
   const GALGAS_outputInputJokerParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3600,9 +3600,9 @@ init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputJokerParameterAST::
-outputInputJokerParameterAST_init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
-                                               const GALGAS_uint & in_mJokerIndex,
-                                               Compiler * /* inCompiler */) {
+outputInputJokerParameterAST_init_21__21_ (const GALGAS_location & in_mQualifierLocation,
+                                           const GALGAS_uint & in_mJokerIndex,
+                                           Compiler * /* inCompiler */) {
   mProperty_mQualifierLocation = in_mQualifierLocation ;
   mProperty_mJokerIndex = in_mJokerIndex ;
 }
@@ -4560,13 +4560,13 @@ GALGAS_actualParameterAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_inputJokerActualParameterAST GALGAS_inputJokerActualParameterAST::
-init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
-                  const GALGAS_uint & in_mJokerIndex,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mQualifierLocation,
+              const GALGAS_uint & in_mJokerIndex,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_inputJokerActualParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_inputJokerActualParameterAST (inCompiler COMMA_THERE)) ;
-  object->inputJokerActualParameterAST_init_28__2C__29_ (in_mQualifierLocation, in_mJokerIndex, inCompiler) ;
+  object->inputJokerActualParameterAST_init_21__21_ (in_mQualifierLocation, in_mJokerIndex, inCompiler) ;
   const GALGAS_inputJokerActualParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4575,9 +4575,9 @@ init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputJokerActualParameterAST::
-inputJokerActualParameterAST_init_28__2C__29_ (const GALGAS_location & in_mQualifierLocation,
-                                               const GALGAS_uint & in_mJokerIndex,
-                                               Compiler * /* inCompiler */) {
+inputJokerActualParameterAST_init_21__21_ (const GALGAS_location & in_mQualifierLocation,
+                                           const GALGAS_uint & in_mJokerIndex,
+                                           Compiler * /* inCompiler */) {
   mProperty_mQualifierLocation = in_mQualifierLocation ;
   mProperty_mJokerIndex = in_mJokerIndex ;
 }
@@ -5443,25 +5443,21 @@ GALGAS_string extensionGetter_keyRepresentation (const GALGAS_formalParameterLis
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension Getter '@formalInputParameterListAST signature'
+//Extension Getter '@formalInputParameterListAST initializerSignature'
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string extensionGetter_signature (const GALGAS_formalInputParameterListAST & inObject,
-                                         Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_initializerSignature (const GALGAS_formalInputParameterListAST & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
-  result_result = GALGAS_string ("(") ;
+  result_result = GALGAS_string ("init") ;
   const GALGAS_formalInputParameterListAST temp_0 = inObject ;
-  cEnumerator_formalInputParameterListAST enumerator_4095 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_4095.hasCurrentObject ()) {
-    result_result.plusAssign_operation(enumerator_4095.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 114)) ;
-    if (enumerator_4095.hasNextObject ()) {
-      result_result.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 116)) ;
-    }
-    enumerator_4095.gotoNextObject () ;
+  cEnumerator_formalInputParameterListAST enumerator_4109 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_4109.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GALGAS_string ("!").add_operation (enumerator_4109.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 113)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 113)) ;
+    enumerator_4109.gotoNextObject () ;
   }
-  result_result.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 118)) ;
 //---
   return result_result ;
 }
@@ -5728,11 +5724,11 @@ GALGAS_abstractInputParameter () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_inputParameterAnonymousVariable GALGAS_inputParameterAnonymousVariable::
-init_28__29_ (Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init (Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_inputParameterAnonymousVariable * object = nullptr ;
   macroMyNew (object, cPtr_inputParameterAnonymousVariable (inCompiler COMMA_THERE)) ;
-  object->inputParameterAnonymousVariable_init_28__29_ (inCompiler) ;
+  object->inputParameterAnonymousVariable_init (inCompiler) ;
   const GALGAS_inputParameterAnonymousVariable result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5741,7 +5737,7 @@ init_28__29_ (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputParameterAnonymousVariable::
-inputParameterAnonymousVariable_init_28__29_ (Compiler * /* inCompiler */) {
+inputParameterAnonymousVariable_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7936,15 +7932,15 @@ void extensionMethod_buildPropertyInitializationCode (const GALGAS_propertyInCol
   outArgument_outUnusedVariableCppNameSet.drop () ; // Release 'out' argument
   outArgument_outInitializationCode.drop () ; // Release 'out' argument
   outArgument_outInitializationCode = GALGAS_string::makeEmptyString () ;
-  GALGAS_stringset var_inclusionSet_9179 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 250)) ;
-  GALGAS_uint var_temporaryVariableIndex_9222 = GALGAS_uint (uint32_t (0U)) ;
-  GALGAS_stringset temp_0 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 252)) ;
-  temp_0.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 252))  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 252)) ;
+  GALGAS_stringset var_inclusionSet_9145 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 246)) ;
+  GALGAS_uint var_temporaryVariableIndex_9188 = GALGAS_uint (uint32_t (0U)) ;
+  GALGAS_stringset temp_0 = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 248)) ;
+  temp_0.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 248))  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 248)) ;
   outArgument_outUnusedVariableCppNameSet = temp_0 ;
   const GALGAS_propertyInCollectionListAST temp_1 = inObject ;
-  cEnumerator_propertyInCollectionListAST enumerator_9360 (temp_1, EnumerationOrder::up) ;
-  while (enumerator_9360.hasCurrentObject ()) {
-    switch (enumerator_9360.current_initialization (HERE).enumValue ()) {
+  cEnumerator_propertyInCollectionListAST enumerator_9326 (temp_1, EnumerationOrder::up) ;
+  while (enumerator_9326.hasCurrentObject ()) {
+    switch (enumerator_9326.current_initialization (HERE).enumValue ()) {
     case GALGAS_propertyInCollectionInitializationAST::kNotBuilt:
       break ;
     case GALGAS_propertyInCollectionInitializationAST::kEnum_none:
@@ -7953,24 +7949,24 @@ void extensionMethod_buildPropertyInitializationCode (const GALGAS_propertyInCol
       break ;
     case GALGAS_propertyInCollectionInitializationAST::kEnum_some:
       {
-        const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * extractPtr_10789 = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) (enumerator_9360.current_initialization (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_9449_expressionAST = extractPtr_10789->mAssociatedValue0 ;
-        GALGAS_localVarManager var_variableMap_9478 = GALGAS_localVarManager::class_func_new (inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 257)) ;
-        GALGAS_analysisContext var_analysisContext_9545 = GALGAS_analysisContext::class_func_new (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GALGAS_string::makeEmptyString (), GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticsTypesForAST.galgas", 262)), GALGAS_string::makeEmptyString (), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 258)) ;
-        GALGAS_unifiedTypeMapEntry var_propertyType_9823 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_9360.current_propertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 266)) ;
-        GALGAS_semanticExpressionForGeneration var_expression_10194 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_9449_expressionAST.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9823, var_analysisContext_9545, ioArgument_ioTypeMap, var_variableMap_9478, var_expression_10194, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 267)) ;
+        const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * extractPtr_10755 = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) (enumerator_9326.current_initialization (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_9415_expressionAST = extractPtr_10755->mAssociatedValue0 ;
+        GALGAS_localVarManager var_variableMap_9444 = GALGAS_localVarManager::class_func_new (inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 253)) ;
+        GALGAS_analysisContext var_analysisContext_9511 = GALGAS_analysisContext::class_func_new (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GALGAS_string::makeEmptyString (), GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticsTypesForAST.galgas", 258)), GALGAS_string::makeEmptyString (), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 254)) ;
+        GALGAS_unifiedTypeMapEntry var_propertyType_9789 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_9326.current_propertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 262)) ;
+        GALGAS_semanticExpressionForGeneration var_expression_10160 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_9415_expressionAST.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9789, var_analysisContext_9511, ioArgument_ioTypeMap, var_variableMap_9444, var_expression_10160, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 263)) ;
         {
-        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9823, var_expression_10194.readProperty_mResultType (), enumerator_9360.current_propertyName (HERE).readProperty_location (), var_expression_10194, inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 277)) ;
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9789, var_expression_10160.readProperty_mResultType (), enumerator_9326.current_propertyName (HERE).readProperty_location (), var_expression_10160, inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 273)) ;
         }
-        GALGAS_string var_sourceVar_10626 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_10194.ptr (), outArgument_outInitializationCode, var_inclusionSet_9179, var_temporaryVariableIndex_9222, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10626, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 283)) ;
-        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string ("  mProperty_").add_operation (enumerator_9360.current_propertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticsTypesForAST.galgas", 290)), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 290)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 290)) ;
-        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string (" = ").add_operation (var_sourceVar_10626, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 291)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 291)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 291)) ;
+        GALGAS_string var_sourceVar_10592 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_10160.ptr (), outArgument_outInitializationCode, var_inclusionSet_9145, var_temporaryVariableIndex_9188, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10592, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 279)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string ("  mProperty_").add_operation (enumerator_9326.current_propertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticsTypesForAST.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 286)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 286)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string (" = ").add_operation (var_sourceVar_10592, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)) ;
       }
       break ;
     }
-    enumerator_9360.gotoNextObject () ;
+    enumerator_9326.gotoNextObject () ;
   }
 }
 

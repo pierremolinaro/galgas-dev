@@ -516,9 +516,9 @@ class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInst
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionStringForGeneration init_28__29_ (const class GALGAS_string & inOperand0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionStringForGeneration init_21_ (const class GALGAS_string & inOperand0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -567,8 +567,8 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInstructionStringForGeneration_init_28__29_ (const class GALGAS_string & inOperand0,
-                                                                    Compiler * inCompiler) ;
+  public: void templateInstructionStringForGeneration_init_21_ (const class GALGAS_string & inOperand0,
+                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method templateCodeGeneration

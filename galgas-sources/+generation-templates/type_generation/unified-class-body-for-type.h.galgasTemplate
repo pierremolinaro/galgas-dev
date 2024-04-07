@@ -2,7 +2,7 @@
 
 //--------------------------------- Initializers
 % for (lkey formalArgumentList) in INITIALIZER_MAP do
-%  public: static GALGAS_%!TYPE_IDENTIFIER% init%![lkey identifierRepresentation]% (%?^
+%  public: static GALGAS_%!TYPE_IDENTIFIER% %![lkey identifierRepresentation]% (%?^
     for (mFormalSelector mFormalArgumentType mFormalArgumentName isConstant) in formalArgumentList do (IDX)
       if isConstant then %const % else end
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^

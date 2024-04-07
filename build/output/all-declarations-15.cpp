@@ -20,9 +20,9 @@ GALGAS_actualParameterListForGeneration_2D_element::~ GALGAS_actualParameterList
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_actualParameterListForGeneration_2D_element GALGAS_actualParameterListForGeneration_2D_element::init_28__29_ (const GALGAS_actualParameterForGeneration & in_mActualParameter,
-                                                                                                                     Compiler * inCompiler
-                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_actualParameterListForGeneration_2D_element GALGAS_actualParameterListForGeneration_2D_element::init_21_ (const GALGAS_actualParameterForGeneration & in_mActualParameter,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_actualParameterListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mActualParameter = in_mActualParameter ;
@@ -141,9 +141,9 @@ GALGAS_semanticInstructionListForGeneration_2D_element::~ GALGAS_semanticInstruc
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_semanticInstructionListForGeneration_2D_element GALGAS_semanticInstructionListForGeneration_2D_element::init_28__29_ (const GALGAS_semanticInstructionForGeneration & in_mInstruction,
-                                                                                                                             Compiler * inCompiler
-                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_semanticInstructionListForGeneration_2D_element GALGAS_semanticInstructionListForGeneration_2D_element::init_21_ (const GALGAS_semanticInstructionForGeneration & in_mInstruction,
+                                                                                                                         Compiler * inCompiler
+                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticInstructionListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstruction = in_mInstruction ;
@@ -263,10 +263,10 @@ GALGAS_listOfSemanticInstructionListForGeneration_2D_element::~ GALGAS_listOfSem
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_listOfSemanticInstructionListForGeneration_2D_element GALGAS_listOfSemanticInstructionListForGeneration_2D_element::init_28__2C__29_ (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
-                                                                                                                                             const GALGAS_location & in_mEndOfInstructionList,
-                                                                                                                                             Compiler * inCompiler
-                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_listOfSemanticInstructionListForGeneration_2D_element GALGAS_listOfSemanticInstructionListForGeneration_2D_element::init_21__21_ (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                                                                                                         const GALGAS_location & in_mEndOfInstructionList,
+                                                                                                                                         Compiler * inCompiler
+                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_listOfSemanticInstructionListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstructionList = in_mInstructionList ;
@@ -397,10 +397,10 @@ GALGAS_semanticDeclarationListForGeneration_2D_element::~ GALGAS_semanticDeclara
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_semanticDeclarationListForGeneration_2D_element GALGAS_semanticDeclarationListForGeneration_2D_element::init_28_infoMessage_2C__29_ (const GALGAS_string & in_infoMessage,
-                                                                                                                                            const GALGAS_semanticDeclarationForGeneration & in_mDeclaration,
-                                                                                                                                            Compiler * inCompiler
-                                                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_semanticDeclarationListForGeneration_2D_element GALGAS_semanticDeclarationListForGeneration_2D_element::init_21_infoMessage_21_ (const GALGAS_string & in_infoMessage,
+                                                                                                                                        const GALGAS_semanticDeclarationForGeneration & in_mDeclaration,
+                                                                                                                                        Compiler * inCompiler
+                                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticDeclarationListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_infoMessage = in_infoMessage ;
@@ -531,10 +531,10 @@ GALGAS_nonTerminalToAddList_2D_element::~ GALGAS_nonTerminalToAddList_2D_element
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_nonTerminalToAddList_2D_element GALGAS_nonTerminalToAddList_2D_element::init_28__2C__29_ (const GALGAS_string & in_mSyntaxComponentName,
-                                                                                                 const GALGAS_uint & in_mNonTerminalToAddCount,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_nonTerminalToAddList_2D_element GALGAS_nonTerminalToAddList_2D_element::init_21__21_ (const GALGAS_string & in_mSyntaxComponentName,
+                                                                                             const GALGAS_uint & in_mNonTerminalToAddCount,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_nonTerminalToAddList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
@@ -666,11 +666,11 @@ GALGAS_terminalCheckAssignementList_2D_element::~ GALGAS_terminalCheckAssignemen
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_terminalCheckAssignementList_2D_element GALGAS_terminalCheckAssignementList_2D_element::init_28__2C__2C__29_ (const GALGAS_string & in_mTypeName,
-                                                                                                                     const GALGAS_string & in_mTargetVarCppName,
-                                                                                                                     const GALGAS_string & in_mSourceLexicalAttributeName,
-                                                                                                                     Compiler * inCompiler
-                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_terminalCheckAssignementList_2D_element GALGAS_terminalCheckAssignementList_2D_element::init_21__21__21_ (const GALGAS_string & in_mTypeName,
+                                                                                                                 const GALGAS_string & in_mTargetVarCppName,
+                                                                                                                 const GALGAS_string & in_mSourceLexicalAttributeName,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_terminalCheckAssignementList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mTypeName = in_mTypeName ;
@@ -813,11 +813,11 @@ GALGAS_filewrapperTemplateListForGeneration_2D_element::~ GALGAS_filewrapperTemp
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplateListForGeneration_2D_element::init_28__2C__2C__29_ (const GALGAS_string & in_mFilewrapperTemplateName,
-                                                                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mFilewrapperTemplateFormalInputParameters,
-                                                                                                                                     const GALGAS_templateInstructionListForGeneration & in_mTemplateInstructionListForGeneration,
-                                                                                                                                     Compiler * inCompiler
-                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplateListForGeneration_2D_element::init_21__21__21_ (const GALGAS_string & in_mFilewrapperTemplateName,
+                                                                                                                                 const GALGAS_formalInputParameterListForGeneration & in_mFilewrapperTemplateFormalInputParameters,
+                                                                                                                                 const GALGAS_templateInstructionListForGeneration & in_mTemplateInstructionListForGeneration,
+                                                                                                                                 Compiler * inCompiler
+                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapperTemplateListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
@@ -960,11 +960,11 @@ GALGAS_ruleDeclarationList_2D_element::~ GALGAS_ruleDeclarationList_2D_element (
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_ruleDeclarationList_2D_element GALGAS_ruleDeclarationList_2D_element::init_28__2C__2C__29_ (const GALGAS_string & in_mNonterminalName,
-                                                                                                   const GALGAS_uint & in_mRuleIndex,
-                                                                                                   const GALGAS_ruleLabelImplementationList & in_mLabelImplementationList,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ruleDeclarationList_2D_element GALGAS_ruleDeclarationList_2D_element::init_21__21__21_ (const GALGAS_string & in_mNonterminalName,
+                                                                                               const GALGAS_uint & in_mRuleIndex,
+                                                                                               const GALGAS_ruleLabelImplementationList & in_mLabelImplementationList,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ruleDeclarationList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mNonterminalName = in_mNonterminalName ;
@@ -1105,9 +1105,9 @@ GALGAS_localVarMapListForLLVM_2D_element::~ GALGAS_localVarMapListForLLVM_2D_ele
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_localVarMapListForLLVM_2D_element GALGAS_localVarMapListForLLVM_2D_element::init_28__29_ (const GALGAS_scopeLocalVarMap & in_mMap,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_localVarMapListForLLVM_2D_element GALGAS_localVarMapListForLLVM_2D_element::init_21_ (const GALGAS_scopeLocalVarMap & in_mMap,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_localVarMapListForLLVM_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mMap = in_mMap ;
@@ -1226,9 +1226,9 @@ GALGAS_openedOverrideList_2D_element::~ GALGAS_openedOverrideList_2D_element (vo
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_openedOverrideList_2D_element GALGAS_openedOverrideList_2D_element::init_28__29_ (const GALGAS_overrideKind & in_mOverrideKind,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_openedOverrideList_2D_element GALGAS_openedOverrideList_2D_element::init_21_ (const GALGAS_overrideKind & in_mOverrideKind,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_openedOverrideList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mOverrideKind = in_mOverrideKind ;
@@ -1347,9 +1347,9 @@ GALGAS_collectionValueElementList_2D_element::~ GALGAS_collectionValueElementLis
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_collectionValueElementList_2D_element GALGAS_collectionValueElementList_2D_element::init_28__29_ (const GALGAS_abstractCollectionValueElement & in_mElement,
-                                                                                                         Compiler * inCompiler
-                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_collectionValueElementList_2D_element GALGAS_collectionValueElementList_2D_element::init_21_ (const GALGAS_abstractCollectionValueElement & in_mElement,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_collectionValueElementList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mElement = in_mElement ;
@@ -1468,9 +1468,9 @@ GALGAS_collectionValueElementListForGeneration_2D_element::~ GALGAS_collectionVa
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_collectionValueElementListForGeneration_2D_element GALGAS_collectionValueElementListForGeneration_2D_element::init_28__29_ (const GALGAS_abstractCollectionValueElementForGeneration & in_mElement,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_collectionValueElementListForGeneration_2D_element GALGAS_collectionValueElementListForGeneration_2D_element::init_21_ (const GALGAS_abstractCollectionValueElementForGeneration & in_mElement,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_collectionValueElementListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mElement = in_mElement ;
@@ -1592,12 +1592,12 @@ GALGAS_castInstructionBranchListForGeneration_2D_element::~ GALGAS_castInstructi
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_castInstructionBranchListForGeneration_2D_element GALGAS_castInstructionBranchListForGeneration_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                                                                                                             const GALGAS_string & in_mCastedVarCppName,
-                                                                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
-                                                                                                                                             Compiler * inCompiler
-                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_castInstructionBranchListForGeneration_2D_element GALGAS_castInstructionBranchListForGeneration_2D_element::init_21__21__21__21_ (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                                                                                                         const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                                                                         const GALGAS_string & in_mCastedVarCppName,
+                                                                                                                                         const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                                                                                                         Compiler * inCompiler
+                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_castInstructionBranchListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
@@ -1749,9 +1749,9 @@ GALGAS_fixitListAST_2D_element::~ GALGAS_fixitListAST_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_fixitListAST_2D_element GALGAS_fixitListAST_2D_element::init_28__29_ (const GALGAS_fixitElementAST & in_mElement,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_fixitListAST_2D_element GALGAS_fixitListAST_2D_element::init_21_ (const GALGAS_fixitElementAST & in_mElement,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_fixitListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mElement = in_mElement ;
@@ -1870,9 +1870,9 @@ GALGAS_fixitListForGeneration_2D_element::~ GALGAS_fixitListForGeneration_2D_ele
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_fixitListForGeneration_2D_element GALGAS_fixitListForGeneration_2D_element::init_28__29_ (const GALGAS_fixitElementForGeneration & in_mElement,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_fixitListForGeneration_2D_element GALGAS_fixitListForGeneration_2D_element::init_21_ (const GALGAS_fixitElementForGeneration & in_mElement,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_fixitListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mElement = in_mElement ;
@@ -1992,10 +1992,10 @@ GALGAS_forInstructionEnumeratedObjectListAST_2D_element::~ GALGAS_forInstruction
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_forInstructionEnumeratedObjectListAST_2D_element GALGAS_forInstructionEnumeratedObjectListAST_2D_element::init_28__2C__29_ (const GALGAS_bool & in_mAscending,
-                                                                                                                                   const GALGAS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_forInstructionEnumeratedObjectListAST_2D_element GALGAS_forInstructionEnumeratedObjectListAST_2D_element::init_21__21_ (const GALGAS_bool & in_mAscending,
+                                                                                                                               const GALGAS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mAscending = in_mAscending ;
@@ -2125,9 +2125,9 @@ GALGAS_ifExpressionList_2D_element::~ GALGAS_ifExpressionList_2D_element (void) 
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_ifExpressionList_2D_element GALGAS_ifExpressionList_2D_element::init_28__29_ (const GALGAS_ifExpressionKind & in_mExpression,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ifExpressionList_2D_element GALGAS_ifExpressionList_2D_element::init_21_ (const GALGAS_ifExpressionKind & in_mExpression,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ifExpressionList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mExpression = in_mExpression ;
@@ -2246,9 +2246,9 @@ GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::~ GALGAS_option
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_optionalMethodActualArgumentListForGeneration_2D_element GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::init_28__29_ (const GALGAS_optionalMethodActualArgumentForGeneration & in_mParameter,
-                                                                                                                                               Compiler * inCompiler
-                                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_optionalMethodActualArgumentListForGeneration_2D_element GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::init_21_ (const GALGAS_optionalMethodActualArgumentForGeneration & in_mParameter,
+                                                                                                                                           Compiler * inCompiler
+                                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgumentListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mParameter = in_mParameter ;
@@ -2367,9 +2367,9 @@ GALGAS_ifTestListForGeneration_2D_element::~ GALGAS_ifTestListForGeneration_2D_e
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_ifTestListForGeneration_2D_element GALGAS_ifTestListForGeneration_2D_element::init_28__29_ (const GALGAS_ifTestForGeneration & in_mExpression,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_ifTestListForGeneration_2D_element GALGAS_ifTestListForGeneration_2D_element::init_21_ (const GALGAS_ifTestForGeneration & in_mExpression,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ifTestListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mExpression = in_mExpression ;
@@ -2491,12 +2491,12 @@ GALGAS_switchBranchesAST_2D_element::~ GALGAS_switchBranchesAST_2D_element (void
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstringlist & in_mSwitchConstantList,
-                                                                                                   const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                                                                   const GALGAS_semanticInstructionListAST & in_mInstructions,
-                                                                                                   const GALGAS_location & in_mEndOfBranch,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::init_21__21__21__21_ (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                                                               const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
+                                                                                               const GALGAS_semanticInstructionListAST & in_mInstructions,
+                                                                                               const GALGAS_location & in_mEndOfBranch,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_switchBranchesAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mSwitchConstantList = in_mSwitchConstantList ;
@@ -2650,11 +2650,11 @@ GALGAS_extractedAssociatedValuesForGeneration_2D_element::~ GALGAS_extractedAsso
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssociatedValuesForGeneration_2D_element::init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                                                                                                         const GALGAS_string & in_mCppName,
-                                                                                                                                         const GALGAS_uint & in_mIndex,
-                                                                                                                                         Compiler * inCompiler
-                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssociatedValuesForGeneration_2D_element::init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                                                                     const GALGAS_string & in_mCppName,
+                                                                                                                                     const GALGAS_uint & in_mIndex,
+                                                                                                                                     Compiler * inCompiler
+                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extractedAssociatedValuesForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mType = in_mType ;
@@ -2798,12 +2798,12 @@ GALGAS_switchBranchesForGeneration_2D_element::~ GALGAS_switchBranchesForGenerat
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_switchBranchesForGeneration_2D_element GALGAS_switchBranchesForGeneration_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstringlist & in_mSwitchConstantList,
-                                                                                                                       const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
-                                                                                                                       const GALGAS_uint & in_mEndOfBranchLocationIndex,
-                                                                                                                       const GALGAS_semanticInstructionListForGeneration & in_mInstructions,
-                                                                                                                       Compiler * inCompiler
-                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_switchBranchesForGeneration_2D_element GALGAS_switchBranchesForGeneration_2D_element::init_21__21__21__21_ (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                                                                                   const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                                                                                   const GALGAS_uint & in_mEndOfBranchLocationIndex,
+                                                                                                                   const GALGAS_semanticInstructionListForGeneration & in_mInstructions,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_switchBranchesForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mSwitchConstantList = in_mSwitchConstantList ;
@@ -2955,9 +2955,9 @@ GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::~ GALGAS_syntaxInstru
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::init_28__29_ (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element::init_21_ (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstruction = in_mInstruction ;
@@ -3076,9 +3076,9 @@ GALGAS_branchListForGrammarAnalysis_2D_element::~ GALGAS_branchListForGrammarAna
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_branchListForGrammarAnalysis_2D_element GALGAS_branchListForGrammarAnalysis_2D_element::init_28__29_ (const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mSyntaxInstructionList,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_branchListForGrammarAnalysis_2D_element GALGAS_branchListForGrammarAnalysis_2D_element::init_21_ (const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mSyntaxInstructionList,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_branchListForGrammarAnalysis_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mSyntaxInstructionList = in_mSyntaxInstructionList ;
@@ -3197,9 +3197,9 @@ GALGAS_rowList_2D_element::~ GALGAS_rowList_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_rowList_2D_element GALGAS_rowList_2D_element::init_28__29_ (const GALGAS__32_stringlist & in_columns,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_rowList_2D_element GALGAS_rowList_2D_element::init_21_ (const GALGAS__32_stringlist & in_columns,
+                                                               Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_rowList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_columns = in_columns ;
@@ -3318,9 +3318,9 @@ GALGAS_programListForGeneration_2D_element::~ GALGAS_programListForGeneration_2D
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_programListForGeneration_2D_element GALGAS_programListForGeneration_2D_element::init_28__29_ (const GALGAS_semanticDeclarationForGeneration & in_mDeclaration,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_programListForGeneration_2D_element GALGAS_programListForGeneration_2D_element::init_21_ (const GALGAS_semanticDeclarationForGeneration & in_mDeclaration,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_programListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mDeclaration = in_mDeclaration ;
@@ -3440,10 +3440,10 @@ GALGAS_genericExtensionMethodListMap_2D_element::~ GALGAS_genericExtensionMethod
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_genericExtensionMethodListMap_2D_element GALGAS_genericExtensionMethodListMap_2D_element::init_28__2C__29_ (const GALGAS_string & in_key,
-                                                                                                                   const GALGAS_lstringlist & in_mList,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_genericExtensionMethodListMap_2D_element GALGAS_genericExtensionMethodListMap_2D_element::init_21__21_ (const GALGAS_string & in_key,
+                                                                                                               const GALGAS_lstringlist & in_mList,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_genericExtensionMethodListMap_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_key = in_key ;
@@ -3573,9 +3573,9 @@ GALGAS_unifiedTypeMapEntryList_2D_element::~ GALGAS_unifiedTypeMapEntryList_2D_e
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList_2D_element GALGAS_unifiedTypeMapEntryList_2D_element::init_28__29_ (const GALGAS_unifiedTypeMapEntry & in_mEntry,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_unifiedTypeMapEntryList_2D_element GALGAS_unifiedTypeMapEntryList_2D_element::init_21_ (const GALGAS_unifiedTypeMapEntry & in_mEntry,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntryList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mEntry = in_mEntry ;
@@ -3695,10 +3695,10 @@ GALGAS_descendantClassListMap_2D_element::~ GALGAS_descendantClassListMap_2D_ele
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_descendantClassListMap_2D_element GALGAS_descendantClassListMap_2D_element::init_28__2C__29_ (const GALGAS_string & in_key,
-                                                                                                     const GALGAS_unifiedTypeMapEntryList & in_mList,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_descendantClassListMap_2D_element GALGAS_descendantClassListMap_2D_element::init_21__21_ (const GALGAS_string & in_key,
+                                                                                                 const GALGAS_unifiedTypeMapEntryList & in_mList,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_descendantClassListMap_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_key = in_key ;
@@ -3831,12 +3831,12 @@ GALGAS_XCodeGroupList_2D_element::~ GALGAS_XCodeGroupList_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_XCodeGroupList_2D_element GALGAS_XCodeGroupList_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_string & in_mGroupReference,
-                                                                                             const GALGAS_string & in_mGroupName,
-                                                                                             const GALGAS_string & in_mGroupPath,
-                                                                                             const GALGAS_stringlist & in_mChildrenRefs,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_XCodeGroupList_2D_element GALGAS_XCodeGroupList_2D_element::init_21__21__21__21_ (const GALGAS_string & in_mGroupReference,
+                                                                                         const GALGAS_string & in_mGroupName,
+                                                                                         const GALGAS_string & in_mGroupPath,
+                                                                                         const GALGAS_stringlist & in_mChildrenRefs,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_XCodeGroupList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mGroupReference = in_mGroupReference ;
@@ -3998,19 +3998,19 @@ GALGAS_XCodeToolTargetList_2D_element::~ GALGAS_XCodeToolTargetList_2D_element (
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mTargetRef,
-                                                                                                                                   const GALGAS_string & in_mTargetName,
-                                                                                                                                   const GALGAS_string & in_mProductFileReference,
-                                                                                                                                   const GALGAS_string & in_mProductFileName,
-                                                                                                                                   const GALGAS_stringlist & in_mBuildPhaseRefList,
-                                                                                                                                   const GALGAS_string & in_mBuildPhaseRef,
-                                                                                                                                   const GALGAS_string & in_mBuildConfigurationListRef,
-                                                                                                                                   const GALGAS_stringlist & in_mBuildConfigurationSettingList,
-                                                                                                                                   const GALGAS_string & in_mBuildConfigurationRef,
-                                                                                                                                   const GALGAS_stringlist & in_mFrameworksFileRefList,
-                                                                                                                                   const GALGAS_string & in_mFrameworkBuildPhaseRef,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::init_21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_string & in_mTargetRef,
+                                                                                                                               const GALGAS_string & in_mTargetName,
+                                                                                                                               const GALGAS_string & in_mProductFileReference,
+                                                                                                                               const GALGAS_string & in_mProductFileName,
+                                                                                                                               const GALGAS_stringlist & in_mBuildPhaseRefList,
+                                                                                                                               const GALGAS_string & in_mBuildPhaseRef,
+                                                                                                                               const GALGAS_string & in_mBuildConfigurationListRef,
+                                                                                                                               const GALGAS_stringlist & in_mBuildConfigurationSettingList,
+                                                                                                                               const GALGAS_string & in_mBuildConfigurationRef,
+                                                                                                                               const GALGAS_stringlist & in_mFrameworksFileRefList,
+                                                                                                                               const GALGAS_string & in_mFrameworkBuildPhaseRef,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_XCodeToolTargetList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mTargetRef = in_mTargetRef ;
@@ -4252,22 +4252,22 @@ GALGAS_XCodeAppTargetList_2D_element::~ GALGAS_XCodeAppTargetList_2D_element (vo
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mTargetRef,
-                                                                                                                                             const GALGAS_string & in_mTargetName,
-                                                                                                                                             const GALGAS_string & in_mProductFileReference,
-                                                                                                                                             const GALGAS_string & in_mProductFileName,
-                                                                                                                                             const GALGAS_stringlist & in_mBuildPhaseRefList,
-                                                                                                                                             const GALGAS_string & in_mBuildPhaseRef,
-                                                                                                                                             const GALGAS_string & in_mBuildConfigurationListRef,
-                                                                                                                                             const GALGAS_stringlist & in_mBuildConfigurationSettingList,
-                                                                                                                                             const GALGAS_string & in_mBuildConfigurationRef,
-                                                                                                                                             const GALGAS_stringlist & in_mFrameworksFileRefList,
-                                                                                                                                             const GALGAS_string & in_mFrameworkBuildPhaseRef,
-                                                                                                                                             const GALGAS__32_stringlist & in_mDependentTargets,
-                                                                                                                                             const GALGAS_string & in_mResourceBuildRef,
-                                                                                                                                             const GALGAS_stringlist & in_mResourceFileBuildRefs,
-                                                                                                                                             Compiler * inCompiler
-                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::init_21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_string & in_mTargetRef,
+                                                                                                                                         const GALGAS_string & in_mTargetName,
+                                                                                                                                         const GALGAS_string & in_mProductFileReference,
+                                                                                                                                         const GALGAS_string & in_mProductFileName,
+                                                                                                                                         const GALGAS_stringlist & in_mBuildPhaseRefList,
+                                                                                                                                         const GALGAS_string & in_mBuildPhaseRef,
+                                                                                                                                         const GALGAS_string & in_mBuildConfigurationListRef,
+                                                                                                                                         const GALGAS_stringlist & in_mBuildConfigurationSettingList,
+                                                                                                                                         const GALGAS_string & in_mBuildConfigurationRef,
+                                                                                                                                         const GALGAS_stringlist & in_mFrameworksFileRefList,
+                                                                                                                                         const GALGAS_string & in_mFrameworkBuildPhaseRef,
+                                                                                                                                         const GALGAS__32_stringlist & in_mDependentTargets,
+                                                                                                                                         const GALGAS_string & in_mResourceBuildRef,
+                                                                                                                                         const GALGAS_stringlist & in_mResourceFileBuildRefs,
+                                                                                                                                         Compiler * inCompiler
+                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_XCodeAppTargetList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mTargetRef = in_mTargetRef ;
@@ -4531,11 +4531,11 @@ GALGAS_BuildFileList_2D_element::~ GALGAS_BuildFileList_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_BuildFileList_2D_element GALGAS_BuildFileList_2D_element::init_28__2C__2C__29_ (const GALGAS_string & in_mFileReference,
-                                                                                       const GALGAS_string & in_mFileName,
-                                                                                       const GALGAS_string & in_mBuildReference,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_BuildFileList_2D_element GALGAS_BuildFileList_2D_element::init_21__21__21_ (const GALGAS_string & in_mFileReference,
+                                                                                   const GALGAS_string & in_mFileName,
+                                                                                   const GALGAS_string & in_mBuildReference,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_BuildFileList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mFileReference = in_mFileReference ;
@@ -5278,14 +5278,14 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST::
-init_28__2C__2C__29_ (const GALGAS_lstring & in_mTypeName,
-                      const GALGAS_lstring & in_mClassFunctionName,
-                      const GALGAS_templateExpressionListAST & in_mExpressionList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_lstring & in_mTypeName,
+                  const GALGAS_lstring & in_mClassFunctionName,
+                  const GALGAS_templateExpressionListAST & in_mExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_templateClassFunctionAST * object = nullptr ;
   macroMyNew (object, cPtr_templateClassFunctionAST (inCompiler COMMA_THERE)) ;
-  object->templateClassFunctionAST_init_28__2C__2C__29_ (in_mTypeName, in_mClassFunctionName, in_mExpressionList, inCompiler) ;
+  object->templateClassFunctionAST_init_21__21__21_ (in_mTypeName, in_mClassFunctionName, in_mExpressionList, inCompiler) ;
   const GALGAS_templateClassFunctionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5294,10 +5294,10 @@ init_28__2C__2C__29_ (const GALGAS_lstring & in_mTypeName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateClassFunctionAST::
-templateClassFunctionAST_init_28__2C__2C__29_ (const GALGAS_lstring & in_mTypeName,
-                                               const GALGAS_lstring & in_mClassFunctionName,
-                                               const GALGAS_templateExpressionListAST & in_mExpressionList,
-                                               Compiler * /* inCompiler */) {
+templateClassFunctionAST_init_21__21__21_ (const GALGAS_lstring & in_mTypeName,
+                                           const GALGAS_lstring & in_mClassFunctionName,
+                                           const GALGAS_templateExpressionListAST & in_mExpressionList,
+                                           Compiler * /* inCompiler */) {
   mProperty_mTypeName = in_mTypeName ;
   mProperty_mClassFunctionName = in_mClassFunctionName ;
   mProperty_mExpressionList = in_mExpressionList ;
@@ -5509,14 +5509,14 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST::
-init_28__2C__2C__29_ (const GALGAS_lstring & in_mFileWrapperName,
-                      const GALGAS_lstring & in_mTemplateName,
-                      const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_lstring & in_mFileWrapperName,
+                  const GALGAS_lstring & in_mTemplateName,
+                  const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_templateFileWrapperTemplateCallAST * object = nullptr ;
   macroMyNew (object, cPtr_templateFileWrapperTemplateCallAST (inCompiler COMMA_THERE)) ;
-  object->templateFileWrapperTemplateCallAST_init_28__2C__2C__29_ (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  object->templateFileWrapperTemplateCallAST_init_21__21__21_ (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
   const GALGAS_templateFileWrapperTemplateCallAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5525,10 +5525,10 @@ init_28__2C__2C__29_ (const GALGAS_lstring & in_mFileWrapperName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateFileWrapperTemplateCallAST::
-templateFileWrapperTemplateCallAST_init_28__2C__2C__29_ (const GALGAS_lstring & in_mFileWrapperName,
-                                                         const GALGAS_lstring & in_mTemplateName,
-                                                         const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                                                         Compiler * /* inCompiler */) {
+templateFileWrapperTemplateCallAST_init_21__21__21_ (const GALGAS_lstring & in_mFileWrapperName,
+                                                     const GALGAS_lstring & in_mTemplateName,
+                                                     const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                                                     Compiler * /* inCompiler */) {
   mProperty_mFileWrapperName = in_mFileWrapperName ;
   mProperty_mTemplateName = in_mTemplateName ;
   mProperty_mOutExpressionList = in_mOutExpressionList ;
@@ -5740,14 +5740,14 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST::
-init_28__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
-                      const GALGAS_lstring & in_mTemplateName,
-                      const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
+                  const GALGAS_lstring & in_mTemplateName,
+                  const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_templateExtensionTemplateCallAST * object = nullptr ;
   macroMyNew (object, cPtr_templateExtensionTemplateCallAST (inCompiler COMMA_THERE)) ;
-  object->templateExtensionTemplateCallAST_init_28__2C__2C__29_ (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  object->templateExtensionTemplateCallAST_init_21__21__21_ (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
   const GALGAS_templateExtensionTemplateCallAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5756,10 +5756,10 @@ init_28__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateExtensionTemplateCallAST::
-templateExtensionTemplateCallAST_init_28__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
-                                                       const GALGAS_lstring & in_mTemplateName,
-                                                       const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                                                       Compiler * /* inCompiler */) {
+templateExtensionTemplateCallAST_init_21__21__21_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
+                                                   const GALGAS_lstring & in_mTemplateName,
+                                                   const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                                                   Compiler * /* inCompiler */) {
   mProperty_mExpressionValue = in_mExpressionValue ;
   mProperty_mTemplateName = in_mTemplateName ;
   mProperty_mOutExpressionList = in_mOutExpressionList ;
@@ -5966,13 +5966,13 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST::
-init_28__2C__29_ (const GALGAS_stringlist & in_mLiteralStringList,
-                  const GALGAS_location & in_mLocation,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_stringlist & in_mLiteralStringList,
+              const GALGAS_location & in_mLocation,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_templateLiteralStringExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_templateLiteralStringExpressionAST (inCompiler COMMA_THERE)) ;
-  object->templateLiteralStringExpressionAST_init_28__2C__29_ (in_mLiteralStringList, in_mLocation, inCompiler) ;
+  object->templateLiteralStringExpressionAST_init_21__21_ (in_mLiteralStringList, in_mLocation, inCompiler) ;
   const GALGAS_templateLiteralStringExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5981,9 +5981,9 @@ init_28__2C__29_ (const GALGAS_stringlist & in_mLiteralStringList,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLiteralStringExpressionAST::
-templateLiteralStringExpressionAST_init_28__2C__29_ (const GALGAS_stringlist & in_mLiteralStringList,
-                                                     const GALGAS_location & in_mLocation,
-                                                     Compiler * /* inCompiler */) {
+templateLiteralStringExpressionAST_init_21__21_ (const GALGAS_stringlist & in_mLiteralStringList,
+                                                 const GALGAS_location & in_mLocation,
+                                                 Compiler * /* inCompiler */) {
   mProperty_mLiteralStringList = in_mLiteralStringList ;
   mProperty_mLocation = in_mLocation ;
 }
@@ -6176,14 +6176,14 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_structFieldAccessTemplateExpressionAST GALGAS_structFieldAccessTemplateExpressionAST::
-init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                      const GALGAS_templateExpressionAST & in_mExpression,
-                      const GALGAS_lstring & in_mStructFieldName,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                  const GALGAS_templateExpressionAST & in_mExpression,
+                  const GALGAS_lstring & in_mStructFieldName,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_structFieldAccessTemplateExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_structFieldAccessTemplateExpressionAST (inCompiler COMMA_THERE)) ;
-  object->structFieldAccessTemplateExpressionAST_init_28__2C__2C__29_ (in_mOperatorLocation, in_mExpression, in_mStructFieldName, inCompiler) ;
+  object->structFieldAccessTemplateExpressionAST_init_21__21__21_ (in_mOperatorLocation, in_mExpression, in_mStructFieldName, inCompiler) ;
   const GALGAS_structFieldAccessTemplateExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6192,10 +6192,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structFieldAccessTemplateExpressionAST::
-structFieldAccessTemplateExpressionAST_init_28__2C__2C__29_ (const GALGAS_location & in_mOperatorLocation,
-                                                             const GALGAS_templateExpressionAST & in_mExpression,
-                                                             const GALGAS_lstring & in_mStructFieldName,
-                                                             Compiler * /* inCompiler */) {
+structFieldAccessTemplateExpressionAST_init_21__21__21_ (const GALGAS_location & in_mOperatorLocation,
+                                                         const GALGAS_templateExpressionAST & in_mExpression,
+                                                         const GALGAS_lstring & in_mStructFieldName,
+                                                         Compiler * /* inCompiler */) {
   mProperty_mOperatorLocation = in_mOperatorLocation ;
   mProperty_mExpression = in_mExpression ;
   mProperty_mStructFieldName = in_mStructFieldName ;
@@ -6407,14 +6407,14 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateOptionAccessAST GALGAS_templateOptionAccessAST::
-init_28__2C__2C__29_ (const GALGAS_lstring & in_mOptionComponentName,
-                      const GALGAS_lstring & in_mOptionName,
-                      const GALGAS_lstring & in_mGetterName,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_lstring & in_mOptionComponentName,
+                  const GALGAS_lstring & in_mOptionName,
+                  const GALGAS_lstring & in_mGetterName,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_templateOptionAccessAST * object = nullptr ;
   macroMyNew (object, cPtr_templateOptionAccessAST (inCompiler COMMA_THERE)) ;
-  object->templateOptionAccessAST_init_28__2C__2C__29_ (in_mOptionComponentName, in_mOptionName, in_mGetterName, inCompiler) ;
+  object->templateOptionAccessAST_init_21__21__21_ (in_mOptionComponentName, in_mOptionName, in_mGetterName, inCompiler) ;
   const GALGAS_templateOptionAccessAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6423,10 +6423,10 @@ init_28__2C__2C__29_ (const GALGAS_lstring & in_mOptionComponentName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateOptionAccessAST::
-templateOptionAccessAST_init_28__2C__2C__29_ (const GALGAS_lstring & in_mOptionComponentName,
-                                              const GALGAS_lstring & in_mOptionName,
-                                              const GALGAS_lstring & in_mGetterName,
-                                              Compiler * /* inCompiler */) {
+templateOptionAccessAST_init_21__21__21_ (const GALGAS_lstring & in_mOptionComponentName,
+                                          const GALGAS_lstring & in_mOptionName,
+                                          const GALGAS_lstring & in_mGetterName,
+                                          Compiler * /* inCompiler */) {
   mProperty_mOptionComponentName = in_mOptionComponentName ;
   mProperty_mOptionName = in_mOptionName ;
   mProperty_mGetterName = in_mGetterName ;
@@ -6643,15 +6643,15 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateTestDynamicClassAST GALGAS_templateTestDynamicClassAST::
-init_28__2C__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
-                          const GALGAS_location & in_mEndOfReceiverExpression,
-                          const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                          const GALGAS_lstring & in_mTypeName,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
+                      const GALGAS_location & in_mEndOfReceiverExpression,
+                      const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                      const GALGAS_lstring & in_mTypeName,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_templateTestDynamicClassAST * object = nullptr ;
   macroMyNew (object, cPtr_templateTestDynamicClassAST (inCompiler COMMA_THERE)) ;
-  object->templateTestDynamicClassAST_init_28__2C__2C__2C__29_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeComparisonKind, in_mTypeName, inCompiler) ;
+  object->templateTestDynamicClassAST_init_21__21__21__21_ (in_mReceiverExpression, in_mEndOfReceiverExpression, in_mTypeComparisonKind, in_mTypeName, inCompiler) ;
   const GALGAS_templateTestDynamicClassAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6660,11 +6660,11 @@ init_28__2C__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mReceiverExpre
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateTestDynamicClassAST::
-templateTestDynamicClassAST_init_28__2C__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
-                                                      const GALGAS_location & in_mEndOfReceiverExpression,
-                                                      const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                      const GALGAS_lstring & in_mTypeName,
-                                                      Compiler * /* inCompiler */) {
+templateTestDynamicClassAST_init_21__21__21__21_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
+                                                  const GALGAS_location & in_mEndOfReceiverExpression,
+                                                  const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                  const GALGAS_lstring & in_mTypeName,
+                                                  Compiler * /* inCompiler */) {
   mProperty_mReceiverExpression = in_mReceiverExpression ;
   mProperty_mEndOfReceiverExpression = in_mEndOfReceiverExpression ;
   mProperty_mTypeComparisonKind = in_mTypeComparisonKind ;
@@ -6890,13 +6890,13 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateFunctionCallAST GALGAS_templateFunctionCallAST::
-init_28__2C__29_ (const GALGAS_lstring & in_mFunctionName,
-                  const GALGAS_templateExpressionListAST & in_mExpressionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lstring & in_mFunctionName,
+              const GALGAS_templateExpressionListAST & in_mExpressionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_templateFunctionCallAST * object = nullptr ;
   macroMyNew (object, cPtr_templateFunctionCallAST (inCompiler COMMA_THERE)) ;
-  object->templateFunctionCallAST_init_28__2C__29_ (in_mFunctionName, in_mExpressionList, inCompiler) ;
+  object->templateFunctionCallAST_init_21__21_ (in_mFunctionName, in_mExpressionList, inCompiler) ;
   const GALGAS_templateFunctionCallAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6905,9 +6905,9 @@ init_28__2C__29_ (const GALGAS_lstring & in_mFunctionName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateFunctionCallAST::
-templateFunctionCallAST_init_28__2C__29_ (const GALGAS_lstring & in_mFunctionName,
-                                          const GALGAS_templateExpressionListAST & in_mExpressionList,
-                                          Compiler * /* inCompiler */) {
+templateFunctionCallAST_init_21__21_ (const GALGAS_lstring & in_mFunctionName,
+                                      const GALGAS_templateExpressionListAST & in_mExpressionList,
+                                      Compiler * /* inCompiler */) {
   mProperty_mFunctionName = in_mFunctionName ;
   mProperty_mExpressionList = in_mExpressionList ;
 }
@@ -7090,12 +7090,12 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateVarInExpressionAST GALGAS_templateVarInExpressionAST::
-init_28__29_ (const GALGAS_lstring & in_mVarName,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lstring & in_mVarName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_templateVarInExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_templateVarInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->templateVarInExpressionAST_init_28__29_ (in_mVarName, inCompiler) ;
+  object->templateVarInExpressionAST_init_21_ (in_mVarName, inCompiler) ;
   const GALGAS_templateVarInExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7104,8 +7104,8 @@ init_28__29_ (const GALGAS_lstring & in_mVarName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateVarInExpressionAST::
-templateVarInExpressionAST_init_28__29_ (const GALGAS_lstring & in_mVarName,
-                                         Compiler * /* inCompiler */) {
+templateVarInExpressionAST_init_21_ (const GALGAS_lstring & in_mVarName,
+                                     Compiler * /* inCompiler */) {
   mProperty_mVarName = in_mVarName ;
 }
 
@@ -7269,12 +7269,12 @@ GALGAS_templateInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST::
-init_28__29_ (const GALGAS_string & in_mTemplateString,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_string & in_mTemplateString,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionStringAST * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionStringAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionStringAST_init_28__29_ (in_mTemplateString, inCompiler) ;
+  object->templateInstructionStringAST_init_21_ (in_mTemplateString, inCompiler) ;
   const GALGAS_templateInstructionStringAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7283,8 +7283,8 @@ init_28__29_ (const GALGAS_string & in_mTemplateString,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionStringAST::
-templateInstructionStringAST_init_28__29_ (const GALGAS_string & in_mTemplateString,
-                                           Compiler * /* inCompiler */) {
+templateInstructionStringAST_init_21_ (const GALGAS_string & in_mTemplateString,
+                                       Compiler * /* inCompiler */) {
   mProperty_mTemplateString = in_mTemplateString ;
 }
 
@@ -9807,12 +9807,12 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionStringForGeneration GALGAS_templateInstructionStringForGeneration::
-init_28__29_ (const GALGAS_string & in_mTemplateString,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_string & in_mTemplateString,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionStringForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionStringForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateInstructionStringForGeneration_init_28__29_ (in_mTemplateString, inCompiler) ;
+  object->templateInstructionStringForGeneration_init_21_ (in_mTemplateString, inCompiler) ;
   const GALGAS_templateInstructionStringForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -9821,8 +9821,8 @@ init_28__29_ (const GALGAS_string & in_mTemplateString,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionStringForGeneration::
-templateInstructionStringForGeneration_init_28__29_ (const GALGAS_string & in_mTemplateString,
-                                                     Compiler * /* inCompiler */) {
+templateInstructionStringForGeneration_init_21_ (const GALGAS_string & in_mTemplateString,
+                                                 Compiler * /* inCompiler */) {
   mProperty_mTemplateString = in_mTemplateString ;
 }
 
@@ -10239,14 +10239,14 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForGeneration::
-init_28__2C__2C__29_ (const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                      const GALGAS_location & in_mLocation,
-                      const GALGAS_templateInstructionListForGeneration & in_mBlockInstructionList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                  const GALGAS_location & in_mLocation,
+                  const GALGAS_templateInstructionListForGeneration & in_mBlockInstructionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_templateBlockInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateBlockInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateBlockInstructionForGeneration_init_28__2C__2C__29_ (in_mExpression, in_mLocation, in_mBlockInstructionList, inCompiler) ;
+  object->templateBlockInstructionForGeneration_init_21__21__21_ (in_mExpression, in_mLocation, in_mBlockInstructionList, inCompiler) ;
   const GALGAS_templateBlockInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -10255,10 +10255,10 @@ init_28__2C__2C__29_ (const GALGAS_semanticExpressionForGeneration & in_mExpress
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateBlockInstructionForGeneration::
-templateBlockInstructionForGeneration_init_28__2C__2C__29_ (const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                                                            const GALGAS_location & in_mLocation,
-                                                            const GALGAS_templateInstructionListForGeneration & in_mBlockInstructionList,
-                                                            Compiler * /* inCompiler */) {
+templateBlockInstructionForGeneration_init_21__21__21_ (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                        const GALGAS_location & in_mLocation,
+                                                        const GALGAS_templateInstructionListForGeneration & in_mBlockInstructionList,
+                                                        Compiler * /* inCompiler */) {
   mProperty_mExpression = in_mExpression ;
   mProperty_mLocation = in_mLocation ;
   mProperty_mBlockInstructionList = in_mBlockInstructionList ;
@@ -10475,15 +10475,15 @@ GALGAS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateGetterCallInExpressionAST GALGAS_templateGetterCallInExpressionAST::
-init_28__2C__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
-                          const GALGAS_lstring & in_mGetterName,
-                          const GALGAS_templateExpressionListAST & in_mExpressionList,
-                          const GALGAS_location & in_mExpressionLocation,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
+                      const GALGAS_lstring & in_mGetterName,
+                      const GALGAS_templateExpressionListAST & in_mExpressionList,
+                      const GALGAS_location & in_mExpressionLocation,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_templateGetterCallInExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_templateGetterCallInExpressionAST (inCompiler COMMA_THERE)) ;
-  object->templateGetterCallInExpressionAST_init_28__2C__2C__2C__29_ (in_mReceiverExpression, in_mGetterName, in_mExpressionList, in_mExpressionLocation, inCompiler) ;
+  object->templateGetterCallInExpressionAST_init_21__21__21__21_ (in_mReceiverExpression, in_mGetterName, in_mExpressionList, in_mExpressionLocation, inCompiler) ;
   const GALGAS_templateGetterCallInExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -10492,11 +10492,11 @@ init_28__2C__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mReceiverExpre
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateGetterCallInExpressionAST::
-templateGetterCallInExpressionAST_init_28__2C__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
-                                                            const GALGAS_lstring & in_mGetterName,
-                                                            const GALGAS_templateExpressionListAST & in_mExpressionList,
-                                                            const GALGAS_location & in_mExpressionLocation,
-                                                            Compiler * /* inCompiler */) {
+templateGetterCallInExpressionAST_init_21__21__21__21_ (const GALGAS_templateExpressionAST & in_mReceiverExpression,
+                                                        const GALGAS_lstring & in_mGetterName,
+                                                        const GALGAS_templateExpressionListAST & in_mExpressionList,
+                                                        const GALGAS_location & in_mExpressionLocation,
+                                                        Compiler * /* inCompiler */) {
   mProperty_mReceiverExpression = in_mReceiverExpression ;
   mProperty_mGetterName = in_mGetterName ;
   mProperty_mExpressionList = in_mExpressionList ;
@@ -10752,19 +10752,19 @@ GALGAS_templateInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionForeachAST GALGAS_templateInstructionForeachAST::
-init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_mIsAscending,
-                                          const GALGAS_templateExpressionAST & in_mExpression,
-                                          const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                          const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
-                                          const GALGAS_templateInstructionListAST & in_mDoInstructionList,
-                                          const GALGAS_lstring & in_mIndexIdentifier,
-                                          const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
-                                          const GALGAS_templateInstructionListAST & in_mAfterInstructionList,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_mIsAscending,
+                                      const GALGAS_templateExpressionAST & in_mExpression,
+                                      const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
+                                      const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
+                                      const GALGAS_templateInstructionListAST & in_mDoInstructionList,
+                                      const GALGAS_lstring & in_mIndexIdentifier,
+                                      const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
+                                      const GALGAS_templateInstructionListAST & in_mAfterInstructionList,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionForeachAST * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionForeachAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionForeachAST_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (in_mIsAscending, in_mExpression, in_mEnumeratedObjectProperties, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexIdentifier, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
+  object->templateInstructionForeachAST_init_21__21__21__21__21__21__21__21_ (in_mIsAscending, in_mExpression, in_mEnumeratedObjectProperties, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexIdentifier, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
   const GALGAS_templateInstructionForeachAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -10773,15 +10773,15 @@ init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_mIsAscending,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionForeachAST::
-templateInstructionForeachAST_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_mIsAscending,
-                                                                        const GALGAS_templateExpressionAST & in_mExpression,
-                                                                        const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                                                        const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
-                                                                        const GALGAS_templateInstructionListAST & in_mDoInstructionList,
-                                                                        const GALGAS_lstring & in_mIndexIdentifier,
-                                                                        const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
-                                                                        const GALGAS_templateInstructionListAST & in_mAfterInstructionList,
-                                                                        Compiler * /* inCompiler */) {
+templateInstructionForeachAST_init_21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_mIsAscending,
+                                                                    const GALGAS_templateExpressionAST & in_mExpression,
+                                                                    const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
+                                                                    const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
+                                                                    const GALGAS_templateInstructionListAST & in_mDoInstructionList,
+                                                                    const GALGAS_lstring & in_mIndexIdentifier,
+                                                                    const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
+                                                                    const GALGAS_templateInstructionListAST & in_mAfterInstructionList,
+                                                                    Compiler * /* inCompiler */) {
   mProperty_mIsAscending = in_mIsAscending ;
   mProperty_mExpression = in_mExpression ;
   mProperty_mEnumeratedObjectProperties = in_mEnumeratedObjectProperties ;
@@ -11113,19 +11113,19 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionForeachForGeneration GALGAS_templateInstructionForeachForGeneration::
-init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_mIsAscending,
-                                          const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                                          const GALGAS_string & in_mEnumeratorCppName,
-                                          const GALGAS_templateInstructionListForGeneration & in_mBeforeInstructionList,
-                                          const GALGAS_templateInstructionListForGeneration & in_mDoInstructionList,
-                                          const GALGAS_string & in_mIndexCppName,
-                                          const GALGAS_templateInstructionListForGeneration & in_mBetweenInstructionList,
-                                          const GALGAS_templateInstructionListForGeneration & in_mAfterInstructionList,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_mIsAscending,
+                                      const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                      const GALGAS_string & in_mEnumeratorCppName,
+                                      const GALGAS_templateInstructionListForGeneration & in_mBeforeInstructionList,
+                                      const GALGAS_templateInstructionListForGeneration & in_mDoInstructionList,
+                                      const GALGAS_string & in_mIndexCppName,
+                                      const GALGAS_templateInstructionListForGeneration & in_mBetweenInstructionList,
+                                      const GALGAS_templateInstructionListForGeneration & in_mAfterInstructionList,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionForeachForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionForeachForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateInstructionForeachForGeneration_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (in_mIsAscending, in_mExpression, in_mEnumeratorCppName, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexCppName, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
+  object->templateInstructionForeachForGeneration_init_21__21__21__21__21__21__21__21_ (in_mIsAscending, in_mExpression, in_mEnumeratorCppName, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexCppName, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
   const GALGAS_templateInstructionForeachForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11134,15 +11134,15 @@ init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_mIsAscending,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionForeachForGeneration::
-templateInstructionForeachForGeneration_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_mIsAscending,
-                                                                                  const GALGAS_semanticExpressionForGeneration & in_mExpression,
-                                                                                  const GALGAS_string & in_mEnumeratorCppName,
-                                                                                  const GALGAS_templateInstructionListForGeneration & in_mBeforeInstructionList,
-                                                                                  const GALGAS_templateInstructionListForGeneration & in_mDoInstructionList,
-                                                                                  const GALGAS_string & in_mIndexCppName,
-                                                                                  const GALGAS_templateInstructionListForGeneration & in_mBetweenInstructionList,
-                                                                                  const GALGAS_templateInstructionListForGeneration & in_mAfterInstructionList,
-                                                                                  Compiler * /* inCompiler */) {
+templateInstructionForeachForGeneration_init_21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_mIsAscending,
+                                                                              const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                                              const GALGAS_string & in_mEnumeratorCppName,
+                                                                              const GALGAS_templateInstructionListForGeneration & in_mBeforeInstructionList,
+                                                                              const GALGAS_templateInstructionListForGeneration & in_mDoInstructionList,
+                                                                              const GALGAS_string & in_mIndexCppName,
+                                                                              const GALGAS_templateInstructionListForGeneration & in_mBetweenInstructionList,
+                                                                              const GALGAS_templateInstructionListForGeneration & in_mAfterInstructionList,
+                                                                              Compiler * /* inCompiler */) {
   mProperty_mIsAscending = in_mIsAscending ;
   mProperty_mExpression = in_mExpression ;
   mProperty_mEnumeratorCppName = in_mEnumeratorCppName ;
@@ -11449,14 +11449,14 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchForGeneration::
-init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
-                      const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                      const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
+                  const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
+                  const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionSwitchForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionSwitchForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateInstructionSwitchForGeneration_init_28__2C__2C__29_ (in_mEnumType, in_mSwitchExpression, in_mTemplateInstructionSwitchBranchList, inCompiler) ;
+  object->templateInstructionSwitchForGeneration_init_21__21__21_ (in_mEnumType, in_mSwitchExpression, in_mTemplateInstructionSwitchBranchList, inCompiler) ;
   const GALGAS_templateInstructionSwitchForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11465,10 +11465,10 @@ init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionSwitchForGeneration::
-templateInstructionSwitchForGeneration_init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
-                                                             const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                                                             const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList,
-                                                             Compiler * /* inCompiler */) {
+templateInstructionSwitchForGeneration_init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
+                                                         const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
+                                                         const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList,
+                                                         Compiler * /* inCompiler */) {
   mProperty_mEnumType = in_mEnumType ;
   mProperty_mSwitchExpression = in_mSwitchExpression ;
   mProperty_mTemplateInstructionSwitchBranchList = in_mTemplateInstructionSwitchBranchList ;
@@ -11723,23 +11723,23 @@ GALGAS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::
-init_28_isPredefined_2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                      const GALGAS_lstring & in_mLexiqueComponentName,
-                                                                      const GALGAS_bool & in_mIsTemplate,
-                                                                      const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
-                                                                      const GALGAS_templateReplacementListAST & in_mTemplateReplacementListAST,
-                                                                      const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
-                                                                      const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
-                                                                      const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
-                                                                      const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
-                                                                      const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
-                                                                      const GALGAS_lexicalRuleListAST & in_mLexicalRuleListAST,
-                                                                      const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_isPredefined,
+                                                                  const GALGAS_lstring & in_mLexiqueComponentName,
+                                                                  const GALGAS_bool & in_mIsTemplate,
+                                                                  const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
+                                                                  const GALGAS_templateReplacementListAST & in_mTemplateReplacementListAST,
+                                                                  const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                                  const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                                                  const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
+                                                                  const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
+                                                                  const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                                                  const GALGAS_lexicalRuleListAST & in_mLexicalRuleListAST,
+                                                                  const GALGAS_indexingListAST & in_mIndexingListAST,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   cPtr_lexiqueComponentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexiqueComponentAST (inCompiler COMMA_THERE)) ;
-  object->lexiqueComponentAST_init_28_isPredefined_2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (in_isPredefined, in_mLexiqueComponentName, in_mIsTemplate, in_mTemplateDelimitorListAST, in_mTemplateReplacementListAST, in_mLexicalAttributeListAST, in_mLexicalStyleListAST, in_mTerminalDeclarationListAST, in_mLexicalMessageDeclarationListAST, in_mLexicalListDeclarationListAST, in_mLexicalRuleListAST, in_mIndexingListAST, inCompiler) ;
+  object->lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (in_isPredefined, in_mLexiqueComponentName, in_mIsTemplate, in_mTemplateDelimitorListAST, in_mTemplateReplacementListAST, in_mLexicalAttributeListAST, in_mLexicalStyleListAST, in_mTerminalDeclarationListAST, in_mLexicalMessageDeclarationListAST, in_mLexicalListDeclarationListAST, in_mLexicalRuleListAST, in_mIndexingListAST, inCompiler) ;
   const GALGAS_lexiqueComponentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11748,19 +11748,19 @@ init_28_isPredefined_2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALG
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueComponentAST::
-lexiqueComponentAST_init_28_isPredefined_2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                                          const GALGAS_lstring & in_mLexiqueComponentName,
-                                                                                          const GALGAS_bool & in_mIsTemplate,
-                                                                                          const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
-                                                                                          const GALGAS_templateReplacementListAST & in_mTemplateReplacementListAST,
-                                                                                          const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
-                                                                                          const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
-                                                                                          const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
-                                                                                          const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
-                                                                                          const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
-                                                                                          const GALGAS_lexicalRuleListAST & in_mLexicalRuleListAST,
-                                                                                          const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                                                          Compiler * /* inCompiler */) {
+lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_isPredefined,
+                                                                                      const GALGAS_lstring & in_mLexiqueComponentName,
+                                                                                      const GALGAS_bool & in_mIsTemplate,
+                                                                                      const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
+                                                                                      const GALGAS_templateReplacementListAST & in_mTemplateReplacementListAST,
+                                                                                      const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                                                      const GALGAS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                                                                      const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
+                                                                                      const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
+                                                                                      const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                                                                      const GALGAS_lexicalRuleListAST & in_mLexicalRuleListAST,
+                                                                                      const GALGAS_indexingListAST & in_mIndexingListAST,
+                                                                                      Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
   mProperty_mIsTemplate = in_mIsTemplate ;
@@ -12248,16 +12248,16 @@ GALGAS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateLexiqueComponentAST GALGAS_templateLexiqueComponentAST::
-init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                          const GALGAS_lstring & in_mLexiqueComponentName,
-                                          const GALGAS_lstring & in_mLexiqueSuperComponentName,
-                                          const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorList,
-                                          const GALGAS_templateReplacementListAST & in_mTemplateReplacementList,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21_ (const GALGAS_bool & in_isPredefined,
+                                      const GALGAS_lstring & in_mLexiqueComponentName,
+                                      const GALGAS_lstring & in_mLexiqueSuperComponentName,
+                                      const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorList,
+                                      const GALGAS_templateReplacementListAST & in_mTemplateReplacementList,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
   cPtr_templateLexiqueComponentAST * object = nullptr ;
   macroMyNew (object, cPtr_templateLexiqueComponentAST (inCompiler COMMA_THERE)) ;
-  object->templateLexiqueComponentAST_init_28_isPredefined_2C__2C__2C__2C__29_ (in_isPredefined, in_mLexiqueComponentName, in_mLexiqueSuperComponentName, in_mTemplateDelimitorList, in_mTemplateReplacementList, inCompiler) ;
+  object->templateLexiqueComponentAST_init_21_isPredefined_21__21__21__21_ (in_isPredefined, in_mLexiqueComponentName, in_mLexiqueSuperComponentName, in_mTemplateDelimitorList, in_mTemplateReplacementList, inCompiler) ;
   const GALGAS_templateLexiqueComponentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12266,12 +12266,12 @@ init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLexiqueComponentAST::
-templateLexiqueComponentAST_init_28_isPredefined_2C__2C__2C__2C__29_ (const GALGAS_bool & in_isPredefined,
-                                                                      const GALGAS_lstring & in_mLexiqueComponentName,
-                                                                      const GALGAS_lstring & in_mLexiqueSuperComponentName,
-                                                                      const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorList,
-                                                                      const GALGAS_templateReplacementListAST & in_mTemplateReplacementList,
-                                                                      Compiler * /* inCompiler */) {
+templateLexiqueComponentAST_init_21_isPredefined_21__21__21__21_ (const GALGAS_bool & in_isPredefined,
+                                                                  const GALGAS_lstring & in_mLexiqueComponentName,
+                                                                  const GALGAS_lstring & in_mLexiqueSuperComponentName,
+                                                                  const GALGAS_templateDelimitorListAST & in_mTemplateDelimitorList,
+                                                                  const GALGAS_templateReplacementListAST & in_mTemplateReplacementList,
+                                                                  Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
   mProperty_mLexiqueSuperComponentName = in_mLexiqueSuperComponentName ;
@@ -12498,12 +12498,12 @@ GALGAS_abstractLexicalRuleAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalImplicitRuleAST GALGAS_lexicalImplicitRuleAST::
-init_28__29_ (const GALGAS_lstring & in_mListName,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lstring & in_mListName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalImplicitRuleAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalImplicitRuleAST (inCompiler COMMA_THERE)) ;
-  object->lexicalImplicitRuleAST_init_28__29_ (in_mListName, inCompiler) ;
+  object->lexicalImplicitRuleAST_init_21_ (in_mListName, inCompiler) ;
   const GALGAS_lexicalImplicitRuleAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12512,8 +12512,8 @@ init_28__29_ (const GALGAS_lstring & in_mListName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalImplicitRuleAST::
-lexicalImplicitRuleAST_init_28__29_ (const GALGAS_lstring & in_mListName,
-                                     Compiler * /* inCompiler */) {
+lexicalImplicitRuleAST_init_21_ (const GALGAS_lstring & in_mListName,
+                                 Compiler * /* inCompiler */) {
   mProperty_mListName = in_mListName ;
 }
 
@@ -12677,12 +12677,12 @@ GALGAS_lexicalExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalCharacterSetMatchAST GALGAS_lexicalCharacterSetMatchAST::
-init_28__29_ (const GALGAS_lstring & in_mCharacterSetName,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lstring & in_mCharacterSetName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalCharacterSetMatchAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalCharacterSetMatchAST (inCompiler COMMA_THERE)) ;
-  object->lexicalCharacterSetMatchAST_init_28__29_ (in_mCharacterSetName, inCompiler) ;
+  object->lexicalCharacterSetMatchAST_init_21_ (in_mCharacterSetName, inCompiler) ;
   const GALGAS_lexicalCharacterSetMatchAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12691,8 +12691,8 @@ init_28__29_ (const GALGAS_lstring & in_mCharacterSetName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterSetMatchAST::
-lexicalCharacterSetMatchAST_init_28__29_ (const GALGAS_lstring & in_mCharacterSetName,
-                                          Compiler * /* inCompiler */) {
+lexicalCharacterSetMatchAST_init_21_ (const GALGAS_lstring & in_mCharacterSetName,
+                                      Compiler * /* inCompiler */) {
   mProperty_mCharacterSetName = in_mCharacterSetName ;
 }
 
@@ -12856,12 +12856,12 @@ GALGAS_lexicalExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalCharacterMatchAST GALGAS_lexicalCharacterMatchAST::
-init_28__29_ (const GALGAS_lchar & in_mCharacter,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lchar & in_mCharacter,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalCharacterMatchAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalCharacterMatchAST (inCompiler COMMA_THERE)) ;
-  object->lexicalCharacterMatchAST_init_28__29_ (in_mCharacter, inCompiler) ;
+  object->lexicalCharacterMatchAST_init_21_ (in_mCharacter, inCompiler) ;
   const GALGAS_lexicalCharacterMatchAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12870,8 +12870,8 @@ init_28__29_ (const GALGAS_lchar & in_mCharacter,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterMatchAST::
-lexicalCharacterMatchAST_init_28__29_ (const GALGAS_lchar & in_mCharacter,
-                                       Compiler * /* inCompiler */) {
+lexicalCharacterMatchAST_init_21_ (const GALGAS_lchar & in_mCharacter,
+                                   Compiler * /* inCompiler */) {
   mProperty_mCharacter = in_mCharacter ;
 }
 
@@ -13040,13 +13040,13 @@ GALGAS_lexicalExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalCharacterIntervalMatchAST GALGAS_lexicalCharacterIntervalMatchAST::
-init_28__2C__29_ (const GALGAS_lchar & in_mLowerBound,
-                  const GALGAS_lchar & in_mUpperBound,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lchar & in_mLowerBound,
+              const GALGAS_lchar & in_mUpperBound,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalCharacterIntervalMatchAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalCharacterIntervalMatchAST (inCompiler COMMA_THERE)) ;
-  object->lexicalCharacterIntervalMatchAST_init_28__2C__29_ (in_mLowerBound, in_mUpperBound, inCompiler) ;
+  object->lexicalCharacterIntervalMatchAST_init_21__21_ (in_mLowerBound, in_mUpperBound, inCompiler) ;
   const GALGAS_lexicalCharacterIntervalMatchAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13055,9 +13055,9 @@ init_28__2C__29_ (const GALGAS_lchar & in_mLowerBound,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterIntervalMatchAST::
-lexicalCharacterIntervalMatchAST_init_28__2C__29_ (const GALGAS_lchar & in_mLowerBound,
-                                                   const GALGAS_lchar & in_mUpperBound,
-                                                   Compiler * /* inCompiler */) {
+lexicalCharacterIntervalMatchAST_init_21__21_ (const GALGAS_lchar & in_mLowerBound,
+                                               const GALGAS_lchar & in_mUpperBound,
+                                               Compiler * /* inCompiler */) {
   mProperty_mLowerBound = in_mLowerBound ;
   mProperty_mUpperBound = in_mUpperBound ;
 }
@@ -13240,12 +13240,12 @@ GALGAS_lexicalExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalStringMatchAST GALGAS_lexicalStringMatchAST::
-init_28__29_ (const GALGAS_lstring & in_mString,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lstring & in_mString,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalStringMatchAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalStringMatchAST (inCompiler COMMA_THERE)) ;
-  object->lexicalStringMatchAST_init_28__29_ (in_mString, inCompiler) ;
+  object->lexicalStringMatchAST_init_21_ (in_mString, inCompiler) ;
   const GALGAS_lexicalStringMatchAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13254,8 +13254,8 @@ init_28__29_ (const GALGAS_lstring & in_mString,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStringMatchAST::
-lexicalStringMatchAST_init_28__29_ (const GALGAS_lstring & in_mString,
-                                    Compiler * /* inCompiler */) {
+lexicalStringMatchAST_init_21_ (const GALGAS_lstring & in_mString,
+                                Compiler * /* inCompiler */) {
   mProperty_mString = in_mString ;
 }
 
@@ -13424,13 +13424,13 @@ GALGAS_lexicalExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalStringNotMatchAST GALGAS_lexicalStringNotMatchAST::
-init_28__2C__29_ (const GALGAS_lstring & in_mString,
-                  const GALGAS_lstring & in_mErrorMessage,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lstring & in_mString,
+              const GALGAS_lstring & in_mErrorMessage,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalStringNotMatchAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalStringNotMatchAST (inCompiler COMMA_THERE)) ;
-  object->lexicalStringNotMatchAST_init_28__2C__29_ (in_mString, in_mErrorMessage, inCompiler) ;
+  object->lexicalStringNotMatchAST_init_21__21_ (in_mString, in_mErrorMessage, inCompiler) ;
   const GALGAS_lexicalStringNotMatchAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13439,9 +13439,9 @@ init_28__2C__29_ (const GALGAS_lstring & in_mString,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStringNotMatchAST::
-lexicalStringNotMatchAST_init_28__2C__29_ (const GALGAS_lstring & in_mString,
-                                           const GALGAS_lstring & in_mErrorMessage,
-                                           Compiler * /* inCompiler */) {
+lexicalStringNotMatchAST_init_21__21_ (const GALGAS_lstring & in_mString,
+                                       const GALGAS_lstring & in_mErrorMessage,
+                                       Compiler * /* inCompiler */) {
   mProperty_mString = in_mString ;
   mProperty_mErrorMessage = in_mErrorMessage ;
 }
@@ -13624,12 +13624,12 @@ GALGAS_lexicalSendDefaultActionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalSendTerminalByDefaultAST GALGAS_lexicalSendTerminalByDefaultAST::
-init_28__29_ (const GALGAS_lstring & in_mDefaultSentTerminal,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lstring & in_mDefaultSentTerminal,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalSendTerminalByDefaultAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalSendTerminalByDefaultAST (inCompiler COMMA_THERE)) ;
-  object->lexicalSendTerminalByDefaultAST_init_28__29_ (in_mDefaultSentTerminal, inCompiler) ;
+  object->lexicalSendTerminalByDefaultAST_init_21_ (in_mDefaultSentTerminal, inCompiler) ;
   const GALGAS_lexicalSendTerminalByDefaultAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13638,8 +13638,8 @@ init_28__29_ (const GALGAS_lstring & in_mDefaultSentTerminal,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalSendTerminalByDefaultAST::
-lexicalSendTerminalByDefaultAST_init_28__29_ (const GALGAS_lstring & in_mDefaultSentTerminal,
-                                              Compiler * /* inCompiler */) {
+lexicalSendTerminalByDefaultAST_init_21_ (const GALGAS_lstring & in_mDefaultSentTerminal,
+                                          Compiler * /* inCompiler */) {
   mProperty_mDefaultSentTerminal = in_mDefaultSentTerminal ;
 }
 
@@ -13803,12 +13803,12 @@ GALGAS_lexicalSendDefaultActionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalErrorByDefaultAST GALGAS_lexicalErrorByDefaultAST::
-init_28__29_ (const GALGAS_lstring & in_mDefaultErrorMessageName,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lstring & in_mDefaultErrorMessageName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalErrorByDefaultAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalErrorByDefaultAST (inCompiler COMMA_THERE)) ;
-  object->lexicalErrorByDefaultAST_init_28__29_ (in_mDefaultErrorMessageName, inCompiler) ;
+  object->lexicalErrorByDefaultAST_init_21_ (in_mDefaultErrorMessageName, inCompiler) ;
   const GALGAS_lexicalErrorByDefaultAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13817,8 +13817,8 @@ init_28__29_ (const GALGAS_lstring & in_mDefaultErrorMessageName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalErrorByDefaultAST::
-lexicalErrorByDefaultAST_init_28__29_ (const GALGAS_lstring & in_mDefaultErrorMessageName,
-                                       Compiler * /* inCompiler */) {
+lexicalErrorByDefaultAST_init_21_ (const GALGAS_lstring & in_mDefaultErrorMessageName,
+                                   Compiler * /* inCompiler */) {
   mProperty_mDefaultErrorMessageName = in_mDefaultErrorMessageName ;
 }
 
@@ -13982,12 +13982,12 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST::
-init_28__29_ (const GALGAS_lstring & in_mAttributeName,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lstring & in_mAttributeName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalAttributeInputArgumentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalAttributeInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalAttributeInputArgumentAST_init_28__29_ (in_mAttributeName, inCompiler) ;
+  object->lexicalAttributeInputArgumentAST_init_21_ (in_mAttributeName, inCompiler) ;
   const GALGAS_lexicalAttributeInputArgumentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13996,8 +13996,8 @@ init_28__29_ (const GALGAS_lstring & in_mAttributeName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalAttributeInputArgumentAST::
-lexicalAttributeInputArgumentAST_init_28__29_ (const GALGAS_lstring & in_mAttributeName,
-                                               Compiler * /* inCompiler */) {
+lexicalAttributeInputArgumentAST_init_21_ (const GALGAS_lstring & in_mAttributeName,
+                                           Compiler * /* inCompiler */) {
   mProperty_mAttributeName = in_mAttributeName ;
 }
 
@@ -14161,12 +14161,12 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST::
-init_28__29_ (const GALGAS_lchar & in_mCharacter,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lchar & in_mCharacter,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalCharacterInputArgumentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalCharacterInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalCharacterInputArgumentAST_init_28__29_ (in_mCharacter, inCompiler) ;
+  object->lexicalCharacterInputArgumentAST_init_21_ (in_mCharacter, inCompiler) ;
   const GALGAS_lexicalCharacterInputArgumentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -14175,8 +14175,8 @@ init_28__29_ (const GALGAS_lchar & in_mCharacter,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCharacterInputArgumentAST::
-lexicalCharacterInputArgumentAST_init_28__29_ (const GALGAS_lchar & in_mCharacter,
-                                               Compiler * /* inCompiler */) {
+lexicalCharacterInputArgumentAST_init_21_ (const GALGAS_lchar & in_mCharacter,
+                                           Compiler * /* inCompiler */) {
   mProperty_mCharacter = in_mCharacter ;
 }
 
@@ -14340,12 +14340,12 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::
-init_28__29_ (const GALGAS_lbigint & in_mUnsigned,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_lbigint & in_mUnsigned,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalUnsignedInputArgumentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalUnsignedInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalUnsignedInputArgumentAST_init_28__29_ (in_mUnsigned, inCompiler) ;
+  object->lexicalUnsignedInputArgumentAST_init_21_ (in_mUnsigned, inCompiler) ;
   const GALGAS_lexicalUnsignedInputArgumentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -14354,8 +14354,8 @@ init_28__29_ (const GALGAS_lbigint & in_mUnsigned,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalUnsignedInputArgumentAST::
-lexicalUnsignedInputArgumentAST_init_28__29_ (const GALGAS_lbigint & in_mUnsigned,
-                                              Compiler * /* inCompiler */) {
+lexicalUnsignedInputArgumentAST_init_21_ (const GALGAS_lbigint & in_mUnsigned,
+                                          Compiler * /* inCompiler */) {
   mProperty_mUnsigned = in_mUnsigned ;
 }
 
@@ -14524,13 +14524,13 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST::
-init_28__2C__29_ (const GALGAS_lstring & in_mFunctionName,
-                  const GALGAS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lstring & in_mFunctionName,
+              const GALGAS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalFunctionInputArgumentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalFunctionInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalFunctionInputArgumentAST_init_28__2C__29_ (in_mFunctionName, in_mFunctionActualArgumentList, inCompiler) ;
+  object->lexicalFunctionInputArgumentAST_init_21__21_ (in_mFunctionName, in_mFunctionActualArgumentList, inCompiler) ;
   const GALGAS_lexicalFunctionInputArgumentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -14539,9 +14539,9 @@ init_28__2C__29_ (const GALGAS_lstring & in_mFunctionName,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalFunctionInputArgumentAST::
-lexicalFunctionInputArgumentAST_init_28__2C__29_ (const GALGAS_lstring & in_mFunctionName,
-                                                  const GALGAS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
-                                                  Compiler * /* inCompiler */) {
+lexicalFunctionInputArgumentAST_init_21__21_ (const GALGAS_lstring & in_mFunctionName,
+                                              const GALGAS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+                                              Compiler * /* inCompiler */) {
   mProperty_mFunctionName = in_mFunctionName ;
   mProperty_mFunctionActualArgumentList = in_mFunctionActualArgumentList ;
 }
@@ -14690,20 +14690,20 @@ GALGAS_lexiqueAnalysisContext::~ GALGAS_lexiqueAnalysisContext (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexiqueAnalysisContext GALGAS_lexiqueAnalysisContext::init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mLexiqueName,
-                                                                                                                       const GALGAS_lexicalRoutineMap & in_mLexicalRoutineMessageMap,
-                                                                                                                       const GALGAS_lexicalFunctionMap & in_mLexicalFunctionMap,
-                                                                                                                       const GALGAS_lexicalMessageMap & in_mLexicalMessageMap,
-                                                                                                                       const GALGAS_terminalMap & in_mTerminalMap,
-                                                                                                                       const GALGAS_terminalList & in_mTerminalList,
-                                                                                                                       const GALGAS_lexicalAttributeMap & in_mLexicalAttributeMap,
-                                                                                                                       const GALGAS_lexicalExplicitTokenListMapMap & in_mLexicalTokenListMap,
-                                                                                                                       const GALGAS_stringset & in_mUnicodeStringToGenerate,
-                                                                                                                       const GALGAS_templateDelimitorList & in_mTemplateDelimitorList,
-                                                                                                                       const GALGAS_styleMap & in_mStyleMap,
-                                                                                                                       const GALGAS_stringset & in_mUnicodeTestFunctions,
-                                                                                                                       Compiler * inCompiler
-                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexiqueAnalysisContext GALGAS_lexiqueAnalysisContext::init_21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_string & in_mLexiqueName,
+                                                                                                                   const GALGAS_lexicalRoutineMap & in_mLexicalRoutineMessageMap,
+                                                                                                                   const GALGAS_lexicalFunctionMap & in_mLexicalFunctionMap,
+                                                                                                                   const GALGAS_lexicalMessageMap & in_mLexicalMessageMap,
+                                                                                                                   const GALGAS_terminalMap & in_mTerminalMap,
+                                                                                                                   const GALGAS_terminalList & in_mTerminalList,
+                                                                                                                   const GALGAS_lexicalAttributeMap & in_mLexicalAttributeMap,
+                                                                                                                   const GALGAS_lexicalExplicitTokenListMapMap & in_mLexicalTokenListMap,
+                                                                                                                   const GALGAS_stringset & in_mUnicodeStringToGenerate,
+                                                                                                                   const GALGAS_templateDelimitorList & in_mTemplateDelimitorList,
+                                                                                                                   const GALGAS_styleMap & in_mStyleMap,
+                                                                                                                   const GALGAS_stringset & in_mUnicodeTestFunctions,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexiqueAnalysisContext result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexiqueName = in_mLexiqueName ;
@@ -14925,6 +14925,185 @@ GALGAS_lexiqueAnalysisContext GALGAS_lexiqueAnalysisContext::extractObject (cons
       result = *p ;
     }else{
       inCompiler->castError ("lexiqueAnalysisContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalDropInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mTerminalName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalDropInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cPtr_lexicalDropInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
+  const cPtr_lexicalDropInstructionAST * p = (const cPtr_lexicalDropInstructionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mTerminalName.objectCompare (p->mProperty_mTerminalName) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+ComparisonResult GALGAS_lexicalDropInstructionAST::objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST::GALGAS_lexicalDropInstructionAST (void) :
+GALGAS_lexicalInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::
+init_21_ (const GALGAS_lstring & in_mTerminalName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_lexicalDropInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalDropInstructionAST (inCompiler COMMA_THERE)) ;
+  object->lexicalDropInstructionAST_init_21_ (in_mTerminalName, inCompiler) ;
+  const GALGAS_lexicalDropInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalDropInstructionAST::
+lexicalDropInstructionAST_init_21_ (const GALGAS_lstring & in_mTerminalName,
+                                    Compiler * /* inCompiler */) {
+  mProperty_mTerminalName = in_mTerminalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST::GALGAS_lexicalDropInstructionAST (const cPtr_lexicalDropInstructionAST * inSourcePtr) :
+GALGAS_lexicalInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalDropInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::class_func_new (const GALGAS_lstring & in_mTerminalName
+                                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalDropInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalDropInstructionAST (in_mTerminalName COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_lexicalDropInstructionAST::readProperty_mTerminalName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_lexicalDropInstructionAST * p = (cPtr_lexicalDropInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
+    return p->mProperty_mTerminalName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalDropInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (const GALGAS_lstring & in_mTerminalName
+                                                                COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (THERE),
+mProperty_mTerminalName () {
+  mProperty_mTerminalName = in_mTerminalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalDropInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
+}
+
+void cPtr_lexicalDropInstructionAST::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalDropInstructionAST:") ;
+  mProperty_mTerminalName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalDropInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalDropInstructionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ("lexicalDropInstructionAST",
+                                                                                 & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalDropInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalDropInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalDropInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalDropInstructionAST result ;
+  const GALGAS_lexicalDropInstructionAST * p = (const GALGAS_lexicalDropInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalDropInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalDropInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

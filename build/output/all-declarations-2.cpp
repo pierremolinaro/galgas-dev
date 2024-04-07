@@ -3193,12 +3193,12 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInputArgumentAST::
-init_28__29_ (const GALGAS_location & in_mLocation,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_location & in_mLocation,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalCurrentCharacterInputArgumentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalCurrentCharacterInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalCurrentCharacterInputArgumentAST_init_28__29_ (in_mLocation, inCompiler) ;
+  object->lexicalCurrentCharacterInputArgumentAST_init_21_ (in_mLocation, inCompiler) ;
   const GALGAS_lexicalCurrentCharacterInputArgumentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3207,8 +3207,8 @@ init_28__29_ (const GALGAS_location & in_mLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalCurrentCharacterInputArgumentAST::
-lexicalCurrentCharacterInputArgumentAST_init_28__29_ (const GALGAS_location & in_mLocation,
-                                                      Compiler * /* inCompiler */) {
+lexicalCurrentCharacterInputArgumentAST_init_21_ (const GALGAS_location & in_mLocation,
+                                                  Compiler * /* inCompiler */) {
   mProperty_mLocation = in_mLocation ;
 }
 
@@ -11794,13 +11794,13 @@ GALGAS_lexicalInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST::
-init_28__2C__29_ (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
-                  const GALGAS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
+              const GALGAS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalStructuredSendInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalStructuredSendInstructionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalStructuredSendInstructionAST_init_28__2C__29_ (in_mLexicalSendSearchList, in_mLexicalSendDefaultAction, inCompiler) ;
+  object->lexicalStructuredSendInstructionAST_init_21__21_ (in_mLexicalSendSearchList, in_mLexicalSendDefaultAction, inCompiler) ;
   const GALGAS_lexicalStructuredSendInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11809,9 +11809,9 @@ init_28__2C__29_ (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchL
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalStructuredSendInstructionAST::
-lexicalStructuredSendInstructionAST_init_28__2C__29_ (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
-                                                      const GALGAS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction,
-                                                      Compiler * /* inCompiler */) {
+lexicalStructuredSendInstructionAST_init_21__21_ (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
+                                                  const GALGAS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction,
+                                                  Compiler * /* inCompiler */) {
   mProperty_mLexicalSendSearchList = in_mLexicalSendSearchList ;
   mProperty_mLexicalSendDefaultAction = in_mLexicalSendDefaultAction ;
 }
@@ -12316,11 +12316,11 @@ GALGAS_lexicalInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST::
-init_28__29_ (Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init (Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_lexicalLogInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalLogInstructionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalLogInstructionAST_init_28__29_ (inCompiler) ;
+  object->lexicalLogInstructionAST_init (inCompiler) ;
   const GALGAS_lexicalLogInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12329,7 +12329,7 @@ init_28__29_ (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalLogInstructionAST::
-lexicalLogInstructionAST_init_28__29_ (Compiler * /* inCompiler */) {
+lexicalLogInstructionAST_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12594,14 +12594,14 @@ GALGAS_lexicalInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::
-init_28__2C__2C__29_ (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
-                      const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
-                      const GALGAS_location & in_mLocation,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
+                  const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
+                  const GALGAS_location & in_mLocation,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_lexicalRepeatInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalRepeatInstructionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalRepeatInstructionAST_init_28__2C__2C__29_ (in_mRepeatedInstructionList, in_mLexicalWhileBranchList, in_mLocation, inCompiler) ;
+  object->lexicalRepeatInstructionAST_init_21__21__21_ (in_mRepeatedInstructionList, in_mLexicalWhileBranchList, in_mLocation, inCompiler) ;
   const GALGAS_lexicalRepeatInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12610,10 +12610,10 @@ init_28__2C__2C__29_ (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstr
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalRepeatInstructionAST::
-lexicalRepeatInstructionAST_init_28__2C__2C__29_ (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
-                                                  const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
-                                                  const GALGAS_location & in_mLocation,
-                                                  Compiler * /* inCompiler */) {
+lexicalRepeatInstructionAST_init_21__21__21_ (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
+                                              const GALGAS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
+                                              const GALGAS_location & in_mLocation,
+                                              Compiler * /* inCompiler */) {
   mProperty_mRepeatedInstructionList = in_mRepeatedInstructionList ;
   mProperty_mLexicalWhileBranchList = in_mLexicalWhileBranchList ;
   mProperty_mLocation = in_mLocation ;
@@ -13374,13 +13374,13 @@ GALGAS_abstractLexicalRoutineActualArgumentAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::
-init_28__2C__29_ (const GALGAS_location & in_mActualPassingModeLocation,
-                  const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mActualPassingModeLocation,
+              const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalFormalInputArgumentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalFormalInputArgumentAST (inCompiler COMMA_THERE)) ;
-  object->lexicalFormalInputArgumentAST_init_28__2C__29_ (in_mActualPassingModeLocation, in_mRoutineOrFunctionFormalInputArgument, inCompiler) ;
+  object->lexicalFormalInputArgumentAST_init_21__21_ (in_mActualPassingModeLocation, in_mRoutineOrFunctionFormalInputArgument, inCompiler) ;
   const GALGAS_lexicalFormalInputArgumentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13389,9 +13389,9 @@ init_28__2C__29_ (const GALGAS_location & in_mActualPassingModeLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalFormalInputArgumentAST::
-lexicalFormalInputArgumentAST_init_28__2C__29_ (const GALGAS_location & in_mActualPassingModeLocation,
-                                                const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument,
-                                                Compiler * /* inCompiler */) {
+lexicalFormalInputArgumentAST_init_21__21_ (const GALGAS_location & in_mActualPassingModeLocation,
+                                            const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument,
+                                            Compiler * /* inCompiler */) {
   mProperty_mActualPassingModeLocation = in_mActualPassingModeLocation ;
   mProperty_mRoutineOrFunctionFormalInputArgument = in_mRoutineOrFunctionFormalInputArgument ;
 }
@@ -14263,13 +14263,13 @@ GALGAS_lexicalInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::
-init_28__2C__29_ (const GALGAS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
-                  const GALGAS_lexicalInstructionListAST & in_mDefaultInstructionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
+              const GALGAS_lexicalInstructionListAST & in_mDefaultInstructionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalSelectInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalSelectInstructionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalSelectInstructionAST_init_28__2C__29_ (in_mLexicalSelectBranchList, in_mDefaultInstructionList, inCompiler) ;
+  object->lexicalSelectInstructionAST_init_21__21_ (in_mLexicalSelectBranchList, in_mDefaultInstructionList, inCompiler) ;
   const GALGAS_lexicalSelectInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -14278,9 +14278,9 @@ init_28__2C__29_ (const GALGAS_lexicalSelectBranchListAST & in_mLexicalSelectBra
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalSelectInstructionAST::
-lexicalSelectInstructionAST_init_28__2C__29_ (const GALGAS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
-                                              const GALGAS_lexicalInstructionListAST & in_mDefaultInstructionList,
-                                              Compiler * /* inCompiler */) {
+lexicalSelectInstructionAST_init_21__21_ (const GALGAS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
+                                          const GALGAS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                          Compiler * /* inCompiler */) {
   mProperty_mLexicalSelectBranchList = in_mLexicalSelectBranchList ;
   mProperty_mDefaultInstructionList = in_mDefaultInstructionList ;
 }

@@ -107,15 +107,11 @@ list @formalInputParameterListAST {
   public let @bool mIsUnused
   public let @bool mIsConstant
 
-  getter signature -> @string {
-    result = "("
-    for parameter in self
-    do
-      result += parameter.mFormalSelector
-    between
-      result += ","
+  getter initializerSignature -> @string {
+    result = "init"
+    for parameter in self do
+      result += "!" + parameter.mFormalSelector
     end
-    result += ")"
   }
 }
 

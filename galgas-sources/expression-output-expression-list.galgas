@@ -26,13 +26,11 @@ list @actualOutputArgumentList {
 
   #·······························································································
   
-  getter signature -> @string {
-    result = "("
-    for effectiveParameter in self
-    do result += effectiveParameter.mActualSelector
-    between result += ","
+  getter initializerSignature -> @string {
+    result = "init"
+    for effectiveParameter in self do
+      result += "!" + effectiveParameter.mActualSelector
     end
-    result += ")"
   }
 
   #·······························································································

@@ -18,8 +18,8 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
   #endif
 
 //--------------------------------- Initializers
-  public: void abstractSyntaxInstructionForGrammarAnalysis_init_28__29_ (const class GALGAS_location & inOperand0,
-                                                                         Compiler * inCompiler) ;
+  public: void abstractSyntaxInstructionForGrammarAnalysis_init_21_ (const class GALGAS_location & inOperand0,
+                                                                     Compiler * inCompiler) ;
 
 
 //--- Extension getter isLinear

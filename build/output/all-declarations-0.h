@@ -210,10 +210,10 @@ class GALGAS__32_lstringlist_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS__32_lstringlist_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS__32_lstringlist_2D_element init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                 const class GALGAS_lstring & inOperand1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -637,8 +637,8 @@ class GALGAS_templateInstructionAST : public AC_GALGAS_reference_class {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionAST init_28__29_ (Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionAST init (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -683,7 +683,7 @@ class cPtr_templateInstructionAST : public acStrongPtr_class {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInstructionAST_init_28__29_ (Compiler * inCompiler) ;
+  public: void templateInstructionAST_init (Compiler * inCompiler) ;
 
 
 //--- Extension method templateInstructionAnalysis
@@ -942,9 +942,9 @@ class GALGAS_templateInstructionListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionListAST_2D_element init_28__29_ (const class GALGAS_templateInstructionAST & inOperand0,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionListAST_2D_element init_21_ (const class GALGAS_templateInstructionAST & inOperand0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1001,8 +1001,8 @@ class GALGAS_templateExpressionAST : public AC_GALGAS_reference_class {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateExpressionAST init_28__29_ (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateExpressionAST init (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1047,7 +1047,7 @@ class cPtr_templateExpressionAST : public acStrongPtr_class {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateExpressionAST_init_28__29_ (Compiler * inCompiler) ;
+  public: void templateExpressionAST_init (Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -1366,11 +1366,11 @@ class GALGAS_templateExpressionListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateExpressionListAST_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                   const class GALGAS_templateExpressionAST & inOperand1,
-                                                                                   const class GALGAS_location & inOperand2,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateExpressionListAST_2D_element init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                               const class GALGAS_templateExpressionAST & inOperand1,
+                                                                               const class GALGAS_location & inOperand2,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1435,11 +1435,11 @@ class GALGAS_templateClassFunctionAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateClassFunctionAST init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_templateExpressionListAST & inOperand2,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateClassFunctionAST init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1490,10 +1490,10 @@ class cPtr_templateClassFunctionAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateClassFunctionAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                              const class GALGAS_lstring & inOperand1,
-                                                              const class GALGAS_templateExpressionListAST & inOperand2,
-                                                              Compiler * inCompiler) ;
+  public: void templateClassFunctionAST_init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                          const class GALGAS_lstring & inOperand1,
+                                                          const class GALGAS_templateExpressionListAST & inOperand2,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -1611,11 +1611,11 @@ class GALGAS_templateFileWrapperTemplateCallAST : public GALGAS_templateExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateFileWrapperTemplateCallAST init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_templateExpressionListAST & inOperand2,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateFileWrapperTemplateCallAST init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1666,10 +1666,10 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
   #endif
 
 //--------------------------------- Initializers
-  public: void templateFileWrapperTemplateCallAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                        const class GALGAS_lstring & inOperand1,
-                                                                        const class GALGAS_templateExpressionListAST & inOperand2,
-                                                                        Compiler * inCompiler) ;
+  public: void templateFileWrapperTemplateCallAST_init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                    const class GALGAS_lstring & inOperand1,
+                                                                    const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -1787,11 +1787,11 @@ class GALGAS_templateExtensionTemplateCallAST : public GALGAS_templateExpression
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateExtensionTemplateCallAST init_28__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_templateExpressionListAST & inOperand2,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateExtensionTemplateCallAST init_21__21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1842,10 +1842,10 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
   #endif
 
 //--------------------------------- Initializers
-  public: void templateExtensionTemplateCallAST_init_28__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1,
-                                                                      const class GALGAS_templateExpressionListAST & inOperand2,
-                                                                      Compiler * inCompiler) ;
+  public: void templateExtensionTemplateCallAST_init_21__21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_templateExpressionListAST & inOperand2,
+                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -1963,11 +1963,11 @@ class GALGAS_templateAndOperationAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateAndOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_templateExpressionAST & inOperand1,
-                                                                      const class GALGAS_templateExpressionAST & inOperand2,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateAndOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_templateExpressionAST & inOperand1,
+                                                                  const class GALGAS_templateExpressionAST & inOperand2,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2018,10 +2018,10 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateAndOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_templateExpressionAST & inOperand1,
-                                                             const class GALGAS_templateExpressionAST & inOperand2,
-                                                             Compiler * inCompiler) ;
+  public: void templateAndOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                         const class GALGAS_templateExpressionAST & inOperand1,
+                                                         const class GALGAS_templateExpressionAST & inOperand2,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -2139,11 +2139,11 @@ class GALGAS_templateOrOperationAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateOrOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_templateExpressionAST & inOperand1,
-                                                                     const class GALGAS_templateExpressionAST & inOperand2,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateOrOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_templateExpressionAST & inOperand1,
+                                                                 const class GALGAS_templateExpressionAST & inOperand2,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2194,10 +2194,10 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateOrOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_templateExpressionAST & inOperand1,
-                                                            const class GALGAS_templateExpressionAST & inOperand2,
-                                                            Compiler * inCompiler) ;
+  public: void templateOrOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                        const class GALGAS_templateExpressionAST & inOperand1,
+                                                        const class GALGAS_templateExpressionAST & inOperand2,
+                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -2315,11 +2315,11 @@ class GALGAS_templateXorOperationAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateXorOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_templateExpressionAST & inOperand1,
-                                                                      const class GALGAS_templateExpressionAST & inOperand2,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateXorOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_templateExpressionAST & inOperand1,
+                                                                  const class GALGAS_templateExpressionAST & inOperand2,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2370,10 +2370,10 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateXorOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_templateExpressionAST & inOperand1,
-                                                             const class GALGAS_templateExpressionAST & inOperand2,
-                                                             Compiler * inCompiler) ;
+  public: void templateXorOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                         const class GALGAS_templateExpressionAST & inOperand1,
+                                                         const class GALGAS_templateExpressionAST & inOperand2,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -2487,9 +2487,9 @@ class GALGAS_templateTrueBoolAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateTrueBoolAST init_28__29_ (const class GALGAS_location & inOperand0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateTrueBoolAST init_21_ (const class GALGAS_location & inOperand0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2538,8 +2538,8 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateTrueBoolAST_init_28__29_ (const class GALGAS_location & inOperand0,
-                                                 Compiler * inCompiler) ;
+  public: void templateTrueBoolAST_init_21_ (const class GALGAS_location & inOperand0,
+                                             Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -2649,9 +2649,9 @@ class GALGAS_templateFalseBoolAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateFalseBoolAST init_28__29_ (const class GALGAS_location & inOperand0,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateFalseBoolAST init_21_ (const class GALGAS_location & inOperand0,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2700,8 +2700,8 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateFalseBoolAST_init_28__29_ (const class GALGAS_location & inOperand0,
-                                                  Compiler * inCompiler) ;
+  public: void templateFalseBoolAST_init_21_ (const class GALGAS_location & inOperand0,
+                                              Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -2813,10 +2813,10 @@ class GALGAS_templateLiteralStringExpressionAST : public GALGAS_templateExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateLiteralStringExpressionAST init_28__2C__29_ (const class GALGAS_stringlist & inOperand0,
-                                                                             const class GALGAS_location & inOperand1,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateLiteralStringExpressionAST init_21__21_ (const class GALGAS_stringlist & inOperand0,
+                                                                         const class GALGAS_location & inOperand1,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2866,9 +2866,9 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLiteralStringExpressionAST_init_28__2C__29_ (const class GALGAS_stringlist & inOperand0,
-                                                                    const class GALGAS_location & inOperand1,
-                                                                    Compiler * inCompiler) ;
+  public: void templateLiteralStringExpressionAST_init_21__21_ (const class GALGAS_stringlist & inOperand0,
+                                                                const class GALGAS_location & inOperand1,
+                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -2980,9 +2980,9 @@ class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpression
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateLiteralUIntExpressionAST init_28__29_ (const class GALGAS_lbigint & inOperand0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateLiteralUIntExpressionAST init_21_ (const class GALGAS_lbigint & inOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3031,8 +3031,8 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLiteralUIntExpressionAST_init_28__29_ (const class GALGAS_lbigint & inOperand0,
-                                                              Compiler * inCompiler) ;
+  public: void templateLiteralUIntExpressionAST_init_21_ (const class GALGAS_lbigint & inOperand0,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -3142,9 +3142,9 @@ class GALGAS_templateLiteralCharExpressionAST : public GALGAS_templateExpression
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateLiteralCharExpressionAST init_28__29_ (const class GALGAS_lchar & inOperand0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateLiteralCharExpressionAST init_21_ (const class GALGAS_lchar & inOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3193,8 +3193,8 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLiteralCharExpressionAST_init_28__29_ (const class GALGAS_lchar & inOperand0,
-                                                              Compiler * inCompiler) ;
+  public: void templateLiteralCharExpressionAST_init_21_ (const class GALGAS_lchar & inOperand0,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -3304,9 +3304,9 @@ class GALGAS_templateLiteralDoubleExpressionAST : public GALGAS_templateExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateLiteralDoubleExpressionAST init_28__29_ (const class GALGAS_ldouble & inOperand0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateLiteralDoubleExpressionAST init_21_ (const class GALGAS_ldouble & inOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3355,8 +3355,8 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLiteralDoubleExpressionAST_init_28__29_ (const class GALGAS_ldouble & inOperand0,
-                                                                Compiler * inCompiler) ;
+  public: void templateLiteralDoubleExpressionAST_init_21_ (const class GALGAS_ldouble & inOperand0,
+                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -3470,11 +3470,11 @@ class GALGAS_structFieldAccessTemplateExpressionAST : public GALGAS_templateExpr
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_structFieldAccessTemplateExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                     const class GALGAS_templateExpressionAST & inOperand1,
-                                                                                     const class GALGAS_lstring & inOperand2,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_structFieldAccessTemplateExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                 const class GALGAS_templateExpressionAST & inOperand1,
+                                                                                 const class GALGAS_lstring & inOperand2,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3525,10 +3525,10 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
   #endif
 
 //--------------------------------- Initializers
-  public: void structFieldAccessTemplateExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                            const class GALGAS_templateExpressionAST & inOperand1,
-                                                                            const class GALGAS_lstring & inOperand2,
-                                                                            Compiler * inCompiler) ;
+  public: void structFieldAccessTemplateExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                        const class GALGAS_templateExpressionAST & inOperand1,
+                                                                        const class GALGAS_lstring & inOperand2,
+                                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -3644,10 +3644,10 @@ class GALGAS_templateNotOperatorAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateNotOperatorAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                 const class GALGAS_templateExpressionAST & inOperand1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateNotOperatorAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_templateExpressionAST & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3697,9 +3697,9 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateNotOperatorAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                        const class GALGAS_templateExpressionAST & inOperand1,
-                                                        Compiler * inCompiler) ;
+  public: void templateNotOperatorAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                    const class GALGAS_templateExpressionAST & inOperand1,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -3813,10 +3813,10 @@ class GALGAS_templateLogicalNegateAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateLogicalNegateAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_templateExpressionAST & inOperand1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateLogicalNegateAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_templateExpressionAST & inOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3866,9 +3866,9 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLogicalNegateAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                          const class GALGAS_templateExpressionAST & inOperand1,
-                                                          Compiler * inCompiler) ;
+  public: void templateLogicalNegateAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                      const class GALGAS_templateExpressionAST & inOperand1,
+                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -3984,11 +3984,11 @@ class GALGAS_templateOptionAccessAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateOptionAccessAST init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1,
-                                                                      const class GALGAS_lstring & inOperand2,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateOptionAccessAST init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_lstring & inOperand2,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4039,10 +4039,10 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateOptionAccessAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                             const class GALGAS_lstring & inOperand1,
-                                                             const class GALGAS_lstring & inOperand2,
-                                                             Compiler * inCompiler) ;
+  public: void templateOptionAccessAST_init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                         const class GALGAS_lstring & inOperand1,
+                                                         const class GALGAS_lstring & inOperand2,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -4244,12 +4244,12 @@ class GALGAS_templateTestDynamicClassAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateTestDynamicClassAST init_28__2C__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                              const class GALGAS_location & inOperand1,
-                                                                              const class GALGAS_dynamicTypeComparisonKind & inOperand2,
-                                                                              const class GALGAS_lstring & inOperand3,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateTestDynamicClassAST init_21__21__21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                          const class GALGAS_location & inOperand1,
+                                                                          const class GALGAS_dynamicTypeComparisonKind & inOperand2,
+                                                                          const class GALGAS_lstring & inOperand3,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4301,11 +4301,11 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateTestDynamicClassAST_init_28__2C__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                     const class GALGAS_location & inOperand1,
-                                                                     const class GALGAS_dynamicTypeComparisonKind & inOperand2,
-                                                                     const class GALGAS_lstring & inOperand3,
-                                                                     Compiler * inCompiler) ;
+  public: void templateTestDynamicClassAST_init_21__21__21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                 const class GALGAS_location & inOperand1,
+                                                                 const class GALGAS_dynamicTypeComparisonKind & inOperand2,
+                                                                 const class GALGAS_lstring & inOperand3,
+                                                                 Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -4423,10 +4423,10 @@ class GALGAS_templateFunctionCallAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateFunctionCallAST init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                  const class GALGAS_templateExpressionListAST & inOperand1,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateFunctionCallAST init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                              const class GALGAS_templateExpressionListAST & inOperand1,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4476,9 +4476,9 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateFunctionCallAST_init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                         const class GALGAS_templateExpressionListAST & inOperand1,
-                                                         Compiler * inCompiler) ;
+  public: void templateFunctionCallAST_init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                     const class GALGAS_templateExpressionListAST & inOperand1,
+                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -4590,9 +4590,9 @@ class GALGAS_templateVarInExpressionAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateVarInExpressionAST init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateVarInExpressionAST init_21_ (const class GALGAS_lstring & inOperand0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4641,8 +4641,8 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateVarInExpressionAST_init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                        Compiler * inCompiler) ;
+  public: void templateVarInExpressionAST_init_21_ (const class GALGAS_lstring & inOperand0,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -4756,11 +4756,11 @@ class GALGAS_templateAddOperationAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateAddOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_templateExpressionAST & inOperand1,
-                                                                      const class GALGAS_templateExpressionAST & inOperand2,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateAddOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_templateExpressionAST & inOperand1,
+                                                                  const class GALGAS_templateExpressionAST & inOperand2,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4811,10 +4811,10 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateAddOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_templateExpressionAST & inOperand1,
-                                                             const class GALGAS_templateExpressionAST & inOperand2,
-                                                             Compiler * inCompiler) ;
+  public: void templateAddOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                         const class GALGAS_templateExpressionAST & inOperand1,
+                                                         const class GALGAS_templateExpressionAST & inOperand2,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -4932,11 +4932,11 @@ class GALGAS_templateSubOperationAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateSubOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_templateExpressionAST & inOperand1,
-                                                                      const class GALGAS_templateExpressionAST & inOperand2,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateSubOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_templateExpressionAST & inOperand1,
+                                                                  const class GALGAS_templateExpressionAST & inOperand2,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4987,10 +4987,10 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateSubOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_templateExpressionAST & inOperand1,
-                                                             const class GALGAS_templateExpressionAST & inOperand2,
-                                                             Compiler * inCompiler) ;
+  public: void templateSubOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                         const class GALGAS_templateExpressionAST & inOperand1,
+                                                         const class GALGAS_templateExpressionAST & inOperand2,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -5108,11 +5108,11 @@ class GALGAS_templateMultiplyOperationAST : public GALGAS_templateExpressionAST 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateMultiplyOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_templateExpressionAST & inOperand1,
-                                                                           const class GALGAS_templateExpressionAST & inOperand2,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateMultiplyOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_templateExpressionAST & inOperand1,
+                                                                       const class GALGAS_templateExpressionAST & inOperand2,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5163,10 +5163,10 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateMultiplyOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_templateExpressionAST & inOperand1,
-                                                                  const class GALGAS_templateExpressionAST & inOperand2,
-                                                                  Compiler * inCompiler) ;
+  public: void templateMultiplyOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_templateExpressionAST & inOperand1,
+                                                              const class GALGAS_templateExpressionAST & inOperand2,
+                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -5284,11 +5284,11 @@ class GALGAS_templateDivideOperationAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateDivideOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_templateExpressionAST & inOperand1,
-                                                                         const class GALGAS_templateExpressionAST & inOperand2,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateDivideOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_templateExpressionAST & inOperand1,
+                                                                     const class GALGAS_templateExpressionAST & inOperand2,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5339,10 +5339,10 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateDivideOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_templateExpressionAST & inOperand1,
-                                                                const class GALGAS_templateExpressionAST & inOperand2,
-                                                                Compiler * inCompiler) ;
+  public: void templateDivideOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                            const class GALGAS_templateExpressionAST & inOperand1,
+                                                            const class GALGAS_templateExpressionAST & inOperand2,
+                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -5460,11 +5460,11 @@ class GALGAS_templateModuloOperationAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateModuloOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_templateExpressionAST & inOperand1,
-                                                                         const class GALGAS_templateExpressionAST & inOperand2,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateModuloOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_templateExpressionAST & inOperand1,
+                                                                     const class GALGAS_templateExpressionAST & inOperand2,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5515,10 +5515,10 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateModuloOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_templateExpressionAST & inOperand1,
-                                                                const class GALGAS_templateExpressionAST & inOperand2,
-                                                                Compiler * inCompiler) ;
+  public: void templateModuloOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                            const class GALGAS_templateExpressionAST & inOperand1,
+                                                            const class GALGAS_templateExpressionAST & inOperand2,
+                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -5634,10 +5634,10 @@ class GALGAS_templateUnaryMinusOperationAST : public GALGAS_templateExpressionAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateUnaryMinusOperationAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_templateExpressionAST & inOperand1,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateUnaryMinusOperationAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_templateExpressionAST & inOperand1,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5687,9 +5687,9 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateUnaryMinusOperationAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_templateExpressionAST & inOperand1,
-                                                                Compiler * inCompiler) ;
+  public: void templateUnaryMinusOperationAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                            const class GALGAS_templateExpressionAST & inOperand1,
+                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -5805,11 +5805,11 @@ class GALGAS_templateEqualTestAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateEqualTestAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_templateExpressionAST & inOperand1,
-                                                                   const class GALGAS_templateExpressionAST & inOperand2,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateEqualTestAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_templateExpressionAST & inOperand1,
+                                                               const class GALGAS_templateExpressionAST & inOperand2,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5860,10 +5860,10 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                          const class GALGAS_templateExpressionAST & inOperand1,
-                                                          const class GALGAS_templateExpressionAST & inOperand2,
-                                                          Compiler * inCompiler) ;
+  public: void templateEqualTestAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                      const class GALGAS_templateExpressionAST & inOperand1,
+                                                      const class GALGAS_templateExpressionAST & inOperand2,
+                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -5981,11 +5981,11 @@ class GALGAS_templateNonEqualTestAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateNonEqualTestAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_templateExpressionAST & inOperand1,
-                                                                      const class GALGAS_templateExpressionAST & inOperand2,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateNonEqualTestAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_templateExpressionAST & inOperand1,
+                                                                  const class GALGAS_templateExpressionAST & inOperand2,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6036,10 +6036,10 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateNonEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_templateExpressionAST & inOperand1,
-                                                             const class GALGAS_templateExpressionAST & inOperand2,
-                                                             Compiler * inCompiler) ;
+  public: void templateNonEqualTestAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                         const class GALGAS_templateExpressionAST & inOperand1,
+                                                         const class GALGAS_templateExpressionAST & inOperand2,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -6157,11 +6157,11 @@ class GALGAS_templateStrictInfTestAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateStrictInfTestAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_templateExpressionAST & inOperand1,
-                                                                       const class GALGAS_templateExpressionAST & inOperand2,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateStrictInfTestAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_templateExpressionAST & inOperand1,
+                                                                   const class GALGAS_templateExpressionAST & inOperand2,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6212,10 +6212,10 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateStrictInfTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                              const class GALGAS_templateExpressionAST & inOperand1,
-                                                              const class GALGAS_templateExpressionAST & inOperand2,
-                                                              Compiler * inCompiler) ;
+  public: void templateStrictInfTestAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                          const class GALGAS_templateExpressionAST & inOperand1,
+                                                          const class GALGAS_templateExpressionAST & inOperand2,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -6333,11 +6333,11 @@ class GALGAS_templateInfOrEqualTestAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInfOrEqualTestAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_templateExpressionAST & inOperand1,
-                                                                        const class GALGAS_templateExpressionAST & inOperand2,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInfOrEqualTestAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_templateExpressionAST & inOperand1,
+                                                                    const class GALGAS_templateExpressionAST & inOperand2,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6388,10 +6388,10 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInfOrEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_templateExpressionAST & inOperand1,
-                                                               const class GALGAS_templateExpressionAST & inOperand2,
-                                                               Compiler * inCompiler) ;
+  public: void templateInfOrEqualTestAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                           const class GALGAS_templateExpressionAST & inOperand1,
+                                                           const class GALGAS_templateExpressionAST & inOperand2,
+                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -6509,11 +6509,11 @@ class GALGAS_templateStrictSupTestAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateStrictSupTestAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_templateExpressionAST & inOperand1,
-                                                                       const class GALGAS_templateExpressionAST & inOperand2,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateStrictSupTestAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_templateExpressionAST & inOperand1,
+                                                                   const class GALGAS_templateExpressionAST & inOperand2,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6564,10 +6564,10 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateStrictSupTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                              const class GALGAS_templateExpressionAST & inOperand1,
-                                                              const class GALGAS_templateExpressionAST & inOperand2,
-                                                              Compiler * inCompiler) ;
+  public: void templateStrictSupTestAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                          const class GALGAS_templateExpressionAST & inOperand1,
+                                                          const class GALGAS_templateExpressionAST & inOperand2,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -6685,11 +6685,11 @@ class GALGAS_templateSupOrEqualTestAST : public GALGAS_templateExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateSupOrEqualTestAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_templateExpressionAST & inOperand1,
-                                                                        const class GALGAS_templateExpressionAST & inOperand2,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateSupOrEqualTestAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_templateExpressionAST & inOperand1,
+                                                                    const class GALGAS_templateExpressionAST & inOperand2,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6740,10 +6740,10 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateSupOrEqualTestAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_templateExpressionAST & inOperand1,
-                                                               const class GALGAS_templateExpressionAST & inOperand2,
-                                                               Compiler * inCompiler) ;
+  public: void templateSupOrEqualTestAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                           const class GALGAS_templateExpressionAST & inOperand1,
+                                                           const class GALGAS_templateExpressionAST & inOperand2,
+                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -6861,11 +6861,11 @@ class GALGAS_templateLeftShiftOperationAST : public GALGAS_templateExpressionAST
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateLeftShiftOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                            const class GALGAS_templateExpressionAST & inOperand1,
-                                                                            const class GALGAS_templateExpressionAST & inOperand2,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateLeftShiftOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                        const class GALGAS_templateExpressionAST & inOperand1,
+                                                                        const class GALGAS_templateExpressionAST & inOperand2,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6916,10 +6916,10 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLeftShiftOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_templateExpressionAST & inOperand1,
-                                                                   const class GALGAS_templateExpressionAST & inOperand2,
-                                                                   Compiler * inCompiler) ;
+  public: void templateLeftShiftOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_templateExpressionAST & inOperand1,
+                                                               const class GALGAS_templateExpressionAST & inOperand2,
+                                                               Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -7037,11 +7037,11 @@ class GALGAS_templateRightShiftOperationAST : public GALGAS_templateExpressionAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateRightShiftOperationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_templateExpressionAST & inOperand1,
-                                                                             const class GALGAS_templateExpressionAST & inOperand2,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateRightShiftOperationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_templateExpressionAST & inOperand1,
+                                                                         const class GALGAS_templateExpressionAST & inOperand2,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7092,10 +7092,10 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateRightShiftOperationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                    const class GALGAS_templateExpressionAST & inOperand1,
-                                                                    const class GALGAS_templateExpressionAST & inOperand2,
-                                                                    Compiler * inCompiler) ;
+  public: void templateRightShiftOperationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                const class GALGAS_templateExpressionAST & inOperand1,
+                                                                const class GALGAS_templateExpressionAST & inOperand2,
+                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method templateExpressionAnalysis
@@ -7209,9 +7209,9 @@ class GALGAS_templateInstructionStringAST : public GALGAS_templateInstructionAST
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionStringAST init_28__29_ (const class GALGAS_string & inOperand0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionStringAST init_21_ (const class GALGAS_string & inOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7260,8 +7260,8 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInstructionStringAST_init_28__29_ (const class GALGAS_string & inOperand0,
-                                                          Compiler * inCompiler) ;
+  public: void templateInstructionStringAST_init_21_ (const class GALGAS_string & inOperand0,
+                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method templateInstructionAnalysis
@@ -7373,10 +7373,10 @@ class GALGAS_templateInstructionExpressionAST : public GALGAS_templateInstructio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionExpressionAST init_28__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                           const class GALGAS_location & inOperand1,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionExpressionAST init_21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                       const class GALGAS_location & inOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7426,9 +7426,9 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInstructionExpressionAST_init_28__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                  const class GALGAS_location & inOperand1,
-                                                                  Compiler * inCompiler) ;
+  public: void templateInstructionExpressionAST_init_21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                              const class GALGAS_location & inOperand1,
+                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method templateInstructionAnalysis
@@ -7544,11 +7544,11 @@ class GALGAS_templateBlockInstructionAST : public GALGAS_templateInstructionAST 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateBlockInstructionAST init_28__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          const class GALGAS_templateInstructionListAST & inOperand2,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateBlockInstructionAST init_21__21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                      const class GALGAS_location & inOperand1,
+                                                                      const class GALGAS_templateInstructionListAST & inOperand2,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7599,10 +7599,10 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateBlockInstructionAST_init_28__2C__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                 const class GALGAS_location & inOperand1,
-                                                                 const class GALGAS_templateInstructionListAST & inOperand2,
-                                                                 Compiler * inCompiler) ;
+  public: void templateBlockInstructionAST_init_21__21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                             const class GALGAS_location & inOperand1,
+                                                             const class GALGAS_templateInstructionListAST & inOperand2,
+                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method templateInstructionAnalysis
@@ -7714,8 +7714,8 @@ class GALGAS_templateInstructionGetColumnLocationAST : public GALGAS_templateIns
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionGetColumnLocationAST init_28__29_ (Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionGetColumnLocationAST init (Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7763,7 +7763,7 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInstructionGetColumnLocationAST_init_28__29_ (Compiler * inCompiler) ;
+  public: void templateInstructionGetColumnLocationAST_init (Compiler * inCompiler) ;
 
 
 //--- Extension method templateInstructionAnalysis
@@ -7869,8 +7869,8 @@ class GALGAS_templateInstructionGotoColumnLocationAST : public GALGAS_templateIn
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionGotoColumnLocationAST init_28__29_ (Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionGotoColumnLocationAST init (Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7918,7 +7918,7 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInstructionGotoColumnLocationAST_init_28__29_ (Compiler * inCompiler) ;
+  public: void templateInstructionGotoColumnLocationAST_init (Compiler * inCompiler) ;
 
 
 //--- Extension method templateInstructionAnalysis
@@ -8210,10 +8210,10 @@ class GALGAS_templateInstructionIfBranchListAST_2D_element : public AC_GALGAS_ro
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionIfBranchListAST_2D_element init_28__2C__29_ (const class GALGAS_templateExpressionAST & inOperand0,
-                                                                                        const class GALGAS_templateInstructionListAST & inOperand1,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionIfBranchListAST_2D_element init_21__21_ (const class GALGAS_templateExpressionAST & inOperand0,
+                                                                                    const class GALGAS_templateInstructionListAST & inOperand1,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8275,10 +8275,10 @@ class GALGAS_templateInstructionIfAST : public GALGAS_templateInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_templateInstructionIfAST init_28__2C__29_ (const class GALGAS_templateInstructionIfBranchListAST & inOperand0,
-                                                                   const class GALGAS_templateInstructionListAST & inOperand1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_templateInstructionIfAST init_21__21_ (const class GALGAS_templateInstructionIfBranchListAST & inOperand0,
+                                                               const class GALGAS_templateInstructionListAST & inOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8328,9 +8328,9 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void templateInstructionIfAST_init_28__2C__29_ (const class GALGAS_templateInstructionIfBranchListAST & inOperand0,
-                                                          const class GALGAS_templateInstructionListAST & inOperand1,
-                                                          Compiler * inCompiler) ;
+  public: void templateInstructionIfAST_init_21__21_ (const class GALGAS_templateInstructionIfBranchListAST & inOperand0,
+                                                      const class GALGAS_templateInstructionListAST & inOperand1,
+                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method templateInstructionAnalysis

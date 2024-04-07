@@ -296,10 +296,10 @@ class GALGAS_unifiedTypeMap_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_unifiedTypeMap_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                    const class GALGAS_unifiedTypeMapElementClass & inOperand1,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_unifiedTypeMap_2D_element init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                const class GALGAS_unifiedTypeMapElementClass & inOperand1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -474,12 +474,12 @@ class GALGAS_ifExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_ifExpressionAST init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_ifExpressionAST init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_semanticExpressionAST & inOperand1,
+                                                              const class GALGAS_semanticExpressionAST & inOperand2,
+                                                              const class GALGAS_semanticExpressionAST & inOperand3,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -531,11 +531,11 @@ class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void ifExpressionAST_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                         const class GALGAS_semanticExpressionAST & inOperand1,
-                                                         const class GALGAS_semanticExpressionAST & inOperand2,
-                                                         const class GALGAS_semanticExpressionAST & inOperand3,
-                                                         Compiler * inCompiler) ;
+  public: void ifExpressionAST_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                     const class GALGAS_semanticExpressionAST & inOperand2,
+                                                     const class GALGAS_semanticExpressionAST & inOperand3,
+                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -661,13 +661,13 @@ class GALGAS_ifExpressionForGeneration : public GALGAS_semanticExpressionForGene
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_ifExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_location & inOperand1,
-                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_ifExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -720,12 +720,12 @@ class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGenerati
   #endif
 
 //--------------------------------- Initializers
-  public: void ifExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GALGAS_location & inOperand1,
-                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                       Compiler * inCompiler) ;
+  public: void ifExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                   const class GALGAS_location & inOperand1,
+                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -843,10 +843,10 @@ class GALGAS_unaryPlusExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_unaryPlusExpressionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_unaryPlusExpressionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_semanticExpressionAST & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -896,9 +896,9 @@ class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void unaryPlusExpressionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                        const class GALGAS_semanticExpressionAST & inOperand1,
-                                                        Compiler * inCompiler) ;
+  public: void unaryPlusExpressionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                    const class GALGAS_semanticExpressionAST & inOperand1,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -1018,10 +1018,10 @@ class GALGAS_unaryMinusExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_unaryMinusExpressionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_unaryMinusExpressionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_semanticExpressionAST & inOperand1,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1071,9 +1071,9 @@ class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void unaryMinusExpressionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                         const class GALGAS_semanticExpressionAST & inOperand1,
-                                                         Compiler * inCompiler) ;
+  public: void unaryMinusExpressionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -1191,11 +1191,11 @@ class GALGAS_unaryMinusExpressionForGeneration : public GALGAS_semanticExpressio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_unaryMinusExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_location & inOperand1,
-                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_unaryMinusExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1246,10 +1246,10 @@ class cPtr_unaryMinusExpressionForGeneration : public cPtr_semanticExpressionFor
   #endif
 
 //--------------------------------- Initializers
-  public: void unaryMinusExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GALGAS_location & inOperand1,
-                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                       Compiler * inCompiler) ;
+  public: void unaryMinusExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                   const class GALGAS_location & inOperand1,
+                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -1361,9 +1361,9 @@ class GALGAS_varInExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_varInExpressionAST init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_varInExpressionAST init_21_ (const class GALGAS_lstring & inOperand0,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1412,8 +1412,8 @@ class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void varInExpressionAST_init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                Compiler * inCompiler) ;
+  public: void varInExpressionAST_init_21_ (const class GALGAS_lstring & inOperand0,
+                                            Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -1531,12 +1531,12 @@ class GALGAS_varInExpressionForGeneration : public GALGAS_semanticExpressionForG
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_varInExpressionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                               const class GALGAS_location & inOperand1,
-                                                                               const class GALGAS_string & inOperand2,
-                                                                               const class GALGAS_string & inOperand3,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_varInExpressionForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                           const class GALGAS_location & inOperand1,
+                                                                           const class GALGAS_string & inOperand2,
+                                                                           const class GALGAS_string & inOperand3,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1588,11 +1588,11 @@ class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGener
   #endif
 
 //--------------------------------- Initializers
-  public: void varInExpressionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                      const class GALGAS_location & inOperand1,
-                                                                      const class GALGAS_string & inOperand2,
-                                                                      const class GALGAS_string & inOperand3,
-                                                                      Compiler * inCompiler) ;
+  public: void varInExpressionForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                  const class GALGAS_location & inOperand1,
+                                                                  const class GALGAS_string & inOperand2,
+                                                                  const class GALGAS_string & inOperand3,
+                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -1744,11 +1744,11 @@ class GALGAS_actualOutputArgumentList_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_actualOutputArgumentList_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                  const class GALGAS_location & inOperand2,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_actualOutputArgumentList_2D_element init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                              const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                              const class GALGAS_location & inOperand2,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1820,9 +1820,9 @@ class GALGAS_trueExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_trueExpressionAST init_28__29_ (const class GALGAS_location & inOperand0,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_trueExpressionAST init_21_ (const class GALGAS_location & inOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1871,8 +1871,8 @@ class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void trueExpressionAST_init_28__29_ (const class GALGAS_location & inOperand0,
-                                               Compiler * inCompiler) ;
+  public: void trueExpressionAST_init_21_ (const class GALGAS_location & inOperand0,
+                                           Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -1988,9 +1988,9 @@ class GALGAS_falseExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_falseExpressionAST init_28__29_ (const class GALGAS_location & inOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_falseExpressionAST init_21_ (const class GALGAS_location & inOperand0,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2039,8 +2039,8 @@ class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void falseExpressionAST_init_28__29_ (const class GALGAS_location & inOperand0,
-                                                Compiler * inCompiler) ;
+  public: void falseExpressionAST_init_21_ (const class GALGAS_location & inOperand0,
+                                            Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -2154,10 +2154,10 @@ class GALGAS_trueExpressionForGeneration : public GALGAS_semanticExpressionForGe
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_trueExpressionForGeneration init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                      const class GALGAS_location & inOperand1,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_trueExpressionForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                  const class GALGAS_location & inOperand1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2207,9 +2207,9 @@ class cPtr_trueExpressionForGeneration : public cPtr_semanticExpressionForGenera
   #endif
 
 //--------------------------------- Initializers
-  public: void trueExpressionForGeneration_init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                             const class GALGAS_location & inOperand1,
-                                                             Compiler * inCompiler) ;
+  public: void trueExpressionForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                         const class GALGAS_location & inOperand1,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension getter isTrueExpression
@@ -2320,10 +2320,10 @@ class GALGAS_falseExpressionForGeneration : public GALGAS_semanticExpressionForG
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_falseExpressionForGeneration init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GALGAS_location & inOperand1,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_falseExpressionForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                   const class GALGAS_location & inOperand1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2373,9 +2373,9 @@ class cPtr_falseExpressionForGeneration : public cPtr_semanticExpressionForGener
   #endif
 
 //--------------------------------- Initializers
-  public: void falseExpressionForGeneration_init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                              const class GALGAS_location & inOperand1,
-                                                              Compiler * inCompiler) ;
+  public: void falseExpressionForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                          const class GALGAS_location & inOperand1,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -2487,10 +2487,10 @@ class GALGAS_literalStringExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalStringExpressionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_stringlist & inOperand1,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalStringExpressionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_stringlist & inOperand1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2540,9 +2540,9 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void literalStringExpressionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_stringlist & inOperand1,
-                                                            Compiler * inCompiler) ;
+  public: void literalStringExpressionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                        const class GALGAS_stringlist & inOperand1,
+                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -2660,11 +2660,11 @@ class GALGAS_literalStringExpressionForGeneration : public GALGAS_semanticExpres
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalStringExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GALGAS_location & inOperand1,
-                                                                                   const class GALGAS_string & inOperand2,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalStringExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               const class GALGAS_string & inOperand2,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2715,10 +2715,10 @@ class cPtr_literalStringExpressionForGeneration : public cPtr_semanticExpression
   #endif
 
 //--------------------------------- Initializers
-  public: void literalStringExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          const class GALGAS_string & inOperand2,
-                                                                          Compiler * inCompiler) ;
+  public: void literalStringExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                      const class GALGAS_location & inOperand1,
+                                                                      const class GALGAS_string & inOperand2,
+                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -2830,9 +2830,9 @@ class GALGAS_literalCharExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalCharExpressionAST init_28__29_ (const class GALGAS_lchar & inOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalCharExpressionAST init_21_ (const class GALGAS_lchar & inOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2881,8 +2881,8 @@ class cPtr_literalCharExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void literalCharExpressionAST_init_28__29_ (const class GALGAS_lchar & inOperand0,
-                                                      Compiler * inCompiler) ;
+  public: void literalCharExpressionAST_init_21_ (const class GALGAS_lchar & inOperand0,
+                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -2998,11 +2998,11 @@ class GALGAS_literalCharExpressionForGeneration : public GALGAS_semanticExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalCharExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                 const class GALGAS_location & inOperand1,
-                                                                                 const class GALGAS_char & inOperand2,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalCharExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                             const class GALGAS_location & inOperand1,
+                                                                             const class GALGAS_char & inOperand2,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3053,10 +3053,10 @@ class cPtr_literalCharExpressionForGeneration : public cPtr_semanticExpressionFo
   #endif
 
 //--------------------------------- Initializers
-  public: void literalCharExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                        const class GALGAS_location & inOperand1,
-                                                                        const class GALGAS_char & inOperand2,
-                                                                        Compiler * inCompiler) ;
+  public: void literalCharExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                    const class GALGAS_location & inOperand1,
+                                                                    const class GALGAS_char & inOperand2,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -3168,9 +3168,9 @@ class GALGAS_literalDoubleExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalDoubleExpressionAST init_28__29_ (const class GALGAS_ldouble & inOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalDoubleExpressionAST init_21_ (const class GALGAS_ldouble & inOperand0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3219,8 +3219,8 @@ class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void literalDoubleExpressionAST_init_28__29_ (const class GALGAS_ldouble & inOperand0,
-                                                        Compiler * inCompiler) ;
+  public: void literalDoubleExpressionAST_init_21_ (const class GALGAS_ldouble & inOperand0,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -3336,11 +3336,11 @@ class GALGAS_literalDoubleExpressionForGeneration : public GALGAS_semanticExpres
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalDoubleExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GALGAS_location & inOperand1,
-                                                                                   const class GALGAS_double & inOperand2,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalDoubleExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               const class GALGAS_double & inOperand2,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3391,10 +3391,10 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
   #endif
 
 //--------------------------------- Initializers
-  public: void literalDoubleExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          const class GALGAS_double & inOperand2,
-                                                                          Compiler * inCompiler) ;
+  public: void literalDoubleExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                      const class GALGAS_location & inOperand1,
+                                                                      const class GALGAS_double & inOperand2,
+                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -3506,9 +3506,9 @@ class GALGAS_literalBigIntExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalBigIntExpressionAST init_28__29_ (const class GALGAS_lbigint & inOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalBigIntExpressionAST init_21_ (const class GALGAS_lbigint & inOperand0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3557,8 +3557,8 @@ class cPtr_literalBigIntExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void literalBigIntExpressionAST_init_28__29_ (const class GALGAS_lbigint & inOperand0,
-                                                        Compiler * inCompiler) ;
+  public: void literalBigIntExpressionAST_init_21_ (const class GALGAS_lbigint & inOperand0,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -3674,11 +3674,11 @@ class GALGAS_literalUIntExpressionForGeneration : public GALGAS_semanticExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalUIntExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                 const class GALGAS_location & inOperand1,
-                                                                                 const class GALGAS_uint & inOperand2,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalUIntExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                             const class GALGAS_location & inOperand1,
+                                                                             const class GALGAS_uint & inOperand2,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3729,10 +3729,10 @@ class cPtr_literalUIntExpressionForGeneration : public cPtr_semanticExpressionFo
   #endif
 
 //--------------------------------- Initializers
-  public: void literalUIntExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                        const class GALGAS_location & inOperand1,
-                                                                        const class GALGAS_uint & inOperand2,
-                                                                        Compiler * inCompiler) ;
+  public: void literalUIntExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                    const class GALGAS_location & inOperand1,
+                                                                    const class GALGAS_uint & inOperand2,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -3844,11 +3844,11 @@ class GALGAS_literalUInt_36__34_ExpressionForGeneration : public GALGAS_semantic
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalUInt_36__34_ExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                         const class GALGAS_location & inOperand1,
-                                                                                         const class GALGAS_uint_36__34_ & inOperand2,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalUInt_36__34_ExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                     const class GALGAS_location & inOperand1,
+                                                                                     const class GALGAS_uint_36__34_ & inOperand2,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3899,10 +3899,10 @@ class cPtr_literalUInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
   #endif
 
 //--------------------------------- Initializers
-  public: void literalUInt_36__34_ExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_location & inOperand1,
-                                                                                const class GALGAS_uint_36__34_ & inOperand2,
-                                                                                Compiler * inCompiler) ;
+  public: void literalUInt_36__34_ExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_uint_36__34_ & inOperand2,
+                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -4014,11 +4014,11 @@ class GALGAS_literalSIntExpressionForGeneration : public GALGAS_semanticExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalSIntExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                 const class GALGAS_location & inOperand1,
-                                                                                 const class GALGAS_sint & inOperand2,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalSIntExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                             const class GALGAS_location & inOperand1,
+                                                                             const class GALGAS_sint & inOperand2,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4069,10 +4069,10 @@ class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionFo
   #endif
 
 //--------------------------------- Initializers
-  public: void literalSIntExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                        const class GALGAS_location & inOperand1,
-                                                                        const class GALGAS_sint & inOperand2,
-                                                                        Compiler * inCompiler) ;
+  public: void literalSIntExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                    const class GALGAS_location & inOperand1,
+                                                                    const class GALGAS_sint & inOperand2,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -4184,11 +4184,11 @@ class GALGAS_literalSInt_36__34_ExpressionForGeneration : public GALGAS_semantic
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalSInt_36__34_ExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                         const class GALGAS_location & inOperand1,
-                                                                                         const class GALGAS_sint_36__34_ & inOperand2,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalSInt_36__34_ExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                     const class GALGAS_location & inOperand1,
+                                                                                     const class GALGAS_sint_36__34_ & inOperand2,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4239,10 +4239,10 @@ class cPtr_literalSInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
   #endif
 
 //--------------------------------- Initializers
-  public: void literalSInt_36__34_ExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_location & inOperand1,
-                                                                                const class GALGAS_sint_36__34_ & inOperand2,
-                                                                                Compiler * inCompiler) ;
+  public: void literalSInt_36__34_ExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_sint_36__34_ & inOperand2,
+                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -4354,11 +4354,11 @@ class GALGAS_literalBigIntExpressionForGeneration : public GALGAS_semanticExpres
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalBigIntExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GALGAS_location & inOperand1,
-                                                                                   const class GALGAS_bigint & inOperand2,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalBigIntExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               const class GALGAS_bigint & inOperand2,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4409,10 +4409,10 @@ class cPtr_literalBigIntExpressionForGeneration : public cPtr_semanticExpression
   #endif
 
 //--------------------------------- Initializers
-  public: void literalBigIntExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          const class GALGAS_bigint & inOperand2,
-                                                                          Compiler * inCompiler) ;
+  public: void literalBigIntExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                      const class GALGAS_location & inOperand1,
+                                                                      const class GALGAS_bigint & inOperand2,
+                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -4647,12 +4647,12 @@ class GALGAS_comparisonExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_comparisonExpressionAST init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                          const class GALGAS_comparison & inOperand2,
-                                                                          const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_comparisonExpressionAST init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                      const class GALGAS_comparison & inOperand2,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4704,11 +4704,11 @@ class cPtr_comparisonExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void comparisonExpressionAST_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                 const class GALGAS_comparison & inOperand2,
-                                                                 const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                 Compiler * inCompiler) ;
+  public: void comparisonExpressionAST_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_semanticExpressionAST & inOperand1,
+                                                             const class GALGAS_comparison & inOperand2,
+                                                             const class GALGAS_semanticExpressionAST & inOperand3,
+                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -4834,13 +4834,13 @@ class GALGAS_comparisonExpressionForGeneration : public GALGAS_semanticExpressio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_comparisonExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                        const class GALGAS_location & inOperand1,
-                                                                                        const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                        const class GALGAS_comparison & inOperand3,
-                                                                                        const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_comparisonExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                    const class GALGAS_location & inOperand1,
+                                                                                    const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                    const class GALGAS_comparison & inOperand3,
+                                                                                    const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4893,12 +4893,12 @@ class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionFor
   #endif
 
 //--------------------------------- Initializers
-  public: void comparisonExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                               const class GALGAS_location & inOperand1,
-                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                               const class GALGAS_comparison & inOperand3,
-                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                               Compiler * inCompiler) ;
+  public: void comparisonExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                           const class GALGAS_location & inOperand1,
+                                                                           const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                           const class GALGAS_comparison & inOperand3,
+                                                                           const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -5018,11 +5018,11 @@ class GALGAS_rightShiftExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_rightShiftExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                      const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_rightShiftExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                  const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5073,10 +5073,10 @@ class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void rightShiftExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_semanticExpressionAST & inOperand1,
-                                                             const class GALGAS_semanticExpressionAST & inOperand2,
-                                                             Compiler * inCompiler) ;
+  public: void rightShiftExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                         const class GALGAS_semanticExpressionAST & inOperand1,
+                                                         const class GALGAS_semanticExpressionAST & inOperand2,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -5200,11 +5200,11 @@ class GALGAS_leftShiftExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_leftShiftExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                     const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_leftShiftExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                 const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5255,10 +5255,10 @@ class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void leftShiftExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_semanticExpressionAST & inOperand1,
-                                                            const class GALGAS_semanticExpressionAST & inOperand2,
-                                                            Compiler * inCompiler) ;
+  public: void leftShiftExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                        const class GALGAS_semanticExpressionAST & inOperand1,
+                                                        const class GALGAS_semanticExpressionAST & inOperand2,
+                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -5382,11 +5382,11 @@ class GALGAS_addExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_addExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                               const class GALGAS_semanticExpressionAST & inOperand2,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_addExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                           const class GALGAS_semanticExpressionAST & inOperand1,
+                                                           const class GALGAS_semanticExpressionAST & inOperand2,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5437,10 +5437,10 @@ class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void addExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                      const class GALGAS_semanticExpressionAST & inOperand1,
-                                                      const class GALGAS_semanticExpressionAST & inOperand2,
-                                                      Compiler * inCompiler) ;
+  public: void addExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                  const class GALGAS_semanticExpressionAST & inOperand1,
+                                                  const class GALGAS_semanticExpressionAST & inOperand2,
+                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -5564,11 +5564,11 @@ class GALGAS_addExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_addExpressionNoOverflowAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                         const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_addExpressionNoOverflowAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5619,10 +5619,10 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void addExpressionNoOverflowAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                Compiler * inCompiler) ;
+  public: void addExpressionNoOverflowAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                            const class GALGAS_semanticExpressionAST & inOperand1,
+                                                            const class GALGAS_semanticExpressionAST & inOperand2,
+                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -5746,11 +5746,11 @@ class GALGAS_subExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_subExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                               const class GALGAS_semanticExpressionAST & inOperand2,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_subExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                           const class GALGAS_semanticExpressionAST & inOperand1,
+                                                           const class GALGAS_semanticExpressionAST & inOperand2,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5801,10 +5801,10 @@ class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void subExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                      const class GALGAS_semanticExpressionAST & inOperand1,
-                                                      const class GALGAS_semanticExpressionAST & inOperand2,
-                                                      Compiler * inCompiler) ;
+  public: void subExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                  const class GALGAS_semanticExpressionAST & inOperand1,
+                                                  const class GALGAS_semanticExpressionAST & inOperand2,
+                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -5928,11 +5928,11 @@ class GALGAS_subExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_subExpressionNoOverflowAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                         const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_subExpressionNoOverflowAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5983,10 +5983,10 @@ class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void subExpressionNoOverflowAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                Compiler * inCompiler) ;
+  public: void subExpressionNoOverflowAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                            const class GALGAS_semanticExpressionAST & inOperand1,
+                                                            const class GALGAS_semanticExpressionAST & inOperand2,
+                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -6269,13 +6269,13 @@ class GALGAS_binaryOperatorExpressionForGeneration : public GALGAS_semanticExpre
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_binaryOperatorExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                            const class GALGAS_location & inOperand1,
-                                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                            const class GALGAS_binaryOperator & inOperand3,
-                                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_binaryOperatorExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                        const class GALGAS_location & inOperand1,
+                                                                                        const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                        const class GALGAS_binaryOperator & inOperand3,
+                                                                                        const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6328,12 +6328,12 @@ class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressio
   #endif
 
 //--------------------------------- Initializers
-  public: void binaryOperatorExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GALGAS_location & inOperand1,
-                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                   const class GALGAS_binaryOperator & inOperand3,
-                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                                   Compiler * inCompiler) ;
+  public: void binaryOperatorExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                               const class GALGAS_binaryOperator & inOperand3,
+                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                               Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -6453,11 +6453,11 @@ class GALGAS_multiplicationExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_multiplicationExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                          const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_multiplicationExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6508,10 +6508,10 @@ class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void multiplicationExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                 const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                 Compiler * inCompiler) ;
+  public: void multiplicationExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                             const class GALGAS_semanticExpressionAST & inOperand1,
+                                                             const class GALGAS_semanticExpressionAST & inOperand2,
+                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -6635,11 +6635,11 @@ class GALGAS_multiplicationExpressionNoOverflowAST : public GALGAS_semanticExpre
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_multiplicationExpressionNoOverflowAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                    const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                    const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_multiplicationExpressionNoOverflowAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                                const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6690,10 +6690,10 @@ class cPtr_multiplicationExpressionNoOverflowAST : public cPtr_semanticExpressio
   #endif
 
 //--------------------------------- Initializers
-  public: void multiplicationExpressionNoOverflowAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                           const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                           Compiler * inCompiler) ;
+  public: void multiplicationExpressionNoOverflowAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                       const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -6817,11 +6817,11 @@ class GALGAS_divisionExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_divisionExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                    const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                    const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_divisionExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6872,10 +6872,10 @@ class cPtr_divisionExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void divisionExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                           const class GALGAS_semanticExpressionAST & inOperand1,
-                                                           const class GALGAS_semanticExpressionAST & inOperand2,
-                                                           Compiler * inCompiler) ;
+  public: void divisionExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                       const class GALGAS_semanticExpressionAST & inOperand1,
+                                                       const class GALGAS_semanticExpressionAST & inOperand2,
+                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -6999,11 +6999,11 @@ class GALGAS_divisionExpressionNoOverflowAST : public GALGAS_semanticExpressionA
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_divisionExpressionNoOverflowAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                              const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_divisionExpressionNoOverflowAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                          const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                          const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7054,10 +7054,10 @@ class cPtr_divisionExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void divisionExpressionNoOverflowAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                     const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                     Compiler * inCompiler) ;
+  public: void divisionExpressionNoOverflowAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                 const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                 Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -7181,11 +7181,11 @@ class GALGAS_moduloExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_moduloExpressionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_moduloExpressionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_semanticExpressionAST & inOperand1,
+                                                              const class GALGAS_semanticExpressionAST & inOperand2,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7236,10 +7236,10 @@ class cPtr_moduloExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void moduloExpressionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                         const class GALGAS_semanticExpressionAST & inOperand1,
-                                                         const class GALGAS_semanticExpressionAST & inOperand2,
-                                                         Compiler * inCompiler) ;
+  public: void moduloExpressionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                     const class GALGAS_semanticExpressionAST & inOperand2,
+                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -7365,12 +7365,12 @@ class GALGAS_testDynamicClassInExpressionAST : public GALGAS_semanticExpressionA
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_testDynamicClassInExpressionAST init_28__2C__2C__2C__29_ (const class GALGAS_semanticExpressionAST & inOperand0,
-                                                                                  const class GALGAS_location & inOperand1,
-                                                                                  const class GALGAS_dynamicTypeComparisonKind & inOperand2,
-                                                                                  const class GALGAS_lstring & inOperand3,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_testDynamicClassInExpressionAST init_21__21__21__21_ (const class GALGAS_semanticExpressionAST & inOperand0,
+                                                                              const class GALGAS_location & inOperand1,
+                                                                              const class GALGAS_dynamicTypeComparisonKind & inOperand2,
+                                                                              const class GALGAS_lstring & inOperand3,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7422,11 +7422,11 @@ class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void testDynamicClassInExpressionAST_init_28__2C__2C__2C__29_ (const class GALGAS_semanticExpressionAST & inOperand0,
-                                                                         const class GALGAS_location & inOperand1,
-                                                                         const class GALGAS_dynamicTypeComparisonKind & inOperand2,
-                                                                         const class GALGAS_lstring & inOperand3,
-                                                                         Compiler * inCompiler) ;
+  public: void testDynamicClassInExpressionAST_init_21__21__21__21_ (const class GALGAS_semanticExpressionAST & inOperand0,
+                                                                     const class GALGAS_location & inOperand1,
+                                                                     const class GALGAS_dynamicTypeComparisonKind & inOperand2,
+                                                                     const class GALGAS_lstring & inOperand3,
+                                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -7552,11 +7552,11 @@ class GALGAS_castInExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_castInExpressionAST init_28__2C__2C__29_ (const class GALGAS_semanticExpressionAST & inOperand0,
-                                                                  const class GALGAS_location & inOperand1,
-                                                                  const class GALGAS_lstring & inOperand2,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_castInExpressionAST init_21__21__21_ (const class GALGAS_semanticExpressionAST & inOperand0,
+                                                              const class GALGAS_location & inOperand1,
+                                                              const class GALGAS_lstring & inOperand2,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7607,10 +7607,10 @@ class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void castInExpressionAST_init_28__2C__2C__29_ (const class GALGAS_semanticExpressionAST & inOperand0,
-                                                         const class GALGAS_location & inOperand1,
-                                                         const class GALGAS_lstring & inOperand2,
-                                                         Compiler * inCompiler) ;
+  public: void castInExpressionAST_init_21__21__21_ (const class GALGAS_semanticExpressionAST & inOperand0,
+                                                     const class GALGAS_location & inOperand1,
+                                                     const class GALGAS_lstring & inOperand2,
+                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -7734,13 +7734,13 @@ class GALGAS_testDynamicClassInExpressionForGeneration : public GALGAS_semanticE
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_testDynamicClassInExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                const class GALGAS_location & inOperand1,
-                                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                                const class GALGAS_dynamicTypeComparisonKind & inOperand3,
-                                                                                                const class GALGAS_unifiedTypeMapEntry & inOperand4,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_testDynamicClassInExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                            const class GALGAS_location & inOperand1,
+                                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                            const class GALGAS_dynamicTypeComparisonKind & inOperand3,
+                                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7793,12 +7793,12 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
   #endif
 
 //--------------------------------- Initializers
-  public: void testDynamicClassInExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                       const class GALGAS_location & inOperand1,
-                                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                       const class GALGAS_dynamicTypeComparisonKind & inOperand3,
-                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand4,
-                                                                                       Compiler * inCompiler) ;
+  public: void testDynamicClassInExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                   const class GALGAS_location & inOperand1,
+                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                   const class GALGAS_dynamicTypeComparisonKind & inOperand3,
+                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -7916,12 +7916,12 @@ class GALGAS_extractObjectInExpressionForGeneration : public GALGAS_semanticExpr
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_extractObjectInExpressionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                         const class GALGAS_location & inOperand1,
-                                                                                         const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                         const class GALGAS_string & inOperand3,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_extractObjectInExpressionForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                     const class GALGAS_location & inOperand1,
+                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                     const class GALGAS_string & inOperand3,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7973,11 +7973,11 @@ class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressi
   #endif
 
 //--------------------------------- Initializers
-  public: void extractObjectInExpressionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_location & inOperand1,
-                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                const class GALGAS_string & inOperand3,
-                                                                                Compiler * inCompiler) ;
+  public: void extractObjectInExpressionForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                            const class GALGAS_string & inOperand3,
+                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -8095,11 +8095,11 @@ class GALGAS_optionExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionExpressionAST init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
-                                                                  const class GALGAS_lstring & inOperand2,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionExpressionAST init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                              const class GALGAS_lstring & inOperand1,
+                                                              const class GALGAS_lstring & inOperand2,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8150,10 +8150,10 @@ class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void optionExpressionAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                         const class GALGAS_lstring & inOperand1,
-                                                         const class GALGAS_lstring & inOperand2,
-                                                         Compiler * inCompiler) ;
+  public: void optionExpressionAST_init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                     const class GALGAS_lstring & inOperand1,
+                                                     const class GALGAS_lstring & inOperand2,
+                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -8277,13 +8277,13 @@ class GALGAS_optionValueExpressionForGeneration : public GALGAS_semanticExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionValueExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                         const class GALGAS_location & inOperand1,
-                                                                                         const class GALGAS_bool & inOperand2,
-                                                                                         const class GALGAS_string & inOperand3,
-                                                                                         const class GALGAS_string & inOperand4,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionValueExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                     const class GALGAS_location & inOperand1,
+                                                                                     const class GALGAS_bool & inOperand2,
+                                                                                     const class GALGAS_string & inOperand3,
+                                                                                     const class GALGAS_string & inOperand4,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8336,12 +8336,12 @@ class cPtr_optionValueExpressionForGeneration : public cPtr_semanticExpressionFo
   #endif
 
 //--------------------------------- Initializers
-  public: void optionValueExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_location & inOperand1,
-                                                                                const class GALGAS_bool & inOperand2,
-                                                                                const class GALGAS_string & inOperand3,
-                                                                                const class GALGAS_string & inOperand4,
-                                                                                Compiler * inCompiler) ;
+  public: void optionValueExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_bool & inOperand2,
+                                                                            const class GALGAS_string & inOperand3,
+                                                                            const class GALGAS_string & inOperand4,
+                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -8461,13 +8461,13 @@ class GALGAS_optionCharExpressionForGeneration : public GALGAS_semanticExpressio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionCharExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                        const class GALGAS_location & inOperand1,
-                                                                                        const class GALGAS_bool & inOperand2,
-                                                                                        const class GALGAS_string & inOperand3,
-                                                                                        const class GALGAS_string & inOperand4,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionCharExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                    const class GALGAS_location & inOperand1,
+                                                                                    const class GALGAS_bool & inOperand2,
+                                                                                    const class GALGAS_string & inOperand3,
+                                                                                    const class GALGAS_string & inOperand4,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8520,12 +8520,12 @@ class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionFor
   #endif
 
 //--------------------------------- Initializers
-  public: void optionCharExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                               const class GALGAS_location & inOperand1,
-                                                                               const class GALGAS_bool & inOperand2,
-                                                                               const class GALGAS_string & inOperand3,
-                                                                               const class GALGAS_string & inOperand4,
-                                                                               Compiler * inCompiler) ;
+  public: void optionCharExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                           const class GALGAS_location & inOperand1,
+                                                                           const class GALGAS_bool & inOperand2,
+                                                                           const class GALGAS_string & inOperand3,
+                                                                           const class GALGAS_string & inOperand4,
+                                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -8645,13 +8645,13 @@ class GALGAS_optionStringExpressionForGeneration : public GALGAS_semanticExpress
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionStringExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                          const class GALGAS_location & inOperand1,
-                                                                                          const class GALGAS_bool & inOperand2,
-                                                                                          const class GALGAS_string & inOperand3,
-                                                                                          const class GALGAS_string & inOperand4,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionStringExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                      const class GALGAS_location & inOperand1,
+                                                                                      const class GALGAS_bool & inOperand2,
+                                                                                      const class GALGAS_string & inOperand3,
+                                                                                      const class GALGAS_string & inOperand4,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8704,12 +8704,12 @@ class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionF
   #endif
 
 //--------------------------------- Initializers
-  public: void optionStringExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                 const class GALGAS_location & inOperand1,
-                                                                                 const class GALGAS_bool & inOperand2,
-                                                                                 const class GALGAS_string & inOperand3,
-                                                                                 const class GALGAS_string & inOperand4,
-                                                                                 Compiler * inCompiler) ;
+  public: void optionStringExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                             const class GALGAS_location & inOperand1,
+                                                                             const class GALGAS_bool & inOperand2,
+                                                                             const class GALGAS_string & inOperand3,
+                                                                             const class GALGAS_string & inOperand4,
+                                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -8829,13 +8829,13 @@ class GALGAS_optionCommentExpressionForGeneration : public GALGAS_semanticExpres
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionCommentExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                           const class GALGAS_location & inOperand1,
-                                                                                           const class GALGAS_bool & inOperand2,
-                                                                                           const class GALGAS_string & inOperand3,
-                                                                                           const class GALGAS_string & inOperand4,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionCommentExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                       const class GALGAS_location & inOperand1,
+                                                                                       const class GALGAS_bool & inOperand2,
+                                                                                       const class GALGAS_string & inOperand3,
+                                                                                       const class GALGAS_string & inOperand4,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8888,12 +8888,12 @@ class cPtr_optionCommentExpressionForGeneration : public cPtr_semanticExpression
   #endif
 
 //--------------------------------- Initializers
-  public: void optionCommentExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                  const class GALGAS_location & inOperand1,
-                                                                                  const class GALGAS_bool & inOperand2,
-                                                                                  const class GALGAS_string & inOperand3,
-                                                                                  const class GALGAS_string & inOperand4,
-                                                                                  Compiler * inCompiler) ;
+  public: void optionCommentExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                              const class GALGAS_location & inOperand1,
+                                                                              const class GALGAS_bool & inOperand2,
+                                                                              const class GALGAS_string & inOperand3,
+                                                                              const class GALGAS_string & inOperand4,
+                                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -9011,10 +9011,10 @@ class GALGAS_lexiqueIntrospectionExpressionAST : public GALGAS_semanticExpressio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_lexiqueIntrospectionExpressionAST init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                            const class GALGAS_lstring & inOperand1,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_lexiqueIntrospectionExpressionAST init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                        const class GALGAS_lstring & inOperand1,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9064,9 +9064,9 @@ class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST
   #endif
 
 //--------------------------------- Initializers
-  public: void lexiqueIntrospectionExpressionAST_init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   Compiler * inCompiler) ;
+  public: void lexiqueIntrospectionExpressionAST_init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                               const class GALGAS_lstring & inOperand1,
+                                                               Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -9186,12 +9186,12 @@ class GALGAS_lexiqueIntrospectionForGeneration : public GALGAS_semanticExpressio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_lexiqueIntrospectionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                    const class GALGAS_location & inOperand1,
-                                                                                    const class GALGAS_string & inOperand2,
-                                                                                    const class GALGAS_string & inOperand3,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_lexiqueIntrospectionForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                const class GALGAS_location & inOperand1,
+                                                                                const class GALGAS_string & inOperand2,
+                                                                                const class GALGAS_string & inOperand3,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9243,11 +9243,11 @@ class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionFor
   #endif
 
 //--------------------------------- Initializers
-  public: void lexiqueIntrospectionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                           const class GALGAS_location & inOperand1,
-                                                                           const class GALGAS_string & inOperand2,
-                                                                           const class GALGAS_string & inOperand3,
-                                                                           Compiler * inCompiler) ;
+  public: void lexiqueIntrospectionForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                       const class GALGAS_location & inOperand1,
+                                                                       const class GALGAS_string & inOperand2,
+                                                                       const class GALGAS_string & inOperand3,
+                                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -9361,9 +9361,9 @@ class GALGAS_filewrapperObjectInstanciationInExpressionAST : public GALGAS_seman
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_filewrapperObjectInstanciationInExpressionAST init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_filewrapperObjectInstanciationInExpressionAST init_21_ (const class GALGAS_lstring & inOperand0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9412,8 +9412,8 @@ class cPtr_filewrapperObjectInstanciationInExpressionAST : public cPtr_semanticE
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperObjectInstanciationInExpressionAST_init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                                           Compiler * inCompiler) ;
+  public: void filewrapperObjectInstanciationInExpressionAST_init_21_ (const class GALGAS_lstring & inOperand0,
+                                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -9531,10 +9531,10 @@ class GALGAS_filewrapperInExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_filewrapperInExpressionAST init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_filewrapperInExpressionAST init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                 const class GALGAS_lstring & inOperand1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9584,9 +9584,9 @@ class cPtr_filewrapperInExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperInExpressionAST_init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                            const class GALGAS_lstring & inOperand1,
-                                                            Compiler * inCompiler) ;
+  public: void filewrapperInExpressionAST_init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                        const class GALGAS_lstring & inOperand1,
+                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -9708,11 +9708,11 @@ class GALGAS_filewrapperTemplateInExpressionAST : public GALGAS_semanticExpressi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_filewrapperTemplateInExpressionAST init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_actualOutputArgumentList & inOperand2,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_filewrapperTemplateInExpressionAST init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_actualOutputArgumentList & inOperand2,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9763,10 +9763,10 @@ class cPtr_filewrapperTemplateInExpressionAST : public cPtr_semanticExpressionAS
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperTemplateInExpressionAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                        const class GALGAS_lstring & inOperand1,
-                                                                        const class GALGAS_actualOutputArgumentList & inOperand2,
-                                                                        Compiler * inCompiler) ;
+  public: void filewrapperTemplateInExpressionAST_init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                    const class GALGAS_lstring & inOperand1,
+                                                                    const class GALGAS_actualOutputArgumentList & inOperand2,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -9888,12 +9888,12 @@ class GALGAS_filewrapperInExpressionForGeneration : public GALGAS_semanticExpres
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_filewrapperInExpressionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                       const class GALGAS_location & inOperand1,
-                                                                                       const class GALGAS_string & inOperand2,
-                                                                                       const class GALGAS_string & inOperand3,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_filewrapperInExpressionForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                   const class GALGAS_location & inOperand1,
+                                                                                   const class GALGAS_string & inOperand2,
+                                                                                   const class GALGAS_string & inOperand3,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9945,11 +9945,11 @@ class cPtr_filewrapperInExpressionForGeneration : public cPtr_semanticExpression
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperInExpressionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                              const class GALGAS_location & inOperand1,
-                                                                              const class GALGAS_string & inOperand2,
-                                                                              const class GALGAS_string & inOperand3,
-                                                                              Compiler * inCompiler) ;
+  public: void filewrapperInExpressionForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                          const class GALGAS_location & inOperand1,
+                                                                          const class GALGAS_string & inOperand2,
+                                                                          const class GALGAS_string & inOperand3,
+                                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -10067,13 +10067,13 @@ class GALGAS_filewrapperTemplateInExpressionForGeneration : public GALGAS_semant
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_filewrapperTemplateInExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                   const class GALGAS_location & inOperand1,
-                                                                                                   const class GALGAS_string & inOperand2,
-                                                                                                   const class GALGAS_string & inOperand3,
-                                                                                                   const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_filewrapperTemplateInExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                               const class GALGAS_location & inOperand1,
+                                                                                               const class GALGAS_string & inOperand2,
+                                                                                               const class GALGAS_string & inOperand3,
+                                                                                               const class GALGAS_semanticExpressionListForGeneration & inOperand4,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10126,12 +10126,12 @@ class cPtr_filewrapperTemplateInExpressionForGeneration : public cPtr_semanticEx
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperTemplateInExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                          const class GALGAS_location & inOperand1,
-                                                                                          const class GALGAS_string & inOperand2,
-                                                                                          const class GALGAS_string & inOperand3,
-                                                                                          const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                                          Compiler * inCompiler) ;
+  public: void filewrapperTemplateInExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                      const class GALGAS_location & inOperand1,
+                                                                                      const class GALGAS_string & inOperand2,
+                                                                                      const class GALGAS_string & inOperand3,
+                                                                                      const class GALGAS_semanticExpressionListForGeneration & inOperand4,
+                                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -10251,13 +10251,13 @@ class GALGAS_filewrapperStaticPathInExpressionForGeneration : public GALGAS_sema
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_filewrapperStaticPathInExpressionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                     const class GALGAS_location & inOperand1,
-                                                                                                     const class GALGAS_string & inOperand2,
-                                                                                                     const class GALGAS_uint & inOperand3,
-                                                                                                     const class GALGAS_bool & inOperand4,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_filewrapperStaticPathInExpressionForGeneration init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                 const class GALGAS_location & inOperand1,
+                                                                                                 const class GALGAS_string & inOperand2,
+                                                                                                 const class GALGAS_uint & inOperand3,
+                                                                                                 const class GALGAS_bool & inOperand4,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10310,12 +10310,12 @@ class cPtr_filewrapperStaticPathInExpressionForGeneration : public cPtr_semantic
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperStaticPathInExpressionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                            const class GALGAS_location & inOperand1,
-                                                                                            const class GALGAS_string & inOperand2,
-                                                                                            const class GALGAS_uint & inOperand3,
-                                                                                            const class GALGAS_bool & inOperand4,
-                                                                                            Compiler * inCompiler) ;
+  public: void filewrapperStaticPathInExpressionForGeneration_init_21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                        const class GALGAS_location & inOperand1,
+                                                                                        const class GALGAS_string & inOperand2,
+                                                                                        const class GALGAS_uint & inOperand3,
+                                                                                        const class GALGAS_bool & inOperand4,
+                                                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -10439,13 +10439,13 @@ class GALGAS_getterCallExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_getterCallExpressionAST init_28_errorOnGetterCallInsteadOfPropertyRead_2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
-                                                                                                                    const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                                                    const class GALGAS_lstring & inOperand2,
-                                                                                                                    const class GALGAS_actualOutputArgumentList & inOperand3,
-                                                                                                                    const class GALGAS_location & inOperand4,
-                                                                                                                    Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_getterCallExpressionAST init_21_errorOnGetterCallInsteadOfPropertyRead_21__21__21__21_ (const class GALGAS_bool & inOperand0,
+                                                                                                                const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                                                                const class GALGAS_lstring & inOperand2,
+                                                                                                                const class GALGAS_actualOutputArgumentList & inOperand3,
+                                                                                                                const class GALGAS_location & inOperand4,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10498,12 +10498,12 @@ class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void getterCallExpressionAST_init_28_errorOnGetterCallInsteadOfPropertyRead_2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
-                                                                                                           const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                                           const class GALGAS_lstring & inOperand2,
-                                                                                                           const class GALGAS_actualOutputArgumentList & inOperand3,
-                                                                                                           const class GALGAS_location & inOperand4,
-                                                                                                           Compiler * inCompiler) ;
+  public: void getterCallExpressionAST_init_21_errorOnGetterCallInsteadOfPropertyRead_21__21__21__21_ (const class GALGAS_bool & inOperand0,
+                                                                                                       const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                                                       const class GALGAS_lstring & inOperand2,
+                                                                                                       const class GALGAS_actualOutputArgumentList & inOperand3,
+                                                                                                       const class GALGAS_location & inOperand4,
+                                                                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -10637,16 +10637,16 @@ class GALGAS_getterCallExpressionForGeneration : public GALGAS_semanticExpressio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_getterCallExpressionForGeneration init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                    const class GALGAS_location & inOperand1,
-                                                                                                    const class GALGAS_methodKind & inOperand2,
-                                                                                                    const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                                    const class GALGAS_stringlist & inOperand4,
-                                                                                                    const class GALGAS_string & inOperand5,
-                                                                                                    const class GALGAS_semanticExpressionListForGeneration & inOperand6,
-                                                                                                    const class GALGAS_bool & inOperand7,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_getterCallExpressionForGeneration init_21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                const class GALGAS_location & inOperand1,
+                                                                                                const class GALGAS_methodKind & inOperand2,
+                                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                const class GALGAS_stringlist & inOperand4,
+                                                                                                const class GALGAS_string & inOperand5,
+                                                                                                const class GALGAS_semanticExpressionListForGeneration & inOperand6,
+                                                                                                const class GALGAS_bool & inOperand7,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10702,15 +10702,15 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
   #endif
 
 //--------------------------------- Initializers
-  public: void getterCallExpressionForGeneration_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                           const class GALGAS_location & inOperand1,
-                                                                                           const class GALGAS_methodKind & inOperand2,
-                                                                                           const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                           const class GALGAS_stringlist & inOperand4,
-                                                                                           const class GALGAS_string & inOperand5,
-                                                                                           const class GALGAS_semanticExpressionListForGeneration & inOperand6,
-                                                                                           const class GALGAS_bool & inOperand7,
-                                                                                           Compiler * inCompiler) ;
+  public: void getterCallExpressionForGeneration_init_21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                       const class GALGAS_location & inOperand1,
+                                                                                       const class GALGAS_methodKind & inOperand2,
+                                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                       const class GALGAS_stringlist & inOperand4,
+                                                                                       const class GALGAS_string & inOperand5,
+                                                                                       const class GALGAS_semanticExpressionListForGeneration & inOperand6,
+                                                                                       const class GALGAS_bool & inOperand7,
+                                                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -10838,12 +10838,12 @@ class GALGAS_classFuncExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_classFuncExpressionAST init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                         const class GALGAS_lstring & inOperand1,
-                                                                         const class GALGAS_actualOutputArgumentList & inOperand2,
-                                                                         const class GALGAS_location & inOperand3,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classFuncExpressionAST init_21__21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     const class GALGAS_actualOutputArgumentList & inOperand2,
+                                                                     const class GALGAS_location & inOperand3,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10895,11 +10895,11 @@ class cPtr_classFuncExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void classFuncExpressionAST_init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                const class GALGAS_lstring & inOperand1,
-                                                                const class GALGAS_actualOutputArgumentList & inOperand2,
-                                                                const class GALGAS_location & inOperand3,
-                                                                Compiler * inCompiler) ;
+  public: void classFuncExpressionAST_init_21__21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                            const class GALGAS_lstring & inOperand1,
+                                                            const class GALGAS_actualOutputArgumentList & inOperand2,
+                                                            const class GALGAS_location & inOperand3,
+                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -11027,14 +11027,14 @@ class GALGAS_classFuncExpressionForGeneration : public GALGAS_semanticExpression
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_classFuncExpressionForGeneration init_28__2C__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                           const class GALGAS_location & inOperand1,
-                                                                                           const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                           const class GALGAS_string & inOperand3,
-                                                                                           const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                                           const class GALGAS_bool & inOperand5,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classFuncExpressionForGeneration init_21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                       const class GALGAS_location & inOperand1,
+                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                       const class GALGAS_string & inOperand3,
+                                                                                       const class GALGAS_semanticExpressionListForGeneration & inOperand4,
+                                                                                       const class GALGAS_bool & inOperand5,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11088,13 +11088,13 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
   #endif
 
 //--------------------------------- Initializers
-  public: void classFuncExpressionForGeneration_init_28__2C__2C__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                  const class GALGAS_location & inOperand1,
-                                                                                  const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                  const class GALGAS_string & inOperand3,
-                                                                                  const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                                  const class GALGAS_bool & inOperand5,
-                                                                                  Compiler * inCompiler) ;
+  public: void classFuncExpressionForGeneration_init_21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                              const class GALGAS_location & inOperand1,
+                                                                              const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                              const class GALGAS_string & inOperand3,
+                                                                              const class GALGAS_semanticExpressionListForGeneration & inOperand4,
+                                                                              const class GALGAS_bool & inOperand5,
+                                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -11214,12 +11214,12 @@ class GALGAS_defaultConstructorExpressionForGeneration : public GALGAS_semanticE
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_defaultConstructorExpressionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                            const class GALGAS_location & inOperand1,
-                                                                                            const class GALGAS_string & inOperand2,
-                                                                                            const class GALGAS_bool & inOperand3,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_defaultConstructorExpressionForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                        const class GALGAS_location & inOperand1,
+                                                                                        const class GALGAS_string & inOperand2,
+                                                                                        const class GALGAS_bool & inOperand3,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11271,11 +11271,11 @@ class cPtr_defaultConstructorExpressionForGeneration : public cPtr_semanticExpre
   #endif
 
 //--------------------------------- Initializers
-  public: void defaultConstructorExpressionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GALGAS_location & inOperand1,
-                                                                                   const class GALGAS_string & inOperand2,
-                                                                                   const class GALGAS_bool & inOperand3,
-                                                                                   Compiler * inCompiler) ;
+  public: void defaultConstructorExpressionForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               const class GALGAS_string & inOperand2,
+                                                                               const class GALGAS_bool & inOperand3,
+                                                                               Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -11391,10 +11391,10 @@ class GALGAS_functionCallExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_functionCallExpressionAST init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                    const class GALGAS_actualOutputArgumentList & inOperand1,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_functionCallExpressionAST init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                const class GALGAS_actualOutputArgumentList & inOperand1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11444,9 +11444,9 @@ class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void functionCallExpressionAST_init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                           const class GALGAS_actualOutputArgumentList & inOperand1,
-                                                           Compiler * inCompiler) ;
+  public: void functionCallExpressionAST_init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                       const class GALGAS_actualOutputArgumentList & inOperand1,
+                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -11566,12 +11566,12 @@ class GALGAS_functionCallExpressionForGeneration : public GALGAS_semanticExpress
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_functionCallExpressionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                      const class GALGAS_location & inOperand1,
-                                                                                      const class GALGAS_string & inOperand2,
-                                                                                      const class GALGAS_semanticExpressionListForGeneration & inOperand3,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_functionCallExpressionForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                  const class GALGAS_location & inOperand1,
+                                                                                  const class GALGAS_string & inOperand2,
+                                                                                  const class GALGAS_semanticExpressionListForGeneration & inOperand3,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11623,11 +11623,11 @@ class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionF
   #endif
 
 //--------------------------------- Initializers
-  public: void functionCallExpressionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                             const class GALGAS_location & inOperand1,
-                                                                             const class GALGAS_string & inOperand2,
-                                                                             const class GALGAS_semanticExpressionListForGeneration & inOperand3,
-                                                                             Compiler * inCompiler) ;
+  public: void functionCallExpressionForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                         const class GALGAS_location & inOperand1,
+                                                                         const class GALGAS_string & inOperand2,
+                                                                         const class GALGAS_semanticExpressionListForGeneration & inOperand3,
+                                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -11741,9 +11741,9 @@ class GALGAS_literalTypeInExpressionAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalTypeInExpressionAST init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalTypeInExpressionAST init_21_ (const class GALGAS_lstring & inOperand0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11792,8 +11792,8 @@ class cPtr_literalTypeInExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void literalTypeInExpressionAST_init_28__29_ (const class GALGAS_lstring & inOperand0,
-                                                        Compiler * inCompiler) ;
+  public: void literalTypeInExpressionAST_init_21_ (const class GALGAS_lstring & inOperand0,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -11909,11 +11909,11 @@ class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpres
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_literalTypeInExpressionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GALGAS_location & inOperand1,
-                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_literalTypeInExpressionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11964,10 +11964,10 @@ class cPtr_literalTypeInExpressionForGeneration : public cPtr_semanticExpression
   #endif
 
 //--------------------------------- Initializers
-  public: void literalTypeInExpressionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                          Compiler * inCompiler) ;
+  public: void literalTypeInExpressionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                      const class GALGAS_location & inOperand1,
+                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -12213,8 +12213,8 @@ class GALGAS_abstractCollectionValueElement : public AC_GALGAS_reference_class {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_abstractCollectionValueElement init_28__29_ (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_abstractCollectionValueElement init (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12259,7 +12259,7 @@ class cPtr_abstractCollectionValueElement : public acStrongPtr_class {
   #endif
 
 //--------------------------------- Initializers
-  public: void abstractCollectionValueElement_init_28__29_ (Compiler * inCompiler) ;
+  public: void abstractCollectionValueElement_init (Compiler * inCompiler) ;
 
 
 //--- Extension method analyze
@@ -12333,9 +12333,9 @@ class GALGAS_collectionValueElementList_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_collectionValueElementList_2D_element init_28__29_ (const class GALGAS_abstractCollectionValueElement & inOperand0,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_collectionValueElementList_2D_element init_21_ (const class GALGAS_abstractCollectionValueElement & inOperand0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12451,10 +12451,10 @@ class GALGAS_expressionCollectionValue : public GALGAS_abstractCollectionValueEl
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_expressionCollectionValue init_28__2C__29_ (const class GALGAS_semanticExpressionAST & inOperand0,
-                                                                    const class GALGAS_location & inOperand1,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_expressionCollectionValue init_21__21_ (const class GALGAS_semanticExpressionAST & inOperand0,
+                                                                const class GALGAS_location & inOperand1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12504,9 +12504,9 @@ class cPtr_expressionCollectionValue : public cPtr_abstractCollectionValueElemen
   #endif
 
 //--------------------------------- Initializers
-  public: void expressionCollectionValue_init_28__2C__29_ (const class GALGAS_semanticExpressionAST & inOperand0,
-                                                           const class GALGAS_location & inOperand1,
-                                                           Compiler * inCompiler) ;
+  public: void expressionCollectionValue_init_21__21_ (const class GALGAS_semanticExpressionAST & inOperand0,
+                                                       const class GALGAS_location & inOperand1,
+                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method analyze
@@ -12626,10 +12626,10 @@ class GALGAS_expressionListCollectionValue : public GALGAS_abstractCollectionVal
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_expressionListCollectionValue init_28__2C__29_ (const class GALGAS_actualOutputArgumentList & inOperand0,
-                                                                        const class GALGAS_location & inOperand1,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_expressionListCollectionValue init_21__21_ (const class GALGAS_actualOutputArgumentList & inOperand0,
+                                                                    const class GALGAS_location & inOperand1,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12679,9 +12679,9 @@ class cPtr_expressionListCollectionValue : public cPtr_abstractCollectionValueEl
   #endif
 
 //--------------------------------- Initializers
-  public: void expressionListCollectionValue_init_28__2C__29_ (const class GALGAS_actualOutputArgumentList & inOperand0,
-                                                               const class GALGAS_location & inOperand1,
-                                                               Compiler * inCompiler) ;
+  public: void expressionListCollectionValue_init_21__21_ (const class GALGAS_actualOutputArgumentList & inOperand0,
+                                                           const class GALGAS_location & inOperand1,
+                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method analyze
@@ -12803,11 +12803,11 @@ class GALGAS_collectionValueAST : public GALGAS_semanticExpressionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_collectionValueAST init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                 const class GALGAS_collectionValueElementList & inOperand1,
-                                                                 const class GALGAS_location & inOperand2,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_collectionValueAST init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                             const class GALGAS_collectionValueElementList & inOperand1,
+                                                             const class GALGAS_location & inOperand2,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12858,10 +12858,10 @@ class cPtr_collectionValueAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void collectionValueAST_init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                        const class GALGAS_collectionValueElementList & inOperand1,
-                                                        const class GALGAS_location & inOperand2,
-                                                        Compiler * inCompiler) ;
+  public: void collectionValueAST_init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                    const class GALGAS_collectionValueElementList & inOperand1,
+                                                    const class GALGAS_location & inOperand2,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -13145,9 +13145,9 @@ class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_refe
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_abstractCollectionValueElementForGeneration init_28__29_ (const class GALGAS_location & inOperand0,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_abstractCollectionValueElementForGeneration init_21_ (const class GALGAS_location & inOperand0,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -13192,8 +13192,8 @@ class cPtr_abstractCollectionValueElementForGeneration : public acStrongPtr_clas
   #endif
 
 //--------------------------------- Initializers
-  public: void abstractCollectionValueElementForGeneration_init_28__29_ (const class GALGAS_location & inOperand0,
-                                                                         Compiler * inCompiler) ;
+  public: void abstractCollectionValueElementForGeneration_init_21_ (const class GALGAS_location & inOperand0,
+                                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method generateCollectionElementCode
@@ -13264,9 +13264,9 @@ class GALGAS_collectionValueElementListForGeneration_2D_element : public AC_GALG
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_collectionValueElementListForGeneration_2D_element init_28__29_ (const class GALGAS_abstractCollectionValueElementForGeneration & inOperand0,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_collectionValueElementListForGeneration_2D_element init_21_ (const class GALGAS_abstractCollectionValueElementForGeneration & inOperand0,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

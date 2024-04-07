@@ -185,7 +185,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !.new {![constructorPropertyTypeList signature] !self.structTypeName}
+        !.new {![constructorPropertyTypeList initializerSignature] !self.structTypeName}
         !constructorPropertyTypeList
       ]
     end

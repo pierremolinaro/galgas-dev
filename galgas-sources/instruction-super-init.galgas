@@ -97,12 +97,8 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
         let superTypeDefinition = [superType.bang definition]
       #--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
-        let signature = @lstring.new {![self.mActualParameterList signature] !self.mInstructionLocation}
+        let signature = @lstring.new {![self.mActualParameterList initializerSignature] !self.mInstructionLocation}
         [superClassInitializerMap searchKey !signature ?let formalSignature]
-        println (!"CLASS " + superTypeDefinition.typeName)
-        for initializer in superClassInitializerMap do
-          println (!"  - " + initializer.lkey)
-        end
       #--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
@@ -144,7 +140,7 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
       #--- Generate instructions
         ioInstructionListForGeneration += !@superInitInstructionForGeneration.new {
           !self.mInstructionLocation
-          ![formalSignature signature]
+          ![formalSignature initializerSignature]
           !actualParameterListForGeneration
           !superTypeDefinition.typeName
         }
@@ -188,7 +184,7 @@ refclass @superInitInstructionForGeneration : @semanticInstructionForGeneration 
       ]
       getterArgumentCppNameList += !argumentCppName
     end
-    ioGeneratedCode += [self.mSuperTypeName identifierRepresentation] + "_init"
+    ioGeneratedCode += [self.mSuperTypeName identifierRepresentation] + "_"
     ioGeneratedCode += [self.mSuperInitializerSignature identifierRepresentation]
     ioGeneratedCode += " (" 
     for (mValue) in getterArgumentCppNameList do

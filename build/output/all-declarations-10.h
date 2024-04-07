@@ -10,190 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : public GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult {
-//--------------------------------- Default constructor
-  public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (const class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GALGAS_lstring readProperty_mActualParameterTypeName (void) const ;
-
-  public: class GALGAS_lstring readProperty_mActualParameterName (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                                           const class GALGAS_lstring & inOperand1,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst extractObject (const GALGAS_object & inObject,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                                                               const class GALGAS_lstring & inOperand1
-                                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                                  Compiler * inCompiler) ;
-
-
-//--- Extension method analyzeGrammarInstructionSDT
-  public: virtual void method_analyzeGrammarInstructionSDT (const class GALGAS_analysisContext arg_inAnalysisContext,
-           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
-           const class GALGAS_bool arg_inHasTranslateFeature,
-           const class GALGAS_string arg_inSyntaxDirectedTranslationResultVarName,
-           class GALGAS_stringlist & arg_ioAssignementList,
-           class GALGAS_localVarManager & arg_ioVariableMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method analyzeSDT
-  public: virtual void method_analyzeSDT (const class GALGAS_analysisContext arg_inAnalysisContext,
-           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
-           const class GALGAS_bool arg_inHasTranslateFeature,
-           class GALGAS_localVarManager & arg_ioVariableMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method generateCode
-  public: virtual void method_generateCode (const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
-           const class GALGAS_string arg_inAccessMethodName,
-           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
-           class GALGAS_string & arg_ioGeneratedCode,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mActualParameterTypeName ;
-  public: GALGAS_lstring mProperty_mActualParameterName ;
-
-
-//--- Default constructor
-  public: cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (const GALGAS_lstring & in_mActualParameterTypeName,
-                                                                                 const GALGAS_lstring & in_mActualParameterName
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak : public GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak (const class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst & inSource) ;
-
-  public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak & operator = (const class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst bang_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @grammarInFileInstructionAST reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -221,15 +37,15 @@ class GALGAS_grammarInFileInstructionAST : public GALGAS_semanticInstructionAST 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_grammarInFileInstructionAST init_28__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                          const class GALGAS_lstring & inOperand1,
-                                                                                          const class GALGAS_lstring & inOperand2,
-                                                                                          const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                                          const class GALGAS_location & inOperand4,
-                                                                                          const class GALGAS_actualParameterListAST & inOperand5,
-                                                                                          const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_grammarInFileInstructionAST init_21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                      const class GALGAS_lstring & inOperand1,
+                                                                                      const class GALGAS_lstring & inOperand2,
+                                                                                      const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                                      const class GALGAS_location & inOperand4,
+                                                                                      const class GALGAS_actualParameterListAST & inOperand5,
+                                                                                      const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -284,14 +100,14 @@ class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void grammarInFileInstructionAST_init_28__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_lstring & inOperand2,
-                                                                                 const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                                 const class GALGAS_location & inOperand4,
-                                                                                 const class GALGAS_actualParameterListAST & inOperand5,
-                                                                                 const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6,
-                                                                                 Compiler * inCompiler) ;
+  public: void grammarInFileInstructionAST_init_21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_lstring & inOperand2,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                             const class GALGAS_location & inOperand4,
+                                                                             const class GALGAS_actualParameterListAST & inOperand5,
+                                                                             const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6,
+                                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -431,17 +247,17 @@ class GALGAS_grammarInStringInstructionAST : public GALGAS_semanticInstructionAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_grammarInStringInstructionAST init_28__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                    const class GALGAS_lstring & inOperand1,
-                                                                                                    const class GALGAS_lstring & inOperand2,
-                                                                                                    const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                                                    const class GALGAS_location & inOperand4,
-                                                                                                    const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                                                    const class GALGAS_location & inOperand6,
-                                                                                                    const class GALGAS_actualParameterListAST & inOperand7,
-                                                                                                    const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand8,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_grammarInStringInstructionAST init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                const class GALGAS_lstring & inOperand1,
+                                                                                                const class GALGAS_lstring & inOperand2,
+                                                                                                const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                                                const class GALGAS_location & inOperand4,
+                                                                                                const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                                                const class GALGAS_location & inOperand6,
+                                                                                                const class GALGAS_actualParameterListAST & inOperand7,
+                                                                                                const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand8,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -498,16 +314,16 @@ class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void grammarInStringInstructionAST_init_28__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                           const class GALGAS_lstring & inOperand1,
-                                                                                           const class GALGAS_lstring & inOperand2,
-                                                                                           const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                                           const class GALGAS_location & inOperand4,
-                                                                                           const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                                           const class GALGAS_location & inOperand6,
-                                                                                           const class GALGAS_actualParameterListAST & inOperand7,
-                                                                                           const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand8,
-                                                                                           Compiler * inCompiler) ;
+  public: void grammarInStringInstructionAST_init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                       const class GALGAS_lstring & inOperand1,
+                                                                                       const class GALGAS_lstring & inOperand2,
+                                                                                       const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                                       const class GALGAS_location & inOperand4,
+                                                                                       const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                                       const class GALGAS_location & inOperand6,
+                                                                                       const class GALGAS_actualParameterListAST & inOperand7,
+                                                                                       const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand8,
+                                                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -651,16 +467,16 @@ class GALGAS_grammarInstructionWithSourceFileForGeneration : public GALGAS_seman
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_grammarInstructionWithSourceFileForGeneration init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                                const class GALGAS_string & inOperand1,
-                                                                                                                const class GALGAS_string & inOperand2,
-                                                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                                                const class GALGAS_actualParameterListForGeneration & inOperand4,
-                                                                                                                const class GALGAS_bool & inOperand5,
-                                                                                                                const class GALGAS_stringlist & inOperand6,
-                                                                                                                const class GALGAS_string & inOperand7,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_grammarInstructionWithSourceFileForGeneration init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                            const class GALGAS_string & inOperand1,
+                                                                                                            const class GALGAS_string & inOperand2,
+                                                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                            const class GALGAS_actualParameterListForGeneration & inOperand4,
+                                                                                                            const class GALGAS_bool & inOperand5,
+                                                                                                            const class GALGAS_stringlist & inOperand6,
+                                                                                                            const class GALGAS_string & inOperand7,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -716,15 +532,15 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
   #endif
 
 //--------------------------------- Initializers
-  public: void grammarInstructionWithSourceFileForGeneration_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                       const class GALGAS_string & inOperand1,
-                                                                                                       const class GALGAS_string & inOperand2,
-                                                                                                       const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                                       const class GALGAS_actualParameterListForGeneration & inOperand4,
-                                                                                                       const class GALGAS_bool & inOperand5,
-                                                                                                       const class GALGAS_stringlist & inOperand6,
-                                                                                                       const class GALGAS_string & inOperand7,
-                                                                                                       Compiler * inCompiler) ;
+  public: void grammarInstructionWithSourceFileForGeneration_init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                   const class GALGAS_string & inOperand1,
+                                                                                                   const class GALGAS_string & inOperand2,
+                                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                   const class GALGAS_actualParameterListForGeneration & inOperand4,
+                                                                                                   const class GALGAS_bool & inOperand5,
+                                                                                                   const class GALGAS_stringlist & inOperand6,
+                                                                                                   const class GALGAS_string & inOperand7,
+                                                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -864,17 +680,17 @@ class GALGAS_grammarInstructionWithSourceExpressionForGeneration : public GALGAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_grammarInstructionWithSourceExpressionForGeneration init_28__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                                          const class GALGAS_string & inOperand1,
-                                                                                                                          const class GALGAS_string & inOperand2,
-                                                                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                                                                          const class GALGAS_actualParameterListForGeneration & inOperand5,
-                                                                                                                          const class GALGAS_bool & inOperand6,
-                                                                                                                          const class GALGAS_stringlist & inOperand7,
-                                                                                                                          const class GALGAS_string & inOperand8,
-                                                                                                                          Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_grammarInstructionWithSourceExpressionForGeneration init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                                      const class GALGAS_string & inOperand1,
+                                                                                                                      const class GALGAS_string & inOperand2,
+                                                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                                                      const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                                                      const class GALGAS_bool & inOperand6,
+                                                                                                                      const class GALGAS_stringlist & inOperand7,
+                                                                                                                      const class GALGAS_string & inOperand8,
+                                                                                                                      Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -931,16 +747,16 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
   #endif
 
 //--------------------------------- Initializers
-  public: void grammarInstructionWithSourceExpressionForGeneration_init_28__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                                 const class GALGAS_string & inOperand1,
-                                                                                                                 const class GALGAS_string & inOperand2,
-                                                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand4,
-                                                                                                                 const class GALGAS_actualParameterListForGeneration & inOperand5,
-                                                                                                                 const class GALGAS_bool & inOperand6,
-                                                                                                                 const class GALGAS_stringlist & inOperand7,
-                                                                                                                 const class GALGAS_string & inOperand8,
-                                                                                                                 Compiler * inCompiler) ;
+  public: void grammarInstructionWithSourceExpressionForGeneration_init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                             const class GALGAS_string & inOperand1,
+                                                                                                             const class GALGAS_string & inOperand2,
+                                                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                                             const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                                             const class GALGAS_bool & inOperand6,
+                                                                                                             const class GALGAS_stringlist & inOperand7,
+                                                                                                             const class GALGAS_string & inOperand8,
+                                                                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -1147,13 +963,13 @@ class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_incDecInstructionAST init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_bool & inOperand1,
-                                                                           const class GALGAS_lstring & inOperand2,
-                                                                           const class GALGAS_lstringlist & inOperand3,
-                                                                           const class GALGAS_incDecKind & inOperand4,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_incDecInstructionAST init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_bool & inOperand1,
+                                                                       const class GALGAS_lstring & inOperand2,
+                                                                       const class GALGAS_lstringlist & inOperand3,
+                                                                       const class GALGAS_incDecKind & inOperand4,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1206,12 +1022,12 @@ class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void incDecInstructionAST_init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_bool & inOperand1,
-                                                                  const class GALGAS_lstring & inOperand2,
-                                                                  const class GALGAS_lstringlist & inOperand3,
-                                                                  const class GALGAS_incDecKind & inOperand4,
-                                                                  Compiler * inCompiler) ;
+  public: void incDecInstructionAST_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_bool & inOperand1,
+                                                              const class GALGAS_lstring & inOperand2,
+                                                              const class GALGAS_lstringlist & inOperand3,
+                                                              const class GALGAS_incDecKind & inOperand4,
+                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -1339,13 +1155,13 @@ class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_incDecNoOVFInstructionAST init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                const class GALGAS_bool & inOperand1,
-                                                                                const class GALGAS_lstring & inOperand2,
-                                                                                const class GALGAS_lstringlist & inOperand3,
-                                                                                const class GALGAS_incDecKind & inOperand4,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_incDecNoOVFInstructionAST init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                            const class GALGAS_bool & inOperand1,
+                                                                            const class GALGAS_lstring & inOperand2,
+                                                                            const class GALGAS_lstringlist & inOperand3,
+                                                                            const class GALGAS_incDecKind & inOperand4,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1398,12 +1214,12 @@ class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void incDecNoOVFInstructionAST_init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_bool & inOperand1,
-                                                                       const class GALGAS_lstring & inOperand2,
-                                                                       const class GALGAS_lstringlist & inOperand3,
-                                                                       const class GALGAS_incDecKind & inOperand4,
-                                                                       Compiler * inCompiler) ;
+  public: void incDecNoOVFInstructionAST_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_bool & inOperand1,
+                                                                   const class GALGAS_lstring & inOperand2,
+                                                                   const class GALGAS_lstringlist & inOperand3,
+                                                                   const class GALGAS_incDecKind & inOperand4,
+                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -1525,10 +1341,10 @@ class GALGAS_selfIncDecInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfIncDecInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_incDecKind & inOperand1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfIncDecInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_incDecKind & inOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1578,9 +1394,9 @@ class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void selfIncDecInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                          const class GALGAS_incDecKind & inOperand1,
-                                                          Compiler * inCompiler) ;
+  public: void selfIncDecInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                      const class GALGAS_incDecKind & inOperand1,
+                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -1696,10 +1512,10 @@ class GALGAS_selfIncDecNoOVFInstructionAST : public GALGAS_semanticInstructionAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfIncDecNoOVFInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_incDecKind & inOperand1,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfIncDecNoOVFInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_incDecKind & inOperand1,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1749,9 +1565,9 @@ class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void selfIncDecNoOVFInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_incDecKind & inOperand1,
-                                                               Compiler * inCompiler) ;
+  public: void selfIncDecNoOVFInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                           const class GALGAS_incDecKind & inOperand1,
+                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -1875,13 +1691,13 @@ class GALGAS_incDecInstructionForGeneration : public GALGAS_semanticInstructionF
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_incDecInstructionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                     const class GALGAS_string & inOperand1,
-                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                     const class GALGAS_lstringlist & inOperand3,
-                                                                                     const class GALGAS_incDecKind & inOperand4,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_incDecInstructionForGeneration init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                 const class GALGAS_string & inOperand1,
+                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                 const class GALGAS_lstringlist & inOperand3,
+                                                                                 const class GALGAS_incDecKind & inOperand4,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1934,12 +1750,12 @@ class cPtr_incDecInstructionForGeneration : public cPtr_semanticInstructionForGe
   #endif
 
 //--------------------------------- Initializers
-  public: void incDecInstructionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                            const class GALGAS_string & inOperand1,
-                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                            const class GALGAS_lstringlist & inOperand3,
-                                                                            const class GALGAS_incDecKind & inOperand4,
-                                                                            Compiler * inCompiler) ;
+  public: void incDecInstructionForGeneration_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                        const class GALGAS_string & inOperand1,
+                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                        const class GALGAS_lstringlist & inOperand3,
+                                                                        const class GALGAS_incDecKind & inOperand4,
+                                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -2065,13 +1881,13 @@ class GALGAS_incDecNoOVFInstructionForGeneration : public GALGAS_semanticInstruc
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_incDecNoOVFInstructionForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                          const class GALGAS_string & inOperand1,
-                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                          const class GALGAS_lstringlist & inOperand3,
-                                                                                          const class GALGAS_incDecKind & inOperand4,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_incDecNoOVFInstructionForGeneration init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                      const class GALGAS_string & inOperand1,
+                                                                                      const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                      const class GALGAS_lstringlist & inOperand3,
+                                                                                      const class GALGAS_incDecKind & inOperand4,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2124,12 +1940,12 @@ class cPtr_incDecNoOVFInstructionForGeneration : public cPtr_semanticInstruction
   #endif
 
 //--------------------------------- Initializers
-  public: void incDecNoOVFInstructionForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_string & inOperand1,
-                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                 const class GALGAS_lstringlist & inOperand3,
-                                                                                 const class GALGAS_incDecKind & inOperand4,
-                                                                                 Compiler * inCompiler) ;
+  public: void incDecNoOVFInstructionForGeneration_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_string & inOperand1,
+                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                             const class GALGAS_lstringlist & inOperand3,
+                                                                             const class GALGAS_incDecKind & inOperand4,
+                                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -2822,10 +2638,10 @@ class GALGAS_optionalMethodActualArgumentList_2D_element : public AC_GALGAS_root
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionalMethodActualArgumentList_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                      const class GALGAS_optionalMethodActualArgument & inOperand1,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionalMethodActualArgumentList_2D_element init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                                  const class GALGAS_optionalMethodActualArgument & inOperand1,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3039,9 +2855,9 @@ class GALGAS_ifExpressionList_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_ifExpressionList_2D_element init_28__29_ (const class GALGAS_ifExpressionKind & inOperand0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_ifExpressionList_2D_element init_21_ (const class GALGAS_ifExpressionKind & inOperand0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3108,14 +2924,14 @@ class GALGAS_ifInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_ifInstructionAST init_28__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_ifExpressionList & inOperand1,
-                                                                           const class GALGAS_semanticInstructionListAST & inOperand2,
-                                                                           const class GALGAS_location & inOperand3,
-                                                                           const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                           const class GALGAS_location & inOperand5,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_ifInstructionAST init_21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_ifExpressionList & inOperand1,
+                                                                       const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                                       const class GALGAS_location & inOperand3,
+                                                                       const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                       const class GALGAS_location & inOperand5,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3169,13 +2985,13 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void ifInstructionAST_init_28__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_ifExpressionList & inOperand1,
-                                                                  const class GALGAS_semanticInstructionListAST & inOperand2,
-                                                                  const class GALGAS_location & inOperand3,
-                                                                  const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                  const class GALGAS_location & inOperand5,
-                                                                  Compiler * inCompiler) ;
+  public: void ifInstructionAST_init_21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_ifExpressionList & inOperand1,
+                                                              const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                              const class GALGAS_location & inOperand3,
+                                                              const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                              const class GALGAS_location & inOperand5,
+                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -3796,9 +3612,9 @@ class GALGAS_optionalMethodActualArgumentListForGeneration_2D_element : public A
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionalMethodActualArgumentListForGeneration_2D_element init_28__29_ (const class GALGAS_optionalMethodActualArgumentForGeneration & inOperand0,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionalMethodActualArgumentListForGeneration_2D_element init_21_ (const class GALGAS_optionalMethodActualArgumentForGeneration & inOperand0,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4011,9 +3827,9 @@ class GALGAS_ifTestListForGeneration_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_ifTestListForGeneration_2D_element init_28__29_ (const class GALGAS_ifTestForGeneration & inOperand0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_ifTestListForGeneration_2D_element init_21_ (const class GALGAS_ifTestForGeneration & inOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4078,12 +3894,12 @@ class GALGAS_ifInstructionForGeneration : public GALGAS_semanticInstructionForGe
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_ifInstructionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_ifTestListForGeneration & inOperand1,
-                                                                             const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                             const class GALGAS_semanticInstructionListForGeneration & inOperand3,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_ifInstructionForGeneration init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_ifTestListForGeneration & inOperand1,
+                                                                         const class GALGAS_semanticInstructionListForGeneration & inOperand2,
+                                                                         const class GALGAS_semanticInstructionListForGeneration & inOperand3,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4135,11 +3951,11 @@ class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGenera
   #endif
 
 //--------------------------------- Initializers
-  public: void ifInstructionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                    const class GALGAS_ifTestListForGeneration & inOperand1,
-                                                                    const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                    const class GALGAS_semanticInstructionListForGeneration & inOperand3,
-                                                                    Compiler * inCompiler) ;
+  public: void ifInstructionForGeneration_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                const class GALGAS_ifTestListForGeneration & inOperand1,
+                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand2,
+                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand3,
+                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -4261,13 +4077,13 @@ class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST : public GALGAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_localVariableOrConstantDeclarationWithAssignmentAST init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                          const class GALGAS_bool & inOperand1,
-                                                                                                          const class GALGAS_lstring & inOperand2,
-                                                                                                          const class GALGAS_lstring & inOperand3,
-                                                                                                          const class GALGAS_semanticExpressionAST & inOperand4,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_localVariableOrConstantDeclarationWithAssignmentAST init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                      const class GALGAS_bool & inOperand1,
+                                                                                                      const class GALGAS_lstring & inOperand2,
+                                                                                                      const class GALGAS_lstring & inOperand3,
+                                                                                                      const class GALGAS_semanticExpressionAST & inOperand4,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4320,12 +4136,12 @@ class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_sem
   #endif
 
 //--------------------------------- Initializers
-  public: void localVariableOrConstantDeclarationWithAssignmentAST_init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                 const class GALGAS_bool & inOperand1,
-                                                                                                 const class GALGAS_lstring & inOperand2,
-                                                                                                 const class GALGAS_lstring & inOperand3,
-                                                                                                 const class GALGAS_semanticExpressionAST & inOperand4,
-                                                                                                 Compiler * inCompiler) ;
+  public: void localVariableOrConstantDeclarationWithAssignmentAST_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                             const class GALGAS_bool & inOperand1,
+                                                                                             const class GALGAS_lstring & inOperand2,
+                                                                                             const class GALGAS_lstring & inOperand3,
+                                                                                             const class GALGAS_semanticExpressionAST & inOperand4,
+                                                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -4449,11 +4265,11 @@ class GALGAS_undefinedLocalConstantDeclarationAST : public GALGAS_semanticInstru
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_undefinedLocalConstantDeclarationAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                   const class GALGAS_lstring & inOperand1,
-                                                                                   const class GALGAS_lstring & inOperand2,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_undefinedLocalConstantDeclarationAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                               const class GALGAS_lstring & inOperand1,
+                                                                               const class GALGAS_lstring & inOperand2,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4504,10 +4320,10 @@ class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructio
   #endif
 
 //--------------------------------- Initializers
-  public: void undefinedLocalConstantDeclarationAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_lstring & inOperand1,
-                                                                          const class GALGAS_lstring & inOperand2,
-                                                                          Compiler * inCompiler) ;
+  public: void undefinedLocalConstantDeclarationAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_lstring & inOperand1,
+                                                                      const class GALGAS_lstring & inOperand2,
+                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -4627,11 +4443,11 @@ class GALGAS_localConstantDeclarationWithAssignmentAST : public GALGAS_semanticI
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_localConstantDeclarationWithAssignmentAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                        const class GALGAS_lstring & inOperand1,
-                                                                                        const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_localConstantDeclarationWithAssignmentAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                    const class GALGAS_lstring & inOperand1,
+                                                                                    const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4682,10 +4498,10 @@ class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstr
   #endif
 
 //--------------------------------- Initializers
-  public: void localConstantDeclarationWithAssignmentAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                               Compiler * inCompiler) ;
+  public: void localConstantDeclarationWithAssignmentAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -4805,10 +4621,10 @@ class GALGAS_undefinedLocalConstantDeclarationForGeneration : public GALGAS_sema
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_undefinedLocalConstantDeclarationForGeneration init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                         const class GALGAS_string & inOperand1,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_undefinedLocalConstantDeclarationForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                     const class GALGAS_string & inOperand1,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4858,9 +4674,9 @@ class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semantic
   #endif
 
 //--------------------------------- Initializers
-  public: void undefinedLocalConstantDeclarationForGeneration_init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_string & inOperand1,
-                                                                                Compiler * inCompiler) ;
+  public: void undefinedLocalConstantDeclarationForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_string & inOperand1,
+                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -4978,12 +4794,12 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                                      const class GALGAS_bool & inOperand1,
-                                                                                                                      const class GALGAS_string & inOperand2,
-                                                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                                                      Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                                  const class GALGAS_bool & inOperand1,
+                                                                                                                  const class GALGAS_string & inOperand2,
+                                                                                                                  const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                                  Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5035,11 +4851,11 @@ class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration :
   #endif
 
 //--------------------------------- Initializers
-  public: void localVariableOrConstantDeclarationWithSourceExpressionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                             const class GALGAS_bool & inOperand1,
-                                                                                                             const class GALGAS_string & inOperand2,
-                                                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                                             Compiler * inCompiler) ;
+  public: void localVariableOrConstantDeclarationWithSourceExpressionForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                         const class GALGAS_bool & inOperand1,
+                                                                                                         const class GALGAS_string & inOperand2,
+                                                                                                         const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -5339,10 +5155,10 @@ class GALGAS_logListAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_logListAST_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_logListAST_2D_element init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                            const class GALGAS_semanticExpressionAST & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5402,10 +5218,10 @@ class GALGAS_logInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_logInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_logListAST & inOperand1,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_logInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                        const class GALGAS_logListAST & inOperand1,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5455,9 +5271,9 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void logInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                   const class GALGAS_logListAST & inOperand1,
-                                                   Compiler * inCompiler) ;
+  public: void logInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                               const class GALGAS_logListAST & inOperand1,
+                                               Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -5575,10 +5391,10 @@ class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForG
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_logInstructionForGeneration init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_logInstructionForGeneration init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                  const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5628,9 +5444,9 @@ class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGener
   #endif
 
 //--------------------------------- Initializers
-  public: void logInstructionForGeneration_init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                             const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                             Compiler * inCompiler) ;
+  public: void logInstructionForGeneration_init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                         const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -5758,18 +5574,18 @@ class GALGAS_loopInstructionWithVariantAST : public GALGAS_semanticInstructionAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_loopInstructionWithVariantAST init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                        const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                                        const class GALGAS_location & inOperand2,
-                                                                                                        const class GALGAS_semanticInstructionListAST & inOperand3,
-                                                                                                        const class GALGAS_location & inOperand4,
-                                                                                                        const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                                                        const class GALGAS_location & inOperand6,
-                                                                                                        const class GALGAS_semanticInstructionListAST & inOperand7,
-                                                                                                        const class GALGAS_location & inOperand8,
-                                                                                                        const class GALGAS_location & inOperand9,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_loopInstructionWithVariantAST init_21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                    const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                                                    const class GALGAS_location & inOperand2,
+                                                                                                    const class GALGAS_semanticInstructionListAST & inOperand3,
+                                                                                                    const class GALGAS_location & inOperand4,
+                                                                                                    const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                                                    const class GALGAS_location & inOperand6,
+                                                                                                    const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                                                    const class GALGAS_location & inOperand8,
+                                                                                                    const class GALGAS_location & inOperand9,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5827,17 +5643,17 @@ class cPtr_loopInstructionWithVariantAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void loopInstructionWithVariantAST_init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                               const class GALGAS_location & inOperand2,
-                                                                                               const class GALGAS_semanticInstructionListAST & inOperand3,
-                                                                                               const class GALGAS_location & inOperand4,
-                                                                                               const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                                               const class GALGAS_location & inOperand6,
-                                                                                               const class GALGAS_semanticInstructionListAST & inOperand7,
-                                                                                               const class GALGAS_location & inOperand8,
-                                                                                               const class GALGAS_location & inOperand9,
-                                                                                               Compiler * inCompiler) ;
+  public: void loopInstructionWithVariantAST_init_21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                           const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                                           const class GALGAS_location & inOperand2,
+                                                                                           const class GALGAS_semanticInstructionListAST & inOperand3,
+                                                                                           const class GALGAS_location & inOperand4,
+                                                                                           const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                                           const class GALGAS_location & inOperand6,
+                                                                                           const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                                           const class GALGAS_location & inOperand8,
+                                                                                           const class GALGAS_location & inOperand9,
+                                                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -5977,13 +5793,13 @@ class GALGAS_loopInstructionWithVariantForGeneration : public GALGAS_semanticIns
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_loopInstructionWithVariantForGeneration init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                              const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                                              const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                                              const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                              const class GALGAS_semanticInstructionListForGeneration & inOperand4,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_loopInstructionWithVariantForGeneration init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                                          const class GALGAS_semanticInstructionListForGeneration & inOperand2,
+                                                                                          const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                          const class GALGAS_semanticInstructionListForGeneration & inOperand4,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6036,12 +5852,12 @@ class cPtr_loopInstructionWithVariantForGeneration : public cPtr_semanticInstruc
   #endif
 
 //--------------------------------- Initializers
-  public: void loopInstructionWithVariantForGeneration_init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand2,
-                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand3,
-                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand4,
-                                                                                     Compiler * inCompiler) ;
+  public: void loopInstructionWithVariantForGeneration_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand2,
+                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand4,
+                                                                                 Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -6171,16 +5987,16 @@ class GALGAS_loopInstructionWithoutVariantAST : public GALGAS_semanticInstructio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_loopInstructionWithoutVariantAST init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                   const class GALGAS_semanticInstructionListAST & inOperand1,
-                                                                                                   const class GALGAS_location & inOperand2,
-                                                                                                   const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                                                   const class GALGAS_location & inOperand4,
-                                                                                                   const class GALGAS_semanticInstructionListAST & inOperand5,
-                                                                                                   const class GALGAS_location & inOperand6,
-                                                                                                   const class GALGAS_location & inOperand7,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_loopInstructionWithoutVariantAST init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                               const class GALGAS_semanticInstructionListAST & inOperand1,
+                                                                                               const class GALGAS_location & inOperand2,
+                                                                                               const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                                               const class GALGAS_location & inOperand4,
+                                                                                               const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                                               const class GALGAS_location & inOperand6,
+                                                                                               const class GALGAS_location & inOperand7,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6236,15 +6052,15 @@ class cPtr_loopInstructionWithoutVariantAST : public cPtr_semanticInstructionAST
   #endif
 
 //--------------------------------- Initializers
-  public: void loopInstructionWithoutVariantAST_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                          const class GALGAS_semanticInstructionListAST & inOperand1,
-                                                                                          const class GALGAS_location & inOperand2,
-                                                                                          const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                                          const class GALGAS_location & inOperand4,
-                                                                                          const class GALGAS_semanticInstructionListAST & inOperand5,
-                                                                                          const class GALGAS_location & inOperand6,
-                                                                                          const class GALGAS_location & inOperand7,
-                                                                                          Compiler * inCompiler) ;
+  public: void loopInstructionWithoutVariantAST_init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                      const class GALGAS_semanticInstructionListAST & inOperand1,
+                                                                                      const class GALGAS_location & inOperand2,
+                                                                                      const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                                      const class GALGAS_location & inOperand4,
+                                                                                      const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                                      const class GALGAS_location & inOperand6,
+                                                                                      const class GALGAS_location & inOperand7,
+                                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -6378,12 +6194,12 @@ class GALGAS_loopInstructionWithoutVariantForGeneration : public GALGAS_semantic
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_loopInstructionWithoutVariantForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                             const class GALGAS_semanticInstructionListForGeneration & inOperand1,
-                                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                             const class GALGAS_semanticInstructionListForGeneration & inOperand3,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_loopInstructionWithoutVariantForGeneration init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                         const class GALGAS_semanticInstructionListForGeneration & inOperand1,
+                                                                                         const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                         const class GALGAS_semanticInstructionListForGeneration & inOperand3,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6435,11 +6251,11 @@ class cPtr_loopInstructionWithoutVariantForGeneration : public cPtr_semanticInst
   #endif
 
 //--------------------------------- Initializers
-  public: void loopInstructionWithoutVariantForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                    const class GALGAS_semanticInstructionListForGeneration & inOperand1,
-                                                                                    const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                    const class GALGAS_semanticInstructionListForGeneration & inOperand3,
-                                                                                    Compiler * inCompiler) ;
+  public: void loopInstructionWithoutVariantForGeneration_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand1,
+                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand3,
+                                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -6555,10 +6371,10 @@ class GALGAS_messageInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_messageInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_messageInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                            const class GALGAS_semanticExpressionAST & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6608,9 +6424,9 @@ class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void messageInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                       const class GALGAS_semanticExpressionAST & inOperand1,
-                                                       Compiler * inCompiler) ;
+  public: void messageInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                   const class GALGAS_semanticExpressionAST & inOperand1,
+                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -6728,10 +6544,10 @@ class GALGAS_messageInstructionForGeneration : public GALGAS_semanticInstruction
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_messageInstructionForGeneration init_28__2C__29_ (const class GALGAS_semanticExpressionForGeneration & inOperand0,
-                                                                          const class GALGAS_location & inOperand1,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_messageInstructionForGeneration init_21__21_ (const class GALGAS_semanticExpressionForGeneration & inOperand0,
+                                                                      const class GALGAS_location & inOperand1,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6781,9 +6597,9 @@ class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForG
   #endif
 
 //--------------------------------- Initializers
-  public: void messageInstructionForGeneration_init_28__2C__29_ (const class GALGAS_semanticExpressionForGeneration & inOperand0,
-                                                                 const class GALGAS_location & inOperand1,
-                                                                 Compiler * inCompiler) ;
+  public: void messageInstructionForGeneration_init_21__21_ (const class GALGAS_semanticExpressionForGeneration & inOperand0,
+                                                             const class GALGAS_location & inOperand1,
+                                                             Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -6899,12 +6715,12 @@ class GALGAS_methodCallInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_methodCallInstructionAST init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                           const class GALGAS_lstring & inOperand2,
-                                                                           const class GALGAS_actualParameterListAST & inOperand3,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_methodCallInstructionAST init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                       const class GALGAS_lstring & inOperand2,
+                                                                       const class GALGAS_actualParameterListAST & inOperand3,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6956,11 +6772,11 @@ class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void methodCallInstructionAST_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                  const class GALGAS_lstring & inOperand2,
-                                                                  const class GALGAS_actualParameterListAST & inOperand3,
-                                                                  Compiler * inCompiler) ;
+  public: void methodCallInstructionAST_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_semanticExpressionAST & inOperand1,
+                                                              const class GALGAS_lstring & inOperand2,
+                                                              const class GALGAS_actualParameterListAST & inOperand3,
+                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -7094,16 +6910,16 @@ class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstruct
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_methodCallInstructionForGeneration init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                                     const class GALGAS_string & inOperand3,
-                                                                                                     const class GALGAS_methodKind & inOperand4,
-                                                                                                     const class GALGAS_actualParameterListForGeneration & inOperand5,
-                                                                                                     const class GALGAS_bool & inOperand6,
-                                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand7,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_methodCallInstructionForGeneration init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                                 const class GALGAS_string & inOperand3,
+                                                                                                 const class GALGAS_methodKind & inOperand4,
+                                                                                                 const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                                 const class GALGAS_bool & inOperand6,
+                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand7,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7159,15 +6975,15 @@ class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionF
   #endif
 
 //--------------------------------- Initializers
-  public: void methodCallInstructionForGeneration_init_28__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                            const class GALGAS_string & inOperand3,
-                                                                                            const class GALGAS_methodKind & inOperand4,
-                                                                                            const class GALGAS_actualParameterListForGeneration & inOperand5,
-                                                                                            const class GALGAS_bool & inOperand6,
-                                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand7,
-                                                                                            Compiler * inCompiler) ;
+  public: void methodCallInstructionForGeneration_init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                                        const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                        const class GALGAS_string & inOperand3,
+                                                                                        const class GALGAS_methodKind & inOperand4,
+                                                                                        const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                        const class GALGAS_bool & inOperand6,
+                                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand7,
+                                                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -7291,10 +7107,10 @@ class GALGAS_superInitInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_superInitInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_actualOutputArgumentList & inOperand1,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_superInitInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_actualOutputArgumentList & inOperand1,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7344,9 +7160,9 @@ class cPtr_superInitInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void superInitInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                         const class GALGAS_actualOutputArgumentList & inOperand1,
-                                                         Compiler * inCompiler) ;
+  public: void superInitInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                     const class GALGAS_actualOutputArgumentList & inOperand1,
+                                                     Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -7468,12 +7284,12 @@ class GALGAS_superInitInstructionForGeneration : public GALGAS_semanticInstructi
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_superInitInstructionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                    const class GALGAS_string & inOperand1,
-                                                                                    const class GALGAS_semanticExpressionListForGeneration & inOperand2,
-                                                                                    const class GALGAS_string & inOperand3,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_superInitInstructionForGeneration init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_string & inOperand1,
+                                                                                const class GALGAS_semanticExpressionListForGeneration & inOperand2,
+                                                                                const class GALGAS_string & inOperand3,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7525,11 +7341,11 @@ class cPtr_superInitInstructionForGeneration : public cPtr_semanticInstructionFo
   #endif
 
 //--------------------------------- Initializers
-  public: void superInitInstructionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_string & inOperand1,
-                                                                           const class GALGAS_semanticExpressionListForGeneration & inOperand2,
-                                                                           const class GALGAS_string & inOperand3,
-                                                                           Compiler * inCompiler) ;
+  public: void superInitInstructionForGeneration_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_string & inOperand1,
+                                                                       const class GALGAS_semanticExpressionListForGeneration & inOperand2,
+                                                                       const class GALGAS_string & inOperand3,
+                                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -7647,11 +7463,11 @@ class GALGAS_procCallInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_procCallInstructionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_actualParameterListAST & inOperand2,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_procCallInstructionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_lstring & inOperand1,
+                                                                 const class GALGAS_actualParameterListAST & inOperand2,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7702,10 +7518,10 @@ class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void procCallInstructionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_lstring & inOperand1,
-                                                            const class GALGAS_actualParameterListAST & inOperand2,
-                                                            Compiler * inCompiler) ;
+  public: void procCallInstructionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                        const class GALGAS_lstring & inOperand1,
+                                                        const class GALGAS_actualParameterListAST & inOperand2,
+                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -7825,10 +7641,10 @@ class GALGAS_procCallInstructionForGeneration : public GALGAS_semanticInstructio
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_procCallInstructionForGeneration init_28_routineMangledName_2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                             const class GALGAS_actualParameterListForGeneration & inOperand1,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_procCallInstructionForGeneration init_21_routineMangledName_21_ (const class GALGAS_lstring & inOperand0,
+                                                                                         const class GALGAS_actualParameterListForGeneration & inOperand1,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7878,9 +7694,9 @@ class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionFor
   #endif
 
 //--------------------------------- Initializers
-  public: void procCallInstructionForGeneration_init_28_routineMangledName_2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                    const class GALGAS_actualParameterListForGeneration & inOperand1,
-                                                                                    Compiler * inCompiler) ;
+  public: void procCallInstructionForGeneration_init_21_routineMangledName_21_ (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_actualParameterListForGeneration & inOperand1,
+                                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -7992,10 +7808,10 @@ class GALGAS_selfAssignmentInstructionAST : public GALGAS_semanticInstructionAST
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfAssignmentInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfAssignmentInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8045,9 +7861,9 @@ class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void selfAssignmentInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                              const class GALGAS_semanticExpressionAST & inOperand1,
-                                                              Compiler * inCompiler) ;
+  public: void selfAssignmentInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                          const class GALGAS_semanticExpressionAST & inOperand1,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -8163,10 +7979,10 @@ class GALGAS_selfPlusEqualElementsInstructionAST : public GALGAS_semanticInstruc
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfPlusEqualElementsInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_actualOutputArgumentList & inOperand1,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfPlusEqualElementsInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                          const class GALGAS_actualOutputArgumentList & inOperand1,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8216,9 +8032,9 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
   #endif
 
 //--------------------------------- Initializers
-  public: void selfPlusEqualElementsInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_actualOutputArgumentList & inOperand1,
-                                                                     Compiler * inCompiler) ;
+  public: void selfPlusEqualElementsInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_actualOutputArgumentList & inOperand1,
+                                                                 Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -8334,10 +8150,10 @@ class GALGAS_selfPlusEqualExpressionInstructionAST : public GALGAS_semanticInstr
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfPlusEqualExpressionInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfPlusEqualExpressionInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                            const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8387,9 +8203,9 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
   #endif
 
 //--------------------------------- Initializers
-  public: void selfPlusEqualExpressionInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                       Compiler * inCompiler) ;
+  public: void selfPlusEqualExpressionInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -8505,10 +8321,10 @@ class GALGAS_selfMinusEqualExpressionInstructionAST : public GALGAS_semanticInst
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfMinusEqualExpressionInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfMinusEqualExpressionInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8558,9 +8374,9 @@ class cPtr_selfMinusEqualExpressionInstructionAST : public cPtr_semanticInstruct
   #endif
 
 //--------------------------------- Initializers
-  public: void selfMinusEqualExpressionInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                        Compiler * inCompiler) ;
+  public: void selfMinusEqualExpressionInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -8676,10 +8492,10 @@ class GALGAS_selfMulEqualExpressionInstructionAST : public GALGAS_semanticInstru
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfMulEqualExpressionInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfMulEqualExpressionInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                           const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8729,9 +8545,9 @@ class cPtr_selfMulEqualExpressionInstructionAST : public cPtr_semanticInstructio
   #endif
 
 //--------------------------------- Initializers
-  public: void selfMulEqualExpressionInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                      Compiler * inCompiler) ;
+  public: void selfMulEqualExpressionInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -8847,10 +8663,10 @@ class GALGAS_selfDivEqualExpressionInstructionAST : public GALGAS_semanticInstru
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfDivEqualExpressionInstructionAST init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfDivEqualExpressionInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                           const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8900,9 +8716,9 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
   #endif
 
 //--------------------------------- Initializers
-  public: void selfDivEqualExpressionInstructionAST_init_28__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                      Compiler * inCompiler) ;
+  public: void selfDivEqualExpressionInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -9028,15 +8844,15 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_setterCallInstructionAST init_28__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                       const class GALGAS_bool & inOperand1,
-                                                                                       const class GALGAS_lstring & inOperand2,
-                                                                                       const class GALGAS_lstringlist & inOperand3,
-                                                                                       const class GALGAS_lstring & inOperand4,
-                                                                                       const class GALGAS_lstring & inOperand5,
-                                                                                       const class GALGAS_actualParameterListAST & inOperand6,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_setterCallInstructionAST init_21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                   const class GALGAS_bool & inOperand1,
+                                                                                   const class GALGAS_lstring & inOperand2,
+                                                                                   const class GALGAS_lstringlist & inOperand3,
+                                                                                   const class GALGAS_lstring & inOperand4,
+                                                                                   const class GALGAS_lstring & inOperand5,
+                                                                                   const class GALGAS_actualParameterListAST & inOperand6,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9091,14 +8907,14 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void setterCallInstructionAST_init_28__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_bool & inOperand1,
-                                                                              const class GALGAS_lstring & inOperand2,
-                                                                              const class GALGAS_lstringlist & inOperand3,
-                                                                              const class GALGAS_lstring & inOperand4,
-                                                                              const class GALGAS_lstring & inOperand5,
-                                                                              const class GALGAS_actualParameterListAST & inOperand6,
-                                                                              Compiler * inCompiler) ;
+  public: void setterCallInstructionAST_init_21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                          const class GALGAS_bool & inOperand1,
+                                                                          const class GALGAS_lstring & inOperand2,
+                                                                          const class GALGAS_lstringlist & inOperand3,
+                                                                          const class GALGAS_lstring & inOperand4,
+                                                                          const class GALGAS_lstring & inOperand5,
+                                                                          const class GALGAS_actualParameterListAST & inOperand6,
+                                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -9226,11 +9042,11 @@ class GALGAS_selfSetterCallInstructionAST : public GALGAS_semanticInstructionAST
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfSetterCallInstructionAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_lstring & inOperand1,
-                                                                           const class GALGAS_actualParameterListAST & inOperand2,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfSetterCallInstructionAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_lstring & inOperand1,
+                                                                       const class GALGAS_actualParameterListAST & inOperand2,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9281,10 +9097,10 @@ class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void selfSetterCallInstructionAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
-                                                                  const class GALGAS_actualParameterListAST & inOperand2,
-                                                                  Compiler * inCompiler) ;
+  public: void selfSetterCallInstructionAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_lstring & inOperand1,
+                                                              const class GALGAS_actualParameterListAST & inOperand2,
+                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -9422,19 +9238,19 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_setterCallInstructionForGeneration init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                                 const class GALGAS_string & inOperand1,
-                                                                                                                 const class GALGAS_string & inOperand2,
-                                                                                                                 const class GALGAS_lstringlist & inOperand3,
-                                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand4,
-                                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand5,
-                                                                                                                 const class GALGAS_lstring & inOperand6,
-                                                                                                                 const class GALGAS_methodKind & inOperand7,
-                                                                                                                 const class GALGAS_actualParameterListForGeneration & inOperand8,
-                                                                                                                 const class GALGAS_bool & inOperand9,
-                                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand10,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_setterCallInstructionForGeneration init_21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                             const class GALGAS_string & inOperand1,
+                                                                                                             const class GALGAS_string & inOperand2,
+                                                                                                             const class GALGAS_lstringlist & inOperand3,
+                                                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand5,
+                                                                                                             const class GALGAS_lstring & inOperand6,
+                                                                                                             const class GALGAS_methodKind & inOperand7,
+                                                                                                             const class GALGAS_actualParameterListForGeneration & inOperand8,
+                                                                                                             const class GALGAS_bool & inOperand9,
+                                                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand10,
+                                                                                                             Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9493,18 +9309,18 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   #endif
 
 //--------------------------------- Initializers
-  public: void setterCallInstructionForGeneration_init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                                        const class GALGAS_string & inOperand1,
-                                                                                                        const class GALGAS_string & inOperand2,
-                                                                                                        const class GALGAS_lstringlist & inOperand3,
-                                                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand4,
-                                                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand5,
-                                                                                                        const class GALGAS_lstring & inOperand6,
-                                                                                                        const class GALGAS_methodKind & inOperand7,
-                                                                                                        const class GALGAS_actualParameterListForGeneration & inOperand8,
-                                                                                                        const class GALGAS_bool & inOperand9,
-                                                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand10,
-                                                                                                        Compiler * inCompiler) ;
+  public: void setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                    const class GALGAS_string & inOperand1,
+                                                                                                    const class GALGAS_string & inOperand2,
+                                                                                                    const class GALGAS_lstringlist & inOperand3,
+                                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand4,
+                                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand5,
+                                                                                                    const class GALGAS_lstring & inOperand6,
+                                                                                                    const class GALGAS_methodKind & inOperand7,
+                                                                                                    const class GALGAS_actualParameterListForGeneration & inOperand8,
+                                                                                                    const class GALGAS_bool & inOperand9,
+                                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand10,
+                                                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -9644,14 +9460,14 @@ class GALGAS_selfSetterCallInstructionForGeneration : public GALGAS_semanticInst
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_selfSetterCallInstructionForGeneration init_28__2C__2C__2C__2C__2C__29_ (const class GALGAS_string & inOperand0,
-                                                                                                 const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                                                 const class GALGAS_lstring & inOperand2,
-                                                                                                 const class GALGAS_methodKind & inOperand3,
-                                                                                                 const class GALGAS_actualParameterListForGeneration & inOperand4,
-                                                                                                 const class GALGAS_bool & inOperand5,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_selfSetterCallInstructionForGeneration init_21__21__21__21__21__21_ (const class GALGAS_string & inOperand0,
+                                                                                             const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                                             const class GALGAS_lstring & inOperand2,
+                                                                                             const class GALGAS_methodKind & inOperand3,
+                                                                                             const class GALGAS_actualParameterListForGeneration & inOperand4,
+                                                                                             const class GALGAS_bool & inOperand5,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9705,13 +9521,13 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
   #endif
 
 //--------------------------------- Initializers
-  public: void selfSetterCallInstructionForGeneration_init_28__2C__2C__2C__2C__2C__29_ (const class GALGAS_string & inOperand0,
-                                                                                        const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                                        const class GALGAS_lstring & inOperand2,
-                                                                                        const class GALGAS_methodKind & inOperand3,
-                                                                                        const class GALGAS_actualParameterListForGeneration & inOperand4,
-                                                                                        const class GALGAS_bool & inOperand5,
-                                                                                        Compiler * inCompiler) ;
+  public: void selfSetterCallInstructionForGeneration_init_21__21__21__21__21__21_ (const class GALGAS_string & inOperand0,
+                                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                                    const class GALGAS_lstring & inOperand2,
+                                                                                    const class GALGAS_methodKind & inOperand3,
+                                                                                    const class GALGAS_actualParameterListForGeneration & inOperand4,
+                                                                                    const class GALGAS_bool & inOperand5,
+                                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -10075,12 +9891,12 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_switchBranchesAST_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstringlist & inOperand0,
-                                                                               const class GALGAS_switchExtractedValuesListAST & inOperand1,
-                                                                               const class GALGAS_semanticInstructionListAST & inOperand2,
-                                                                               const class GALGAS_location & inOperand3,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_switchBranchesAST_2D_element init_21__21__21__21_ (const class GALGAS_lstringlist & inOperand0,
+                                                                           const class GALGAS_switchExtractedValuesListAST & inOperand1,
+                                                                           const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                                           const class GALGAS_location & inOperand3,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10148,13 +9964,13 @@ class GALGAS_switchInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_switchInstructionAST init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                           const class GALGAS_location & inOperand2,
-                                                                           const class GALGAS_switchBranchesAST & inOperand3,
-                                                                           const class GALGAS_location & inOperand4,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_switchInstructionAST init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                       const class GALGAS_location & inOperand2,
+                                                                       const class GALGAS_switchBranchesAST & inOperand3,
+                                                                       const class GALGAS_location & inOperand4,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10207,12 +10023,12 @@ class cPtr_switchInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void switchInstructionAST_init_28__2C__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                  const class GALGAS_location & inOperand2,
-                                                                  const class GALGAS_switchBranchesAST & inOperand3,
-                                                                  const class GALGAS_location & inOperand4,
-                                                                  Compiler * inCompiler) ;
+  public: void switchInstructionAST_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_semanticExpressionAST & inOperand1,
+                                                              const class GALGAS_location & inOperand2,
+                                                              const class GALGAS_switchBranchesAST & inOperand3,
+                                                              const class GALGAS_location & inOperand4,
+                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -10578,12 +10394,12 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_switchBranchesForGeneration_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_lstringlist & inOperand0,
-                                                                                         const class GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
-                                                                                         const class GALGAS_uint & inOperand2,
-                                                                                         const class GALGAS_semanticInstructionListForGeneration & inOperand3,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_switchBranchesForGeneration_2D_element init_21__21__21__21_ (const class GALGAS_lstringlist & inOperand0,
+                                                                                     const class GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                     const class GALGAS_uint & inOperand2,
+                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand3,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10649,11 +10465,11 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_switchInstructionForGeneration init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                             const class GALGAS_switchBranchesForGeneration & inOperand2,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_switchInstructionForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                         const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                         const class GALGAS_switchBranchesForGeneration & inOperand2,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10704,10 +10520,10 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
   #endif
 
 //--------------------------------- Initializers
-  public: void switchInstructionForGeneration_init_28__2C__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                    const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                    const class GALGAS_switchBranchesForGeneration & inOperand2,
-                                                                    Compiler * inCompiler) ;
+  public: void switchInstructionForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                const class GALGAS_switchBranchesForGeneration & inOperand2,
+                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -10825,12 +10641,12 @@ class GALGAS_typeMethodCallInstructionAST : public GALGAS_semanticInstructionAST
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_typeMethodCallInstructionAST init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_lstring & inOperand2,
-                                                                               const class GALGAS_actualParameterListAST & inOperand3,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_typeMethodCallInstructionAST init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_lstring & inOperand2,
+                                                                           const class GALGAS_actualParameterListAST & inOperand3,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10882,11 +10698,11 @@ class cPtr_typeMethodCallInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void typeMethodCallInstructionAST_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1,
-                                                                      const class GALGAS_lstring & inOperand2,
-                                                                      const class GALGAS_actualParameterListAST & inOperand3,
-                                                                      Compiler * inCompiler) ;
+  public: void typeMethodCallInstructionAST_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_lstring & inOperand2,
+                                                                  const class GALGAS_actualParameterListAST & inOperand3,
+                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -11012,12 +10828,12 @@ class GALGAS_typeMethodCallInstructionForGeneration : public GALGAS_semanticInst
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_typeMethodCallInstructionForGeneration init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                         const class GALGAS_lstring & inOperand1,
-                                                                                         const class GALGAS_actualParameterListForGeneration & inOperand2,
-                                                                                         const class GALGAS_bool & inOperand3,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_typeMethodCallInstructionForGeneration init_21__21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     const class GALGAS_actualParameterListForGeneration & inOperand2,
+                                                                                     const class GALGAS_bool & inOperand3,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11069,11 +10885,11 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
   #endif
 
 //--------------------------------- Initializers
-  public: void typeMethodCallInstructionForGeneration_init_28__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
-                                                                                const class GALGAS_lstring & inOperand1,
-                                                                                const class GALGAS_actualParameterListForGeneration & inOperand2,
-                                                                                const class GALGAS_bool & inOperand3,
-                                                                                Compiler * inCompiler) ;
+  public: void typeMethodCallInstructionForGeneration_init_21__21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_actualParameterListForGeneration & inOperand2,
+                                                                            const class GALGAS_bool & inOperand3,
+                                                                            Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -11191,11 +11007,11 @@ class GALGAS_localVariableDeclarationWithAssignmentAST : public GALGAS_semanticI
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_localVariableDeclarationWithAssignmentAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                        const class GALGAS_lstring & inOperand1,
-                                                                                        const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_localVariableDeclarationWithAssignmentAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                    const class GALGAS_lstring & inOperand1,
+                                                                                    const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11246,10 +11062,10 @@ class cPtr_localVariableDeclarationWithAssignmentAST : public cPtr_semanticInstr
   #endif
 
 //--------------------------------- Initializers
-  public: void localVariableDeclarationWithAssignmentAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                               Compiler * inCompiler) ;
+  public: void localVariableDeclarationWithAssignmentAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -11369,11 +11185,11 @@ class GALGAS_localVariableDeclarationNoAssignmentAST : public GALGAS_semanticIns
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_localVariableDeclarationNoAssignmentAST init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                                      const class GALGAS_lstring & inOperand1,
-                                                                                      const class GALGAS_lstring & inOperand2,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_localVariableDeclarationNoAssignmentAST init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                  const class GALGAS_lstring & inOperand1,
+                                                                                  const class GALGAS_lstring & inOperand2,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11424,10 +11240,10 @@ class cPtr_localVariableDeclarationNoAssignmentAST : public cPtr_semanticInstruc
   #endif
 
 //--------------------------------- Initializers
-  public: void localVariableDeclarationNoAssignmentAST_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_lstring & inOperand1,
-                                                                             const class GALGAS_lstring & inOperand2,
-                                                                             Compiler * inCompiler) ;
+  public: void localVariableDeclarationNoAssignmentAST_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1,
+                                                                         const class GALGAS_lstring & inOperand2,
+                                                                         Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction
@@ -11547,10 +11363,10 @@ class GALGAS_localVariableDeclarationForGeneration : public GALGAS_semanticInstr
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_localVariableDeclarationForGeneration init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                const class GALGAS_string & inOperand1,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_localVariableDeclarationForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GALGAS_string & inOperand1,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11600,9 +11416,9 @@ class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructi
   #endif
 
 //--------------------------------- Initializers
-  public: void localVariableDeclarationForGeneration_init_28__2C__29_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GALGAS_string & inOperand1,
-                                                                       Compiler * inCompiler) ;
+  public: void localVariableDeclarationForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                   const class GALGAS_string & inOperand1,
+                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension method generateInstruction
@@ -11718,12 +11534,12 @@ class GALGAS_warningInstructionAST : public GALGAS_semanticInstructionAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_warningInstructionAST init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                        const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                        const class GALGAS_fixitListAST & inOperand3,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_warningInstructionAST init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                    const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                    const class GALGAS_fixitListAST & inOperand3,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11775,11 +11591,11 @@ class cPtr_warningInstructionAST : public cPtr_semanticInstructionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void warningInstructionAST_init_28__2C__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                               const class GALGAS_semanticExpressionAST & inOperand2,
-                                                               const class GALGAS_fixitListAST & inOperand3,
-                                                               Compiler * inCompiler) ;
+  public: void warningInstructionAST_init_21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                           const class GALGAS_semanticExpressionAST & inOperand1,
+                                                           const class GALGAS_semanticExpressionAST & inOperand2,
+                                                           const class GALGAS_fixitListAST & inOperand3,
+                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticInstruction

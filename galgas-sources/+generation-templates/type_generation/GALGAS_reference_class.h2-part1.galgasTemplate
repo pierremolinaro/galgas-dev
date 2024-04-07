@@ -12,7 +12,7 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acS
 
 //--------------------------------- Initializers
 % for (lkey formalArgumentList) in INITIALIZER_MAP do
-%  public: void %!TYPE_IDENTIFIER%_init%![lkey identifierRepresentation]% (%?^
+%  public: void %!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% (%?^
     for (mFormalSelector mFormalArgumentType mFormalArgumentName isConstant) in formalArgumentList do (IDX)
       if isConstant then %const % else end
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^

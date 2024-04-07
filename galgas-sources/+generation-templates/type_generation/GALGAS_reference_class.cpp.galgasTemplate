@@ -92,7 +92,7 @@ if (not IS_ABSTRACT) & GENERATE_SYNTHETIZED_INITIALIZER then
 %//--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::
-init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+%![[INITIALIZER_ARGUMENT_LIST initializerSignature] identifierRepresentation]% (%?^
   for (typeEntry name 3*) in INITIALIZER_ARGUMENT_LIST do
     %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
   end
@@ -100,7 +100,7 @@ init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
           %!^%COMMA_LOCATION_ARGS) {
   cPtr_%!TYPE_IDENTIFIER% * object = nullptr ;
   macroMyNew (object, cPtr_%!TYPE_IDENTIFIER% (inCompiler COMMA_THERE)) ;
-  object->%!TYPE_IDENTIFIER%_init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%
+  object->%!TYPE_IDENTIFIER%_%![[INITIALIZER_ARGUMENT_LIST initializerSignature] identifierRepresentation]% (%
   for (* name 3*) in INITIALIZER_ARGUMENT_LIST do
     %in_%![name identifierRepresentation]%, %
   end
@@ -113,7 +113,7 @@ init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_%!TYPE_IDENTIFIER%::
-%!TYPE_IDENTIFIER%_init%![[INITIALIZER_ARGUMENT_LIST signature] identifierRepresentation]% (%?^
+%!TYPE_IDENTIFIER%_%![[INITIALIZER_ARGUMENT_LIST initializerSignature] identifierRepresentation]% (%?^
   for (typeEntry name 3*) in INITIALIZER_ARGUMENT_LIST do
     %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
   end

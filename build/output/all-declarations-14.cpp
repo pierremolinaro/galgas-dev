@@ -9283,9 +9283,9 @@ GALGAS_templateInstructionListAST_2D_element::~ GALGAS_templateInstructionListAS
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_templateInstructionListAST_2D_element GALGAS_templateInstructionListAST_2D_element::init_28__29_ (const GALGAS_templateInstructionAST & in_mInstruction,
-                                                                                                         Compiler * inCompiler
-                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionListAST_2D_element GALGAS_templateInstructionListAST_2D_element::init_21_ (const GALGAS_templateInstructionAST & in_mInstruction,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstruction = in_mInstruction ;
@@ -9405,10 +9405,10 @@ GALGAS_templateInstructionIfBranchListAST_2D_element::~ GALGAS_templateInstructi
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_templateInstructionIfBranchListAST_2D_element GALGAS_templateInstructionIfBranchListAST_2D_element::init_28__2C__29_ (const GALGAS_templateExpressionAST & in_mExpression,
-                                                                                                                             const GALGAS_templateInstructionListAST & in_mInstructionList,
-                                                                                                                             Compiler * inCompiler
-                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionIfBranchListAST_2D_element GALGAS_templateInstructionIfBranchListAST_2D_element::init_21__21_ (const GALGAS_templateExpressionAST & in_mExpression,
+                                                                                                                         const GALGAS_templateInstructionListAST & in_mInstructionList,
+                                                                                                                         Compiler * inCompiler
+                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mExpression = in_mExpression ;
@@ -9541,12 +9541,12 @@ GALGAS_templateInstructionSwitchBranchListAST_2D_element::~ GALGAS_templateInstr
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstringlist & in_mConstantList,
-                                                                                                                                             const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                                                                                                             const GALGAS_templateInstructionListAST & in_mInstructionList,
-                                                                                                                                             const GALGAS_location & in_mEndOfBranch,
-                                                                                                                                             Compiler * inCompiler
-                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::init_21__21__21__21_ (const GALGAS_lstringlist & in_mConstantList,
+                                                                                                                                         const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
+                                                                                                                                         const GALGAS_templateInstructionListAST & in_mInstructionList,
+                                                                                                                                         const GALGAS_location & in_mEndOfBranch,
+                                                                                                                                         Compiler * inCompiler
+                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mConstantList = in_mConstantList ;
@@ -9701,12 +9701,12 @@ GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::~ GALGAS_tem
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::init_28__2C__2C__2C__29_ (const GALGAS_lstringlist & in_mConstantList,
-                                                                                                                                                                 const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
-                                                                                                                                                                 const GALGAS_uint & in_mEndOfBranchLocationIndex,
-                                                                                                                                                                 const GALGAS_templateInstructionListForGeneration & in_mInstructionList,
-                                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element::init_21__21__21__21_ (const GALGAS_lstringlist & in_mConstantList,
+                                                                                                                                                             const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                                                                                                                             const GALGAS_uint & in_mEndOfBranchLocationIndex,
+                                                                                                                                                             const GALGAS_templateInstructionListForGeneration & in_mInstructionList,
+                                                                                                                                                             Compiler * inCompiler
+                                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mConstantList = in_mConstantList ;
@@ -9858,9 +9858,9 @@ GALGAS_lexicalInstructionListAST_2D_element::~ GALGAS_lexicalInstructionListAST_
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalInstructionListAST_2D_element GALGAS_lexicalInstructionListAST_2D_element::init_28__29_ (const GALGAS_lexicalInstructionAST & in_mInstruction,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalInstructionListAST_2D_element GALGAS_lexicalInstructionListAST_2D_element::init_21_ (const GALGAS_lexicalInstructionAST & in_mInstruction,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalInstructionListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstruction = in_mInstruction ;
@@ -9979,9 +9979,9 @@ GALGAS_lexicalRuleListAST_2D_element::~ GALGAS_lexicalRuleListAST_2D_element (vo
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalRuleListAST_2D_element GALGAS_lexicalRuleListAST_2D_element::init_28__29_ (const GALGAS_abstractLexicalRuleAST & in_mLexicalRule,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalRuleListAST_2D_element GALGAS_lexicalRuleListAST_2D_element::init_21_ (const GALGAS_abstractLexicalRuleAST & in_mLexicalRule,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRuleListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexicalRule = in_mLexicalRule ;
@@ -10101,10 +10101,10 @@ GALGAS_lexicalWhileBranchListAST_2D_element::~ GALGAS_lexicalWhileBranchListAST_
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalWhileBranchListAST_2D_element GALGAS_lexicalWhileBranchListAST_2D_element::init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mWhileExpression,
-                                                                                                           const GALGAS_lexicalInstructionListAST & in_mWhileInstructionList,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalWhileBranchListAST_2D_element GALGAS_lexicalWhileBranchListAST_2D_element::init_21__21_ (const GALGAS_lexicalExpressionAST & in_mWhileExpression,
+                                                                                                       const GALGAS_lexicalInstructionListAST & in_mWhileInstructionList,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalWhileBranchListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mWhileExpression = in_mWhileExpression ;
@@ -10235,10 +10235,10 @@ GALGAS_lexicalSelectBranchListAST_2D_element::~ GALGAS_lexicalSelectBranchListAS
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalSelectBranchListAST_2D_element GALGAS_lexicalSelectBranchListAST_2D_element::init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mSelectExpression,
-                                                                                                             const GALGAS_lexicalInstructionListAST & in_mSelectInstructionList,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalSelectBranchListAST_2D_element GALGAS_lexicalSelectBranchListAST_2D_element::init_21__21_ (const GALGAS_lexicalExpressionAST & in_mSelectExpression,
+                                                                                                         const GALGAS_lexicalInstructionListAST & in_mSelectInstructionList,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalSelectBranchListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mSelectExpression = in_mSelectExpression ;
@@ -10368,9 +10368,9 @@ GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::~ GALGAS_lexicalFunc
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::init_28__29_ (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mLexicalActualInputArgument,
-                                                                                                                                     Compiler * inCompiler
-                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element::init_21_ (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mLexicalActualInputArgument,
+                                                                                                                                 Compiler * inCompiler
+                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexicalActualInputArgument = in_mLexicalActualInputArgument ;
@@ -10491,11 +10491,11 @@ GALGAS_tokenSortedlist_2D_element::~ GALGAS_tokenSortedlist_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_tokenSortedlist_2D_element GALGAS_tokenSortedlist_2D_element::init_28__2C__2C__29_ (const GALGAS_uint & in_mLength,
-                                                                                           const GALGAS_string & in_mName,
-                                                                                           const GALGAS_string & in_mTerminalName,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_tokenSortedlist_2D_element GALGAS_tokenSortedlist_2D_element::init_21__21__21_ (const GALGAS_uint & in_mLength,
+                                                                                       const GALGAS_string & in_mName,
+                                                                                       const GALGAS_string & in_mTerminalName,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_tokenSortedlist_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLength = in_mLength ;
@@ -10638,11 +10638,11 @@ GALGAS_lexicalRoutineFormalArgumentList_2D_element::~ GALGAS_lexicalRoutineForma
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalRoutineFormalArgumentList_2D_element GALGAS_lexicalRoutineFormalArgumentList_2D_element::init_28__2C__2C__29_ (const GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
-                                                                                                                             const GALGAS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
-                                                                                                                             const GALGAS_string & in_mArgumentNameForComment,
-                                                                                                                             Compiler * inCompiler
-                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalRoutineFormalArgumentList_2D_element GALGAS_lexicalRoutineFormalArgumentList_2D_element::init_21__21__21_ (const GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
+                                                                                                                         const GALGAS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
+                                                                                                                         const GALGAS_string & in_mArgumentNameForComment,
+                                                                                                                         Compiler * inCompiler
+                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRoutineFormalArgumentList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexicalFormalArgumentMode = in_mLexicalFormalArgumentMode ;
@@ -10784,10 +10784,10 @@ GALGAS_lexicalFunctionFormalArgumentList_2D_element::~ GALGAS_lexicalFunctionFor
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalFunctionFormalArgumentList_2D_element GALGAS_lexicalFunctionFormalArgumentList_2D_element::init_28__2C__29_ (const GALGAS_lexicalTypeEnum & in_mLexicalType,
-                                                                                                                           const GALGAS_string & in_mArgumentNameForComment,
-                                                                                                                           Compiler * inCompiler
-                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalFunctionFormalArgumentList_2D_element GALGAS_lexicalFunctionFormalArgumentList_2D_element::init_21__21_ (const GALGAS_lexicalTypeEnum & in_mLexicalType,
+                                                                                                                       const GALGAS_string & in_mArgumentNameForComment,
+                                                                                                                       Compiler * inCompiler
+                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalFunctionFormalArgumentList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexicalType = in_mLexicalType ;
@@ -10917,9 +10917,9 @@ GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::~ GALGAS_lexicalRouti
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::init_28__29_ (const GALGAS_abstractLexicalRoutineActualArgumentAST & in_mLexicalRoutineActualArgument,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element::init_21_ (const GALGAS_abstractLexicalRoutineActualArgumentAST & in_mLexicalRoutineActualArgument,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexicalRoutineActualArgument = in_mLexicalRoutineActualArgument ;
@@ -11042,13 +11042,13 @@ GALGAS_commandLineOptionSortedList_2D_element::~ GALGAS_commandLineOptionSortedL
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_commandLineOptionSortedList_2D_element GALGAS_commandLineOptionSortedList_2D_element::init_28__2C__2C__2C__2C__29_ (const GALGAS_string & in_mOptionIdentifier,
-                                                                                                                           const GALGAS_char & in_mOptionChar,
-                                                                                                                           const GALGAS_string & in_mOptionString,
-                                                                                                                           const GALGAS_string & in_mComment,
-                                                                                                                           const GALGAS_string & in_mDefaultValue,
-                                                                                                                           Compiler * inCompiler
-                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_commandLineOptionSortedList_2D_element GALGAS_commandLineOptionSortedList_2D_element::init_21__21__21__21__21_ (const GALGAS_string & in_mOptionIdentifier,
+                                                                                                                       const GALGAS_char & in_mOptionChar,
+                                                                                                                       const GALGAS_string & in_mOptionString,
+                                                                                                                       const GALGAS_string & in_mComment,
+                                                                                                                       const GALGAS_string & in_mDefaultValue,
+                                                                                                                       Compiler * inCompiler
+                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_commandLineOptionSortedList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mOptionIdentifier = in_mOptionIdentifier ;
@@ -11213,11 +11213,11 @@ GALGAS_guiLabelListAST_2D_element::~ GALGAS_guiLabelListAST_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_guiLabelListAST_2D_element GALGAS_guiLabelListAST_2D_element::init_28__2C__2C__29_ (const GALGAS_uint & in_mLeadingCharacterStrippedCount,
-                                                                                           const GALGAS_terminalLabelListAST & in_mTerminalList,
-                                                                                           const GALGAS_location & in_mLocation,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_guiLabelListAST_2D_element GALGAS_guiLabelListAST_2D_element::init_21__21__21_ (const GALGAS_uint & in_mLeadingCharacterStrippedCount,
+                                                                                       const GALGAS_terminalLabelListAST & in_mTerminalList,
+                                                                                       const GALGAS_location & in_mLocation,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiLabelListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLeadingCharacterStrippedCount = in_mLeadingCharacterStrippedCount ;
@@ -11362,13 +11362,13 @@ GALGAS_guiCommandLineOptionList_2D_element::~ GALGAS_guiCommandLineOptionList_2D
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_guiCommandLineOptionList_2D_element GALGAS_guiCommandLineOptionList_2D_element::init_28__2C__2C__2C__2C__29_ (const GALGAS_string & in_mOptionComponent,
-                                                                                                                     const GALGAS_string & in_mOptionIdentifier,
-                                                                                                                     const GALGAS_char & in_mOptionChar,
-                                                                                                                     const GALGAS_string & in_mOptionString,
-                                                                                                                     const GALGAS_string & in_mComment,
-                                                                                                                     Compiler * inCompiler
-                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_guiCommandLineOptionList_2D_element GALGAS_guiCommandLineOptionList_2D_element::init_21__21__21__21__21_ (const GALGAS_string & in_mOptionComponent,
+                                                                                                                 const GALGAS_string & in_mOptionIdentifier,
+                                                                                                                 const GALGAS_char & in_mOptionChar,
+                                                                                                                 const GALGAS_string & in_mOptionString,
+                                                                                                                 const GALGAS_string & in_mComment,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiCommandLineOptionList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mOptionComponent = in_mOptionComponent ;
@@ -11532,10 +11532,10 @@ GALGAS_textMacroList_2D_element::~ GALGAS_textMacroList_2D_element (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_textMacroList_2D_element GALGAS_textMacroList_2D_element::init_28__2C__29_ (const GALGAS_string & in_mKey,
-                                                                                   const GALGAS_string & in_mContents,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_textMacroList_2D_element GALGAS_textMacroList_2D_element::init_21__21_ (const GALGAS_string & in_mKey,
+                                                                               const GALGAS_string & in_mContents,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_textMacroList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mKey = in_mKey ;
@@ -11671,15 +11671,15 @@ GALGAS_importedLexiqueList_2D_element::~ GALGAS_importedLexiqueList_2D_element (
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_importedLexiqueList_2D_element GALGAS_importedLexiqueList_2D_element::init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mLexiqueClassName,
-                                                                                                                   const GALGAS_uint & in_mIndex,
-                                                                                                                   const GALGAS_string & in_mBlockComment,
-                                                                                                                   const GALGAS_string & in_mTitle,
-                                                                                                                   const GALGAS_textMacroList & in_mTextMacroList,
-                                                                                                                   const GALGAS_guiLabelListAST & in_mLabels,
-                                                                                                                   const GALGAS_lexicalStyleListAST & in_mLexicalStyleList,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_importedLexiqueList_2D_element GALGAS_importedLexiqueList_2D_element::init_21__21__21__21__21__21__21_ (const GALGAS_string & in_mLexiqueClassName,
+                                                                                                               const GALGAS_uint & in_mIndex,
+                                                                                                               const GALGAS_string & in_mBlockComment,
+                                                                                                               const GALGAS_string & in_mTitle,
+                                                                                                               const GALGAS_textMacroList & in_mTextMacroList,
+                                                                                                               const GALGAS_guiLabelListAST & in_mLabels,
+                                                                                                               const GALGAS_lexicalStyleListAST & in_mLexicalStyleList,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_importedLexiqueList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexiqueClassName = in_mLexiqueClassName ;
@@ -11865,10 +11865,10 @@ GALGAS_enumConstantListForGeneration_2D_element::~ GALGAS_enumConstantListForGen
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::init_28__2C__29_ (const GALGAS_string & in_mConstantName,
-                                                                                                                   const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::init_21__21_ (const GALGAS_string & in_mConstantName,
+                                                                                                               const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mConstantName = in_mConstantName ;
@@ -11998,9 +11998,9 @@ GALGAS_insertOrReplaceDeclarationListAST_2D_element::~ GALGAS_insertOrReplaceDec
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_insertOrReplaceDeclarationListAST_2D_element GALGAS_insertOrReplaceDeclarationListAST_2D_element::init_28__29_ (const GALGAS_location & in_mInsertOrReplaceDeclarationLocation,
-                                                                                                                       Compiler * inCompiler
-                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_insertOrReplaceDeclarationListAST_2D_element GALGAS_insertOrReplaceDeclarationListAST_2D_element::init_21_ (const GALGAS_location & in_mInsertOrReplaceDeclarationLocation,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_insertOrReplaceDeclarationListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInsertOrReplaceDeclarationLocation = in_mInsertOrReplaceDeclarationLocation ;
@@ -12121,11 +12121,11 @@ GALGAS_sortDescriptorListForGeneration_2D_element::~ GALGAS_sortDescriptorListFo
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_sortDescriptorListForGeneration_2D_element GALGAS_sortDescriptorListForGeneration_2D_element::init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mAttributeTypeIndex,
-                                                                                                                           const GALGAS_string & in_mAttributeName,
-                                                                                                                           const GALGAS_bool & in_mAscendingOrder,
-                                                                                                                           Compiler * inCompiler
-                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_sortDescriptorListForGeneration_2D_element GALGAS_sortDescriptorListForGeneration_2D_element::init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mAttributeTypeIndex,
+                                                                                                                       const GALGAS_string & in_mAttributeName,
+                                                                                                                       const GALGAS_bool & in_mAscendingOrder,
+                                                                                                                       Compiler * inCompiler
+                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_sortDescriptorListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mAttributeTypeIndex = in_mAttributeTypeIndex ;
@@ -12266,9 +12266,9 @@ GALGAS_actualParameterListAST_2D_element::~ GALGAS_actualParameterListAST_2D_ele
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_actualParameterListAST_2D_element GALGAS_actualParameterListAST_2D_element::init_28__29_ (const GALGAS_actualParameterAST & in_mActualParameter,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_actualParameterListAST_2D_element GALGAS_actualParameterListAST_2D_element::init_21_ (const GALGAS_actualParameterAST & in_mActualParameter,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_actualParameterListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mActualParameter = in_mActualParameter ;
@@ -12387,9 +12387,9 @@ GALGAS_semanticInstructionListAST_2D_element::~ GALGAS_semanticInstructionListAS
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST_2D_element GALGAS_semanticInstructionListAST_2D_element::init_28__29_ (const GALGAS_semanticInstructionAST & in_mInstruction,
-                                                                                                         Compiler * inCompiler
-                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_semanticInstructionListAST_2D_element GALGAS_semanticInstructionListAST_2D_element::init_21_ (const GALGAS_semanticInstructionAST & in_mInstruction,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticInstructionListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstruction = in_mInstruction ;
@@ -12508,9 +12508,9 @@ GALGAS_semanticDeclarationListAST_2D_element::~ GALGAS_semanticDeclarationListAS
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_semanticDeclarationListAST_2D_element GALGAS_semanticDeclarationListAST_2D_element::init_28__29_ (const GALGAS_semanticDeclarationAST & in_mSemanticDeclaration,
-                                                                                                         Compiler * inCompiler
-                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_semanticDeclarationListAST_2D_element GALGAS_semanticDeclarationListAST_2D_element::init_21_ (const GALGAS_semanticDeclarationAST & in_mSemanticDeclaration,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticDeclarationListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mSemanticDeclaration = in_mSemanticDeclaration ;
@@ -12629,9 +12629,9 @@ GALGAS_syntaxInstructionList_2D_element::~ GALGAS_syntaxInstructionList_2D_eleme
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_syntaxInstructionList_2D_element GALGAS_syntaxInstructionList_2D_element::init_28__29_ (const GALGAS_syntaxInstructionAST & in_mInstruction,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_syntaxInstructionList_2D_element GALGAS_syntaxInstructionList_2D_element::init_21_ (const GALGAS_syntaxInstructionAST & in_mInstruction,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxInstructionList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstruction = in_mInstruction ;
@@ -12751,10 +12751,10 @@ GALGAS_listOfSyntaxInstructionList_2D_element::~ GALGAS_listOfSyntaxInstructionL
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_listOfSyntaxInstructionList_2D_element GALGAS_listOfSyntaxInstructionList_2D_element::init_28__2C__29_ (const GALGAS_syntaxInstructionList & in_mSyntaxInstructionList,
-                                                                                                               const GALGAS_location & in_mEndOf_5F_instructions,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_listOfSyntaxInstructionList_2D_element GALGAS_listOfSyntaxInstructionList_2D_element::init_21__21_ (const GALGAS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                                                                           const GALGAS_location & in_mEndOf_5F_instructions,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_listOfSyntaxInstructionList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mSyntaxInstructionList = in_mSyntaxInstructionList ;
@@ -12885,10 +12885,10 @@ GALGAS_syntaxExtensions_2D_element::~ GALGAS_syntaxExtensions_2D_element (void) 
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::init_28__2C__29_ (const GALGAS_string & in_key,
-                                                                                         const GALGAS_galgas_33_SyntaxExtensionListAST & in_mList,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_syntaxExtensions_2D_element GALGAS_syntaxExtensions_2D_element::init_21__21_ (const GALGAS_string & in_key,
+                                                                                     const GALGAS_galgas_33_SyntaxExtensionListAST & in_mList,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_syntaxExtensions_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_key = in_key ;
@@ -13019,10 +13019,10 @@ GALGAS_prologueEpilogueList_2D_element::~ GALGAS_prologueEpilogueList_2D_element
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::init_28__2C__29_ (const GALGAS_semanticInstructionListAST & in_mInstructionList,
-                                                                                                 const GALGAS_location & in_mEndOfInstructionList,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_prologueEpilogueList_2D_element GALGAS_prologueEpilogueList_2D_element::init_21__21_ (const GALGAS_semanticInstructionListAST & in_mInstructionList,
+                                                                                             const GALGAS_location & in_mEndOfInstructionList,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_prologueEpilogueList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstructionList = in_mInstructionList ;
@@ -13153,10 +13153,10 @@ GALGAS_enumerationDescriptorList_2D_element::~ GALGAS_enumerationDescriptorList_
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::init_28__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mEnumeratedType,
-                                                                                                           const GALGAS_string & in_mEnumerationName,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::init_21__21_ (const GALGAS_unifiedTypeMapEntry & in_mEnumeratedType,
+                                                                                                       const GALGAS_string & in_mEnumerationName,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumerationDescriptorList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mEnumeratedType = in_mEnumeratedType ;
@@ -13287,10 +13287,10 @@ GALGAS_acceptableParameterList_2D_element::~ GALGAS_acceptableParameterList_2D_e
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_acceptableParameterList_2D_element GALGAS_acceptableParameterList_2D_element::init_28__2C__29_ (const GALGAS_formalParameterSignature & in_mRoutineSignature,
-                                                                                                       const GALGAS_bool & in_mIsFilePrivate,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_acceptableParameterList_2D_element GALGAS_acceptableParameterList_2D_element::init_21__21_ (const GALGAS_formalParameterSignature & in_mRoutineSignature,
+                                                                                                   const GALGAS_bool & in_mIsFilePrivate,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_acceptableParameterList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mRoutineSignature = in_mRoutineSignature ;
@@ -13420,9 +13420,9 @@ GALGAS_templateInstructionListForGeneration_2D_element::~ GALGAS_templateInstruc
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::init_28__29_ (const GALGAS_templateInstructionForGeneration & in_mInstruction,
-                                                                                                                             Compiler * inCompiler
-                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::init_21_ (const GALGAS_templateInstructionForGeneration & in_mInstruction,
+                                                                                                                         Compiler * inCompiler
+                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionListForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mInstruction = in_mInstruction ;

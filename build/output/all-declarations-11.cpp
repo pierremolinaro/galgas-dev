@@ -853,16 +853,16 @@ GALGAS_syntaxInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_nonterminalInstructionForGeneration GALGAS_nonterminalInstructionForGeneration::
-init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                              const GALGAS_string & in_mNonterminalName,
-                              const GALGAS_string & in_mLabelName,
-                              const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                              const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                          const GALGAS_string & in_mNonterminalName,
+                          const GALGAS_string & in_mLabelName,
+                          const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                          const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_nonterminalInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_nonterminalInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->nonterminalInstructionForGeneration_init_28__2C__2C__2C__2C__29_ (in_mInstructionLocation, in_mNonterminalName, in_mLabelName, in_mActualParameterList, in_mGrammarInstructionSyntaxDirectedTranslationResult, inCompiler) ;
+  object->nonterminalInstructionForGeneration_init_21__21__21__21__21_ (in_mInstructionLocation, in_mNonterminalName, in_mLabelName, in_mActualParameterList, in_mGrammarInstructionSyntaxDirectedTranslationResult, inCompiler) ;
   const GALGAS_nonterminalInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -871,12 +871,12 @@ init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_nonterminalInstructionForGeneration::
-nonterminalInstructionForGeneration_init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                                  const GALGAS_string & in_mNonterminalName,
-                                                                  const GALGAS_string & in_mLabelName,
-                                                                  const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
-                                                                  const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult,
-                                                                  Compiler * /* inCompiler */) {
+nonterminalInstructionForGeneration_init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                              const GALGAS_string & in_mNonterminalName,
+                                                              const GALGAS_string & in_mLabelName,
+                                                              const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                              const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult,
+                                                              Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mNonterminalName = in_mNonterminalName ;
   mProperty_mLabelName = in_mLabelName ;
@@ -1231,16 +1231,16 @@ GALGAS_syntaxInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_repeatInstruction GALGAS_repeatInstruction::
-init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                              const GALGAS_syntaxInstructionList & in_mRepeatedInstructionList,
-                              const GALGAS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
-                              const GALGAS_listOfSyntaxInstructionList & in_mRepeatBranchList,
-                              const GALGAS_location & in_mEndOf_5F_repeat_5F_instruction,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                          const GALGAS_syntaxInstructionList & in_mRepeatedInstructionList,
+                          const GALGAS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
+                          const GALGAS_listOfSyntaxInstructionList & in_mRepeatBranchList,
+                          const GALGAS_location & in_mEndOf_5F_repeat_5F_instruction,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
   cPtr_repeatInstruction * object = nullptr ;
   macroMyNew (object, cPtr_repeatInstruction (inCompiler COMMA_THERE)) ;
-  object->repeatInstruction_init_28__2C__2C__2C__2C__29_ (in_mInstructionLocation, in_mRepeatedInstructionList, in_mEndOf_5F_repeated_5F_instructions_5F_branch, in_mRepeatBranchList, in_mEndOf_5F_repeat_5F_instruction, inCompiler) ;
+  object->repeatInstruction_init_21__21__21__21__21_ (in_mInstructionLocation, in_mRepeatedInstructionList, in_mEndOf_5F_repeated_5F_instructions_5F_branch, in_mRepeatBranchList, in_mEndOf_5F_repeat_5F_instruction, inCompiler) ;
   const GALGAS_repeatInstruction result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1249,12 +1249,12 @@ init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstruction::
-repeatInstruction_init_28__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                const GALGAS_syntaxInstructionList & in_mRepeatedInstructionList,
-                                                const GALGAS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
-                                                const GALGAS_listOfSyntaxInstructionList & in_mRepeatBranchList,
-                                                const GALGAS_location & in_mEndOf_5F_repeat_5F_instruction,
-                                                Compiler * /* inCompiler */) {
+repeatInstruction_init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                            const GALGAS_syntaxInstructionList & in_mRepeatedInstructionList,
+                                            const GALGAS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
+                                            const GALGAS_listOfSyntaxInstructionList & in_mRepeatBranchList,
+                                            const GALGAS_location & in_mEndOf_5F_repeat_5F_instruction,
+                                            Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mRepeatedInstructionList = in_mRepeatedInstructionList ;
   mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch = in_mEndOf_5F_repeated_5F_instructions_5F_branch ;
@@ -1614,17 +1614,17 @@ GALGAS_syntaxInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_repeatInstructionForGeneration GALGAS_repeatInstructionForGeneration::
-init_28__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                  const GALGAS_string & in_mSyntaxComponentName,
-                                  const GALGAS_uint & in_mChoiceIndex,
-                                  const GALGAS_semanticInstructionListForGeneration & in_m_5F_repeated_5F_instructionList,
-                                  const GALGAS_location & in_mEndOfRepeatedInstructions,
-                                  const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                              const GALGAS_string & in_mSyntaxComponentName,
+                              const GALGAS_uint & in_mChoiceIndex,
+                              const GALGAS_semanticInstructionListForGeneration & in_m_5F_repeated_5F_instructionList,
+                              const GALGAS_location & in_mEndOfRepeatedInstructions,
+                              const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) {
   cPtr_repeatInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_repeatInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->repeatInstructionForGeneration_init_28__2C__2C__2C__2C__2C__29_ (in_mInstructionLocation, in_mSyntaxComponentName, in_mChoiceIndex, in_m_5F_repeated_5F_instructionList, in_mEndOfRepeatedInstructions, in_mListOfSemanticInstructionListForGeneration, inCompiler) ;
+  object->repeatInstructionForGeneration_init_21__21__21__21__21__21_ (in_mInstructionLocation, in_mSyntaxComponentName, in_mChoiceIndex, in_m_5F_repeated_5F_instructionList, in_mEndOfRepeatedInstructions, in_mListOfSemanticInstructionListForGeneration, inCompiler) ;
   const GALGAS_repeatInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1633,13 +1633,13 @@ init_28__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocatio
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGeneration::
-repeatInstructionForGeneration_init_28__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                                 const GALGAS_string & in_mSyntaxComponentName,
-                                                                 const GALGAS_uint & in_mChoiceIndex,
-                                                                 const GALGAS_semanticInstructionListForGeneration & in_m_5F_repeated_5F_instructionList,
-                                                                 const GALGAS_location & in_mEndOfRepeatedInstructions,
-                                                                 const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
-                                                                 Compiler * /* inCompiler */) {
+repeatInstructionForGeneration_init_21__21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                             const GALGAS_string & in_mSyntaxComponentName,
+                                                             const GALGAS_uint & in_mChoiceIndex,
+                                                             const GALGAS_semanticInstructionListForGeneration & in_m_5F_repeated_5F_instructionList,
+                                                             const GALGAS_location & in_mEndOfRepeatedInstructions,
+                                                             const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+                                                             Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
   mProperty_mChoiceIndex = in_mChoiceIndex ;
@@ -2003,14 +2003,14 @@ GALGAS_syntaxInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_selectInstruction GALGAS_selectInstruction::
-init_28__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                      const GALGAS_listOfSyntaxInstructionList & in_mSelectBranchList,
-                      const GALGAS_location & in_mEndOf_5F_select_5F_instruction,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                  const GALGAS_listOfSyntaxInstructionList & in_mSelectBranchList,
+                  const GALGAS_location & in_mEndOf_5F_select_5F_instruction,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_selectInstruction * object = nullptr ;
   macroMyNew (object, cPtr_selectInstruction (inCompiler COMMA_THERE)) ;
-  object->selectInstruction_init_28__2C__2C__29_ (in_mInstructionLocation, in_mSelectBranchList, in_mEndOf_5F_select_5F_instruction, inCompiler) ;
+  object->selectInstruction_init_21__21__21_ (in_mInstructionLocation, in_mSelectBranchList, in_mEndOf_5F_select_5F_instruction, inCompiler) ;
   const GALGAS_selectInstruction result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2019,10 +2019,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstruction::
-selectInstruction_init_28__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                        const GALGAS_listOfSyntaxInstructionList & in_mSelectBranchList,
-                                        const GALGAS_location & in_mEndOf_5F_select_5F_instruction,
-                                        Compiler * /* inCompiler */) {
+selectInstruction_init_21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                    const GALGAS_listOfSyntaxInstructionList & in_mSelectBranchList,
+                                    const GALGAS_location & in_mEndOf_5F_select_5F_instruction,
+                                    Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mSelectBranchList = in_mSelectBranchList ;
   mProperty_mEndOf_5F_select_5F_instruction = in_mEndOf_5F_select_5F_instruction ;
@@ -2334,15 +2334,15 @@ GALGAS_syntaxInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_selectInstructionForGeneration GALGAS_selectInstructionForGeneration::
-init_28__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                          const GALGAS_string & in_mSyntaxComponentName,
-                          const GALGAS_uint & in_mChoiceIndex,
-                          const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                      const GALGAS_string & in_mSyntaxComponentName,
+                      const GALGAS_uint & in_mChoiceIndex,
+                      const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_selectInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_selectInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->selectInstructionForGeneration_init_28__2C__2C__2C__29_ (in_mInstructionLocation, in_mSyntaxComponentName, in_mChoiceIndex, in_mListOfSemanticInstructionListForGeneration, inCompiler) ;
+  object->selectInstructionForGeneration_init_21__21__21__21_ (in_mInstructionLocation, in_mSyntaxComponentName, in_mChoiceIndex, in_mListOfSemanticInstructionListForGeneration, inCompiler) ;
   const GALGAS_selectInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2351,11 +2351,11 @@ init_28__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGeneration::
-selectInstructionForGeneration_init_28__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                         const GALGAS_string & in_mSyntaxComponentName,
-                                                         const GALGAS_uint & in_mChoiceIndex,
-                                                         const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
-                                                         Compiler * /* inCompiler */) {
+selectInstructionForGeneration_init_21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                     const GALGAS_string & in_mSyntaxComponentName,
+                                                     const GALGAS_uint & in_mChoiceIndex,
+                                                     const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+                                                     Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
   mProperty_mChoiceIndex = in_mChoiceIndex ;
@@ -3147,18 +3147,18 @@ GALGAS_syntaxInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_parseLoopInstruction GALGAS_parseLoopInstruction::
-init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                      const GALGAS_semanticExpressionAST & in_mVariantExpression,
-                                      const GALGAS_location & in_mEndOfVariantExpression,
-                                      const GALGAS_semanticExpressionAST & in_mWhileExpression,
-                                      const GALGAS_location & in_mEndOfWhileExpression,
-                                      const GALGAS_syntaxInstructionList & in_mDoInstructionList,
-                                      const GALGAS_location & in_mEndOfInstructionList,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                  const GALGAS_semanticExpressionAST & in_mVariantExpression,
+                                  const GALGAS_location & in_mEndOfVariantExpression,
+                                  const GALGAS_semanticExpressionAST & in_mWhileExpression,
+                                  const GALGAS_location & in_mEndOfWhileExpression,
+                                  const GALGAS_syntaxInstructionList & in_mDoInstructionList,
+                                  const GALGAS_location & in_mEndOfInstructionList,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
   cPtr_parseLoopInstruction * object = nullptr ;
   macroMyNew (object, cPtr_parseLoopInstruction (inCompiler COMMA_THERE)) ;
-  object->parseLoopInstruction_init_28__2C__2C__2C__2C__2C__2C__29_ (in_mInstructionLocation, in_mVariantExpression, in_mEndOfVariantExpression, in_mWhileExpression, in_mEndOfWhileExpression, in_mDoInstructionList, in_mEndOfInstructionList, inCompiler) ;
+  object->parseLoopInstruction_init_21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mVariantExpression, in_mEndOfVariantExpression, in_mWhileExpression, in_mEndOfWhileExpression, in_mDoInstructionList, in_mEndOfInstructionList, inCompiler) ;
   const GALGAS_parseLoopInstruction result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3167,14 +3167,14 @@ init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLoc
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseLoopInstruction::
-parseLoopInstruction_init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                           const GALGAS_semanticExpressionAST & in_mVariantExpression,
-                                                           const GALGAS_location & in_mEndOfVariantExpression,
-                                                           const GALGAS_semanticExpressionAST & in_mWhileExpression,
-                                                           const GALGAS_location & in_mEndOfWhileExpression,
-                                                           const GALGAS_syntaxInstructionList & in_mDoInstructionList,
-                                                           const GALGAS_location & in_mEndOfInstructionList,
-                                                           Compiler * /* inCompiler */) {
+parseLoopInstruction_init_21__21__21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                       const GALGAS_semanticExpressionAST & in_mVariantExpression,
+                                                       const GALGAS_location & in_mEndOfVariantExpression,
+                                                       const GALGAS_semanticExpressionAST & in_mWhileExpression,
+                                                       const GALGAS_location & in_mEndOfWhileExpression,
+                                                       const GALGAS_syntaxInstructionList & in_mDoInstructionList,
+                                                       const GALGAS_location & in_mEndOfInstructionList,
+                                                       Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mVariantExpression = in_mVariantExpression ;
   mProperty_mEndOfVariantExpression = in_mEndOfVariantExpression ;
@@ -3667,14 +3667,14 @@ GALGAS_syntaxInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_parseRewindInstruction GALGAS_parseRewindInstruction::
-init_28__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                      const GALGAS_listOfSyntaxInstructionList & in_mParseRewindBranchList,
-                      const GALGAS_location & in_mEndOfParseDoInstruction,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                  const GALGAS_listOfSyntaxInstructionList & in_mParseRewindBranchList,
+                  const GALGAS_location & in_mEndOfParseDoInstruction,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_parseRewindInstruction * object = nullptr ;
   macroMyNew (object, cPtr_parseRewindInstruction (inCompiler COMMA_THERE)) ;
-  object->parseRewindInstruction_init_28__2C__2C__29_ (in_mInstructionLocation, in_mParseRewindBranchList, in_mEndOfParseDoInstruction, inCompiler) ;
+  object->parseRewindInstruction_init_21__21__21_ (in_mInstructionLocation, in_mParseRewindBranchList, in_mEndOfParseDoInstruction, inCompiler) ;
   const GALGAS_parseRewindInstruction result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3683,10 +3683,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseRewindInstruction::
-parseRewindInstruction_init_28__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                             const GALGAS_listOfSyntaxInstructionList & in_mParseRewindBranchList,
-                                             const GALGAS_location & in_mEndOfParseDoInstruction,
-                                             Compiler * /* inCompiler */) {
+parseRewindInstruction_init_21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                         const GALGAS_listOfSyntaxInstructionList & in_mParseRewindBranchList,
+                                         const GALGAS_location & in_mEndOfParseDoInstruction,
+                                         Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mParseRewindBranchList = in_mParseRewindBranchList ;
   mProperty_mEndOfParseDoInstruction = in_mEndOfParseDoInstruction ;
@@ -3988,13 +3988,13 @@ GALGAS_syntaxInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_parseRewindInstructionForGeneration GALGAS_parseRewindInstructionForGeneration::
-init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                  const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mInstructionLocation,
+              const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_parseRewindInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_parseRewindInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->parseRewindInstructionForGeneration_init_28__2C__29_ (in_mInstructionLocation, in_mListOfSemanticInstructionListForGeneration, inCompiler) ;
+  object->parseRewindInstructionForGeneration_init_21__21_ (in_mInstructionLocation, in_mListOfSemanticInstructionListForGeneration, inCompiler) ;
   const GALGAS_parseRewindInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4003,9 +4003,9 @@ init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseRewindInstructionForGeneration::
-parseRewindInstructionForGeneration_init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                      const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
-                                                      Compiler * /* inCompiler */) {
+parseRewindInstructionForGeneration_init_21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                  const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration,
+                                                  Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mListOfSemanticInstructionListForGeneration = in_mListOfSemanticInstructionListForGeneration ;
 }
@@ -4313,18 +4313,18 @@ GALGAS_syntaxInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_parseWhenInstruction GALGAS_parseWhenInstruction::
-init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                      const GALGAS_semanticExpressionAST & in_mWhenExpression,
-                                      const GALGAS_location & in_mEndOfWhenExpression,
-                                      const GALGAS_syntaxInstructionList & in_mWhenInstructionList,
-                                      const GALGAS_location & in_mEndOfWhenInstructionList,
-                                      const GALGAS_syntaxInstructionList & in_mElseInstructionList,
-                                      const GALGAS_location & in_mEndOfElseInstructionList,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                  const GALGAS_semanticExpressionAST & in_mWhenExpression,
+                                  const GALGAS_location & in_mEndOfWhenExpression,
+                                  const GALGAS_syntaxInstructionList & in_mWhenInstructionList,
+                                  const GALGAS_location & in_mEndOfWhenInstructionList,
+                                  const GALGAS_syntaxInstructionList & in_mElseInstructionList,
+                                  const GALGAS_location & in_mEndOfElseInstructionList,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
   cPtr_parseWhenInstruction * object = nullptr ;
   macroMyNew (object, cPtr_parseWhenInstruction (inCompiler COMMA_THERE)) ;
-  object->parseWhenInstruction_init_28__2C__2C__2C__2C__2C__2C__29_ (in_mInstructionLocation, in_mWhenExpression, in_mEndOfWhenExpression, in_mWhenInstructionList, in_mEndOfWhenInstructionList, in_mElseInstructionList, in_mEndOfElseInstructionList, inCompiler) ;
+  object->parseWhenInstruction_init_21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mWhenExpression, in_mEndOfWhenExpression, in_mWhenInstructionList, in_mEndOfWhenInstructionList, in_mElseInstructionList, in_mEndOfElseInstructionList, inCompiler) ;
   const GALGAS_parseWhenInstruction result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4333,14 +4333,14 @@ init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLoc
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_parseWhenInstruction::
-parseWhenInstruction_init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                                           const GALGAS_semanticExpressionAST & in_mWhenExpression,
-                                                           const GALGAS_location & in_mEndOfWhenExpression,
-                                                           const GALGAS_syntaxInstructionList & in_mWhenInstructionList,
-                                                           const GALGAS_location & in_mEndOfWhenInstructionList,
-                                                           const GALGAS_syntaxInstructionList & in_mElseInstructionList,
-                                                           const GALGAS_location & in_mEndOfElseInstructionList,
-                                                           Compiler * /* inCompiler */) {
+parseWhenInstruction_init_21__21__21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                       const GALGAS_semanticExpressionAST & in_mWhenExpression,
+                                                       const GALGAS_location & in_mEndOfWhenExpression,
+                                                       const GALGAS_syntaxInstructionList & in_mWhenInstructionList,
+                                                       const GALGAS_location & in_mEndOfWhenInstructionList,
+                                                       const GALGAS_syntaxInstructionList & in_mElseInstructionList,
+                                                       const GALGAS_location & in_mEndOfElseInstructionList,
+                                                       Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mWhenExpression = in_mWhenExpression ;
   mProperty_mEndOfWhenExpression = in_mEndOfWhenExpression ;
@@ -4828,13 +4828,13 @@ GALGAS_syntaxInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_syntaxSendInstructionAST GALGAS_syntaxSendInstructionAST::
-init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                  const GALGAS_semanticExpressionAST & in_mExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_location & in_mInstructionLocation,
+              const GALGAS_semanticExpressionAST & in_mExpression,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_syntaxSendInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_syntaxSendInstructionAST (inCompiler COMMA_THERE)) ;
-  object->syntaxSendInstructionAST_init_28__2C__29_ (in_mInstructionLocation, in_mExpression, inCompiler) ;
+  object->syntaxSendInstructionAST_init_21__21_ (in_mInstructionLocation, in_mExpression, inCompiler) ;
   const GALGAS_syntaxSendInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4843,9 +4843,9 @@ init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_syntaxSendInstructionAST::
-syntaxSendInstructionAST_init_28__2C__29_ (const GALGAS_location & in_mInstructionLocation,
-                                           const GALGAS_semanticExpressionAST & in_mExpression,
-                                           Compiler * /* inCompiler */) {
+syntaxSendInstructionAST_init_21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                       const GALGAS_semanticExpressionAST & in_mExpression,
+                                       Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mExpression = in_mExpression ;
 }
@@ -7428,14 +7428,14 @@ GALGAS_abstractSyntaxInstructionForGrammarAnalysis () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_selectInstructionForGrammarAnalysis GALGAS_selectInstructionForGrammarAnalysis::
-init_28__2C__2C__29_ (const GALGAS_location & in_mStartLocation,
-                      const GALGAS_branchListForGrammarAnalysis & in_mSelectBranchList,
-                      const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mStartLocation,
+                  const GALGAS_branchListForGrammarAnalysis & in_mSelectBranchList,
+                  const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_selectInstructionForGrammarAnalysis * object = nullptr ;
   macroMyNew (object, cPtr_selectInstructionForGrammarAnalysis (inCompiler COMMA_THERE)) ;
-  object->selectInstructionForGrammarAnalysis_init_28__2C__2C__29_ (in_mStartLocation, in_mSelectBranchList, in_mAddedNonTerminalSymbolIndex, inCompiler) ;
+  object->selectInstructionForGrammarAnalysis_init_21__21__21_ (in_mStartLocation, in_mSelectBranchList, in_mAddedNonTerminalSymbolIndex, inCompiler) ;
   const GALGAS_selectInstructionForGrammarAnalysis result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7444,10 +7444,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mStartLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_selectInstructionForGrammarAnalysis::
-selectInstructionForGrammarAnalysis_init_28__2C__2C__29_ (const GALGAS_location & in_mStartLocation,
-                                                          const GALGAS_branchListForGrammarAnalysis & in_mSelectBranchList,
-                                                          const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
-                                                          Compiler * /* inCompiler */) {
+selectInstructionForGrammarAnalysis_init_21__21__21_ (const GALGAS_location & in_mStartLocation,
+                                                      const GALGAS_branchListForGrammarAnalysis & in_mSelectBranchList,
+                                                      const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
+                                                      Compiler * /* inCompiler */) {
   mProperty_mStartLocation = in_mStartLocation ;
   mProperty_mSelectBranchList = in_mSelectBranchList ;
   mProperty_mAddedNonTerminalSymbolIndex = in_mAddedNonTerminalSymbolIndex ;
@@ -7754,14 +7754,14 @@ GALGAS_abstractSyntaxInstructionForGrammarAnalysis () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_repeatInstructionForGrammarAnalysis GALGAS_repeatInstructionForGrammarAnalysis::
-init_28__2C__2C__29_ (const GALGAS_location & in_mStartLocation,
-                      const GALGAS_branchListForGrammarAnalysis & in_mRepeatBranchList,
-                      const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_location & in_mStartLocation,
+                  const GALGAS_branchListForGrammarAnalysis & in_mRepeatBranchList,
+                  const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_repeatInstructionForGrammarAnalysis * object = nullptr ;
   macroMyNew (object, cPtr_repeatInstructionForGrammarAnalysis (inCompiler COMMA_THERE)) ;
-  object->repeatInstructionForGrammarAnalysis_init_28__2C__2C__29_ (in_mStartLocation, in_mRepeatBranchList, in_mAddedNonTerminalSymbolIndex, inCompiler) ;
+  object->repeatInstructionForGrammarAnalysis_init_21__21__21_ (in_mStartLocation, in_mRepeatBranchList, in_mAddedNonTerminalSymbolIndex, inCompiler) ;
   const GALGAS_repeatInstructionForGrammarAnalysis result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7770,10 +7770,10 @@ init_28__2C__2C__29_ (const GALGAS_location & in_mStartLocation,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_repeatInstructionForGrammarAnalysis::
-repeatInstructionForGrammarAnalysis_init_28__2C__2C__29_ (const GALGAS_location & in_mStartLocation,
-                                                          const GALGAS_branchListForGrammarAnalysis & in_mRepeatBranchList,
-                                                          const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
-                                                          Compiler * /* inCompiler */) {
+repeatInstructionForGrammarAnalysis_init_21__21__21_ (const GALGAS_location & in_mStartLocation,
+                                                      const GALGAS_branchListForGrammarAnalysis & in_mRepeatBranchList,
+                                                      const GALGAS_uint & in_mAddedNonTerminalSymbolIndex,
+                                                      Compiler * /* inCompiler */) {
   mProperty_mStartLocation = in_mStartLocation ;
   mProperty_mRepeatBranchList = in_mRepeatBranchList ;
   mProperty_mAddedNonTerminalSymbolIndex = in_mAddedNonTerminalSymbolIndex ;
@@ -12114,23 +12114,23 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
                                                                                                                       GALGAS_actualOutputArgumentList & outArgument_outExpressionList,
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outExpressionList.drop () ; // Release 'out' argument
-  outArgument_outExpressionList = GALGAS_actualOutputArgumentList::class_func_emptyList (SOURCE_FILE ("expression-output-expression-list.galgas", 60)) ;
+  outArgument_outExpressionList = GALGAS_actualOutputArgumentList::class_func_emptyList (SOURCE_FILE ("expression-output-expression-list.galgas", 58)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
     case 2: {
-      GALGAS_lstring var_selector_2704 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 63)) ;
-      GALGAS_semanticExpressionAST var_expression_2782 ;
-      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_2782, inCompiler) ;
-      outArgument_outExpressionList.addAssign_operation (var_selector_2704, var_expression_2782, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 65))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 65)) ;
+      GALGAS_lstring var_selector_2682 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 61)) ;
+      GALGAS_semanticExpressionAST var_expression_2760 ;
+      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_2760, inCompiler) ;
+      outArgument_outExpressionList.addAssign_operation (var_selector_2682, var_expression_2760, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 63))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 63)) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 67)) ;
-      GALGAS_lstring var_selector_2879 = GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 68)) ;
-      GALGAS_semanticExpressionAST var_expression_2969 ;
-      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_2969, inCompiler) ;
-      outArgument_outExpressionList.addAssign_operation (var_selector_2879, var_expression_2969, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 70))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 70)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 65)) ;
+      GALGAS_lstring var_selector_2857 = GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 66)) ;
+      GALGAS_semanticExpressionAST var_expression_2947 ;
+      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_2947, inCompiler) ;
+      outArgument_outExpressionList.addAssign_operation (var_selector_2857, var_expression_2947, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 68))  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 68)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -12146,11 +12146,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 63)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 61)) ;
       nt_expression_5F_ggs_33__parse (inCompiler) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 67)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 65)) ;
       nt_expression_5F_ggs_33__parse (inCompiler) ;
     } break ;
     default:
@@ -12168,11 +12168,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
   while (repeatFlag_0) {
     switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 63)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 61)) ;
       nt_expression_5F_ggs_33__indexing (inCompiler) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 67)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 65)) ;
       nt_expression_5F_ggs_33__indexing (inCompiler) ;
     } break ;
     default:

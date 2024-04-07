@@ -34,15 +34,11 @@ list @functionSignature {
   public let @string mFormalArgumentName
   public let @bool isConstant
 
-  getter signature -> @string {
-    result = "("
-    for parameter in self
-    do
-      result += parameter.mFormalSelector
-    between
-      result += ","
+  getter initializerSignature -> @string {
+    result = "init"
+    for parameter in self do
+      result += "!" + parameter.mFormalSelector
     end
-    result += ")"
   }
 }
 
@@ -213,22 +209,16 @@ list @typedPropertyList {
   public let @bool hasSetter %selector
   public let @bool hasSelector %selector
   
-  getter signature -> @string {
-    result = "("
-    var first = true
+  getter initializerSignature -> @string {
+    result = "init"
     for property in self do
       if property.initialization == .none then
-        if first then
-          first = false
-        else
-          result += ","
-        end
+        result += "!"
         if property.hasSelector then
           result += property.name
         end
       end
     end
-    result += ")"
   }
 }
 

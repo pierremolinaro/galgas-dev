@@ -15,10 +15,10 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   #endif
 
 //--------------------------------- Initializers
-  public: void selectInstructionForGrammarAnalysis_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_branchListForGrammarAnalysis & inOperand1,
-                                                                         const class GALGAS_uint & inOperand2,
-                                                                         Compiler * inCompiler) ;
+  public: void selectInstructionForGrammarAnalysis_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_branchListForGrammarAnalysis & inOperand1,
+                                                                     const class GALGAS_uint & inOperand2,
+                                                                     Compiler * inCompiler) ;
 
 
 //--- Extension getter isLinear

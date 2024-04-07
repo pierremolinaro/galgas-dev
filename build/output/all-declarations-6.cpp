@@ -27,8 +27,8 @@ GALGAS_galgasDeclarationAST::~ GALGAS_galgasDeclarationAST (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::init_28__29_ (Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::init (Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgasDeclarationAST result ;
   result.setInitializedProperties (inCompiler) ;
   return result ;
@@ -37,14 +37,14 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::init_28__29_ (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_galgasDeclarationAST::setInitializedProperties (Compiler * /* inCompiler */) {
-  mProperty_mDeclarationList = GALGAS_semanticDeclarationListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 462)) ;
-  mProperty_mImplicitTypeDeclarationSet = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 463)) ;
-  mProperty_mSyntaxComponentList = GALGAS_galgas_33_SyntaxComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 464)) ;
-  mProperty_mSyntaxExtensions = GALGAS_syntaxExtensions::class_func_emptyMap (SOURCE_FILE ("semanticsTypesForAST.galgas", 465)) ;
-  mProperty_mGUIComponentList = GALGAS_galgasGUIComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 466)) ;
-  mProperty_mPrologueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 467)) ;
-  mProperty_mSourceRuleList = GALGAS_programRuleList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 468)) ;
-  mProperty_mEpilogueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 469)) ;
+  mProperty_mDeclarationList = GALGAS_semanticDeclarationListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 458)) ;
+  mProperty_mImplicitTypeDeclarationSet = GALGAS_stringset::class_func_emptySet (SOURCE_FILE ("semanticsTypesForAST.galgas", 459)) ;
+  mProperty_mSyntaxComponentList = GALGAS_galgas_33_SyntaxComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 460)) ;
+  mProperty_mSyntaxExtensions = GALGAS_syntaxExtensions::class_func_emptyMap (SOURCE_FILE ("semanticsTypesForAST.galgas", 461)) ;
+  mProperty_mGUIComponentList = GALGAS_galgasGUIComponentListAST::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 462)) ;
+  mProperty_mPrologueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 463)) ;
+  mProperty_mSourceRuleList = GALGAS_programRuleList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 464)) ;
+  mProperty_mEpilogueDeclarationList = GALGAS_prologueEpilogueList::class_func_emptyList (SOURCE_FILE ("semanticsTypesForAST.galgas", 465)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5623,45 +5623,34 @@ GALGAS_enumerationDescriptorList GALGAS_enumerationDescriptorList::extractObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension Getter '@typedPropertyList signature'
+//Extension Getter '@typedPropertyList initializerSignature'
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string extensionGetter_signature (const GALGAS_typedPropertyList & inObject,
-                                         Compiler * inCompiler
-                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_string extensionGetter_initializerSignature (const GALGAS_typedPropertyList & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
-  result_result = GALGAS_string ("(") ;
-  GALGAS_bool var_first_8343 = GALGAS_bool (true) ;
+  result_result = GALGAS_string ("init") ;
   const GALGAS_typedPropertyList temp_0 = inObject ;
-  cEnumerator_typedPropertyList enumerator_8376 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_8376.hasCurrentObject ()) {
+  cEnumerator_typedPropertyList enumerator_8335 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_8335.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8376.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 220)))).boolEnum () ;
+      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8335.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 215)))).boolEnum () ;
       if (kBoolTrue == test_1) {
+        result_result.plusAssign_operation(GALGAS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
         enumGalgasBool test_2 = kBoolTrue ;
         if (kBoolTrue == test_2) {
-          test_2 = var_first_8343.boolEnum () ;
+          test_2 = enumerator_8335.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (kBoolTrue == test_2) {
-            var_first_8343 = GALGAS_bool (false) ;
-          }
-        }
-        if (kBoolFalse == test_2) {
-          result_result.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 224)) ;
-        }
-        enumGalgasBool test_3 = kBoolTrue ;
-        if (kBoolTrue == test_3) {
-          test_3 = enumerator_8376.current (HERE).readProperty_hasSelector ().boolEnum () ;
-          if (kBoolTrue == test_3) {
-            result_result.plusAssign_operation(enumerator_8376.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 227)) ;
+            result_result.plusAssign_operation(enumerator_8335.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 218)) ;
           }
         }
       }
     }
-    enumerator_8376.gotoNextObject () ;
+    enumerator_8335.gotoNextObject () ;
   }
-  result_result.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 231)) ;
 //---
   return result_result ;
 }

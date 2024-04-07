@@ -223,12 +223,12 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
     let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
   #--- Search initializer
     if (inConstructorName.string == "new") && ([outConstructorType definition].typeKind == .structType) then
-      let initializerSignature = [inInitializerEffectiveParameterExpressions signature]
+      let initializerSignature = [inInitializerEffectiveParameterExpressions initializerSignature]
       let initializerMap = [outConstructorType definition].initializerMap
       if not [initializerMap hasKey !initializerSignature] then
         warning inConstructorName
         : "initializer @" + [outConstructorType definition].typeName
-        + initializerSignature + " does not exist"
+        + "." + initializerSignature + " does not exist"
       end
     end
   #--- Search contructor

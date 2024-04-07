@@ -1843,15 +1843,15 @@ GALGAS_actualParameterForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::
-init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                          const GALGAS_string & in_mOutputInputVariableCppName,
-                          const GALGAS_lstringlist & in_mStructAttributeList,
-                          const GALGAS_unifiedTypeMapEntryList & in_mTypeList,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                      const GALGAS_string & in_mOutputInputVariableCppName,
+                      const GALGAS_lstringlist & in_mStructAttributeList,
+                      const GALGAS_unifiedTypeMapEntryList & in_mTypeList,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_outputInputActualParameterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_outputInputActualParameterForGeneration (inCompiler COMMA_THERE)) ;
-  object->outputInputActualParameterForGeneration_init_28__2C__2C__2C__29_ (in_mFormalArgumentType, in_mOutputInputVariableCppName, in_mStructAttributeList, in_mTypeList, inCompiler) ;
+  object->outputInputActualParameterForGeneration_init_21__21__21__21_ (in_mFormalArgumentType, in_mOutputInputVariableCppName, in_mStructAttributeList, in_mTypeList, inCompiler) ;
   const GALGAS_outputInputActualParameterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1860,11 +1860,11 @@ init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentT
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_outputInputActualParameterForGeneration::
-outputInputActualParameterForGeneration_init_28__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                                  const GALGAS_string & in_mOutputInputVariableCppName,
-                                                                  const GALGAS_lstringlist & in_mStructAttributeList,
-                                                                  const GALGAS_unifiedTypeMapEntryList & in_mTypeList,
-                                                                  Compiler * /* inCompiler */) {
+outputInputActualParameterForGeneration_init_21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                              const GALGAS_string & in_mOutputInputVariableCppName,
+                                                              const GALGAS_lstringlist & in_mStructAttributeList,
+                                                              const GALGAS_unifiedTypeMapEntryList & in_mTypeList,
+                                                              Compiler * /* inCompiler */) {
   mProperty_mFormalArgumentType = in_mFormalArgumentType ;
   mProperty_mOutputInputVariableCppName = in_mOutputInputVariableCppName ;
   mProperty_mStructAttributeList = in_mStructAttributeList ;
@@ -2300,14 +2300,14 @@ GALGAS_actualParameterForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration::
-init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                      const GALGAS_string & in_mInputActualCppName,
-                      const GALGAS__32_stringlist & in_mPoisonedVarNameList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                  const GALGAS_string & in_mInputActualCppName,
+                  const GALGAS__32_stringlist & in_mPoisonedVarNameList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_inputJokerParameterForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_inputJokerParameterForGeneration (inCompiler COMMA_THERE)) ;
-  object->inputJokerParameterForGeneration_init_28__2C__2C__29_ (in_mFormalArgumentType, in_mInputActualCppName, in_mPoisonedVarNameList, inCompiler) ;
+  object->inputJokerParameterForGeneration_init_21__21__21_ (in_mFormalArgumentType, in_mInputActualCppName, in_mPoisonedVarNameList, inCompiler) ;
   const GALGAS_inputJokerParameterForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2316,10 +2316,10 @@ init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_inputJokerParameterForGeneration::
-inputJokerParameterForGeneration_init_28__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                       const GALGAS_string & in_mInputActualCppName,
-                                                       const GALGAS__32_stringlist & in_mPoisonedVarNameList,
-                                                       Compiler * /* inCompiler */) {
+inputJokerParameterForGeneration_init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                   const GALGAS_string & in_mInputActualCppName,
+                                                   const GALGAS__32_stringlist & in_mPoisonedVarNameList,
+                                                   Compiler * /* inCompiler */) {
   mProperty_mFormalArgumentType = in_mFormalArgumentType ;
   mProperty_mInputActualCppName = in_mInputActualCppName ;
   mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
@@ -3256,12 +3256,12 @@ GALGAS_semanticInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_semanticBlockInstructionForGeneration GALGAS_semanticBlockInstructionForGeneration::
-init_28__29_ (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21_ (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_semanticBlockInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_semanticBlockInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->semanticBlockInstructionForGeneration_init_28__29_ (in_mInstructionList, inCompiler) ;
+  object->semanticBlockInstructionForGeneration_init_21_ (in_mInstructionList, inCompiler) ;
   const GALGAS_semanticBlockInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3270,8 +3270,8 @@ init_28__29_ (const GALGAS_semanticInstructionListForGeneration & in_mInstructio
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_semanticBlockInstructionForGeneration::
-semanticBlockInstructionForGeneration_init_28__29_ (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
-                                                    Compiler * /* inCompiler */) {
+semanticBlockInstructionForGeneration_init_21_ (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                Compiler * /* inCompiler */) {
   mProperty_mInstructionList = in_mInstructionList ;
 }
 
@@ -11453,18 +11453,18 @@ GALGAS_semanticDeclarationForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration::
-init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mSyntaxComponentName,
-                                      const GALGAS_string & in_mLexiqueName,
-                                      const GALGAS_nonterminalMap & in_mNonterminalDeclarationMap,
-                                      const GALGAS_ruleDeclarationList & in_mRuleDeclarationList,
-                                      const GALGAS_uint & in_mSelectMethodCount,
-                                      const GALGAS_bool & in_mHasIndexing,
-                                      const GALGAS_bool & in_mHasTranslateFeature,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21_ (const GALGAS_string & in_mSyntaxComponentName,
+                                  const GALGAS_string & in_mLexiqueName,
+                                  const GALGAS_nonterminalMap & in_mNonterminalDeclarationMap,
+                                  const GALGAS_ruleDeclarationList & in_mRuleDeclarationList,
+                                  const GALGAS_uint & in_mSelectMethodCount,
+                                  const GALGAS_bool & in_mHasIndexing,
+                                  const GALGAS_bool & in_mHasTranslateFeature,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
   cPtr_syntaxDeclarationForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_syntaxDeclarationForGeneration (inCompiler COMMA_THERE)) ;
-  object->syntaxDeclarationForGeneration_init_28__2C__2C__2C__2C__2C__2C__29_ (in_mSyntaxComponentName, in_mLexiqueName, in_mNonterminalDeclarationMap, in_mRuleDeclarationList, in_mSelectMethodCount, in_mHasIndexing, in_mHasTranslateFeature, inCompiler) ;
+  object->syntaxDeclarationForGeneration_init_21__21__21__21__21__21__21_ (in_mSyntaxComponentName, in_mLexiqueName, in_mNonterminalDeclarationMap, in_mRuleDeclarationList, in_mSelectMethodCount, in_mHasIndexing, in_mHasTranslateFeature, inCompiler) ;
   const GALGAS_syntaxDeclarationForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11473,14 +11473,14 @@ init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mSyntaxComponentN
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_syntaxDeclarationForGeneration::
-syntaxDeclarationForGeneration_init_28__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_string & in_mSyntaxComponentName,
-                                                                     const GALGAS_string & in_mLexiqueName,
-                                                                     const GALGAS_nonterminalMap & in_mNonterminalDeclarationMap,
-                                                                     const GALGAS_ruleDeclarationList & in_mRuleDeclarationList,
-                                                                     const GALGAS_uint & in_mSelectMethodCount,
-                                                                     const GALGAS_bool & in_mHasIndexing,
-                                                                     const GALGAS_bool & in_mHasTranslateFeature,
-                                                                     Compiler * /* inCompiler */) {
+syntaxDeclarationForGeneration_init_21__21__21__21__21__21__21_ (const GALGAS_string & in_mSyntaxComponentName,
+                                                                 const GALGAS_string & in_mLexiqueName,
+                                                                 const GALGAS_nonterminalMap & in_mNonterminalDeclarationMap,
+                                                                 const GALGAS_ruleDeclarationList & in_mRuleDeclarationList,
+                                                                 const GALGAS_uint & in_mSelectMethodCount,
+                                                                 const GALGAS_bool & in_mHasIndexing,
+                                                                 const GALGAS_bool & in_mHasTranslateFeature,
+                                                                 Compiler * /* inCompiler */) {
   mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
   mProperty_mLexiqueName = in_mLexiqueName ;
   mProperty_mNonterminalDeclarationMap = in_mNonterminalDeclarationMap ;
@@ -14424,8 +14424,8 @@ GALGAS_currentVarManager::~ GALGAS_currentVarManager (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_currentVarManager GALGAS_currentVarManager::init_28__29_ (Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_currentVarManager GALGAS_currentVarManager::init (Compiler * inCompiler
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_currentVarManager result ;
   result.setInitializedProperties (inCompiler) ;
   return result ;

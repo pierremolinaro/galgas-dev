@@ -120,7 +120,7 @@ refclass @initializerAST : @semanticDeclarationAST {
   #·······························································································
 
   override getter keyRepresentation -> @string {
-    result = "initializer @" + self.mTypeName + [self.mFormalParameterList signature]
+    result = "initializer @" + self.mTypeName + "." + [self.mFormalParameterList initializerSignature]
   }
 
   #·······························································································
@@ -144,7 +144,7 @@ refclass @initializerAST : @semanticDeclarationAST {
     end
     with self.mTypeName in !?ioExtensionInitializerForBuildingContext error message searchKey  do
       [!?mExtensionInitializerMapForType insertKey
-        !@lstring.new {![self.mFormalParameterList signature] !self.mTypeName.location}
+        !@lstring.new {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
         !self.mFormalParameterList
       ]
     end
@@ -211,9 +211,9 @@ refclass @initializerAST : @semanticDeclarationAST {
       ?let formalParameterListForGeneration
     )
   #---
-    let initializerName = [self.mFormalParameterList signature]
+    let initializerName = [self.mFormalParameterList initializerSignature]
     ioSemanticDeclarationListForGeneration +=
-      !infoMessage: "initializer @" + self.mTypeName + initializerName
+      !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
       !@extensionInitializerForGeneration.new {
         !generateHeader: false # Generate Cpp header file
         !implementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
@@ -414,7 +414,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   if isStruct then
     outGeneratedCode = "GALGAS_" + [className identifierRepresentation]
        + " GALGAS_" + [className identifierRepresentation] 
-       + "::init" + [inInitializerName identifierRepresentation] + " ("
+       + "::" + [inInitializerName identifierRepresentation] + " ("
     let @uint colRef = [outGeneratedCode currentColumn]
   #---
     for formalArg in inFormalArgumentList do
@@ -444,7 +444,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   else # class
     outGeneratedCode = "GALGAS_" + [className identifierRepresentation]
        + " GALGAS_" + [className identifierRepresentation] 
-       + "::init" + [inInitializerName identifierRepresentation] + " ("
+       + "::" + [inInitializerName identifierRepresentation] + " ("
     let @uint colRef = [outGeneratedCode currentColumn]
   #---
     for formalArg in inFormalArgumentList do
@@ -465,7 +465,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     outGeneratedCode += "  macroMyNew (object, cPtr_" + [className identifierRepresentation]
     outGeneratedCode += " (" + compilerCppName () + " COMMA_THERE)) ;\n"
     outGeneratedCode += "  object->" + [className identifierRepresentation] 
-       + "_init" + [inInitializerName identifierRepresentation] + " ("
+       + "_" + [inInitializerName identifierRepresentation] + " ("
     for formalArg in inFormalArgumentList do
       outGeneratedCode +=  formalArg.mFormalArgumentCppName
       outGeneratedCode += ", "
@@ -477,7 +477,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     outGeneratedCode += "}\n\n"
     outGeneratedCode += "void cPtr_" + [className identifierRepresentation]
        + "::" + [className identifierRepresentation] 
-       + "_init" + [inInitializerName identifierRepresentation] + " ("
+       + "_" + [inInitializerName identifierRepresentation] + " ("
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then
         outGeneratedCode += "const "

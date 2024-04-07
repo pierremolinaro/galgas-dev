@@ -15,10 +15,10 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
   #endif
 
 //--------------------------------- Initializers
-  public: void nonTerminalInstructionForGrammarAnalysis_init_28__2C__2C__29_ (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_lstring & inOperand1,
-                                                                              const class GALGAS_uint & inOperand2,
-                                                                              Compiler * inCompiler) ;
+  public: void nonTerminalInstructionForGrammarAnalysis_init_21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                          const class GALGAS_lstring & inOperand1,
+                                                                          const class GALGAS_uint & inOperand2,
+                                                                          Compiler * inCompiler) ;
 
 
 //--- Extension getter isLinear

@@ -1004,11 +1004,11 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstructionGetColumnLocationForGeneration::
-init_28__29_ (Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init (Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionGetColumnLocationForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionGetColumnLocationForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateInstructionGetColumnLocationForGeneration_init_28__29_ (inCompiler) ;
+  object->templateInstructionGetColumnLocationForGeneration_init (inCompiler) ;
   const GALGAS_templateInstructionGetColumnLocationForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1017,7 +1017,7 @@ init_28__29_ (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionGetColumnLocationForGeneration::
-templateInstructionGetColumnLocationForGeneration_init_28__29_ (Compiler * /* inCompiler */) {
+templateInstructionGetColumnLocationForGeneration_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1264,11 +1264,11 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstructionGotoColumnLocationForGeneration::
-init_28__29_ (Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init (Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionGotoColumnLocationForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionGotoColumnLocationForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateInstructionGotoColumnLocationForGeneration_init_28__29_ (inCompiler) ;
+  object->templateInstructionGotoColumnLocationForGeneration_init (inCompiler) ;
   const GALGAS_templateInstructionGotoColumnLocationForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -1277,7 +1277,7 @@ init_28__29_ (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionGotoColumnLocationForGeneration::
-templateInstructionGotoColumnLocationForGeneration_init_28__29_ (Compiler * /* inCompiler */) {
+templateInstructionGotoColumnLocationForGeneration_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2011,13 +2011,13 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionIfForGeneration GALGAS_templateInstructionIfForGeneration::
-init_28__2C__29_ (const GALGAS_templateInstructionIfBranchListForGeneration & in_mTemplateInstructionIfBranchList,
-                  const GALGAS_templateInstructionListForGeneration & in_mElseInstructionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_templateInstructionIfBranchListForGeneration & in_mTemplateInstructionIfBranchList,
+              const GALGAS_templateInstructionListForGeneration & in_mElseInstructionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionIfForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionIfForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateInstructionIfForGeneration_init_28__2C__29_ (in_mTemplateInstructionIfBranchList, in_mElseInstructionList, inCompiler) ;
+  object->templateInstructionIfForGeneration_init_21__21_ (in_mTemplateInstructionIfBranchList, in_mElseInstructionList, inCompiler) ;
   const GALGAS_templateInstructionIfForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2026,9 +2026,9 @@ init_28__2C__29_ (const GALGAS_templateInstructionIfBranchListForGeneration & in
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionIfForGeneration::
-templateInstructionIfForGeneration_init_28__2C__29_ (const GALGAS_templateInstructionIfBranchListForGeneration & in_mTemplateInstructionIfBranchList,
-                                                     const GALGAS_templateInstructionListForGeneration & in_mElseInstructionList,
-                                                     Compiler * /* inCompiler */) {
+templateInstructionIfForGeneration_init_21__21_ (const GALGAS_templateInstructionIfBranchListForGeneration & in_mTemplateInstructionIfBranchList,
+                                                 const GALGAS_templateInstructionListForGeneration & in_mElseInstructionList,
+                                                 Compiler * /* inCompiler */) {
   mProperty_mTemplateInstructionIfBranchList = in_mTemplateInstructionIfBranchList ;
   mProperty_mElseInstructionList = in_mElseInstructionList ;
 }
@@ -2816,30 +2816,30 @@ GALGAS_predefinedTypes::~ GALGAS_predefinedTypes (void) {
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_predefinedTypes GALGAS_predefinedTypes::init_28__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const GALGAS_unifiedTypeMapEntry & in_mLocationType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mBoolType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mCharType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mStringType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mUIntType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mSIntType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mUInt_36__34_Type,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mSInt_36__34_Type,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mDoubleType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLBoolType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLCharType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLStringType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLUIntType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLSIntType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLUInt_36__34_Type,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLSInt_36__34_Type,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLDoubleType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mStringListType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLBigIntType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mBigIntType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mStringSetType,
-                                                                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mLStringListType,
-                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_predefinedTypes GALGAS_predefinedTypes::init_21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mLocationType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mBoolType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mCharType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mStringType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mUIntType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mSIntType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mUInt_36__34_Type,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mSInt_36__34_Type,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mDoubleType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLBoolType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLCharType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLStringType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLUIntType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLSIntType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLUInt_36__34_Type,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLSInt_36__34_Type,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLDoubleType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mStringListType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLBigIntType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mBigIntType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mStringSetType,
+                                                                                                                                             const GALGAS_unifiedTypeMapEntry & in_mLStringListType,
+                                                                                                                                             Compiler * inCompiler
+                                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLocationType = in_mLocationType ;
@@ -5045,14 +5045,14 @@ GALGAS_templateInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionSwitchAST GALGAS_templateInstructionSwitchAST::
-init_28__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mSwitchExpression,
-                      const GALGAS_location & in_mSwitchExpressionEndLocation,
-                      const GALGAS_templateInstructionSwitchBranchListAST & in_mTemplateInstructionSwitchBranchList,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_templateExpressionAST & in_mSwitchExpression,
+                  const GALGAS_location & in_mSwitchExpressionEndLocation,
+                  const GALGAS_templateInstructionSwitchBranchListAST & in_mTemplateInstructionSwitchBranchList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionSwitchAST * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionSwitchAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionSwitchAST_init_28__2C__2C__29_ (in_mSwitchExpression, in_mSwitchExpressionEndLocation, in_mTemplateInstructionSwitchBranchList, inCompiler) ;
+  object->templateInstructionSwitchAST_init_21__21__21_ (in_mSwitchExpression, in_mSwitchExpressionEndLocation, in_mTemplateInstructionSwitchBranchList, inCompiler) ;
   const GALGAS_templateInstructionSwitchAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5061,10 +5061,10 @@ init_28__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mSwitchExpression,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionSwitchAST::
-templateInstructionSwitchAST_init_28__2C__2C__29_ (const GALGAS_templateExpressionAST & in_mSwitchExpression,
-                                                   const GALGAS_location & in_mSwitchExpressionEndLocation,
-                                                   const GALGAS_templateInstructionSwitchBranchListAST & in_mTemplateInstructionSwitchBranchList,
-                                                   Compiler * /* inCompiler */) {
+templateInstructionSwitchAST_init_21__21__21_ (const GALGAS_templateExpressionAST & in_mSwitchExpression,
+                                               const GALGAS_location & in_mSwitchExpressionEndLocation,
+                                               const GALGAS_templateInstructionSwitchBranchListAST & in_mTemplateInstructionSwitchBranchList,
+                                               Compiler * /* inCompiler */) {
   mProperty_mSwitchExpression = in_mSwitchExpression ;
   mProperty_mSwitchExpressionEndLocation = in_mSwitchExpressionEndLocation ;
   mProperty_mTemplateInstructionSwitchBranchList = in_mTemplateInstructionSwitchBranchList ;
@@ -13074,13 +13074,13 @@ GALGAS_abstractLexicalRuleAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalExplicitRuleAST GALGAS_lexicalExplicitRuleAST::
-init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
-                  const GALGAS_lexicalInstructionListAST & in_mInstructionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
+              const GALGAS_lexicalInstructionListAST & in_mInstructionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalExplicitRuleAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalExplicitRuleAST (inCompiler COMMA_THERE)) ;
-  object->lexicalExplicitRuleAST_init_28__2C__29_ (in_mLexicalRuleExpression, in_mInstructionList, inCompiler) ;
+  object->lexicalExplicitRuleAST_init_21__21_ (in_mLexicalRuleExpression, in_mInstructionList, inCompiler) ;
   const GALGAS_lexicalExplicitRuleAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -13089,9 +13089,9 @@ init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalExplicitRuleAST::
-lexicalExplicitRuleAST_init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
-                                         const GALGAS_lexicalInstructionListAST & in_mInstructionList,
-                                         Compiler * /* inCompiler */) {
+lexicalExplicitRuleAST_init_21__21_ (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
+                                     const GALGAS_lexicalInstructionListAST & in_mInstructionList,
+                                     Compiler * /* inCompiler */) {
   mProperty_mLexicalRuleExpression = in_mLexicalRuleExpression ;
   mProperty_mInstructionList = in_mInstructionList ;
 }
@@ -14469,13 +14469,13 @@ GALGAS_lexicalExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_lexicalOrExpressionAST GALGAS_lexicalOrExpressionAST::
-init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
-                  const GALGAS_lexicalExpressionAST & in_mRightOperand,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21_ (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
+              const GALGAS_lexicalExpressionAST & in_mRightOperand,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
   cPtr_lexicalOrExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_lexicalOrExpressionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalOrExpressionAST_init_28__2C__29_ (in_mLeftOperand, in_mRightOperand, inCompiler) ;
+  object->lexicalOrExpressionAST_init_21__21_ (in_mLeftOperand, in_mRightOperand, inCompiler) ;
   const GALGAS_lexicalOrExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -14484,9 +14484,9 @@ init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalOrExpressionAST::
-lexicalOrExpressionAST_init_28__2C__29_ (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
-                                         const GALGAS_lexicalExpressionAST & in_mRightOperand,
-                                         Compiler * /* inCompiler */) {
+lexicalOrExpressionAST_init_21__21_ (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
+                                     const GALGAS_lexicalExpressionAST & in_mRightOperand,
+                                     Compiler * /* inCompiler */) {
   mProperty_mLeftOperand = in_mLeftOperand ;
   mProperty_mRightOperand = in_mRightOperand ;
 }

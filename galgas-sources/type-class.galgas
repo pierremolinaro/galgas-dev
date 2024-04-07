@@ -384,7 +384,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !.new {![synthetizedInitializerArgumentList signature] !self.mClassTypeName}
+        !.new {![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
         !synthetizedInitializerArgumentList
       ]
     end

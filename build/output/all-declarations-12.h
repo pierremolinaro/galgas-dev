@@ -2289,20 +2289,20 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_lexiqueComponentAST init_28_isPredefined_2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
-                                                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                                                  const class GALGAS_bool & inOperand2,
-                                                                                                                  const class GALGAS_templateDelimitorListAST & inOperand3,
-                                                                                                                  const class GALGAS_templateReplacementListAST & inOperand4,
-                                                                                                                  const class GALGAS_lexicalAttributeListAST & inOperand5,
-                                                                                                                  const class GALGAS_lexicalStyleListAST & inOperand6,
-                                                                                                                  const class GALGAS_terminalDeclarationListAST & inOperand7,
-                                                                                                                  const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
-                                                                                                                  const class GALGAS_lexicalListDeclarationListAST & inOperand9,
-                                                                                                                  const class GALGAS_lexicalRuleListAST & inOperand10,
-                                                                                                                  const class GALGAS_indexingListAST & inOperand11,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_lexiqueComponentAST init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_bool & inOperand0,
+                                                                                                              const class GALGAS_lstring & inOperand1,
+                                                                                                              const class GALGAS_bool & inOperand2,
+                                                                                                              const class GALGAS_templateDelimitorListAST & inOperand3,
+                                                                                                              const class GALGAS_templateReplacementListAST & inOperand4,
+                                                                                                              const class GALGAS_lexicalAttributeListAST & inOperand5,
+                                                                                                              const class GALGAS_lexicalStyleListAST & inOperand6,
+                                                                                                              const class GALGAS_terminalDeclarationListAST & inOperand7,
+                                                                                                              const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
+                                                                                                              const class GALGAS_lexicalListDeclarationListAST & inOperand9,
+                                                                                                              const class GALGAS_lexicalRuleListAST & inOperand10,
+                                                                                                              const class GALGAS_indexingListAST & inOperand11,
+                                                                                                              Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2362,19 +2362,19 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void lexiqueComponentAST_init_28_isPredefined_2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_bool & inOperand0,
-                                                                                                         const class GALGAS_lstring & inOperand1,
-                                                                                                         const class GALGAS_bool & inOperand2,
-                                                                                                         const class GALGAS_templateDelimitorListAST & inOperand3,
-                                                                                                         const class GALGAS_templateReplacementListAST & inOperand4,
-                                                                                                         const class GALGAS_lexicalAttributeListAST & inOperand5,
-                                                                                                         const class GALGAS_lexicalStyleListAST & inOperand6,
-                                                                                                         const class GALGAS_terminalDeclarationListAST & inOperand7,
-                                                                                                         const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
-                                                                                                         const class GALGAS_lexicalListDeclarationListAST & inOperand9,
-                                                                                                         const class GALGAS_lexicalRuleListAST & inOperand10,
-                                                                                                         const class GALGAS_indexingListAST & inOperand11,
-                                                                                                         Compiler * inCompiler) ;
+  public: void lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_bool & inOperand0,
+                                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                                     const class GALGAS_bool & inOperand2,
+                                                                                                     const class GALGAS_templateDelimitorListAST & inOperand3,
+                                                                                                     const class GALGAS_templateReplacementListAST & inOperand4,
+                                                                                                     const class GALGAS_lexicalAttributeListAST & inOperand5,
+                                                                                                     const class GALGAS_lexicalStyleListAST & inOperand6,
+                                                                                                     const class GALGAS_terminalDeclarationListAST & inOperand7,
+                                                                                                     const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
+                                                                                                     const class GALGAS_lexicalListDeclarationListAST & inOperand9,
+                                                                                                     const class GALGAS_lexicalRuleListAST & inOperand10,
+                                                                                                     const class GALGAS_indexingListAST & inOperand11,
+                                                                                                     Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
