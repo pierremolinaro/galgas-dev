@@ -43,7 +43,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
-    var @logListAST logList = <[]>
+    var @logListAST logList = §[]
     repeat
       select
         $identifier$ ?let loggedVariableName
@@ -84,7 +84,7 @@ syntax extension galgas4InstructionsSyntax {
                               !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
-    var @logListAST logList = <[]>
+    var @logListAST logList = §[]
     repeat
       select
         $identifier$ ?let loggedVariableName

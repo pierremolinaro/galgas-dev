@@ -56,7 +56,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   #--- Else part
     <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
     let endOfElseInstructions = @location.here
-    outElseInstructionList = <[]>
+    outElseInstructionList = §[]
     outElseInstructionList += !@parseWhenInstruction.new {
       !instructionLocation
       !whenExpression
@@ -125,7 +125,7 @@ syntax extension galgas4SyntaxComponentSyntax {
   #--- Else part
     <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
     let endOfElseInstructions = @location.here
-    outElseInstructionList = <[]>
+    outElseInstructionList = §[]
     outElseInstructionList += !@parseWhenInstruction.new {
       !instructionLocation
       !whenExpression

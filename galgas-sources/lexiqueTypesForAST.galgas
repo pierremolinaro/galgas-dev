@@ -390,7 +390,7 @@ map @lexicalTypeMap {
 func %once buildLexicalTypeMap
   ->@lexicalTypeMap outLexicalTypeMap
 {
-  outLexicalTypeMap = <[]>
+  outLexicalTypeMap = §[]
   [!?outLexicalTypeMap insertKey !@lstring.new {!"string" !@location.here} !.lexicalType_string]
   [!?outLexicalTypeMap insertKey !@lstring.new {!"char"   !@location.here} !.lexicalType_char]
   [!?outLexicalTypeMap insertKey !@lstring.new {!"uint"   !@location.here} !.lexicalType_uint]

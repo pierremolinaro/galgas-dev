@@ -128,7 +128,7 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
   if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       !self.mTypeName
-      !<[]>
+      !§[]
     ]
   end
   with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
@@ -186,7 +186,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
     error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].typeName.string + "' is not an abstract class"
   end
 #--- Compute method signature
-  var formalParameterListForGeneration = @formalParameterListForGeneration <[]>
+  var formalParameterListForGeneration = @formalParameterListForGeneration §[]
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector

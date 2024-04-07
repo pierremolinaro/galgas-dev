@@ -368,7 +368,7 @@ proc updateGalgasTargets
   end
 #---------------------------------------- Check target names, file base name uniqueness, and build target file list
 #--- Parse features
-  var @stringset availableGenerationFeatures = <[]>
+  var @stringset availableGenerationFeatures = §[]
   availableGenerationFeatures += !"quietOutputByDefault"
   availableGenerationFeatures += !"codeblocks-windows"
   availableGenerationFeatures += !"codeblocks-linux32"
@@ -379,7 +379,7 @@ proc updateGalgasTargets
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
   availableGenerationFeatures += !"makefile-win32-on-macosx"
   availableGenerationFeatures += !"MacOS"
-  var @stringset generationFeatures = <[]>
+  var @stringset generationFeatures = §[]
 #--- Check xcode target architectures
   var @string SDK = ""
   for (value) in inTargetFeatureList do
@@ -397,7 +397,7 @@ proc updateGalgasTargets
         generationFeatures += !value.string
       end
     else
-      var @stringlist s = <[]>
+      var @stringlist s = §[]
       for (key) in availableGenerationFeatures do
         s += !"%" + key
       end
@@ -470,7 +470,7 @@ proc updateGalgasTargets
     )
   end
 #--- Frameworks to link with tool
-  var @stringlist linkOptionForLinkingFrameworkWithTool = <[]>
+  var @stringlist linkOptionForLinkingFrameworkWithTool = §[]
   if [inFrameworkToolFileList count] > 0 then
     if SDK != "macosx" then
       linkOptionForLinkingFrameworkWithTool += !"-isysroot"
@@ -482,7 +482,7 @@ proc updateGalgasTargets
     end
   end
 #--- Update json file list
-  var @stringlist handCodedSourceToolFileList = <[]>
+  var @stringlist handCodedSourceToolFileList = §[]
   for (f) in inHandCodedSourceToolFileList do
     if [f pathExtension] != "h" then
       handCodedSourceToolFileList += ![f lastPathComponent]
@@ -533,7 +533,7 @@ proc updateGalgasTargets
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
-    let @stringlist extensionList = <[!"icns"]>
+    let @stringlist extensionList = §[!"icns"]
     let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
@@ -551,7 +551,7 @@ proc updateGalgasTargets
     end
     headerSearchPaths += ")"
   #--- Default build configuration
-    var @stringlist xcodeSettingList = <[
+    var @stringlist xcodeSettingList = §[
       !"ALWAYS_SEARCH_USER_PATHS = NO",
       !"CLANG_CXX_LANGUAGE_STANDARD = \"c++17\"",
       !"CLANG_ENABLE_OBJC_ARC = YES",
@@ -603,7 +603,7 @@ proc updateGalgasTargets
       !headerSearchPaths,
       !"SDKROOT = " + SDK,
       !"COPY_PHASE_STRIP = NO"
-    ]>
+    ]
     if SDK == "macosx10.6" then
       xcodeSettingList += !"CLANG_ENABLE_OBJC_ARC = NO"
       xcodeSettingList += !"GCC_ENABLE_OBJC_GC = required"
@@ -615,8 +615,8 @@ proc updateGalgasTargets
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList:xcodeSettingList]
   #--- Add "Hand coded sources (App)" group
-    var @stringlist m_HandCodedSourceFileRefForAppList = <[]>
-    var @stringlist m_HandCodedResourceFileRefForAppList = <[]>
+    var @stringlist m_HandCodedSourceFileRefForAppList = §[]
+    var @stringlist m_HandCodedResourceFileRefForAppList = §[]
     if [inHandCodedSourceAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (App)"
@@ -633,7 +633,7 @@ proc updateGalgasTargets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
   #--- Add "Frameworks for App" group
-    var @stringlist appFrameworksFileRefList = <[]>
+    var @stringlist appFrameworksFileRefList = §[]
     if [inHandCodedLinkAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName: "Frameworks (App)"
@@ -650,12 +650,12 @@ proc updateGalgasTargets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
     end
   #--- Mach O target
-    var @stringlist buildCFileRefListForTool = <[]>
-    var @stringlist buildCppFileRefListForTool = <[]>
-    var @stringlist m_FileRefList = <[]>
-    var @stringlist mm_FileRefList = <[]>
-    var @stringlist frameworksFileRefList = <[]>
-    var @stringlist resourceFileBuildRefs = <[]>
+    var @stringlist buildCFileRefListForTool = §[]
+    var @stringlist buildCppFileRefListForTool = §[]
+    var @stringlist m_FileRefList = §[]
+    var @stringlist mm_FileRefList = §[]
+    var @stringlist frameworksFileRefList = §[]
+    var @stringlist resourceFileBuildRefs = §[]
   #--- Add "Hand coded sources (Tool)" group
     if [inHandCodedSourceToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
@@ -673,7 +673,7 @@ proc updateGalgasTargets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
   #--- Add "Frameworks for tool" group
-    var @stringlist toolFrameworksFileRefList = <[]>
+    var @stringlist toolFrameworksFileRefList = §[]
     if [inFrameworkToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (Tool)"
@@ -703,12 +703,12 @@ proc updateGalgasTargets
       ?groupRef:var @string groupRef
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
-    var @stringlist libpmReferenceGroupList = <[]>
+    var @stringlist libpmReferenceGroupList = §[]
   #--- Add "BDD" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Binary Decision Diagrams"
       !groupPath:"bdd"
-      !fileNames: <[
+      !fileNames: §[
         !"BinaryDecisionDiagramRelationConfiguration.cpp",
         !"BinaryDecisionDiagramRelationConfiguration.h",
         !"BinaryDecisionDiagramRelation.cpp",
@@ -718,7 +718,7 @@ proc updateGalgasTargets
         !"BinaryDecisionDiagram-node.h",
         !"BinaryDecisionDiagram.cpp",
         !"BinaryDecisionDiagram.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -732,7 +732,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Big Integers"
       !groupPath:"big-integers"
-      !fileNames: <[
+      !fileNames: §[
         !"BigSigned-add.cpp",
         !"BigSigned-bit.cpp",
         !"BigSigned-chunk-operations.cpp",
@@ -770,7 +770,7 @@ proc updateGalgasTargets
         !"chunk-U32.h",
         !"chunk-U64.h",
         !"chunk-U8.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -784,13 +784,13 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Utilities"
       !groupPath:"cocoa_utilities"
-      !fileNames: <[
+      !fileNames: §[
         !"main.m",
         !"PMCancelButtonForPanel.h",
         !"PMCancelButtonForPanel.m",
         !"PMOkButtonForPanel.h",
         !"PMOkButtonForPanel.m"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -804,7 +804,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Objc GALGAS"
       !groupPath:"cocoa_objc_galgas"
-      !fileNames: <[
+      !fileNames: §[
         !"Base.lproj/OC_GGS_Document.xib",
         !"Base.lproj/PMDebug.xib",
         !"Base.lproj/MainMenu.xib",
@@ -856,7 +856,7 @@ proc updateGalgasTargets
         !"PMTableViewHandlesContextualMenu.m",
         !"PMUndoManager.h",
         !"PMUndoManager.m"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -870,11 +870,11 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Generic Arraies"
       !groupPath:"generic-arraies"
-      !fileNames: <[
+      !fileNames: §[
         !"TC_Array.h",
         !"TC_UniqueArray.h",
         !"TC_UniqueArray2.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -888,7 +888,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Command line Interface"
       !groupPath:"command_line_interface"
-      !fileNames: <[
+      !fileNames: §[
         !"F_mainForLIBPM.cpp",
         !"F_mainForLIBPM.h",
         !"builtin-command-line-options.cpp",
@@ -905,7 +905,7 @@ proc updateGalgasTargets
         !"StringCommandLineOption.h",
         !"StringListCommandLineOption.cpp",
         !"StringListCommandLineOption.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -919,7 +919,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"File"
       !groupPath:"files"
-      !fileNames: <[
+      !fileNames: §[
         !"FileManager.cpp",
         !"FileManager.h",
         !"AbstractFileHandle.cpp",
@@ -930,7 +930,7 @@ proc updateGalgasTargets
         !"TextFileWrite.h",
         !"HTMLFileWrite.cpp",
         !"HTMLFileWrite.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -944,7 +944,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Galgas"
       !groupPath:"galgas"
-      !fileNames: <[
+      !fileNames: §[
         !"AC_GALGAS_reference_class.cpp",
         !"AC_GALGAS_reference_class.h",
         !"AC_GALGAS_value_class.cpp",
@@ -1044,7 +1044,7 @@ proc updateGalgasTargets
         !"ComparisonResult.h",
         !"ComparisonKind.h",
         !"EnumerationOrder.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1058,14 +1058,14 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Streams"
       !groupPath:"streams"
-      !fileNames: <[
+      !fileNames: §[
         !"AbstractOutputStream.cpp",
         !"AbstractOutputStream.h",
         !"ConsoleOut.cpp",
         !"ConsoleOut.h",
         !"ColoredConsole.cpp",
         !"ColoredConsole.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1079,7 +1079,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Strings"
       !groupPath:"strings"
-      !fileNames: <[
+      !fileNames: §[
         !"String-class-getters.cpp",
         !"String-class.cpp",
         !"String-class.h",
@@ -1093,7 +1093,7 @@ proc updateGalgasTargets
         !"unicode_character_m.m",
         !"print.cpp",
         !"print.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1107,12 +1107,12 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Time"
       !groupPath:"time"
-      !fileNames: <[
+      !fileNames: §[
         !"DateTime.cpp",
         !"DateTime.h",
         !"Timer.cpp",
         !"Timer.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1126,7 +1126,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Utilities"
       !groupPath:"utilities"
-      !fileNames: <[
+      !fileNames: §[
         !"basic-allocation.cpp",
         !"basic-allocation.h",
         !"U8Data.cpp",
@@ -1159,7 +1159,7 @@ proc updateGalgasTargets
         !"TF_Swap.h",
         !"galgas-random.cpp",
         !"galgas-random.h"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1176,7 +1176,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Resources"
       !groupPath:"."
-      !fileNames: <[!"Info.plist"]>
+      !fileNames: §[!"Info.plist"]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1204,10 +1204,10 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Frameworks for App"
       !groupPath:"/System/Library/Frameworks"
-      !fileNames: <[
+      !fileNames: §[
         !"AppKit.framework",
         !"Cocoa.framework"
-      ]>
+      ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1220,29 +1220,29 @@ proc updateGalgasTargets
   #--- Code signing identity
     let @stringlist codeSigningSettingList
     if macCodeSign.string == "" then
-      codeSigningSettingList = <[!"CODE_SIGN_IDENTITY = \"-\""]>
+      codeSigningSettingList = §[!"CODE_SIGN_IDENTITY = \"-\""]
     else
       let components = [macCodeSign.string componentsSeparatedByString !":"]
       if [components count] != 2 then
         error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
       elsif [components mValueAtIndex !0] == "MacDeveloper" then
-        codeSigningSettingList = <[
+        codeSigningSettingList = §[
           !"CODE_SIGN_IDENTITY = \"Mac Developer\"",
           !"DEVELOPMENT_TEAM = \"" + [components mValueAtIndex !1] + "\""
-        ]>
+        ]
       elsif [components mValueAtIndex !0] == "Certificate" then
-        codeSigningSettingList = <[!"CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\""]>
+        codeSigningSettingList = §[!"CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\""]
       else
         error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" : codeSigningSettingList
       end
     end
   #--- Add Mach O release target
-    var @stringlist settingList = <[
+    var @stringlist settingList = §[
       !"GCC_OPTIMIZATION_LEVEL = 2",
       !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
       !"GCC_WARN_UNUSED_PARAMETER = YES",
       !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\""
-    ]> + codeSigningSettingList
+    ] + codeSigningSettingList
     if [inHandCodedLinkToolFileList count] > 0 then
       var s = "OTHER_LDFLAGS=("
       for (toolLink) in inHandCodedLinkToolFileList
@@ -1262,13 +1262,13 @@ proc updateGalgasTargets
       ?productFileRef:let releaseProductFileRef
     ]
   #--- Add Mach O debug target
-    settingList = <[
+    settingList = §[
       !"GCC_OPTIMIZATION_LEVEL = 0",
       !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
       !"GCC_PREPROCESSOR_DEFINITIONS = ()",
       !"GCC_WARN_UNUSED_PARAMETER = YES",
       !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\""
-    ]> + codeSigningSettingList
+    ] + codeSigningSettingList
     if [inHandCodedLinkToolFileList count] > 0 then
       var s = "OTHER_LDFLAGS=("
       for (toolLink) in inHandCodedLinkToolFileList
@@ -1288,10 +1288,10 @@ proc updateGalgasTargets
       ?productFileRef:let debugProductFileRef
     ]
   #--- Add Cocoa target
-    let @stringlist cocoaConfigurationSettingList = <[
+    let @stringlist cocoaConfigurationSettingList = §[
       !"GCC_OPTIMIZATION_LEVEL = 0",
       !"GCC_PREPROCESSOR_DEFINITIONS = ()"
-    ]> + codeSigningSettingList
+    ] + codeSigningSettingList
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName
       !productFileName:"Cocoa" + [inTargetName stringByCapitalizingFirstCharacter]
@@ -1299,8 +1299,8 @@ proc updateGalgasTargets
       !frameworkFileRefs:frameworksFileRefList + appFrameworksFileRefList
       !resourceFileRefs:resourceFileBuildRefs + m_HandCodedResourceFileRefForAppList
       !buildConfigurationSettingList: cocoaConfigurationSettingList
-      !dependantTargetList: <[!releaseTargetRef, !debugTargetRef]>
-      !productCopyList: <[!releaseProductFileRef !inTargetName, !debugProductFileRef !inTargetName + "-debug"]>
+      !dependantTargetList: §[!releaseTargetRef, !debugTargetRef]
+      !productCopyList: §[!releaseProductFileRef !inTargetName, !debugProductFileRef !inTargetName + "-debug"]
       ?productFileRef:*
     ]
   #--- Generate project

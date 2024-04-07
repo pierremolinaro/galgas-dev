@@ -505,8 +505,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
    kToken__21__3D__3D_ /* 186 */ ,
    kToken__3F__5E_ /* 187 */ ,
    kToken__21__5E_ /* 188 */ ,
-   kToken__3C__5B_ /* 189 */ ,
-   kToken__5D__3E_ /* 190 */ } ;
+   kToken__A7__5B_ /* 189 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -610,7 +609,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 190 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 189 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

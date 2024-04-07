@@ -50,7 +50,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                         !@semanticInstructionListAST outInstructionsList {
-    outInstructionsList = @semanticInstructionListAST <[]>
+    outInstructionsList = @semanticInstructionListAST §[]
     select
     or
       repeat
@@ -262,7 +262,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   rule <actual_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@actualInputParameterListAST outActualInputParameterList {
-    outActualInputParameterList = @actualInputParameterListAST <[]>
+    outActualInputParameterList = @actualInputParameterListAST §[]
     repeat
     while
       let @lstring selector
@@ -345,7 +345,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionListAST outInstructionsList {
-    outInstructionsList = @semanticInstructionListAST <[]>
+    outInstructionsList = @semanticInstructionListAST §[]
     select
     or
       repeat
@@ -558,7 +558,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   rule <actual_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                      !@actualInputParameterListAST outActualInputParameterList {
-    outActualInputParameterList = @actualInputParameterListAST <[]>
+    outActualInputParameterList = @actualInputParameterListAST §[]
     select
     or
       $($

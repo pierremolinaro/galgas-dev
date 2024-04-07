@@ -48,7 +48,7 @@ syntax extension templateSyntax {
     <expression_tpl> ?let switchExpression
     let @location endOfSwitchExpression = .here
   #--- Loop on "case" clauses
-    var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = <[]>
+    var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = §[]
     repeat
     while
       $case$
@@ -56,7 +56,7 @@ syntax extension templateSyntax {
         ?let @lstringlist constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
-      var @templateInstructionListAST instructionList = <[]>
+      var @templateInstructionListAST instructionList = §[]
       repeat
         enterTemplateString (!?instructionList)
       while
@@ -77,14 +77,14 @@ syntax extension templateSyntax {
 
   rule <switch_case> !@lstringlist outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
-    outConstantNameList = <[]>
+    outConstantNameList = §[]
     repeat
       $identifier$ ?let @lstring constantName
       outConstantNameList += !constantName
     while
       $,$
     end
-    outAssociatedValuesExtraction = <[]>
+    outAssociatedValuesExtraction = §[]
     select
     or
       $($
@@ -145,11 +145,11 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     ?let switchExpression
   ]
   if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap] then
-    var @stringset constantsNamedInSwitchInstruction = <[]>
+    var @stringset constantsNamedInSwitchInstruction = §[]
   #--- Analyze branches
-    var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = <[]>
+    var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = §[]
     for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.mTemplateInstructionSwitchBranchList do
-      var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = <[]>
+      var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = §[]
       var @bool firstConstant = true
       var analysisContext = inAnalysisContext
       for (mValue) in mConstantList do
@@ -192,7 +192,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
         end
         firstConstant = false
       end
-      var @templateInstructionListForGeneration instructionList = <[]>
+      var @templateInstructionListForGeneration instructionList = §[]
       templateInstructionListAnalysis (
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

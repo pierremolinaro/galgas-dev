@@ -46,7 +46,7 @@ syntax extension galgas3DeclarationsSyntax {
       isUsefull = true
     end
     ${$
-    var @propertyInCollectionListAST propertyList = <[]>
+    var @propertyInCollectionListAST propertyList = §[]
     repeat
     while
       <property_declaration_ggs3> !?ioDeclarations !?propertyList
@@ -88,7 +88,7 @@ syntax extension galgas4DeclarationsSyntax {
       isUsefull = true
     end
     ${$
-    var @propertyInCollectionListAST propertyList = <[]>
+    var @propertyInCollectionListAST propertyList = §[]
     repeat
     while
       <property_declaration> !?ioDeclarations !?propertyList
@@ -139,7 +139,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Handle attributes
-  var @typedPropertyList typedAttributeList = <[]>
+  var @typedPropertyList typedAttributeList = §[]
   for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
@@ -157,10 +157,10 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Property description
-  var @enumerationDescriptorList enumerationDescriptor = <[]>
-  var @functionSignature constructorAttributeTypeList = <[]>
-  var @formalParameterSignature setterOutputFormalArgumentList = <[]>
-  var @formalParameterSignature setterInputFormalArgumentList = <[]>
+  var @enumerationDescriptorList enumerationDescriptor = §[]
+  var @functionSignature constructorAttributeTypeList = §[]
+  var @formalParameterSignature setterOutputFormalArgumentList = §[]
+  var @formalParameterSignature setterInputFormalArgumentList = §[]
   for (mPropertyTypeEntry mPropertyName * * mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
@@ -181,7 +181,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !mPropertyName.string
   end
 #--- Class functions
-  var @classFunctionMap classFunctionMap = <[]>
+  var @classFunctionMap classFunctionMap = §[]
   enterClassFunctionWithoutArgument (
     !?classFunctionMap
     !?ioTypeMap
@@ -241,7 +241,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !@lstring.new {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
-      !@functionSignature <[!["" nowhere] !uintType !"inIndex"  !true]>
+      !@functionSignature §[!["" nowhere] !uintType !"inIndex"  !true]
       !@location.here
       !true
       !mPropertyTypeEntry
@@ -250,7 +250,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #------------------------- Instance methods
-  var @instanceMethodMap instanceMethodMap = <[]>
+  var @instanceMethodMap instanceMethodMap = §[]
   [!?instanceMethodMap insertKey
     !@lstring.new {!"first" !@location.here}
     !@methodKind.definedAsMember
@@ -270,7 +270,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !""
   ]
 #----------------------------------------- Modifiers
-  var @setterMap setterMap = <[]>
+  var @setterMap setterMap = §[]
   [!?setterMap insertOrReplace
     !@lstring.new {!"append" !@location.here}
     !@methodKind.definedAsMember
@@ -306,7 +306,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   ]
   for (mPropertyTypeEntry mPropertyName * mHasSetter *) in typedAttributeList do
     if mHasSetter then
-      var setterFormalArgumentList = @formalParameterSignature <[]>
+      var setterFormalArgumentList = @formalParameterSignature §[]
       setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace
@@ -330,7 +330,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #--- Add extensions
-  var @initializerMap initializerMap = <[]>
+  var @initializerMap initializerMap = §[]
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -355,20 +355,20 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !typeKind: .listType
     !supportCollectionValue: true # Support collection value
     !allTypedPropertyList: typedAttributeList
-    !propertyMap: <[]>
-    !currentTypedPropertyList: <[]>
+    !propertyMap: §[]
+    !currentTypedPropertyList: §[]
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: <[]>
-    !optionalMethodMap: <[]>
+    !classMethodMap: §[]
+    !optionalMethodMap: §[]
     !enumerationDescriptorList: enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator | .isComparable
     !constructorAttributeTypeList
-    !@mapSearchMethodListAST <[]>
-    !@mapSearchMethodListAST <[]>
+    !@mapSearchMethodListAST §[]
+    !@mapSearchMethodListAST §[]
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyList" # Default constructor
@@ -383,7 +383,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
 {
-  var @propertyInCollectionListAST structAttributeList = <[]>
+  var @propertyInCollectionListAST structAttributeList = §[]
   for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
       !isConstant: isConstant
@@ -424,8 +424,8 @@ override method @listDeclarationAST semanticAnalysis
     ioUsefulnessRootEntities += !nameForUsefulness
   end
 #---
-  var @typedPropertyList typedAttributeList = <[]>
-  var @propertyIndexMap attributeMap = <[]>
+  var @typedPropertyList typedAttributeList = §[]
+  var @propertyIndexMap attributeMap = §[]
   for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error propertyName : "property initialization is not handled for a list"

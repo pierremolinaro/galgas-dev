@@ -70,7 +70,7 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
 #}
 #
 #proc @adjMat.addNode() {
-#   let tmp = @stringlist <[]>
+#   let tmp = @stringlist §[]
 #   self.nodes = tmp
 #}
 
@@ -84,9 +84,9 @@ private proc typeCastInSetterCall () {
 
 }
 
-class @baseClassForTypeCastInSetterCall <[]>
+class @baseClassForTypeCastInSetterCall §[]
 
-class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall <[]>
+class @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall §[]
 
 proc @inheritedClassForTypeCastInSetterCall.unSetter() {
   println ("Appel @inheritedClassForTypeCastInSetterCall unSetter")

@@ -136,7 +136,7 @@ override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
   if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       ! self.mTypeName
-      !<[]>
+      !§[]
     ]
   end
   with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
@@ -190,7 +190,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
 #--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
-  var inheritedSignature = @formalParameterSignature <[]>
+  var inheritedSignature = @formalParameterSignature §[]
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do

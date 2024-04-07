@@ -218,7 +218,7 @@ proc performGalgas3ProjectGlobalCheckings
   end
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
-  var @descendantClassListMap descendantClassListMap = <[]>
+  var @descendantClassListMap descendantClassListMap = §[]
   for (lkey element) in ioTypeMap do
      let superType = [element definition].superType
      if not [superType isNull] then
@@ -228,18 +228,18 @@ proc performGalgas3ProjectGlobalCheckings
      end
   end
 #--- Build Extension method listmaps
-  var @genericExtensionMethodListMap abstractExtensionMethodListMap = <[]>
-  var @genericExtensionMethodListMap extensionMethodListMap = <[]>
-  var @genericExtensionMethodListMap overridingExtensionMethodListMap = <[]>
-  var @genericExtensionMethodListMap overridingAbstractExtensionMethodListMap = <[]>
-  var @genericExtensionMethodListMap abstractExtensionGetterListMap = <[]>
-  var @genericExtensionMethodListMap extensionReaderListMap = <[]>
-  var @genericExtensionMethodListMap overridingExtensionGetterListMap = <[]>
-  var @genericExtensionMethodListMap overridingAbstractExtensionGetterListMap = <[]>
-  var @genericExtensionMethodListMap abstractExtensionSetterListMap = <[]>
-  var @genericExtensionMethodListMap extensionSetterListMap = <[]>
-  var @genericExtensionMethodListMap overridingExtensionSetterListMap = <[]>
-  var @genericExtensionMethodListMap overridingAbstractExtensionSetterListMap = <[]>
+  var @genericExtensionMethodListMap abstractExtensionMethodListMap = §[]
+  var @genericExtensionMethodListMap extensionMethodListMap = §[]
+  var @genericExtensionMethodListMap overridingExtensionMethodListMap = §[]
+  var @genericExtensionMethodListMap overridingAbstractExtensionMethodListMap = §[]
+  var @genericExtensionMethodListMap abstractExtensionGetterListMap = §[]
+  var @genericExtensionMethodListMap extensionReaderListMap = §[]
+  var @genericExtensionMethodListMap overridingExtensionGetterListMap = §[]
+  var @genericExtensionMethodListMap overridingAbstractExtensionGetterListMap = §[]
+  var @genericExtensionMethodListMap abstractExtensionSetterListMap = §[]
+  var @genericExtensionMethodListMap extensionSetterListMap = §[]
+  var @genericExtensionMethodListMap overridingExtensionSetterListMap = §[]
+  var @genericExtensionMethodListMap overridingAbstractExtensionSetterListMap = §[]
   for (mSemanticDeclaration) in inSemanticDeclarationList do
     [mSemanticDeclaration buildExtensionListMaps
       !?abstractExtensionSetterListMap
@@ -260,28 +260,28 @@ proc performGalgas3ProjectGlobalCheckings
   if @uint.errorCount == 0 then
   #--- A given abstract extension setter is defined only once for a class
     for (* mList) in abstractExtensionSetterListMap do
-      var @extensionSetterMapForGlobalCheckings extensionSetterMap = <[]>
+      var @extensionSetterMapForGlobalCheckings extensionSetterMap = §[]
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
   #--- A given base extension setter is defined only once for a class
     for (* mList) in extensionSetterListMap do
-      var @extensionSetterMapForGlobalCheckings extensionSetterMap = <[]>
+      var @extensionSetterMapForGlobalCheckings extensionSetterMap = §[]
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
   #--- A given overriding extension setter is defined only once for a class
     for (* mList) in overridingExtensionSetterListMap do
-      var @extensionSetterMapForGlobalCheckings extensionSetterMap = <[]>
+      var @extensionSetterMapForGlobalCheckings extensionSetterMap = §[]
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
   #--- A given overriding abstract extension setter is defined only once for a class
     for (* mList) in overridingAbstractExtensionMethodListMap do
-      var @extensionSetterMapForGlobalCheckings extensionSetterMap = <[]>
+      var @extensionSetterMapForGlobalCheckings extensionSetterMap = §[]
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
@@ -314,28 +314,28 @@ proc performGalgas3ProjectGlobalCheckings
     end
   #--- A given abstract extension method is defined only once for a class
     for (* mList) in abstractExtensionMethodListMap do
-      var @extensionMethodMapForGlobalCheckings extensionMethodMap = <[]>
+      var @extensionMethodMapForGlobalCheckings extensionMethodMap = §[]
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
   #--- A given base extension method is defined only once for a class
     for (* mList) in extensionMethodListMap do
-      var @extensionMethodMapForGlobalCheckings extensionMethodMap = <[]>
+      var @extensionMethodMapForGlobalCheckings extensionMethodMap = §[]
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
   #--- A given overriding extension method is defined only once for a class
     for (* mList) in overridingExtensionMethodListMap do
-      var @extensionMethodMapForGlobalCheckings extensionMethodMap = <[]>
+      var @extensionMethodMapForGlobalCheckings extensionMethodMap = §[]
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
   #--- A given overriding abstract extension method is defined only once for a class
     for (* mList) in overridingAbstractExtensionMethodListMap do
-      var @extensionMethodMapForGlobalCheckings extensionMethodMap = <[]>
+      var @extensionMethodMapForGlobalCheckings extensionMethodMap = §[]
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
@@ -370,21 +370,21 @@ proc performGalgas3ProjectGlobalCheckings
 ##--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
   #--- A given abstract extension getter is defined only once for a class
     for (* mList) in abstractExtensionGetterListMap do
-      var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = <[]>
+      var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = §[]
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
   #--- A given base extension getter is defined only once for a class
     for (* mList) in extensionReaderListMap do
-      var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = <[]>
+      var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = §[]
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
   #--- A given overriding extension getter is defined only once for a class
     for (* mList) in overridingExtensionGetterListMap do
-      var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = <[]>
+      var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = §[]
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end

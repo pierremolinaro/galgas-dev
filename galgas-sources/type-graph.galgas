@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
     <type_definition_ggs3> !?ioDeclarations ?let associatedListTypeName
     $)$
     ${$
-    var graphInsertModifierList = @graphInsertModifierList <[]>
+    var graphInsertModifierList = @graphInsertModifierList §[]
     repeat
     while
       $insert$
@@ -82,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
     <type_definition> !?ioDeclarations ?let associatedListTypeName
     $)$
     ${$
-    var graphInsertModifierList = @graphInsertModifierList <[]>
+    var graphInsertModifierList = @graphInsertModifierList §[]
     repeat
     while
       $%insertSetter$
@@ -159,11 +159,11 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #---
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @classFunctionMap classFunctionMap = <[]>
-  var @setterMap setterMap = <[]>
-  var @instanceMethodMap instanceMethodMap = <[]>
+  var @classFunctionMap classFunctionMap = §[]
+  var @setterMap setterMap = §[]
+  var @instanceMethodMap instanceMethodMap = §[]
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
-  var formalParameterList = @formalParameterSignature <[]>
+  var formalParameterList = @formalParameterSignature §[]
   formalParameterList +=
     !["" nowhere]
     !associatedListTypeEntry
@@ -204,7 +204,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #  drop formalParameterList
 #--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
-  formalParameterList = <[]>
+  formalParameterList = §[]
   formalParameterList +=
     !["" nowhere]
     !associatedListTypeEntry
@@ -371,12 +371,12 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
 #--- Constructor 'emptyGraph'
   [!?classFunctionMap insertKey
     !@lstring.new {!"emptyGraph" !@location.here}
-    !<[]>
+    !§[]
     !false # No compiler argument
     !graphTypeEntry
   ]
 #--- setter 'enterNode'
-  formalParameterList = <[]>
+  formalParameterList = §[]
   formalParameterList +=
     !["" nowhere]
     !lstringTypeEntry
@@ -405,13 +405,13 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   [!?setterMap insertKey
     !@lstring.new {!"removeEdgesToDominators" !@location.here}
     !@methodKind.definedAsMember
-    !<[]>
+    !§[]
     !false # No compiler argument
     !@methodQualifier. isInherited
     !"" # No error message
   ]
 #--- setter 'removeEdgesToNode'
-  formalParameterList = @formalParameterSignature <[]>
+  formalParameterList = @formalParameterSignature §[]
   formalParameterList += !["" nowhere] !stringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
   [!?setterMap insertKey
     !@lstring.new {!"removeEdgesToNode" !@location.here}
@@ -423,7 +423,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #  drop formalParameterList
 #--- setter 'addEdge'
-  formalParameterList = @formalParameterSignature <[]>
+  formalParameterList = @formalParameterSignature §[]
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
   [!?setterMap insertKey
@@ -436,7 +436,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #  drop formalParameterList
 #--- setter 'noteNode'
-  formalParameterList = @formalParameterSignature <[]>
+  formalParameterList = @formalParameterSignature §[]
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
   [!?setterMap insertKey
     !@lstring.new {!"noteNode" !@location.here}
@@ -448,7 +448,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #  drop formalParameterList
 #--- Add Categories
-  var @initializerMap initializerMap = <[]>
+  var @initializerMap initializerMap = §[]
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -472,21 +472,21 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !superType: .null
     !typeKind: .graphType
     !supportCollectionValue: false # Does not support collection value
-    !allTypedPropertyList: <[]>
-    !propertyMap: <[]>
-    !currentTypedPropertyList: <[]>
+    !allTypedPropertyList: §[]
+    !propertyMap: §[]
+    !currentTypedPropertyList: §[]
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: <[]>
-    !optionalMethodMap: <[]>
-    !enumerationDescriptorList: <[]>
+    !classMethodMap: §[]
+    !optionalMethodMap: §[]
+    !enumerationDescriptorList: §[]
     !.doNotGenererateObjectCompare
-    !@functionSignature <[]>
-    !@mapSearchMethodListAST <[]>
-    !@mapSearchMethodListAST <[]>
+    !@functionSignature §[]
+    !@mapSearchMethodListAST §[]
+    !@mapSearchMethodListAST §[]
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !.null # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyGraph" # Default constructor
@@ -524,7 +524,7 @@ override method @graphDeclarationAST semanticAnalysis
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"
   end
 #--- Analyze insert methods
-  let @stringset reservedModifierNames = <[!"noteNode", !"addArc"]>
+  let @stringset reservedModifierNames = §[!"noteNode", !"addArc"]
   for (mInsertModifierName mInsertErrorMessage) in self.mInsertModifierList do
     if [reservedModifierNames hasKey !mInsertModifierName.string] then
       error mInsertModifierName : "the '" + mInsertModifierName + "' setter name is reserved for a graph type"

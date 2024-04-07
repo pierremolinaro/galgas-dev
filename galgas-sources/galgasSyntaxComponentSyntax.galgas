@@ -64,8 +64,8 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     end
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList = @nonterminalDeclarationListAST <[]>
-    var ruleList = @syntaxRuleListAST <[]>
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST §[]
+    var ruleList = @syntaxRuleListAST §[]
     repeat
     while
       <nonterminal_declaration> !?ioDeclarations !?nonterminalDeclarationList
@@ -92,8 +92,8 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     $identifier$ ?let @lstring syntaxComponentName
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList = @nonterminalDeclarationListAST <[]>
-    var ruleList = @syntaxRuleListAST <[]>
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST §[]
+    var ruleList = @syntaxRuleListAST §[]
     repeat
     while
       <nonterminal_declaration> !?ioDeclarations !?nonterminalDeclarationList
@@ -117,7 +117,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
                                  ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-    var @nonTerminalLabelListAST labels = <[]>
+    var @nonTerminalLabelListAST labels = §[]
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST firstBranchFormalParameters
     labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
     repeat
@@ -156,7 +156,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var labelName = @lstring.new{!"" !@location.here}
-    var mLabelList = @syntaxRuleLabelListAST <[]>
+    var mLabelList = @syntaxRuleLabelListAST §[]
     repeat
       <syntax_rule_label> !?ioDeclarations !labelName !?mLabelList
     while
@@ -174,7 +174,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 
   rule <syntax_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                       !@syntaxInstructionList outSyntaxInstructionList {
-    outSyntaxInstructionList = <[]>
+    outSyntaxInstructionList = §[]
     select
     or
       repeat
@@ -260,8 +260,8 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     end
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList = @nonterminalDeclarationListAST <[]>
-    var ruleList = @syntaxRuleListAST <[]>
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST §[]
+    var ruleList = @syntaxRuleListAST §[]
     repeat
     while
       <nonterminal_declaration> !?ioDeclarations !? nonterminalDeclarationList
@@ -288,8 +288,8 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $identifier$ ?let @lstring syntaxComponentName
     ${$
   #--- Loop on declarations
-    var nonterminalDeclarationList = @nonterminalDeclarationListAST <[]>
-    var ruleList = @syntaxRuleListAST <[]>
+    var nonterminalDeclarationList = @nonterminalDeclarationListAST §[]
+    var ruleList = @syntaxRuleListAST §[]
     repeat
     while
       <nonterminal_declaration> !?ioDeclarations !? nonterminalDeclarationList
@@ -313,7 +313,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
                                  ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-    var @nonTerminalLabelListAST labels = <[]>
+    var @nonTerminalLabelListAST labels = §[]
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST firstBranchFormalParameters
     labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
     repeat
@@ -352,7 +352,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var labelName = @lstring.new{!"" !@location.here}
-    var mLabelList = @syntaxRuleLabelListAST <[]>
+    var mLabelList = @syntaxRuleLabelListAST §[]
     repeat
       <syntax_rule_label> !?ioDeclarations !labelName !?mLabelList
     while
@@ -370,7 +370,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
   rule <syntax_instruction_list> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionList outSyntaxInstructionList {
-    outSyntaxInstructionList = <[]>
+    outSyntaxInstructionList = §[]
     select
     or
       repeat

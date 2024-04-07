@@ -220,7 +220,7 @@ syntax jsonSyntax (jsonScanner) {
 
   rule <object> !@jsonObjectValue outObjectValue {
     ${$
-    outObjectValue = <[]>
+    outObjectValue = §[]
     repeat
       $"string"$ ?let keyValue
       $:$
@@ -236,7 +236,7 @@ syntax jsonSyntax (jsonScanner) {
 
   rule <array> !@jsonArrayValue outArrayValue {
     $[$
-    outArrayValue = <[]>
+    outArrayValue = §[]
     repeat
       <value> ?let value
       outArrayValue += !value

@@ -2,7 +2,7 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper generationTemplate in "."
-<[]><[]>{
+§[]§[]{
  template svg "logo-svg.galgasTemplate"
   ?@string TITLE
   ?@string DRAWINGS

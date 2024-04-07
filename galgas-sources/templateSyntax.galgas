@@ -349,7 +349,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
-  var @stringlist literalStringList = <[]>
+  var @stringlist literalStringList = §[]
   repeat
     $"string"$ ?let @lstring literalString
     literalStringList += !literalString.string
@@ -486,7 +486,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList {
-  outExpressionList = <[]>
+  outExpressionList = §[]
   repeat
   while
     $!selector:$ ?let selector
@@ -533,7 +533,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   <expression_tpl> ?let @templateExpressionAST expression
   $:$
 #--- Instruction list
-  var blockInstructionList = @templateInstructionListAST <[]>
+  var blockInstructionList = @templateInstructionListAST §[]
   repeat
     enterTemplateString (!?blockInstructionList)
   while
@@ -551,11 +551,11 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $if$
-  var templateInstructionIfBranchList = @templateInstructionIfBranchListAST <[]>
+  var templateInstructionIfBranchList = @templateInstructionIfBranchListAST §[]
   repeat
     <expression_tpl> ?let expression
     $then$
-    var @templateInstructionListAST instructionList = <[]>
+    var @templateInstructionListAST instructionList = §[]
     repeat
       enterTemplateString (!?instructionList)
     while
@@ -566,7 +566,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
     $elsif$
   end
 #--- else
-  var @templateInstructionListAST elseInstructionList = <[]>
+  var @templateInstructionListAST elseInstructionList = §[]
   select
   or
     $else$
@@ -586,7 +586,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_parser_start_symbol> !@templateInstructionListAST outResultingInstructionList {
-  outResultingInstructionList = <[]>
+  outResultingInstructionList = §[]
   repeat
     enterTemplateString (!?outResultingInstructionList)
   while

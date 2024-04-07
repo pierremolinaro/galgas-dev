@@ -83,14 +83,14 @@ syntax extension galgas3InstructionsSyntax {
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
-      else_instructionList = @semanticInstructionListAST <[]>
+      else_instructionList = @semanticInstructionListAST §[]
     or
       $else$
       <semantic_instruction_list_ggs3> !?ioDeclarations ?else_instructionList
     or
       $elsif$
       <if_instruction_core> !?ioDeclarations ?let instruction
-      else_instructionList = <[!instruction]>
+      else_instructionList = §[!instruction]
     end
     outInstruction = @ifInstructionAST.new {
       !instructionLocation
@@ -115,7 +115,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@ifExpressionList outExpressionList {
-    outExpressionList = <[]>
+    outExpressionList = §[]
     repeat
       select
         $let$
@@ -151,7 +151,7 @@ syntax extension galgas3InstructionsSyntax {
         $[$
         <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
-        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = <[]>
+        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = §[]
         repeat
         while
           let @lstring selector
@@ -257,14 +257,14 @@ syntax extension galgas4InstructionsSyntax {
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
-      else_instructionList = <[]>
+      else_instructionList = §[]
     or
       $else$
       <semantic_instruction_list> !?ioDeclarations ?else_instructionList
     or
       $elsif$
       <if_instruction_core> !?ioDeclarations ?let instruction
-      else_instructionList = <[!instruction]>
+      else_instructionList = §[!instruction]
     end
     outInstruction = @ifInstructionAST.new {
       !instructionLocation
@@ -289,7 +289,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
                        !@ifExpressionList outExpressionList {
-    outExpressionList = <[]>
+    outExpressionList = §[]
     repeat
       select
         $let$
@@ -325,7 +325,7 @@ syntax extension galgas4InstructionsSyntax {
         $[$
         <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
-        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = <[]>
+        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = §[]
         repeat
         while
           $!selector:$ ?let selector
@@ -470,7 +470,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   ?!@localVarManager ioVariableMap
 {
 #--- Test expression
-  var @ifTestListForGeneration testListForGeneration = <[]>
+  var @ifTestListForGeneration testListForGeneration = §[]
   for (expression) in self.mExpressions do
     switch expression
     case regularExp (exp endOfExpression) :
@@ -596,9 +596,9 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: <[]>
-    !localInitializedVariableListWarnsIfNotMutated: <[]>
-    !localInitializedVariableListNoWarnsIfNotMutated: <[]>
+    !localConstantList: §[]
+    !localInitializedVariableListWarnsIfNotMutated: §[]
+    !localInitializedVariableListNoWarnsIfNotMutated: §[]
     !self.m_then_instructionList
     !?ioVariableMap
     ?let then_instructionList
@@ -616,9 +616,9 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: <[]>
-    !localInitializedVariableListWarnsIfNotMutated: <[]>
-    !localInitializedVariableListNoWarnsIfNotMutated: <[]>
+    !localConstantList: §[]
+    !localInitializedVariableListWarnsIfNotMutated: §[]
+    !localInitializedVariableListNoWarnsIfNotMutated: §[]
     !self.m_else_instructionList
     !self.mEndOf_if_instruction
     !?ioVariableMap
@@ -680,7 +680,7 @@ private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityNam
     + [optionalMethodSignature count] + " parameter(s), while this call has "
     + [inActualParameters count] + " parameter(s)"
   else
-    var @optionalMethodActualArgumentListForGeneration actualParameterList = <[]>
+    var @optionalMethodActualArgumentListForGeneration actualParameterList = §[]
     for (actualSelector actualParameter) in inActualParameters,
         (* formalSelector formalType *) in optionalMethodSignature do
       switch actualParameter
@@ -867,7 +867,7 @@ override method @ifInstructionForGeneration generateInstruction
         !?ioUnusedVariableCppNameSet
         ?let cppVarName
       ]
-      var @stringlist actualParameterNameList = <[]>
+      var @stringlist actualParameterNameList = §[]
       for (parameter) in parameters do
         switch parameter
         case actualOutput (expression) :

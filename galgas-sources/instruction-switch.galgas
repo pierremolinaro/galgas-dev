@@ -57,7 +57,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let switchExpression
     let endOfSwitchExpression = @location.here
-    var @switchBranchesAST switchBranches = <[]>
+    var @switchBranchesAST switchBranches = §[]
     repeat
       $case$
       <switch_case>
@@ -85,14 +85,14 @@ syntax extension galgas3InstructionsSyntax {
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      !@lstringlist outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction  {
-    outConstantNameList = <[]>
+    outConstantNameList = §[]
     repeat
       $identifier$ ?let @lstring constantName
       outConstantNameList += !constantName
     while
       $,$
     end
-    outAssociatedValuesExtraction = <[]>
+    outAssociatedValuesExtraction = §[]
     select
     or
       $($
@@ -145,7 +145,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     <expression> !?ioDeclarations ?let switchExpression
     let endOfSwitchExpression = @location.here
-    var @switchBranchesAST switchBranches = <[]>
+    var @switchBranchesAST switchBranches = §[]
     repeat
       $case$
       <switch_case>
@@ -173,14 +173,14 @@ syntax extension galgas4InstructionsSyntax {
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      !@lstringlist outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
-    outConstantNameList = <[]>
+    outConstantNameList = §[]
     repeat
       $identifier$ ?let @lstring constantName
       outConstantNameList += !constantName
     while
       $,$
     end
-    outAssociatedValuesExtraction = <[]>
+    outAssociatedValuesExtraction = §[]
     select
     or
       $($
@@ -261,13 +261,13 @@ override method @switchInstructionAST analyzeSemanticInstruction
   if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap] then
   #--- Enum constant map
 //    let enumConstantMap = [switchExpression.mResultType definition].enumConstantMap
-    var @stringset constantsNamedInSwitchInstruction = <[]>
+    var @stringset constantsNamedInSwitchInstruction = §[]
   #--- Analyze branches
     [!?ioVariableMap openOverrideForSelectBlock]
-    var @switchBranchesForGeneration switchBranchesForGeneration = <[]>
+    var @switchBranchesForGeneration switchBranchesForGeneration = §[]
     for (mSwitchConstantList mAssociatedValuesExtraction mInstructions mEndOfBranch) in self.mBranches do
       [!?ioVariableMap openBranch]
-      var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = <[]>
+      var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = §[]
       var @bool firstConstant = true
       for (mValue) in mSwitchConstantList do
         if [enumConstantMap hasKey !mValue.string] then
@@ -318,9 +318,9 @@ override method @switchInstructionAST analyzeSemanticInstruction
         !?ioUsefulEntitiesGraph
         !inAnalysisContext
         !?ioTypeMap
-        !localConstantList: <[]>
-        !localInitializedVariableListWarnsIfNotMutated: <[]>
-        !localInitializedVariableListNoWarnsIfNotMutated: <[]>
+        !localConstantList: §[]
+        !localInitializedVariableListWarnsIfNotMutated: §[]
+        !localInitializedVariableListNoWarnsIfNotMutated: §[]
         !mInstructions
         !?ioVariableMap
         ?let @semanticInstructionListForGeneration instructionList

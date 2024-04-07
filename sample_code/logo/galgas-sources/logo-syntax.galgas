@@ -59,7 +59,7 @@ syntax logo_syntax (logo_lexique) {
     $ROUTINE$
     $identifier$ ?let @lstring routineName indexing routineDefinition
     $BEGIN$
-    var @instructionList il = <[]>
+    var @instructionList il = §[]
     <instruction_list> !? ioTableRoutines !? il
     $END$
   #--- Insertion dans la table
@@ -71,8 +71,8 @@ syntax logo_syntax (logo_lexique) {
   rule <start_symbol> {
   #-- Définition des routines
     $PROGRAM$
-    var @routineMap tableRoutines = <[]>
-    var @instructionList instructions = <[]>
+    var @routineMap tableRoutines = §[]
+    var @instructionList instructions = §[]
     repeat
     while
       <routine_definition> !? tableRoutines

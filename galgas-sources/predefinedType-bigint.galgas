@@ -41,7 +41,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
   override method getClassFunctionMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
     !@classFunctionMap outMap {
-    outMap = <[]>
+    outMap = §[]
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -56,10 +56,10 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
   override method getInstanceMethodMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
     !@instanceMethodMap outInstanceMethodMap {
-    outInstanceMethodMap = <[]>
+    outInstanceMethodMap = §[]
   #--- divide, floorDivide, ceilDivide
     [!?ioUnifiedTypeMap makeEntryFromString !"bigint" ?let bigIntType]
-    var @formalParameterSignature argList = <[]>
+    var @formalParameterSignature argList = §[]
     argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
     argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"
     argList += !["remainder" nowhere] !bigIntType !.argumentOut !"outRemainder"
@@ -98,7 +98,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
     ?!@unifiedTypeMap ioUnifiedTypeMap
     !@setterMap outSetterMap
   {
-    outSetterMap = <[]>
+    outSetterMap = §[]
     enterModifierWith2InputArguments (
       !?outSetterMap
       !?ioUnifiedTypeMap

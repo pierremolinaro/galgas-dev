@@ -192,7 +192,7 @@ refclass @extensionGetterAST : @semanticDeclarationAST {
     if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionGetterMapForBuildingContext insertKey
         !self.mTypeName
-        !<[]>
+        !§[]
       ]
     end
     with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
@@ -270,7 +270,7 @@ override method @extensionGetterAST semanticAnalysis
     !self.mExtensionGetterFormalInputParameterList
     !if [[selfType definition].typeKind isClassType] | ([selfType definition].typeKind == .structType) | ([selfType definition].typeKind == .sharedMapEntryType)
        then [selfType definition].allTypedPropertyList
-       else @typedPropertyList <[]>
+       else @typedPropertyList §[]
      end
     !selfObjectAccessorNew
     !self.mExtensionGetterInstructionList

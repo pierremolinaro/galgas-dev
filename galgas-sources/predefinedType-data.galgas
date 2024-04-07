@@ -34,7 +34,7 @@ refclass @dataPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = <[]>
+    outMap = §[]
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -65,7 +65,7 @@ refclass @dataPredefinedTypeAST : @predefinedTypeAST {
                                       !@enumerationDescriptorList outEnumerationList
                                       !@string outEnumeratedType {
     [!?ioUnifiedTypeMap makeEntryFromString !"uint" ?let uintTypeIndex]
-    outEnumerationList = <[]>
+    outEnumerationList = §[]
     outEnumerationList += !uintTypeIndex !"data"
     outEnumeratedType = "uint"
   }
@@ -74,7 +74,7 @@ refclass @dataPredefinedTypeAST : @predefinedTypeAST {
 
   override method getInstanceMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                        !@instanceMethodMap outInstanceMethodMap {
-    outInstanceMethodMap = <[]>
+    outInstanceMethodMap = §[]
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap
       !?ioUnifiedTypeMap
@@ -91,7 +91,7 @@ refclass @dataPredefinedTypeAST : @predefinedTypeAST {
       !methodName: "writeToExecutableFile"
       !true
     )
-    var @formalParameterSignature argList = <[]>
+    var @formalParameterSignature argList = §[]
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
     argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
     [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
@@ -134,7 +134,7 @@ refclass @dataPredefinedTypeAST : @predefinedTypeAST {
 
   override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
-    outSetterMap = <[]>
+    outSetterMap = §[]
     enterModifierWithInputArgument (
       !?outSetterMap
       !?ioUnifiedTypeMap

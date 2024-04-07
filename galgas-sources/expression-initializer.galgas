@@ -189,7 +189,7 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
     let initializerMap = instanciedTypeDefinition.initializerMap
     [initializerMap searchKey !outInitializerName ?let formalSignature]
   #--- Analysis arguments
-    outConstructorEffectiveParameterList = <[]>
+    outConstructorEffectiveParameterList = §[]
     for effectiveParameter in inInvocationArguments,
         formalArg in formalSignature do
       [effectiveParameter.mExpression analyzeSemanticExpression
@@ -236,7 +236,7 @@ refclass @initializerCallForGeneration : @semanticExpressionForGeneration {
                                     ?!@stringset ioUnusedVariableCppNameSet
                                     !@string outCppExpression {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-    var @stringlist parameterList = <[]>
+    var @stringlist parameterList = §[]
     for (mExpression) in self.mEffectiveParameterList do
       [mExpression generateExpression
         !?ioGeneratedCode

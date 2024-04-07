@@ -61,7 +61,7 @@ private func routineArgumentFromFormalParameters ?let @formalParameterSignature 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @routineMap {
-  private var @internalRoutineMap mInternalRoutineMap = <[]>
+  private var @internalRoutineMap mInternalRoutineMap = §[]
 
   #·······························································································
 
@@ -72,7 +72,7 @@ struct @routineMap {
     if [self.mInternalRoutineMap hasKey !inRoutineName] then
       [self.mInternalRoutineMap searchKey !inRoutineName ?routineArgumentMap]
     else
-      routineArgumentMap = <[]>
+      routineArgumentMap = §[]
     end
     let routineArguments = routineArgumentFromFormalParameters (!inRoutineSignature)
     if [routineArgumentMap hasKey !routineArguments] then
@@ -96,12 +96,12 @@ struct @routineMap {
                    !routineMangledName: @lstring outRoutineMangledName {
     if let [self.mInternalRoutineMap searchKey !inRoutineName ?let routineArgumentMap] then
       outIsFilePrivate = false
-      outRoutineSignature = <[]>
+      outRoutineSignature = §[]
       for entry in routineArgumentMap do
         outIsFilePrivate = entry.mIsFilePrivate
         outRoutineSignature = entry.mRoutineSignature
       end
-      var @acceptableParameterList acceptableParameterList = <[]>
+      var @acceptableParameterList acceptableParameterList = §[]
       for entry in routineArgumentMap do
         var accept = [inActualParameterList length] == [entry.mRoutineSignature length]
         for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do

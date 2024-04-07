@@ -36,7 +36,7 @@ syntax extension galgas3SyntaxComponentSyntax {
                                  !@syntaxInstructionAST outInstruction {
     $select$
     let mSelectInstructionLocation = @location.here
-    var mSelectBranchList = @listOfSyntaxInstructionList <[]>
+    var mSelectBranchList = @listOfSyntaxInstructionList §[]
     <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList il
     mSelectBranchList += !il !@location.here
     repeat
@@ -68,7 +68,7 @@ syntax extension galgas4SyntaxComponentSyntax {
                             !@syntaxInstructionAST outInstruction {
     $select$
     let mSelectInstructionLocation = @location.here
-    var mSelectBranchList = @listOfSyntaxInstructionList <[]>
+    var mSelectBranchList = @listOfSyntaxInstructionList §[]
     <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList il
     mSelectBranchList += !il !@location.here
     repeat
@@ -102,9 +102,9 @@ override method @selectInstruction transformInstruction
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex += 1
 
-  var selectBranchList = @branchListForGrammarAnalysis <[]>
+  var selectBranchList = @branchListForGrammarAnalysis §[]
   for (mSyntaxInstructionList *) in self.mSelectBranchList do
-    var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis <[]>
+    var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis §[]
     transformInstructionList (
       !mSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
@@ -145,7 +145,7 @@ override method @selectInstruction analyzeSyntaxInstruction
 #--- Begin block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'or' blocks
-  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration <[]>
+  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration §[]
   for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName
@@ -193,7 +193,7 @@ refclass @selectInstructionForGeneration : @syntaxInstructionForGeneration {
 override method @selectInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
-  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration <[]>
+  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration §[]
   for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)

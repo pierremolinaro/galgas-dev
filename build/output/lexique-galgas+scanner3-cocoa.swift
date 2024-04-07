@@ -289,10 +289,9 @@ let galgasScanner3_1__3D__3D__3D_ : UInt16 = 185
 let galgasScanner3_1__21__3D__3D_ : UInt16 = 186
 let galgasScanner3_1__3F__5E_ : UInt16 = 187
 let galgasScanner3_1__21__5E_ : UInt16 = 188
-let galgasScanner3_1__3C__5B_ : UInt16 = 189
-let galgasScanner3_1__5D__3E_ : UInt16 = 190
-let galgasScanner3_2_ERROR : UInt16 = 191
-let galgasScanner3_2_TEMPLATE : UInt16 = 192
+let galgasScanner3_1__A7__5B_ : UInt16 = 189
+let galgasScanner3_2_ERROR : UInt16 = 190
+let galgasScanner3_2_TEMPLATE : UInt16 = 191
 
 //--------------------------------------------------------------------------------------------------
 
@@ -381,7 +380,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 190
+    return 189
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -603,10 +602,9 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       2, // 186 : galgasScanner3_1__21__3D__3D_
       2, // 187 : galgasScanner3_1__3F__5E_
       2, // 188 : galgasScanner3_1__21__5E_
-      2, // 189 : galgasScanner3_1__3C__5B_
-      2, // 190 : galgasScanner3_1__5D__3E_
-      14, // 191 : galgasScanner3_2_ERROR
-      15  // 192 : galgasScanner3_2_TEMPLATE
+      2, // 189 : galgasScanner3_1__A7__5B_
+      14, // 190 : galgasScanner3_2_ERROR
+      15  // 191 : galgasScanner3_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -804,10 +802,9 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       true, // 186 : galgasScanner3_1__21__3D__3D_
       true, // 187 : galgasScanner3_1__3F__5E_
       true, // 188 : galgasScanner3_1__21__5E_
-      true, // 189 : galgasScanner3_1__3C__5B_
-      true, // 190 : galgasScanner3_1__5D__3E_
-      false, // 191 : galgasScanner3_2_ERROR
-      false  // 192 : galgasScanner3_2_TEMPLATE
+      true, // 189 : galgasScanner3_1__A7__5B_
+      false, // 190 : galgasScanner3_2_ERROR
+      false  // 191 : galgasScanner3_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -1243,10 +1240,10 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       tokenCode = galgasScanner3_1__26__2B__2B_
     }else if scanningOk && self.testForInputString ("!==", advance: true) {
       tokenCode = galgasScanner3_1__21__3D__3D_
+    }else if scanningOk && self.testForInputString ("§[", advance: true) {
+      tokenCode = galgasScanner3_1__A7__5B_
     }else if scanningOk && self.testForInputString ("||", advance: true) {
       tokenCode = galgasScanner3_1__7C__7C_
-    }else if scanningOk && self.testForInputString ("]>", advance: true) {
-      tokenCode = galgasScanner3_1__5D__3E_
     }else if scanningOk && self.testForInputString ("\?^", advance: true) {
       tokenCode = galgasScanner3_1__3F__5E_
     }else if scanningOk && self.testForInputString (">>", advance: true) {
@@ -1255,8 +1252,6 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       tokenCode = galgasScanner3_1__3E__3D_
     }else if scanningOk && self.testForInputString ("==", advance: true) {
       tokenCode = galgasScanner3_1__3D__3D_
-    }else if scanningOk && self.testForInputString ("<[", advance: true) {
-      tokenCode = galgasScanner3_1__3C__5B_
     }else if scanningOk && self.testForInputString (":>", advance: true) {
       tokenCode = galgasScanner3_1__3A__3E_
     }else if scanningOk && self.testForInputString ("/=", advance: true) {

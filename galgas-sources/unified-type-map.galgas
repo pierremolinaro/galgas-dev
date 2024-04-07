@@ -31,7 +31,7 @@ map @unifiedTypeMap {
   #-----------------------------------------------------------------------------------------------
 
   getter unsolvedEntryList -> @lstringlist {
-    result = <[]>
+    result = §[]
     for (lkey element) in self do
       if [element.mDefinition isUnsolved] then
         result += !lkey
