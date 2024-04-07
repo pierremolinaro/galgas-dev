@@ -47,14 +47,14 @@ syntax extension galgas3InstructionsSyntax {
     repeat
       select
         $identifier$ ?let loggedVariableName
-        logList += !loggedVariableName !@varInExpressionAST.new {!loggedVariableName}
+        logList += !loggedVariableName !@varInExpressionAST {!loggedVariableName}
       or
         $self$
         $.$
         $identifier$ ?let propertyName
         logList +=
          !propertyName
-         !@structPropertyAccessExpressionAST.new {!propertyName.location !@selfInExpressionAST.new {!propertyName.location} !propertyName}
+         !@structPropertyAccessExpressionAST {!propertyName.location !@selfInExpressionAST {!propertyName.location} !propertyName}
       or
         $"string"$ ?let logMessage
         $:$
@@ -64,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
     while
       $,$
     end
-    outInstruction = @logInstructionAST.new {
+    outInstruction = @logInstructionAST {
       !instructionLocation
       !logList
     }
@@ -88,14 +88,14 @@ syntax extension galgas4InstructionsSyntax {
     repeat
       select
         $identifier$ ?let loggedVariableName
-        logList += !loggedVariableName !@varInExpressionAST.new {!loggedVariableName}
+        logList += !loggedVariableName !@varInExpressionAST {!loggedVariableName}
       or
         $self$
         $.$
         $identifier$ ?let propertyName
         logList +=
          !propertyName
-         !@structPropertyAccessExpressionAST.new {!propertyName.location !@selfInExpressionAST.new {!propertyName.location} !propertyName}
+         !@structPropertyAccessExpressionAST {!propertyName.location !@selfInExpressionAST {!propertyName.location} !propertyName}
       or
         $"string"$ ?let logMessage
         $:$
@@ -105,7 +105,7 @@ syntax extension galgas4InstructionsSyntax {
     while
       $,$
     end
-    outInstruction = @logInstructionAST.new {
+    outInstruction = @logInstructionAST {
       !instructionLocation
       !logList
     }
@@ -150,7 +150,7 @@ override method @logInstructionAST analyzeSemanticInstruction
       ?let expression
     ]
   #--- Generate instruction
-    ioInstructionListForGeneration += !@logInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@logInstructionForGeneration {
       !mLogMessage
       !expression
     }

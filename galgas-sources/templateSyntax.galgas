@@ -40,14 +40,14 @@ rule <expression_tpl>
     let @templateExpressionAST leftOperand = outExpression
     let @templateExpressionAST rightOperand
     <relation_term_tpl> ?rightOperand
-    outExpression = @templateOrOperationAST.new {!operatorLocation !leftOperand !rightOperand}
+    outExpression = @templateOrOperationAST {!operatorLocation !leftOperand !rightOperand}
   while
     let @location operatorLocation = @location.here
     $^$
     let @templateExpressionAST leftOperand = outExpression
     let @templateExpressionAST rightOperand
     <relation_term_tpl> ?rightOperand
-    outExpression = @templateXorOperationAST.new {!operatorLocation !leftOperand !rightOperand}
+    outExpression = @templateXorOperationAST {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
@@ -67,7 +67,7 @@ rule <relation_term_tpl>
     let @templateExpressionAST leftOperand = outExpression
    let @templateExpressionAST rightOperand
     <relation_factor_tpl> ?rightOperand
-    outExpression = @templateAndOperationAST.new {!operatorLocation !leftOperand !rightOperand}
+    outExpression = @templateAndOperationAST {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
@@ -87,42 +87,42 @@ rule <relation_factor_tpl>
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <simple_expression_tpl> ?rightExpression
-    outExpression = @templateEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateEqualTestAST {!operatorLocation !leftExpression !rightExpression}
   or
     let @location operatorLocation = @location.here
     $!=$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <simple_expression_tpl> ?rightExpression
-    outExpression = @templateNonEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateNonEqualTestAST {!operatorLocation !leftExpression !rightExpression}
   or
     let @location operatorLocation = @location.here
     $<=$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <simple_expression_tpl> ?rightExpression
-    outExpression = @templateInfOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateInfOrEqualTestAST {!operatorLocation !leftExpression !rightExpression}
   or
     let @location operatorLocation = @location.here
     $>=$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <simple_expression_tpl> ?rightExpression
-    outExpression = @templateSupOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateSupOrEqualTestAST {!operatorLocation !leftExpression !rightExpression}
   or
     let @location operatorLocation = @location.here
     $>$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <simple_expression_tpl> ?rightExpression
-    outExpression = @templateStrictSupTestAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateStrictSupTestAST {!operatorLocation !leftExpression !rightExpression}
   or
     let @location operatorLocation = @location.here
     $<$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <simple_expression_tpl> ?rightExpression
-    outExpression = @templateStrictInfTestAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateStrictInfTestAST {!operatorLocation !leftExpression !rightExpression}
   end
 }
 
@@ -141,28 +141,28 @@ rule <simple_expression_tpl> !@templateExpressionAST outExpression {
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <term_tpl> ?rightExpression
-    outExpression = @templateLeftShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateLeftShiftOperationAST {!operatorLocation !leftExpression !rightExpression}
   while
     let @location operatorLocation = @location.here
     $>>$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <term_tpl> ?rightExpression
-    outExpression = @templateRightShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateRightShiftOperationAST {!operatorLocation !leftExpression !rightExpression}
   while
     let @location operatorLocation = @location.here
     $+$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <term_tpl> ?rightExpression
-    outExpression = @templateAddOperationAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateAddOperationAST {!operatorLocation !leftExpression !rightExpression}
   while
     let @location operatorLocation = @location.here
     $-$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <term_tpl> ?rightExpression
-    outExpression = @templateSubOperationAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateSubOperationAST {!operatorLocation !leftExpression !rightExpression}
   end
 }
 
@@ -182,21 +182,21 @@ rule <term_tpl>
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <factor_tpl> ?rightExpression
-    outExpression = @templateMultiplyOperationAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateMultiplyOperationAST {!operatorLocation !leftExpression !rightExpression}
   while
     let @location operatorLocation = @location.here
     $/$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <factor_tpl> ?rightExpression
-    outExpression = @templateDivideOperationAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateDivideOperationAST {!operatorLocation !leftExpression !rightExpression}
   while
     let @location operatorLocation = @location.here
     $mod$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <factor_tpl> ?rightExpression
-    outExpression = @templateModuloOperationAST.new {!operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateModuloOperationAST {!operatorLocation !leftExpression !rightExpression}
   end
 }
 
@@ -212,7 +212,7 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
   while
     $.$
     $identifier$ ?let @lstring structFieldName
-    outExpression = @structFieldAccessTemplateExpressionAST.new {
+    outExpression = @structFieldAccessTemplateExpressionAST {
       !structFieldName.location
       !outExpression
       !structFieldName
@@ -231,7 +231,7 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
   $-$
   let @templateExpressionAST expression
   <factor_tpl> ?expression
-  outExpression = @templateUnaryMinusOperationAST.new {!operatorLocation !expression}
+  outExpression = @templateUnaryMinusOperationAST {!operatorLocation !expression}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -245,7 +245,7 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
   $not$
   let @templateExpressionAST ifCondition
   <factor_tpl> ?ifCondition
-  outExpression = @templateNotOperatorAST.new {!operatorLocation !ifCondition}
+  outExpression = @templateNotOperatorAST {!operatorLocation !ifCondition}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -260,7 +260,7 @@ rule <factor_tpl>
   $~$
   let @templateExpressionAST ifCondition
   <factor_tpl> ?ifCondition
-  outExpression = @templateLogicalNegateAST.new {!operatorLocation !ifCondition}
+  outExpression = @templateLogicalNegateAST {!operatorLocation !ifCondition}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -271,7 +271,7 @@ rule <factor_tpl>
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $identifier$ ?let @lstring identifier
-  outExpression = @templateVarInExpressionAST.new {!identifier}
+  outExpression = @templateVarInExpressionAST {!identifier}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -294,7 +294,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $true$
-  outExpression = @templateTrueBoolAST.new {!@location.here}
+  outExpression = @templateTrueBoolAST {!@location.here}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -305,7 +305,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $false$
-  outExpression = @templateFalseBoolAST.new {!@location.here}
+  outExpression = @templateFalseBoolAST {!@location.here}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -316,7 +316,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $literalInt$ ?let literalInt
-  outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
+  outExpression = @templateLiteralUIntExpressionAST {!literalInt}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -328,7 +328,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 rule <primary_tpl> !@templateExpressionAST outExpression {
   let @ldouble literalDouble
   $double.xxx$ ? literalDouble ?*
-  outExpression = @templateLiteralDoubleExpressionAST.new {!literalDouble}
+  outExpression = @templateLiteralDoubleExpressionAST {!literalDouble}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -339,7 +339,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $'char'$ ?let @lchar literalChar
-  outExpression = @templateLiteralCharExpressionAST.new {!literalChar}
+  outExpression = @templateLiteralCharExpressionAST {!literalChar}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -355,7 +355,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     literalStringList += !literalString.string
   while
   end
-  outExpression = @templateLiteralStringExpressionAST.new {!literalStringList !@location.here}
+  outExpression = @templateLiteralStringExpressionAST {!literalStringList !@location.here}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -380,7 +380,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     $identifier$ ?let @lstring templateName
     let @templateExpressionListAST expressionList
     <output_expression_list_tpl> ?expressionList
-    outExpression = @templateExtensionTemplateCallAST.new {
+    outExpression = @templateExtensionTemplateCallAST {
       !receiverExpression
       !templateName
       !expressionList
@@ -390,7 +390,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     $@type$ ?let @lstring typeName
     $identifier$ ?let @lstring constructorName
     <output_expression_list_tpl> ?let @templateExpressionListAST expressionList
-    outExpression = @templateClassFunctionAST.new {
+    outExpression = @templateClassFunctionAST {
       !typeName
       !constructorName
       !expressionList
@@ -404,7 +404,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     let @templateExpressionListAST expressionList
     <output_expression_list_tpl> ?expressionList
     $]$
-    outExpression = @templateFileWrapperTemplateCallAST.new {!filewrapperName !templateName !expressionList}
+    outExpression = @templateFileWrapperTemplateCallAST {!filewrapperName !templateName !expressionList}
   or #--------------------------------- Getter call
     let startLocation = @location.here
     let @templateExpressionAST receiverExpression
@@ -414,7 +414,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     <output_expression_list_tpl> ?expressionList
     $]$
     let endLocation = @location.here
-    outExpression = @templateGetterCallInExpressionAST.new {
+    outExpression = @templateGetterCallInExpressionAST {
       !receiverExpression
       !getterName
       !expressionList
@@ -426,13 +426,13 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
       $.$
       $identifier$ ?let @lstring optionName
       $identifier$ ?let @lstring getterName
-      outExpression = @templateOptionAccessAST.new {!@lstring.new {!"galgas_builtin_options" !@location.here} !optionName !getterName}
+      outExpression = @templateOptionAccessAST {!@lstring {!"galgas_builtin_options" !@location.here} !optionName !getterName}
     or
       $identifier$ ?let @lstring optionComponentName
       $.$
       $identifier$ ?let @lstring optionName
       $identifier$ ?let @lstring getterName
-      outExpression = @templateOptionAccessAST.new {!optionComponentName !optionName !getterName}
+      outExpression = @templateOptionAccessAST {!optionComponentName !optionName !getterName}
     end
     $]$
   end
@@ -450,7 +450,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
   $($
   <output_expression_list_tpl> ?let @templateExpressionListAST expressionList
   $)$
-  outExpression = @templateFunctionCallAST.new {!functionName !expressionList}
+  outExpression = @templateFunctionCallAST {!functionName !expressionList}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -471,7 +471,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     kind = .strictlyInherited
   end
   $@type$ ?let @lstring typeName
-  outExpression = @templateTestDynamicClassAST.new {
+  outExpression = @templateTestDynamicClassAST {
     !outExpression
     !endOfReceiverExpression
     !kind
@@ -509,21 +509,21 @@ rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $!$
   <expression_tpl> ?let @templateExpressionAST expression
-  ioResultingInstructionList += !@templateInstructionExpressionAST.new {!expression !@location.here}
+  ioResultingInstructionList += !@templateInstructionExpressionAST {!expression !@location.here}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $?^$
-  ioResultingInstructionList += !@templateInstructionGetColumnLocationAST.new
+  ioResultingInstructionList += !@templateInstructionGetColumnLocationAST {}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $!^$
-  ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST.new
+  ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST {}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -541,7 +541,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   end
 #---
   $end$
-  ioResultingInstructionList += !@templateBlockInstructionAST.new {
+  ioResultingInstructionList += !@templateBlockInstructionAST {
    !expression
    !@location.here
    !blockInstructionList}
@@ -578,7 +578,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   end
 #---
   $end$
-  ioResultingInstructionList += !@templateInstructionIfAST.new {
+  ioResultingInstructionList += !@templateInstructionIfAST {
     !templateInstructionIfBranchList
     !elseInstructionList}
 }
@@ -603,7 +603,7 @@ rule <template_parser_start_symbol> !@templateInstructionListAST outResultingIns
 proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
   let @string s = @string.retrieveAndResetTemplateString
   if [s count] > 0 then
-    outResultingInstructionList += !@templateInstructionStringAST.new {!s}
+    outResultingInstructionList += !@templateInstructionStringAST {!s}
   end
 }
 

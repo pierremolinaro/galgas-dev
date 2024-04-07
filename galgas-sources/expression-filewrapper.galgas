@@ -52,21 +52,21 @@ syntax extension galgas3ExpressionSyntax {
     $filewrapper$
     $identifier$ ?let filewrapperName indexing filewrapperReference
     select
-      outExpression = @filewrapperObjectInstanciationInExpressionAST.new {
+      outExpression = @filewrapperObjectInstanciationInExpressionAST {
         !filewrapperName
       }
     or
       $.$
       select
         $"string"$ ?let @lstring filePath
-        outExpression = @filewrapperInExpressionAST.new {
+        outExpression = @filewrapperInExpressionAST {
           !filewrapperName
           !filePath
         }
       or
         $identifier$ ?let @lstring filewrapperTemplateName
         <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
-        outExpression = @filewrapperTemplateInExpressionAST.new {
+        outExpression = @filewrapperTemplateInExpressionAST {
           !filewrapperName
           !filewrapperTemplateName
           !expressionList
@@ -92,12 +92,12 @@ syntax extension galgas4ExpressionSyntax {
     $[$
     $identifier$ ?let filewrapperName indexing filewrapperReference
     select
-      outExpression = @filewrapperObjectInstanciationInExpressionAST.new {!filewrapperName}
+      outExpression = @filewrapperObjectInstanciationInExpressionAST {!filewrapperName}
     or
       $.$
       select
         $"string"$ ?let @lstring filePath
-        outExpression = @filewrapperInExpressionAST.new {
+        outExpression = @filewrapperInExpressionAST {
           !filewrapperName
           !filePath
         }
@@ -105,7 +105,7 @@ syntax extension galgas4ExpressionSyntax {
         $identifier$ ?let @lstring filewrapperTemplateName
         $:$
         <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
-        outExpression = @filewrapperTemplateInExpressionAST.new {
+        outExpression = @filewrapperTemplateInExpressionAST {
           !filewrapperName
           !filewrapperTemplateName
           !expressionList
@@ -156,8 +156,8 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
     end
   end
 #---
-  outExpression = @filewrapperInExpressionForGeneration.new {
-    ![ioTypeMap typeMapEntryForLKey !@lstring.new {!"filewrapper" !self.mFilewrapperName.location}]
+  outExpression = @filewrapperInExpressionForGeneration {
+    ![ioTypeMap typeMapEntryForLKey !@lstring {!"filewrapper" !self.mFilewrapperName.location}]
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
     !filewrapperPath.string}
@@ -231,7 +231,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     end
   end
 #---
-  outExpression = @filewrapperTemplateInExpressionForGeneration.new {
+  outExpression = @filewrapperTemplateInExpressionForGeneration {
     !inAnalysisContext.predefinedTypes.mStringType
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string
@@ -295,7 +295,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
       [filewrapperDirectoryMap searchKey
-        !@lstring.new {!directoryName !@location.here}
+        !@lstring {!directoryName !@location.here}
         ?filewrapperFileMap
         ?filewrapperDirectoryMap
         ?*
@@ -308,17 +308,17 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   let @uint fileIndex
   let @bool isTextFile
   if [filewrapperFileMap hasKey !fileName] then
-    [filewrapperFileMap searchKey !@lstring.new {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
+    [filewrapperFileMap searchKey !@lstring {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
   else
     error self.mFilewrapperPath
     : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
     : fileIndex, isTextFile
   end
 #---
-  outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
+  outExpression = @filewrapperStaticPathInExpressionForGeneration {
     !if isTextFile
       then inAnalysisContext.predefinedTypes.mStringType
-      else [ioTypeMap typeMapEntryForLKey !@lstring.new {!"data" !@location.here}]
+      else [ioTypeMap typeMapEntryForLKey !@lstring {!"data" !@location.here}]
      end
     !self.mFilewrapperName.location
     !self.mFilewrapperName.string

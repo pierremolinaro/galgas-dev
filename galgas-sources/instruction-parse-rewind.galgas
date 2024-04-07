@@ -48,7 +48,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $end$
     let endOfInstruction = @location.here
-    outInstruction = @parseRewindInstruction.new {
+    outInstruction = @parseRewindInstruction {
       !instructionLocation
       !mParseDoBranchList
       !endOfInstruction
@@ -81,7 +81,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $end$
     let endOfInstruction = @location.here
-    outInstruction = @parseRewindInstruction.new {
+    outInstruction = @parseRewindInstruction {
       !instructionLocation
       !mParseDoBranchList
       !endOfInstruction
@@ -170,7 +170,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     )
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@parseRewindInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@parseRewindInstructionForGeneration {
     !self.mInstructionLocation
     !listOfSemanticInstructionListForGeneration
   }

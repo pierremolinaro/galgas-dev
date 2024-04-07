@@ -38,7 +38,7 @@ syntax extension galgas3ExpressionSyntax {
     $($
     <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
     $)$
-    outExpression = @functionCallExpressionAST.new {
+    outExpression = @functionCallExpressionAST {
       !functionName
       !expressionList
     }
@@ -60,7 +60,7 @@ syntax extension galgas4ExpressionSyntax {
     $($
     <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
     $)$
-    outExpression = @functionCallExpressionAST.new {!functionName !expressionList}
+    outExpression = @functionCallExpressionAST {!functionName !expressionList}
   }
 
   #·······························································································
@@ -141,7 +141,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       end
       semanticExpressionListForGeneration += !expression
     end
-    outExpression = @functionCallExpressionForGeneration.new {
+    outExpression = @functionCallExpressionForGeneration {
       !resultType
       !self.mFunctionName.location
       !self.mFunctionName.string

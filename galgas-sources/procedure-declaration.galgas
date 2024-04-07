@@ -44,7 +44,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@procDeclarationAST {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # private
       !mRoutineName
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@procDeclarationAST {
       !isPredefined: false # Is not predefined
       !isFilePrivate: true # private
       !mRoutineName
@@ -115,7 +115,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@procDeclarationAST {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false
       !mRoutineName
@@ -146,7 +146,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@procDeclarationAST {
       !isPredefined: false # Is not predefined
       !isFilePrivate: true
       !mRoutineName
@@ -223,7 +223,7 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
       ioUsefulnessRootEntities += !nameForUsefulness
     end
   #--- Instruction list
-    let analysisContext = @analysisContext.new {
+    let analysisContext = @analysisContext {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: ""
@@ -246,7 +246,7 @@ refclass @procDeclarationAST : @externProcedureDeclarationAST {
     )
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "proc " + mangledName
-      !@routineImplementationForGeneration.new {
+      !@routineImplementationForGeneration {
         !generateHeader: true # Generate Cpp header file
         !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
         !routineMangledName: mangledName.string

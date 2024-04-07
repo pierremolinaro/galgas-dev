@@ -206,7 +206,7 @@ map @syntaxComponentMap {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
-  public var @routineMap routineMap = .new
+  public var @routineMap routineMap = .init {}
   public var @functionMap mFunctionMap = §[]
   public var @filewrapperMap mFilewrapperMap = §[]
   public var @grammarMap grammarMap = §[]
@@ -621,7 +621,7 @@ proc recursivelyEnumerateDirectories
     if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
-        !@lstring.new {!mValue !@location.here}
+        !@lstring {!mValue !@location.here}
         !absoluteFilePath
         !true # Text File
         !currentDirectoryIndex
@@ -631,7 +631,7 @@ proc recursivelyEnumerateDirectories
     elsif [inBinaryFileExtensionMap hasKey ![mValue pathExtension]] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
-        !@lstring.new {!mValue !@location.here}
+        !@lstring {!mValue !@location.here}
         !absoluteFilePath
         !false # Binary file
         !currentDirectoryIndex
@@ -656,7 +656,7 @@ proc recursivelyEnumerateDirectories
       !?ioWrapperDirectoryIndex
     )
     [!?outWrapperDirectoryMap insertKey
-      !@lstring.new {!mValue !@location.here}
+      !@lstring {!mValue !@location.here}
       !internalWrapperFileMap
       !internalWrapperDirectoryMap
       !theDirectoryIndex
@@ -871,10 +871,10 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"grammar " + self.mGrammarComponentName !self.mGrammarComponentName.location}
+  let key = @lstring {!"grammar " + self.mGrammarComponentName !self.mGrammarComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (s) in self.mSyntaxComponents do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"syntax " + s !s.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"syntax " + s !s.location}]
   end
 }
 
@@ -887,14 +887,14 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"syntax " + self.mSyntaxComponentName !self.mSyntaxComponentName.location}
+  let key = @lstring {!"syntax " + self.mSyntaxComponentName !self.mSyntaxComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"lexique " + self.mLexiqueName !self.mLexiqueName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"lexique " + self.mLexiqueName !self.mLexiqueName.location}]
   for (* mLabelList) in self.mRuleList do
     for (* mFormalArguments * * *) in mLabelList do
       for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArguments do
         switch mFormalArgumentPassingMode
-          case argumentIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}]
+          case argumentIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}]
           case argumentOut, argumentInOut, argumentConstantIn :
         end
       end

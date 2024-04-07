@@ -99,7 +99,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
     let @lstring labelName
     select
-      labelName = @lstring.new {!"" !@location.here}
+      labelName = @lstring {!"" !@location.here}
     or
       $label$
       $identifier$ ?labelName
@@ -124,12 +124,12 @@ syntax extension galgas3InstructionsSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @grammarInFileInstructionAST.new {
+    outInstruction = @grammarInFileInstructionAST {
       !inInstructionLocation
       !inGrammarComponentName
       !inLabelName
@@ -157,12 +157,12 @@ syntax extension galgas3InstructionsSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @grammarInStringInstructionAST.new {
+    outInstruction = @grammarInStringInstructionAST {
       !inInstructionLocation
       !inGrammarComponentName
       !inLabelName
@@ -189,7 +189,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
     let @lstring labelName
     select
-      labelName = @lstring.new {!"" !@location.here}
+      labelName = @lstring {!"" !@location.here}
     or
       $label$
       $identifier$ ?labelName
@@ -211,12 +211,12 @@ syntax extension galgas3InstructionsSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @grammarInFileInstructionAST.new {
+    outInstruction = @grammarInFileInstructionAST {
       !inInstructionLocation
       !inGrammarComponentName
       !inLabelName
@@ -246,12 +246,12 @@ syntax extension galgas3InstructionsSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @grammarInStringInstructionAST.new {
+    outInstruction = @grammarInStringInstructionAST {
       !inInstructionLocation
       !inGrammarComponentName
       !inLabelName
@@ -281,7 +281,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
     let @lstring labelName
     select
-      labelName = @lstring.new {!"" !.here}
+      labelName = @lstring {!"" !.here}
     or
       $label$
       $identifier$ ?labelName
@@ -304,12 +304,12 @@ syntax extension galgas4InstructionsSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @grammarInFileInstructionAST.new {
+    outInstruction = @grammarInFileInstructionAST {
       !inInstructionLocation
       !inGrammarComponentName
       !inLabelName
@@ -337,12 +337,12 @@ syntax extension galgas4InstructionsSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @grammarInStringInstructionAST.new {
+    outInstruction = @grammarInStringInstructionAST {
       !inInstructionLocation
       !inGrammarComponentName
       !inLabelName
@@ -450,7 +450,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
   ]
 #--- Generate instructions
-  ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration.new {
+  ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration {
     !self.mInstructionLocation
     !self.mGrammarComponentName.string
     !self.mLabelName.string
@@ -543,7 +543,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
   ]
 #--- Generate instructions
-  ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration.new {
+  ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration {
     !self.mInstructionLocation
     !self.mGrammarComponentName.string
     !self.mLabelName.string

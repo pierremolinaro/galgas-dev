@@ -2,12 +2,12 @@
 
 proc testsuite_extension_modifiers {
   message "*************************************** begin of extension modifier test\n"
-  var v = @TestExtensionModifier.new {!1 !"Hello"}
+  var v = @TestExtensionModifier {!1 !"Hello"}
   @uint u = 2
   @string s = " World"
   [!?v modifier2 !?u !s]
   log u, v
-  var w = @overridingTestExtensionModifier.new {!1 !"" !"" !2}
+  var w = @overridingTestExtensionModifier {!1 !"" !"" !2}
   [!?w m]
 #--- Test type cast in setter call
   typeCastInSetterCall ()

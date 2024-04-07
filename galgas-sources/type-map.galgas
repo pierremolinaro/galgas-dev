@@ -96,7 +96,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !mapTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@mapDeclarationAST {
       !isPredefined: false # Is not predefined
       !mapTypeName
       !propertyList
@@ -147,7 +147,7 @@ syntax extension galgas3DeclarationsSyntax {
     $"string"$ ?let @lstring mErrorMessage
     let @lstring mShadowErrorMessage
     select
-      mShadowErrorMessage = @lstring.new {!"" !@location.here}
+      mShadowErrorMessage = @lstring {!"" !@location.here}
     or
       $,$
       $"string"$ ? mShadowErrorMessage
@@ -194,7 +194,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> !mapTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@mapDeclarationAST {
       !isPredefined: false # Is not predefined
       !mapTypeName
       !propertyList
@@ -241,7 +241,7 @@ syntax extension galgas4DeclarationsSyntax {
     $"string"$ ?let @lstring mErrorMessage
     let @lstring mShadowErrorMessage
     select
-      mShadowErrorMessage = @lstring.new {!"" !@location.here}
+      mShadowErrorMessage = @lstring {!"" !@location.here}
     or
       $,$
       $"string"$ ? mShadowErrorMessage
@@ -279,9 +279,9 @@ override method @mapDeclarationAST addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
-  ioSemanticDeclarationList += !@structDeclarationAST.new {
+  ioSemanticDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
-    !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
+    !@lstring {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
     !structAttributeList
     !""
   }
@@ -298,10 +298,10 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mMapTypeName !self.mMapTypeName.location}
+  let key = @lstring {!"@" + self.mMapTypeName !self.mMapTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (* propertyTypeName 4*) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + propertyTypeName !propertyTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + propertyTypeName !propertyTypeName.location}]
   end
 }
 
@@ -511,7 +511,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Enter "attributeForKey" getters
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
+    let accessorName = @lstring {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
@@ -528,7 +528,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   if [self.mInsertOrReplaceDeclarationListAST count] >= 1 then
     [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceLocation]
     [!?setterMap insertOrReplace
-      !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
+      !@lstring {!"insertOrReplace" !insertOrReplaceLocation}
       !.definedAsMember
       !insertMethodFormalArgumentList
       !false
@@ -538,7 +538,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring.new {
+    let accessorName = @lstring {
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
     }
@@ -580,11 +580,11 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Element type index
   [!?ioTypeMap makeEntry
-    !@lstring.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
+    !@lstring {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
     ?let @unifiedTypeMapEntry elementTypeEntry
   ]
 #--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mMapTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -643,7 +643,7 @@ override method @mapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mMapTypeName.string + "-element" !self.mMapTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mMapTypeName.string + "-element" !self.mMapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #------ Enter property
   var @typedPropertyList typedAttributeList = §[]
@@ -702,9 +702,9 @@ override method @mapDeclarationAST semanticAnalysis
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "map " + self.mMapTypeName
-    !@mapTypeForGeneration.new {
+    !@mapTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName]
-      ![ioTypeMap typeMapEntryForLKey !.new {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
+      ![ioTypeMap typeMapEntryForLKey !.init {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList

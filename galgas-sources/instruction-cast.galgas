@@ -63,7 +63,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       $identifier$ ?mConstantVarName
     or
-      mConstantVarName = @lstring.new {!"" !@location.here}
+      mConstantVarName = @lstring {!"" !@location.here}
     end
     $:$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mCastBranchInstructionList
@@ -90,10 +90,10 @@ syntax extension galgas3InstructionsSyntax {
       $error$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST errorLocationExpression
       outElseOrDefault = §[]
-      outElseOrDefault += !@errorInstructionAST.new {
+      outElseOrDefault += !@errorInstructionAST {
         !instructionLocation
         !errorLocationExpression
-        !@literalStringExpressionAST.new {!instructionLocation!§[!"cast instruction run-time error"]}
+        !@literalStringExpressionAST {!instructionLocation!§[!"cast instruction run-time error"]}
         !§[]
         !§[]
       }
@@ -118,7 +118,7 @@ syntax extension galgas3InstructionsSyntax {
     <cast_else_or_default> !?ioDeclarations ?let @semanticInstructionListAST mElseOrDefault
     $end$
     let endOfInstructionLocation = @location.here
-    outInstruction = @structuredCastInstructionAST.new {
+    outInstruction = @structuredCastInstructionAST {
       !instructionLocation
       !expression
       !mCastInstructionBranchList
@@ -230,7 +230,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- End override
   [!?ioVariableMap closeOverride !self.mEndOfCastInstruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@structuredCastInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@structuredCastInstructionForGeneration {
     !castExpression
     !castBranchList
     !else_instructionList}

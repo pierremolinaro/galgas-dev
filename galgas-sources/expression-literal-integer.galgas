@@ -58,7 +58,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
     $literalInt$ ?let @lbigint literalInt
-    outExpression = @literalBigIntExpressionAST.new {!literalInt}
+    outExpression = @literalBigIntExpressionAST {!literalInt}
   }
 
   #·······························································································
@@ -74,7 +74,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
     $literalInt$ ?let @lbigint literalInt
-    outExpression = @literalBigIntExpressionAST.new {!literalInt}
+    outExpression = @literalBigIntExpressionAST {!literalInt}
   }
 
   #·······························································································
@@ -100,7 +100,7 @@ syntax extension galgas4ExpressionSyntax {
 #  ?!@localVarManager unused ioVariableMap
 #  !@semanticExpressionForGeneration outExpression
 #{
-#  outExpression = @literalUInt64ExpressionForGeneration.new {
+#  outExpression = @literalUInt64ExpressionForGeneration {
 #    !inAnalysisContext.predefinedTypes.mUInt64Type
 #    !self.mValue.location
 #    !self.mValue.uint64
@@ -124,7 +124,7 @@ syntax extension galgas4ExpressionSyntax {
 #  ?!@localVarManager unused ioVariableMap
 #  !@semanticExpressionForGeneration outExpression
 #{
-#  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
+#  outExpression = @literalSIntExpressionForGeneration {!inAnalysisContext.predefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
 #}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -144,7 +144,7 @@ syntax extension galgas4ExpressionSyntax {
 #  ?!@localVarManager unused ioVariableMap
 #  !@semanticExpressionForGeneration outExpression
 #{
-#  outExpression = @literalSInt64ExpressionForGeneration.new {
+#  outExpression = @literalSInt64ExpressionForGeneration {
 #    !inAnalysisContext.predefinedTypes.mSInt64Type
 #    !self.mValue.location
 #    !self.mValue.sint64
@@ -169,7 +169,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @literalBigIntExpressionForGeneration.new {
+  outExpression = @literalBigIntExpressionForGeneration {
     !inAnalysisContext.predefinedTypes.mBigIntType
     !self.mValue.location
     !self.mValue.bigint

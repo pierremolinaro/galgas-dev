@@ -54,7 +54,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     $=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
-    outInstruction = @assignmentInstructionAST.new {
+    outInstruction = @assignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
       !optionalProperty
@@ -79,7 +79,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     $=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
-    outInstruction = @selfPropertyAssignmentInstructionAST.new {
+    outInstruction = @selfPropertyAssignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
       !optionalProperty
@@ -117,7 +117,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
-    outInstruction = @assignmentInstructionAST.new {
+    outInstruction = @assignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
       !optionalProperty
@@ -149,7 +149,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
-    outInstruction = @selfPropertyAssignmentInstructionAST.new {
+    outInstruction = @selfPropertyAssignmentInstructionAST {
       !mTargetVariableName.location
       !mTargetVariableName
       !optionalProperty
@@ -243,7 +243,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     ]
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
     !receiverType
     !targetType
     !targetVariableCppName
@@ -295,12 +295,12 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     ]
   #---
     [!?ioVariableMap searchForWriteAccess 
-      !.new {!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
+      !.init {!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
     ]
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
       !selfType
       !targetType
       !targetVariableCppName

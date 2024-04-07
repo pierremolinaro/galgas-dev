@@ -92,7 +92,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     select
       $++$
-      outInstruction = @incDecInstructionAST.new {
+      outInstruction = @incDecInstructionAST {
         !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
@@ -101,7 +101,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $&++$
-      outInstruction = @incDecNoOVFInstructionAST.new {
+      outInstruction = @incDecNoOVFInstructionAST {
         !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
@@ -110,7 +110,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $&--$
-      outInstruction = @incDecNoOVFInstructionAST.new {
+      outInstruction = @incDecNoOVFInstructionAST {
         !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
@@ -119,7 +119,7 @@ syntax extension galgas3InstructionsSyntax {
       }
     or
       $--$
-      outInstruction = @incDecInstructionAST.new {
+      outInstruction = @incDecInstructionAST {
         !mReceiverName.location
         !inPrefixedBySelf
         !mReceiverName
@@ -137,25 +137,25 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     select
       $++$
-      outInstruction = @selfIncDecInstructionAST.new {
+      outInstruction = @selfIncDecInstructionAST {
         !instructionLocation
         !.increment
       }
     or
       $--$
-      outInstruction = @selfIncDecInstructionAST.new {
+      outInstruction = @selfIncDecInstructionAST {
         !instructionLocation
         !.decrement
       }
     or
       $&++$
-      outInstruction = @selfIncDecNoOVFInstructionAST.new {
+      outInstruction = @selfIncDecNoOVFInstructionAST {
         !instructionLocation
         !.increment
       }
     or
       $&--$
-      outInstruction = @selfIncDecNoOVFInstructionAST.new {
+      outInstruction = @selfIncDecNoOVFInstructionAST {
         !instructionLocation
         !.decrement
       }
@@ -250,7 +250,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '++', '--' operators"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@incDecInstructionForGeneration {
     !self.mInstructionLocation
     !targetVariableCppName
     !targetType
@@ -289,7 +289,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '&++', '&--' operators"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration {
     !self.mInstructionLocation
     !targetVariableCppName
     !targetType
@@ -318,7 +318,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
       :"the target object has the '@" + [selfType definition].typeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
     end
   #--- Generate instruction
-    ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration {
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
       !selfType
@@ -350,7 +350,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
       :"the target object has the '@" + [selfType definition].typeName.string + "' type, but this type does not support the '++' and  '--' operators"
     end
   #--- Generate instruction
-    ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@incDecInstructionForGeneration {
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
       !selfType

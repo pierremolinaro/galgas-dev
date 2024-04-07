@@ -39,7 +39,7 @@ syntax extension galgas3ExpressionSyntax {
     $identifier$ ?let lexiqueName
     $:$
     $identifier$ ?let getterName
-    outExpression = @lexiqueIntrospectionExpressionAST.new {!lexiqueName !getterName}
+    outExpression = @lexiqueIntrospectionExpressionAST {!lexiqueName !getterName}
     $]$
   }
 
@@ -60,7 +60,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ ?let lexiqueName
     $:$
     $identifier$ ?let getterName
-    outExpression = @lexiqueIntrospectionExpressionAST.new {!lexiqueName !getterName}
+    outExpression = @lexiqueIntrospectionExpressionAST {!lexiqueName !getterName}
     $]$
   }
 
@@ -100,7 +100,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     error self.mLexiqueGetterName:"unknown getter"
   end
 #---
-  outExpression = @lexiqueIntrospectionForGeneration.new {
+  outExpression = @lexiqueIntrospectionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !["stringlist" nowhere]]
     !self.mLexiqueComponentName.location
     !self.mLexiqueComponentName.string

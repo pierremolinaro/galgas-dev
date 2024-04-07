@@ -74,31 +74,31 @@ syntax extension galgas3ExpressionSyntax {
       $*$
       let leftOperand = outExpression
       <factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @multiplicationExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @multiplicationExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
       <factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @multiplicationExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @multiplicationExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
       <factor_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @divisionExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
       <factor_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @divisionExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @divisionExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
       <factor_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @moduloExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @moduloExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -121,31 +121,31 @@ syntax extension galgas4ExpressionSyntax {
       $*$
       let leftOperand = outExpression
       <factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @multiplicationExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @multiplicationExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&*$
       let leftOperand = outExpression
       <factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @multiplicationExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @multiplicationExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $/$
       let leftOperand = outExpression
       <factor> !?ioDeclarations ?let rightOperand
-      outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @divisionExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&/$
       let leftOperand = outExpression
       <factor> !?ioDeclarations ?let rightOperand
-      outExpression = @divisionExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @divisionExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $mod$
       let leftOperand = outExpression
       <factor> !?ioDeclarations ?let rightOperand
-      outExpression = @moduloExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @moduloExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -203,7 +203,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -261,7 +261,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -318,7 +318,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -375,7 +375,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -432,7 +432,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression

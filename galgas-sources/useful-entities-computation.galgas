@@ -75,98 +75,98 @@ proc checkUsefulEntities
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func getterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inGetterName -> @lstring {
-  result = .new {!"getter @" + inTypeName + " " + inGetterName !inGetterName.location}
+  result = .init {!"getter @" + inTypeName + " " + inGetterName !inGetterName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func setterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inSetterName -> @lstring {
-  result = .new {!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
+  result = .init {!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMethodName -> @lstring {
-  result = .new {!"method @" + inTypeName + " " + inMethodName !inMethodName.location}
+  result = .init {!"method @" + inTypeName + " " + inMethodName !inMethodName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @formalInputParameterListAST inParameterList -> @lstring {
-  result = .new {!"@" + inTypeName + "." + [inParameterList initializerSignature] !inTypeName.location}
+  result = .init {!"@" + inTypeName + "." + [inParameterList initializerSignature] !inTypeName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func lexiqueNameForUsefulEntitiesGraph ?let @lstring inLexiqueName -> @lstring {
-  result = .new {!"lexique " + inLexiqueName !inLexiqueName.location}
+  result = .init {!"lexique " + inLexiqueName !inLexiqueName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func grammarNameForUsefulEntitiesGraph ?let @lstring inGrammarName -> @lstring {
-  result = .new {!"grammar " + inGrammarName !inGrammarName.location}
+  result = .init {!"grammar " + inGrammarName !inGrammarName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func syntaxNameForUsefulEntitiesGraph ?let @lstring inSyntaxName -> @lstring {
-  result = .new {!"syntax " + inSyntaxName !inSyntaxName.location}
+  result = .init {!"syntax " + inSyntaxName !inSyntaxName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func optionNameForUsefulEntitiesGraph ?let @lstring inOptionName -> @lstring {
-  result = .new {!"option " + inOptionName !inOptionName.location}
+  result = .init {!"option " + inOptionName !inOptionName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func filewrapperNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName -> @lstring {
-  result = .new {!"filewrapper " + inFilewrapperName !inFilewrapperName.location}
+  result = .init {!"filewrapper " + inFilewrapperName !inFilewrapperName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func filewrapperTemplateNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName  ?let @lstring inTemplateName
 -> @lstring {
-  result = .new {!"filewrapper template " + inFilewrapperName + "." + inTemplateName !inTemplateName.location}
+  result = .init {!"filewrapper template " + inFilewrapperName + "." + inTemplateName !inTemplateName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func functionNameForUsefulEntitiesGraph ?let @lstring inFunctionName -> @lstring {
-  result = .new {!"function " + inFunctionName !inFunctionName.location}
+  result = .init {!"function " + inFunctionName !inFunctionName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func procedureNameForUsefulEntitiesGraph ?let @lstring inProcName -> @lstring {
-  result = .new {!"procedure " + inProcName !inProcName.location}
+  result = .init {!"procedure " + inProcName !inProcName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func typeNameForUsefulEntitiesGraph ?let @lstring inTypeName -> @lstring {
-  result = .new {!"type @" + inTypeName !inTypeName.location}
+  result = .init {!"type @" + inTypeName !inTypeName.location}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func afterNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
-  result = .new {!"after" !inLocation}
+  result = .init {!"after" !inLocation}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func beforeNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
-  result = .new {!"before" !inLocation}
+  result = .init {!"before" !inLocation}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func rootRuleNameForUsefulEntitiesGraph ?let @lstring inFileExtension -> @lstring {
-  result = .new {!"rule ." + inFileExtension !inFileExtension}
+  result = .init {!"rule ." + inFileExtension !inFileExtension}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

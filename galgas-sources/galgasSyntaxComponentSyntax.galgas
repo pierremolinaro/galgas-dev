@@ -119,7 +119,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var @nonTerminalLabelListAST labels = §[]
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST firstBranchFormalParameters
-    labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
+    labels += !.init {!"" !.here} !firstBranchFormalParameters !.here
     repeat
     while
       $label$
@@ -155,7 +155,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   rule <syntax_rule_declaration> ?!@galgasDeclarationAST ioDeclarations ?!@syntaxRuleListAST ioRuleList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-    var labelName = @lstring.new{!"" !@location.here}
+    var labelName = @lstring {!"" !@location.here}
     var mLabelList = @syntaxRuleLabelListAST §[]
     repeat
       <syntax_rule_label> !?ioDeclarations !labelName !?mLabelList
@@ -315,7 +315,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var @nonTerminalLabelListAST labels = §[]
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST firstBranchFormalParameters
-    labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
+    labels += !.init {!"" !.here} !firstBranchFormalParameters !.here
     repeat
     while
       $label$
@@ -351,7 +351,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
                                  ?!@syntaxRuleListAST ioRuleList {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-    var labelName = @lstring.new{!"" !@location.here}
+    var labelName = @lstring {!"" !@location.here}
     var mLabelList = @syntaxRuleLabelListAST §[]
     repeat
       <syntax_rule_label> !?ioDeclarations !labelName !?mLabelList

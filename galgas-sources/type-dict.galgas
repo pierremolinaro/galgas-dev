@@ -56,7 +56,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !mDictTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST {
       !isPredefined: false # Is not predefined
       !mDictTypeName
       !keyTypeName
@@ -91,7 +91,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> !mDictTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST {
       !isPredefined: false # Is not predefined
       !mDictTypeName
       !keyTypeName
@@ -125,9 +125,9 @@ override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationL
       !hasSelector: hasSelector
       !initialization: .none
   end
-  ioSemanticDeclarationList += !@structDeclarationAST.new {
+  ioSemanticDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
-    !.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
+    !.init {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
     !structAttributeList
     !""
   }
@@ -145,11 +145,11 @@ override method @dictDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
  {
-  let dictionary = @lstring.new {!"@" + self.mDictTypeName !self.mDictTypeName.location}
+  let dictionary = @lstring {!"@" + self.mDictTypeName !self.mDictTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
-  [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
+  [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
   for (* typeName 4*) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + typeName !typeName}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + typeName !typeName}]
   end
 }
 
@@ -247,7 +247,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Handle insert setter
   [!?setterMap insertOrReplace
-    !.new {!"insert" !self.mDictTypeName.location}
+    !.init {!"insert" !self.mDictTypeName.location}
     !@methodKind.definedAsMember
     !insertSetterFormalArgumentList
     !true
@@ -256,7 +256,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   ]
 #--- Handle remove setter
   [!?setterMap insertOrReplace
-    !.new {!"removeKey" !self.mDictTypeName.location}
+    !.init {!"removeKey" !self.mDictTypeName.location}
     !@methodKind.definedAsMember
     !removeMethodFormalArgumentList
     !true
@@ -265,7 +265,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   ]
 #--- Handle search methods (methods if no state, setters if states)
   [!?instanceMethodMap insertKey
-    !.new {!"searchKey" !self.mDictTypeName}
+    !.init {!"searchKey" !self.mDictTypeName}
     !@methodKind.definedAsMember
     !removeMethodFormalArgumentList
     !self.mDictTypeName.location
@@ -275,7 +275,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   ]
 #--- Enter "attributeForKey" getters
   for (* typeName mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring.new {!mPropertyName.string + "ForKey" !mPropertyName.location}
+    let accessorName = @lstring {!mPropertyName.string + "ForKey" !mPropertyName.location}
     [!?ioTypeMap makeEntry  !typeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
@@ -290,7 +290,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for (* typeName mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring.new {
+    let accessorName = @lstring {
       !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
       !mPropertyName.location
     }
@@ -329,14 +329,14 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Element type index
   [!?ioTypeMap makeEntry
-    !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
+    !@lstring {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
     ?let @unifiedTypeMapEntry elementTypeEntry
   ]
 #--- Add Optional method
   var optionalMethodMap = @optionalMethodMap §[]
   [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
 #--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mDictTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -426,7 +426,7 @@ override method @dictDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mDictTypeName.string + "-element" !self.mDictTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mDictTypeName.string + "-element" !self.mDictTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = §[]
@@ -455,9 +455,9 @@ override method @dictDeclarationAST semanticAnalysis
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "dict " + self.mDictTypeName
-    !@dictTypeForGeneration.new {
+    !@dictTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mDictTypeName]
-      ![ioTypeMap typeMapEntryForLKey !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !@lstring {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
       !self.mDictTypeName
       !typedAttributeList
       !self.mKeyTypeName

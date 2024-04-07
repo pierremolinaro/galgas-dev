@@ -107,7 +107,7 @@ syntax extension galgas3InstructionsSyntax {
       end
     end
     <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
-    outInstruction = @errorInstructionAST.new {
+    outInstruction = @errorInstructionAST {
       !instructionLocation
       !mReceiverExpression
       !mErrorExpression
@@ -189,7 +189,7 @@ syntax extension galgas4InstructionsSyntax {
       $)$
     end
     <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
-    outInstruction = @errorInstructionAST.new {
+    outInstruction = @errorInstructionAST {
       !instructionLocation
       !mReceiverExpression
       !mErrorExpression
@@ -392,7 +392,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
     builtVariableCppNameList += !varCppName
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@errorInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@errorInstructionForGeneration {
     !self.mInstructionLocation
     !locationExpression
     !messageExpression

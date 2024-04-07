@@ -58,7 +58,7 @@ syntax extension galgas3DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
       !isPredefined: false # Is not predefined
       !sortedListTypeName
       !attributeList
@@ -109,7 +109,7 @@ syntax extension galgas4DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
       !isPredefined: false # Is not predefined
       !sortedListTypeName
       !attributeList
@@ -146,10 +146,10 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
+  let key = @lstring {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (* propertyTypeName 4*) in self.mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + propertyTypeName !propertyTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + propertyTypeName !propertyTypeName.location}]
   end
 }
 
@@ -169,9 +169,9 @@ override method @sortedListDeclarationAST addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
-  ioSemanticDeclarationList += !@structDeclarationAST.new {
+  ioSemanticDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
-    !@lstring.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
+    !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     !structAttributeList
     !""
   }
@@ -192,7 +192,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry  !self.mSortedListTypeName ?let listTypeIndex]
 #--- Element type index
   [!?ioTypeMap makeEntry
-    !@lstring.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
+    !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Enumeration description
@@ -220,7 +220,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !hasLexiqueArg:false
   )
   [!?classFunctionMap insertKey
-    !@lstring.new {!"sortedListWithValue" !@location.here}
+    !@lstring {!"sortedListWithValue" !@location.here}
     !constructorAttributeTypeList
     !false
     !listTypeIndex
@@ -238,7 +238,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
 #--- Setters
   var @setterMap setterMap = §[]
   [!?setterMap insertOrReplace
-    !@lstring.new {!"popGreatest" !@location.here}
+    !@lstring {!"popGreatest" !@location.here}
     !@methodKind.definedAsMember
     !setterFormalOutputArgumentList
     !true
@@ -246,7 +246,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
   [!?setterMap insertOrReplace
-    !@lstring.new {!"popSmallest" !@location.here}
+    !@lstring {!"popSmallest" !@location.here}
     !@methodKind.definedAsMember
     !setterFormalOutputArgumentList
     !true
@@ -254,7 +254,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
   [!?setterMap insertOrReplace
-    !@lstring.new {!"insert" !@location.here}
+    !@lstring {!"insert" !@location.here}
     !@methodKind.definedAsMember
     !setterFormalInputArgumentList
     !true
@@ -264,7 +264,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
 #--- Instance methods
   var @instanceMethodMap instanceMethodMap = §[]
   [!?instanceMethodMap insertKey
-    !@lstring.new {!"greatest" !@location.here}
+    !@lstring {!"greatest" !@location.here}
     !@methodKind.definedAsMember
     !setterFormalOutputArgumentList
     !@location.here
@@ -273,7 +273,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
-    !@lstring.new {!"smallest" !@location.here}
+    !@lstring {!"smallest" !@location.here}
     !@methodKind.definedAsMember
     !setterFormalOutputArgumentList
     !@location.here
@@ -299,7 +299,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mSortedListTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -346,7 +346,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSortedListTypeName)
   [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefulness !sortedListNameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mSortedListTypeName.string + "-element" !self.mSortedListTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mSortedListTypeName.string + "-element" !self.mSortedListTypeName})
   [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
 #--- Attribute
   var typedAttributeList = @typedPropertyList §[]
@@ -378,9 +378,9 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "sorted list " + self.mSortedListTypeName
-    !@sortedListTypeForGeneration.new {
+    !@sortedListTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mSortedListTypeName]
-      ![ioTypeMap typeMapEntryForLKey !.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
+      ![ioTypeMap typeMapEntryForLKey !.init {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
       !typedAttributeList
       !sortDescriptorList
     }

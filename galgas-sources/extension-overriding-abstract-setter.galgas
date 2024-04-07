@@ -30,7 +30,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionSetter
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !className
       !setterName
@@ -46,7 +46,7 @@ syntax extension galgas3DeclarationsSyntax {
     $setter$
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !setterName
@@ -72,7 +72,7 @@ syntax extension galgas3DeclarationsSyntax {
 #    $.$
 #    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
 #    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-#    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
+#    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
 #      !isPredefined: false # Is not predefined
 #      !className
 #      !setterName
@@ -89,7 +89,7 @@ syntax extension galgas3DeclarationsSyntax {
 #    $proc$
 #    $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
 #    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-#    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST.new {
+#    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
 #      !isPredefined: false # Is not predefined
 #      !inClassName
 #      !setterName
@@ -182,7 +182,7 @@ refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
       error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
     end
   #--- Analyze formal argument list
-    var variableMap = @localVarManager.new
+    var variableMap = @localVarManager {}
     buildLocalVariableMapAndSignature (
       !inSemanticContext
       !?ioTypeMap

@@ -30,14 +30,14 @@ syntax extension galgas3SyntaxComponentSyntax {
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
     select
-      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone.new
-      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
-    outInstruction = @terminalCheckInstructionAST.new {
+    outInstruction = @terminalCheckInstructionAST {
       !terminalName.location
       !terminalName
       !actualInputParameterList
@@ -88,14 +88,14 @@ syntax extension galgas4SyntaxComponentSyntax {
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
     select
-      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone.new
-      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone {}
+      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
     end
-    outInstruction = @terminalCheckInstructionAST.new {
+    outInstruction = @terminalCheckInstructionAST {
       !terminalName.location
       !terminalName
       !actualInputParameterList
@@ -158,7 +158,7 @@ refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
       terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
       [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
     end
-    ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis.new {
+    ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis {
       !self.mInstructionLocation
       !self.mTerminalName
       !terminalSymbolIndex
@@ -227,7 +227,7 @@ refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
       !?ioVariableMap
     ]
   #---
-    ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
       !self.mInstructionLocation
       !self.mTerminalName
       !inLexiqueName
@@ -303,14 +303,14 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   ?let @string unused inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
  {
-  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration {
     !self.mInstructionLocation
     !self.mTerminalName
     !self.mLexiqueIdentifier
     !@terminalCheckAssignementList §[]
     !self.mIndexingKeyList
-    !@grammarInstructionSyntaxDirectedTranslationResultNone.new
-    !@grammarInstructionSyntaxDirectedTranslationResultNone.new
+    !@grammarInstructionSyntaxDirectedTranslationResultNone {}
+    !@grammarInstructionSyntaxDirectedTranslationResultNone {}
   }
 }
 

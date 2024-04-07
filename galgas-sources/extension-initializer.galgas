@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST.new {
+    ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
       !className
       !formalParameterList
@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST.new {
+    ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !formalParameterList
@@ -75,7 +75,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST.new {
+    ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
       !className
       !formalParameterList
@@ -94,7 +94,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST.new {
+    ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !formalParameterList
@@ -132,9 +132,9 @@ refclass @initializerAST : @semanticDeclarationAST {
           ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
           ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring.new {![self keyRepresentation] !self.mTypeName.location}
+    let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !.new {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mTypeName !self.mTypeName.location}]
   #---
     if not [ioExtensionInitializerForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionInitializerForBuildingContext insertKey
@@ -144,7 +144,7 @@ refclass @initializerAST : @semanticDeclarationAST {
     end
     with self.mTypeName in !?ioExtensionInitializerForBuildingContext error message searchKey  do
       [!?mExtensionInitializerMapForType insertKey
-        !@lstring.new {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
+        !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
         !self.mFormalParameterList
       ]
     end
@@ -191,7 +191,7 @@ refclass @initializerAST : @semanticDeclarationAST {
       selfObjectAccessorString = "result."
     end
   #--- Analyze instruction list
-    let analysisContextNew = @analysisContext.new {
+    let analysisContextNew = @analysisContext {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: selfObjectNameString
@@ -214,7 +214,7 @@ refclass @initializerAST : @semanticDeclarationAST {
     let initializerName = [self.mFormalParameterList initializerSignature]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
-      !@extensionInitializerForGeneration.new {
+      !@extensionInitializerForGeneration {
         !generateHeader: false # Generate Cpp header file
         !implementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
         !selfType
@@ -240,7 +240,7 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
                         ?let @location inEndOfMethodLocation
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
                         !@formalInputParameterListForGeneration outSignatureForGeneration {
-  var variableMap = @localVarManager.new
+  var variableMap = @localVarManager {}
 #--- Enter properties that should be explicitly initialized
   if let [inAnalysisContext.selfAvailability available ?type: let type ?selfMutability: let selfMutability] then
     for property in [type definition].allTypedPropertyList do

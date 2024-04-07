@@ -34,9 +34,9 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @lbool hasIndexing
     select
-      hasIndexing = @lbool.new {!false !@location.here}
+      hasIndexing = @lbool {!false !@location.here}
     or
-      hasIndexing = @lbool.new {!true !@location.here}
+      hasIndexing = @lbool {!true !@location.here}
       $indexing$
     end
     $grammar$
@@ -62,7 +62,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   #--- Root symbol
     $<non_terminal>$ ?let @lstring  mStartSymbol indexing ruleReference
     var mLabelList = @nonTerminalLabelListAST §[]
-    <grammar_start_symbol_label_ggs3> !?ioDeclarations !@lstring.new {!"" !@location.here} !?mLabelList
+    <grammar_start_symbol_label_ggs3> !?ioDeclarations !@lstring {!"" !@location.here} !?mLabelList
     repeat
     while
       $label$
@@ -79,7 +79,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     end
   #---
     $}$
-    ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST.new {
+    ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST {
       !isPredefined: false # Is not predefined
       !hasIndexing
       !mGrammarName
@@ -231,9 +231,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @lbool hasIndexing
     select
-      hasIndexing = @lbool.new {!false !@location.here}
+      hasIndexing = @lbool {!false !@location.here}
     or
-      hasIndexing = @lbool.new {!true !@location.here}
+      hasIndexing = @lbool {!true !@location.here}
       $indexing$
     end
     $grammar$
@@ -259,7 +259,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   #--- Root symbol
     $<non_terminal>$ ?let @lstring startSymbol indexing ruleReference
     var mLabelList = @nonTerminalLabelListAST §[]
-    <grammar_start_symbol_label> !?ioDeclarations !@lstring.new {!"" !@location.here} !?mLabelList
+    <grammar_start_symbol_label> !?ioDeclarations !@lstring {!"" !@location.here} !?mLabelList
     repeat
     while
       $label$
@@ -276,7 +276,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
   #---
     $}$
-    ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST.new {
+    ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST {
       !isPredefined: false # Is not predefined
       !hasIndexing
       !mGrammarName

@@ -76,12 +76,12 @@ proc compileBeforeClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {
       !blockSemanticInstructionListForGeneration}
   end
 #---
   ioDecoratedDeclarationListForGeneration +=
-    !@routineImplementationForGeneration.new {
+    !@routineImplementationForGeneration {
       !generateHeader: false # Has no header
       !implementationCppFileName: "proc-before"
       !routineMangledName:"before"
@@ -113,7 +113,7 @@ private proc compileProgramRulesGalgas3
     let @formalParameterListAST argumentList = §[
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
-      !@lstring.new {!"lstring" !@location.here}
+      !@lstring {!"lstring" !@location.here}
       !mSourceFileVariableName
       !mSourceFileVariableNameIsUnused
     ]
@@ -131,7 +131,7 @@ private proc compileProgramRulesGalgas3
       ?let routineSignature
     )
     ioDecoratedDeclarationListForGeneration +=
-      !@routineImplementationForGeneration.new {
+      !@routineImplementationForGeneration {
         !generateHeader: false # Has no header
         !implementationCppFileName: "proc-programrule"
         !routineMangledName: "programRule_" + [ruleIndex string]
@@ -177,10 +177,10 @@ proc compileAfterClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {!blockSemanticInstructionListForGeneration}
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {!blockSemanticInstructionListForGeneration}
   end
 #---
-  ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration.new {
+  ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration {
     !generateHeader: false # Has no header
     !implementationCppFileName: "proc-after"
     !routineMangledName: "after"
@@ -208,7 +208,7 @@ proc compileProgramComponentGalgas3
   !@programComponentForGeneration outProgramComponentForGeneration
 {
 #--- Analysis context
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !buildPredefinedTypes (!ioTypeMap)
     !selfObjectCppName: ""
@@ -265,7 +265,7 @@ proc compileProgramComponentGalgas3
     !inProjectVersionString
   ]
 #---
-  outProgramComponentForGeneration = @programComponentForGeneration.new {
+  outProgramComponentForGeneration = @programComponentForGeneration {
     !generateHeader: false # No header
     !implementationCppFileName: "program"
     !inclusionSet

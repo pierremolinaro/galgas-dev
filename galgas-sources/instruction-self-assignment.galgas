@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @selfAssignmentInstructionAST.new {
+    outInstruction = @selfAssignmentInstructionAST {
       !instructionLocation
       !sourceExpression
     }
@@ -59,7 +59,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @selfAssignmentInstructionAST.new {
+    outInstruction = @selfAssignmentInstructionAST {
       !instructionLocation
       !sourceExpression
     }
@@ -108,7 +108,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
       !selfType
       !selfType
       !inAnalysisContext.selfObjectCppName

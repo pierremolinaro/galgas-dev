@@ -29,7 +29,7 @@ syntax extension galgas3InstructionsSyntax {
     $($
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $)$
-    outInstruction = @procCallInstructionAST.new {
+    outInstruction = @procCallInstructionAST {
       !mRoutineName.location
       !mRoutineName
       !actualParameterList
@@ -49,7 +49,7 @@ syntax extension galgas4InstructionsSyntax {
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $identifier$ ?let mRoutineName indexing routineCall
 #    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
-#    outInstruction = @procCallInstructionAST.new {
+#    outInstruction = @procCallInstructionAST {
 #      !mRoutineName.location
 #      !mRoutineName
 #      !actualParameterList
@@ -116,7 +116,7 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
   #--- Generate instruction
-    ioInstructionListForGeneration += !@procCallInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@procCallInstructionForGeneration {
       !routineMangledName: routineMangledName # self.mRoutineName
       !actualParameterListForGeneration
     }

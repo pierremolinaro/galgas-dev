@@ -38,7 +38,7 @@ syntax extension galgas3ExpressionSyntax {
     <primary_ggs3> !?ioDeclarations ?outExpression
     $.$
     $bang$
-    outExpression = @bangExpressionAST.new {!operatorLocation !outExpression}
+    outExpression = @bangExpressionAST {!operatorLocation !outExpression}
   }
 
   #·······························································································
@@ -58,7 +58,7 @@ syntax extension galgas4ExpressionSyntax {
 #    $°$
     $.$
     $bang$
-    outExpression = @bangExpressionAST.new {!operatorLocation !outExpression}
+    outExpression = @bangExpressionAST {!operatorLocation !outExpression}
   }
 
   #·······························································································
@@ -99,7 +99,7 @@ override method @bangExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if let [[type definition].typeKind weakReferenceType ?referenceType: let classIndex] then
-    outExpression = @bangExpressionForGeneration.new {
+    outExpression = @bangExpressionForGeneration {
       !classIndex
       !self.mOperatorLocation
       !expression

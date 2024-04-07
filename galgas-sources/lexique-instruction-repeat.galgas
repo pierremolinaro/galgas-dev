@@ -47,7 +47,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     while
     end
     $end$
-    ioInstructionList += !@lexicalRepeatInstructionAST.new {
+    ioInstructionList += !@lexicalRepeatInstructionAST {
       !repeatedInstructionList
       !lexicalWhileBranchList
       !location
@@ -78,7 +78,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     while
     end
     $end$
-    ioInstructionList += !@lexicalRepeatInstructionAST.new {
+    ioInstructionList += !@lexicalRepeatInstructionAST {
       !repeatedInstructionList
       !lexicalWhileBranchList
       !location

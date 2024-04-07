@@ -154,7 +154,7 @@ proc checkExpressionIsBoolean
   elsif [expressionType definition].typeKind == .structType then
     if [[expressionType definition].propertyMap hasKey !"bool"] then
       [[expressionType definition].propertyMap searchKey
-        !@lstring.new {!"bool" !inErrorLocation}
+        !@lstring {!"bool" !inErrorLocation}
         ?let accessControl
         ?*
         ?let @unifiedTypeMapEntry attributeType
@@ -164,7 +164,7 @@ proc checkExpressionIsBoolean
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
 #      end
       if attributeType == boolType then
-        outExpression = @structPropertyAccessExpressionForGeneration.new {
+        outExpression = @structPropertyAccessExpressionForGeneration {
           !boolType
           !inErrorLocation
           !inExpression
@@ -187,7 +187,7 @@ proc checkExpressionIsBoolean
       elsif [mArgumentTypeList count] > 0 then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' getter that requires argument(s)" : outExpression
       else
-        outExpression = @getterCallExpressionForGeneration.new {
+        outExpression = @getterCallExpressionForGeneration {
           !boolType
           !inErrorLocation
           !mKind

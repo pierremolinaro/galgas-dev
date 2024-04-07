@@ -66,12 +66,12 @@ syntax extension galgas3LexiqueComponentSyntax {
       $!$
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
-      actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
+      actualArgumentList += !@lexicalFormalInputArgumentAST {!passingModeLocation !arg}
     while
       $!?$
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName
-      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
+      let arg = @lexicalAttributeInputOutputArgumentAST {!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
     var @lstringlist errorMessageList = §[]
@@ -86,7 +86,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       end
     end
     $)$
-    ioInstructionList += !@lexicalRoutineCallInstructionAST.new {
+    ioInstructionList += !@lexicalRoutineCallInstructionAST {
       !actionName
       !actualArgumentList
       !errorMessageList}
@@ -111,12 +111,12 @@ syntax extension galgas4LexiqueComponentSyntax {
       $!$
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
-      actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
+      actualArgumentList += !@lexicalFormalInputArgumentAST {!passingModeLocation !arg}
     while
       $!?$
       let passingModeLocation = @location.here
       $identifier$ ?let @lstring attributeName
-      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
+      let arg = @lexicalAttributeInputOutputArgumentAST {!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
     var @lstringlist errorMessageList = §[]
@@ -131,7 +131,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       end
     end
     $)$
-    ioInstructionList += !@lexicalRoutineCallInstructionAST.new {
+    ioInstructionList += !@lexicalRoutineCallInstructionAST {
       !actionName
       !actualArgumentList
       !errorMessageList}

@@ -57,7 +57,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
     let endOfElseInstructions = @location.here
     outElseInstructionList = §[]
-    outElseInstructionList += !@parseWhenInstruction.new {
+    outElseInstructionList += !@parseWhenInstruction {
       !instructionLocation
       !whenExpression
       !endOfWhenExpression
@@ -84,7 +84,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     <branchOfParseWhithInstruction> !?ioDeclarations ?let @syntaxInstructionList elseInstructionList
     let endOfElseInstructions = @location.here
     $end$
-    outInstruction = @parseWhenInstruction.new {
+    outInstruction = @parseWhenInstruction {
       !instructionLocation
       !whenExpression
       !endOfWhenExpression
@@ -126,7 +126,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     <branchOfParseWhithInstruction> !?ioDeclarations ?let elseInstructionList
     let endOfElseInstructions = @location.here
     outElseInstructionList = §[]
-    outElseInstructionList += !@parseWhenInstruction.new {
+    outElseInstructionList += !@parseWhenInstruction {
       !instructionLocation
       !whenExpression
       !endOfWhenExpression
@@ -153,7 +153,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     <branchOfParseWhithInstruction> !?ioDeclarations ?let @syntaxInstructionList elseInstructionList
     let endOfElseInstructions = @location.here
     $end$
-    outInstruction = @parseWhenInstruction.new {
+    outInstruction = @parseWhenInstruction {
       !instructionLocation
       !whenExpression
       !endOfWhenExpression
@@ -264,7 +264,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   )
 #--- Generate instruction
   if ok then
-    ioInstructionListForGeneration += !@parseWhenInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@parseWhenInstructionForGeneration {
       !self.mInstructionLocation
       !when_expression
       !when_instructionListForGeneration

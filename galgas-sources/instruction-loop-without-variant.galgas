@@ -52,7 +52,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
-    outInstruction = @loopInstructionWithoutVariantAST.new {
+    outInstruction = @loopInstructionWithoutVariantAST {
       !instructionLocation
       !firstInstructions
       !endOfFirstInstructions
@@ -89,7 +89,7 @@ syntax extension galgas4InstructionsSyntax {
     let endOfSecondInstructions = @location.here
     $end$
     let endOfLoopInstruction = @location.here
-    outInstruction = @loopInstructionWithoutVariantAST.new {
+    outInstruction = @loopInstructionWithoutVariantAST {
       !instructionLocation
       !firstInstructions
       !endOfFirstInstructions
@@ -174,7 +174,7 @@ override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
 #--- End override
   [!?ioVariableMap closeOverride !self.mEndOfLoopInstruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@loopInstructionWithoutVariantForGeneration.new {
+  ioInstructionListForGeneration += !@loopInstructionWithoutVariantForGeneration {
     !self.mInstructionLocation
     !first_instructionList
     !loopExpression

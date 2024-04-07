@@ -49,7 +49,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $end$
     let endOf_repeat_instruction = @location.here
-    outInstruction = @repeatInstruction.new {
+    outInstruction = @repeatInstruction {
       !mRepeatInstructionLocation
       !mRepeatedInstructionList
       !endOf_repeated_instructions
@@ -83,7 +83,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $end$
     let endOf_repeat_instruction = @location.here
-    outInstruction = @repeatInstruction.new {
+    outInstruction = @repeatInstruction {
       !mRepeatInstructionLocation
       !mRepeatedInstructionList
       !endOf_repeated_instructions
@@ -130,7 +130,7 @@ override method @repeatInstruction transformInstruction
     repeatBranchList += !syntaxInstructionList
   end
 
-  ioSyntaxInstructionList += !@repeatInstructionForGrammarAnalysis.new {
+  ioSyntaxInstructionList += !@repeatInstructionForGrammarAnalysis {
     !self.mInstructionLocation
     !repeatBranchList
     !addedNonTerminalIndex
@@ -203,7 +203,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #--- End block
   [!?ioVariableMap closeOverride !self.mEndOf_repeat_instruction]
 #---
-  ioInstructionListForGeneration += !@repeatInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@repeatInstructionForGeneration {
     !self.mInstructionLocation
     !inComponentName
     !choiceIndex
@@ -241,7 +241,7 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
       !mEndOfInstructionList
   end
 #---
-  ioInstructionListForGeneration += !@repeatInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@repeatInstructionForGeneration {
     !self.mInstructionLocation
     !self.mSyntaxComponentName
     !self.mChoiceIndex

@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
     $($
     <type_definition_ggs3> !?ioDeclarations ?let associatedListTypeName
     $)$
-    ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@listmapDeclarationAST {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
       !associatedListTypeName
@@ -61,7 +61,7 @@ syntax extension galgas4DeclarationsSyntax {
     $($
     <type_definition> !?ioDeclarations ?let associatedListTypeName
     $)$
-    ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@listmapDeclarationAST {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
       !associatedListTypeName
@@ -94,9 +94,9 @@ override method @listmapDeclarationAST addAssociatedElement
     !hasSelector: false
     !initialization: .none
 #---
-  ioSemanticDeclarationList += !@structDeclarationAST.new {
+  ioSemanticDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
-    !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
+    !@lstring {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     !structAttributeList
     !""
   }
@@ -113,9 +113,9 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mListmapTypeName !self.mListmapTypeName.location}
+  let key = @lstring {!"@" + self.mListmapTypeName !self.mListmapTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -208,7 +208,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
       !mPropertyName.string
   end
   [!?setterMap insertOrReplace
-    !.new {!"insert" !self.mListmapTypeName.location}
+    !.init {!"insert" !self.mListmapTypeName.location}
     !@methodKind.definedAsMember
     !insertSetterFormalArgumentList
     !true
@@ -234,11 +234,11 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Element type index
   [!?ioTypeMap makeEntry
-    !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
+    !@lstring {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Enter type in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mListmapTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -287,7 +287,7 @@ override method @listmapDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListmapTypeName.string + "-element" !self.mListmapTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mListmapTypeName.string + "-element" !self.mListmapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
   let associatedTypeDefinition = [ioTypeMap typeDefinition !self.mAssociatedListTypeName]
@@ -306,11 +306,11 @@ override method @listmapDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "list map " + self.mListmapTypeName
-    !@listmapTypeForGeneration.new {
+    !@listmapTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mListmapTypeName]
       ![ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]
       !associatedTypeDefinition.allTypedPropertyList
-      ![ioTypeMap typeMapEntryForLKey !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !@lstring {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}]
     }
 }
 

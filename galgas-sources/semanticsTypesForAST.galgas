@@ -251,7 +251,7 @@ list @propertyInCollectionListAST {
       case none :
       case some (expressionAST) :
         var variableMap = @localVarManager {}
-        let @analysisContext analysisContext = .new {
+        let @analysisContext analysisContext = .init {
           !inSemanticContext
           !inPredefinedTypes
           !selfObjectCppName: ""

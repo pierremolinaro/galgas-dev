@@ -71,7 +71,7 @@ syntax extension galgas3ExpressionSyntax {
         $,$
       end
     end
-    outExpression = @collectionValueAST.new {
+    outExpression = @collectionValueAST {
       !typeName
       !elementList
       !.here
@@ -96,7 +96,7 @@ syntax extension galgas3ExpressionSyntax {
       expressionList += !selector !expression !@location.here
     while
     end
-    outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
+    outValueElement = @expressionListCollectionValue {!expressionList !@location.here}
   }
 
   #·······························································································
@@ -104,7 +104,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
                                   !@abstractCollectionValueElement outValueElement {
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    outValueElement = @expressionCollectionValue.new {!expression !@location.here}
+    outValueElement = @expressionCollectionValue {!expression !@location.here}
   }
 
   #·······························································································
@@ -131,7 +131,7 @@ syntax extension galgas4ExpressionSyntax {
         $:$
       end
     end
-    outExpression = @collectionValueAST.new {
+    outExpression = @collectionValueAST {
       !typeName
       !elementList
       !.here
@@ -162,14 +162,14 @@ syntax extension galgas4ExpressionSyntax {
     while
       $,$
     end
-    outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
+    outValueElement = @expressionListCollectionValue {!expressionList !@location.here}
   }
 
   #·······························································································
 
 #  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
 #    <expression> ?let @semanticExpressionAST expression
-#    outValueElement = @expressionCollectionValue.new {!expression !@location.here}
+#    outValueElement = @expressionCollectionValue {!expression !@location.here}
 #  }
 
   #·······························································································
@@ -226,12 +226,12 @@ override method @collectionValueAST analyzeSemanticExpression
       : "the '@" + [targetType definition].typeName + "' has no initializer without argument"
     end
     let usefulnessName = typeNameForUsefulEntitiesGraph (
-      !.new {![targetType definition].typeName.string
+      !.init {![targetType definition].typeName.string
       !self.mEndOfCollectionValue}
     )
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
     if [self.mElementList count] == 0 then
-      outExpression = @defaultConstructorExpressionForGeneration.new {
+      outExpression = @defaultConstructorExpressionForGeneration {
         !targetType
         !self.mTypeName.location
         !constructorName
@@ -250,7 +250,7 @@ override method @collectionValueAST analyzeSemanticExpression
           !?collectionValueElementListForGeneration
         ]
       end
-      outExpression = @expressionCollectionForGeneration.new {
+      outExpression = @expressionCollectionForGeneration {
         !targetType
         !self.mEndOfCollectionValue
         !collectionValueElementListForGeneration
@@ -310,7 +310,7 @@ override method @expressionCollectionValue analyze
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!inElementType !expression.mResultType !self.mExpressionLocation !?expression)
 #---
-  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!self.mExpressionLocation !expression}
+  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration {!self.mExpressionLocation !expression}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -350,7 +350,7 @@ override method @expressionListCollectionValue analyze
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !self.mEndOfExpressionLocation !?exp)
       semanticExpressionListForGeneration += !exp
     end
-    ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration.new {
+    ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration {
       !self.mEndOfExpressionLocation
       !semanticExpressionListForGeneration}
   end

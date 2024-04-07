@@ -31,7 +31,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let mMethodName
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
-    outInstruction = @methodCallInstructionAST.new {
+    outInstruction = @methodCallInstructionAST {
       !instructionLocation
       !mReceiverExpression
       !mMethodName
@@ -55,7 +55,7 @@ syntax extension galgas4InstructionsSyntax {
 #    <expression> ?let @semanticExpressionAST receiverExpression
 #    $identifier$ ?let methodName
 #    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
-#    outInstruction = @methodCallInstructionAST.new {
+#    outInstruction = @methodCallInstructionAST {
 #      !instructionLocation
 #      !receiverExpression
 #      !methodName
@@ -73,7 +73,7 @@ syntax extension galgas4InstructionsSyntax {
 #    $.$
 #    $identifier$ ?let methodName
 #    <actual_parameter_list_within_parenthesis> ?let @actualParameterListAST actualParameterList
-#    outInstruction = @methodCallInstructionAST.new {
+#    outInstruction = @methodCallInstructionAST {
 #      !instructionLocation
 #      !receiverExpression
 #      !methodName
@@ -168,7 +168,7 @@ refclass @methodCallInstructionAST : @semanticInstructionAST {
       end
     end
   #--- Generate instructions
-    ioInstructionListForGeneration += !@methodCallInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@methodCallInstructionForGeneration {
       !self.mInstructionLocation
       !receiverExpression.mResultType
       !receiverExpression

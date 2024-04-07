@@ -54,7 +54,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       <lexical_instruction> !?defaultInstructionList
     end
     $end$
-    ioInstructionList += !@lexicalSelectInstructionAST.new {
+    ioInstructionList += !@lexicalSelectInstructionAST {
       !lexicalWhileBranchList
       !defaultInstructionList
     }
@@ -92,7 +92,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       <lexical_instruction> !?defaultInstructionList
     end
     $end$
-    ioInstructionList += !@lexicalSelectInstructionAST.new {
+    ioInstructionList += !@lexicalSelectInstructionAST {
       !lexicalWhileBranchList
       !defaultInstructionList
     }

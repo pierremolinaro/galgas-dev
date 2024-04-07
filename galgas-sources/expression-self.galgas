@@ -34,7 +34,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
     $self$
-    outExpression = @selfInExpressionAST.new {!@location.here}
+    outExpression = @selfInExpressionAST {!@location.here}
   }
 
   #·······························································································
@@ -50,7 +50,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
     $self$
-    outExpression = @selfInExpressionAST.new {!@location.here}
+    outExpression = @selfInExpressionAST {!@location.here}
   }
 
   #·······························································································
@@ -79,7 +79,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
 {
   if let [inAnalysisContext.selfAvailability available ?type: let selfType ?1*] then
     let @string selfCppName = inAnalysisContext.selfObjectCppName
-    outExpression = @selfInExpressionForGeneration.new {!selfType !self.mSelfLocation !selfCppName}
+    outExpression = @selfInExpressionForGeneration {!selfType !self.mSelfLocation !selfCppName}
   else
     error self.mSelfLocation : "'self' not available in this context" : outExpression
   end

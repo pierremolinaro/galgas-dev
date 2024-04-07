@@ -50,13 +50,13 @@ syntax extension galgas3ExpressionSyntax {
       $&$
       let leftOperand = outExpression
       <relation_factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @andExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
       <relation_factor_ggs3> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @andShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -79,13 +79,13 @@ syntax extension galgas4ExpressionSyntax {
       $&$
       let leftOperand = outExpression
       <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @andExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
       <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @andShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @andShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -143,7 +143,7 @@ override method @andExpressionAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -200,7 +200,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @andShortExpressionForGeneration.new {
+  outExpression = @andShortExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression

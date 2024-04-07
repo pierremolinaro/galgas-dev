@@ -57,7 +57,7 @@ syntax extension galgas3DeclarationsSyntax {
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$
-    ioDeclarations.mDeclarationList += !@graphDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@graphDeclarationAST {
       !isPredefined: false # Is not predefined
       !graphTypeName
       !associatedListTypeName
@@ -92,7 +92,7 @@ syntax extension galgas4DeclarationsSyntax {
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$
-    ioDeclarations.mDeclarationList += !@graphDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@graphDeclarationAST {
       !isPredefined: false # Is not predefined
       !graphTypeName
       !associatedListTypeName
@@ -116,9 +116,9 @@ override method @graphDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + self.mGraphTypeName !self.mGraphTypeName.location}
+  let key = @lstring {!"@" + self.mGraphTypeName !self.mGraphTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !.new {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -185,7 +185,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !@formalArgumentPassingModeAST.argumentOut
     !"outUnsortedLKeyList"
   [!?instanceMethodMap insertKey
-    !@lstring.new {!"topologicalSort" !@location.here}
+    !@lstring {!"topologicalSort" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
@@ -194,7 +194,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
-    !@lstring.new {!"depthFirstTopologicalSort" !@location.here}
+    !@lstring {!"depthFirstTopologicalSort" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
@@ -216,7 +216,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !@formalArgumentPassingModeAST.argumentOut
     !"outLKeyList"
   [!?instanceMethodMap insertKey
-    !@lstring.new {!"circularities" !@location.here}
+    !@lstring {!"circularities" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
@@ -225,7 +225,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
-    !@lstring.new {!"nodesWithNoSuccessor" !@location.here}
+    !@lstring {!"nodesWithNoSuccessor" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
@@ -234,7 +234,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
-    !@lstring.new {!"nodesWithNoPredecessor" !@location.here}
+    !@lstring {!"nodesWithNoPredecessor" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !@location.here
@@ -370,7 +370,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   )
 #--- Constructor 'emptyGraph'
   [!?classFunctionMap insertKey
-    !@lstring.new {!"emptyGraph" !@location.here}
+    !@lstring {!"emptyGraph" !@location.here}
     !§[]
     !false # No compiler argument
     !graphTypeEntry
@@ -403,7 +403,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
 #  drop formalParameterList
 #--- setter 'removeEdgeToDominators'
   [!?setterMap insertKey
-    !@lstring.new {!"removeEdgesToDominators" !@location.here}
+    !@lstring {!"removeEdgesToDominators" !@location.here}
     !@methodKind.definedAsMember
     !§[]
     !false # No compiler argument
@@ -414,7 +414,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   formalParameterList = @formalParameterSignature §[]
   formalParameterList += !["" nowhere] !stringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
   [!?setterMap insertKey
-    !@lstring.new {!"removeEdgesToNode" !@location.here}
+    !@lstring {!"removeEdgesToNode" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !true # Compiler argument
@@ -427,7 +427,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
   [!?setterMap insertKey
-    !@lstring.new {!"addEdge" !@location.here}
+    !@lstring {!"addEdge" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !false # No compiler argument
@@ -439,7 +439,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   formalParameterList = @formalParameterSignature §[]
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
   [!?setterMap insertKey
-    !@lstring.new {!"noteNode" !@location.here}
+    !@lstring {!"noteNode" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
     !false # No compiler argument
@@ -465,7 +465,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Enter type in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mGraphTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -518,7 +518,7 @@ override method @graphDeclarationAST semanticAnalysis
   let graphTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mGraphTypeName]
   let associatedListTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]
   let associatedListElementTypeEntry = [ioTypeMap typeMapEntryForLKey
-    !@lstring.new {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}
+    !@lstring {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}
   ]
   if [associatedListTypeEntry definition].typeKind != .listType then
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"
@@ -534,7 +534,7 @@ override method @graphDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "graph " + self.mGraphTypeName
-    !@graphDeclarationForGeneration.new {
+    !@graphDeclarationForGeneration {
       !graphTypeEntry
       !associatedListTypeEntry
       !associatedListElementTypeEntry

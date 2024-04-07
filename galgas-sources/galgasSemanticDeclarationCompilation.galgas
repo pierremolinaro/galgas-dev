@@ -40,8 +40,8 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   for name in @application.boolOptionNameList do
     options +=
       !["bool" nowhere]
-      !.new {!name.mValue1 !.here}
-      !.new {!@application.boolOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
+      !.init {!name.mValue1 !.here}
+      !.init {!@application.boolOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
       ![@application.boolOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
       ![@application.boolOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
       !["" nowhere]
@@ -50,8 +50,8 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   for name in @application.uintOptionNameList do
     options +=
       !["uint" nowhere]
-      !.new {!name.mValue1 !.here}
-      !@lchar.new {!@application.uintOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
+      !.init {!name.mValue1 !.here}
+      !@lchar {!@application.uintOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
       ![@application.uintOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
       ![@application.uintOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
       !["" nowhere]
@@ -60,14 +60,14 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   for name in @application.stringOptionNameList do
     options +=
       !["string" nowhere]
-      !.new {!name.mValue1 !.here}
-      !@lchar.new {!@application.stringOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
+      !.init {!name.mValue1 !.here}
+      !@lchar {!@application.stringOptionInvocationCharacter {!name.mValue0 !name.mValue1} !.nowhere}
       ![@application.stringOptionInvocationString {!name.mValue0 !name.mValue1} nowhere]
       ![@application.stringOptionCommentString {!name.mValue0 !name.mValue1} nowhere]
       !["" nowhere]
       !.noDefaultValue
   end
-  semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST.new {
+  semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST {
     !isPredefined: true # Is predefined
     !["galgas_builtin_options" nowhere]
     !options
@@ -178,7 +178,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     #--- Build initial semantic context
       outTypeMap = .emptyMap
-      outSemanticContext = @semanticContext.new {!galgas4: inGalgas4}
+      outSemanticContext = @semanticContext {!galgas4: inGalgas4}
     #--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
         [declaration.mSemanticDeclaration enterDeclarationInSemanticContext

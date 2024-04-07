@@ -49,7 +49,7 @@ syntax extension galgas3DeclarationsSyntax {
     $[$
     $literalInt$ ?let dimension
     $]$
-    ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@arrayDeclarationAST {
       !false # Is not predefined
       !arrayTypeName
       !elementListTypeName
@@ -71,9 +71,9 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mArrayTypeName !self.mArrayTypeName.location}
+  let key = @lstring {!"@" + self.mArrayTypeName !self.mArrayTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mElementTypeName !self.mElementTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mElementTypeName !self.mElementTypeName.location}]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -103,10 +103,10 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   let @instanceMethodMap instanceMethodMap = §[]
 #---
 #  [!?ioTypeMap makeEntryFromString !"bool" ?let boolType]
-  [!?ioTypeMap makeEntry !.new {!"bool" !.nowhere} ?let boolType]
+  [!?ioTypeMap makeEntry !.init {!"bool" !.nowhere} ?let boolType]
 #---
 #  [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
-  [!?ioTypeMap makeEntry !.new {!"uint" !.nowhere} ?let uintType]
+  [!?ioTypeMap makeEntry !.init {!"uint" !.nowhere} ?let uintType]
 #---
   var @functionSignature uintArgs = §[]
   var @uint idx = 0
@@ -116,7 +116,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Constructor
   [!?classFunctionMap insertKey
-    !@lstring.new {!"new" !@location.here}
+    !@lstring {!"new" !@location.here}
     !uintArgs
     !false
     !arrayTypeIndex
@@ -147,7 +147,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !hasCompilerArgument:true
   )
   [!?getterMap insertOrReplace
-    !@lstring.new {!"isValueValidAtIndex" !@location.here}
+    !@lstring {!"isValueValidAtIndex" !@location.here}
     !@methodKind.definedAsMember
     !uintArgs
     !@location.here
@@ -157,7 +157,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !"" # getter name is not obsolete, no replacement getter
   ]
   [!?getterMap insertOrReplace
-    !@lstring.new {!"valueAtIndex" !@location.here}
+    !@lstring {!"valueAtIndex" !@location.here}
     !@methodKind.definedAsMember
     !uintArgs
     !@location.here
@@ -219,7 +219,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !""
   ]
 #--- Enter in semantic context
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !self.mArrayTypeName
     !self.mIsPredefined
     !true # Concrete Type
@@ -272,7 +272,7 @@ override method @arrayDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"array " + self.mArrayTypeName
-    !@arrayTypeForGeneration.new {
+    !@arrayTypeForGeneration {
       ![ioTypeMap searchKey !self.mArrayTypeName]
       ![ioTypeMap searchKey !self.mElementTypeName]
       !self.mDimension.bigint

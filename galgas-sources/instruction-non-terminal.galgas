@@ -25,10 +25,10 @@ syntax extension galgas3SyntaxComponentSyntax {
                                  !@syntaxInstructionAST outInstruction {
     let @lstring mLabelName # No label : empty string
     select
-      mLabelName = @lstring.new {!"" !@location.here}
+      mLabelName = @lstring {!"" !@location.here}
     or
       $parse$
-      mLabelName = @lstring.new {!"parse" !@location.here}
+      mLabelName = @lstring {!"parse" !@location.here}
     or
       $parse$
       $identifier$ ? mLabelName
@@ -38,12 +38,12 @@ syntax extension galgas3SyntaxComponentSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @nonterminalCallInstruction.new {
+    outInstruction = @nonterminalCallInstruction {
       !mNonterminalName.location
       !mNonterminalName
       !mLabelName
@@ -66,10 +66,10 @@ syntax extension galgas4SyntaxComponentSyntax {
                             !@syntaxInstructionAST outInstruction {
     let @lstring mLabelName # No label : empty string
     select
-      mLabelName = @lstring.new {!"" !@location.here}
+      mLabelName = @lstring {!"" !@location.here}
     or
       $parse$
-      mLabelName = @lstring.new {!"parse" !@location.here}
+      mLabelName = @lstring {!"parse" !@location.here}
     or
       $parse$
       $identifier$ ? mLabelName
@@ -79,12 +79,12 @@ syntax extension galgas4SyntaxComponentSyntax {
   #--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
     or
       $:>$
       <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
     end
-    outInstruction = @nonterminalCallInstruction.new {
+    outInstruction = @nonterminalCallInstruction {
       !mNonterminalName.location
       !mNonterminalName
       !mLabelName
@@ -115,7 +115,7 @@ refclass @nonterminalCallInstruction : @syntaxInstructionAST {
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
     [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?let nonTerminalSymbolIndex ?*]
-    ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
+    ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis {
       !self.mInstructionLocation
       !self.mNonterminalName
       !nonTerminalSymbolIndex
@@ -165,7 +165,7 @@ refclass @nonterminalCallInstruction : @syntaxInstructionAST {
       !?ioVariableMap
     ]
   #--- Generate instructions
-    ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {
       !self.mInstructionLocation
       !self.mNonterminalName.string
       !self.mLabelName.string
@@ -197,12 +197,12 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 {
-  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {
     !self.mInstructionLocation
     !self.mNonterminalName
     !inPosfix
     !@actualParameterListForGeneration §[]
-    !@grammarInstructionSyntaxDirectedTranslationResultNone.new
+    !@grammarInstructionSyntaxDirectedTranslationResultNone {}
   }
 }
 

@@ -112,28 +112,28 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
       end
-      ioExpression = @literalUIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      ioExpression = @literalUIntExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
       handled = true
     elsif "sint" == [inTargetType definition].typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
       end
-      ioExpression = @literalSIntExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue sint]}
+      ioExpression = @literalSIntExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue sint]}
       handled = true
     elsif "uint64" == [inTargetType definition].typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
       end
-      ioExpression = @literalUInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue uint64]}
+      ioExpression = @literalUInt64ExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue uint64]}
       handled = true
     elsif "sint64" == [inTargetType definition].typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
       end
-      ioExpression = @literalSInt64ExpressionForGeneration.new {!inTargetType !ioExpression.mLocation ![bigIntValue sint64]}
+      ioExpression = @literalSInt64ExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue sint64]}
       handled = true
     end
   end
@@ -158,7 +158,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
 #      if not isPublic then
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
 #      end
-      let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
+      let conversionExpression = @structPropertyAccessExpressionForGeneration {
         !propertyType
         !inErrorLocation
         !ioExpression
@@ -178,7 +178,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       ]
       ok = ([argumentTypeList count] == 0) & (returnedType == inTargetType)
    #--- Add conversion expression
-      let conversionExpression = @getterCallExpressionForGeneration.new {
+      let conversionExpression = @getterCallExpressionForGeneration {
         !inTargetType
         !inErrorLocation
         !kind
@@ -227,28 +227,28 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
         end
-        ioRightExpression = @literalUIntExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue uint]}
+        ioRightExpression = @literalUIntExpressionForGeneration {!leftType !ioRightExpression.mLocation ![bigIntValue uint]}
         ok = true
       elsif "sint" == [leftType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
         end
-        ioRightExpression = @literalSIntExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue sint]}
+        ioRightExpression = @literalSIntExpressionForGeneration {!leftType !ioRightExpression.mLocation ![bigIntValue sint]}
         ok = true
       elsif "uint64" == [leftType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
         end
-        ioRightExpression = @literalUInt64ExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue uint64]}
+        ioRightExpression = @literalUInt64ExpressionForGeneration {!leftType !ioRightExpression.mLocation ![bigIntValue uint64]}
         ok = true
       elsif "sint64" == [leftType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
           error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
         end
-        ioRightExpression = @literalSInt64ExpressionForGeneration.new {!leftType !ioRightExpression.mLocation ![bigIntValue sint64]}
+        ioRightExpression = @literalSInt64ExpressionForGeneration {!leftType !ioRightExpression.mLocation ![bigIntValue sint64]}
         ok = true
       end
     end
@@ -259,28 +259,28 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
         end
-        ioLeftExpression = @literalUIntExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue uint]}
+        ioLeftExpression = @literalUIntExpressionForGeneration {!rightType !ioLeftExpression.mLocation ![bigIntValue uint]}
         ok = true
       elsif "sint" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
         end
-        ioLeftExpression = @literalSIntExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue sint]}
+        ioLeftExpression = @literalSIntExpressionForGeneration {!rightType !ioLeftExpression.mLocation ![bigIntValue sint]}
         ok = true
       elsif "uint64" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
         end
-        ioLeftExpression = @literalUInt64ExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue uint64]}
+        ioLeftExpression = @literalUInt64ExpressionForGeneration {!rightType !ioLeftExpression.mLocation ![bigIntValue uint64]}
         ok = true
       elsif "sint64" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
           error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
         end
-        ioLeftExpression = @literalSInt64ExpressionForGeneration.new {!rightType !ioLeftExpression.mLocation ![bigIntValue sint64]}
+        ioLeftExpression = @literalSInt64ExpressionForGeneration {!rightType !ioLeftExpression.mLocation ![bigIntValue sint64]}
         ok = true
       end
     end
@@ -290,7 +290,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
 #      if not isPublic then
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
 #      end
-      let conversionExpression = @structPropertyAccessExpressionForGeneration.new {
+      let conversionExpression = @structPropertyAccessExpressionForGeneration {
         !propertyType
         !inErrorLocation
         !ioRightExpression
@@ -310,7 +310,7 @@ proc checkDiadicOperator ?let @bool inOperandIsHandled
       ]
       ok = ([argumentTypeList count] == 0) & (returnedType == leftType)
    #--- Add conversion expression
-      let conversionExpression = @getterCallExpressionForGeneration.new {
+      let conversionExpression = @getterCallExpressionForGeneration {
         !leftType
         !inErrorLocation
         !kind

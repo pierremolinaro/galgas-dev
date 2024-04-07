@@ -30,7 +30,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
@@ -52,7 +52,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
@@ -83,7 +83,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !className
@@ -105,7 +105,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !inClassName
@@ -145,12 +145,12 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
      ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
      ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
      ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring.new {
+    let key = @lstring {
       !"extension method @" + self.mTypeName + " " + self.mExtensionMethodName
       !self.mExtensionMethodName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !.new {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mTypeName !self.mTypeName.location}]
   #---
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionMethodMapForBuildingContext insertKey
@@ -211,7 +211,7 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
       implementedAsFunction = true
     end
   #--- Analyze instruction list
-    let analysisContextNew = @analysisContext.new {
+    let analysisContextNew = @analysisContext {
       !inSemanticContext
       !inPredefinedTypes
       !selfObjectCppName: selfObjectNameString
@@ -250,7 +250,7 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
   #---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage:"extension method " + self.mExtensionMethodName
-      !@extensionMethodForGeneration.new {
+      !@extensionMethodForGeneration {
         !generateHeader: true # Generate Cpp header file
         !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
         !selfType
@@ -339,7 +339,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !["" nowhere]
       !@formalArgumentPassingModeAST.argumentConstantIn
       !self.mReceiverType
-      !@lstring.new {!"self" !@location.here}
+      !@lstring {!"self" !@location.here}
       !"inObject"
       !0
     ]

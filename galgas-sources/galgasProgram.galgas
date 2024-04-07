@@ -86,7 +86,7 @@ message "a GALGAS 3 source file"
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: false !inSourceFile.string )
+    parseAndAnalyzeProject (!.init {!projectFilePath !inSourceFile.location} !galgas4: false !inSourceFile.string )
   end
 }
 
@@ -112,7 +112,7 @@ message "a GALGAS 4 source file"
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
+    parseAndAnalyzeProject (!.init {!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
   end
 }
 
@@ -194,7 +194,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
                             ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
-  var @galgasDeclarationAST declarationAST = .new
+  var @galgasDeclarationAST declarationAST = .init {}
 //--- Parse predefined type definitions
 #  var f = filewrapper  typeGenerationTemplate
   grammar galgas4Grammar (!?declarationAST) on
@@ -204,10 +204,10 @@ private proc compileProject ?let @lstring inProjectSourceFile
   for (mValue) in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas3Grammar (!?declarationAST) in @lstring.new {!absoluteSourcePath !mValue.location}
+      grammar galgas3Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !mValue.location}
     elsif [mValue pathExtension] == "ggs" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas4Grammar (!?declarationAST) in @lstring.new {!absoluteSourcePath !mValue.location}
+      grammar galgas4Grammar (!?declarationAST) in @lstring {!absoluteSourcePath !mValue.location}
     else
       error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
     end
@@ -215,7 +215,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
 #---------------------------------- Add 'print' proc
 #  var @formalParameterListAST formalParameterList = §[]
 #  formalParameterList += !["" nowhere] !.argumentConstantIn !["string" nowhere] !["inMessage" nowhere] !false
-#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST.new {
+#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST {
 #    !false # Is not predefined
 #    !false # Is not internal
 #    !["println" nowhere]
@@ -223,7 +223,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
 #    !usefullProcedure: true
 #  }
 ##  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["println" nowhere])
-#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST.new {
+#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST {
 #    !false # Is not predefined
 #    !false # Is not internal
 #    !["print" nowhere]
@@ -319,7 +319,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     )
   else
     semanticDeclarationSortedListForGeneration = §[]
-    semanticContext = @semanticContext.new {!galgas4: inGalgas4}
+    semanticContext = @semanticContext {!galgas4: inGalgas4}
     typeMap = §[]
   end
 #---------------------------------- Compile GUI components

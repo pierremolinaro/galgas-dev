@@ -61,7 +61,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $+=$
     <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
-    outInstruction = @selfPlusEqualElementsInstructionAST.new {
+    outInstruction = @selfPlusEqualElementsInstructionAST {
       !instructionLocation
       !expressionList
     }
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $+=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfPlusEqualExpressionInstructionAST.new {
+    outInstruction = @selfPlusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -89,7 +89,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $-=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfMinusEqualExpressionInstructionAST.new {
+    outInstruction = @selfMinusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -103,7 +103,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $*=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfMulEqualExpressionInstructionAST.new {
+    outInstruction = @selfMulEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -117,7 +117,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $/=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfDivEqualExpressionInstructionAST.new {
+    outInstruction = @selfDivEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -140,7 +140,7 @@ syntax extension galgas4InstructionsSyntax {
 #    $+=$
 #    error .here : "obsolete"
 #    <non_empty_output_expression_list> ?let @actualOutputArgumentList expressionList
-#    outInstruction = @selfPlusEqualElementsInstructionAST.new {
+#    outInstruction = @selfPlusEqualElementsInstructionAST {
 #      !instructionLocation
 #      !expressionList
 #    }
@@ -154,7 +154,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $+=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfPlusEqualExpressionInstructionAST.new {
+    outInstruction = @selfPlusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -168,7 +168,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $-=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfMinusEqualExpressionInstructionAST.new {
+    outInstruction = @selfMinusEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -182,7 +182,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $*=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfMulEqualExpressionInstructionAST.new {
+    outInstruction = @selfMulEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -196,7 +196,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     $/=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @selfDivEqualExpressionInstructionAST.new {
+    outInstruction = @selfDivEqualExpressionInstructionAST {
       !instructionLocation
       !expression
     }
@@ -287,7 +287,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
         effectiveParameterList += !expression
       end
     #--- Generate instruction
-      ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
+      ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
         !inAnalysisContext.selfObjectCppName
         !selfType
         !""
@@ -337,7 +337,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
       !self.mInstructionLocation
       !selfType
       !inAnalysisContext.selfObjectCppName
@@ -392,7 +392,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
       !self.mInstructionLocation
       !selfType
       !inAnalysisContext.selfObjectCppName
@@ -440,7 +440,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
       !self.mInstructionLocation
       !selfType
       !inAnalysisContext.selfObjectCppName
@@ -490,7 +490,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
       !self.mInstructionLocation
       !selfType
       !inAnalysisContext.selfObjectCppName

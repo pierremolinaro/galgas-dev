@@ -26,7 +26,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <optional_type_ggs3> !@lstring outTypeName {
     select
-      outTypeName = .new {!"" !.here}
+      outTypeName = .init {!"" !.here}
     or
       $@type$ ?outTypeName indexing typeReferenceInConstructor
     end
@@ -52,7 +52,7 @@ syntax extension galgas3ExpressionSyntax {
       $}$
     end
     let endOfExpression = @location.here
-    outExpression = @classFuncExpressionAST.new {
+    outExpression = @classFuncExpressionAST {
       !typeName
       !constructorName
       !expressionList
@@ -72,7 +72,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <optional_type> !@lstring outTypeName {
     select
-      outTypeName = .new {!"" !.here}
+      outTypeName = .init {!"" !.here}
     or
       $@type$ ?outTypeName indexing typeReferenceInConstructor
     end
@@ -98,7 +98,7 @@ syntax extension galgas4ExpressionSyntax {
       $)$
     end
     let endOfExpression = @location.here
-    outExpression = @classFuncExpressionAST.new {
+    outExpression = @classFuncExpressionAST {
       !typeName
       !constructorName
       !expressionList
@@ -154,12 +154,12 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
       ?let @bool hasCompilerArgument
     )
-    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType definition].typeName.string !self.mTypeName})
+    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![constructorType definition].typeName.string !self.mTypeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].typeName.string !self.mTypeName})
+    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![returnedType definition].typeName.string !self.mTypeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
   #---
-    outExpression = @classFuncExpressionForGeneration.new {
+    outExpression = @classFuncExpressionForGeneration {
       !returnedType
       !self.mConstructorName.location
       !constructorType
@@ -276,6 +276,9 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
       fixit { replace " §[]" }
     end
+  end
+  if inConstructorName.string == "new" then
+    warning inConstructorName : "old style constructor, use initilizer '.init {}'"
   end
 }
 

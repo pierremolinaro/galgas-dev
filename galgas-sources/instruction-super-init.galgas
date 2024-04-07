@@ -31,7 +31,7 @@ syntax extension galgas3InstructionsSyntax {
     $init$
     <output_expression_list_ggs3> !?ioDeclarations ?let actualParameterList
     $]$
-    outInstruction = @superInitInstructionAST.new {
+    outInstruction = @superInitInstructionAST {
       !instructionLocation
       !actualParameterList
     }
@@ -56,7 +56,7 @@ syntax extension galgas4InstructionsSyntax {
     $($
     <output_expression_list> !?ioDeclarations ?let actualParameterList
     $)$
-    outInstruction = @superInitInstructionAST.new {
+    outInstruction = @superInitInstructionAST {
       !instructionLocation
       !actualParameterList
     }
@@ -97,13 +97,13 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
         let superTypeDefinition = [superType.bang definition]
       #--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
-        let signature = @lstring.new {![self.mActualParameterList initializerSignature] !self.mInstructionLocation}
+        let signature = @lstring {![self.mActualParameterList initializerSignature] !self.mInstructionLocation}
         [superClassInitializerMap searchKey !signature ?let formalSignature]
       #--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
             [!?ioVariableMap searchForWriteAccess 
-              !.new {!"self." + superProperty.name !self.mInstructionLocation}
+              !.init {!"self." + superProperty.name !self.mInstructionLocation}
               ?3*
             ]
           end
@@ -138,7 +138,7 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
           actualParameterListForGeneration += !expression
         end
       #--- Generate instructions
-        ioInstructionListForGeneration += !@superInitInstructionForGeneration.new {
+        ioInstructionListForGeneration += !@superInitInstructionForGeneration {
           !self.mInstructionLocation
           ![formalSignature initializerSignature]
           !actualParameterListForGeneration

@@ -43,7 +43,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $@type$ ?let typeName # Obsolete, dont't use <type_definition_ggs3>
     $identifier$ ?let variableName
-    outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
+    outInstruction = @localVariableDeclarationNoAssignmentAST {!typeName.location !typeName !variableName}
     if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
       error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
       fixit { replace "var @" + typeName }
@@ -58,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let variableName
     $=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableDeclarationWithAssignmentAST.new {
+    outInstruction = @localVariableDeclarationWithAssignmentAST {
       !variableName.location
       !variableName
       !sourceExpression
@@ -73,7 +73,7 @@ syntax extension galgas3InstructionsSyntax {
     <type_definition_ggs3> !?ioDeclarations ?let typeName
     $identifier$ ?let variableName
     select
-      outInstruction = @localVariableDeclarationNoAssignmentAST.new {
+      outInstruction = @localVariableDeclarationNoAssignmentAST {
         !typeName.location
         !typeName
         !variableName
@@ -81,7 +81,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
         !false
         !typeName
@@ -99,7 +99,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let variableName
     $=$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
       !typeName.location
       !false
       !typeName
@@ -128,7 +128,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ ?let variableName
     $=$
     <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableDeclarationWithAssignmentAST.new {
+    outInstruction = @localVariableDeclarationWithAssignmentAST {
       !variableName.location
       !variableName
       !sourceExpression
@@ -143,11 +143,11 @@ syntax extension galgas4InstructionsSyntax {
     <type_definition> !?ioDeclarations ?let typeName
     $identifier$ ?let variableName
     select
-      outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
+      outInstruction = @localVariableDeclarationNoAssignmentAST {!typeName.location !typeName !variableName}
     or
       $=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
         !false
         !typeName
@@ -203,7 +203,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     !targetVariableCppName
   ]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
     !expression.mResultType
     !false
     !targetVariableCppName
@@ -241,7 +241,7 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
     !targetVariableCppName
   ]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration {
     !targetType
     !targetVariableCppName
   }

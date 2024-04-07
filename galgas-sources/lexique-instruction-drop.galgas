@@ -34,7 +34,7 @@ syntax extension galgas3LexiqueComponentSyntax {
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $drop$
     $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
+    ioInstructionList += !@lexicalDropInstructionAST {!terminalName}
   }
 
   #·······························································································
@@ -50,7 +50,7 @@ syntax extension galgas4LexiqueComponentSyntax {
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $drop$
     $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
+    ioInstructionList += !@lexicalDropInstructionAST {!terminalName}
   }
 
   #·······························································································

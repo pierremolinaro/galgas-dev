@@ -36,7 +36,7 @@ syntax extension galgas3InstructionsSyntax {
     $message$
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    outInstruction = @messageInstructionAST.new {!instructionLocation !expression}
+    outInstruction = @messageInstructionAST {!instructionLocation !expression}
   }
 
   #·······························································································
@@ -55,7 +55,7 @@ syntax extension galgas4InstructionsSyntax {
 #    $message$
 #    let instructionLocation = @location.here
 #    <expression> ?let @semanticExpressionAST expression
-#    outInstruction = @messageInstructionAST.new {!instructionLocation !expression}
+#    outInstruction = @messageInstructionAST {!instructionLocation !expression}
 #  }
 
   #·······························································································
@@ -99,7 +99,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
     :"the expression has the '@" + [expression.mResultType definition].typeName.string + "' type, but the 'message' instruction requires an '@string' expression"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@messageInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@messageInstructionForGeneration {
     !expression
     !self.mInstructionLocation}
 }

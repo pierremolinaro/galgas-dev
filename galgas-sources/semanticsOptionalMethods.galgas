@@ -33,7 +33,7 @@ proc enterBaseOptionalMethodWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
   argList += !false !["" nowhere] !t !inArgument1Name
   [!?ioMap insertKey
-    !@lstring.new {!inOptionalMethodName !@location.here}
+    !@lstring {!inOptionalMethodName !@location.here}
     !argList
   ]
 }

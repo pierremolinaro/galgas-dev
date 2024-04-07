@@ -34,7 +34,7 @@ proc enterModifierWithInputArgument
   var @formalParameterSignature argList = §[]
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgumentName
   [!?ioSetterMap insertOrReplace
-    !@lstring.new {!inSetterName !@location.here}
+    !@lstring {!inSetterName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !inHasCompilerArgument
@@ -61,7 +61,7 @@ proc enterModifierWithOutputAndInputArguments
   argList += !["" nowhere] !outputArgumentTypeIndex !.argumentOut !inOutputArgumentName
   argList += !["" nowhere] !inputArgumentTypeIndex !.argumentConstantIn !inInputArgumentName
   [!?ioSetterMap insertOrReplace
-    !@lstring.new {!inSetterName !@location.here}
+    !@lstring {!inSetterName !@location.here}
     !@methodKind.definedAsMember
     !argList
     !inHasCompilerArgument
@@ -88,7 +88,7 @@ proc enterModifierWith2InputArguments
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgument2TypeName ?argumentTypeIndex]
   argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgument2Name
   [!?ioSetterMap insertOrReplace
-    !@lstring.new {!inSetterName !.here}
+    !@lstring {!inSetterName !.here}
     !@methodKind. definedAsMember
     !argList
     !inHasCompilerArgument
@@ -105,7 +105,7 @@ proc enterModifierWithoutArgument
   ?compilerArg:let @bool inHasCompilerArgument
 {
   [!?ioSetterMap insertOrReplace
-    !@lstring.new {!inSetterName !@location.here}
+    !@lstring {!inSetterName !@location.here}
     !@methodKind. definedAsMember
     !@formalParameterSignature §[]
     !inHasCompilerArgument

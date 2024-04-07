@@ -51,7 +51,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       <template_replacement_ggs3> !? templateReplacementList
     end
     $}$
-    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
+    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {
       !isPredefined: false # Is not predefined
       !lexiqueComponentName
       !lexiqueSuperComponentName
@@ -113,7 +113,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     or
       $->$
       $"string"$ ?replacementString
-      replacementFunction = @lstring.new {!"" !@location.here}
+      replacementFunction = @lstring {!"" !@location.here}
     end
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
@@ -146,7 +146,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       <template_replacement> !? templateReplacementList
     end
     $}$
-    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST.new {
+    ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {
       !isPredefined: false # Is not predefined
       !lexiqueComponentName
       !lexiqueSuperComponentName
@@ -208,7 +208,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     or
       $->$
       $"string"$ ?replacementString
-      replacementFunction = @lstring.new {!"" !@location.here}
+      replacementFunction = @lstring {!"" !@location.here}
     end
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
@@ -232,9 +232,9 @@ override method @templateLexiqueComponentAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
+  let key = @lstring {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  let superKey = @lstring.new {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}
+  let superKey = @lstring {!"lexique " + self.mLexiqueSuperComponentName !self.mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addEdge !key !superKey]
 }
 
@@ -308,7 +308,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
 #--------------------------------------- Unicode test functions
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 #---------------------------------------
-  var @lexiqueAnalysisContext lexiqueAnalysisContext = .new {
+  var @lexiqueAnalysisContext lexiqueAnalysisContext = .init {
     !self.mLexiqueComponentName.string
     !lexicalRoutineMap
     !lexicalFunctionMap
@@ -434,7 +434,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   #---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: ""
-      !@lexiqueDeclarationForGeneration.new {
+      !@lexiqueDeclarationForGeneration {
         !generateHeader: true # has header
         !implementationCppFileName: "lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
         !self.mLexiqueComponentName.string

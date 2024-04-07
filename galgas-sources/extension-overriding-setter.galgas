@@ -46,7 +46,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
@@ -69,7 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
@@ -163,7 +163,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
   end
 #--- Analyze instruction list
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: "object"
@@ -196,7 +196,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: " overriding extension setter " + self.mOverridingExtensionSetterName
-    !@overridingExtensionSetterForGeneration.new {
+    !@overridingExtensionSetterForGeneration {
       !generateHeader: false # Do not generate Cpp header file
       !implementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionSetterName fileNameRepresentation]
       !selfType

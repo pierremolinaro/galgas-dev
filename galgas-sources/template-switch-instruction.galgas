@@ -66,7 +66,7 @@ syntax extension templateSyntax {
     end
     $end$
   #---
-    ioResultingInstructionList += !@templateInstructionSwitchAST.new {
+    ioResultingInstructionList += !@templateInstructionSwitchAST {
       !switchExpression
       !endOfSwitchExpression
       !templateInstructionSwitchBranchList
@@ -218,7 +218,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       : "the switch instruction should name all enumeration constants; missing constants are:" + s
     end
   #---
-    ioInstructionList += !@templateInstructionSwitchForGeneration.new {
+    ioInstructionList += !@templateInstructionSwitchForGeneration {
       !switchExpression.mResultType
       !switchExpression
       !templateInstructionSwitchBranchList

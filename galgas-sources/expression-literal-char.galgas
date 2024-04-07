@@ -34,7 +34,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
     $'char'$ ?let @lchar literalChar
-    outExpression = @literalCharExpressionAST.new {!literalChar}
+    outExpression = @literalCharExpressionAST {!literalChar}
   }
 
   #·······························································································
@@ -50,7 +50,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
     $'char'$ ?let @lchar literalChar
-    outExpression = @literalCharExpressionAST.new {!literalChar}
+    outExpression = @literalCharExpressionAST {!literalChar}
   }
 
   #·······························································································
@@ -77,7 +77,7 @@ override method @literalCharExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @literalCharExpressionForGeneration.new {
+  outExpression = @literalCharExpressionForGeneration {
     !inAnalysisContext.predefinedTypes.mCharType
     !self.mCharacter.location
     !self.mCharacter.char

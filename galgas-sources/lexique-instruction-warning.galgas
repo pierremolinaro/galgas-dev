@@ -34,7 +34,7 @@ syntax extension galgas3LexiqueComponentSyntax {
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $warning$
     $identifier$ ?let warningMessageName
-    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
+    ioInstructionList += !@lexicalWarningInstructionAST {!warningMessageName}
   }
 
   #·······························································································
@@ -50,7 +50,7 @@ syntax extension galgas4LexiqueComponentSyntax {
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $warning$
     $identifier$ ?let warningMessageName
-    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
+    ioInstructionList += !@lexicalWarningInstructionAST {!warningMessageName}
   }
 
   #·······························································································

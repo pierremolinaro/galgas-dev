@@ -64,7 +64,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
     argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"
     argList += !["remainder" nowhere] !bigIntType !.argumentOut !"outRemainder"
     [!?outInstanceMethodMap insertKey
-      !.new {!"divideBy" !.here}
+      !.init {!"divideBy" !.here}
       !.definedAsMember
       !argList
       !.here
@@ -73,7 +73,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
       !"" # No error message
     ]
   #  [!?outInstanceMethodMap insertKey
-  #    !.new {!"floorDivideBy" !.here}
+  #    !.init {!"floorDivideBy" !.here}
   #    !.definedAsMember
   #    !argList
   #    !.here
@@ -82,7 +82,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
   #    !"" # No error message
   #  ]
   #  [!?outInstanceMethodMap insertKey
-  #    !.new {!"ceilDivideBy" !.here}
+  #    !.init {!"ceilDivideBy" !.here}
   #    !.definedAsMember
   #    !argList
   #    !.here

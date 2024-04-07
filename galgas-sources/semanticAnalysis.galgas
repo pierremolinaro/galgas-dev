@@ -226,7 +226,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         ?let @location inEndOfMethodLocation
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
                         !@formalParameterListForGeneration outRoutineSignature {
-  var variableMap = @localVarManager.new
+  var variableMap = @localVarManager.init {}
 #--- Enter non mutable instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for property in inNonMutableTypedAttributeList do
@@ -321,7 +321,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   end
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern func " + self.mFunctionName
-    !@functionPrototypeDeclarationForGeneration.new {
+    !@functionPrototypeDeclarationForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
@@ -349,7 +349,7 @@ proc analyzeFunctionBody
   !@string outResultVariableCppName
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 {
-  var variableMap = @localVarManager.new
+  var variableMap = @localVarManager {}
 #--- Enter instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (typeEntry name 3*) in inTypedAttributeList do
@@ -444,7 +444,7 @@ override method @functionDeclarationAST semanticAnalysis
     ioUsefulnessRootEntities += !nameForUsefulness
   end
 #--- Analyse function body
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: ""
@@ -472,7 +472,7 @@ override method @functionDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "function " + self.mFunctionName
-    !@functionImplementationForGeneration.new {
+    !@functionImplementationForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
@@ -500,7 +500,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     ioUsefulnessRootEntities += !nameForUsefulness
   end
 #--- Analyse function body
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: ""
@@ -528,7 +528,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "once function " + self.mFunctionName
-    !@onceFunctionDeclarationForGeneration.new {
+    !@onceFunctionDeclarationForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
@@ -590,7 +590,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       let absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
     #--- Parse template
       grammar templateGrammar (?let @templateInstructionListAST resultingInstructionList)
-         in @lstring.new {!absoluteTemplatePath !mFilewrapperTemplatePath.location}
+         in @lstring {!absoluteTemplatePath !mFilewrapperTemplatePath.location}
     #--- Build template variable map
       var @templateVariableMap templateVariableMap = §[]
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = §[]
@@ -602,7 +602,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       end
     #--- Analyze template
       var templateInstructionListForGeneration = @templateInstructionListForGeneration §[]
-      let templateAnalysisContext = @templateAnalysisContext.new {
+      let templateAnalysisContext = @templateAnalysisContext {
         !inSemanticContext
         !inPredefinedTypes
         !templateVariableMap
@@ -624,7 +624,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "filewrapper " + self.mFilewrapperName
-      !@filewrapperDeclarationForGeneration.new {
+      !@filewrapperDeclarationForGeneration {
         !generateHeader: true # Generate Cpp header file
         !implementationCppFileName: "filewrapper-" + self.mFilewrapperName
         !self.mFilewrapperName.string
@@ -871,7 +871,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: ""
-    !@grammarForGeneration.new {
+    !@grammarForGeneration {
       !generateHeader:  true # has header
       !implementationCppFileName: "grammar-" + [self.mGrammarComponentName fileNameRepresentation]
       !self.mGrammarComponentName.string
@@ -893,29 +893,29 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func buildPredefinedTypes ?let @unifiedTypeMap inTypeMap -> @predefinedTypes outPredefinedTypes {
-  outPredefinedTypes = .new {
-    ![inTypeMap typeMapEntryForLKey !.new {!"location"   !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"bool"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"char"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"string"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"uint"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"sint"       !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"uint64"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"sint64"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"double"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"lbool"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"lchar"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"lstring"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"luint"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"lsint"      !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"luint64"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"lsint64"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"ldouble"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"stringlist" !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"lbigint"    !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"bigint"     !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"stringset"  !.here}]
-    ![inTypeMap typeMapEntryForLKey !.new {!"lstringlist"!.here}]
+  outPredefinedTypes = .init {
+    ![inTypeMap typeMapEntryForLKey !.init {!"location"   !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"bool"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"char"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"string"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"uint"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"sint"       !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"uint64"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"sint64"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"double"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"lbool"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"lchar"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"lstring"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"luint"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"lsint"      !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"luint64"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"lsint64"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"ldouble"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"stringlist" !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"lbigint"    !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"bigint"     !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"stringset"  !.here}]
+    ![inTypeMap typeMapEntryForLKey !.init {!"lstringlist"!.here}]
   }
 }
 
@@ -1469,7 +1469,7 @@ proc semanticAnalysisOfRuleLabel
   !@formalParameterSignature outSignature
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 {
-  var variableMap = @localVarManager.new
+  var variableMap = @localVarManager.init {}
   buildLocalVariableMapAndSignature (
     !inAnalysisContext.semanticContext
     !?ioTypeMap
@@ -1556,7 +1556,7 @@ private proc semanticAnalysisOfSyntaxComponent
       enterNonterminalNonTerminalInMapAndCheck (!mNonterminalName !nonterminalLabelMap !?nonterminalMap )
   end
 #--- Analysis context
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: ""
@@ -1610,7 +1610,7 @@ private proc semanticAnalysisOfSyntaxComponent
     newRuleIndex += 1
   end
 #---
-  outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration.new {
+  outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration {
     !inSyntaxComponentName
     !inLexiqueName
     !nonterminalMap

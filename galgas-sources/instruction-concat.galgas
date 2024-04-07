@@ -101,7 +101,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       $-=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @minusEqualExpressionInstructionAST.new {
+      outInstruction = @minusEqualExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -112,7 +112,7 @@ syntax extension galgas3InstructionsSyntax {
       $+=$
       select
         <non_empty_output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
-        outInstruction = @plusEqualElementsInstructionAST.new {
+        outInstruction = @plusEqualElementsInstructionAST {
           !instructionLocation
           !inHasSelfPrefix
           !receiverName
@@ -121,7 +121,7 @@ syntax extension galgas3InstructionsSyntax {
         }
       or
         <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-        outInstruction = @plusEqualExpressionInstructionAST.new {
+        outInstruction = @plusEqualExpressionInstructionAST {
           !instructionLocation
           !inHasSelfPrefix
           !receiverName
@@ -132,7 +132,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $*=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @mulEqualExpressionInstructionAST.new {
+      outInstruction = @mulEqualExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -142,7 +142,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $/=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @divEqualExpressionInstructionAST.new {
+      outInstruction = @divEqualExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -211,7 +211,7 @@ syntax extension galgas4InstructionsSyntax {
     select
       $-=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @minusEqualExpressionInstructionAST.new {
+      outInstruction = @minusEqualExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -221,7 +221,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $+=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @plusEqualExpressionInstructionAST.new {
+      outInstruction = @plusEqualExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -231,7 +231,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $*=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @mulEqualExpressionInstructionAST.new {
+      outInstruction = @mulEqualExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -241,7 +241,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $/=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @divEqualExpressionInstructionAST.new {
+      outInstruction = @divEqualExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -252,20 +252,20 @@ syntax extension galgas4InstructionsSyntax {
       <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       if inHasSelfPrefix then
         if [propertyList length] == 0 then
-          outInstruction = @methodCallInstructionAST.new {
+          outInstruction = @methodCallInstructionAST {
             !instructionLocation
-            !@selfInExpressionAST.new {!instructionLocation}
+            !@selfInExpressionAST {!instructionLocation}
             !receiverName # Method name
             !actualParameterList
           }
         else
           [!?propertyList popLast ?let methodName]
-          var @semanticExpressionAST receiverExpression = @selfInExpressionAST.new {!@location.here}
-          receiverExpression = @structPropertyAccessExpressionAST.new {!receiverName.location !receiverExpression !receiverName}
+          var @semanticExpressionAST receiverExpression = @selfInExpressionAST {!@location.here}
+          receiverExpression = @structPropertyAccessExpressionAST {!receiverName.location !receiverExpression !receiverName}
           for (propertyName) in propertyList do
-            receiverExpression = @structPropertyAccessExpressionAST.new {!propertyName.location !receiverExpression !propertyName}
+            receiverExpression = @structPropertyAccessExpressionAST {!propertyName.location !receiverExpression !propertyName}
           end
-          outInstruction = @methodCallInstructionAST.new {
+          outInstruction = @methodCallInstructionAST {
             !instructionLocation
             !receiverExpression
             !methodName
@@ -273,18 +273,18 @@ syntax extension galgas4InstructionsSyntax {
           }
         end
       elsif [propertyList length] == 0 then
-        outInstruction = @procCallInstructionAST.new {
+        outInstruction = @procCallInstructionAST {
           !receiverName.location
           !receiverName # Proc name
           !actualParameterList
         }
       else
         [!?propertyList popLast ?let methodName]
-        var @semanticExpressionAST receiverExpression = @varInExpressionAST.new {!receiverName}
+        var @semanticExpressionAST receiverExpression = @varInExpressionAST {!receiverName}
         for (propertyName) in propertyList do
-          receiverExpression = @structPropertyAccessExpressionAST.new {!propertyName.location !receiverExpression !propertyName}
+          receiverExpression = @structPropertyAccessExpressionAST {!propertyName.location !receiverExpression !propertyName}
         end
-        outInstruction = @methodCallInstructionAST.new {
+        outInstruction = @methodCallInstructionAST {
           !instructionLocation
           !receiverExpression
           !methodName
@@ -400,7 +400,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -482,7 +482,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -565,7 +565,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -648,7 +648,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -751,7 +751,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
       effectiveParameterList += !expression
     end
   #--- Generate instruction
-    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
+    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
       !targetVariableCppName
       !targetType
       !nameForCheckingFormalParameterUsing

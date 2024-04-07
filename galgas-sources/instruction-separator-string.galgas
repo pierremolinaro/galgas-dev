@@ -36,7 +36,7 @@
 #      if actualSelector.string != "" then
 #        error actualSelector : "an empty selector '?' is required here"
 #      end
-#      outInstruction = @SeparatorStringSyntaxInstruction.new {
+#      outInstruction = @SeparatorStringSyntaxInstruction {
 #        !location
 #        !inputParameter
 #      }
@@ -74,7 +74,7 @@
 #    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
 #    ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
 #  #  [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?let nonTerminalSymbolIndex ?*]
-#  #  ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
+#  #  ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis {
 #  #    !self.mInstructionLocation
 #  #    !self.mNonterminalName
 #  #    !nonTerminalSymbolIndex
@@ -107,7 +107,7 @@
 #      !?ioVariableMap
 #    ]
 #  ##--- Generate instructions
-#  #  ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration.new {
+#  #  ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration {
 #  #    !self.mInstructionLocation
 #  #    !self.mNonterminalName.string
 #  #    !self.mLabelName.string
@@ -150,7 +150,7 @@
 ##    !?ioVariableMap
 ##  ]
 ###--- Generate instructions
-##  ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration.new {
+##  ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration {
 ##    !self.mInstructionLocation
 ##    !self.mNonterminalName.string
 ##    !self.mLabelName.string
@@ -175,7 +175,7 @@
 #    ?let @string unused inPosfix
 #    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 #  {
-##    ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration.new {
+##    ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration {
 ##      !self.mInstructionLocation
 ##      !self.mNonterminalName
 ##      !inPosfix

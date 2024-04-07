@@ -45,17 +45,17 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + self.mWeakReferenceTypeName !self.mWeakReferenceTypeName.location}
+  let key = @lstring {!"@" + self.mWeakReferenceTypeName !self.mWeakReferenceTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if self.mSuperWeakReferenceTypeName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge
       !key
-      !@lstring.new {!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
+      !@lstring {!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
     ]
   end
 #  [!?ioSemanticTypePrecedenceGraph addEdge
 #    !key
-#    !@lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
+#    !@lstring {!"@" + self.mClassTypeName !self.mClassTypeName.location}
 #  ]
 }
 
@@ -107,7 +107,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 #--- Class functions
   var @classFunctionMap classFunctionMap = §[]
   [!?classFunctionMap insertKey
-    !@lstring.new {!"nil" !self.mWeakReferenceTypeName.location}
+    !@lstring {!"nil" !self.mWeakReferenceTypeName.location}
     !§[]
     !false
     !weakReferenceIndex
@@ -143,7 +143,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   end
 #--- Enter in type map
   [!?ioTypeMap makeEntry  !self.mClassTypeName ?let classIndex]
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mWeakReferenceTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -251,7 +251,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
   ]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "weak reference " + self.mWeakReferenceTypeName
-    !@weakReferenceTypeForGeneration.new {
+    !@weakReferenceTypeForGeneration {
       !selfType
       !referenceClassType
       !superClassEntry
@@ -320,7 +320,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
     !self.allTypedPropertyList
-    ![self.allTypedPropertyList subListWithRange !.new {!0 ![self.allTypedPropertyList count] - [self.mTypedAttributeList count]}]
+    ![self.allTypedPropertyList subListWithRange !.init {!0 ![self.allTypedPropertyList count] - [self.mTypedAttributeList count]}]
   ]
 }
 

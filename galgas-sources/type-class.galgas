@@ -71,7 +71,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !className !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@classDeclarationAST {
       !isPredefined: false # Is not predefined
       !isAbstract
       !isReference
@@ -81,13 +81,13 @@ syntax extension galgas3DeclarationsSyntax {
       !propertyList
     }
     if isReference then
-      ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
+      ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
         !isPredefined: false # Is not predefined
         !className
-        !.new {!className.string + weakSuffix () !className.location}
+        !.init {!className.string + weakSuffix () !className.location}
         !if superClassName.string == ""
            then superClassName
-           else .new {!superClassName.string + "-weak" !superClassName.location}
+           else .init {!superClassName.string + "-weak" !superClassName.location}
          end
         !generateInSeparateFile
         !propertyList
@@ -139,7 +139,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> !className !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@classDeclarationAST {
       !isPredefined: false # Is not predefined
       !isAbstract
       !true
@@ -149,13 +149,13 @@ syntax extension galgas4DeclarationsSyntax {
       !propertyList
     }
   #--- Associated Weak Type
-    ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
       !isPredefined: false # Is not predefined
       !className
-      !.new {!className.string + weakSuffix () !className.location}
+      !.init {!className.string + weakSuffix () !className.location}
       !if superClassName.string == ""
          then superClassName
-         else .new {!superClassName.string + "-weak" !superClassName.location}
+         else .init {!superClassName.string + "-weak" !superClassName.location}
        end
       !generateInSeparateFile
       !propertyList
@@ -193,20 +193,20 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
             ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
             ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
             ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring.new {!"@" + self.mClassTypeName !self.mClassTypeName.location}
+    let key = @lstring {!"@" + self.mClassTypeName !self.mClassTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   #--- Add edge from super class
     if self.mSuperClassName.string != "" then
       [!?ioSemanticTypePrecedenceGraph addEdge
         !key
-        !.new {!"@" + self.mSuperClassName !self.mSuperClassName.location}
+        !.init {!"@" + self.mSuperClassName !self.mSuperClassName.location}
       ]
     end
   #--- Add edge from property types
     for (* propertyTypeName 4*) in self.mPropertyList do
       [!?ioSemanticTypePrecedenceGraph addEdge
         !key
-        !@lstring.new {!"@" + propertyTypeName !self.mSuperClassName.location}
+        !@lstring {!"@" + propertyTypeName !self.mSuperClassName.location}
       ]
     end
   }
@@ -323,7 +323,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @classFunctionMap classFunctionMap = §[]
     if not self.mIsAbstract then
       [!?classFunctionMap insertKey
-        !@lstring.new {!"new" !@location.here}
+        !@lstring {!"new" !@location.here}
         !synthetizedInitializerArgumentList
         !false
         !classIndex
@@ -352,7 +352,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       for property in currentClassTypedPropertyList do
         if property.hasSetter then
           [!?setterMap insertKey
-            !.new {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
+            !.init {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
             !§[!["" nowhere] !property.typeEntry !.argumentIn !property.name.string]
             !false # Compiler argument
@@ -384,7 +384,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !.new {![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
+        !.init {![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
         !synthetizedInitializerArgumentList
       ]
     end
@@ -396,7 +396,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       end
     end
   #--- Enter in type map
-    let typeDefinition = @unifiedTypeDefinition.new {
+    let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.mClassTypeName
       !isPredefined: self.isPredefined
       !isConcrete: not self.mIsAbstract # Concrete Type
@@ -444,7 +444,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
     end
     if self.mIsReference then
-      let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!self.mClassTypeName.string + weakSuffix () !self.mClassTypeName})
+      let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init {!self.mClassTypeName.string + weakSuffix () !self.mClassTypeName})
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
     end
   #------ Self type
@@ -534,7 +534,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "class " + self.mClassTypeName
-      !@classTypeForGeneration.new {
+      !@classTypeForGeneration {
         !selfType
         !self.mIsAbstract
         !self.mIsReference
@@ -744,7 +744,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let typedefinition = [self.mSelfTypeEntry definition]
     let at = [self.mAllTypedAttributeList subListWithRange
-      !.new {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
+      !.init {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
     ]
     if self.mIsReference then
       outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation

@@ -34,13 +34,13 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .new {!"result" !.here}
+      resultVariableName = .init {!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
@@ -65,13 +65,13 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .new {!"result" !.here}
+      resultVariableName = .init {!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
@@ -106,13 +106,13 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .new {!"result" !.here}
+      resultVariableName = .init {!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !className
@@ -134,12 +134,12 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> !?ioDeclarations ?let mFormalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
-    let @lstring resultVariableName = .new {!"result" !.here}
+    let @lstring resultVariableName = .init {!"result" !.here}
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !inClassName
@@ -185,9 +185,9 @@ refclass @extensionGetterAST : @semanticDeclarationAST {
         ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
         ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
         ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring.new {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName !self.mExtensionGetterName.location}
+    let key = @lstring {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName !self.mExtensionGetterName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !.new {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mTypeName !self.mTypeName.location}]
   #---
     if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionGetterMapForBuildingContext insertKey
@@ -254,7 +254,7 @@ override method @extensionGetterAST semanticAnalysis
     implementedAsFunctionNew = true
   end
 #--- Analyze instruction list
-  let analysisContextNew = @analysisContext.new {
+  let analysisContextNew = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: selfObjectNameNew
@@ -285,7 +285,7 @@ override method @extensionGetterAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage:"extension getter " + self.mExtensionGetterName
-    !@extensionGetterForGeneration.new {
+    !@extensionGetterForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "getter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
       !selfType
@@ -377,7 +377,7 @@ refclass @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGenera
         !["" nowhere]
         !self.mReceiverType
         !"inObject"
-        !@lstring.new {!"self" !@location.here}
+        !@lstring {!"self" !@location.here}
         !true
         !0
       ]

@@ -37,7 +37,7 @@ proc groupSyntaxComponentsGalgas3
       nonterminalDeclarationList += mNonterminalDeclarationList
       ruleList += mRuleList
     end
-    ioDeclarationList += !@galgas3SyntaxComponentAST.new {
+    ioDeclarationList += !@galgas3SyntaxComponentAST {
       !isPredefined: false # Is not predefined
       !component.mSyntaxComponentName
       !component.mImportedLexiqueFilePath

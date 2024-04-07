@@ -20,14 +20,14 @@ syntax logo_syntax (logo_lexique) {
     select
       $FORWARD$
       $integer$ ?let @luint param
-      let @instruction ins = @forward.new {!param}
+      let @instruction ins = @forward {!param}
       il += !ins
       $;$
     or
       $ROTATE$
       $integer$ ?let @luint param
       $;$
-      let @instruction ins = @rotate.new {!param}
+      let @instruction ins = @rotate {!param}
       il += !ins
     or
       $PEN$

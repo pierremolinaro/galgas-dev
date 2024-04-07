@@ -73,7 +73,7 @@ syntax extension galgas3ExpressionSyntax {
       end
       $@type$ ?let typeName
 #      <type_definition_ggs3> !?ioDeclarations ?let typeName
-      outExpression = @testDynamicClassInExpressionAST.new {
+      outExpression = @testDynamicClassInExpressionAST {
         !outExpression
         !endOfReceiverExpression
         !kind
@@ -84,7 +84,7 @@ syntax extension galgas3ExpressionSyntax {
       $as$
 #      <type_definition_ggs3> !?ioDeclarations ?let typeName
       $@type$ ?let typeName
-      outExpression = @castInExpressionAST.new {
+      outExpression = @castInExpressionAST {
         !outExpression
         !endOfReceiverExpression
         !typeName
@@ -111,7 +111,7 @@ syntax extension galgas4ExpressionSyntax {
       $is$
       $@type$ ?let typeName
 #      <type_definition> !?ioDeclarations ?let typeName
-      outExpression = @testDynamicClassInExpressionAST.new {
+      outExpression = @testDynamicClassInExpressionAST {
         !outExpression
         !endOfReceiverExpression
         !.inherited
@@ -122,7 +122,7 @@ syntax extension galgas4ExpressionSyntax {
       $as$
 #      <type_definition> !?ioDeclarations ?let typeName
       $@type$ ?let typeName
-      outExpression = @castInExpressionAST.new {
+      outExpression = @castInExpressionAST {
         !outExpression
         !endOfReceiverExpression
         !typeName
@@ -186,7 +186,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
      +  [expression.mResultType definition].typeName.string + " instance"
   end
 #--- Generate expression
-  outExpression = @testDynamicClassInExpressionForGeneration.new {
+  outExpression = @testDynamicClassInExpressionForGeneration {
     !inAnalysisContext.predefinedTypes.mBoolType
     !self.mTypeName.location
     !expression
@@ -247,13 +247,13 @@ override method @castInExpressionAST analyzeSemanticExpression
   end
 #--- Generate expression
   if [expression.mResultType definition].typeName.string == "object" then
-    outExpression = @extractObjectInExpressionForGeneration.new {
+    outExpression = @extractObjectInExpressionForGeneration {
       !type
       !self.mEndOfReceiverExpression
       !expression
       !self.mTypeName.string}
   else
-    outExpression = @castInExpressionForGeneration.new {
+    outExpression = @castInExpressionForGeneration {
       !type
       !self.mTypeName.location
       !expression

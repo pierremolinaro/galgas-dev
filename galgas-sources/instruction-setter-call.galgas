@@ -74,7 +74,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let mSetterName
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
-    outInstruction = @setterCallInstructionAST.new {
+    outInstruction = @setterCallInstructionAST {
       !instructionLocation
       !prefixedBySelf
       !mReceiverName
@@ -96,7 +96,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let mSetterName
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
-    outInstruction = @selfSetterCallInstructionAST.new {
+    outInstruction = @selfSetterCallInstructionAST {
       !instructionLocation
       !mSetterName
       !actualParameterList
@@ -138,7 +138,7 @@ syntax extension galgas4InstructionsSyntax {
 #    end
 #    $identifier$ ?let mSetterName
 #    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-#    outInstruction = @setterCallInstructionAST.new {
+#    outInstruction = @setterCallInstructionAST {
 #      !instructionLocation
 #      !prefixedBySelf
 #      !mReceiverName
@@ -168,7 +168,7 @@ syntax extension galgas4InstructionsSyntax {
     select
       <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       if prefixedBySelf then
-        outInstruction = @selfSetterCallInstructionAST.new {
+        outInstruction = @selfSetterCallInstructionAST {
           !instructionLocation
           !mReceiverName
           !actualParameterList
@@ -186,7 +186,7 @@ syntax extension galgas4InstructionsSyntax {
       end
       [!?receiverStructProperties popLast ?let setterName]
       <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
-      outInstruction = @setterCallInstructionAST.new {
+      outInstruction = @setterCallInstructionAST {
         !instructionLocation
         !prefixedBySelf
         !mReceiverName
@@ -338,7 +338,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Generate instructions
-  ioInstructionListForGeneration += !@setterCallInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@setterCallInstructionForGeneration {
     !self.mReceiverName.location
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
@@ -387,7 +387,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
   #--- Generate instructions
-    ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration {
       !inAnalysisContext.selfObjectCppName
       !selfType
       !self.mSetterName

@@ -237,7 +237,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
     argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
     argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
     [!?outClassMethodMap insertOrReplace
-      !.new {!"generateFile" !.here}
+      !.init {!"generateFile" !.here}
       !argList
       !true
     ]
@@ -253,7 +253,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
     argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
     argList += !["makeExecutable" nowhere] !boolType !.argumentConstantIn !"inMakeExecutable"
     [!?outClassMethodMap insertOrReplace
-      !@lstring.new {!"generateFileWithPattern" !@location.here}
+      !@lstring {!"generateFileWithPattern" !@location.here}
       !argList
       !true
     ]
@@ -316,7 +316,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
     [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
     argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
     [!?outInstanceMethodMap insertKey
-      !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
+      !@lstring {!"writeToFileWhenDifferentContents" !@location.here}
       !@methodKind.definedAsMember
       !argList
       !@location.here
@@ -325,7 +325,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !"" # No error message
     ]
     [!?outInstanceMethodMap insertKey
-      !.new {!"writeToExecutableFileWhenDifferentContents" !.here}
+      !.init {!"writeToExecutableFileWhenDifferentContents" !.here}
       !@methodKind.definedAsMember
       !argList
       !@location.here

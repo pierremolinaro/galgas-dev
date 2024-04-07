@@ -82,37 +82,37 @@ syntax extension galgas3ExpressionSyntax {
       $<<$
       let leftOperand = outExpression
       <term_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @leftShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @leftShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $>>$
       let leftOperand = outExpression
       <term_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @rightShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @rightShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $+$
       let leftOperand = outExpression
       <term_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @addExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @addExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&+$
       let leftOperand = outExpression
       <term_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @addExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @addExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $-$
       let leftOperand = outExpression
       <term_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @subExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @subExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&-$
       let leftOperand = outExpression
       <term_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @subExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @subExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -135,37 +135,37 @@ syntax extension galgas4ExpressionSyntax {
       $<<$
       let leftOperand = outExpression
       <term> !?ioDeclarations ?let rightOperand
-      outExpression = @leftShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @leftShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $>>$
       let leftOperand = outExpression
       <term> !?ioDeclarations ?let rightOperand
-      outExpression = @rightShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @rightShiftExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $+$
       let leftOperand = outExpression
       <term> !?ioDeclarations ?let rightOperand
-      outExpression = @addExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @addExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&+$
       let leftOperand = outExpression
       <term> !?ioDeclarations ?let rightOperand
-      outExpression = @addExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @addExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $-$
       let leftOperand = outExpression
       <term> !?ioDeclarations ?let rightOperand
-      outExpression = @subExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @subExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $&-$
       let leftOperand = outExpression
       <term> !?ioDeclarations ?let rightOperand
-      outExpression = @subExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @subExpressionNoOverflowAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -219,14 +219,14 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
-     outExpression = @literalBigIntExpressionForGeneration.new {
+     outExpression = @literalBigIntExpressionForGeneration {
        !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue >> right.mValue
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
-     outExpression = @literalBigIntExpressionForGeneration.new {
+     outExpression = @literalBigIntExpressionForGeneration {
        !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue >> [right.mValue uint]
@@ -237,7 +237,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @binaryOperatorExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration {
       !leftType
       !self.mOperatorLocation
       !leftExpression
@@ -291,14 +291,14 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
-     outExpression = @literalBigIntExpressionForGeneration.new {
+     outExpression = @literalBigIntExpressionForGeneration {
        !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue << right.mValue
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
-     outExpression = @literalBigIntExpressionForGeneration.new {
+     outExpression = @literalBigIntExpressionForGeneration {
        !inAnalysisContext.predefinedTypes.mBigIntType
        !self.mOperatorLocation
        !left.mValue << [right.mValue uint]
@@ -309,7 +309,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @binaryOperatorExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration {
       !leftType
       !self.mOperatorLocation
       !leftExpression
@@ -370,13 +370,13 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
-    outExpression = @literalBigIntExpressionForGeneration.new {
+    outExpression = @literalBigIntExpressionForGeneration {
       !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue + rightBigint.mValue
     }
   else
-    outExpression = @binaryOperatorExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration {
       !leftExpression.mResultType
       !self.mOperatorLocation
       !leftExpression
@@ -436,13 +436,13 @@ override method @addExpressionAST analyzeSemanticExpression
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
-    outExpression = @literalBigIntExpressionForGeneration.new {
+    outExpression = @literalBigIntExpressionForGeneration {
       !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue + rightBigint.mValue
     }
   else
-    outExpression = @binaryOperatorExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration {
       !leftExpression.mResultType
       !self.mOperatorLocation
       !leftExpression
@@ -503,13 +503,13 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
-    outExpression = @literalBigIntExpressionForGeneration.new {
+    outExpression = @literalBigIntExpressionForGeneration {
       !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue - rightBigint.mValue
     }
   else
-    outExpression = @binaryOperatorExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration {
       !leftExpression.mResultType
       !self.mOperatorLocation
       !leftExpression
@@ -569,13 +569,13 @@ override method @subExpressionAST analyzeSemanticExpression
 #--- Generate expression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
-    outExpression = @literalBigIntExpressionForGeneration.new {
+    outExpression = @literalBigIntExpressionForGeneration {
       !inAnalysisContext.predefinedTypes.mBigIntType
       !self.mOperatorLocation
       !leftBigint.mValue - rightBigint.mValue
     }
   else
-    outExpression = @binaryOperatorExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration {
       !leftExpression.mResultType
       !self.mOperatorLocation
       !leftExpression

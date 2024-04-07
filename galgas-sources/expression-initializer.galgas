@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
     <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
     $}$
-    outExpression = @initializerCallAST.new {
+    outExpression = @initializerCallAST {
       !typeName
       !expressionList
       !endOfExpression
@@ -49,7 +49,7 @@ syntax extension galgas3ExpressionSyntax {
     <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
     $}$
-    outExpression = @initializerCallAST.new {
+    outExpression = @initializerCallAST {
       !typeName
       !expressionList
       !endOfExpression
@@ -75,7 +75,7 @@ syntax extension galgas4ExpressionSyntax {
     <output_expression_list> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
     $)$
-    outExpression = @initializerCallAST.new {
+    outExpression = @initializerCallAST {
       !typeName
       !expressionList
       !endOfExpression
@@ -92,7 +92,7 @@ syntax extension galgas4ExpressionSyntax {
     <output_expression_list> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
     $)$
-    outExpression = @initializerCallAST.new {
+    outExpression = @initializerCallAST {
       !typeName
       !expressionList
       !endOfExpression
@@ -148,7 +148,7 @@ refclass @initializerCallAST : @semanticExpressionAST {
 #    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].typeName.string !self.mTypeName})
 #    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
   #---
-    outExpression = @initializerCallForGeneration.new {
+    outExpression = @initializerCallForGeneration {
       !instanciedType
       !self.mEndOfExpressions
       !initializerName.string
@@ -183,38 +183,44 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
     : "cannot infer type"
     : outInstanciedType, outConstructorEffectiveParameterList, outInitializerName
   else
-  #--- Search initializer
-    outInitializerName = .new {![inInvocationArguments initializerSignature] !inEndOfExpressions}
     let instanciedTypeDefinition = [outInstanciedType definition]
-    let initializerMap = instanciedTypeDefinition.initializerMap
-    [initializerMap searchKey !outInitializerName ?let formalSignature]
-  #--- Analysis arguments
-    outConstructorEffectiveParameterList = §[]
-    for effectiveParameter in inInvocationArguments,
-        formalArg in formalSignature do
-      [effectiveParameter.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: formalArg.mFormalArgumentType
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
-        ?@semanticExpressionForGeneration exp
-      ]
-      checkAssignmentTypeWithImplicitGetterCall (
-        !formalArg.mFormalArgumentType
-        !exp.mResultType
-        !effectiveParameter.mEndOfExpressionLocation
-        !?exp
-      )
-      outConstructorEffectiveParameterList += !exp
-      if formalArg.mFormalSelector.string != effectiveParameter.mActualSelector.string then
-        let @string s = "!" + if formalArg.mFormalSelector.string != ""
-          then formalArg.mFormalSelector.string + ":"
-          else ""
+    if not instanciedTypeDefinition.isConcrete then
+      error inTypeName
+      : "cannot instanciate an abstract class"
+      : outInstanciedType, outConstructorEffectiveParameterList, outInitializerName
+    else
+    #--- Search initializer
+      outInitializerName = .init {![inInvocationArguments initializerSignature] !inEndOfExpressions}
+      let initializerMap = instanciedTypeDefinition.initializerMap
+      [initializerMap searchKey !outInitializerName ?let formalSignature]
+    #--- Analysis arguments
+      outConstructorEffectiveParameterList = §[]
+      for effectiveParameter in inInvocationArguments,
+          formalArg in formalSignature do
+        [effectiveParameter.mExpression analyzeSemanticExpression
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: formalArg.mFormalArgumentType
+          !inAnalysisContext
+          !?ioTypeMap
+          !?ioVariableMap
+          ?@semanticExpressionForGeneration exp
+        ]
+        checkAssignmentTypeWithImplicitGetterCall (
+          !formalArg.mFormalArgumentType
+          !exp.mResultType
+          !effectiveParameter.mEndOfExpressionLocation
+          !?exp
+        )
+        outConstructorEffectiveParameterList += !exp
+        if formalArg.mFormalSelector.string != effectiveParameter.mActualSelector.string then
+          let @string s = "!" + if formalArg.mFormalSelector.string != ""
+            then formalArg.mFormalSelector.string + ":"
+            else ""
+          end
+          error effectiveParameter.mActualSelector
+          : "the selector should be '" + s + "'" fixit { replace s }
         end
-        error effectiveParameter.mActualSelector
-        : "the selector should be '" + s + "'" fixit { replace s }
       end
     end
   end

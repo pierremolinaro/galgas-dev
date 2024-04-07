@@ -47,13 +47,13 @@ syntax extension galgas3LexiqueComponentSyntax {
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
       $\$terminal\$$ ?let @lstring defaultSentTerminal
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST {!defaultSentTerminal}
     or
       $error$
       $identifier$ ?let @lstring defaultErrorMessageName
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST {!defaultErrorMessageName}
     end
-    outInstruction = @lexicalStructuredSendInstructionAST.new {
+    outInstruction = @lexicalStructuredSendInstructionAST {
       !lexicalSendSearchList
       !lexicalSendDefaultAction
     }
@@ -84,13 +84,13 @@ syntax extension galgas4LexiqueComponentSyntax {
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
       $\$terminal\$$ ?let @lstring defaultSentTerminal
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
+      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST {!defaultSentTerminal}
     or
       $error$
       $identifier$ ?let @lstring defaultErrorMessageName
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
+      lexicalSendDefaultAction = @lexicalErrorByDefaultAST {!defaultErrorMessageName}
     end
-    outInstruction = @lexicalStructuredSendInstructionAST.new {
+    outInstruction = @lexicalStructuredSendInstructionAST {
       !lexicalSendSearchList
       !lexicalSendDefaultAction
     }

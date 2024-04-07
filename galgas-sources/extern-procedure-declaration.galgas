@@ -41,7 +41,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
-    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # Is not internal
       !mActionName
@@ -76,7 +76,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $identifier$ ?let @lstring mActionName indexing routineDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
-    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # Is not internal
       !mActionName
@@ -193,7 +193,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
   #---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "proc " + mangledName
-      !@routinePrototypeDeclarationForGeneration.new {
+      !@routinePrototypeDeclarationForGeneration {
         !generateHeader: true # Generate Cpp header file
         !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
         !routineMangledName: mangledName.string # self.mRoutineName.string

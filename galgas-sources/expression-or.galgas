@@ -74,31 +74,31 @@ syntax extension galgas3ExpressionSyntax {
       $|$
       let leftOperand = outExpression
       <expression_and_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @orExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
       <expression_and_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @orShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
       <expression_and_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @xorExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
       <expression_and_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @closedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
       <expression_and_ggs3> !?ioDeclarations ?let rightOperand
-      outExpression = @openedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -121,31 +121,31 @@ syntax extension galgas4ExpressionSyntax {
       $|$
       let leftOperand = outExpression
       <expression_and> !?ioDeclarations ?let rightOperand
-      outExpression = @orExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $||$
       let leftOperand = outExpression
       <expression_and> !?ioDeclarations ?let rightOperand
-      outExpression = @orShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @orShortExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $^$
       let leftOperand = outExpression
       <expression_and> !?ioDeclarations ?let rightOperand
-      outExpression = @xorExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @xorExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $...$
       let leftOperand = outExpression
       <expression_and> !?ioDeclarations ?let rightOperand
-      outExpression = @closedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @closedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     while
       let operatorLocation = @location.here
       $..<$
       let leftOperand = outExpression
       <expression_and> !?ioDeclarations ?let rightOperand
-      outExpression = @openedSliceExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @openedSliceExpressionAST {!operatorLocation !leftOperand !rightOperand}
     end
   }
 
@@ -202,7 +202,7 @@ override method @orExpressionAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -259,7 +259,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @orShortExpressionForGeneration.new {
+  outExpression = @orShortExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -314,7 +314,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     !?rightExpression
   )
 #--- Generate expression
-  outExpression = @binaryOperatorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
     !leftExpression
@@ -373,8 +373,8 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
     error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
   end
 #--- Generate expression
-  outExpression = @closedSliceExpressionForGeneration.new {
-    ![ioTypeMap typeMapEntryForLKey !.new {!"range" !leftExpression.mLocation}]
+  outExpression = @closedSliceExpressionForGeneration {
+    ![ioTypeMap typeMapEntryForLKey !.init {!"range" !leftExpression.mLocation}]
     !self.mOperatorLocation
     !leftExpression
     !rightExpression
@@ -442,8 +442,8 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 #    error rightExpression.mLocation : "the right expression of '..<' operator should an @uint"
 #  end
 #--- Generate expression
-  outExpression = @openedSliceExpressionForGeneration.new {
-    ![ioTypeMap typeMapEntryForLKey !.new {!"range" !leftExpression.mLocation}]
+  outExpression = @openedSliceExpressionForGeneration {
+    ![ioTypeMap typeMapEntryForLKey !.init {!"range" !leftExpression.mLocation}]
     !self.mOperatorLocation
     !leftExpression
     !rightExpression

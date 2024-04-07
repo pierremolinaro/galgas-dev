@@ -25,7 +25,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
     $identifier$ ?let identifier
-    outExpression = @varInExpressionAST.new {!identifier}
+    outExpression = @varInExpressionAST {!identifier}
   }
 
   #·······························································································
@@ -41,7 +41,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
     $identifier$ ?let identifier
-    outExpression = @varInExpressionAST.new {!identifier}
+    outExpression = @varInExpressionAST {!identifier}
   }
 
   #·······························································································
@@ -76,7 +76,7 @@ refclass @varInExpressionAST : @semanticExpressionAST {
       ?let @string sourceVariableCppName
       ?let @string nameForCheckingFormalParameterUsing
     ]
-    outExpression = @varInExpressionForGeneration.new {
+    outExpression = @varInExpressionForGeneration {
       !type
       !self.mVarName.location
       !sourceVariableCppName

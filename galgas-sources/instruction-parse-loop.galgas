@@ -50,7 +50,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList instructionList
     $end$
     let endOfInstructionList = @location.here
-    outInstruction = @parseLoopInstruction.new {
+    outInstruction = @parseLoopInstruction {
       !instructionLocation
       !variantExpression
       !endOfVariantExpression
@@ -85,7 +85,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList
     $end$
     let endOfInstructionList = @location.here
-    outInstruction = @parseLoopInstruction.new {
+    outInstruction = @parseLoopInstruction {
       !instructionLocation
       !variantExpression
       !endOfVariantExpression
@@ -189,7 +189,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- End block
   [!?ioVariableMap closeOverride !self.mEndOfInstructionList]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@parseLoopInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@parseLoopInstructionForGeneration {
     !self.mInstructionLocation
     !variant_expression
     !while_expression

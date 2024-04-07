@@ -41,7 +41,7 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let @lstring mMethodName
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
     $]$
-    outInstruction = @typeMethodCallInstructionAST.new {
+    outInstruction = @typeMethodCallInstructionAST {
       !instructionLocation
       !mTypeName
       !mMethodName
@@ -66,7 +66,7 @@ syntax extension galgas4InstructionsSyntax {
     $.$
     $identifier$ ?let @lstring mMethodName
     <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
-    outInstruction = @typeMethodCallInstructionAST.new {
+    outInstruction = @typeMethodCallInstructionAST {
       !instructionLocation
       !mTypeName
       !mMethodName
@@ -117,7 +117,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   ]
 #--- Generate instructions
-  ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration {
     !self.mTypeName
     !self.mMethodName
     !actualParameterListForGeneration

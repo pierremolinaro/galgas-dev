@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
       !isPredefined: false # Is not predefined
       !boolsetTypeName
       !slotList
@@ -73,7 +73,7 @@ syntax extension galgas4DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
       !isPredefined: false # Is not predefined
       !boolsetTypeName
       !slotList
@@ -96,7 +96,7 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + self.mBoolsetTypeName !self.mBoolsetTypeName.location}
+  let key = @lstring {!"@" + self.mBoolsetTypeName !self.mBoolsetTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
@@ -206,7 +206,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .isComparable
 #--- Enter in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mBoolsetTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true
@@ -261,7 +261,7 @@ override method @boolsetDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "boolset " + self.mBoolsetTypeName
-    !@boolsetTypeForGeneration.new {
+    !@boolsetTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mBoolsetTypeName]
       !self.mFlagList
     }

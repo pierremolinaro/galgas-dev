@@ -33,7 +33,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !structTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@structDeclarationAST {
       !isPredefined: false # Is not predefined
       !structTypeName
       !propertyList
@@ -63,7 +63,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> !structTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@structDeclarationAST {
       !isPredefined: false # Is not predefined
       !structTypeName
       !propertyList
@@ -101,10 +101,10 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
   {
-    let key = @lstring.new {!"@" + self.structTypeName !self.structTypeName.location}
+    let key = @lstring {!"@" + self.structTypeName !self.structTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     for property in self.mStructurePropertyListAST do
-      let propertyKey = @lstring.new {!"@" + property.propertyTypeName !property.propertyTypeName.location}
+      let propertyKey = @lstring {!"@" + property.propertyTypeName !property.propertyTypeName.location}
       [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
     end
   }
@@ -154,7 +154,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       ]
     end
     [!?classFunctionMap insertKey
-      !@lstring.new {!"new" !.here}
+      !@lstring {!"new" !.here}
       !constructorPropertyTypeList
       !true
       !structTypeIndex
@@ -185,7 +185,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !.new {![constructorPropertyTypeList initializerSignature] !self.structTypeName}
+        !.init {![constructorPropertyTypeList initializerSignature] !self.structTypeName}
         !constructorPropertyTypeList
       ]
     end
@@ -207,7 +207,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       end
     end
   #--- Enter in type map
-    let typeDefinition = @unifiedTypeDefinition.new {
+    let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.structTypeName
       !isPredefined: self.isPredefined
       !isConcrete: true
@@ -303,7 +303,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     let structType = [ioTypeMap typeMapEntryForLKey !self.structTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "struct " + self.structTypeName
-      !@structTypeForGeneration.new {
+      !@structTypeForGeneration {
         !structType
         !typedPropertyList
         !constructorArgumentList

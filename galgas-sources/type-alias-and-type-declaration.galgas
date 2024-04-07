@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let aliasTypeName indexing dictionaryDefinition
     $=$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring definedTypeName
-    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST {
       !isPredefined: false
       !aliasTypeName
       !definedTypeName
@@ -118,7 +118,7 @@ syntax extension galgas4DeclarationsSyntax {
     $@type$ ?let aliasTypeName indexing dictionaryDefinition
     $=$
     <type_definition> !?ioDeclarations ?let @lstring definedTypeName
-    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST {
       !isPredefined: false # Is not predefined
       !aliasTypeName
       !definedTypeName
@@ -226,9 +226,9 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let aliasKey = @lstring.new {!"@" + self.mAliasTypeName !self.mAliasTypeName.location}
+    let aliasKey = @lstring {!"@" + self.mAliasTypeName !self.mAliasTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !aliasKey !self]
-    let referenceKey = @lstring.new {!"@" + self.mDefinedTypeName !self.mDefinedTypeName.location}
+    let referenceKey = @lstring {!"@" + self.mDefinedTypeName !self.mDefinedTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addEdge !aliasKey !referenceKey]
   }
 
@@ -250,7 +250,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
       case unsolved :
         error self.mDefinedTypeName : "Undefined type"
       case solved (@unifiedTypeDefinition def) :
-        let definition = @unifiedTypeDefinition.new {
+        let definition = @unifiedTypeDefinition {
           !typeName: def.typeName
           !isPredefined: false # Not predefined
           !isConcrete: def.isConcrete # false if abstract class
@@ -301,7 +301,7 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
     let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !self.mDefinedTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "typealias " + self.mAliasTypeName
-      !@aliasTypeForGeneration.new {![ioTypeMap typeMapEntryForLKey !self.mAliasTypeName] !self.mAliasTypeName !t}
+      !@aliasTypeForGeneration {![ioTypeMap typeMapEntryForLKey !self.mAliasTypeName] !self.mAliasTypeName !t}
   }
 
   #·······························································································

@@ -45,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
@@ -66,7 +66,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
@@ -98,7 +98,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !className
@@ -121,7 +121,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@extensionSetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !inClassName
@@ -155,12 +155,12 @@ override method @extensionSetterAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {
+  let key = @lstring {
     !"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
     !self.mExtensionSetterName.location
   }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
   if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
@@ -223,7 +223,7 @@ override method @extensionSetterAST semanticAnalysis
     implementedAsFunction = true
   end
 #--- Analyze instruction list
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: selfObjectName
@@ -247,7 +247,7 @@ override method @extensionSetterAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage:"extension setter " + self.mExtensionSetterName
-    !@extensionSetterForGeneration.new {
+    !@extensionSetterForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "setter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
       !selfType
@@ -336,7 +336,7 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentInOut
       !self.mReceiverType
-      !@lstring.new {!"self" !@location.here}
+      !@lstring {!"self" !@location.here}
       !"ioObject"
       !0
     ]

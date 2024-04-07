@@ -33,7 +33,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
@@ -55,7 +55,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
@@ -87,7 +87,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !className
@@ -110,7 +110,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !inClassName
@@ -238,7 +238,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     error self.mOverridingExtensionMethodName:"this method is not declared by a super class"
   end
 #--- Analyze instruction list
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: "this"
@@ -286,7 +286,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
-    !@overridingExtensionMethodForGeneration.new {
+    !@overridingExtensionMethodForGeneration {
       !generateHeader: false # Do not generate Cpp header file
       !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mOverridingExtensionMethodName fileNameRepresentation]
       !selfType

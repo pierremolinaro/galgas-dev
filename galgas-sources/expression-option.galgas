@@ -41,7 +41,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     $identifier$ ?let optionName
     $identifier$ ?let getterName
-    outExpression = @optionExpressionAST.new {!optionComponentName !optionName !getterName}
+    outExpression = @optionExpressionAST {!optionComponentName !optionName !getterName}
     $]$
   }
 
@@ -54,7 +54,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     $identifier$ ?let optionName
     $identifier$ ?let getterName
-    outExpression = @optionExpressionAST.new {!.new {!"galgas_builtin_options" !.here} !optionName !getterName}
+    outExpression = @optionExpressionAST {!.init {!"galgas_builtin_options" !.here} !optionName !getterName}
     $]$
   }
 
@@ -76,7 +76,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ ?let optionName
     $.$
     $identifier$ ?let getterName
-    outExpression = @optionExpressionAST.new {!optionComponentName !optionName !getterName}
+    outExpression = @optionExpressionAST {!optionComponentName !optionName !getterName}
     $]$
   }
 
@@ -89,7 +89,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ ?let optionName
     $.$
     $identifier$ ?let getterName
-    outExpression = @optionExpressionAST.new {!.new {!"galgas_builtin_options" !.here} !optionName !getterName}
+    outExpression = @optionExpressionAST {!.init {!"galgas_builtin_options" !.here} !optionName !getterName}
     $]$
   }
 
@@ -144,28 +144,28 @@ override method @optionExpressionAST analyzeSemanticExpression
   end
   if found then
     if self.mOptionGetterName.string == "value" then
-      outExpression = @optionValueExpressionForGeneration.new {
+      outExpression = @optionValueExpressionForGeneration {
         !returnedType
         !self.mOptionComponentName.location
         !optionComponentIsPredefined
         !self.mOptionComponentName.string
         !self.mOptionEntryName.string}
     elsif self.mOptionGetterName.string == "char" then
-      outExpression = @optionCharExpressionForGeneration.new {
+      outExpression = @optionCharExpressionForGeneration {
         !inAnalysisContext.predefinedTypes.mCharType
         !self.mOptionComponentName.location
         !optionComponentIsPredefined
         !self.mOptionComponentName.string
         !self.mOptionEntryName.string}
     elsif self.mOptionGetterName.string == "string" then
-      outExpression = @optionStringExpressionForGeneration.new {
+      outExpression = @optionStringExpressionForGeneration {
         !inAnalysisContext.predefinedTypes.mStringType
         !self.mOptionComponentName.location
         !optionComponentIsPredefined
         !self.mOptionComponentName.string
         !self.mOptionEntryName.string}
     elsif self.mOptionGetterName.string == "comment" then
-      outExpression = @optionCommentExpressionForGeneration.new {
+      outExpression = @optionCommentExpressionForGeneration {
         !inAnalysisContext.predefinedTypes.mStringType
         !self.mOptionComponentName.location
         !optionComponentIsPredefined

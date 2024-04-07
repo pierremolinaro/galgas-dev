@@ -9123,58 +9123,58 @@ void extensionMethod_searchKey (const GALGAS_routineMap inObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_routineMap temp_1 = inObject ;
-    GALGAS_routineArgumentMap var_routineArgumentMap_4104 ;
-    const bool optionalResult4074 = temp_1.readProperty_mInternalRoutineMap ().optional_searchKey (constinArgument_inRoutineName.readProperty_string (), var_routineArgumentMap_4104) ;
-    if (!optionalResult4074) {
+    GALGAS_routineArgumentMap var_routineArgumentMap_4106 ;
+    const bool optionalResult4076 = temp_1.readProperty_mInternalRoutineMap ().optional_searchKey (constinArgument_inRoutineName.readProperty_string (), var_routineArgumentMap_4106) ;
+    if (!optionalResult4076) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
       outArgument_outIsFilePrivate = GALGAS_bool (false) ;
       outArgument_outRoutineSignature = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("routineMap.galgas", 99)) ;
-      cEnumerator_routineArgumentMap enumerator_4211 (var_routineArgumentMap_4104, EnumerationOrder::up) ;
-      while (enumerator_4211.hasCurrentObject ()) {
-        outArgument_outIsFilePrivate = enumerator_4211.current (HERE).readProperty_mIsFilePrivate () ;
-        outArgument_outRoutineSignature = enumerator_4211.current (HERE).readProperty_mRoutineSignature () ;
-        enumerator_4211.gotoNextObject () ;
+      cEnumerator_routineArgumentMap enumerator_4213 (var_routineArgumentMap_4106, EnumerationOrder::up) ;
+      while (enumerator_4213.hasCurrentObject ()) {
+        outArgument_outIsFilePrivate = enumerator_4213.current (HERE).readProperty_mIsFilePrivate () ;
+        outArgument_outRoutineSignature = enumerator_4213.current (HERE).readProperty_mRoutineSignature () ;
+        enumerator_4213.gotoNextObject () ;
       }
-      GALGAS_acceptableParameterList var_acceptableParameterList_4380 = GALGAS_acceptableParameterList::class_func_emptyList (SOURCE_FILE ("routineMap.galgas", 104)) ;
-      cEnumerator_routineArgumentMap enumerator_4429 (var_routineArgumentMap_4104, EnumerationOrder::up) ;
-      while (enumerator_4429.hasCurrentObject ()) {
-        GALGAS_bool var_accept_4463 = GALGAS_bool (ComparisonKind::equal, inArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4429.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
-        cEnumerator_formalParameterSignature enumerator_4576 (enumerator_4429.current (HERE).readProperty_mRoutineSignature (), EnumerationOrder::up) ;
-        cEnumerator_actualParameterListAST enumerator_4596 (inArgument_inActualParameterList, EnumerationOrder::up) ;
-        bool bool_2 = var_accept_4463.isValidAndTrue () ;
-        if (enumerator_4576.hasCurrentObject () && enumerator_4596.hasCurrentObject () && bool_2) {
-          while (enumerator_4576.hasCurrentObject () && enumerator_4596.hasCurrentObject () && bool_2) {
-            var_accept_4463 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4596.current_mActualParameter (HERE).ptr (), enumerator_4576.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4576.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 108)) ;
-            enumerator_4576.gotoNextObject () ;
-            enumerator_4596.gotoNextObject () ;
-            if (enumerator_4576.hasCurrentObject () && enumerator_4596.hasCurrentObject ()) {
-              bool_2 = var_accept_4463.isValidAndTrue () ;
+      GALGAS_acceptableParameterList var_acceptableParameterList_4382 = GALGAS_acceptableParameterList::class_func_emptyList (SOURCE_FILE ("routineMap.galgas", 104)) ;
+      cEnumerator_routineArgumentMap enumerator_4431 (var_routineArgumentMap_4106, EnumerationOrder::up) ;
+      while (enumerator_4431.hasCurrentObject ()) {
+        GALGAS_bool var_accept_4465 = GALGAS_bool (ComparisonKind::equal, inArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4431.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
+        cEnumerator_formalParameterSignature enumerator_4578 (enumerator_4431.current (HERE).readProperty_mRoutineSignature (), EnumerationOrder::up) ;
+        cEnumerator_actualParameterListAST enumerator_4598 (inArgument_inActualParameterList, EnumerationOrder::up) ;
+        bool bool_2 = var_accept_4465.isValidAndTrue () ;
+        if (enumerator_4578.hasCurrentObject () && enumerator_4598.hasCurrentObject () && bool_2) {
+          while (enumerator_4578.hasCurrentObject () && enumerator_4598.hasCurrentObject () && bool_2) {
+            var_accept_4465 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4598.current_mActualParameter (HERE).ptr (), enumerator_4578.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4578.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 108)) ;
+            enumerator_4578.gotoNextObject () ;
+            enumerator_4598.gotoNextObject () ;
+            if (enumerator_4578.hasCurrentObject () && enumerator_4598.hasCurrentObject ()) {
+              bool_2 = var_accept_4465.isValidAndTrue () ;
             }
           }
         }
         enumGalgasBool test_3 = kBoolTrue ;
         if (kBoolTrue == test_3) {
-          test_3 = var_accept_4463.boolEnum () ;
+          test_3 = var_accept_4465.boolEnum () ;
           if (kBoolTrue == test_3) {
-            var_acceptableParameterList_4380.addAssign_operation (enumerator_4429.current (HERE).readProperty_mRoutineSignature (), enumerator_4429.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas", 114)) ;
+            var_acceptableParameterList_4382.addAssign_operation (enumerator_4431.current (HERE).readProperty_mRoutineSignature (), enumerator_4431.current (HERE).readProperty_mIsFilePrivate ()  COMMA_SOURCE_FILE ("routineMap.galgas", 114)) ;
           }
         }
-        enumerator_4429.gotoNextObject () ;
+        enumerator_4431.gotoNextObject () ;
       }
       enumGalgasBool test_4 = kBoolTrue ;
       if (kBoolTrue == test_4) {
-        test_4 = GALGAS_bool (ComparisonKind::equal, var_acceptableParameterList_4380.getter_count (SOURCE_FILE ("routineMap.galgas", 117)).objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
+        test_4 = GALGAS_bool (ComparisonKind::equal, var_acceptableParameterList_4382.getter_count (SOURCE_FILE ("routineMap.galgas", 117)).objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
         if (kBoolTrue == test_4) {
-          var_acceptableParameterList_4380.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 118)) ;
+          var_acceptableParameterList_4382.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 118)) ;
           outArgument_outRoutineMangledName = function_routineMangledName (constinArgument_inRoutineName, outArgument_outRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 119)) ;
         }
       }
       if (kBoolFalse == test_4) {
         enumGalgasBool test_5 = kBoolTrue ;
         if (kBoolTrue == test_5) {
-          test_5 = GALGAS_bool (ComparisonKind::equal, var_acceptableParameterList_4380.getter_count (SOURCE_FILE ("routineMap.galgas", 120)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+          test_5 = GALGAS_bool (ComparisonKind::equal, var_acceptableParameterList_4382.getter_count (SOURCE_FILE ("routineMap.galgas", 120)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_5) {
             TC_Array <FixItDescription> fixItArray6 ;
             inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GALGAS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas", 121)) ;
@@ -9184,14 +9184,14 @@ void extensionMethod_searchKey (const GALGAS_routineMap inObject,
           }
         }
         if (kBoolFalse == test_5) {
-          GALGAS_string var_s_5431 = GALGAS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          cEnumerator_acceptableParameterList enumerator_5528 (var_acceptableParameterList_4380, EnumerationOrder::up) ;
-          while (enumerator_5528.hasCurrentObject ()) {
-            var_s_5431.plusAssign_operation(GALGAS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5528.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 127)) ;
-            enumerator_5528.gotoNextObject () ;
+          GALGAS_string var_s_5433 = GALGAS_string ("ambiguity, several procedures with compatible formal argument list:") ;
+          cEnumerator_acceptableParameterList enumerator_5530 (var_acceptableParameterList_4382, EnumerationOrder::up) ;
+          while (enumerator_5530.hasCurrentObject ()) {
+            var_s_5433.plusAssign_operation(GALGAS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5530.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 127)) ;
+            enumerator_5530.gotoNextObject () ;
           }
           TC_Array <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5431, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas", 129)) ;
+          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5433, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
           outArgument_outRoutineMangledName.drop () ; // Release error dropped variable
@@ -13516,7 +13516,7 @@ void extensionSetter_insertInitializerSelfProperty (GALGAS_localVarManager & ioO
                                                     const GALGAS_bool constinArgument_inInitialized,
                                                     Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_lstring var_varName_12496 = GALGAS_lstring::class_func_new (GALGAS_string ("self.").add_operation (constinArgument_inPropertyName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 273)), constinArgument_inErrorLocation, inCompiler  COMMA_SOURCE_FILE ("variable-manager.galgas", 273)) ;
+  GALGAS_lstring var_varName_12496 = GALGAS_lstring::init_21__21_ (GALGAS_string ("self.").add_operation (constinArgument_inPropertyName, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 273)), constinArgument_inErrorLocation, inCompiler COMMA_HERE) ;
   {
   GALGAS_localVarValuation temp_0 ;
   const enumGalgasBool test_1 = constinArgument_inInitialized.boolEnum () ;
@@ -13572,25 +13572,25 @@ void extensionSetter_closeOverride (GALGAS_localVarManager & ioObject,
     const GALGAS_localVarManager temp_1 = ioObject ;
     test_0 = GALGAS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mOverridenManagers ().getter_count (SOURCE_FILE ("variable-manager.galgas", 302)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_overrideKind var_savedManager_13739 ;
+      GALGAS_overrideKind var_savedManager_13735 ;
       {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_13739, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 303)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_13735, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 303)) ;
       }
-      switch (var_savedManager_13739.enumValue ()) {
+      switch (var_savedManager_13735.enumValue ()) {
       case GALGAS_overrideKind::kNotBuilt:
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_13853 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_13739.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_13839_savedManager = extractPtr_13853->mAssociatedValue0 ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_13849 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_13735.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_13835_savedManager = extractPtr_13849->mAssociatedValue0 ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_13999 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_13739.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_13918_savedManager = extractPtr_13999->mAssociatedValue0 ;
-          const GALGAS_currentVarManager extractedValue_13950_referenceManager = extractPtr_13999->mAssociatedValue1 ;
-          ioObject.mProperty_mCurrentManager = extractedValue_13950_referenceManager ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_13995 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_13735.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_13914_savedManager = extractPtr_13995->mAssociatedValue0 ;
+          const GALGAS_currentVarManager extractedValue_13946_referenceManager = extractPtr_13995->mAssociatedValue1 ;
+          ioObject.mProperty_mCurrentManager = extractedValue_13946_referenceManager ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_repeatOverride:
@@ -13636,39 +13636,39 @@ void extensionSetter_closeBranch (GALGAS_localVarManager & ioObject,
     const GALGAS_localVarManager temp_1 = ioObject ;
     test_0 = GALGAS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mOverridenManagers ().getter_count (SOURCE_FILE ("variable-manager.galgas", 324)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_overrideKind var_savedManager_14567 ;
+      GALGAS_overrideKind var_savedManager_14563 ;
       {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_14567, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 325)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_14563, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 325)) ;
       }
-      switch (var_savedManager_14567.enumValue ()) {
+      switch (var_savedManager_14563.enumValue ()) {
       case GALGAS_overrideKind::kNotBuilt:
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideFirstBranch:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_14837 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_14567.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_14660_savedManager = extractPtr_14837->mAssociatedValue0 ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * extractPtr_14833 = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) (var_savedManager_14563.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_14656_savedManager = extractPtr_14833->mAssociatedValue0 ;
           const GALGAS_localVarManager temp_2 = ioObject ;
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14660_savedManager, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas", 328)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14660_savedManager ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14656_savedManager, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas", 328)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_14656_savedManager ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_selectOverrideNextBranches:
         {
-          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_15290 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_14567.unsafePointer ()) ;
-          const GALGAS_currentVarManager extractedValue_14906_savedManager = extractPtr_15290->mAssociatedValue0 ;
-          const GALGAS_currentVarManager extractedValue_14938_referenceManager = extractPtr_15290->mAssociatedValue1 ;
+          const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * extractPtr_15286 = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) (var_savedManager_14563.unsafePointer ()) ;
+          const GALGAS_currentVarManager extractedValue_14902_savedManager = extractPtr_15286->mAssociatedValue0 ;
+          const GALGAS_currentVarManager extractedValue_14934_referenceManager = extractPtr_15286->mAssociatedValue1 ;
           const GALGAS_localVarManager temp_3 = ioObject ;
-          GALGAS_currentVarManager var_newReferenceManager_14968 = temp_3.readProperty_mCurrentManager () ;
+          GALGAS_currentVarManager var_newReferenceManager_14964 = temp_3.readProperty_mCurrentManager () ;
           {
-          extensionSetter_combineManagerWith (var_newReferenceManager_14968, extractedValue_14938_referenceManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 332)) ;
+          extensionSetter_combineManagerWith (var_newReferenceManager_14964, extractedValue_14934_referenceManager, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 332)) ;
           }
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14906_savedManager, var_newReferenceManager_14968  COMMA_SOURCE_FILE ("variable-manager.galgas", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas", 333)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14906_savedManager ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GALGAS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14902_savedManager, var_newReferenceManager_14964  COMMA_SOURCE_FILE ("variable-manager.galgas", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas", 333)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_14902_savedManager ;
         }
         break ;
       case GALGAS_overrideKind::kEnum_repeatOverride:
         {
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_14567  COMMA_SOURCE_FILE ("variable-manager.galgas", 336)) ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_14563  COMMA_SOURCE_FILE ("variable-manager.galgas", 336)) ;
         }
         break ;
       }

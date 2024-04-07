@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
     end
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !className
       !mGetterName
@@ -70,7 +70,7 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
     end
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !mGetterName
@@ -103,7 +103,7 @@ syntax extension galgas4DeclarationsSyntax {
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
     end
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !className
       !mGetterName
@@ -127,7 +127,7 @@ syntax extension galgas4DeclarationsSyntax {
       $identifier$ ? let idf
       warning idf : "an identifier is no longer required here" fixit { remove }
     end
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !mGetterName
@@ -159,12 +159,12 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
             ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
             ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
             ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {
+  let key = @lstring {
     !"extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
     !self.mAbstractExtensionGetterName.location
   }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
@@ -232,7 +232,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "abstract extension getter " + self.mAbstractExtensionGetterName
-    !@abstractExtensionGetterForGeneration.new {
+    !@abstractExtensionGetterForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType

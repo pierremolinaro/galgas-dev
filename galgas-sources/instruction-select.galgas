@@ -47,7 +47,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $end$
     let endOf_select_instruction = @location.here
-    outInstruction = @selectInstruction.new {
+    outInstruction = @selectInstruction {
       !mSelectInstructionLocation
       !mSelectBranchList
       !endOf_select_instruction
@@ -79,7 +79,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $end$
     let endOf_select_instruction = @location.here
-    outInstruction = @selectInstruction.new {
+    outInstruction = @selectInstruction {
       !mSelectInstructionLocation
       !mSelectBranchList
       !endOf_select_instruction
@@ -115,7 +115,7 @@ override method @selectInstruction transformInstruction
     selectBranchList += !syntaxInstructionList
   end
 
-  ioSyntaxInstructionList += !@selectInstructionForGrammarAnalysis.new {
+  ioSyntaxInstructionList += !@selectInstructionForGrammarAnalysis {
     !self.mInstructionLocation
     !selectBranchList
     !addedNonTerminalIndex
@@ -168,7 +168,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   end
 #--- End block
   [!?ioVariableMap closeOverride !self.mEndOf_select_instruction]
-  ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@selectInstructionForGeneration {
     !self.mInstructionLocation
     !inComponentName
     !choiceIndex
@@ -199,7 +199,7 @@ override method @selectInstructionForGeneration appendSyntaxSignature
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
   end
-  ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@selectInstructionForGeneration {
     !self.mInstructionLocation
     !self.mSyntaxComponentName
     !self.mChoiceIndex

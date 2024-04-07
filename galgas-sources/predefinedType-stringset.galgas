@@ -101,7 +101,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
     outSetterMap = §[]
     [!?outSetterMap insertKey
-      !@lstring.new {!"removeKey" !@location.here}
+      !@lstring {!"removeKey" !@location.here}
       !@methodKind. definedAsMember
       !@formalParameterSignature.listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
       !false # No Compiler argument

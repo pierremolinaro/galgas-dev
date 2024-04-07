@@ -40,7 +40,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
     $true$
-    outExpression = @trueExpressionAST.new {!.here}
+    outExpression = @trueExpressionAST {!.here}
   }
 
   #·······························································································
@@ -48,7 +48,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
     $false$
-    outExpression = @falseExpressionAST.new {!.here}
+    outExpression = @falseExpressionAST {!.here}
   }
 
   #·······························································································
@@ -64,7 +64,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
     $true$
-    outExpression = @trueExpressionAST.new {!.here}
+    outExpression = @trueExpressionAST {!.here}
   }
 
   #·······························································································
@@ -72,7 +72,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
     $false$
-    outExpression = @falseExpressionAST.new {!.here}
+    outExpression = @falseExpressionAST {!.here}
   }
 
   #·······························································································
@@ -99,7 +99,7 @@ override method @trueExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
+  outExpression = @trueExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -120,7 +120,7 @@ override method @falseExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
+  outExpression = @falseExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mLocation}
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

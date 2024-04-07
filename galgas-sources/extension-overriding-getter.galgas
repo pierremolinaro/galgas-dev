@@ -50,13 +50,13 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .new {!"result" !.here}
+      resultVariableName = .init {!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !className
@@ -82,13 +82,13 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .new {!"result" !.here}
+      resultVariableName = .init {!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inClassName
@@ -124,13 +124,13 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .new {!"result" !.here}
+      resultVariableName = .init {!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !className
@@ -157,13 +157,13 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .new {!"result" !.here}
+      resultVariableName = .init {!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !inClassName
@@ -284,7 +284,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     error self.mOverridingExtensionGetterName: "this getter is not declared by a super class"
   end
 #--- Analyze instruction list
-  let analysisContext = @analysisContext.new {
+  let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
     !selfObjectCppName: "this"
@@ -326,7 +326,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "override extension getter " + self.mOverridingExtensionGetterName
-    !@overrideExtensionGetterForGeneration.new {
+    !@overrideExtensionGetterForGeneration {
       !generateHeader: false # Do not generate Cpp header file
       !implementationCppFileName: "getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionGetterName fileNameRepresentation]
       !selfType

@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
     let operatorLocation = @location.here
     $~$
     <factor_ggs3> !?ioDeclarations ?outExpression
-    outExpression = @tildeExpressionAST.new {!operatorLocation !outExpression}
+    outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 
   #·······························································································
@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $~$
     <factor> !?ioDeclarations ?outExpression
-    outExpression = @tildeExpressionAST.new {!operatorLocation !outExpression}
+    outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 
   #·······························································································
@@ -96,7 +96,7 @@ override method @tildeExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if let exp = expression as @literalBigIntExpressionForGeneration then
-    outExpression = @literalBigIntExpressionForGeneration.new {
+    outExpression = @literalBigIntExpressionForGeneration {
       !exp.mResultType
       !exp.mLocation
       !~ exp.mValue
@@ -107,7 +107,7 @@ override method @tildeExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @tildeExpressionForGeneration.new {
+    outExpression = @tildeExpressionForGeneration {
       !type
       !self.mOperatorLocation
       !expression

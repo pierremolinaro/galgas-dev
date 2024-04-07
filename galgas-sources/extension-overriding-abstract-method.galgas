@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !className
       !mMethodName
@@ -56,7 +56,7 @@ syntax extension galgas3DeclarationsSyntax {
     $method$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !mMethodName
@@ -82,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
     $.$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list>!?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !className
       !mMethodName
@@ -99,7 +99,7 @@ syntax extension galgas4DeclarationsSyntax {
     $proc$
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !mMethodName
@@ -214,7 +214,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
     error self.mOverridingExtensionMethodName:"this getter is not declared by a super class"
   end
 #--- Analyze formal argument list
-  var variableMap = @localVarManager.new
+  var variableMap = @localVarManager {}
   buildLocalVariableMapAndSignature (
     !inSemanticContext
     !?ioTypeMap

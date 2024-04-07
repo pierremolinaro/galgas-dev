@@ -176,7 +176,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
         !?expression
       )
     #--- Generate actual parameter
-      ioActualParameterListForGeneration += !@outputActualParameterForGeneration.new {
+      ioActualParameterListForGeneration += !@outputActualParameterForGeneration {
         !inFormalArgumentType
         !expression
       }
@@ -277,7 +277,7 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
     end
     ioExclusiveVariableSet += !self.mOutputInputActualParameterName.string
   #--- Generate actual parameter
-    ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
+    ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
       !parameterType
       !variableCppName
       !self.mStructAttributeList
@@ -356,13 +356,13 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
     end
   #--- Generate actual parameter
     let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
-    ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+    ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
       !inFormalArgumentType
       !false # Is not constant
       !cppVarName
-      !@defaultConstructorExpressionForGeneration.new {!inFormalArgumentType !self.mActualSelector.location !constructorName !hasCompilerArgument}
+      !@defaultConstructorExpressionForGeneration {!inFormalArgumentType !self.mActualSelector.location !constructorName !hasCompilerArgument}
     }
-    ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
+    ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
       !inFormalArgumentType
       !cppVarName
       !§[]
@@ -441,7 +441,7 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
         + "', it should be the same as the corresponding formal argument: '@"
         + [inFormalArgumentType definition].typeName.string + "'"
     end
-      ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
+      ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
         !inFormalArgumentType
         !"ioObject"
         !§[]
@@ -520,13 +520,13 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
       end
     #--- Generate actual parameter
       let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
-      ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+      ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
         !inFormalArgumentType
         !false # Is not constant
         !cppVarName
-        !@defaultConstructorExpressionForGeneration.new {!inFormalArgumentType !self.mQualifierLocation !constructorName !hasCompilerArgument}
+        !@defaultConstructorExpressionForGeneration {!inFormalArgumentType !self.mQualifierLocation !constructorName !hasCompilerArgument}
       }
-      ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
+      ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
         !inFormalArgumentType
         !cppVarName
         !§[]
@@ -617,7 +617,7 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
       ]
       poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
     end
-    ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+    ioActualParameterListForGeneration += !@inputActualParameterForGeneration {
       !parameterType
       !targetVariableCppName
       !poisonedVarCppNameList
@@ -705,7 +705,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
         ]
         poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
       end
-      ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+      ioActualParameterListForGeneration += !@inputActualParameterForGeneration {
         !parameterType
         !targetVariableCppName
         !poisonedVarCppNameList
@@ -798,7 +798,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
         ]
         poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
       end
-      ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+      ioActualParameterListForGeneration += !@inputActualParameterForGeneration {
         !selfType
         !targetVariableCppName
         !poisonedVarCppNameList
@@ -887,7 +887,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
       !targetVariableCppName
     ]
   #--- Generate local variable declaration
-    ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
+    ioInstructionListForGeneration += !@localVariableDeclarationForGeneration {
       !inFormalArgumentType
       !targetVariableCppName}
   #--- Check for exclusive access
@@ -907,7 +907,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
       ]
       poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
     end
-    ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+    ioActualParameterListForGeneration += !@inputActualParameterForGeneration {
       !inFormalArgumentType
       !targetVariableCppName
       !poisonedVarCppNameList
@@ -1000,7 +1000,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
       ]
     end
   #--- Generate local variable declaration
-    ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
+    ioInstructionListForGeneration += !@localVariableDeclarationForGeneration {
       !inFormalArgumentType
       !targetVariableCppName
     }
@@ -1021,7 +1021,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
       ]
       poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
     end
-    ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+    ioActualParameterListForGeneration += !@inputActualParameterForGeneration {
       !inFormalArgumentType
       !targetVariableCppName
       !poisonedVarCppNameList
@@ -1094,7 +1094,7 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
         ]
         poisonedVarCppNameList += !targetVariableCppName !nameForCheckingFormalParameterUsing
       end
-      ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
+      ioActualParameterListForGeneration += !@inputJokerParameterForGeneration {
         !inFormalArgumentType
         !cppVarName
         !poisonedVarCppNameList
@@ -1154,7 +1154,7 @@ refclass @inputJokerActualParameterAST : @actualParameterAST {
     else
       let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
     #--- Generate actual parameter
-      ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
+      ioActualParameterListForGeneration += !@inputJokerParameterForGeneration {
         !inFormalArgumentType
         !cppVarName
         !§[]

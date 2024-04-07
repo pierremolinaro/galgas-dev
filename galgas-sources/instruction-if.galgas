@@ -92,7 +92,7 @@ syntax extension galgas3InstructionsSyntax {
       <if_instruction_core> !?ioDeclarations ?let instruction
       else_instructionList = §[!instruction]
     end
-    outInstruction = @ifInstructionAST.new {
+    outInstruction = @ifInstructionAST {
       !instructionLocation
       !testExpression
       !then_instructionList
@@ -266,7 +266,7 @@ syntax extension galgas4InstructionsSyntax {
       <if_instruction_core> !?ioDeclarations ?let instruction
       else_instructionList = §[!instruction]
     end
-    outInstruction = @ifInstructionAST.new {
+    outInstruction = @ifInstructionAST {
       !instructionLocation
       !testExpression
       !then_instructionList
@@ -626,7 +626,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !self.mEndOf_if_instruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@ifInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@ifInstructionForGeneration {
     !self.mEndOf_then_branch
     !testListForGeneration
     !then_instructionList

@@ -44,7 +44,7 @@ syntax extension galgas3ExpressionSyntax {
     $else$
     <expression_ggs3> !?ioDeclarations ?let elseExpression
     $end$
-    outExpression = @ifExpressionAST.new {
+    outExpression = @ifExpressionAST {
       !operatorLocation
       !ifExpression
       !thenExpression
@@ -72,7 +72,7 @@ syntax extension galgas4ExpressionSyntax {
     $else$
     <expression> !?ioDeclarations ?let elseExpression
     $end$
-    outExpression = @ifExpressionAST.new {
+    outExpression = @ifExpressionAST {
       !operatorLocation
       !ifExpression
       !thenExpression
@@ -93,7 +93,7 @@ syntax extension galgas4ExpressionSyntax {
 #    ${$
 #    <expression> ?let elseExpression
 #    $}$
-#    outExpression = @ifExpressionAST.new {
+#    outExpression = @ifExpressionAST {
 #      !operatorLocation
 #      !ifExpression
 #      !thenExpression
@@ -169,7 +169,7 @@ override method @ifExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @ifExpressionForGeneration.new {
+    outExpression = @ifExpressionForGeneration {
       !then_expression.mResultType
       !self.mOperatorLocation
       !if_expression

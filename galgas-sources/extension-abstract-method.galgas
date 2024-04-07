@@ -39,7 +39,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !className
       !mMethodName
@@ -54,7 +54,7 @@ syntax extension galgas3DeclarationsSyntax {
     $method$
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !mMethodName
@@ -79,7 +79,7 @@ syntax extension galgas4DeclarationsSyntax {
     $.$
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !className
       !mMethodName
@@ -95,7 +95,7 @@ syntax extension galgas4DeclarationsSyntax {
     $proc$
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !mMethodName
@@ -118,12 +118,12 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {
+  let key = @lstring {
     !"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
     !self.mAbstractExtensionMethodName.location
   }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
 #---
   if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
@@ -198,7 +198,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
-    !@abstractExtensionMethodForGeneration.new {
+    !@abstractExtensionMethodForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
       !selfType

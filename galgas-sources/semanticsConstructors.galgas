@@ -34,7 +34,7 @@ proc enterClassFunctionWithoutArgument
     ?let @unifiedTypeMapEntry returnedTypeIndex
   ]
   [!?ioClassFunctionMap insertOrReplace
-    !@lstring.new {!inClassFunctionName !@location.here}
+    !@lstring {!inClassFunctionName !@location.here}
     !@functionSignature §[]
     !inHasLexiqueArgument
     !returnedTypeIndex
@@ -55,7 +55,7 @@ proc enterClassFunctionWithArgument
   [!?ioUnifiedTypeMap makeEntryFromString !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument1TypeName ?let t]
   [!?ioClassFunctionMap insertOrReplace
-    !@lstring.new {!inClassFunctionName !@location.here}
+    !@lstring {!inClassFunctionName !@location.here}
     !@functionSignature §[!["" nowhere] !t !inArgument1Name !true]
     !inHasLexiqueArgument
     !returnedTypeIndex
@@ -83,7 +83,7 @@ proc enterClassFunctionWith2Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument2TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument2Name !true
   [!?ioClassFunctionMap insertOrReplace
-    !@lstring.new {!inClassFunctionName !@location.here}
+    !@lstring {!inClassFunctionName !@location.here}
     !argumentTypeList
     !inHasLexiqueArgument
     !returnedTypeIndex
@@ -114,7 +114,7 @@ proc enterClassFunctionWith3Arguments
   [!?ioUnifiedTypeMap makeEntryFromString !inArgument3TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument3Name !true
   [!?ioClassFunctionMap insertOrReplace
-    !@lstring.new {!inClassFunctionName !@location.here}
+    !@lstring {!inClassFunctionName !@location.here}
     !argumentTypeList
     !inHasLexiqueArgument
     !returnedTypeIndex

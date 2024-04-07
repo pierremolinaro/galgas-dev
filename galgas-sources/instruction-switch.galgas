@@ -71,7 +71,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     $end$
     let endOfSwitchInstruction = @location.here
-    outInstruction = @switchInstructionAST.new {
+    outInstruction = @switchInstructionAST {
       !instructionLocation
       !switchExpression
       !endOfSwitchExpression
@@ -159,7 +159,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     $end$
     let endOfSwitchInstruction = @location.here
-    outInstruction = @switchInstructionAST.new {
+    outInstruction = @switchInstructionAST {
       !instructionLocation
       !switchExpression
       !endOfSwitchExpression
@@ -340,7 +340,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
       : "the switch instruction should name all enumeration constants; missing constants are:" + s
     end
   #--- Generate instruction
-    ioInstructionListForGeneration += !@switchInstructionForGeneration.new {
+    ioInstructionListForGeneration += !@switchInstructionForGeneration {
       !switchExpression.mResultType
       !switchExpression
       !switchBranchesForGeneration}

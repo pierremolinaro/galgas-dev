@@ -98,7 +98,7 @@ syntax extension galgas3DeclarationsSyntax {
       <externtype_method_ggs3> !?ioDeclarations !?externTypeMethodList
     end
     $}$
-    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
       !isPredefined: false # Is not predefined
       !externTypeName
       !cppPredeclarationCode
@@ -237,7 +237,7 @@ syntax extension galgas4DeclarationsSyntax {
       <externtype_method> !?ioDeclarations !?externTypeMethodList
     end
     $}$
-    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
       !isPredefined: false # Is not predefined
       !externTypeName
       !cppPredeclarationCode
@@ -361,7 +361,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mExternTypeName !self.mExternTypeName.location}
+  let key = @lstring {!"@" + self.mExternTypeName !self.mExternTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
@@ -461,7 +461,7 @@ override method @externTypeDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #--- Enter type in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mExternTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -511,7 +511,7 @@ override method @externTypeDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern type " + self.mExternTypeName
-    !@externTypeDeclarationForGeneration.new {
+    !@externTypeDeclarationForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mExternTypeName]
       !self.mExternTypeName.string
       !self.mCppPreDeclarationCode

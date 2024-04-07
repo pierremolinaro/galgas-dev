@@ -65,7 +65,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOfKeyExpression = @location.here
     let @lstring withPrefix
     select
-      withPrefix = @lstring.new {!"" !@location.here}
+      withPrefix = @lstring {!"" !@location.here}
     or
       $:$
       $identifier$ ? withPrefix
@@ -106,7 +106,7 @@ syntax extension galgas3InstructionsSyntax {
       end
       <semantic_instruction_list_ggs3> !?ioDeclarations ?mElseBranchInstructions
     end
-    outInstruction = @readAccessWithInstructionAST.new {
+    outInstruction = @readAccessWithInstructionAST {
       !inInstructionLocation
       !inWithPrefix
       !receiverExpression
@@ -181,7 +181,7 @@ syntax extension galgas3InstructionsSyntax {
       <semantic_instruction_list_ggs3> !?ioDeclarations ?mElseBranchInstructions
     end
     let endOf_else_instructions = @location.here
-    outInstruction = @readWriteAccessWithInstructionAST.new {
+    outInstruction = @readWriteAccessWithInstructionAST {
       !inInstructionLocation
       !inWithPrefix
       !targetObjectName
@@ -216,7 +216,7 @@ syntax extension galgas4InstructionsSyntax {
     let endOfKeyExpression = @location.here
     let @lstring withPrefix
     select
-      withPrefix = @lstring.new {!"" !@location.here}
+      withPrefix = @lstring {!"" !@location.here}
     or
       $:$
       $identifier$ ? withPrefix
@@ -256,7 +256,7 @@ syntax extension galgas4InstructionsSyntax {
       end
       <semantic_instruction_list> !?ioDeclarations ?mElseBranchInstructions
     end
-    outInstruction = @readAccessWithInstructionAST.new {
+    outInstruction = @readAccessWithInstructionAST {
       !inInstructionLocation
       !inWithPrefix
       !receiverExpression
@@ -332,7 +332,7 @@ syntax extension galgas4InstructionsSyntax {
       <semantic_instruction_list> !?ioDeclarations ?mElseBranchInstructions
     end
     let endOf_else_instructions = @location.here
-    outInstruction = @readWriteAccessWithInstructionAST.new {
+    outInstruction = @readWriteAccessWithInstructionAST {
       !inInstructionLocation
       !inWithPrefix
       !targetObjectName
@@ -442,14 +442,14 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   for (mPropertyTypeEntry mPropertyName 3*) in [receiverType definition].currentTypedPropertyList do
     localConstantList +=
       !mPropertyTypeEntry
-      !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
+      !@lstring {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
       !true # Do not warn if unused
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
     ![ioTypeMap typeMapEntryForLKey !["lstring" nowhere]]
-    !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
+    !@lstring {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mPropertylkey"
   analyzeSemanticInstructionList (
@@ -481,7 +481,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !self.mEndOf_else_instructions]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@readOnlyWithInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@readOnlyWithInstructionForGeneration {
     !self.mInstructionLocation
     !receiverExpression
     !objectArrayCppName
@@ -587,12 +587,12 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   for (mPropertyTypeEntry mPropertyName 3*) in [targetType definition].currentTypedPropertyList do
     localInitializedVariableList +=
       !mPropertyTypeEntry
-      !@lstring.new {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
+      !@lstring {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
   let localConstantList = @localConstantList §[
     ![ioTypeMap typeMapEntryForLKey !["lstring" nowhere]]
-    !@lstring.new {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
+    !@lstring {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mProperty_lkey"
   ]
@@ -625,7 +625,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !self.mEndOf_else_instructions]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@readWriteWithInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@readWriteWithInstructionForGeneration {
     !self.mInstructionLocation
     !receiverVariableCppName
     !targetType

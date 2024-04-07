@@ -41,7 +41,7 @@ syntax extension galgas3InstructionsSyntax {
     $:$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mWarningExpression
     <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
-    outInstruction = @warningInstructionAST.new {
+    outInstruction = @warningInstructionAST {
       !instructionLocation
       !mReceiverExpression
       !mWarningExpression
@@ -67,7 +67,7 @@ syntax extension galgas4InstructionsSyntax {
     $:$
     <expression> !?ioDeclarations ?let @semanticExpressionAST mWarningExpression
     <issue_fixit> !?ioDeclarations ?let @fixitListAST fixitListAST
-    outInstruction = @warningInstructionAST.new {
+    outInstruction = @warningInstructionAST {
       !instructionLocation
       !mReceiverExpression
       !mWarningExpression
@@ -117,7 +117,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
     ?let fixitListForGeneration
   )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@warningInstructionForGeneration.new {
+  ioInstructionListForGeneration += !@warningInstructionForGeneration {
     !self.mInstructionLocation
     !locationExpression
     !messageExpression

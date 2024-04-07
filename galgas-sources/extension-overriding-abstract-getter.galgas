@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
       warning idf : "an identifier is no longer required here" fixit { remove }
     or
     end
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !className
       !getterName
@@ -72,7 +72,7 @@ syntax extension galgas3DeclarationsSyntax {
       warning idf : "an identifier is no longer required here" fixit { remove }
     or
     end
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !getterName
@@ -106,7 +106,7 @@ syntax extension galgas4DeclarationsSyntax {
       warning idf : "an identifier is no longer required here" fixit { remove }
     or
     end
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !className
       !getterName
@@ -131,7 +131,7 @@ syntax extension galgas4DeclarationsSyntax {
       warning idf : "an identifier is no longer required here" fixit { remove }
     or
     end
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !getterName

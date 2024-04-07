@@ -61,7 +61,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
       <option_declaration_ggs3> !?options
     end
     $}$
-    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST {
       !isPredefined: false
       !optionComponentName
       !options
@@ -79,7 +79,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     $"string"$ ?let @lstring mOptionInvocationString
     $->$
     $"string"$ ?let @lstring mOptionComment
-    var defaultValue = @lstring.new{!"" !@location.here}
+    var defaultValue = @lstring {!"" !@location.here}
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
@@ -90,7 +90,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
         $literalInt$ ?let v
-        defaultValue = @lstring.new {![v.bigint string] !v.location}
+        defaultValue = @lstring {![v.bigint string] !v.location}
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
     end
@@ -124,7 +124,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       <option_declaration_ggs3> !?options
     end
     $}$
-    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST {
       !isPredefined: false
       !optionComponentName
       !options
@@ -142,7 +142,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     $"string"$ ?let @lstring mOptionInvocationString
     $->$
     $"string"$ ?let @lstring mOptionComment
-    var defaultValue = @lstring.new{!"" !@location.here}
+    var defaultValue = @lstring {!"" !@location.here}
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
@@ -153,7 +153,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
         $literalInt$ ?let v
-        defaultValue = @lstring.new {![v.bigint string] !v.location}
+        defaultValue = @lstring {![v.bigint string] !v.location}
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
     end
@@ -330,7 +330,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
 #---- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "option " + self.mOptionComponentName
-    !@optionComponentForGeneration.new {
+    !@optionComponentForGeneration {
       !generateHeader: true # Generate Cpp header file
       !implementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
       !optionIsPredefined

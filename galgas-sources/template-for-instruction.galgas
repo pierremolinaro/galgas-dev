@@ -148,7 +148,7 @@ syntax extension templateSyntax {
     $do$
     let @lstring indexIdentifier
     select
-      indexIdentifier = @lstring.new {!"" !@location.here}
+      indexIdentifier = @lstring {!"" !@location.here}
     or
       $($
       $identifier$ ? indexIdentifier
@@ -184,7 +184,7 @@ syntax extension templateSyntax {
     end
   #---
     $end$
-    ioResultingInstructionList += !@templateInstructionForeachAST.new {
+    ioResultingInstructionList += !@templateInstructionForeachAST {
       !ascending
       !expression
       !enumeratedProperties
@@ -248,7 +248,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     for (enumeratedType enumerationName) in enumerationDescriptor
     do
       [!?doVariableMap insertKey
-        !@lstring.new {!prefix + enumerationName !expression.mLocation}
+        !@lstring {!prefix + enumerationName !expression.mLocation}
         !enumeratedType
         !enumeratorCppName +".current_" + [enumerationName identifierRepresentation] + " (HERE)"
       ]
@@ -280,7 +280,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
       end
     end
   end
-  let doAnalysisContext = @templateAnalysisContext.new {
+  let doAnalysisContext = @templateAnalysisContext {
     !inAnalysisContext.mSemanticContext
     !inAnalysisContext.mPredefinedTypes
     !doVariableMap}
@@ -314,7 +314,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !?afterInstructionList
   )
 #---
-  ioInstructionList += !@templateInstructionForeachForGeneration.new {
+  ioInstructionList += !@templateInstructionForeachForGeneration {
     !self.mIsAscending
     !expression
     !enumeratorCppName

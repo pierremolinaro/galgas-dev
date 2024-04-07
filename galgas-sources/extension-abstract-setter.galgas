@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
     $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !className
       !setterName
@@ -44,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
     $setter$
     $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
+    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !inClassName
       !setterName
@@ -70,7 +70,7 @@ syntax extension galgas3DeclarationsSyntax {
 #    $.$
 #    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
 #    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
+#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
 #      !isPredefined: false # Is not predefined
 #      !className
 #      !setterName
@@ -86,7 +86,7 @@ syntax extension galgas3DeclarationsSyntax {
 #    $proc$
 #    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
 #    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {
+#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
 #      !isPredefined: false # Is not predefined
 #      !inClassName
 #      !setterName
@@ -115,9 +115,9 @@ refclass @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
   {
-    let key = @lstring.new {!"extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
+    let key = @lstring {!"extension setter @" + self.mTypeName + " " + self.mAbstractExtensionSetterName !self.mAbstractExtensionSetterName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
   #---
     if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionSetterMapForBuildingContext insertKey
@@ -186,7 +186,7 @@ refclass @abstractExtensionSetterAST : @semanticDeclarationAST {
   #---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: " abstract extension setter " + self.mAbstractExtensionSetterName
-      !@abstractExtensionSetterForGeneration.new {
+      !@abstractExtensionSetterForGeneration {
         !generateHeader: true # Generate Cpp header file
         !implementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
         !selfType

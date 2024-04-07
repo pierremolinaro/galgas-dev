@@ -67,7 +67,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> !mEnumTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST {
       !isPredefined: false # Is not predefined
       !mEnumTypeName
       !mConstantList
@@ -112,7 +112,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> !mEnumTypeName !?ioDeclarations
     end
     $}$
-    ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST {
       !isPredefined: false # Is not predefined
       !mEnumTypeName
       !mConstantList
@@ -134,14 +134,14 @@ override method @enumDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + self.mEnumTypeName !self.mEnumTypeName.location}
+  let key = @lstring {!"@" + self.mEnumTypeName !self.mEnumTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 #--- There is a circular reference if all constant names current type in associated values
   var circularReference = true
   for (* mAssociatedValueDefinitionList) in self.mConstantList while circularReference do
     var namesCurrentType = false
     for (mValue0 *) in mAssociatedValueDefinitionList while not namesCurrentType do
-      let propertyKey = @lstring.new {!"@" + mValue0 !mValue0.location}
+      let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
       if propertyKey.string == key.string then
         namesCurrentType = true
       end
@@ -154,7 +154,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
   if circularReference then
     for (* mAssociatedValueDefinitionList) in self.mConstantList do
       for (mValue0 *) in mAssociatedValueDefinitionList do
-        let propertyKey = @lstring.new {!"@" + mValue0 !mValue0.location}
+        let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
         if (propertyKey.string != key.string) then # || circularReference then
           [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
         end
@@ -266,7 +266,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Enter type in type map
-  let typeDefinition = @unifiedTypeDefinition.new {
+  let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mEnumTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
@@ -338,7 +338,7 @@ override method @enumDeclarationAST semanticAnalysis
   let selfType = [ioTypeMap typeMapEntryForLKey !self.mEnumTypeName]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "enum " + self.mEnumTypeName
-    !@enumTypeForGeneration.new {
+    !@enumTypeForGeneration {
       !selfType
       !enumConstantListForGeneration
     }
