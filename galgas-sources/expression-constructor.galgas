@@ -24,7 +24,7 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <optional_type> !@lstring outTypeName {
+  rule <optional_type_ggs3> !@lstring outTypeName {
     select
       outTypeName = .new {!"" !.here}
     or
@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
   #--- Type name
-    <optional_type> ?let @lstring typeName
+    <optional_type_ggs3> ?let @lstring typeName
     $.$
     let startOfExpression = @location.here
   #--- Constructor name
@@ -45,7 +45,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
-      expressionList = {}
+      expressionList = <[]>
     or
       ${$
       <output_expression_list_ggs3> !?ioDeclarations ?expressionList
@@ -91,7 +91,7 @@ syntax extension galgas4ExpressionSyntax {
   #--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
-      expressionList = {}
+      expressionList = <[]>
     or
       $($
       <output_expression_list> !?ioDeclarations ?expressionList
@@ -101,27 +101,6 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @classFuncExpressionAST.new {
       !typeName
       !constructorName
-      !expressionList
-      ![startOfExpression union !endOfExpression]
-    }
-  }
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
-  #--- Type name
-    $@type$ ?let typeName indexing typeReferenceInConstructor
-    let startOfExpression = @location.here
-  #--- Actual arguments
-    let @actualOutputArgumentList expressionList
-    $($
-    <output_expression_list> !?ioDeclarations ?expressionList
-    $)$
-    let endOfExpression = @location.here
-    outExpression = @classFuncExpressionAST.new {
-      !typeName
-      !.new {!"new" !typeName}
       !expressionList
       ![startOfExpression union !endOfExpression]
     }
@@ -259,7 +238,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
       + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
     end
-    outConstructorEffectiveParameterList = {}
+    outConstructorEffectiveParameterList = <[]>
     for effectiveParameter in inInitializerEffectiveParameterExpressions,
         formalArg in constructorFormalArgumentTypeList do
       [effectiveParameter.mExpression analyzeSemanticExpression
@@ -291,11 +270,11 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
 #---
   if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && 
      ([inInitializerEffectiveParameterExpressions count] == 0) then
-    let oldInitializers = @stringset {!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"}
+    let oldInitializers = @stringset <[!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"]>
     if [oldInitializers hasKey !inConstructorName.string] then
       error inLocationForOldStyleCollectionInitializerError
       : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
-      fixit { replace " {}" }
+      fixit { replace " <[]>" }
     end
   end
 }
@@ -320,7 +299,7 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
     !@string outCppExpression
   {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-    var @stringlist parameterList = {}
+    var @stringlist parameterList = <[]>
     for (mExpression) in self.mEffectiveParameterList do
       [mExpression generateExpression
         !?ioGeneratedCode

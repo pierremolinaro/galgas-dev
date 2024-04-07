@@ -80,7 +80,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <cast_else_or_default> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionListAST outElseOrDefault {
     select
-      outElseOrDefault = {}
+      outElseOrDefault = <[]>
     or
       $else$
       <semantic_instruction_list_ggs3> !?ioDeclarations ?outElseOrDefault
@@ -89,13 +89,13 @@ syntax extension galgas3InstructionsSyntax {
       let instructionLocation = @location.here
       $error$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST errorLocationExpression
-      outElseOrDefault = {}
+      outElseOrDefault = <[]>
       outElseOrDefault += !@errorInstructionAST.new {
         !instructionLocation
         !errorLocationExpression
-        !@literalStringExpressionAST.new {!instructionLocation!{!"cast instruction run-time error"}}
-        !{}
-        !{}
+        !@literalStringExpressionAST.new {!instructionLocation!<[!"cast instruction run-time error"]>}
+        !<[]>
+        !<[]>
       }
     end
   }
@@ -110,7 +110,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    var mCastInstructionBranchList = @castInstructionBranchListAST {}
+    var mCastInstructionBranchList = @castInstructionBranchListAST <[]>
     repeat
       <cast_instruction_branch> !?ioDeclarations !?mCastInstructionBranchList
     while
@@ -168,7 +168,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- Branches
-  var castBranchList = @castInstructionBranchListForGeneration {}
+  var castBranchList = @castInstructionBranchListForGeneration <[]>
   for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
   #--- Get named type
     let type = [ioTypeMap typeMapEntryForLKey !mTypeName]
@@ -186,7 +186,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     end
   #--- Declare a local constant ?
     let @string localConstantName
-    var localConstantList = @localConstantList {}
+    var localConstantList = @localConstantList <[]>
     if [mConstantVarName count] > 0 then
       localConstantName = "cast_" + [mConstantVarName.location startLocationIndex] + "_" + mConstantVarName
       localConstantList +=
@@ -204,8 +204,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !inAnalysisContext
       !?ioTypeMap
       !localConstantList: localConstantList
-      !localInitializedVariableListWarnsIfNotMutated: {}
-      !localInitializedVariableListNoWarnsIfNotMutated: {}
+      !localInitializedVariableListWarnsIfNotMutated: <[]>
+      !localInitializedVariableListNoWarnsIfNotMutated: <[]>
       !mInstructionList
       !mEndOfInstructions
       !?ioVariableMap
@@ -219,9 +219,9 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: {}
-    !localInitializedVariableListWarnsIfNotMutated: {}
-    !localInitializedVariableListNoWarnsIfNotMutated: {}
+    !localConstantList: <[]>
+    !localInitializedVariableListWarnsIfNotMutated: <[]>
+    !localInitializedVariableListNoWarnsIfNotMutated: <[]>
     !self.mElseInstructionList
     !self.mEndOfCastInstruction
     !?ioVariableMap

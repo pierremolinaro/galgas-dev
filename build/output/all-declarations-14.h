@@ -16,7 +16,7 @@
 
 class cParser_galgas_34_LexiqueComponentSyntax {
 //--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_LexiqueComponentSyntax (void) {}
+  public: virtual ~ cParser_galgas_34_LexiqueComponentSyntax (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_declaration_ (class GALGAS_galgasDeclarationAST & ioArgument0,
@@ -474,7 +474,7 @@ class cParser_galgas_34_LexiqueComponentSyntax {
 
 class cParser_galgas_34_OptionComponentSyntax {
 //--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_OptionComponentSyntax (void) {}
+  public: virtual ~ cParser_galgas_34_OptionComponentSyntax (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_declaration_ (class GALGAS_galgasDeclarationAST & ioArgument0,
@@ -527,7 +527,7 @@ class cParser_galgas_34_OptionComponentSyntax {
 
 class cParser_galgas_34_GuiComponentSyntax {
 //--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_GuiComponentSyntax (void) {}
+  public: virtual ~ cParser_galgas_34_GuiComponentSyntax (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_declaration_ (class GALGAS_galgasDeclarationAST & ioArgument0,
@@ -616,7 +616,7 @@ class cParser_galgas_34_GuiComponentSyntax {
 
 class cParser_galgas_34_SyntaxComponentSyntax {
 //--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_SyntaxComponentSyntax (void) {}
+  public: virtual ~ cParser_galgas_34_SyntaxComponentSyntax (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_ (class GALGAS_galgasDeclarationAST & ioArgument0,
@@ -918,7 +918,7 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
 class cParser_galgas_34_GrammarComponentSyntax {
 //--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_GrammarComponentSyntax (void) {}
+  public: virtual ~ cParser_galgas_34_GrammarComponentSyntax (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_declaration_ (class GALGAS_galgasDeclarationAST & ioArgument0,
@@ -1084,7 +1084,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
 class cParser_galgas_34_ProgramDeclarations {
 //--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_ProgramDeclarations (void) {}
+  public: virtual ~ cParser_galgas_34_ProgramDeclarations (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_declaration_ (class GALGAS_galgasDeclarationAST & ioArgument0,

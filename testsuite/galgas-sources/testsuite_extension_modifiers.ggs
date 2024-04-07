@@ -60,7 +60,7 @@ valueclass @adjMat{
 }
 
 setter @adjMat addNode {
-   var tmp = @stringlist {}
+   var tmp = @stringlist <[]>
    [!?self setNodes !tmp]
 }
 
@@ -74,9 +74,9 @@ private proc typeCastInSetterCall {
 
 }
 
-valueclass @baseClassForTypeCastInSetterCall {}
+valueclass @baseClassForTypeCastInSetterCall <[]>
 
-valueclass @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall {}
+valueclass @inheritedClassForTypeCastInSetterCall : @baseClassForTypeCastInSetterCall <[]>
 
 setter @inheritedClassForTypeCastInSetterCall unSetter {
   message "Appel @inheritedClassForTypeCastInSetterCall unSetter\n"

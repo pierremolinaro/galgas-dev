@@ -78,7 +78,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override method @listmapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList = @propertyInCollectionListAST {}
+  var structAttributeList = @propertyInCollectionListAST <[]>
   structAttributeList +=
     !isConstant: false
     !["string" nowhere]
@@ -134,13 +134,13 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
   var @typedPropertyList listTypedAttributeList = associatedTypeDefinition.allTypedPropertyList
   if associatedTypeDefinition.typeKind != @typeKindEnum.listType then
     error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
-    listTypedAttributeList = @typedPropertyList {}
+    listTypedAttributeList = @typedPropertyList <[]>
   end
 #---
-  var @classFunctionMap classFunctionMap ={}
+  var @classFunctionMap classFunctionMap =<[]>
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @setterMap setterMap = {}
-  var @instanceMethodMap instanceMethodMap = {}
+  var @setterMap setterMap = <[]>
+  var @instanceMethodMap instanceMethodMap = <[]>
 #--- Associated map type index
   [!?ioTypeMap makeEntry  !self.mAssociatedListTypeName ?let associatedListTypeIndex]
 #--- currentType type index
@@ -187,17 +187,17 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !hasLexiqueArg:false
   )
 #--- Enumerator description
-  var enumeratorDescriptor = @enumerationDescriptorList {}
+  var enumeratorDescriptor = @enumerationDescriptorList <[]>
   enumeratorDescriptor += !stringTypeIndex !"key"
   enumeratorDescriptor += !associatedListTypeIndex !"mList"
 #--- Add assign operator description, insert setter
-  var @formalParameterSignature insertSetterFormalArgumentList = {}
+  var @formalParameterSignature insertSetterFormalArgumentList = <[]>
   insertSetterFormalArgumentList +=
     !["" nowhere]
     !stringTypeIndex
     !.argumentConstantIn
     !"inKey"
-  var addAssignOperatorDescription = @functionSignature {}
+  var addAssignOperatorDescription = @functionSignature <[]>
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey" !true
   for (mPropertyTypeEntry mPropertyName 3*) in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mPropertyTypeEntry !mPropertyName.string !true
@@ -216,7 +216,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !""
   ]
 #--- Add extensions
-  var @initializerMap initializerMap = {}
+  var @initializerMap initializerMap = <[]>
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -245,21 +245,21 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !superType: .null
     !typeKind: .listMapType
     !supportCollectionValue: true # Support collection value
-    !allTypedPropertyList: {}
-    !propertyMap: {}
+    !allTypedPropertyList: <[]>
+    !propertyMap: <[]>
     !currentTypedPropertyList: listTypedAttributeList
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: {}
-    !optionalMethodMap: {}
+    !classMethodMap: <[]>
+    !optionalMethodMap: <[]>
     !enumerationDescriptorList: enumeratorDescriptor
     !.doNotGenererateObjectCompare
     !addAssignOperatorDescription
-    !@mapSearchMethodListAST {}
-    !@mapSearchMethodListAST {}
+    !@mapSearchMethodListAST <[]>
+    !@mapSearchMethodListAST <[]>
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyMap" # Default constructor

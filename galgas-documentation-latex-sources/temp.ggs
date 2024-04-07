@@ -1,1 +1,3 @@
-%removeSetter nom %errorMessage "message_erreur"
+var aVariable = @maStructure.init (!123, !propriété2: true)
+// Ou bien, en éliminant l'argument d'étiquette vide :
+var aVariable = @maStructure.init (123, !propriété2: true)

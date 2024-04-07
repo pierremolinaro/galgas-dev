@@ -330,41 +330,42 @@ message undefinedAttribute : "undefined attribute"
 list attributeKeyWordList style attributeStyle error message "the '%K' keyword" {
   "app-link" -> $%app-link$,
   "app-source" -> $%app-source$,
+  "applicationBundleBase" -> $%applicationBundleBase$,
+  "codeblocks-linux32" -> $%codeblocks-linux32$,
+  "codeblocks-linux64" -> $%codeblocks-linux64$,
+  "codeblocks-windows" -> $%codeblocks-windows$,
+  "errorMessage" -> $%errorMessage$,
+  "generatedInSeparateFile" -> $%generatedInSeparateFile$,
+  "insertAfter" -> $%insertAfter$,
+  "insertBefore" -> $%insertBefore$,
+  "insertOrReplaceSetter" -> $%insertOrReplaceSetter$,
+  "insertSetter" -> $%insertSetter$,
+  "libpmAtPath" -> $%libpmAtPath$,
+  "macCodeSign" -> $%macCodeSign$,
   "makefile-macosx" -> $%makefile-macosx$,
   "makefile-unix" -> $%makefile-unix$,
   "makefile-x86linux32-on-macosx" -> $%makefile-x86linux32-on-macosx$,
   "makefile-x86linux64-on-macosx" -> $%makefile-x86linux64-on-macosx$,
   "makefile-win32-on-macosx" -> $%makefile-win32-on-macosx$,
-  "codeblocks-windows" -> $%codeblocks-windows$,
-  "codeblocks-linux32" -> $%codeblocks-linux32$,
-  "codeblocks-linux64" -> $%codeblocks-linux64$,
-  "applicationBundleBase" -> $%applicationBundleBase$,
   "MacOS" -> $%MacOS$,
   "MacOSDeployment" -> $%MacOSDeployment$,
-  "quietOutputByDefault" -> $%quietOutputByDefault$,
-  "macCodeSign" -> $%macCodeSign$,
-  "libpmAtPath" -> $%libpmAtPath$,
-  "tool-source" -> $%tool-source$,
-  "translate" -> $%translate$,
-  "once" -> $%once$,
-  "usefull" -> $%usefull$,
-  "generatedInSeparateFile" -> $%generatedInSeparateFile$,
+  "noArgumentLabel" -> $%noArgumentLabel$,
   "nonAtomicSelection" -> $%nonAtomicSelection$,
-  "templateEndMark" -> $%templateEndMark$,
+  "once" -> $%once$,
   "preserved" -> $%preserved$,
-  "selector" -> $%selector$,
-  "insertSetter" -> $%insertSetter$,
-  "searchMethod" -> $%searchMethod$,
-  "removeSetter" -> $%removeSetter$,
-  "errorMessage" -> $%errorMessage$,
-  "insertOrReplaceSetter" -> $%insertOrReplaceSetter$,
-  "remove" -> $%remove$,
+  "quietOutputByDefault" -> $%quietOutputByDefault$,
   "replaceBy" -> $%replaceBy$,
-  "insertAfter" -> $%insertAfter$,
-  "insertBefore" -> $%insertBefore$,
-  "useGrammar" -> $%useGrammar$,
+  "remove" -> $%remove$,
+  "removeSetter" -> $%removeSetter$,
+  "searchMethod" -> $%searchMethod$,
   "searchString" -> $%searchString$,
-  "templateReplacement" -> $%templateReplacement$
+  "selector" -> $%selector$,
+  "tool-source" -> $%tool-source$,
+  "templateEndMark" -> $%templateEndMark$,
+  "templateReplacement" -> $%templateReplacement$,
+  "translate" -> $%translate$,
+  "usefull" -> $%usefull$,
+  "useGrammar" -> $%useGrammar$
 }
 
 rule '%' {
@@ -619,10 +620,10 @@ $!?$ style delimitersStyle error message "the '!?' delimitor"
 rule "?!" {
   tag onlyInterrogationExclamationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case ':' :
@@ -639,10 +640,10 @@ rule "?!" {
 rule '?' {
   tag onlyInterrogationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case ':' :
@@ -659,10 +660,10 @@ rule '?' {
 rule "!?" {
   tag onlyExclamationInterrogationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case ':' :
@@ -679,10 +680,10 @@ rule "!?" {
 rule '!' {
   tag onlyExclamationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case ':' :

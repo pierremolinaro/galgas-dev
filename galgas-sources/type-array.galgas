@@ -97,10 +97,10 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry !self.mElementTypeName ?let elementTypeIndex]
 #  [!?ioTypeMap makeEntry  !self.mElementTypeName ?let elementTypeIndex]
 #---
-  var @classFunctionMap classFunctionMap = {}
+  var @classFunctionMap classFunctionMap = <[]>
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @setterMap setterMap ={}
-  let @instanceMethodMap instanceMethodMap = {}
+  var @setterMap setterMap =<[]>
+  let @instanceMethodMap instanceMethodMap = <[]>
 #---
 #  [!?ioTypeMap makeEntryFromString !"bool" ?let boolType]
   [!?ioTypeMap makeEntry !.new {!"bool" !.nowhere} ?let boolType]
@@ -108,7 +108,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
 #  [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
   [!?ioTypeMap makeEntry !.new {!"uint" !.nowhere} ?let uintType]
 #---
-  var @functionSignature uintArgs = {}
+  var @functionSignature uintArgs = <[]>
   var @uint idx = 0
   loop (self.mDimension.bigint) while idx < self.mDimension.bigint do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx
@@ -167,7 +167,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !"" # getter name is not obsolete, no replacement getter
   ]
 #--- Modifiers
-  var setterFormalArgumentList = @formalParameterSignature {}
+  var setterFormalArgumentList = @formalParameterSignature <[]>
   setterFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
   loop (self.mDimension.bigint) while idx < self.mDimension.bigint do
@@ -207,7 +207,7 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasicFinal
     !""
   ]
-  setterFormalArgumentList = @formalParameterSignature {}
+  setterFormalArgumentList = @formalParameterSignature <[]>
   setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inSize"
   setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inAxisIndex"
   [!?setterMap insertKey
@@ -226,22 +226,22 @@ override method @arrayDeclarationAST enterDeclarationInSemanticContext
     !@unifiedTypeMapEntry.null
     !@typeKindEnum. listMapType
     !false # Does not support collection value
-    !@typedPropertyList {}
-    !{}
-    !@typedPropertyList {}
+    !@typedPropertyList <[]>
+    !<[]>
+    !@typedPropertyList <[]>
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !{}
-    !@optionalMethodMap {}
-    !@enumerationDescriptorList {}
+    !<[]>
+    !@optionalMethodMap <[]>
+    !@enumerationDescriptorList <[]>
     !.isComparable
-    !@functionSignature {} # addAssignOperatorDescription
-    !{}
-    !{}
-    !@mapSearchMethodListAST {}
-    !@mapSearchMethodListAST {}
+    !@functionSignature <[]> # addAssignOperatorDescription
+    !<[]>
+    !<[]>
+    !@mapSearchMethodListAST <[]>
+    !@mapSearchMethodListAST <[]>
     !false # Do not generate header in separate file
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !defaultConstructorName: "" # No default constructor
@@ -327,7 +327,7 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
 
-  var suffixList = @stringlist {}
+  var suffixList = @stringlist <[]>
   var @uint idx = 0
   loop (self.mDimension) while idx < self.mDimension do
     suffixList += ![idx string]

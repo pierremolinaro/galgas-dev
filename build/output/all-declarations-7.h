@@ -7631,7 +7631,7 @@ class cEnumAssociatedValues_localVarValuation_declared : public cEnumAssociatedV
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_localVarValuation_declared (void) {}
+  public: virtual ~ cEnumAssociatedValues_localVarValuation_declared (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8005,7 +8005,7 @@ class cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch : public cEnu
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch (void) {}
+  public: virtual ~ cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8023,7 +8023,7 @@ class cEnumAssociatedValues_overrideKind_selectOverrideNextBranches : public cEn
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_overrideKind_selectOverrideNextBranches (void) {}
+  public: virtual ~ cEnumAssociatedValues_overrideKind_selectOverrideNextBranches (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------

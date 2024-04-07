@@ -173,9 +173,9 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
           !self.mPropertyName.location
           !kind
           !expression
-          !{}
+          !<[]>
           !if actualGetterNameString == "" then self.mPropertyName.string else actualGetterNameString end
-          !{}
+          !<[]>
           !hasCompilerArgument
         }
       end
@@ -213,7 +213,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #                                            ?!@localVarManager ioVariableMap
 #                                            !@semanticExpressionForGeneration outExpression {
 #  #--------------------------------------- Translate actual argument list to actual output argument list
-#    var @actualOutputArgumentList actualOutputArgumentList = {}
+#    var @actualOutputArgumentList actualOutputArgumentList = <[]>
 #    for (mActualParameter) in self.mActualArgumentList do
 #      [mActualParameter enterInActualOutputParameterList !?actualOutputArgumentList]
 #    end
@@ -252,7 +252,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #        + [getterFormalArgumentTypeList count] + " parameter(s), while this call has "
 #        + [self.mActualArgumentList count] + " parameter(s)" : outExpression
 #      else
-#        var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+#        var @semanticExpressionListForGeneration constructorEffectiveParameterList = <[]>
 #        for (mActualSelector mExpression mEndOfExpressionLocation) in actualOutputArgumentList,
 #            (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
 #          [mExpression analyzeSemanticExpression
@@ -276,7 +276,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #          !self.mGetterName.location
 #          !kind
 #          !receiverExpression
-#          !{}
+#          !<[]>
 #          !if replacementGetter == "" then self.mGetterName.string else replacementGetter end
 #          !constructorEffectiveParameterList
 #          !hasCompilerArgument
@@ -306,11 +306,11 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #    else
 #      var @uint matchingReaderCount = 0
 #      if [receiverType definition].typeKind == .structType then
-#        var @functionSignature getterFormalArgumentTypeList = {}
+#        var @functionSignature getterFormalArgumentTypeList = <[]>
 #        var hasCompilerArgument = true
 #        var returnedType = @unifiedTypeMapEntry.null
 #        var kind = @methodKind.definedAsExtension
-#        let @stringlist fieldList = {}
+#        let @stringlist fieldList = <[]>
 #        var obsoletedByGetter = ""
 #        for (propertyTypeEntry propertyName 2*) in [receiverType definition].mCurrentTypedPropertyList do
 #          let propertyType = [ioTypeMap searchKey !.new {![propertyTypeEntry definition].mTypeName.string !.here}]
@@ -354,7 +354,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #          + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
 #          + [[self.mActualArgumentList count] string] + " parameter(s)" : outExpression
 #        else
-#          var @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+#          var @semanticExpressionListForGeneration constructorEffectiveParameterList = <[]>
 #          for (mActualSelector mExpression mEndOfExpressionLocation) in actualOutputArgumentList,
 #              (mFormalSelector mFormalArgumentType *) in getterFormalArgumentTypeList do
 #            [mExpression analyzeSemanticExpression

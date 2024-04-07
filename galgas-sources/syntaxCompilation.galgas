@@ -28,7 +28,7 @@ proc groupSyntaxComponentsGalgas3
   ?!@semanticDeclarationListAST ioDeclarationList
 {
 #--- Add extensions to syntax list
-  var @stringset componentNameSet = {}
+  var @stringset componentNameSet = <[]>
   for component in inAllSyntaxComponents do
     componentNameSet += !component.mSyntaxComponentName.string
     var nonterminalDeclarationList = component.mNonterminalDeclarationList

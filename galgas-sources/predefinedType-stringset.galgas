@@ -57,7 +57,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = {}
+    outMap = <[]>
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -99,7 +99,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
   override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringType]
-    outSetterMap = {}
+    outSetterMap = <[]>
     [!?outSetterMap insertKey
       !@lstring.new {!"removeKey" !@location.here}
       !@methodKind. definedAsMember
@@ -124,7 +124,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
                                      !@enumerationDescriptorList outEnumerationList
                                      !@string outEnumeratedType {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
-    outEnumerationList = {}
+    outEnumerationList = <[]>
     outEnumerationList += !stringTypeIndex !"key"
     outEnumeratedType = "string"
   }
@@ -134,7 +134,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
   override method getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
                                            !@functionSignature outAddAssignArgumentList {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringTypeIndex]
-    outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString" !true}
+    outAddAssignArgumentList = <[!["" nowhere] !stringTypeIndex !"inString" !true]>
   }
 
   #-----------------------------------------------------------------------------------------------

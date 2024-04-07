@@ -37,7 +37,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     $parse$
     let instructionLocation = @location.here
     $do$
-    var mParseDoBranchList = @listOfSyntaxInstructionList {}
+    var mParseDoBranchList = @listOfSyntaxInstructionList <[]>
     <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList il
     mParseDoBranchList += !il !@location.here
     repeat
@@ -70,7 +70,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     $parse$
     let instructionLocation = @location.here
     $do$
-    var mParseDoBranchList = @listOfSyntaxInstructionList {}
+    var mParseDoBranchList = @listOfSyntaxInstructionList <[]>
     <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList il
     mParseDoBranchList += !il !@location.here
     repeat
@@ -133,11 +133,11 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount
 {
 #--- 'Rewind' blocks
-  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration {}
+  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration <[]>
   let @uint referenceSelectMethodCount = ioSelectMethodCount
   for (mSyntaxInstructionList mEndOf_instructions) in self.mParseRewindBranchList do
     ioSelectMethodCount = referenceSelectMethodCount
-    var instructionList = @semanticInstructionListForGeneration {}
+    var instructionList = @semanticInstructionListForGeneration <[]>
     for (mInstruction) in mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
         !inUsefulnessCallerEntityName

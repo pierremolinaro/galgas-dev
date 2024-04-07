@@ -215,7 +215,7 @@ refclass @charPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = {}
+    outMap = <[]>
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap

@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
     <type_definition_ggs3> !?ioDeclarations ?let keyTypeName
   #--- Map properties
     ${$
-    var propertyList = @propertyInCollectionListAST {}
+    var propertyList = @propertyInCollectionListAST <[]>
     repeat
     while
       <property_declaration_ggs3> !?ioDeclarations !? propertyList
@@ -83,7 +83,7 @@ syntax extension galgas4DeclarationsSyntax {
     <type_definition> !?ioDeclarations ?let keyTypeName
   #--- Map properties
     ${$
-    var propertyList = @propertyInCollectionListAST {}
+    var propertyList = @propertyInCollectionListAST <[]>
     repeat
     while
       <property_declaration> !?ioDeclarations !? propertyList
@@ -108,7 +108,7 @@ syntax extension galgas4DeclarationsSyntax {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var @propertyInCollectionListAST structAttributeList = {}
+  var @propertyInCollectionListAST structAttributeList = <[]>
   structAttributeList +=
     !isConstant: true
     !self.mKeyTypeName
@@ -169,10 +169,10 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
 #---
-  var @classFunctionMap classFunctionMap = {}
+  var @classFunctionMap classFunctionMap = <[]>
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @setterMap setterMap = {}
-  var @instanceMethodMap instanceMethodMap = {}
+  var @setterMap setterMap = <[]>
+  var @instanceMethodMap instanceMethodMap = <[]>
 #--- Class functions
   enterClassFunctionWithoutArgument (
     !?classFunctionMap
@@ -199,28 +199,28 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !hasCompilerArgument:false
   )
 #--- Handle properties
-  var @formalParameterSignature insertSetterFormalArgumentList = {}
-  var @typedPropertyList typedPropertyList = {}
-  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
+  var @formalParameterSignature insertSetterFormalArgumentList = <[]>
+  var @typedPropertyList typedPropertyList = <[]>
+  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = <[]>
   argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key" !true
   insertSetterFormalArgumentList +=
     !["" nowhere]
     !keyTypeIndex
     !.argumentConstantIn
     !"inKey"
-  var @formalParameterSignature removeMethodFormalArgumentList = {}
+  var @formalParameterSignature removeMethodFormalArgumentList = <[]>
   removeMethodFormalArgumentList +=
     !["" nowhere]
     !keyTypeIndex
     !.argumentConstantIn
     !"inKey"
-  var @optionalMethodSignature optionalMethodSignature = {}
+  var @optionalMethodSignature optionalMethodSignature = <[]>
   optionalMethodSignature +=
     !true
     !["" nowhere]
     !keyTypeIndex
     !"inKey"
-  var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList {}
+  var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList <[]>
   for (* typeName mPropertyName 2* initExpression) in self.mPropertyList do
     [!?ioTypeMap makeEntry !typeName ?let attributeTypeIndex]
     let hasSetter = true
@@ -279,12 +279,12 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     [!?ioTypeMap makeEntry  !typeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
-      !@methodKind.definedAsMember
-      !@functionSignature {!["" nowhere] !keyTypeIndex !"inKey" !true}
-      !@location.here
+      !.definedAsMember
+      !@functionSignature <[!["" nowhere] !keyTypeIndex !"inKey" !true]>
+      !.here
       !true
       !attributeTypeIndex
-      !@methodQualifier.isBasic
+      !.isBasic
       !"" # getter name is not obsolete, no replacement getter
     ]
   end
@@ -298,7 +298,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       !typeName
       ?let @unifiedTypeMapEntry attributeTypeIndex
     ]
-    var accessorFormalArgumentList = @formalParameterSignature {}
+    var accessorFormalArgumentList = @formalParameterSignature <[]>
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !keyTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace
@@ -311,7 +311,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #--- Add extensions
-  var @initializerMap initializerMap = {}
+  var @initializerMap initializerMap = <[]>
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -333,7 +333,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     ?let @unifiedTypeMapEntry elementTypeEntry
   ]
 #--- Add Optional method
-  var optionalMethodMap = @optionalMethodMap {}
+  var optionalMethodMap = @optionalMethodMap <[]>
   [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition.new {
@@ -343,21 +343,21 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !superType: .null
     !typeKind: .mapType
     !supportCollectionValue: true # Support collection value
-    !allTypedPropertyList: {}
-    !propertyMap: {}
+    !allTypedPropertyList: <[]>
+    !propertyMap: <[]>
     !currentTypedPropertyList: typedPropertyList
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: {}
+    !classMethodMap: <[]>
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
     !argumentTypeListForAddAssignWithFieldExpressionList
-    !{}
-    !{}
+    !<[]>
+    !<[]>
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !elementTypeEntry # Type for enumerated element for "for" instruction
     !defaultConstructorName: "emptyDict"
@@ -406,7 +406,7 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  #--- Check escape sequ
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once forbiddenKeysForMapAndDict -> @stringset {
-  result = {}
+  result = <[]>
   result += !"key"
   result += !"description"
   result += !"object"
@@ -429,8 +429,8 @@ override method @dictDeclarationAST semanticAnalysis
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mDictTypeName.string + "-element" !self.mDictTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #------ Enter attributes
-  var @typedPropertyList typedAttributeList = {}
-  var @propertyIndexMap attributeMap = {}
+  var @typedPropertyList typedAttributeList = <[]>
+  var @propertyIndexMap attributeMap = <[]>
   for (* typeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]

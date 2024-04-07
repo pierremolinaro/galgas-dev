@@ -6,7 +6,7 @@
 
 class cParser_%![COMPONENT_NAME identifierRepresentation]% {
 //--- Virtual destructor
-  public: virtual ~ cParser_%![COMPONENT_NAME identifierRepresentation]% (void) {}
+  public: virtual ~ cParser_%![COMPONENT_NAME identifierRepresentation]% (void) { }
 
 //--- Non terminal declarations
 %for (lkey mLabelMap) in NONTERMINAL_MAP do

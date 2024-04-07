@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
     ${$
-    var @lstringlist slotList = {}
+    var @lstringlist slotList = <[]>
     repeat
       $identifier$ ?let slotName
       slotList += !slotName
@@ -65,7 +65,7 @@ syntax extension galgas4DeclarationsSyntax {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
     ${$
-    var @lstringlist slotList = {}
+    var @lstringlist slotList = <[]>
     repeat
       $identifier$ ?let slotName
       slotList += !slotName
@@ -113,7 +113,7 @@ override getter @boolsetDeclarationAST keyRepresentation -> @string {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once forbiddenKeysForBoolset -> @stringset {
-  result = {}
+  result = <[]>
   result += !"all"
   result += !"description"
   result += !"dynamicType"
@@ -132,7 +132,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Check unicity of slot names
-  var @stringset slotNameSet = {}
+  var @stringset slotNameSet = <[]>
   for (slotName) in self.mFlagList do
     if [forbiddenKeysForBoolset () hasKey !slotName.string] then
       var @string m = "a slot cannot be named:"
@@ -150,9 +150,9 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Class functions and attribute map
   commonGetterMapForAllTypes (!?ioTypeMap ?@getterMap getterMap)
-  var @classFunctionMap classFunctionMap = {}
-  [!?classFunctionMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex]
-  [!?classFunctionMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex]
+  var @classFunctionMap classFunctionMap = <[]>
+  [!?classFunctionMap insertKey !["none" nowhere] !<[]> !false !boolsetTypeIndex]
+  [!?classFunctionMap insertKey !["all" nowhere] !<[]> !false !boolsetTypeIndex]
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -171,7 +171,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   )
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
-      [!?classFunctionMap insertKey !slotName !{} !false !boolsetTypeIndex]
+      [!?classFunctionMap insertKey !slotName !<[]> !false !boolsetTypeIndex]
       enterBaseFinalGetterWithoutArgument (
         !?getterMap
         !?ioTypeMap
@@ -183,9 +183,9 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     end
   end
 #--- Add extensions
-  var @setterMap setterMap = {}
-  var @instanceMethodMap instanceMethodMap = {}
-  var @initializerMap initializerMap = {}
+  var @setterMap setterMap = <[]>
+  var @instanceMethodMap instanceMethodMap = <[]>
+  var @initializerMap initializerMap = <[]>
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -213,21 +213,21 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !superType: .null
     !typeKind: .boolsetType
     !supportCollectionValue: false # Does not support collection value
-    !allTypedPropertyList: {}
-    !propertyMap: {}
-    !currentTypedPropertyList: {}
+    !allTypedPropertyList: <[]>
+    !propertyMap: <[]>
+    !currentTypedPropertyList: <[]>
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: {}
-    !optionalMethodMap: {}
-    !enumerationDescriptorList: {}
+    !classMethodMap: <[]>
+    !optionalMethodMap: <[]>
+    !enumerationDescriptorList: <[]>
     !operators
-    !{}
-    !{}
-    !{}
+    !<[]>
+    !<[]>
+    !<[]>
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !.null # No type for enumerated element for "for" instruction
     !defaultConstructorName: "none" # Default constructor name

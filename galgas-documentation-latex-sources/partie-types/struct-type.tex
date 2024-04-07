@@ -9,19 +9,31 @@
 
 
 
-Le mot-clé \ggst!struct! permet de définir des types de structure. Un objet de type structure a une sémantique de valeur.
+Le mot-clé \ggst!struct! permet de définir des types de structure. Un objet de type structure a une sémantique de valeur. Une déclaration de structure doit déclarer au moins une propriété. Par exemple :
 
-La syntaxe de définition d'un type structure est de la forme~:
+\begin{galgas34}
+struct @MaStructure {
+  public var @uint propriété
+}
+\end{galgas34}
 
+Il est possible d'associer une valeur initiale à la déclaration d'une propriété~:
+\begin{galgas34}
+struct @MaStructure2 {
+  public var @uint propriété = 9
+}
+\end{galgas34}
+
+En GALGAS 3, les propriétés non initialisées peuvent être déclarées avec \ggst!public! et \ggst!var! implicites (cette syntaxe est obsolète et n'existe pas en GALGAS 4)~:
 \begin{galgas3}
 struct @MaStructure {
-  # Liste de déclaration de propriétés, par exemple :
-  @uint mProp1
-  @bool mProp2
+  @uint propriété
 }
 \end{galgas3}
 
-Il n'est pas possible de définir du code dans une déclaration de structure~: la seule possibilité est de le définir dans des \ggst=extension= (\refChapterPage{chapitreExtensions}).
+Une déclaration de structure peut aussi déclarer~: des initialisateurs (\refSectionPage{initStruct}), des \emph{getters} (\refSectionPage{getterStruct}), des \emph{methodes} (\refSectionPage{methodStruct}) et des \emph{setters} (\refSectionPage{setterStruct}).
+
+Ces déclarations peuvent apparaître soit dans la déclaration de structure, soit comme une extension (\refChapterPage{chapitreExtensions}).
 
 
 
@@ -34,17 +46,93 @@ Il n'est pas possible de définir du code dans une déclaration de structure~: l
 
 
 
-\section{Constructeurs}
+\sectionLabel{initialisateurs}{initStruct}
 
-\subsection{Constructeur \texttt{new}}
+Lorque que l'on instancie un type structure, on appelle un \emph{initialisateur}. Celui-ci a pour rôle de fixer une valeur initiale à toutes les propriétés de la structure instancée.
 
-Tout type structure définit implicitement le constructeur \ggst!new!. Son appel comprend une valeur par propriété déclarée par le type structure.
+En GALGAS 3, on peut instancier une structure avec le constructeur \ggst!new! (\refSubsectionPage{constructeurNewStruct}), qui est automatiquement engendré par toute structure~; cette construction est obsolète et est remplacée par l'appel d'un initialisateur.
+
+Toute structure implémente un initialisateur. Si une structure ne déclare aucun initialisateur, un initialisateur par défaut est automatiquement engendré (\refSubsectionPage{initialisateurDefautStruct}). L'écriture d'un initialisateur est présenté à la \refSubsectionPage{initialisateurStruct}.
+
+\subsectionLabel{Initialisateur synthétisé}{initialisateurDefautStruct}
+
+L'appel de l'initialisateur synthétisé comprend une valeur par propriété non initialisée déclarée par le type structure.
+
+Par exemple, pour la déclaration~:
+\begin{galgas34}
+struct @maStructure {
+  public var @uint propriété1
+  public var @bool propriété2
+}
+\end{galgas34}
+
+La syntaxe la plus générale d'appel de l'initialisateur synthétisé est~:
+\begin{galgas4}
+var aVariable = @maStructure.init (!propriété1: 123, !propriété2: true)
+\end{galgas4}
+\begin{galgas3}
+var aVariable = @maStructure.init {!propriété1: 123 !propriété2: true}
+\end{galgas3}
+
+On peut omettre \ggst!.init!~:
+\begin{galgas4}
+var aVariable = @maStructure (!propriété1: 123, !propriété2: true)
+\end{galgas4}
+\begin{galgas3}
+var aVariable = @maStructure {!propriété1: 123 !propriété2: true}
+\end{galgas3}
+
+
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur~:
+\begin{galgas4}
+var @maStructure aVariable = .init (!propriété1: 123, !propriété2: true)
+\end{galgas4}
+\begin{galgas3}
+var @maStructure aVariable = .init {!propriété1: 123 !propriété2: true}
+\end{galgas3}
+
+
+Il est possible d'ajouter l'attribut \ggst=%noArgumentLabel= à la déclaration d'une propriété non initialisée, pour supprimer dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
+\begin{galgas3}
+struct @maStructure {
+  public var @uint propriété1 %noArgumentLabel
+  public var @bool propriété2
+}
+\end{galgas3}
+
+Alors l'appel de l'initialisateur synthétisé devient~:
+\begin{galgas4}
+var aVariable = @maStructure.init (!123, !propriété2: true)
+// Ou bien, en éliminant l'argument d'étiquette vide :
+var aVariable = @maStructure.init (123, !propriété2: true)
+\end{galgas4}
+\begin{galgas3}
+var aVariable = @maStructure.init {!123 !propriété2: true}
+\end{galgas3}
+
+On peut omettre \ggst!.init! ou l'annotation de type si le contexte le permet.
+
+Si la propriété est initialisée, alors \ggst=%noArgumentLabel= est invalide (déclenche une erreur de syntaxe).
+
+
+
+
+
+\subsectionLabel{Initialisateur}{initialisateurStruct}
+
+
+
+\subsectionLabel{GALGAS 3 : constructeur \texttt{new}}{constructeurNewStruct}
+
+{\bf Cette construction est obsolète et est remplacée par l'appel d'un initialisateur.}
+
+En GALGAS 3, tout type structure définit implicitement le constructeur \ggst!new!. Son appel comprend une valeur par propriété non initialisée déclarée par le type structure.
 
 Par exemple, pour la déclaration~:
 \begin{galgas3}
 struct @maStructure {
-  @uint mProp1
-  @bool mProp2
+  public var @uint propriété1
+  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
 }
 \end{galgas3}
 
@@ -55,33 +143,33 @@ var aVariable = @maStructure.new {!123 !true}
 
 Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
 \begin{galgas3}
-@maStructure aVariable = .new {!123 !true}
+var @maStructure aVariable = .new {!123 !true}
 \end{galgas3}
 
-À partir de la version 3.3.8, il est possible d'ajouter l'attribut \ggst=%selector= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggst=new=. Par exemple, si on déclare~:
+Il est possible d'ajouter l'attribut \ggst=%selector= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggst=new=. Par exemple, si on déclare~:
 \begin{galgas3}
 struct @maStructure {
-  @uint mProp1 %selector
-  @bool mProp2
+  public var @uint propriété1 %selector
+  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
 }
 \end{galgas3}
 
 Alors l'appel du constructeur \ggst!new! devient~:
 \begin{galgas3}
-var aVariable = @maStructure.new {!mProp1:123 !true}
+var aVariable = @maStructure.new {!propriété1: 123 !true}
 \end{galgas3}
 
 
-\subsection{Constructeur \texttt{default}}
-
-Si chacune des propriétés accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggst!@maStructure! définie au dessus~: \ggst!@uint! accepte le constructeur par défaut (initialisation à \ggst!0!), ainsi que \ggst!@bool! (initialisation à \ggst!false!). Donc~:
-\begin{galgas3}
-var aVariable = @maStructure.default
-\end{galgas3}
-Initialise les propriétés de \ggst!aVariable! respectivement à \ggst!0! et \ggst!false!. On peut aussi écrire~:
-\begin{galgas3}
-@maStructure aVariable = .default
-\end{galgas3}
+%\subsection{Constructeur \texttt{default}}
+%
+%Si chacune des propriétés accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggst!@maStructure! définie au dessus~: \ggst!@uint! accepte le constructeur par défaut (initialisation à \ggst!0!), ainsi que \ggst!@bool! (initialisation à \ggst!false!). Donc~:
+%\begin{galgas3}
+%var aVariable = @maStructure.default
+%\end{galgas3}
+%Initialise les propriétés de \ggst!aVariable! respectivement à \ggst!0! et \ggst!false!. On peut aussi écrire~:
+%\begin{galgas3}
+%@maStructure aVariable = .default
+%\end{galgas3}
 
 
 \section{Accès aux propriétés}
@@ -108,7 +196,7 @@ aVariable.mProp1 ++
 
 
 
-\section{Getters}
+\sectionLabel{Getters}{getterStruct}
 
 Un type structure définit un \emph{getter} sans argument par propriété, qui permet d'accéder en lecture à cette propriété. Son nom est celui de la propriété. Par exemple, à la place de~:
 \begin{galgas3}
@@ -120,6 +208,13 @@ On peut écrire~:
 @uint v = [aVariable mProp1]
 \end{galgas3}
 
+
+
+\sectionLabel{Méthodes}{methodStruct}
+
+
+
+\sectionLabel{Setters}{setterStruct}
 
 
 \section{Types structure prédéfinis}

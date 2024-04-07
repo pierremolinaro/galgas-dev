@@ -364,6 +364,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "generatedInSeparateFile" -> $%generatedInSeparateFile$,
   "nonAtomicSelection" -> $%nonAtomicSelection$,
   "templateEndMark" -> $%templateEndMark$,
+  "noArgumentLabel" -> $%noArgumentLabel$,
   "preserved" -> $%preserved$,
   "selector" -> $%selector$,
   "useGrammar" -> $%useGrammar$
@@ -600,7 +601,8 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   "{",    "}",   "`",  "||", "|",
   "^",    ">>",  "~",
   "--",   "++",  "&--",   "&++",
-  "===", "!==", "?^", "!^"
+  "===", "!==", "?^", "!^",
+  "<[", "]>"
 }
 
 rule list galgasDelimitorsList
@@ -622,10 +624,10 @@ $!?$ style delimitersStyle error message "the '!?' delimitor"
 rule "?!" {
   tag onlyInterrogationExclamationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case ':' :
@@ -642,10 +644,10 @@ rule "?!" {
 rule '?' {
   tag onlyInterrogationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case ':' :
@@ -662,10 +664,10 @@ rule '?' {
 rule "!?" {
   tag onlyExclamationInterrogationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '_' :
     end
     select
     case ':' :
@@ -682,10 +684,10 @@ rule "!?" {
 rule '!' {
   tag onlyExclamationMark
   select
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case ':' :

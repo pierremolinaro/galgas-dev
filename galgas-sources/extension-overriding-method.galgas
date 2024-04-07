@@ -163,7 +163,7 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph
   if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       ! self.mTypeName
-      !{}
+      !<[]>
     ]
   end
   with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
@@ -214,7 +214,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
 #--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
-  var inheritedSignature = @formalParameterSignature {}
+  var inheritedSignature = @formalParameterSignature <[]>
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
@@ -250,8 +250,8 @@ override method @overridingExtensionMethodAST semanticAnalysis
   if let [[selfType definition].typeKind classType ?isReference: let reference] then
     isRefClass = reference
   end
-  var mutableProperties = @typedPropertyList {}
-  var nonMutableProperties = @typedPropertyList {}
+  var mutableProperties = @typedPropertyList <[]>
+  var nonMutableProperties = @typedPropertyList <[]>
   if [selfType definition].typeKind == .structType then
     nonMutableProperties = [selfType definition].allTypedPropertyList
   elsif let [[selfType definition].typeKind classType ?isReference: let isReference] then

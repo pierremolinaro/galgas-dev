@@ -2339,7 +2339,7 @@ class cEnumAssociatedValues_ifExpressionKind_regularExp : public cEnumAssociated
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_ifExpressionKind_regularExp (void) {}
+  public: virtual ~ cEnumAssociatedValues_ifExpressionKind_regularExp (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2361,7 +2361,7 @@ class cEnumAssociatedValues_ifExpressionKind_letExp : public cEnumAssociatedValu
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_ifExpressionKind_letExp (void) {}
+  public: virtual ~ cEnumAssociatedValues_ifExpressionKind_letExp (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2381,7 +2381,7 @@ class cEnumAssociatedValues_ifExpressionKind_optionalMethodCall : public cEnumAs
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_ifExpressionKind_optionalMethodCall (void) {}
+  public: virtual ~ cEnumAssociatedValues_ifExpressionKind_optionalMethodCall (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2532,7 +2532,7 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualOutput : public c
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualOutput (void) {}
+  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualOutput (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2550,7 +2550,7 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput : public
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput (void) {}
+  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2568,7 +2568,7 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput : public
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput (void) {}
+  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2588,7 +2588,7 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker : publ
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (void) {}
+  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3366,7 +3366,7 @@ class cEnumAssociatedValues_ifTestForGeneration_regular : public cEnumAssociated
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_ifTestForGeneration_regular (void) {}
+  public: virtual ~ cEnumAssociatedValues_ifTestForGeneration_regular (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3388,7 +3388,7 @@ class cEnumAssociatedValues_ifTestForGeneration_letExp : public cEnumAssociatedV
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_ifTestForGeneration_letExp (void) {}
+  public: virtual ~ cEnumAssociatedValues_ifTestForGeneration_letExp (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3408,7 +3408,7 @@ class cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall : public cEnu
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall (void) {}
+  public: virtual ~ cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3536,7 +3536,7 @@ class cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutp
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutput (void) {}
+  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutput (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3554,7 +3554,7 @@ class cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetI
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetInput (void) {}
+  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetInput (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3572,7 +3572,7 @@ class cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarI
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarInput (void) {}
+  public: virtual ~ cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarInput (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------

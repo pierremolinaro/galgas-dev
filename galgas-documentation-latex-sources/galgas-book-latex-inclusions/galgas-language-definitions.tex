@@ -223,7 +223,49 @@
 \makeatother
 
 %-----------------------------------------------------------------------------------------------------------------------*
-% ENVIRONNEMENT galgas4box : affichage de code galgas encadré                                                           *
+% ENVIRONNEMENT galgas34 : affichage de code galgas 3 et galgas4
+%-----------------------------------------------------------------------------------------------------------------------*
+
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  skipabove=0pt,
+  skipbelow=0pt,
+  linecolor=blue,
+  backgroundcolor=gray!5,
+  linewidth=1pt,
+  frametitle={GALGAS 3 et GALGAS 4},
+  frametitlefont=\normalfont\bfseries\scriptsize,
+  frametitlerule=true,
+  frametitleaboveskip=3pt,
+  frametitlebelowskip=3pt,
+]{siderules34}
+
+\makeatletter
+\newenvironment{galgas34}{%
+  \begingroup
+  \@bsphack
+  \immediate\openout\tempfile=temp.ggs%
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active
+  \verbatim@startline
+  \verbatim@addtoline
+  \verbatim@finish
+  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
+  \verbatim@start
+}{
+  \immediate\closeout\tempfile
+  \@esphack
+  \endgroup
+  \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}
+  {\medskip\begin{siderules34}\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\end{siderules34}}
+}
+\makeatother
+
+%-----------------------------------------------------------------------------------------------------------------------*
+% ENVIRONNEMENT galgas4box : affichage de code galgas encadré
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \newmdenv[

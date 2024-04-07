@@ -168,6 +168,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %generatedInSeparateFile */,
   false /* %nonAtomicSelection */,
   false /* %templateEndMark */,
+  false /* %noArgumentLabel */,
   false /* %preserved */,
   false /* %selector */,
   false /* %useGrammar */,
@@ -214,7 +215,9 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* === */,
   false /* !== */,
   false /* ?^ */,
-  false /* !^ */
+  false /* !^ */,
+  false /* <[ */,
+  false /* ]> */
 ]
 
 
@@ -348,7 +351,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [190] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -489,6 +492,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* %generatedInSeparateFile */,
   NO /* %nonAtomicSelection */,
   NO /* %templateEndMark */,
+  NO /* %noArgumentLabel */,
   NO /* %preserved */,
   NO /* %selector */,
   NO /* %useGrammar */,
@@ -535,7 +539,9 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [187] = {
   NO /* === */,
   NO /* !== */,
   NO /* ?^ */,
-  NO /* !^ */
+  NO /* !^ */,
+  NO /* <[ */,
+  NO /* ]> */
 } ;
  */
 

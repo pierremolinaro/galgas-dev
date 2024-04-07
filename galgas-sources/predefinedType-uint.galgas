@@ -52,7 +52,7 @@ refclass @uintPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = {}
+    outMap = <[]>
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -263,7 +263,7 @@ refclass @uintPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                     !@classMethodMap outClassMethodMap {
-    outClassMethodMap = {}
+    outClassMethodMap = <[]>
     enterClassMethodWithInputArgument (
       !?outClassMethodMap
       !?ioUnifiedTypeMap

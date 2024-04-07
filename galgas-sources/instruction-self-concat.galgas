@@ -268,7 +268,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
       + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
       + [[self.mExpressions count] string] + " parameter(s)"
     else
-      var effectiveParameterList = @semanticExpressionListForGeneration {}
+      var effectiveParameterList = @semanticExpressionListForGeneration <[]>
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
         [mExpression analyzeSemanticExpression
           !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -292,7 +292,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
         !selfType
         !""
         !self.mInstructionLocation
-        !@lstringlist {}
+        !@lstringlist <[]>
         !effectiveParameterList
       }
     end
@@ -342,7 +342,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
       !selfType
       !inAnalysisContext.selfObjectCppName
       !""
-      !{}
+      !<[]>
       !expression
       !"plusAssign_operation"
     }
@@ -397,7 +397,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
       !selfType
       !inAnalysisContext.selfObjectCppName
       !""
-      !{}
+      !<[]>
       !expression
       !"minusAssign_operation"
     }
@@ -445,7 +445,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
       !selfType
       !inAnalysisContext.selfObjectCppName
       !""
-      !{}
+      !<[]>
       !expression
       !"mulAssign_operation"
     }
@@ -495,7 +495,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
       !selfType
       !inAnalysisContext.selfObjectCppName
       !""
-      !{}
+      !<[]>
       !expression
       !"divAssign_operation"
     }

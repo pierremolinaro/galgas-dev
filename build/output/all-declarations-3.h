@@ -4416,7 +4416,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
 //    an error if a direct delete is performed; only the static method
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ Lexique_galgasScanner_34_ (void) {}
+    protected: virtual ~ Lexique_galgasScanner_34_ (void) { }
   #endif
 
 
@@ -4531,85 +4531,86 @@ class Lexique_galgasScanner_34_ : public Lexique {
    kToken_with /* 106 */ ,
    kToken__25_app_2D_link /* 107 */ ,
    kToken__25_app_2D_source /* 108 */ ,
-   kToken__25_makefile_2D_macosx /* 109 */ ,
-   kToken__25_makefile_2D_unix /* 110 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 111 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 112 */ ,
-   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 113 */ ,
-   kToken__25_codeblocks_2D_windows /* 114 */ ,
-   kToken__25_codeblocks_2D_linux_33__32_ /* 115 */ ,
-   kToken__25_codeblocks_2D_linux_36__34_ /* 116 */ ,
-   kToken__25_applicationBundleBase /* 117 */ ,
-   kToken__25_MacOS /* 118 */ ,
-   kToken__25_MacOSDeployment /* 119 */ ,
-   kToken__25_quietOutputByDefault /* 120 */ ,
-   kToken__25_macCodeSign /* 121 */ ,
-   kToken__25_libpmAtPath /* 122 */ ,
-   kToken__25_tool_2D_source /* 123 */ ,
-   kToken__25_translate /* 124 */ ,
-   kToken__25_once /* 125 */ ,
-   kToken__25_usefull /* 126 */ ,
-   kToken__25_generatedInSeparateFile /* 127 */ ,
-   kToken__25_nonAtomicSelection /* 128 */ ,
-   kToken__25_templateEndMark /* 129 */ ,
-   kToken__25_preserved /* 130 */ ,
-   kToken__25_selector /* 131 */ ,
-   kToken__25_insertSetter /* 132 */ ,
-   kToken__25_searchMethod /* 133 */ ,
-   kToken__25_removeSetter /* 134 */ ,
-   kToken__25_errorMessage /* 135 */ ,
-   kToken__25_insertOrReplaceSetter /* 136 */ ,
-   kToken__25_remove /* 137 */ ,
-   kToken__25_replaceBy /* 138 */ ,
-   kToken__25_insertAfter /* 139 */ ,
-   kToken__25_insertBefore /* 140 */ ,
-   kToken__25_useGrammar /* 141 */ ,
-   kToken__25_searchString /* 142 */ ,
-   kToken__25_templateReplacement /* 143 */ ,
-   kToken__2A_ /* 144 */ ,
-   kToken__2C_ /* 145 */ ,
-   kToken__2B_ /* 146 */ ,
-   kToken__26__2B_ /* 147 */ ,
-   kToken__26__2D_ /* 148 */ ,
-   kToken__26__2A_ /* 149 */ ,
-   kToken__26__2F_ /* 150 */ ,
-   kToken__3E_ /* 151 */ ,
-   kToken__3B_ /* 152 */ ,
-   kToken__3A_ /* 153 */ ,
-   kToken__3A__3E_ /* 154 */ ,
-   kToken__2D_ /* 155 */ ,
-   kToken__28_ /* 156 */ ,
-   kToken__29_ /* 157 */ ,
-   kToken__2D__3E_ /* 158 */ ,
-   kToken__3D__3D_ /* 159 */ ,
-   kToken__3D_ /* 160 */ ,
-   kToken__26__26_ /* 161 */ ,
-   kToken__5B_ /* 162 */ ,
-   kToken__5D_ /* 163 */ ,
-   kToken__2B__3D_ /* 164 */ ,
-   kToken__2D__3D_ /* 165 */ ,
-   kToken__2A__3D_ /* 166 */ ,
-   kToken__2F__3D_ /* 167 */ ,
-   kToken__2F_ /* 168 */ ,
-   kToken__21__3D_ /* 169 */ ,
-   kToken__3E__3D_ /* 170 */ ,
-   kToken__26_ /* 171 */ ,
-   kToken__7B_ /* 172 */ ,
-   kToken__7D_ /* 173 */ ,
-   kToken__60_ /* 174 */ ,
-   kToken__7C__7C_ /* 175 */ ,
-   kToken__7C_ /* 176 */ ,
-   kToken__5E_ /* 177 */ ,
-   kToken__3E__3E_ /* 178 */ ,
-   kToken__7E_ /* 179 */ ,
-   kToken__2D__2D_ /* 180 */ ,
-   kToken__2B__2B_ /* 181 */ ,
-   kToken__26__2D__2D_ /* 182 */ ,
-   kToken__26__2B__2B_ /* 183 */ ,
-   kToken__3D__3D__3D_ /* 184 */ ,
-   kToken__21__3D__3D_ /* 185 */ ,
-   kToken__3F__5E_ /* 186 */ ,
-   kToken__21__5E_ /* 187 */ } ;
+   kToken__25_applicationBundleBase /* 109 */ ,
+   kToken__25_codeblocks_2D_linux_33__32_ /* 110 */ ,
+   kToken__25_codeblocks_2D_linux_36__34_ /* 111 */ ,
+   kToken__25_codeblocks_2D_windows /* 112 */ ,
+   kToken__25_errorMessage /* 113 */ ,
+   kToken__25_generatedInSeparateFile /* 114 */ ,
+   kToken__25_insertAfter /* 115 */ ,
+   kToken__25_insertBefore /* 116 */ ,
+   kToken__25_insertOrReplaceSetter /* 117 */ ,
+   kToken__25_insertSetter /* 118 */ ,
+   kToken__25_libpmAtPath /* 119 */ ,
+   kToken__25_macCodeSign /* 120 */ ,
+   kToken__25_makefile_2D_macosx /* 121 */ ,
+   kToken__25_makefile_2D_unix /* 122 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 123 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 124 */ ,
+   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 125 */ ,
+   kToken__25_MacOS /* 126 */ ,
+   kToken__25_MacOSDeployment /* 127 */ ,
+   kToken__25_noArgumentLabel /* 128 */ ,
+   kToken__25_nonAtomicSelection /* 129 */ ,
+   kToken__25_once /* 130 */ ,
+   kToken__25_preserved /* 131 */ ,
+   kToken__25_quietOutputByDefault /* 132 */ ,
+   kToken__25_replaceBy /* 133 */ ,
+   kToken__25_remove /* 134 */ ,
+   kToken__25_removeSetter /* 135 */ ,
+   kToken__25_searchMethod /* 136 */ ,
+   kToken__25_searchString /* 137 */ ,
+   kToken__25_selector /* 138 */ ,
+   kToken__25_tool_2D_source /* 139 */ ,
+   kToken__25_templateEndMark /* 140 */ ,
+   kToken__25_templateReplacement /* 141 */ ,
+   kToken__25_translate /* 142 */ ,
+   kToken__25_usefull /* 143 */ ,
+   kToken__25_useGrammar /* 144 */ ,
+   kToken__2A_ /* 145 */ ,
+   kToken__2C_ /* 146 */ ,
+   kToken__2B_ /* 147 */ ,
+   kToken__26__2B_ /* 148 */ ,
+   kToken__26__2D_ /* 149 */ ,
+   kToken__26__2A_ /* 150 */ ,
+   kToken__26__2F_ /* 151 */ ,
+   kToken__3E_ /* 152 */ ,
+   kToken__3B_ /* 153 */ ,
+   kToken__3A_ /* 154 */ ,
+   kToken__3A__3E_ /* 155 */ ,
+   kToken__2D_ /* 156 */ ,
+   kToken__28_ /* 157 */ ,
+   kToken__29_ /* 158 */ ,
+   kToken__2D__3E_ /* 159 */ ,
+   kToken__3D__3D_ /* 160 */ ,
+   kToken__3D_ /* 161 */ ,
+   kToken__26__26_ /* 162 */ ,
+   kToken__5B_ /* 163 */ ,
+   kToken__5D_ /* 164 */ ,
+   kToken__2B__3D_ /* 165 */ ,
+   kToken__2D__3D_ /* 166 */ ,
+   kToken__2A__3D_ /* 167 */ ,
+   kToken__2F__3D_ /* 168 */ ,
+   kToken__2F_ /* 169 */ ,
+   kToken__21__3D_ /* 170 */ ,
+   kToken__3E__3D_ /* 171 */ ,
+   kToken__26_ /* 172 */ ,
+   kToken__7B_ /* 173 */ ,
+   kToken__7D_ /* 174 */ ,
+   kToken__60_ /* 175 */ ,
+   kToken__7C__7C_ /* 176 */ ,
+   kToken__7C_ /* 177 */ ,
+   kToken__5E_ /* 178 */ ,
+   kToken__3E__3E_ /* 179 */ ,
+   kToken__7E_ /* 180 */ ,
+   kToken__2D__2D_ /* 181 */ ,
+   kToken__2B__2B_ /* 182 */ ,
+   kToken__26__2D__2D_ /* 183 */ ,
+   kToken__26__2B__2B_ /* 184 */ ,
+   kToken__3D__3D__3D_ /* 185 */ ,
+   kToken__21__3D__3D_ /* 186 */ ,
+   kToken__3F__5E_ /* 187 */ ,
+   kToken__21__5E_ /* 188 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -4713,7 +4714,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 187 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 188 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -5300,7 +5301,7 @@ class cEnumAssociatedValues_AccessControlAST_fileprivateAccess : public cEnumAss
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControlAST_fileprivateAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControlAST_fileprivateAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5316,7 +5317,7 @@ class cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess : public cEnum
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5471,7 +5472,7 @@ class cEnumAssociatedValues_propertyInCollectionInitializationAST_some : public 
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_propertyInCollectionInitializationAST_some (void) {}
+  public: virtual ~ cEnumAssociatedValues_propertyInCollectionInitializationAST_some (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------

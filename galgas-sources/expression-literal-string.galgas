@@ -34,7 +34,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
-    var @stringlist literalStringList = {}
+    var @stringlist literalStringList = <[]>
     repeat
       $"string"$ ?let literalString
       literalStringList += !literalString.string
@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
-    var @stringlist literalStringList = {}
+    var @stringlist literalStringList = <[]>
     repeat
       $"string"$ ?let literalString
       literalStringList += !literalString.string

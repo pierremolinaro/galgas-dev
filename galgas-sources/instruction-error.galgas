@@ -51,7 +51,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
                      !@fixitListAST outFixitListAST {
-    outFixitListAST = {}
+    outFixitListAST = <[]>
     select
     or
       $fixit$
@@ -95,7 +95,7 @@ syntax extension galgas3InstructionsSyntax {
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mErrorExpression
-    var mBuiltVariableList = @lstringlist {}
+    var mBuiltVariableList = @lstringlist <[]>
     select
     or
       $:$
@@ -128,7 +128,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
                      !@fixitListAST outFixitListAST {
-    outFixitListAST = {}
+    outFixitListAST = <[]>
     select
     or
       $fixit$
@@ -175,7 +175,7 @@ syntax extension galgas4InstructionsSyntax {
     <expression> !?ioDeclarations ?let @semanticExpressionAST mReceiverExpression
     $:$
     <expression> !?ioDeclarations ?let @semanticExpressionAST mErrorExpression
-    var mBuiltVariableList = @lstringlist {}
+    var mBuiltVariableList = @lstringlist <[]>
     select
     or
       $spoil$
@@ -290,7 +290,7 @@ proc analyzeErrorOrWarningInstruction
     ?outMessageExpression
   ]
 #--- Analyze fixit expressions
-  outFixitListForGeneration = {}
+  outFixitListForGeneration = <[]>
   for (element) in inFixitListAST do
     switch element
     case fixItRemove :
@@ -386,7 +386,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
     ?let fixitListForGeneration
   )
 #--- Handle dropped variables
-  var builtVariableCppNameList = @stringlist {}
+  var builtVariableCppNameList = @stringlist <[]>
   for (mValue) in self.mBuiltVariableList do
     [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
     builtVariableCppNameList += !varCppName

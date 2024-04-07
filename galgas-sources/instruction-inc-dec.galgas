@@ -83,7 +83,7 @@ syntax extension galgas3InstructionsSyntax {
                                       ?prefixedBySelf: let @bool inPrefixedBySelf
                                       !@semanticInstructionAST outInstruction {
     $identifier$ ?let mReceiverName
-    var mStructAttributeList = @lstringlist {}
+    var mStructAttributeList = @lstringlist <[]>
     repeat
     while
       $.$
@@ -322,7 +322,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
       !selfType
-      !{}
+      !<[]>
       !self.mKind
     }
   else
@@ -354,7 +354,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
       !selfType
-      !{}
+      !<[]>
       !self.mKind
      }
   else

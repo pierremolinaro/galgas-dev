@@ -1,6 +1,6 @@
 
 
-class @TestExtensionMethod {}
+class @TestExtensionMethod <[]>
 
 proc @TestExtensionMethod.method1() {
 }

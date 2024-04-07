@@ -3354,7 +3354,7 @@ class cEnumAssociatedValues_typeDefinition_solved : public cEnumAssociatedValues
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_typeDefinition_solved (void) {}
+  public: virtual ~ cEnumAssociatedValues_typeDefinition_solved (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3474,7 +3474,7 @@ class cEnumAssociatedValues_unifiedTypeMapEntry_element : public cEnumAssociated
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_unifiedTypeMapEntry_element (void) {}
+  public: virtual ~ cEnumAssociatedValues_unifiedTypeMapEntry_element (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7424,7 +7424,7 @@ class cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit : publ
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (void) {}
+  public: virtual ~ cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7442,7 +7442,7 @@ class cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit : publ
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit (void) {}
+  public: virtual ~ cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------

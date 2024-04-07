@@ -7924,7 +7924,7 @@ class cEnumAssociatedValues_fixitElementAST_fixItReplace : public cEnumAssociate
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_fixitElementAST_fixItReplace (void) {}
+  public: virtual ~ cEnumAssociatedValues_fixitElementAST_fixItReplace (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7942,7 +7942,7 @@ class cEnumAssociatedValues_fixitElementAST_fixItInsertAfter : public cEnumAssoc
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_fixitElementAST_fixItInsertAfter (void) {}
+  public: virtual ~ cEnumAssociatedValues_fixitElementAST_fixItInsertAfter (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7960,7 +7960,7 @@ class cEnumAssociatedValues_fixitElementAST_fixItInsertBefore : public cEnumAsso
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_fixitElementAST_fixItInsertBefore (void) {}
+  public: virtual ~ cEnumAssociatedValues_fixitElementAST_fixItInsertBefore (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8507,7 +8507,7 @@ class cEnumAssociatedValues_fixitElementForGeneration_fixItReplace : public cEnu
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_fixitElementForGeneration_fixItReplace (void) {}
+  public: virtual ~ cEnumAssociatedValues_fixitElementForGeneration_fixItReplace (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8523,7 +8523,7 @@ class cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore : public
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore (void) {}
+  public: virtual ~ cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8539,7 +8539,7 @@ class cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter : public 
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter (void) {}
+  public: virtual ~ cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -55,7 +55,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$
-    var @commandLineOptionListAST options = {}
+    var @commandLineOptionListAST options = <[]>
     repeat
     while
       <option_declaration_ggs3> !?options
@@ -118,7 +118,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     $option$
     $identifier$ ?let @lstring optionComponentName
     ${$
-    var @commandLineOptionListAST options = {}
+    var @commandLineOptionListAST options = <[]>
     repeat
     while
       <option_declaration_ggs3> !?options
@@ -197,10 +197,10 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
-  var @commandLineOptionMap boolOptionMap = {}
-  var @commandLineOptionMap uintOptionMap = {}
-  var @commandLineOptionMap stringOptionMap = {}
-  var @commandLineOptionMap stringListOptionMap = {}
+  var @commandLineOptionMap boolOptionMap = <[]>
+  var @commandLineOptionMap uintOptionMap = <[]>
+  var @commandLineOptionMap stringOptionMap = <[]>
+  var @commandLineOptionMap stringListOptionMap = <[]>
   var optionNameSet = @stringset.emptySet
   for (mOptionTypeName mOptionInternalName mOptionInvocationLetter mOptionInvocationString mOptionComment mOptionDefaultValue mOptionDefaultValueKind) in self.mOptions do
     if [optionNameSet hasKey !mOptionInternalName.string] then
@@ -291,7 +291,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
     ?let @commandLineOptionMap stringListOptionMap
   ]
 #---- Sort options
-  var @commandLineOptionSortedList boolOptionSortedList = {}
+  var @commandLineOptionSortedList boolOptionSortedList = <[]>
   for anOption in boolOptionMap do
     boolOptionSortedList +=
       !anOption.lkey.string
@@ -300,7 +300,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !anOption.mComment
       !anOption.mDefaultValue
   end
-  var @commandLineOptionSortedList uintOptionSortedList = {}
+  var @commandLineOptionSortedList uintOptionSortedList = <[]>
   for anOption in uintOptionMap do
     uintOptionSortedList +=
       !anOption.lkey.string
@@ -309,7 +309,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !anOption.mComment
       !anOption.mDefaultValue
   end
-  var @commandLineOptionSortedList stringOptionSortedList = {}
+  var @commandLineOptionSortedList stringOptionSortedList = <[]>
   for anOption in stringOptionMap do
     stringOptionSortedList +=
       !anOption.lkey.string
@@ -318,7 +318,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !anOption.mComment
       !anOption.mDefaultValue
   end
-  var @commandLineOptionSortedList stringListOptionSortedList = {}
+  var @commandLineOptionSortedList stringListOptionSortedList = <[]>
   for anOption in stringListOptionMap do
     stringListOptionSortedList +=
       !anOption.lkey.string

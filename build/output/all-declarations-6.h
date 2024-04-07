@@ -1672,7 +1672,7 @@ class cEnumAssociatedValues_AccessControl_protectedAccess : public cEnumAssociat
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControl_protectedAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControl_protectedAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1688,7 +1688,7 @@ class cEnumAssociatedValues_AccessControl_protectedSetAccess : public cEnumAssoc
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControl_protectedSetAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControl_protectedSetAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1704,7 +1704,7 @@ class cEnumAssociatedValues_AccessControl_privateAccess : public cEnumAssociated
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControl_privateAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControl_privateAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1720,7 +1720,7 @@ class cEnumAssociatedValues_AccessControl_privateSetAccess : public cEnumAssocia
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControl_privateSetAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControl_privateSetAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1736,7 +1736,7 @@ class cEnumAssociatedValues_AccessControl_fileprivateAccess : public cEnumAssoci
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControl_fileprivateAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControl_fileprivateAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1752,7 +1752,7 @@ class cEnumAssociatedValues_AccessControl_fileprivateSetAccess : public cEnumAss
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_AccessControl_fileprivateSetAccess (void) {}
+  public: virtual ~ cEnumAssociatedValues_AccessControl_fileprivateSetAccess (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------

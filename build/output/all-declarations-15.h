@@ -44,7 +44,7 @@ class Lexique_galgasTemplateScanner : public Lexique_galgasScanner_33_ {
 //    an error if a direct delete is performed; only the static method
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ Lexique_galgasTemplateScanner (void) {}
+    protected: virtual ~ Lexique_galgasTemplateScanner (void) { }
   #endif
 //--- Scanner mode for template scanner
   private: int32_t mMatchedTemplateDelimiterIndex ;
@@ -61,7 +61,7 @@ class Lexique_galgasTemplateScanner : public Lexique_galgasScanner_33_ {
 
 class cParser_templateSyntax {
 //--- Virtual destructor
-  public: virtual ~ cParser_templateSyntax (void) {}
+  public: virtual ~ cParser_templateSyntax (void) { }
 
 //--- Non terminal declarations
   protected: virtual void nt_expression_5F_tpl_ (class GALGAS_templateExpressionAST & outArgument0,

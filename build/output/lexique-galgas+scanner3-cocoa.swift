@@ -241,55 +241,58 @@ let galgasScanner3_1__25_usefull : UInt16 = 137
 let galgasScanner3_1__25_generatedInSeparateFile : UInt16 = 138
 let galgasScanner3_1__25_nonAtomicSelection : UInt16 = 139
 let galgasScanner3_1__25_templateEndMark : UInt16 = 140
-let galgasScanner3_1__25_preserved : UInt16 = 141
-let galgasScanner3_1__25_selector : UInt16 = 142
-let galgasScanner3_1__25_useGrammar : UInt16 = 143
-let galgasScanner3_1__2A_ : UInt16 = 144
-let galgasScanner3_1__2C_ : UInt16 = 145
-let galgasScanner3_1__2B_ : UInt16 = 146
-let galgasScanner3_1__26__2B_ : UInt16 = 147
-let galgasScanner3_1__26__2D_ : UInt16 = 148
-let galgasScanner3_1__26__2A_ : UInt16 = 149
-let galgasScanner3_1__26__2F_ : UInt16 = 150
-let galgasScanner3_1__3E_ : UInt16 = 151
-let galgasScanner3_1__3B_ : UInt16 = 152
-let galgasScanner3_1__3A_ : UInt16 = 153
-let galgasScanner3_1__3A__3E_ : UInt16 = 154
-let galgasScanner3_1__2D_ : UInt16 = 155
-let galgasScanner3_1__28_ : UInt16 = 156
-let galgasScanner3_1__29_ : UInt16 = 157
-let galgasScanner3_1__2D__3E_ : UInt16 = 158
-let galgasScanner3_1__3D__3D_ : UInt16 = 159
-let galgasScanner3_1__3D_ : UInt16 = 160
-let galgasScanner3_1__26__26_ : UInt16 = 161
-let galgasScanner3_1__5B_ : UInt16 = 162
-let galgasScanner3_1__5D_ : UInt16 = 163
-let galgasScanner3_1__2B__3D_ : UInt16 = 164
-let galgasScanner3_1__2D__3D_ : UInt16 = 165
-let galgasScanner3_1__2A__3D_ : UInt16 = 166
-let galgasScanner3_1__2F__3D_ : UInt16 = 167
-let galgasScanner3_1__2F_ : UInt16 = 168
-let galgasScanner3_1__21__3D_ : UInt16 = 169
-let galgasScanner3_1__3E__3D_ : UInt16 = 170
-let galgasScanner3_1__26_ : UInt16 = 171
-let galgasScanner3_1__7B_ : UInt16 = 172
-let galgasScanner3_1__7D_ : UInt16 = 173
-let galgasScanner3_1__60_ : UInt16 = 174
-let galgasScanner3_1__7C__7C_ : UInt16 = 175
-let galgasScanner3_1__7C_ : UInt16 = 176
-let galgasScanner3_1__5E_ : UInt16 = 177
-let galgasScanner3_1__3E__3E_ : UInt16 = 178
-let galgasScanner3_1__7E_ : UInt16 = 179
-let galgasScanner3_1__2D__2D_ : UInt16 = 180
-let galgasScanner3_1__2B__2B_ : UInt16 = 181
-let galgasScanner3_1__26__2D__2D_ : UInt16 = 182
-let galgasScanner3_1__26__2B__2B_ : UInt16 = 183
-let galgasScanner3_1__3D__3D__3D_ : UInt16 = 184
-let galgasScanner3_1__21__3D__3D_ : UInt16 = 185
-let galgasScanner3_1__3F__5E_ : UInt16 = 186
-let galgasScanner3_1__21__5E_ : UInt16 = 187
-let galgasScanner3_2_ERROR : UInt16 = 188
-let galgasScanner3_2_TEMPLATE : UInt16 = 189
+let galgasScanner3_1__25_noArgumentLabel : UInt16 = 141
+let galgasScanner3_1__25_preserved : UInt16 = 142
+let galgasScanner3_1__25_selector : UInt16 = 143
+let galgasScanner3_1__25_useGrammar : UInt16 = 144
+let galgasScanner3_1__2A_ : UInt16 = 145
+let galgasScanner3_1__2C_ : UInt16 = 146
+let galgasScanner3_1__2B_ : UInt16 = 147
+let galgasScanner3_1__26__2B_ : UInt16 = 148
+let galgasScanner3_1__26__2D_ : UInt16 = 149
+let galgasScanner3_1__26__2A_ : UInt16 = 150
+let galgasScanner3_1__26__2F_ : UInt16 = 151
+let galgasScanner3_1__3E_ : UInt16 = 152
+let galgasScanner3_1__3B_ : UInt16 = 153
+let galgasScanner3_1__3A_ : UInt16 = 154
+let galgasScanner3_1__3A__3E_ : UInt16 = 155
+let galgasScanner3_1__2D_ : UInt16 = 156
+let galgasScanner3_1__28_ : UInt16 = 157
+let galgasScanner3_1__29_ : UInt16 = 158
+let galgasScanner3_1__2D__3E_ : UInt16 = 159
+let galgasScanner3_1__3D__3D_ : UInt16 = 160
+let galgasScanner3_1__3D_ : UInt16 = 161
+let galgasScanner3_1__26__26_ : UInt16 = 162
+let galgasScanner3_1__5B_ : UInt16 = 163
+let galgasScanner3_1__5D_ : UInt16 = 164
+let galgasScanner3_1__2B__3D_ : UInt16 = 165
+let galgasScanner3_1__2D__3D_ : UInt16 = 166
+let galgasScanner3_1__2A__3D_ : UInt16 = 167
+let galgasScanner3_1__2F__3D_ : UInt16 = 168
+let galgasScanner3_1__2F_ : UInt16 = 169
+let galgasScanner3_1__21__3D_ : UInt16 = 170
+let galgasScanner3_1__3E__3D_ : UInt16 = 171
+let galgasScanner3_1__26_ : UInt16 = 172
+let galgasScanner3_1__7B_ : UInt16 = 173
+let galgasScanner3_1__7D_ : UInt16 = 174
+let galgasScanner3_1__60_ : UInt16 = 175
+let galgasScanner3_1__7C__7C_ : UInt16 = 176
+let galgasScanner3_1__7C_ : UInt16 = 177
+let galgasScanner3_1__5E_ : UInt16 = 178
+let galgasScanner3_1__3E__3E_ : UInt16 = 179
+let galgasScanner3_1__7E_ : UInt16 = 180
+let galgasScanner3_1__2D__2D_ : UInt16 = 181
+let galgasScanner3_1__2B__2B_ : UInt16 = 182
+let galgasScanner3_1__26__2D__2D_ : UInt16 = 183
+let galgasScanner3_1__26__2B__2B_ : UInt16 = 184
+let galgasScanner3_1__3D__3D__3D_ : UInt16 = 185
+let galgasScanner3_1__21__3D__3D_ : UInt16 = 186
+let galgasScanner3_1__3F__5E_ : UInt16 = 187
+let galgasScanner3_1__21__5E_ : UInt16 = 188
+let galgasScanner3_1__3C__5B_ : UInt16 = 189
+let galgasScanner3_1__5D__3E_ : UInt16 = 190
+let galgasScanner3_2_ERROR : UInt16 = 191
+let galgasScanner3_2_TEMPLATE : UInt16 = 192
 
 //--------------------------------------------------------------------------------------------------
 
@@ -378,7 +381,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 187
+    return 190
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -552,55 +555,58 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       12, // 138 : galgasScanner3_1__25_generatedInSeparateFile
       12, // 139 : galgasScanner3_1__25_nonAtomicSelection
       12, // 140 : galgasScanner3_1__25_templateEndMark
-      12, // 141 : galgasScanner3_1__25_preserved
-      12, // 142 : galgasScanner3_1__25_selector
-      12, // 143 : galgasScanner3_1__25_useGrammar
-      2, // 144 : galgasScanner3_1__2A_
-      2, // 145 : galgasScanner3_1__2C_
-      2, // 146 : galgasScanner3_1__2B_
-      2, // 147 : galgasScanner3_1__26__2B_
-      2, // 148 : galgasScanner3_1__26__2D_
-      2, // 149 : galgasScanner3_1__26__2A_
-      2, // 150 : galgasScanner3_1__26__2F_
-      2, // 151 : galgasScanner3_1__3E_
-      2, // 152 : galgasScanner3_1__3B_
-      2, // 153 : galgasScanner3_1__3A_
-      2, // 154 : galgasScanner3_1__3A__3E_
-      2, // 155 : galgasScanner3_1__2D_
-      2, // 156 : galgasScanner3_1__28_
-      2, // 157 : galgasScanner3_1__29_
-      2, // 158 : galgasScanner3_1__2D__3E_
-      2, // 159 : galgasScanner3_1__3D__3D_
-      2, // 160 : galgasScanner3_1__3D_
-      2, // 161 : galgasScanner3_1__26__26_
-      2, // 162 : galgasScanner3_1__5B_
-      2, // 163 : galgasScanner3_1__5D_
-      2, // 164 : galgasScanner3_1__2B__3D_
-      2, // 165 : galgasScanner3_1__2D__3D_
-      2, // 166 : galgasScanner3_1__2A__3D_
-      2, // 167 : galgasScanner3_1__2F__3D_
-      2, // 168 : galgasScanner3_1__2F_
-      2, // 169 : galgasScanner3_1__21__3D_
-      2, // 170 : galgasScanner3_1__3E__3D_
-      2, // 171 : galgasScanner3_1__26_
-      2, // 172 : galgasScanner3_1__7B_
-      2, // 173 : galgasScanner3_1__7D_
-      2, // 174 : galgasScanner3_1__60_
-      2, // 175 : galgasScanner3_1__7C__7C_
-      2, // 176 : galgasScanner3_1__7C_
-      2, // 177 : galgasScanner3_1__5E_
-      2, // 178 : galgasScanner3_1__3E__3E_
-      2, // 179 : galgasScanner3_1__7E_
-      2, // 180 : galgasScanner3_1__2D__2D_
-      2, // 181 : galgasScanner3_1__2B__2B_
-      2, // 182 : galgasScanner3_1__26__2D__2D_
-      2, // 183 : galgasScanner3_1__26__2B__2B_
-      2, // 184 : galgasScanner3_1__3D__3D__3D_
-      2, // 185 : galgasScanner3_1__21__3D__3D_
-      2, // 186 : galgasScanner3_1__3F__5E_
-      2, // 187 : galgasScanner3_1__21__5E_
-      14, // 188 : galgasScanner3_2_ERROR
-      15  // 189 : galgasScanner3_2_TEMPLATE
+      12, // 141 : galgasScanner3_1__25_noArgumentLabel
+      12, // 142 : galgasScanner3_1__25_preserved
+      12, // 143 : galgasScanner3_1__25_selector
+      12, // 144 : galgasScanner3_1__25_useGrammar
+      2, // 145 : galgasScanner3_1__2A_
+      2, // 146 : galgasScanner3_1__2C_
+      2, // 147 : galgasScanner3_1__2B_
+      2, // 148 : galgasScanner3_1__26__2B_
+      2, // 149 : galgasScanner3_1__26__2D_
+      2, // 150 : galgasScanner3_1__26__2A_
+      2, // 151 : galgasScanner3_1__26__2F_
+      2, // 152 : galgasScanner3_1__3E_
+      2, // 153 : galgasScanner3_1__3B_
+      2, // 154 : galgasScanner3_1__3A_
+      2, // 155 : galgasScanner3_1__3A__3E_
+      2, // 156 : galgasScanner3_1__2D_
+      2, // 157 : galgasScanner3_1__28_
+      2, // 158 : galgasScanner3_1__29_
+      2, // 159 : galgasScanner3_1__2D__3E_
+      2, // 160 : galgasScanner3_1__3D__3D_
+      2, // 161 : galgasScanner3_1__3D_
+      2, // 162 : galgasScanner3_1__26__26_
+      2, // 163 : galgasScanner3_1__5B_
+      2, // 164 : galgasScanner3_1__5D_
+      2, // 165 : galgasScanner3_1__2B__3D_
+      2, // 166 : galgasScanner3_1__2D__3D_
+      2, // 167 : galgasScanner3_1__2A__3D_
+      2, // 168 : galgasScanner3_1__2F__3D_
+      2, // 169 : galgasScanner3_1__2F_
+      2, // 170 : galgasScanner3_1__21__3D_
+      2, // 171 : galgasScanner3_1__3E__3D_
+      2, // 172 : galgasScanner3_1__26_
+      2, // 173 : galgasScanner3_1__7B_
+      2, // 174 : galgasScanner3_1__7D_
+      2, // 175 : galgasScanner3_1__60_
+      2, // 176 : galgasScanner3_1__7C__7C_
+      2, // 177 : galgasScanner3_1__7C_
+      2, // 178 : galgasScanner3_1__5E_
+      2, // 179 : galgasScanner3_1__3E__3E_
+      2, // 180 : galgasScanner3_1__7E_
+      2, // 181 : galgasScanner3_1__2D__2D_
+      2, // 182 : galgasScanner3_1__2B__2B_
+      2, // 183 : galgasScanner3_1__26__2D__2D_
+      2, // 184 : galgasScanner3_1__26__2B__2B_
+      2, // 185 : galgasScanner3_1__3D__3D__3D_
+      2, // 186 : galgasScanner3_1__21__3D__3D_
+      2, // 187 : galgasScanner3_1__3F__5E_
+      2, // 188 : galgasScanner3_1__21__5E_
+      2, // 189 : galgasScanner3_1__3C__5B_
+      2, // 190 : galgasScanner3_1__5D__3E_
+      14, // 191 : galgasScanner3_2_ERROR
+      15  // 192 : galgasScanner3_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -750,55 +756,58 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       true, // 138 : galgasScanner3_1__25_generatedInSeparateFile
       true, // 139 : galgasScanner3_1__25_nonAtomicSelection
       true, // 140 : galgasScanner3_1__25_templateEndMark
-      true, // 141 : galgasScanner3_1__25_preserved
-      true, // 142 : galgasScanner3_1__25_selector
-      true, // 143 : galgasScanner3_1__25_useGrammar
-      true, // 144 : galgasScanner3_1__2A_
-      true, // 145 : galgasScanner3_1__2C_
-      true, // 146 : galgasScanner3_1__2B_
-      true, // 147 : galgasScanner3_1__26__2B_
-      true, // 148 : galgasScanner3_1__26__2D_
-      true, // 149 : galgasScanner3_1__26__2A_
-      true, // 150 : galgasScanner3_1__26__2F_
-      true, // 151 : galgasScanner3_1__3E_
-      true, // 152 : galgasScanner3_1__3B_
-      true, // 153 : galgasScanner3_1__3A_
-      true, // 154 : galgasScanner3_1__3A__3E_
-      true, // 155 : galgasScanner3_1__2D_
-      true, // 156 : galgasScanner3_1__28_
-      true, // 157 : galgasScanner3_1__29_
-      true, // 158 : galgasScanner3_1__2D__3E_
-      true, // 159 : galgasScanner3_1__3D__3D_
-      true, // 160 : galgasScanner3_1__3D_
-      true, // 161 : galgasScanner3_1__26__26_
-      true, // 162 : galgasScanner3_1__5B_
-      true, // 163 : galgasScanner3_1__5D_
-      true, // 164 : galgasScanner3_1__2B__3D_
-      true, // 165 : galgasScanner3_1__2D__3D_
-      true, // 166 : galgasScanner3_1__2A__3D_
-      true, // 167 : galgasScanner3_1__2F__3D_
-      true, // 168 : galgasScanner3_1__2F_
-      true, // 169 : galgasScanner3_1__21__3D_
-      true, // 170 : galgasScanner3_1__3E__3D_
-      true, // 171 : galgasScanner3_1__26_
-      true, // 172 : galgasScanner3_1__7B_
-      true, // 173 : galgasScanner3_1__7D_
-      true, // 174 : galgasScanner3_1__60_
-      true, // 175 : galgasScanner3_1__7C__7C_
-      true, // 176 : galgasScanner3_1__7C_
-      true, // 177 : galgasScanner3_1__5E_
-      true, // 178 : galgasScanner3_1__3E__3E_
-      true, // 179 : galgasScanner3_1__7E_
-      true, // 180 : galgasScanner3_1__2D__2D_
-      true, // 181 : galgasScanner3_1__2B__2B_
-      true, // 182 : galgasScanner3_1__26__2D__2D_
-      true, // 183 : galgasScanner3_1__26__2B__2B_
-      true, // 184 : galgasScanner3_1__3D__3D__3D_
-      true, // 185 : galgasScanner3_1__21__3D__3D_
-      true, // 186 : galgasScanner3_1__3F__5E_
-      true, // 187 : galgasScanner3_1__21__5E_
-      false, // 188 : galgasScanner3_2_ERROR
-      false  // 189 : galgasScanner3_2_TEMPLATE
+      true, // 141 : galgasScanner3_1__25_noArgumentLabel
+      true, // 142 : galgasScanner3_1__25_preserved
+      true, // 143 : galgasScanner3_1__25_selector
+      true, // 144 : galgasScanner3_1__25_useGrammar
+      true, // 145 : galgasScanner3_1__2A_
+      true, // 146 : galgasScanner3_1__2C_
+      true, // 147 : galgasScanner3_1__2B_
+      true, // 148 : galgasScanner3_1__26__2B_
+      true, // 149 : galgasScanner3_1__26__2D_
+      true, // 150 : galgasScanner3_1__26__2A_
+      true, // 151 : galgasScanner3_1__26__2F_
+      true, // 152 : galgasScanner3_1__3E_
+      true, // 153 : galgasScanner3_1__3B_
+      true, // 154 : galgasScanner3_1__3A_
+      true, // 155 : galgasScanner3_1__3A__3E_
+      true, // 156 : galgasScanner3_1__2D_
+      true, // 157 : galgasScanner3_1__28_
+      true, // 158 : galgasScanner3_1__29_
+      true, // 159 : galgasScanner3_1__2D__3E_
+      true, // 160 : galgasScanner3_1__3D__3D_
+      true, // 161 : galgasScanner3_1__3D_
+      true, // 162 : galgasScanner3_1__26__26_
+      true, // 163 : galgasScanner3_1__5B_
+      true, // 164 : galgasScanner3_1__5D_
+      true, // 165 : galgasScanner3_1__2B__3D_
+      true, // 166 : galgasScanner3_1__2D__3D_
+      true, // 167 : galgasScanner3_1__2A__3D_
+      true, // 168 : galgasScanner3_1__2F__3D_
+      true, // 169 : galgasScanner3_1__2F_
+      true, // 170 : galgasScanner3_1__21__3D_
+      true, // 171 : galgasScanner3_1__3E__3D_
+      true, // 172 : galgasScanner3_1__26_
+      true, // 173 : galgasScanner3_1__7B_
+      true, // 174 : galgasScanner3_1__7D_
+      true, // 175 : galgasScanner3_1__60_
+      true, // 176 : galgasScanner3_1__7C__7C_
+      true, // 177 : galgasScanner3_1__7C_
+      true, // 178 : galgasScanner3_1__5E_
+      true, // 179 : galgasScanner3_1__3E__3E_
+      true, // 180 : galgasScanner3_1__7E_
+      true, // 181 : galgasScanner3_1__2D__2D_
+      true, // 182 : galgasScanner3_1__2B__2B_
+      true, // 183 : galgasScanner3_1__26__2D__2D_
+      true, // 184 : galgasScanner3_1__26__2B__2B_
+      true, // 185 : galgasScanner3_1__3D__3D__3D_
+      true, // 186 : galgasScanner3_1__21__3D__3D_
+      true, // 187 : galgasScanner3_1__3F__5E_
+      true, // 188 : galgasScanner3_1__21__5E_
+      true, // 189 : galgasScanner3_1__3C__5B_
+      true, // 190 : galgasScanner3_1__5D__3E_
+      false, // 191 : galgasScanner3_2_ERROR
+      false  // 192 : galgasScanner3_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -1236,6 +1245,8 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       tokenCode = galgasScanner3_1__21__3D__3D_
     }else if scanningOk && self.testForInputString ("||", advance: true) {
       tokenCode = galgasScanner3_1__7C__7C_
+    }else if scanningOk && self.testForInputString ("]>", advance: true) {
+      tokenCode = galgasScanner3_1__5D__3E_
     }else if scanningOk && self.testForInputString ("\?^", advance: true) {
       tokenCode = galgasScanner3_1__3F__5E_
     }else if scanningOk && self.testForInputString (">>", advance: true) {
@@ -1244,6 +1255,8 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       tokenCode = galgasScanner3_1__3E__3D_
     }else if scanningOk && self.testForInputString ("==", advance: true) {
       tokenCode = galgasScanner3_1__3D__3D_
+    }else if scanningOk && self.testForInputString ("<[", advance: true) {
+      tokenCode = galgasScanner3_1__3C__5B_
     }else if scanningOk && self.testForInputString (":>", advance: true) {
       tokenCode = galgasScanner3_1__3A__3E_
     }else if scanningOk && self.testForInputString ("/=", advance: true) {
@@ -1316,10 +1329,10 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       tokenCode = galgasScanner3_1__26_
     }else if scanningOk && (self.testForInputString ("\?!", advance: true)) {
       let locationForTag_onlyInterrogationExclamationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -1337,10 +1350,10 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       }
     }else if scanningOk && (self.testForInputChar (63)) {
       let locationForTag_onlyInterrogationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -1358,10 +1371,10 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       }
     }else if scanningOk && (self.testForInputString ("!\?", advance: true)) {
       let locationForTag_onlyExclamationInterrogationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -1379,10 +1392,10 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       }
     }else if scanningOk && (self.testForInputChar (33)) {
       let locationForTag_onlyExclamationMark = self.savedScanningPoint ()
-      if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90)) {
+      if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
         while (loop && scanningOk) {
           scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
+          if scanningOk && (self.testForCharWithFunction (isUnicodeLetter) || self.testForInputFromChar (48, toChar:57) || self.testForInputChar (95)) {
           }else{
             loop = false
           }
@@ -1595,6 +1608,7 @@ fileprivate func search_into_galgasScanner_33__attributeKeyWordList (_ inSearche
     "makefile-unix" : galgasScanner3_1__25_makefile_2D_unix,
     "MacOSDeployment" : galgasScanner3_1__25_MacOSDeployment,
     "makefile-macosx" : galgasScanner3_1__25_makefile_2D_macosx,
+    "noArgumentLabel" : galgasScanner3_1__25_noArgumentLabel,
     "templateEndMark" : galgasScanner3_1__25_templateEndMark,
     "codeblocks-linux32" : galgasScanner3_1__25_codeblocks_2D_linux_33__32_,
     "codeblocks-linux64" : galgasScanner3_1__25_codeblocks_2D_linux_36__34_,

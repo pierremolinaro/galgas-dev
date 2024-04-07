@@ -185,9 +185,9 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: {}
-    !localInitializedVariableListWarnsIfNotMutated: {}
-    !localInitializedVariableListNoWarnsIfNotMutated: {}
+    !localConstantList: <[]>
+    !localInitializedVariableListWarnsIfNotMutated: <[]>
+    !localInitializedVariableListNoWarnsIfNotMutated: <[]>
     !self.mFirstInstructions
     !self.mEndOfFirstInstructions
     !?ioVariableMap
@@ -199,9 +199,9 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: {}
-    !localInitializedVariableListWarnsIfNotMutated: {}
-    !localInitializedVariableListNoWarnsIfNotMutated: {}
+    !localConstantList: <[]>
+    !localInitializedVariableListWarnsIfNotMutated: <[]>
+    !localInitializedVariableListNoWarnsIfNotMutated: <[]>
     !self.mSecondInstructions
     !self.mEndOfSecondInstructions
     !?ioVariableMap

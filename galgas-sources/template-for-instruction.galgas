@@ -97,7 +97,7 @@ syntax extension templateSyntax {
 
   rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
                                            !@templateExpressionAST outExpression {
-    var enumeration = @lstringlist {}
+    var enumeration = @lstringlist <[]>
     $($
     repeat
       <for_instruction_element> !?enumeration
@@ -134,7 +134,7 @@ syntax extension templateSyntax {
     end
     <for_instruction_enumerated_object> ?let enumeratedProperties ?let expression
   #--- before block
-    var @templateInstructionListAST beforeInstructionList = {}
+    var @templateInstructionListAST beforeInstructionList = <[]>
     select
     or
       $before$
@@ -154,14 +154,14 @@ syntax extension templateSyntax {
       $identifier$ ? indexIdentifier
       $)$
     end
-    var @templateInstructionListAST doInstructionList = {}
+    var @templateInstructionListAST doInstructionList = <[]>
     repeat
       enterTemplateString (!?doInstructionList)
     while
       <template_instruction> !?doInstructionList
     end
   #--- between block
-    var @templateInstructionListAST betweenInstructionList = {}
+    var @templateInstructionListAST betweenInstructionList = <[]>
     select
     or
       $between$
@@ -172,7 +172,7 @@ syntax extension templateSyntax {
       end
     end
   #--- after block
-    var @templateInstructionListAST afterInstructionList = {}
+    var @templateInstructionListAST afterInstructionList = <[]>
     select
     or
       $after$
@@ -225,7 +225,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     error expression.mLocation : "expression of '@" + [expression.mResultType definition].typeName.string + "' cannot be enumerated"
   end
 #--- Before instructions
-  var beforeInstructionList = @templateInstructionListForGeneration {}
+  var beforeInstructionList = @templateInstructionListForGeneration <[]>
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -284,7 +284,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inAnalysisContext.mSemanticContext
     !inAnalysisContext.mPredefinedTypes
     !doVariableMap}
-  var doInstructionList = @templateInstructionListForGeneration {}
+  var doInstructionList = @templateInstructionListForGeneration <[]>
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -294,7 +294,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !?doInstructionList
   )
 #--- Between instructions
-  var betweenInstructionList = @templateInstructionListForGeneration {}
+  var betweenInstructionList = @templateInstructionListForGeneration <[]>
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -304,7 +304,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !?betweenInstructionList
   )
 #--- After instructions
-  var afterInstructionList = @templateInstructionListForGeneration {}
+  var afterInstructionList = @templateInstructionListForGeneration <[]>
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

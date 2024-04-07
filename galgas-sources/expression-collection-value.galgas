@@ -25,7 +25,7 @@ list @collectionValueElementList {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @abstractCollectionValueElement {}
+abstract refclass @abstractCollectionValueElement { }
 
 #·····················································································································
 
@@ -59,9 +59,9 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
-    <optional_type> ?let @lstring typeName
-    ${$
-    var @collectionValueElementList elementList = {}
+    <optional_type_ggs3> ?let @lstring typeName
+    $<[$
+    var @collectionValueElementList elementList = <[]>
     select
     or
       repeat
@@ -76,14 +76,14 @@ syntax extension galgas3ExpressionSyntax {
       !elementList
       !.here
     }
-    $}$
+    $]>$
   }
 
   #·······························································································
 
   rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
                                   !@abstractCollectionValueElement outValueElement {
-    var @actualOutputArgumentList expressionList = {}
+    var @actualOutputArgumentList expressionList = <[]>
     repeat
       let @lstring selector
       select
@@ -121,7 +121,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     $[$
-    var @collectionValueElementList elementList = {}
+    var @collectionValueElementList elementList = <[]>
     select
     or
       repeat
@@ -143,7 +143,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
                                   !@abstractCollectionValueElement outValueElement {
-    var @actualOutputArgumentList expressionList = {}
+    var @actualOutputArgumentList expressionList = <[]>
     repeat
       select
         $!selector:$ ?let selector
@@ -238,7 +238,7 @@ override method @collectionValueAST analyzeSemanticExpression
         !hasCompilerArgument
       }
     else
-      var @collectionValueElementListForGeneration collectionValueElementListForGeneration = {}
+      var @collectionValueElementListForGeneration collectionValueElementListForGeneration = <[]>
       for (mElement) in self.mElementList do
         [mElement analyze
           !inUsefulnessCallerEntityName
@@ -330,7 +330,7 @@ override method @expressionListCollectionValue analyze
     + [formalParameterTypeList count] + " parameter(s), while this list has "
     + [self.mExpressionList count] + " element(s)" : semanticExpressionListForGeneration
   else
-    semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
+    semanticExpressionListForGeneration = @semanticExpressionListForGeneration <[]>
     for expression in self.mExpressionList, (mFormalSelector mFormalArgumentType 2*) in formalParameterTypeList do
       [expression.mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -425,7 +425,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @string inCppTargetVar {
 #--- Parameters
-  var parameterList = @stringlist {}
+  var parameterList = @stringlist <[]>
   for (mExpression) in self.mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode

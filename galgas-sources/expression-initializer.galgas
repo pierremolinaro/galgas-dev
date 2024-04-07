@@ -24,39 +24,35 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <optional_type> !@lstring outTypeName {
-    select
-      outTypeName = .new {!"" !.here}
-    or
-      $@type$ ?outTypeName indexing typeReferenceInConstructor
-    end
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
+    <optional_type_ggs3> ?let @lstring typeName
+    $.$
+    $init$
+    ${$
+    <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
+    let endOfExpression = @location.here
+    $}$
+    outExpression = @initializerCallAST.new {
+      !typeName
+      !expressionList
+      !endOfExpression
+    }
   }
 
   #·······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
-  #--- Type name
-    <optional_type> ?let @lstring typeName
-    $.$
-    let startOfExpression = @location.here
-  #--- Constructor name
-    $identifier$ ?let @lstring constructorName
-  #--- Actual arguments
-    let @actualOutputExpressionList expressionList
-    select
-      expressionList = {}
-    or
-      ${$
-      <output_expression_list_ggs3> !?ioDeclarations ?expressionList
-      $}$
-    end
+    $@type$ ?let typeName indexing typeReferenceInConstructor
+    ${$
+    <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
-    outExpression = @classFuncExpressionAST.new {
+    $}$
+    outExpression = @initializerCallAST.new {
       !typeName
-      !constructorName
       !expressionList
-      ![startOfExpression union !endOfExpression]
+      !endOfExpression
     }
   }
 
@@ -70,39 +66,19 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <optional_type> !@lstring outTypeName {
-    select
-      outTypeName = .new {!"" !.here}
-    or
-      $@type$ ?outTypeName indexing typeReferenceInConstructor
-    end
-  }
-
-  #·······························································································
-
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
-  #--- Type name
     <optional_type> ?let @lstring typeName
     $.$
-    let startOfExpression = @location.here
-  #--- Constructor name
-    $identifier$ ?let @lstring constructorName
-  #--- Actual arguments
-    let @actualOutputExpressionList expressionList
-    select
-      expressionList = {}
-    or
-      $($
-      <output_expression_list> !?ioDeclarations ?expressionList
-      $)$
-    end
+    $init$
+    $($
+    <output_expression_list> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
-    outExpression = @classFuncExpressionAST.new {
+    $)$
+    outExpression = @initializerCallAST.new {
       !typeName
-      !constructorName
       !expressionList
-      ![startOfExpression union !endOfExpression]
+      !endOfExpression
     }
   }
 
@@ -112,18 +88,14 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression {
   #--- Type name
     $@type$ ?let typeName indexing typeReferenceInConstructor
-    let startOfExpression = @location.here
-  #--- Actual arguments
-    let @actualOutputExpressionList expressionList
     $($
-    <output_expression_list> !?ioDeclarations ?expressionList
-    $)$
+    <output_expression_list> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
-    outExpression = @classFuncExpressionAST.new {
+    $)$
+    outExpression = @initializerCallAST.new {
       !typeName
-      !.new {!"new" !typeName}
       !expressionList
-      ![startOfExpression union !endOfExpression]
+      !endOfExpression
     }
   }
 
@@ -133,11 +105,10 @@ syntax extension galgas4ExpressionSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @classFuncExpressionAST : @semanticExpressionAST {
+refclass @initializerCallAST : @semanticExpressionAST {
   private let @lstring mTypeName
-  private let @lstring mConstructorName
-  private let @actualOutputExpressionList mExpressions
-  private let @location locationForOldStyleCollectionInitializerError
+  private let @actualOutputArgumentList mExpressions
+  private let @location mEndOfExpressions
 
   #·······························································································
 
@@ -151,15 +122,14 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
   #·······························································································
 
   override method analyzeSemanticExpression
-    ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?inferenceType: let @unifiedTypeMapEntry inType
-    ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?!@localVarManager ioVariableMap
-    !@semanticExpressionForGeneration outExpression
-  {
-    analyzeConstructorInvocation (
+                            ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                            ?inferenceType: let @unifiedTypeMapEntry inType
+                            ?let @analysisContext inAnalysisContext
+                            ?!@unifiedTypeMap ioTypeMap
+                            ?!@localVarManager ioVariableMap
+                            !@semanticExpressionForGeneration outExpression {
+    analyzeInitializerInvocation (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inType
@@ -167,26 +137,22 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
       !?ioTypeMap
       !?ioVariableMap
       !self.mTypeName
-      !self.mConstructorName
       !self.mExpressions
-      !self.locationForOldStyleCollectionInitializerError
-      ?let @unifiedTypeMapEntry returnedType
-      ?let @unifiedTypeMapEntry constructorType
+      !self.mEndOfExpressions
+      ?let @unifiedTypeMapEntry instanciedType
+      ?let @lstring initializerName
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
-      ?let @bool hasCompilerArgument
     )
-    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType definition].typeName.string !self.mTypeName})
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].typeName.string !self.mTypeName})
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
+#    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType definition].typeName.string !self.mTypeName})
+#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
+#    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].typeName.string !self.mTypeName})
+#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
   #---
-    outExpression = @classFuncExpressionForGeneration.new {
-      !returnedType
-      !self.mConstructorName.location
-      !constructorType
-      !self.mConstructorName.string
+    outExpression = @initializerCallForGeneration.new {
+      !instanciedType
+      !self.mEndOfExpressions
+      !initializerName.string
       !constructorEffectiveParameterList
-      !hasCompilerArgument
     }
   }
 
@@ -196,72 +162,36 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntityName
+private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntityName
                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                       ?let @unifiedTypeMapEntry inType
                       ?let @analysisContext inAnalysisContext
                       ?!@unifiedTypeMap ioTypeMap
                       ?!@localVarManager ioVariableMap
                       ?let @lstring inTypeName
-                      ?let @lstring inConstructorName
-                      ?let @actualOutputExpressionList inInitializerEffectiveParameterExpressions
-                      ?let @location inLocationForOldStyleCollectionInitializerError
-                      !@unifiedTypeMapEntry outReturnedType
-                      !@unifiedTypeMapEntry outConstructorType
-                      !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
-                      !@bool outHasCompilerArgument {
-  outConstructorType = inType
+                      ?let @actualOutputArgumentList inInvocationArguments
+                      ?let @location inEndOfExpressions
+                      !@unifiedTypeMapEntry outInstanciedType
+                      !@lstring outInitializerName
+                      !@semanticExpressionListForGeneration outConstructorEffectiveParameterList {
+  outInstanciedType = inType
   if inTypeName.string != "" then
-    outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
+    outInstanciedType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
-  if [outConstructorType isNull] then
+  if [outInstanciedType isNull] then
     error inTypeName
     : "cannot infer type"
-    : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
+    : outInstanciedType, outConstructorEffectiveParameterList, outInitializerName
   else
-  #--- Get constructor map from type map
-    let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
   #--- Search initializer
-    if (inConstructorName.string == "new") && ([outConstructorType definition].typeKind == .structType) then
-      let initializerSignature = [inInitializerEffectiveParameterExpressions keyRepresentation]
-      let initializerMap = [outConstructorType definition].initializerMap
-      if not [initializerMap hasKey !initializerSignature] then
-        warning inConstructorName
-        : "initializer @" + [outConstructorType definition].typeName
-        + "." + initializerSignature + " does not exist"
-      end
-    end
-  #--- Search contructor
-    let @functionSignature constructorFormalArgumentTypeList
-    with inConstructorName.string in classFunctionMap  do
-      constructorFormalArgumentTypeList = mArgumentTypeList
-      outHasCompilerArgument = mHasCompilerArgument
-      outReturnedType = mReturnedType
-    else
-      if [classFunctionMap count] == 0 then
-        error inConstructorName
-        : "the '@"+ [outConstructorType definition].typeName.string 
-        + "' type does not define any constructor"
-        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-      else
-        error inConstructorName
-        : "the '@"+ [outConstructorType definition].typeName.string
-        + "' type does not define the '" + inConstructorName + "' constructor"
-        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-        fixit { replace [classFunctionMap keyList] }
-      end
-    end
+    outInitializerName = .new {![inInvocationArguments initializerSignature] !inEndOfExpressions}
+    let instanciedTypeDefinition = [outInstanciedType definition]
+    let initializerMap = instanciedTypeDefinition.initializerMap
+    [initializerMap searchKey !outInitializerName ?let formalSignature]
   #--- Analysis arguments
-    if [inInitializerEffectiveParameterExpressions count] != [constructorFormalArgumentTypeList count] then
-      error inConstructorName
-      : "calling the '" + inConstructorName + "' constructor of '@"
-      + [outConstructorType definition].typeName.string + "' requires "
-      + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
-      + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
-    end
-    outConstructorEffectiveParameterList = {}
-    for effectiveParameter in inInitializerEffectiveParameterExpressions,
-        formalArg in constructorFormalArgumentTypeList do
+    outConstructorEffectiveParameterList = <[]>
+    for effectiveParameter in inInvocationArguments,
+        formalArg in formalSignature do
       [effectiveParameter.mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -288,39 +218,25 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       end
     end
   end
-#---
-  if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && 
-     ([inInitializerEffectiveParameterExpressions count] == 0) then
-    let oldInitializers = @stringset {!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"}
-    if [oldInitializers hasKey !inConstructorName.string] then
-      error inLocationForOldStyleCollectionInitializerError
-      : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
-      fixit { replace " {}" }
-    end
-  end
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @unifiedTypeMapEntry mConstructorType
-  private let @string mConstructorName
+refclass @initializerCallForGeneration : @semanticExpressionForGeneration {
+  private let @string initializerName
   private let @semanticExpressionListForGeneration mEffectiveParameterList
-  private let @bool mHasCompilerArgument
 
   #·······························································································
 
-  override method generateExpression
-    ?!@string ioGeneratedCode
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    !@string outCppExpression
-  {
+  override method generateExpression ?!@string ioGeneratedCode
+                                    ?!@stringset ioInclusionSet
+                                    ?!@uint ioTemporaryVariableIndex
+                                    ?!@stringset ioUnusedVariableCppNameSet
+                                    !@string outCppExpression {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-    var @stringlist parameterList = {}
+    var @stringlist parameterList = <[]>
     for (mExpression) in self.mEffectiveParameterList do
       [mExpression generateExpression
         !?ioGeneratedCode
@@ -331,57 +247,15 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
       ]
       parameterList += !parameter
     end
-    outCppExpression = "GALGAS_"  + [self.mConstructorType identifierRepresentation]
-                     + "::class_func_" + [self.mConstructorName identifierRepresentation]
+    outCppExpression = "GALGAS_"  + [self.mResultType identifierRepresentation]
+                     + "::" + [self.initializerName identifierRepresentation]
                      + " ("
-    for (mValue) in parameterList
-      do outCppExpression += mValue
-      between outCppExpression += ", "
+    for (mValue) in parameterList do
+      outCppExpression += mValue + ", "
     end
-    var @bool needsComma = [parameterList count] > 0
-    if self.mHasCompilerArgument then
-      if needsComma then
-        outCppExpression += ", "
-      end
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-      outCppExpression += compilerCppName ()
-      needsComma = true
-    end
-    if needsComma then
-      outCppExpression += " " + [self.mLocation commaSourceFile] + ")"
-    else
-      outCppExpression += [self.mLocation sourceFile] + ")"
-    end
-  }
-
-  #·······························································································
-
-}
-
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @string mConstructorName
-  private let @bool mHasCompilerArgument
-
-  #·······························································································
-
-  override method generateExpression ?!@string unused ioGeneratedCode
-                                      ?!@stringset ioInclusionSet
-                                      ?!@uint unused ioTemporaryVariableIndex
-                                      ?!@stringset unused ioUnusedVariableCppNameSet
-                                      !@string outCppExpression {
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
-    outCppExpression =
-      "GALGAS_"  + [self.mResultType identifierRepresentation]
-    + "::class_func_"
-    + [self.mConstructorName identifierRepresentation]
-    if self.mHasCompilerArgument then
-      outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-    else
-      outCppExpression += " (" + [self.mLocation sourceFile] + ")"
-    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    outCppExpression += compilerCppName ()
+    outCppExpression += " COMMA_HERE)"
   }
 
   #·······························································································

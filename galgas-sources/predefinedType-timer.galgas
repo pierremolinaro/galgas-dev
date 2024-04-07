@@ -40,7 +40,7 @@ refclass @timerPredefinedTypeAST : @predefinedTypeAST {
 
   override method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                !@setterMap outSetterMap {
-    outSetterMap = {}
+    outSetterMap = <[]>
     enterModifierWithoutArgument (
       !?outSetterMap
       !"stop"
@@ -88,7 +88,7 @@ refclass @timerPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = {}
+    outMap = <[]>
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap

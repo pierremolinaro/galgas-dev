@@ -1,8 +1,8 @@
 
 
-abstract class @A_A {}
+abstract class @A_A <[]>
 
-class @B_B : @A_A {}
+class @B_B : @A_A <[]>
 
 abstract func @A_A.aReader( ?@uint inA, ?let@string inB) -> @string
 
@@ -16,7 +16,7 @@ func @B_B.otherReader( ?@uint inA, ?let @string inB) -> @string {
   result = inB + inA + self.aReader (inA, !inB) + self.aReader (inA, !inB)
 }
 
-#abstract class @C_C : @B_B {}
+#abstract class @C_C : @B_B <[]>
 #
 #override abstract func @C_C.aReader( ?@uint inA ?let@string inB) -> @string
 

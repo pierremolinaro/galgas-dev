@@ -165,6 +165,7 @@ enum {galgasScanner3_1_,
   galgasScanner3_1__25_generatedInSeparateFile,
   galgasScanner3_1__25_nonAtomicSelection,
   galgasScanner3_1__25_templateEndMark,
+  galgasScanner3_1__25_noArgumentLabel,
   galgasScanner3_1__25_preserved,
   galgasScanner3_1__25_selector,
   galgasScanner3_1__25_useGrammar,
@@ -211,7 +212,9 @@ enum {galgasScanner3_1_,
   galgasScanner3_1__3D__3D__3D_,
   galgasScanner3_1__21__3D__3D_,
   galgasScanner3_1__3F__5E_,
-  galgasScanner3_1__21__5E_
+  galgasScanner3_1__21__5E_,
+  galgasScanner3_1__3C__5B_,
+  galgasScanner3_1__5D__3E_
 } ;
 
 //--------------------------------------------------------------------------------------------------

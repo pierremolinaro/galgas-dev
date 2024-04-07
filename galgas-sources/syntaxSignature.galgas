@@ -38,7 +38,7 @@ func syntaxSignatureOfInstructionList
   ?let @semanticInstructionListForGeneration inInstructionList
   -> @semanticInstructionListForGeneration
 {
-  result = {}
+  result = <[]>
   for (mInstruction) in inInstructionList do
     [mInstruction appendSyntaxSignature !inPosfix !?result]
   end

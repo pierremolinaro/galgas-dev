@@ -8072,7 +8072,7 @@ class cEnumAssociatedValues_selfAvailability_available : public cEnumAssociatedV
                                     const int32_t inIndentation) const ;
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
 
-  public: virtual ~ cEnumAssociatedValues_selfAvailability_available (void) {}
+  public: virtual ~ cEnumAssociatedValues_selfAvailability_available (void) { }
 } ;
 
 //--------------------------------------------------------------------------------------------------

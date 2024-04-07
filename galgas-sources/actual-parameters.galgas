@@ -42,8 +42,8 @@ list @actualParameterListAST {
       + [[self count] string] + " argument(s)"
       : outActualParameterListForGeneration
     else
-      outActualParameterListForGeneration = {}
-      var @stringset exclusiveVariableSet = {}
+      outActualParameterListForGeneration = <[]>
+      var @stringset exclusiveVariableSet = <[]>
       for formalArgument in inRoutineSignature, (mActualParameter) in self do
         [mActualParameter checkAgainstFormalArgument
           !inUsefulnessCallerEntityName
@@ -365,7 +365,7 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
     ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
       !inFormalArgumentType
       !cppVarName
-      !{}
+      !<[]>
       !@unifiedTypeMapEntryList.listWithValue {!inFormalArgumentType}
     }
   }
@@ -444,7 +444,7 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
       ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
         !inFormalArgumentType
         !"ioObject"
-        !{}
+        !<[]>
         !@unifiedTypeMapEntryList.listWithValue {!inFormalArgumentType}
       }
     else
@@ -529,7 +529,7 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
       ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
         !inFormalArgumentType
         !cppVarName
-        !{}
+        !<[]>
         !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
     }
 
@@ -607,7 +607,7 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
     end
     ioExclusiveVariableSet += !self.mInputActualParameterName.string
   #--- Generate actual parameter
-    var @2stringlist poisonedVarCppNameList = {}
+    var @2stringlist poisonedVarCppNameList = <[]>
     for (varName) in self.mPoisonedVarNameList do
       [!?ioVariableMap searchForWriteAccess
         !varName
@@ -695,7 +695,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
         + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType definition].typeName.string + "'"
       end
     #--- Generate actual parameter
-      var @2stringlist poisonedVarCppNameList = {}
+      var @2stringlist poisonedVarCppNameList = <[]>
       for (varName) in self.mPoisonedVarNameList do
         [!?ioVariableMap searchForWriteAccess
           !varName
@@ -788,7 +788,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
         + [inFormalArgumentType definition].typeName.string + "'"
       end
     #--- Generate actual parameter
-      var @2stringlist poisonedVarCppNameList = {}
+      var @2stringlist poisonedVarCppNameList = <[]>
       for (varName) in self.mPoisonedVarNameList do
         [!?ioVariableMap searchForWriteAccess
           !varName
@@ -897,7 +897,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
     end
     ioExclusiveVariableSet += !self.mInputActualParameterName.string
   #--- Generate actual parameter
-    var @2stringlist poisonedVarCppNameList = {}
+    var @2stringlist poisonedVarCppNameList = <[]>
     for (varName) in self.mPoisonedVarNameList do
       [!?ioVariableMap searchForWriteAccess
         !varName
@@ -1011,7 +1011,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
     end
     ioExclusiveVariableSet += !self.mInputActualParameterName.string
   #--- Generate actual parameter
-    var @2stringlist poisonedVarCppNameList = {}
+    var @2stringlist poisonedVarCppNameList = <[]>
     for (varName) in self.mPoisonedVarNameList do
       [!?ioVariableMap searchForWriteAccess
         !varName
@@ -1084,7 +1084,7 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
     else
       let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
     #--- Generate actual parameter
-      var @2stringlist poisonedVarCppNameList = {}
+      var @2stringlist poisonedVarCppNameList = <[]>
       for (varName) in self.mPoisonedVarNameList do
         [!?ioVariableMap searchForWriteAccess
           !varName
@@ -1157,7 +1157,7 @@ refclass @inputJokerActualParameterAST : @actualParameterAST {
       ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
         !inFormalArgumentType
         !cppVarName
-        !{}
+        !<[]>
       }
     end
   }

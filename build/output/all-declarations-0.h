@@ -310,7 +310,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
 //    an error if a direct delete is performed; only the static method
 //    SharedObject::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ Lexique_galgasScanner_33_ (void) {}
+    protected: virtual ~ Lexique_galgasScanner_33_ (void) { }
   #endif
 
 
@@ -457,53 +457,56 @@ class Lexique_galgasScanner_33_ : public Lexique {
    kToken__25_generatedInSeparateFile /* 138 */ ,
    kToken__25_nonAtomicSelection /* 139 */ ,
    kToken__25_templateEndMark /* 140 */ ,
-   kToken__25_preserved /* 141 */ ,
-   kToken__25_selector /* 142 */ ,
-   kToken__25_useGrammar /* 143 */ ,
-   kToken__2A_ /* 144 */ ,
-   kToken__2C_ /* 145 */ ,
-   kToken__2B_ /* 146 */ ,
-   kToken__26__2B_ /* 147 */ ,
-   kToken__26__2D_ /* 148 */ ,
-   kToken__26__2A_ /* 149 */ ,
-   kToken__26__2F_ /* 150 */ ,
-   kToken__3E_ /* 151 */ ,
-   kToken__3B_ /* 152 */ ,
-   kToken__3A_ /* 153 */ ,
-   kToken__3A__3E_ /* 154 */ ,
-   kToken__2D_ /* 155 */ ,
-   kToken__28_ /* 156 */ ,
-   kToken__29_ /* 157 */ ,
-   kToken__2D__3E_ /* 158 */ ,
-   kToken__3D__3D_ /* 159 */ ,
-   kToken__3D_ /* 160 */ ,
-   kToken__26__26_ /* 161 */ ,
-   kToken__5B_ /* 162 */ ,
-   kToken__5D_ /* 163 */ ,
-   kToken__2B__3D_ /* 164 */ ,
-   kToken__2D__3D_ /* 165 */ ,
-   kToken__2A__3D_ /* 166 */ ,
-   kToken__2F__3D_ /* 167 */ ,
-   kToken__2F_ /* 168 */ ,
-   kToken__21__3D_ /* 169 */ ,
-   kToken__3E__3D_ /* 170 */ ,
-   kToken__26_ /* 171 */ ,
-   kToken__7B_ /* 172 */ ,
-   kToken__7D_ /* 173 */ ,
-   kToken__60_ /* 174 */ ,
-   kToken__7C__7C_ /* 175 */ ,
-   kToken__7C_ /* 176 */ ,
-   kToken__5E_ /* 177 */ ,
-   kToken__3E__3E_ /* 178 */ ,
-   kToken__7E_ /* 179 */ ,
-   kToken__2D__2D_ /* 180 */ ,
-   kToken__2B__2B_ /* 181 */ ,
-   kToken__26__2D__2D_ /* 182 */ ,
-   kToken__26__2B__2B_ /* 183 */ ,
-   kToken__3D__3D__3D_ /* 184 */ ,
-   kToken__21__3D__3D_ /* 185 */ ,
-   kToken__3F__5E_ /* 186 */ ,
-   kToken__21__5E_ /* 187 */ } ;
+   kToken__25_noArgumentLabel /* 141 */ ,
+   kToken__25_preserved /* 142 */ ,
+   kToken__25_selector /* 143 */ ,
+   kToken__25_useGrammar /* 144 */ ,
+   kToken__2A_ /* 145 */ ,
+   kToken__2C_ /* 146 */ ,
+   kToken__2B_ /* 147 */ ,
+   kToken__26__2B_ /* 148 */ ,
+   kToken__26__2D_ /* 149 */ ,
+   kToken__26__2A_ /* 150 */ ,
+   kToken__26__2F_ /* 151 */ ,
+   kToken__3E_ /* 152 */ ,
+   kToken__3B_ /* 153 */ ,
+   kToken__3A_ /* 154 */ ,
+   kToken__3A__3E_ /* 155 */ ,
+   kToken__2D_ /* 156 */ ,
+   kToken__28_ /* 157 */ ,
+   kToken__29_ /* 158 */ ,
+   kToken__2D__3E_ /* 159 */ ,
+   kToken__3D__3D_ /* 160 */ ,
+   kToken__3D_ /* 161 */ ,
+   kToken__26__26_ /* 162 */ ,
+   kToken__5B_ /* 163 */ ,
+   kToken__5D_ /* 164 */ ,
+   kToken__2B__3D_ /* 165 */ ,
+   kToken__2D__3D_ /* 166 */ ,
+   kToken__2A__3D_ /* 167 */ ,
+   kToken__2F__3D_ /* 168 */ ,
+   kToken__2F_ /* 169 */ ,
+   kToken__21__3D_ /* 170 */ ,
+   kToken__3E__3D_ /* 171 */ ,
+   kToken__26_ /* 172 */ ,
+   kToken__7B_ /* 173 */ ,
+   kToken__7D_ /* 174 */ ,
+   kToken__60_ /* 175 */ ,
+   kToken__7C__7C_ /* 176 */ ,
+   kToken__7C_ /* 177 */ ,
+   kToken__5E_ /* 178 */ ,
+   kToken__3E__3E_ /* 179 */ ,
+   kToken__7E_ /* 180 */ ,
+   kToken__2D__2D_ /* 181 */ ,
+   kToken__2B__2B_ /* 182 */ ,
+   kToken__26__2D__2D_ /* 183 */ ,
+   kToken__26__2B__2B_ /* 184 */ ,
+   kToken__3D__3D__3D_ /* 185 */ ,
+   kToken__21__3D__3D_ /* 186 */ ,
+   kToken__3F__5E_ /* 187 */ ,
+   kToken__21__5E_ /* 188 */ ,
+   kToken__3C__5B_ /* 189 */ ,
+   kToken__5D__3E_ /* 190 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -607,7 +610,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 187 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 190 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

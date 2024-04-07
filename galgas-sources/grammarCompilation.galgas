@@ -26,9 +26,9 @@ func transformLabelMap
   ?let @nonTerminalLabelListAST inLabels
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 {
-  outNonterminalSymbolLabelMapForGrammarAnalysis = {}
+  outNonterminalSymbolLabelMapForGrammarAnalysis = <[]>
   for (mLabelName mFormalArgumentList *) in inLabels do
-    var @signatureForGrammarAnalysis formalParametersList = {}
+    var @signatureForGrammarAnalysis formalParametersList = <[]>
     for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
@@ -47,7 +47,7 @@ proc checkLabelMap
   ?let @location inOriginalNonTerminalLocation
   ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 {
-  var @stringset labelStringSet = {}
+  var @stringset labelStringSet = <[]>
   for (mLabelName mFormalArgumentList *) in inLabels do
     labelStringSet += !mLabelName.string
     [inNonterminalSymbolLabelMapForGrammarAnalysis searchKey !mLabelName ?let formalParametersList]
@@ -120,7 +120,7 @@ proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @syntaxRuleListAST inRuleList {
   for (mNonterminalName mLabelList) in inRuleList do
-    var nonTerminalLabelListAST = @nonTerminalLabelListAST {}
+    var nonTerminalLabelListAST = @nonTerminalLabelListAST <[]>
     for (mLabelName mFormalArguments mEndOfArgumentLocation * *) in mLabelList do
       nonTerminalLabelListAST +=
         !mLabelName
@@ -190,14 +190,14 @@ proc buildRuleList
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis
   ?!@uint ioAddedNonTerminalCount {
-  var productionRulesList = @productionRuleListForGrammarAnalysis {}
+  var productionRulesList = @productionRuleListForGrammarAnalysis <[]>
   for (mNonterminalName mLabelList) in inRuleList do
     [inNonTerminalMapForGrammarAnalysis searchKey !mNonterminalName ?let nonTerminalIndex ?*]
   #--- Retrieve instruction list from first label
     let @syntaxInstructionList parsedSyntaxInstructionList
     [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
   #--- Transform instruction list
-    var instructionList = @syntaxInstructionListForGrammarAnalysis {}
+    var instructionList = @syntaxInstructionListForGrammarAnalysis <[]>
     transformInstructionList (
       !parsedSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
