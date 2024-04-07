@@ -7208,182 +7208,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @externTypeConstructorList list
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_externTypeConstructorList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GALGAS_externTypeConstructorList (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GALGAS_externTypeConstructorList (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS_lstring & in_mConstructorName,
-                                                 const class GALGAS_lstring & in_mResultTypeName,
-                                                 const class GALGAS_typeNameFormalParameterNameList & in_mParameterList
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_externTypeConstructorList extractObject (const GALGAS_object & inObject,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_externTypeConstructorList class_func_emptyList (LOCATION_ARGS) ;
-
-  public: static class GALGAS_externTypeConstructorList class_func_listWithValue (const class GALGAS_lstring & inOperand0,
-                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                  const class GALGAS_typeNameFormalParameterNameList & inOperand2
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_externTypeConstructorList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_lstring & inOperand1,
-                                                     const class GALGAS_typeNameFormalParameterNameList & inOperand2
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_externTypeConstructorList add_operation (const GALGAS_externTypeConstructorList & inOperand,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
-                                               class GALGAS_lstring constinArgument1,
-                                               class GALGAS_typeNameFormalParameterNameList constinArgument2,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
-                                                      class GALGAS_lstring constinArgument1,
-                                                      class GALGAS_typeNameFormalParameterNameList constinArgument2,
-                                                      class GALGAS_uint constinArgument3,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
-                                                 class GALGAS_lstring & outArgument1,
-                                                 class GALGAS_typeNameFormalParameterNameList & outArgument2,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
-                                                class GALGAS_lstring & outArgument1,
-                                                class GALGAS_typeNameFormalParameterNameList & outArgument2,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
-                                                      class GALGAS_lstring & outArgument1,
-                                                      class GALGAS_typeNameFormalParameterNameList & outArgument2,
-                                                      class GALGAS_uint constinArgument3,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMConstructorNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                                   class GALGAS_uint constinArgument1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMParameterListAtIndex (class GALGAS_typeNameFormalParameterNameList constinArgument0,
-                                                                 class GALGAS_uint constinArgument1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMResultTypeNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                                  class GALGAS_uint constinArgument1,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
-                                              class GALGAS_lstring & outArgument1,
-                                              class GALGAS_typeNameFormalParameterNameList & outArgument2,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
-                                             class GALGAS_lstring & outArgument1,
-                                             class GALGAS_typeNameFormalParameterNameList & outArgument2,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mConstructorNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_typeNameFormalParameterNameList getter_mParameterListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mResultTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_externTypeConstructorList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_externTypeConstructorList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_externTypeConstructorList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-
-  friend class cEnumerator_externTypeConstructorList ;
- 
-} ; // End of GALGAS_externTypeConstructorList class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_externTypeConstructorList : public cGenericAbstractEnumerator {
-  public: cEnumerator_externTypeConstructorList (const GALGAS_externTypeConstructorList & inEnumeratedObject,
-                                                 const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_mConstructorName (LOCATION_ARGS) const ;
-  public: class GALGAS_lstring current_mResultTypeName (LOCATION_ARGS) const ;
-  public: class GALGAS_typeNameFormalParameterNameList current_mParameterList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_externTypeConstructorList_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @typeNameFormalParameterNameList list
 //
 //--------------------------------------------------------------------------------------------------
@@ -7560,25 +7384,25 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParam
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @externTypeConstructorList_2D_element struct
+// Phase 1: @typeNameFormalParameterNameList_2D_element struct
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_externTypeConstructorList_2D_element : public AC_GALGAS_root {
+class GALGAS_typeNameFormalParameterNameList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS_lstring mProperty_mConstructorName ;
-  public: inline GALGAS_lstring readProperty_mConstructorName (void) const {
-    return mProperty_mConstructorName ;
+  public: GALGAS_lstring mProperty_mFormalSelector ;
+  public: inline GALGAS_lstring readProperty_mFormalSelector (void) const {
+    return mProperty_mFormalSelector ;
   }
 
-  public: GALGAS_lstring mProperty_mResultTypeName ;
-  public: inline GALGAS_lstring readProperty_mResultTypeName (void) const {
-    return mProperty_mResultTypeName ;
+  public: GALGAS_lstring mProperty_mFormalParameterTypeName ;
+  public: inline GALGAS_lstring readProperty_mFormalParameterTypeName (void) const {
+    return mProperty_mFormalParameterTypeName ;
   }
 
-  public: GALGAS_typeNameFormalParameterNameList mProperty_mParameterList ;
-  public: inline GALGAS_typeNameFormalParameterNameList readProperty_mParameterList (void) const {
-    return mProperty_mParameterList ;
+  public: GALGAS_lstring mProperty_mFormalParameterName ;
+  public: inline GALGAS_lstring readProperty_mFormalParameterName (void) const {
+    return mProperty_mFormalParameterName ;
   }
 
 //--------------------------------- Accessors
@@ -7586,61 +7410,61 @@ class GALGAS_externTypeConstructorList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GALGAS_externTypeConstructorList_2D_element (void) ;
+  public: GALGAS_typeNameFormalParameterNameList_2D_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMConstructorName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mConstructorName = inValue ;
+  public: inline void setter_setMFormalSelector (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalSelector = inValue ;
   }
 
-  public: inline void setter_setMResultTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mResultTypeName = inValue ;
+  public: inline void setter_setMFormalParameterTypeName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalParameterTypeName = inValue ;
   }
 
-  public: inline void setter_setMParameterList (const GALGAS_typeNameFormalParameterNameList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mParameterList = inValue ;
+  public: inline void setter_setMFormalParameterName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalParameterName = inValue ;
   }
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GALGAS_externTypeConstructorList_2D_element (void) ;
+  public: virtual ~ GALGAS_typeNameFormalParameterNameList_2D_element (void) ;
 
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_externTypeConstructorList_2D_element (const GALGAS_lstring & in_mConstructorName,
-                                                       const GALGAS_lstring & in_mResultTypeName,
-                                                       const GALGAS_typeNameFormalParameterNameList & in_mParameterList) ;
+  public: GALGAS_typeNameFormalParameterNameList_2D_element (const GALGAS_lstring & in_mFormalSelector,
+                                                             const GALGAS_lstring & in_mFormalParameterTypeName,
+                                                             const GALGAS_lstring & in_mFormalParameterName) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_externTypeConstructorList_2D_element init_21__21__21_ (const class GALGAS_lstring & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_typeNameFormalParameterNameList & inOperand2,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_typeNameFormalParameterNameList_2D_element init_21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     const class GALGAS_lstring & inOperand2,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_externTypeConstructorList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_typeNameFormalParameterNameList_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_externTypeConstructorList_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                                   const class GALGAS_lstring & inOperand1,
-                                                                                   const class GALGAS_typeNameFormalParameterNameList & inOperand2,
-                                                                                   class Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_typeNameFormalParameterNameList_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                                         const class GALGAS_lstring & inOperand1,
+                                                                                         const class GALGAS_lstring & inOperand2,
+                                                                                         class Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_externTypeConstructorList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeNameFormalParameterNameList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -7654,10 +7478,10 @@ class GALGAS_externTypeConstructorList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_externTypeConstructorList_2D_element class
+} ; // End of GALGAS_typeNameFormalParameterNameList_2D_element class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2D_element ;
 

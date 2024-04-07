@@ -394,13 +394,6 @@ override getter @graphDeclarationAST keyRepresentation
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @externTypeDeclarationAST keyRepresentation
-  ->@string {
-  result = "extern @" + self.mExternTypeName
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @onceFunctionDeclarationAST keyRepresentation
   ->@string {
   result = "once function " + self.mFunctionName

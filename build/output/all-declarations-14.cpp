@@ -11987,6 +11987,127 @@ GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGenera
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_externTypeConstructorList_2D_element::GALGAS_externTypeConstructorList_2D_element (void) :
+mProperty_mParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_externTypeConstructorList_2D_element::~ GALGAS_externTypeConstructorList_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::init_21_ (const GALGAS_typeNameFormalParameterNameList & in_mParameterList,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_externTypeConstructorList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mParameterList = in_mParameterList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_externTypeConstructorList_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_externTypeConstructorList_2D_element::GALGAS_externTypeConstructorList_2D_element (const GALGAS_typeNameFormalParameterNameList & inOperand0) :
+mProperty_mParameterList (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::class_func_new (const GALGAS_typeNameFormalParameterNameList & in_mParameterList,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_externTypeConstructorList_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mParameterList = in_mParameterList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_externTypeConstructorList_2D_element::objectCompare (const GALGAS_externTypeConstructorList_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mParameterList.objectCompare (inOperand.mProperty_mParameterList) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_externTypeConstructorList_2D_element::isValid (void) const {
+  return mProperty_mParameterList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_externTypeConstructorList_2D_element::drop (void) {
+  mProperty_mParameterList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_externTypeConstructorList_2D_element::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @externTypeConstructorList-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mParameterList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @externTypeConstructorList-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList_2D_element ("externTypeConstructorList-element",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_externTypeConstructorList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeConstructorList_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_externTypeConstructorList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_externTypeConstructorList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_externTypeConstructorList_2D_element result ;
+  const GALGAS_externTypeConstructorList_2D_element * p = (const GALGAS_externTypeConstructorList_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_externTypeConstructorList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("externTypeConstructorList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_insertOrReplaceDeclarationListAST_2D_element::GALGAS_insertOrReplaceDeclarationListAST_2D_element (void) :
 mProperty_mInsertOrReplaceDeclarationLocation () {
 }
@@ -13402,127 +13523,6 @@ GALGAS_acceptableParameterList_2D_element GALGAS_acceptableParameterList_2D_elem
       result = *p ;
     }else{
       inCompiler->castError ("acceptableParameterList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListForGeneration_2D_element::GALGAS_templateInstructionListForGeneration_2D_element (void) :
-mProperty_mInstruction () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListForGeneration_2D_element::~ GALGAS_templateInstructionListForGeneration_2D_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::init_21_ (const GALGAS_templateInstructionForGeneration & in_mInstruction,
-                                                                                                                         Compiler * inCompiler
-                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_templateInstructionListForGeneration_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mInstruction = in_mInstruction ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_templateInstructionListForGeneration_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListForGeneration_2D_element::GALGAS_templateInstructionListForGeneration_2D_element (const GALGAS_templateInstructionForGeneration & inOperand0) :
-mProperty_mInstruction (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::class_func_new (const GALGAS_templateInstructionForGeneration & in_mInstruction,
-                                                                                                                               Compiler * inCompiler
-                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_templateInstructionListForGeneration_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mInstruction = in_mInstruction ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_templateInstructionListForGeneration_2D_element::objectCompare (const GALGAS_templateInstructionListForGeneration_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mInstruction.objectCompare (inOperand.mProperty_mInstruction) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_templateInstructionListForGeneration_2D_element::isValid (void) const {
-  return mProperty_mInstruction.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_templateInstructionListForGeneration_2D_element::drop (void) {
-  mProperty_mInstruction.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_templateInstructionListForGeneration_2D_element::description (String & ioString,
-                                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @templateInstructionListForGeneration-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mInstruction.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateInstructionListForGeneration-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2D_element ("templateInstructionListForGeneration-element",
-                                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionListForGeneration_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionListForGeneration_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionListForGeneration_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                              Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionListForGeneration_2D_element result ;
-  const GALGAS_templateInstructionListForGeneration_2D_element * p = (const GALGAS_templateInstructionListForGeneration_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateInstructionListForGeneration_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -137,7 +137,8 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           lineIndex = 0
           found = false
           while (lineIndex < lines.count) && !found {
-            found = lines [lineIndex].hasPrefix ("semantic warning #1: the constant value is unused")
+            found = lines [lineIndex].hasPrefix ("semantic warning #1: variable '")
+                && lines [lineIndex].hasSuffix ("' was never read; consider removing it")
             lineIndex += 1
           }
           loop = found
@@ -237,7 +238,7 @@ print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
 let directoryEnumerator = fm.enumerator (atPath: scriptDir)
 var galgasProjectFiles = [String] ()
 while let file = directoryEnumerator?.nextObject () as? String {
-  if file.hasSuffix (".galgasProject") {
+  if file.lowercased ().hasSuffix (".galgasproject") || file.lowercased ().hasSuffix (".ggsproject") {
     let path = scriptDir.appending("/\(file)")
     galgasProjectFiles.append (path)
     print ("  found \(path)")

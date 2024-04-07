@@ -16,60 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @externTypeDeclarationAST : @semanticDeclarationAST {
-  private let @lstring mExternTypeName
-  private let @string mCppPreDeclarationCode
-  private let @string mCppClassCode
-  private let @externTypeConstructorList mExternTypeConstructorList
-  private let @externTypeGetterList mExternTypeGetterList
-  private let @externTypeSetterList mExternTypeSetterList
-  private let @externTypeMethodList mExternTypeMethodList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @typeNameFormalParameterNameList {
-  public let @lstring mFormalSelector
-  public let @lstring mFormalParameterTypeName
-  public let @lstring mFormalParameterName
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @externTypeConstructorList {
-  public let @lstring mConstructorName
-  public let @lstring mResultTypeName
-  public let @typeNameFormalParameterNameList mParameterList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @externTypeGetterList {
-  public let @lstring mGetterName
-  public let @lstring mResultTypeName
-  public let @typeNameFormalParameterNameList mParameterList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @externTypeSetterList {
-  public let @lstring mSetterName
-  public let @formalParameterListAST mFormalParameterList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @externTypeMethodList {
-  public let @lstring mMethodName
-  public let @formalParameterListAST mFormalParameterList
-  public let @location mDeclarationLocation
-}
-
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -141,7 +87,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <externtype_constructor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      ?!@externTypeConstructorList ioExternTypeConstructorList {
     $init$
-    $identifier$ ?let @lstring constructorName
+    $($
     var @typeNameFormalParameterNameList argumentTypeList = §[]
     repeat
     while
@@ -156,9 +102,8 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?let @lstring argumentName
       argumentTypeList += !selector !argumentTypeName !argumentName
     end
-    $->$
-    <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
-    ioExternTypeConstructorList += !constructorName !resultTypeName !argumentTypeList
+    $)$
+    ioExternTypeConstructorList += !argumentTypeList
   }
 
   #·······························································································
@@ -280,24 +225,29 @@ syntax extension galgas4DeclarationsSyntax {
   rule <externtype_constructor> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeConstructorList ioExternTypeConstructorList {
     $init$
-    $identifier$ ?let @lstring constructorName
+    $($
     var @typeNameFormalParameterNameList argumentTypeList = §[]
-    repeat
-    while
-      $?selector:$ ?let selector
-      <type_definition> !?ioDeclarations ?let argumentTypeName
-      $identifier$ ?let @lstring argumentName
-      argumentTypeList += !selector !argumentTypeName !argumentName
-    while
-      $?$
-      let selector = ["" here]
-      <type_definition> !?ioDeclarations ?let argumentTypeName
-      $identifier$ ?let @lstring argumentName
-      argumentTypeList += !selector !argumentTypeName !argumentName
+    select
+    or
+      repeat
+        select
+          $?selector:$ ?let selector
+          <type_definition> !?ioDeclarations ?let argumentTypeName
+          $identifier$ ?let argumentName
+          argumentTypeList += !selector !argumentTypeName !argumentName
+        or
+          $?$
+          let selector = ["" here]
+          <type_definition> !?ioDeclarations ?let argumentTypeName
+          $identifier$ ?let argumentName
+          argumentTypeList += !selector !argumentTypeName !argumentName
+        end
+      while
+        $,$
+      end
     end
-    $->$
-    <type_definition> !?ioDeclarations ?let resultTypeName
-    ioExternTypeConstructorList += !constructorName !resultTypeName !argumentTypeList
+    $)$
+    ioExternTypeConstructorList += !argumentTypeList
   }
 
   #·······························································································
@@ -351,145 +301,210 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externTypeDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring {!"@" + self.mExternTypeName !self.mExternTypeName.location}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+list @typeNameFormalParameterNameList {
+  public let @lstring mFormalSelector
+  public let @lstring mFormalParameterTypeName
+  public let @lstring mFormalParameterName
+  
+  getter initializerSignature -> @string {
+    result = "init"
+    for formalArg in self do
+      result += "!" + formalArg.mFormalSelector
+    end
+  }
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
+
+list @externTypeConstructorList {
+  public let @typeNameFormalParameterNameList mParameterList
+}
+
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externTypeDeclarationAST enterDeclarationInSemanticContext
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext unused ioSemanticContext {
-#---
-  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @classFunctionMap classFunctionMap = §[]
-  var @setterMap setterMap = §[]
-  var @instanceMethodMap instanceMethodMap = §[]
-#--- Class functions
-  for (mConstructorName mResultTypeName mParameterList) in self.mExternTypeConstructorList do
-    [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
-  #---
-    var @functionSignature arguments = §[]
-    for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
-      [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
-      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
-    end
-  #---
-    [!?classFunctionMap insertKey
-      !mConstructorName
-      !arguments
-      !true #inHasLexiqueAndLocationArguments
-      !returnedTypeEntry
-    ]
-  end
-#--- Getters
-  for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
-    [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
-  #---
-    var @functionSignature arguments = §[]
-    for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
-      [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
-      arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
-    end
-  #---
-    [!?getterMap insertKey
-      !mGetterName
-      !@methodKind.definedAsMember
-      !arguments
-      !@location.here
-      !true #inHasLexiqueAndLocationArguments
-      !returnedTypeEntry
-      !@methodQualifier.isBasicFinal
-      !"" # getter name is not obsolete, no replacement getter
-    ]
-  end
-#--- Modifiers
-  for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
-    var @formalParameterSignature routineSignature = §[]
-    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-      [!?ioTypeMap makeEntry
-        !mFormalArgumentTypeName
-        ?let @unifiedTypeMapEntry parameterTypeIndex
-      ]
-      routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
-    end
-  #---
-    [!?setterMap insertKey
-      !mSetterName
-      !@methodKind.definedAsMember
-      !routineSignature
-      !true #inHasLexiqueAndLocationArguments
-      !@methodQualifier.isBasicFinal
-      !"" # No Error message
-    ]
-  end
-#--- Methods
-  for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
-    var routineSignature = @formalParameterSignature §[]
-    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
-      [!?ioTypeMap makeEntry
-        !mFormalArgumentTypeName
-        ?let parameterTypeIndex
-      ]
-      routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
-    end
-  #---
-    [!?instanceMethodMap insertKey
-      !mMethodName
-      !@methodKind.definedAsMember
-      !routineSignature
-      !mDeclarationLocation
-      !true #inHasLexiqueAndLocationArguments
-      !@methodQualifier.isBasicFinal
-      !"" # No Error message
-    ]
-  end
-#--- Enter type in type map
-  let typeDefinition = @unifiedTypeDefinition {
-    !typeName: self.mExternTypeName
-    !isPredefined: self.isPredefined
-    !isConcrete: true # Concrete Type
-    !superType: .null
-    !typeKind: .externType
-    !supportCollectionValue: false # Does not support collection value
-    !allTypedPropertyList: §[]
-    !propertyMap: §[]
-    !currentTypedPropertyList: §[]
-    !initializerMap: §[]
-    !classFunctionMap: classFunctionMap
-    !getterMap: getterMap
-    !setterMap: setterMap
-    !instanceMethodMap: instanceMethodMap
-    !classMethodMap: §[]
-    !optionalMethodMap: §[]
-    !enumerationDescriptorList: §[]
-    !.none
-    !§[]
-    !§[]
-    !§[]
-    !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !defaultConstructorName: "default" # Default constructor
-    !"externtype-" + [self.mExternTypeName fileNameRepresentation]
-    !headerKind: .oneHeader
+list @externTypeGetterList {
+  public let @lstring mGetterName
+  public let @lstring mResultTypeName
+  public let @typeNameFormalParameterNameList mParameterList
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @externTypeSetterList {
+  public let @lstring mSetterName
+  public let @formalParameterListAST mFormalParameterList
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @externTypeMethodList {
+  public let @lstring mMethodName
+  public let @formalParameterListAST mFormalParameterList
+  public let @location mDeclarationLocation
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @externTypeDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mExternTypeName
+  private let @string mCppPreDeclarationCode
+  private let @string mCppClassCode
+  private let @externTypeConstructorList externTypeInitializerList
+  private let @externTypeGetterList mExternTypeGetterList
+  private let @externTypeSetterList mExternTypeSetterList
+  private let @externTypeMethodList mExternTypeMethodList
+
+  #·······························································································
+
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring {!"@" + self.mExternTypeName !self.mExternTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
-  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+
+  #·······························································································
+
+  override getter keyRepresentation ->@string {
+    result = "extern @" + self.mExternTypeName
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInSemanticContext
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext unused ioSemanticContext {
+  #---
+    commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
+#    var @classFunctionMap classFunctionMap = §[]
+    var @setterMap setterMap = §[]
+    var @instanceMethodMap instanceMethodMap = §[]
+  #--- Class functions
+    var @initializerMap initializerMap = §[]
+    for initializer in self.externTypeInitializerList do
+#      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
+    #---
+      var @functionSignature arguments = §[]
+      for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in initializer.mParameterList do
+        [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
+        arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
+      end
+    #---
+      let initializerName = @lstring {![initializer.mParameterList initializerSignature] !self.mExternTypeName}
+      [!?initializerMap insertKey !initializerName !arguments]
+    #--- Old
+#      [!?classFunctionMap insertKey
+#        !initializer.mConstructorName
+#        !arguments
+#        !true #inHasLexiqueAndLocationArguments
+#        !returnedTypeEntry
+#      ]
+    end
+  #--- Getters
+    for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
+      [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
+    #---
+      var @functionSignature arguments = §[]
+      for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
+        [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
+        arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
+      end
+    #---
+      [!?getterMap insertKey
+        !mGetterName
+        !@methodKind.definedAsMember
+        !arguments
+        !@location.here
+        !true #inHasLexiqueAndLocationArguments
+        !returnedTypeEntry
+        !@methodQualifier.isBasicFinal
+        !"" # getter name is not obsolete, no replacement getter
+      ]
+    end
+  #--- Modifiers
+    for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
+      var @formalParameterSignature routineSignature = §[]
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
+        [!?ioTypeMap makeEntry
+          !mFormalArgumentTypeName
+          ?let @unifiedTypeMapEntry parameterTypeIndex
+        ]
+        routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+      end
+    #---
+      [!?setterMap insertKey
+        !mSetterName
+        !@methodKind.definedAsMember
+        !routineSignature
+        !true #inHasLexiqueAndLocationArguments
+        !@methodQualifier.isBasicFinal
+        !"" # No Error message
+      ]
+    end
+  #--- Methods
+    for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
+      var routineSignature = @formalParameterSignature §[]
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
+        [!?ioTypeMap makeEntry
+          !mFormalArgumentTypeName
+          ?let parameterTypeIndex
+        ]
+        routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+      end
+    #---
+      [!?instanceMethodMap insertKey
+        !mMethodName
+        !@methodKind.definedAsMember
+        !routineSignature
+        !mDeclarationLocation
+        !true #inHasLexiqueAndLocationArguments
+        !@methodQualifier.isBasicFinal
+        !"" # No Error message
+      ]
+    end
+  #--- Enter type in type map
+    let typeDefinition = @unifiedTypeDefinition {
+      !typeName: self.mExternTypeName
+      !isPredefined: self.isPredefined
+      !isConcrete: true # Concrete Type
+      !superType: .null
+      !typeKind: .externType
+      !supportCollectionValue: false # Does not support collection value
+      !allTypedPropertyList: §[]
+      !propertyMap: §[]
+      !currentTypedPropertyList: §[]
+      !initializerMap: initializerMap
+      !classFunctionMap: §[]
+      !getterMap: getterMap
+      !setterMap: setterMap
+      !instanceMethodMap: instanceMethodMap
+      !classMethodMap: §[]
+      !optionalMethodMap: §[]
+      !enumerationDescriptorList: §[]
+      !.none
+      !§[]
+      !§[]
+      !§[]
+      !generateHeaderInSeparateFile: false # Do not generate header in separate file
+      !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
+      !defaultConstructorName: "default" # Default constructor
+      !"externtype-" + [self.mExternTypeName fileNameRepresentation]
+      !headerKind: .oneHeader
+    }
+    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

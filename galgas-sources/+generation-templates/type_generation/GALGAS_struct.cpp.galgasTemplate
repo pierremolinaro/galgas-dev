@@ -66,7 +66,7 @@ if [INITIALIZER_ARGUMENT_LIST count] == 0 then
   !^%COMMA_UNUSED_LOCATION_ARGS) {
 %else
 for (propertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST
-  do %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & in_%![propertyName string]%,\n%!^
+  do %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & in_%!propertyName.string%,\n%!^
 end
   %Compiler * inCompiler\n%
   !^%COMMA_UNUSED_LOCATION_ARGS) {
@@ -76,7 +76,7 @@ end
   result.setInitializedProperties (inCompiler) ;
 %
 for (mPropertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST do
-   %  result.mProperty_%![propertyName identifierRepresentation]% = in_%![propertyName string]% ;
+   %  result.mProperty_%![propertyName identifierRepresentation]% = in_%!propertyName.string% ;
 %end
 %  return result ;
 }

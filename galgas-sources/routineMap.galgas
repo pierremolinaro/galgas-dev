@@ -103,7 +103,7 @@ struct @routineMap {
       end
       var @acceptableParameterList acceptableParameterList = §[]
       for entry in routineArgumentMap do
-        var accept = [inActualParameterList length] == [entry.mRoutineSignature length]
+        var accept = [inActualParameterList count] == [entry.mRoutineSignature count]
         for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
           accept = [actualParameter isCompatibleWith
             !formalParameter.mFormalArgumentPassingMode

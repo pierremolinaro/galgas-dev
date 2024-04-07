@@ -71,7 +71,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
   }
   task.waitUntilExit ()
   let status = task.terminationStatus
-  return (String (data: data, encoding: .ascii)!, status)
+  return (String (data: data, encoding: .utf8)!, status)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -85,8 +85,8 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
     var loop = true
     var nombreModifications = 0
     while loop {
-      print ("----------------------------------------------------------------------------------------------------------")
-      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-class-declaration", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
+      print ("--------------------------------------------------------------------------------------------")
+      let (s, status) = runHiddenCommand ("/usr/local/bin/galgas", ["--error-using-new-instead-of-init", "-q", "--no-color", "--max-errors=1", inCheminFichierGALGAS])
       if status == 0 {
         print (BOLD_GREEN + "Succès !" + ENDC)
         loop = false
@@ -97,22 +97,32 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         let line2 = lines [1]
         print (line1)
         print (line2)
-        loop = line2.hasPrefix ("semantic error #1: 'class' declaration is obsolete, use 'valueclass'")
+        loop = line2.hasPrefix ("semantic error #1: old style constructor, use initializer '.init {}'")
         if loop {
           let c = line1.components (separatedBy: ":")
           assert (c.count == 5)
           let fichier = c [0]
           let ligne = Int (c [1])!
-          let colonne = Int (c[2])!
-          print (BOLD_BLUE + "Erreur détectée dans '\(fichier)', ligne \(ligne), colonne \(colonne)" + ENDC)
-          let contents = try! String (contentsOf: URL (fileURLWithPath: fichier))
+          let premierCaractère = Int (c[2])! - 1
+          let dernierCaractère = Int (c[3])! - 1
+          print (BOLD_BLUE + "Erreur détectée dans '\(fichier)', ligne \(ligne), colonne \(premierCaractère + 1)" + ENDC)
+          let contents = try! String (contentsOf: URL (fileURLWithPath: fichier), encoding: .utf8)
           var lignesDuFichier = contents.components (separatedBy: "\n")
           let ligneConcernée = lignesDuFichier [ligne - 1]
           print ("line concernée '\(ligneConcernée)'")
-          let components = ligneConcernée.components (separatedBy: "class @")
-          let ligneModifiée = components.joined (separator: "valueclass @")
+          var préfixe = ligneConcernée
+          préfixe.removeLast (ligneConcernée.count - premierCaractère)
+          while let lastChar = préfixe.last, lastChar == " " {
+            préfixe.removeLast ()
+          }
+          print ("  Préfixe '\(préfixe)'")
+          var suffixe = ligneConcernée
+          suffixe.removeFirst (dernierCaractère + 1)
+          print ("  Suffixe '\(suffixe)'")
+          let ligneModifiée = préfixe + "init" + suffixe
           print ("ligne modifiée '\(ligneModifiée)'")
           lignesDuFichier [ligne - 1] = ligneModifiée
+       //   loop = false
           let newContents = lignesDuFichier.joined (separator: "\n")
           let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
           try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
@@ -141,7 +151,7 @@ print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
   let directoryEnumerator = fm.enumerator (atPath: scriptDir)
   var galgasProjectFiles = [String] ()
   while let file = directoryEnumerator?.nextObject () as? String {
-    if file.hasSuffix (".galgasProject") {
+    if file.lowercased ().hasSuffix (".galgasproject") || file.lowercased ().hasSuffix (".ggsproject") {
       let path = scriptDir.appending("/\(file)")
       galgasProjectFiles.append (path)
       print ("  found \(path)")

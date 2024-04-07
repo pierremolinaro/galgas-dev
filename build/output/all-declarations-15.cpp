@@ -9,6 +9,127 @@
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_templateInstructionListForGeneration_2D_element::GALGAS_templateInstructionListForGeneration_2D_element (void) :
+mProperty_mInstruction () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionListForGeneration_2D_element::~ GALGAS_templateInstructionListForGeneration_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::init_21_ (const GALGAS_templateInstructionForGeneration & in_mInstruction,
+                                                                                                                         Compiler * inCompiler
+                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_templateInstructionListForGeneration_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mInstruction = in_mInstruction ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_templateInstructionListForGeneration_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionListForGeneration_2D_element::GALGAS_templateInstructionListForGeneration_2D_element (const GALGAS_templateInstructionForGeneration & inOperand0) :
+mProperty_mInstruction (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::class_func_new (const GALGAS_templateInstructionForGeneration & in_mInstruction,
+                                                                                                                               Compiler * inCompiler
+                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_templateInstructionListForGeneration_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mInstruction = in_mInstruction ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_templateInstructionListForGeneration_2D_element::objectCompare (const GALGAS_templateInstructionListForGeneration_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mInstruction.objectCompare (inOperand.mProperty_mInstruction) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_templateInstructionListForGeneration_2D_element::isValid (void) const {
+  return mProperty_mInstruction.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_templateInstructionListForGeneration_2D_element::drop (void) {
+  mProperty_mInstruction.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_templateInstructionListForGeneration_2D_element::description (String & ioString,
+                                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @templateInstructionListForGeneration-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mInstruction.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @templateInstructionListForGeneration-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2D_element ("templateInstructionListForGeneration-element",
+                                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateInstructionListForGeneration_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateInstructionListForGeneration_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateInstructionListForGeneration_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionListForGeneration_2D_element GALGAS_templateInstructionListForGeneration_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                              Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_templateInstructionListForGeneration_2D_element result ;
+  const GALGAS_templateInstructionListForGeneration_2D_element * p = (const GALGAS_templateInstructionListForGeneration_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateInstructionListForGeneration_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateInstructionListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_actualParameterListForGeneration_2D_element::GALGAS_actualParameterListForGeneration_2D_element (void) :
 mProperty_mActualParameter () {
 }
@@ -14929,185 +15050,6 @@ GALGAS_lexiqueAnalysisContext GALGAS_lexiqueAnalysisContext::extractObject (cons
       result = *p ;
     }else{
       inCompiler->castError ("lexiqueAnalysisContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @lexicalDropInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTerminalName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalDropInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cPtr_lexicalDropInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  const cPtr_lexicalDropInstructionAST * p = (const cPtr_lexicalDropInstructionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mTerminalName.objectCompare (p->mProperty_mTerminalName) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-ComparisonResult GALGAS_lexicalDropInstructionAST::objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalDropInstructionAST::GALGAS_lexicalDropInstructionAST (void) :
-GALGAS_lexicalInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::
-init_21_ (const GALGAS_lstring & in_mTerminalName,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalDropInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalDropInstructionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalDropInstructionAST_init_21_ (in_mTerminalName, inCompiler) ;
-  const GALGAS_lexicalDropInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalDropInstructionAST::
-lexicalDropInstructionAST_init_21_ (const GALGAS_lstring & in_mTerminalName,
-                                    Compiler * /* inCompiler */) {
-  mProperty_mTerminalName = in_mTerminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalDropInstructionAST::GALGAS_lexicalDropInstructionAST (const cPtr_lexicalDropInstructionAST * inSourcePtr) :
-GALGAS_lexicalInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalDropInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::class_func_new (const GALGAS_lstring & in_mTerminalName
-                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalDropInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalDropInstructionAST (in_mTerminalName COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_lexicalDropInstructionAST::readProperty_mTerminalName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_lexicalDropInstructionAST * p = (cPtr_lexicalDropInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
-    return p->mProperty_mTerminalName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalDropInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (const GALGAS_lstring & in_mTerminalName
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
-mProperty_mTerminalName () {
-  mProperty_mTerminalName = in_mTerminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_lexicalDropInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
-}
-
-void cPtr_lexicalDropInstructionAST::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalDropInstructionAST:") ;
-  mProperty_mTerminalName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_lexicalDropInstructionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @lexicalDropInstructionAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ("lexicalDropInstructionAST",
-                                                                                 & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_lexicalDropInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_lexicalDropInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalDropInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::extractObject (const GALGAS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalDropInstructionAST result ;
-  const GALGAS_lexicalDropInstructionAST * p = (const GALGAS_lexicalDropInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalDropInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalDropInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -309,7 +309,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (101 types)
+--- Type list (102 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -356,6 +356,7 @@ LOGGING r: <@uint:5>
   @classeH-weak
   @classeI
   @classeI-weak
+  @complex
   @data
   @double
   @filewrapper
@@ -458,6 +459,10 @@ LOGGING result: <@string:"accentué
 *************************************** begin of range test
 LOGGING s: <@string:"Range [4, 3] enumeration: 4 5 6">
 LOGGING s: <@string:"Range [4, 3] reverse enumeration: 6 5 4">
+*************************************** begin of extern type test
+LOGGING complex: <@complex:1, -1>
+LOGGING real: <@double:1>
+LOGGING imaginary: <@double:-1>
 *************************************** begin of @bigint test
 --- construction
 0

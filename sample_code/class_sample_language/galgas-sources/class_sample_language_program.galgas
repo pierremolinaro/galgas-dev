@@ -27,7 +27,7 @@ message "an '.class_sample_language' source file"
       ?*
       ?let @lstringlist circularDefinitionClassNameList
     ]
-    if [circularDefinitionClassNameList length] > 0 then
+    if [circularDefinitionClassNameList count] > 0 then
       for (mValue) in  circularDefinitionClassNameList do
         error mValue : "the '" + mValue + "' class is involved in a circular definition"
       end

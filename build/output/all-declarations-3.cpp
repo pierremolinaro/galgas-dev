@@ -15746,19 +15746,19 @@ GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 //
-//Class for element of '@externTypeConstructorList' list
+//Class for element of '@typeNameFormalParameterNameList' list
 //
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_externTypeConstructorList : public cCollectionElement {
-  public: GALGAS_externTypeConstructorList_2D_element mObject ;
+class cCollectionElement_typeNameFormalParameterNameList : public cCollectionElement {
+  public: GALGAS_typeNameFormalParameterNameList_2D_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_externTypeConstructorList (const GALGAS_lstring & in_mConstructorName,
-                                                        const GALGAS_lstring & in_mResultTypeName,
-                                                        const GALGAS_typeNameFormalParameterNameList & in_mParameterList
-                                                        COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_externTypeConstructorList (const GALGAS_externTypeConstructorList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typeNameFormalParameterNameList (const GALGAS_lstring & in_mFormalSelector,
+                                                              const GALGAS_lstring & in_mFormalParameterTypeName,
+                                                              const GALGAS_lstring & in_mFormalParameterName
+                                                              COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typeNameFormalParameterNameList (const GALGAS_typeNameFormalParameterNameList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -15775,89 +15775,89 @@ class cCollectionElement_externTypeConstructorList : public cCollectionElement {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_externTypeConstructorList::cCollectionElement_externTypeConstructorList (const GALGAS_lstring & in_mConstructorName,
-                                                                                            const GALGAS_lstring & in_mResultTypeName,
-                                                                                            const GALGAS_typeNameFormalParameterNameList & in_mParameterList
-                                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement_typeNameFormalParameterNameList::cCollectionElement_typeNameFormalParameterNameList (const GALGAS_lstring & in_mFormalSelector,
+                                                                                                        const GALGAS_lstring & in_mFormalParameterTypeName,
+                                                                                                        const GALGAS_lstring & in_mFormalParameterName
+                                                                                                        COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mConstructorName, in_mResultTypeName, in_mParameterList) {
+mObject (in_mFormalSelector, in_mFormalParameterTypeName, in_mFormalParameterName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_externTypeConstructorList::cCollectionElement_externTypeConstructorList (const GALGAS_externTypeConstructorList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_typeNameFormalParameterNameList::cCollectionElement_typeNameFormalParameterNameList (const GALGAS_typeNameFormalParameterNameList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mConstructorName, inElement.mProperty_mResultTypeName, inElement.mProperty_mParameterList) {
+mObject (inElement.mProperty_mFormalSelector, inElement.mProperty_mFormalParameterTypeName, inElement.mProperty_mFormalParameterName) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_externTypeConstructorList::isValid (void) const {
+bool cCollectionElement_typeNameFormalParameterNameList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_externTypeConstructorList::copy (void) {
+cCollectionElement * cCollectionElement_typeNameFormalParameterNameList::copy (void) {
   cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_externTypeConstructorList (mObject.mProperty_mConstructorName, mObject.mProperty_mResultTypeName, mObject.mProperty_mParameterList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_typeNameFormalParameterNameList (mObject.mProperty_mFormalSelector, mObject.mProperty_mFormalParameterTypeName, mObject.mProperty_mFormalParameterName COMMA_HERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cCollectionElement_externTypeConstructorList::description (String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_typeNameFormalParameterNameList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mConstructorName" ":") ;
-  mObject.mProperty_mConstructorName.description (ioString, inIndentation) ;
+  ioString.appendCString ("mFormalSelector" ":") ;
+  mObject.mProperty_mFormalSelector.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mResultTypeName" ":") ;
-  mObject.mProperty_mResultTypeName.description (ioString, inIndentation) ;
+  ioString.appendCString ("mFormalParameterTypeName" ":") ;
+  mObject.mProperty_mFormalParameterTypeName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mParameterList" ":") ;
-  mObject.mProperty_mParameterList.description (ioString, inIndentation) ;
+  ioString.appendCString ("mFormalParameterName" ":") ;
+  mObject.mProperty_mFormalParameterName.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult cCollectionElement_externTypeConstructorList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_externTypeConstructorList * operand = (cCollectionElement_externTypeConstructorList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_externTypeConstructorList) ;
+ComparisonResult cCollectionElement_typeNameFormalParameterNameList::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_typeNameFormalParameterNameList * operand = (cCollectionElement_typeNameFormalParameterNameList *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_typeNameFormalParameterNameList) ;
   return mObject.objectCompare (operand->mObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList::GALGAS_externTypeConstructorList (void) :
+GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (void) :
 AC_GALGAS_list () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList::GALGAS_externTypeConstructorList (const capCollectionElementArray & inSharedArray) :
+GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_externTypeConstructorList (capCollectionElementArray ()) ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_typeNameFormalParameterNameList (capCollectionElementArray ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                             const GALGAS_lstring & inOperand1,
-                                                                                             const GALGAS_typeNameFormalParameterNameList & inOperand2
-                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_externTypeConstructorList result ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                         const GALGAS_lstring & inOperand1,
+                                                                                                         const GALGAS_lstring & inOperand2
+                                                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_typeNameFormalParameterNameList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_externTypeConstructorList (capCollectionElementArray ()) ;
+    result = GALGAS_typeNameFormalParameterNameList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_externTypeConstructorList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    GALGAS_typeNameFormalParameterNameList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -15865,28 +15865,45 @@ GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::class_func_li
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                  const GALGAS_lstring & in_mConstructorName,
-                                                                  const GALGAS_lstring & in_mResultTypeName,
-                                                                  const GALGAS_typeNameFormalParameterNameList & in_mParameterList
-                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_externTypeConstructorList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_externTypeConstructorList (in_mConstructorName,
-                                                               in_mResultTypeName,
-                                                               in_mParameterList COMMA_THERE)) ;
+void GALGAS_typeNameFormalParameterNameList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                        const GALGAS_lstring & in_mFormalSelector,
+                                                                        const GALGAS_lstring & in_mFormalParameterTypeName,
+                                                                        const GALGAS_lstring & in_mFormalParameterName
+                                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement_typeNameFormalParameterNameList * p = nullptr ;
+  macroMyNew (p, cCollectionElement_typeNameFormalParameterNameList (in_mFormalSelector,
+                                                                     in_mFormalParameterTypeName,
+                                                                     in_mFormalParameterName COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                            const GALGAS_lstring & inOperand1,
-                                                            const GALGAS_typeNameFormalParameterNameList & inOperand2
+void GALGAS_typeNameFormalParameterNameList::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                                  const GALGAS_lstring & inOperand1,
+                                                                  const GALGAS_lstring & inOperand2
+                                                                  COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_typeNameFormalParameterNameList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeNameFormalParameterNameList::setter_append (const GALGAS_lstring inOperand0,
+                                                            const GALGAS_lstring inOperand1,
+                                                            const GALGAS_lstring inOperand2,
+                                                            Compiler * /* inCompiler */
                                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_externTypeConstructorList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_typeNameFormalParameterNameList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -15896,33 +15913,16 @@ void GALGAS_externTypeConstructorList::addAssign_operation (const GALGAS_lstring
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_append (const GALGAS_lstring inOperand0,
-                                                      const GALGAS_lstring inOperand1,
-                                                      const GALGAS_typeNameFormalParameterNameList inOperand2,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_externTypeConstructorList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_externTypeConstructorList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                             const GALGAS_lstring inOperand1,
-                                                             const GALGAS_typeNameFormalParameterNameList inOperand2,
-                                                             const GALGAS_uint inInsertionIndex,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_typeNameFormalParameterNameList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                   const GALGAS_lstring inOperand1,
+                                                                   const GALGAS_lstring inOperand2,
+                                                                   const GALGAS_uint inInsertionIndex,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
       cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_externTypeConstructorList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+      macroMyNew (p, cCollectionElement_typeNameFormalParameterNameList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
       capCollectionElement attributes ;
       attributes.setPointer (p) ;
       macroDetachSharedObject (p) ;
@@ -15935,27 +15935,27 @@ void GALGAS_externTypeConstructorList::setter_insertAtIndex (const GALGAS_lstrin
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                             GALGAS_lstring & outOperand1,
-                                                             GALGAS_typeNameFormalParameterNameList & outOperand2,
-                                                             const GALGAS_uint inRemoveIndex,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_typeNameFormalParameterNameList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                   GALGAS_lstring & outOperand1,
+                                                                   GALGAS_lstring & outOperand2,
+                                                                   const GALGAS_uint inRemoveIndex,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     if (inRemoveIndex.isValid ()) {
       capCollectionElement attributes ;
       removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
+      cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
       if (nullptr == p) {
         outOperand0.drop () ;
         outOperand1.drop () ;
         outOperand2.drop () ;
         drop () ;
       }else{
-        macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-        outOperand0 = p->mObject.mProperty_mConstructorName ;
-        outOperand1 = p->mObject.mProperty_mResultTypeName ;
-        outOperand2 = p->mObject.mProperty_mParameterList ;
+        macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+        outOperand0 = p->mObject.mProperty_mFormalSelector ;
+        outOperand1 = p->mObject.mProperty_mFormalParameterTypeName ;
+        outOperand2 = p->mObject.mProperty_mFormalParameterName ;
       }
     }else{
       outOperand0.drop () ;
@@ -15972,98 +15972,98 @@ void GALGAS_externTypeConstructorList::setter_removeAtIndex (GALGAS_lstring & ou
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_popFirst (GALGAS_lstring & outOperand0,
-                                                        GALGAS_lstring & outOperand1,
-                                                        GALGAS_typeNameFormalParameterNameList & outOperand2,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_typeNameFormalParameterNameList::setter_popFirst (GALGAS_lstring & outOperand0,
+                                                              GALGAS_lstring & outOperand1,
+                                                              GALGAS_lstring & outOperand2,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-    outOperand0 = p->mObject.mProperty_mConstructorName ;
-    outOperand1 = p->mObject.mProperty_mResultTypeName ;
-    outOperand2 = p->mObject.mProperty_mParameterList ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+    outOperand0 = p->mObject.mProperty_mFormalSelector ;
+    outOperand1 = p->mObject.mProperty_mFormalParameterTypeName ;
+    outOperand2 = p->mObject.mProperty_mFormalParameterName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_popLast (GALGAS_lstring & outOperand0,
-                                                       GALGAS_lstring & outOperand1,
-                                                       GALGAS_typeNameFormalParameterNameList & outOperand2,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_typeNameFormalParameterNameList::setter_popLast (GALGAS_lstring & outOperand0,
+                                                             GALGAS_lstring & outOperand1,
+                                                             GALGAS_lstring & outOperand2,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-    outOperand0 = p->mObject.mProperty_mConstructorName ;
-    outOperand1 = p->mObject.mProperty_mResultTypeName ;
-    outOperand2 = p->mObject.mProperty_mParameterList ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+    outOperand0 = p->mObject.mProperty_mFormalSelector ;
+    outOperand1 = p->mObject.mProperty_mFormalParameterTypeName ;
+    outOperand2 = p->mObject.mProperty_mFormalParameterName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::method_first (GALGAS_lstring & outOperand0,
-                                                     GALGAS_lstring & outOperand1,
-                                                     GALGAS_typeNameFormalParameterNameList & outOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+void GALGAS_typeNameFormalParameterNameList::method_first (GALGAS_lstring & outOperand0,
+                                                           GALGAS_lstring & outOperand1,
+                                                           GALGAS_lstring & outOperand2,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-    outOperand0 = p->mObject.mProperty_mConstructorName ;
-    outOperand1 = p->mObject.mProperty_mResultTypeName ;
-    outOperand2 = p->mObject.mProperty_mParameterList ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+    outOperand0 = p->mObject.mProperty_mFormalSelector ;
+    outOperand1 = p->mObject.mProperty_mFormalParameterTypeName ;
+    outOperand2 = p->mObject.mProperty_mFormalParameterName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::method_last (GALGAS_lstring & outOperand0,
-                                                    GALGAS_lstring & outOperand1,
-                                                    GALGAS_typeNameFormalParameterNameList & outOperand2,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
+void GALGAS_typeNameFormalParameterNameList::method_last (GALGAS_lstring & outOperand0,
+                                                          GALGAS_lstring & outOperand1,
+                                                          GALGAS_lstring & outOperand2,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
   if (nullptr == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
   }else{
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-    outOperand0 = p->mObject.mProperty_mConstructorName ;
-    outOperand1 = p->mObject.mProperty_mResultTypeName ;
-    outOperand2 = p->mObject.mProperty_mParameterList ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+    outOperand0 = p->mObject.mProperty_mFormalSelector ;
+    outOperand1 = p->mObject.mProperty_mFormalParameterTypeName ;
+    outOperand2 = p->mObject.mProperty_mFormalParameterName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::add_operation (const GALGAS_externTypeConstructorList & inOperand,
-                                                                                  Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_externTypeConstructorList result ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::add_operation (const GALGAS_typeNameFormalParameterNameList & inOperand,
+                                                                                              Compiler * /* inCompiler */
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_typeNameFormalParameterNameList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.appendList (inOperand) ;
@@ -16073,125 +16073,125 @@ GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::add_operation
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const {
-  GALGAS_externTypeConstructorList result = GALGAS_externTypeConstructorList::class_func_emptyList (THERE) ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_typeNameFormalParameterNameList result = GALGAS_typeNameFormalParameterNameList::class_func_emptyList (THERE) ;
   subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const {
-  GALGAS_externTypeConstructorList result = GALGAS_externTypeConstructorList::class_func_emptyList (THERE) ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_typeNameFormalParameterNameList result = GALGAS_typeNameFormalParameterNameList::class_func_emptyList (THERE) ;
   subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
-  GALGAS_externTypeConstructorList result = GALGAS_externTypeConstructorList::class_func_emptyList (THERE) ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_typeNameFormalParameterNameList result = GALGAS_typeNameFormalParameterNameList::class_func_emptyList (THERE) ;
   subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::plusAssign_operation (const GALGAS_externTypeConstructorList inOperand,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_typeNameFormalParameterNameList::plusAssign_operation (const GALGAS_typeNameFormalParameterNameList inOperand,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_setMConstructorNameAtIndex (GALGAS_lstring inOperand,
-                                                                          GALGAS_uint inIndex,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+void GALGAS_typeNameFormalParameterNameList::setter_setMFormalSelectorAtIndex (GALGAS_lstring inOperand,
+                                                                               GALGAS_uint inIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mConstructorName = inOperand ;
+    p->mObject.mProperty_mFormalSelector = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_externTypeConstructorList::getter_mConstructorNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_typeNameFormalParameterNameList::getter_mFormalSelectorAtIndex (const GALGAS_uint & inIndex,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-    result = p->mObject.mProperty_mConstructorName ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+    result = p->mObject.mProperty_mFormalSelector ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_setMResultTypeNameAtIndex (GALGAS_lstring inOperand,
-                                                                         GALGAS_uint inIndex,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+void GALGAS_typeNameFormalParameterNameList::setter_setMFormalParameterTypeNameAtIndex (GALGAS_lstring inOperand,
+                                                                                        GALGAS_uint inIndex,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mResultTypeName = inOperand ;
+    p->mObject.mProperty_mFormalParameterTypeName = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_externTypeConstructorList::getter_mResultTypeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_typeNameFormalParameterNameList::getter_mFormalParameterTypeNameAtIndex (const GALGAS_uint & inIndex,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-    result = p->mObject.mProperty_mResultTypeName ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+    result = p->mObject.mProperty_mFormalParameterTypeName ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_externTypeConstructorList::setter_setMParameterListAtIndex (GALGAS_typeNameFormalParameterNameList inOperand,
-                                                                        GALGAS_uint inIndex,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+void GALGAS_typeNameFormalParameterNameList::setter_setMFormalParameterNameAtIndex (GALGAS_lstring inOperand,
+                                                                                    GALGAS_uint inIndex,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mParameterList = inOperand ;
+    p->mObject.mProperty_mFormalParameterName = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeNameFormalParameterNameList GALGAS_externTypeConstructorList::getter_mParameterListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_typeNameFormalParameterNameList::getter_mFormalParameterNameAtIndex (const GALGAS_uint & inIndex,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_externTypeConstructorList * p = (cCollectionElement_externTypeConstructorList *) attributes.ptr () ;
-  GALGAS_typeNameFormalParameterNameList result ;
+  cCollectionElement_typeNameFormalParameterNameList * p = (cCollectionElement_typeNameFormalParameterNameList *) attributes.ptr () ;
+  GALGAS_lstring result ;
   if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-    result = p->mObject.mProperty_mParameterList ;
+    macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+    result = p->mObject.mProperty_mFormalParameterName ;
   }
   return result ;
 }
@@ -16200,43 +16200,43 @@ GALGAS_typeNameFormalParameterNameList GALGAS_externTypeConstructorList::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumerator_externTypeConstructorList::cEnumerator_externTypeConstructorList (const GALGAS_externTypeConstructorList & inEnumeratedObject,
-                                                                              const EnumerationOrder inOrder) :
+cEnumerator_typeNameFormalParameterNameList::cEnumerator_typeNameFormalParameterNameList (const GALGAS_typeNameFormalParameterNameList & inEnumeratedObject,
+                                                                                          const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList_2D_element cEnumerator_externTypeConstructorList::current (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeConstructorList * p = (const cCollectionElement_externTypeConstructorList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
+GALGAS_typeNameFormalParameterNameList_2D_element cEnumerator_typeNameFormalParameterNameList::current (LOCATION_ARGS) const {
+  const cCollectionElement_typeNameFormalParameterNameList * p = (const cCollectionElement_typeNameFormalParameterNameList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
   return p->mObject ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_externTypeConstructorList::current_mConstructorName (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeConstructorList * p = (const cCollectionElement_externTypeConstructorList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-  return p->mObject.mProperty_mConstructorName ;
+GALGAS_lstring cEnumerator_typeNameFormalParameterNameList::current_mFormalSelector (LOCATION_ARGS) const {
+  const cCollectionElement_typeNameFormalParameterNameList * p = (const cCollectionElement_typeNameFormalParameterNameList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+  return p->mObject.mProperty_mFormalSelector ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_externTypeConstructorList::current_mResultTypeName (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeConstructorList * p = (const cCollectionElement_externTypeConstructorList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-  return p->mObject.mProperty_mResultTypeName ;
+GALGAS_lstring cEnumerator_typeNameFormalParameterNameList::current_mFormalParameterTypeName (LOCATION_ARGS) const {
+  const cCollectionElement_typeNameFormalParameterNameList * p = (const cCollectionElement_typeNameFormalParameterNameList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+  return p->mObject.mProperty_mFormalParameterTypeName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeNameFormalParameterNameList cEnumerator_externTypeConstructorList::current_mParameterList (LOCATION_ARGS) const {
-  const cCollectionElement_externTypeConstructorList * p = (const cCollectionElement_externTypeConstructorList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_externTypeConstructorList) ;
-  return p->mObject.mProperty_mParameterList ;
+GALGAS_lstring cEnumerator_typeNameFormalParameterNameList::current_mFormalParameterName (LOCATION_ARGS) const {
+  const cCollectionElement_typeNameFormalParameterNameList * p = (const cCollectionElement_typeNameFormalParameterNameList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typeNameFormalParameterNameList) ;
+  return p->mObject.mProperty_mFormalParameterName ;
 }
 
 
@@ -16244,41 +16244,41 @@ GALGAS_typeNameFormalParameterNameList cEnumerator_externTypeConstructorList::cu
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @externTypeConstructorList generic code implementation
+//     @typeNameFormalParameterNameList generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList ("externTypeConstructorList",
-                                                                                 nullptr) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ("typeNameFormalParameterNameList",
+                                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_externTypeConstructorList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_externTypeConstructorList ;
+const C_galgas_type_descriptor * GALGAS_typeNameFormalParameterNameList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_externTypeConstructorList::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_typeNameFormalParameterNameList::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_externTypeConstructorList (*this)) ;
+    macroMyNew (result, GALGAS_typeNameFormalParameterNameList (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::extractObject (const GALGAS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_externTypeConstructorList result ;
-  const GALGAS_externTypeConstructorList * p = (const GALGAS_externTypeConstructorList *) inObject.embeddedObject () ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::extractObject (const GALGAS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_typeNameFormalParameterNameList result ;
+  const GALGAS_typeNameFormalParameterNameList * p = (const GALGAS_typeNameFormalParameterNameList *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_externTypeConstructorList *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_typeNameFormalParameterNameList *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("externTypeConstructorList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("typeNameFormalParameterNameList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

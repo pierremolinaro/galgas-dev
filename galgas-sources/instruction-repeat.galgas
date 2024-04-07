@@ -311,7 +311,7 @@ override method @repeatInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   )
   [!?ioGeneratedCode incIndentation !2]
-  if [self.mListOfSemanticInstructionListForGeneration length] == 1 then
+  if [self.mListOfSemanticInstructionListForGeneration count] == 1 then
     ioGeneratedCode += "if (select_" + [self.mSyntaxComponentName identifierRepresentation]
     ioGeneratedCode += "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ") == 2) {\n"
     let instructionList = [self.mListOfSemanticInstructionListForGeneration mInstructionListAtIndex !0]

@@ -954,6 +954,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGenerati
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension getter '@typeNameFormalParameterNameList initializerSignature' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_initializerSignature (const class GALGAS_typeNameFormalParameterNameList & inObject,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @externTypeDeclarationForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------

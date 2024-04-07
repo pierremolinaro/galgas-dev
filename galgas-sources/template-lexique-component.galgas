@@ -335,7 +335,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
-  @terminalList terminalList = §[]
+  var @terminalList terminalList = §[]
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string count] > 0 then

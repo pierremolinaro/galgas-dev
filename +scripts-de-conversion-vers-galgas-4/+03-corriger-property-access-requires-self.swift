@@ -97,7 +97,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         let line2 = lines [1]
         print (line1)
         print (line2)
-        loop = line2.hasPrefix ("semantic error #1: the '") && line2.hasSuffix ("' variable is not declared")
+        loop = line2.hasPrefix ("semantic error #1: '") && line2.hasSuffix ("' variable is not declared")
         if loop {
           let c = line1.components (separatedBy: ":")
           assert (c.count == 5)
@@ -141,7 +141,7 @@ print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
   let directoryEnumerator = fm.enumerator (atPath: scriptDir)
   var galgasProjectFiles = [String] ()
   while let file = directoryEnumerator?.nextObject () as? String {
-    if file.hasSuffix (".galgasProject") {
+    if file.lowercased ().hasSuffix (".galgasproject") || file.lowercased ().hasSuffix (".ggsproject") {
       let path = scriptDir.appending("/\(file)")
       galgasProjectFiles.append (path)
       print ("  found \(path)")

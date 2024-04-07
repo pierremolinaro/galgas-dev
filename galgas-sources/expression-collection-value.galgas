@@ -215,7 +215,7 @@ override method @collectionValueAST analyzeSemanticExpression
     var @string constructorName = ""
     var found = false
     for c in classFunctionMap while not found do
-      if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == targetType) then
+      if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == targetType) then
         hasCompilerArgument = c.mHasCompilerArgument
         constructorName = c.lkey.string
         found = true

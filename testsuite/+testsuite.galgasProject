@@ -29,9 +29,9 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_bigint.ggs"
   "galgas-sources/testsuite_bugMap.ggs"
 
-#  "galgas-sources/testsuite_extern_type.ggs"
-#
-#   %tool-source : "hand_coded_sources/extern_type_implementation.cpp"
+  "galgas-sources/testsuite_extern_type.ggs"
+
+   %tool-source : "hand_coded_sources/extern_type_implementation.cpp"
 
   "galgas-sources/testsuite_program.ggs"
 

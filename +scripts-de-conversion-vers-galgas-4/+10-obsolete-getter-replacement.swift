@@ -200,7 +200,7 @@ print (BOLD_BLUE + "Inventaire des 'ggsproject' dans \(scriptDir)…" + ENDC)
 let directoryEnumerator = fm.enumerator (atPath: scriptDir)
 var galgasProjectFiles = [String] ()
 while let file = directoryEnumerator?.nextObject () as? String {
-  if file.hasSuffix (".ggsproject") || file.hasSuffix (".galgasproject") || file.hasSuffix (".galgasProject") {
+ if file.lowercased ().hasSuffix (".galgasproject") || file.lowercased ().hasSuffix (".ggsproject") {
     let path = scriptDir.appending("/\(file)")
     galgasProjectFiles.append (path)
     print ("  found \(path)")

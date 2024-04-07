@@ -10,466 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @extensionGetterMapForBuildingContext map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_extensionGetterMapForBuildingContext ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_extensionGetterMapForBuildingContext : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public: GALGAS_extensionGetterMapForBuildingContext (void) ;
-
-//--------------------------------- Handle copy
-  public: GALGAS_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inSource) ;
-  public: GALGAS_extensionGetterMapForBuildingContext & operator = (const GALGAS_extensionGetterMapForBuildingContext & inSource) ;
-  
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_extensionGetterMapForBuildingContext extractObject (const GALGAS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_extensionGetterMapForBuildingContext class_func_emptyMap (LOCATION_ARGS) ;
-
-  public: static class GALGAS_extensionGetterMapForBuildingContext class_func_mapWithMapToOverride (const class GALGAS_extensionGetterMapForBuildingContext & inOperand0
-                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_extensionGetterMapForType & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_extensionGetterMapForBuildingContext add_operation (const GALGAS_extensionGetterMapForBuildingContext & inOperand,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  class GALGAS_extensionGetterMapForType constinArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMExtensionGetterMapForTypeForKey (class GALGAS_extensionGetterMapForType constinArgument0,
-                                                                            class GALGAS_string constinArgument1,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                  class GALGAS_extensionGetterMapForType & outArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_extensionGetterMapForType getter_mExtensionGetterMapForTypeForKey (const class GALGAS_string & constinOperand0,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_extensionGetterMapForBuildingContext getter_overriddenMap (Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_extensionGetterMapForType & outOperand1) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_extensionGetterMapForBuildingContext * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                                 const GALGAS_string & inKey
-                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-
-  friend class cEnumerator_extensionGetterMapForBuildingContext ;
- 
-} ; // End of GALGAS_extensionGetterMapForBuildingContext class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_extensionGetterMapForBuildingContext : public cGenericAbstractEnumerator {
-  public: cEnumerator_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inEnumeratedObject,
-                                                            const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GALGAS_extensionGetterMapForType current_mExtensionGetterMapForType (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_extensionGetterMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: class for element of '@extensionGetterMapForBuildingContext' map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_extensionGetterMapForBuildingContext : public cMapElement {
-//--- Map attributes
-  public: GALGAS_extensionGetterMapForType mProperty_mExtensionGetterMapForType ;
-
-//--- Constructor
-  public: cMapElement_extensionGetterMapForBuildingContext (const GALGAS_lstring & inKey,
-                                                            const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @extensionGetterMapForBuildingContext_2D_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_extensionGetterMapForBuildingContext_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (void) const {
-    return mProperty_lkey ;
-  }
-
-  public: GALGAS_extensionGetterMapForType mProperty_mExtensionGetterMapForType ;
-  public: inline GALGAS_extensionGetterMapForType readProperty_mExtensionGetterMapForType (void) const {
-    return mProperty_mExtensionGetterMapForType ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_extensionGetterMapForBuildingContext_2D_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setLkey (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_lkey = inValue ;
-  }
-
-  public: inline void setter_setMExtensionGetterMapForType (const GALGAS_extensionGetterMapForType & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mExtensionGetterMapForType = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GALGAS_extensionGetterMapForBuildingContext_2D_element (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_extensionGetterMapForBuildingContext_2D_element (const GALGAS_lstring & in_lkey,
-                                                                  const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_extensionGetterMapForBuildingContext_2D_element init_21__21_ (const class GALGAS_lstring & inOperand0,
-                                                                                      const class GALGAS_extensionGetterMapForType & inOperand1,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_extensionGetterMapForBuildingContext_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_extensionGetterMapForBuildingContext_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                                              const class GALGAS_extensionGetterMapForType & inOperand1,
-                                                                                              class Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_extensionGetterMapForBuildingContext_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_extensionGetterMapForBuildingContext_2D_element class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext_2D_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension getter '@semanticDeclarationAST keyRepresentation'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_string callExtensionGetter_keyRepresentation (const class cPtr_semanticDeclarationAST * inObject,
-                                                           class Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@semanticDeclarationAST enterDeclarationInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticDeclarationAST * inObject,
-                                                            const class GALGAS_extensionInitializerForBuildingContext constin_inExtensionInitializerMapForBuildingContext,
-                                                            const class GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
-                                                            const class GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
-                                                            const class GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
-                                                            class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                            class GALGAS_semanticContext & io_ioSemanticContext,
-                                                            class Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @wrapperExtensionMap map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_wrapperExtensionMap ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_wrapperExtensionMap : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public: GALGAS_wrapperExtensionMap (void) ;
-
-//--------------------------------- Handle copy
-  public: GALGAS_wrapperExtensionMap (const GALGAS_wrapperExtensionMap & inSource) ;
-  public: GALGAS_wrapperExtensionMap & operator = (const GALGAS_wrapperExtensionMap & inSource) ;
-  
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_wrapperExtensionMap extractObject (const GALGAS_object & inObject,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_wrapperExtensionMap class_func_emptyMap (LOCATION_ARGS) ;
-
-  public: static class GALGAS_wrapperExtensionMap class_func_mapWithMapToOverride (const class GALGAS_wrapperExtensionMap & inOperand0
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_wrapperExtensionMap add_operation (const GALGAS_wrapperExtensionMap & inOperand,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_wrapperExtensionMap getter_overriddenMap (Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_wrapperExtensionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                const GALGAS_string & inKey
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-
-  friend class cEnumerator_wrapperExtensionMap ;
- 
-} ; // End of GALGAS_wrapperExtensionMap class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_wrapperExtensionMap : public cGenericAbstractEnumerator {
-  public: cEnumerator_wrapperExtensionMap (const GALGAS_wrapperExtensionMap & inEnumeratedObject,
-                                           const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_wrapperExtensionMap_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: class for element of '@wrapperExtensionMap' map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_wrapperExtensionMap : public cMapElement {
-//--- Map attributes
-
-//--- Constructor
-  public: cMapElement_wrapperExtensionMap (const GALGAS_lstring & inKey
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @wrapperExtensionMap_2D_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_wrapperExtensionMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_lstring mProperty_lkey ;
-  public: inline GALGAS_lstring readProperty_lkey (void) const {
-    return mProperty_lkey ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_wrapperExtensionMap_2D_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setLkey (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_lkey = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GALGAS_wrapperExtensionMap_2D_element (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_wrapperExtensionMap_2D_element (const GALGAS_lstring & in_lkey) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_wrapperExtensionMap_2D_element init_21_ (const class GALGAS_lstring & inOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_wrapperExtensionMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_wrapperExtensionMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                             class Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_wrapperExtensionMap_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_wrapperExtensionMap_2D_element class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2D_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticTypePrecedenceGraph graph
 //
 //--------------------------------------------------------------------------------------------------
@@ -8209,4 +7749,135 @@ void extensionSetter_writeTransition (class GALGAS_localVarValuation & ioObject,
                                       const class GALGAS_localVariableAttributes constin_inAttributes,
                                       class Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@currentVarManager searchForReadAccess'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_searchForReadAccess (class GALGAS_currentVarManager & ioObject,
+                                          const class GALGAS_lstring constin_inVarName,
+                                          class GALGAS_unifiedTypeMapEntry & out_outType,
+                                          class GALGAS_string & out_outCppName,
+                                          class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
+                                          class Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@localVarMapListForLLVM readAccess'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_readAccess (class GALGAS_localVarMapListForLLVM & ioObject,
+                                 const class GALGAS_lstring constin_inVarName,
+                                 const class GALGAS_uint constin_inIndex,
+                                 class GALGAS_unifiedTypeMapEntry & out_outType,
+                                 class GALGAS_string & out_outCppName,
+                                 class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
+                                 class Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@localVarValuation readTransition'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_readTransition (class GALGAS_localVarValuation & ioObject,
+                                     const class GALGAS_lstring constin_inVarName,
+                                     const class GALGAS_localVariableAttributes constin_inAttributes,
+                                     class Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@currentVarManager searchForReadWriteAccess'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_searchForReadWriteAccess (class GALGAS_currentVarManager & ioObject,
+                                               const class GALGAS_lstring constin_inVarName,
+                                               class GALGAS_unifiedTypeMapEntry & out_outType,
+                                               class GALGAS_string & out_outCppName,
+                                               class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
+                                               class Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@localVarMapListForLLVM readWriteAccess'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_readWriteAccess (class GALGAS_localVarMapListForLLVM & ioObject,
+                                      const class GALGAS_lstring constin_inVarName,
+                                      const class GALGAS_uint constin_inIndex,
+                                      class GALGAS_unifiedTypeMapEntry & out_outType,
+                                      class GALGAS_string & out_outCppName,
+                                      class GALGAS_string & out_outNameForCheckingFormalParameterUsing,
+                                      class Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@localVarValuation readWriteTransition'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_readWriteTransition (class GALGAS_localVarValuation & ioObject,
+                                          const class GALGAS_lstring constin_inVarName,
+                                          const class GALGAS_bool constin_inOverridenMap,
+                                          const class GALGAS_localVariableAttributes constin_inAttributes,
+                                          class Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@currentVarManager openScope'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_openScope (class GALGAS_currentVarManager & ioObject,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@currentVarManager closeScope'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_closeScope (class GALGAS_currentVarManager & ioObject,
+                                 const class GALGAS_location constin_inErrorLocation,
+                                 class Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@scopeLocalVarMap checkFinalStates'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkFinalStates (const class GALGAS_scopeLocalVarMap inObject,
+                                       const class GALGAS_location constin_inErrorLocation,
+                                       class Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@currentVarManager insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GALGAS_currentVarManager & ioObject,
+                                const class GALGAS_lstring constin_inVarName,
+                                const class GALGAS_unifiedTypeMapEntry constin_inType,
+                                const class GALGAS_string constin_inCppName,
+                                const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
+                                const class GALGAS_localVariableAttributes constin_inAttributes,
+                                const class GALGAS_localVarValuation constin_inState,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
 

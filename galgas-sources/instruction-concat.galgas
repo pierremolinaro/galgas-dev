@@ -251,7 +251,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
       if inHasSelfPrefix then
-        if [propertyList length] == 0 then
+        if [propertyList count] == 0 then
           outInstruction = @methodCallInstructionAST {
             !instructionLocation
             !@selfInExpressionAST {!instructionLocation}
@@ -272,7 +272,7 @@ syntax extension galgas4InstructionsSyntax {
             !actualParameterList
           }
         end
-      elsif [propertyList length] == 0 then
+      elsif [propertyList count] == 0 then
         outInstruction = @procCallInstructionAST {
           !receiverName.location
           !receiverName # Proc name

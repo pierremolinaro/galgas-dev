@@ -29,7 +29,7 @@ rule <start_symbol>
   ?let @bool inDoNotCondenseWhiteSpaces
   ?let @bool inPrintDuringParsing {
   let @string s = @string. retrieveAndResetTemplateString
-  if [s length] > 0 then
+  if [s count] > 0 then
     error @location.here: "No character is allowed before XML header"
   end
 #--- XML header
@@ -103,9 +103,9 @@ rule <element>
       discartedMessage = "(discarted) "
     end
     var @string s = inIndendation + "COMMENT " + discartedMessage + "'" + commentString + "' "
-    s += [[commentString.location line] string]
-    s += ":" + [[commentString.location column] string]
-    s += ":" + [[commentString.location locationIndex] string] + "\n"
+    s += [[commentString.location endLine] string]
+    s += ":" + [[commentString.location endColumn] string]
+    s += ":" + [[commentString.location endLocationIndex] string] + "\n"
     print (!s)
   end
 }
@@ -132,18 +132,18 @@ rule <element>
   if inPrintDuringParsing then
     var @string s = inIndendation
     s += "ELEMENT '" + name + "' "
-    s += [[name.location line] string]
-    s += ":" + [[name.location column] string]
-    s += ":" + [[name.location locationIndex] string] + " {"
+    s += [[name.location endLine] string]
+    s += ":" + [[name.location endColumn] string]
+    s += ":" + [[name.location endLocationIndex] string] + " {"
     for (lkey value) in  attributeMap do
       s += "'" + lkey + "' "
-      s += [[lkey.location line] string]
-      s += ":" + [[lkey.location column] string]
-      s += ":" + [[lkey.location locationIndex] string]
+      s += [[lkey.location endLine] string]
+      s += ":" + [[lkey.location endColumn] string]
+      s += ":" + [[lkey.location endLocationIndex] string]
       s += " -> '" + value + "' "
-      s += [[value.location line] string]
-      s += ":" + [[value.location column] string]
-      s += ":" + [[value.location locationIndex] string]
+      s += [[value.location endLine] string]
+      s += ":" + [[value.location endColumn] string]
+      s += ":" + [[value.location endLocationIndex] string]
     between s += ", "
     end
     s += "}\n"
@@ -196,7 +196,7 @@ proc addText
   ?let @string inIndendation {
   let @string s = @string. retrieveAndResetTemplateString
   let @string trimmedString = [s stringByTrimmingWhiteSpaces]
-  if [trimmedString length] > 0 then
+  if [trimmedString count] > 0 then
     let @string ls
     if inDoNotCondenseWhiteSpaces then
       ls = s

@@ -177,7 +177,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
     #--- Add extension override
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     #--- Build initial semantic context
-      outTypeMap = .emptyMap
+      outTypeMap =  §[]
       outSemanticContext = @semanticContext {!galgas4: inGalgas4}
     #--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do

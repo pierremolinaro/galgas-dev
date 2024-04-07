@@ -117,7 +117,7 @@ override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
                                       ?let @string inScannerClassName
                                       ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
                                       -> @string outGeneratedCode {
-  let loopVarName = "loop" + [self.mLocation locationIndex]
+  let loopVarName = "loop" + [self.mLocation endLocationIndex]
   outGeneratedCode = "BOOL " + loopVarName + " = YES ;\n"
   outGeneratedCode += "do {\n"
   [!?outGeneratedCode incIndentation !2]

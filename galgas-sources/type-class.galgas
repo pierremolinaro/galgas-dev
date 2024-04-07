@@ -759,7 +759,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.propertyInitializationCode
         ![typedefinition.mHandledOperatorFlags generateSynthetizedInitializer]
         !self.synthetizedInitializerArgumentList
-        !inheritedSynthetizedInitializerArgumentList
+        !self.inheritedSynthetizedInitializerArgumentList
         !typedefinition.initializerMap
       ]
     else

@@ -344,7 +344,7 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
     var @string constructorName = ""
     var found = false
     for c in classFunctionMap while not found do
-      if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == inFormalArgumentType) then
+      if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == inFormalArgumentType) then
         hasCompilerArgument = c.mHasCompilerArgument
         constructorName = c.lkey.string
         found = true
@@ -508,7 +508,7 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
       var @string constructorName = ""
       var found = false
       for c in classFunctionMap while not found do
-        if ([c.mArgumentTypeList length] == 0) && (c.mReturnedType == inFormalArgumentType) then
+        if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == inFormalArgumentType) then
           hasCompilerArgument = c.mHasCompilerArgument
           constructorName = c.lkey.string
           found = true

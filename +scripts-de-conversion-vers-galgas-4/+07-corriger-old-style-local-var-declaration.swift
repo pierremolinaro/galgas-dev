@@ -92,7 +92,6 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         loop = false
         ok = true
       }else if status == 1 {
-    //    print (CYAN + s + ENDC)
         let lines = s.components (separatedBy: "\n")
         var lineIndex = 0
         var found = false
@@ -159,7 +158,7 @@ print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
 let directoryEnumerator = fm.enumerator (atPath: scriptDir)
 var galgasProjectFiles = [String] ()
 while let file = directoryEnumerator?.nextObject () as? String {
-  if file.hasSuffix (".galgasProject") {
+ if file.lowercased ().hasSuffix (".galgasproject") || file.lowercased ().hasSuffix (".ggsproject") {
     let path = scriptDir.appending("/\(file)")
     galgasProjectFiles.append (path)
     print ("  found \(path)")

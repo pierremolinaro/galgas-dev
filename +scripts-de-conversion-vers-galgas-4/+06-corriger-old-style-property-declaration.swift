@@ -123,15 +123,13 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
           préfixe.removeLast (ligneConcernée.count - premierCaractère)
           print ("  Préfixe '\(préfixe)'")
           var suffixe = ligneConcernée
-          suffixe.removeFirst (dernierCaractère + 1)
+          suffixe.removeFirst (premierCaractère)
           print ("  Suffixe '\(suffixe)'")
-          var chaîneRemplacement = lineFixIt
-          chaîneRemplacement.removeFirst (22) // "Fix-it, replace with " suivi de ZeroWidthSpace
-          print ("  Remplacement '\(chaîneRemplacement)'")
-          let ligneModifiée = préfixe + chaîneRemplacement + suffixe
+          let ligneModifiée = préfixe + "public var " + suffixe
           print ("  ligne modifiée '\(ligneModifiée)'")
           lignesDuFichier [ligne - 1] = ligneModifiée
           let newContents = lignesDuFichier.joined (separator: "\n")
+          // loop = false
           let data : Data = newContents.data (using: .utf8, allowLossyConversion: false)!
           try! data.write (to: URL (fileURLWithPath: fichier), options: .atomic)
           nombreModifications += 1
@@ -159,7 +157,7 @@ print (BOLD_BLUE + "Inventaire des projets galgas dans \(scriptDir)…" + ENDC)
 let directoryEnumerator = fm.enumerator (atPath: scriptDir)
 var galgasProjectFiles = [String] ()
 while let file = directoryEnumerator?.nextObject () as? String {
-  if file.hasSuffix (".galgasProject") {
+ if file.lowercased ().hasSuffix (".galgasproject") || file.lowercased ().hasSuffix (".ggsproject") {
     let path = scriptDir.appending("/\(file)")
     galgasProjectFiles.append (path)
     print ("  found \(path)")

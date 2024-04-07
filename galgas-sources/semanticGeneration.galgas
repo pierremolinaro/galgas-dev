@@ -1045,7 +1045,7 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  if [selfTypeDefinition typeKind] == .packageType then
+  if selfTypeDefinition.typeKind == .packageType then
     result = ""
   else
     result = [filewrapper typeGenerationTemplate.genericTypeImplementation
@@ -1301,7 +1301,7 @@ proc generateWrapperContents
       ioImplementation += "_"
       ioImplementation += [inFilewrapperName identifierRepresentation]
       ioImplementation += " = "
-      if [contents length] > 100 then
+      if [contents count] > 100 then
         var components = [contents componentsSeparatedByString !"\n"]
         [!?components popLast ?let lastLine]
         for (str) in components
@@ -1311,7 +1311,7 @@ proc generateWrapperContents
           let s = str + "\n"
           ioImplementation += [s utf8RepresentationEscapingQuestionMark] + "\n  "
         end
-        if [lastLine length] > 0 then
+        if [lastLine count] > 0 then
           ioImplementation += [lastLine utf8RepresentationEscapingQuestionMark]
         end
       else
@@ -1463,7 +1463,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
   override getter appendPrimitiveTypeDeclaration -> @string {
     result = self.mCppDeclarationString
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
-    if [self isPackage] then
+    if self.isPackage then
       result += [filewrapper typeGenerationTemplate.unifiedClassBodyForPackage
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
@@ -1551,7 +1551,7 @@ proc generatePredefinedTypeFiles
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendTypeGenericImplementation]
-      [mDeclaration appendSpecificImplementation !.emptyMap !?* ?let @string code]
+      [mDeclaration appendSpecificImplementation ! §[] !?* ?let @string code]
       generatedCode += code
     end
   end

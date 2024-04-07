@@ -8,6 +8,185 @@
 #include "all-declarations-16.h"
 
 //--------------------------------------------------------------------------------------------------
+// @lexicalDropInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mTerminalName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalDropInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cPtr_lexicalDropInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
+  const cPtr_lexicalDropInstructionAST * p = (const cPtr_lexicalDropInstructionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mTerminalName.objectCompare (p->mProperty_mTerminalName) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+ComparisonResult GALGAS_lexicalDropInstructionAST::objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST::GALGAS_lexicalDropInstructionAST (void) :
+GALGAS_lexicalInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::
+init_21_ (const GALGAS_lstring & in_mTerminalName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_lexicalDropInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalDropInstructionAST (inCompiler COMMA_THERE)) ;
+  object->lexicalDropInstructionAST_init_21_ (in_mTerminalName, inCompiler) ;
+  const GALGAS_lexicalDropInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalDropInstructionAST::
+lexicalDropInstructionAST_init_21_ (const GALGAS_lstring & in_mTerminalName,
+                                    Compiler * /* inCompiler */) {
+  mProperty_mTerminalName = in_mTerminalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST::GALGAS_lexicalDropInstructionAST (const cPtr_lexicalDropInstructionAST * inSourcePtr) :
+GALGAS_lexicalInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalDropInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::class_func_new (const GALGAS_lstring & in_mTerminalName
+                                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalDropInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalDropInstructionAST (in_mTerminalName COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_lexicalDropInstructionAST::readProperty_mTerminalName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_lexicalDropInstructionAST * p = (cPtr_lexicalDropInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
+    return p->mProperty_mTerminalName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalDropInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (const GALGAS_lstring & in_mTerminalName
+                                                                COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (THERE),
+mProperty_mTerminalName () {
+  mProperty_mTerminalName = in_mTerminalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalDropInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
+}
+
+void cPtr_lexicalDropInstructionAST::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalDropInstructionAST:") ;
+  mProperty_mTerminalName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalDropInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalDropInstructionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ("lexicalDropInstructionAST",
+                                                                                 & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalDropInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalDropInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalDropInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalDropInstructionAST result ;
+  const GALGAS_lexicalDropInstructionAST * p = (const GALGAS_lexicalDropInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalDropInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalDropInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @lexicalErrorInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -4345,6 +4524,30 @@ GALGAS_enumTypeForGeneration_2D_weak GALGAS_enumTypeForGeneration_2D_weak::extra
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@typeNameFormalParameterNameList initializerSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string extensionGetter_initializerSignature (const GALGAS_typeNameFormalParameterNameList & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  result_result = GALGAS_string ("init") ;
+  const GALGAS_typeNameFormalParameterNameList temp_0 = inObject ;
+  cEnumerator_typeNameFormalParameterNameList enumerator_11845 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_11845.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GALGAS_string ("!").add_operation (enumerator_11845.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 313)), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 313)) ;
+    enumerator_11845.gotoNextObject () ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
 // @externTypeDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -4353,7 +4556,7 @@ cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_mExternTypeName (),
 mProperty_mCppPreDeclarationCode (),
 mProperty_mCppClassCode (),
-mProperty_mExternTypeConstructorList (),
+mProperty_externTypeInitializerList (),
 mProperty_mExternTypeGetterList (),
 mProperty_mExternTypeSetterList (),
 mProperty_mExternTypeMethodList () {
@@ -4367,7 +4570,7 @@ mProperty_mExternTypeMethodList () {
     mProperty_mExternTypeName.printNonNullClassInstanceProperties ("mExternTypeName") ;
     mProperty_mCppPreDeclarationCode.printNonNullClassInstanceProperties ("mCppPreDeclarationCode") ;
     mProperty_mCppClassCode.printNonNullClassInstanceProperties ("mCppClassCode") ;
-    mProperty_mExternTypeConstructorList.printNonNullClassInstanceProperties ("mExternTypeConstructorList") ;
+    mProperty_externTypeInitializerList.printNonNullClassInstanceProperties ("externTypeInitializerList") ;
     mProperty_mExternTypeGetterList.printNonNullClassInstanceProperties ("mExternTypeGetterList") ;
     mProperty_mExternTypeSetterList.printNonNullClassInstanceProperties ("mExternTypeSetterList") ;
     mProperty_mExternTypeMethodList.printNonNullClassInstanceProperties ("mExternTypeMethodList") ;
@@ -4393,7 +4596,7 @@ ComparisonResult cPtr_externTypeDeclarationAST::dynamicObjectCompare (const acPt
     result = mProperty_mCppClassCode.objectCompare (p->mProperty_mCppClassCode) ;
   }
   if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mExternTypeConstructorList.objectCompare (p->mProperty_mExternTypeConstructorList) ;
+    result = mProperty_externTypeInitializerList.objectCompare (p->mProperty_externTypeInitializerList) ;
   }
   if (ComparisonResult::operandEqual == result) {
     result = mProperty_mExternTypeGetterList.objectCompare (p->mProperty_mExternTypeGetterList) ;
@@ -4439,7 +4642,7 @@ init_21_isPredefined_21__21__21__21__21__21__21_ (const GALGAS_bool & in_isPrede
                                                   const GALGAS_lstring & in_mExternTypeName,
                                                   const GALGAS_string & in_mCppPreDeclarationCode,
                                                   const GALGAS_string & in_mCppClassCode,
-                                                  const GALGAS_externTypeConstructorList & in_mExternTypeConstructorList,
+                                                  const GALGAS_externTypeConstructorList & in_externTypeInitializerList,
                                                   const GALGAS_externTypeGetterList & in_mExternTypeGetterList,
                                                   const GALGAS_externTypeSetterList & in_mExternTypeSetterList,
                                                   const GALGAS_externTypeMethodList & in_mExternTypeMethodList,
@@ -4447,7 +4650,7 @@ init_21_isPredefined_21__21__21__21__21__21__21_ (const GALGAS_bool & in_isPrede
                                                   COMMA_LOCATION_ARGS) {
   cPtr_externTypeDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_externTypeDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->externTypeDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, in_mExternTypeConstructorList, in_mExternTypeGetterList, in_mExternTypeSetterList, in_mExternTypeMethodList, inCompiler) ;
+  object->externTypeDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, in_externTypeInitializerList, in_mExternTypeGetterList, in_mExternTypeSetterList, in_mExternTypeMethodList, inCompiler) ;
   const GALGAS_externTypeDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4460,7 +4663,7 @@ externTypeDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const
                                                                            const GALGAS_lstring & in_mExternTypeName,
                                                                            const GALGAS_string & in_mCppPreDeclarationCode,
                                                                            const GALGAS_string & in_mCppClassCode,
-                                                                           const GALGAS_externTypeConstructorList & in_mExternTypeConstructorList,
+                                                                           const GALGAS_externTypeConstructorList & in_externTypeInitializerList,
                                                                            const GALGAS_externTypeGetterList & in_mExternTypeGetterList,
                                                                            const GALGAS_externTypeSetterList & in_mExternTypeSetterList,
                                                                            const GALGAS_externTypeMethodList & in_mExternTypeMethodList,
@@ -4469,7 +4672,7 @@ externTypeDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const
   mProperty_mExternTypeName = in_mExternTypeName ;
   mProperty_mCppPreDeclarationCode = in_mCppPreDeclarationCode ;
   mProperty_mCppClassCode = in_mCppClassCode ;
-  mProperty_mExternTypeConstructorList = in_mExternTypeConstructorList ;
+  mProperty_externTypeInitializerList = in_externTypeInitializerList ;
   mProperty_mExternTypeGetterList = in_mExternTypeGetterList ;
   mProperty_mExternTypeSetterList = in_mExternTypeSetterList ;
   mProperty_mExternTypeMethodList = in_mExternTypeMethodList ;
@@ -4487,13 +4690,13 @@ GALGAS_externTypeDeclarationAST GALGAS_externTypeDeclarationAST::class_func_new 
                                                                                  const GALGAS_lstring & in_mExternTypeName,
                                                                                  const GALGAS_string & in_mCppPreDeclarationCode,
                                                                                  const GALGAS_string & in_mCppClassCode,
-                                                                                 const GALGAS_externTypeConstructorList & in_mExternTypeConstructorList,
+                                                                                 const GALGAS_externTypeConstructorList & in_externTypeInitializerList,
                                                                                  const GALGAS_externTypeGetterList & in_mExternTypeGetterList,
                                                                                  const GALGAS_externTypeSetterList & in_mExternTypeSetterList,
                                                                                  const GALGAS_externTypeMethodList & in_mExternTypeMethodList
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_externTypeDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_externTypeDeclarationAST (in_isPredefined, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, in_mExternTypeConstructorList, in_mExternTypeGetterList, in_mExternTypeSetterList, in_mExternTypeMethodList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_externTypeDeclarationAST (in_isPredefined, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, in_externTypeInitializerList, in_mExternTypeGetterList, in_mExternTypeSetterList, in_mExternTypeMethodList COMMA_THERE)) ;
   return result ;
 }
 
@@ -4535,13 +4738,13 @@ GALGAS_string GALGAS_externTypeDeclarationAST::readProperty_mCppClassCode (void)
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_externTypeConstructorList GALGAS_externTypeDeclarationAST::readProperty_mExternTypeConstructorList (void) const {
+GALGAS_externTypeConstructorList GALGAS_externTypeDeclarationAST::readProperty_externTypeInitializerList (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_externTypeConstructorList () ;
   }else{
     cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
-    return p->mProperty_mExternTypeConstructorList ;
+    return p->mProperty_externTypeInitializerList ;
   }
 }
 
@@ -4589,7 +4792,7 @@ cPtr_externTypeDeclarationAST::cPtr_externTypeDeclarationAST (const GALGAS_bool 
                                                               const GALGAS_lstring & in_mExternTypeName,
                                                               const GALGAS_string & in_mCppPreDeclarationCode,
                                                               const GALGAS_string & in_mCppClassCode,
-                                                              const GALGAS_externTypeConstructorList & in_mExternTypeConstructorList,
+                                                              const GALGAS_externTypeConstructorList & in_externTypeInitializerList,
                                                               const GALGAS_externTypeGetterList & in_mExternTypeGetterList,
                                                               const GALGAS_externTypeSetterList & in_mExternTypeSetterList,
                                                               const GALGAS_externTypeMethodList & in_mExternTypeMethodList
@@ -4598,7 +4801,7 @@ cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
 mProperty_mExternTypeName (),
 mProperty_mCppPreDeclarationCode (),
 mProperty_mCppClassCode (),
-mProperty_mExternTypeConstructorList (),
+mProperty_externTypeInitializerList (),
 mProperty_mExternTypeGetterList (),
 mProperty_mExternTypeSetterList (),
 mProperty_mExternTypeMethodList () {
@@ -4606,7 +4809,7 @@ mProperty_mExternTypeMethodList () {
   mProperty_mExternTypeName = in_mExternTypeName ;
   mProperty_mCppPreDeclarationCode = in_mCppPreDeclarationCode ;
   mProperty_mCppClassCode = in_mCppClassCode ;
-  mProperty_mExternTypeConstructorList = in_mExternTypeConstructorList ;
+  mProperty_externTypeInitializerList = in_externTypeInitializerList ;
   mProperty_mExternTypeGetterList = in_mExternTypeGetterList ;
   mProperty_mExternTypeSetterList = in_mExternTypeSetterList ;
   mProperty_mExternTypeMethodList = in_mExternTypeMethodList ;
@@ -4629,7 +4832,7 @@ void cPtr_externTypeDeclarationAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mCppClassCode.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mExternTypeConstructorList.description (ioString, inIndentation+1) ;
+  mProperty_externTypeInitializerList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mExternTypeGetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -4643,7 +4846,7 @@ void cPtr_externTypeDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_externTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_externTypeDeclarationAST (mProperty_isPredefined, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, mProperty_mExternTypeConstructorList, mProperty_mExternTypeGetterList, mProperty_mExternTypeSetterList, mProperty_mExternTypeMethodList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationAST (mProperty_isPredefined, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, mProperty_externTypeInitializerList, mProperty_mExternTypeGetterList, mProperty_mExternTypeSetterList, mProperty_mExternTypeMethodList COMMA_THERE)) ;
   return ptr ;
 }
 

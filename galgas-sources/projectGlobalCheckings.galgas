@@ -56,7 +56,7 @@ method @semanticDeclarationAST buildExtensionListMaps
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @unifiedTypeMapEntryList {
-  @unifiedTypeMapEntry mEntry
+  public var @unifiedTypeMapEntry mEntry
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
