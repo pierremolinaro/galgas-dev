@@ -137,7 +137,7 @@ end
     before %static const TemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
     do %  TemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
       if [mEndString count] == 0 then
-        %§[], 0,%
+        %{}, 0,%
       else
         %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString count] string]%,%
       end
