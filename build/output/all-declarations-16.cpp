@@ -2440,7 +2440,8 @@ mProperty_mIsReference (),
 mProperty_mClassTypeName (),
 mProperty_mSuperClassName (),
 mProperty_mGenerateInSeparateFile (),
-mProperty_mPropertyList () {
+mProperty_mPropertyList (),
+mProperty_clonable () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2454,6 +2455,7 @@ mProperty_mPropertyList () {
     mProperty_mSuperClassName.printNonNullClassInstanceProperties ("mSuperClassName") ;
     mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
     mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_clonable.printNonNullClassInstanceProperties ("clonable") ;
   }
 #endif
 
@@ -2483,6 +2485,9 @@ ComparisonResult cPtr_classDeclarationAST::dynamicObjectCompare (const acPtr_cla
   }
   if (ComparisonResult::operandEqual == result) {
     result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_clonable.objectCompare (p->mProperty_clonable) ;
   }
   return result ;
 }
@@ -2515,18 +2520,19 @@ GALGAS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_classDeclarationAST GALGAS_classDeclarationAST::
-init_21_isPredefined_21__21__21__21__21__21_ (const GALGAS_bool & in_isPredefined,
-                                              const GALGAS_bool & in_mIsAbstract,
-                                              const GALGAS_bool & in_mIsReference,
-                                              const GALGAS_lstring & in_mClassTypeName,
-                                              const GALGAS_lstring & in_mSuperClassName,
-                                              const GALGAS_bool & in_mGenerateInSeparateFile,
-                                              const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21_ (const GALGAS_bool & in_isPredefined,
+                                                  const GALGAS_bool & in_mIsAbstract,
+                                                  const GALGAS_bool & in_mIsReference,
+                                                  const GALGAS_lstring & in_mClassTypeName,
+                                                  const GALGAS_lstring & in_mSuperClassName,
+                                                  const GALGAS_bool & in_mGenerateInSeparateFile,
+                                                  const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                  const GALGAS_bool & in_clonable,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   cPtr_classDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_classDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21_ (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, inCompiler) ;
+  object->classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable, inCompiler) ;
   const GALGAS_classDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2535,14 +2541,15 @@ init_21_isPredefined_21__21__21__21__21__21_ (const GALGAS_bool & in_isPredefine
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classDeclarationAST::
-classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21_ (const GALGAS_bool & in_isPredefined,
-                                                                  const GALGAS_bool & in_mIsAbstract,
-                                                                  const GALGAS_bool & in_mIsReference,
-                                                                  const GALGAS_lstring & in_mClassTypeName,
-                                                                  const GALGAS_lstring & in_mSuperClassName,
-                                                                  const GALGAS_bool & in_mGenerateInSeparateFile,
-                                                                  const GALGAS_propertyInCollectionListAST & in_mPropertyList,
-                                                                  Compiler * /* inCompiler */) {
+classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const GALGAS_bool & in_isPredefined,
+                                                                      const GALGAS_bool & in_mIsAbstract,
+                                                                      const GALGAS_bool & in_mIsReference,
+                                                                      const GALGAS_lstring & in_mClassTypeName,
+                                                                      const GALGAS_lstring & in_mSuperClassName,
+                                                                      const GALGAS_bool & in_mGenerateInSeparateFile,
+                                                                      const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                      const GALGAS_bool & in_clonable,
+                                                                      Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsAbstract = in_mIsAbstract ;
   mProperty_mIsReference = in_mIsReference ;
@@ -2550,6 +2557,7 @@ classDeclarationAST_init_21_isPredefined_21__21__21__21__21__21_ (const GALGAS_b
   mProperty_mSuperClassName = in_mSuperClassName ;
   mProperty_mGenerateInSeparateFile = in_mGenerateInSeparateFile ;
   mProperty_mPropertyList = in_mPropertyList ;
+  mProperty_clonable = in_clonable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2566,10 +2574,11 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST::class_func_new (const GAL
                                                                        const GALGAS_lstring & in_mClassTypeName,
                                                                        const GALGAS_lstring & in_mSuperClassName,
                                                                        const GALGAS_bool & in_mGenerateInSeparateFile,
-                                                                       const GALGAS_propertyInCollectionListAST & in_mPropertyList
+                                                                       const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                       const GALGAS_bool & in_clonable
                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_classDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable COMMA_THERE)) ;
   return result ;
 }
 
@@ -2646,6 +2655,18 @@ GALGAS_propertyInCollectionListAST GALGAS_classDeclarationAST::readProperty_mPro
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_classDeclarationAST::readProperty_clonable (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_classDeclarationAST) ;
+    return p->mProperty_clonable ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @classDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
@@ -2655,7 +2676,8 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GALGAS_bool & in_isPre
                                                     const GALGAS_lstring & in_mClassTypeName,
                                                     const GALGAS_lstring & in_mSuperClassName,
                                                     const GALGAS_bool & in_mGenerateInSeparateFile,
-                                                    const GALGAS_propertyInCollectionListAST & in_mPropertyList
+                                                    const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                    const GALGAS_bool & in_clonable
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
 mProperty_mIsAbstract (),
@@ -2663,7 +2685,8 @@ mProperty_mIsReference (),
 mProperty_mClassTypeName (),
 mProperty_mSuperClassName (),
 mProperty_mGenerateInSeparateFile (),
-mProperty_mPropertyList () {
+mProperty_mPropertyList (),
+mProperty_clonable () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsAbstract = in_mIsAbstract ;
   mProperty_mIsReference = in_mIsReference ;
@@ -2671,6 +2694,7 @@ mProperty_mPropertyList () {
   mProperty_mSuperClassName = in_mSuperClassName ;
   mProperty_mGenerateInSeparateFile = in_mGenerateInSeparateFile ;
   mProperty_mPropertyList = in_mPropertyList ;
+  mProperty_clonable = in_clonable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2695,6 +2719,8 @@ void cPtr_classDeclarationAST::description (String & ioString,
   mProperty_mGenerateInSeparateFile.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mPropertyList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_clonable.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -2702,7 +2728,7 @@ void cPtr_classDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -2765,7 +2791,8 @@ mProperty_initializerNeedsCompilerVariable (),
 mProperty_propertyInitializationCode (),
 mProperty_synthetizedInitializerArgumentList (),
 mProperty_inheritedSynthetizedInitializerArgumentList (),
-mProperty_initializerMap () {
+mProperty_initializerMap (),
+mProperty_clonable () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2784,6 +2811,7 @@ mProperty_initializerMap () {
     mProperty_synthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("synthetizedInitializerArgumentList") ;
     mProperty_inheritedSynthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("inheritedSynthetizedInitializerArgumentList") ;
     mProperty_initializerMap.printNonNullClassInstanceProperties ("initializerMap") ;
+    mProperty_clonable.printNonNullClassInstanceProperties ("clonable") ;
   }
 #endif
 
@@ -2829,6 +2857,9 @@ ComparisonResult cPtr_classTypeForGeneration::dynamicObjectCompare (const acPtr_
   if (ComparisonResult::operandEqual == result) {
     result = mProperty_initializerMap.objectCompare (p->mProperty_initializerMap) ;
   }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_clonable.objectCompare (p->mProperty_clonable) ;
+  }
   return result ;
 }
 
@@ -2860,23 +2891,24 @@ GALGAS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::
-init_21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                      const GALGAS_bool & in_mIsAbstract,
-                                                      const GALGAS_bool & in_mIsReference,
-                                                      const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
-                                                      const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
-                                                      const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
-                                                      const GALGAS_bool & in_generateHeaderInSeparateFile,
-                                                      const GALGAS_bool & in_initializerNeedsCompilerVariable,
-                                                      const GALGAS_string & in_propertyInitializationCode,
-                                                      const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                      const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
-                                                      const GALGAS_initializerMap & in_initializerMap,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                          const GALGAS_bool & in_mIsAbstract,
+                                                          const GALGAS_bool & in_mIsReference,
+                                                          const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
+                                                          const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
+                                                          const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                          const GALGAS_bool & in_generateHeaderInSeparateFile,
+                                                          const GALGAS_bool & in_initializerNeedsCompilerVariable,
+                                                          const GALGAS_string & in_propertyInitializationCode,
+                                                          const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                                          const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                          const GALGAS_initializerMap & in_initializerMap,
+                                                          const GALGAS_bool & in_clonable,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   cPtr_classTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_classTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap, inCompiler) ;
+  object->classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap, in_clonable, inCompiler) ;
   const GALGAS_classTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2885,19 +2917,20 @@ init_21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMa
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classTypeForGeneration::
-classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                             const GALGAS_bool & in_mIsAbstract,
-                                                                             const GALGAS_bool & in_mIsReference,
-                                                                             const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
-                                                                             const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
-                                                                             const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
-                                                                             const GALGAS_bool & in_generateHeaderInSeparateFile,
-                                                                             const GALGAS_bool & in_initializerNeedsCompilerVariable,
-                                                                             const GALGAS_string & in_propertyInitializationCode,
-                                                                             const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                                             const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
-                                                                             const GALGAS_initializerMap & in_initializerMap,
-                                                                             Compiler * /* inCompiler */) {
+classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                 const GALGAS_bool & in_mIsAbstract,
+                                                                                 const GALGAS_bool & in_mIsReference,
+                                                                                 const GALGAS_unifiedTypeMapEntry & in_mSuperClass,
+                                                                                 const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
+                                                                                 const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                                                 const GALGAS_bool & in_generateHeaderInSeparateFile,
+                                                                                 const GALGAS_bool & in_initializerNeedsCompilerVariable,
+                                                                                 const GALGAS_string & in_propertyInitializationCode,
+                                                                                 const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
+                                                                                 const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                                                 const GALGAS_initializerMap & in_initializerMap,
+                                                                                 const GALGAS_bool & in_clonable,
+                                                                                 Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mIsAbstract = in_mIsAbstract ;
   mProperty_mIsReference = in_mIsReference ;
@@ -2910,6 +2943,7 @@ classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21_ (con
   mProperty_synthetizedInitializerArgumentList = in_synthetizedInitializerArgumentList ;
   mProperty_inheritedSynthetizedInitializerArgumentList = in_inheritedSynthetizedInitializerArgumentList ;
   mProperty_initializerMap = in_initializerMap ;
+  mProperty_clonable = in_clonable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2931,10 +2965,11 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::class_func_new (con
                                                                              const GALGAS_string & in_propertyInitializationCode,
                                                                              const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
                                                                              const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
-                                                                             const GALGAS_initializerMap & in_initializerMap
+                                                                             const GALGAS_initializerMap & in_initializerMap,
+                                                                             const GALGAS_bool & in_clonable
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_classTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap, in_clonable COMMA_THERE)) ;
   return result ;
 }
 
@@ -3071,6 +3106,18 @@ GALGAS_initializerMap GALGAS_classTypeForGeneration::readProperty_initializerMap
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_classTypeForGeneration::readProperty_clonable (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
+    return p->mProperty_clonable ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @classTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
@@ -3085,7 +3132,8 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GALGAS_unifiedTy
                                                           const GALGAS_string & in_propertyInitializationCode,
                                                           const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
                                                           const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
-                                                          const GALGAS_initializerMap & in_initializerMap
+                                                          const GALGAS_initializerMap & in_initializerMap,
+                                                          const GALGAS_bool & in_clonable
                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_mIsAbstract (),
@@ -3098,7 +3146,8 @@ mProperty_initializerNeedsCompilerVariable (),
 mProperty_propertyInitializationCode (),
 mProperty_synthetizedInitializerArgumentList (),
 mProperty_inheritedSynthetizedInitializerArgumentList (),
-mProperty_initializerMap () {
+mProperty_initializerMap (),
+mProperty_clonable () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mIsAbstract = in_mIsAbstract ;
   mProperty_mIsReference = in_mIsReference ;
@@ -3111,6 +3160,7 @@ mProperty_initializerMap () {
   mProperty_synthetizedInitializerArgumentList = in_synthetizedInitializerArgumentList ;
   mProperty_inheritedSynthetizedInitializerArgumentList = in_inheritedSynthetizedInitializerArgumentList ;
   mProperty_initializerMap = in_initializerMap ;
+  mProperty_clonable = in_clonable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3145,6 +3195,8 @@ void cPtr_classTypeForGeneration::description (String & ioString,
   mProperty_inheritedSynthetizedInitializerArgumentList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_initializerMap.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_clonable.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -3152,7 +3204,7 @@ void cPtr_classTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList, mProperty_initializerMap COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList, mProperty_initializerMap, mProperty_clonable COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -15085,274 +15137,6 @@ GALGAS_extensionInitializerForGeneration_2D_weak GALGAS_extensionInitializerForG
       result = *p ;
     }else{
       inCompiler->castError ("extensionInitializerForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @overridingAbstractExtensionGetterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_overridingAbstractExtensionGetterAST::cPtr_overridingAbstractExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mAbstractExtensionGetterName (),
-mProperty_mAbstractExtensionGetterFormalInputParameterList (),
-mProperty_mAbstractExtensionGetterReturnedTypeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_overridingAbstractExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mAbstractExtensionGetterName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterName") ;
-    mProperty_mAbstractExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionGetterFormalInputParameterList") ;
-    mProperty_mAbstractExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterReturnedTypeName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cPtr_overridingAbstractExtensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  const cPtr_overridingAbstractExtensionGetterAST * p = (const cPtr_overridingAbstractExtensionGetterAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_isPredefined.objectCompare (p->mProperty_isPredefined) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mTypeName.objectCompare (p->mProperty_mTypeName) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mAbstractExtensionGetterName.objectCompare (p->mProperty_mAbstractExtensionGetterName) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mAbstractExtensionGetterFormalInputParameterList.objectCompare (p->mProperty_mAbstractExtensionGetterFormalInputParameterList) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mAbstractExtensionGetterReturnedTypeName.objectCompare (p->mProperty_mAbstractExtensionGetterReturnedTypeName) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-ComparisonResult GALGAS_overridingAbstractExtensionGetterAST::objectCompare (const GALGAS_overridingAbstractExtensionGetterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overridingAbstractExtensionGetterAST::GALGAS_overridingAbstractExtensionGetterAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::
-init_21_isPredefined_21__21__21__21_ (const GALGAS_bool & in_isPredefined,
-                                      const GALGAS_lstring & in_mTypeName,
-                                      const GALGAS_lstring & in_mAbstractExtensionGetterName,
-                                      const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                      const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cPtr_overridingAbstractExtensionGetterAST * object = nullptr ;
-  macroMyNew (object, cPtr_overridingAbstractExtensionGetterAST (inCompiler COMMA_THERE)) ;
-  object->overridingAbstractExtensionGetterAST_init_21_isPredefined_21__21__21__21_ (in_isPredefined, in_mTypeName, in_mAbstractExtensionGetterName, in_mAbstractExtensionGetterFormalInputParameterList, in_mAbstractExtensionGetterReturnedTypeName, inCompiler) ;
-  const GALGAS_overridingAbstractExtensionGetterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_overridingAbstractExtensionGetterAST::
-overridingAbstractExtensionGetterAST_init_21_isPredefined_21__21__21__21_ (const GALGAS_bool & in_isPredefined,
-                                                                           const GALGAS_lstring & in_mTypeName,
-                                                                           const GALGAS_lstring & in_mAbstractExtensionGetterName,
-                                                                           const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                                                           const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
-                                                                           Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mAbstractExtensionGetterName = in_mAbstractExtensionGetterName ;
-  mProperty_mAbstractExtensionGetterFormalInputParameterList = in_mAbstractExtensionGetterFormalInputParameterList ;
-  mProperty_mAbstractExtensionGetterReturnedTypeName = in_mAbstractExtensionGetterReturnedTypeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overridingAbstractExtensionGetterAST::GALGAS_overridingAbstractExtensionGetterAST (const cPtr_overridingAbstractExtensionGetterAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionGetterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::class_func_new (const GALGAS_bool & in_isPredefined,
-                                                                                                         const GALGAS_lstring & in_mTypeName,
-                                                                                                         const GALGAS_lstring & in_mAbstractExtensionGetterName,
-                                                                                                         const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                                                                                         const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName
-                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractExtensionGetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_overridingAbstractExtensionGetterAST (in_isPredefined, in_mTypeName, in_mAbstractExtensionGetterName, in_mAbstractExtensionGetterFormalInputParameterList, in_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
-    return p->mProperty_mAbstractExtensionGetterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_formalInputParameterListAST GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterFormalInputParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_formalInputParameterListAST () ;
-  }else{
-    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
-    return p->mProperty_mAbstractExtensionGetterFormalInputParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::readProperty_mAbstractExtensionGetterReturnedTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
-    return p->mProperty_mAbstractExtensionGetterReturnedTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @overridingAbstractExtensionGetterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_overridingAbstractExtensionGetterAST::cPtr_overridingAbstractExtensionGetterAST (const GALGAS_bool & in_isPredefined,
-                                                                                      const GALGAS_lstring & in_mTypeName,
-                                                                                      const GALGAS_lstring & in_mAbstractExtensionGetterName,
-                                                                                      const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                                                                      const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName
-                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mAbstractExtensionGetterName (),
-mProperty_mAbstractExtensionGetterFormalInputParameterList (),
-mProperty_mAbstractExtensionGetterReturnedTypeName () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mAbstractExtensionGetterName = in_mAbstractExtensionGetterName ;
-  mProperty_mAbstractExtensionGetterFormalInputParameterList = in_mAbstractExtensionGetterFormalInputParameterList ;
-  mProperty_mAbstractExtensionGetterReturnedTypeName = in_mAbstractExtensionGetterReturnedTypeName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionGetterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
-}
-
-void cPtr_overridingAbstractExtensionGetterAST::description (String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString.appendCString ("[@overridingAbstractExtensionGetterAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mAbstractExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mAbstractExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_overridingAbstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_overridingAbstractExtensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionGetterName, mProperty_mAbstractExtensionGetterFormalInputParameterList, mProperty_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @overridingAbstractExtensionGetterAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ("overridingAbstractExtensionGetterAST",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionGetterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_overridingAbstractExtensionGetterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_overridingAbstractExtensionGetterAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractExtensionGetterAST result ;
-  const GALGAS_overridingAbstractExtensionGetterAST * p = (const GALGAS_overridingAbstractExtensionGetterAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_overridingAbstractExtensionGetterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("overridingAbstractExtensionGetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

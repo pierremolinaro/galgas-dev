@@ -532,6 +532,8 @@ class GALGAS_operators : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_operators class_func_all (LOCATION_ARGS) ;
 
+  public: static class GALGAS_operators class_func_clonable (LOCATION_ARGS) ;
+
   public: static class GALGAS_operators class_func_divEqualOperatorWithExpression (LOCATION_ARGS) ;
 
   public: static class GALGAS_operators class_func_doNotGenererateObjectCompare (LOCATION_ARGS) ;
@@ -633,6 +635,8 @@ class GALGAS_operators : public AC_GALGAS_root {
 
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_all (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_clonable (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_divEqualOperatorWithExpression (LOCATION_ARGS) const ;
 

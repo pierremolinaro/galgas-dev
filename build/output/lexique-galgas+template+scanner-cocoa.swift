@@ -152,6 +152,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %makefile-x86linux32-on-macosx */,
   false /* %makefile-x86linux64-on-macosx */,
   false /* %makefile-win32-on-macosx */,
+  false /* %clonable */,
   false /* %codeblocks-windows */,
   false /* %codeblocks-linux32 */,
   false /* %codeblocks-linux64 */,
@@ -350,7 +351,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [189] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [190] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -475,6 +476,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [189] = {
   NO /* %makefile-x86linux32-on-macosx */,
   NO /* %makefile-x86linux64-on-macosx */,
   NO /* %makefile-win32-on-macosx */,
+  NO /* %clonable */,
   NO /* %codeblocks-windows */,
   NO /* %codeblocks-linux32 */,
   NO /* %codeblocks-linux64 */,

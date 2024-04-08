@@ -4889,7 +4889,7 @@ GALGAS_operators GALGAS_operators::class_func_none (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_operators GALGAS_operators::class_func_all (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (uint64_t (0x1FFFFFFFF)) ;
+  return GALGAS_operators (uint64_t (0x3FFFFFFFF)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5092,6 +5092,12 @@ GALGAS_operators GALGAS_operators::class_func_generateSynthetizedInitializer (UN
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_operators GALGAS_operators::class_func_clonable (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (uint64_t (1) << 33) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 ComparisonResult GALGAS_operators::objectCompare (const GALGAS_operators & inOperand) const {
    ComparisonResult result = ComparisonResult::invalid ;
    if (mIsValid && inOperand.mIsValid) {
@@ -5161,7 +5167,7 @@ GALGAS_operators GALGAS_operators::substract_operation (const GALGAS_operators &
 GALGAS_operators GALGAS_operators::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_operators result ;
   if (mIsValid) {
-    result = GALGAS_operators (((uint64_t) 0x1FFFFFFFF) ^ mFlags) ;
+    result = GALGAS_operators (((uint64_t) 0x3FFFFFFFF) ^ mFlags) ;
   }
   return result ;
 }
@@ -5273,6 +5279,9 @@ void GALGAS_operators::description (String & ioString,
     if ((mFlags & ((uint64_t) 1) << 32) != 0) {
       ioString.appendCString (" generateSynthetizedInitializer") ;
     }
+    if ((mFlags & ((uint64_t) 1) << 33) != 0) {
+      ioString.appendCString (" clonable") ;
+    }
   }
   ioString.appendCString (">") ;
 }
@@ -5292,7 +5301,7 @@ GALGAS_bool GALGAS_operators::getter_none (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_operators::getter_all (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool (mFlags == uint64_t (0x1FFFFFFFF)) ;
+    result = GALGAS_bool (mFlags == uint64_t (0x3FFFFFFFF)) ;
   }
   return result ;
 }
@@ -5623,6 +5632,16 @@ GALGAS_bool GALGAS_operators::getter_generateSynthetizedInitializer (UNUSED_LOCA
   GALGAS_bool result ;
   if (mIsValid) {
     result = GALGAS_bool ((mFlags & (uint64_t (1) << 32)) != 0) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_operators::getter_clonable (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & (uint64_t (1) << 33)) != 0) ;
   }
   return result ;
 }

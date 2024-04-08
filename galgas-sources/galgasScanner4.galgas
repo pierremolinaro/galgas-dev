@@ -331,6 +331,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "app-link" -> $%app-link$,
   "app-source" -> $%app-source$,
   "applicationBundleBase" -> $%applicationBundleBase$,
+  "clonable" -> $%clonable$,
   "codeblocks-linux32" -> $%codeblocks-linux32$,
   "codeblocks-linux64" -> $%codeblocks-linux64$,
   "codeblocks-windows" -> $%codeblocks-windows$,

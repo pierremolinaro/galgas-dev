@@ -4872,7 +4872,7 @@ static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [189] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [190] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -4997,6 +4997,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [189] = {
   false /* %makefile-x86linux32-on-macosx */,
   false /* %makefile-x86linux64-on-macosx */,
   false /* %makefile-win32-on-macosx */,
+  false /* %clonable */,
   false /* %codeblocks-windows */,
   false /* %codeblocks-linux32 */,
   false /* %codeblocks-linux64 */,
@@ -5249,6 +5250,7 @@ GALGAS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%makefile-x86linux32-on-macosx") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%makefile-x86linux64-on-macosx") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%makefile-win32-on-macosx") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%clonable") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%codeblocks-windows") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%codeblocks-linux32") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%codeblocks-linux64") COMMA_HERE) ;

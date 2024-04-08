@@ -639,7 +639,8 @@ GALGAS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeSpec
                                                                                                     const class GALGAS_bool & in_GENERATE_5F_SYNTHETIZED_5F_INITIALIZER,
                                                                                                     const class GALGAS_typedPropertyList & in_INITIALIZER_5F_ARGUMENT_5F_LIST,
                                                                                                     const class GALGAS_typedPropertyList & in_INHERITED_5F_INITIALIZER_5F_ARGUMENT_5F_LIST,
-                                                                                                    const class GALGAS_initializerMap & in_INITIALIZER_5F_MAP
+                                                                                                    const class GALGAS_initializerMap & in_INITIALIZER_5F_MAP,
+                                                                                                    const class GALGAS_bool & in_CLONABLE
                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

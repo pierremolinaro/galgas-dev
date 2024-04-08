@@ -371,23 +371,26 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_initializerMap readProperty_initializerMap (void) const ;
 
+  public: class GALGAS_bool readProperty_clonable (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_classTypeForGeneration init_21__21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                     const class GALGAS_bool & inOperand1,
-                                                                                                     const class GALGAS_bool & inOperand2,
-                                                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand3,
-                                                                                                     const class GALGAS_typedPropertyList & inOperand4,
-                                                                                                     const class GALGAS_typedPropertyList & inOperand5,
-                                                                                                     const class GALGAS_bool & inOperand6,
-                                                                                                     const class GALGAS_bool & inOperand7,
-                                                                                                     const class GALGAS_string & inOperand8,
-                                                                                                     const class GALGAS_typedPropertyList & inOperand9,
-                                                                                                     const class GALGAS_typedPropertyList & inOperand10,
-                                                                                                     const class GALGAS_initializerMap & inOperand11,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classTypeForGeneration init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                         const class GALGAS_bool & inOperand1,
+                                                                                                         const class GALGAS_bool & inOperand2,
+                                                                                                         const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                                                         const class GALGAS_typedPropertyList & inOperand4,
+                                                                                                         const class GALGAS_typedPropertyList & inOperand5,
+                                                                                                         const class GALGAS_bool & inOperand6,
+                                                                                                         const class GALGAS_bool & inOperand7,
+                                                                                                         const class GALGAS_string & inOperand8,
+                                                                                                         const class GALGAS_typedPropertyList & inOperand9,
+                                                                                                         const class GALGAS_typedPropertyList & inOperand10,
+                                                                                                         const class GALGAS_initializerMap & inOperand11,
+                                                                                                         const class GALGAS_bool & inOperand12,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -409,7 +412,8 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                      const class GALGAS_string & inOperand8,
                                                                      const class GALGAS_typedPropertyList & inOperand9,
                                                                      const class GALGAS_typedPropertyList & inOperand10,
-                                                                     const class GALGAS_initializerMap & inOperand11
+                                                                     const class GALGAS_initializerMap & inOperand11,
+                                                                     const class GALGAS_bool & inOperand12
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -447,19 +451,20 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                            const class GALGAS_bool & inOperand1,
-                                                                                            const class GALGAS_bool & inOperand2,
-                                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand3,
-                                                                                            const class GALGAS_typedPropertyList & inOperand4,
-                                                                                            const class GALGAS_typedPropertyList & inOperand5,
-                                                                                            const class GALGAS_bool & inOperand6,
-                                                                                            const class GALGAS_bool & inOperand7,
-                                                                                            const class GALGAS_string & inOperand8,
-                                                                                            const class GALGAS_typedPropertyList & inOperand9,
-                                                                                            const class GALGAS_typedPropertyList & inOperand10,
-                                                                                            const class GALGAS_initializerMap & inOperand11,
-                                                                                            Compiler * inCompiler) ;
+  public: void classTypeForGeneration_init_21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                                const class GALGAS_bool & inOperand1,
+                                                                                                const class GALGAS_bool & inOperand2,
+                                                                                                const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                                                const class GALGAS_typedPropertyList & inOperand4,
+                                                                                                const class GALGAS_typedPropertyList & inOperand5,
+                                                                                                const class GALGAS_bool & inOperand6,
+                                                                                                const class GALGAS_bool & inOperand7,
+                                                                                                const class GALGAS_string & inOperand8,
+                                                                                                const class GALGAS_typedPropertyList & inOperand9,
+                                                                                                const class GALGAS_typedPropertyList & inOperand10,
+                                                                                                const class GALGAS_initializerMap & inOperand11,
+                                                                                                const class GALGAS_bool & inOperand12,
+                                                                                                Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -491,6 +496,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_typedPropertyList mProperty_synthetizedInitializerArgumentList ;
   public: GALGAS_typedPropertyList mProperty_inheritedSynthetizedInitializerArgumentList ;
   public: GALGAS_initializerMap mProperty_initializerMap ;
+  public: GALGAS_bool mProperty_clonable ;
 
 
 //--- Default constructor
@@ -508,7 +514,8 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                        const GALGAS_string & in_propertyInitializationCode,
                                        const GALGAS_typedPropertyList & in_synthetizedInitializerArgumentList,
                                        const GALGAS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
-                                       const GALGAS_initializerMap & in_initializerMap
+                                       const GALGAS_initializerMap & in_initializerMap,
+                                       const GALGAS_bool & in_clonable
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

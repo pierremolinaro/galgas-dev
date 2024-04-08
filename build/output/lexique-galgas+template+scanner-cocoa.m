@@ -66,7 +66,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //
 //--------------------------------------------------------------------------------------------------
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [189] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [190] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -191,6 +191,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [189] = {
   NO /* %makefile-x86linux32-on-macosx */,
   NO /* %makefile-x86linux64-on-macosx */,
   NO /* %makefile-win32-on-macosx */,
+  NO /* %clonable */,
   NO /* %codeblocks-windows */,
   NO /* %codeblocks-linux32 */,
   NO /* %codeblocks-linux64 */,

@@ -29,11 +29,18 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
+    let @bool clonable
     select
       isAbstract = false
+      clonable = false
     or
       $abstract$
       isAbstract = true
+      clonable = false
+    or
+      $%clonable$
+      isAbstract = false
+      clonable = true
     end
     let @bool isReference
     select
@@ -79,6 +86,7 @@ syntax extension galgas3DeclarationsSyntax {
       !superClassName # Empty if no super class
       !generateInSeparateFile
       !propertyList
+      !clonable
     }
     if isReference then
       ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
@@ -107,11 +115,18 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
+    let @bool clonable
     select
       isAbstract = false
+      clonable = false
     or
       $abstract$
       isAbstract = true
+      clonable = false
+    or
+      $%clonable$
+      isAbstract = false
+      clonable = true
     end
     $class$
     $@type$ ?let @lstring className indexing classDefinition
@@ -147,6 +162,7 @@ syntax extension galgas4DeclarationsSyntax {
       !superClassName # Empty if no super class
       !generateInSeparateFile
       !propertyList
+      !clonable
     }
   #--- Associated Weak Type
     ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
@@ -177,6 +193,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSuperClassName # Empty if no super class
   private let @bool mGenerateInSeparateFile
   private let @propertyInCollectionListAST mPropertyList
+  private let @bool clonable
 
   #·······························································································
 
@@ -362,8 +379,23 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         end
       end
     end
-  #--- Add Extensions
+  #--- Clonable ?
     var @initializerMap initializerMap = §[]
+    var @operators features = if self.mIsReference then .isReferenceEquatable else .isComparable end
+    if self.clonable then
+      features = features | .clonable
+      var @functionSignature cloneInitializerArgumentList = §[]
+      cloneInitializerArgumentList +=
+        !["cloned" nowhere]
+        !classIndex
+        !"inObject"
+        !true
+      [!?initializerMap insertKey
+        !.init {![cloneInitializerArgumentList initializerSignature] !self.mClassTypeName}
+        !cloneInitializerArgumentList
+      ]
+    end
+  #--- Add Extensions
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -380,8 +412,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !acceptSetters: not self.mIsReference
     )
   #--- Synthetize an initializer, if the structure defines none
-    var @operators features = if self.mIsReference then .isReferenceEquatable else .isComparable end
-    if [initializerMap count] == 0 then
+    if [initializerMap count] == if self.clonable then 1 else 0 end then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
         !.init {![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
@@ -547,6 +578,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !synthetizedInitialzerArgumentList
         !synthetizedInheritedInitializerArgumentList
         ![selfType definition].initializerMap
+        !self.clonable
       }
   }
 
@@ -570,6 +602,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList synthetizedInitializerArgumentList
   private let @typedPropertyList inheritedSynthetizedInitializerArgumentList
   private let @initializerMap initializerMap
+  private let @bool clonable
 
   #·······························································································
 
@@ -761,6 +794,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.synthetizedInitializerArgumentList
         !self.inheritedSynthetizedInitializerArgumentList
         !typedefinition.initializerMap
+        !self.clonable
       ]
     else
       outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
@@ -977,6 +1011,7 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList INITIALIZER_ARGUMENT_LIST
     ?@typedPropertyList INHERITED_INITIALIZER_ARGUMENT_LIST
     ?@initializerMap INITIALIZER_MAP
+    ?@bool CLONABLE
 
 #---------- Weak Reference Class
   template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"

@@ -268,7 +268,8 @@ boolset @operators {
   doNotGenererateObjectCompare,
   generateDescriptionGetterUtilityMethod,
   generateCopyConstructorAndAssignmentOperator,
-  generateSynthetizedInitializer
+  generateSynthetizedInitializer,
+  clonable
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

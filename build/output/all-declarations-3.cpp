@@ -7538,8 +7538,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 189)) {
-    static const char * syntaxErrorMessageArray [189] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 190)) {
+    static const char * syntaxErrorMessageArray [190] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -7649,6 +7649,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the '%app-link' keyword",
         "the '%app-source' keyword",
         "the '%applicationBundleBase' keyword",
+        "the '%clonable' keyword",
         "the '%codeblocks-linux32' keyword",
         "the '%codeblocks-linux64' keyword",
         "the '%codeblocks-windows' keyword",
@@ -8178,6 +8179,18 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__clas
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('s'),
+} ;
+
+//--- Unicode string for '$clonable$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__clonable = {
+  TO_UNICODE ('c'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
 } ;
 
 //--- Unicode string for '$codeblocks-linux32$'
@@ -9480,7 +9493,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7E_
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__attributeKeyWordList = 38 ;
+static const int32_t ktable_size_galgasScanner_34__attributeKeyWordList = 39 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attributeKeyWordList [ktable_size_galgasScanner_34__attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__once, Lexique_galgasScanner_34_::kToken__25_once),
@@ -9488,6 +9501,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__remove, Lexique_galgasScanner_34_::kToken__25_remove),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__usefull, Lexique_galgasScanner_34_::kToken__25_usefull),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__app_2D_link, Lexique_galgasScanner_34_::kToken__25_app_2D_link),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__clonable, Lexique_galgasScanner_34_::kToken__25_clonable),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__selector, Lexique_galgasScanner_34_::kToken__25_selector),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__preserved, Lexique_galgasScanner_34_::kToken__25_preserved),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__replaceBy, Lexique_galgasScanner_34_::kToken__25_replaceBy),
@@ -10263,6 +10277,11 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken__25_applicationBundleBase:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%applicationBundleBase") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__25_clonable:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("%clonable") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_codeblocks_2D_linux_33__32_:
@@ -11749,6 +11768,7 @@ GALGAS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%app-link") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%app-source") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%applicationBundleBase") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%clonable") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%codeblocks-linux32") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%codeblocks-linux64") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%codeblocks-windows") COMMA_HERE) ;
@@ -11851,6 +11871,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("remove") ;
     ioList.appendObject ("usefull") ;
     ioList.appendObject ("app-link") ;
+    ioList.appendObject ("clonable") ;
     ioList.appendObject ("selector") ;
     ioList.appendObject ("preserved") ;
     ioList.appendObject ("replaceBy") ;
@@ -12033,7 +12054,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [189] = {0,
+  static const uint32_t kTerminalSymbolStyles [190] = {0,
     0 /* galgasScanner4_1_identifier */,
     8 /* galgasScanner4_1_double_2E_xxx */,
     7 /* galgasScanner4_1_literalInt */,
@@ -12143,6 +12164,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     12 /* galgasScanner4_1__25_app_2D_link */,
     12 /* galgasScanner4_1__25_app_2D_source */,
     12 /* galgasScanner4_1__25_applicationBundleBase */,
+    12 /* galgasScanner4_1__25_clonable */,
     12 /* galgasScanner4_1__25_codeblocks_2D_linux_33__32_ */,
     12 /* galgasScanner4_1__25_codeblocks_2D_linux_36__34_ */,
     12 /* galgasScanner4_1__25_codeblocks_2D_windows */,

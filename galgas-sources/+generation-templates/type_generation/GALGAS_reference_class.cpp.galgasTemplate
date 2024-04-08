@@ -88,6 +88,24 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 }
 
 %
+if CLONABLE then
+%
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init_21_cloned (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inObject,
+           %!^%Compiler * inCompiler
+           %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  if (inObject.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (inCompiler COMMA_HERE)) ;
+%  for (* name 3*) in ALL_PROPERTY_LIST do
+    %    ((cPtr_%!TYPE_IDENTIFIER% *) result.mObjectPtr)->mProperty_%![name identifierRepresentation]% = ((cPtr_%!TYPE_IDENTIFIER% *) inObject.mObjectPtr)->mProperty_%![name identifierRepresentation]% ;\n%
+  end
+%  }
+  return result ;
+}
+%
+end
 if (not IS_ABSTRACT) & GENERATE_SYNTHETIZED_INITIALIZER then
 %//--- Synthetized initializer ----------------------------------------------------------------------
 
