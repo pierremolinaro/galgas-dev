@@ -123,7 +123,7 @@ syntax extension galgas4DeclarationsSyntax {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionMethodAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %selector
+  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mExtensionMethodName
   private let @formalParameterListAST mExtensionMethodFormalParameterList

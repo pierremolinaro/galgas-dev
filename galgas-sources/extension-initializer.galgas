@@ -22,9 +22,11 @@ syntax extension galgas3DeclarationsSyntax {
   #·······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
-    $init$
+    $extension$
     $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
+    $.$
+    $init$
+    <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     $}$
@@ -43,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <method_declaration_ggs3> ?let @lstring inClassName
                                  ?!@galgasDeclarationAST ioDeclarations {
     $init$
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
+    <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     $}$
@@ -68,8 +70,10 @@ syntax extension galgas4DeclarationsSyntax {
   #·······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $init$
+    $extension$
     $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
+    $.$
+    $init$
     <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList

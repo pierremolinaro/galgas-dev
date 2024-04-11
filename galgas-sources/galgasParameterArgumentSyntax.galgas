@@ -316,6 +316,55 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   }
 
   #·······························································································
+  #  F O R M A L    I N P U T    P A R A M E T E R S
+  #·······························································································
+
+  rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                     !@formalInputParameterListAST outFormalInputParameterList {
+    outFormalInputParameterList = §[]
+    $($
+    select
+    or
+      repeat
+        let @lstring selector
+        select
+          $?selector:$ ?selector
+        or
+          $?$
+          selector = ["" here]
+        or
+          selector = ["" here]
+        end
+        let @bool isConstant
+        select
+          isConstant = false
+        or
+          $let$
+          isConstant = true
+        end
+        <type_definition_ggs3> !?ioDeclarations ?let formalParameterTypeName
+        let @bool isUnused
+        select
+          isUnused = false
+        or
+          $unused$
+          isUnused = true
+        end
+        $identifier$ ?let @lstring formalParameterName
+        outFormalInputParameterList +=
+          !selector
+          !formalParameterTypeName
+          !formalParameterName
+          !isUnused
+          !isConstant
+      while
+        $,$
+      end
+    end
+    $)$
+  }
+
+  #·······························································································
 
   rule <poisoned_var_list_ggs3> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = §[]

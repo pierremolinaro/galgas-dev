@@ -7655,6 +7655,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the '%codeblocks-windows' keyword",
         "the '%errorMessage' keyword",
         "the '%generatedInSeparateFile' keyword",
+        "the '%initArgLabel' keyword",
         "the '%insertAfter' keyword",
         "the '%insertBefore' keyword",
         "the '%insertOrReplaceSetter' keyword",
@@ -7678,7 +7679,6 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the '%removeSetter' keyword",
         "the '%searchMethod' keyword",
         "the '%searchString' keyword",
-        "the '%selector' keyword",
         "the '%tool-source' keyword",
         "the '%templateEndMark' keyword",
         "the '%templateReplacement' keyword",
@@ -8530,6 +8530,22 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__init
   TO_UNICODE ('t'),
 } ;
 
+//--- Unicode string for '$initArgLabel$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__initArgLabel = {
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('A'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('L'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+} ;
+
 //--- Unicode string for '$insertAfter$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertAfter = {
   TO_UNICODE ('i'),
@@ -9176,18 +9192,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sele
   TO_UNICODE ('t'),
 } ;
 
-//--- Unicode string for '$selector$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__selector = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-} ;
-
 //--- Unicode string for '$self$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__self = {
   TO_UNICODE ('s'),
@@ -9502,7 +9506,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__usefull, Lexique_galgasScanner_34_::kToken__25_usefull),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__app_2D_link, Lexique_galgasScanner_34_::kToken__25_app_2D_link),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__clonable, Lexique_galgasScanner_34_::kToken__25_clonable),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__selector, Lexique_galgasScanner_34_::kToken__25_selector),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__preserved, Lexique_galgasScanner_34_::kToken__25_preserved),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__replaceBy, Lexique_galgasScanner_34_::kToken__25_replaceBy),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__translate, Lexique_galgasScanner_34_::kToken__25_translate),
@@ -9513,6 +9516,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__macCodeSign, Lexique_galgasScanner_34_::kToken__25_macCodeSign),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__tool_2D_source, Lexique_galgasScanner_34_::kToken__25_tool_2D_source),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__errorMessage, Lexique_galgasScanner_34_::kToken__25_errorMessage),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__initArgLabel, Lexique_galgasScanner_34_::kToken__25_initArgLabel),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__insertBefore, Lexique_galgasScanner_34_::kToken__25_insertBefore),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__insertSetter, Lexique_galgasScanner_34_::kToken__25_insertSetter),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__removeSetter, Lexique_galgasScanner_34_::kToken__25_removeSetter),
@@ -10309,6 +10313,11 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("%generatedInSeparateFile") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
+    case kToken__25_initArgLabel:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("%initArgLabel") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
     case kToken__25_insertAfter:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%insertAfter") ;
@@ -10422,11 +10431,6 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken__25_searchString:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%searchString") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      break ;
-    case kToken__25_selector:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("%selector") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_tool_2D_source:
@@ -11774,6 +11778,7 @@ GALGAS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%codeblocks-windows") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%errorMessage") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%generatedInSeparateFile") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%initArgLabel") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%insertAfter") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%insertBefore") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%insertOrReplaceSetter") COMMA_HERE) ;
@@ -11797,7 +11802,6 @@ GALGAS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%removeSetter") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%searchMethod") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%searchString") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%selector") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%tool-source") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%templateEndMark") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%templateReplacement") COMMA_HERE) ;
@@ -11872,7 +11876,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("usefull") ;
     ioList.appendObject ("app-link") ;
     ioList.appendObject ("clonable") ;
-    ioList.appendObject ("selector") ;
     ioList.appendObject ("preserved") ;
     ioList.appendObject ("replaceBy") ;
     ioList.appendObject ("translate") ;
@@ -11883,6 +11886,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("macCodeSign") ;
     ioList.appendObject ("tool-source") ;
     ioList.appendObject ("errorMessage") ;
+    ioList.appendObject ("initArgLabel") ;
     ioList.appendObject ("insertBefore") ;
     ioList.appendObject ("insertSetter") ;
     ioList.appendObject ("removeSetter") ;
@@ -12170,6 +12174,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     12 /* galgasScanner4_1__25_codeblocks_2D_windows */,
     12 /* galgasScanner4_1__25_errorMessage */,
     12 /* galgasScanner4_1__25_generatedInSeparateFile */,
+    12 /* galgasScanner4_1__25_initArgLabel */,
     12 /* galgasScanner4_1__25_insertAfter */,
     12 /* galgasScanner4_1__25_insertBefore */,
     12 /* galgasScanner4_1__25_insertOrReplaceSetter */,
@@ -12193,7 +12198,6 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     12 /* galgasScanner4_1__25_removeSetter */,
     12 /* galgasScanner4_1__25_searchMethod */,
     12 /* galgasScanner4_1__25_searchString */,
-    12 /* galgasScanner4_1__25_selector */,
     12 /* galgasScanner4_1__25_tool_2D_source */,
     12 /* galgasScanner4_1__25_templateEndMark */,
     12 /* galgasScanner4_1__25_templateReplacement */,

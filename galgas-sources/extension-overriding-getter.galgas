@@ -20,7 +20,7 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @overridingExtensionGetterAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %selector
+  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionGetterName
   private let @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList

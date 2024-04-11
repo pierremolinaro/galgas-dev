@@ -504,6 +504,18 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
                                                                             GALGAS_formalInputParameterListAST & outArgument1,
                                                                             Lexique_galgasScanner_33_ * inCompiler) ;
 
+//------------------------------------- 'formal_input_parameter_list_ggs34' non terminal
+//--- 'parse' label
+  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__parse (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_5F_ggs_33__34__ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                                GALGAS_formalInputParameterListAST & outArgument1,
+                                                                                Lexique_galgasScanner_33_ * inCompiler) ;
+
 //------------------------------------- 'formal_parameter_list_ggs3' non terminal
 //--- 'parse' label
   public: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ;
@@ -515,6 +527,21 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                    GALGAS_formalParameterListAST & outArgument1,
                                                                    Lexique_galgasScanner_33_ * inCompiler) ;
+
+//------------------------------------- 'function_declaration_ggs3' non terminal
+//--- 'parse' label
+  public: virtual void nt_function_5F_declaration_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_function_5F_declaration_5F_ggs_33__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_function_5F_declaration_5F_ggs_33__ (const GALGAS_bool inArgument0,
+                                                               const GALGAS_bool inArgument1,
+                                                               const GALGAS_bool inArgument2,
+                                                               const GALGAS_lstring inArgument3,
+                                                               GALGAS_galgasDeclarationAST & ioArgument4,
+                                                               Lexique_galgasScanner_33_ * inCompiler) ;
 
 //------------------------------------- 'grammar_instruction_core' non terminal
 //--- 'parse' label
@@ -1318,6 +1345,16 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_23 (Lexique_galgasScanner_33_ *) ;
 
+  public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_24 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_25 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_26 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_27 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_28 (Lexique_galgasScanner_33_ *) ;
+
   public: virtual int32_t select_galgas_33_InstructionsSyntax_0 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_InstructionsSyntax_1 (Lexique_galgasScanner_33_ *) ;
@@ -1601,10 +1638,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_48 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_49 (Lexique_galgasScanner_33_ *) ;
-
-  public: virtual int32_t select_galgas_33_DeclarationsSyntax_50 (Lexique_galgasScanner_33_ *) ;
-
-  public: virtual int32_t select_galgas_33_DeclarationsSyntax_51 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_0 (Lexique_galgasScanner_33_ *) ;
 

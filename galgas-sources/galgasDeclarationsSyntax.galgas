@@ -46,6 +46,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@formalInputParameterListAST outFormalInputParameterList
 
+  rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                           !@formalInputParameterListAST outFormalInputParameterList
+
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpression
 
@@ -73,7 +76,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       initialization = .none
       selectorAttribute = false
     or
-      $%selector$
+      $%initArgLabel$
       initialization = .none
       selectorAttribute = true
     or
@@ -93,32 +96,17 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   #·······························································································
 
-  rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
+  rule <property_declaration_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     $@type$ ?let propertyTypeName // Ne pas utiliser <type_definition_ggs3>
     $identifier$ ?let propertyName
-    let @bool selectorAttribute
-    select
-      selectorAttribute = false
-    or
-      $%selector$
-      selectorAttribute = true
-    end
-    let @propertyInCollectionInitializationAST initialization
-    select
-      initialization = .none
-    or
-      $=$
-      <expression_ggs3> !?ioDeclarations ?let expression
-      initialization = .some {!expression: expression}
-    end
     ioAttributeInCollectionList +=
       !isConstant: false
       !propertyTypeName
       !propertyName
       !.publicAccess
-      !hasSelector: selectorAttribute
-      !initialization: initialization
+      !hasSelector: false
+      !initialization: .none
     if [option galgas_cli_options.errorOldStylePropertyDeclaration value] then
       let errorLocation = [propertyTypeName.location union !propertyName.location]
       error errorLocation
@@ -313,7 +301,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     var selectorAttribute = false
     repeat
     while
-      $%selector$
+      $%initArgLabel$
       selectorAttribute = true
     end
     let @propertyInCollectionInitializationAST initialization

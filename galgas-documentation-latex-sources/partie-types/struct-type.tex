@@ -68,51 +68,84 @@ struct @maStructure {
 
 La syntaxe la plus générale d'appel de l'initialisateur synthétisé est~:
 \begin{galgas4}
-var aVariable = @maStructure.init (!propriété1: 123, !propriété2: true)
+var aVariable = @maStructure.init (123, true)
 \end{galgas4}
 \begin{galgas3}
-var aVariable = @maStructure.init {!propriété1: 123 !propriété2: true}
+var aVariable = @maStructure.init {!123 !true}
 \end{galgas3}
 
 On peut omettre \ggst!.init!~:
 \begin{galgas4}
-var aVariable = @maStructure (!propriété1: 123, !propriété2: true)
+var aVariable = @maStructure (123, true)
 \end{galgas4}
 \begin{galgas3}
-var aVariable = @maStructure {!propriété1: 123 !propriété2: true}
+var aVariable = @maStructure {!123 !true}
 \end{galgas3}
 
 
 Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur~:
 \begin{galgas4}
-var @maStructure aVariable = .init (!propriété1: 123, !propriété2: true)
+var @maStructure aVariable = .init (123, true)
 \end{galgas4}
 \begin{galgas3}
-var @maStructure aVariable = .init {!propriété1: 123 !propriété2: true}
+var @maStructure aVariable = .init {!123 !true}
 \end{galgas3}
 
 
-Il est possible d'ajouter l'attribut \ggst=%noArgumentLabel= à la déclaration d'une propriété non initialisée, pour supprimer dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
+Il est possible d'ajouter l'attribut \ggst=%initArgLabel= à la déclaration d'une propriété non initialisée, pour ajouter dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
 \begin{galgas3}
 struct @maStructure {
-  public var @uint propriété1 %noArgumentLabel
+  public var @uint propriété1 %initArgLabel
   public var @bool propriété2
 }
 \end{galgas3}
 
 Alors l'appel de l'initialisateur synthétisé devient~:
 \begin{galgas4}
-var aVariable = @maStructure.init (!123, !propriété2: true)
-// Ou bien, en éliminant l'argument d'étiquette vide :
-var aVariable = @maStructure.init (123, !propriété2: true)
+var aVariable = @maStructure.init (!propriété1: 123, true)
 \end{galgas4}
 \begin{galgas3}
-var aVariable = @maStructure.init {!123 !propriété2: true}
+var aVariable = @maStructure.init {!propriété1: 123 !true}
 \end{galgas3}
 
 On peut omettre \ggst!.init! ou l'annotation de type si le contexte le permet.
 
-Si la propriété est initialisée, alors \ggst=%noArgumentLabel= est invalide (déclenche une erreur de syntaxe).
+Si la propriété est initialisée, alors l'attribut \ggst=%initArgLabel= est invalide (déclenche une erreur de syntaxe).
+
+
+Si toutes les propriétés sont initialisées, alors l'initialisateur synthétisé n'a pas d'argument. Pour la structure~:
+\begin{galgas34}
+struct @maStructure {
+  public var @uint propriété1 = 1
+  public var @bool propriété2 = 2
+}
+\end{galgas34}
+
+On écrit donc~:
+\begin{galgas4}
+var aVariable = @maStructure.init ()
+// Ou :
+var aVariable = @maStructure.init
+// Ou :
+var aVariable = @maStructure ()
+// Ou :
+var @maStructure aVariable = .init ()
+// Ou :
+var @maStructure aVariable = .init
+\end{galgas4}
+\begin{galgas3}
+var aVariable = @maStructure.init {}
+// Ou :
+var aVariable = @maStructure.init
+// Ou :
+var aVariable = @maStructure {}
+// Ou :
+var @maStructure aVariable = .init {}
+// Ou :
+var @maStructure aVariable = .init
+\end{galgas3}
+
+
 
 
 
@@ -146,10 +179,10 @@ Si le contexte le permet, l'annotation de type peut être omis lors de l'appel d
 var @maStructure aVariable = .new {!123 !true}
 \end{galgas3}
 
-Il est possible d'ajouter l'attribut \ggst=%selector= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggst=new=. Par exemple, si on déclare~:
+Il est possible d'ajouter l'attribut \ggst=%initArgLabel= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggst=new=. Par exemple, si on déclare~:
 \begin{galgas3}
 struct @maStructure {
-  public var @uint propriété1 %selector
+  public var @uint propriété1 %initArgLabel
   @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
 }
 \end{galgas3}

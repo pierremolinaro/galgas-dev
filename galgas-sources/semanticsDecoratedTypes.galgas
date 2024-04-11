@@ -243,7 +243,7 @@ abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticDeclarationListForGeneration {
-  public let @string infoMessage %selector
+  public let @string infoMessage %initArgLabel
   public let @semanticDeclarationForGeneration mDeclaration
 }
 
@@ -288,8 +288,8 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
-  public let @bool generateHeader %selector
-  public let @string implementationCppFileName %selector
+  public let @bool generateHeader %initArgLabel
+  public let @string implementationCppFileName %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,3 +1,9 @@
-var aVariable = @maStructure.init (!123, !propriété2: true)
-// Ou bien, en éliminant l'argument d'étiquette vide :
-var aVariable = @maStructure.init (123, !propriété2: true)
+var aVariable = @maStructure.init ()
+// Ou :
+var aVariable = @maStructure.init
+// Ou :
+var aVariable = @maStructure ()
+// Ou :
+var @maStructure aVariable = .init ()
+// Ou :
+var @maStructure aVariable = .init

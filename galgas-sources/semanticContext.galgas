@@ -213,7 +213,7 @@ struct @semanticContext {
   public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = §[]
   public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = §[]
   public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = §[]
-  public var @bool galgas4 %selector
+  public var @bool galgas4 %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -189,7 +189,7 @@ refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
   public let @formalInputParameterListAST mFormalArgumentList
   public let @lstring mResultTypeName
-  public let @bool usefullFunc %selector
+  public let @bool usefullFunc %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -228,12 +228,12 @@ refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @propertyInCollectionListAST {
-  public let @bool isConstant %selector
+  public let @bool isConstant %initArgLabel
   public let @lstring propertyTypeName
   public let @lstring propertyName
   public let @AccessControlAST accessControl
-  public let @bool hasSelector %selector
-  public let @propertyInCollectionInitializationAST initialization %selector
+  public let @bool hasSelector %initArgLabel
+  public let @propertyInCollectionInitializationAST initialization %initArgLabel
 
   method buildPropertyInitializationCode ?let @lstring inTypeNameForUsefulness
                                           ?let @semanticContext inSemanticContext

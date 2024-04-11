@@ -38,6 +38,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@formalInputParameterListAST outFormalInputParameterList
 
+  rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                           !@formalInputParameterListAST outFormalInputParameterList
+
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName
 
@@ -92,9 +95,19 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList count] > 0) then
-      error functionName: "an 'once' function should has no argument"
+    <function_declaration_ggs3> !once: isOnce !usefull: isUsefull !private: false !functionName !?ioDeclarations
+  }
+   
+   #·······························································································
+
+  rule <function_declaration_ggs3> ?once: let @bool inIsOnce
+                                   ?usefull: let @bool inIsUsefull
+                                   ?private: let @bool inPrivate
+                                   ?let @lstring inFunctionName
+                                   ?!@galgasDeclarationAST ioDeclarations {
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
+    if inIsOnce, ([formalInputParameterList count] > 0) then
+      error inFunctionName: "an 'once' function should has no argument"
     end
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
@@ -108,28 +121,72 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
-    if isOnce then
+    if inIsOnce then
       ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
         !isPredefined: false # Is not predefined
-        !functionName
+        !inFunctionName
         !resultTypeName
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !false # private
-        !isUsefull
+        !inPrivate
+        !inIsUsefull
       }
     else
       ioDeclarations.mDeclarationList += !@functionDeclarationAST {
         !isPredefined: false # Is not predefined
-        !functionName
+        !inFunctionName
         !formalInputParameterList
         !resultTypeName
-        !usefullFunc: isUsefull
+        !usefullFunc: inIsUsefull
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !false # private
+        !inPrivate
+      }
+    end
+  }
+
+  #·······························································································
+
+  rule <function_declaration_ggs3> ?once: let @bool inIsOnce
+                                   ?usefull: let @bool inIsUsefull
+                                   ?private: let @bool inIsPrivate
+                                   ?let @lstring inFunctionName
+                                   ?!@galgasDeclarationAST ioDeclarations {
+    <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalInputParameterList
+    if inIsOnce, ([formalInputParameterList count] > 0) then
+      error inFunctionName: "an 'once' function should has no argument"
+    end
+    $->$
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
+    let resultVariableName = @lstring {!"result" !.here}
+    ${$
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let functionInstructionList
+    $}$
+    let endOfFunctionInstructionList = @location.here
+    if inIsOnce then
+      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
+        !isPredefined: false
+        !inFunctionName
+        !resultTypeName
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !inIsPrivate
+        !inIsUsefull
+      }
+    else
+      ioDeclarations.mDeclarationList += !@functionDeclarationAST {
+        !isPredefined: false 
+        !inFunctionName
+        !formalInputParameterList
+        !resultTypeName
+        !usefullFunc: inIsUsefull
+        !resultVariableName
+        !functionInstructionList
+        !endOfFunctionInstructionList
+        !inIsPrivate
       }
     end
   }
@@ -156,46 +213,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let functionName indexing functionDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
-    if isOnce, ([formalInputParameterList count] > 0) then
-      error functionName: "an 'once' function should has no argument"
-    end
-    $->$
-    <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
-    let @lstring resultVariableName
-    select
-      $identifier$ ?resultVariableName
-    or
-      resultVariableName = .init {!"result" !.here}
-    end
-    ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
-    $}$
-    let endOfFunctionInstructionList = @location.here
-    if isOnce then
-      ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
-        !isPredefined: false # Is not predefined
-        !functionName
-        !resultTypeName
-        !resultVariableName
-        !functionInstructionList
-        !endOfFunctionInstructionList
-        !true # private
-        !isUsefull
-      }
-    else
-      ioDeclarations.mDeclarationList += !@functionDeclarationAST {
-        !isPredefined: false # Is not predefined
-        !functionName
-        !formalInputParameterList
-        !resultTypeName
-        !usefullFunc: isUsefull
-        !resultVariableName
-        !functionInstructionList
-        !endOfFunctionInstructionList
-        !true # private
-      }
-    end
+    <function_declaration_ggs3> !once: isOnce !usefull: isUsefull !private: true !functionName !?ioDeclarations
   }
 
   #·······························································································
@@ -215,7 +233,12 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let mActionName indexing functionDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
+    let @formalInputParameterListAST formalInputParameterList
+    select
+      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+    or
+      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+    end
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST {

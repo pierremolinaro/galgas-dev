@@ -131,7 +131,7 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @procCallInstructionForGeneration : @semanticInstructionForGeneration {
-  private let @lstring routineMangledName %selector
+  private let @lstring routineMangledName %initArgLabel
   private let @actualParameterListForGeneration mActualParameterList
 
   #·······························································································

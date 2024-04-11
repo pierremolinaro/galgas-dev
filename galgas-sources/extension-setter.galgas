@@ -20,7 +20,7 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @extensionSetterAST : @semanticDeclarationAST {
-  private let @bool requiresSelfForAccessingProperty %selector
+  private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mExtensionSetterName
   private let @formalParameterListAST mExtensionSetterFormalParameterList

@@ -216,30 +216,30 @@ let galgasScanner4_1__25_codeblocks_2D_linux_36__34_ : UInt16 = 112
 let galgasScanner4_1__25_codeblocks_2D_windows : UInt16 = 113
 let galgasScanner4_1__25_errorMessage : UInt16 = 114
 let galgasScanner4_1__25_generatedInSeparateFile : UInt16 = 115
-let galgasScanner4_1__25_insertAfter : UInt16 = 116
-let galgasScanner4_1__25_insertBefore : UInt16 = 117
-let galgasScanner4_1__25_insertOrReplaceSetter : UInt16 = 118
-let galgasScanner4_1__25_insertSetter : UInt16 = 119
-let galgasScanner4_1__25_libpmAtPath : UInt16 = 120
-let galgasScanner4_1__25_macCodeSign : UInt16 = 121
-let galgasScanner4_1__25_makefile_2D_macosx : UInt16 = 122
-let galgasScanner4_1__25_makefile_2D_unix : UInt16 = 123
-let galgasScanner4_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx : UInt16 = 124
-let galgasScanner4_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx : UInt16 = 125
-let galgasScanner4_1__25_makefile_2D_win_33__32__2D_on_2D_macosx : UInt16 = 126
-let galgasScanner4_1__25_MacOS : UInt16 = 127
-let galgasScanner4_1__25_MacOSDeployment : UInt16 = 128
-let galgasScanner4_1__25_noArgumentLabel : UInt16 = 129
-let galgasScanner4_1__25_nonAtomicSelection : UInt16 = 130
-let galgasScanner4_1__25_once : UInt16 = 131
-let galgasScanner4_1__25_preserved : UInt16 = 132
-let galgasScanner4_1__25_quietOutputByDefault : UInt16 = 133
-let galgasScanner4_1__25_replaceBy : UInt16 = 134
-let galgasScanner4_1__25_remove : UInt16 = 135
-let galgasScanner4_1__25_removeSetter : UInt16 = 136
-let galgasScanner4_1__25_searchMethod : UInt16 = 137
-let galgasScanner4_1__25_searchString : UInt16 = 138
-let galgasScanner4_1__25_selector : UInt16 = 139
+let galgasScanner4_1__25_initArgLabel : UInt16 = 116
+let galgasScanner4_1__25_insertAfter : UInt16 = 117
+let galgasScanner4_1__25_insertBefore : UInt16 = 118
+let galgasScanner4_1__25_insertOrReplaceSetter : UInt16 = 119
+let galgasScanner4_1__25_insertSetter : UInt16 = 120
+let galgasScanner4_1__25_libpmAtPath : UInt16 = 121
+let galgasScanner4_1__25_macCodeSign : UInt16 = 122
+let galgasScanner4_1__25_makefile_2D_macosx : UInt16 = 123
+let galgasScanner4_1__25_makefile_2D_unix : UInt16 = 124
+let galgasScanner4_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx : UInt16 = 125
+let galgasScanner4_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx : UInt16 = 126
+let galgasScanner4_1__25_makefile_2D_win_33__32__2D_on_2D_macosx : UInt16 = 127
+let galgasScanner4_1__25_MacOS : UInt16 = 128
+let galgasScanner4_1__25_MacOSDeployment : UInt16 = 129
+let galgasScanner4_1__25_noArgumentLabel : UInt16 = 130
+let galgasScanner4_1__25_nonAtomicSelection : UInt16 = 131
+let galgasScanner4_1__25_once : UInt16 = 132
+let galgasScanner4_1__25_preserved : UInt16 = 133
+let galgasScanner4_1__25_quietOutputByDefault : UInt16 = 134
+let galgasScanner4_1__25_replaceBy : UInt16 = 135
+let galgasScanner4_1__25_remove : UInt16 = 136
+let galgasScanner4_1__25_removeSetter : UInt16 = 137
+let galgasScanner4_1__25_searchMethod : UInt16 = 138
+let galgasScanner4_1__25_searchString : UInt16 = 139
 let galgasScanner4_1__25_tool_2D_source : UInt16 = 140
 let galgasScanner4_1__25_templateEndMark : UInt16 = 141
 let galgasScanner4_1__25_templateReplacement : UInt16 = 142
@@ -529,30 +529,30 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       12, // 113 : galgasScanner4_1__25_codeblocks_2D_windows
       12, // 114 : galgasScanner4_1__25_errorMessage
       12, // 115 : galgasScanner4_1__25_generatedInSeparateFile
-      12, // 116 : galgasScanner4_1__25_insertAfter
-      12, // 117 : galgasScanner4_1__25_insertBefore
-      12, // 118 : galgasScanner4_1__25_insertOrReplaceSetter
-      12, // 119 : galgasScanner4_1__25_insertSetter
-      12, // 120 : galgasScanner4_1__25_libpmAtPath
-      12, // 121 : galgasScanner4_1__25_macCodeSign
-      12, // 122 : galgasScanner4_1__25_makefile_2D_macosx
-      12, // 123 : galgasScanner4_1__25_makefile_2D_unix
-      12, // 124 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
-      12, // 125 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
-      12, // 126 : galgasScanner4_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
-      12, // 127 : galgasScanner4_1__25_MacOS
-      12, // 128 : galgasScanner4_1__25_MacOSDeployment
-      12, // 129 : galgasScanner4_1__25_noArgumentLabel
-      12, // 130 : galgasScanner4_1__25_nonAtomicSelection
-      12, // 131 : galgasScanner4_1__25_once
-      12, // 132 : galgasScanner4_1__25_preserved
-      12, // 133 : galgasScanner4_1__25_quietOutputByDefault
-      12, // 134 : galgasScanner4_1__25_replaceBy
-      12, // 135 : galgasScanner4_1__25_remove
-      12, // 136 : galgasScanner4_1__25_removeSetter
-      12, // 137 : galgasScanner4_1__25_searchMethod
-      12, // 138 : galgasScanner4_1__25_searchString
-      12, // 139 : galgasScanner4_1__25_selector
+      12, // 116 : galgasScanner4_1__25_initArgLabel
+      12, // 117 : galgasScanner4_1__25_insertAfter
+      12, // 118 : galgasScanner4_1__25_insertBefore
+      12, // 119 : galgasScanner4_1__25_insertOrReplaceSetter
+      12, // 120 : galgasScanner4_1__25_insertSetter
+      12, // 121 : galgasScanner4_1__25_libpmAtPath
+      12, // 122 : galgasScanner4_1__25_macCodeSign
+      12, // 123 : galgasScanner4_1__25_makefile_2D_macosx
+      12, // 124 : galgasScanner4_1__25_makefile_2D_unix
+      12, // 125 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      12, // 126 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      12, // 127 : galgasScanner4_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
+      12, // 128 : galgasScanner4_1__25_MacOS
+      12, // 129 : galgasScanner4_1__25_MacOSDeployment
+      12, // 130 : galgasScanner4_1__25_noArgumentLabel
+      12, // 131 : galgasScanner4_1__25_nonAtomicSelection
+      12, // 132 : galgasScanner4_1__25_once
+      12, // 133 : galgasScanner4_1__25_preserved
+      12, // 134 : galgasScanner4_1__25_quietOutputByDefault
+      12, // 135 : galgasScanner4_1__25_replaceBy
+      12, // 136 : galgasScanner4_1__25_remove
+      12, // 137 : galgasScanner4_1__25_removeSetter
+      12, // 138 : galgasScanner4_1__25_searchMethod
+      12, // 139 : galgasScanner4_1__25_searchString
       12, // 140 : galgasScanner4_1__25_tool_2D_source
       12, // 141 : galgasScanner4_1__25_templateEndMark
       12, // 142 : galgasScanner4_1__25_templateReplacement
@@ -729,30 +729,30 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       true, // 113 : galgasScanner4_1__25_codeblocks_2D_windows
       true, // 114 : galgasScanner4_1__25_errorMessage
       true, // 115 : galgasScanner4_1__25_generatedInSeparateFile
-      true, // 116 : galgasScanner4_1__25_insertAfter
-      true, // 117 : galgasScanner4_1__25_insertBefore
-      true, // 118 : galgasScanner4_1__25_insertOrReplaceSetter
-      true, // 119 : galgasScanner4_1__25_insertSetter
-      true, // 120 : galgasScanner4_1__25_libpmAtPath
-      true, // 121 : galgasScanner4_1__25_macCodeSign
-      true, // 122 : galgasScanner4_1__25_makefile_2D_macosx
-      true, // 123 : galgasScanner4_1__25_makefile_2D_unix
-      true, // 124 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
-      true, // 125 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
-      true, // 126 : galgasScanner4_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
-      true, // 127 : galgasScanner4_1__25_MacOS
-      true, // 128 : galgasScanner4_1__25_MacOSDeployment
-      true, // 129 : galgasScanner4_1__25_noArgumentLabel
-      true, // 130 : galgasScanner4_1__25_nonAtomicSelection
-      true, // 131 : galgasScanner4_1__25_once
-      true, // 132 : galgasScanner4_1__25_preserved
-      true, // 133 : galgasScanner4_1__25_quietOutputByDefault
-      true, // 134 : galgasScanner4_1__25_replaceBy
-      true, // 135 : galgasScanner4_1__25_remove
-      true, // 136 : galgasScanner4_1__25_removeSetter
-      true, // 137 : galgasScanner4_1__25_searchMethod
-      true, // 138 : galgasScanner4_1__25_searchString
-      true, // 139 : galgasScanner4_1__25_selector
+      true, // 116 : galgasScanner4_1__25_initArgLabel
+      true, // 117 : galgasScanner4_1__25_insertAfter
+      true, // 118 : galgasScanner4_1__25_insertBefore
+      true, // 119 : galgasScanner4_1__25_insertOrReplaceSetter
+      true, // 120 : galgasScanner4_1__25_insertSetter
+      true, // 121 : galgasScanner4_1__25_libpmAtPath
+      true, // 122 : galgasScanner4_1__25_macCodeSign
+      true, // 123 : galgasScanner4_1__25_makefile_2D_macosx
+      true, // 124 : galgasScanner4_1__25_makefile_2D_unix
+      true, // 125 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      true, // 126 : galgasScanner4_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      true, // 127 : galgasScanner4_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
+      true, // 128 : galgasScanner4_1__25_MacOS
+      true, // 129 : galgasScanner4_1__25_MacOSDeployment
+      true, // 130 : galgasScanner4_1__25_noArgumentLabel
+      true, // 131 : galgasScanner4_1__25_nonAtomicSelection
+      true, // 132 : galgasScanner4_1__25_once
+      true, // 133 : galgasScanner4_1__25_preserved
+      true, // 134 : galgasScanner4_1__25_quietOutputByDefault
+      true, // 135 : galgasScanner4_1__25_replaceBy
+      true, // 136 : galgasScanner4_1__25_remove
+      true, // 137 : galgasScanner4_1__25_removeSetter
+      true, // 138 : galgasScanner4_1__25_searchMethod
+      true, // 139 : galgasScanner4_1__25_searchString
       true, // 140 : galgasScanner4_1__25_tool_2D_source
       true, // 141 : galgasScanner4_1__25_templateEndMark
       true, // 142 : galgasScanner4_1__25_templateReplacement
@@ -1592,7 +1592,6 @@ fileprivate func search_into_galgasScanner_34__attributeKeyWordList (_ inSearche
     "usefull" : galgasScanner4_1__25_usefull,
     "app-link" : galgasScanner4_1__25_app_2D_link,
     "clonable" : galgasScanner4_1__25_clonable,
-    "selector" : galgasScanner4_1__25_selector,
     "preserved" : galgasScanner4_1__25_preserved,
     "replaceBy" : galgasScanner4_1__25_replaceBy,
     "translate" : galgasScanner4_1__25_translate,
@@ -1603,6 +1602,7 @@ fileprivate func search_into_galgasScanner_34__attributeKeyWordList (_ inSearche
     "macCodeSign" : galgasScanner4_1__25_macCodeSign,
     "tool-source" : galgasScanner4_1__25_tool_2D_source,
     "errorMessage" : galgasScanner4_1__25_errorMessage,
+    "initArgLabel" : galgasScanner4_1__25_initArgLabel,
     "insertBefore" : galgasScanner4_1__25_insertBefore,
     "insertSetter" : galgasScanner4_1__25_insertSetter,
     "removeSetter" : galgasScanner4_1__25_removeSetter,

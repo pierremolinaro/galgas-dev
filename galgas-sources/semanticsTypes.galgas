@@ -206,8 +206,8 @@ list @typedPropertyList {
   public let @unifiedTypeMapEntry typeEntry
   public let @lstring name
   public let @propertyInCollectionInitializationAST initialization
-  public let @bool hasSetter %selector
-  public let @bool hasSelector %selector
+  public let @bool hasSetter %initArgLabel
+  public let @bool hasSelector %initArgLabel
   
   getter initializerSignature -> @string {
     result = "init"

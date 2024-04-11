@@ -12883,13 +12883,13 @@ GALGAS_bool extensionGetter_useLoopLocalVar (const GALGAS_lexicalRuleListAST & i
   GALGAS_bool result_result ; // Returned variable
   result_result = GALGAS_bool (false) ;
   const GALGAS_lexicalRuleListAST temp_0 = inObject ;
-  cEnumerator_lexicalRuleListAST enumerator_2993 (temp_0, EnumerationOrder::up) ;
+  cEnumerator_lexicalRuleListAST enumerator_3001 (temp_0, EnumerationOrder::up) ;
   bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 78)).isValidAndTrue () ;
-  if (enumerator_2993.hasCurrentObject () && bool_1) {
-    while (enumerator_2993.hasCurrentObject () && bool_1) {
-      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2993.current_mLexicalRule (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 79)) ;
-      enumerator_2993.gotoNextObject () ;
-      if (enumerator_2993.hasCurrentObject ()) {
+  if (enumerator_3001.hasCurrentObject () && bool_1) {
+    while (enumerator_3001.hasCurrentObject () && bool_1) {
+      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_3001.current_mLexicalRule (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 79)) ;
+      enumerator_3001.gotoNextObject () ;
+      if (enumerator_3001.hasCurrentObject ()) {
         bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 78)).isValidAndTrue () ;
       }
     }

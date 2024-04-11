@@ -23,32 +23,32 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @unifiedTypeDefinition {
-  public let @lstring typeName %selector
-  public let @bool isPredefined %selector
-  public let @bool isConcrete %selector # false if abstract class
-  public let @unifiedTypeMapEntry superType %selector
-  public let @typeKindEnum typeKind %selector
-  public let @bool supportCollectionValue %selector
-  public let @typedPropertyList allTypedPropertyList %selector
-  public let @propertyMap propertyMap %selector # struct, class
-  public let @typedPropertyList currentTypedPropertyList %selector
-  public let @initializerMap initializerMap %selector
-  public let @classFunctionMap classFunctionMap %selector
-  public let @getterMap getterMap %selector
-  public let @setterMap setterMap %selector
-  public let @instanceMethodMap instanceMethodMap %selector
-  public let @classMethodMap classMethodMap %selector
-  public let @optionalMethodMap optionalMethodMap %selector
-  public let @enumerationDescriptorList enumerationDescriptorList %selector # Empty List if cannot be enumerated
+  public let @lstring typeName %initArgLabel
+  public let @bool isPredefined %initArgLabel
+  public let @bool isConcrete %initArgLabel # false if abstract class
+  public let @unifiedTypeMapEntry superType %initArgLabel
+  public let @typeKindEnum typeKind %initArgLabel
+  public let @bool supportCollectionValue %initArgLabel
+  public let @typedPropertyList allTypedPropertyList %initArgLabel
+  public let @propertyMap propertyMap %initArgLabel # struct, class
+  public let @typedPropertyList currentTypedPropertyList %initArgLabel
+  public let @initializerMap initializerMap %initArgLabel
+  public let @classFunctionMap classFunctionMap %initArgLabel
+  public let @getterMap getterMap %initArgLabel
+  public let @setterMap setterMap %initArgLabel
+  public let @instanceMethodMap instanceMethodMap %initArgLabel
+  public let @classMethodMap classMethodMap %initArgLabel
+  public let @optionalMethodMap optionalMethodMap %initArgLabel
+  public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel # Empty List if cannot be enumerated
   public let @operators mHandledOperatorFlags
   public let @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
   public let @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
   public let @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
-  public let @bool generateHeaderInSeparateFile %selector # Significant only for classes
+  public let @bool generateHeaderInSeparateFile %initArgLabel # Significant only for classes
   public let @unifiedTypeMapEntry mTypeForEnumeratedElement
-  public let @string defaultConstructorName %selector # Used in [@xxx default] (empty string if no default initializer)
+  public let @string defaultConstructorName %initArgLabel # Used in [@xxx default] (empty string if no default initializer)
   public let @string mHeaderFileName # Name of C++ header file that contains type declaration
-  public let @headerKind headerKind %selector
+  public let @headerKind headerKind %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

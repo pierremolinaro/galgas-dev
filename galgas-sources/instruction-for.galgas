@@ -51,7 +51,7 @@ refclass @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
 
 refclass @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   private let @forInstructionEnumeratedObjectElementListAST mElementList
-  private let @bool mEndsWithEllipsis %selector
+  private let @bool mEndsWithEllipsis %initArgLabel
   private let @semanticExpressionAST mEnumeratedExpression
   private let @location mEndOfEnumerationExpression
 }

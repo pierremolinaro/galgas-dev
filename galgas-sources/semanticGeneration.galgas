@@ -1450,7 +1450,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
   public let @string mPredefinedTypeName
   public let @string mCppDeclarationString
-  public let @bool isPackage %selector
+  public let @bool isPackage %initArgLabel
 
   #-----------------------------------------------------------------------------------------------
 

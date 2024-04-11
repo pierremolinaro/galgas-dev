@@ -188,7 +188,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 #refclass @getterCallExpressionGGS4AST : @semanticExpressionAST {
-#  private let @bool errorOnGetterCallInsteadOfPropertyRead %selector
+#  private let @bool errorOnGetterCallInsteadOfPropertyRead %initArgLabel
 #  private let @semanticExpressionAST mReceiver
 #  private let @lstring mGetterName
 #  private let @actualParameterListAST mActualArgumentList

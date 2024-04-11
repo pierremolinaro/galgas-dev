@@ -66,10 +66,10 @@ enum @selfAvailability {
 struct @analysisContext {
   public let @semanticContext semanticContext
   public let @predefinedTypes predefinedTypes
-  public let @string selfObjectCppName %selector
-  public let @selfAvailability selfAvailability %selector
-  public let @string selfObjectCppPrefixForAccessingProperty %selector # i.e. "ioObject->", ...
-  public let @bool requiresSelfForAccessingProperty %selector
+  public let @string selfObjectCppName %initArgLabel
+  public let @selfAvailability selfAvailability %initArgLabel
+  public let @string selfObjectCppPrefixForAccessingProperty %initArgLabel # i.e. "ioObject->", ...
+  public let @bool requiresSelfForAccessingProperty %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -4839,23 +4839,23 @@ GALGAS_string extensionGetter_initializerSignature (const GALGAS_typedPropertyLi
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("init") ;
   const GALGAS_typedPropertyList temp_0 = inObject ;
-  cEnumerator_typedPropertyList enumerator_8335 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_8335.hasCurrentObject ()) {
+  cEnumerator_typedPropertyList enumerator_8343 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_8343.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8335.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 215)))).boolEnum () ;
+      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8343.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 215)))).boolEnum () ;
       if (kBoolTrue == test_1) {
         result_result.plusAssign_operation(GALGAS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
         enumGalgasBool test_2 = kBoolTrue ;
         if (kBoolTrue == test_2) {
-          test_2 = enumerator_8335.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_2 = enumerator_8343.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (kBoolTrue == test_2) {
-            result_result.plusAssign_operation(enumerator_8335.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 218)) ;
+            result_result.plusAssign_operation(enumerator_8343.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 218)) ;
           }
         }
       }
     }
-    enumerator_8335.gotoNextObject () ;
+    enumerator_8343.gotoNextObject () ;
   }
 //---
   return result_result ;

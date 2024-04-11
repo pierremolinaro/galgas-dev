@@ -23,7 +23,7 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract refclass @semanticDeclarationAST {
-  protected let @bool isPredefined %selector
+  protected let @bool isPredefined %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -46,7 +46,7 @@ list @lexicalInstructionListAST {
 
 list @templateDelimitorListAST {
   public let @lstring mStartString
-  public let @bool nonAtomicSelection %selector
+  public let @bool nonAtomicSelection %initArgLabel
   public let @bool mTemplateEndMark
   public let @bool mPreserved
   public let @lstring mEndString
@@ -121,8 +121,8 @@ list @terminalDeclarationListAST {
   public let @sentLexicalAttributeListAST mSentAttributeList
   public let @lstring mSyntaxErrorMessage
   public let @lstring mStyle # Empty string if no style
-  public let @bool nonAtomicSelection %selector
-  public let @bool isEndOfTemplateMark %selector
+  public let @bool nonAtomicSelection %initArgLabel
+  public let @bool isEndOfTemplateMark %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -130,8 +130,8 @@ list @terminalDeclarationListAST {
 list @lexicalListEntryListAST {
   public let @lstring mEntrySpelling
   public let @lstring mTerminalSpelling
-  public let @bool nonAtomicSelection %selector
-  public let @bool isEndOfTemplateMark %selector
+  public let @bool nonAtomicSelection %initArgLabel
+  public let @bool isEndOfTemplateMark %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

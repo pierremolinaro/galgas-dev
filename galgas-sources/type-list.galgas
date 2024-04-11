@@ -22,7 +22,7 @@
 refclass @listDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListTypeName
   private let @propertyInCollectionListAST mPropertyList
-  private let @bool usefullList %selector
+  private let @bool usefullList %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
