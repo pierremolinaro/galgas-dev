@@ -496,7 +496,7 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
       !§[]
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-      !defaultConstructorName: "default" # Default constructor
+      !defaultConstructorName: "" # Default constructor
       !"externtype-" + [self.mExternTypeName fileNameRepresentation]
       !headerKind: .oneHeader
     }
