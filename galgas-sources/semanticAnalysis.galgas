@@ -892,8 +892,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func buildPredefinedTypes ?let @unifiedTypeMap inTypeMap -> @predefinedTypes outPredefinedTypes {
-  outPredefinedTypes = .init {
+func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
+  result = .init {
     ![inTypeMap typeMapEntryForLKey !.init {!"location"   !.here}]
     ![inTypeMap typeMapEntryForLKey !.init {!"bool"       !.here}]
     ![inTypeMap typeMapEntryForLKey !.init {!"char"       !.here}]

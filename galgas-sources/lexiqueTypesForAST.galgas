@@ -387,18 +387,16 @@ map @lexicalTypeMap {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func %once buildLexicalTypeMap
-  ->@lexicalTypeMap outLexicalTypeMap
-{
-  outLexicalTypeMap = §[]
-  [!?outLexicalTypeMap insertKey !@lstring {!"string" !@location.here} !.lexicalType_string]
-  [!?outLexicalTypeMap insertKey !@lstring {!"char"   !@location.here} !.lexicalType_char]
-  [!?outLexicalTypeMap insertKey !@lstring {!"uint"   !@location.here} !.lexicalType_uint]
-  [!?outLexicalTypeMap insertKey !@lstring {!"uint64" !@location.here} !.lexicalType_uint64]
-  [!?outLexicalTypeMap insertKey !@lstring {!"sint"   !@location.here} !.lexicalType_sint]
-  [!?outLexicalTypeMap insertKey !@lstring {!"sint64" !@location.here} !.lexicalType_sint64]
-  [!?outLexicalTypeMap insertKey !@lstring {!"double" !@location.here} !.lexicalType_double]
-  [!?outLexicalTypeMap insertKey !@lstring {!"bigint" !@location.here} !.lexicalType_bigint]
+func %once buildLexicalTypeMap () -> @lexicalTypeMap {
+  result = §[]
+  [!?result insertKey !@lstring {!"string" !@location.here} !.lexicalType_string]
+  [!?result insertKey !@lstring {!"char"   !@location.here} !.lexicalType_char]
+  [!?result insertKey !@lstring {!"uint"   !@location.here} !.lexicalType_uint]
+  [!?result insertKey !@lstring {!"uint64" !@location.here} !.lexicalType_uint64]
+  [!?result insertKey !@lstring {!"sint"   !@location.here} !.lexicalType_sint]
+  [!?result insertKey !@lstring {!"sint64" !@location.here} !.lexicalType_sint64]
+  [!?result insertKey !@lstring {!"double" !@location.here} !.lexicalType_double]
+  [!?result insertKey !@lstring {!"bigint" !@location.here} !.lexicalType_bigint]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

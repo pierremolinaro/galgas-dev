@@ -34,7 +34,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func escapeForTex ?let @string inString -> @string result {
+private func escapeForTex (let @string inString) -> @string {
   result = ""
   for @uint idx in 0 ..< [inString count] do
     let c = [inString characterAtIndex !idx]

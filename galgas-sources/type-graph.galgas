@@ -446,9 +446,14 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier. isInherited
     !"" # No error message
   ]
-#  drop formalParameterList
-#--- Add Categories
+#--- Add initializer without argument
   var @initializerMap initializerMap = §[]
+  let @functionSignature constructorPropertyTypeList = §[]
+  [!?initializerMap insertKey
+    !.init {![constructorPropertyTypeList initializerSignature] !self.mGraphTypeName}
+    !constructorPropertyTypeList
+  ]
+#--- Add Extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext

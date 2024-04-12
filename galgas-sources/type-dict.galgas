@@ -405,7 +405,7 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  #--- Check escape sequ
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func %once forbiddenKeysForMapAndDict -> @stringset {
+func %once forbiddenKeysForMapAndDict () -> @stringset {
   result = §[]
   result += !"key"
   result += !"description"

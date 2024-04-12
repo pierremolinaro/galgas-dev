@@ -36,12 +36,44 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
-    <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
+    var @actualOutputArgumentList expressionList = §[]
+    select
+      let selector = ["" here]
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      expressionList += !selector !expression !.here
+    or
+      repeat
+      while
+        $!selector:$ ?let selector
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !.here
+      while
+        $!$
+        let selector = ["" here]
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !.here
+      end
+    end
+    repeat
+    while
+      $,$
+      select
+        $!selector:$ ?let selector
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !.here
+      or
+        $!$
+        let selector = ["" here]
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !.here
+      or
+        let selector = ["" here]
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !selector !expression !.here
+      end
+    end
+    outExpression = @functionCallExpressionAST (functionName, expressionList)
     $)$
-    outExpression = @functionCallExpressionAST {
-      !functionName
-      !expressionList
-    }
   }
 
   #·······························································································

@@ -94,7 +94,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
 #------ Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = §[]
   if @uint.errorCount == 0 then
-    let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outTypeMap)
+    let @predefinedTypes predefinedTypes = buildPredefinedTypes (outTypeMap)
     for declaration in sortedSemanticDeclarationListAST do
       [declaration.mSemanticDeclaration semanticAnalysis
         !?ioUsefulnessRootEntities
@@ -130,7 +130,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
 #  - a class appears after its super class
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
-  var @semanticTypePrecedenceGraph semanticTypePrecedenceGraph = .emptyGraph
+  var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph ()
   var @extensionInitializerForBuildingContext extensionInitializerForBuildingContext = §[]
   var @extensionMethodMapForBuildingContext extensionMethodMapForBuildingContext = §[]
   var @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = §[]

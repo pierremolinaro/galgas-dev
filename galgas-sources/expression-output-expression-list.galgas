@@ -71,6 +71,36 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
+  rule <output_expression_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                      !@actualOutputArgumentList outExpressionList {
+    outExpressionList = §[]
+    $($
+    select
+    or
+      repeat
+        select
+          $!selector:$ ?let selector
+          <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+          outExpressionList += !selector !expression !.here
+        or
+          $!$
+          let selector = ["" here]
+          <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+          outExpressionList += !selector !expression !.here
+        or
+          let selector = ["" here]
+          <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+          outExpressionList += !selector !expression !.here
+        end
+      while
+        $,$
+      end
+    end
+    $)$
+  }
+
+  #·······························································································
+
 #  rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
 #                                                !@actualOutputArgumentList outExpressionList {
 #    outExpressionList = §[]

@@ -270,15 +270,18 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
 #---
   if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && 
      ([inInitializerEffectiveParameterExpressions count] == 0) then
-    let oldInitializers = @stringset §[!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"]
-    if [oldInitializers hasKey !inConstructorName.string] then
+    let oldCollectionInitializers = @stringset §[!"emptyList", !"emptyMap", !"emptySortedList", !"emptyDict"]
+    if [oldCollectionInitializers hasKey !inConstructorName.string] then
       error inLocationForOldStyleCollectionInitializerError
       : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
       fixit { replace " §[]" }
     end
   end
-  if [option galgas_cli_options.errorUsingNewInsteadOfInit value] && (inConstructorName.string == "new") then
-    error inConstructorName : "old style constructor, use initializer '.init {}'"
+  if [option galgas_cli_options.errorUsingNewInsteadOfInit value] then
+    let oldInitializers = @stringset §[!"emptyGraph", !"new"]
+    if [oldInitializers hasKey !inConstructorName.string]  then
+      error inConstructorName : "old style constructor, use initializer '.init (...)'"
+    end
   end
 }
 

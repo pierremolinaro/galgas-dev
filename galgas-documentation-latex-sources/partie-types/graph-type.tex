@@ -50,17 +50,17 @@ graph @monGraphe (@maListe) {
 
 
 
-\section{Constructeur \texttt{emptyGraph}}
+\section{Initilisateur}
 
-\begin{galgas3}
-constructor emptyGraph -> @self
-\end{galgas3}
+\begin{galgas34}
+init ()
+\end{galgas34}
 
-\ggst+emptyGraph+ est le seul constructeur d'un graphe. Il instancie un graphe vide.
+L'initialisateur sans argument est le seul initialisateur d'un graphe. Il instancie un graphe vide.
 
-\begin{galgas3}
-var gr = @monGraphe.emptyGraph
-\end{galgas3}
+\begin{galgas34}
+var gr = @monGraphe ()
+\end{galgas34}
 
 
 

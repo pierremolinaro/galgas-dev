@@ -9,7 +9,7 @@
 
 
 
-Le mot-clé \ggst!struct! permet de définir des types de structure. Un objet de type structure a une sémantique de valeur. Une déclaration de structure doit déclarer au moins une propriété. Par exemple :
+Le mot-clé \ggsq!struct! permet de définir des types de structure. Un objet de type structure a une sémantique de valeur. Une déclaration de structure doit déclarer au moins une propriété. Par exemple :
 
 \begin{galgas34}
 struct @MaStructure {
@@ -23,13 +23,6 @@ struct @MaStructure2 {
   public var @uint propriété = 9
 }
 \end{galgas34}
-
-En GALGAS 3, les propriétés non initialisées peuvent être déclarées avec \ggst!public! et \ggst!var! implicites (cette syntaxe est obsolète et n'existe pas en GALGAS 4)~:
-\begin{galgas3}
-struct @MaStructure {
-  @uint propriété
-}
-\end{galgas3}
 
 Une déclaration de structure peut aussi déclarer~: des initialisateurs (\refSectionPage{initStruct}), des \emph{getters} (\refSectionPage{getterStruct}), des \emph{methodes} (\refSectionPage{methodStruct}) et des \emph{setters} (\refSectionPage{setterStruct}).
 
@@ -48,11 +41,10 @@ Ces déclarations peuvent apparaître soit dans la déclaration de structure, so
 
 \sectionLabel{initialisateurs}{initStruct}
 
-Lorque que l'on instancie un type structure, on appelle un \emph{initialisateur}. Celui-ci a pour rôle de fixer une valeur initiale à toutes les propriétés de la structure instancée.
+Lorque que l'on instancie un type structure, on appelle un \emph{initialisateur}. Celui-ci a pour rôle d'attribuer une valeur initiale à toutes les propriétés de la structure instancée.
 
-En GALGAS 3, on peut instancier une structure avec le constructeur \ggst!new! (\refSubsectionPage{constructeurNewStruct}), qui est automatiquement engendré par toute structure~; cette construction est obsolète et est remplacée par l'appel d'un initialisateur.
 
-Toute structure implémente un initialisateur. Si une structure ne déclare aucun initialisateur, un initialisateur par défaut est automatiquement engendré (\refSubsectionPage{initialisateurDefautStruct}). L'écriture d'un initialisateur est présenté à la \refSubsectionPage{initialisateurStruct}.
+Toute structure implémente un initialisateur. Si une structure ne déclare aucun initialisateur, un initialisateur synthétisé est automatiquement engendré (\refSubsectionPage{initialisateurDefautStruct}). L'écriture d'un initialisateur est présenté à la \refSubsectionPage{initialisateurStruct}.
 
 \subsectionLabel{Initialisateur synthétisé}{initialisateurDefautStruct}
 
@@ -67,32 +59,32 @@ struct @maStructure {
 \end{galgas34}
 
 La syntaxe la plus générale d'appel de l'initialisateur synthétisé est~:
-\begin{galgas4}
+\begin{galgas34}
 var aVariable = @maStructure.init (123, true)
-\end{galgas4}
+\end{galgas34}
 \begin{galgas3}
 var aVariable = @maStructure.init {!123 !true}
 \end{galgas3}
 
-On peut omettre \ggst!.init!~:
-\begin{galgas4}
+On peut omettre \ggsq!.init!~:
+\begin{galgas34}
 var aVariable = @maStructure (123, true)
-\end{galgas4}
+\end{galgas34}
 \begin{galgas3}
 var aVariable = @maStructure {!123 !true}
 \end{galgas3}
 
 
 Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur~:
-\begin{galgas4}
+\begin{galgas34}
 var @maStructure aVariable = .init (123, true)
-\end{galgas4}
+\end{galgas34}
 \begin{galgas3}
 var @maStructure aVariable = .init {!123 !true}
 \end{galgas3}
 
 
-Il est possible d'ajouter l'attribut \ggst=%initArgLabel= à la déclaration d'une propriété non initialisée, pour ajouter dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
+Il est possible d'ajouter l'attribut \ggsq=%initArgLabel= à la déclaration d'une propriété non initialisée, pour ajouter dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
 \begin{galgas3}
 struct @maStructure {
   public var @uint propriété1 %initArgLabel
@@ -108,9 +100,9 @@ var aVariable = @maStructure.init (!propriété1: 123, true)
 var aVariable = @maStructure.init {!propriété1: 123 !true}
 \end{galgas3}
 
-On peut omettre \ggst!.init! ou l'annotation de type si le contexte le permet.
+On peut omettre \ggsq!.init! ou l'annotation de type si le contexte le permet.
 
-Si la propriété est initialisée, alors l'attribut \ggst=%initArgLabel= est invalide (déclenche une erreur de syntaxe).
+Si la propriété est initialisée, alors l'attribut \ggsq=%initArgLabel= est invalide (déclenche une erreur de syntaxe).
 
 
 Si toutes les propriétés sont initialisées, alors l'initialisateur synthétisé n'a pas d'argument. Pour la structure~:
@@ -122,7 +114,7 @@ struct @maStructure {
 \end{galgas34}
 
 On écrit donc~:
-\begin{galgas4}
+\begin{galgas34}
 var aVariable = @maStructure.init ()
 // Ou :
 var aVariable = @maStructure.init
@@ -132,7 +124,7 @@ var aVariable = @maStructure ()
 var @maStructure aVariable = .init ()
 // Ou :
 var @maStructure aVariable = .init
-\end{galgas4}
+\end{galgas34}
 \begin{galgas3}
 var aVariable = @maStructure.init {}
 // Ou :
@@ -153,53 +145,112 @@ var @maStructure aVariable = .init
 
 \subsectionLabel{Initialisateur}{initialisateurStruct}
 
+Un initialisateur peut être déclaré à l'intérieur de la déclaration de structure, ou comme une extension. Exemple d'initialisateur déclaré dans la déclaration de structure~:
 
-
-\subsectionLabel{GALGAS 3 : constructeur \texttt{new}}{constructeurNewStruct}
-
-{\bf Cette construction est obsolète et est remplacée par l'appel d'un initialisateur.}
-
-En GALGAS 3, tout type structure définit implicitement le constructeur \ggst!new!. Son appel comprend une valeur par propriété non initialisée déclarée par le type structure.
-
-Par exemple, pour la déclaration~:
-\begin{galgas3}
+\begin{galgas34}
 struct @maStructure {
   public var @uint propriété1
-  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
+  public var @bool propriété2
+  
+  init (let @uint inV1, let @uint inV2) {
+    self.propriété1 = inV1
+    self.propriété2 = inV2
+  }
 }
-\end{galgas3}
+\end{galgas34}
 
-L'appel du constructeur \ggst!new! est~:
-\begin{galgas3}
-var aVariable = @maStructure.new {!123 !true}
-\end{galgas3}
+Et comme extension :
 
-Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
-\begin{galgas3}
-var @maStructure aVariable = .new {!123 !true}
-\end{galgas3}
+\begin{galgas34}
+extension @maStructure.init (let @uint inV) {
+  self.propriété1 = inV
+  self.propriété2 = inV
+}
+\end{galgas34}
 
-Il est possible d'ajouter l'attribut \ggst=%initArgLabel= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggst=new=. Par exemple, si on déclare~:
-\begin{galgas3}
+On peut déclarer autant d'initialisateurs que l'on souhaite, du moment qu'ils se distinguent par leur nombre d'arguments et leurs étiquettes d'arguments. Par exemple, si on veut déclarer un autre initialisateur avec un seul argument, il faut ajouter, pour le distinguer du précédent, une étiquette à l'argument~:
+\begin{galgas34}
+extension @maStructure.init (?plusUn: let @uint inV) {
+  self.propriété1 = inV + 1
+  self.propriété2 = inV + 1
+}
+\end{galgas34}
+
+Remarquer que \ggsq!self.! est obligatoire pour accéder aux propriétés.
+
+\subsection{Liste d'instructions d'un initialisateur}
+
+La liste d'instructions d'un initialisateur est divisée en deux parties séquentielles séparées par une limite invisible~:
+\begin{itemize}
+  \item d'abord l'initialisation des propriétés ;
+  \item ensuite, on peut accéder aux fonctions et procédures de la structure sans restriction.
+\end{itemize}
+
+Par exemple~:
+\begin{galgas34}
 struct @maStructure {
-  public var @uint propriété1 %initArgLabel
-  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
+  public var @uint propriété1
+  public var @bool propriété2
+  
+  init (let @uint inV1, let @uint inV2) {
+    self.propriété1 = inV1
+    self.propriété2 = inV2
+  //--- À partir d'ici, l'objet courant est complètement initialisé
+    self.propriété1 += self.somme ()
+  }
+  
+  func somme () -> @uint {
+    result = self.propriété1 + self.propriété2
+  }
 }
-\end{galgas3}
+\end{galgas34}
 
-Alors l'appel du constructeur \ggst!new! devient~:
-\begin{galgas3}
-var aVariable = @maStructure.new {!propriété1: 123 !true}
-\end{galgas3}
+
+%\subsectionLabel{GALGAS 3 : constructeur \texttt{new}}{constructeurNewStruct}
+%
+%{\bf Cette construction est obsolète et est remplacée par l'appel d'un initialisateur.}
+%
+%En GALGAS 3, tout type structure définit implicitement le constructeur \ggsq!new!. Son appel comprend une valeur par propriété non initialisée déclarée par le type structure.
+%
+%Par exemple, pour la déclaration~:
+%\begin{galgas3}
+%struct @maStructure {
+%  public var @uint propriété1
+%  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
+%}
+%\end{galgas3}
+%
+%L'appel du constructeur \ggsq!new! est~:
+%\begin{galgas3}
+%var aVariable = @maStructure.new {!123 !true}
+%\end{galgas3}
+%
+%Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
+%\begin{galgas3}
+%var @maStructure aVariable = .new {!123 !true}
+%\end{galgas3}
+%
+%Il est possible d'ajouter l'attribut \ggsq=%initArgLabel= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggsq=new=. Par exemple, si on déclare~:
+%\begin{galgas3}
+%struct @maStructure {
+%  public var @uint propriété1 %initArgLabel
+%  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
+%}
+%\end{galgas3}
+%
+%Alors l'appel du constructeur \ggsq!new! devient~:
+%\begin{galgas3}
+%var aVariable = @maStructure.new {!propriété1: 123 !true}
+%\end{galgas3}
 
 
 %\subsection{Constructeur \texttt{default}}
 %
-%Si chacune des propriétés accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggst!@maStructure! définie au dessus~: \ggst!@uint! accepte le constructeur par défaut (initialisation à \ggst!0!), ainsi que \ggst!@bool! (initialisation à \ggst!false!). Donc~:
+%Si chacune des propriétés accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggsq!@maStructure! définie au dessus~: \ggsq!@uint! accepte le constructeur par défaut (initialisation à \ggsq!0!), ainsi que \ggsq!@bool! (initialisation à \ggsq!false!). Donc~:
 %\begin{galgas3}
 %var aVariable = @maStructure.default
 %\end{galgas3}
-%Initialise les propriétés de \ggst!aVariable! respectivement à \ggst!0! et \ggst!false!. On peut aussi écrire~:
+%Initialise les propriétés de \ggsq!aVariable! respectivement à \ggsq!0! et \ggsq!false!. On peut aussi écrire~:
 %\begin{galgas3}
 %@maStructure aVariable = .default
 %\end{galgas3}
@@ -207,23 +258,41 @@ var aVariable = @maStructure.new {!propriété1: 123 !true}
 
 \section{Accès aux propriétés}
 
-La notation pointée \ggst!variable.propriété! permet d'accéder à une propriété d'une structure, aussi bien en lecture, en écriture et en lecture/écriture.
+À l'intérieur d'une fonction ou procédure de la structure, l'accès par \ggsq!self.! est obligatoire. La notation pointée \ggsq!variable.propriété! permet d'accéder à une propriété d'une structure, sous réserve de satisfaire le contrôle d'accès (\refTableau{controleAccessPropStruct})
 
-Exemple d'accès en lecture~:
-\begin{galgas3}
-@uint v = aVariable.mProp1
-\end{galgas3}
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{rcccc}
+  \bf Déclaration de la  & \bf Lecture       & \bf Écriture       & \bf Lecture           & \bf Écriture \\
+  \bf propriété \ggsq!v! & \bf \ggsq!self.p! & \bf \ggsq!self.p!  & \bf \ggsq!variable.p! & \bf \ggsq!variable.p! \\
+  \ggsq!public var p!    & \checkmark        & \checkmark         & \checkmark            & \checkmark \\
+  \ggsq!public let p!    & \checkmark        &                    & \checkmark            & \\
+  \ggsq!private var p!   & \checkmark        & \checkmark         &                       & \\
+  \ggsq!private let p!   & \checkmark        &                    &                       & \\
+  \ggsq!private(set) var p! & \checkmark     & \checkmark         & \checkmark             & 
+  \end{tabular}
+  \caption{Contrôle d'accès des propriétés d'une structure}
+  \labelTableau{controleAccessPropStruct}
+\end{table}
 
-Exemple d'accès en écriture~:
-\begin{galgas3}
-aVariable.mProp1 = 10
-\end{galgas3}
 
-
-Exemple d'accès en lecture/écriture~:
-\begin{galgas3}
-aVariable.mProp1 ++
-\end{galgas3}
+%aussi bien en lecture, en écriture et en lecture/écriture.
+%
+%Exemple d'accès en lecture~:
+%\begin{galgas34}
+%var v = aVariable.propriété1
+%\end{galgas34}
+%
+%Exemple d'accès en écriture~:
+%\begin{galgas34}
+%aVariable.propriété1 = 10
+%\end{galgas34}
+%
+%
+%Exemple d'accès en lecture/écriture~:
+%\begin{galgas34}
+%aVariable.propriété1 += 1
+%\end{galgas34}
 
 
 
@@ -256,44 +325,44 @@ Plusieurs types préféfinis GALGAS sont des structures.
 
 \subsectionTypePredefiniLabelIndex{lbigint}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @lbigint {
-  @bigint bigint
-  @location location
+  public var @bigint bigint
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 
 \subsectionTypePredefiniLabelIndex{lbool}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @lbool {
-  @bool bool
-  @location location
+  public var @bool bool
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 
 \subsectionTypePredefiniLabelIndex{lchar}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @lchar {
-  @char char
-  @location location
+  public var @char char
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 \subsectionTypePredefiniLabelIndex{ldouble}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @ldouble {
-  @double double
-  @location location
+  public var @double double
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 
@@ -303,12 +372,12 @@ struct @ldouble {
 
 \subsectionTypePredefiniLabelIndex{lsint}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @lsint {
-  @sint sint
-  @location location
+  public var @sint sint
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 
@@ -319,12 +388,12 @@ struct @lsint {
 
 \subsectionTypePredefiniLabelIndex{lsint64}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @lsint64 {
-  @sint64 sint64
-  @location location
+  public var @sint64 sint64
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 
@@ -334,12 +403,12 @@ struct @lsint64 {
 
 \subsectionTypePredefiniLabelIndex{lstring}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @lstring {
-  @string string
-  @location location
+  public var @string string
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 
@@ -349,12 +418,12 @@ struct @lstring {
 
 \subsectionTypePredefiniLabelIndex{luint}
 
-\begin{galgas3}
+\begin{galgas34}
 struct @luint {
-  @uint uint
-  @location location
+  public var @uint uint
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 
@@ -363,84 +432,84 @@ struct @luint {
 \subsectionTypePredefiniLabelIndex{luint64}
 
 
-\begin{galgas3}
+\begin{galgas34}
 struct @luint64 {
-  @uint64 uint64
-  @location location
+  public var @uint64 uint64
+  public var @location location
 }
-\end{galgas3}
+\end{galgas34}
 
 
 \subsectionTypePredefiniLabelIndex{range}
 
-Le type \ggst!@range! définit les intervalles d'entiers non signés 32 bits (\ggst!@uint!).
+Le type \ggsq!@range! définit les intervalles d'entiers non signés 32 bits (\ggsq!@uint!).
 
-\begin{galgas3}
+\begin{galgas34}
 struct @range {
-  @uint start
-  @uint length
+  public var @uint start
+  public var @uint length
 }
-\end{galgas3}
+\end{galgas34}
 
-La plupart des propriétés du type \ggst!@range! découle de cette définition (\refChapterPage{typeStructure}).
+La plupart des propriétés du type \ggsq!@range! découle de cette définition (\refChapterPage{typeStructure}).
 
-\ggst+@range.new {!a !b}+, où \ggst!a! et \ggst!b! sont des expressions de type \ggst!@uint!, représente~:
+\ggsq+@range (a, b)+, où \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@uint!, représente~:
 \begin{itemize}
-  \item un intervalle vide si \ggst!b! est égal à zéro ;
-  \item l'intervalle $[a, a+b-1]$ si \ggst!b! est strictement positif.
+  \item un intervalle vide si \ggsq!b! est égal à zéro ;
+  \item l'intervalle $[a, a+b-1]$ si \ggsq!b! est strictement positif.
 \end{itemize}
 
 
 
-\subsubsectionLabel{Opérateurs \texttt{...} et \texttt{..<}}{operateurIntervalleRange}
+\subsubsection{Opérateurs \texttt{.{}.{}.} et \texttt{.{}.{}<}}
 
-Deux opérateurs permettent de construire plus facilement des objets de type \ggst!@range!.
+Deux opérateurs permettent de construire plus facilement des objets de type \ggsq!@range!.
 
-L'opérateur \ggst!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure~: si \ggst!a! et \ggst!b! sont des expressions de type \ggst!@uint!, l'expression \ggst!a ... b! est équivalente à la construction \ggst*@range.new {!a !b - a + 1}*. Une exception est levée si $b < a$.
+L'opérateur \ggsq!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure~: si \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@uint!, l'expression \ggsq!a ... b! est équivalente à la construction \ggsq*@range (a, b - a + 1)*. Une exception est levée si $b < a$.
 
-L'opérateur \ggst!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure~: si \ggst!a! et \ggst!b! sont des expressions de type \ggst!@uint!, l'expression \ggst!a ..< b! est équivalente à \ggst*@range.new {!a !b - a}*. Une exception est levée si $b < a$.
+L'opérateur \ggsq!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure~: si \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@uint!, l'expression \ggsq!a ..< b! est équivalente à \ggsq*@range (a, b - a)*. Une exception est levée si $b < a$.
 
 \subsubsection{Type \texttt{@range} et instruction \texttt{for}}
 
-On peut utiliser une expression de type \ggst!@range! avec l'instruction \ggst!for!~:
+On peut utiliser une expression de type \ggsq!@range! avec l'instruction \ggsq!for!~:
 
-\begin{galgas3}
-for i in @range.new {!12 !5} do
+\begin{galgas34}
+for i in @range (12, 5) do
   # i prend successivement les valeurs 12, 13, 14, 15, 16
 end
-\end{galgas3}
+\end{galgas34}
 
-Et, avec l'opérateur \ggst!...!~:
-\begin{galgas3}
+Et, avec l'opérateur \ggsq!...!~:
+\begin{galgas34}
 for i in 12 ... 16 do
   # i prend successivement les valeurs 12, 13, 14, 15, 16
 end
-\end{galgas3}
+\end{galgas34}
 
-Et l'opérateur \ggst!..<!~:
-\begin{galgas3}
+Et l'opérateur \ggsq!..<!~:
+\begin{galgas34}
 for i in 12 ..< 17 do
   # i prend successivement les valeurs 12, 13, 14, 15, 16
 end
-\end{galgas3}
+\end{galgas34}
 
-Si l'on veut parcourir l'énumération à partir de la dernière valeur, on utilise le modificateur \ggst!>! après le mot-clé \ggst!for!~:
-\begin{galgas3}
-for > i in @range.new {!12 !5} do
+Si l'on veut parcourir l'énumération à partir de la dernière valeur, on utilise le modificateur \ggsq!>! après le mot-clé \ggsq!for!~:
+\begin{galgas34}
+for > i in @range (12, 5) do
   # i prend successivement les valeurs 16, 15, 14, 13, 12
 end
-\end{galgas3}
+\end{galgas34}
 
-\begin{galgas3}
+\begin{galgas34}
 for > i in 12 ... 16 do
   # i prend successivement les valeurs 16, 15, 14, 13, 12
 end
-\end{galgas3}
+\end{galgas34}
 
-\begin{galgas3}
+\begin{galgas34}
 for > i in 12 ..< 17 do
   # i prend successivement les valeurs 16, 15, 14, 13, 12
 end
-\end{galgas3}
+\end{galgas34}
 
 

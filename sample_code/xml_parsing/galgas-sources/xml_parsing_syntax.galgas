@@ -87,7 +87,7 @@ rule <element>
   ?let @string inIndendation {
   $comment$ ?let @lstring commentString
   if inIncludeComments then
-    let node = @xmlNode.init{
+    let node = @xmlNode {
       !@xmlNodeType. comment
       !commentString.string
       !§[]

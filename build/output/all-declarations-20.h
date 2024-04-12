@@ -904,6 +904,18 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
                                                                     GALGAS_actualOutputArgumentList & outArgument1,
                                                                     Lexique_galgasScanner_33_ * inCompiler) ;
 
+//------------------------------------- 'output_expression_list_ggs34' non terminal
+//--- 'parse' label
+  public: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__34__parse (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__34__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_output_5F_expression_5F_list_5F_ggs_33__34__ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                        GALGAS_actualOutputArgumentList & outArgument1,
+                                                                        Lexique_galgasScanner_33_ * inCompiler) ;
+
 //------------------------------------- 'poisoned_var_list_ggs3' non terminal
 //--- 'parse' label
   public: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ;
@@ -1296,6 +1308,24 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_ExpressionSyntax_16 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_ExpressionSyntax_17 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_18 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_19 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_20 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_21 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_22 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_23 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_24 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_25 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ExpressionSyntax_26 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_ParameterArgumentSyntax_0 (Lexique_galgasScanner_33_ *) ;
 

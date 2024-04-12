@@ -29,15 +29,25 @@ syntax extension galgas3ExpressionSyntax {
     <optional_type_ggs3> ?let @lstring typeName
     $.$
     $init$
-    ${$
-    <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
-    let endOfExpression = @location.here
-    $}$
-    outExpression = @initializerCallAST {
-      !typeName
-      !expressionList
-      !endOfExpression
-    }
+    select
+      ${$
+      <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
+      let endOfExpression = @location.here
+      $}$
+      outExpression = @initializerCallAST {
+        !typeName
+        !expressionList
+        !endOfExpression
+      }
+    or
+      <output_expression_list_ggs34> !?ioDeclarations ?let expressionList
+      let endOfExpression = @location.here
+      outExpression = @initializerCallAST {
+        !typeName
+        !expressionList
+        !endOfExpression
+      }
+    end
   }
 
   #·······························································································
@@ -60,15 +70,17 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
     $@type$ ?let typeName indexing typeReferenceInConstructor
-    ${$
-    <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
-    let endOfExpression = @location.here
-    $}$
-    outExpression = @initializerCallAST {
-      !typeName
-      !expressionList
-      !endOfExpression
-    }
+    select
+      ${$
+      <output_expression_list_ggs3> !?ioDeclarations ?let expressionList
+      let endOfExpression = @location.here
+      $}$
+      outExpression = @initializerCallAST (typeName, expressionList, endOfExpression)
+    or
+      <output_expression_list_ggs34> !?ioDeclarations ?let expressionList
+      let endOfExpression = @location.here
+      outExpression = @initializerCallAST (typeName, expressionList, endOfExpression)
+    end
   }
 
   #·······························································································

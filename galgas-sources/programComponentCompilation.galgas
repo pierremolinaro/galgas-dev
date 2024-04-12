@@ -210,7 +210,7 @@ proc compileProgramComponentGalgas3
 #--- Analysis context
   let analysisContext = @analysisContext {
     !inSemanticContext
-    !buildPredefinedTypes (!ioTypeMap)
+    !buildPredefinedTypes (ioTypeMap)
     !selfObjectCppName: ""
     !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""

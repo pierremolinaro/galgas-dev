@@ -23,14 +23,29 @@ syntax extension galgas3InstructionsSyntax {
 
   #·······························································································
 
+#  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+#                                   !@semanticInstructionAST outInstruction {
+#    $[$
+#    let instructionLocation = @location.here
+#    $super$
+#    $init$
+#    <output_expression_list_ggs3> !?ioDeclarations ?let actualParameterList
+#    $]$
+#    outInstruction = @superInitInstructionAST {
+#      !instructionLocation
+#      !actualParameterList
+#    }
+#  }
+
+  #·······························································································
+
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
-    $[$
-    let instructionLocation = @location.here
     $super$
+    let instructionLocation = @location.here
+    $.$
     $init$
-    <output_expression_list_ggs3> !?ioDeclarations ?let actualParameterList
-    $]$
+    <output_expression_list_ggs34> !?ioDeclarations ?let actualParameterList
     outInstruction = @superInitInstructionAST {
       !instructionLocation
       !actualParameterList

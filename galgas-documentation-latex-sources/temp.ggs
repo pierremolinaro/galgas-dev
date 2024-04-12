@@ -1,9 +1,3 @@
-var aVariable = @maStructure.init ()
-// Ou :
-var aVariable = @maStructure.init
-// Ou :
-var aVariable = @maStructure ()
-// Ou :
-var @maStructure aVariable = .init ()
-// Ou :
-var @maStructure aVariable = .init
+for > i in 12 ..< 17 do
+  # i prend successivement les valeurs 16, 15, 14, 13, 12
+end

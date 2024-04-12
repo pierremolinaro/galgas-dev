@@ -291,7 +291,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     !?declarationAST.mDeclarationList
   )
 #---------------------------------- Compile semantic declarations
-  var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
+  var usefulEntitiesGraph = @usefulEntitiesGraph ()
   let @string buildDirectoryName
   if inGalgas4 then
     buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"-"] + "-build"

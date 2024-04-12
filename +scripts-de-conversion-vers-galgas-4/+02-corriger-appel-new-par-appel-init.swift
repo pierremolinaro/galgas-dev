@@ -97,7 +97,7 @@ func runHiddenCommand (_ cmd : String, _ args : [String]) -> (String, Int32) {
         let line2 = lines [1]
         print (line1)
         print (line2)
-        loop = line2.hasPrefix ("semantic error #1: old style constructor, use initializer '.init {}'")
+        loop = line2.hasPrefix ("semantic error #1: old style constructor, use initializer '.init (...)'")
         if loop {
           let c = line1.components (separatedBy: ":")
           assert (c.count == 5)

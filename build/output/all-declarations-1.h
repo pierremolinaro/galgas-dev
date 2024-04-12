@@ -5435,6 +5435,8 @@ class GALGAS_usefulEntitiesGraph : public AC_GALGAS_graph {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_usefulEntitiesGraph init (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
