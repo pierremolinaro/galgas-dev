@@ -33,7 +33,7 @@ refclass @timerPredefinedTypeAST : @predefinedTypeAST {
   #-----------------------------------------------------------------------------------------------
 
   override getter initializers -> @initializerSignatureList {
-    result = §[!@functionSignature §[]]
+    result = §[!@formalInputParameterListAST §[]]
   }
 
   #-----------------------------------------------------------------------------------------------

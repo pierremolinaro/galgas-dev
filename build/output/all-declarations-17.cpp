@@ -3685,31 +3685,36 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::extra
 }
 
 //--------------------------------------------------------------------------------------------------
-// @outputInputSingleJokerParameterAST reference class
+// @outputInputJokerParameterAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_outputInputSingleJokerParameterAST::cPtr_outputInputSingleJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector () {
+mProperty_mActualSelector (),
+mProperty_initializerCall () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_outputInputSingleJokerParameterAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_outputInputJokerParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
     mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_initializerCall.printNonNullClassInstanceProperties ("initializerCall") ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult cPtr_outputInputSingleJokerParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+ComparisonResult cPtr_outputInputJokerParameterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   ComparisonResult result = ComparisonResult::operandEqual ;
-  const cPtr_outputInputSingleJokerParameterAST * p = (const cPtr_outputInputSingleJokerParameterAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_outputInputSingleJokerParameterAST) ;
+  const cPtr_outputInputJokerParameterAST * p = (const cPtr_outputInputJokerParameterAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
   if (ComparisonResult::operandEqual == result) {
     result = mProperty_mActualSelector.objectCompare (p->mProperty_mActualSelector) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_initializerCall.objectCompare (p->mProperty_initializerCall) ;
   }
   return result ;
 }
@@ -3717,7 +3722,7 @@ ComparisonResult cPtr_outputInputSingleJokerParameterAST::dynamicObjectCompare (
 //--------------------------------------------------------------------------------------------------
 
 
-ComparisonResult GALGAS_outputInputSingleJokerParameterAST::objectCompare (const GALGAS_outputInputSingleJokerParameterAST & inOperand) const {
+ComparisonResult GALGAS_outputInputJokerParameterAST::objectCompare (const GALGAS_outputInputJokerParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -3735,129 +3740,150 @@ ComparisonResult GALGAS_outputInputSingleJokerParameterAST::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSingleJokerParameterAST::GALGAS_outputInputSingleJokerParameterAST (void) :
+GALGAS_outputInputJokerParameterAST::GALGAS_outputInputJokerParameterAST (void) :
 GALGAS_actualParameterAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::
-init_21_ (const GALGAS_lstring & in_mActualSelector,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_outputInputSingleJokerParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_outputInputSingleJokerParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputInputSingleJokerParameterAST_init_21_ (in_mActualSelector, inCompiler) ;
-  const GALGAS_outputInputSingleJokerParameterAST result (object) ;
+GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::
+init_21__21_ (const GALGAS_lstring & in_mActualSelector,
+              const GALGAS_semanticExpressionAST & in_initializerCall,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_outputInputJokerParameterAST * object = nullptr ;
+  macroMyNew (object, cPtr_outputInputJokerParameterAST (inCompiler COMMA_THERE)) ;
+  object->outputInputJokerParameterAST_init_21__21_ (in_mActualSelector, in_initializerCall, inCompiler) ;
+  const GALGAS_outputInputJokerParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_outputInputSingleJokerParameterAST::
-outputInputSingleJokerParameterAST_init_21_ (const GALGAS_lstring & in_mActualSelector,
-                                             Compiler * /* inCompiler */) {
+void cPtr_outputInputJokerParameterAST::
+outputInputJokerParameterAST_init_21__21_ (const GALGAS_lstring & in_mActualSelector,
+                                           const GALGAS_semanticExpressionAST & in_initializerCall,
+                                           Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_initializerCall = in_initializerCall ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSingleJokerParameterAST::GALGAS_outputInputSingleJokerParameterAST (const cPtr_outputInputSingleJokerParameterAST * inSourcePtr) :
+GALGAS_outputInputJokerParameterAST::GALGAS_outputInputJokerParameterAST (const cPtr_outputInputJokerParameterAST * inSourcePtr) :
 GALGAS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputSingleJokerParameterAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputJokerParameterAST) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::class_func_new (const GALGAS_lstring & in_mActualSelector
-                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_outputInputSingleJokerParameterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_outputInputSingleJokerParameterAST (in_mActualSelector COMMA_THERE)) ;
+GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::class_func_new (const GALGAS_lstring & in_mActualSelector,
+                                                                                         const GALGAS_semanticExpressionAST & in_initializerCall
+                                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_outputInputJokerParameterAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_outputInputJokerParameterAST (in_mActualSelector, in_initializerCall COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_outputInputSingleJokerParameterAST::readProperty_mActualSelector (void) const {
+GALGAS_lstring GALGAS_outputInputJokerParameterAST::readProperty_mActualSelector (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_lstring () ;
   }else{
-    cPtr_outputInputSingleJokerParameterAST * p = (cPtr_outputInputSingleJokerParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputSingleJokerParameterAST) ;
+    cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
     return p->mProperty_mActualSelector ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @outputInputSingleJokerParameterAST class
+
+GALGAS_semanticExpressionAST GALGAS_outputInputJokerParameterAST::readProperty_initializerCall (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionAST () ;
+  }else{
+    cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
+    return p->mProperty_initializerCall ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @outputInputJokerParameterAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_outputInputSingleJokerParameterAST::cPtr_outputInputSingleJokerParameterAST (const GALGAS_lstring & in_mActualSelector
-                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                                                      const GALGAS_semanticExpressionAST & in_initializerCall
+                                                                      COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (THERE),
-mProperty_mActualSelector () {
+mProperty_mActualSelector (),
+mProperty_initializerCall () {
   mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_initializerCall = in_initializerCall ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_outputInputSingleJokerParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ;
+const C_galgas_type_descriptor * cPtr_outputInputJokerParameterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
 }
 
-void cPtr_outputInputSingleJokerParameterAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@outputInputSingleJokerParameterAST:") ;
+void cPtr_outputInputJokerParameterAST::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("[@outputInputJokerParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_initializerCall.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_outputInputSingleJokerParameterAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_outputInputJokerParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_outputInputSingleJokerParameterAST (mProperty_mActualSelector COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_outputInputJokerParameterAST (mProperty_mActualSelector, mProperty_initializerCall COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @outputInputSingleJokerParameterAST generic code implementation
+//     @outputInputJokerParameterAST generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ("outputInputSingleJokerParameterAST",
-                                                                                          & kTypeDescriptor_GALGAS_actualParameterAST) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST ("outputInputJokerParameterAST",
+                                                                                    & kTypeDescriptor_GALGAS_actualParameterAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_outputInputSingleJokerParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ;
+const C_galgas_type_descriptor * GALGAS_outputInputJokerParameterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_outputInputSingleJokerParameterAST::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_outputInputJokerParameterAST::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_outputInputSingleJokerParameterAST (*this)) ;
+    macroMyNew (result, GALGAS_outputInputJokerParameterAST (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_outputInputSingleJokerParameterAST GALGAS_outputInputSingleJokerParameterAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_outputInputSingleJokerParameterAST result ;
-  const GALGAS_outputInputSingleJokerParameterAST * p = (const GALGAS_outputInputSingleJokerParameterAST *) inObject.embeddedObject () ;
+GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::extractObject (const GALGAS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_outputInputJokerParameterAST result ;
+  const GALGAS_outputInputJokerParameterAST * p = (const GALGAS_outputInputJokerParameterAST *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_outputInputSingleJokerParameterAST *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_outputInputJokerParameterAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("outputInputSingleJokerParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("outputInputJokerParameterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9230,6 +9256,30 @@ GALGAS_galgas_33_GrammarComponentAST GALGAS_galgas_33_GrammarComponentAST::extra
   }
   return result ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@functionSignature initializerSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string extensionGetter_initializerSignature (const GALGAS_functionSignature & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  result_result = GALGAS_string ("init") ;
+  const GALGAS_functionSignature temp_0 = inObject ;
+  cEnumerator_functionSignature enumerator_1808 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_1808.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GALGAS_string ("!").add_operation (enumerator_1808.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)) ;
+    enumerator_1808.gotoNextObject () ;
+  }
+//---
+  return result_result ;
+}
+
+
+
 
 //--------------------------------------------------------------------------------------------------
 

@@ -10366,233 +10366,6 @@ GALGAS_classFuncExpressionForGeneration GALGAS_classFuncExpressionForGeneration:
 }
 
 //--------------------------------------------------------------------------------------------------
-// @defaultConstructorExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_defaultConstructorExpressionForGeneration::cPtr_defaultConstructorExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
-mProperty_mConstructorName (),
-mProperty_mHasCompilerArgument () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_defaultConstructorExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mConstructorName.printNonNullClassInstanceProperties ("mConstructorName") ;
-    mProperty_mHasCompilerArgument.printNonNullClassInstanceProperties ("mHasCompilerArgument") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cPtr_defaultConstructorExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  const cPtr_defaultConstructorExpressionForGeneration * p = (const cPtr_defaultConstructorExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_defaultConstructorExpressionForGeneration) ;
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mConstructorName.objectCompare (p->mProperty_mConstructorName) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mHasCompilerArgument.objectCompare (p->mProperty_mHasCompilerArgument) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-
-ComparisonResult GALGAS_defaultConstructorExpressionForGeneration::objectCompare (const GALGAS_defaultConstructorExpressionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_defaultConstructorExpressionForGeneration::GALGAS_defaultConstructorExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::
-init_21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                      const GALGAS_location & in_mLocation,
-                      const GALGAS_string & in_mConstructorName,
-                      const GALGAS_bool & in_mHasCompilerArgument,
-                      Compiler * inCompiler
-                      COMMA_LOCATION_ARGS) {
-  cPtr_defaultConstructorExpressionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_defaultConstructorExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->defaultConstructorExpressionForGeneration_init_21__21__21__21_ (in_mResultType, in_mLocation, in_mConstructorName, in_mHasCompilerArgument, inCompiler) ;
-  const GALGAS_defaultConstructorExpressionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_defaultConstructorExpressionForGeneration::
-defaultConstructorExpressionForGeneration_init_21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                const GALGAS_location & in_mLocation,
-                                                                const GALGAS_string & in_mConstructorName,
-                                                                const GALGAS_bool & in_mHasCompilerArgument,
-                                                                Compiler * /* inCompiler */) {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mConstructorName = in_mConstructorName ;
-  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_defaultConstructorExpressionForGeneration::GALGAS_defaultConstructorExpressionForGeneration (const cPtr_defaultConstructorExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_defaultConstructorExpressionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                                   const GALGAS_location & in_mLocation,
-                                                                                                                   const GALGAS_string & in_mConstructorName,
-                                                                                                                   const GALGAS_bool & in_mHasCompilerArgument
-                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_defaultConstructorExpressionForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_defaultConstructorExpressionForGeneration (in_mResultType, in_mLocation, in_mConstructorName, in_mHasCompilerArgument COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_defaultConstructorExpressionForGeneration::readProperty_mConstructorName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_string () ;
-  }else{
-    cPtr_defaultConstructorExpressionForGeneration * p = (cPtr_defaultConstructorExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_defaultConstructorExpressionForGeneration) ;
-    return p->mProperty_mConstructorName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_defaultConstructorExpressionForGeneration::readProperty_mHasCompilerArgument (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_bool () ;
-  }else{
-    cPtr_defaultConstructorExpressionForGeneration * p = (cPtr_defaultConstructorExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_defaultConstructorExpressionForGeneration) ;
-    return p->mProperty_mHasCompilerArgument ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @defaultConstructorExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_defaultConstructorExpressionForGeneration::cPtr_defaultConstructorExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                const GALGAS_location & in_mLocation,
-                                                                                                const GALGAS_string & in_mConstructorName,
-                                                                                                const GALGAS_bool & in_mHasCompilerArgument
-                                                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mConstructorName (),
-mProperty_mHasCompilerArgument () {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mConstructorName = in_mConstructorName ;
-  mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_defaultConstructorExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_defaultConstructorExpressionForGeneration ;
-}
-
-void cPtr_defaultConstructorExpressionForGeneration::description (String & ioString,
-                                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@defaultConstructorExpressionForGeneration:") ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mConstructorName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_defaultConstructorExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_defaultConstructorExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mConstructorName, mProperty_mHasCompilerArgument COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @defaultConstructorExpressionForGeneration generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_defaultConstructorExpressionForGeneration ("defaultConstructorExpressionForGeneration",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_defaultConstructorExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_defaultConstructorExpressionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_defaultConstructorExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_defaultConstructorExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_defaultConstructorExpressionForGeneration result ;
-  const GALGAS_defaultConstructorExpressionForGeneration * p = (const GALGAS_defaultConstructorExpressionForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_defaultConstructorExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("defaultConstructorExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @functionCallExpressionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -14936,6 +14709,341 @@ GALGAS_selfPropertyAssignmentInstructionAST GALGAS_selfPropertyAssignmentInstruc
       result = *p ;
     }else{
       inCompiler->castError ("selfPropertyAssignmentInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @assignmentInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_assignmentInstructionForGeneration::cPtr_assignmentInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverType (),
+mProperty_mTargetType (),
+mProperty_mTargetCppName (),
+mProperty_mNameForCheckingFormalParameterUsing (),
+mProperty_mOptionalProperty (),
+mProperty_mSourceExpression (),
+mProperty_mSourceLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_assignmentInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mTargetType.printNonNullClassInstanceProperties ("mTargetType") ;
+    mProperty_mTargetCppName.printNonNullClassInstanceProperties ("mTargetCppName") ;
+    mProperty_mNameForCheckingFormalParameterUsing.printNonNullClassInstanceProperties ("mNameForCheckingFormalParameterUsing") ;
+    mProperty_mOptionalProperty.printNonNullClassInstanceProperties ("mOptionalProperty") ;
+    mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
+    mProperty_mSourceLocation.printNonNullClassInstanceProperties ("mSourceLocation") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cPtr_assignmentInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
+  const cPtr_assignmentInstructionForGeneration * p = (const cPtr_assignmentInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mReceiverType.objectCompare (p->mProperty_mReceiverType) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mTargetType.objectCompare (p->mProperty_mTargetType) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mTargetCppName.objectCompare (p->mProperty_mTargetCppName) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mNameForCheckingFormalParameterUsing.objectCompare (p->mProperty_mNameForCheckingFormalParameterUsing) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mOptionalProperty.objectCompare (p->mProperty_mOptionalProperty) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mSourceExpression.objectCompare (p->mProperty_mSourceExpression) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mSourceLocation.objectCompare (p->mProperty_mSourceLocation) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+
+ComparisonResult GALGAS_assignmentInstructionForGeneration::objectCompare (const GALGAS_assignmentInstructionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_assignmentInstructionForGeneration::GALGAS_assignmentInstructionForGeneration (void) :
+GALGAS_semanticInstructionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGeneration::
+init_21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                  const GALGAS_unifiedTypeMapEntry & in_mTargetType,
+                                  const GALGAS_string & in_mTargetCppName,
+                                  const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                  const GALGAS_string & in_mOptionalProperty,
+                                  const GALGAS_semanticExpressionForGeneration & in_mSourceExpression,
+                                  const GALGAS_location & in_mSourceLocation,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
+  cPtr_assignmentInstructionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_assignmentInstructionForGeneration (inCompiler COMMA_THERE)) ;
+  object->assignmentInstructionForGeneration_init_21__21__21__21__21__21__21_ (in_mReceiverType, in_mTargetType, in_mTargetCppName, in_mNameForCheckingFormalParameterUsing, in_mOptionalProperty, in_mSourceExpression, in_mSourceLocation, inCompiler) ;
+  const GALGAS_assignmentInstructionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_assignmentInstructionForGeneration::
+assignmentInstructionForGeneration_init_21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                     const GALGAS_unifiedTypeMapEntry & in_mTargetType,
+                                                                     const GALGAS_string & in_mTargetCppName,
+                                                                     const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                                                     const GALGAS_string & in_mOptionalProperty,
+                                                                     const GALGAS_semanticExpressionForGeneration & in_mSourceExpression,
+                                                                     const GALGAS_location & in_mSourceLocation,
+                                                                     Compiler * /* inCompiler */) {
+  mProperty_mReceiverType = in_mReceiverType ;
+  mProperty_mTargetType = in_mTargetType ;
+  mProperty_mTargetCppName = in_mTargetCppName ;
+  mProperty_mNameForCheckingFormalParameterUsing = in_mNameForCheckingFormalParameterUsing ;
+  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSourceExpression = in_mSourceExpression ;
+  mProperty_mSourceLocation = in_mSourceLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_assignmentInstructionForGeneration::GALGAS_assignmentInstructionForGeneration (const cPtr_assignmentInstructionForGeneration * inSourcePtr) :
+GALGAS_semanticInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_assignmentInstructionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mTargetType,
+                                                                                                     const GALGAS_string & in_mTargetCppName,
+                                                                                                     const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                                                                                     const GALGAS_string & in_mOptionalProperty,
+                                                                                                     const GALGAS_semanticExpressionForGeneration & in_mSourceExpression,
+                                                                                                     const GALGAS_location & in_mSourceLocation
+                                                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_assignmentInstructionForGeneration result ;
+  macroMyNew (result.mObjectPtr, cPtr_assignmentInstructionForGeneration (in_mReceiverType, in_mTargetType, in_mTargetCppName, in_mNameForCheckingFormalParameterUsing, in_mOptionalProperty, in_mSourceExpression, in_mSourceLocation COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_assignmentInstructionForGeneration::readProperty_mReceiverType (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    return p->mProperty_mReceiverType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_assignmentInstructionForGeneration::readProperty_mTargetType (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    return p->mProperty_mTargetType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_assignmentInstructionForGeneration::readProperty_mTargetCppName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    return p->mProperty_mTargetCppName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_assignmentInstructionForGeneration::readProperty_mNameForCheckingFormalParameterUsing (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    return p->mProperty_mNameForCheckingFormalParameterUsing ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_assignmentInstructionForGeneration::readProperty_mOptionalProperty (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_string () ;
+  }else{
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    return p->mProperty_mOptionalProperty ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionForGeneration GALGAS_assignmentInstructionForGeneration::readProperty_mSourceExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    return p->mProperty_mSourceExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_assignmentInstructionForGeneration::readProperty_mSourceLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_location () ;
+  }else{
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    return p->mProperty_mSourceLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @assignmentInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_assignmentInstructionForGeneration::cPtr_assignmentInstructionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mReceiverType,
+                                                                                  const GALGAS_unifiedTypeMapEntry & in_mTargetType,
+                                                                                  const GALGAS_string & in_mTargetCppName,
+                                                                                  const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                                                                  const GALGAS_string & in_mOptionalProperty,
+                                                                                  const GALGAS_semanticExpressionForGeneration & in_mSourceExpression,
+                                                                                  const GALGAS_location & in_mSourceLocation
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (THERE),
+mProperty_mReceiverType (),
+mProperty_mTargetType (),
+mProperty_mTargetCppName (),
+mProperty_mNameForCheckingFormalParameterUsing (),
+mProperty_mOptionalProperty (),
+mProperty_mSourceExpression (),
+mProperty_mSourceLocation () {
+  mProperty_mReceiverType = in_mReceiverType ;
+  mProperty_mTargetType = in_mTargetType ;
+  mProperty_mTargetCppName = in_mTargetCppName ;
+  mProperty_mNameForCheckingFormalParameterUsing = in_mNameForCheckingFormalParameterUsing ;
+  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSourceExpression = in_mSourceExpression ;
+  mProperty_mSourceLocation = in_mSourceLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_assignmentInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ;
+}
+
+void cPtr_assignmentInstructionForGeneration::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@assignmentInstructionForGeneration:") ;
+  mProperty_mReceiverType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTargetType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTargetCppName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOptionalProperty.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSourceLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_assignmentInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_assignmentInstructionForGeneration (mProperty_mReceiverType, mProperty_mTargetType, mProperty_mTargetCppName, mProperty_mNameForCheckingFormalParameterUsing, mProperty_mOptionalProperty, mProperty_mSourceExpression, mProperty_mSourceLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @assignmentInstructionForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ("assignmentInstructionForGeneration",
+                                                                                          & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_assignmentInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_assignmentInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_assignmentInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_assignmentInstructionForGeneration result ;
+  const GALGAS_assignmentInstructionForGeneration * p = (const GALGAS_assignmentInstructionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_assignmentInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("assignmentInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

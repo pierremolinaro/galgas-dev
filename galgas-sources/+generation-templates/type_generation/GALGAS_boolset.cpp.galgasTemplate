@@ -16,6 +16,12 @@ mIsValid (true) {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_%!TYPE_IDENTIFIER% (0) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_none (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (0) ;
 }

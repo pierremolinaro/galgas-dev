@@ -12796,6 +12796,12 @@ mIsValid (true) {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_localVariableAttributes GALGAS_localVariableAttributes::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_localVariableAttributes (0) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::class_func_none (UNUSED_LOCATION_ARGS) {
   return GALGAS_localVariableAttributes (0) ;
 }

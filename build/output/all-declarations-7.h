@@ -7743,6 +7743,8 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_localVariableAttributes init (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

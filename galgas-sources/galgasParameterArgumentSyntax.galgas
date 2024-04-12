@@ -170,10 +170,8 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !structAttributeList
         }
       or
-        $*$
-#        warning .here : "OLD CONSTRUCT"
-#        <initializer_call_ggs3> !?ioDeclarations ?let initializerCall
-        outActualParameterList += !@outputInputSingleJokerParameterAST {!selector}
+        <initializer_call_ggs3> !?ioDeclarations ?let initializerCall
+        outActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
       end
     while 
       let @lstring selector
@@ -599,7 +597,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   # Actual output / input argument
   #·······························································································
 
-  rule <actual_parameter> ?!@galgasDeclarationAST unused ioDeclarations
+  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
     let @lstring selector
     select
@@ -623,10 +621,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !structAttributeList
       }
     or
-      $*$
-#      warning .here : "OLD CONSTRUCT"
- #     <initializer_call> !?ioDeclarations ?let initializerCall
-      ioActualParameterList += !@outputInputSingleJokerParameterAST (selector)
+      <initializer_call> !?ioDeclarations ?let initializerCall
+      ioActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
     or
       $self$
       ioActualParameterList += !@outputInputSelfParameterAST {!selector}

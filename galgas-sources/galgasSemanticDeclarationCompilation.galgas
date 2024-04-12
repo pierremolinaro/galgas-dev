@@ -420,14 +420,14 @@ private proc generateOneBigHeader
 #--- Declaration 1
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
-      [declaration.mDeclaration appendDeclaration1 !?* ?let @string headerString1]
+      [declaration.mDeclaration appendDeclaration1 !? () ?let @string headerString1]
       headerString += headerString1
     end
   end
 #--- Declaration 2
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
-      [declaration.mDeclaration appendDeclaration2 !inProductDirectory !?* ?let @string headerString2]
+      [declaration.mDeclaration appendDeclaration2 !inProductDirectory !? () ?let @string headerString2]
       headerString += headerString2
     end
   end

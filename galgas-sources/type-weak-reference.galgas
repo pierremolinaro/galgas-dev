@@ -167,7 +167,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !§[]
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !defaultConstructorName: "nil" # Default constructor
+    !defaultConstructorName: "" # Default constructor
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }

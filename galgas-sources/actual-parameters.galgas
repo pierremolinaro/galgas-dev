@@ -288,12 +288,14 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
+refclass @outputInputJokerParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
+  public let @semanticExpressionAST initializerCall
 
   #·······························································································
 
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+  override method enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.initializerCall enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   #·······························································································
@@ -315,14 +317,14 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
   #·······························································································
 
   override method checkAgainstFormalArgument
-                                  ?let @lstring unused inUsefulnessCallerEntityName
-                                  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                                  ?let @analysisContext unused inAnalysisContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
+                                  ?let @lstring inUsefulnessCallerEntityName
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                  ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
                                   ?let @lstring inFormalSelector
                                   ?let @unifiedTypeMapEntry inFormalArgumentType
                                   ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-                                  ?!@localVarManager unused ioVariableMap
+                                  ?!@localVarManager ioVariableMap
                                   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
                                   ?!@stringset unused ioExclusiveVariableSet
                                   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
@@ -335,29 +337,23 @@ refclass @outputInputSingleJokerParameterAST : @actualParameterAST {
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
-  #--- Find a constructor without any argument
-    let classFunctionMap = [inFormalArgumentType definition].classFunctionMap
-    var @bool hasCompilerArgument = false
-    var @string constructorName = ""
-    var found = false
-    for c in classFunctionMap while not found do
-      if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == inFormalArgumentType) then
-        hasCompilerArgument = c.mHasCompilerArgument
-        constructorName = c.lkey.string
-        found = true
-      end
-    end
-    if not found then
-      error self.mActualSelector
-      : "the '@" + [inFormalArgumentType definition].typeName + "' has no initializer without argument"
-    end
+  #--- Check initializer
+   [self.initializerCall analyzeSemanticExpression
+     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+     !?ioUsefulEntitiesGraph
+     !inferenceType: inFormalArgumentType
+     !inAnalysisContext
+     !?ioTypeMap
+     !?ioVariableMap
+     ?let @semanticExpressionForGeneration initializerExpression
+   ]
   #--- Generate actual parameter
     let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
     ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
       !inFormalArgumentType
       !false # Is not constant
       !cppVarName
-      !@defaultConstructorExpressionForGeneration {!inFormalArgumentType !self.mActualSelector.location !constructorName !hasCompilerArgument}
+      !initializerExpression
     }
     ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
       !inFormalArgumentType
@@ -420,12 +416,6 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
-  #  let defaultConstructorName = [inFormalArgumentType definition].mDefaultConstructorName
-  #  if defaultConstructorName == "" then
-  #    error self.mActualSelector
-  #    : "the formal parameter type @" + [inFormalArgumentType definition].mTypeName.string
-  #    + " should support the default constructor"
-  #  end
   #--- Analyze self
     if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
       if not [selfMutability selfIsMutable] then
@@ -448,87 +438,6 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
       error self.mActualSelector : "'self' not available in this context"
     end
   }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @outputInputJokerParameterAST : @actualParameterAST {
-  public let @location mQualifierLocation
-  public let @uint mJokerIndex
-
-  #·······························································································
-
-  override method enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
-  }
-
-  #·······························································································
-
-  override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
-                                   ?let @string unused inSelector -> @bool {
-    result = inFormalPassingMode == .argumentInOut
-#    if result then
-#      result = self.mActualSelector.string == inSelector
-#    end
-  }
-
-  #·······························································································
-
-  override method enterInActualOutputParameterList ?!@actualOutputArgumentList unused ioActualOutputArgumentList {
-    error self.mQualifierLocation : "a getter does not support output/input parameter"
-  }
-
-  #·······························································································
-
-    override method checkAgainstFormalArgument
-                                                ?let @lstring unused inUsefulnessCallerEntityName
-                                                ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                                                ?let @analysisContext unused inAnalysisContext
-                                    ?!@unifiedTypeMap unused ioTypeMap
-                                                ?let @lstring unused inFormalSelector
-                                                ?let @unifiedTypeMapEntry inFormalArgumentType
-                                                ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
-                                                ?!@localVarManager unused ioVariableMap
-                                                ?!@actualParameterListForGeneration ioActualParameterListForGeneration
-                                                ?!@stringset unused ioExclusiveVariableSet
-                                                ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
-      if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentInOut then
-        error self.mQualifierLocation
-        :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
-        + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
-      end
-    #--- Find a constructor without any argument
-      let classFunctionMap = [inFormalArgumentType definition].classFunctionMap
-      var @bool hasCompilerArgument = false
-      var @string constructorName = ""
-      var found = false
-      for c in classFunctionMap while not found do
-        if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == inFormalArgumentType) then
-          hasCompilerArgument = c.mHasCompilerArgument
-          constructorName = c.lkey.string
-          found = true
-        end
-      end
-      if not found then
-        error self.mQualifierLocation
-        : "the '@" + [inFormalArgumentType definition].typeName + "' has no initializer without argument"
-      end
-    #--- Generate actual parameter
-      let cppVarName = "joker_" + [self.mQualifierLocation startLocationIndex] + "_" + self.mJokerIndex
-      ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
-        !inFormalArgumentType
-        !false # Is not constant
-        !cppVarName
-        !@defaultConstructorExpressionForGeneration {!inFormalArgumentType !self.mQualifierLocation !constructorName !hasCompilerArgument}
-      }
-      ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
-        !inFormalArgumentType
-        !cppVarName
-        !§[]
-        !@unifiedTypeMapEntryList. listWithValue {!inFormalArgumentType}}
-    }
 
   #·······························································································
 

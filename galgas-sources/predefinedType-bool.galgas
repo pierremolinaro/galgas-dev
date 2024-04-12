@@ -32,6 +32,14 @@ refclass @boolPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
+  override getter initializers -> @initializerSignatureList {
+    var initializer = @formalInputParameterListAST ()
+    initializer += !["" nowhere] !["bool" nowhere] !["inValue" nowhere] !false !true
+    result = §[!initializer]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
   override getter getSupportedOperatorFlags -> @operators {
     result = .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixNotOperator
       | .generateDescriptionGetterUtilityMethod | .isComparable

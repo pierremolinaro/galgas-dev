@@ -182,10 +182,16 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
       )
     end
   end
+#--- Add initializer without argument
+  var @initializerMap initializerMap = §[]
+  let @functionSignature emptyArgumentList = §[]
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mBoolsetTypeName}
+    !emptyArgumentList
+  ]
 #--- Add extensions
   var @setterMap setterMap = §[]
   var @instanceMethodMap instanceMethodMap = §[]
-  var @initializerMap initializerMap = §[]
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -230,7 +236,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !§[]
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !.null # No type for enumerated element for "for" instruction
-    !defaultConstructorName: "none" # Default constructor name
+    !defaultConstructorName: "" # Default constructor name
     !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }

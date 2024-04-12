@@ -278,7 +278,25 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
     #--- Search initializer
       outInitializerName = .init {![inInvocationArguments initializerSignature] !inEndOfExpressions}
       let initializerMap = instanciedTypeDefinition.initializerMap
-      [initializerMap searchKey !outInitializerName ?let formalSignature]
+      let @functionSignature formalSignature
+      if [initializerMap hasKey !outInitializerName] then
+        [initializerMap searchKey !outInitializerName ?formalSignature]
+      else
+        var s = "@" + instanciedTypeDefinition.typeName + ".init("
+        for formalArg in inInvocationArguments
+        do
+          s += "."
+          if formalArg.mActualSelector.string != "" then
+            s += formalArg.mActualSelector.string + ":"
+          end
+        between
+          s += ","
+        end
+        s += ")"
+        error outInitializerName :
+        "the " + s + " initializer is not declared"
+        : formalSignature
+      end
     #--- Analysis arguments
       outConstructorEffectiveParameterList = §[]
       for effectiveParameter in inInvocationArguments,

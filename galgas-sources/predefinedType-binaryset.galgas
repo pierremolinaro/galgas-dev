@@ -33,7 +33,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
   #-----------------------------------------------------------------------------------------------
 
   override getter initializers -> @initializerSignatureList {
-    result = §[!@functionSignature §[]]
+    result = §[!@formalInputParameterListAST §[]]
   }
 
   #-----------------------------------------------------------------------------------------------

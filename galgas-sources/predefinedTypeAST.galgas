@@ -27,7 +27,7 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @initializerSignatureList {
-  public let @functionSignature initializer
+  public let @formalInputParameterListAST initializer
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -100,7 +100,15 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   #--- Add Extensions
     var @initializerMap initializerMap = §[]
     for (initializer) in [self initializers] do
-      [!?initializerMap insertKey !.init ([initializer initializerSignature], .nowhere) !initializer]
+      var @functionSignature formalParameterList = §[]
+      for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in initializer do
+        formalParameterList +=
+          !mFormalSelector
+          ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
+          !mFormalArgumentName.string
+          !mIsConstant
+      end      
+      [!?initializerMap insertKey !.init ([initializer initializerSignature], .nowhere) !formalParameterList]
     end
     addExtensions (
       !inExtensionInitializerMapForBuildingContext

@@ -1032,6 +1032,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension getter '@functionSignature initializerSignature' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string extensionGetter_initializerSignature (const class GALGAS_functionSignature & inObject,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension method '@routineMap searchKey'
 //
 //--------------------------------------------------------------------------------------------------

@@ -11775,27 +11775,31 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (319)
 , BOTTOM_UP_END ()
 // State S698 (index = 20720)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (334)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (334)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_REDUCE (334)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (334)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_REDUCE (334)
 , Lexique_galgasScanner_34_::kToken_self, BOTTOM_UP_REDUCE (334)
 , BOTTOM_UP_END ()
-// State S699 (index = 20727)
+// State S699 (index = 20731)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (335)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (335)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_REDUCE (335)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (335)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_REDUCE (335)
 , Lexique_galgasScanner_34_::kToken_self, BOTTOM_UP_REDUCE (335)
 , BOTTOM_UP_END ()
-// State S700 (index = 20734)
+// State S700 (index = 20742)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (45)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (45)
 , BOTTOM_UP_END ()
-// State S701 (index = 20739)
+// State S701 (index = 20747)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (316)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (927)
 , BOTTOM_UP_END ()
-// State S702 (index = 20744)
+// State S702 (index = 20752)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (929)
 , BOTTOM_UP_END ()
-// State S703 (index = 20747)
+// State S703 (index = 20755)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (930)
 , Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (931)
@@ -11806,12 +11810,15 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (934)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_SHIFT (935)
 , BOTTOM_UP_END ()
-// State S704 (index = 20766)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (938)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (939)
+// State S704 (index = 20774)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (938)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (939)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (205)
+, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (271)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_REDUCE (271)
 , Lexique_galgasScanner_34_::kToken_self, BOTTOM_UP_SHIFT (940)
 , BOTTOM_UP_END ()
-// State S705 (index = 20773)
+// State S705 (index = 20787)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -11835,7 +11842,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S706 (index = 20818)
+// State S706 (index = 20832)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (412)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (412)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (412)
@@ -11872,7 +11879,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (412)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (412)
 , BOTTOM_UP_END ()
-// State S707 (index = 20889)
+// State S707 (index = 20903)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (413)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (413)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (413)
@@ -11909,7 +11916,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (413)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (413)
 , BOTTOM_UP_END ()
-// State S708 (index = 20960)
+// State S708 (index = 20974)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (414)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (414)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (414)
@@ -11946,7 +11953,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (414)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (414)
 , BOTTOM_UP_END ()
-// State S709 (index = 21031)
+// State S709 (index = 21045)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (415)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (415)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (415)
@@ -11983,7 +11990,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (415)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (415)
 , BOTTOM_UP_END ()
-// State S710 (index = 21102)
+// State S710 (index = 21116)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (92)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (92)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (92)
@@ -12020,7 +12027,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (92)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (92)
 , BOTTOM_UP_END ()
-// State S711 (index = 21173)
+// State S711 (index = 21187)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (239)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (239)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_REDUCE (239)
@@ -12046,21 +12053,21 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (239)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (239)
 , BOTTOM_UP_END ()
-// State S712 (index = 21222)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (944)
+// State S712 (index = 21236)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (946)
 , BOTTOM_UP_END ()
-// State S713 (index = 21225)
-, Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_SHIFT (945)
+// State S713 (index = 21239)
+, Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_SHIFT (947)
 , BOTTOM_UP_END ()
-// State S714 (index = 21228)
+// State S714 (index = 21242)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S715 (index = 21235)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (947)
+// State S715 (index = 21249)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (949)
 , BOTTOM_UP_END ()
-// State S716 (index = 21238)
+// State S716 (index = 21252)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (79)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (79)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (79)
@@ -12097,7 +12104,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (79)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (79)
 , BOTTOM_UP_END ()
-// State S717 (index = 21309)
+// State S717 (index = 21323)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (130)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (130)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (130)
@@ -12154,12 +12161,12 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (130)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (130)
 , BOTTOM_UP_END ()
-// State S718 (index = 21420)
+// State S718 (index = 21434)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S719 (index = 21427)
+// State S719 (index = 21441)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -12183,7 +12190,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S720 (index = 21472)
+// State S720 (index = 21486)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (78)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (78)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (78)
@@ -12220,13 +12227,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (78)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (78)
 , BOTTOM_UP_END ()
-// State S721 (index = 21543)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (950)
+// State S721 (index = 21557)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (952)
 , Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_REDUCE (632)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S722 (index = 21552)
+// State S722 (index = 21566)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (93)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (93)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (93)
@@ -12263,7 +12270,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (93)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (93)
 , BOTTOM_UP_END ()
-// State S723 (index = 21623)
+// State S723 (index = 21637)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -12287,7 +12294,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S724 (index = 21668)
+// State S724 (index = 21682)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (94)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (94)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (94)
@@ -12324,10 +12331,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (94)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (94)
 , BOTTOM_UP_END ()
-// State S725 (index = 21739)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (953)
+// State S725 (index = 21753)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (955)
 , BOTTOM_UP_END ()
-// State S726 (index = 21742)
+// State S726 (index = 21756)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (500)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (500)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (500)
@@ -12364,7 +12371,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (500)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (500)
 , BOTTOM_UP_END ()
-// State S727 (index = 21813)
+// State S727 (index = 21827)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (89)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (89)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (89)
@@ -12401,7 +12408,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (89)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (89)
 , BOTTOM_UP_END ()
-// State S728 (index = 21884)
+// State S728 (index = 21898)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (417)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (417)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (417)
@@ -12439,7 +12446,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (417)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (417)
 , BOTTOM_UP_END ()
-// State S729 (index = 21957)
+// State S729 (index = 21971)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (427)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (427)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (427)
@@ -12449,7 +12456,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (427)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (427)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (427)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (955)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (957)
 , Lexique_galgasScanner_34_::kToken__3B_, BOTTOM_UP_REDUCE (427)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (427)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_REDUCE (427)
@@ -12478,14 +12485,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (427)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (427)
 , BOTTOM_UP_END ()
-// State S730 (index = 22032)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (957)
+// State S730 (index = 22046)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (959)
 , Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_REDUCE (443)
 , BOTTOM_UP_END ()
-// State S731 (index = 22037)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (959)
+// State S731 (index = 22051)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (961)
 , BOTTOM_UP_END ()
-// State S732 (index = 22040)
+// State S732 (index = 22054)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (634)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (432)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (714)
@@ -12494,16 +12501,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (432)
 , BOTTOM_UP_END ()
-// State S733 (index = 22055)
+// State S733 (index = 22069)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (437)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (960)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (962)
 , BOTTOM_UP_END ()
-// State S734 (index = 22060)
+// State S734 (index = 22074)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (435)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (962)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (963)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (964)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (965)
 , BOTTOM_UP_END ()
-// State S735 (index = 22067)
+// State S735 (index = 22081)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (447)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (447)
 , Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_SHIFT (250)
@@ -12511,28 +12518,28 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (447)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (447)
 , BOTTOM_UP_END ()
-// State S736 (index = 22080)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (967)
+// State S736 (index = 22094)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (969)
 , Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_REDUCE (449)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (449)
 , BOTTOM_UP_END ()
-// State S737 (index = 22087)
+// State S737 (index = 22101)
 , Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_REDUCE (442)
 , BOTTOM_UP_END ()
-// State S738 (index = 22090)
+// State S738 (index = 22104)
 , Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_REDUCE (441)
 , BOTTOM_UP_END ()
-// State S739 (index = 22093)
-, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (969)
+// State S739 (index = 22107)
+, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (971)
 , BOTTOM_UP_END ()
-// State S740 (index = 22096)
+// State S740 (index = 22110)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (460)
 , BOTTOM_UP_END ()
-// State S741 (index = 22099)
-, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (970)
-, Lexique_galgasScanner_34_::kToken_on, BOTTOM_UP_SHIFT (971)
+// State S741 (index = 22113)
+, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (972)
+, Lexique_galgasScanner_34_::kToken_on, BOTTOM_UP_SHIFT (973)
 , BOTTOM_UP_END ()
-// State S742 (index = 22104)
+// State S742 (index = 22118)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (497)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (497)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (497)
@@ -12570,7 +12577,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (497)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (497)
 , BOTTOM_UP_END ()
-// State S743 (index = 22177)
+// State S743 (index = 22191)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (496)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (496)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (496)
@@ -12608,7 +12615,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (496)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (496)
 , BOTTOM_UP_END ()
-// State S744 (index = 22250)
+// State S744 (index = 22264)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (493)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (493)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (493)
@@ -12646,7 +12653,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (493)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (493)
 , BOTTOM_UP_END ()
-// State S745 (index = 22323)
+// State S745 (index = 22337)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -12674,10 +12681,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S746 (index = 22376)
-, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (975)
+// State S746 (index = 22390)
+, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (977)
 , BOTTOM_UP_END ()
-// State S747 (index = 22379)
+// State S747 (index = 22393)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (229)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (234)
@@ -12705,15 +12712,15 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (234)
 , BOTTOM_UP_END ()
-// State S748 (index = 22432)
+// State S748 (index = 22446)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (506)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (977)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (979)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (506)
 , BOTTOM_UP_END ()
-// State S749 (index = 22439)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (979)
+// State S749 (index = 22453)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (981)
 , BOTTOM_UP_END ()
-// State S750 (index = 22442)
+// State S750 (index = 22456)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (419)
@@ -12726,7 +12733,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__3B_, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_REDUCE (419)
-, Lexique_galgasScanner_34_::kToken_fixit, BOTTOM_UP_SHIFT (980)
+, Lexique_galgasScanner_34_::kToken_fixit, BOTTOM_UP_SHIFT (982)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_for, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (419)
@@ -12751,10 +12758,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (419)
 , BOTTOM_UP_END ()
-// State S751 (index = 22515)
+// State S751 (index = 22529)
 , Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_REDUCE (522)
 , BOTTOM_UP_END ()
-// State S752 (index = 22518)
+// State S752 (index = 22532)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -12777,9 +12784,9 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_self, BOTTOM_UP_SHIFT (210)
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
-, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (983)
+, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (985)
 , BOTTOM_UP_END ()
-// State S753 (index = 22565)
+// State S753 (index = 22579)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (359)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (359)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (359)
@@ -12790,22 +12797,22 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_elsif, BOTTOM_UP_REDUCE (359)
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (359)
 , BOTTOM_UP_END ()
-// State S754 (index = 22584)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (986)
+// State S754 (index = 22598)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (988)
 , BOTTOM_UP_END ()
-// State S755 (index = 22587)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (987)
+// State S755 (index = 22601)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (989)
 , BOTTOM_UP_END ()
-// State S756 (index = 22590)
+// State S756 (index = 22604)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (703)
 , Lexique_galgasScanner_34_::kToken_template, BOTTOM_UP_SHIFT (154)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_SHIFT (160)
 , BOTTOM_UP_END ()
-// State S757 (index = 22597)
+// State S757 (index = 22611)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (507)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (566)
 , BOTTOM_UP_END ()
-// State S758 (index = 22602)
+// State S758 (index = 22616)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (106)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (106)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (106)
@@ -12839,10 +12846,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (106)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (106)
 , BOTTOM_UP_END ()
-// State S759 (index = 22667)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (992)
+// State S759 (index = 22681)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (994)
 , BOTTOM_UP_END ()
-// State S760 (index = 22670)
+// State S760 (index = 22684)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (137)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (137)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (137)
@@ -12876,35 +12883,35 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (137)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (137)
 , BOTTOM_UP_END ()
-// State S761 (index = 22735)
+// State S761 (index = 22749)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S762 (index = 22742)
+// State S762 (index = 22756)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (578)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (994)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (996)
 , Lexique_galgasScanner_34_::kToken_abstract, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_override, BOTTOM_UP_REDUCE (578)
 , BOTTOM_UP_END ()
-// State S763 (index = 22759)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (996)
+// State S763 (index = 22773)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (998)
 , BOTTOM_UP_END ()
-// State S764 (index = 22762)
+// State S764 (index = 22776)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (604)
-, Lexique_galgasScanner_34_::kToken__25_insertSetter, BOTTOM_UP_SHIFT (997)
+, Lexique_galgasScanner_34_::kToken__25_insertSetter, BOTTOM_UP_SHIFT (999)
 , BOTTOM_UP_END ()
-// State S765 (index = 22767)
+// State S765 (index = 22781)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (609)
 , BOTTOM_UP_END ()
-// State S766 (index = 22770)
+// State S766 (index = 22784)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (610)
 , BOTTOM_UP_END ()
-// State S767 (index = 22773)
+// State S767 (index = 22787)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (117)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (117)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (117)
@@ -12938,7 +12945,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (117)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (117)
 , BOTTOM_UP_END ()
-// State S768 (index = 22838)
+// State S768 (index = 22852)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (280)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (650)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (650)
@@ -12953,7 +12960,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_SHIFT (292)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_SHIFT (293)
 , BOTTOM_UP_END ()
-// State S769 (index = 22865)
+// State S769 (index = 22879)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (280)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (650)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (650)
@@ -12968,10 +12975,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_SHIFT (292)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_SHIFT (293)
 , BOTTOM_UP_END ()
-// State S770 (index = 22892)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1001)
+// State S770 (index = 22906)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1003)
 , BOTTOM_UP_END ()
-// State S771 (index = 22895)
+// State S771 (index = 22909)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -12999,60 +13006,60 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S772 (index = 22948)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1003)
+// State S772 (index = 22962)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1005)
 , BOTTOM_UP_END ()
-// State S773 (index = 22951)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1004)
+// State S773 (index = 22965)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1006)
 , BOTTOM_UP_END ()
-// State S774 (index = 22954)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1005)
+// State S774 (index = 22968)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1007)
 , BOTTOM_UP_END ()
-// State S775 (index = 22957)
+// State S775 (index = 22971)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (174)
 , BOTTOM_UP_END ()
-// State S776 (index = 22960)
+// State S776 (index = 22974)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S777 (index = 22963)
+// State S777 (index = 22977)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S778 (index = 22966)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1009)
-, BOTTOM_UP_END ()
-// State S779 (index = 22969)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1010)
-, BOTTOM_UP_END ()
-// State S780 (index = 22972)
+// State S778 (index = 22980)
 , Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1011)
 , BOTTOM_UP_END ()
-// State S781 (index = 22975)
+// State S779 (index = 22983)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1012)
+, BOTTOM_UP_END ()
+// State S780 (index = 22986)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1013)
+, BOTTOM_UP_END ()
+// State S781 (index = 22989)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (174)
 , BOTTOM_UP_END ()
-// State S782 (index = 22978)
+// State S782 (index = 22992)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S783 (index = 22981)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1014)
+// State S783 (index = 22995)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1016)
 , BOTTOM_UP_END ()
-// State S784 (index = 22984)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1015)
+// State S784 (index = 22998)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1017)
 , BOTTOM_UP_END ()
-// State S785 (index = 22987)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1016)
+// State S785 (index = 23001)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1018)
 , BOTTOM_UP_END ()
-// State S786 (index = 22990)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1017)
+// State S786 (index = 23004)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1019)
 , BOTTOM_UP_END ()
-// State S787 (index = 22993)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1018)
+// State S787 (index = 23007)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1020)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S788 (index = 23000)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1019)
+// State S788 (index = 23014)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1021)
 , BOTTOM_UP_END ()
-// State S789 (index = 23003)
+// State S789 (index = 23017)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -13080,58 +13087,58 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S790 (index = 23056)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1022)
+// State S790 (index = 23070)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1024)
 , BOTTOM_UP_END ()
-// State S791 (index = 23059)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1023)
+// State S791 (index = 23073)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1025)
 , BOTTOM_UP_END ()
-// State S792 (index = 23062)
+// State S792 (index = 23076)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (174)
 , BOTTOM_UP_END ()
-// State S793 (index = 23065)
+// State S793 (index = 23079)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S794 (index = 23068)
+// State S794 (index = 23082)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (757)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1026)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1028)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (757)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (757)
 , Lexique_galgasScanner_34_::kToken_project, BOTTOM_UP_REDUCE (757)
 , BOTTOM_UP_END ()
-// State S795 (index = 23079)
+// State S795 (index = 23093)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (196)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (196)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (196)
 , Lexique_galgasScanner_34_::kToken_project, BOTTOM_UP_REDUCE (196)
 , BOTTOM_UP_END ()
-// State S796 (index = 23088)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1028)
+// State S796 (index = 23102)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1030)
 , BOTTOM_UP_END ()
-// State S797 (index = 23091)
-, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1029)
+// State S797 (index = 23105)
+, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1031)
 , BOTTOM_UP_END ()
-// State S798 (index = 23094)
+// State S798 (index = 23108)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (763)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_SHIFT (567)
 , BOTTOM_UP_END ()
-// State S799 (index = 23099)
+// State S799 (index = 23113)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (763)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_SHIFT (567)
 , BOTTOM_UP_END ()
-// State S800 (index = 23104)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1032)
+// State S800 (index = 23118)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1034)
 , BOTTOM_UP_END ()
-// State S801 (index = 23107)
+// State S801 (index = 23121)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S802 (index = 23110)
+// State S802 (index = 23124)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (767)
 , BOTTOM_UP_END ()
-// State S803 (index = 23113)
+// State S803 (index = 23127)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (768)
 , BOTTOM_UP_END ()
-// State S804 (index = 23116)
+// State S804 (index = 23130)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (199)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (199)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (199)
@@ -13165,7 +13172,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (199)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (199)
 , BOTTOM_UP_END ()
-// State S805 (index = 23181)
+// State S805 (index = 23195)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (280)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (650)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (650)
@@ -13180,13 +13187,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_SHIFT (292)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_SHIFT (293)
 , BOTTOM_UP_END ()
-// State S806 (index = 23208)
-, Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_SHIFT (1038)
+// State S806 (index = 23222)
+, Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_SHIFT (1040)
 , BOTTOM_UP_END ()
-// State S807 (index = 23211)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1039)
+// State S807 (index = 23225)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1041)
 , BOTTOM_UP_END ()
-// State S808 (index = 23214)
+// State S808 (index = 23228)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (158)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (158)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (158)
@@ -13198,37 +13205,37 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (158)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (158)
 , BOTTOM_UP_END ()
-// State S809 (index = 23235)
+// State S809 (index = 23249)
 , Lexique_galgasScanner_34_::kToken__2E__2E__2E_, BOTTOM_UP_REDUCE (708)
 , BOTTOM_UP_END ()
-// State S810 (index = 23238)
+// State S810 (index = 23252)
 , Lexique_galgasScanner_34_::kToken__2E__2E__2E_, BOTTOM_UP_REDUCE (707)
 , BOTTOM_UP_END ()
-// State S811 (index = 23241)
+// State S811 (index = 23255)
 , Lexique_galgasScanner_34_::kToken__2E__2E__2E_, BOTTOM_UP_REDUCE (709)
 , BOTTOM_UP_END ()
-// State S812 (index = 23244)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1040)
+// State S812 (index = 23258)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1042)
 , BOTTOM_UP_END ()
-// State S813 (index = 23247)
+// State S813 (index = 23261)
 , Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (582)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (583)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (684)
 , Lexique_galgasScanner_34_::kToken_style, BOTTOM_UP_REDUCE (684)
 , BOTTOM_UP_END ()
-// State S814 (index = 23256)
+// State S814 (index = 23270)
 , Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (582)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (583)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (684)
 , Lexique_galgasScanner_34_::kToken_style, BOTTOM_UP_REDUCE (684)
 , BOTTOM_UP_END ()
-// State S815 (index = 23265)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1043)
+// State S815 (index = 23279)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1045)
 , BOTTOM_UP_END ()
-// State S816 (index = 23268)
-, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1044)
+// State S816 (index = 23282)
+, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1046)
 , BOTTOM_UP_END ()
-// State S817 (index = 23271)
+// State S817 (index = 23285)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (157)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (157)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (157)
@@ -13240,24 +13247,24 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (157)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (157)
 , BOTTOM_UP_END ()
-// State S818 (index = 23292)
+// State S818 (index = 23306)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (683)
 , Lexique_galgasScanner_34_::kToken__7C_, BOTTOM_UP_REDUCE (683)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (683)
 , BOTTOM_UP_END ()
-// State S819 (index = 23299)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1045)
+// State S819 (index = 23313)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1047)
 , BOTTOM_UP_END ()
-// State S820 (index = 23302)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1046)
+// State S820 (index = 23316)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1048)
 , BOTTOM_UP_END ()
-// State S821 (index = 23305)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1047)
+// State S821 (index = 23319)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1049)
 , BOTTOM_UP_END ()
-// State S822 (index = 23308)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1048)
+// State S822 (index = 23322)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1050)
 , BOTTOM_UP_END ()
-// State S823 (index = 23311)
+// State S823 (index = 23325)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (184)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (184)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (184)
@@ -13274,14 +13281,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (184)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (184)
 , BOTTOM_UP_END ()
-// State S824 (index = 23342)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1049)
+// State S824 (index = 23356)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1051)
 , BOTTOM_UP_END ()
-// State S825 (index = 23345)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1050)
-, Lexique_galgasScanner_34_::kToken__25_searchString, BOTTOM_UP_SHIFT (1051)
+// State S825 (index = 23359)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1052)
+, Lexique_galgasScanner_34_::kToken__25_searchString, BOTTOM_UP_SHIFT (1053)
 , BOTTOM_UP_END ()
-// State S826 (index = 23350)
+// State S826 (index = 23364)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (822)
@@ -13294,16 +13301,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S827 (index = 23373)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1055)
-, BOTTOM_UP_END ()
-// State S828 (index = 23376)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1056)
-, BOTTOM_UP_END ()
-// State S829 (index = 23379)
+// State S827 (index = 23387)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1057)
 , BOTTOM_UP_END ()
-// State S830 (index = 23382)
+// State S828 (index = 23390)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1058)
+, BOTTOM_UP_END ()
+// State S829 (index = 23393)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1059)
+, BOTTOM_UP_END ()
+// State S830 (index = 23396)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (672)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
@@ -13316,15 +13323,15 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S831 (index = 23405)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1059)
+// State S831 (index = 23419)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1061)
 , BOTTOM_UP_END ()
-// State S832 (index = 23408)
+// State S832 (index = 23422)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (680)
 , Lexique_galgasScanner_34_::kToken__7C_, BOTTOM_UP_SHIFT (591)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (680)
 , BOTTOM_UP_END ()
-// State S833 (index = 23415)
+// State S833 (index = 23429)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (177)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (177)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (177)
@@ -13336,37 +13343,37 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (177)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (177)
 , BOTTOM_UP_END ()
-// State S834 (index = 23436)
+// State S834 (index = 23450)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (697)
 , Lexique_galgasScanner_34_::kToken_style, BOTTOM_UP_REDUCE (697)
 , Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_REDUCE (697)
 , Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_REDUCE (697)
 , BOTTOM_UP_END ()
-// State S835 (index = 23445)
+// State S835 (index = 23459)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (698)
 , Lexique_galgasScanner_34_::kToken_style, BOTTOM_UP_REDUCE (698)
 , Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_REDUCE (698)
 , Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_REDUCE (698)
 , BOTTOM_UP_END ()
-// State S836 (index = 23454)
+// State S836 (index = 23468)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (699)
 , Lexique_galgasScanner_34_::kToken_style, BOTTOM_UP_SHIFT (596)
 , Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_SHIFT (597)
 , Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_SHIFT (598)
 , BOTTOM_UP_END ()
-// State S837 (index = 23463)
+// State S837 (index = 23477)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (702)
 , BOTTOM_UP_END ()
-// State S838 (index = 23466)
+// State S838 (index = 23480)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (701)
 , BOTTOM_UP_END ()
-// State S839 (index = 23469)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1062)
+// State S839 (index = 23483)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1064)
 , BOTTOM_UP_END ()
-// State S840 (index = 23472)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1063)
+// State S840 (index = 23486)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1065)
 , BOTTOM_UP_END ()
-// State S841 (index = 23475)
+// State S841 (index = 23489)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (711)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (711)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (711)
@@ -13378,27 +13385,27 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (711)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (711)
 , BOTTOM_UP_END ()
-// State S842 (index = 23496)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1064)
+// State S842 (index = 23510)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1066)
 , BOTTOM_UP_END ()
-// State S843 (index = 23499)
+// State S843 (index = 23513)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (548)
 , BOTTOM_UP_END ()
-// State S844 (index = 23502)
+// State S844 (index = 23516)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (103)
 , BOTTOM_UP_END ()
-// State S845 (index = 23505)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1065)
+// State S845 (index = 23519)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1067)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (553)
 , BOTTOM_UP_END ()
-// State S846 (index = 23510)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1067)
+// State S846 (index = 23524)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1069)
 , BOTTOM_UP_END ()
-// State S847 (index = 23513)
+// State S847 (index = 23527)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (555)
-, Lexique_galgasScanner_34_::kToken_template, BOTTOM_UP_SHIFT (1068)
+, Lexique_galgasScanner_34_::kToken_template, BOTTOM_UP_SHIFT (1070)
 , BOTTOM_UP_END ()
-// State S848 (index = 23518)
+// State S848 (index = 23532)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (101)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (101)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (101)
@@ -13432,65 +13439,65 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (101)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (101)
 , BOTTOM_UP_END ()
-// State S849 (index = 23583)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1070)
+// State S849 (index = 23597)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1072)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (641)
 , BOTTOM_UP_END ()
-// State S850 (index = 23592)
+// State S850 (index = 23606)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (352)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1072)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1074)
 , BOTTOM_UP_END ()
-// State S851 (index = 23601)
+// State S851 (index = 23615)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (365)
 , BOTTOM_UP_END ()
-// State S852 (index = 23604)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1074)
+// State S852 (index = 23618)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1076)
 , BOTTOM_UP_END ()
-// State S853 (index = 23607)
+// State S853 (index = 23621)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (847)
 , BOTTOM_UP_END ()
-// State S854 (index = 23610)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1076)
+// State S854 (index = 23624)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1078)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (371)
 , BOTTOM_UP_END ()
-// State S855 (index = 23619)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1078)
+// State S855 (index = 23633)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1080)
 , BOTTOM_UP_END ()
-// State S856 (index = 23622)
+// State S856 (index = 23636)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (595)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1079)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1080)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1081)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1082)
 , BOTTOM_UP_END ()
-// State S857 (index = 23629)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1083)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1084)
+// State S857 (index = 23643)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1085)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1086)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (601)
 , BOTTOM_UP_END ()
-// State S858 (index = 23636)
+// State S858 (index = 23650)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S859 (index = 23639)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1087)
+// State S859 (index = 23653)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1089)
 , BOTTOM_UP_END ()
-// State S860 (index = 23642)
+// State S860 (index = 23656)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (587)
 , BOTTOM_UP_END ()
-// State S861 (index = 23645)
+// State S861 (index = 23659)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (588)
 , BOTTOM_UP_END ()
-// State S862 (index = 23648)
+// State S862 (index = 23662)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (589)
 , BOTTOM_UP_END ()
-// State S863 (index = 23651)
+// State S863 (index = 23665)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (590)
 , BOTTOM_UP_END ()
-// State S864 (index = 23654)
+// State S864 (index = 23668)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (109)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (109)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (109)
@@ -13524,7 +13531,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (109)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (109)
 , BOTTOM_UP_END ()
-// State S865 (index = 23719)
+// State S865 (index = 23733)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (52)
@@ -13560,16 +13567,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (52)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (52)
 , BOTTOM_UP_END ()
-// State S866 (index = 23788)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1088)
+// State S866 (index = 23802)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1090)
 , BOTTOM_UP_END ()
-// State S867 (index = 23791)
+// State S867 (index = 23805)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (313)
 , BOTTOM_UP_END ()
-// State S868 (index = 23794)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1089)
+// State S868 (index = 23808)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1091)
 , BOTTOM_UP_END ()
-// State S869 (index = 23797)
+// State S869 (index = 23811)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (56)
@@ -13603,10 +13610,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (56)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (56)
 , BOTTOM_UP_END ()
-// State S870 (index = 23862)
-, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1090)
+// State S870 (index = 23876)
+, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1092)
 , BOTTOM_UP_END ()
-// State S871 (index = 23865)
+// State S871 (index = 23879)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (28)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (28)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (28)
@@ -13702,12 +13709,12 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (28)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (28)
 , BOTTOM_UP_END ()
-// State S872 (index = 24054)
+// State S872 (index = 24068)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (230)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1091)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1093)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (230)
 , BOTTOM_UP_END ()
-// State S873 (index = 24061)
+// State S873 (index = 24075)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (25)
@@ -13803,35 +13810,35 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (25)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (25)
 , BOTTOM_UP_END ()
-// State S874 (index = 24250)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1093)
+// State S874 (index = 24264)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1095)
 , BOTTOM_UP_END ()
-// State S875 (index = 24253)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1094)
-, BOTTOM_UP_END ()
-// State S876 (index = 24256)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1095)
-, BOTTOM_UP_END ()
-// State S877 (index = 24259)
+// State S875 (index = 24267)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1096)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1097)
 , BOTTOM_UP_END ()
-// State S878 (index = 24264)
-, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1099)
+// State S876 (index = 24270)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1097)
 , BOTTOM_UP_END ()
-// State S879 (index = 24267)
-, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1100)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1101)
+// State S877 (index = 24273)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1098)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1099)
+, BOTTOM_UP_END ()
+// State S878 (index = 24278)
+, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1101)
+, BOTTOM_UP_END ()
+// State S879 (index = 24281)
+, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1102)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1103)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (477)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1102)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1103)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1104)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1105)
 , BOTTOM_UP_END ()
-// State S880 (index = 24278)
+// State S880 (index = 24292)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (475)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (475)
-, Lexique_galgasScanner_34_::kToken_as, BOTTOM_UP_SHIFT (1106)
+, Lexique_galgasScanner_34_::kToken_as, BOTTOM_UP_SHIFT (1108)
 , BOTTOM_UP_END ()
-// State S881 (index = 24285)
+// State S881 (index = 24299)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (284)
@@ -13864,7 +13871,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_as, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (410)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1108)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1110)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (284)
@@ -13927,7 +13934,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (284)
 , BOTTOM_UP_END ()
-// State S882 (index = 24474)
+// State S882 (index = 24488)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (229)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (234)
@@ -13955,7 +13962,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (234)
 , BOTTOM_UP_END ()
-// State S883 (index = 24527)
+// State S883 (index = 24541)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (284)
@@ -13988,7 +13995,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_as, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (410)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1108)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1110)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (284)
@@ -14051,7 +14058,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (284)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (284)
 , BOTTOM_UP_END ()
-// State S884 (index = 24716)
+// State S884 (index = 24730)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (259)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (259)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (259)
@@ -14140,7 +14147,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (259)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (259)
 , BOTTOM_UP_END ()
-// State S885 (index = 24891)
+// State S885 (index = 24905)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (260)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (260)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (260)
@@ -14229,7 +14236,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (260)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (260)
 , BOTTOM_UP_END ()
-// State S886 (index = 25066)
+// State S886 (index = 25080)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (261)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (261)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (261)
@@ -14318,7 +14325,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (261)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (261)
 , BOTTOM_UP_END ()
-// State S887 (index = 25241)
+// State S887 (index = 25255)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (262)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (262)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (262)
@@ -14407,7 +14414,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (262)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (262)
 , BOTTOM_UP_END ()
-// State S888 (index = 25416)
+// State S888 (index = 25430)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (263)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (263)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (263)
@@ -14496,7 +14503,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (263)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (263)
 , BOTTOM_UP_END ()
-// State S889 (index = 25591)
+// State S889 (index = 25605)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (296)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (296)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (296)
@@ -14569,7 +14576,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (296)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (296)
 , BOTTOM_UP_END ()
-// State S890 (index = 25734)
+// State S890 (index = 25748)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (297)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (297)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (297)
@@ -14642,7 +14649,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (297)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (297)
 , BOTTOM_UP_END ()
-// State S891 (index = 25877)
+// State S891 (index = 25891)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (243)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (243)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (243)
@@ -14717,7 +14724,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (243)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (243)
 , BOTTOM_UP_END ()
-// State S892 (index = 26024)
+// State S892 (index = 26038)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (244)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (244)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (244)
@@ -14792,7 +14799,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (244)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (244)
 , BOTTOM_UP_END ()
-// State S893 (index = 26171)
+// State S893 (index = 26185)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (245)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (245)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (245)
@@ -14867,7 +14874,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (245)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (245)
 , BOTTOM_UP_END ()
-// State S894 (index = 26318)
+// State S894 (index = 26332)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (246)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (246)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (246)
@@ -14942,7 +14949,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (246)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (246)
 , BOTTOM_UP_END ()
-// State S895 (index = 26465)
+// State S895 (index = 26479)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (247)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (247)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (247)
@@ -15017,7 +15024,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (247)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (247)
 , BOTTOM_UP_END ()
-// State S896 (index = 26612)
+// State S896 (index = 26626)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (248)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (248)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (248)
@@ -15092,7 +15099,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (248)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (248)
 , BOTTOM_UP_END ()
-// State S897 (index = 26759)
+// State S897 (index = 26773)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (249)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (249)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (249)
@@ -15167,7 +15174,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (249)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (249)
 , BOTTOM_UP_END ()
-// State S898 (index = 26906)
+// State S898 (index = 26920)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (250)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (250)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (250)
@@ -15242,7 +15249,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (250)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (250)
 , BOTTOM_UP_END ()
-// State S899 (index = 27053)
+// State S899 (index = 27067)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (254)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (254)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (254)
@@ -15325,7 +15332,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (254)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (254)
 , BOTTOM_UP_END ()
-// State S900 (index = 27216)
+// State S900 (index = 27230)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (256)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (256)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (256)
@@ -15408,7 +15415,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (256)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (256)
 , BOTTOM_UP_END ()
-// State S901 (index = 27379)
+// State S901 (index = 27393)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (252)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (252)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (252)
@@ -15491,7 +15498,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (252)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (252)
 , BOTTOM_UP_END ()
-// State S902 (index = 27542)
+// State S902 (index = 27556)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (253)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (253)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (253)
@@ -15574,7 +15581,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (253)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (253)
 , BOTTOM_UP_END ()
-// State S903 (index = 27705)
+// State S903 (index = 27719)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (255)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (255)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (255)
@@ -15657,7 +15664,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (255)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (255)
 , BOTTOM_UP_END ()
-// State S904 (index = 27868)
+// State S904 (index = 27882)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (257)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (257)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (257)
@@ -15740,17 +15747,17 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (257)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (257)
 , BOTTOM_UP_END ()
-// State S905 (index = 28031)
+// State S905 (index = 28045)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (281)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (281)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (281)
 , BOTTOM_UP_END ()
-// State S906 (index = 28038)
+// State S906 (index = 28052)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (282)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (282)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (282)
 , BOTTOM_UP_END ()
-// State S907 (index = 28045)
+// State S907 (index = 28059)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -15776,10 +15783,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S908 (index = 28094)
+// State S908 (index = 28108)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (276)
 , BOTTOM_UP_END ()
-// State S909 (index = 28097)
+// State S909 (index = 28111)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (30)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (30)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (30)
@@ -15875,7 +15882,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (30)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (30)
 , BOTTOM_UP_END ()
-// State S910 (index = 28286)
+// State S910 (index = 28300)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -15901,11 +15908,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S911 (index = 28335)
+// State S911 (index = 28349)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (31)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (31)
 , BOTTOM_UP_END ()
-// State S912 (index = 28340)
+// State S912 (index = 28354)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (229)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (234)
@@ -15933,7 +15940,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (234)
 , BOTTOM_UP_END ()
-// State S913 (index = 28393)
+// State S913 (index = 28407)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (27)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (27)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (27)
@@ -16029,7 +16036,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (27)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (27)
 , BOTTOM_UP_END ()
-// State S914 (index = 28582)
+// State S914 (index = 28596)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (229)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (234)
@@ -16057,7 +16064,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (234)
 , BOTTOM_UP_END ()
-// State S915 (index = 28635)
+// State S915 (index = 28649)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (290)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (290)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (290)
@@ -16125,7 +16132,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (290)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (290)
 , BOTTOM_UP_END ()
-// State S916 (index = 28768)
+// State S916 (index = 28782)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (291)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (291)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (291)
@@ -16193,7 +16200,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (291)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (291)
 , BOTTOM_UP_END ()
-// State S917 (index = 28901)
+// State S917 (index = 28915)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (292)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (292)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (292)
@@ -16261,7 +16268,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (292)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (292)
 , BOTTOM_UP_END ()
-// State S918 (index = 29034)
+// State S918 (index = 29048)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (293)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (293)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (293)
@@ -16329,7 +16336,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (293)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (293)
 , BOTTOM_UP_END ()
-// State S919 (index = 29167)
+// State S919 (index = 29181)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (294)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (294)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (294)
@@ -16397,7 +16404,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (294)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (294)
 , BOTTOM_UP_END ()
-// State S920 (index = 29300)
+// State S920 (index = 29314)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -16425,7 +16432,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S921 (index = 29353)
+// State S921 (index = 29367)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -16450,13 +16457,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (213)
 , BOTTOM_UP_END ()
-// State S922 (index = 29400)
+// State S922 (index = 29414)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (75)
 , BOTTOM_UP_END ()
-// State S923 (index = 29403)
+// State S923 (index = 29417)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (469)
 , BOTTOM_UP_END ()
-// State S924 (index = 29406)
+// State S924 (index = 29420)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (239)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (239)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_REDUCE (239)
@@ -16482,10 +16489,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (239)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (239)
 , BOTTOM_UP_END ()
-// State S925 (index = 29455)
+// State S925 (index = 29469)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (6)
 , BOTTOM_UP_END ()
-// State S926 (index = 29458)
+// State S926 (index = 29472)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (410)
 , Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (691)
 , Lexique_galgasScanner_34_::kToken__2D__3D_, BOTTOM_UP_REDUCE (410)
@@ -16493,7 +16500,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__2A__3D_, BOTTOM_UP_REDUCE (410)
 , Lexique_galgasScanner_34_::kToken__2F__3D_, BOTTOM_UP_REDUCE (410)
 , BOTTOM_UP_END ()
-// State S927 (index = 29471)
+// State S927 (index = 29485)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -16523,10 +16530,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__21__3F_selector_3A_, BOTTOM_UP_SHIFT (698)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (699)
 , BOTTOM_UP_END ()
-// State S928 (index = 29528)
+// State S928 (index = 29542)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (315)
 , BOTTOM_UP_END ()
-// State S929 (index = 29531)
+// State S929 (index = 29545)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (41)
@@ -16566,72 +16573,78 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (41)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (41)
 , BOTTOM_UP_END ()
-// State S930 (index = 29608)
+// State S930 (index = 29622)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1120)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1122)
 , BOTTOM_UP_END ()
-// State S931 (index = 29615)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1122)
+// State S931 (index = 29629)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1124)
 , BOTTOM_UP_END ()
-// State S932 (index = 29618)
+// State S932 (index = 29632)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1120)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1122)
 , BOTTOM_UP_END ()
-// State S933 (index = 29625)
+// State S933 (index = 29639)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1124)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1120)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1126)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1122)
 , BOTTOM_UP_END ()
-// State S934 (index = 29634)
+// State S934 (index = 29648)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (330)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (330)
 , BOTTOM_UP_END ()
-// State S935 (index = 29645)
+// State S935 (index = 29659)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (328)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S936 (index = 29654)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1130)
+// State S936 (index = 29668)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1132)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S937 (index = 29661)
+// State S937 (index = 29675)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (42)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (42)
 , BOTTOM_UP_END ()
-// State S938 (index = 29666)
+// State S938 (index = 29680)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (389)
+, BOTTOM_UP_END ()
+// State S939 (index = 29683)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (339)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (339)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1131)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1133)
 , BOTTOM_UP_END ()
-// State S939 (index = 29673)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (337)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (337)
-, BOTTOM_UP_END ()
-// State S940 (index = 29678)
+// State S940 (index = 29690)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (338)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (338)
 , BOTTOM_UP_END ()
-// State S941 (index = 29683)
+// State S941 (index = 29695)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (337)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (337)
+, BOTTOM_UP_END ()
+// State S942 (index = 29700)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1135)
+, BOTTOM_UP_END ()
+// State S943 (index = 29703)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (43)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (43)
 , BOTTOM_UP_END ()
-// State S942 (index = 29688)
+// State S944 (index = 29708)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (44)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (44)
 , BOTTOM_UP_END ()
-// State S943 (index = 29693)
-, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1133)
+// State S945 (index = 29713)
+, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1136)
 , BOTTOM_UP_END ()
-// State S944 (index = 29696)
+// State S946 (index = 29716)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (410)
 , Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (691)
 , Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_REDUCE (409)
@@ -16640,7 +16653,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__2A__3D_, BOTTOM_UP_REDUCE (410)
 , Lexique_galgasScanner_34_::kToken__2F__3D_, BOTTOM_UP_REDUCE (410)
 , BOTTOM_UP_END ()
-// State S945 (index = 29711)
+// State S947 (index = 29731)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -16664,13 +16677,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S946 (index = 29756)
+// State S948 (index = 29776)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (634)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (714)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S947 (index = 29765)
+// State S949 (index = 29785)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (134)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (134)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (134)
@@ -16727,12 +16740,12 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (134)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (134)
 , BOTTOM_UP_END ()
-// State S948 (index = 29876)
+// State S950 (index = 29896)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
-, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1136)
+, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1139)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S949 (index = 29883)
+// State S951 (index = 29903)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (492)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (492)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (492)
@@ -16769,15 +16782,15 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (492)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (492)
 , BOTTOM_UP_END ()
-// State S950 (index = 29954)
+// State S952 (index = 29974)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S951 (index = 29961)
-, Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_SHIFT (1138)
+// State S953 (index = 29981)
+, Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_SHIFT (1141)
 , BOTTOM_UP_END ()
-// State S952 (index = 29964)
+// State S954 (index = 29984)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (520)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (520)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (520)
@@ -16814,11 +16827,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (520)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (520)
 , BOTTOM_UP_END ()
-// State S953 (index = 30035)
+// State S955 (index = 30055)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (502)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1139)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1142)
 , BOTTOM_UP_END ()
-// State S954 (index = 30040)
+// State S956 (index = 30060)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (418)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (418)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (418)
@@ -16855,10 +16868,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (418)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (418)
 , BOTTOM_UP_END ()
-// State S955 (index = 30111)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1141)
+// State S957 (index = 30131)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1144)
 , BOTTOM_UP_END ()
-// State S956 (index = 30114)
+// State S958 (index = 30134)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (419)
@@ -16871,7 +16884,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__3B_, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_REDUCE (419)
-, Lexique_galgasScanner_34_::kToken_fixit, BOTTOM_UP_SHIFT (980)
+, Lexique_galgasScanner_34_::kToken_fixit, BOTTOM_UP_SHIFT (982)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_for, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (419)
@@ -16896,17 +16909,17 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (419)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (419)
 , BOTTOM_UP_END ()
-// State S957 (index = 30187)
+// State S959 (index = 30207)
 , Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_REDUCE (444)
 , BOTTOM_UP_END ()
-// State S958 (index = 30190)
-, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1143)
+// State S960 (index = 30210)
+, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1146)
 , BOTTOM_UP_END ()
-// State S959 (index = 30193)
+// State S961 (index = 30213)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (66)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (66)
 , BOTTOM_UP_END ()
-// State S960 (index = 30198)
+// State S962 (index = 30218)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (431)
 , Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (731)
@@ -16915,31 +16928,31 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (431)
 , BOTTOM_UP_END ()
-// State S961 (index = 30213)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1146)
+// State S963 (index = 30233)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1149)
 , BOTTOM_UP_END ()
-// State S962 (index = 30216)
+// State S964 (index = 30236)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (433)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (433)
 , BOTTOM_UP_END ()
-// State S963 (index = 30221)
+// State S965 (index = 30241)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (436)
 , BOTTOM_UP_END ()
-// State S964 (index = 30224)
+// State S966 (index = 30244)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (67)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (67)
 , BOTTOM_UP_END ()
-// State S965 (index = 30229)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1147)
+// State S967 (index = 30249)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1150)
 , BOTTOM_UP_END ()
-// State S966 (index = 30232)
+// State S968 (index = 30252)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (487)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (439)
 , Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_REDUCE (439)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S967 (index = 30243)
+// State S969 (index = 30263)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -16963,11 +16976,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S968 (index = 30288)
-, Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_SHIFT (1150)
+// State S970 (index = 30308)
+, Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_SHIFT (1153)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (451)
 , BOTTOM_UP_END ()
-// State S969 (index = 30293)
+// State S971 (index = 30313)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -16991,7 +17004,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S970 (index = 30338)
+// State S972 (index = 30358)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -17015,7 +17028,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S971 (index = 30383)
+// State S973 (index = 30403)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -17039,7 +17052,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S972 (index = 30428)
+// State S974 (index = 30448)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (72)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (72)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (72)
@@ -17076,7 +17089,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (72)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (72)
 , BOTTOM_UP_END ()
-// State S973 (index = 30499)
+// State S975 (index = 30519)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (494)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (494)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (494)
@@ -17113,10 +17126,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (494)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (494)
 , BOTTOM_UP_END ()
-// State S974 (index = 30570)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1155)
+// State S976 (index = 30590)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1158)
 , BOTTOM_UP_END ()
-// State S975 (index = 30573)
+// State S977 (index = 30593)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -17144,17 +17157,17 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S976 (index = 30626)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1157)
+// State S978 (index = 30646)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1160)
 , BOTTOM_UP_END ()
-// State S977 (index = 30629)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1158)
+// State S979 (index = 30649)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1161)
 , BOTTOM_UP_END ()
-// State S978 (index = 30632)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1159)
+// State S980 (index = 30652)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1162)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (508)
 , BOTTOM_UP_END ()
-// State S979 (index = 30637)
+// State S981 (index = 30657)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -17182,10 +17195,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S980 (index = 30690)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1162)
+// State S982 (index = 30710)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1165)
 , BOTTOM_UP_END ()
-// State S981 (index = 30693)
+// State S983 (index = 30713)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (95)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (95)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (95)
@@ -17222,7 +17235,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (95)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (95)
 , BOTTOM_UP_END ()
-// State S982 (index = 30764)
+// State S984 (index = 30784)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (64)
@@ -17259,55 +17272,55 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (64)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (64)
 , BOTTOM_UP_END ()
-// State S983 (index = 30835)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1163)
-, Lexique_galgasScanner_34_::kToken_self, BOTTOM_UP_SHIFT (1164)
+// State S985 (index = 30855)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1166)
+, Lexique_galgasScanner_34_::kToken_self, BOTTOM_UP_SHIFT (1167)
 , BOTTOM_UP_END ()
-// State S984 (index = 30840)
+// State S986 (index = 30860)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (523)
-, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1166)
+, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1169)
 , BOTTOM_UP_END ()
-// State S985 (index = 30845)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1168)
+// State S987 (index = 30865)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1171)
 , BOTTOM_UP_END ()
-// State S986 (index = 30848)
+// State S988 (index = 30868)
 , Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_REDUCE (827)
 , BOTTOM_UP_END ()
-// State S987 (index = 30851)
+// State S989 (index = 30871)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (828)
-, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (1169)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (1172)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (828)
 , BOTTOM_UP_END ()
-// State S988 (index = 30858)
+// State S990 (index = 30878)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (703)
 , Lexique_galgasScanner_34_::kToken_template, BOTTOM_UP_SHIFT (154)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_SHIFT (160)
 , BOTTOM_UP_END ()
-// State S989 (index = 30865)
+// State S991 (index = 30885)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (703)
 , Lexique_galgasScanner_34_::kToken_template, BOTTOM_UP_SHIFT (154)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_SHIFT (160)
 , BOTTOM_UP_END ()
-// State S990 (index = 30872)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1173)
+// State S992 (index = 30892)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1176)
 , BOTTOM_UP_END ()
-// State S991 (index = 30875)
+// State S993 (index = 30895)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (567)
 , BOTTOM_UP_END ()
-// State S992 (index = 30878)
+// State S994 (index = 30898)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S993 (index = 30885)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1175)
+// State S995 (index = 30905)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1178)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S994 (index = 30892)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1176)
+// State S996 (index = 30912)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1179)
 , BOTTOM_UP_END ()
-// State S995 (index = 30895)
+// State S997 (index = 30915)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (280)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_SHIFT (281)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (584)
@@ -17316,7 +17329,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_SHIFT (285)
 , Lexique_galgasScanner_34_::kToken_override, BOTTOM_UP_SHIFT (290)
 , BOTTOM_UP_END ()
-// State S996 (index = 30910)
+// State S998 (index = 30930)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -17344,19 +17357,19 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S997 (index = 30963)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1180)
+// State S999 (index = 30983)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1183)
 , BOTTOM_UP_END ()
-// State S998 (index = 30966)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1181)
+// State S1000 (index = 30986)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1184)
 , BOTTOM_UP_END ()
-// State S999 (index = 30969)
+// State S1001 (index = 30989)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (612)
 , BOTTOM_UP_END ()
-// State S1000 (index = 30972)
+// State S1002 (index = 30992)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (613)
 , BOTTOM_UP_END ()
-// State S1001 (index = 30975)
+// State S1003 (index = 30995)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (119)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (119)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (119)
@@ -17390,19 +17403,19 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (119)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (119)
 , BOTTOM_UP_END ()
-// State S1002 (index = 31040)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1182)
+// State S1004 (index = 31060)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1185)
 , BOTTOM_UP_END ()
-// State S1003 (index = 31043)
+// State S1005 (index = 31063)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1004 (index = 31050)
+// State S1006 (index = 31070)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (658)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (658)
 , BOTTOM_UP_END ()
-// State S1005 (index = 31055)
+// State S1007 (index = 31075)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -17430,10 +17443,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1006 (index = 31108)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1185)
+// State S1008 (index = 31128)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1188)
 , BOTTOM_UP_END ()
-// State S1007 (index = 31111)
+// State S1009 (index = 31131)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (138)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (138)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (138)
@@ -17452,11 +17465,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (138)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (138)
 , BOTTOM_UP_END ()
-// State S1008 (index = 31146)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1186)
+// State S1010 (index = 31166)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1189)
 , BOTTOM_UP_END ()
-// State S1009 (index = 31149)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1187)
+// State S1011 (index = 31169)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1190)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (621)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (621)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (621)
@@ -17475,7 +17488,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (621)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (621)
 , BOTTOM_UP_END ()
-// State S1010 (index = 31186)
+// State S1012 (index = 31206)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (121)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (121)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (121)
@@ -17494,7 +17507,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (121)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (121)
 , BOTTOM_UP_END ()
-// State S1011 (index = 31221)
+// State S1013 (index = 31241)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (122)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (122)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (122)
@@ -17513,27 +17526,27 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (122)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (122)
 , BOTTOM_UP_END ()
-// State S1012 (index = 31256)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1189)
+// State S1014 (index = 31276)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1192)
 , BOTTOM_UP_END ()
-// State S1013 (index = 31259)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1190)
+// State S1015 (index = 31279)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1193)
 , BOTTOM_UP_END ()
-// State S1014 (index = 31262)
+// State S1016 (index = 31282)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (174)
 , BOTTOM_UP_END ()
-// State S1015 (index = 31265)
+// State S1017 (index = 31285)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S1016 (index = 31268)
+// State S1018 (index = 31288)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (656)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (656)
 , BOTTOM_UP_END ()
-// State S1017 (index = 31273)
+// State S1019 (index = 31293)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (660)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (660)
 , BOTTOM_UP_END ()
-// State S1018 (index = 31278)
+// State S1020 (index = 31298)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (543)
@@ -17542,7 +17555,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_private, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_REDUCE (543)
-, Lexique_galgasScanner_34_::kToken__25_initArgLabel, BOTTOM_UP_SHIFT (1193)
+, Lexique_galgasScanner_34_::kToken__25_initArgLabel, BOTTOM_UP_SHIFT (1196)
 , Lexique_galgasScanner_34_::kToken_abstract, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken__25_insertSetter, BOTTOM_UP_REDUCE (543)
@@ -17554,23 +17567,23 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (543)
 , BOTTOM_UP_END ()
-// State S1019 (index = 31317)
-, Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_SHIFT (1195)
-, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (1196)
+// State S1021 (index = 31337)
+, Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_SHIFT (1198)
+, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (1199)
 , BOTTOM_UP_END ()
-// State S1020 (index = 31322)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1198)
+// State S1022 (index = 31342)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1201)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (625)
 , BOTTOM_UP_END ()
-// State S1021 (index = 31327)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1200)
+// State S1023 (index = 31347)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1203)
 , BOTTOM_UP_END ()
-// State S1022 (index = 31330)
+// State S1024 (index = 31350)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1023 (index = 31337)
+// State S1025 (index = 31357)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -17598,10 +17611,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1024 (index = 31390)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1203)
+// State S1026 (index = 31410)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1206)
 , BOTTOM_UP_END ()
-// State S1025 (index = 31393)
+// State S1027 (index = 31413)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (149)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (149)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (149)
@@ -17635,34 +17648,34 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (149)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (149)
 , BOTTOM_UP_END ()
-// State S1026 (index = 31458)
+// State S1028 (index = 31478)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (757)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1026)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1028)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (757)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (757)
 , Lexique_galgasScanner_34_::kToken_project, BOTTOM_UP_REDUCE (757)
 , BOTTOM_UP_END ()
-// State S1027 (index = 31469)
+// State S1029 (index = 31489)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (197)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (197)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (197)
 , Lexique_galgasScanner_34_::kToken_project, BOTTOM_UP_REDUCE (197)
 , BOTTOM_UP_END ()
-// State S1028 (index = 31478)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1205)
+// State S1030 (index = 31498)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1208)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (744)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1206)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1209)
 , BOTTOM_UP_END ()
-// State S1029 (index = 31485)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1208)
+// State S1031 (index = 31505)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1211)
 , BOTTOM_UP_END ()
-// State S1030 (index = 31488)
+// State S1032 (index = 31508)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (764)
 , BOTTOM_UP_END ()
-// State S1031 (index = 31491)
+// State S1033 (index = 31511)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (765)
 , BOTTOM_UP_END ()
-// State S1032 (index = 31494)
+// State S1034 (index = 31514)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (198)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (198)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (198)
@@ -17696,18 +17709,18 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (198)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (198)
 , BOTTOM_UP_END ()
-// State S1033 (index = 31559)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1209)
+// State S1035 (index = 31579)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1212)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (769)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1210)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1213)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (769)
 , BOTTOM_UP_END ()
-// State S1034 (index = 31568)
+// State S1036 (index = 31588)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (771)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1212)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1215)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (771)
 , BOTTOM_UP_END ()
-// State S1035 (index = 31575)
+// State S1037 (index = 31595)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (280)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (650)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (650)
@@ -17722,7 +17735,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_SHIFT (292)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_SHIFT (293)
 , BOTTOM_UP_END ()
-// State S1036 (index = 31602)
+// State S1038 (index = 31622)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (280)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (650)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (650)
@@ -17737,16 +17750,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_SHIFT (292)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_SHIFT (293)
 , BOTTOM_UP_END ()
-// State S1037 (index = 31629)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1216)
+// State S1039 (index = 31649)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1219)
 , BOTTOM_UP_END ()
-// State S1038 (index = 31632)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1217)
+// State S1040 (index = 31652)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1220)
 , BOTTOM_UP_END ()
-// State S1039 (index = 31635)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1218)
+// State S1041 (index = 31655)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1221)
 , BOTTOM_UP_END ()
-// State S1040 (index = 31638)
+// State S1042 (index = 31658)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (179)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (179)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (179)
@@ -17758,32 +17771,32 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (179)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (179)
 , BOTTOM_UP_END ()
-// State S1041 (index = 31659)
+// State S1043 (index = 31679)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (685)
 , Lexique_galgasScanner_34_::kToken_style, BOTTOM_UP_REDUCE (685)
 , BOTTOM_UP_END ()
-// State S1042 (index = 31664)
+// State S1044 (index = 31684)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (686)
 , Lexique_galgasScanner_34_::kToken_style, BOTTOM_UP_REDUCE (686)
 , BOTTOM_UP_END ()
-// State S1043 (index = 31669)
+// State S1045 (index = 31689)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (687)
 , BOTTOM_UP_END ()
-// State S1044 (index = 31672)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1219)
+// State S1046 (index = 31692)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1222)
 , BOTTOM_UP_END ()
-// State S1045 (index = 31675)
+// State S1047 (index = 31695)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (170)
 , Lexique_galgasScanner_34_::kToken__7C_, BOTTOM_UP_REDUCE (170)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (170)
 , BOTTOM_UP_END ()
-// State S1046 (index = 31682)
+// State S1048 (index = 31702)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (720)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1220)
-, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (1221)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1223)
+, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (1224)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (720)
 , BOTTOM_UP_END ()
-// State S1047 (index = 31691)
+// State S1049 (index = 31711)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (182)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (182)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (182)
@@ -17800,7 +17813,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (182)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (182)
 , BOTTOM_UP_END ()
-// State S1048 (index = 31722)
+// State S1050 (index = 31742)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (183)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (183)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (183)
@@ -17817,7 +17830,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (183)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (183)
 , BOTTOM_UP_END ()
-// State S1049 (index = 31753)
+// State S1051 (index = 31773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (191)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (191)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (191)
@@ -17834,7 +17847,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (191)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (191)
 , BOTTOM_UP_END ()
-// State S1050 (index = 31784)
+// State S1052 (index = 31804)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (189)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (189)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (189)
@@ -17851,10 +17864,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (189)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (189)
 , BOTTOM_UP_END ()
-// State S1051 (index = 31815)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1223)
+// State S1053 (index = 31835)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1226)
 , BOTTOM_UP_END ()
-// State S1052 (index = 31818)
+// State S1054 (index = 31838)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (161)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (161)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (161)
@@ -17871,7 +17884,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (161)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (161)
 , BOTTOM_UP_END ()
-// State S1053 (index = 31849)
+// State S1055 (index = 31869)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (822)
@@ -17884,19 +17897,19 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1054 (index = 31872)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1225)
+// State S1056 (index = 31892)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1228)
 , BOTTOM_UP_END ()
-// State S1055 (index = 31875)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1227)
+// State S1057 (index = 31895)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1230)
 , BOTTOM_UP_END ()
-// State S1056 (index = 31878)
+// State S1058 (index = 31898)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (336)
 , Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (337)
 , Lexique_galgasScanner_34_::kToken__27_char_27_, BOTTOM_UP_SHIFT (338)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (339)
 , BOTTOM_UP_END ()
-// State S1057 (index = 31887)
+// State S1059 (index = 31907)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (190)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (190)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (190)
@@ -17913,10 +17926,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (190)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (190)
 , BOTTOM_UP_END ()
-// State S1058 (index = 31918)
+// State S1060 (index = 31938)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (673)
 , BOTTOM_UP_END ()
-// State S1059 (index = 31921)
+// State S1061 (index = 31941)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (160)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (160)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (160)
@@ -17928,14 +17941,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (160)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (160)
 , BOTTOM_UP_END ()
-// State S1060 (index = 31942)
+// State S1062 (index = 31962)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (681)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (681)
 , BOTTOM_UP_END ()
-// State S1061 (index = 31947)
+// State S1063 (index = 31967)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (700)
 , BOTTOM_UP_END ()
-// State S1062 (index = 31950)
+// State S1064 (index = 31970)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (176)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (176)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (176)
@@ -17947,41 +17960,41 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (176)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (176)
 , BOTTOM_UP_END ()
-// State S1063 (index = 31971)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1229)
+// State S1065 (index = 31991)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1232)
 , BOTTOM_UP_END ()
-// State S1064 (index = 31974)
+// State S1066 (index = 31994)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (842)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (549)
 , BOTTOM_UP_END ()
-// State S1065 (index = 31979)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1231)
+// State S1067 (index = 31999)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1234)
 , BOTTOM_UP_END ()
-// State S1066 (index = 31982)
+// State S1068 (index = 32002)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (552)
 , BOTTOM_UP_END ()
-// State S1067 (index = 31985)
+// State S1069 (index = 32005)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (104)
 , BOTTOM_UP_END ()
-// State S1068 (index = 31988)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1232)
-, BOTTOM_UP_END ()
-// State S1069 (index = 31991)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1233)
-, BOTTOM_UP_END ()
-// State S1070 (index = 31994)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (640)
-, BOTTOM_UP_END ()
-// State S1071 (index = 31997)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1234)
-, BOTTOM_UP_END ()
-// State S1072 (index = 32000)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (353)
-, BOTTOM_UP_END ()
-// State S1073 (index = 32003)
+// State S1070 (index = 32008)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1235)
 , BOTTOM_UP_END ()
-// State S1074 (index = 32006)
+// State S1071 (index = 32011)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1236)
+, BOTTOM_UP_END ()
+// State S1072 (index = 32014)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (640)
+, BOTTOM_UP_END ()
+// State S1073 (index = 32017)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1237)
+, BOTTOM_UP_END ()
+// State S1074 (index = 32020)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (353)
+, BOTTOM_UP_END ()
+// State S1075 (index = 32023)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1238)
+, BOTTOM_UP_END ()
+// State S1076 (index = 32026)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -18009,7 +18022,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1075 (index = 32059)
+// State S1077 (index = 32079)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (102)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (102)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (102)
@@ -18043,13 +18056,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (102)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (102)
 , BOTTOM_UP_END ()
-// State S1076 (index = 32124)
+// State S1078 (index = 32144)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (370)
 , BOTTOM_UP_END ()
-// State S1077 (index = 32127)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1237)
+// State S1079 (index = 32147)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1240)
 , BOTTOM_UP_END ()
-// State S1078 (index = 32130)
+// State S1080 (index = 32150)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (57)
@@ -18083,47 +18096,47 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (57)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (57)
 , BOTTOM_UP_END ()
-// State S1079 (index = 32195)
+// State S1081 (index = 32215)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1080 (index = 32202)
+// State S1082 (index = 32222)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1081 (index = 32209)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1240)
+// State S1083 (index = 32229)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1243)
 , BOTTOM_UP_END ()
-// State S1082 (index = 32212)
+// State S1084 (index = 32232)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (597)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1241)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1244)
 , BOTTOM_UP_END ()
-// State S1083 (index = 32217)
+// State S1085 (index = 32237)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1084 (index = 32224)
+// State S1086 (index = 32244)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1085 (index = 32231)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1245)
+// State S1087 (index = 32251)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1248)
 , BOTTOM_UP_END ()
-// State S1086 (index = 32234)
+// State S1088 (index = 32254)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (115)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (115)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (115)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (115)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (115)
 , BOTTOM_UP_END ()
-// State S1087 (index = 32245)
+// State S1089 (index = 32265)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S1088 (index = 32248)
+// State S1090 (index = 32268)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (141)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (141)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (141)
@@ -18157,11 +18170,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (141)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (141)
 , BOTTOM_UP_END ()
-// State S1089 (index = 32313)
+// State S1091 (index = 32333)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (300)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1247)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1250)
 , BOTTOM_UP_END ()
-// State S1090 (index = 32318)
+// State S1092 (index = 32338)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -18185,7 +18198,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1091 (index = 32363)
+// State S1093 (index = 32383)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_REDUCE (234)
@@ -18211,29 +18224,29 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (234)
 , BOTTOM_UP_END ()
-// State S1092 (index = 32412)
+// State S1094 (index = 32432)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (228)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (228)
 , BOTTOM_UP_END ()
-// State S1093 (index = 32417)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1251)
+// State S1095 (index = 32437)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1254)
 , BOTTOM_UP_END ()
-// State S1094 (index = 32420)
-, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1252)
+// State S1096 (index = 32440)
+, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1255)
 , BOTTOM_UP_END ()
-// State S1095 (index = 32423)
-, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1253)
+// State S1097 (index = 32443)
+, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1256)
 , BOTTOM_UP_END ()
-// State S1096 (index = 32426)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1254)
+// State S1098 (index = 32446)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1257)
 , BOTTOM_UP_END ()
-// State S1097 (index = 32429)
+// State S1099 (index = 32449)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (269)
 , BOTTOM_UP_END ()
-// State S1098 (index = 32432)
+// State S1100 (index = 32452)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (268)
 , BOTTOM_UP_END ()
-// State S1099 (index = 32435)
+// State S1101 (index = 32455)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (20)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (20)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (20)
@@ -18329,7 +18342,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (20)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (20)
 , BOTTOM_UP_END ()
-// State S1100 (index = 32624)
+// State S1102 (index = 32644)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -18353,7 +18366,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1101 (index = 32669)
+// State S1103 (index = 32689)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -18377,40 +18390,40 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1102 (index = 32714)
+// State S1104 (index = 32734)
 , Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_REDUCE (481)
 , Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_REDUCE (481)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (481)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (481)
 , BOTTOM_UP_END ()
-// State S1103 (index = 32723)
+// State S1105 (index = 32743)
 , Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_REDUCE (482)
 , Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_REDUCE (482)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (482)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (482)
 , BOTTOM_UP_END ()
-// State S1104 (index = 32732)
-, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1257)
+// State S1106 (index = 32752)
+, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1260)
 , BOTTOM_UP_END ()
-// State S1105 (index = 32735)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1258)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1259)
-, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1260)
-, Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_SHIFT (1261)
+// State S1107 (index = 32755)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1261)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1262)
+, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1263)
+, Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_SHIFT (1264)
 , BOTTOM_UP_END ()
-// State S1106 (index = 32744)
+// State S1108 (index = 32764)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1107 (index = 32751)
+// State S1109 (index = 32771)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (470)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (470)
 , BOTTOM_UP_END ()
-// State S1108 (index = 32756)
+// State S1110 (index = 32776)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (649)
 , BOTTOM_UP_END ()
-// State S1109 (index = 32759)
+// State S1111 (index = 32779)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (285)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (285)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (285)
@@ -18504,10 +18517,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (285)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (285)
 , BOTTOM_UP_END ()
-// State S1110 (index = 32944)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1264)
+// State S1112 (index = 32964)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1267)
 , BOTTOM_UP_END ()
-// State S1111 (index = 32947)
+// State S1113 (index = 32967)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (286)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (286)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (286)
@@ -18601,28 +18614,28 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (286)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (286)
 , BOTTOM_UP_END ()
-// State S1112 (index = 33132)
+// State S1114 (index = 33152)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (277)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (907)
 , BOTTOM_UP_END ()
-// State S1113 (index = 33137)
+// State S1115 (index = 33157)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (910)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (279)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (279)
 , BOTTOM_UP_END ()
-// State S1114 (index = 33144)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1267)
+// State S1116 (index = 33164)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1270)
 , BOTTOM_UP_END ()
-// State S1115 (index = 33147)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1268)
+// State S1117 (index = 33167)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1271)
 , BOTTOM_UP_END ()
-// State S1116 (index = 33150)
+// State S1118 (index = 33170)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (466)
 , BOTTOM_UP_END ()
-// State S1117 (index = 33153)
+// State S1119 (index = 33173)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (467)
 , BOTTOM_UP_END ()
-// State S1118 (index = 33156)
+// State S1120 (index = 33176)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -18646,66 +18659,69 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1119 (index = 33201)
+// State S1121 (index = 33221)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (316)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (927)
 , BOTTOM_UP_END ()
-// State S1120 (index = 33206)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1271)
+// State S1122 (index = 33226)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1274)
 , BOTTOM_UP_END ()
-// State S1121 (index = 33209)
+// State S1123 (index = 33229)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (322)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (322)
 , BOTTOM_UP_END ()
-// State S1122 (index = 33214)
+// State S1124 (index = 33234)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (321)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (321)
 , BOTTOM_UP_END ()
-// State S1123 (index = 33219)
+// State S1125 (index = 33239)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (320)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (320)
 , BOTTOM_UP_END ()
-// State S1124 (index = 33224)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1272)
+// State S1126 (index = 33244)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1275)
 , BOTTOM_UP_END ()
-// State S1125 (index = 33227)
+// State S1127 (index = 33247)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (324)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (324)
 , BOTTOM_UP_END ()
-// State S1126 (index = 33232)
+// State S1128 (index = 33252)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (331)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (331)
 , BOTTOM_UP_END ()
-// State S1127 (index = 33241)
+// State S1129 (index = 33261)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (332)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1273)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1276)
 , BOTTOM_UP_END ()
-// State S1128 (index = 33246)
+// State S1130 (index = 33266)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (329)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1129 (index = 33253)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1275)
+// State S1131 (index = 33273)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1278)
 , BOTTOM_UP_END ()
-// State S1130 (index = 33256)
+// State S1132 (index = 33276)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1120)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1122)
 , BOTTOM_UP_END ()
-// State S1131 (index = 33263)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1277)
+// State S1133 (index = 33283)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1280)
 , BOTTOM_UP_END ()
-// State S1132 (index = 33266)
+// State S1134 (index = 33286)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (336)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (336)
 , BOTTOM_UP_END ()
-// State S1133 (index = 33271)
+// State S1135 (index = 33291)
+, Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (679)
+, BOTTOM_UP_END ()
+// State S1136 (index = 33294)
 , Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_REDUCE (408)
 , BOTTOM_UP_END ()
-// State S1134 (index = 33274)
+// State S1137 (index = 33297)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (59)
@@ -18742,10 +18758,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (59)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (59)
 , BOTTOM_UP_END ()
-// State S1135 (index = 33345)
+// State S1138 (index = 33368)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (635)
 , BOTTOM_UP_END ()
-// State S1136 (index = 33348)
+// State S1139 (index = 33371)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (131)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (131)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (131)
@@ -18802,13 +18818,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (131)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (131)
 , BOTTOM_UP_END ()
-// State S1137 (index = 33459)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (950)
+// State S1140 (index = 33482)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (952)
 , Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_REDUCE (632)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1138 (index = 33468)
+// State S1141 (index = 33491)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (133)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (133)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (133)
@@ -18865,16 +18881,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (133)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (133)
 , BOTTOM_UP_END ()
-// State S1139 (index = 33579)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1279)
+// State S1142 (index = 33602)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1282)
 , BOTTOM_UP_END ()
-// State S1140 (index = 33582)
+// State S1143 (index = 33605)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (459)
 , BOTTOM_UP_END ()
-// State S1141 (index = 33585)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1281)
+// State S1144 (index = 33608)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1284)
 , BOTTOM_UP_END ()
-// State S1142 (index = 33588)
+// State S1145 (index = 33611)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (65)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (65)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (65)
@@ -18911,7 +18927,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (65)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (65)
 , BOTTOM_UP_END ()
-// State S1143 (index = 33659)
+// State S1146 (index = 33682)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -18935,35 +18951,35 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1144 (index = 33704)
+// State S1147 (index = 33727)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (432)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_REDUCE (432)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (432)
 , BOTTOM_UP_END ()
-// State S1145 (index = 33715)
+// State S1148 (index = 33738)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (437)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (960)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (962)
 , BOTTOM_UP_END ()
-// State S1146 (index = 33720)
-, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1284)
+// State S1149 (index = 33743)
+, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1287)
 , BOTTOM_UP_END ()
-// State S1147 (index = 33723)
+// State S1150 (index = 33746)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (434)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (434)
 , BOTTOM_UP_END ()
-// State S1148 (index = 33728)
+// State S1151 (index = 33751)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (735)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (445)
 , Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_REDUCE (445)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (445)
 , BOTTOM_UP_END ()
-// State S1149 (index = 33737)
+// State S1152 (index = 33760)
 , Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_REDUCE (450)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (450)
 , BOTTOM_UP_END ()
-// State S1150 (index = 33742)
+// State S1153 (index = 33765)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -18991,16 +19007,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1151 (index = 33795)
-, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1287)
+// State S1154 (index = 33818)
+, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1290)
 , BOTTOM_UP_END ()
-// State S1152 (index = 33798)
+// State S1155 (index = 33821)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (69)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (69)
 , Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_REDUCE (69)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (69)
 , BOTTOM_UP_END ()
-// State S1153 (index = 33807)
+// State S1156 (index = 33830)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (461)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (461)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (461)
@@ -19020,7 +19036,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_between, BOTTOM_UP_REDUCE (461)
 , Lexique_galgasScanner_34_::kToken_after, BOTTOM_UP_REDUCE (461)
 , Lexique_galgasScanner_34_::kToken_grammar, BOTTOM_UP_REDUCE (461)
-, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1288)
+, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1291)
 , Lexique_galgasScanner_34_::kToken_elsif, BOTTOM_UP_REDUCE (461)
 , Lexique_galgasScanner_34_::kToken_log, BOTTOM_UP_REDUCE (461)
 , Lexique_galgasScanner_34_::kToken_loop, BOTTOM_UP_REDUCE (461)
@@ -19038,10 +19054,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (461)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (461)
 , BOTTOM_UP_END ()
-// State S1154 (index = 33880)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1290)
+// State S1157 (index = 33903)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1293)
 , BOTTOM_UP_END ()
-// State S1155 (index = 33883)
+// State S1158 (index = 33906)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -19065,10 +19081,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1156 (index = 33928)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1292)
+// State S1159 (index = 33951)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1295)
 , BOTTOM_UP_END ()
-// State S1157 (index = 33931)
+// State S1160 (index = 33954)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (83)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (83)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (83)
@@ -19105,54 +19121,54 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (83)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (83)
 , BOTTOM_UP_END ()
-// State S1158 (index = 34002)
+// State S1161 (index = 34025)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (506)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (977)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (979)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (506)
 , BOTTOM_UP_END ()
-// State S1159 (index = 34009)
+// State S1162 (index = 34032)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (516)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1294)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1295)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1297)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1298)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (516)
 , BOTTOM_UP_END ()
-// State S1160 (index = 34024)
+// State S1163 (index = 34047)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (91)
 , BOTTOM_UP_END ()
-// State S1161 (index = 34027)
+// State S1164 (index = 34050)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (504)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1299)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1302)
 , BOTTOM_UP_END ()
-// State S1162 (index = 34032)
-, Lexique_galgasScanner_34_::kToken__25_remove, BOTTOM_UP_SHIFT (1301)
-, Lexique_galgasScanner_34_::kToken__25_replaceBy, BOTTOM_UP_SHIFT (1302)
-, Lexique_galgasScanner_34_::kToken__25_insertAfter, BOTTOM_UP_SHIFT (1303)
-, Lexique_galgasScanner_34_::kToken__25_insertBefore, BOTTOM_UP_SHIFT (1304)
+// State S1165 (index = 34055)
+, Lexique_galgasScanner_34_::kToken__25_remove, BOTTOM_UP_SHIFT (1304)
+, Lexique_galgasScanner_34_::kToken__25_replaceBy, BOTTOM_UP_SHIFT (1305)
+, Lexique_galgasScanner_34_::kToken__25_insertAfter, BOTTOM_UP_SHIFT (1306)
+, Lexique_galgasScanner_34_::kToken__25_insertBefore, BOTTOM_UP_SHIFT (1307)
 , BOTTOM_UP_END ()
-// State S1163 (index = 34041)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1306)
+// State S1166 (index = 34064)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1309)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (529)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (529)
 , BOTTOM_UP_END ()
-// State S1164 (index = 34048)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1308)
+// State S1167 (index = 34071)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1311)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (531)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (531)
 , BOTTOM_UP_END ()
-// State S1165 (index = 34055)
+// State S1168 (index = 34078)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (535)
-, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1310)
+, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1313)
 , BOTTOM_UP_END ()
-// State S1166 (index = 34060)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1312)
+// State S1169 (index = 34083)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1315)
 , BOTTOM_UP_END ()
-// State S1167 (index = 34063)
-, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1313)
+// State S1170 (index = 34086)
+, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1316)
 , BOTTOM_UP_END ()
-// State S1168 (index = 34066)
+// State S1171 (index = 34089)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (96)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (96)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (96)
@@ -19189,21 +19205,21 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (96)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (96)
 , BOTTOM_UP_END ()
-// State S1169 (index = 34137)
+// State S1172 (index = 34160)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (829)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (829)
 , BOTTOM_UP_END ()
-// State S1170 (index = 34142)
+// State S1173 (index = 34165)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (830)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1314)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1317)
 , BOTTOM_UP_END ()
-// State S1171 (index = 34147)
+// State S1174 (index = 34170)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (704)
 , BOTTOM_UP_END ()
-// State S1172 (index = 34150)
+// State S1175 (index = 34173)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (705)
 , BOTTOM_UP_END ()
-// State S1173 (index = 34153)
+// State S1176 (index = 34176)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (178)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (178)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (178)
@@ -19237,8 +19253,8 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (178)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (178)
 , BOTTOM_UP_END ()
-// State S1174 (index = 34218)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1316)
+// State S1177 (index = 34241)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1319)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (636)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (636)
@@ -19274,13 +19290,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (636)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (636)
 , BOTTOM_UP_END ()
-// State S1175 (index = 34289)
+// State S1178 (index = 34312)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (582)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1176 (index = 34298)
+// State S1179 (index = 34321)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (761)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (580)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (580)
@@ -19291,7 +19307,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (580)
 , Lexique_galgasScanner_34_::kToken_override, BOTTOM_UP_REDUCE (580)
 , BOTTOM_UP_END ()
-// State S1177 (index = 34317)
+// State S1180 (index = 34340)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_SHIFT (280)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_SHIFT (281)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (584)
@@ -19300,16 +19316,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_SHIFT (285)
 , Lexique_galgasScanner_34_::kToken_override, BOTTOM_UP_SHIFT (290)
 , BOTTOM_UP_END ()
-// State S1178 (index = 34332)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1322)
+// State S1181 (index = 34355)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1325)
 , BOTTOM_UP_END ()
-// State S1179 (index = 34335)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1323)
+// State S1182 (index = 34358)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1326)
 , BOTTOM_UP_END ()
-// State S1180 (index = 34338)
-, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1324)
+// State S1183 (index = 34361)
+, Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_SHIFT (1327)
 , BOTTOM_UP_END ()
-// State S1181 (index = 34341)
+// State S1184 (index = 34364)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (116)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (116)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (116)
@@ -19343,7 +19359,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (116)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (116)
 , BOTTOM_UP_END ()
-// State S1182 (index = 34406)
+// State S1185 (index = 34429)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (146)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (146)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (146)
@@ -19362,20 +19378,20 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (146)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (146)
 , BOTTOM_UP_END ()
-// State S1183 (index = 34441)
+// State S1186 (index = 34464)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1325)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1328)
 , BOTTOM_UP_END ()
-// State S1184 (index = 34448)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1326)
+// State S1187 (index = 34471)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1329)
 , BOTTOM_UP_END ()
-// State S1185 (index = 34451)
+// State S1188 (index = 34474)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1186 (index = 34458)
+// State S1189 (index = 34481)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -19403,10 +19419,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1187 (index = 34511)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1329)
+// State S1190 (index = 34534)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1332)
 , BOTTOM_UP_END ()
-// State S1188 (index = 34514)
+// State S1191 (index = 34537)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (124)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (124)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (124)
@@ -19425,12 +19441,12 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (124)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (124)
 , BOTTOM_UP_END ()
-// State S1189 (index = 34549)
+// State S1192 (index = 34572)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1190 (index = 34556)
+// State S1193 (index = 34579)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -19458,10 +19474,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1191 (index = 34609)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1332)
+// State S1194 (index = 34632)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1335)
 , BOTTOM_UP_END ()
-// State S1192 (index = 34612)
+// State S1195 (index = 34635)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (150)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (150)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (150)
@@ -19480,7 +19496,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (150)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (150)
 , BOTTOM_UP_END ()
-// State S1193 (index = 34647)
+// State S1196 (index = 34670)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (543)
@@ -19489,7 +19505,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_private, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_REDUCE (543)
-, Lexique_galgasScanner_34_::kToken__25_initArgLabel, BOTTOM_UP_SHIFT (1193)
+, Lexique_galgasScanner_34_::kToken__25_initArgLabel, BOTTOM_UP_SHIFT (1196)
 , Lexique_galgasScanner_34_::kToken_abstract, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken__25_insertSetter, BOTTOM_UP_REDUCE (543)
@@ -19501,7 +19517,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (543)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (543)
 , BOTTOM_UP_END ()
-// State S1194 (index = 34686)
+// State S1197 (index = 34709)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (545)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (545)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (545)
@@ -19509,7 +19525,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (545)
 , Lexique_galgasScanner_34_::kToken_private, BOTTOM_UP_REDUCE (545)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (545)
-, Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_SHIFT (1334)
+, Lexique_galgasScanner_34_::kToken__3D_, BOTTOM_UP_SHIFT (1337)
 , Lexique_galgasScanner_34_::kToken_abstract, BOTTOM_UP_REDUCE (545)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (545)
 , Lexique_galgasScanner_34_::kToken__25_insertSetter, BOTTOM_UP_REDUCE (545)
@@ -19521,25 +19537,25 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (545)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (545)
 , BOTTOM_UP_END ()
-// State S1195 (index = 34723)
+// State S1198 (index = 34746)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (628)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (628)
 , BOTTOM_UP_END ()
-// State S1196 (index = 34728)
+// State S1199 (index = 34751)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (627)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (627)
 , BOTTOM_UP_END ()
-// State S1197 (index = 34733)
+// State S1200 (index = 34756)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (126)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (126)
 , BOTTOM_UP_END ()
-// State S1198 (index = 34738)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1019)
+// State S1201 (index = 34761)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1021)
 , BOTTOM_UP_END ()
-// State S1199 (index = 34741)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1337)
+// State S1202 (index = 34764)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1340)
 , BOTTOM_UP_END ()
-// State S1200 (index = 34744)
+// State S1203 (index = 34767)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (145)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (145)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (145)
@@ -19573,44 +19589,44 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (145)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (145)
 , BOTTOM_UP_END ()
-// State S1201 (index = 34809)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1338)
+// State S1204 (index = 34832)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1341)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (647)
 , BOTTOM_UP_END ()
-// State S1202 (index = 34818)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1340)
+// State S1205 (index = 34841)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1343)
 , BOTTOM_UP_END ()
-// State S1203 (index = 34821)
+// State S1206 (index = 34844)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1204 (index = 34828)
+// State S1207 (index = 34851)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (758)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (758)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (758)
 , Lexique_galgasScanner_34_::kToken_project, BOTTOM_UP_REDUCE (758)
 , BOTTOM_UP_END ()
-// State S1205 (index = 34837)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1342)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1343)
+// State S1208 (index = 34860)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1345)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1346)
 , BOTTOM_UP_END ()
-// State S1206 (index = 34842)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1344)
+// State S1209 (index = 34865)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1347)
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (748)
 , BOTTOM_UP_END ()
-// State S1207 (index = 34847)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1346)
+// State S1210 (index = 34870)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1349)
 , BOTTOM_UP_END ()
-// State S1208 (index = 34850)
+// State S1211 (index = 34873)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (314)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (739)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (315)
 , Lexique_galgasScanner_34_::kToken_project, BOTTOM_UP_SHIFT (316)
 , BOTTOM_UP_END ()
-// State S1209 (index = 34859)
+// State S1212 (index = 34882)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -19633,36 +19649,36 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1210 (index = 34920)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1359)
+// State S1213 (index = 34943)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1362)
 , BOTTOM_UP_END ()
-// State S1211 (index = 34923)
+// State S1214 (index = 34946)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (200)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (200)
 , BOTTOM_UP_END ()
-// State S1212 (index = 34928)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1360)
+// State S1215 (index = 34951)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1363)
 , BOTTOM_UP_END ()
-// State S1213 (index = 34931)
+// State S1216 (index = 34954)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (202)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (202)
 , BOTTOM_UP_END ()
-// State S1214 (index = 34936)
+// State S1217 (index = 34959)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (576)
 , BOTTOM_UP_END ()
-// State S1215 (index = 34939)
+// State S1218 (index = 34962)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (577)
 , BOTTOM_UP_END ()
-// State S1216 (index = 34942)
+// State S1219 (index = 34965)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (107)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (107)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (107)
@@ -19696,52 +19712,52 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (107)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (107)
 , BOTTOM_UP_END ()
-// State S1217 (index = 35007)
-, Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_SHIFT (1361)
+// State S1220 (index = 35030)
+, Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_SHIFT (1364)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (804)
 , BOTTOM_UP_END ()
-// State S1218 (index = 35012)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1363)
+// State S1221 (index = 35035)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1366)
 , BOTTOM_UP_END ()
-// State S1219 (index = 35015)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1364)
+// State S1222 (index = 35038)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1367)
 , BOTTOM_UP_END ()
-// State S1220 (index = 35018)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1365)
-, Lexique_galgasScanner_34_::kToken__27_char_27_, BOTTOM_UP_SHIFT (1366)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1367)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1368)
+// State S1223 (index = 35041)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1368)
+, Lexique_galgasScanner_34_::kToken__27_char_27_, BOTTOM_UP_SHIFT (1369)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1370)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1371)
 , BOTTOM_UP_END ()
-// State S1221 (index = 35027)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1370)
+// State S1224 (index = 35050)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1373)
 , BOTTOM_UP_END ()
-// State S1222 (index = 35030)
+// State S1225 (index = 35053)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (723)
-, Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (1371)
+, Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (1374)
 , BOTTOM_UP_END ()
-// State S1223 (index = 35035)
-, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1373)
+// State S1226 (index = 35058)
+, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1376)
 , BOTTOM_UP_END ()
-// State S1224 (index = 35038)
+// State S1227 (index = 35061)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (717)
 , BOTTOM_UP_END ()
-// State S1225 (index = 35041)
+// State S1228 (index = 35064)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (336)
 , Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (337)
 , Lexique_galgasScanner_34_::kToken__27_char_27_, BOTTOM_UP_SHIFT (338)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (339)
 , BOTTOM_UP_END ()
-// State S1226 (index = 35050)
+// State S1229 (index = 35073)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (718)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1225)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1228)
 , BOTTOM_UP_END ()
-// State S1227 (index = 35055)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1377)
+// State S1230 (index = 35078)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1380)
 , BOTTOM_UP_END ()
-// State S1228 (index = 35058)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1378)
+// State S1231 (index = 35081)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1381)
 , BOTTOM_UP_END ()
-// State S1229 (index = 35061)
+// State S1232 (index = 35084)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (710)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (710)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (710)
@@ -19753,17 +19769,17 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (710)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (710)
 , BOTTOM_UP_END ()
-// State S1230 (index = 35082)
+// State S1233 (index = 35105)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (550)
 , BOTTOM_UP_END ()
-// State S1231 (index = 35085)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1065)
+// State S1234 (index = 35108)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1067)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (553)
 , BOTTOM_UP_END ()
-// State S1232 (index = 35090)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1380)
+// State S1235 (index = 35113)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1383)
 , BOTTOM_UP_END ()
-// State S1233 (index = 35093)
+// State S1236 (index = 35116)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (105)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (105)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (105)
@@ -19797,7 +19813,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (105)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (105)
 , BOTTOM_UP_END ()
-// State S1234 (index = 35158)
+// State S1237 (index = 35181)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -19825,14 +19841,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1235 (index = 35211)
+// State S1238 (index = 35234)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (345)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1382)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1385)
 , BOTTOM_UP_END ()
-// State S1236 (index = 35216)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1384)
+// State S1239 (index = 35239)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1387)
 , BOTTOM_UP_END ()
-// State S1237 (index = 35219)
+// State S1240 (index = 35242)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -19860,53 +19876,53 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1238 (index = 35272)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1386)
+// State S1241 (index = 35295)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1389)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1239 (index = 35279)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1387)
+// State S1242 (index = 35302)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1390)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1240 (index = 35286)
+// State S1243 (index = 35309)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (112)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (112)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (112)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (112)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (112)
 , BOTTOM_UP_END ()
-// State S1241 (index = 35297)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1079)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1080)
+// State S1244 (index = 35320)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1081)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1082)
 , BOTTOM_UP_END ()
-// State S1242 (index = 35302)
+// State S1245 (index = 35325)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (596)
 , BOTTOM_UP_END ()
-// State S1243 (index = 35305)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1389)
+// State S1246 (index = 35328)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1392)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1244 (index = 35312)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1390)
+// State S1247 (index = 35335)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1393)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1245 (index = 35319)
+// State S1248 (index = 35342)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1246 (index = 35326)
+// State S1249 (index = 35349)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (114)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (114)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (114)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (114)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (114)
 , BOTTOM_UP_END ()
-// State S1247 (index = 35337)
+// State S1250 (index = 35360)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (304)
 , Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (379)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (380)
@@ -19918,13 +19934,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_, BOTTOM_UP_SHIFT (384)
 , Lexique_galgasScanner_34_::kToken__3F__21_, BOTTOM_UP_SHIFT (385)
 , BOTTOM_UP_END ()
-// State S1248 (index = 35358)
+// State S1251 (index = 35381)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (299)
 , BOTTOM_UP_END ()
-// State S1249 (index = 35361)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1393)
+// State S1252 (index = 35384)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1396)
 , BOTTOM_UP_END ()
-// State S1250 (index = 35364)
+// State S1253 (index = 35387)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -19948,10 +19964,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1251 (index = 35409)
-, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1395)
+// State S1254 (index = 35432)
+, Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_SHIFT (1398)
 , BOTTOM_UP_END ()
-// State S1252 (index = 35412)
+// State S1255 (index = 35435)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (18)
@@ -20047,7 +20063,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (18)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (18)
 , BOTTOM_UP_END ()
-// State S1253 (index = 35601)
+// State S1256 (index = 35624)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (19)
@@ -20143,7 +20159,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (19)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (19)
 , BOTTOM_UP_END ()
-// State S1254 (index = 35790)
+// State S1257 (index = 35813)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (229)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (234)
@@ -20171,60 +20187,60 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_REDUCE (234)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_REDUCE (234)
 , BOTTOM_UP_END ()
-// State S1255 (index = 35843)
-, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1100)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1101)
+// State S1258 (index = 35866)
+, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1102)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1103)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (477)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1102)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1103)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1104)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1105)
 , BOTTOM_UP_END ()
-// State S1256 (index = 35854)
-, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1100)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1101)
+// State S1259 (index = 35877)
+, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1102)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1103)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (477)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1102)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1103)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1104)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1105)
 , BOTTOM_UP_END ()
-// State S1257 (index = 35865)
+// State S1260 (index = 35888)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (471)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (471)
 , BOTTOM_UP_END ()
-// State S1258 (index = 35870)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1399)
+// State S1261 (index = 35893)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1402)
 , BOTTOM_UP_END ()
-// State S1259 (index = 35873)
+// State S1262 (index = 35896)
 , Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (485)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (485)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (485)
 , Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_REDUCE (485)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_REDUCE (485)
 , BOTTOM_UP_END ()
-// State S1260 (index = 35884)
+// State S1263 (index = 35907)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (487)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1261 (index = 35893)
+// State S1264 (index = 35916)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (489)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1262 (index = 35902)
-, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1100)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1101)
+// State S1265 (index = 35925)
+, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1102)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1103)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (477)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1102)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1103)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1104)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1105)
 , BOTTOM_UP_END ()
-// State S1263 (index = 35913)
+// State S1266 (index = 35936)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (476)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (476)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1264 (index = 35922)
+// State S1267 (index = 35945)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (288)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (288)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (288)
@@ -20320,14 +20336,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (288)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (288)
 , BOTTOM_UP_END ()
-// State S1265 (index = 36111)
+// State S1268 (index = 36134)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (278)
 , BOTTOM_UP_END ()
-// State S1266 (index = 36114)
+// State S1269 (index = 36137)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (280)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (280)
 , BOTTOM_UP_END ()
-// State S1267 (index = 36119)
+// State S1270 (index = 36142)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (274)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (274)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (274)
@@ -20423,7 +20439,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (274)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (274)
 , BOTTOM_UP_END ()
-// State S1268 (index = 36308)
+// State S1271 (index = 36331)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (22)
@@ -20519,49 +20535,49 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (22)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (22)
 , BOTTOM_UP_END ()
-// State S1269 (index = 36497)
+// State S1272 (index = 36520)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (924)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (235)
 , BOTTOM_UP_END ()
-// State S1270 (index = 36502)
+// State S1273 (index = 36525)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (317)
 , BOTTOM_UP_END ()
-// State S1271 (index = 36505)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1406)
+// State S1274 (index = 36528)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1409)
 , BOTTOM_UP_END ()
-// State S1272 (index = 36508)
+// State S1275 (index = 36531)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1120)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1122)
 , BOTTOM_UP_END ()
-// State S1273 (index = 36515)
+// State S1276 (index = 36538)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (333)
 , BOTTOM_UP_END ()
-// State S1274 (index = 36518)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1408)
+// State S1277 (index = 36541)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1411)
 , BOTTOM_UP_END ()
-// State S1275 (index = 36521)
+// State S1278 (index = 36544)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1120)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1122)
 , BOTTOM_UP_END ()
-// State S1276 (index = 36528)
+// State S1279 (index = 36551)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (326)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (326)
 , BOTTOM_UP_END ()
-// State S1277 (index = 36533)
+// State S1280 (index = 36556)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (339)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (339)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1131)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1133)
 , BOTTOM_UP_END ()
-// State S1278 (index = 36540)
+// State S1281 (index = 36563)
 , Lexique_galgasScanner_34_::kToken__3E_, BOTTOM_UP_REDUCE (633)
 , BOTTOM_UP_END ()
-// State S1279 (index = 36543)
+// State S1282 (index = 36566)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (502)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1139)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1142)
 , BOTTOM_UP_END ()
-// State S1280 (index = 36548)
+// State S1283 (index = 36571)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (501)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (501)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (501)
@@ -20598,20 +20614,20 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (501)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (501)
 , BOTTOM_UP_END ()
-// State S1281 (index = 36619)
+// State S1284 (index = 36642)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (429)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1412)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1415)
 , BOTTOM_UP_END ()
-// State S1282 (index = 36624)
+// State S1285 (index = 36647)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_REDUCE (70)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (70)
 , BOTTOM_UP_END ()
-// State S1283 (index = 36633)
+// State S1286 (index = 36656)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (438)
 , BOTTOM_UP_END ()
-// State S1284 (index = 36636)
+// State S1287 (index = 36659)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -20635,16 +20651,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1285 (index = 36681)
+// State S1288 (index = 36704)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (446)
 , Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_REDUCE (446)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (446)
 , BOTTOM_UP_END ()
-// State S1286 (index = 36688)
+// State S1289 (index = 36711)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (452)
 , BOTTOM_UP_END ()
-// State S1287 (index = 36691)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1415)
+// State S1290 (index = 36714)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1418)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (453)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (453)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (453)
@@ -20666,10 +20682,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_REDUCE (453)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (453)
 , BOTTOM_UP_END ()
-// State S1288 (index = 36734)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1417)
+// State S1291 (index = 36757)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1420)
 , BOTTOM_UP_END ()
-// State S1289 (index = 36737)
+// State S1292 (index = 36760)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (73)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (73)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (73)
@@ -20706,7 +20722,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (73)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (73)
 , BOTTOM_UP_END ()
-// State S1290 (index = 36808)
+// State S1293 (index = 36831)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -20730,10 +20746,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1291 (index = 36853)
-, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1420)
+// State S1294 (index = 36876)
+, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1423)
 , BOTTOM_UP_END ()
-// State S1292 (index = 36856)
+// State S1295 (index = 36879)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (82)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (82)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (82)
@@ -20770,42 +20786,42 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (82)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (82)
 , BOTTOM_UP_END ()
-// State S1293 (index = 36927)
+// State S1296 (index = 36950)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (507)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (507)
 , BOTTOM_UP_END ()
-// State S1294 (index = 36932)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1421)
+// State S1297 (index = 36955)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1424)
 , BOTTOM_UP_END ()
-// State S1295 (index = 36935)
+// State S1298 (index = 36958)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (513)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (513)
 , BOTTOM_UP_END ()
-// State S1296 (index = 36940)
+// State S1299 (index = 36963)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (515)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (515)
 , BOTTOM_UP_END ()
-// State S1297 (index = 36949)
+// State S1300 (index = 36972)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (510)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1422)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1425)
 , BOTTOM_UP_END ()
-// State S1298 (index = 36954)
+// State S1301 (index = 36977)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (517)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1424)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1427)
 , BOTTOM_UP_END ()
-// State S1299 (index = 36959)
+// State S1302 (index = 36982)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (748)
 , BOTTOM_UP_END ()
-// State S1300 (index = 36962)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1427)
+// State S1303 (index = 36985)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1430)
 , BOTTOM_UP_END ()
-// State S1301 (index = 36965)
+// State S1304 (index = 36988)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (423)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (423)
 , BOTTOM_UP_END ()
-// State S1302 (index = 36970)
+// State S1305 (index = 36993)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -20829,7 +20845,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1303 (index = 37015)
+// State S1306 (index = 37038)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -20853,7 +20869,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1304 (index = 37060)
+// State S1307 (index = 37083)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -20877,34 +20893,34 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1305 (index = 37105)
+// State S1308 (index = 37128)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (421)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1431)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1434)
 , BOTTOM_UP_END ()
-// State S1306 (index = 37110)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1433)
+// State S1309 (index = 37133)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1436)
 , BOTTOM_UP_END ()
-// State S1307 (index = 37113)
+// State S1310 (index = 37136)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (527)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (527)
 , BOTTOM_UP_END ()
-// State S1308 (index = 37118)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1434)
+// State S1311 (index = 37141)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1437)
 , BOTTOM_UP_END ()
-// State S1309 (index = 37121)
+// State S1312 (index = 37144)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (528)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (528)
 , BOTTOM_UP_END ()
-// State S1310 (index = 37126)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1435)
+// State S1313 (index = 37149)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1438)
 , BOTTOM_UP_END ()
-// State S1311 (index = 37129)
-, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1436)
+// State S1314 (index = 37152)
+, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1439)
 , BOTTOM_UP_END ()
-// State S1312 (index = 37132)
+// State S1315 (index = 37155)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (524)
 , BOTTOM_UP_END ()
-// State S1313 (index = 37135)
+// State S1316 (index = 37158)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -20932,13 +20948,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1314 (index = 37188)
+// State S1317 (index = 37211)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (831)
 , BOTTOM_UP_END ()
-// State S1315 (index = 37191)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1438)
+// State S1318 (index = 37214)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1441)
 , BOTTOM_UP_END ()
-// State S1316 (index = 37194)
+// State S1319 (index = 37217)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (637)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (637)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (637)
@@ -20972,7 +20988,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (637)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (637)
 , BOTTOM_UP_END ()
-// State S1317 (index = 37259)
+// State S1320 (index = 37282)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (135)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (135)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (135)
@@ -21006,28 +21022,28 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (135)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (135)
 , BOTTOM_UP_END ()
-// State S1318 (index = 37324)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1439)
+// State S1321 (index = 37347)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1442)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1319 (index = 37331)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1440)
+// State S1322 (index = 37354)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1443)
 , BOTTOM_UP_END ()
-// State S1320 (index = 37334)
+// State S1323 (index = 37357)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (578)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (994)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (996)
 , Lexique_galgasScanner_34_::kToken_abstract, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (578)
 , Lexique_galgasScanner_34_::kToken_override, BOTTOM_UP_REDUCE (578)
 , BOTTOM_UP_END ()
-// State S1321 (index = 37351)
+// State S1324 (index = 37374)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (585)
 , BOTTOM_UP_END ()
-// State S1322 (index = 37354)
+// State S1325 (index = 37377)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (108)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (108)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (108)
@@ -21061,7 +21077,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (108)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (108)
 , BOTTOM_UP_END ()
-// State S1323 (index = 37419)
+// State S1326 (index = 37442)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (143)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (143)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (143)
@@ -21095,10 +21111,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (143)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (143)
 , BOTTOM_UP_END ()
-// State S1324 (index = 37484)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1442)
+// State S1327 (index = 37507)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1445)
 , BOTTOM_UP_END ()
-// State S1325 (index = 37487)
+// State S1328 (index = 37510)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -21126,7 +21142,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1326 (index = 37540)
+// State S1329 (index = 37563)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (142)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (142)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (142)
@@ -21145,8 +21161,8 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (142)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (142)
 , BOTTOM_UP_END ()
-// State S1327 (index = 37575)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1444)
+// State S1330 (index = 37598)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1447)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (638)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
@@ -21167,10 +21183,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (638)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (638)
 , BOTTOM_UP_END ()
-// State S1328 (index = 37616)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1446)
+// State S1331 (index = 37639)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1449)
 , BOTTOM_UP_END ()
-// State S1329 (index = 37619)
+// State S1332 (index = 37642)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (622)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (622)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (622)
@@ -21189,21 +21205,21 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (622)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (622)
 , BOTTOM_UP_END ()
-// State S1330 (index = 37654)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1447)
+// State S1333 (index = 37677)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1450)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (649)
 , BOTTOM_UP_END ()
-// State S1331 (index = 37663)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1449)
+// State S1334 (index = 37686)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1452)
 , BOTTOM_UP_END ()
-// State S1332 (index = 37666)
+// State S1335 (index = 37689)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1333 (index = 37673)
+// State S1336 (index = 37696)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (544)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (544)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (544)
@@ -21223,7 +21239,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (544)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (544)
 , BOTTOM_UP_END ()
-// State S1334 (index = 37710)
+// State S1337 (index = 37733)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -21247,7 +21263,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1335 (index = 37755)
+// State S1338 (index = 37778)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (100)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (100)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (100)
@@ -21266,11 +21282,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (100)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (100)
 , BOTTOM_UP_END ()
-// State S1336 (index = 37790)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1198)
+// State S1339 (index = 37813)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1201)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (625)
 , BOTTOM_UP_END ()
-// State S1337 (index = 37795)
+// State S1340 (index = 37818)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (125)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (125)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (125)
@@ -21304,13 +21320,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (125)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (125)
 , BOTTOM_UP_END ()
-// State S1338 (index = 37860)
+// State S1341 (index = 37883)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (646)
 , BOTTOM_UP_END ()
-// State S1339 (index = 37863)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1453)
+// State S1342 (index = 37886)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1456)
 , BOTTOM_UP_END ()
-// State S1340 (index = 37866)
+// State S1343 (index = 37889)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (153)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (153)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (153)
@@ -21344,8 +21360,8 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (153)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (153)
 , BOTTOM_UP_END ()
-// State S1341 (index = 37931)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1454)
+// State S1344 (index = 37954)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1457)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (643)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (643)
@@ -21381,28 +21397,28 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (643)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (643)
 , BOTTOM_UP_END ()
-// State S1342 (index = 38002)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1456)
+// State S1345 (index = 38025)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1459)
 , BOTTOM_UP_END ()
-// State S1343 (index = 38005)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1457)
+// State S1346 (index = 38028)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1460)
 , BOTTOM_UP_END ()
-// State S1344 (index = 38008)
+// State S1347 (index = 38031)
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (749)
 , BOTTOM_UP_END ()
-// State S1345 (index = 38011)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1458)
+// State S1348 (index = 38034)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1461)
 , BOTTOM_UP_END ()
-// State S1346 (index = 38014)
+// State S1349 (index = 38037)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (195)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (195)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (195)
 , Lexique_galgasScanner_34_::kToken_project, BOTTOM_UP_REDUCE (195)
 , BOTTOM_UP_END ()
-// State S1347 (index = 38023)
+// State S1350 (index = 38046)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (740)
 , BOTTOM_UP_END ()
-// State S1348 (index = 38026)
+// State S1351 (index = 38049)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -21426,8 +21442,8 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1349 (index = 38071)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1460)
+// State S1352 (index = 38094)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1463)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (378)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (378)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (378)
@@ -21462,7 +21478,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (378)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (378)
 , BOTTOM_UP_END ()
-// State S1350 (index = 38140)
+// State S1353 (index = 38163)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -21485,16 +21501,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1351 (index = 38201)
+// State S1354 (index = 38224)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -21517,23 +21533,23 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1352 (index = 38262)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1465)
-, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1466)
-, Lexique_galgasScanner_34_::kToken_loop, BOTTOM_UP_SHIFT (1467)
-, Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (1468)
+// State S1355 (index = 38285)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1468)
+, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1469)
+, Lexique_galgasScanner_34_::kToken_loop, BOTTOM_UP_SHIFT (1470)
+, Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (1471)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (782)
 , BOTTOM_UP_END ()
-// State S1353 (index = 38273)
+// State S1356 (index = 38296)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (777)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (777)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (777)
@@ -21566,10 +21582,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (777)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (777)
 , BOTTOM_UP_END ()
-// State S1354 (index = 38336)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1469)
+// State S1357 (index = 38359)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1472)
 , BOTTOM_UP_END ()
-// State S1355 (index = 38339)
+// State S1358 (index = 38362)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (778)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (778)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (778)
@@ -21602,7 +21618,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (778)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (778)
 , BOTTOM_UP_END ()
-// State S1356 (index = 38402)
+// State S1359 (index = 38425)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (203)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (203)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (203)
@@ -21611,7 +21627,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (203)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (203)
 , BOTTOM_UP_END ()
-// State S1357 (index = 38417)
+// State S1360 (index = 38440)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (775)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (775)
@@ -21621,7 +21637,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (780)
-, Lexique_galgasScanner_34_::kToken__3B_, BOTTOM_UP_SHIFT (1470)
+, Lexique_galgasScanner_34_::kToken__3B_, BOTTOM_UP_SHIFT (1473)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (775)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (780)
@@ -21644,84 +21660,84 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (775)
 , BOTTOM_UP_END ()
-// State S1358 (index = 38480)
-, Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_SHIFT (1473)
+// State S1361 (index = 38503)
+, Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_SHIFT (1476)
 , BOTTOM_UP_END ()
-// State S1359 (index = 38483)
+// State S1362 (index = 38506)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S1360 (index = 38486)
+// State S1363 (index = 38509)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (191)
 , BOTTOM_UP_END ()
-// State S1361 (index = 38489)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1477)
+// State S1364 (index = 38512)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1480)
 , BOTTOM_UP_END ()
-// State S1362 (index = 38492)
-, Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_SHIFT (1478)
+// State S1365 (index = 38515)
+, Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_SHIFT (1481)
 , BOTTOM_UP_END ()
-// State S1363 (index = 38495)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1479)
+// State S1366 (index = 38518)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1482)
 , BOTTOM_UP_END ()
-// State S1364 (index = 38498)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1480)
+// State S1367 (index = 38521)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1483)
 , BOTTOM_UP_END ()
-// State S1365 (index = 38501)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1482)
+// State S1368 (index = 38524)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1485)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (676)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (676)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (676)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (676)
 , BOTTOM_UP_END ()
-// State S1366 (index = 38512)
+// State S1369 (index = 38535)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (163)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (163)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (163)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (163)
 , BOTTOM_UP_END ()
-// State S1367 (index = 38521)
+// State S1370 (index = 38544)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (164)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (164)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (164)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (164)
 , BOTTOM_UP_END ()
-// State S1368 (index = 38530)
+// State S1371 (index = 38553)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (165)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (165)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (165)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (165)
 , BOTTOM_UP_END ()
-// State S1369 (index = 38539)
+// State S1372 (index = 38562)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (720)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1220)
-, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (1221)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1223)
+, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (1224)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (720)
 , BOTTOM_UP_END ()
-// State S1370 (index = 38548)
+// State S1373 (index = 38571)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (720)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1220)
-, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (1221)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1223)
+, Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_SHIFT (1224)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (720)
 , BOTTOM_UP_END ()
-// State S1371 (index = 38557)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1486)
+// State S1374 (index = 38580)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1489)
 , BOTTOM_UP_END ()
-// State S1372 (index = 38560)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1487)
+// State S1375 (index = 38583)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1490)
 , BOTTOM_UP_END ()
-// State S1373 (index = 38563)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1488)
+// State S1376 (index = 38586)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1491)
 , BOTTOM_UP_END ()
-// State S1374 (index = 38566)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1489)
+// State S1377 (index = 38589)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1492)
 , BOTTOM_UP_END ()
-// State S1375 (index = 38569)
+// State S1378 (index = 38592)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (718)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1225)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1228)
 , BOTTOM_UP_END ()
-// State S1376 (index = 38574)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1491)
+// State S1379 (index = 38597)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1494)
 , BOTTOM_UP_END ()
-// State S1377 (index = 38577)
+// State S1380 (index = 38600)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (186)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (186)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (186)
@@ -21738,7 +21754,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (186)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (186)
 , BOTTOM_UP_END ()
-// State S1378 (index = 38608)
+// State S1381 (index = 38631)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (822)
@@ -21752,16 +21768,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1379 (index = 38633)
+// State S1382 (index = 38656)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (554)
 , BOTTOM_UP_END ()
-// State S1380 (index = 38636)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1494)
+// State S1383 (index = 38659)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1497)
 , BOTTOM_UP_END ()
-// State S1381 (index = 38639)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1495)
+// State S1384 (index = 38662)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1498)
 , BOTTOM_UP_END ()
-// State S1382 (index = 38642)
+// State S1385 (index = 38665)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (349)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (349)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (349)
@@ -21769,10 +21785,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (364)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (349)
 , BOTTOM_UP_END ()
-// State S1383 (index = 38655)
+// State S1386 (index = 38678)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (344)
 , BOTTOM_UP_END ()
-// State S1384 (index = 38658)
+// State S1387 (index = 38681)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (50)
@@ -21806,32 +21822,32 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (50)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (50)
 , BOTTOM_UP_END ()
-// State S1385 (index = 38723)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1497)
+// State S1388 (index = 38746)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1500)
 , BOTTOM_UP_END ()
-// State S1386 (index = 38726)
+// State S1389 (index = 38749)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (599)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (599)
 , BOTTOM_UP_END ()
-// State S1387 (index = 38731)
+// State S1390 (index = 38754)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (600)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (600)
 , BOTTOM_UP_END ()
-// State S1388 (index = 38736)
+// State S1391 (index = 38759)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (597)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1241)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1244)
 , BOTTOM_UP_END ()
-// State S1389 (index = 38741)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1083)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1084)
+// State S1392 (index = 38764)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1085)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1086)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (601)
 , BOTTOM_UP_END ()
-// State S1390 (index = 38748)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1083)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1084)
+// State S1393 (index = 38771)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1085)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1086)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (601)
 , BOTTOM_UP_END ()
-// State S1391 (index = 38755)
+// State S1394 (index = 38778)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (113)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
@@ -21840,12 +21856,12 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_proc, BOTTOM_UP_REDUCE (113)
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (113)
 , BOTTOM_UP_END ()
-// State S1392 (index = 38770)
+// State S1395 (index = 38793)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1393 (index = 38777)
+// State S1396 (index = 38800)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (1)
@@ -21941,12 +21957,12 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (1)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (1)
 , BOTTOM_UP_END ()
-// State S1394 (index = 38966)
+// State S1397 (index = 38989)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (230)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1091)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1093)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (230)
 , BOTTOM_UP_END ()
-// State S1395 (index = 38973)
+// State S1398 (index = 38996)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasScanner_34_::kToken_then, BOTTOM_UP_REDUCE (17)
@@ -22042,84 +22058,84 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (17)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (17)
 , BOTTOM_UP_END ()
-// State S1396 (index = 39162)
+// State S1399 (index = 39185)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (270)
 , BOTTOM_UP_END ()
-// State S1397 (index = 39165)
+// State S1400 (index = 39188)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (478)
 , BOTTOM_UP_END ()
-// State S1398 (index = 39168)
+// State S1401 (index = 39191)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (479)
 , BOTTOM_UP_END ()
-// State S1399 (index = 39171)
+// State S1402 (index = 39194)
 , Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (486)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (486)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (486)
 , Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_REDUCE (486)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_REDUCE (486)
 , BOTTOM_UP_END ()
-// State S1400 (index = 39182)
+// State S1403 (index = 39205)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (488)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1401 (index = 39189)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1503)
+// State S1404 (index = 39212)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1506)
 , BOTTOM_UP_END ()
-// State S1402 (index = 39192)
+// State S1405 (index = 39215)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (490)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1403 (index = 39199)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1504)
+// State S1406 (index = 39222)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1507)
 , BOTTOM_UP_END ()
-// State S1404 (index = 39202)
+// State S1407 (index = 39225)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (480)
 , BOTTOM_UP_END ()
-// State S1405 (index = 39205)
+// State S1408 (index = 39228)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (236)
 , BOTTOM_UP_END ()
-// State S1406 (index = 39208)
+// State S1409 (index = 39231)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (354)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1505)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1508)
 , BOTTOM_UP_END ()
-// State S1407 (index = 39213)
+// State S1410 (index = 39236)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (323)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (323)
 , BOTTOM_UP_END ()
-// State S1408 (index = 39218)
+// State S1411 (index = 39241)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (47)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (47)
-, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1120)
+, Lexique_galgasScanner_34_::kToken_spoil, BOTTOM_UP_SHIFT (1122)
 , BOTTOM_UP_END ()
-// State S1409 (index = 39225)
+// State S1412 (index = 39248)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (325)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (325)
 , BOTTOM_UP_END ()
-// State S1410 (index = 39230)
+// State S1413 (index = 39253)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (340)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (340)
 , BOTTOM_UP_END ()
-// State S1411 (index = 39235)
+// State S1414 (index = 39258)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (503)
 , BOTTOM_UP_END ()
-// State S1412 (index = 39238)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1508)
+// State S1415 (index = 39261)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1511)
 , BOTTOM_UP_END ()
-// State S1413 (index = 39241)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1509)
+// State S1416 (index = 39264)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1512)
 , BOTTOM_UP_END ()
-// State S1414 (index = 39244)
+// State S1417 (index = 39267)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (68)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (68)
 , Lexique_galgasScanner_34_::kToken_before, BOTTOM_UP_REDUCE (68)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (68)
 , BOTTOM_UP_END ()
-// State S1415 (index = 39253)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1510)
+// State S1418 (index = 39276)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1513)
 , BOTTOM_UP_END ()
-// State S1416 (index = 39256)
+// State S1419 (index = 39279)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -22147,10 +22163,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1417 (index = 39309)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1512)
+// State S1420 (index = 39332)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1515)
 , BOTTOM_UP_END ()
-// State S1418 (index = 39312)
+// State S1421 (index = 39335)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (462)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (462)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (462)
@@ -22187,7 +22203,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (462)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (462)
 , BOTTOM_UP_END ()
-// State S1419 (index = 39383)
+// State S1422 (index = 39406)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (463)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (463)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (463)
@@ -22207,7 +22223,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_between, BOTTOM_UP_REDUCE (463)
 , Lexique_galgasScanner_34_::kToken_after, BOTTOM_UP_REDUCE (463)
 , Lexique_galgasScanner_34_::kToken_grammar, BOTTOM_UP_REDUCE (463)
-, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1513)
+, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1516)
 , Lexique_galgasScanner_34_::kToken_elsif, BOTTOM_UP_REDUCE (463)
 , Lexique_galgasScanner_34_::kToken_log, BOTTOM_UP_REDUCE (463)
 , Lexique_galgasScanner_34_::kToken_loop, BOTTOM_UP_REDUCE (463)
@@ -22225,7 +22241,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (463)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (463)
 , BOTTOM_UP_END ()
-// State S1420 (index = 39456)
+// State S1423 (index = 39479)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -22253,32 +22269,32 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1421 (index = 39509)
+// State S1424 (index = 39532)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (512)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (512)
 , BOTTOM_UP_END ()
-// State S1422 (index = 39514)
+// State S1425 (index = 39537)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (516)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1294)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1295)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1297)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1298)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (516)
 , BOTTOM_UP_END ()
-// State S1423 (index = 39529)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1517)
+// State S1426 (index = 39552)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1520)
 , BOTTOM_UP_END ()
-// State S1424 (index = 39532)
+// State S1427 (index = 39555)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (518)
 , BOTTOM_UP_END ()
-// State S1425 (index = 39535)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1518)
+// State S1428 (index = 39558)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1521)
 , BOTTOM_UP_END ()
-// State S1426 (index = 39538)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1519)
+// State S1429 (index = 39561)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1522)
 , BOTTOM_UP_END ()
-// State S1427 (index = 39541)
+// State S1430 (index = 39564)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (90)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (90)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (90)
@@ -22315,41 +22331,41 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (90)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (90)
 , BOTTOM_UP_END ()
-// State S1428 (index = 39612)
+// State S1431 (index = 39635)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (424)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (424)
 , BOTTOM_UP_END ()
-// State S1429 (index = 39617)
+// State S1432 (index = 39640)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (425)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (425)
 , BOTTOM_UP_END ()
-// State S1430 (index = 39622)
+// State S1433 (index = 39645)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (426)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (426)
 , BOTTOM_UP_END ()
-// State S1431 (index = 39627)
-, Lexique_galgasScanner_34_::kToken__25_remove, BOTTOM_UP_SHIFT (1301)
-, Lexique_galgasScanner_34_::kToken__25_replaceBy, BOTTOM_UP_SHIFT (1302)
-, Lexique_galgasScanner_34_::kToken__25_insertAfter, BOTTOM_UP_SHIFT (1303)
-, Lexique_galgasScanner_34_::kToken__25_insertBefore, BOTTOM_UP_SHIFT (1304)
+// State S1434 (index = 39650)
+, Lexique_galgasScanner_34_::kToken__25_remove, BOTTOM_UP_SHIFT (1304)
+, Lexique_galgasScanner_34_::kToken__25_replaceBy, BOTTOM_UP_SHIFT (1305)
+, Lexique_galgasScanner_34_::kToken__25_insertAfter, BOTTOM_UP_SHIFT (1306)
+, Lexique_galgasScanner_34_::kToken__25_insertBefore, BOTTOM_UP_SHIFT (1307)
 , BOTTOM_UP_END ()
-// State S1432 (index = 39636)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1521)
+// State S1435 (index = 39659)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1524)
 , BOTTOM_UP_END ()
-// State S1433 (index = 39639)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1306)
+// State S1436 (index = 39662)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1309)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (529)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (529)
 , BOTTOM_UP_END ()
-// State S1434 (index = 39646)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1523)
+// State S1437 (index = 39669)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1526)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (533)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (533)
 , BOTTOM_UP_END ()
-// State S1435 (index = 39653)
+// State S1438 (index = 39676)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (536)
 , BOTTOM_UP_END ()
-// State S1436 (index = 39656)
+// State S1439 (index = 39679)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -22377,20 +22393,20 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1437 (index = 39709)
-, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1526)
+// State S1440 (index = 39732)
+, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1529)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (525)
 , BOTTOM_UP_END ()
-// State S1438 (index = 39714)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1528)
+// State S1441 (index = 39737)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1531)
 , BOTTOM_UP_END ()
-// State S1439 (index = 39717)
+// State S1442 (index = 39740)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (582)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1440 (index = 39726)
+// State S1443 (index = 39749)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (581)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (581)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (581)
@@ -22400,7 +22416,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (581)
 , Lexique_galgasScanner_34_::kToken_override, BOTTOM_UP_REDUCE (581)
 , BOTTOM_UP_END ()
-// State S1441 (index = 39743)
+// State S1444 (index = 39766)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (579)
 , Lexique_galgasScanner_34_::kToken_func, BOTTOM_UP_REDUCE (579)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (579)
@@ -22409,14 +22425,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_mutating, BOTTOM_UP_REDUCE (579)
 , Lexique_galgasScanner_34_::kToken_override, BOTTOM_UP_REDUCE (579)
 , BOTTOM_UP_END ()
-// State S1442 (index = 39758)
+// State S1445 (index = 39781)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (604)
-, Lexique_galgasScanner_34_::kToken__25_insertSetter, BOTTOM_UP_SHIFT (997)
+, Lexique_galgasScanner_34_::kToken__25_insertSetter, BOTTOM_UP_SHIFT (999)
 , BOTTOM_UP_END ()
-// State S1443 (index = 39763)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1531)
+// State S1446 (index = 39786)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1534)
 , BOTTOM_UP_END ()
-// State S1444 (index = 39766)
+// State S1447 (index = 39789)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (639)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (639)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (639)
@@ -22435,7 +22451,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (639)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (639)
 , BOTTOM_UP_END ()
-// State S1445 (index = 39801)
+// State S1448 (index = 39824)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (136)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (136)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (136)
@@ -22454,7 +22470,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (136)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (136)
 , BOTTOM_UP_END ()
-// State S1446 (index = 39836)
+// State S1449 (index = 39859)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (144)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (144)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (144)
@@ -22473,13 +22489,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (144)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (144)
 , BOTTOM_UP_END ()
-// State S1447 (index = 39871)
+// State S1450 (index = 39894)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_REDUCE (648)
 , BOTTOM_UP_END ()
-// State S1448 (index = 39874)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1532)
+// State S1451 (index = 39897)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1535)
 , BOTTOM_UP_END ()
-// State S1449 (index = 39877)
+// State S1452 (index = 39900)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (154)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (154)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (154)
@@ -22498,8 +22514,8 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (154)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (154)
 , BOTTOM_UP_END ()
-// State S1450 (index = 39912)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1533)
+// State S1453 (index = 39935)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1536)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (645)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
@@ -22520,7 +22536,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (645)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (645)
 , BOTTOM_UP_END ()
-// State S1451 (index = 39953)
+// State S1454 (index = 39976)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (546)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (546)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (546)
@@ -22539,10 +22555,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (546)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (546)
 , BOTTOM_UP_END ()
-// State S1452 (index = 39988)
+// State S1455 (index = 40011)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (626)
 , BOTTOM_UP_END ()
-// State S1453 (index = 39991)
+// State S1456 (index = 40014)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -22570,7 +22586,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1454 (index = 40044)
+// State S1457 (index = 40067)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (642)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (642)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (642)
@@ -22604,7 +22620,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (642)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (642)
 , BOTTOM_UP_END ()
-// State S1455 (index = 40109)
+// State S1458 (index = 40132)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (147)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (147)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (147)
@@ -22638,23 +22654,23 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (147)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (147)
 , BOTTOM_UP_END ()
-// State S1456 (index = 40174)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1536)
+// State S1459 (index = 40197)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1539)
 , BOTTOM_UP_END ()
-// State S1457 (index = 40177)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1205)
+// State S1460 (index = 40200)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1208)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (744)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1206)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1209)
 , BOTTOM_UP_END ()
-// State S1458 (index = 40184)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1538)
-, Lexique_galgasScanner_34_::kToken__2D_, BOTTOM_UP_SHIFT (1539)
+// State S1461 (index = 40207)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1541)
+, Lexique_galgasScanner_34_::kToken__2D_, BOTTOM_UP_SHIFT (1542)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (752)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (752)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (752)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (752)
 , BOTTOM_UP_END ()
-// State S1459 (index = 40197)
+// State S1462 (index = 40220)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (214)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (214)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (214)
@@ -22687,11 +22703,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (214)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (214)
 , BOTTOM_UP_END ()
-// State S1460 (index = 40260)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1541)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1542)
+// State S1463 (index = 40283)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1544)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1545)
 , BOTTOM_UP_END ()
-// State S1461 (index = 40265)
+// State S1464 (index = 40288)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (792)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (792)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (792)
@@ -22716,7 +22732,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (792)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_REDUCE (792)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (792)
-, Lexique_galgasScanner_34_::kToken_indexing, BOTTOM_UP_SHIFT (1544)
+, Lexique_galgasScanner_34_::kToken_indexing, BOTTOM_UP_SHIFT (1547)
 , Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_REDUCE (792)
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (792)
 , Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_REDUCE (792)
@@ -22726,7 +22742,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (792)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (792)
 , BOTTOM_UP_END ()
-// State S1462 (index = 40332)
+// State S1465 (index = 40355)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (54)
@@ -22761,16 +22777,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (54)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (54)
 , BOTTOM_UP_END ()
-// State S1463 (index = 40399)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1547)
+// State S1466 (index = 40422)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1550)
 , BOTTOM_UP_END ()
-// State S1464 (index = 40402)
-, Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_SHIFT (1548)
+// State S1467 (index = 40425)
+, Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_SHIFT (1551)
 , BOTTOM_UP_END ()
-// State S1465 (index = 40405)
+// State S1468 (index = 40428)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (783)
 , BOTTOM_UP_END ()
-// State S1466 (index = 40408)
+// State S1469 (index = 40431)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -22793,16 +22809,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1467 (index = 40469)
+// State S1470 (index = 40492)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -22826,7 +22842,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1468 (index = 40514)
+// State S1471 (index = 40537)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -22850,12 +22866,12 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1469 (index = 40559)
+// State S1472 (index = 40582)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (201)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (201)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (201)
 , BOTTOM_UP_END ()
-// State S1470 (index = 40566)
+// State S1473 (index = 40589)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (779)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (779)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (779)
@@ -22880,7 +22896,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (779)
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (779)
 , BOTTOM_UP_END ()
-// State S1471 (index = 40613)
+// State S1474 (index = 40636)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (774)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (774)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (774)
@@ -22889,7 +22905,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (774)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (774)
 , BOTTOM_UP_END ()
-// State S1472 (index = 40628)
+// State S1475 (index = 40651)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (101)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (102)
@@ -22907,75 +22923,75 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_switch, BOTTOM_UP_SHIFT (114)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , BOTTOM_UP_END ()
-// State S1473 (index = 40675)
+// State S1476 (index = 40698)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (459)
 , BOTTOM_UP_END ()
-// State S1474 (index = 40678)
+// State S1477 (index = 40701)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (769)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1210)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1213)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (769)
 , BOTTOM_UP_END ()
-// State S1475 (index = 40685)
-, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1209)
+// State S1478 (index = 40708)
+, Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1212)
 , BOTTOM_UP_END ()
-// State S1476 (index = 40688)
+// State S1479 (index = 40711)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (771)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1212)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1215)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (771)
 , BOTTOM_UP_END ()
-// State S1477 (index = 40695)
-, Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_SHIFT (1361)
+// State S1480 (index = 40718)
+, Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_SHIFT (1364)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (804)
 , BOTTOM_UP_END ()
-// State S1478 (index = 40700)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1557)
+// State S1481 (index = 40723)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1560)
 , BOTTOM_UP_END ()
-// State S1479 (index = 40703)
+// State S1482 (index = 40726)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (735)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (735)
-, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1559)
+, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1562)
 , BOTTOM_UP_END ()
-// State S1480 (index = 40710)
+// State S1483 (index = 40733)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (691)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (691)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (691)
-, Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_SHIFT (1561)
-, Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_SHIFT (1562)
+, Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_SHIFT (1564)
+, Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_SHIFT (1565)
 , BOTTOM_UP_END ()
-// State S1481 (index = 40721)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1564)
+// State S1484 (index = 40744)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1567)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (689)
 , BOTTOM_UP_END ()
-// State S1482 (index = 40726)
+// State S1485 (index = 40749)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (678)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1566)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1569)
 , BOTTOM_UP_END ()
-// State S1483 (index = 40731)
+// State S1486 (index = 40754)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (166)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (166)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (166)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (166)
 , BOTTOM_UP_END ()
-// State S1484 (index = 40740)
+// State S1487 (index = 40763)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (721)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (721)
 , BOTTOM_UP_END ()
-// State S1485 (index = 40745)
+// State S1488 (index = 40768)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (722)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (722)
 , BOTTOM_UP_END ()
-// State S1486 (index = 40750)
+// State S1489 (index = 40773)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (725)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1568)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1571)
 , BOTTOM_UP_END ()
-// State S1487 (index = 40755)
+// State S1490 (index = 40778)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (187)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (187)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (187)
@@ -22992,10 +23008,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (187)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (187)
 , BOTTOM_UP_END ()
-// State S1488 (index = 40786)
-, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1570)
+// State S1491 (index = 40809)
+, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1573)
 , BOTTOM_UP_END ()
-// State S1489 (index = 40789)
+// State S1492 (index = 40812)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (674)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
@@ -23009,10 +23025,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1490 (index = 40814)
+// State S1493 (index = 40837)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (719)
 , BOTTOM_UP_END ()
-// State S1491 (index = 40817)
+// State S1494 (index = 40840)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (185)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (185)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (185)
@@ -23029,7 +23045,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (185)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (185)
 , BOTTOM_UP_END ()
-// State S1492 (index = 40848)
+// State S1495 (index = 40871)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (822)
@@ -23043,14 +23059,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1493 (index = 40873)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1574)
+// State S1496 (index = 40896)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1577)
 , Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_REDUCE (727)
 , BOTTOM_UP_END ()
-// State S1494 (index = 40878)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1576)
+// State S1497 (index = 40901)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1579)
 , BOTTOM_UP_END ()
-// State S1495 (index = 40881)
+// State S1498 (index = 40904)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (139)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (139)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (139)
@@ -23084,13 +23100,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (139)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (139)
 , BOTTOM_UP_END ()
-// State S1496 (index = 40946)
+// State S1499 (index = 40969)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (350)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (350)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (350)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (609)
 , BOTTOM_UP_END ()
-// State S1497 (index = 40955)
+// State S1500 (index = 40978)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (51)
@@ -23124,54 +23140,54 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (51)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (51)
 , BOTTOM_UP_END ()
-// State S1498 (index = 41020)
+// State S1501 (index = 41043)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (598)
 , BOTTOM_UP_END ()
-// State S1499 (index = 41023)
+// State S1502 (index = 41046)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (602)
 , BOTTOM_UP_END ()
-// State S1500 (index = 41026)
+// State S1503 (index = 41049)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (603)
 , BOTTOM_UP_END ()
-// State S1501 (index = 41029)
+// State S1504 (index = 41052)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (312)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (867)
 , BOTTOM_UP_END ()
-// State S1502 (index = 41038)
+// State S1505 (index = 41061)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (231)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (231)
 , BOTTOM_UP_END ()
-// State S1503 (index = 41043)
+// State S1506 (index = 41066)
 , Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (483)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (483)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (483)
 , Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_REDUCE (483)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_REDUCE (483)
 , BOTTOM_UP_END ()
-// State S1504 (index = 41054)
+// State S1507 (index = 41077)
 , Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_REDUCE (484)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (484)
 , Lexique_galgasScanner_34_::kToken__5D_, BOTTOM_UP_REDUCE (484)
 , Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_REDUCE (484)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_REDUCE (484)
 , BOTTOM_UP_END ()
-// State S1505 (index = 41065)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1579)
+// State S1508 (index = 41088)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1582)
 , BOTTOM_UP_END ()
-// State S1506 (index = 41068)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1580)
+// State S1509 (index = 41091)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1583)
 , BOTTOM_UP_END ()
-// State S1507 (index = 41071)
+// State S1510 (index = 41094)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (327)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (327)
 , BOTTOM_UP_END ()
-// State S1508 (index = 41076)
+// State S1511 (index = 41099)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (429)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1412)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1415)
 , BOTTOM_UP_END ()
-// State S1509 (index = 41081)
+// State S1512 (index = 41104)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (428)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (428)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (428)
@@ -23209,26 +23225,26 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (428)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (428)
 , BOTTOM_UP_END ()
-// State S1510 (index = 41154)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1582)
-, BOTTOM_UP_END ()
-// State S1511 (index = 41157)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (455)
-, Lexique_galgasScanner_34_::kToken_between, BOTTOM_UP_SHIFT (1583)
-, Lexique_galgasScanner_34_::kToken_after, BOTTOM_UP_REDUCE (455)
-, BOTTOM_UP_END ()
-// State S1512 (index = 41164)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1585)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1586)
-, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
-, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
-, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1587)
-, BOTTOM_UP_END ()
 // State S1513 (index = 41177)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1417)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1585)
 , BOTTOM_UP_END ()
 // State S1514 (index = 41180)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (455)
+, Lexique_galgasScanner_34_::kToken_between, BOTTOM_UP_SHIFT (1586)
+, Lexique_galgasScanner_34_::kToken_after, BOTTOM_UP_REDUCE (455)
+, BOTTOM_UP_END ()
+// State S1515 (index = 41187)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1588)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1589)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
+, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
+, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1590)
+, BOTTOM_UP_END ()
+// State S1516 (index = 41200)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1420)
+, BOTTOM_UP_END ()
+// State S1517 (index = 41203)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (74)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (74)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (74)
@@ -23265,21 +23281,21 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (74)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (74)
 , BOTTOM_UP_END ()
-// State S1515 (index = 41251)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1591)
+// State S1518 (index = 41274)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1594)
 , BOTTOM_UP_END ()
-// State S1516 (index = 41254)
+// State S1519 (index = 41277)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (510)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1422)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1425)
 , BOTTOM_UP_END ()
-// State S1517 (index = 41259)
+// State S1520 (index = 41282)
 , Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_REDUCE (509)
 , BOTTOM_UP_END ()
-// State S1518 (index = 41262)
+// State S1521 (index = 41285)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (514)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (514)
 , BOTTOM_UP_END ()
-// State S1519 (index = 41267)
+// State S1522 (index = 41290)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -23307,11 +23323,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1520 (index = 41320)
+// State S1523 (index = 41343)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (421)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1431)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1434)
 , BOTTOM_UP_END ()
-// State S1521 (index = 41325)
+// State S1524 (index = 41348)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (420)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (420)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (420)
@@ -23348,22 +23364,22 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (420)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (420)
 , BOTTOM_UP_END ()
-// State S1522 (index = 41396)
+// State S1525 (index = 41419)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (530)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (530)
 , BOTTOM_UP_END ()
-// State S1523 (index = 41401)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1595)
+// State S1526 (index = 41424)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1598)
 , BOTTOM_UP_END ()
-// State S1524 (index = 41404)
+// State S1527 (index = 41427)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (532)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (532)
 , BOTTOM_UP_END ()
-// State S1525 (index = 41409)
-, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1596)
+// State S1528 (index = 41432)
+, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1599)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (537)
 , BOTTOM_UP_END ()
-// State S1526 (index = 41414)
+// State S1529 (index = 41437)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -23391,10 +23407,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1527 (index = 41467)
+// State S1530 (index = 41490)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (97)
 , BOTTOM_UP_END ()
-// State S1528 (index = 41470)
+// State S1531 (index = 41493)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -23422,13 +23438,13 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1529 (index = 41523)
+// State S1532 (index = 41546)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (583)
 , BOTTOM_UP_END ()
-// State S1530 (index = 41526)
+// State S1533 (index = 41549)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (605)
 , BOTTOM_UP_END ()
-// State S1531 (index = 41529)
+// State S1534 (index = 41552)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (140)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (140)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (140)
@@ -23447,7 +23463,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (140)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (140)
 , BOTTOM_UP_END ()
-// State S1532 (index = 41564)
+// State S1535 (index = 41587)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -23475,7 +23491,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1533 (index = 41617)
+// State S1536 (index = 41640)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (644)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (644)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (644)
@@ -23494,7 +23510,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (644)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (644)
 , BOTTOM_UP_END ()
-// State S1534 (index = 41652)
+// State S1537 (index = 41675)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (148)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (148)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (148)
@@ -23513,53 +23529,53 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (148)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (148)
 , BOTTOM_UP_END ()
-// State S1535 (index = 41687)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1601)
+// State S1538 (index = 41710)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1604)
 , BOTTOM_UP_END ()
-// State S1536 (index = 41690)
+// State S1539 (index = 41713)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (755)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1602)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1605)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (755)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (755)
 , BOTTOM_UP_END ()
-// State S1537 (index = 41699)
+// State S1540 (index = 41722)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (747)
 , BOTTOM_UP_END ()
-// State S1538 (index = 41702)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1604)
+// State S1541 (index = 41725)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1607)
 , BOTTOM_UP_END ()
-// State S1539 (index = 41705)
+// State S1542 (index = 41728)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (753)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (753)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (753)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (753)
 , BOTTOM_UP_END ()
-// State S1540 (index = 41714)
+// State S1543 (index = 41737)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (750)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1605)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1608)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (750)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (750)
 , BOTTOM_UP_END ()
-// State S1541 (index = 41723)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1607)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1608)
-, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1609)
-, Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_SHIFT (1610)
-, BOTTOM_UP_END ()
-// State S1542 (index = 41732)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1611)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1612)
-, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1613)
-, Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_SHIFT (1614)
-, BOTTOM_UP_END ()
-// State S1543 (index = 41741)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (380)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1615)
-, BOTTOM_UP_END ()
 // State S1544 (index = 41746)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1617)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1610)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1611)
+, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1612)
+, Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_SHIFT (1613)
 , BOTTOM_UP_END ()
-// State S1545 (index = 41749)
+// State S1545 (index = 41755)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1614)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1615)
+, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1616)
+, Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_SHIFT (1617)
+, BOTTOM_UP_END ()
+// State S1546 (index = 41764)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (380)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1618)
+, BOTTOM_UP_END ()
+// State S1547 (index = 41769)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1620)
+, BOTTOM_UP_END ()
+// State S1548 (index = 41772)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (790)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (790)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (790)
@@ -23576,7 +23592,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_for, BOTTOM_UP_REDUCE (790)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (790)
 , Lexique_galgasScanner_34_::kToken_grammar, BOTTOM_UP_REDUCE (790)
-, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1618)
+, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1621)
 , Lexique_galgasScanner_34_::kToken_log, BOTTOM_UP_REDUCE (790)
 , Lexique_galgasScanner_34_::kToken_loop, BOTTOM_UP_REDUCE (790)
 , Lexique_galgasScanner_34_::kToken_super, BOTTOM_UP_REDUCE (790)
@@ -23593,7 +23609,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (790)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (790)
 , BOTTOM_UP_END ()
-// State S1546 (index = 41814)
+// State S1549 (index = 41837)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (208)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (208)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (208)
@@ -23627,7 +23643,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (208)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (208)
 , BOTTOM_UP_END ()
-// State S1547 (index = 41879)
+// State S1550 (index = 41902)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -23650,16 +23666,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1548 (index = 41940)
+// State S1551 (index = 41963)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -23682,25 +23698,25 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1549 (index = 42001)
-, Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_SHIFT (1622)
+// State S1552 (index = 42024)
+, Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_SHIFT (1625)
 , BOTTOM_UP_END ()
-// State S1550 (index = 42004)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1623)
+// State S1553 (index = 42027)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1626)
 , BOTTOM_UP_END ()
-// State S1551 (index = 42007)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1624)
+// State S1554 (index = 42030)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1627)
 , BOTTOM_UP_END ()
-// State S1552 (index = 42010)
+// State S1555 (index = 42033)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (775)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (775)
@@ -23710,7 +23726,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (780)
-, Lexique_galgasScanner_34_::kToken__3B_, BOTTOM_UP_SHIFT (1470)
+, Lexique_galgasScanner_34_::kToken__3B_, BOTTOM_UP_SHIFT (1473)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (775)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (780)
@@ -23733,7 +23749,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (780)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (775)
 , BOTTOM_UP_END ()
-// State S1553 (index = 42073)
+// State S1556 (index = 42096)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (784)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (784)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (784)
@@ -23750,7 +23766,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_for, BOTTOM_UP_REDUCE (784)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (784)
 , Lexique_galgasScanner_34_::kToken_grammar, BOTTOM_UP_REDUCE (784)
-, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1626)
+, Lexique_galgasScanner_34_::kToken__3A__3E_, BOTTOM_UP_SHIFT (1629)
 , Lexique_galgasScanner_34_::kToken_log, BOTTOM_UP_REDUCE (784)
 , Lexique_galgasScanner_34_::kToken_loop, BOTTOM_UP_REDUCE (784)
 , Lexique_galgasScanner_34_::kToken_super, BOTTOM_UP_REDUCE (784)
@@ -23767,85 +23783,85 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (784)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (784)
 , BOTTOM_UP_END ()
-// State S1554 (index = 42138)
+// State S1557 (index = 42161)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (770)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (770)
 , BOTTOM_UP_END ()
-// State S1555 (index = 42143)
+// State S1558 (index = 42166)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (772)
 , Lexique_galgasScanner_34_::kToken_rule, BOTTOM_UP_REDUCE (772)
 , BOTTOM_UP_END ()
-// State S1556 (index = 42148)
+// State S1559 (index = 42171)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (805)
 , BOTTOM_UP_END ()
-// State S1557 (index = 42151)
+// State S1560 (index = 42174)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (810)
-, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1628)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1629)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1630)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1631)
-, Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_, BOTTOM_UP_SHIFT (1632)
-, Lexique_galgasScanner_34_::kToken__3F__21_, BOTTOM_UP_SHIFT (1633)
+, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1631)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1632)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1633)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1634)
+, Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_, BOTTOM_UP_SHIFT (1635)
+, Lexique_galgasScanner_34_::kToken__3F__21_, BOTTOM_UP_SHIFT (1636)
 , BOTTOM_UP_END ()
-// State S1558 (index = 42166)
+// State S1561 (index = 42189)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (806)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (806)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1636)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1639)
 , BOTTOM_UP_END ()
-// State S1559 (index = 42173)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1638)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1639)
+// State S1562 (index = 42196)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1641)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1642)
 , BOTTOM_UP_END ()
-// State S1560 (index = 42178)
+// State S1563 (index = 42201)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (193)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (193)
 , BOTTOM_UP_END ()
-// State S1561 (index = 42183)
+// State S1564 (index = 42206)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (691)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (691)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (691)
-, Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_SHIFT (1561)
-, Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_SHIFT (1562)
+, Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_SHIFT (1564)
+, Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_SHIFT (1565)
 , BOTTOM_UP_END ()
-// State S1562 (index = 42194)
+// State S1565 (index = 42217)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (691)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (691)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (691)
-, Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_SHIFT (1561)
-, Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_SHIFT (1562)
+, Lexique_galgasScanner_34_::kToken__25_templateEndMark, BOTTOM_UP_SHIFT (1564)
+, Lexique_galgasScanner_34_::kToken__25_nonAtomicSelection, BOTTOM_UP_SHIFT (1565)
 , BOTTOM_UP_END ()
-// State S1563 (index = 42205)
+// State S1566 (index = 42228)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (695)
-, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1643)
+, Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_SHIFT (1646)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (695)
 , BOTTOM_UP_END ()
-// State S1564 (index = 42212)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1480)
+// State S1567 (index = 42235)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1483)
 , BOTTOM_UP_END ()
-// State S1565 (index = 42215)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1646)
+// State S1568 (index = 42238)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1649)
 , BOTTOM_UP_END ()
-// State S1566 (index = 42218)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1365)
-, Lexique_galgasScanner_34_::kToken__27_char_27_, BOTTOM_UP_SHIFT (1366)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1367)
-, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1368)
+// State S1569 (index = 42241)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1368)
+, Lexique_galgasScanner_34_::kToken__27_char_27_, BOTTOM_UP_SHIFT (1369)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1370)
+, Lexique_galgasScanner_34_::kToken__2A_, BOTTOM_UP_SHIFT (1371)
 , BOTTOM_UP_END ()
-// State S1567 (index = 42227)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1648)
+// State S1570 (index = 42250)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1651)
 , BOTTOM_UP_END ()
-// State S1568 (index = 42230)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1649)
+// State S1571 (index = 42253)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1652)
 , BOTTOM_UP_END ()
-// State S1569 (index = 42233)
+// State S1572 (index = 42256)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (724)
 , BOTTOM_UP_END ()
-// State S1570 (index = 42236)
+// State S1573 (index = 42259)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (712)
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (712)
-, Lexique_galgasScanner_34_::kToken__25_searchString, BOTTOM_UP_SHIFT (1650)
+, Lexique_galgasScanner_34_::kToken__25_searchString, BOTTOM_UP_SHIFT (1653)
 , BOTTOM_UP_END ()
-// State S1571 (index = 42243)
+// State S1574 (index = 42266)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (674)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
@@ -23859,51 +23875,51 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1572 (index = 42268)
+// State S1575 (index = 42291)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (162)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (162)
 , BOTTOM_UP_END ()
-// State S1573 (index = 42273)
+// State S1576 (index = 42296)
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (730)
 , Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_REDUCE (730)
 , BOTTOM_UP_END ()
-// State S1574 (index = 42278)
+// State S1577 (index = 42301)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (336)
 , Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (337)
 , Lexique_galgasScanner_34_::kToken__27_char_27_, BOTTOM_UP_SHIFT (338)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (339)
 , BOTTOM_UP_END ()
-// State S1575 (index = 42287)
-, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1654)
+// State S1578 (index = 42310)
+, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1657)
 , BOTTOM_UP_END ()
-// State S1576 (index = 42290)
+// State S1579 (index = 42313)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (561)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (557)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (561)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (561)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1655)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1656)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1658)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1659)
 , BOTTOM_UP_END ()
-// State S1577 (index = 42303)
+// State S1580 (index = 42326)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1578 (index = 42310)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1660)
+// State S1581 (index = 42333)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1663)
 , BOTTOM_UP_END ()
-// State S1579 (index = 42313)
+// State S1582 (index = 42336)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (354)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1505)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1508)
 , BOTTOM_UP_END ()
-// State S1580 (index = 42318)
+// State S1583 (index = 42341)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (48)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (48)
 , BOTTOM_UP_END ()
-// State S1581 (index = 42323)
+// State S1584 (index = 42346)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (430)
 , BOTTOM_UP_END ()
-// State S1582 (index = 42326)
+// State S1585 (index = 42349)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (454)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (454)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (454)
@@ -23925,7 +23941,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_REDUCE (454)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_REDUCE (454)
 , BOTTOM_UP_END ()
-// State S1583 (index = 42367)
+// State S1586 (index = 42390)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -23953,30 +23969,30 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1584 (index = 42420)
+// State S1587 (index = 42443)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (457)
-, Lexique_galgasScanner_34_::kToken_after, BOTTOM_UP_SHIFT (1663)
+, Lexique_galgasScanner_34_::kToken_after, BOTTOM_UP_SHIFT (1666)
 , BOTTOM_UP_END ()
-// State S1585 (index = 42425)
+// State S1588 (index = 42448)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (377)
 , BOTTOM_UP_END ()
-// State S1586 (index = 42428)
+// State S1589 (index = 42451)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (374)
 , BOTTOM_UP_END ()
-// State S1587 (index = 42431)
+// State S1590 (index = 42454)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1588 (index = 42438)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1666)
+// State S1591 (index = 42461)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1669)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1589 (index = 42445)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1667)
+// State S1592 (index = 42468)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1670)
 , BOTTOM_UP_END ()
-// State S1590 (index = 42448)
+// State S1593 (index = 42471)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (464)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (464)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (464)
@@ -24013,7 +24029,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (464)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (464)
 , BOTTOM_UP_END ()
-// State S1591 (index = 42519)
+// State S1594 (index = 42542)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (81)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (81)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (81)
@@ -24050,22 +24066,22 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (81)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (81)
 , BOTTOM_UP_END ()
-// State S1592 (index = 42590)
+// State S1595 (index = 42613)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (511)
 , BOTTOM_UP_END ()
-// State S1593 (index = 42593)
+// State S1596 (index = 42616)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (504)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1299)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1302)
 , BOTTOM_UP_END ()
-// State S1594 (index = 42598)
+// State S1597 (index = 42621)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (422)
 , BOTTOM_UP_END ()
-// State S1595 (index = 42601)
-, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1523)
+// State S1598 (index = 42624)
+, Lexique_galgasScanner_34_::kToken__2E_, BOTTOM_UP_SHIFT (1526)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (533)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (533)
 , BOTTOM_UP_END ()
-// State S1596 (index = 42608)
+// State S1599 (index = 42631)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -24093,19 +24109,19 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1597 (index = 42661)
+// State S1600 (index = 42684)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (98)
 , BOTTOM_UP_END ()
-// State S1598 (index = 42664)
+// State S1601 (index = 42687)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (526)
 , BOTTOM_UP_END ()
-// State S1599 (index = 42667)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1671)
+// State S1602 (index = 42690)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1674)
 , BOTTOM_UP_END ()
-// State S1600 (index = 42670)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1672)
+// State S1603 (index = 42693)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1675)
 , BOTTOM_UP_END ()
-// State S1601 (index = 42673)
+// State S1604 (index = 42696)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (151)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (151)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (151)
@@ -24139,82 +24155,82 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (151)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (151)
 , BOTTOM_UP_END ()
-// State S1602 (index = 42738)
+// State S1605 (index = 42761)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (755)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1602)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1605)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (755)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (755)
 , BOTTOM_UP_END ()
-// State S1603 (index = 42747)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1205)
+// State S1606 (index = 42770)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1208)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (744)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1206)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1209)
 , BOTTOM_UP_END ()
-// State S1604 (index = 42754)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1675)
+// State S1607 (index = 42777)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1678)
 , BOTTOM_UP_END ()
-// State S1605 (index = 42757)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1676)
+// State S1608 (index = 42780)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1679)
 , BOTTOM_UP_END ()
-// State S1606 (index = 42760)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1205)
+// State S1609 (index = 42783)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1208)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (744)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1206)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1209)
 , BOTTOM_UP_END ()
-// State S1607 (index = 42767)
+// State S1610 (index = 42790)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (388)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (388)
 , BOTTOM_UP_END ()
-// State S1608 (index = 42772)
+// State S1611 (index = 42795)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (383)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (383)
 , BOTTOM_UP_END ()
-// State S1609 (index = 42777)
+// State S1612 (index = 42800)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (394)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1610 (index = 42786)
+// State S1613 (index = 42809)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (390)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1611 (index = 42795)
+// State S1614 (index = 42818)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (389)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (389)
 , BOTTOM_UP_END ()
-// State S1612 (index = 42800)
+// State S1615 (index = 42823)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (382)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (382)
 , BOTTOM_UP_END ()
-// State S1613 (index = 42805)
+// State S1616 (index = 42828)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (396)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1614 (index = 42814)
+// State S1617 (index = 42837)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (392)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1615 (index = 42823)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1541)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1542)
+// State S1618 (index = 42846)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1544)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1545)
 , BOTTOM_UP_END ()
-// State S1616 (index = 42828)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1687)
+// State S1619 (index = 42851)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1690)
 , BOTTOM_UP_END ()
-// State S1617 (index = 42831)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1688)
+// State S1620 (index = 42854)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1691)
 , BOTTOM_UP_END ()
-// State S1618 (index = 42834)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1417)
+// State S1621 (index = 42857)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1420)
 , BOTTOM_UP_END ()
-// State S1619 (index = 42837)
+// State S1622 (index = 42860)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (207)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (207)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (207)
@@ -24247,15 +24263,15 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (207)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (207)
 , BOTTOM_UP_END ()
-// State S1620 (index = 42900)
+// State S1623 (index = 42923)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (786)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1690)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1693)
 , BOTTOM_UP_END ()
-// State S1621 (index = 42905)
+// State S1624 (index = 42928)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (788)
-, Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_SHIFT (1692)
+, Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_SHIFT (1695)
 , BOTTOM_UP_END ()
-// State S1622 (index = 42910)
+// State S1625 (index = 42933)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -24278,16 +24294,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1623 (index = 42971)
+// State S1626 (index = 42994)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -24311,7 +24327,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1624 (index = 43016)
+// State S1627 (index = 43039)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -24334,16 +24350,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1625 (index = 43077)
+// State S1628 (index = 43100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (776)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (776)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (776)
@@ -24352,10 +24368,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (776)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (776)
 , BOTTOM_UP_END ()
-// State S1626 (index = 43092)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1417)
+// State S1629 (index = 43115)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1420)
 , BOTTOM_UP_END ()
-// State S1627 (index = 43095)
+// State S1630 (index = 43118)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (204)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (204)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (204)
@@ -24388,86 +24404,86 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (204)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (204)
 , BOTTOM_UP_END ()
-// State S1628 (index = 43158)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
-, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
-, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
-, BOTTOM_UP_END ()
-// State S1629 (index = 43165)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
-, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
-, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
-, BOTTOM_UP_END ()
-// State S1630 (index = 43172)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
-, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
-, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
-, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1700)
-, BOTTOM_UP_END ()
 // State S1631 (index = 43181)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
-, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1702)
 , BOTTOM_UP_END ()
-// State S1632 (index = 43190)
+// State S1632 (index = 43188)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1633 (index = 43197)
+// State S1633 (index = 43195)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
+, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1703)
 , BOTTOM_UP_END ()
 // State S1634 (index = 43204)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
+, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
+, Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_SHIFT (1705)
+, BOTTOM_UP_END ()
+// State S1635 (index = 43213)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
+, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
+, BOTTOM_UP_END ()
+// State S1636 (index = 43220)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
+, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
+, BOTTOM_UP_END ()
+// State S1637 (index = 43227)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (812)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1706)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1709)
 , BOTTOM_UP_END ()
-// State S1635 (index = 43209)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1708)
+// State S1638 (index = 43232)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1711)
 , BOTTOM_UP_END ()
-// State S1636 (index = 43212)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1709)
+// State S1639 (index = 43235)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1712)
 , BOTTOM_UP_END ()
-// State S1637 (index = 43215)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1710)
+// State S1640 (index = 43238)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1713)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (808)
 , BOTTOM_UP_END ()
-// State S1638 (index = 43220)
+// State S1641 (index = 43243)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (737)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (737)
 , BOTTOM_UP_END ()
-// State S1639 (index = 43225)
+// State S1642 (index = 43248)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (738)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (738)
 , BOTTOM_UP_END ()
-// State S1640 (index = 43230)
+// State S1643 (index = 43253)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (736)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (736)
 , BOTTOM_UP_END ()
-// State S1641 (index = 43235)
+// State S1644 (index = 43258)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (692)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (692)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (692)
 , BOTTOM_UP_END ()
-// State S1642 (index = 43242)
+// State S1645 (index = 43265)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (693)
 , Lexique_galgasScanner_34_::kToken__2D__3E_, BOTTOM_UP_REDUCE (693)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (693)
 , BOTTOM_UP_END ()
-// State S1643 (index = 43249)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1712)
+// State S1646 (index = 43272)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1715)
 , BOTTOM_UP_END ()
-// State S1644 (index = 43252)
+// State S1647 (index = 43275)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (174)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (174)
 , BOTTOM_UP_END ()
-// State S1645 (index = 43257)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1564)
+// State S1648 (index = 43280)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1567)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (689)
 , BOTTOM_UP_END ()
-// State S1646 (index = 43262)
+// State S1649 (index = 43285)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (173)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (173)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (173)
@@ -24479,35 +24495,35 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (173)
 , Lexique_galgasScanner_34_::kToken__25_templateReplacement, BOTTOM_UP_REDUCE (173)
 , BOTTOM_UP_END ()
-// State S1647 (index = 43283)
+// State S1650 (index = 43306)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (678)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1566)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1569)
 , BOTTOM_UP_END ()
-// State S1648 (index = 43288)
+// State S1651 (index = 43311)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (677)
 , Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_REDUCE (677)
 , Lexique_galgasScanner_34_::kToken__21__3F_, BOTTOM_UP_REDUCE (677)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (677)
 , BOTTOM_UP_END ()
-// State S1649 (index = 43297)
+// State S1652 (index = 43320)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (725)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1568)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1571)
 , BOTTOM_UP_END ()
-// State S1650 (index = 43302)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1716)
+// State S1653 (index = 43325)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1719)
 , BOTTOM_UP_END ()
-// State S1651 (index = 43305)
-, Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (1717)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1718)
+// State S1654 (index = 43328)
+, Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (1720)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1721)
 , BOTTOM_UP_END ()
-// State S1652 (index = 43310)
+// State S1655 (index = 43333)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (675)
 , Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_REDUCE (675)
 , BOTTOM_UP_END ()
-// State S1653 (index = 43315)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1720)
+// State S1656 (index = 43338)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1723)
 , BOTTOM_UP_END ()
-// State S1654 (index = 43318)
+// State S1657 (index = 43341)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (731)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
@@ -24520,42 +24536,42 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1655 (index = 43341)
+// State S1658 (index = 43364)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (563)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (563)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (563)
 , BOTTOM_UP_END ()
-// State S1656 (index = 43348)
+// State S1659 (index = 43371)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (562)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (562)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (562)
 , BOTTOM_UP_END ()
-// State S1657 (index = 43355)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1723)
+// State S1660 (index = 43378)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1726)
 , BOTTOM_UP_END ()
-// State S1658 (index = 43358)
+// State S1661 (index = 43381)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1659 (index = 43365)
+// State S1662 (index = 43388)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (352)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1072)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1074)
 , BOTTOM_UP_END ()
-// State S1660 (index = 43374)
+// State S1663 (index = 43397)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (300)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1247)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1250)
 , BOTTOM_UP_END ()
-// State S1661 (index = 43379)
+// State S1664 (index = 43402)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (355)
 , BOTTOM_UP_END ()
-// State S1662 (index = 43382)
+// State S1665 (index = 43405)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (456)
 , Lexique_galgasScanner_34_::kToken_after, BOTTOM_UP_REDUCE (456)
 , BOTTOM_UP_END ()
-// State S1663 (index = 43387)
+// State S1666 (index = 43410)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (356)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (356)
@@ -24583,18 +24599,18 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
 , BOTTOM_UP_END ()
-// State S1664 (index = 43440)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1728)
+// State S1667 (index = 43463)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1731)
 , BOTTOM_UP_END ()
-// State S1665 (index = 43443)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1729)
+// State S1668 (index = 43466)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1732)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1666 (index = 43450)
+// State S1669 (index = 43473)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (375)
 , BOTTOM_UP_END ()
-// State S1667 (index = 43453)
+// State S1670 (index = 43476)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (53)
@@ -24632,17 +24648,17 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (53)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (53)
 , BOTTOM_UP_END ()
-// State S1668 (index = 43526)
+// State S1671 (index = 43549)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (505)
 , BOTTOM_UP_END ()
-// State S1669 (index = 43529)
+// State S1672 (index = 43552)
 , Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_REDUCE (534)
 , Lexique_galgasScanner_34_::kToken__25_errorMessage, BOTTOM_UP_REDUCE (534)
 , BOTTOM_UP_END ()
-// State S1670 (index = 43534)
+// State S1673 (index = 43557)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (538)
 , BOTTOM_UP_END ()
-// State S1671 (index = 43537)
+// State S1674 (index = 43560)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (227)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (227)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (227)
@@ -24676,7 +24692,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (227)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (227)
 , BOTTOM_UP_END ()
-// State S1672 (index = 43602)
+// State S1675 (index = 43625)
 , Lexique_galgasScanner_34_::kToken_init, BOTTOM_UP_REDUCE (152)
 , Lexique_galgasScanner_34_::kToken_let, BOTTOM_UP_REDUCE (152)
 , Lexique_galgasScanner_34_::kToken_var, BOTTOM_UP_REDUCE (152)
@@ -24695,65 +24711,65 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_protected, BOTTOM_UP_REDUCE (152)
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_REDUCE (152)
 , BOTTOM_UP_END ()
-// State S1673 (index = 43637)
+// State S1676 (index = 43660)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (756)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (756)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (756)
 , BOTTOM_UP_END ()
-// State S1674 (index = 43644)
+// State S1677 (index = 43667)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (746)
 , BOTTOM_UP_END ()
-// State S1675 (index = 43647)
-, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1730)
+// State S1678 (index = 43670)
+, Lexique_galgasScanner_34_::kToken_literalInt, BOTTOM_UP_SHIFT (1733)
 , BOTTOM_UP_END ()
-// State S1676 (index = 43650)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1538)
-, Lexique_galgasScanner_34_::kToken__2D_, BOTTOM_UP_SHIFT (1539)
+// State S1679 (index = 43673)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1541)
+, Lexique_galgasScanner_34_::kToken__2D_, BOTTOM_UP_SHIFT (1542)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (752)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (752)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (752)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (752)
 , BOTTOM_UP_END ()
-// State S1677 (index = 43663)
+// State S1680 (index = 43686)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (745)
 , BOTTOM_UP_END ()
-// State S1678 (index = 43666)
+// State S1681 (index = 43689)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (395)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1679 (index = 43673)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1732)
+// State S1682 (index = 43696)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1735)
 , BOTTOM_UP_END ()
-// State S1680 (index = 43676)
+// State S1683 (index = 43699)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (391)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1681 (index = 43683)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1733)
+// State S1684 (index = 43706)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1736)
 , BOTTOM_UP_END ()
-// State S1682 (index = 43686)
+// State S1685 (index = 43709)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (397)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1683 (index = 43693)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1734)
+// State S1686 (index = 43716)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1737)
 , BOTTOM_UP_END ()
-// State S1684 (index = 43696)
+// State S1687 (index = 43719)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (393)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , BOTTOM_UP_END ()
-// State S1685 (index = 43703)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1735)
+// State S1688 (index = 43726)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1738)
 , BOTTOM_UP_END ()
-// State S1686 (index = 43706)
+// State S1689 (index = 43729)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (380)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1615)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1618)
 , BOTTOM_UP_END ()
-// State S1687 (index = 43711)
+// State S1690 (index = 43734)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (379)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (379)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (379)
@@ -24788,15 +24804,15 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (379)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (379)
 , BOTTOM_UP_END ()
-// State S1688 (index = 43778)
+// State S1691 (index = 43801)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (796)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (796)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1737)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1740)
 , BOTTOM_UP_END ()
-// State S1689 (index = 43785)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1417)
+// State S1692 (index = 43808)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1420)
 , BOTTOM_UP_END ()
-// State S1690 (index = 43788)
+// State S1693 (index = 43811)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -24819,19 +24835,19 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1691 (index = 43849)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1741)
+// State S1694 (index = 43872)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1744)
 , BOTTOM_UP_END ()
-// State S1692 (index = 43852)
+// State S1695 (index = 43875)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -24854,30 +24870,30 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1693 (index = 43913)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1743)
+// State S1696 (index = 43936)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1746)
 , BOTTOM_UP_END ()
-// State S1694 (index = 43916)
+// State S1697 (index = 43939)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (798)
-, Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_SHIFT (1744)
+, Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_SHIFT (1747)
 , BOTTOM_UP_END ()
-// State S1695 (index = 43921)
-, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1746)
+// State S1698 (index = 43944)
+, Lexique_galgasScanner_34_::kToken_do, BOTTOM_UP_SHIFT (1749)
 , BOTTOM_UP_END ()
-// State S1696 (index = 43924)
-, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1747)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1748)
+// State S1699 (index = 43947)
+, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1750)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1751)
 , BOTTOM_UP_END ()
-// State S1697 (index = 43929)
+// State S1700 (index = 43952)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (785)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (785)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (785)
@@ -24910,95 +24926,95 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (785)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (785)
 , BOTTOM_UP_END ()
-// State S1698 (index = 43992)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1750)
+// State S1701 (index = 44015)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1753)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, BOTTOM_UP_END ()
-// State S1699 (index = 43999)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1751)
-, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, BOTTOM_UP_END ()
-// State S1700 (index = 44006)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
-, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
-, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
-, BOTTOM_UP_END ()
-// State S1701 (index = 44013)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (814)
-, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1753)
 , BOTTOM_UP_END ()
 // State S1702 (index = 44022)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1754)
+, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
+, BOTTOM_UP_END ()
+// State S1703 (index = 44029)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1703 (index = 44029)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (816)
+// State S1704 (index = 44036)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (814)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1756)
 , BOTTOM_UP_END ()
-// State S1704 (index = 44038)
+// State S1705 (index = 44045)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
+, Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
+, Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
+, BOTTOM_UP_END ()
+// State S1706 (index = 44052)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (816)
+, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1759)
+, BOTTOM_UP_END ()
+// State S1707 (index = 44061)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (822)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1758)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1761)
 , BOTTOM_UP_END ()
-// State S1705 (index = 44047)
+// State S1708 (index = 44070)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (824)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1760)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1763)
 , BOTTOM_UP_END ()
-// State S1706 (index = 44056)
-, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1628)
-, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1629)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1630)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1631)
-, Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_, BOTTOM_UP_SHIFT (1632)
-, Lexique_galgasScanner_34_::kToken__3F__21_, BOTTOM_UP_SHIFT (1633)
+// State S1709 (index = 44079)
+, Lexique_galgasScanner_34_::kToken__21_selector_3A_, BOTTOM_UP_SHIFT (1631)
+, Lexique_galgasScanner_34_::kToken__21_, BOTTOM_UP_SHIFT (1632)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1633)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1634)
+, Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_, BOTTOM_UP_SHIFT (1635)
+, Lexique_galgasScanner_34_::kToken__3F__21_, BOTTOM_UP_SHIFT (1636)
 , BOTTOM_UP_END ()
-// State S1707 (index = 44069)
+// State S1710 (index = 44092)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (811)
 , BOTTOM_UP_END ()
-// State S1708 (index = 44072)
+// State S1711 (index = 44095)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (216)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (216)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (216)
 , BOTTOM_UP_END ()
-// State S1709 (index = 44079)
-, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1557)
+// State S1712 (index = 44102)
+, Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (1560)
 , BOTTOM_UP_END ()
-// State S1710 (index = 44082)
-, Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_SHIFT (1764)
+// State S1713 (index = 44105)
+, Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_SHIFT (1767)
 , BOTTOM_UP_END ()
-// State S1711 (index = 44085)
-, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1765)
+// State S1714 (index = 44108)
+, Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_SHIFT (1768)
 , BOTTOM_UP_END ()
-// State S1712 (index = 44088)
+// State S1715 (index = 44111)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (694)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (694)
 , BOTTOM_UP_END ()
-// State S1713 (index = 44093)
+// State S1716 (index = 44116)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (690)
 , BOTTOM_UP_END ()
-// State S1714 (index = 44096)
+// State S1717 (index = 44119)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (679)
 , BOTTOM_UP_END ()
-// State S1715 (index = 44099)
+// State S1718 (index = 44122)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (726)
 , BOTTOM_UP_END ()
-// State S1716 (index = 44102)
-, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1766)
+// State S1719 (index = 44125)
+, Lexique_galgasScanner_34_::kToken_in, BOTTOM_UP_SHIFT (1769)
 , BOTTOM_UP_END ()
-// State S1717 (index = 44105)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1767)
+// State S1720 (index = 44128)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1770)
 , BOTTOM_UP_END ()
-// State S1718 (index = 44108)
+// State S1721 (index = 44131)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (714)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (714)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (714)
@@ -25015,7 +25031,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (714)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (714)
 , BOTTOM_UP_END ()
-// State S1719 (index = 44139)
+// State S1722 (index = 44162)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (181)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (181)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (181)
@@ -25032,7 +25048,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (181)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (181)
 , BOTTOM_UP_END ()
-// State S1720 (index = 44170)
+// State S1723 (index = 44193)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_SHIFT (822)
@@ -25046,7 +25062,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1721 (index = 44195)
+// State S1724 (index = 44218)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (731)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (820)
 , Lexique_galgasScanner_34_::kToken_drop, BOTTOM_UP_SHIFT (821)
@@ -25059,29 +25075,29 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (828)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_SHIFT (829)
 , BOTTOM_UP_END ()
-// State S1722 (index = 44218)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1770)
+// State S1725 (index = 44241)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1773)
 , BOTTOM_UP_END ()
-// State S1723 (index = 44221)
+// State S1726 (index = 44244)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (555)
-, Lexique_galgasScanner_34_::kToken_template, BOTTOM_UP_SHIFT (1068)
+, Lexique_galgasScanner_34_::kToken_template, BOTTOM_UP_SHIFT (1070)
 , BOTTOM_UP_END ()
-// State S1724 (index = 44226)
+// State S1727 (index = 44249)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (564)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1772)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1775)
 , BOTTOM_UP_END ()
-// State S1725 (index = 44235)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1774)
+// State S1728 (index = 44258)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1777)
 , BOTTOM_UP_END ()
-// State S1726 (index = 44238)
+// State S1729 (index = 44261)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (301)
 , BOTTOM_UP_END ()
-// State S1727 (index = 44241)
+// State S1730 (index = 44264)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (458)
 , BOTTOM_UP_END ()
-// State S1728 (index = 44244)
+// State S1731 (index = 44267)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (71)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (71)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (71)
@@ -25118,46 +25134,46 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (71)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (71)
 , BOTTOM_UP_END ()
-// State S1729 (index = 44315)
+// State S1732 (index = 44338)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (376)
 , BOTTOM_UP_END ()
-// State S1730 (index = 44318)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1775)
+// State S1733 (index = 44341)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1778)
 , BOTTOM_UP_END ()
-// State S1731 (index = 44321)
+// State S1734 (index = 44344)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (750)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1605)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1608)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (750)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (750)
 , BOTTOM_UP_END ()
-// State S1732 (index = 44330)
+// State S1735 (index = 44353)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (386)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (386)
 , BOTTOM_UP_END ()
-// State S1733 (index = 44335)
+// State S1736 (index = 44358)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (384)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (384)
 , BOTTOM_UP_END ()
-// State S1734 (index = 44340)
+// State S1737 (index = 44363)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (387)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (387)
 , BOTTOM_UP_END ()
-// State S1735 (index = 44345)
+// State S1738 (index = 44368)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (385)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (385)
 , BOTTOM_UP_END ()
-// State S1736 (index = 44350)
+// State S1739 (index = 44373)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (381)
 , BOTTOM_UP_END ()
-// State S1737 (index = 44353)
+// State S1740 (index = 44376)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (797)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (797)
 , BOTTOM_UP_END ()
-// State S1738 (index = 44358)
+// State S1741 (index = 44381)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (794)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1777)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1780)
 , BOTTOM_UP_END ()
-// State S1739 (index = 44363)
+// State S1742 (index = 44386)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (791)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (791)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (791)
@@ -25190,11 +25206,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (791)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (791)
 , BOTTOM_UP_END ()
-// State S1740 (index = 44426)
+// State S1743 (index = 44449)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (786)
-, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1690)
+, Lexique_galgasScanner_34_::kToken_while, BOTTOM_UP_SHIFT (1693)
 , BOTTOM_UP_END ()
-// State S1741 (index = 44431)
+// State S1744 (index = 44454)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (205)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (205)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (205)
@@ -25227,11 +25243,11 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (205)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (205)
 , BOTTOM_UP_END ()
-// State S1742 (index = 44494)
+// State S1745 (index = 44517)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (788)
-, Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_SHIFT (1692)
+, Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_SHIFT (1695)
 , BOTTOM_UP_END ()
-// State S1743 (index = 44499)
+// State S1746 (index = 44522)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (206)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (206)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (206)
@@ -25264,7 +25280,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (206)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (206)
 , BOTTOM_UP_END ()
-// State S1744 (index = 44562)
+// State S1747 (index = 44585)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -25287,19 +25303,19 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1745 (index = 44623)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1782)
+// State S1748 (index = 44646)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1785)
 , BOTTOM_UP_END ()
-// State S1746 (index = 44626)
+// State S1749 (index = 44649)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -25322,16 +25338,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1747 (index = 44687)
+// State S1750 (index = 44710)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -25354,16 +25370,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1748 (index = 44748)
+// State S1751 (index = 44771)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (193)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (194)
 , Lexique_galgasScanner_34_::kToken__2B_, BOTTOM_UP_SHIFT (195)
@@ -25387,67 +25403,67 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_not, BOTTOM_UP_SHIFT (211)
 , Lexique_galgasScanner_34_::kToken__7E_, BOTTOM_UP_SHIFT (212)
 , BOTTOM_UP_END ()
-// State S1749 (index = 44793)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1786)
+// State S1752 (index = 44816)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1789)
 , BOTTOM_UP_END ()
-// State S1750 (index = 44796)
+// State S1753 (index = 44819)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (223)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (223)
 , BOTTOM_UP_END ()
-// State S1751 (index = 44801)
+// State S1754 (index = 44824)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (224)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (224)
 , BOTTOM_UP_END ()
-// State S1752 (index = 44806)
+// State S1755 (index = 44829)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (818)
-, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1787)
-, BOTTOM_UP_END ()
-// State S1753 (index = 44815)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (815)
-, BOTTOM_UP_END ()
-// State S1754 (index = 44818)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1789)
-, BOTTOM_UP_END ()
-// State S1755 (index = 44821)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (820)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1790)
 , BOTTOM_UP_END ()
-// State S1756 (index = 44830)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (817)
+// State S1756 (index = 44838)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (815)
 , BOTTOM_UP_END ()
-// State S1757 (index = 44833)
+// State S1757 (index = 44841)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1792)
 , BOTTOM_UP_END ()
-// State S1758 (index = 44836)
+// State S1758 (index = 44844)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (820)
+, Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1793)
+, BOTTOM_UP_END ()
+// State S1759 (index = 44853)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (817)
+, BOTTOM_UP_END ()
+// State S1760 (index = 44856)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1795)
+, BOTTOM_UP_END ()
+// State S1761 (index = 44859)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (823)
 , BOTTOM_UP_END ()
-// State S1759 (index = 44839)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1793)
+// State S1762 (index = 44862)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1796)
 , BOTTOM_UP_END ()
-// State S1760 (index = 44842)
+// State S1763 (index = 44865)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (825)
 , BOTTOM_UP_END ()
-// State S1761 (index = 44845)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1794)
+// State S1764 (index = 44868)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1797)
 , BOTTOM_UP_END ()
-// State S1762 (index = 44848)
+// State S1765 (index = 44871)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (812)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1706)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1709)
 , BOTTOM_UP_END ()
-// State S1763 (index = 44853)
+// State S1766 (index = 44876)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (806)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (806)
-, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1636)
+, Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_SHIFT (1639)
 , BOTTOM_UP_END ()
-// State S1764 (index = 44860)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1710)
+// State S1767 (index = 44883)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1713)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (808)
 , BOTTOM_UP_END ()
-// State S1765 (index = 44865)
+// State S1768 (index = 44888)
 , Lexique_galgasScanner_34_::kToken_option, BOTTOM_UP_REDUCE (215)
 , Lexique_galgasScanner_34_::kToken_lexique, BOTTOM_UP_REDUCE (215)
 , Lexique_galgasScanner_34_::kToken_filewrapper, BOTTOM_UP_REDUCE (215)
@@ -25481,10 +25497,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_syntax, BOTTOM_UP_REDUCE (215)
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (215)
 , BOTTOM_UP_END ()
-// State S1766 (index = 44930)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1798)
+// State S1769 (index = 44953)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1801)
 , BOTTOM_UP_END ()
-// State S1767 (index = 44933)
+// State S1770 (index = 44956)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (715)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (715)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (715)
@@ -25501,14 +25517,14 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (715)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (715)
 , BOTTOM_UP_END ()
-// State S1768 (index = 44964)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1574)
+// State S1771 (index = 44987)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1577)
 , Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_REDUCE (727)
 , BOTTOM_UP_END ()
-// State S1769 (index = 44969)
+// State S1772 (index = 44992)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (732)
 , BOTTOM_UP_END ()
-// State S1770 (index = 44972)
+// State S1773 (index = 44995)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (188)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (188)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (188)
@@ -25525,47 +25541,47 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_REDUCE (188)
 , Lexique_galgasScanner_34_::kToken_tag, BOTTOM_UP_REDUCE (188)
 , BOTTOM_UP_END ()
-// State S1771 (index = 45003)
+// State S1774 (index = 45026)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (556)
 , BOTTOM_UP_END ()
-// State S1772 (index = 45006)
+// State S1775 (index = 45029)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (565)
 , BOTTOM_UP_END ()
-// State S1773 (index = 45009)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1800)
+// State S1776 (index = 45032)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1803)
 , BOTTOM_UP_END ()
-// State S1774 (index = 45012)
+// State S1777 (index = 45035)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (345)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1382)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1385)
 , BOTTOM_UP_END ()
-// State S1775 (index = 45017)
+// State S1778 (index = 45040)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (754)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (754)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (754)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (754)
 , BOTTOM_UP_END ()
-// State S1776 (index = 45026)
+// State S1779 (index = 45049)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (751)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (751)
 , Lexique_galgasScanner_34_::kToken_label, BOTTOM_UP_REDUCE (751)
 , BOTTOM_UP_END ()
-// State S1777 (index = 45033)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1802)
+// State S1780 (index = 45056)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1805)
 , BOTTOM_UP_END ()
-// State S1778 (index = 45036)
-, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1803)
+// State S1781 (index = 45059)
+, Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_SHIFT (1806)
 , BOTTOM_UP_END ()
-// State S1779 (index = 45039)
+// State S1782 (index = 45062)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (787)
 , BOTTOM_UP_END ()
-// State S1780 (index = 45042)
+// State S1783 (index = 45065)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (789)
 , BOTTOM_UP_END ()
-// State S1781 (index = 45045)
+// State S1784 (index = 45068)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (798)
-, Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_SHIFT (1744)
+, Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_SHIFT (1747)
 , BOTTOM_UP_END ()
-// State S1782 (index = 45050)
+// State S1785 (index = 45073)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (210)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (210)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (210)
@@ -25598,16 +25614,16 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (210)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (210)
 , BOTTOM_UP_END ()
-// State S1783 (index = 45113)
-, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1805)
+// State S1786 (index = 45136)
+, Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_SHIFT (1808)
 , BOTTOM_UP_END ()
-// State S1784 (index = 45116)
+// State S1787 (index = 45139)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (211)
 , BOTTOM_UP_END ()
-// State S1785 (index = 45119)
-, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1806)
+// State S1788 (index = 45142)
+, Lexique_galgasScanner_34_::kToken__3A_, BOTTOM_UP_SHIFT (1809)
 , BOTTOM_UP_END ()
-// State S1786 (index = 45122)
+// State S1789 (index = 45145)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (213)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (213)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (213)
@@ -25640,63 +25656,63 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (213)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (213)
 , BOTTOM_UP_END ()
-// State S1787 (index = 45185)
+// State S1790 (index = 45208)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (819)
 , BOTTOM_UP_END ()
-// State S1788 (index = 45188)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1807)
+// State S1791 (index = 45211)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1810)
 , BOTTOM_UP_END ()
-// State S1789 (index = 45191)
+// State S1792 (index = 45214)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (217)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (217)
 , BOTTOM_UP_END ()
-// State S1790 (index = 45196)
+// State S1793 (index = 45219)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (821)
 , BOTTOM_UP_END ()
-// State S1791 (index = 45199)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1808)
+// State S1794 (index = 45222)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1811)
 , BOTTOM_UP_END ()
-// State S1792 (index = 45202)
+// State S1795 (index = 45225)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (218)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (218)
 , BOTTOM_UP_END ()
-// State S1793 (index = 45207)
+// State S1796 (index = 45230)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (221)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (221)
 , BOTTOM_UP_END ()
-// State S1794 (index = 45212)
+// State S1797 (index = 45235)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (222)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (222)
 , BOTTOM_UP_END ()
-// State S1795 (index = 45217)
+// State S1798 (index = 45240)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (813)
 , BOTTOM_UP_END ()
-// State S1796 (index = 45220)
+// State S1799 (index = 45243)
 , Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_REDUCE (807)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (807)
 , BOTTOM_UP_END ()
-// State S1797 (index = 45225)
+// State S1800 (index = 45248)
 , Lexique_galgasScanner_34_::kToken__7D_, BOTTOM_UP_REDUCE (809)
 , BOTTOM_UP_END ()
-// State S1798 (index = 45228)
-, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1809)
+// State S1801 (index = 45251)
+, Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_SHIFT (1812)
 , BOTTOM_UP_END ()
-// State S1799 (index = 45231)
+// State S1802 (index = 45254)
 , Lexique_galgasScanner_34_::kToken_default, BOTTOM_UP_REDUCE (728)
 , BOTTOM_UP_END ()
-// State S1800 (index = 45234)
+// State S1803 (index = 45257)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (559)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1810)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1813)
 , BOTTOM_UP_END ()
-// State S1801 (index = 45239)
+// State S1804 (index = 45262)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (346)
 , BOTTOM_UP_END ()
-// State S1802 (index = 45242)
+// State S1805 (index = 45265)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (796)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (796)
-, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1737)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1740)
 , BOTTOM_UP_END ()
-// State S1803 (index = 45249)
+// State S1806 (index = 45272)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (793)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (793)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (793)
@@ -25730,10 +25746,10 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (793)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (793)
 , BOTTOM_UP_END ()
-// State S1804 (index = 45314)
+// State S1807 (index = 45337)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (799)
 , BOTTOM_UP_END ()
-// State S1805 (index = 45317)
+// State S1808 (index = 45340)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_REDUCE (209)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (209)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (209)
@@ -25766,7 +25782,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_REDUCE (209)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (209)
 , BOTTOM_UP_END ()
-// State S1806 (index = 45380)
+// State S1809 (index = 45403)
 , Lexique_galgasScanner_34_::kToken_if, BOTTOM_UP_SHIFT (100)
 , Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (773)
@@ -25789,79 +25805,79 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_REDUCE (773)
 , Lexique_galgasScanner_34_::kToken_warning, BOTTOM_UP_SHIFT (115)
 , Lexique_galgasScanner_34_::kToken_with, BOTTOM_UP_SHIFT (116)
-, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1348)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1349)
-, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1350)
+, Lexique_galgasScanner_34_::kToken_send, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_repeat, BOTTOM_UP_SHIFT (1353)
 , Lexique_galgasScanner_34_::kToken_rewind, BOTTOM_UP_REDUCE (773)
-, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1351)
+, Lexique_galgasScanner_34_::kToken_select, BOTTOM_UP_SHIFT (1354)
 , Lexique_galgasScanner_34_::kToken__3C_non_5F_terminal_3E_, BOTTOM_UP_REDUCE (781)
-, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1352)
+, Lexique_galgasScanner_34_::kToken_parse, BOTTOM_UP_SHIFT (1355)
 , Lexique_galgasScanner_34_::kToken_or, BOTTOM_UP_REDUCE (773)
 , BOTTOM_UP_END ()
-// State S1807 (index = 45441)
+// State S1810 (index = 45464)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (219)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (219)
 , BOTTOM_UP_END ()
-// State S1808 (index = 45446)
+// State S1811 (index = 45469)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (220)
 , Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_REDUCE (220)
 , BOTTOM_UP_END ()
-// State S1809 (index = 45451)
+// State S1812 (index = 45474)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (712)
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (712)
-, Lexique_galgasScanner_34_::kToken__25_searchString, BOTTOM_UP_SHIFT (1650)
+, Lexique_galgasScanner_34_::kToken__25_searchString, BOTTOM_UP_SHIFT (1653)
 , BOTTOM_UP_END ()
-// State S1810 (index = 45458)
+// State S1813 (index = 45481)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_REDUCE (561)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_REDUCE (561)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_REDUCE (561)
-, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1655)
-, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1656)
+, Lexique_galgasScanner_34_::kToken__3F_selector_3A_, BOTTOM_UP_SHIFT (1658)
+, Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (1659)
 , BOTTOM_UP_END ()
-// State S1811 (index = 45469)
+// State S1814 (index = 45492)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (558)
 , BOTTOM_UP_END ()
-// State S1812 (index = 45472)
+// State S1815 (index = 45495)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (794)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1777)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1780)
 , BOTTOM_UP_END ()
-// State S1813 (index = 45477)
-, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1747)
-, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1748)
+// State S1816 (index = 45500)
+, Lexique_galgasScanner_34_::kToken_else, BOTTOM_UP_SHIFT (1750)
+, Lexique_galgasScanner_34_::kToken_case, BOTTOM_UP_SHIFT (1751)
 , BOTTOM_UP_END ()
-// State S1814 (index = 45482)
+// State S1817 (index = 45505)
 , Lexique_galgasScanner_34_::kToken_error, BOTTOM_UP_REDUCE (713)
 , Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_REDUCE (713)
 , BOTTOM_UP_END ()
-// State S1815 (index = 45487)
+// State S1818 (index = 45510)
 , Lexique_galgasScanner_34_::kToken__28_, BOTTOM_UP_SHIFT (239)
 , Lexique_galgasScanner_34_::kToken__40_type, BOTTOM_UP_SHIFT (241)
 , Lexique_galgasScanner_34_::kToken__5B_, BOTTOM_UP_SHIFT (242)
 , BOTTOM_UP_END ()
-// State S1816 (index = 45494)
+// State S1819 (index = 45517)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (795)
 , BOTTOM_UP_END ()
-// State S1817 (index = 45497)
+// State S1820 (index = 45520)
 , Lexique_galgasScanner_34_::kToken_end, BOTTOM_UP_REDUCE (212)
 , BOTTOM_UP_END ()
-// State S1818 (index = 45500)
+// State S1821 (index = 45523)
 , Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_REDUCE (564)
 , Lexique_galgasScanner_34_::kToken__3C_, BOTTOM_UP_SHIFT (478)
 , Lexique_galgasScanner_34_::kToken__3F_, BOTTOM_UP_SHIFT (479)
-, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1772)
+, Lexique_galgasScanner_34_::kToken_unused, BOTTOM_UP_SHIFT (1775)
 , BOTTOM_UP_END ()
-// State S1819 (index = 45509)
-, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1820)
+// State S1822 (index = 45532)
+, Lexique_galgasScanner_34_::kToken_identifier, BOTTOM_UP_SHIFT (1823)
 , BOTTOM_UP_END ()
-// State S1820 (index = 45512)
+// State S1823 (index = 45535)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (559)
-, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1810)
+, Lexique_galgasScanner_34_::kToken__2C_, BOTTOM_UP_SHIFT (1813)
 , BOTTOM_UP_END ()
-// State S1821 (index = 45517)
+// State S1824 (index = 45540)
 , Lexique_galgasScanner_34_::kToken__29_, BOTTOM_UP_REDUCE (560)
 , BOTTOM_UP_END ()} ;
 
-static const uint32_t gActionTableIndex_galgas4Grammar [1822] = {
+static const uint32_t gActionTableIndex_galgas4Grammar [1825] = {
   0  // S0
 , 65  // S1
 , 68  // S2
@@ -26561,1129 +26577,1132 @@ static const uint32_t gActionTableIndex_galgas4Grammar [1822] = {
 , 20682  // S696
 , 20701  // S697
 , 20720  // S698
-, 20727  // S699
-, 20734  // S700
-, 20739  // S701
-, 20744  // S702
-, 20747  // S703
-, 20766  // S704
-, 20773  // S705
-, 20818  // S706
-, 20889  // S707
-, 20960  // S708
-, 21031  // S709
-, 21102  // S710
-, 21173  // S711
-, 21222  // S712
-, 21225  // S713
-, 21228  // S714
-, 21235  // S715
-, 21238  // S716
-, 21309  // S717
-, 21420  // S718
-, 21427  // S719
-, 21472  // S720
-, 21543  // S721
-, 21552  // S722
-, 21623  // S723
-, 21668  // S724
-, 21739  // S725
-, 21742  // S726
-, 21813  // S727
-, 21884  // S728
-, 21957  // S729
-, 22032  // S730
-, 22037  // S731
-, 22040  // S732
-, 22055  // S733
-, 22060  // S734
-, 22067  // S735
-, 22080  // S736
-, 22087  // S737
-, 22090  // S738
-, 22093  // S739
-, 22096  // S740
-, 22099  // S741
-, 22104  // S742
-, 22177  // S743
-, 22250  // S744
-, 22323  // S745
-, 22376  // S746
-, 22379  // S747
-, 22432  // S748
-, 22439  // S749
-, 22442  // S750
-, 22515  // S751
-, 22518  // S752
-, 22565  // S753
-, 22584  // S754
-, 22587  // S755
-, 22590  // S756
-, 22597  // S757
-, 22602  // S758
-, 22667  // S759
-, 22670  // S760
-, 22735  // S761
-, 22742  // S762
-, 22759  // S763
-, 22762  // S764
-, 22767  // S765
-, 22770  // S766
-, 22773  // S767
-, 22838  // S768
-, 22865  // S769
-, 22892  // S770
-, 22895  // S771
-, 22948  // S772
-, 22951  // S773
-, 22954  // S774
-, 22957  // S775
-, 22960  // S776
-, 22963  // S777
-, 22966  // S778
-, 22969  // S779
-, 22972  // S780
-, 22975  // S781
-, 22978  // S782
-, 22981  // S783
-, 22984  // S784
-, 22987  // S785
-, 22990  // S786
-, 22993  // S787
-, 23000  // S788
-, 23003  // S789
-, 23056  // S790
-, 23059  // S791
-, 23062  // S792
-, 23065  // S793
-, 23068  // S794
-, 23079  // S795
-, 23088  // S796
-, 23091  // S797
-, 23094  // S798
-, 23099  // S799
-, 23104  // S800
-, 23107  // S801
-, 23110  // S802
-, 23113  // S803
-, 23116  // S804
-, 23181  // S805
-, 23208  // S806
-, 23211  // S807
-, 23214  // S808
-, 23235  // S809
-, 23238  // S810
-, 23241  // S811
-, 23244  // S812
-, 23247  // S813
-, 23256  // S814
-, 23265  // S815
-, 23268  // S816
-, 23271  // S817
-, 23292  // S818
-, 23299  // S819
-, 23302  // S820
-, 23305  // S821
-, 23308  // S822
-, 23311  // S823
-, 23342  // S824
-, 23345  // S825
-, 23350  // S826
-, 23373  // S827
-, 23376  // S828
-, 23379  // S829
-, 23382  // S830
-, 23405  // S831
-, 23408  // S832
-, 23415  // S833
-, 23436  // S834
-, 23445  // S835
-, 23454  // S836
-, 23463  // S837
-, 23466  // S838
-, 23469  // S839
-, 23472  // S840
-, 23475  // S841
-, 23496  // S842
-, 23499  // S843
-, 23502  // S844
-, 23505  // S845
-, 23510  // S846
-, 23513  // S847
-, 23518  // S848
-, 23583  // S849
-, 23592  // S850
-, 23601  // S851
-, 23604  // S852
-, 23607  // S853
-, 23610  // S854
-, 23619  // S855
-, 23622  // S856
-, 23629  // S857
-, 23636  // S858
-, 23639  // S859
-, 23642  // S860
-, 23645  // S861
-, 23648  // S862
-, 23651  // S863
-, 23654  // S864
-, 23719  // S865
-, 23788  // S866
-, 23791  // S867
-, 23794  // S868
-, 23797  // S869
-, 23862  // S870
-, 23865  // S871
-, 24054  // S872
-, 24061  // S873
-, 24250  // S874
-, 24253  // S875
-, 24256  // S876
-, 24259  // S877
-, 24264  // S878
-, 24267  // S879
-, 24278  // S880
-, 24285  // S881
-, 24474  // S882
-, 24527  // S883
-, 24716  // S884
-, 24891  // S885
-, 25066  // S886
-, 25241  // S887
-, 25416  // S888
-, 25591  // S889
-, 25734  // S890
-, 25877  // S891
-, 26024  // S892
-, 26171  // S893
-, 26318  // S894
-, 26465  // S895
-, 26612  // S896
-, 26759  // S897
-, 26906  // S898
-, 27053  // S899
-, 27216  // S900
-, 27379  // S901
-, 27542  // S902
-, 27705  // S903
-, 27868  // S904
-, 28031  // S905
-, 28038  // S906
-, 28045  // S907
-, 28094  // S908
-, 28097  // S909
-, 28286  // S910
-, 28335  // S911
-, 28340  // S912
-, 28393  // S913
-, 28582  // S914
-, 28635  // S915
-, 28768  // S916
-, 28901  // S917
-, 29034  // S918
-, 29167  // S919
-, 29300  // S920
-, 29353  // S921
-, 29400  // S922
-, 29403  // S923
-, 29406  // S924
-, 29455  // S925
-, 29458  // S926
-, 29471  // S927
-, 29528  // S928
-, 29531  // S929
-, 29608  // S930
-, 29615  // S931
-, 29618  // S932
-, 29625  // S933
-, 29634  // S934
-, 29645  // S935
-, 29654  // S936
-, 29661  // S937
-, 29666  // S938
-, 29673  // S939
-, 29678  // S940
-, 29683  // S941
-, 29688  // S942
-, 29693  // S943
-, 29696  // S944
-, 29711  // S945
-, 29756  // S946
-, 29765  // S947
-, 29876  // S948
-, 29883  // S949
-, 29954  // S950
-, 29961  // S951
-, 29964  // S952
-, 30035  // S953
-, 30040  // S954
-, 30111  // S955
-, 30114  // S956
-, 30187  // S957
-, 30190  // S958
-, 30193  // S959
-, 30198  // S960
+, 20731  // S699
+, 20742  // S700
+, 20747  // S701
+, 20752  // S702
+, 20755  // S703
+, 20774  // S704
+, 20787  // S705
+, 20832  // S706
+, 20903  // S707
+, 20974  // S708
+, 21045  // S709
+, 21116  // S710
+, 21187  // S711
+, 21236  // S712
+, 21239  // S713
+, 21242  // S714
+, 21249  // S715
+, 21252  // S716
+, 21323  // S717
+, 21434  // S718
+, 21441  // S719
+, 21486  // S720
+, 21557  // S721
+, 21566  // S722
+, 21637  // S723
+, 21682  // S724
+, 21753  // S725
+, 21756  // S726
+, 21827  // S727
+, 21898  // S728
+, 21971  // S729
+, 22046  // S730
+, 22051  // S731
+, 22054  // S732
+, 22069  // S733
+, 22074  // S734
+, 22081  // S735
+, 22094  // S736
+, 22101  // S737
+, 22104  // S738
+, 22107  // S739
+, 22110  // S740
+, 22113  // S741
+, 22118  // S742
+, 22191  // S743
+, 22264  // S744
+, 22337  // S745
+, 22390  // S746
+, 22393  // S747
+, 22446  // S748
+, 22453  // S749
+, 22456  // S750
+, 22529  // S751
+, 22532  // S752
+, 22579  // S753
+, 22598  // S754
+, 22601  // S755
+, 22604  // S756
+, 22611  // S757
+, 22616  // S758
+, 22681  // S759
+, 22684  // S760
+, 22749  // S761
+, 22756  // S762
+, 22773  // S763
+, 22776  // S764
+, 22781  // S765
+, 22784  // S766
+, 22787  // S767
+, 22852  // S768
+, 22879  // S769
+, 22906  // S770
+, 22909  // S771
+, 22962  // S772
+, 22965  // S773
+, 22968  // S774
+, 22971  // S775
+, 22974  // S776
+, 22977  // S777
+, 22980  // S778
+, 22983  // S779
+, 22986  // S780
+, 22989  // S781
+, 22992  // S782
+, 22995  // S783
+, 22998  // S784
+, 23001  // S785
+, 23004  // S786
+, 23007  // S787
+, 23014  // S788
+, 23017  // S789
+, 23070  // S790
+, 23073  // S791
+, 23076  // S792
+, 23079  // S793
+, 23082  // S794
+, 23093  // S795
+, 23102  // S796
+, 23105  // S797
+, 23108  // S798
+, 23113  // S799
+, 23118  // S800
+, 23121  // S801
+, 23124  // S802
+, 23127  // S803
+, 23130  // S804
+, 23195  // S805
+, 23222  // S806
+, 23225  // S807
+, 23228  // S808
+, 23249  // S809
+, 23252  // S810
+, 23255  // S811
+, 23258  // S812
+, 23261  // S813
+, 23270  // S814
+, 23279  // S815
+, 23282  // S816
+, 23285  // S817
+, 23306  // S818
+, 23313  // S819
+, 23316  // S820
+, 23319  // S821
+, 23322  // S822
+, 23325  // S823
+, 23356  // S824
+, 23359  // S825
+, 23364  // S826
+, 23387  // S827
+, 23390  // S828
+, 23393  // S829
+, 23396  // S830
+, 23419  // S831
+, 23422  // S832
+, 23429  // S833
+, 23450  // S834
+, 23459  // S835
+, 23468  // S836
+, 23477  // S837
+, 23480  // S838
+, 23483  // S839
+, 23486  // S840
+, 23489  // S841
+, 23510  // S842
+, 23513  // S843
+, 23516  // S844
+, 23519  // S845
+, 23524  // S846
+, 23527  // S847
+, 23532  // S848
+, 23597  // S849
+, 23606  // S850
+, 23615  // S851
+, 23618  // S852
+, 23621  // S853
+, 23624  // S854
+, 23633  // S855
+, 23636  // S856
+, 23643  // S857
+, 23650  // S858
+, 23653  // S859
+, 23656  // S860
+, 23659  // S861
+, 23662  // S862
+, 23665  // S863
+, 23668  // S864
+, 23733  // S865
+, 23802  // S866
+, 23805  // S867
+, 23808  // S868
+, 23811  // S869
+, 23876  // S870
+, 23879  // S871
+, 24068  // S872
+, 24075  // S873
+, 24264  // S874
+, 24267  // S875
+, 24270  // S876
+, 24273  // S877
+, 24278  // S878
+, 24281  // S879
+, 24292  // S880
+, 24299  // S881
+, 24488  // S882
+, 24541  // S883
+, 24730  // S884
+, 24905  // S885
+, 25080  // S886
+, 25255  // S887
+, 25430  // S888
+, 25605  // S889
+, 25748  // S890
+, 25891  // S891
+, 26038  // S892
+, 26185  // S893
+, 26332  // S894
+, 26479  // S895
+, 26626  // S896
+, 26773  // S897
+, 26920  // S898
+, 27067  // S899
+, 27230  // S900
+, 27393  // S901
+, 27556  // S902
+, 27719  // S903
+, 27882  // S904
+, 28045  // S905
+, 28052  // S906
+, 28059  // S907
+, 28108  // S908
+, 28111  // S909
+, 28300  // S910
+, 28349  // S911
+, 28354  // S912
+, 28407  // S913
+, 28596  // S914
+, 28649  // S915
+, 28782  // S916
+, 28915  // S917
+, 29048  // S918
+, 29181  // S919
+, 29314  // S920
+, 29367  // S921
+, 29414  // S922
+, 29417  // S923
+, 29420  // S924
+, 29469  // S925
+, 29472  // S926
+, 29485  // S927
+, 29542  // S928
+, 29545  // S929
+, 29622  // S930
+, 29629  // S931
+, 29632  // S932
+, 29639  // S933
+, 29648  // S934
+, 29659  // S935
+, 29668  // S936
+, 29675  // S937
+, 29680  // S938
+, 29683  // S939
+, 29690  // S940
+, 29695  // S941
+, 29700  // S942
+, 29703  // S943
+, 29708  // S944
+, 29713  // S945
+, 29716  // S946
+, 29731  // S947
+, 29776  // S948
+, 29785  // S949
+, 29896  // S950
+, 29903  // S951
+, 29974  // S952
+, 29981  // S953
+, 29984  // S954
+, 30055  // S955
+, 30060  // S956
+, 30131  // S957
+, 30134  // S958
+, 30207  // S959
+, 30210  // S960
 , 30213  // S961
-, 30216  // S962
-, 30221  // S963
-, 30224  // S964
-, 30229  // S965
-, 30232  // S966
-, 30243  // S967
-, 30288  // S968
-, 30293  // S969
-, 30338  // S970
-, 30383  // S971
-, 30428  // S972
-, 30499  // S973
-, 30570  // S974
-, 30573  // S975
-, 30626  // S976
-, 30629  // S977
-, 30632  // S978
-, 30637  // S979
-, 30690  // S980
-, 30693  // S981
-, 30764  // S982
-, 30835  // S983
-, 30840  // S984
-, 30845  // S985
-, 30848  // S986
-, 30851  // S987
-, 30858  // S988
-, 30865  // S989
-, 30872  // S990
-, 30875  // S991
-, 30878  // S992
-, 30885  // S993
-, 30892  // S994
-, 30895  // S995
-, 30910  // S996
-, 30963  // S997
-, 30966  // S998
-, 30969  // S999
-, 30972  // S1000
-, 30975  // S1001
-, 31040  // S1002
-, 31043  // S1003
-, 31050  // S1004
-, 31055  // S1005
-, 31108  // S1006
-, 31111  // S1007
-, 31146  // S1008
-, 31149  // S1009
-, 31186  // S1010
-, 31221  // S1011
-, 31256  // S1012
-, 31259  // S1013
-, 31262  // S1014
-, 31265  // S1015
-, 31268  // S1016
-, 31273  // S1017
-, 31278  // S1018
-, 31317  // S1019
-, 31322  // S1020
-, 31327  // S1021
-, 31330  // S1022
-, 31337  // S1023
-, 31390  // S1024
-, 31393  // S1025
-, 31458  // S1026
-, 31469  // S1027
+, 30218  // S962
+, 30233  // S963
+, 30236  // S964
+, 30241  // S965
+, 30244  // S966
+, 30249  // S967
+, 30252  // S968
+, 30263  // S969
+, 30308  // S970
+, 30313  // S971
+, 30358  // S972
+, 30403  // S973
+, 30448  // S974
+, 30519  // S975
+, 30590  // S976
+, 30593  // S977
+, 30646  // S978
+, 30649  // S979
+, 30652  // S980
+, 30657  // S981
+, 30710  // S982
+, 30713  // S983
+, 30784  // S984
+, 30855  // S985
+, 30860  // S986
+, 30865  // S987
+, 30868  // S988
+, 30871  // S989
+, 30878  // S990
+, 30885  // S991
+, 30892  // S992
+, 30895  // S993
+, 30898  // S994
+, 30905  // S995
+, 30912  // S996
+, 30915  // S997
+, 30930  // S998
+, 30983  // S999
+, 30986  // S1000
+, 30989  // S1001
+, 30992  // S1002
+, 30995  // S1003
+, 31060  // S1004
+, 31063  // S1005
+, 31070  // S1006
+, 31075  // S1007
+, 31128  // S1008
+, 31131  // S1009
+, 31166  // S1010
+, 31169  // S1011
+, 31206  // S1012
+, 31241  // S1013
+, 31276  // S1014
+, 31279  // S1015
+, 31282  // S1016
+, 31285  // S1017
+, 31288  // S1018
+, 31293  // S1019
+, 31298  // S1020
+, 31337  // S1021
+, 31342  // S1022
+, 31347  // S1023
+, 31350  // S1024
+, 31357  // S1025
+, 31410  // S1026
+, 31413  // S1027
 , 31478  // S1028
-, 31485  // S1029
-, 31488  // S1030
-, 31491  // S1031
-, 31494  // S1032
-, 31559  // S1033
-, 31568  // S1034
-, 31575  // S1035
-, 31602  // S1036
-, 31629  // S1037
-, 31632  // S1038
-, 31635  // S1039
-, 31638  // S1040
-, 31659  // S1041
-, 31664  // S1042
-, 31669  // S1043
-, 31672  // S1044
-, 31675  // S1045
-, 31682  // S1046
-, 31691  // S1047
-, 31722  // S1048
-, 31753  // S1049
-, 31784  // S1050
-, 31815  // S1051
-, 31818  // S1052
-, 31849  // S1053
-, 31872  // S1054
-, 31875  // S1055
-, 31878  // S1056
-, 31887  // S1057
-, 31918  // S1058
-, 31921  // S1059
-, 31942  // S1060
-, 31947  // S1061
-, 31950  // S1062
-, 31971  // S1063
-, 31974  // S1064
-, 31979  // S1065
-, 31982  // S1066
-, 31985  // S1067
-, 31988  // S1068
-, 31991  // S1069
-, 31994  // S1070
-, 31997  // S1071
-, 32000  // S1072
-, 32003  // S1073
-, 32006  // S1074
-, 32059  // S1075
-, 32124  // S1076
-, 32127  // S1077
-, 32130  // S1078
-, 32195  // S1079
-, 32202  // S1080
-, 32209  // S1081
-, 32212  // S1082
-, 32217  // S1083
-, 32224  // S1084
-, 32231  // S1085
-, 32234  // S1086
-, 32245  // S1087
-, 32248  // S1088
-, 32313  // S1089
-, 32318  // S1090
-, 32363  // S1091
-, 32412  // S1092
-, 32417  // S1093
-, 32420  // S1094
-, 32423  // S1095
-, 32426  // S1096
-, 32429  // S1097
-, 32432  // S1098
-, 32435  // S1099
-, 32624  // S1100
-, 32669  // S1101
-, 32714  // S1102
-, 32723  // S1103
-, 32732  // S1104
-, 32735  // S1105
-, 32744  // S1106
-, 32751  // S1107
-, 32756  // S1108
-, 32759  // S1109
-, 32944  // S1110
-, 32947  // S1111
-, 33132  // S1112
-, 33137  // S1113
-, 33144  // S1114
-, 33147  // S1115
-, 33150  // S1116
-, 33153  // S1117
-, 33156  // S1118
-, 33201  // S1119
-, 33206  // S1120
-, 33209  // S1121
-, 33214  // S1122
-, 33219  // S1123
-, 33224  // S1124
-, 33227  // S1125
-, 33232  // S1126
-, 33241  // S1127
-, 33246  // S1128
-, 33253  // S1129
-, 33256  // S1130
-, 33263  // S1131
-, 33266  // S1132
-, 33271  // S1133
-, 33274  // S1134
-, 33345  // S1135
-, 33348  // S1136
-, 33459  // S1137
-, 33468  // S1138
-, 33579  // S1139
-, 33582  // S1140
-, 33585  // S1141
-, 33588  // S1142
-, 33659  // S1143
-, 33704  // S1144
-, 33715  // S1145
-, 33720  // S1146
-, 33723  // S1147
-, 33728  // S1148
-, 33737  // S1149
-, 33742  // S1150
-, 33795  // S1151
-, 33798  // S1152
-, 33807  // S1153
-, 33880  // S1154
-, 33883  // S1155
-, 33928  // S1156
-, 33931  // S1157
-, 34002  // S1158
-, 34009  // S1159
-, 34024  // S1160
-, 34027  // S1161
+, 31489  // S1029
+, 31498  // S1030
+, 31505  // S1031
+, 31508  // S1032
+, 31511  // S1033
+, 31514  // S1034
+, 31579  // S1035
+, 31588  // S1036
+, 31595  // S1037
+, 31622  // S1038
+, 31649  // S1039
+, 31652  // S1040
+, 31655  // S1041
+, 31658  // S1042
+, 31679  // S1043
+, 31684  // S1044
+, 31689  // S1045
+, 31692  // S1046
+, 31695  // S1047
+, 31702  // S1048
+, 31711  // S1049
+, 31742  // S1050
+, 31773  // S1051
+, 31804  // S1052
+, 31835  // S1053
+, 31838  // S1054
+, 31869  // S1055
+, 31892  // S1056
+, 31895  // S1057
+, 31898  // S1058
+, 31907  // S1059
+, 31938  // S1060
+, 31941  // S1061
+, 31962  // S1062
+, 31967  // S1063
+, 31970  // S1064
+, 31991  // S1065
+, 31994  // S1066
+, 31999  // S1067
+, 32002  // S1068
+, 32005  // S1069
+, 32008  // S1070
+, 32011  // S1071
+, 32014  // S1072
+, 32017  // S1073
+, 32020  // S1074
+, 32023  // S1075
+, 32026  // S1076
+, 32079  // S1077
+, 32144  // S1078
+, 32147  // S1079
+, 32150  // S1080
+, 32215  // S1081
+, 32222  // S1082
+, 32229  // S1083
+, 32232  // S1084
+, 32237  // S1085
+, 32244  // S1086
+, 32251  // S1087
+, 32254  // S1088
+, 32265  // S1089
+, 32268  // S1090
+, 32333  // S1091
+, 32338  // S1092
+, 32383  // S1093
+, 32432  // S1094
+, 32437  // S1095
+, 32440  // S1096
+, 32443  // S1097
+, 32446  // S1098
+, 32449  // S1099
+, 32452  // S1100
+, 32455  // S1101
+, 32644  // S1102
+, 32689  // S1103
+, 32734  // S1104
+, 32743  // S1105
+, 32752  // S1106
+, 32755  // S1107
+, 32764  // S1108
+, 32771  // S1109
+, 32776  // S1110
+, 32779  // S1111
+, 32964  // S1112
+, 32967  // S1113
+, 33152  // S1114
+, 33157  // S1115
+, 33164  // S1116
+, 33167  // S1117
+, 33170  // S1118
+, 33173  // S1119
+, 33176  // S1120
+, 33221  // S1121
+, 33226  // S1122
+, 33229  // S1123
+, 33234  // S1124
+, 33239  // S1125
+, 33244  // S1126
+, 33247  // S1127
+, 33252  // S1128
+, 33261  // S1129
+, 33266  // S1130
+, 33273  // S1131
+, 33276  // S1132
+, 33283  // S1133
+, 33286  // S1134
+, 33291  // S1135
+, 33294  // S1136
+, 33297  // S1137
+, 33368  // S1138
+, 33371  // S1139
+, 33482  // S1140
+, 33491  // S1141
+, 33602  // S1142
+, 33605  // S1143
+, 33608  // S1144
+, 33611  // S1145
+, 33682  // S1146
+, 33727  // S1147
+, 33738  // S1148
+, 33743  // S1149
+, 33746  // S1150
+, 33751  // S1151
+, 33760  // S1152
+, 33765  // S1153
+, 33818  // S1154
+, 33821  // S1155
+, 33830  // S1156
+, 33903  // S1157
+, 33906  // S1158
+, 33951  // S1159
+, 33954  // S1160
+, 34025  // S1161
 , 34032  // S1162
-, 34041  // S1163
-, 34048  // S1164
+, 34047  // S1163
+, 34050  // S1164
 , 34055  // S1165
-, 34060  // S1166
-, 34063  // S1167
-, 34066  // S1168
-, 34137  // S1169
-, 34142  // S1170
-, 34147  // S1171
-, 34150  // S1172
-, 34153  // S1173
-, 34218  // S1174
-, 34289  // S1175
-, 34298  // S1176
-, 34317  // S1177
-, 34332  // S1178
-, 34335  // S1179
-, 34338  // S1180
-, 34341  // S1181
-, 34406  // S1182
-, 34441  // S1183
-, 34448  // S1184
-, 34451  // S1185
-, 34458  // S1186
-, 34511  // S1187
-, 34514  // S1188
-, 34549  // S1189
-, 34556  // S1190
-, 34609  // S1191
-, 34612  // S1192
-, 34647  // S1193
-, 34686  // S1194
-, 34723  // S1195
-, 34728  // S1196
-, 34733  // S1197
-, 34738  // S1198
-, 34741  // S1199
-, 34744  // S1200
-, 34809  // S1201
-, 34818  // S1202
-, 34821  // S1203
-, 34828  // S1204
-, 34837  // S1205
-, 34842  // S1206
-, 34847  // S1207
-, 34850  // S1208
-, 34859  // S1209
-, 34920  // S1210
-, 34923  // S1211
-, 34928  // S1212
-, 34931  // S1213
-, 34936  // S1214
-, 34939  // S1215
-, 34942  // S1216
-, 35007  // S1217
-, 35012  // S1218
-, 35015  // S1219
-, 35018  // S1220
-, 35027  // S1221
-, 35030  // S1222
-, 35035  // S1223
-, 35038  // S1224
-, 35041  // S1225
-, 35050  // S1226
-, 35055  // S1227
-, 35058  // S1228
-, 35061  // S1229
-, 35082  // S1230
-, 35085  // S1231
-, 35090  // S1232
-, 35093  // S1233
-, 35158  // S1234
-, 35211  // S1235
-, 35216  // S1236
-, 35219  // S1237
-, 35272  // S1238
-, 35279  // S1239
-, 35286  // S1240
-, 35297  // S1241
+, 34064  // S1166
+, 34071  // S1167
+, 34078  // S1168
+, 34083  // S1169
+, 34086  // S1170
+, 34089  // S1171
+, 34160  // S1172
+, 34165  // S1173
+, 34170  // S1174
+, 34173  // S1175
+, 34176  // S1176
+, 34241  // S1177
+, 34312  // S1178
+, 34321  // S1179
+, 34340  // S1180
+, 34355  // S1181
+, 34358  // S1182
+, 34361  // S1183
+, 34364  // S1184
+, 34429  // S1185
+, 34464  // S1186
+, 34471  // S1187
+, 34474  // S1188
+, 34481  // S1189
+, 34534  // S1190
+, 34537  // S1191
+, 34572  // S1192
+, 34579  // S1193
+, 34632  // S1194
+, 34635  // S1195
+, 34670  // S1196
+, 34709  // S1197
+, 34746  // S1198
+, 34751  // S1199
+, 34756  // S1200
+, 34761  // S1201
+, 34764  // S1202
+, 34767  // S1203
+, 34832  // S1204
+, 34841  // S1205
+, 34844  // S1206
+, 34851  // S1207
+, 34860  // S1208
+, 34865  // S1209
+, 34870  // S1210
+, 34873  // S1211
+, 34882  // S1212
+, 34943  // S1213
+, 34946  // S1214
+, 34951  // S1215
+, 34954  // S1216
+, 34959  // S1217
+, 34962  // S1218
+, 34965  // S1219
+, 35030  // S1220
+, 35035  // S1221
+, 35038  // S1222
+, 35041  // S1223
+, 35050  // S1224
+, 35053  // S1225
+, 35058  // S1226
+, 35061  // S1227
+, 35064  // S1228
+, 35073  // S1229
+, 35078  // S1230
+, 35081  // S1231
+, 35084  // S1232
+, 35105  // S1233
+, 35108  // S1234
+, 35113  // S1235
+, 35116  // S1236
+, 35181  // S1237
+, 35234  // S1238
+, 35239  // S1239
+, 35242  // S1240
+, 35295  // S1241
 , 35302  // S1242
-, 35305  // S1243
-, 35312  // S1244
-, 35319  // S1245
-, 35326  // S1246
-, 35337  // S1247
-, 35358  // S1248
-, 35361  // S1249
-, 35364  // S1250
-, 35409  // S1251
-, 35412  // S1252
-, 35601  // S1253
-, 35790  // S1254
-, 35843  // S1255
-, 35854  // S1256
-, 35865  // S1257
-, 35870  // S1258
-, 35873  // S1259
-, 35884  // S1260
+, 35309  // S1243
+, 35320  // S1244
+, 35325  // S1245
+, 35328  // S1246
+, 35335  // S1247
+, 35342  // S1248
+, 35349  // S1249
+, 35360  // S1250
+, 35381  // S1251
+, 35384  // S1252
+, 35387  // S1253
+, 35432  // S1254
+, 35435  // S1255
+, 35624  // S1256
+, 35813  // S1257
+, 35866  // S1258
+, 35877  // S1259
+, 35888  // S1260
 , 35893  // S1261
-, 35902  // S1262
-, 35913  // S1263
-, 35922  // S1264
-, 36111  // S1265
-, 36114  // S1266
-, 36119  // S1267
-, 36308  // S1268
-, 36497  // S1269
-, 36502  // S1270
-, 36505  // S1271
-, 36508  // S1272
-, 36515  // S1273
-, 36518  // S1274
-, 36521  // S1275
-, 36528  // S1276
-, 36533  // S1277
-, 36540  // S1278
-, 36543  // S1279
-, 36548  // S1280
-, 36619  // S1281
-, 36624  // S1282
-, 36633  // S1283
-, 36636  // S1284
-, 36681  // S1285
-, 36688  // S1286
-, 36691  // S1287
-, 36734  // S1288
-, 36737  // S1289
-, 36808  // S1290
-, 36853  // S1291
-, 36856  // S1292
-, 36927  // S1293
-, 36932  // S1294
-, 36935  // S1295
-, 36940  // S1296
-, 36949  // S1297
-, 36954  // S1298
-, 36959  // S1299
-, 36962  // S1300
-, 36965  // S1301
-, 36970  // S1302
-, 37015  // S1303
-, 37060  // S1304
-, 37105  // S1305
-, 37110  // S1306
-, 37113  // S1307
-, 37118  // S1308
-, 37121  // S1309
-, 37126  // S1310
-, 37129  // S1311
-, 37132  // S1312
-, 37135  // S1313
-, 37188  // S1314
-, 37191  // S1315
-, 37194  // S1316
-, 37259  // S1317
-, 37324  // S1318
-, 37331  // S1319
-, 37334  // S1320
-, 37351  // S1321
+, 35896  // S1262
+, 35907  // S1263
+, 35916  // S1264
+, 35925  // S1265
+, 35936  // S1266
+, 35945  // S1267
+, 36134  // S1268
+, 36137  // S1269
+, 36142  // S1270
+, 36331  // S1271
+, 36520  // S1272
+, 36525  // S1273
+, 36528  // S1274
+, 36531  // S1275
+, 36538  // S1276
+, 36541  // S1277
+, 36544  // S1278
+, 36551  // S1279
+, 36556  // S1280
+, 36563  // S1281
+, 36566  // S1282
+, 36571  // S1283
+, 36642  // S1284
+, 36647  // S1285
+, 36656  // S1286
+, 36659  // S1287
+, 36704  // S1288
+, 36711  // S1289
+, 36714  // S1290
+, 36757  // S1291
+, 36760  // S1292
+, 36831  // S1293
+, 36876  // S1294
+, 36879  // S1295
+, 36950  // S1296
+, 36955  // S1297
+, 36958  // S1298
+, 36963  // S1299
+, 36972  // S1300
+, 36977  // S1301
+, 36982  // S1302
+, 36985  // S1303
+, 36988  // S1304
+, 36993  // S1305
+, 37038  // S1306
+, 37083  // S1307
+, 37128  // S1308
+, 37133  // S1309
+, 37136  // S1310
+, 37141  // S1311
+, 37144  // S1312
+, 37149  // S1313
+, 37152  // S1314
+, 37155  // S1315
+, 37158  // S1316
+, 37211  // S1317
+, 37214  // S1318
+, 37217  // S1319
+, 37282  // S1320
+, 37347  // S1321
 , 37354  // S1322
-, 37419  // S1323
-, 37484  // S1324
-, 37487  // S1325
-, 37540  // S1326
-, 37575  // S1327
-, 37616  // S1328
-, 37619  // S1329
-, 37654  // S1330
-, 37663  // S1331
-, 37666  // S1332
-, 37673  // S1333
-, 37710  // S1334
-, 37755  // S1335
-, 37790  // S1336
-, 37795  // S1337
-, 37860  // S1338
-, 37863  // S1339
-, 37866  // S1340
-, 37931  // S1341
-, 38002  // S1342
-, 38005  // S1343
-, 38008  // S1344
-, 38011  // S1345
-, 38014  // S1346
-, 38023  // S1347
-, 38026  // S1348
-, 38071  // S1349
-, 38140  // S1350
-, 38201  // S1351
-, 38262  // S1352
-, 38273  // S1353
-, 38336  // S1354
-, 38339  // S1355
-, 38402  // S1356
-, 38417  // S1357
-, 38480  // S1358
-, 38483  // S1359
-, 38486  // S1360
-, 38489  // S1361
-, 38492  // S1362
-, 38495  // S1363
-, 38498  // S1364
-, 38501  // S1365
-, 38512  // S1366
+, 37357  // S1323
+, 37374  // S1324
+, 37377  // S1325
+, 37442  // S1326
+, 37507  // S1327
+, 37510  // S1328
+, 37563  // S1329
+, 37598  // S1330
+, 37639  // S1331
+, 37642  // S1332
+, 37677  // S1333
+, 37686  // S1334
+, 37689  // S1335
+, 37696  // S1336
+, 37733  // S1337
+, 37778  // S1338
+, 37813  // S1339
+, 37818  // S1340
+, 37883  // S1341
+, 37886  // S1342
+, 37889  // S1343
+, 37954  // S1344
+, 38025  // S1345
+, 38028  // S1346
+, 38031  // S1347
+, 38034  // S1348
+, 38037  // S1349
+, 38046  // S1350
+, 38049  // S1351
+, 38094  // S1352
+, 38163  // S1353
+, 38224  // S1354
+, 38285  // S1355
+, 38296  // S1356
+, 38359  // S1357
+, 38362  // S1358
+, 38425  // S1359
+, 38440  // S1360
+, 38503  // S1361
+, 38506  // S1362
+, 38509  // S1363
+, 38512  // S1364
+, 38515  // S1365
+, 38518  // S1366
 , 38521  // S1367
-, 38530  // S1368
-, 38539  // S1369
-, 38548  // S1370
-, 38557  // S1371
-, 38560  // S1372
-, 38563  // S1373
-, 38566  // S1374
-, 38569  // S1375
-, 38574  // S1376
-, 38577  // S1377
-, 38608  // S1378
-, 38633  // S1379
-, 38636  // S1380
-, 38639  // S1381
-, 38642  // S1382
-, 38655  // S1383
-, 38658  // S1384
-, 38723  // S1385
-, 38726  // S1386
-, 38731  // S1387
-, 38736  // S1388
-, 38741  // S1389
-, 38748  // S1390
-, 38755  // S1391
-, 38770  // S1392
-, 38777  // S1393
-, 38966  // S1394
-, 38973  // S1395
-, 39162  // S1396
-, 39165  // S1397
-, 39168  // S1398
-, 39171  // S1399
-, 39182  // S1400
-, 39189  // S1401
-, 39192  // S1402
-, 39199  // S1403
-, 39202  // S1404
-, 39205  // S1405
-, 39208  // S1406
-, 39213  // S1407
-, 39218  // S1408
-, 39225  // S1409
-, 39230  // S1410
-, 39235  // S1411
-, 39238  // S1412
-, 39241  // S1413
-, 39244  // S1414
-, 39253  // S1415
-, 39256  // S1416
-, 39309  // S1417
-, 39312  // S1418
-, 39383  // S1419
-, 39456  // S1420
-, 39509  // S1421
-, 39514  // S1422
-, 39529  // S1423
+, 38524  // S1368
+, 38535  // S1369
+, 38544  // S1370
+, 38553  // S1371
+, 38562  // S1372
+, 38571  // S1373
+, 38580  // S1374
+, 38583  // S1375
+, 38586  // S1376
+, 38589  // S1377
+, 38592  // S1378
+, 38597  // S1379
+, 38600  // S1380
+, 38631  // S1381
+, 38656  // S1382
+, 38659  // S1383
+, 38662  // S1384
+, 38665  // S1385
+, 38678  // S1386
+, 38681  // S1387
+, 38746  // S1388
+, 38749  // S1389
+, 38754  // S1390
+, 38759  // S1391
+, 38764  // S1392
+, 38771  // S1393
+, 38778  // S1394
+, 38793  // S1395
+, 38800  // S1396
+, 38989  // S1397
+, 38996  // S1398
+, 39185  // S1399
+, 39188  // S1400
+, 39191  // S1401
+, 39194  // S1402
+, 39205  // S1403
+, 39212  // S1404
+, 39215  // S1405
+, 39222  // S1406
+, 39225  // S1407
+, 39228  // S1408
+, 39231  // S1409
+, 39236  // S1410
+, 39241  // S1411
+, 39248  // S1412
+, 39253  // S1413
+, 39258  // S1414
+, 39261  // S1415
+, 39264  // S1416
+, 39267  // S1417
+, 39276  // S1418
+, 39279  // S1419
+, 39332  // S1420
+, 39335  // S1421
+, 39406  // S1422
+, 39479  // S1423
 , 39532  // S1424
-, 39535  // S1425
-, 39538  // S1426
-, 39541  // S1427
-, 39612  // S1428
-, 39617  // S1429
-, 39622  // S1430
-, 39627  // S1431
-, 39636  // S1432
-, 39639  // S1433
-, 39646  // S1434
-, 39653  // S1435
-, 39656  // S1436
-, 39709  // S1437
-, 39714  // S1438
-, 39717  // S1439
-, 39726  // S1440
-, 39743  // S1441
-, 39758  // S1442
-, 39763  // S1443
+, 39537  // S1425
+, 39552  // S1426
+, 39555  // S1427
+, 39558  // S1428
+, 39561  // S1429
+, 39564  // S1430
+, 39635  // S1431
+, 39640  // S1432
+, 39645  // S1433
+, 39650  // S1434
+, 39659  // S1435
+, 39662  // S1436
+, 39669  // S1437
+, 39676  // S1438
+, 39679  // S1439
+, 39732  // S1440
+, 39737  // S1441
+, 39740  // S1442
+, 39749  // S1443
 , 39766  // S1444
-, 39801  // S1445
-, 39836  // S1446
-, 39871  // S1447
-, 39874  // S1448
-, 39877  // S1449
-, 39912  // S1450
-, 39953  // S1451
-, 39988  // S1452
-, 39991  // S1453
-, 40044  // S1454
-, 40109  // S1455
-, 40174  // S1456
-, 40177  // S1457
-, 40184  // S1458
+, 39781  // S1445
+, 39786  // S1446
+, 39789  // S1447
+, 39824  // S1448
+, 39859  // S1449
+, 39894  // S1450
+, 39897  // S1451
+, 39900  // S1452
+, 39935  // S1453
+, 39976  // S1454
+, 40011  // S1455
+, 40014  // S1456
+, 40067  // S1457
+, 40132  // S1458
 , 40197  // S1459
-, 40260  // S1460
-, 40265  // S1461
-, 40332  // S1462
-, 40399  // S1463
-, 40402  // S1464
-, 40405  // S1465
-, 40408  // S1466
-, 40469  // S1467
-, 40514  // S1468
-, 40559  // S1469
-, 40566  // S1470
-, 40613  // S1471
-, 40628  // S1472
-, 40675  // S1473
-, 40678  // S1474
-, 40685  // S1475
-, 40688  // S1476
-, 40695  // S1477
-, 40700  // S1478
-, 40703  // S1479
-, 40710  // S1480
-, 40721  // S1481
+, 40200  // S1460
+, 40207  // S1461
+, 40220  // S1462
+, 40283  // S1463
+, 40288  // S1464
+, 40355  // S1465
+, 40422  // S1466
+, 40425  // S1467
+, 40428  // S1468
+, 40431  // S1469
+, 40492  // S1470
+, 40537  // S1471
+, 40582  // S1472
+, 40589  // S1473
+, 40636  // S1474
+, 40651  // S1475
+, 40698  // S1476
+, 40701  // S1477
+, 40708  // S1478
+, 40711  // S1479
+, 40718  // S1480
+, 40723  // S1481
 , 40726  // S1482
-, 40731  // S1483
-, 40740  // S1484
-, 40745  // S1485
-, 40750  // S1486
-, 40755  // S1487
-, 40786  // S1488
-, 40789  // S1489
-, 40814  // S1490
-, 40817  // S1491
-, 40848  // S1492
-, 40873  // S1493
-, 40878  // S1494
-, 40881  // S1495
-, 40946  // S1496
-, 40955  // S1497
-, 41020  // S1498
-, 41023  // S1499
-, 41026  // S1500
-, 41029  // S1501
-, 41038  // S1502
-, 41043  // S1503
-, 41054  // S1504
-, 41065  // S1505
-, 41068  // S1506
-, 41071  // S1507
-, 41076  // S1508
-, 41081  // S1509
-, 41154  // S1510
-, 41157  // S1511
-, 41164  // S1512
+, 40733  // S1483
+, 40744  // S1484
+, 40749  // S1485
+, 40754  // S1486
+, 40763  // S1487
+, 40768  // S1488
+, 40773  // S1489
+, 40778  // S1490
+, 40809  // S1491
+, 40812  // S1492
+, 40837  // S1493
+, 40840  // S1494
+, 40871  // S1495
+, 40896  // S1496
+, 40901  // S1497
+, 40904  // S1498
+, 40969  // S1499
+, 40978  // S1500
+, 41043  // S1501
+, 41046  // S1502
+, 41049  // S1503
+, 41052  // S1504
+, 41061  // S1505
+, 41066  // S1506
+, 41077  // S1507
+, 41088  // S1508
+, 41091  // S1509
+, 41094  // S1510
+, 41099  // S1511
+, 41104  // S1512
 , 41177  // S1513
 , 41180  // S1514
-, 41251  // S1515
-, 41254  // S1516
-, 41259  // S1517
-, 41262  // S1518
-, 41267  // S1519
-, 41320  // S1520
-, 41325  // S1521
-, 41396  // S1522
-, 41401  // S1523
-, 41404  // S1524
-, 41409  // S1525
-, 41414  // S1526
-, 41467  // S1527
-, 41470  // S1528
-, 41523  // S1529
-, 41526  // S1530
-, 41529  // S1531
-, 41564  // S1532
-, 41617  // S1533
-, 41652  // S1534
-, 41687  // S1535
-, 41690  // S1536
-, 41699  // S1537
-, 41702  // S1538
-, 41705  // S1539
-, 41714  // S1540
-, 41723  // S1541
-, 41732  // S1542
-, 41741  // S1543
+, 41187  // S1515
+, 41200  // S1516
+, 41203  // S1517
+, 41274  // S1518
+, 41277  // S1519
+, 41282  // S1520
+, 41285  // S1521
+, 41290  // S1522
+, 41343  // S1523
+, 41348  // S1524
+, 41419  // S1525
+, 41424  // S1526
+, 41427  // S1527
+, 41432  // S1528
+, 41437  // S1529
+, 41490  // S1530
+, 41493  // S1531
+, 41546  // S1532
+, 41549  // S1533
+, 41552  // S1534
+, 41587  // S1535
+, 41640  // S1536
+, 41675  // S1537
+, 41710  // S1538
+, 41713  // S1539
+, 41722  // S1540
+, 41725  // S1541
+, 41728  // S1542
+, 41737  // S1543
 , 41746  // S1544
-, 41749  // S1545
-, 41814  // S1546
-, 41879  // S1547
-, 41940  // S1548
-, 42001  // S1549
-, 42004  // S1550
-, 42007  // S1551
-, 42010  // S1552
-, 42073  // S1553
-, 42138  // S1554
-, 42143  // S1555
-, 42148  // S1556
-, 42151  // S1557
+, 41755  // S1545
+, 41764  // S1546
+, 41769  // S1547
+, 41772  // S1548
+, 41837  // S1549
+, 41902  // S1550
+, 41963  // S1551
+, 42024  // S1552
+, 42027  // S1553
+, 42030  // S1554
+, 42033  // S1555
+, 42096  // S1556
+, 42161  // S1557
 , 42166  // S1558
-, 42173  // S1559
-, 42178  // S1560
-, 42183  // S1561
-, 42194  // S1562
-, 42205  // S1563
-, 42212  // S1564
-, 42215  // S1565
-, 42218  // S1566
-, 42227  // S1567
-, 42230  // S1568
-, 42233  // S1569
-, 42236  // S1570
-, 42243  // S1571
-, 42268  // S1572
-, 42273  // S1573
-, 42278  // S1574
-, 42287  // S1575
-, 42290  // S1576
-, 42303  // S1577
+, 42171  // S1559
+, 42174  // S1560
+, 42189  // S1561
+, 42196  // S1562
+, 42201  // S1563
+, 42206  // S1564
+, 42217  // S1565
+, 42228  // S1566
+, 42235  // S1567
+, 42238  // S1568
+, 42241  // S1569
+, 42250  // S1570
+, 42253  // S1571
+, 42256  // S1572
+, 42259  // S1573
+, 42266  // S1574
+, 42291  // S1575
+, 42296  // S1576
+, 42301  // S1577
 , 42310  // S1578
 , 42313  // S1579
-, 42318  // S1580
-, 42323  // S1581
-, 42326  // S1582
-, 42367  // S1583
-, 42420  // S1584
-, 42425  // S1585
-, 42428  // S1586
-, 42431  // S1587
-, 42438  // S1588
-, 42445  // S1589
-, 42448  // S1590
-, 42519  // S1591
-, 42590  // S1592
-, 42593  // S1593
-, 42598  // S1594
-, 42601  // S1595
-, 42608  // S1596
-, 42661  // S1597
-, 42664  // S1598
-, 42667  // S1599
-, 42670  // S1600
-, 42673  // S1601
-, 42738  // S1602
-, 42747  // S1603
-, 42754  // S1604
-, 42757  // S1605
-, 42760  // S1606
-, 42767  // S1607
-, 42772  // S1608
-, 42777  // S1609
-, 42786  // S1610
+, 42326  // S1580
+, 42333  // S1581
+, 42336  // S1582
+, 42341  // S1583
+, 42346  // S1584
+, 42349  // S1585
+, 42390  // S1586
+, 42443  // S1587
+, 42448  // S1588
+, 42451  // S1589
+, 42454  // S1590
+, 42461  // S1591
+, 42468  // S1592
+, 42471  // S1593
+, 42542  // S1594
+, 42613  // S1595
+, 42616  // S1596
+, 42621  // S1597
+, 42624  // S1598
+, 42631  // S1599
+, 42684  // S1600
+, 42687  // S1601
+, 42690  // S1602
+, 42693  // S1603
+, 42696  // S1604
+, 42761  // S1605
+, 42770  // S1606
+, 42777  // S1607
+, 42780  // S1608
+, 42783  // S1609
+, 42790  // S1610
 , 42795  // S1611
 , 42800  // S1612
-, 42805  // S1613
-, 42814  // S1614
+, 42809  // S1613
+, 42818  // S1614
 , 42823  // S1615
 , 42828  // S1616
-, 42831  // S1617
-, 42834  // S1618
-, 42837  // S1619
-, 42900  // S1620
-, 42905  // S1621
-, 42910  // S1622
-, 42971  // S1623
-, 43016  // S1624
-, 43077  // S1625
-, 43092  // S1626
-, 43095  // S1627
-, 43158  // S1628
-, 43165  // S1629
-, 43172  // S1630
+, 42837  // S1617
+, 42846  // S1618
+, 42851  // S1619
+, 42854  // S1620
+, 42857  // S1621
+, 42860  // S1622
+, 42923  // S1623
+, 42928  // S1624
+, 42933  // S1625
+, 42994  // S1626
+, 43039  // S1627
+, 43100  // S1628
+, 43115  // S1629
+, 43118  // S1630
 , 43181  // S1631
-, 43190  // S1632
-, 43197  // S1633
+, 43188  // S1632
+, 43195  // S1633
 , 43204  // S1634
-, 43209  // S1635
-, 43212  // S1636
-, 43215  // S1637
-, 43220  // S1638
-, 43225  // S1639
-, 43230  // S1640
-, 43235  // S1641
-, 43242  // S1642
-, 43249  // S1643
-, 43252  // S1644
-, 43257  // S1645
-, 43262  // S1646
-, 43283  // S1647
-, 43288  // S1648
-, 43297  // S1649
-, 43302  // S1650
-, 43305  // S1651
-, 43310  // S1652
-, 43315  // S1653
-, 43318  // S1654
-, 43341  // S1655
-, 43348  // S1656
-, 43355  // S1657
-, 43358  // S1658
-, 43365  // S1659
-, 43374  // S1660
-, 43379  // S1661
-, 43382  // S1662
-, 43387  // S1663
-, 43440  // S1664
-, 43443  // S1665
-, 43450  // S1666
-, 43453  // S1667
-, 43526  // S1668
-, 43529  // S1669
-, 43534  // S1670
-, 43537  // S1671
-, 43602  // S1672
-, 43637  // S1673
-, 43644  // S1674
-, 43647  // S1675
-, 43650  // S1676
-, 43663  // S1677
-, 43666  // S1678
+, 43213  // S1635
+, 43220  // S1636
+, 43227  // S1637
+, 43232  // S1638
+, 43235  // S1639
+, 43238  // S1640
+, 43243  // S1641
+, 43248  // S1642
+, 43253  // S1643
+, 43258  // S1644
+, 43265  // S1645
+, 43272  // S1646
+, 43275  // S1647
+, 43280  // S1648
+, 43285  // S1649
+, 43306  // S1650
+, 43311  // S1651
+, 43320  // S1652
+, 43325  // S1653
+, 43328  // S1654
+, 43333  // S1655
+, 43338  // S1656
+, 43341  // S1657
+, 43364  // S1658
+, 43371  // S1659
+, 43378  // S1660
+, 43381  // S1661
+, 43388  // S1662
+, 43397  // S1663
+, 43402  // S1664
+, 43405  // S1665
+, 43410  // S1666
+, 43463  // S1667
+, 43466  // S1668
+, 43473  // S1669
+, 43476  // S1670
+, 43549  // S1671
+, 43552  // S1672
+, 43557  // S1673
+, 43560  // S1674
+, 43625  // S1675
+, 43660  // S1676
+, 43667  // S1677
+, 43670  // S1678
 , 43673  // S1679
-, 43676  // S1680
-, 43683  // S1681
-, 43686  // S1682
-, 43693  // S1683
-, 43696  // S1684
-, 43703  // S1685
-, 43706  // S1686
-, 43711  // S1687
-, 43778  // S1688
-, 43785  // S1689
-, 43788  // S1690
-, 43849  // S1691
-, 43852  // S1692
-, 43913  // S1693
-, 43916  // S1694
-, 43921  // S1695
-, 43924  // S1696
-, 43929  // S1697
-, 43992  // S1698
-, 43999  // S1699
-, 44006  // S1700
-, 44013  // S1701
+, 43686  // S1680
+, 43689  // S1681
+, 43696  // S1682
+, 43699  // S1683
+, 43706  // S1684
+, 43709  // S1685
+, 43716  // S1686
+, 43719  // S1687
+, 43726  // S1688
+, 43729  // S1689
+, 43734  // S1690
+, 43801  // S1691
+, 43808  // S1692
+, 43811  // S1693
+, 43872  // S1694
+, 43875  // S1695
+, 43936  // S1696
+, 43939  // S1697
+, 43944  // S1698
+, 43947  // S1699
+, 43952  // S1700
+, 44015  // S1701
 , 44022  // S1702
 , 44029  // S1703
-, 44038  // S1704
-, 44047  // S1705
-, 44056  // S1706
-, 44069  // S1707
-, 44072  // S1708
+, 44036  // S1704
+, 44045  // S1705
+, 44052  // S1706
+, 44061  // S1707
+, 44070  // S1708
 , 44079  // S1709
-, 44082  // S1710
-, 44085  // S1711
-, 44088  // S1712
-, 44093  // S1713
-, 44096  // S1714
-, 44099  // S1715
-, 44102  // S1716
-, 44105  // S1717
-, 44108  // S1718
-, 44139  // S1719
-, 44170  // S1720
-, 44195  // S1721
-, 44218  // S1722
-, 44221  // S1723
-, 44226  // S1724
-, 44235  // S1725
-, 44238  // S1726
-, 44241  // S1727
-, 44244  // S1728
-, 44315  // S1729
-, 44318  // S1730
-, 44321  // S1731
-, 44330  // S1732
-, 44335  // S1733
-, 44340  // S1734
-, 44345  // S1735
-, 44350  // S1736
-, 44353  // S1737
-, 44358  // S1738
-, 44363  // S1739
-, 44426  // S1740
-, 44431  // S1741
-, 44494  // S1742
-, 44499  // S1743
-, 44562  // S1744
-, 44623  // S1745
-, 44626  // S1746
-, 44687  // S1747
-, 44748  // S1748
-, 44793  // S1749
-, 44796  // S1750
-, 44801  // S1751
-, 44806  // S1752
-, 44815  // S1753
-, 44818  // S1754
-, 44821  // S1755
-, 44830  // S1756
-, 44833  // S1757
-, 44836  // S1758
-, 44839  // S1759
-, 44842  // S1760
-, 44845  // S1761
-, 44848  // S1762
-, 44853  // S1763
-, 44860  // S1764
-, 44865  // S1765
-, 44930  // S1766
-, 44933  // S1767
-, 44964  // S1768
-, 44969  // S1769
-, 44972  // S1770
-, 45003  // S1771
-, 45006  // S1772
-, 45009  // S1773
-, 45012  // S1774
-, 45017  // S1775
-, 45026  // S1776
-, 45033  // S1777
-, 45036  // S1778
-, 45039  // S1779
-, 45042  // S1780
-, 45045  // S1781
-, 45050  // S1782
-, 45113  // S1783
-, 45116  // S1784
-, 45119  // S1785
-, 45122  // S1786
-, 45185  // S1787
-, 45188  // S1788
-, 45191  // S1789
-, 45196  // S1790
-, 45199  // S1791
-, 45202  // S1792
-, 45207  // S1793
-, 45212  // S1794
-, 45217  // S1795
-, 45220  // S1796
-, 45225  // S1797
-, 45228  // S1798
-, 45231  // S1799
-, 45234  // S1800
-, 45239  // S1801
-, 45242  // S1802
-, 45249  // S1803
-, 45314  // S1804
-, 45317  // S1805
-, 45380  // S1806
-, 45441  // S1807
-, 45446  // S1808
-, 45451  // S1809
-, 45458  // S1810
+, 44092  // S1710
+, 44095  // S1711
+, 44102  // S1712
+, 44105  // S1713
+, 44108  // S1714
+, 44111  // S1715
+, 44116  // S1716
+, 44119  // S1717
+, 44122  // S1718
+, 44125  // S1719
+, 44128  // S1720
+, 44131  // S1721
+, 44162  // S1722
+, 44193  // S1723
+, 44218  // S1724
+, 44241  // S1725
+, 44244  // S1726
+, 44249  // S1727
+, 44258  // S1728
+, 44261  // S1729
+, 44264  // S1730
+, 44267  // S1731
+, 44338  // S1732
+, 44341  // S1733
+, 44344  // S1734
+, 44353  // S1735
+, 44358  // S1736
+, 44363  // S1737
+, 44368  // S1738
+, 44373  // S1739
+, 44376  // S1740
+, 44381  // S1741
+, 44386  // S1742
+, 44449  // S1743
+, 44454  // S1744
+, 44517  // S1745
+, 44522  // S1746
+, 44585  // S1747
+, 44646  // S1748
+, 44649  // S1749
+, 44710  // S1750
+, 44771  // S1751
+, 44816  // S1752
+, 44819  // S1753
+, 44824  // S1754
+, 44829  // S1755
+, 44838  // S1756
+, 44841  // S1757
+, 44844  // S1758
+, 44853  // S1759
+, 44856  // S1760
+, 44859  // S1761
+, 44862  // S1762
+, 44865  // S1763
+, 44868  // S1764
+, 44871  // S1765
+, 44876  // S1766
+, 44883  // S1767
+, 44888  // S1768
+, 44953  // S1769
+, 44956  // S1770
+, 44987  // S1771
+, 44992  // S1772
+, 44995  // S1773
+, 45026  // S1774
+, 45029  // S1775
+, 45032  // S1776
+, 45035  // S1777
+, 45040  // S1778
+, 45049  // S1779
+, 45056  // S1780
+, 45059  // S1781
+, 45062  // S1782
+, 45065  // S1783
+, 45068  // S1784
+, 45073  // S1785
+, 45136  // S1786
+, 45139  // S1787
+, 45142  // S1788
+, 45145  // S1789
+, 45208  // S1790
+, 45211  // S1791
+, 45214  // S1792
+, 45219  // S1793
+, 45222  // S1794
+, 45225  // S1795
+, 45230  // S1796
+, 45235  // S1797
+, 45240  // S1798
+, 45243  // S1799
+, 45248  // S1800
+, 45251  // S1801
+, 45254  // S1802
+, 45257  // S1803
+, 45262  // S1804
+, 45265  // S1805
+, 45272  // S1806
+, 45337  // S1807
+, 45340  // S1808
+, 45403  // S1809
+, 45464  // S1810
 , 45469  // S1811
-, 45472  // S1812
-, 45477  // S1813
-, 45482  // S1814
-, 45487  // S1815
-, 45494  // S1816
-, 45497  // S1817
-, 45500  // S1818
-, 45509  // S1819
-, 45512  // S1820
-, 45517  // S1821
+, 45474  // S1812
+, 45481  // S1813
+, 45492  // S1814
+, 45495  // S1815
+, 45500  // S1816
+, 45505  // S1817
+, 45510  // S1818
+, 45517  // S1819
+, 45520  // S1820
+, 45523  // S1821
+, 45532  // S1822
+, 45535  // S1823
+, 45540  // S1824
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -29095,221 +29114,224 @@ static const int32_t gSuccessorTable_galgas4Grammar_701 [3] = {109, 928, -1} ;
 static const int32_t gSuccessorTable_galgas4Grammar_703 [5] = {0, 936,
   111, 937, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_704 [3] = {116, 941, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_704 [9] = {10, 941,
+  11, 942,
+  94, 226,
+  116, 943, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_705 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 942,
+  9, 944,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_711 [5] = {5, 943,
+static const int32_t gSuccessorTable_galgas4Grammar_711 [5] = {5, 945,
   86, 456, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_714 [3] = {0, 946, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_714 [3] = {0, 948, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_718 [3] = {0, 948, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_718 [3] = {0, 950, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_719 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 949,
+  9, 951,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_721 [3] = {243, 951, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_721 [3] = {243, 953, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_723 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 952,
+  9, 954,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_728 [3] = {148, 954, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_728 [3] = {148, 956, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_729 [3] = {152, 956, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_729 [3] = {152, 958, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_730 [3] = {160, 958, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_730 [3] = {160, 960, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_732 [3] = {244, 715, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_733 [3] = {157, 961, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_733 [3] = {157, 963, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_734 [5] = {155, 964,
-  156, 965, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_734 [5] = {155, 966,
+  156, 967, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_735 [3] = {162, 966, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_735 [3] = {162, 968, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_736 [3] = {163, 968, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_736 [3] = {163, 970, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_741 [3] = {29, 972, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_741 [3] = {29, 974, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_744 [3] = {182, 973, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_744 [3] = {182, 975, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_745 [9] = {20, 974,
+static const int32_t gSuccessorTable_galgas4Grammar_745 [9] = {20, 976,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_747 [7] = {4, 976,
+static const int32_t gSuccessorTable_galgas4Grammar_747 [7] = {4, 978,
   82, 638,
   84, 639, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_748 [3] = {188, 978, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_748 [3] = {188, 980, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_750 [5] = {26, 981,
-  149, 982, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_750 [5] = {26, 983,
+  149, 984, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_752 [25] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 984,
+  9, 986,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
-  32, 985,
+  32, 987,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_756 [7] = {66, 988,
-  67, 989,
-  270, 990, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_756 [7] = {66, 990,
+  67, 991,
+  270, 992, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_757 [3] = {217, 991, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_757 [3] = {217, 993, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_761 [3] = {0, 993, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_761 [3] = {0, 995, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_762 [3] = {222, 995, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_762 [3] = {222, 997, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_764 [3] = {233, 998, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_764 [3] = {233, 1000, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_768 [11] = {34, 768,
   49, 769,
   50, 300,
-  236, 999,
+  236, 1001,
   252, 302, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_769 [11] = {34, 768,
   49, 769,
   50, 300,
-  236, 1000,
+  236, 1002,
   252, 302, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_771 [9] = {20, 1002,
+static const int32_t gSuccessorTable_galgas4Grammar_771 [9] = {20, 1004,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_775 [3] = {17, 1006, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_775 [3] = {17, 1008, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_776 [3] = {15, 1007, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_776 [3] = {15, 1009, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_777 [3] = {15, 1008, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_777 [3] = {15, 1010, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_781 [3] = {17, 1012, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_781 [3] = {17, 1014, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_782 [3] = {15, 1013, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_782 [3] = {15, 1015, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_788 [3] = {48, 1020, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_788 [3] = {48, 1022, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_789 [9] = {20, 1021,
+static const int32_t gSuccessorTable_galgas4Grammar_789 [9] = {20, 1023,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_792 [3] = {17, 1024, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_792 [3] = {17, 1026, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_793 [3] = {15, 1025, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_793 [3] = {15, 1027, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_794 [3] = {292, 1027, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_794 [3] = {292, 1029, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_798 [7] = {73, 798,
   75, 799,
-  295, 1030, -1} ;
+  295, 1032, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_799 [7] = {73, 798,
   75, 799,
-  295, 1031, -1} ;
+  295, 1033, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_801 [5] = {15, 1033,
-  74, 1034, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_801 [5] = {15, 1035,
+  74, 1036, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_805 [11] = {34, 1035,
-  49, 1036,
+static const int32_t gSuccessorTable_galgas4Grammar_805 [11] = {34, 1037,
+  49, 1038,
   50, 300,
-  221, 1037,
+  221, 1039,
   252, 302, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_813 [3] = {263, 1041, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_813 [3] = {263, 1043, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_814 [3] = {263, 1042, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_814 [3] = {263, 1044, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_825 [3] = {68, 1052, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_825 [3] = {68, 1054, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_826 [5] = {55, 1053,
-  275, 1054, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_826 [5] = {55, 1055,
+  275, 1056, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_830 [5] = {55, 830,
-  257, 1058, -1} ;
+  257, 1060, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_832 [3] = {261, 1060, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_832 [3] = {261, 1062, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_836 [3] = {269, 1061, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_836 [3] = {269, 1063, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_845 [3] = {211, 1066, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_845 [3] = {211, 1068, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_847 [3] = {212, 1069, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_847 [3] = {212, 1071, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_849 [3] = {247, 1071, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_849 [3] = {247, 1073, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_850 [3] = {123, 1073, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_850 [3] = {123, 1075, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_853 [3] = {37, 1075, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_853 [3] = {37, 1077, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_854 [3] = {131, 1077, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_854 [3] = {131, 1079, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_856 [5] = {229, 1081,
-  231, 1082, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_856 [5] = {229, 1083,
+  231, 1084, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_857 [3] = {232, 1085, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_857 [3] = {232, 1087, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_858 [3] = {15, 1086, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_858 [3] = {15, 1088, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_872 [3] = {83, 1092, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_872 [3] = {83, 1094, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_877 [3] = {93, 1098, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_877 [3] = {93, 1100, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_879 [5] = {176, 1104,
-  177, 1105, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_879 [5] = {176, 1106,
+  177, 1107, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_880 [3] = {175, 1107, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_880 [3] = {175, 1109, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_881 [3] = {100, 1109, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_881 [3] = {100, 1111, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_882 [7] = {4, 1110,
+static const int32_t gSuccessorTable_galgas4Grammar_882 [7] = {4, 1112,
   82, 638,
   84, 639, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_883 [3] = {100, 1111, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_883 [3] = {100, 1113, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_907 [27] = {2, 214,
   3, 215,
@@ -29319,7 +29341,7 @@ static const int32_t gSuccessorTable_galgas4Grammar_907 [27] = {2, 214,
   9, 674,
   10, 220,
   11, 221,
-  12, 1112,
+  12, 1114,
   13, 222,
   14, 223,
   94, 226,
@@ -29336,17 +29358,17 @@ static const int32_t gSuccessorTable_galgas4Grammar_910 [25] = {2, 214,
   13, 222,
   14, 223,
   94, 226,
-  99, 1113, -1} ;
+  99, 1115, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_912 [7] = {4, 1114,
+static const int32_t gSuccessorTable_galgas4Grammar_912 [7] = {4, 1116,
   82, 638,
   84, 639, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_914 [7] = {4, 1115,
+static const int32_t gSuccessorTable_galgas4Grammar_914 [7] = {4, 1117,
   82, 638,
   84, 639, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_920 [9] = {20, 1116,
+static const int32_t gSuccessorTable_galgas4Grammar_920 [9] = {20, 1118,
   24, 118,
   25, 119,
   125, 120, -1} ;
@@ -29362,11 +29384,11 @@ static const int32_t gSuccessorTable_galgas4Grammar_921 [29] = {2, 214,
   13, 222,
   14, 223,
   19, 224,
-  30, 1117,
+  30, 1119,
   94, 226,
   173, 227, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_924 [3] = {86, 1118, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_924 [3] = {86, 1120, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_926 [3] = {146, 692, -1} ;
 
@@ -29380,70 +29402,56 @@ static const int32_t gSuccessorTable_galgas4Grammar_927 [31] = {2, 214,
   11, 221,
   13, 222,
   14, 223,
-  16, 1119,
+  16, 1121,
   94, 226,
   110, 703,
   115, 704,
   118, 705, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_930 [3] = {18, 1121, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_930 [3] = {18, 1123, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_932 [3] = {18, 1123, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_932 [3] = {18, 1125, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_933 [3] = {18, 1125, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_933 [3] = {18, 1127, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_934 [5] = {0, 1126,
-  113, 1127, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_934 [5] = {0, 1128,
+  113, 1129, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_935 [5] = {0, 1128,
-  112, 1129, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_935 [5] = {0, 1130,
+  112, 1131, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_938 [3] = {117, 1132, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_939 [3] = {117, 1134, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_944 [3] = {146, 692, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_946 [3] = {146, 692, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_945 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_947 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1134,
+  9, 1137,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_946 [3] = {244, 1135, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_948 [3] = {244, 1138, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_950 [3] = {0, 1137, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_952 [3] = {0, 1140, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_953 [3] = {186, 1140, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_955 [3] = {186, 1143, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_956 [5] = {26, 1142,
-  149, 982, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_958 [5] = {26, 1145,
+  149, 984, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_960 [7] = {0, 1144,
-  27, 1145,
+static const int32_t gSuccessorTable_galgas4Grammar_962 [7] = {0, 1147,
+  27, 1148,
   154, 734, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_966 [7] = {0, 488,
-  28, 1148,
+static const int32_t gSuccessorTable_galgas4Grammar_968 [7] = {0, 488,
+  28, 1151,
   158, 490, -1} ;
-
-static const int32_t gSuccessorTable_galgas4Grammar_967 [23] = {2, 214,
-  3, 215,
-  6, 216,
-  7, 217,
-  8, 218,
-  9, 1149,
-  10, 220,
-  11, 221,
-  13, 222,
-  14, 223,
-  94, 226, -1} ;
-
-static const int32_t gSuccessorTable_galgas4Grammar_968 [3] = {164, 1151, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_969 [23] = {2, 214,
   3, 215,
@@ -29457,1035 +29465,1049 @@ static const int32_t gSuccessorTable_galgas4Grammar_969 [23] = {2, 214,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_970 [23] = {2, 214,
-  3, 215,
-  6, 216,
-  7, 217,
-  8, 218,
-  9, 1153,
-  10, 220,
-  11, 221,
-  13, 222,
-  14, 223,
-  94, 226, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_970 [3] = {164, 1154, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_971 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1154,
+  9, 1155,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_975 [9] = {20, 1156,
+static const int32_t gSuccessorTable_galgas4Grammar_972 [23] = {2, 214,
+  3, 215,
+  6, 216,
+  7, 217,
+  8, 218,
+  9, 1156,
+  10, 220,
+  11, 221,
+  13, 222,
+  14, 223,
+  94, 226, -1} ;
+
+static const int32_t gSuccessorTable_galgas4Grammar_973 [23] = {2, 214,
+  3, 215,
+  6, 216,
+  7, 217,
+  8, 218,
+  9, 1157,
+  10, 220,
+  11, 221,
+  13, 222,
+  14, 223,
+  94, 226, -1} ;
+
+static const int32_t gSuccessorTable_galgas4Grammar_977 [9] = {20, 1159,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_978 [3] = {189, 1160, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_980 [3] = {189, 1163, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_979 [9] = {20, 1161,
+static const int32_t gSuccessorTable_galgas4Grammar_981 [9] = {20, 1164,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_983 [3] = {198, 1165, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_985 [3] = {198, 1168, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_984 [3] = {196, 1167, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_986 [3] = {196, 1170, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_987 [3] = {326, 1170, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_989 [3] = {326, 1173, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_988 [7] = {66, 988,
-  67, 989,
-  270, 1171, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_990 [7] = {66, 990,
+  67, 991,
+  270, 1174, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_989 [7] = {66, 988,
-  67, 989,
-  270, 1172, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_991 [7] = {66, 990,
+  67, 991,
+  270, 1175, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_992 [3] = {0, 1174, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_994 [3] = {0, 1177, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_995 [5] = {49, 1177,
-  225, 1178, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_997 [5] = {49, 1180,
+  225, 1181, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_996 [9] = {20, 1179,
+static const int32_t gSuccessorTable_galgas4Grammar_998 [9] = {20, 1182,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1003 [3] = {0, 1183, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1005 [3] = {0, 1186, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1005 [9] = {20, 1184,
+static const int32_t gSuccessorTable_galgas4Grammar_1007 [9] = {20, 1187,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1009 [3] = {238, 1188, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1011 [3] = {238, 1191, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1014 [3] = {17, 1191, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1016 [3] = {17, 1194, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1015 [3] = {15, 1192, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1017 [3] = {15, 1195, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1018 [3] = {206, 1194, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1020 [3] = {206, 1197, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1019 [3] = {241, 1197, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1021 [3] = {241, 1200, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1020 [3] = {240, 1199, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1022 [3] = {240, 1202, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1022 [3] = {0, 1201, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1024 [3] = {0, 1204, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1023 [9] = {20, 1202,
+static const int32_t gSuccessorTable_galgas4Grammar_1025 [9] = {20, 1205,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1026 [3] = {292, 1204, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1028 [3] = {292, 1207, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1028 [3] = {287, 1207, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1030 [3] = {287, 1210, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1033 [3] = {297, 1211, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1035 [3] = {297, 1214, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1034 [3] = {298, 1213, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1036 [3] = {298, 1216, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1035 [11] = {34, 1035,
-  49, 1036,
+static const int32_t gSuccessorTable_galgas4Grammar_1037 [11] = {34, 1037,
+  49, 1038,
   50, 300,
-  221, 1214,
+  221, 1217,
   252, 302, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1036 [11] = {34, 1035,
-  49, 1036,
+static const int32_t gSuccessorTable_galgas4Grammar_1038 [11] = {34, 1037,
+  49, 1038,
   50, 300,
-  221, 1215,
+  221, 1218,
   252, 302, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1046 [3] = {277, 1222, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1048 [3] = {277, 1225, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1053 [5] = {55, 1053,
-  275, 1224, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1055 [5] = {55, 1055,
+  275, 1227, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1054 [3] = {56, 1226, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1056 [3] = {56, 1229, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1056 [7] = {58, 1228,
+static const int32_t gSuccessorTable_galgas4Grammar_1058 [7] = {58, 1231,
   59, 342,
   60, 343, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1064 [3] = {209, 1230, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1066 [3] = {209, 1233, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1074 [9] = {20, 1236,
+static const int32_t gSuccessorTable_galgas4Grammar_1076 [9] = {20, 1239,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1079 [3] = {0, 1238, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1081 [3] = {0, 1241, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1080 [3] = {0, 1239, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1082 [3] = {0, 1242, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1082 [3] = {230, 1242, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1084 [3] = {230, 1245, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1083 [3] = {0, 1243, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1085 [3] = {0, 1246, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1084 [3] = {0, 1244, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1086 [3] = {0, 1247, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1087 [3] = {15, 1246, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1089 [3] = {15, 1249, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1089 [3] = {105, 1248, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1091 [3] = {105, 1251, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1090 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1092 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1249,
+  9, 1252,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1091 [3] = {84, 1250, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1093 [3] = {84, 1253, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1100 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1102 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1255,
+  9, 1258,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1101 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1103 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1256,
+  9, 1259,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1105 [3] = {178, 1262, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1107 [3] = {178, 1265, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1106 [3] = {0, 1263, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1108 [3] = {0, 1266, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1112 [3] = {97, 1265, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1114 [3] = {97, 1268, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1113 [3] = {98, 1266, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1115 [3] = {98, 1269, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1118 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1120 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1269,
+  9, 1272,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1119 [3] = {109, 1270, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1121 [3] = {109, 1273, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1127 [3] = {114, 1274, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1129 [3] = {114, 1277, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1130 [3] = {18, 1276, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1132 [3] = {18, 1279, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1137 [3] = {243, 1278, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1140 [3] = {243, 1281, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1140 [3] = {1, 1280, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1143 [3] = {1, 1283, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1143 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1146 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1282,
+  9, 1285,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1145 [3] = {157, 1283, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1148 [3] = {157, 1286, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1148 [3] = {161, 1285, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1151 [3] = {161, 1288, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1150 [9] = {20, 1286,
+static const int32_t gSuccessorTable_galgas4Grammar_1153 [9] = {20, 1289,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1153 [3] = {169, 1289, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1156 [3] = {169, 1292, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1155 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1158 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1291,
+  9, 1294,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1158 [3] = {188, 1293, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1161 [3] = {188, 1296, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1159 [7] = {0, 1296,
-  191, 1297,
-  192, 1298, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1162 [7] = {0, 1299,
+  191, 1300,
+  192, 1301, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1161 [3] = {187, 1300, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1164 [3] = {187, 1303, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1162 [3] = {151, 1305, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1165 [3] = {151, 1308, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1163 [3] = {199, 1307, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1166 [3] = {199, 1310, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1164 [3] = {200, 1309, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1167 [3] = {200, 1312, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1165 [3] = {202, 1311, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1168 [3] = {202, 1314, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1170 [3] = {327, 1315, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1173 [3] = {327, 1318, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1174 [3] = {245, 1317, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1177 [3] = {245, 1320, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1175 [5] = {0, 1318,
-  224, 1319, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1178 [5] = {0, 1321,
+  224, 1322, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1176 [3] = {223, 1320, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1179 [3] = {223, 1323, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1177 [5] = {49, 1177,
-  225, 1321, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1180 [5] = {49, 1180,
+  225, 1324, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1185 [3] = {0, 1327, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1188 [3] = {0, 1330, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1186 [9] = {20, 1328,
+static const int32_t gSuccessorTable_galgas4Grammar_1189 [9] = {20, 1331,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1189 [3] = {0, 1330, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1192 [3] = {0, 1333, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1190 [9] = {20, 1331,
+static const int32_t gSuccessorTable_galgas4Grammar_1193 [9] = {20, 1334,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1193 [3] = {206, 1333, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1196 [3] = {206, 1336, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1194 [3] = {207, 1335, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1197 [3] = {207, 1338, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1198 [3] = {48, 1336, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1201 [3] = {48, 1339, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1201 [3] = {250, 1339, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1204 [3] = {250, 1342, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1203 [3] = {0, 1341, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1206 [3] = {0, 1344, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1206 [3] = {288, 1345, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1209 [3] = {288, 1348, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1208 [9] = {70, 317,
+static const int32_t gSuccessorTable_galgas4Grammar_1211 [9] = {70, 317,
   71, 318,
   72, 319,
-  286, 1347, -1} ;
+  286, 1350, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1209 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1212 [15] = {24, 1356,
   25, 119,
-  76, 1354,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1357,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1217 [3] = {314, 1362, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1220 [3] = {314, 1365, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1220 [3] = {57, 1369, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1223 [3] = {57, 1372, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1222 [3] = {278, 1372, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1225 [3] = {278, 1375, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1225 [7] = {58, 1374,
+static const int32_t gSuccessorTable_galgas4Grammar_1228 [7] = {58, 1377,
   59, 342,
   60, 343, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1226 [5] = {56, 1375,
-  276, 1376, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1229 [5] = {56, 1378,
+  276, 1379, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1231 [3] = {211, 1379, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1234 [3] = {211, 1382, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1234 [9] = {20, 1381,
+static const int32_t gSuccessorTable_galgas4Grammar_1237 [9] = {20, 1384,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1235 [3] = {120, 1383, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1238 [3] = {120, 1386, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1237 [9] = {20, 1385,
+static const int32_t gSuccessorTable_galgas4Grammar_1240 [9] = {20, 1388,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1241 [3] = {231, 1388, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1244 [3] = {231, 1391, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1245 [3] = {0, 1391, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1248 [3] = {0, 1394, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1247 [3] = {106, 1392, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1250 [3] = {106, 1395, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1250 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1253 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1394,
+  9, 1397,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1254 [7] = {4, 1396,
+static const int32_t gSuccessorTable_galgas4Grammar_1257 [7] = {4, 1399,
   82, 638,
   84, 639, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1255 [5] = {176, 1397,
-  177, 1105, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1258 [5] = {176, 1400,
+  177, 1107, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1256 [5] = {176, 1398,
-  177, 1105, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1259 [5] = {176, 1401,
+  177, 1107, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1260 [5] = {0, 1400,
-  179, 1401, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1263 [5] = {0, 1403,
+  179, 1404, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1261 [5] = {0, 1402,
-  180, 1403, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1264 [5] = {0, 1405,
+  180, 1406, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1262 [5] = {176, 1404,
-  177, 1105, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1265 [5] = {176, 1407,
+  177, 1107, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1269 [3] = {85, 1405, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1272 [3] = {85, 1408, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1272 [3] = {18, 1407, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1275 [3] = {18, 1410, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1275 [3] = {18, 1409, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1278 [3] = {18, 1412, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1277 [3] = {117, 1410, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1280 [3] = {117, 1413, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1279 [3] = {186, 1411, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1282 [3] = {186, 1414, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1281 [3] = {153, 1413, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1284 [3] = {153, 1416, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1284 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1287 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1414,
+  9, 1417,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1287 [3] = {165, 1416, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1290 [3] = {165, 1419, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1288 [3] = {22, 1418, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1291 [3] = {22, 1421, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1290 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1293 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1419,
+  9, 1422,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1297 [3] = {190, 1423, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1300 [3] = {190, 1426, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1298 [3] = {193, 1425, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1301 [3] = {193, 1428, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1299 [3] = {31, 1426, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1302 [3] = {31, 1429, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1302 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1305 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1428,
+  9, 1431,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1303 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1306 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1429,
+  9, 1432,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1304 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1307 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1430,
+  9, 1433,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1305 [3] = {150, 1432, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1308 [3] = {150, 1435, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1313 [9] = {20, 1437,
+static const int32_t gSuccessorTable_galgas4Grammar_1316 [9] = {20, 1440,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1320 [3] = {222, 1441, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1323 [3] = {222, 1444, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1325 [9] = {20, 1443,
+static const int32_t gSuccessorTable_galgas4Grammar_1328 [9] = {20, 1446,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1327 [3] = {246, 1445, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1330 [3] = {246, 1448, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1330 [3] = {251, 1448, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1333 [3] = {251, 1451, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1332 [3] = {0, 1450, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1335 [3] = {0, 1453, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1334 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1337 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1451,
+  9, 1454,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1336 [3] = {240, 1452, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1339 [3] = {240, 1455, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1341 [3] = {248, 1455, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1344 [3] = {248, 1458, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1348 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1351 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1459,
+  9, 1462,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1349 [5] = {23, 1461,
-  134, 1462, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1352 [5] = {23, 1464,
+  134, 1465, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1350 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1353 [15] = {24, 1356,
   25, 119,
-  76, 1463,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1466,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1351 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1354 [15] = {24, 1356,
   25, 119,
-  76, 1464,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1467,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1357 [5] = {300, 1471,
-  302, 1472, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1360 [5] = {300, 1474,
+  302, 1475, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1359 [3] = {15, 1474, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1362 [3] = {15, 1477, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1360 [5] = {15, 1475,
-  74, 1476, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1363 [5] = {15, 1478,
+  74, 1479, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1364 [3] = {62, 1481, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1367 [3] = {62, 1484, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1365 [3] = {259, 1483, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1368 [3] = {259, 1486, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1369 [3] = {277, 1484, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1372 [3] = {277, 1487, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1370 [3] = {277, 1485, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1373 [3] = {277, 1488, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1375 [5] = {56, 1375,
-  276, 1490, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1378 [5] = {56, 1378,
+  276, 1493, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1378 [5] = {55, 1492,
-  281, 1493, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1381 [5] = {55, 1495,
+  281, 1496, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1382 [3] = {121, 1496, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1385 [3] = {121, 1499, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1388 [3] = {230, 1498, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1391 [3] = {230, 1501, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1389 [3] = {232, 1499, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1392 [3] = {232, 1502, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1390 [3] = {232, 1500, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1393 [3] = {232, 1503, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1392 [3] = {0, 1501, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1395 [3] = {0, 1504, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1394 [3] = {83, 1502, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1397 [3] = {83, 1505, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1406 [3] = {124, 1506, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1409 [3] = {124, 1509, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1408 [3] = {18, 1507, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1411 [3] = {18, 1510, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1416 [9] = {20, 1511,
+static const int32_t gSuccessorTable_galgas4Grammar_1419 [9] = {20, 1514,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1419 [3] = {170, 1514, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1422 [3] = {170, 1517, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1420 [9] = {20, 1515,
+static const int32_t gSuccessorTable_galgas4Grammar_1423 [9] = {20, 1518,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1422 [7] = {0, 1296,
-  191, 1516,
-  192, 1298, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1425 [7] = {0, 1299,
+  191, 1519,
+  192, 1301, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1431 [3] = {151, 1520, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1434 [3] = {151, 1523, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1433 [3] = {199, 1522, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1436 [3] = {199, 1525, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1434 [3] = {201, 1524, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1437 [3] = {201, 1527, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1436 [9] = {20, 1525,
+static const int32_t gSuccessorTable_galgas4Grammar_1439 [9] = {20, 1528,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1437 [3] = {197, 1527, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1440 [3] = {197, 1530, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1439 [5] = {0, 1318,
-  224, 1529, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1442 [5] = {0, 1321,
+  224, 1532, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1442 [3] = {233, 1530, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1445 [3] = {233, 1533, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1450 [3] = {249, 1534, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1453 [3] = {249, 1537, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1453 [9] = {20, 1535,
+static const int32_t gSuccessorTable_galgas4Grammar_1456 [9] = {20, 1538,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1457 [3] = {287, 1537, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1460 [3] = {287, 1540, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1458 [3] = {290, 1540, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1461 [3] = {290, 1543, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1460 [3] = {136, 1543, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1463 [3] = {136, 1546, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1461 [5] = {78, 1545,
-  308, 1546, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1464 [5] = {78, 1548,
+  308, 1549, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1466 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1469 [15] = {24, 1356,
   25, 119,
-  76, 1549,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1552,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1467 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1470 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1550,
+  9, 1553,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1468 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1471 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1551,
+  9, 1554,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1472 [11] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1475 [11] = {24, 1356,
   25, 119,
-  77, 1355,
-  301, 1552,
-  303, 1358, -1} ;
+  77, 1358,
+  301, 1555,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1473 [3] = {1, 1553, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1476 [3] = {1, 1556, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1474 [3] = {297, 1554, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1477 [3] = {297, 1557, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1476 [3] = {298, 1555, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1479 [3] = {298, 1558, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1477 [3] = {314, 1556, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1480 [3] = {314, 1559, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1478 [3] = {80, 1558, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1481 [3] = {80, 1561, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1479 [3] = {284, 1560, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1482 [3] = {284, 1563, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1480 [3] = {266, 1563, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1483 [3] = {266, 1566, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1481 [3] = {265, 1565, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1484 [3] = {265, 1568, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1482 [3] = {260, 1567, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1485 [3] = {260, 1570, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1486 [3] = {279, 1569, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1489 [3] = {279, 1572, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1489 [5] = {55, 1571,
-  258, 1572, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1492 [5] = {55, 1574,
+  258, 1575, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1492 [5] = {55, 1492,
-  281, 1573, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1495 [5] = {55, 1495,
+  281, 1576, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1493 [3] = {280, 1575, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1496 [3] = {280, 1578, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1496 [3] = {122, 1577, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1499 [3] = {122, 1580, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1501 [3] = {107, 1578, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1504 [3] = {107, 1581, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1508 [3] = {153, 1581, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1511 [3] = {153, 1584, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1511 [3] = {166, 1584, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1514 [3] = {166, 1587, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1512 [5] = {0, 1588,
-  133, 1589, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1515 [5] = {0, 1591,
+  133, 1592, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1513 [3] = {22, 1590, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1516 [3] = {22, 1593, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1516 [3] = {190, 1592, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1519 [3] = {190, 1595, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1519 [9] = {20, 1593,
+static const int32_t gSuccessorTable_galgas4Grammar_1522 [9] = {20, 1596,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1520 [3] = {150, 1594, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1523 [3] = {150, 1597, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1525 [3] = {203, 1597, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1528 [3] = {203, 1600, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1526 [9] = {20, 1598,
+static const int32_t gSuccessorTable_galgas4Grammar_1529 [9] = {20, 1601,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1528 [9] = {20, 1599,
+static const int32_t gSuccessorTable_galgas4Grammar_1531 [9] = {20, 1602,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1532 [9] = {20, 1600,
+static const int32_t gSuccessorTable_galgas4Grammar_1535 [9] = {20, 1603,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1536 [3] = {291, 1603, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1539 [3] = {291, 1606, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1540 [3] = {289, 1606, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1543 [3] = {289, 1609, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1543 [3] = {135, 1616, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1546 [3] = {135, 1619, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1545 [3] = {307, 1619, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1548 [3] = {307, 1622, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1547 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1550 [15] = {24, 1356,
   25, 119,
-  76, 1620,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1623,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1548 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1551 [15] = {24, 1356,
   25, 119,
-  76, 1621,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1624,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1552 [5] = {300, 1625,
-  302, 1472, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1555 [5] = {300, 1628,
+  302, 1475, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1553 [3] = {304, 1627, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1556 [3] = {304, 1630, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1557 [5] = {81, 1634,
-  317, 1635, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1560 [5] = {81, 1637,
+  317, 1638, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1558 [3] = {315, 1637, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1561 [3] = {315, 1640, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1559 [3] = {285, 1640, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1562 [3] = {285, 1643, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1561 [3] = {266, 1641, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1564 [3] = {266, 1644, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1562 [3] = {266, 1642, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1565 [3] = {266, 1645, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1563 [3] = {267, 1644, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1566 [3] = {267, 1647, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1564 [3] = {62, 1645, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1567 [3] = {62, 1648, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1566 [3] = {57, 1647, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1569 [3] = {57, 1650, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1570 [3] = {273, 1651, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1573 [3] = {273, 1654, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1571 [5] = {55, 1571,
-  258, 1652, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1574 [5] = {55, 1574,
+  258, 1655, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1574 [7] = {58, 1653,
+static const int32_t gSuccessorTable_galgas4Grammar_1577 [7] = {58, 1656,
   59, 342,
   60, 343, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1576 [5] = {213, 1657,
-  215, 1658, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1579 [5] = {213, 1660,
+  215, 1661, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1577 [3] = {0, 1659, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1580 [3] = {0, 1662, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1579 [3] = {124, 1661, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1582 [3] = {124, 1664, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1583 [9] = {20, 1662,
+static const int32_t gSuccessorTable_galgas4Grammar_1586 [9] = {20, 1665,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1584 [3] = {167, 1664, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1587 [3] = {167, 1667, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1587 [3] = {0, 1665, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1590 [3] = {0, 1668, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1593 [3] = {187, 1668, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1596 [3] = {187, 1671, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1595 [3] = {201, 1669, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1598 [3] = {201, 1672, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1596 [9] = {20, 1670,
+static const int32_t gSuccessorTable_galgas4Grammar_1599 [9] = {20, 1673,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1602 [3] = {291, 1673, -1} ;
-
-static const int32_t gSuccessorTable_galgas4Grammar_1603 [3] = {287, 1674, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1605 [3] = {291, 1676, -1} ;
 
 static const int32_t gSuccessorTable_galgas4Grammar_1606 [3] = {287, 1677, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1609 [5] = {0, 1678,
-  139, 1679, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1609 [3] = {287, 1680, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1610 [5] = {0, 1680,
-  137, 1681, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1612 [5] = {0, 1681,
+  139, 1682, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1613 [5] = {0, 1682,
-  140, 1683, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1613 [5] = {0, 1683,
+  137, 1684, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1614 [5] = {0, 1684,
-  138, 1685, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1616 [5] = {0, 1685,
+  140, 1686, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1615 [3] = {136, 1686, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1617 [5] = {0, 1687,
+  138, 1688, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1618 [3] = {22, 1689, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1618 [3] = {136, 1689, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1620 [3] = {305, 1691, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1621 [3] = {22, 1692, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1621 [3] = {306, 1693, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1623 [3] = {305, 1694, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1622 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1624 [3] = {306, 1696, -1} ;
+
+static const int32_t gSuccessorTable_galgas4Grammar_1625 [15] = {24, 1356,
   25, 119,
-  76, 1694,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1697,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1623 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1626 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1695,
+  9, 1698,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1624 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1627 [15] = {24, 1356,
   25, 119,
-  76, 1696,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1699,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1626 [3] = {22, 1697, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1629 [3] = {22, 1700, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1628 [3] = {0, 1698, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1631 [3] = {0, 1701, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1629 [3] = {0, 1699, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1632 [3] = {0, 1702, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1630 [3] = {0, 1701, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1633 [3] = {0, 1704, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1631 [3] = {0, 1703, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1634 [3] = {0, 1706, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1632 [3] = {0, 1704, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1635 [3] = {0, 1707, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1633 [3] = {0, 1705, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1636 [3] = {0, 1708, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1634 [3] = {318, 1707, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1637 [3] = {318, 1710, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1637 [3] = {316, 1711, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1640 [3] = {316, 1714, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1645 [3] = {265, 1713, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1648 [3] = {265, 1716, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1647 [3] = {260, 1714, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1650 [3] = {260, 1717, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1649 [3] = {279, 1715, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1652 [3] = {279, 1718, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1651 [3] = {274, 1719, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1654 [3] = {274, 1722, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1654 [5] = {55, 1721,
-  282, 1722, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1657 [5] = {55, 1724,
+  282, 1725, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1658 [3] = {0, 1724, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1661 [3] = {0, 1727, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1659 [3] = {123, 1725, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1662 [3] = {123, 1728, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1660 [3] = {105, 1726, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1663 [3] = {105, 1729, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1663 [9] = {20, 1727,
+static const int32_t gSuccessorTable_galgas4Grammar_1666 [9] = {20, 1730,
   24, 118,
   25, 119,
   125, 120, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1676 [3] = {290, 1731, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1679 [3] = {290, 1734, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1686 [3] = {135, 1736, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1689 [3] = {135, 1739, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1688 [3] = {310, 1738, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1691 [3] = {310, 1741, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1689 [3] = {22, 1739, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1692 [3] = {22, 1742, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1690 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1693 [15] = {24, 1356,
   25, 119,
-  76, 1740,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1743,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1692 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1695 [15] = {24, 1356,
   25, 119,
-  76, 1742,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1745,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1694 [3] = {311, 1745, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1697 [3] = {311, 1748, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1696 [3] = {79, 1749, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1699 [3] = {79, 1752, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1700 [3] = {0, 1752, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1703 [3] = {0, 1755, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1701 [3] = {319, 1754, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1704 [3] = {319, 1757, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1702 [3] = {0, 1755, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1705 [3] = {0, 1758, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1703 [3] = {320, 1757, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1706 [3] = {320, 1760, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1704 [3] = {323, 1759, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1707 [3] = {323, 1762, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1705 [3] = {324, 1761, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1708 [3] = {324, 1764, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1706 [3] = {81, 1762, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1709 [3] = {81, 1765, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1709 [3] = {80, 1763, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1712 [3] = {80, 1766, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1720 [5] = {55, 1492,
-  281, 1768, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1723 [5] = {55, 1495,
+  281, 1771, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1721 [5] = {55, 1721,
-  282, 1769, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1724 [5] = {55, 1724,
+  282, 1772, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1723 [3] = {212, 1771, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1726 [3] = {212, 1774, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1724 [3] = {216, 1773, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1727 [3] = {216, 1776, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1731 [3] = {289, 1776, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1734 [3] = {289, 1779, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1738 [3] = {309, 1778, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1741 [3] = {309, 1781, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1740 [3] = {305, 1779, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1743 [3] = {305, 1782, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1742 [3] = {306, 1780, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1745 [3] = {306, 1783, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1744 [15] = {24, 1353,
-  25, 119,
-  76, 1781,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
-
-static const int32_t gSuccessorTable_galgas4Grammar_1746 [15] = {24, 1353,
-  25, 119,
-  76, 1783,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
-
-static const int32_t gSuccessorTable_galgas4Grammar_1747 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1747 [15] = {24, 1356,
   25, 119,
   76, 1784,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1748 [23] = {2, 214,
+static const int32_t gSuccessorTable_galgas4Grammar_1749 [15] = {24, 1356,
+  25, 119,
+  76, 1786,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
+
+static const int32_t gSuccessorTable_galgas4Grammar_1750 [15] = {24, 1356,
+  25, 119,
+  76, 1787,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
+
+static const int32_t gSuccessorTable_galgas4Grammar_1751 [23] = {2, 214,
   3, 215,
   6, 216,
   7, 217,
   8, 218,
-  9, 1785,
+  9, 1788,
   10, 220,
   11, 221,
   13, 222,
   14, 223,
   94, 226, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1752 [3] = {321, 1788, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1755 [3] = {321, 1791, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1755 [3] = {322, 1791, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1758 [3] = {322, 1794, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1762 [3] = {318, 1795, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1765 [3] = {318, 1798, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1763 [3] = {315, 1796, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1766 [3] = {315, 1799, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1764 [3] = {316, 1797, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1767 [3] = {316, 1800, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1768 [3] = {280, 1799, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1771 [3] = {280, 1802, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1774 [3] = {120, 1801, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1777 [3] = {120, 1804, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1781 [3] = {311, 1804, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1784 [3] = {311, 1807, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1800 [3] = {214, 1811, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1803 [3] = {214, 1814, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1802 [3] = {310, 1812, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1805 [3] = {310, 1815, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1806 [15] = {24, 1353,
+static const int32_t gSuccessorTable_galgas4Grammar_1809 [15] = {24, 1356,
   25, 119,
-  76, 1813,
-  77, 1355,
-  299, 1356,
-  301, 1357,
-  303, 1358, -1} ;
+  76, 1816,
+  77, 1358,
+  299, 1359,
+  301, 1360,
+  303, 1361, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1809 [3] = {273, 1814, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1812 [3] = {273, 1817, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1810 [3] = {215, 1815, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1813 [3] = {215, 1818, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1812 [3] = {309, 1816, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1815 [3] = {309, 1819, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1813 [3] = {79, 1817, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1816 [3] = {79, 1820, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1815 [3] = {0, 1818, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1818 [3] = {0, 1821, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1818 [3] = {216, 1819, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1821 [3] = {216, 1822, -1} ;
 
-static const int32_t gSuccessorTable_galgas4Grammar_1820 [3] = {214, 1821, -1} ;
+static const int32_t gSuccessorTable_galgas4Grammar_1823 [3] = {214, 1824, -1} ;
 
-static const int32_t * gSuccessorTable_galgas4Grammar [1822] = {
+static const int32_t * gSuccessorTable_galgas4Grammar [1825] = {
 gSuccessorTable_galgas4Grammar_0, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_4, nullptr, nullptr, gSuccessorTable_galgas4Grammar_7, 
   nullptr, nullptr, nullptr, nullptr, 
@@ -30720,228 +30742,229 @@ gSuccessorTable_galgas4Grammar_0, nullptr, nullptr, nullptr,
   gSuccessorTable_galgas4Grammar_924, nullptr, gSuccessorTable_galgas4Grammar_926, gSuccessorTable_galgas4Grammar_927, 
   nullptr, nullptr, gSuccessorTable_galgas4Grammar_930, nullptr, 
   gSuccessorTable_galgas4Grammar_932, gSuccessorTable_galgas4Grammar_933, gSuccessorTable_galgas4Grammar_934, gSuccessorTable_galgas4Grammar_935, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_938, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_939, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_944, gSuccessorTable_galgas4Grammar_945, gSuccessorTable_galgas4Grammar_946, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_950, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_953, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_956, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_960, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_966, gSuccessorTable_galgas4Grammar_967, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_946, gSuccessorTable_galgas4Grammar_947, 
+  gSuccessorTable_galgas4Grammar_948, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_952, nullptr, nullptr, gSuccessorTable_galgas4Grammar_955, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_958, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_962, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_968, gSuccessorTable_galgas4Grammar_969, gSuccessorTable_galgas4Grammar_970, gSuccessorTable_galgas4Grammar_971, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_975, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_978, gSuccessorTable_galgas4Grammar_979, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_983, 
-  gSuccessorTable_galgas4Grammar_984, nullptr, nullptr, gSuccessorTable_galgas4Grammar_987, 
-  gSuccessorTable_galgas4Grammar_988, gSuccessorTable_galgas4Grammar_989, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_992, nullptr, nullptr, gSuccessorTable_galgas4Grammar_995, 
-  gSuccessorTable_galgas4Grammar_996, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1003, 
-  nullptr, gSuccessorTable_galgas4Grammar_1005, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1009, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1014, gSuccessorTable_galgas4Grammar_1015, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1018, gSuccessorTable_galgas4Grammar_1019, 
-  gSuccessorTable_galgas4Grammar_1020, nullptr, gSuccessorTable_galgas4Grammar_1022, gSuccessorTable_galgas4Grammar_1023, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1026, nullptr, 
-  gSuccessorTable_galgas4Grammar_1028, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1033, gSuccessorTable_galgas4Grammar_1034, gSuccessorTable_galgas4Grammar_1035, 
-  gSuccessorTable_galgas4Grammar_1036, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_972, gSuccessorTable_galgas4Grammar_973, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_977, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_980, gSuccessorTable_galgas4Grammar_981, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_985, gSuccessorTable_galgas4Grammar_986, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_989, gSuccessorTable_galgas4Grammar_990, gSuccessorTable_galgas4Grammar_991, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_994, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_997, gSuccessorTable_galgas4Grammar_998, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1046, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1005, nullptr, gSuccessorTable_galgas4Grammar_1007, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1011, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1053, gSuccessorTable_galgas4Grammar_1054, nullptr, 
-  gSuccessorTable_galgas4Grammar_1056, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1064, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1074, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1079, 
-  gSuccessorTable_galgas4Grammar_1080, nullptr, gSuccessorTable_galgas4Grammar_1082, gSuccessorTable_galgas4Grammar_1083, 
-  gSuccessorTable_galgas4Grammar_1084, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1087, 
-  nullptr, gSuccessorTable_galgas4Grammar_1089, gSuccessorTable_galgas4Grammar_1090, gSuccessorTable_galgas4Grammar_1091, 
+  gSuccessorTable_galgas4Grammar_1016, gSuccessorTable_galgas4Grammar_1017, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1020, gSuccessorTable_galgas4Grammar_1021, gSuccessorTable_galgas4Grammar_1022, nullptr, 
+  gSuccessorTable_galgas4Grammar_1024, gSuccessorTable_galgas4Grammar_1025, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1028, nullptr, gSuccessorTable_galgas4Grammar_1030, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1035, 
+  gSuccessorTable_galgas4Grammar_1036, gSuccessorTable_galgas4Grammar_1037, gSuccessorTable_galgas4Grammar_1038, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1100, gSuccessorTable_galgas4Grammar_1101, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1105, gSuccessorTable_galgas4Grammar_1106, nullptr, 
+  gSuccessorTable_galgas4Grammar_1048, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1055, 
+  gSuccessorTable_galgas4Grammar_1056, nullptr, gSuccessorTable_galgas4Grammar_1058, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1112, gSuccessorTable_galgas4Grammar_1113, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1118, gSuccessorTable_galgas4Grammar_1119, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1066, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1127, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1130, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1137, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1076, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1081, gSuccessorTable_galgas4Grammar_1082, nullptr, 
+  gSuccessorTable_galgas4Grammar_1084, gSuccessorTable_galgas4Grammar_1085, gSuccessorTable_galgas4Grammar_1086, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1089, nullptr, gSuccessorTable_galgas4Grammar_1091, 
+  gSuccessorTable_galgas4Grammar_1092, gSuccessorTable_galgas4Grammar_1093, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1102, gSuccessorTable_galgas4Grammar_1103, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1107, 
+  gSuccessorTable_galgas4Grammar_1108, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1114, gSuccessorTable_galgas4Grammar_1115, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1120, gSuccessorTable_galgas4Grammar_1121, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1129, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1132, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_1140, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1143, 
-  nullptr, gSuccessorTable_galgas4Grammar_1145, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1148, nullptr, gSuccessorTable_galgas4Grammar_1150, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1153, nullptr, gSuccessorTable_galgas4Grammar_1155, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1158, gSuccessorTable_galgas4Grammar_1159, 
-  nullptr, gSuccessorTable_galgas4Grammar_1161, gSuccessorTable_galgas4Grammar_1162, gSuccessorTable_galgas4Grammar_1163, 
-  gSuccessorTable_galgas4Grammar_1164, gSuccessorTable_galgas4Grammar_1165, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1170, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1174, gSuccessorTable_galgas4Grammar_1175, 
-  gSuccessorTable_galgas4Grammar_1176, gSuccessorTable_galgas4Grammar_1177, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1146, nullptr, 
+  gSuccessorTable_galgas4Grammar_1148, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1151, 
+  nullptr, gSuccessorTable_galgas4Grammar_1153, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1156, nullptr, gSuccessorTable_galgas4Grammar_1158, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1161, gSuccessorTable_galgas4Grammar_1162, nullptr, 
+  gSuccessorTable_galgas4Grammar_1164, gSuccessorTable_galgas4Grammar_1165, gSuccessorTable_galgas4Grammar_1166, gSuccessorTable_galgas4Grammar_1167, 
+  gSuccessorTable_galgas4Grammar_1168, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1173, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1177, gSuccessorTable_galgas4Grammar_1178, gSuccessorTable_galgas4Grammar_1179, 
+  gSuccessorTable_galgas4Grammar_1180, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1185, gSuccessorTable_galgas4Grammar_1186, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1189, gSuccessorTable_galgas4Grammar_1190, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1193, gSuccessorTable_galgas4Grammar_1194, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1198, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1201, nullptr, gSuccessorTable_galgas4Grammar_1203, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1206, nullptr, 
-  gSuccessorTable_galgas4Grammar_1208, gSuccessorTable_galgas4Grammar_1209, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1188, gSuccessorTable_galgas4Grammar_1189, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1192, gSuccessorTable_galgas4Grammar_1193, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1196, gSuccessorTable_galgas4Grammar_1197, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1201, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1204, nullptr, gSuccessorTable_galgas4Grammar_1206, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1209, nullptr, gSuccessorTable_galgas4Grammar_1211, 
+  gSuccessorTable_galgas4Grammar_1212, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1217, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1220, nullptr, gSuccessorTable_galgas4Grammar_1222, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1225, gSuccessorTable_galgas4Grammar_1226, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1231, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1234, gSuccessorTable_galgas4Grammar_1235, 
-  nullptr, gSuccessorTable_galgas4Grammar_1237, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1241, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1245, nullptr, gSuccessorTable_galgas4Grammar_1247, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1250, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1254, gSuccessorTable_galgas4Grammar_1255, 
-  gSuccessorTable_galgas4Grammar_1256, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1260, gSuccessorTable_galgas4Grammar_1261, gSuccessorTable_galgas4Grammar_1262, nullptr, 
+  gSuccessorTable_galgas4Grammar_1220, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1223, 
+  nullptr, gSuccessorTable_galgas4Grammar_1225, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1228, gSuccessorTable_galgas4Grammar_1229, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1234, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1237, gSuccessorTable_galgas4Grammar_1238, nullptr, 
+  gSuccessorTable_galgas4Grammar_1240, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1244, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1248, nullptr, gSuccessorTable_galgas4Grammar_1250, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1253, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1257, gSuccessorTable_galgas4Grammar_1258, gSuccessorTable_galgas4Grammar_1259, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1263, 
+  gSuccessorTable_galgas4Grammar_1264, gSuccessorTable_galgas4Grammar_1265, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1269, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_1272, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1275, 
-  nullptr, gSuccessorTable_galgas4Grammar_1277, nullptr, gSuccessorTable_galgas4Grammar_1279, 
-  nullptr, gSuccessorTable_galgas4Grammar_1281, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1278, nullptr, 
+  gSuccessorTable_galgas4Grammar_1280, nullptr, gSuccessorTable_galgas4Grammar_1282, nullptr, 
   gSuccessorTable_galgas4Grammar_1284, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1287, 
-  gSuccessorTable_galgas4Grammar_1288, nullptr, gSuccessorTable_galgas4Grammar_1290, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1290, gSuccessorTable_galgas4Grammar_1291, 
+  nullptr, gSuccessorTable_galgas4Grammar_1293, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1297, gSuccessorTable_galgas4Grammar_1298, gSuccessorTable_galgas4Grammar_1299, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1302, gSuccessorTable_galgas4Grammar_1303, 
-  gSuccessorTable_galgas4Grammar_1304, gSuccessorTable_galgas4Grammar_1305, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1300, gSuccessorTable_galgas4Grammar_1301, gSuccessorTable_galgas4Grammar_1302, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1305, gSuccessorTable_galgas4Grammar_1306, gSuccessorTable_galgas4Grammar_1307, 
+  gSuccessorTable_galgas4Grammar_1308, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1313, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1316, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1323, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1320, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1325, nullptr, gSuccessorTable_galgas4Grammar_1327, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1330, nullptr, 
-  gSuccessorTable_galgas4Grammar_1332, nullptr, gSuccessorTable_galgas4Grammar_1334, nullptr, 
-  gSuccessorTable_galgas4Grammar_1336, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1341, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1328, nullptr, gSuccessorTable_galgas4Grammar_1330, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1333, nullptr, gSuccessorTable_galgas4Grammar_1335, 
+  nullptr, gSuccessorTable_galgas4Grammar_1337, nullptr, gSuccessorTable_galgas4Grammar_1339, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1348, gSuccessorTable_galgas4Grammar_1349, gSuccessorTable_galgas4Grammar_1350, gSuccessorTable_galgas4Grammar_1351, 
+  gSuccessorTable_galgas4Grammar_1344, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1351, 
+  gSuccessorTable_galgas4Grammar_1352, gSuccessorTable_galgas4Grammar_1353, gSuccessorTable_galgas4Grammar_1354, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1357, nullptr, gSuccessorTable_galgas4Grammar_1359, 
-  gSuccessorTable_galgas4Grammar_1360, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1364, gSuccessorTable_galgas4Grammar_1365, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1369, gSuccessorTable_galgas4Grammar_1370, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1375, 
+  gSuccessorTable_galgas4Grammar_1360, nullptr, gSuccessorTable_galgas4Grammar_1362, gSuccessorTable_galgas4Grammar_1363, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1367, 
+  gSuccessorTable_galgas4Grammar_1368, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1372, gSuccessorTable_galgas4Grammar_1373, nullptr, nullptr, 
   nullptr, nullptr, gSuccessorTable_galgas4Grammar_1378, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1382, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1381, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1385, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1391, 
+  gSuccessorTable_galgas4Grammar_1392, gSuccessorTable_galgas4Grammar_1393, nullptr, gSuccessorTable_galgas4Grammar_1395, 
+  nullptr, gSuccessorTable_galgas4Grammar_1397, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1388, gSuccessorTable_galgas4Grammar_1389, gSuccessorTable_galgas4Grammar_1390, nullptr, 
-  gSuccessorTable_galgas4Grammar_1392, nullptr, gSuccessorTable_galgas4Grammar_1394, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1409, nullptr, gSuccessorTable_galgas4Grammar_1411, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1406, nullptr, 
-  gSuccessorTable_galgas4Grammar_1408, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1419, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1422, gSuccessorTable_galgas4Grammar_1423, 
+  nullptr, gSuccessorTable_galgas4Grammar_1425, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1416, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1419, 
-  gSuccessorTable_galgas4Grammar_1420, nullptr, gSuccessorTable_galgas4Grammar_1422, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1431, 
-  nullptr, gSuccessorTable_galgas4Grammar_1433, gSuccessorTable_galgas4Grammar_1434, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1434, nullptr, 
   gSuccessorTable_galgas4Grammar_1436, gSuccessorTable_galgas4Grammar_1437, nullptr, gSuccessorTable_galgas4Grammar_1439, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1442, nullptr, 
+  gSuccessorTable_galgas4Grammar_1440, nullptr, gSuccessorTable_galgas4Grammar_1442, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1445, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1450, nullptr, 
   nullptr, gSuccessorTable_galgas4Grammar_1453, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1457, gSuccessorTable_galgas4Grammar_1458, nullptr, 
-  gSuccessorTable_galgas4Grammar_1460, gSuccessorTable_galgas4Grammar_1461, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1466, gSuccessorTable_galgas4Grammar_1467, 
-  gSuccessorTable_galgas4Grammar_1468, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1472, gSuccessorTable_galgas4Grammar_1473, gSuccessorTable_galgas4Grammar_1474, nullptr, 
-  gSuccessorTable_galgas4Grammar_1476, gSuccessorTable_galgas4Grammar_1477, gSuccessorTable_galgas4Grammar_1478, gSuccessorTable_galgas4Grammar_1479, 
-  gSuccessorTable_galgas4Grammar_1480, gSuccessorTable_galgas4Grammar_1481, gSuccessorTable_galgas4Grammar_1482, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1486, nullptr, 
+  gSuccessorTable_galgas4Grammar_1456, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1460, gSuccessorTable_galgas4Grammar_1461, nullptr, gSuccessorTable_galgas4Grammar_1463, 
+  gSuccessorTable_galgas4Grammar_1464, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1469, gSuccessorTable_galgas4Grammar_1470, gSuccessorTable_galgas4Grammar_1471, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1475, 
+  gSuccessorTable_galgas4Grammar_1476, gSuccessorTable_galgas4Grammar_1477, nullptr, gSuccessorTable_galgas4Grammar_1479, 
+  gSuccessorTable_galgas4Grammar_1480, gSuccessorTable_galgas4Grammar_1481, gSuccessorTable_galgas4Grammar_1482, gSuccessorTable_galgas4Grammar_1483, 
+  gSuccessorTable_galgas4Grammar_1484, gSuccessorTable_galgas4Grammar_1485, nullptr, nullptr, 
   nullptr, gSuccessorTable_galgas4Grammar_1489, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1492, gSuccessorTable_galgas4Grammar_1493, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1496, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1501, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1492, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1495, 
+  gSuccessorTable_galgas4Grammar_1496, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1499, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1508, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1511, 
-  gSuccessorTable_galgas4Grammar_1512, gSuccessorTable_galgas4Grammar_1513, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1504, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1511, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1514, gSuccessorTable_galgas4Grammar_1515, 
   gSuccessorTable_galgas4Grammar_1516, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1519, 
-  gSuccessorTable_galgas4Grammar_1520, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1525, gSuccessorTable_galgas4Grammar_1526, nullptr, 
-  gSuccessorTable_galgas4Grammar_1528, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1532, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1536, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1540, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1543, 
-  nullptr, gSuccessorTable_galgas4Grammar_1545, nullptr, gSuccessorTable_galgas4Grammar_1547, 
-  gSuccessorTable_galgas4Grammar_1548, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1552, gSuccessorTable_galgas4Grammar_1553, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1557, gSuccessorTable_galgas4Grammar_1558, gSuccessorTable_galgas4Grammar_1559, 
-  nullptr, gSuccessorTable_galgas4Grammar_1561, gSuccessorTable_galgas4Grammar_1562, gSuccessorTable_galgas4Grammar_1563, 
-  gSuccessorTable_galgas4Grammar_1564, nullptr, gSuccessorTable_galgas4Grammar_1566, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1570, gSuccessorTable_galgas4Grammar_1571, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1574, nullptr, 
-  gSuccessorTable_galgas4Grammar_1576, gSuccessorTable_galgas4Grammar_1577, nullptr, gSuccessorTable_galgas4Grammar_1579, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1583, 
-  gSuccessorTable_galgas4Grammar_1584, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1587, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1522, gSuccessorTable_galgas4Grammar_1523, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1593, nullptr, gSuccessorTable_galgas4Grammar_1595, 
-  gSuccessorTable_galgas4Grammar_1596, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1602, gSuccessorTable_galgas4Grammar_1603, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1606, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1609, gSuccessorTable_galgas4Grammar_1610, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1613, gSuccessorTable_galgas4Grammar_1614, gSuccessorTable_galgas4Grammar_1615, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1618, nullptr, 
-  gSuccessorTable_galgas4Grammar_1620, gSuccessorTable_galgas4Grammar_1621, gSuccessorTable_galgas4Grammar_1622, gSuccessorTable_galgas4Grammar_1623, 
-  gSuccessorTable_galgas4Grammar_1624, nullptr, gSuccessorTable_galgas4Grammar_1626, nullptr, 
-  gSuccessorTable_galgas4Grammar_1628, gSuccessorTable_galgas4Grammar_1629, gSuccessorTable_galgas4Grammar_1630, gSuccessorTable_galgas4Grammar_1631, 
-  gSuccessorTable_galgas4Grammar_1632, gSuccessorTable_galgas4Grammar_1633, gSuccessorTable_galgas4Grammar_1634, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1637, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1528, gSuccessorTable_galgas4Grammar_1529, nullptr, gSuccessorTable_galgas4Grammar_1531, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1535, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1539, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1543, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1546, nullptr, 
+  gSuccessorTable_galgas4Grammar_1548, nullptr, gSuccessorTable_galgas4Grammar_1550, gSuccessorTable_galgas4Grammar_1551, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1555, 
+  gSuccessorTable_galgas4Grammar_1556, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1560, gSuccessorTable_galgas4Grammar_1561, gSuccessorTable_galgas4Grammar_1562, nullptr, 
+  gSuccessorTable_galgas4Grammar_1564, gSuccessorTable_galgas4Grammar_1565, gSuccessorTable_galgas4Grammar_1566, gSuccessorTable_galgas4Grammar_1567, 
+  nullptr, gSuccessorTable_galgas4Grammar_1569, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1573, gSuccessorTable_galgas4Grammar_1574, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1577, nullptr, gSuccessorTable_galgas4Grammar_1579, 
+  gSuccessorTable_galgas4Grammar_1580, nullptr, gSuccessorTable_galgas4Grammar_1582, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1586, gSuccessorTable_galgas4Grammar_1587, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1590, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1645, nullptr, gSuccessorTable_galgas4Grammar_1647, 
-  nullptr, gSuccessorTable_galgas4Grammar_1649, nullptr, gSuccessorTable_galgas4Grammar_1651, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1654, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1658, gSuccessorTable_galgas4Grammar_1659, 
-  gSuccessorTable_galgas4Grammar_1660, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1663, 
+  gSuccessorTable_galgas4Grammar_1596, nullptr, gSuccessorTable_galgas4Grammar_1598, gSuccessorTable_galgas4Grammar_1599, 
   nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1605, gSuccessorTable_galgas4Grammar_1606, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1609, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1612, gSuccessorTable_galgas4Grammar_1613, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1616, gSuccessorTable_galgas4Grammar_1617, gSuccessorTable_galgas4Grammar_1618, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1621, nullptr, gSuccessorTable_galgas4Grammar_1623, 
+  gSuccessorTable_galgas4Grammar_1624, gSuccessorTable_galgas4Grammar_1625, gSuccessorTable_galgas4Grammar_1626, gSuccessorTable_galgas4Grammar_1627, 
+  nullptr, gSuccessorTable_galgas4Grammar_1629, nullptr, gSuccessorTable_galgas4Grammar_1631, 
+  gSuccessorTable_galgas4Grammar_1632, gSuccessorTable_galgas4Grammar_1633, gSuccessorTable_galgas4Grammar_1634, gSuccessorTable_galgas4Grammar_1635, 
+  gSuccessorTable_galgas4Grammar_1636, gSuccessorTable_galgas4Grammar_1637, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1640, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1676, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1686, nullptr, 
-  gSuccessorTable_galgas4Grammar_1688, gSuccessorTable_galgas4Grammar_1689, gSuccessorTable_galgas4Grammar_1690, nullptr, 
-  gSuccessorTable_galgas4Grammar_1692, nullptr, gSuccessorTable_galgas4Grammar_1694, nullptr, 
-  gSuccessorTable_galgas4Grammar_1696, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1700, gSuccessorTable_galgas4Grammar_1701, gSuccessorTable_galgas4Grammar_1702, gSuccessorTable_galgas4Grammar_1703, 
-  gSuccessorTable_galgas4Grammar_1704, gSuccessorTable_galgas4Grammar_1705, gSuccessorTable_galgas4Grammar_1706, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1709, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1648, nullptr, gSuccessorTable_galgas4Grammar_1650, nullptr, 
+  gSuccessorTable_galgas4Grammar_1652, nullptr, gSuccessorTable_galgas4Grammar_1654, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1657, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1661, gSuccessorTable_galgas4Grammar_1662, gSuccessorTable_galgas4Grammar_1663, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1666, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1720, gSuccessorTable_galgas4Grammar_1721, nullptr, gSuccessorTable_galgas4Grammar_1723, 
-  gSuccessorTable_galgas4Grammar_1724, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1731, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1738, nullptr, 
-  gSuccessorTable_galgas4Grammar_1740, nullptr, gSuccessorTable_galgas4Grammar_1742, nullptr, 
-  gSuccessorTable_galgas4Grammar_1744, nullptr, gSuccessorTable_galgas4Grammar_1746, gSuccessorTable_galgas4Grammar_1747, 
-  gSuccessorTable_galgas4Grammar_1748, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1752, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1755, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1762, gSuccessorTable_galgas4Grammar_1763, 
-  gSuccessorTable_galgas4Grammar_1764, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1768, nullptr, nullptr, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1774, nullptr, 
-  nullptr, nullptr, nullptr, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1781, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1679, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1689, nullptr, gSuccessorTable_galgas4Grammar_1691, 
+  gSuccessorTable_galgas4Grammar_1692, gSuccessorTable_galgas4Grammar_1693, nullptr, gSuccessorTable_galgas4Grammar_1695, 
+  nullptr, gSuccessorTable_galgas4Grammar_1697, nullptr, gSuccessorTable_galgas4Grammar_1699, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1703, 
+  gSuccessorTable_galgas4Grammar_1704, gSuccessorTable_galgas4Grammar_1705, gSuccessorTable_galgas4Grammar_1706, gSuccessorTable_galgas4Grammar_1707, 
+  gSuccessorTable_galgas4Grammar_1708, gSuccessorTable_galgas4Grammar_1709, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1712, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1723, 
+  gSuccessorTable_galgas4Grammar_1724, nullptr, gSuccessorTable_galgas4Grammar_1726, gSuccessorTable_galgas4Grammar_1727, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1734, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1741, nullptr, gSuccessorTable_galgas4Grammar_1743, 
+  nullptr, gSuccessorTable_galgas4Grammar_1745, nullptr, gSuccessorTable_galgas4Grammar_1747, 
+  nullptr, gSuccessorTable_galgas4Grammar_1749, gSuccessorTable_galgas4Grammar_1750, gSuccessorTable_galgas4Grammar_1751, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1755, 
+  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1758, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1765, gSuccessorTable_galgas4Grammar_1766, gSuccessorTable_galgas4Grammar_1767, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1771, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1777, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  gSuccessorTable_galgas4Grammar_1784, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
   nullptr, nullptr, nullptr, nullptr, 
-  gSuccessorTable_galgas4Grammar_1800, nullptr, gSuccessorTable_galgas4Grammar_1802, nullptr, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1806, nullptr, 
-  nullptr, gSuccessorTable_galgas4Grammar_1809, gSuccessorTable_galgas4Grammar_1810, nullptr, 
+  nullptr, nullptr, nullptr, nullptr, 
+  nullptr, nullptr, nullptr, gSuccessorTable_galgas4Grammar_1803, 
+  nullptr, gSuccessorTable_galgas4Grammar_1805, nullptr, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1809, nullptr, nullptr, 
   gSuccessorTable_galgas4Grammar_1812, gSuccessorTable_galgas4Grammar_1813, nullptr, gSuccessorTable_galgas4Grammar_1815, 
-  nullptr, nullptr, gSuccessorTable_galgas4Grammar_1818, nullptr, 
-  gSuccessorTable_galgas4Grammar_1820, nullptr} ;
+  gSuccessorTable_galgas4Grammar_1816, nullptr, gSuccessorTable_galgas4Grammar_1818, nullptr, 
+  nullptr, gSuccessorTable_galgas4Grammar_1821, nullptr, gSuccessorTable_galgas4Grammar_1823, 
+  nullptr} ;
 
 //--------------------------------------------------------------------------------------------------
 //

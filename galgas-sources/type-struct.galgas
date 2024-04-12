@@ -231,7 +231,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !@mapSearchMethodListAST §[]
       !generateHeaderInSeparateFile: false
       !enumeratedType # Type for enumerated element for "for" instruction
-      !defaultConstructorName: defaultConstructorName # Default constructor
+      !defaultConstructorName: "" # Default constructor
       !"struct-" + [self.structTypeName fileNameRepresentation]
       !headerKind: .oneHeader
     }

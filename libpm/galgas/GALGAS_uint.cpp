@@ -99,6 +99,14 @@ GALGAS_uint GALGAS_uint::class_func_random (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_uint GALGAS_uint::init_21_ (const GALGAS_uint & inValue,
+                                   Compiler * /* inCompiler */
+                                   COMMA_UNUSED_LOCATION_ARGS) {
+  return inValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_uint GALGAS_uint::class_func_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (UINT32_MAX) ;
 }

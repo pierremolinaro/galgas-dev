@@ -343,32 +343,4 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
 
 }
 
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @string mConstructorName
-  private let @bool mHasCompilerArgument
-
-  #·······························································································
-
-  override method generateExpression ?!@string unused ioGeneratedCode
-                                      ?!@stringset ioInclusionSet
-                                      ?!@uint unused ioTemporaryVariableIndex
-                                      ?!@stringset unused ioUnusedVariableCppNameSet
-                                      !@string outCppExpression {
-    [self.mResultType addHeaderFileName !?ioInclusionSet]
-    outCppExpression = "GALGAS_"  + [self.mResultType identifierRepresentation] + "::class_func_"
-    + [self.mConstructorName identifierRepresentation]
-    if self.mHasCompilerArgument then
-      outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-    else
-      outCppExpression += " (" + [self.mLocation sourceFile] + ")"
-    end
-  }
-
-  #·······························································································
-
-}
-
 #—————————————————————————————————————————————————————————————————————————————————————————————————

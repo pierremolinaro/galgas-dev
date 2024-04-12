@@ -12486,7 +12486,7 @@ GALGAS_initializerSignatureList_2D_element::~ GALGAS_initializerSignatureList_2D
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_initializerSignatureList_2D_element GALGAS_initializerSignatureList_2D_element::init_21_ (const GALGAS_functionSignature & in_initializer,
+GALGAS_initializerSignatureList_2D_element GALGAS_initializerSignatureList_2D_element::init_21_ (const GALGAS_formalInputParameterListAST & in_initializer,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_initializerSignatureList_2D_element result ;
@@ -12502,13 +12502,13 @@ void GALGAS_initializerSignatureList_2D_element::setInitializedProperties (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerSignatureList_2D_element::GALGAS_initializerSignatureList_2D_element (const GALGAS_functionSignature & inOperand0) :
+GALGAS_initializerSignatureList_2D_element::GALGAS_initializerSignatureList_2D_element (const GALGAS_formalInputParameterListAST & inOperand0) :
 mProperty_initializer (inOperand0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerSignatureList_2D_element GALGAS_initializerSignatureList_2D_element::class_func_new (const GALGAS_functionSignature & in_initializer,
+GALGAS_initializerSignatureList_2D_element GALGAS_initializerSignatureList_2D_element::class_func_new (const GALGAS_formalInputParameterListAST & in_initializer,
                                                                                                        Compiler * inCompiler
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_initializerSignatureList_2D_element result ;
