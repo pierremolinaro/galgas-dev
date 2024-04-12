@@ -1009,6 +1009,8 @@ class GALGAS_enumerationDescriptorList : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_enumerationDescriptorList init (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1167,6 +1169,8 @@ class GALGAS_functionSignature : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_functionSignature init (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1361,6 +1365,8 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_mapSearchMethodListAST init (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1520,6 +1526,8 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_typedPropertyList init (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1736,6 +1744,8 @@ class GALGAS_classFunctionMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_classFunctionMap init (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1886,6 +1896,8 @@ class GALGAS_classMethodMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_classMethodMap init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2021,6 +2033,8 @@ class GALGAS_getterMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_getterMap init (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2231,6 +2245,8 @@ class GALGAS_initializerMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_initializerMap init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2351,6 +2367,8 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_instanceMethodMap init (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2547,6 +2565,8 @@ class GALGAS_optionalMethodMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_optionalMethodMap init (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2663,6 +2683,8 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_propertyMap init (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2807,6 +2829,8 @@ class GALGAS_setterMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_setterMap init (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3717,6 +3741,8 @@ class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateInstructionListForGeneration init (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4419,6 +4445,8 @@ class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_lis
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateInstructionIfBranchListForGeneration init (Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4838,6 +4866,8 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateVariableMap init (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5535,6 +5565,8 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_unifiedTypeMap init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5674,6 +5706,8 @@ class GALGAS_filewrapperMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_filewrapperMap init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5860,6 +5894,8 @@ class GALGAS_functionMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_functionMap init (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6004,6 +6040,8 @@ class GALGAS_grammarMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_grammarMap init (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6148,6 +6186,8 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexiqueComponentMapForSemanticAnalysis init (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6348,6 +6388,8 @@ class GALGAS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_optionComponentMapForSemanticAnalysis init (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6520,6 +6562,8 @@ class GALGAS_syntaxComponentMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_syntaxComponentMap init (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6678,6 +6722,8 @@ class GALGAS_internalRoutineMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_internalRoutineMap init (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7897,6 +7943,8 @@ class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateInstructionSwitchBranchListAST init (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8092,6 +8140,8 @@ class GALGAS_switchExtractedValuesListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_switchExtractedValuesListAST init (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8663,6 +8713,8 @@ class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateInstructionSwitchBranchListForGeneration init (Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8858,6 +8910,8 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_extractedAssociatedValuesForGeneration init (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9572,6 +9626,8 @@ class GALGAS_templateDelimitorListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateDelimitorListAST init (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -9913,6 +9969,8 @@ class GALGAS_templateReplacementListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_templateReplacementListAST init (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10191,6 +10249,8 @@ class GALGAS_lexicalAttributeListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalAttributeListAST init (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10438,6 +10498,8 @@ class GALGAS_lexicalStyleListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalStyleListAST init (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10689,6 +10751,8 @@ class GALGAS_terminalDeclarationListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_terminalDeclarationListAST init (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -10921,6 +10985,8 @@ class GALGAS_sentLexicalAttributeListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_sentLexicalAttributeListAST init (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11216,6 +11282,8 @@ class GALGAS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalMessageDeclarationListAST init (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11466,6 +11534,8 @@ class GALGAS_lexicalListDeclarationListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalListDeclarationListAST init (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11681,6 +11751,8 @@ class GALGAS_lexicalListEntryListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalListEntryListAST init (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12001,6 +12073,8 @@ class GALGAS_lexicalRuleListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalRuleListAST init (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12325,6 +12399,8 @@ class GALGAS_indexingListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_indexingListAST init (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -13157,6 +13233,8 @@ class GALGAS_lexicalInstructionListAST : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lexicalInstructionListAST init (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -14337,174 +14415,4 @@ class GALGAS_lexicalCharacterSetMatchAST_2D_weak : public GALGAS_lexicalExpressi
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalCharacterMatchAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalCharacterMatchAST : public GALGAS_lexicalExpressionAST {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalCharacterMatchAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_lexicalCharacterMatchAST (const class cPtr_lexicalCharacterMatchAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GALGAS_lchar readProperty_mCharacter (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_lexicalCharacterMatchAST init_21_ (const class GALGAS_lchar & inOperand0,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalCharacterMatchAST extractObject (const GALGAS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalCharacterMatchAST class_func_new (const class GALGAS_lchar & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalCharacterMatchAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMatchAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @lexicalCharacterMatchAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void lexicalCharacterMatchAST_init_21_ (const class GALGAS_lchar & inOperand0,
-                                                  Compiler * inCompiler) ;
-
-
-//--- Extension getter generateConditionCode
-  public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GALGAS_string getter_generateObjcCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateSwiftCocoaConditionCode
-  public: virtual class GALGAS_string getter_generateSwiftCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lchar mProperty_mCharacter ;
-
-
-//--- Default constructor
-  public: cPtr_lexicalCharacterMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_lexicalCharacterMatchAST (const GALGAS_lchar & in_mCharacter
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalCharacterMatchAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalCharacterMatchAST_2D_weak : public GALGAS_lexicalExpressionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalCharacterMatchAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_lexicalCharacterMatchAST_2D_weak (const class GALGAS_lexicalCharacterMatchAST & inSource) ;
-
-  public: GALGAS_lexicalCharacterMatchAST_2D_weak & operator = (const class GALGAS_lexicalCharacterMatchAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_lexicalCharacterMatchAST bang_lexicalCharacterMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalCharacterMatchAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalCharacterMatchAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalCharacterMatchAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalCharacterMatchAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMatchAST_2D_weak ;
 

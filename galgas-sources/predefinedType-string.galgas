@@ -26,9 +26,15 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultInitializerName -> @string {
+  override getter defaultConstructorName -> @string {
     result = "default"
   }
+
+  #-----------------------------------------------------------------------------------------------
+
+#  override getter initializers -> @initializerSignatureList {
+#    result = §[!@functionSignature §[]]
+#  }
 
   #-----------------------------------------------------------------------------------------------
 

@@ -973,23 +973,6 @@ override method @lexiqueComponentAST semanticAnalysis
     var tokenSortedlist = @tokenSortedlist §[]
     for (mEntrySpelling mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
       let syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
-#      var isEndOfTemplateMark = false
-#      var atomicSelection = true
-#      for (mValue) in mAttributeList do
-#        if mValue.string == "nonAtomicSelection" then
-#          if atomicSelection then
-#            atomicSelection = false
-#          else
-#            error mValue: "the 'nonAtomicSelection' attribute is already set"
-#          end
-#        elsif mValue.string != "templateEndMark" then
-#          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' attributes are allowed here"
-#        elsif isEndOfTemplateMark then
-#          error mValue:"the 'templateEndMark' attribute is already set"
-#        else
-#          isEndOfTemplateMark = true
-#        end
-#      end
       lexiqueAnalysisContext.mTerminalList +=
         !mTerminalSpelling
         !argumentTypeList

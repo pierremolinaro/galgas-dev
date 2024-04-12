@@ -559,9 +559,6 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-#    if not isPublic then
-#      error value : "inaccessible property (due to 'private' qualifier)"
-#    end
     if isConstant then
       error value: "a constant property cannot be modified"
     end

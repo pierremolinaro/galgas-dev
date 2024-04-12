@@ -26,6 +26,12 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+list @initializerSignatureList {
+  public let @functionSignature initializer
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   public let @string mPredefinedTypeName
 
@@ -41,7 +47,13 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  abstract getter defaultInitializerName -> @string // Empty string: no default initializer name
+  abstract getter defaultConstructorName -> @string // Empty string: no default initializer name
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter initializers -> @initializerSignatureList {
+    result = §[]
+  }
 
   #-----------------------------------------------------------------------------------------------
 
@@ -87,6 +99,9 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
     end
   #--- Add Extensions
     var @initializerMap initializerMap = §[]
+    for (initializer) in [self initializers] do
+      [!?initializerMap insertKey !.init ([initializer initializerSignature], .nowhere) !initializer]
+    end
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -127,7 +142,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !@mapSearchMethodListAST §[]
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !enumeratedTypeEntry
-      !defaultConstructorName: [self defaultInitializerName]
+      !defaultConstructorName: [self defaultConstructorName]
       !"predefined-types"
       !headerKind: .twoHeaders
     }

@@ -971,6 +971,8 @@ class GALGAS_stringset : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_stringset init (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2345,6 +2347,8 @@ class GALGAS_binaryset : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_binaryset init (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2664,6 +2668,8 @@ class GALGAS_data : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_data init (Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3102,6 +3108,8 @@ class GALGAS_timer : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_timer init (Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3245,6 +3253,8 @@ class GALGAS_stringlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_stringlist init (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3381,6 +3391,8 @@ class GALGAS_lstringlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lstringlist init (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3609,6 +3621,8 @@ class GALGAS__32_stringlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS__32_stringlist init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3764,6 +3778,8 @@ class GALGAS_functionlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_functionlist init (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3900,6 +3916,8 @@ class GALGAS_luintlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_luintlist init (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4127,6 +4145,8 @@ class GALGAS_objectlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_objectlist init (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4263,6 +4283,8 @@ class GALGAS_typelist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_typelist init (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4399,6 +4421,8 @@ class GALGAS_uintlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_uintlist init (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4535,6 +4559,8 @@ class GALGAS_uint_36__34_list : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_uint_36__34_list init (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4671,6 +4697,8 @@ class GALGAS_bigintlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_bigintlist init (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4807,6 +4835,8 @@ class GALGAS_lbigintlist : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_lbigintlist init (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

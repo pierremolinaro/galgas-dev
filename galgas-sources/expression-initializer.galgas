@@ -26,6 +26,14 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
+    <initializer_call_ggs3> !?ioDeclarations ?let initializerCall
+    outExpression = initializerCall
+  }
+  
+  #·······························································································
+
+  rule <initializer_call_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                               !@initializerCallAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
     $.$
     $init$
@@ -52,8 +60,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <initializer_call_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                               !@initializerCallAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
     $.$
     $init$
@@ -67,8 +75,22 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
+  rule <initializer_call_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                               !@initializerCallAST outExpression {
+    $($
+    $)$
+    let endOfExpression = @location.here
+    outExpression = @initializerCallAST {
+      !["" here]
+      !§[]
+      !endOfExpression
+    }
+  }
+
+  #·······························································································
+
+  rule <initializer_call_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                               !@initializerCallAST outExpression {
     $@type$ ?let typeName indexing typeReferenceInConstructor
     select
       ${$
@@ -94,7 +116,15 @@ syntax extension galgas4ExpressionSyntax {
   #·······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
+                      !@semanticExpressionAST outExpression {
+    <initializer_call> !?ioDeclarations ?let initializerCall
+    outExpression = initializerCall
+  }
+  
+  #·······························································································
+
+  rule <initializer_call> ?!@galgasDeclarationAST ioDeclarations
+                          !@initializerCallAST outExpression {
     <optional_type> ?let @lstring typeName
     $.$
     $init$
@@ -111,8 +141,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <initializer_call> ?!@galgasDeclarationAST unused ioDeclarations
+                          !@initializerCallAST outExpression {
     <optional_type> ?let @lstring typeName
     $.$
     $init$
@@ -126,8 +156,22 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
+  rule <initializer_call> ?!@galgasDeclarationAST unused ioDeclarations
+                          !@initializerCallAST outExpression {
+    $($
+    $)$
+    let endOfExpression = @location.here
+    outExpression = @initializerCallAST {
+      !["" nowhere]
+      !§[]
+      !endOfExpression
+    }
+  }
+
+  #·······························································································
+
+  rule <initializer_call> ?!@galgasDeclarationAST ioDeclarations
+                          !@initializerCallAST outExpression {
   #--- Type name
     $@type$ ?let typeName indexing typeReferenceInConstructor
     $($

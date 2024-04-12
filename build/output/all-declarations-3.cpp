@@ -237,6 +237,14 @@ GALGAS_commandLineOptionSortedList GALGAS_commandLineOptionSortedList::class_fun
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_commandLineOptionSortedList GALGAS_commandLineOptionSortedList::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_commandLineOptionSortedList result ;
+  result.createNewEmptySortedList (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_commandLineOptionSortedList GALGAS_commandLineOptionSortedList::class_func_sortedListWithValue (const GALGAS_string & inOperand0,
                                                                                                        const GALGAS_char & inOperand1,
                                                                                                        const GALGAS_string & inOperand2,
@@ -599,6 +607,14 @@ AC_GALGAS_map (inSource) {
 GALGAS_commandLineOptionMap & GALGAS_commandLineOptionMap::operator = (const GALGAS_commandLineOptionMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_commandLineOptionMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1052,6 +1068,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiSimpleAttributeListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_guiSimpleAttributeListAST (capCollectionElementArray ()) ;
 }
 
@@ -1532,6 +1554,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiCompoundAttributeListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_guiCompoundAttributeListAST (capCollectionElementArray ()) ;
 }
 
@@ -2071,6 +2099,12 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::class_func_emptyList (U
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_terminalLabelListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                    const GALGAS_uint & inOperand1
                                                                                    COMMA_LOCATION_ARGS) {
@@ -2546,6 +2580,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiLabelListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_guiLabelListAST GALGAS_guiLabelListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_guiLabelListAST (capCollectionElementArray ()) ;
 }
 
@@ -3092,6 +3132,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_withLexiqueListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_withLexiqueListAST (capCollectionElementArray ()) ;
 }
 
@@ -3704,6 +3750,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiCommandLineOptionList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_guiCommandLineOptionList (capCollectionElementArray ()) ;
 }
 
@@ -4337,6 +4389,14 @@ GALGAS_extensionMap & GALGAS_extensionMap::operator = (const GALGAS_extensionMap
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_extensionMap GALGAS_extensionMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_extensionMap GALGAS_extensionMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_extensionMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -4671,6 +4731,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_textMacroList GALGAS_textMacroList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_textMacroList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_textMacroList GALGAS_textMacroList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_textMacroList (capCollectionElementArray ()) ;
 }
 
@@ -5175,6 +5241,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_importedLexiqueList GALGAS_importedLexiqueList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_importedLexiqueList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_importedLexiqueList GALGAS_importedLexiqueList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_importedLexiqueList (capCollectionElementArray ()) ;
 }
 
@@ -5954,6 +6026,12 @@ GALGAS_projectIndexingDescriptorList GALGAS_projectIndexingDescriptorList::class
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_projectIndexingDescriptorList GALGAS_projectIndexingDescriptorList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_projectIndexingDescriptorList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_projectIndexingDescriptorList GALGAS_projectIndexingDescriptorList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                                      const GALGAS_lstring & inOperand1
                                                                                                      COMMA_LOCATION_ARGS) {
@@ -6441,6 +6519,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_galgasGUIComponentListAST GALGAS_galgasGUIComponentListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_galgasGUIComponentListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_galgasGUIComponentListAST GALGAS_galgasGUIComponentListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_galgasGUIComponentListAST (capCollectionElementArray ()) ;
 }
 
@@ -7031,16 +7115,24 @@ GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::init (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_guiAnalysisContext::setInitializedProperties (Compiler * /* inCompiler */) {
-  mProperty_mImportedOptionComponentList = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 389)) ;
-  mProperty_mBoolOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 390)) ;
-  mProperty_mUIntOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 391)) ;
-  mProperty_mStringOptionList = GALGAS_guiCommandLineOptionList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 392)) ;
-  mProperty_mNibAndClassList = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 393)) ;
-  mProperty_mExtensionMap = GALGAS_extensionMap::class_func_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 394)) ;
-  mProperty_mWithLexiqueList = GALGAS_importedLexiqueList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 395)) ;
+void GALGAS_guiAnalysisContext::setInitializedProperties (Compiler * inCompiler) {
+GALGAS_stringlist temp_0 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 389)) ;
+  mProperty_mImportedOptionComponentList = temp_0 ;
+GALGAS_guiCommandLineOptionList temp_1 = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 390)) ;
+  mProperty_mBoolOptionList = temp_1 ;
+GALGAS_guiCommandLineOptionList temp_2 = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 391)) ;
+  mProperty_mUIntOptionList = temp_2 ;
+GALGAS_guiCommandLineOptionList temp_3 = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 392)) ;
+  mProperty_mStringOptionList = temp_3 ;
+GALGAS_stringlist temp_4 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 393)) ;
+  mProperty_mNibAndClassList = temp_4 ;
+GALGAS_extensionMap temp_5 = GALGAS_extensionMap::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 394)) ;
+  mProperty_mExtensionMap = temp_5 ;
+GALGAS_importedLexiqueList temp_6 = GALGAS_importedLexiqueList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 395)) ;
+  mProperty_mWithLexiqueList = temp_6 ;
   mProperty_mBuildRunOption = GALGAS_string::makeEmptyString () ;
-  mProperty_mProjectIndexingDescriptorList = GALGAS_projectIndexingDescriptorList::class_func_emptyList (SOURCE_FILE ("guiCompilation.galgas", 397)) ;
+GALGAS_projectIndexingDescriptorList temp_7 = GALGAS_projectIndexingDescriptorList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 397)) ;
+  mProperty_mProjectIndexingDescriptorList = temp_7 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7259,6 +7351,14 @@ AC_GALGAS_map (inSource) {
 GALGAS_optionComponentMapForGeneration & GALGAS_optionComponentMapForGeneration::operator = (const GALGAS_optionComponentMapForGeneration & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionComponentMapForGeneration GALGAS_optionComponentMapForGeneration::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_optionComponentMapForGeneration result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12513,6 +12613,12 @@ GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::class_fun
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_propertyInCollectionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::class_func_listWithValue (const GALGAS_bool & inOperand0,
                                                                                                  const GALGAS_lstring & inOperand1,
                                                                                                  const GALGAS_lstring & inOperand2,
@@ -13355,6 +13461,12 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::class_func_emptyList (UNUSED_
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_typedPropertyList GALGAS_typedPropertyList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_typedPropertyList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_typedPropertyList GALGAS_typedPropertyList::class_func_listWithValue (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                              const GALGAS_lstring & inOperand1,
                                                                              const GALGAS_propertyInCollectionInitializationAST & inOperand2,
@@ -13974,6 +14086,14 @@ GALGAS_initializerMap & GALGAS_initializerMap::operator = (const GALGAS_initiali
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_initializerMap GALGAS_initializerMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_initializerMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_initializerMap GALGAS_initializerMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_initializerMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -14398,6 +14518,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_enumConstantList GALGAS_enumConstantList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_enumConstantList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_enumConstantList GALGAS_enumConstantList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_enumConstantList (capCollectionElementArray ()) ;
 }
 
@@ -14987,6 +15113,12 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::class
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_enumConstantListForGeneration (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::class_func_listWithValue (const GALGAS_string & inOperand0,
                                                                                                      const GALGAS_unifiedTypeMapEntryList & inOperand1
                                                                                                      COMMA_LOCATION_ARGS) {
@@ -15455,6 +15587,12 @@ GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::class_func_emptyL
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_unifiedTypeMapEntryList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_unifiedTypeMapEntryList GALGAS_unifiedTypeMapEntryList::class_func_listWithValue (const GALGAS_unifiedTypeMapEntry & inOperand0
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntryList result ;
@@ -15870,6 +16008,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_typeNameFormalParameterNameList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_typeNameFormalParameterNameList (capCollectionElementArray ()) ;
 }
 

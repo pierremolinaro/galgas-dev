@@ -215,8 +215,14 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-#--- Add extensions
+#--- Add initializer without argument
   var @initializerMap initializerMap = §[]
+  let @functionSignature emptyArgumentList = §[]
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mListmapTypeName}
+    !emptyArgumentList
+  ]
+#--- Add extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -291,14 +297,6 @@ override method @listmapDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
   let associatedTypeDefinition = [ioTypeMap typeDefinition !self.mAssociatedListTypeName]
-#  [ioTypeMap searchKey
-#    !self.mAssociatedListTypeName
-#    ?3*
-#    ?let @typeKindEnum typeKindEnum
-#    ?*
-#    ?let @typedPropertyList listTypeAttributeList
-#    ?20*
-#  ]
 #---
   if associatedTypeDefinition.typeKind != .listType then
     error self.mAssociatedListTypeName : "associated type should be a list type"

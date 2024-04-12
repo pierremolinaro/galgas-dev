@@ -32,12 +32,17 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultInitializerName -> @string {
+  override getter defaultConstructorName -> @string {
     result = "emptySet"
   }
 
   #-----------------------------------------------------------------------------------------------
 
+  override getter initializers -> @initializerSignatureList {
+    result = §[!@functionSignature §[]]
+  }
+
+  #-----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.stringset_type]

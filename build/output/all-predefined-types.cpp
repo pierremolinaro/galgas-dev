@@ -195,6 +195,12 @@ GALGAS_stringlist GALGAS_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_stringlist GALGAS_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_stringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_stringlist GALGAS_stringlist::class_func_listWithValue (const GALGAS_string & inOperand0
                                                                COMMA_LOCATION_ARGS) {
   GALGAS_stringlist result ;
@@ -682,6 +688,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lstringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lstringlist (capCollectionElementArray ()) ;
 }
 
@@ -1356,6 +1368,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS__32_stringlist GALGAS__32_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS__32_stringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS__32_stringlist GALGAS__32_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS__32_stringlist (capCollectionElementArray ()) ;
 }
 
@@ -2333,6 +2351,12 @@ GALGAS_functionlist GALGAS_functionlist::class_func_emptyList (UNUSED_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_functionlist GALGAS_functionlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_functionlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_functionlist GALGAS_functionlist::class_func_listWithValue (const GALGAS_function & inOperand0
                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_functionlist result ;
@@ -2736,6 +2760,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_luintlist GALGAS_luintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_luintlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_luintlist GALGAS_luintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_luintlist (capCollectionElementArray ()) ;
 }
 
@@ -3283,6 +3313,12 @@ GALGAS_objectlist GALGAS_objectlist::class_func_emptyList (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_objectlist GALGAS_objectlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_objectlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_objectlist GALGAS_objectlist::class_func_listWithValue (const GALGAS_object & inOperand0
                                                                COMMA_LOCATION_ARGS) {
   GALGAS_objectlist result ;
@@ -3686,6 +3722,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typelist GALGAS_typelist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_typelist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typelist GALGAS_typelist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_typelist (capCollectionElementArray ()) ;
 }
 
@@ -4099,6 +4141,12 @@ GALGAS_uintlist GALGAS_uintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_uintlist GALGAS_uintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_uintlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_uintlist GALGAS_uintlist::class_func_listWithValue (const GALGAS_uint & inOperand0
                                                            COMMA_LOCATION_ARGS) {
   GALGAS_uintlist result ;
@@ -4502,6 +4550,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uint_36__34_list (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint_36__34_list GALGAS_uint_36__34_list::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_uint_36__34_list (capCollectionElementArray ()) ;
 }
 
@@ -4915,6 +4969,12 @@ GALGAS_bigintlist GALGAS_bigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bigintlist GALGAS_bigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_bigintlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_bigintlist GALGAS_bigintlist::class_func_listWithValue (const GALGAS_bigint & inOperand0
                                                                COMMA_LOCATION_ARGS) {
   GALGAS_bigintlist result ;
@@ -5318,6 +5378,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lbigintlist GALGAS_lbigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lbigintlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lbigintlist GALGAS_lbigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lbigintlist (capCollectionElementArray ()) ;
 }
 

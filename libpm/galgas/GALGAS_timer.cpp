@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.
+//  Copyright (C) 2015, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -45,6 +45,14 @@ void GALGAS_timer::description (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_timer GALGAS_timer::class_func_start (UNUSED_LOCATION_ARGS) {
+  GALGAS_timer result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_timer GALGAS_timer::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_timer result ;
   result.mIsValid = true ;
   return result ;

@@ -396,6 +396,14 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyDict (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  macroMyNew (result.mSharedDict, cSharedDictRoot_%!TYPE_IDENTIFIER% (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Description
 #endif

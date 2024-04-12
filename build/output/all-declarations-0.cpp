@@ -106,6 +106,12 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_emptyList (UNUSED_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS__32_lstringlist GALGAS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS__32_lstringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                          const GALGAS_lstring & inOperand1
                                                                          COMMA_LOCATION_ARGS) {
@@ -5553,6 +5559,12 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::class_func_
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_templateInstructionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::class_func_listWithValue (const GALGAS_templateInstructionAST & inOperand0
                                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionListAST result ;
@@ -6177,6 +6189,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_templateExpressionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_templateExpressionListAST (capCollectionElementArray ()) ;
 }
 
@@ -16441,6 +16459,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_templateInstructionIfBranchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_templateInstructionIfBranchListAST (capCollectionElementArray ()) ;
 }
 

@@ -255,9 +255,6 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
         ?parameterType
       ]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
-  #    if not isPublic then
-  #      error value : " inaccessible property (due to its 'private' qualifier)"
-  #    end
       if isConstant then
         error value : "a constant property cannot be modified"
       end

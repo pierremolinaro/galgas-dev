@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -49,6 +49,12 @@ mData (inData) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_data GALGAS_data::class_func_emptyData (UNUSED_LOCATION_ARGS) {
+  return GALGAS_data (U8Data ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_data GALGAS_data::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_data (U8Data ()) ;
 }
 

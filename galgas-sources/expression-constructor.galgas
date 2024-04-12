@@ -358,9 +358,7 @@ refclass @defaultConstructorExpressionForGeneration : @semanticExpressionForGene
                                       ?!@stringset unused ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-    outCppExpression =
-      "GALGAS_"  + [self.mResultType identifierRepresentation]
-    + "::class_func_"
+    outCppExpression = "GALGAS_"  + [self.mResultType identifierRepresentation] + "::class_func_"
     + [self.mConstructorName identifierRepresentation]
     if self.mHasCompilerArgument then
       outCppExpression += " (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"

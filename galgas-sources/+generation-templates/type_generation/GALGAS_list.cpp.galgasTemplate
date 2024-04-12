@@ -119,6 +119,12 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyList (UNUSE
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_%!TYPE_IDENTIFIER% (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_listWithValue (%?^
   for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
   do (IDX) %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]

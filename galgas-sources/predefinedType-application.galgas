@@ -38,7 +38,7 @@ refclass @applicationPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultInitializerName -> @string {
+  override getter defaultConstructorName -> @string {
     result = "" // No default initializer
   }
 

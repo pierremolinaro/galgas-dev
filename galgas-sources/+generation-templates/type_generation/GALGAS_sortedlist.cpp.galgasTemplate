@@ -125,6 +125,14 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptySortedList 
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.createNewEmptySortedList (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_sortedListWithValue (%?^
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
   do (IDX) %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]

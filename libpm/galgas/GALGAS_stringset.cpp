@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2005, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2005, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -1034,6 +1034,14 @@ ComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & inOpe
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_stringset GALGAS_stringset::class_func_emptySet (LOCATION_ARGS) {
+  GALGAS_stringset result ;
+  macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_stringset GALGAS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
   GALGAS_stringset result ;
   macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
   return result ;

@@ -30,6 +30,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName
 
+  rule <initializer_call_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                               !@initializerCallAST outExpression
+
   #·······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
   #·······························································································
@@ -168,23 +171,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         }
       or
         $*$
+#        warning .here : "OLD CONSTRUCT"
+#        <initializer_call_ggs3> !?ioDeclarations ?let initializerCall
         outActualParameterList += !@outputInputSingleJokerParameterAST {!selector}
-      or
-        $literalInt$ ?let count
-        $*$
-        var n = [count.bigint uint]
-        if selector.string != "" then
-          error selector : "the selector should be '!?'" fixit { replace "!?" }
-        end
-        if n == 0 then
-          error count: "the count value should be > 0"
-        else
-          loop (n)
-          while n > 0 do
-            outActualParameterList += !@outputInputJokerParameterAST {!selector.location !n}
-            n -= 1
-          end
-        end
       end
     while 
       let @lstring selector
@@ -398,6 +387,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName
+
+  rule <initializer_call> ?!@galgasDeclarationAST ioDeclarations
+                          !@initializerCallAST outExpression
 
   #·······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
@@ -632,23 +624,12 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       }
     or
       $*$
-      ioActualParameterList += !@outputInputSingleJokerParameterAST {!selector}
+#      warning .here : "OLD CONSTRUCT"
+ #     <initializer_call> !?ioDeclarations ?let initializerCall
+      ioActualParameterList += !@outputInputSingleJokerParameterAST (selector)
     or
       $self$
       ioActualParameterList += !@outputInputSelfParameterAST {!selector}
-    or
-      $literalInt$ ?let count
-      $*$
-      var n = [count.bigint uint]
-      if n == 0 then
-        error count: "the count value should be > 0"
-      else
-        loop (n)
-        while n > 0 do
-          ioActualParameterList += !@outputInputJokerParameterAST {!selector.location !n}
-          n -= 1
-        end
-      end
     end
   }
 

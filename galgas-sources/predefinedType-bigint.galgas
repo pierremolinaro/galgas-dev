@@ -26,7 +26,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultInitializerName -> @string {
+  override getter defaultConstructorName -> @string {
     result = "zero"
   }
 

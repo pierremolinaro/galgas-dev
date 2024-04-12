@@ -9,6 +9,116 @@
 
 //--------------------------------------------------------------------------------------------------
 
+ComparisonResult GALGAS_lexicalCharacterMatchAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterMatchAST_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterMatchAST_2D_weak::GALGAS_lexicalCharacterMatchAST_2D_weak (void) :
+GALGAS_lexicalExpressionAST_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterMatchAST_2D_weak & GALGAS_lexicalCharacterMatchAST_2D_weak::operator = (const GALGAS_lexicalCharacterMatchAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterMatchAST_2D_weak::GALGAS_lexicalCharacterMatchAST_2D_weak (const GALGAS_lexicalCharacterMatchAST & inSource) :
+GALGAS_lexicalExpressionAST_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterMatchAST_2D_weak GALGAS_lexicalCharacterMatchAST_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalCharacterMatchAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterMatchAST GALGAS_lexicalCharacterMatchAST_2D_weak::bang_lexicalCharacterMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalCharacterMatchAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalCharacterMatchAST) ;
+      result = GALGAS_lexicalCharacterMatchAST ((cPtr_lexicalCharacterMatchAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalCharacterMatchAST-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterMatchAST_2D_weak ("lexicalCharacterMatchAST-weak",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalCharacterMatchAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCharacterMatchAST_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalCharacterMatchAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalCharacterMatchAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterMatchAST_2D_weak GALGAS_lexicalCharacterMatchAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalCharacterMatchAST_2D_weak result ;
+  const GALGAS_lexicalCharacterMatchAST_2D_weak * p = (const GALGAS_lexicalCharacterMatchAST_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterMatchAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalCharacterMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 ComparisonResult GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -431,6 +541,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalSendSearchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalSendSearchListAST (capCollectionElementArray ()) ;
 }
 
@@ -1339,6 +1455,12 @@ GALGAS_lexicalWhileBranchListAST GALGAS_lexicalWhileBranchListAST::class_func_em
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalWhileBranchListAST GALGAS_lexicalWhileBranchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalWhileBranchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalWhileBranchListAST GALGAS_lexicalWhileBranchListAST::class_func_listWithValue (const GALGAS_lexicalExpressionAST & inOperand0,
                                                                                              const GALGAS_lexicalInstructionListAST & inOperand1
                                                                                              COMMA_LOCATION_ARGS) {
@@ -1808,6 +1930,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalSelectBranchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalSelectBranchListAST (capCollectionElementArray ()) ;
 }
 
@@ -2485,6 +2613,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalFunctionCallActualArgumentListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalFunctionCallActualArgumentListAST (capCollectionElementArray ()) ;
 }
 
@@ -4145,6 +4279,12 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::class_func_emptyList (U
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalSentValueList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                    const GALGAS_string & inOperand1,
                                                                                    const GALGAS_lexicalTypeEnum & inOperand2
@@ -4644,6 +4784,14 @@ GALGAS_terminalMap & GALGAS_terminalMap::operator = (const GALGAS_terminalMap & 
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_terminalMap GALGAS_terminalMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_terminalMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_terminalMap GALGAS_terminalMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_terminalMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -4928,6 +5076,14 @@ GALGAS_lexicalTypeMap & GALGAS_lexicalTypeMap::operator = (const GALGAS_lexicalT
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalTypeMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalTypeMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -5208,6 +5364,14 @@ AC_GALGAS_map (inSource) {
 GALGAS_lexicalAttributeMap & GALGAS_lexicalAttributeMap::operator = (const GALGAS_lexicalAttributeMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalAttributeMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5550,6 +5714,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_terminalList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_terminalList GALGAS_terminalList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_terminalList (capCollectionElementArray ()) ;
 }
 
@@ -6252,6 +6422,14 @@ GALGAS_lexicalExplicitTokenListMap & GALGAS_lexicalExplicitTokenListMap::operato
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalExplicitTokenListMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -6673,6 +6851,14 @@ GALGAS_tokenSortedlist GALGAS_tokenSortedlist::class_func_emptySortedList (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_tokenSortedlist GALGAS_tokenSortedlist::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_tokenSortedlist result ;
+  result.createNewEmptySortedList (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_tokenSortedlist GALGAS_tokenSortedlist::class_func_sortedListWithValue (const GALGAS_uint & inOperand0,
                                                                                const GALGAS_string & inOperand1,
                                                                                const GALGAS_string & inOperand2
@@ -6980,6 +7166,14 @@ AC_GALGAS_map (inSource) {
 GALGAS_lexicalExplicitTokenListMapMap & GALGAS_lexicalExplicitTokenListMapMap::operator = (const GALGAS_lexicalExplicitTokenListMapMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalExplicitTokenListMapMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7367,6 +7561,14 @@ GALGAS_lexicalMessageMap & GALGAS_lexicalMessageMap::operator = (const GALGAS_le
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalMessageMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalMessageMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -7732,6 +7934,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalRoutineFormalArgumentList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalRoutineFormalArgumentList (capCollectionElementArray ()) ;
 }
 
@@ -8254,6 +8462,14 @@ GALGAS_lexicalRoutineMap & GALGAS_lexicalRoutineMap::operator = (const GALGAS_le
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalRoutineMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -8658,6 +8874,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalFunctionFormalArgumentList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalFunctionFormalArgumentList (capCollectionElementArray ()) ;
 }
 
@@ -9129,6 +9351,14 @@ GALGAS_lexicalFunctionMap & GALGAS_lexicalFunctionMap::operator = (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalFunctionMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalFunctionMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -9584,6 +9814,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_templateDelimitorList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateDelimitorList GALGAS_templateDelimitorList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_templateDelimitorList (capCollectionElementArray ()) ;
 }
 
@@ -10097,6 +10333,14 @@ GALGAS_styleMap & GALGAS_styleMap::operator = (const GALGAS_styleMap & inSource)
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_styleMap GALGAS_styleMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_styleMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_styleMap GALGAS_styleMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_styleMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -10413,6 +10657,14 @@ AC_GALGAS_map (inSource) {
 GALGAS_lexicalTagMap & GALGAS_lexicalTagMap::operator = (const GALGAS_lexicalTagMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalTagMap GALGAS_lexicalTagMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalTagMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13706,6 +13958,12 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalRoutineCallActualArgumentListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::class_func_listWithValue (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand0
                                                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRoutineCallActualArgumentListAST result ;
@@ -15114,6 +15372,12 @@ AC_GALGAS_list (inSharedArray) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_commandLineOptionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_commandLineOptionListAST (capCollectionElementArray ()) ;
 }
 

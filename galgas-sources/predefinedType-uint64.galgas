@@ -24,7 +24,7 @@ refclass @uint64PredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultInitializerName -> @string {
+  override getter defaultConstructorName -> @string {
     result = "default"
   }
 

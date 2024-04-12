@@ -26,8 +26,14 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultInitializerName -> @string {
+  override getter defaultConstructorName -> @string {
     result = "emptyBinarySet"
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter initializers -> @initializerSignatureList {
+    result = §[!@functionSignature §[]]
   }
 
   #-----------------------------------------------------------------------------------------------

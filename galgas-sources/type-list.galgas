@@ -329,8 +329,14 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#--- Add extensions
+#--- Add initializer without argument
   var @initializerMap initializerMap = §[]
+  let @functionSignature emptyArgumentList = §[]
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mListTypeName}
+    !emptyArgumentList
+  ]
+#--- Add extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext

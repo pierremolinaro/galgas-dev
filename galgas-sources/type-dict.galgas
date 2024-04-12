@@ -310,8 +310,14 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
       !"" # No error message
     ]
   end
-#--- Add extensions
+#--- Add initializer without argument
   var @initializerMap initializerMap = §[]
+  let @functionSignature emptyArgumentList = §[]
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mDictTypeName}
+    !emptyArgumentList
+  ]
+#--- Add extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext

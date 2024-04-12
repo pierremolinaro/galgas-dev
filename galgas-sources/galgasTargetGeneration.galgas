@@ -622,11 +622,11 @@ proc updateGalgasTargets
         !groupName:"Hand Coded Sources (App)"
         !groupPath:"../"
         !fileNames:@stringset.setWithStringList {!inHandCodedSourceAppFileList}
-        !?cFileRefs:*
-        !?cppFileRefs:*
+        !?cFileRefs: *
+        !?cppFileRefs: *
         !?mFileRefs:m_HandCodedSourceFileRefForAppList
-        !?mmFileRefs:*
-        !?frameworkFileRefs:*
+        !?mmFileRefs: *
+        !?frameworkFileRefs: *
         !?resourceFileRefs:m_HandCodedResourceFileRefForAppList
         ?groupRef:let @string groupRef
       ]
@@ -639,12 +639,12 @@ proc updateGalgasTargets
         !groupName: "Frameworks (App)"
         !groupPath: "/System/Library/Frameworks"
         !fileNames: .setWithStringList {!inHandCodedLinkAppFileList}
-        !?cFileRefs:*
-        !?cppFileRefs:*
-        !?mFileRefs:*
-        !?mmFileRefs:*
+        !?cFileRefs: *
+        !?cppFileRefs: *
+        !?mFileRefs: *
+        !?mmFileRefs: *
         !?frameworkFileRefs: appFrameworksFileRefList
-        !?resourceFileRefs:*
+        !?resourceFileRefs: *
         ?groupRef: let @string frameworkGroupRef
       ]
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
@@ -679,12 +679,12 @@ proc updateGalgasTargets
         !groupName:"Frameworks (Tool)"
         !groupPath:"/System/Library/Frameworks"
         !fileNames:@stringset.setWithStringList {!inFrameworkToolFileList}
-        !?cFileRefs:*
-        !?cppFileRefs:*
-        !?mFileRefs:*
-        !?mmFileRefs:*
+        !?cFileRefs: *
+        !?cppFileRefs: *
+        !?mFileRefs: *
+        !?mmFileRefs: *
         !?frameworkFileRefs:toolFrameworksFileRefList
-        !?resourceFileRefs:*
+        !?resourceFileRefs: *
         ?groupRef:let @string frameworkGroupRef
       ]
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]

@@ -281,8 +281,14 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#--- Add Categories
+#--- Add initializer without argument
   var @initializerMap initializerMap = §[]
+  let @functionSignature emptyArgumentList = §[]
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mSortedListTypeName}
+    !emptyArgumentList
+  ]
+#--- Add extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext

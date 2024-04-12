@@ -208,54 +208,53 @@ override method @collectionValueAST analyzeSemanticExpression
     error self.mTypeName : "Cannot infer type" : outExpression
   elsif not [targetType definition].supportCollectionValue then
     error self.mTypeName
-    : "the @" + [targetType definition].typeName.string + " type does not support collection value" : outExpression
+    : "the @" + [targetType definition].typeName.string
+    + " type does not support collection value" : outExpression
   else
-    let classFunctionMap = [targetType definition].classFunctionMap
-    var @bool hasCompilerArgument = false
-    var @string constructorName = ""
-    var found = false
-    for c in classFunctionMap while not found do
-      if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == targetType) then
-        hasCompilerArgument = c.mHasCompilerArgument
-        constructorName = c.lkey.string
-        found = true
-      end
+    let initializerMap = [targetType definition].initializerMap
+    let @functionSignature emptyArgumentList = §[]
+    if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
+      error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
     end
-    if not found then
-      error self.mTypeName
-      : "the '@" + [targetType definition].typeName + "' has no initializer without argument"
-    end
-    let usefulnessName = typeNameForUsefulEntitiesGraph (
-      !.init {![targetType definition].typeName.string
-      !self.mEndOfCollectionValue}
-    )
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-    if [self.mElementList count] == 0 then
-      outExpression = @defaultConstructorExpressionForGeneration {
+
+#    let classFunctionMap = [targetType definition].classFunctionMap
+#    var @bool hasCompilerArgument = false
+#    var @string constructorName = ""
+#    var found = false
+#    for c in classFunctionMap while not found do
+#      if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == targetType) then
+#        hasCompilerArgument = c.mHasCompilerArgument
+#        constructorName = c.lkey.string
+#        found = true
+#      end
+#    end
+#    if not found then
+#      error self.mTypeName
+#      : "the '@" + [targetType definition].typeName + "' has no initializer without argument"
+#    end
+
+#    let usefulnessName = typeNameForUsefulEntitiesGraph (
+#      !.init {![targetType definition].typeName.string
+#      !self.mEndOfCollectionValue}
+#    )
+#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+    var @collectionValueElementListForGeneration collectionValueElementListForGeneration = §[]
+    for (mElement) in self.mElementList do
+      [mElement analyze
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inAnalysisContext
+        !?ioTypeMap
         !targetType
-        !self.mTypeName.location
-        !constructorName
-        !hasCompilerArgument
-      }
-    else
-      var @collectionValueElementListForGeneration collectionValueElementListForGeneration = §[]
-      for (mElement) in self.mElementList do
-        [mElement analyze
-          !inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inAnalysisContext
-          !?ioTypeMap
-          !targetType
-          !?ioVariableMap
-          !?collectionValueElementListForGeneration
-        ]
-      end
-      outExpression = @expressionCollectionForGeneration {
-        !targetType
-        !self.mEndOfCollectionValue
-        !collectionValueElementListForGeneration
-      }
+        !?ioVariableMap
+        !?collectionValueElementListForGeneration
+      ]
     end
+    outExpression = @expressionCollectionForGeneration {
+      !targetType
+      !self.mEndOfCollectionValue
+      !collectionValueElementListForGeneration
+    }
   end
 #---
 }
@@ -344,8 +343,6 @@ override method @expressionListCollectionValue analyze
       if mFormalSelector.string != expression.mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error expression.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error expression.mActualSelector
-#          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !self.mEndOfExpressionLocation !?exp)
       semanticExpressionListForGeneration += !exp
@@ -472,7 +469,9 @@ override method @expressionCollectionForGeneration generateExpression
   ioTemporaryVariableIndex += 1
 #--- Declare variable and apply default constructor
   ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
-     + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::class_func_" + [[self.mResultType definition].defaultConstructorName identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"
+  ioGeneratedCode += " = GALGAS_" +  [self.mResultType identifierRepresentation]
+  ioGeneratedCode += "::init (" + compilerCppName () + [self.mLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 #--- Add Elements
   for (mElement) in self.mElementList do
     [mElement generateCollectionElementCode

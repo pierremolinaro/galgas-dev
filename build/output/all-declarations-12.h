@@ -59,6 +59,14 @@ class cParser_galgas_33_ParameterArgumentSyntax {
 
   protected: virtual void nt_formal_5F_parameter_5F_list_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
 
+  protected: virtual void nt_initializer_5F_call_5F_ggs_33__ (class GALGAS_galgasDeclarationAST & ioArgument0,
+                                                              class GALGAS_initializerCallAST & outArgument1,
+                                                              class Lexique_galgasScanner_33_ * inLexique) = 0 ;
+
+  protected: virtual void nt_initializer_5F_call_5F_ggs_33__parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
+
+  protected: virtual void nt_initializer_5F_call_5F_ggs_33__indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
+
   protected: virtual void nt_poisoned_5F_var_5F_list_5F_ggs_33__ (class GALGAS_lstringlist & outArgument0,
                                                                   class Lexique_galgasScanner_33_ * inLexique) = 0 ;
 

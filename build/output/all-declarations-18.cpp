@@ -594,17 +594,18 @@ GALGAS_unifiedTypeDefinition GALGAS_unifiedTypeDefinition::extractObject (const 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMap & inObject,
-                                                      Compiler *
+                                                      Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist result_result ; // Returned variable
-  result_result = GALGAS_lstringlist::class_func_emptyList (SOURCE_FILE ("unified-type-map.galgas", 34)) ;
-  const GALGAS_unifiedTypeMap temp_0 = inObject ;
-  cEnumerator_unifiedTypeMap enumerator_1820 (temp_0, EnumerationOrder::up) ;
+  GALGAS_lstringlist temp_0 = GALGAS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 34)) ;
+  result_result = temp_0 ;
+  const GALGAS_unifiedTypeMap temp_1 = inObject ;
+  cEnumerator_unifiedTypeMap enumerator_1820 (temp_1, EnumerationOrder::up) ;
   while (enumerator_1820.hasCurrentObject ()) {
-    enumGalgasBool test_1 = kBoolTrue ;
-    if (kBoolTrue == test_1) {
-      test_1 = enumerator_1820.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 36)).boolEnum () ;
-      if (kBoolTrue == test_1) {
+    enumGalgasBool test_2 = kBoolTrue ;
+    if (kBoolTrue == test_2) {
+      test_2 = enumerator_1820.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 36)).boolEnum () ;
+      if (kBoolTrue == test_2) {
         result_result.addAssign_operation (enumerator_1820.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 37)) ;
       }
     }

@@ -6,7 +6,7 @@
 //
 //  Created january 22, 2007.
 //
-//  Copyright (C) 2007, ..., 2017 Pierre Molinaro.
+//  Copyright (C) 2007, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -35,6 +35,12 @@ mBDD () {
 GALGAS_binaryset::GALGAS_binaryset (const BinaryDecisionDiagram & inOperand_mBDD) :
 mIsValid (true),
 mBDD (inOperand_mBDD) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_binaryset GALGAS_binaryset::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_binaryset (BinaryDecisionDiagram ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
