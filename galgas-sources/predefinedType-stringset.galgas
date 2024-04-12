@@ -32,12 +32,6 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "emptySet"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter initializers -> @initializerSignatureList {
     result = §[!@formalInputParameterListAST §[]]
   }

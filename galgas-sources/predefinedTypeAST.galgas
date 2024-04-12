@@ -47,10 +47,6 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  abstract getter defaultConstructorName -> @string // Empty string: no default initializer name
-
-  #-----------------------------------------------------------------------------------------------
-
   getter initializers -> @initializerSignatureList {
     result = §[]
   }
@@ -150,7 +146,6 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !@mapSearchMethodListAST §[]
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !enumeratedTypeEntry
-      !defaultConstructorName: [self defaultConstructorName]
       !"predefined-types"
       !headerKind: .twoHeaders
     }

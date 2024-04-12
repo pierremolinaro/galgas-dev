@@ -26,12 +26,6 @@ refclass @timerPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "start"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter initializers -> @initializerSignatureList {
     result = §[!@formalInputParameterListAST §[]]
   }

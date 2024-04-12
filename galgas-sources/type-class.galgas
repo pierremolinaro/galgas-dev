@@ -420,12 +420,12 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       ]
     end
   #--- Generate a "default" constructor ?
-    var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
-    for (propertyTypeEntry 4*) in allTypedAttributeList while defaultConstructorName != "" do
-      if [propertyTypeEntry definition].defaultConstructorName == "" then
-        defaultConstructorName = ""
-      end
-    end
+#    var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
+#    for (propertyTypeEntry 4*) in allTypedAttributeList while defaultConstructorName != "" do
+#      if [propertyTypeEntry definition].defaultConstructorName == "" then
+#        defaultConstructorName = ""
+#      end
+#    end
   #--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.mClassTypeName
@@ -451,7 +451,6 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !§[]
       !generateHeaderInSeparateFile: generateHeaderInSeparateFile
       !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-      !defaultConstructorName: "" # defaultConstructorName
       !"class-" + [self.mClassTypeName fileNameRepresentation]
       !headerKind: .twoHeaders
     }

@@ -26,12 +26,6 @@ refclass @locationPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "nowhere"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter getSupportedOperatorFlags -> @operators {
     result = .generateDescriptionGetterUtilityMethod | .isComparable
   }

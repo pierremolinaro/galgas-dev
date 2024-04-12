@@ -46,7 +46,6 @@ struct @unifiedTypeDefinition {
   public let @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
   public let @bool generateHeaderInSeparateFile %initArgLabel # Significant only for classes
   public let @unifiedTypeMapEntry mTypeForEnumeratedElement
-  public let @string defaultConstructorName %initArgLabel # Used in [@xxx default] (empty string if no default initializer)
   public let @string mHeaderFileName # Name of C++ header file that contains type declaration
   public let @headerKind headerKind %initArgLabel
 }

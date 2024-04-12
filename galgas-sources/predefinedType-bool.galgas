@@ -26,12 +26,6 @@ refclass @boolPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "default"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter initializers -> @initializerSignatureList {
     var initializer = @formalInputParameterListAST ()
     initializer += !["" nowhere] !["bool" nowhere] !["inValue" nowhere] !false !true

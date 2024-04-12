@@ -274,7 +274,6 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !def.mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
           !generateHeaderInSeparateFile: def.generateHeaderInSeparateFile
           !def.mTypeForEnumeratedElement
-          !defaultConstructorName: def.defaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
           !"typealias-" + [self.mAliasTypeName fileNameRepresentation]
           !headerKind: .oneHeader
         }

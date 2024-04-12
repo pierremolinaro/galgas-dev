@@ -26,12 +26,6 @@ refclass @sintPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "default"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.sint_type]
   }

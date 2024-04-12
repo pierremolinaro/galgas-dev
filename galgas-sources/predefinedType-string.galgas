@@ -26,18 +26,6 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "default"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
-#  override getter initializers -> @initializerSignatureList {
-#    result = §[!@functionSignature §[]]
-#  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = §[]

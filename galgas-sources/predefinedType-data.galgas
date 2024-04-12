@@ -26,12 +26,6 @@ refclass @dataPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "emptyData"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter initializers -> @initializerSignatureList {
     result = §[!@formalInputParameterListAST §[]]
   }

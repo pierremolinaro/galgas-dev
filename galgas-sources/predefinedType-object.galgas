@@ -26,12 +26,6 @@ refclass @objectPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "" // No default initializer
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter getSupportedOperatorFlags -> @operators {
     result = .generateDescriptionGetterUtilityMethod
   }

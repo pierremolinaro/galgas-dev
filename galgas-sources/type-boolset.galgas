@@ -236,7 +236,6 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !§[]
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !.null # No type for enumerated element for "for" instruction
-    !defaultConstructorName: "" # Default constructor name
     !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }

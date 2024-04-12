@@ -86,9 +86,6 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -254,9 +251,6 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -451,9 +445,6 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -625,9 +616,6 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -798,9 +786,6 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -993,9 +978,6 @@ class cPtr_timerPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -1175,9 +1157,6 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
@@ -1348,9 +1327,6 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -1530,9 +1506,6 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Extension getter cppDeclarationString
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter defaultConstructorName
-  public: virtual class GALGAS_string getter_defaultConstructorName (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;

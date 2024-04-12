@@ -26,12 +26,6 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "zero"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
   }

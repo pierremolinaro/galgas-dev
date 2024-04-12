@@ -26,12 +26,6 @@ refclass @sint64PredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter defaultConstructorName -> @string {
-    result = "default"
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter getSupportedOperatorFlags -> @operators {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
