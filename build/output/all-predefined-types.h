@@ -659,9 +659,6 @@ class GALGAS_bool : public AC_GALGAS_root {
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_bool class_func_default (LOCATION_ARGS) ;
-
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GALGAS_bool operator_and (const GALGAS_bool & inOperand
                                                      COMMA_LOCATION_ARGS) const ;

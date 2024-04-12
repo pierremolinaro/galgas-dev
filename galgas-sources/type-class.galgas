@@ -419,13 +419,6 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !synthetizedInitializerArgumentList
       ]
     end
-  #--- Generate a "default" constructor ?
-#    var @string defaultConstructorName = if self.mIsAbstract then "" else "default" end
-#    for (propertyTypeEntry 4*) in allTypedAttributeList while defaultConstructorName != "" do
-#      if [propertyTypeEntry definition].defaultConstructorName == "" then
-#        defaultConstructorName = ""
-#      end
-#    end
   #--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.mClassTypeName

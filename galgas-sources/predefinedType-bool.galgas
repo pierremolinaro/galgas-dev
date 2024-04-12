@@ -47,16 +47,9 @@ refclass @boolPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+  override method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = §[]
-    enterClassFunctionWithoutArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !name: "default"
-      !resultTypeName: "bool"
-      !hasLexiqueArg: false
-    )
   }
 
   #-----------------------------------------------------------------------------------------------

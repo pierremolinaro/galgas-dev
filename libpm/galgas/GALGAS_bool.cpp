@@ -78,12 +78,6 @@ GALGAS_bool GALGAS_bool::init_21_ (const GALGAS_bool & inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bool::class_func_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_bool (false) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_bool::GALGAS_bool (const ComparisonKind inComparisonKind,
                           const ComparisonResult inComparisonResult) :
 mIsValid (ComparisonResult::invalid != inComparisonResult),
