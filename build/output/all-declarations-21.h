@@ -378,18 +378,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
                                                       GALGAS_semanticInstructionAST & outArgument1,
                                                       Lexique_galgasScanner_34_ * inCompiler) ;
 
-//------------------------------------- 'initializer_call' non terminal
-//--- 'parse' label
-  public: virtual void nt_initializer_5F_call_parse (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- indexing
-  public: virtual void nt_initializer_5F_call_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_initializer_5F_call_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                GALGAS_initializerCallAST & outArgument1,
-                                                Lexique_galgasScanner_34_ * inCompiler) ;
-
 //------------------------------------- 'insert_or_replace_declaration' non terminal
 //--- 'parse' label
   public: virtual void nt_insert_5F_or_5F_replace_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ;

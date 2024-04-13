@@ -157,6 +157,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %codeblocks-linux32 */,
   false /* %codeblocks-linux64 */,
   false /* %initArgLabel */,
+  false /* %from */,
   false /* %applicationBundleBase */,
   false /* %MacOS */,
   false /* %MacOSDeployment */,
@@ -217,8 +218,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* !== */,
   false /* ?^ */,
   false /* !^ */,
-  false /* §[ */,
-  false /* §§ */
+  false /* §[ */
 ]
 
 
@@ -482,6 +482,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [191] = {
   NO /* %codeblocks-linux32 */,
   NO /* %codeblocks-linux64 */,
   NO /* %initArgLabel */,
+  NO /* %from */,
   NO /* %applicationBundleBase */,
   NO /* %MacOS */,
   NO /* %MacOSDeployment */,
@@ -542,8 +543,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [191] = {
   NO /* !== */,
   NO /* ?^ */,
   NO /* !^ */,
-  NO /* §[ */,
-  NO /* §§ */
+  NO /* §[ */
 } ;
  */
 

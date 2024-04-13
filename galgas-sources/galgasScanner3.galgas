@@ -353,6 +353,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "codeblocks-linux32" -> $%codeblocks-linux32$,
   "codeblocks-linux64" -> $%codeblocks-linux64$,
   "initArgLabel" -> $%initArgLabel$,
+  "from" -> $%from$,
   "applicationBundleBase" -> $%applicationBundleBase$,
   "MacOS" -> $%MacOS$,
   "MacOSDeployment" -> $%MacOSDeployment$,
@@ -603,7 +604,7 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   "^",    ">>",  "~",
   "--",   "++",  "&--",   "&++",
   "===", "!==", "?^", "!^",
-  "§[", "§§"
+  "§["
 }
 
 rule list galgasDelimitorsList

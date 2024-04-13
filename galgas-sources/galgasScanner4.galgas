@@ -336,6 +336,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "codeblocks-linux64" -> $%codeblocks-linux64$,
   "codeblocks-windows" -> $%codeblocks-windows$,
   "errorMessage" -> $%errorMessage$,
+  "from" -> $%from$,
   "generatedInSeparateFile" -> $%generatedInSeparateFile$,
   "initArgLabel" -> $%initArgLabel$,
   "insertAfter" -> $%insertAfter$,
@@ -600,7 +601,7 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   "{",    "}",   "`",  "||", "|",
   "^",    ">>",  "~",
   "--",   "++",  "&--",   "&++",
-  "===", "!==", "?^", "!^", "§§"
+  "===", "!==", "?^", "!^"
 }
 
 rule list galgasDelimitorsList

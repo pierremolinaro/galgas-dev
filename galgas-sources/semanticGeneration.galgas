@@ -1522,14 +1522,14 @@ proc generatePredefinedTypeFiles
   end
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
-      [mDeclaration appendDeclaration1 !?() ?let @string code]
+      [mDeclaration appendDeclaration1 !? %from () ?let @string code]
       generatedCode += code
     end
   end
   generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
-      [mDeclaration appendDeclaration2 !inDirectory !? () ?let @string headerString2]
+      [mDeclaration appendDeclaration2 !inDirectory !? %from () ?let @string headerString2]
       generatedCode += headerString2
     end
   end
@@ -1553,7 +1553,7 @@ proc generatePredefinedTypeFiles
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendTypeGenericImplementation]
-      [mDeclaration appendSpecificImplementation ! () !? () ?let @string code]
+      [mDeclaration appendSpecificImplementation ! () !? %from () ?let @string code]
       generatedCode += code
     end
   end

@@ -3689,7 +3689,7 @@ GALGAS_outputInputActualParameterAST GALGAS_outputInputActualParameterAST::extra
 cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),
 mProperty_mActualSelector (),
-mProperty_initializerCall () {
+mProperty_expression () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3698,7 +3698,7 @@ mProperty_initializerCall () {
   void cPtr_outputInputJokerParameterAST::printNonNullClassInstanceProperties (void) const {
     cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
     mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_initializerCall.printNonNullClassInstanceProperties ("initializerCall") ;
+    mProperty_expression.printNonNullClassInstanceProperties ("expression") ;
   }
 #endif
 
@@ -3712,7 +3712,7 @@ ComparisonResult cPtr_outputInputJokerParameterAST::dynamicObjectCompare (const 
     result = mProperty_mActualSelector.objectCompare (p->mProperty_mActualSelector) ;
   }
   if (ComparisonResult::operandEqual == result) {
-    result = mProperty_initializerCall.objectCompare (p->mProperty_initializerCall) ;
+    result = mProperty_expression.objectCompare (p->mProperty_expression) ;
   }
   return result ;
 }
@@ -3746,12 +3746,12 @@ GALGAS_actualParameterAST () {
 
 GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::
 init_21__21_ (const GALGAS_lstring & in_mActualSelector,
-              const GALGAS_semanticExpressionAST & in_initializerCall,
+              const GALGAS_semanticExpressionAST & in_expression,
               Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   cPtr_outputInputJokerParameterAST * object = nullptr ;
   macroMyNew (object, cPtr_outputInputJokerParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputInputJokerParameterAST_init_21__21_ (in_mActualSelector, in_initializerCall, inCompiler) ;
+  object->outputInputJokerParameterAST_init_21__21_ (in_mActualSelector, in_expression, inCompiler) ;
   const GALGAS_outputInputJokerParameterAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3761,10 +3761,10 @@ init_21__21_ (const GALGAS_lstring & in_mActualSelector,
 
 void cPtr_outputInputJokerParameterAST::
 outputInputJokerParameterAST_init_21__21_ (const GALGAS_lstring & in_mActualSelector,
-                                           const GALGAS_semanticExpressionAST & in_initializerCall,
+                                           const GALGAS_semanticExpressionAST & in_expression,
                                            Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_initializerCall = in_initializerCall ;
+  mProperty_expression = in_expression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3776,10 +3776,10 @@ GALGAS_actualParameterAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_outputInputJokerParameterAST GALGAS_outputInputJokerParameterAST::class_func_new (const GALGAS_lstring & in_mActualSelector,
-                                                                                         const GALGAS_semanticExpressionAST & in_initializerCall
+                                                                                         const GALGAS_semanticExpressionAST & in_expression
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_outputInputJokerParameterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_outputInputJokerParameterAST (in_mActualSelector, in_initializerCall COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_outputInputJokerParameterAST (in_mActualSelector, in_expression COMMA_THERE)) ;
   return result ;
 }
 
@@ -3797,13 +3797,13 @@ GALGAS_lstring GALGAS_outputInputJokerParameterAST::readProperty_mActualSelector
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_outputInputJokerParameterAST::readProperty_initializerCall (void) const {
+GALGAS_semanticExpressionAST GALGAS_outputInputJokerParameterAST::readProperty_expression (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
     cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
-    return p->mProperty_initializerCall ;
+    return p->mProperty_expression ;
   }
 }
 
@@ -3812,13 +3812,13 @@ GALGAS_semanticExpressionAST GALGAS_outputInputJokerParameterAST::readProperty_i
 //--------------------------------------------------------------------------------------------------
 
 cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                                      const GALGAS_semanticExpressionAST & in_initializerCall
+                                                                      const GALGAS_semanticExpressionAST & in_expression
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (THERE),
 mProperty_mActualSelector (),
-mProperty_initializerCall () {
+mProperty_expression () {
   mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_initializerCall = in_initializerCall ;
+  mProperty_expression = in_expression ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3832,7 +3832,7 @@ void cPtr_outputInputJokerParameterAST::description (String & ioString,
   ioString.appendCString ("[@outputInputJokerParameterAST:") ;
   mProperty_mActualSelector.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_initializerCall.description (ioString, inIndentation+1) ;
+  mProperty_expression.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -3840,7 +3840,7 @@ void cPtr_outputInputJokerParameterAST::description (String & ioString,
 
 acPtr_class * cPtr_outputInputJokerParameterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_outputInputJokerParameterAST (mProperty_mActualSelector, mProperty_initializerCall COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_outputInputJokerParameterAST (mProperty_mActualSelector, mProperty_expression COMMA_THERE)) ;
   return ptr ;
 }
 

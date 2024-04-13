@@ -139,6 +139,7 @@ enum {galgasScanner4_1_,
   galgasScanner4_1__25_codeblocks_2D_linux_36__34_,
   galgasScanner4_1__25_codeblocks_2D_windows,
   galgasScanner4_1__25_errorMessage,
+  galgasScanner4_1__25_from,
   galgasScanner4_1__25_generatedInSeparateFile,
   galgasScanner4_1__25_initArgLabel,
   galgasScanner4_1__25_insertAfter,
@@ -213,8 +214,7 @@ enum {galgasScanner4_1_,
   galgasScanner4_1__3D__3D__3D_,
   galgasScanner4_1__21__3D__3D_,
   galgasScanner4_1__3F__5E_,
-  galgasScanner4_1__21__5E_,
-  galgasScanner4_1__A7__A7_
+  galgasScanner4_1__21__5E_
 } ;
 
 //--------------------------------------------------------------------------------------------------

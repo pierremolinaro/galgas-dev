@@ -196,6 +196,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [191] = {
   NO /* %codeblocks-linux32 */,
   NO /* %codeblocks-linux64 */,
   NO /* %initArgLabel */,
+  NO /* %from */,
   NO /* %applicationBundleBase */,
   NO /* %MacOS */,
   NO /* %MacOSDeployment */,
@@ -256,8 +257,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [191] = {
   NO /* !== */,
   NO /* ?^ */,
   NO /* !^ */,
-  NO /* §[ */,
-  NO /* §§ */
+  NO /* §[ */
 } ;
 
 //--------------------------------------------------------------------------------------------------

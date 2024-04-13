@@ -26,14 +26,6 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
-    <initializer_call_ggs3> !?ioDeclarations ?let initializerCall
-    outExpression = initializerCall
-  }
-  
-  #·······························································································
-
-  rule <initializer_call_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                               !@initializerCallAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
     $.$
     $init$
@@ -60,8 +52,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <initializer_call_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                               !@initializerCallAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
     $.$
     $init$
@@ -75,8 +67,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <initializer_call_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
-                               !@initializerCallAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $($
     $)$
     let endOfExpression = @location.here
@@ -89,8 +81,8 @@ syntax extension galgas3ExpressionSyntax {
 
   #·······························································································
 
-  rule <initializer_call_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                               !@initializerCallAST outExpression {
+  rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                      !@semanticExpressionAST outExpression {
     $@type$ ?let typeName indexing typeReferenceInConstructor
     select
       ${$
@@ -116,15 +108,7 @@ syntax extension galgas4ExpressionSyntax {
   #·······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                      !@semanticExpressionAST outExpression {
-    <initializer_call> !?ioDeclarations ?let initializerCall
-    outExpression = initializerCall
-  }
-  
-  #·······························································································
-
-  rule <initializer_call> ?!@galgasDeclarationAST ioDeclarations
-                          !@initializerCallAST outExpression {
+                 !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     $.$
     $init$
@@ -141,8 +125,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <initializer_call> ?!@galgasDeclarationAST unused ioDeclarations
-                          !@initializerCallAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
     $.$
     $init$
@@ -156,8 +140,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <initializer_call> ?!@galgasDeclarationAST unused ioDeclarations
-                          !@initializerCallAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
     $($
     $)$
     let endOfExpression = @location.here
@@ -170,8 +154,8 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <initializer_call> ?!@galgasDeclarationAST ioDeclarations
-                          !@initializerCallAST outExpression {
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
   #--- Type name
     $@type$ ?let typeName indexing typeReferenceInConstructor
     $($

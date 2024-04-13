@@ -154,6 +154,7 @@ enum {galgasScanner3_1_,
   galgasScanner3_1__25_codeblocks_2D_linux_33__32_,
   galgasScanner3_1__25_codeblocks_2D_linux_36__34_,
   galgasScanner3_1__25_initArgLabel,
+  galgasScanner3_1__25_from,
   galgasScanner3_1__25_applicationBundleBase,
   galgasScanner3_1__25_MacOS,
   galgasScanner3_1__25_MacOSDeployment,
@@ -214,8 +215,7 @@ enum {galgasScanner3_1_,
   galgasScanner3_1__21__3D__3D_,
   galgasScanner3_1__3F__5E_,
   galgasScanner3_1__21__5E_,
-  galgasScanner3_1__A7__5B_,
-  galgasScanner3_1__A7__A7_
+  galgasScanner3_1__A7__5B_
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -30,9 +30,6 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName
 
-  rule <initializer_call_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                               !@initializerCallAST outExpression
-
   #·······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
   #·······························································································
@@ -170,7 +167,8 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !structAttributeList
         }
       or
-        <initializer_call_ggs3> !?ioDeclarations ?let initializerCall
+        $%from$
+        <expression_ggs3> !?ioDeclarations ?let initializerCall
         outActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
       end
     while 
@@ -385,9 +383,6 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName
-
-  rule <initializer_call> ?!@galgasDeclarationAST ioDeclarations
-                          !@initializerCallAST outExpression
 
   #·······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
@@ -621,7 +616,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !structAttributeList
       }
     or
-      <initializer_call> !?ioDeclarations ?let initializerCall
+      $%from$
+      <expression> !?ioDeclarations ?let initializerCall
       ioActualParameterList += !@outputInputJokerParameterAST (selector, initializerCall)
     or
       $self$

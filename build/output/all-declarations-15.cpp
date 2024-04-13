@@ -5162,6 +5162,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [191] = {
   false /* %codeblocks-linux32 */,
   false /* %codeblocks-linux64 */,
   false /* %initArgLabel */,
+  false /* %from */,
   false /* %applicationBundleBase */,
   false /* %MacOS */,
   false /* %MacOSDeployment */,
@@ -5222,8 +5223,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [191] = {
   false /* !== */,
   false /* ?^ */,
   false /* !^ */,
-  false /* §[ */,
-  false /* §§ */
+  false /* §[ */
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5416,6 +5416,7 @@ GALGAS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%codeblocks-linux32") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%codeblocks-linux64") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%initArgLabel") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%from") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%applicationBundleBase") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%MacOS") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%MacOSDeployment") COMMA_HERE) ;
@@ -5477,7 +5478,6 @@ GALGAS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("\?^") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("!^") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("§[") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("§§") COMMA_HERE) ;
   return result ;
 }
 

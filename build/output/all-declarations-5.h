@@ -4270,7 +4270,7 @@ class GALGAS_outputInputJokerParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Property access
   public: class GALGAS_lstring readProperty_mActualSelector (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_initializerCall (void) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_expression (void) const ;
 
 //-- Start of type generic part
 
@@ -4362,7 +4362,7 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
 
 //--- Properties
   public: GALGAS_lstring mProperty_mActualSelector ;
-  public: GALGAS_semanticExpressionAST mProperty_initializerCall ;
+  public: GALGAS_semanticExpressionAST mProperty_expression ;
 
 
 //--- Default constructor
@@ -4370,7 +4370,7 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
 
 //--- Constructor
   public: cPtr_outputInputJokerParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                             const GALGAS_semanticExpressionAST & in_initializerCall
+                                             const GALGAS_semanticExpressionAST & in_expression
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

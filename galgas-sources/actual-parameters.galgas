@@ -290,12 +290,12 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
 
 refclass @outputInputJokerParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
-  public let @semanticExpressionAST initializerCall
+  public let @semanticExpressionAST expression
 
   #·······························································································
 
   override method enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-    [self.initializerCall enterExpressionInSemanticContext !?ioTypeMap]
+    [self.expression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
   #·······························································································
@@ -337,23 +337,30 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
     end
-  #--- Check initializer
-   [self.initializerCall analyzeSemanticExpression
+  #--- Check source expression
+   [self.expression analyzeSemanticExpression
      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
      !?ioUsefulEntitiesGraph
      !inferenceType: inFormalArgumentType
      !inAnalysisContext
      !?ioTypeMap
      !?ioVariableMap
-     ?let @semanticExpressionForGeneration initializerExpression
+     ?var @semanticExpressionForGeneration expressionGeneration
    ]
+#--- Check assignment type compatibility
+  checkAssignmentTypeWithImplicitGetterCall (
+    !inFormalArgumentType
+    !expressionGeneration.mResultType
+    !self.mActualSelector.location
+    !?expressionGeneration
+  )
   #--- Generate actual parameter
     let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
     ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
       !inFormalArgumentType
       !false # Is not constant
       !cppVarName
-      !initializerExpression
+      !expressionGeneration
     }
     ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
       !inFormalArgumentType
