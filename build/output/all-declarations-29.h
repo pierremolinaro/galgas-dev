@@ -86,3 +86,21 @@ void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F
                                                                                                    class Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeOptionalMethodCall?&?&&?receiverExp?optionalMethodName?parameters&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeOptionalMethodCall_3F__26__3F__26__26__3F_receiverExp_3F_optionalMethodName_3F_parameters_26_ (const class GALGAS_lstring constinArgument0,
+                                                                                                                   class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                                                   const class GALGAS_analysisContext constinArgument2,
+                                                                                                                   class GALGAS_unifiedTypeMap & ioArgument3,
+                                                                                                                   class GALGAS_localVarManager & ioArgument4,
+                                                                                                                   const class GALGAS_semanticExpressionAST constinArgument5,
+                                                                                                                   const class GALGAS_lstring constinArgument6,
+                                                                                                                   const class GALGAS_optionalMethodActualArgumentList constinArgument7,
+                                                                                                                   class GALGAS_ifTestListForGeneration & ioArgument8,
+                                                                                                                   class Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+

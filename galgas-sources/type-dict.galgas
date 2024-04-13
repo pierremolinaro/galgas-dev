@@ -280,7 +280,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
-      !@functionSignature §§ §[.init (["" nowhere], keyTypeIndex, "inKey", true)]
+      !@functionSignature §[.init (["" nowhere], keyTypeIndex, "inKey", true)]
       !.here
       !true
       !attributeTypeIndex
@@ -348,7 +348,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !isConcrete: true # Concrete Type
     !superType: .null
     !typeKind: .mapType
-    !supportCollectionValue: false # Support collection value
+    !supportCollectionValue: true
     !allTypedPropertyList: §[]
     !propertyMap: §[]
     !currentTypedPropertyList: typedPropertyList

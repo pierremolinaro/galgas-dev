@@ -8931,9 +8931,9 @@ void extensionMethod_buildPropertyInitializationCode (const GALGAS_propertyInCol
   temp_1.enterElement (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 248)), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 248)) ;
   outArgument_outUnusedVariableCppNameSet = temp_1 ;
   const GALGAS_propertyInCollectionListAST temp_2 = inObject ;
-  cEnumerator_propertyInCollectionListAST enumerator_9346 (temp_2, EnumerationOrder::up) ;
-  while (enumerator_9346.hasCurrentObject ()) {
-    switch (enumerator_9346.current_initialization (HERE).enumValue ()) {
+  cEnumerator_propertyInCollectionListAST enumerator_9343 (temp_2, EnumerationOrder::up) ;
+  while (enumerator_9343.hasCurrentObject ()) {
+    switch (enumerator_9343.current_initialization (HERE).enumValue ()) {
     case GALGAS_propertyInCollectionInitializationAST::kNotBuilt:
       break ;
     case GALGAS_propertyInCollectionInitializationAST::kEnum_none:
@@ -8942,24 +8942,24 @@ void extensionMethod_buildPropertyInitializationCode (const GALGAS_propertyInCol
       break ;
     case GALGAS_propertyInCollectionInitializationAST::kEnum_some:
       {
-        const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * extractPtr_10772 = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) (enumerator_9346.current_initialization (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_9435_expressionAST = extractPtr_10772->mAssociatedValue0 ;
-        GALGAS_localVarManager var_variableMap_9464 = GALGAS_localVarManager::init (inCompiler COMMA_HERE) ;
-        GALGAS_analysisContext var_analysisContext_9527 = GALGAS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty_21_requiresSelfForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GALGAS_string::makeEmptyString (), GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticsTypesForAST.galgas", 258)), GALGAS_string::makeEmptyString (), GALGAS_bool (true), inCompiler COMMA_HERE) ;
-        GALGAS_unifiedTypeMapEntry var_propertyType_9806 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_9346.current_propertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 262)) ;
-        GALGAS_semanticExpressionForGeneration var_expression_10177 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_9435_expressionAST.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9806, var_analysisContext_9527, ioArgument_ioTypeMap, var_variableMap_9464, var_expression_10177, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 263)) ;
+        const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * extractPtr_10769 = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) (enumerator_9343.current_initialization (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_9432_expressionAST = extractPtr_10769->mAssociatedValue0 ;
+        GALGAS_localVarManager var_variableMap_9461 = GALGAS_localVarManager::init (inCompiler COMMA_HERE) ;
+        GALGAS_analysisContext var_analysisContext_9524 = GALGAS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty_21_requiresSelfForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GALGAS_string::makeEmptyString (), GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticsTypesForAST.galgas", 258)), GALGAS_string::makeEmptyString (), GALGAS_bool (true), inCompiler COMMA_HERE) ;
+        GALGAS_unifiedTypeMapEntry var_propertyType_9803 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_9343.current_propertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 262)) ;
+        GALGAS_semanticExpressionForGeneration var_expression_10174 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_9432_expressionAST.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_9803, var_analysisContext_9524, ioArgument_ioTypeMap, var_variableMap_9461, var_expression_10174, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 263)) ;
         {
-        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9806, var_expression_10177.readProperty_mResultType (), enumerator_9346.current_propertyName (HERE).readProperty_location (), var_expression_10177, inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 273)) ;
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_9803, var_expression_10174.readProperty_mResultType (), enumerator_9343.current_propertyName (HERE).readProperty_location (), var_expression_10174, inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 273)) ;
         }
-        GALGAS_string var_sourceVar_10609 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_10177.ptr (), outArgument_outInitializationCode, var_inclusionSet_9161, var_temporaryVariableIndex_9205, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10609, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 279)) ;
-        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string ("  mProperty_").add_operation (enumerator_9346.current_propertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticsTypesForAST.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 286)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 286)) ;
-        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string (" = ").add_operation (var_sourceVar_10609, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)) ;
+        GALGAS_string var_sourceVar_10606 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_10174.ptr (), outArgument_outInitializationCode, var_inclusionSet_9161, var_temporaryVariableIndex_9205, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10606, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 279)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string ("  mProperty_").add_operation (enumerator_9343.current_propertyName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticsTypesForAST.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 286)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 286)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GALGAS_string (" = ").add_operation (var_sourceVar_10606, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 287)) ;
       }
       break ;
     }
-    enumerator_9346.gotoNextObject () ;
+    enumerator_9343.gotoNextObject () ;
   }
 }
 

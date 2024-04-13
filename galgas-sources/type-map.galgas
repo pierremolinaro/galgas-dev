@@ -322,7 +322,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 #--- lstring type index
   [!?ioTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
-  var @enumerationDescriptorList enumerationDescriptor = §§ §[.init (lstringTypeIndex, "lkey")]
+  var @enumerationDescriptorList enumerationDescriptor = §[.init (lstringTypeIndex, "lkey")]
 #---
   var @classFunctionMap classFunctionMap = §[]
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
@@ -516,7 +516,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
-      !@functionSignature §§ §[.init (["" nowhere], stringTypeIndex, "inKey", true)]
+      !@functionSignature §[.init (["" nowhere], stringTypeIndex, "inKey", true)]
       !.here
       !true
       !attributeTypeIndex

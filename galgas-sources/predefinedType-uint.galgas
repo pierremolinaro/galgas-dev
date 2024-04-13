@@ -29,7 +29,7 @@ refclass @uintPredefinedTypeAST : @predefinedTypeAST {
   override getter initializers -> @initializerSignatureList {
     var initializer = @formalInputParameterListAST ()
     initializer += !["" nowhere] !["uint" nowhere] !["inValue" nowhere] !false !true
-    result = §§ §[.init (initializer)]
+    result = §[.init (initializer)]
   }
 
   #-----------------------------------------------------------------------------------------------

@@ -241,7 +241,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !@lstring {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
-      !@functionSignature §§ §[.init (["" nowhere], uintType, "inIndex", true)]
+      !@functionSignature §[.init (["" nowhere], uintType, "inIndex", true)]
       !@location.here
       !true
       !mPropertyTypeEntry

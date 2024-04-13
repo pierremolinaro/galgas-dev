@@ -533,7 +533,7 @@ proc updateGalgasTargets
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
-    let @stringlist extensionList =§§ §[.init ("icns")]
+    let @stringlist extensionList =§[.init ("icns")]
     let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
@@ -551,7 +551,7 @@ proc updateGalgasTargets
     end
     headerSearchPaths += ")"
   #--- Default build configuration
-    var @stringlist xcodeSettingList = §§ §[
+    var @stringlist xcodeSettingList = §[
       .init ("ALWAYS_SEARCH_USER_PATHS = NO"),
       .init ("CLANG_CXX_LANGUAGE_STANDARD = \"c++17\""),
       .init ("CLANG_ENABLE_OBJC_ARC = YES"),
@@ -708,7 +708,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Binary Decision Diagrams"
       !groupPath:"bdd"
-      !fileNames: §§ §[
+      !fileNames: §[
         "BinaryDecisionDiagramRelationConfiguration.cpp",
         "BinaryDecisionDiagramRelationConfiguration.h",
         "BinaryDecisionDiagramRelation.cpp",
@@ -732,7 +732,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Big Integers"
       !groupPath:"big-integers"
-      !fileNames: §§ §[
+      !fileNames: §[
         "BigSigned-add.cpp",
         "BigSigned-bit.cpp",
         "BigSigned-chunk-operations.cpp",
@@ -784,7 +784,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Utilities"
       !groupPath:"cocoa_utilities"
-      !fileNames: §§ §[
+      !fileNames: §[
         "main.m",
         "PMCancelButtonForPanel.h",
         "PMCancelButtonForPanel.m",
@@ -804,7 +804,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Objc GALGAS"
       !groupPath:"cocoa_objc_galgas"
-      !fileNames: §§ §[
+      !fileNames: §[
         "Base.lproj/OC_GGS_Document.xib",
         "Base.lproj/PMDebug.xib",
         "Base.lproj/MainMenu.xib",
@@ -870,7 +870,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Generic Arraies"
       !groupPath:"generic-arraies"
-      !fileNames: §§ §[
+      !fileNames: §[
         "TC_Array.h",
         "TC_UniqueArray.h",
         "TC_UniqueArray2.h"
@@ -888,7 +888,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Command line Interface"
       !groupPath:"command_line_interface"
-      !fileNames: §§ §[
+      !fileNames: §[
         "F_mainForLIBPM.cpp",
         "F_mainForLIBPM.h",
         "builtin-command-line-options.cpp",
@@ -919,7 +919,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"File"
       !groupPath:"files"
-      !fileNames: §§ §[
+      !fileNames: §[
         "FileManager.cpp",
         "FileManager.h",
         "AbstractFileHandle.cpp",
@@ -944,7 +944,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Galgas"
       !groupPath:"galgas"
-      !fileNames: §§ §[
+      !fileNames: §[
         "AC_GALGAS_reference_class.cpp",
         "AC_GALGAS_reference_class.h",
         "AC_GALGAS_value_class.cpp",
@@ -1058,7 +1058,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Streams"
       !groupPath:"streams"
-      !fileNames: §§ §[
+      !fileNames: §[
         "AbstractOutputStream.cpp",
         "AbstractOutputStream.h",
         "ConsoleOut.cpp",
@@ -1079,7 +1079,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Strings"
       !groupPath:"strings"
-      !fileNames: §§ §[
+      !fileNames: §[
         "String-class-getters.cpp",
         "String-class.cpp",
         "String-class.h",
@@ -1107,7 +1107,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Time"
       !groupPath:"time"
-      !fileNames: §§ §[
+      !fileNames: §[
         "DateTime.cpp",
         "DateTime.h",
         "Timer.cpp",
@@ -1126,7 +1126,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Utilities"
       !groupPath:"utilities"
-      !fileNames: §§ §[
+      !fileNames: §[
         "basic-allocation.cpp",
         "basic-allocation.h",
         "U8Data.cpp",
@@ -1176,7 +1176,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Resources"
       !groupPath:"."
-      !fileNames: §§ §["Info.plist"]
+      !fileNames: §["Info.plist"]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1204,7 +1204,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Frameworks for App"
       !groupPath:"/System/Library/Frameworks"
-      !fileNames: §§ §[
+      !fileNames: §[
         "AppKit.framework",
         "Cocoa.framework"
       ]
@@ -1220,24 +1220,24 @@ proc updateGalgasTargets
   #--- Code signing identity
     let @stringlist codeSigningSettingList
     if macCodeSign.string == "" then
-      codeSigningSettingList = §§ §[.init ("CODE_SIGN_IDENTITY = \"-\"")]
+      codeSigningSettingList = §[.init ("CODE_SIGN_IDENTITY = \"-\"")]
     else
       let components = [macCodeSign.string componentsSeparatedByString !":"]
       if [components count] != 2 then
         error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
       elsif [components mValueAtIndex !0] == "MacDeveloper" then
-        codeSigningSettingList = §§ §[
+        codeSigningSettingList = §[
           .init ("CODE_SIGN_IDENTITY = \"Mac Developer\""),
           .init ("DEVELOPMENT_TEAM = \"" + [components mValueAtIndex !1] + "\"")
         ]
       elsif [components mValueAtIndex !0] == "Certificate" then
-        codeSigningSettingList = §§ §[.init ("CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\"")]
+        codeSigningSettingList = §[.init ("CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\"")]
       else
         error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" : codeSigningSettingList
       end
     end
   #--- Add Mach O release target
-    var @stringlist settingList = §§ §[
+    var @stringlist settingList = §[
       .init ("GCC_OPTIMIZATION_LEVEL = 2"),
       .init ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)"),
       .init ("GCC_WARN_UNUSED_PARAMETER = YES"),
@@ -1262,7 +1262,7 @@ proc updateGalgasTargets
       ?productFileRef:let releaseProductFileRef
     ]
   #--- Add Mach O debug target
-    settingList = §§ §[
+    settingList = §[
       .init ("GCC_OPTIMIZATION_LEVEL = 0"),
       .init ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"),
       .init ("GCC_PREPROCESSOR_DEFINITIONS = ()"),
@@ -1288,7 +1288,7 @@ proc updateGalgasTargets
       ?productFileRef:let debugProductFileRef
     ]
   #--- Add Cocoa target
-    let @stringlist cocoaConfigurationSettingList = §§ §[
+    let @stringlist cocoaConfigurationSettingList = §[
       .init ("GCC_OPTIMIZATION_LEVEL = 0"),
       .init (!"GCC_PREPROCESSOR_DEFINITIONS = ()")
     ] + codeSigningSettingList
@@ -1299,8 +1299,8 @@ proc updateGalgasTargets
       !frameworkFileRefs:frameworksFileRefList + appFrameworksFileRefList
       !resourceFileRefs:resourceFileBuildRefs + m_HandCodedResourceFileRefForAppList
       !buildConfigurationSettingList: cocoaConfigurationSettingList
-      !dependantTargetList: §§ §[.init (releaseTargetRef), .init (debugTargetRef)]
-      !productCopyList: §§ §[.init (releaseProductFileRef, inTargetName), .init (debugProductFileRef, inTargetName + "-debug")]
+      !dependantTargetList: §[.init (releaseTargetRef), .init (debugTargetRef)]
+      !productCopyList: §[.init (releaseProductFileRef, inTargetName), .init (debugProductFileRef, inTargetName + "-debug")]
       ?productFileRef:*
     ]
   #--- Generate project
