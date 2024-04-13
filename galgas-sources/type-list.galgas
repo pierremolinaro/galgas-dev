@@ -371,7 +371,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: enumerationDescriptor
-    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator | .comparable
+    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator | .equatable
     !addAssignOperatorArguments: constructorAttributeTypeList
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false
