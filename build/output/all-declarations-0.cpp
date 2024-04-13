@@ -112,6 +112,19 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOC
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS__32_lstringlist::enterElement (const GALGAS__32_lstringlist_2D_element & inValue,
+                                           Compiler * /* inCompiler */
+                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                          const GALGAS_lstring & inOperand1
                                                                          COMMA_LOCATION_ARGS) {
@@ -564,8 +577,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 191)) {
-    static const char * syntaxErrorMessageArray [191] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 192)) {
+    static const char * syntaxErrorMessageArray [192] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -755,7 +768,8 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the '!==' delimitor",
         "the '\?^' delimitor",
         "the '!^' delimitor",
-        "the '§[' delimitor"
+        "the '§[' delimitor",
+        "the '§§' delimitor"
     } ;
     result = syntaxErrorMessageArray [inTerminalIndex] ;
   }
@@ -2458,6 +2472,12 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___A7_
   TO_UNICODE ('['),
 } ;
 
+//--- Unicode string for '$\xC2""\xA7""\xC2""\xA7""$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___A7__A7_ = {
+  TO_UNICODE (167),
+  TO_UNICODE (167),
+} ;
+
 //--------------------------------------------------------------------------------------------------
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
@@ -2503,7 +2523,7 @@ int32_t Lexique_galgasScanner_33_::search_into_attributeKeyWordList (const Strin
 //             Key words table 'galgasDelimitorsList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__galgasDelimitorsList = 45 ;
+static const int32_t ktable_size_galgasScanner_33__galgasDelimitorsList = 46 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDelimitorsList [ktable_size_galgasScanner_33__galgasDelimitorsList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26_, Lexique_galgasScanner_33_::kToken__26_),
@@ -2547,6 +2567,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3F__5E_, Lexique_galgasScanner_33_::kToken__3F__5E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___7C__7C_, Lexique_galgasScanner_33_::kToken__7C__7C_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___A7__5B_, Lexique_galgasScanner_33_::kToken__A7__5B_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___A7__A7_, Lexique_galgasScanner_33_::kToken__A7__A7_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___21__3D__3D_, Lexique_galgasScanner_33_::kToken__21__3D__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26__2B__2B_, Lexique_galgasScanner_33_::kToken__26__2B__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26__2D__2D_, Lexique_galgasScanner_33_::kToken__26__2D__2D_),
@@ -3654,6 +3675,11 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("§[") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
+    case kToken__A7__A7_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("§§") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
     default:
       break ;
     }
@@ -4038,6 +4064,9 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___21__3D__3D_, true)) {
       token.mTokenCode = kToken__21__3D__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___A7__A7_, true)) {
+      token.mTokenCode = kToken__A7__A7_ ;
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___A7__5B_, true)) {
       token.mTokenCode = kToken__A7__5B_ ;
@@ -4827,6 +4856,7 @@ GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("\?^") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("!^") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("§[") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("§§") COMMA_HERE) ;
   return result ;
 }
 
@@ -4918,6 +4948,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("\?^") ;
     ioList.appendObject ("||") ;
     ioList.appendObject ("§[") ;
+    ioList.appendObject ("§§") ;
     ioList.appendObject ("!==") ;
     ioList.appendObject ("&++") ;
     ioList.appendObject ("&--") ;
@@ -5034,7 +5065,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [191] = {0,
+  static const uint32_t kTerminalSymbolStyles [192] = {0,
     0 /* galgasScanner3_1_identifier */,
     8 /* galgasScanner3_1_double_2E_xxx */,
     7 /* galgasScanner3_1_literalInt */,
@@ -5224,7 +5255,8 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     2 /* galgasScanner3_1__21__3D__3D_ */,
     2 /* galgasScanner3_1__3F__5E_ */,
     2 /* galgasScanner3_1__21__5E_ */,
-    2 /* galgasScanner3_1__A7__5B_ */
+    2 /* galgasScanner3_1__A7__5B_ */,
+    2 /* galgasScanner3_1__A7__A7_ */
   } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
 }
@@ -5561,6 +5593,19 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::class_func_
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_templateInstructionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_templateInstructionListAST::enterElement (const GALGAS_templateInstructionListAST_2D_element & inValue,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6196,6 +6241,19 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::class_func_em
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_templateExpressionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_templateExpressionListAST::enterElement (const GALGAS_templateExpressionListAST_2D_element & inValue,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateExpressionListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16466,6 +16524,19 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_templateInstructionIfBranchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_templateInstructionIfBranchListAST::enterElement (const GALGAS_templateInstructionIfBranchListAST_2D_element & inValue,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateInstructionIfBranchListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------

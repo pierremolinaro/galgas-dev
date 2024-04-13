@@ -16,42 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @collectionValueElementList {
-  public let @abstractCollectionValueElement mElement
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-abstract refclass @abstractCollectionValueElement { }
-
-#·····················································································································
-
-refclass @expressionCollectionValue : @abstractCollectionValueElement {
-  public let @semanticExpressionAST mExpression
-  public let @location mExpressionLocation
-}
-
-#·····················································································································
-
-refclass @expressionListCollectionValue : @abstractCollectionValueElement {
-  public let @actualOutputArgumentList mExpressionList
-  public let @location mEndOfExpressionLocation
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @collectionValueAST : @semanticExpressionAST {
-  public let @lstring mTypeName # Empty string if infered
-  public let @collectionValueElementList mElementList
-  public let @location mEndOfCollectionValue
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
@@ -60,51 +24,20 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
+    $§§$
     $§[$
-    var @collectionValueElementList elementList = §[]
+    var @collectionValueElementList expressionList = §[]
     select
     or
       repeat
-        <collection_value_element> !?ioDeclarations ?let @abstractCollectionValueElement element
-        elementList += !element
+        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !expression !.here
       while
         $,$
       end
     end
-    outExpression = @collectionValueAST {
-      !typeName
-      !elementList
-      !.here
-    }
+    outExpression = @collectionValueAST (typeName, expressionList, .here)
     $]$
-  }
-
-  #·······························································································
-
-  rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
-                                  !@abstractCollectionValueElement outValueElement {
-    var @actualOutputArgumentList expressionList = §[]
-    repeat
-      let @lstring selector
-      select
-        $!selector:$ ?selector
-      or
-        $!$
-        selector = ["" here]
-      end
-      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      expressionList += !selector !expression !@location.here
-    while
-    end
-    outValueElement = @expressionListCollectionValue {!expressionList !@location.here}
-  }
-
-  #·······························································································
-
-  rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
-                                  !@abstractCollectionValueElement outValueElement {
-    <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-    outValueElement = @expressionCollectionValue {!expression !@location.here}
   }
 
   #·······························································································
@@ -120,369 +53,157 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
     <optional_type> ?let @lstring typeName
+    $§§$
     $[$
-    var @collectionValueElementList elementList = §[]
+    var @collectionValueElementList expressionList = §[]
     select
     or
       repeat
-        <collection_value_element> !?ioDeclarations ?let @abstractCollectionValueElement element
-        elementList += !element
+        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !expression !.here
       while
-        $:$
+        $,$
       end
     end
-    outExpression = @collectionValueAST {
-      !typeName
-      !elementList
-      !.here
-    }
+    outExpression = @collectionValueAST (typeName, expressionList, .here)
     $]$
   }
 
+   #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @collectionValueElementList {
+  public let @semanticExpressionAST mExpression
+  public let @location location
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @collectionValueAST : @semanticExpressionAST {
+  public let @lstring mTypeName # Empty string if infered
+  public let @collectionValueElementList mExpressionList
+  public let @location mEndOfCollectionValue
+
   #·······························································································
 
-  rule <collection_value_element> ?!@galgasDeclarationAST ioDeclarations
-                                  !@abstractCollectionValueElement outValueElement {
-    var @actualOutputArgumentList expressionList = §[]
-    repeat
-      select
-        $!selector:$ ?let selector
-        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-        expressionList += !selector !expression !@location.here
-      or
-        $!$
-        let selector = ["" here]
-        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-        expressionList += !selector !expression !@location.here
-      or
-        let selector = ["" here]
-        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-        expressionList += !selector !expression !@location.here
-      end
-    while
-      $,$
+  override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    for (expression *) in self.mExpressionList do
+      [expression enterExpressionInSemanticContext !?ioTypeMap]
     end
-    outValueElement = @expressionListCollectionValue {!expressionList !@location.here}
   }
 
   #·······························································································
 
-#  rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
-#    <expression> ?let @semanticExpressionAST expression
-#    outValueElement = @expressionCollectionValue {!expression !@location.here}
-#  }
+  override method analyzeSemanticExpression  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                            ?inferenceType: let @unifiedTypeMapEntry inType
+                                            ?let @analysisContext inAnalysisContext
+                                           ?!@unifiedTypeMap ioTypeMap
+                                          ?!@localVarManager ioVariableMap
+                                          !@semanticExpressionForGeneration outExpression {
+  #--- Type
+    let @unifiedTypeMapEntry targetType
+    if self.mTypeName.string == "" then
+      targetType = inType
+    else
+      targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
+    end
+  #---
+    if targetType == .null then
+      error self.mTypeName : "Cannot infer type" : outExpression
+    elsif not [targetType definition].supportCollectionValue then
+      error self.mTypeName
+      : "the @" + [targetType definition].typeName.string
+      + " type does not support collection value" : outExpression
+    else
+      let initializerMap = [targetType definition].initializerMap
+      let @functionSignature emptyArgumentList = §[]
+      if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
+        error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
+      end
+      let elementType = [targetType definition].mTypeForEnumeratedElement
+      var @collectionValueElementListForGeneration expressionListForGeneration = §[]
+      for (expression location) in self.mExpressionList do
+        [expression analyzeSemanticExpression
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: elementType
+          !inAnalysisContext
+          !?ioTypeMap
+          !?ioVariableMap
+          ?var expressionForGeneration
+        ]
+      #--- Check assignment type compatibility
+        checkAssignmentTypeWithImplicitGetterCall (
+          !elementType
+          !expressionForGeneration.mResultType
+          !location
+          !?expressionForGeneration
+        )
+        expressionListForGeneration += !expressionForGeneration !location
+      end
+      outExpression = @expressionCollectionForGeneration {
+        !targetType
+        !self.mEndOfCollectionValue
+        !expressionListForGeneration
+      }
+    end
+  #---
+  }
 
   #·······························································································
 
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for (mElement) in self.mElementList do
-    [mElement enterInSemanticContext !?ioTypeMap]
-  end
-}
-
-#·····················································································································
-
-override method @collectionValueAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-#--- Type
-  let @unifiedTypeMapEntry targetType
-  if self.mTypeName.string == "" then
-    targetType = inType
-  else
-    targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-  end
-#---
-  if targetType == .null then
-    error self.mTypeName : "Cannot infer type" : outExpression
-  elsif not [targetType definition].supportCollectionValue then
-    error self.mTypeName
-    : "the @" + [targetType definition].typeName.string
-    + " type does not support collection value" : outExpression
-  else
-    let initializerMap = [targetType definition].initializerMap
-    let @functionSignature emptyArgumentList = §[]
-    if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
-      error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
-    end
-
-#    let classFunctionMap = [targetType definition].classFunctionMap
-#    var @bool hasCompilerArgument = false
-#    var @string constructorName = ""
-#    var found = false
-#    for c in classFunctionMap while not found do
-#      if ([c.mArgumentTypeList count] == 0) && (c.mReturnedType == targetType) then
-#        hasCompilerArgument = c.mHasCompilerArgument
-#        constructorName = c.lkey.string
-#        found = true
-#      end
-#    end
-#    if not found then
-#      error self.mTypeName
-#      : "the '@" + [targetType definition].typeName + "' has no initializer without argument"
-#    end
-
-#    let usefulnessName = typeNameForUsefulEntitiesGraph (
-#      !.init {![targetType definition].typeName.string
-#      !self.mEndOfCollectionValue}
-#    )
-#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-    var @collectionValueElementListForGeneration collectionValueElementListForGeneration = §[]
-    for (mElement) in self.mElementList do
-      [mElement analyze
-        !inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inAnalysisContext
-        !?ioTypeMap
-        !targetType
-        !?ioVariableMap
-        !?collectionValueElementListForGeneration
-      ]
-    end
-    outExpression = @expressionCollectionForGeneration {
-      !targetType
-      !self.mEndOfCollectionValue
-      !collectionValueElementListForGeneration
-    }
-  end
-#---
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-abstract method @abstractCollectionValueElement enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @expressionCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @expressionListCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpressionList enterInSemanticContext !?ioTypeMap]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-abstract method @abstractCollectionValueElement analyze
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @unifiedTypeMapEntry inElementType
-  ?!@localVarManager ioVariableMap
-  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @expressionCollectionValue analyze
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @unifiedTypeMapEntry inElementType
-  ?!@localVarManager ioVariableMap
-  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
-{
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: inElementType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!inElementType !expression.mResultType !self.mExpressionLocation !?expression)
-#---
-  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration {!self.mExpressionLocation !expression}
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @expressionListCollectionValue analyze
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @unifiedTypeMapEntry inElementType
-  ?!@localVarManager ioVariableMap
-  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
-  let @functionSignature formalParameterTypeList = [inElementType definition].mAddAssignOperatorArguments
-  var @semanticExpressionListForGeneration semanticExpressionListForGeneration
-  if [formalParameterTypeList count] != [self.mExpressionList count] then
-    error self.mEndOfExpressionLocation: "element of of '@" + [inElementType definition].typeName.string + "' requires "
-    + [formalParameterTypeList count] + " parameter(s), while this list has "
-    + [self.mExpressionList count] + " element(s)" : semanticExpressionListForGeneration
-  else
-    semanticExpressionListForGeneration = @semanticExpressionListForGeneration §[]
-    for expression in self.mExpressionList, (mFormalSelector mFormalArgumentType 2*) in formalParameterTypeList do
-      [expression.mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: mFormalArgumentType
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
-        ?@semanticExpressionForGeneration exp
-      ]
-      if mFormalSelector.string != expression.mActualSelector.string then
-        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error expression.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-      end
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !exp.mResultType !self.mEndOfExpressionLocation !?exp)
-      semanticExpressionListForGeneration += !exp
-    end
-    ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration {
-      !self.mEndOfExpressionLocation
-      !semanticExpressionListForGeneration}
-  end
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementListForGeneration {
-  public let @abstractCollectionValueElementForGeneration mElement
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-abstract refclass @abstractCollectionValueElementForGeneration {
-  public let @location mExpressionLocation
-}
-
-#·····················································································································
-
-abstract method @abstractCollectionValueElementForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMapEntry inTargetType
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @string inCppTargetVar
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
-  public let @semanticExpressionForGeneration mExpression
-}
-
-#·····················································································································
-
-override method @expressionCollectionValueForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMapEntry unused inTargetType
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @string inCppTargetVar {
-  [self.mExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string sourceVar
-  ]
-  ioGeneratedCode += inCppTargetVar
-  ioGeneratedCode += ".plusAssign_operation (" + sourceVar
-  ioGeneratedCode += ", " + compilerCppName ()
-  ioGeneratedCode += " " + [self.mExpressionLocation commaSourceFile] + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
-  public let @semanticExpressionListForGeneration mExpressionList
-}
-
-#·····················································································································
-
-override method @expressionListCollectionForGeneration generateCollectionElementCode
-  ?let @unifiedTypeMapEntry inTargetType
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @string inCppTargetVar {
-#--- Parameters
-  var parameterList = @stringlist §[]
-  for (mExpression) in self.mExpressionList do
-    [mExpression generateExpression
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      ?let @string parameter
-    ]
-    parameterList += !parameter
-  end
-#--- Receiver
-  ioGeneratedCode += inCppTargetVar
-#--- Call add assign (+=) operator
-  ioGeneratedCode += ".addAssign_operation ("
-  for (mValue) in parameterList
-    do ioGeneratedCode += mValue
-    between ioGeneratedCode += ", "
-  end
-  if [[inTargetType definition].mHandledOperatorFlags plusEqualOperatorWithFieldListNeedsCompilerArg] then
-    ioGeneratedCode  += ", " + compilerCppName ()
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  end
-  ioGeneratedCode += " " + [self.mExpressionLocation commaSourceFile] + ") ;\n"
+  public let @semanticExpressionForGeneration expression
+  public let @location location
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @expressionCollectionForGeneration : @semanticExpressionForGeneration {
-  public let @collectionValueElementListForGeneration mElementList
-}
+  public let @collectionValueElementListForGeneration expressionList
 
-#·····················································································································
+  #·······························································································
 
-override method @expressionCollectionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-#---
-  [self.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Create temporary variable variable
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
-  ioTemporaryVariableIndex += 1
-#--- Declare variable and apply default constructor
-  ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
-  ioGeneratedCode += " = GALGAS_" +  [self.mResultType identifierRepresentation]
-  ioGeneratedCode += "::init (" + compilerCppName () + [self.mLocation commaSourceFile] + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-#--- Add Elements
-  for (mElement) in self.mElementList do
-    [mElement generateCollectionElementCode
-      !self.mResultType
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !outCppExpression
-    ]
-  end
+  override method generateExpression ?!@string ioGeneratedCode
+                                      ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      !@string outCppExpression {
+  #---
+    [self.mResultType addHeaderFileName !?ioInclusionSet]
+  #--- Create temporary variable variable
+    outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+    ioTemporaryVariableIndex += 1
+  #--- Declare variable and apply default constructor
+    ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
+    ioGeneratedCode += " = GALGAS_" +  [self.mResultType identifierRepresentation]
+    ioGeneratedCode += "::init (" + compilerCppName () + [self.mLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  #--- Add Elements
+    for (expression location) in self.expressionList do
+      [expression generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let argumentCppName
+      ]
+      ioGeneratedCode += outCppExpression + ".enterElement ("
+      ioGeneratedCode += argumentCppName + ", "
+      ioGeneratedCode += compilerCppName () + [location commaSourceFile] + ") ;\n"
+    end
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

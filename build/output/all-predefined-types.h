@@ -1059,8 +1059,13 @@ class GALGAS_stringset : public AC_GALGAS_root {
 //--------------------------------- Enumeration helper methods
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_string & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_stringset ;
  
 } ; // End of GALGAS_stringset class
@@ -2751,7 +2756,6 @@ class GALGAS_data : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--------------------------------- Friend
-
   friend class cEnumerator_data ;
  
 } ; // End of GALGAS_data class
@@ -3349,8 +3353,13 @@ class GALGAS_stringlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_stringlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_stringlist ;
  
 } ; // End of GALGAS_stringlist class
@@ -3487,8 +3496,13 @@ class GALGAS_lstringlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lstringlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lstringlist ;
  
 } ; // End of GALGAS_lstringlist class
@@ -3735,8 +3749,13 @@ class GALGAS__32_stringlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS__32_stringlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator__32_stringlist ;
  
 } ; // End of GALGAS__32_stringlist class
@@ -3874,8 +3893,13 @@ class GALGAS_functionlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_functionlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_functionlist ;
  
 } ; // End of GALGAS_functionlist class
@@ -4012,8 +4036,13 @@ class GALGAS_luintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_luintlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_luintlist ;
  
 } ; // End of GALGAS_luintlist class
@@ -4241,8 +4270,13 @@ class GALGAS_objectlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_objectlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_objectlist ;
  
 } ; // End of GALGAS_objectlist class
@@ -4379,8 +4413,13 @@ class GALGAS_typelist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_typelist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_typelist ;
  
 } ; // End of GALGAS_typelist class
@@ -4517,8 +4556,13 @@ class GALGAS_uintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_uintlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_uintlist ;
  
 } ; // End of GALGAS_uintlist class
@@ -4655,8 +4699,13 @@ class GALGAS_uint_36__34_list : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_uint_36__34_list_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_uint_36__34_list ;
  
 } ; // End of GALGAS_uint_36__34_list class
@@ -4793,8 +4842,13 @@ class GALGAS_bigintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_bigintlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_bigintlist ;
  
 } ; // End of GALGAS_bigintlist class
@@ -4931,8 +4985,13 @@ class GALGAS_lbigintlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lbigintlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lbigintlist ;
  
 } ; // End of GALGAS_lbigintlist class

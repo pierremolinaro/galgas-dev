@@ -92,9 +92,17 @@ func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMe
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @formalInputParameterListAST inParameterList -> @lstring {
-  result = .init {!"@" + inTypeName + "." + [inParameterList initializerSignature] !inTypeName.location}
+func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName
+                               ?let @string inParameterSignature -> @lstring {
+  result = .init ("@" + inTypeName + "." + inParameterSignature, inTypeName.location)
 }
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+#func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName
+#                          ?let @formalInputParameterListAST inFormalParameterList -> @lstring {
+#  result = "@" + inTypeName + ".init" + [inFormalParameterList initializerSignature]
+#}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -124,7 +124,10 @@ refclass @initializerAST : @semanticDeclarationAST {
   #·······························································································
 
   override getter keyRepresentation -> @string {
-    result = "initializer @" + self.mTypeName + "." + [self.mFormalParameterList initializerSignature]
+    result = initializerNameForUsefulEntitiesGraph (
+      self.mTypeName,
+      [self.mFormalParameterList initializerSignature]
+    )
   }
 
   #·······························································································
@@ -138,7 +141,7 @@ refclass @initializerAST : @semanticDeclarationAST {
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init ("@" + self.mTypeName, self.mTypeName)]
   #---
     if not [ioExtensionInitializerForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionInitializerForBuildingContext insertKey
@@ -176,10 +179,14 @@ refclass @initializerAST : @semanticDeclarationAST {
                 ?let @predefinedTypes inPredefinedTypes
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   #--- Useful entities graph
-    let nameForUsefulness = initializerNameForUsefulEntitiesGraph (!self.mTypeName !self.mFormalParameterList)
-    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-    let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+    let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
+      !self.mTypeName
+      ![self.mFormalParameterList initializerSignature]
+    )
+#    println (!"DEF " + nameForUsefulness)
+#    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#    let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mTypeName)
+#    [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
   #--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
     let @string selfObjectNameString

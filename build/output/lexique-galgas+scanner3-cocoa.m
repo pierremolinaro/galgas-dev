@@ -622,6 +622,8 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     mTokenCode = galgasScanner3_1__26__2B__2B_ ;
   }else if (scanningOk && [self testForInputString:@"!==" advance:YES]) {
     mTokenCode = galgasScanner3_1__21__3D__3D_ ;
+  }else if (scanningOk && [self testForInputString:@"§§" advance:YES]) {
+    mTokenCode = galgasScanner3_1__A7__A7_ ;
   }else if (scanningOk && [self testForInputString:@"§[" advance:YES]) {
     mTokenCode = galgasScanner3_1__A7__5B_ ;
   }else if (scanningOk && [self testForInputString:@"||" advance:YES]) {
@@ -708,14 +710,14 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     scanningPointStructForCocoa locationForTag_onlyInterrogationExclamationMark ;
     [self saveScanningPoint: & locationForTag_onlyInterrogationExclamationMark] ;
     if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-      BOOL loop20675 = YES ;
+      BOOL loop20681 = YES ;
       do {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
         if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
         }else{
-          loop20675 = NO ;
+          loop20681 = NO ;
         }
-      }while (loop20675 && scanningOk) ;
+      }while (loop20681 && scanningOk) ;
       if (scanningOk && ([self testForInputChar:58])) {
         mTokenCode = galgasScanner3_1__3F__21_selector_3A_ ;
       }else{
@@ -730,14 +732,14 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     scanningPointStructForCocoa locationForTag_onlyInterrogationMark ;
     [self saveScanningPoint: & locationForTag_onlyInterrogationMark] ;
     if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-      BOOL loop21060 = YES ;
+      BOOL loop21066 = YES ;
       do {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
         if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
         }else{
-          loop21060 = NO ;
+          loop21066 = NO ;
         }
-      }while (loop21060 && scanningOk) ;
+      }while (loop21066 && scanningOk) ;
       if (scanningOk && ([self testForInputChar:58])) {
         mTokenCode = galgasScanner3_1__3F_selector_3A_ ;
       }else{
@@ -752,14 +754,14 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     scanningPointStructForCocoa locationForTag_onlyExclamationInterrogationMark ;
     [self saveScanningPoint: & locationForTag_onlyExclamationInterrogationMark] ;
     if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-      BOOL loop21443 = YES ;
+      BOOL loop21449 = YES ;
       do {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
         if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputChar:95])) {
         }else{
-          loop21443 = NO ;
+          loop21449 = NO ;
         }
-      }while (loop21443 && scanningOk) ;
+      }while (loop21449 && scanningOk) ;
       if (scanningOk && ([self testForInputChar:58])) {
         mTokenCode = galgasScanner3_1__21__3F_selector_3A_ ;
       }else{
@@ -774,14 +776,14 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     scanningPointStructForCocoa locationForTag_onlyExclamationMark ;
     [self saveScanningPoint: & locationForTag_onlyExclamationMark] ;
     if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-      BOOL loop21813 = YES ;
+      BOOL loop21819 = YES ;
       do {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
         if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
         }else{
-          loop21813 = NO ;
+          loop21819 = NO ;
         }
-      }while (loop21813 && scanningOk) ;
+      }while (loop21819 && scanningOk) ;
       if (scanningOk && ([self testForInputChar:58])) {
         mTokenCode = galgasScanner3_1__21_selector_3A_ ;
       }else{
@@ -800,14 +802,14 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     }else if (scanningOk && ([self testForInputChar:60])) {
       mTokenCode = galgasScanner3_1__3C__3C_ ;
     }else if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter])) {
-      BOOL loop22594 = YES ;
+      BOOL loop22600 = YES ;
       do {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
         if (scanningOk && ([self testForCharWithFunction: isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
         }else{
-          loop22594 = NO ;
+          loop22600 = NO ;
         }
-      }while (loop22594 && scanningOk) ;
+      }while (loop22600 && scanningOk) ;
       if (scanningOk && ([self testForInputChar:62])) {
         mTokenCode = galgasScanner3_1__3C_non_5F_terminal_3E_ ;
       }else{
@@ -818,7 +820,7 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
       mTokenCode = galgasScanner3_1__3C_ ;
     }
   }else if (scanningOk && ([self testForInputChar:34])) {
-    BOOL loop23123 = YES ;
+    BOOL loop23129 = YES ;
     do {
       if (scanningOk && ([self testForInputChar:92])) {
         if (scanningOk && ([self testForInputChar:102])) {
@@ -911,9 +913,9 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
       }else if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:65533])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
       }else{
-        loop23123 = NO ;
+        loop23129 = NO ;
       }
-    }while (loop23123 && scanningOk) ;
+    }while (loop23129 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:34])) {
       mTokenCode = galgasScanner3_1__22_string_22_ ;
     }else{
@@ -954,7 +956,7 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
 //--------------------------------------------------------------------------------------------------
 
 - (NSUInteger) terminalVocabularyCount {
-  return 190 ;
+  return 191 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -984,7 +986,7 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
 //--------------------------------------------------------------------------------------------------
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [191] = {0,
+  static const NSUInteger kTerminalSymbolStyles [192] = {0,
     0 /* galgasScanner3_1_identifier */,
     8 /* galgasScanner3_1_double_2E_xxx */,
     7 /* galgasScanner3_1_literalInt */,
@@ -1174,7 +1176,8 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     2 /* galgasScanner3_1__21__3D__3D_ */,
     2 /* galgasScanner3_1__3F__5E_ */,
     2 /* galgasScanner3_1__21__5E_ */,
-    2 /* galgasScanner3_1__A7__5B_ */
+    2 /* galgasScanner3_1__A7__5B_ */,
+    2 /* galgasScanner3_1__A7__A7_ */
   } ;
   return kTerminalSymbolStyles [inTerminal] ;
 }
@@ -1186,7 +1189,7 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
 //--------------------------------------------------------------------------------------------------
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [191] = {NO,
+  static const BOOL kTerminalAtomicSelection [192] = {NO,
     YES /* galgasScanner3_1_identifier */,
     YES /* galgasScanner3_1_double_2E_xxx */,
     YES /* galgasScanner3_1_literalInt */,
@@ -1376,7 +1379,8 @@ static NSInteger search_into_galgasScanner_33__galgasKeyWordList (NSString * inS
     YES /* galgasScanner3_1__21__3D__3D_ */,
     YES /* galgasScanner3_1__3F__5E_ */,
     YES /* galgasScanner3_1__21__5E_ */,
-    YES /* galgasScanner3_1__A7__5B_ */
+    YES /* galgasScanner3_1__A7__5B_ */,
+    YES /* galgasScanner3_1__A7__A7_ */
   } ;
   return kTerminalAtomicSelection [inTokenIndex] ;
 }

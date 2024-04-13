@@ -1,5 +1,16 @@
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inValue
+      %!^%COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE)%
+for (* mPropertyName * * *) in ATTRIBUTE_LIST
+  do %,\n%  %mProperty_%![mPropertyName identifierRepresentation]% (inValue.mProperty_%![mPropertyName identifierRepresentation]%)%
+end
+% {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
     do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
@@ -110,6 +121,21 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%C
   GALGAS_%!TYPE_IDENTIFIER% result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inValue,
+      %!^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) {
+  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;
+  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@%!TYPE_IDENTIFIER% insert error: '\%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------

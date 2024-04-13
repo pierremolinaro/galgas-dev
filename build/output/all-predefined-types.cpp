@@ -201,6 +201,19 @@ GALGAS_stringlist GALGAS_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_stringlist::enterElement (const GALGAS_stringlist_2D_element & inValue,
+                                      Compiler * /* inCompiler */
+                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_stringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_stringlist GALGAS_stringlist::class_func_listWithValue (const GALGAS_string & inOperand0
                                                                COMMA_LOCATION_ARGS) {
   GALGAS_stringlist result ;
@@ -695,6 +708,19 @@ GALGAS_lstringlist GALGAS_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARG
 
 GALGAS_lstringlist GALGAS_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lstringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lstringlist::enterElement (const GALGAS_lstringlist_2D_element & inValue,
+                                       Compiler * /* inCompiler */
+                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lstringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1375,6 +1401,19 @@ GALGAS__32_stringlist GALGAS__32_stringlist::class_func_emptyList (UNUSED_LOCATI
 
 GALGAS__32_stringlist GALGAS__32_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS__32_stringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS__32_stringlist::enterElement (const GALGAS__32_stringlist_2D_element & inValue,
+                                          Compiler * /* inCompiler */
+                                          COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement__32_stringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2357,6 +2396,19 @@ GALGAS_functionlist GALGAS_functionlist::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_functionlist::enterElement (const GALGAS_functionlist_2D_element & inValue,
+                                        Compiler * /* inCompiler */
+                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_functionlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_functionlist GALGAS_functionlist::class_func_listWithValue (const GALGAS_function & inOperand0
                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_functionlist result ;
@@ -2767,6 +2819,19 @@ GALGAS_luintlist GALGAS_luintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
 
 GALGAS_luintlist GALGAS_luintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_luintlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_luintlist::enterElement (const GALGAS_luintlist_2D_element & inValue,
+                                     Compiler * /* inCompiler */
+                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_luintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3319,6 +3384,19 @@ GALGAS_objectlist GALGAS_objectlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_objectlist::enterElement (const GALGAS_objectlist_2D_element & inValue,
+                                      Compiler * /* inCompiler */
+                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_objectlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_objectlist GALGAS_objectlist::class_func_listWithValue (const GALGAS_object & inOperand0
                                                                COMMA_LOCATION_ARGS) {
   GALGAS_objectlist result ;
@@ -3729,6 +3807,19 @@ GALGAS_typelist GALGAS_typelist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
 
 GALGAS_typelist GALGAS_typelist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_typelist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typelist::enterElement (const GALGAS_typelist_2D_element & inValue,
+                                    Compiler * /* inCompiler */
+                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_typelist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4147,6 +4238,19 @@ GALGAS_uintlist GALGAS_uintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_uintlist::enterElement (const GALGAS_uintlist_2D_element & inValue,
+                                    Compiler * /* inCompiler */
+                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_uintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_uintlist GALGAS_uintlist::class_func_listWithValue (const GALGAS_uint & inOperand0
                                                            COMMA_LOCATION_ARGS) {
   GALGAS_uintlist result ;
@@ -4557,6 +4661,19 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::class_func_emptyList (UNUSED_LO
 
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_uint_36__34_list (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_uint_36__34_list::enterElement (const GALGAS_uint_36__34_list_2D_element & inValue,
+                                            Compiler * /* inCompiler */
+                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_uint_36__34_list (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4975,6 +5092,19 @@ GALGAS_bigintlist GALGAS_bigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_bigintlist::enterElement (const GALGAS_bigintlist_2D_element & inValue,
+                                      Compiler * /* inCompiler */
+                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_bigintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_bigintlist GALGAS_bigintlist::class_func_listWithValue (const GALGAS_bigint & inOperand0
                                                                COMMA_LOCATION_ARGS) {
   GALGAS_bigintlist result ;
@@ -5385,6 +5515,19 @@ GALGAS_lbigintlist GALGAS_lbigintlist::class_func_emptyList (UNUSED_LOCATION_ARG
 
 GALGAS_lbigintlist GALGAS_lbigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lbigintlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lbigintlist::enterElement (const GALGAS_lbigintlist_2D_element & inValue,
+                                       Compiler * /* inCompiler */
+                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lbigintlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------

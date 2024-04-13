@@ -125,6 +125,19 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUS
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_listWithValue (%?^
   for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
   do (IDX) %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]

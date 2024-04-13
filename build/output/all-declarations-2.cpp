@@ -9,6 +9,226 @@
 
 //--------------------------------------------------------------------------------------------------
 
+ComparisonResult GALGAS_lexicalOrExpressionAST_2D_weak::objectCompare (const GALGAS_lexicalOrExpressionAST_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalOrExpressionAST_2D_weak::GALGAS_lexicalOrExpressionAST_2D_weak (void) :
+GALGAS_lexicalExpressionAST_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalOrExpressionAST_2D_weak & GALGAS_lexicalOrExpressionAST_2D_weak::operator = (const GALGAS_lexicalOrExpressionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalOrExpressionAST_2D_weak::GALGAS_lexicalOrExpressionAST_2D_weak (const GALGAS_lexicalOrExpressionAST & inSource) :
+GALGAS_lexicalExpressionAST_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalOrExpressionAST_2D_weak GALGAS_lexicalOrExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalOrExpressionAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalOrExpressionAST GALGAS_lexicalOrExpressionAST_2D_weak::bang_lexicalOrExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalOrExpressionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalOrExpressionAST) ;
+      result = GALGAS_lexicalOrExpressionAST ((cPtr_lexicalOrExpressionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalOrExpressionAST-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpressionAST_2D_weak ("lexicalOrExpressionAST-weak",
+                                                                                      & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalOrExpressionAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalOrExpressionAST_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalOrExpressionAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalOrExpressionAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalOrExpressionAST_2D_weak GALGAS_lexicalOrExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalOrExpressionAST_2D_weak result ;
+  const GALGAS_lexicalOrExpressionAST_2D_weak * p = (const GALGAS_lexicalOrExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalOrExpressionAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalOrExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_lexicalCharacterSetMatchAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterSetMatchAST_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST_2D_weak::GALGAS_lexicalCharacterSetMatchAST_2D_weak (void) :
+GALGAS_lexicalExpressionAST_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST_2D_weak & GALGAS_lexicalCharacterSetMatchAST_2D_weak::operator = (const GALGAS_lexicalCharacterSetMatchAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST_2D_weak::GALGAS_lexicalCharacterSetMatchAST_2D_weak (const GALGAS_lexicalCharacterSetMatchAST & inSource) :
+GALGAS_lexicalExpressionAST_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST_2D_weak GALGAS_lexicalCharacterSetMatchAST_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalCharacterSetMatchAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST GALGAS_lexicalCharacterSetMatchAST_2D_weak::bang_lexicalCharacterSetMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalCharacterSetMatchAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalCharacterSetMatchAST) ;
+      result = GALGAS_lexicalCharacterSetMatchAST ((cPtr_lexicalCharacterSetMatchAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalCharacterSetMatchAST-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST_2D_weak ("lexicalCharacterSetMatchAST-weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalCharacterSetMatchAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalCharacterSetMatchAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalCharacterSetMatchAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalCharacterSetMatchAST_2D_weak GALGAS_lexicalCharacterSetMatchAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalCharacterSetMatchAST_2D_weak result ;
+  const GALGAS_lexicalCharacterSetMatchAST_2D_weak * p = (const GALGAS_lexicalCharacterSetMatchAST_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterSetMatchAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalCharacterSetMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 ComparisonResult GALGAS_lexicalCharacterMatchAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterMatchAST_2D_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -548,6 +768,19 @@ GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::class_func_empt
 
 GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalSendSearchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalSendSearchListAST::enterElement (const GALGAS_lexicalSendSearchListAST_2D_element & inValue,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1461,6 +1694,19 @@ GALGAS_lexicalWhileBranchListAST GALGAS_lexicalWhileBranchListAST::init (Compile
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_lexicalWhileBranchListAST::enterElement (const GALGAS_lexicalWhileBranchListAST_2D_element & inValue,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalWhileBranchListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalWhileBranchListAST GALGAS_lexicalWhileBranchListAST::class_func_listWithValue (const GALGAS_lexicalExpressionAST & inOperand0,
                                                                                              const GALGAS_lexicalInstructionListAST & inOperand1
                                                                                              COMMA_LOCATION_ARGS) {
@@ -1937,6 +2183,19 @@ GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::class_func_
 
 GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalSelectBranchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalSelectBranchListAST::enterElement (const GALGAS_lexicalSelectBranchListAST_2D_element & inValue,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalSelectBranchListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2620,6 +2879,19 @@ GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActual
 
 GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActualArgumentListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalFunctionCallActualArgumentListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalFunctionCallActualArgumentListAST::enterElement (const GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element & inValue,
+                                                                    Compiler * /* inCompiler */
+                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalFunctionCallActualArgumentListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4285,6 +4557,19 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_lexicalSentValueList::enterElement (const GALGAS_lexicalSentValueList_2D_element & inValue,
+                                                Compiler * /* inCompiler */
+                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalSentValueList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                    const GALGAS_string & inOperand1,
                                                                                    const GALGAS_lexicalTypeEnum & inOperand2
@@ -4722,6 +5007,14 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::extractObject (const GA
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_terminalMap::cMapElement_terminalMap (const GALGAS_terminalMap_2D_element & inValue
+                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mSentAttributeList (inValue.mProperty_mSentAttributeList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_terminalMap::cMapElement_terminalMap (const GALGAS_lstring & inKey,
                                                   const GALGAS_lexicalSentValueList & in_mSentAttributeList
                                                   COMMA_LOCATION_ARGS) :
@@ -4814,6 +5107,21 @@ GALGAS_terminalMap GALGAS_terminalMap::getter_overriddenMap (Compiler * inCompil
   GALGAS_terminalMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalMap::enterElement (const GALGAS_terminalMap_2D_element & inValue,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
+  cMapElement_terminalMap * p = nullptr ;
+  macroMyNew (p, cMapElement_terminalMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@terminalMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5014,6 +5322,14 @@ GALGAS_terminalMap GALGAS_terminalMap::extractObject (const GALGAS_object & inOb
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalTypeMap::cMapElement_lexicalTypeMap (const GALGAS_lexicalTypeMap_2D_element & inValue
+                                                        COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mLexicalType (inValue.mProperty_mLexicalType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalTypeMap::cMapElement_lexicalTypeMap (const GALGAS_lstring & inKey,
                                                         const GALGAS_lexicalTypeEnum & in_mLexicalType
                                                         COMMA_LOCATION_ARGS) :
@@ -5106,6 +5422,21 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::getter_overriddenMap (Compiler * in
   GALGAS_lexicalTypeMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalTypeMap::enterElement (const GALGAS_lexicalTypeMap_2D_element & inValue,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalTypeMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalTypeMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalTypeMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5306,6 +5637,14 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::extractObject (const GALGAS_object 
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalAttributeMap::cMapElement_lexicalAttributeMap (const GALGAS_lexicalAttributeMap_2D_element & inValue
+                                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mLexicalType (inValue.mProperty_mLexicalType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalAttributeMap::cMapElement_lexicalAttributeMap (const GALGAS_lstring & inKey,
                                                                   const GALGAS_lexicalTypeEnum & in_mLexicalType
                                                                   COMMA_LOCATION_ARGS) :
@@ -5398,6 +5737,21 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::getter_overriddenMap (Com
   GALGAS_lexicalAttributeMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalAttributeMap::enterElement (const GALGAS_lexicalAttributeMap_2D_element & inValue,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalAttributeMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalAttributeMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalAttributeMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5721,6 +6075,19 @@ GALGAS_terminalList GALGAS_terminalList::class_func_emptyList (UNUSED_LOCATION_A
 
 GALGAS_terminalList GALGAS_terminalList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_terminalList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalList::enterElement (const GALGAS_terminalList_2D_element & inValue,
+                                        Compiler * /* inCompiler */
+                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_terminalList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6342,6 +6709,16 @@ GALGAS_terminalList GALGAS_terminalList::extractObject (const GALGAS_object & in
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap_2D_element & inValue
+                                                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mTerminal (inValue.mProperty_mTerminal),
+mProperty_atomicSelection (inValue.mProperty_atomicSelection),
+mProperty_isEndOfTemplateMark (inValue.mProperty_isEndOfTemplateMark) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GALGAS_lstring & inKey,
                                                                                   const GALGAS_lstring & in_mTerminal,
                                                                                   const GALGAS_bool & in_atomicSelection,
@@ -6452,6 +6829,21 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::getter_ov
   GALGAS_lexicalExplicitTokenListMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalExplicitTokenListMap::enterElement (const GALGAS_lexicalExplicitTokenListMap_2D_element & inValue,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalExplicitTokenListMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalExplicitTokenListMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalExplicitTokenListMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6749,10 +7141,13 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::extractOb
 class cSortedListElement_tokenSortedlist : public cSortedListElement {
   public: GALGAS_tokenSortedlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public: cSortedListElement_tokenSortedlist (const GALGAS_uint & in_mLength,
                                               const GALGAS_string & in_mName,
                                               const GALGAS_string & in_mTerminalName
+                                              COMMA_LOCATION_ARGS) ;
+
+  public: cSortedListElement_tokenSortedlist (const GALGAS_tokenSortedlist_2D_element & inObject
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
@@ -6779,6 +7174,15 @@ cSortedListElement_tokenSortedlist::cSortedListElement_tokenSortedlist (const GA
                                                                         COMMA_LOCATION_ARGS) :
 cSortedListElement (THERE),
 mObject (in_mLength, in_mName, in_mTerminalName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cSortedListElement_tokenSortedlist::
+cSortedListElement_tokenSortedlist (const GALGAS_tokenSortedlist_2D_element & inObject
+                                    COMMA_LOCATION_ARGS) :
+cSortedListElement (THERE),
+mObject (inObject) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6824,6 +7228,19 @@ ComparisonResult cSortedListElement_tokenSortedlist::compare (const cCollectionE
 
 GALGAS_tokenSortedlist::GALGAS_tokenSortedlist (void) :
 AC_GALGAS_sortedlist () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_tokenSortedlist::enterElement (const GALGAS_tokenSortedlist_2D_element & inValue,
+                                           Compiler * /* inCompiler */
+                                           COMMA_LOCATION_ARGS) {
+  cSortedListElement * p = nullptr ;
+  macroMyNew (p, cSortedListElement_tokenSortedlist (inValue COMMA_THERE)) ;
+  capSortedListElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7090,6 +7507,16 @@ GALGAS_tokenSortedlist GALGAS_tokenSortedlist::extractObject (const GALGAS_objec
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalExplicitTokenListMapMap::cMapElement_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap_2D_element & inValue
+                                                                                        COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mExplicitTokenListMap (inValue.mProperty_mExplicitTokenListMap),
+mProperty_mTokenSortedList (inValue.mProperty_mTokenSortedList),
+mProperty_mShouldBeGenerated (inValue.mProperty_mShouldBeGenerated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalExplicitTokenListMapMap::cMapElement_lexicalExplicitTokenListMapMap (const GALGAS_lstring & inKey,
                                                                                         const GALGAS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
                                                                                         const GALGAS_tokenSortedlist & in_mTokenSortedList,
@@ -7200,6 +7627,21 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::get
   GALGAS_lexicalExplicitTokenListMapMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalExplicitTokenListMapMap::enterElement (const GALGAS_lexicalExplicitTokenListMapMap_2D_element & inValue,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalExplicitTokenListMapMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalExplicitTokenListMapMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalExplicitTokenListMapMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7490,6 +7932,15 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::ext
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalMessageMap::cMapElement_lexicalMessageMap (const GALGAS_lexicalMessageMap_2D_element & inValue
+                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mLexicalMessage (inValue.mProperty_mLexicalMessage),
+mProperty_mMessageIsUsed (inValue.mProperty_mMessageIsUsed) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalMessageMap::cMapElement_lexicalMessageMap (const GALGAS_lstring & inKey,
                                                               const GALGAS_lstring & in_mLexicalMessage,
                                                               const GALGAS_bool & in_mMessageIsUsed
@@ -7591,6 +8042,21 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::getter_overriddenMap (Compile
   GALGAS_lexicalMessageMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalMessageMap::enterElement (const GALGAS_lexicalMessageMap_2D_element & inValue,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalMessageMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalMessageMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalMessageMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7941,6 +8407,19 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalRoutineFormalArgumentList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalRoutineFormalArgumentList::enterElement (const GALGAS_lexicalRoutineFormalArgumentList_2D_element & inValue,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalRoutineFormalArgumentList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8382,6 +8861,16 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalRoutineMap::cMapElement_lexicalRoutineMap (const GALGAS_lexicalRoutineMap_2D_element & inValue
+                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mLexicalRoutineFormalArgumentList (inValue.mProperty_mLexicalRoutineFormalArgumentList),
+mProperty_mErrorMessageList (inValue.mProperty_mErrorMessageList),
+mProperty_mIsExtern (inValue.mProperty_mIsExtern) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalRoutineMap::cMapElement_lexicalRoutineMap (const GALGAS_lstring & inKey,
                                                               const GALGAS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
                                                               const GALGAS_stringlist & in_mErrorMessageList,
@@ -8492,6 +8981,21 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::getter_overriddenMap (Compile
   GALGAS_lexicalRoutineMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalRoutineMap::enterElement (const GALGAS_lexicalRoutineMap_2D_element & inValue,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalRoutineMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalRoutineMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalRoutineMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8885,6 +9389,19 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_lexicalFunctionFormalArgumentList::enterElement (const GALGAS_lexicalFunctionFormalArgumentList_2D_element & inValue,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalFunctionFormalArgumentList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::class_func_listWithValue (const GALGAS_lexicalTypeEnum & inOperand0,
                                                                                                              const GALGAS_string & inOperand1
                                                                                                              COMMA_LOCATION_ARGS) {
@@ -9262,6 +9779,17 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalFunctionMap::cMapElement_lexicalFunctionMap (const GALGAS_lexicalFunctionMap_2D_element & inValue
+                                                                COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mLexicalTypeList (inValue.mProperty_mLexicalTypeList),
+mProperty_mReturnedLexicalType (inValue.mProperty_mReturnedLexicalType),
+mProperty_mReplacementFunctionName (inValue.mProperty_mReplacementFunctionName),
+mProperty_mIsExtern (inValue.mProperty_mIsExtern) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalFunctionMap::cMapElement_lexicalFunctionMap (const GALGAS_lstring & inKey,
                                                                 const GALGAS_lexicalFunctionFormalArgumentList & in_mLexicalTypeList,
                                                                 const GALGAS_lexicalTypeEnum & in_mReturnedLexicalType,
@@ -9381,6 +9909,21 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::getter_overriddenMap (Compi
   GALGAS_lexicalFunctionMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalFunctionMap::enterElement (const GALGAS_lexicalFunctionMap_2D_element & inValue,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalFunctionMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalFunctionMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalFunctionMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9825,6 +10368,19 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_templateDelimitorList::enterElement (const GALGAS_templateDelimitorList_2D_element & inValue,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_templateDelimitorList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                      const GALGAS_lstring & inOperand1,
                                                                                      const GALGAS_bool & inOperand2
@@ -10262,6 +10818,15 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_styleMap::cMapElement_styleMap (const GALGAS_styleMap_2D_element & inValue
+                                            COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mComment (inValue.mProperty_mComment),
+mProperty_mStyleIndex (inValue.mProperty_mStyleIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_styleMap::cMapElement_styleMap (const GALGAS_lstring & inKey,
                                             const GALGAS_lstring & in_mComment,
                                             const GALGAS_uint & in_mStyleIndex
@@ -10363,6 +10928,21 @@ GALGAS_styleMap GALGAS_styleMap::getter_overriddenMap (Compiler * inCompiler
   GALGAS_styleMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_styleMap::enterElement (const GALGAS_styleMap_2D_element & inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) {
+  cMapElement_styleMap * p = nullptr ;
+  macroMyNew (p, cMapElement_styleMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@styleMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10608,6 +11188,13 @@ GALGAS_styleMap GALGAS_styleMap::extractObject (const GALGAS_object & inObject,
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_lexicalTagMap::cMapElement_lexicalTagMap (const GALGAS_lexicalTagMap_2D_element & inValue
+                                                      COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_lexicalTagMap::cMapElement_lexicalTagMap (const GALGAS_lstring & inKey
                                                       COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE) {
@@ -10691,6 +11278,21 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::getter_overriddenMap (Compiler * inCo
   GALGAS_lexicalTagMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_lexicalTagMap::enterElement (const GALGAS_lexicalTagMap_2D_element & inValue,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+  cMapElement_lexicalTagMap * p = nullptr ;
+  macroMyNew (p, cMapElement_lexicalTagMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@lexicalTagMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13964,6 +14566,19 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_lexicalRoutineCallActualArgumentListAST::enterElement (const GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element & inValue,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalRoutineCallActualArgumentListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualArgumentListAST::class_func_listWithValue (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand0
                                                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRoutineCallActualArgumentListAST result ;
@@ -15379,6 +15994,19 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::class_func_empt
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_commandLineOptionListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_commandLineOptionListAST::enterElement (const GALGAS_commandLineOptionListAST_2D_element & inValue,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_commandLineOptionListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------

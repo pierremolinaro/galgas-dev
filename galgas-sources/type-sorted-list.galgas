@@ -423,6 +423,7 @@ filewrapper sortedListGenerationTemplate in "+generation-templates/type_generati
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
+    ?@string ELEMENT_TYPE_IDENTIFIER
 }
 
 #·······················································································································
@@ -451,6 +452,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
     !selfTypeDefinition.mHandledOperatorFlags
     !selfTypeDefinition.mAddAssignOperatorArguments
     !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
   ]
  }
 
@@ -466,9 +468,10 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
     !self.mSortDescriptorList
+    ![[self.mListElementTypeIndex definition].typeName identifierRepresentation]
   ]
  }
 

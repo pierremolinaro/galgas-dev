@@ -291,8 +291,9 @@ let galgasScanner3_1__21__3D__3D_ : UInt16 = 187
 let galgasScanner3_1__3F__5E_ : UInt16 = 188
 let galgasScanner3_1__21__5E_ : UInt16 = 189
 let galgasScanner3_1__A7__5B_ : UInt16 = 190
-let galgasScanner3_2_ERROR : UInt16 = 191
-let galgasScanner3_2_TEMPLATE : UInt16 = 192
+let galgasScanner3_1__A7__A7_ : UInt16 = 191
+let galgasScanner3_2_ERROR : UInt16 = 192
+let galgasScanner3_2_TEMPLATE : UInt16 = 193
 
 //--------------------------------------------------------------------------------------------------
 
@@ -381,7 +382,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 190
+    return 191
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -605,8 +606,9 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       2, // 188 : galgasScanner3_1__3F__5E_
       2, // 189 : galgasScanner3_1__21__5E_
       2, // 190 : galgasScanner3_1__A7__5B_
-      14, // 191 : galgasScanner3_2_ERROR
-      15  // 192 : galgasScanner3_2_TEMPLATE
+      2, // 191 : galgasScanner3_1__A7__A7_
+      14, // 192 : galgasScanner3_2_ERROR
+      15  // 193 : galgasScanner3_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -806,8 +808,9 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       true, // 188 : galgasScanner3_1__3F__5E_
       true, // 189 : galgasScanner3_1__21__5E_
       true, // 190 : galgasScanner3_1__A7__5B_
-      false, // 191 : galgasScanner3_2_ERROR
-      false  // 192 : galgasScanner3_2_TEMPLATE
+      true, // 191 : galgasScanner3_1__A7__A7_
+      false, // 192 : galgasScanner3_2_ERROR
+      false  // 193 : galgasScanner3_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -1243,6 +1246,8 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       tokenCode = galgasScanner3_1__26__2B__2B_
     }else if scanningOk && self.testForInputString ("!==", advance: true) {
       tokenCode = galgasScanner3_1__21__3D__3D_
+    }else if scanningOk && self.testForInputString ("§§", advance: true) {
+      tokenCode = galgasScanner3_1__A7__A7_
     }else if scanningOk && self.testForInputString ("§[", advance: true) {
       tokenCode = galgasScanner3_1__A7__5B_
     }else if scanningOk && self.testForInputString ("||", advance: true) {

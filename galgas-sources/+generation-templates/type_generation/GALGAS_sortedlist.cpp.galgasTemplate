@@ -7,7 +7,7 @@
 class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   public: GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public: cSortedListElement_%!TYPE_IDENTIFIER% (%?^
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
     do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
@@ -15,6 +15,9 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
+
+  public: cSortedListElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inObject
+        %!^%COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -48,6 +51,15 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LI
   between %, %
 end
 %) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cSortedListElement_%!TYPE_IDENTIFIER%::
+cSortedListElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inObject
+               %!^%COMMA_LOCATION_ARGS) :
+cSortedListElement (THERE),
+mObject (inObject) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,6 +105,19 @@ ComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollecti
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_sortedlist () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) {
+  cSortedListElement * p = nullptr ;
+  macroMyNew (p, cSortedListElement_%!TYPE_IDENTIFIER% (inValue COMMA_THERE)) ;
+  capSortedListElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1122,8 +1122,13 @@ class GALGAS_enumerationDescriptorList : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_enumerationDescriptorList_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_enumerationDescriptorList ;
  
 } ; // End of GALGAS_enumerationDescriptorList class
@@ -1318,8 +1323,13 @@ class GALGAS_functionSignature : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_functionSignature_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_functionSignature ;
  
 } ; // End of GALGAS_functionSignature class
@@ -1478,8 +1488,13 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_mapSearchMethodListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_mapSearchMethodListAST ;
  
 } ; // End of GALGAS_mapSearchMethodListAST class
@@ -1693,8 +1708,13 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_typedPropertyList_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_typedPropertyList ;
  
 } ; // End of GALGAS_typedPropertyList class
@@ -1846,8 +1866,13 @@ class GALGAS_classFunctionMap : public AC_GALGAS_map {
                                                                                              const GALGAS_string & inKey
                                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_classFunctionMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_classFunctionMap ;
  
 } ; // End of GALGAS_classFunctionMap class
@@ -1984,8 +2009,13 @@ class GALGAS_classMethodMap : public AC_GALGAS_map {
                                                                                            const GALGAS_string & inKey
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_classMethodMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_classMethodMap ;
  
 } ; // End of GALGAS_classMethodMap class
@@ -2191,8 +2221,13 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                                                       const GALGAS_string & inKey
                                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_getterMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_getterMap ;
  
 } ; // End of GALGAS_getterMap class
@@ -2315,8 +2350,13 @@ class GALGAS_initializerMap : public AC_GALGAS_map {
                                                                                            const GALGAS_string & inKey
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_initializerMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_initializerMap ;
  
 } ; // End of GALGAS_initializerMap class
@@ -2512,8 +2552,13 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                                                               const GALGAS_string & inKey
                                                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_instanceMethodMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_instanceMethodMap ;
  
 } ; // End of GALGAS_instanceMethodMap class
@@ -2635,8 +2680,13 @@ class GALGAS_optionalMethodMap : public AC_GALGAS_map {
                                                                                               const GALGAS_string & inKey
                                                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_optionalMethodMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_optionalMethodMap ;
  
 } ; // End of GALGAS_optionalMethodMap class
@@ -2779,8 +2829,13 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
                                                                                         const GALGAS_string & inKey
                                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_propertyMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_propertyMap ;
  
 } ; // End of GALGAS_propertyMap class
@@ -2959,8 +3014,13 @@ class GALGAS_setterMap : public AC_GALGAS_map {
                                                                                       const GALGAS_string & inKey
                                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_setterMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_setterMap ;
  
 } ; // End of GALGAS_setterMap class
@@ -3824,8 +3884,13 @@ class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateInstructionListForGeneration_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateInstructionListForGeneration ;
  
 } ; // End of GALGAS_templateInstructionListForGeneration class
@@ -4546,8 +4611,13 @@ class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_lis
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateInstructionIfBranchListForGeneration_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateInstructionIfBranchListForGeneration ;
  
 } ; // End of GALGAS_templateInstructionIfBranchListForGeneration class
@@ -4937,8 +5007,13 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
                                                                                                 const GALGAS_string & inKey
                                                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateVariableMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateVariableMap ;
  
 } ; // End of GALGAS_templateVariableMap class
@@ -4974,7 +5049,10 @@ class cMapElement_templateVariableMap : public cMapElement {
   public: GALGAS_unifiedTypeMapEntry mProperty_mType ;
   public: GALGAS_string mProperty_mCppName ;
 
-//--- Constructor
+//--- Constructors
+  public: cMapElement_templateVariableMap (const GALGAS_templateVariableMap_2D_element & inValue
+                                           COMMA_LOCATION_ARGS) ;
+ 
   public: cMapElement_templateVariableMap (const GALGAS_lstring & inKey,
                                            const GALGAS_unifiedTypeMapEntry & in_mType,
                                            const GALGAS_string & in_mCppName
@@ -5618,8 +5696,13 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_map {
                                                                                            const GALGAS_string & inKey
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_unifiedTypeMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_unifiedTypeMap ;
  
 } ; // End of GALGAS_unifiedTypeMap class
@@ -5653,7 +5736,10 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 //--- Map attributes
   public: GALGAS_unifiedTypeMapElementClass mProperty_mElement ;
 
-//--- Constructor
+//--- Constructors
+  public: cMapElement_unifiedTypeMap (const GALGAS_unifiedTypeMap_2D_element & inValue
+                                      COMMA_LOCATION_ARGS) ;
+ 
   public: cMapElement_unifiedTypeMap (const GALGAS_lstring & inKey,
                                       const GALGAS_unifiedTypeMapElementClass & in_mElement
                                       COMMA_LOCATION_ARGS) ;
@@ -5829,8 +5915,13 @@ class GALGAS_filewrapperMap : public AC_GALGAS_map {
                                                                                            const GALGAS_string & inKey
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_filewrapperMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_filewrapperMap ;
  
 } ; // End of GALGAS_filewrapperMap class
@@ -5978,8 +6069,13 @@ class GALGAS_functionMap : public AC_GALGAS_map {
                                                                                         const GALGAS_string & inKey
                                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_functionMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_functionMap ;
  
 } ; // End of GALGAS_functionMap class
@@ -6124,8 +6220,13 @@ class GALGAS_grammarMap : public AC_GALGAS_map {
                                                                                        const GALGAS_string & inKey
                                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_grammarMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_grammarMap ;
  
 } ; // End of GALGAS_grammarMap class
@@ -6322,8 +6423,13 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                                    const GALGAS_string & inKey
                                                                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexiqueComponentMapForSemanticAnalysis ;
  
 } ; // End of GALGAS_lexiqueComponentMapForSemanticAnalysis class
@@ -6498,8 +6604,13 @@ class GALGAS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                                                                                                   const GALGAS_string & inKey
                                                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_optionComponentMapForSemanticAnalysis_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_optionComponentMapForSemanticAnalysis ;
  
 } ; // End of GALGAS_optionComponentMapForSemanticAnalysis class
@@ -6659,8 +6770,13 @@ class GALGAS_syntaxComponentMap : public AC_GALGAS_map {
                                                                                                const GALGAS_string & inKey
                                                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_syntaxComponentMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_syntaxComponentMap ;
  
 } ; // End of GALGAS_syntaxComponentMap class
@@ -6784,8 +6900,13 @@ class GALGAS_internalRoutineMap : public AC_GALGAS_map {
                                                                                                const GALGAS_string & inKey
                                                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_internalRoutineMap_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_internalRoutineMap ;
  
 } ; // End of GALGAS_internalRoutineMap class
@@ -8080,8 +8201,13 @@ class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateInstructionSwitchBranchListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateInstructionSwitchBranchListAST ;
  
 } ; // End of GALGAS_templateInstructionSwitchBranchListAST class
@@ -8259,8 +8385,13 @@ class GALGAS_switchExtractedValuesListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_switchExtractedValuesListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_switchExtractedValuesListAST ;
  
 } ; // End of GALGAS_switchExtractedValuesListAST class
@@ -8850,8 +8981,13 @@ class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateInstructionSwitchBranchListForGeneration ;
  
 } ; // End of GALGAS_templateInstructionSwitchBranchListForGeneration class
@@ -9029,8 +9165,13 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_extractedAssociatedValuesForGeneration_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_extractedAssociatedValuesForGeneration ;
  
 } ; // End of GALGAS_extractedAssociatedValuesForGeneration class
@@ -9781,8 +9922,13 @@ class GALGAS_templateDelimitorListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateDelimitorListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateDelimitorListAST ;
  
 } ; // End of GALGAS_templateDelimitorListAST class
@@ -10088,8 +10234,13 @@ class GALGAS_templateReplacementListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateReplacementListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateReplacementListAST ;
  
 } ; // End of GALGAS_templateReplacementListAST class
@@ -10350,8 +10501,13 @@ class GALGAS_lexicalAttributeListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexicalAttributeListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexicalAttributeListAST ;
  
 } ; // End of GALGAS_lexicalAttributeListAST class
@@ -10599,8 +10755,13 @@ class GALGAS_lexicalStyleListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexicalStyleListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexicalStyleListAST ;
  
 } ; // End of GALGAS_lexicalStyleListAST class
@@ -10924,8 +11085,13 @@ class GALGAS_terminalDeclarationListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_terminalDeclarationListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_terminalDeclarationListAST ;
  
 } ; // End of GALGAS_terminalDeclarationListAST class
@@ -11086,8 +11252,13 @@ class GALGAS_sentLexicalAttributeListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_sentLexicalAttributeListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_sentLexicalAttributeListAST ;
  
 } ; // End of GALGAS_sentLexicalAttributeListAST class
@@ -11383,8 +11554,13 @@ class GALGAS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexicalMessageDeclarationListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexicalMessageDeclarationListAST ;
  
 } ; // End of GALGAS_lexicalMessageDeclarationListAST class
@@ -11689,8 +11865,13 @@ class GALGAS_lexicalListDeclarationListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexicalListDeclarationListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexicalListDeclarationListAST ;
  
 } ; // End of GALGAS_lexicalListDeclarationListAST class
@@ -11888,8 +12069,13 @@ class GALGAS_lexicalListEntryListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexicalListEntryListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexicalListEntryListAST ;
  
 } ; // End of GALGAS_lexicalListEntryListAST class
@@ -12156,8 +12342,13 @@ class GALGAS_lexicalRuleListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexicalRuleListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexicalRuleListAST ;
  
 } ; // End of GALGAS_lexicalRuleListAST class
@@ -12500,8 +12691,13 @@ class GALGAS_indexingListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_indexingListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_indexingListAST ;
  
 } ; // End of GALGAS_indexingListAST class
@@ -13316,8 +13512,13 @@ class GALGAS_lexicalInstructionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_lexicalInstructionListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_lexicalInstructionListAST ;
  
 } ; // End of GALGAS_lexicalInstructionListAST class
@@ -14180,229 +14381,4 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalOrExpressionAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalOrExpressionAST_2D_weak : public GALGAS_lexicalExpressionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalOrExpressionAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_lexicalOrExpressionAST_2D_weak (const class GALGAS_lexicalOrExpressionAST & inSource) ;
-
-  public: GALGAS_lexicalOrExpressionAST_2D_weak & operator = (const class GALGAS_lexicalOrExpressionAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_lexicalOrExpressionAST bang_lexicalOrExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalOrExpressionAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalOrExpressionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalOrExpressionAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalOrExpressionAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpressionAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalCharacterSetMatchAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalCharacterSetMatchAST : public GALGAS_lexicalExpressionAST {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalCharacterSetMatchAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_lexicalCharacterSetMatchAST (const class cPtr_lexicalCharacterSetMatchAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GALGAS_lstring readProperty_mCharacterSetName (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_lexicalCharacterSetMatchAST init_21_ (const class GALGAS_lstring & inOperand0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalCharacterSetMatchAST extractObject (const GALGAS_object & inObject,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalCharacterSetMatchAST class_func_new (const class GALGAS_lstring & inOperand0
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalCharacterSetMatchAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @lexicalCharacterSetMatchAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void lexicalCharacterSetMatchAST_init_21_ (const class GALGAS_lstring & inOperand0,
-                                                     Compiler * inCompiler) ;
-
-
-//--- Extension getter generateConditionCode
-  public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GALGAS_string getter_generateObjcCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateSwiftCocoaConditionCode
-  public: virtual class GALGAS_string getter_generateSwiftCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lstring mProperty_mCharacterSetName ;
-
-
-//--- Default constructor
-  public: cPtr_lexicalCharacterSetMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_lexicalCharacterSetMatchAST (const GALGAS_lstring & in_mCharacterSetName
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
-
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalCharacterSetMatchAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalCharacterSetMatchAST_2D_weak : public GALGAS_lexicalExpressionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalCharacterSetMatchAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_lexicalCharacterSetMatchAST_2D_weak (const class GALGAS_lexicalCharacterSetMatchAST & inSource) ;
-
-  public: GALGAS_lexicalCharacterSetMatchAST_2D_weak & operator = (const class GALGAS_lexicalCharacterSetMatchAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_lexicalCharacterSetMatchAST bang_lexicalCharacterSetMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalCharacterSetMatchAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalCharacterSetMatchAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalCharacterSetMatchAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalCharacterSetMatchAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST_2D_weak ;
 

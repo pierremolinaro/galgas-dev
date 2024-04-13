@@ -229,10 +229,12 @@ refclass @initializerCallAST : @semanticExpressionAST {
       ?let @lstring initializerName
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     )
-#    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType definition].typeName.string !self.mTypeName})
-#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-#    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType definition].typeName.string !self.mTypeName})
-#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
+#    let initializerUsefulnessName = initializerNameForUsefulEntitiesGraph (
+#      [instanciedType definition].typeName,
+#      [self.mExpressions initializerSignature]
+#    )
+#    println (!"USE " + initializerUsefulnessName)
+#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !initializerUsefulnessName]
   #---
     outExpression = @initializerCallForGeneration {
       !instanciedType

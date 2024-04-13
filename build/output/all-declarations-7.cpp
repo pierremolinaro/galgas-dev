@@ -9,6 +9,1284 @@
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_extensionMethodMapForType::cMapElement_extensionMethodMapForType (const GALGAS_extensionMethodMapForType_2D_element & inValue
+                                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mFormalParameterList (inValue.mProperty_mFormalParameterList),
+mProperty_mQualifier (inValue.mProperty_mQualifier) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionMethodMapForType::cMapElement_extensionMethodMapForType (const GALGAS_lstring & inKey,
+                                                                              const GALGAS_formalParameterListAST & in_mFormalParameterList,
+                                                                              const GALGAS_methodQualifier & in_mQualifier
+                                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mProperty_mFormalParameterList (in_mFormalParameterList),
+mProperty_mQualifier (in_mQualifier) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cMapElement_extensionMethodMapForType::isValid (void) const {
+  return mProperty_lkey.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement * cMapElement_extensionMethodMapForType::copy (void) {
+  cMapElement * result = nullptr ;
+  macroMyNew (result, cMapElement_extensionMethodMapForType (mProperty_lkey, mProperty_mFormalParameterList, mProperty_mQualifier COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cMapElement_extensionMethodMapForType::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mFormalParameterList" ":") ;
+  mProperty_mFormalParameterList.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mQualifier" ":") ;
+  mProperty_mQualifier.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cMapElement_extensionMethodMapForType::compare (const cCollectionElement * inOperand) const {
+  cMapElement_extensionMethodMapForType * operand = (cMapElement_extensionMethodMapForType *) inOperand ;
+  ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mFormalParameterList.objectCompare (operand->mProperty_mFormalParameterList) ;
+  }
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mQualifier.objectCompare (operand->mProperty_mQualifier) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType::GALGAS_extensionMethodMapForType (void) :
+AC_GALGAS_map () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType::GALGAS_extensionMethodMapForType (const GALGAS_extensionMethodMapForType & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType & GALGAS_extensionMethodMapForType::operator = (const GALGAS_extensionMethodMapForType & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForType result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::class_func_emptyMap (LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForType result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::class_func_mapWithMapToOverride (const GALGAS_extensionMethodMapForType & inMapToOverride
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForType result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::getter_overriddenMap (Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionMethodMapForType result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForType::enterElement (const GALGAS_extensionMethodMapForType_2D_element & inValue,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForType * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionMethodMapForType (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionMethodMapForType insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForType::addAssign_operation (const GALGAS_lstring & inKey,
+                                                            const GALGAS_formalParameterListAST & inArgument0,
+                                                            const GALGAS_methodQualifier & inArgument1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForType * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionMethodMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionMethodMapForType insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::add_operation (const GALGAS_extensionMethodMapForType & inOperand,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionMethodMapForType result = *this ;
+  cEnumerator_extensionMethodMapForType enumerator (inOperand, EnumerationOrder::up) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFormalParameterList (HERE), enumerator.current_mQualifier (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForType::setter_insertKey (GALGAS_lstring inKey,
+                                                         GALGAS_formalParameterListAST inArgument0,
+                                                         GALGAS_methodQualifier inArgument1,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForType * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionMethodMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "the '%K' method has been already declared in %L" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_formalParameterListAST GALGAS_extensionMethodMapForType::getter_mFormalParameterListForKey (const GALGAS_string & inKey,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) attributes ;
+  GALGAS_formalParameterListAST result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+    result = p->mProperty_mFormalParameterList ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_methodQualifier GALGAS_extensionMethodMapForType::getter_mQualifierForKey (const GALGAS_string & inKey,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) attributes ;
+  GALGAS_methodQualifier result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+    result = p->mProperty_mQualifier ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForType::setter_setMFormalParameterListForKey (GALGAS_formalParameterListAST inAttributeValue,
+                                                                             GALGAS_string inKey,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_extensionMethodMapForType * p = (cMapElement_extensionMethodMapForType *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+    p->mProperty_mFormalParameterList = inAttributeValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForType::setter_setMQualifierForKey (GALGAS_methodQualifier inAttributeValue,
+                                                                   GALGAS_string inKey,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_extensionMethodMapForType * p = (cMapElement_extensionMethodMapForType *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+    p->mProperty_mQualifier = inAttributeValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionMethodMapForType * GALGAS_extensionMethodMapForType::readWriteAccessForWithInstruction (Compiler * inCompiler,
+                                                                                                             const GALGAS_string & inKey
+                                                                                                             COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForType * result = (cMapElement_extensionMethodMapForType *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_extensionMethodMapForType) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_extensionMethodMapForType::cEnumerator_extensionMethodMapForType (const GALGAS_extensionMethodMapForType & inEnumeratedObject,
+                                                                              const EnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType_2D_element cEnumerator_extensionMethodMapForType::current (LOCATION_ARGS) const {
+  const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+  return GALGAS_extensionMethodMapForType_2D_element (p->mProperty_lkey, p->mProperty_mFormalParameterList, p->mProperty_mQualifier) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_extensionMethodMapForType::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_formalParameterListAST cEnumerator_extensionMethodMapForType::current_mFormalParameterList (LOCATION_ARGS) const {
+  const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+  return p->mProperty_mFormalParameterList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_methodQualifier cEnumerator_extensionMethodMapForType::current_mQualifier (LOCATION_ARGS) const {
+  const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+  return p->mProperty_mQualifier ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_extensionMethodMapForType::optional_searchKey (const GALGAS_string & inKey,
+                                                           GALGAS_formalParameterListAST & outArgument0,
+                                                           GALGAS_methodQualifier & outArgument1) const {
+  const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) searchForKey (inKey) ;
+  const bool result = nullptr != p ;
+  if (result) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
+    outArgument0 = p->mProperty_mFormalParameterList ;
+    outArgument1 = p->mProperty_mQualifier ;
+  }else{
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @extensionMethodMapForType generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForType ("extensionMethodMapForType",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_extensionMethodMapForType::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionMethodMapForType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_extensionMethodMapForType::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionMethodMapForType (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForType result ;
+  const GALGAS_extensionMethodMapForType * p = (const GALGAS_extensionMethodMapForType *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionMethodMapForType *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionMethodMapForType", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionMethodMapForBuildingContext::cMapElement_extensionMethodMapForBuildingContext (const GALGAS_extensionMethodMapForBuildingContext_2D_element & inValue
+                                                                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mExtensionMethodMapForType (inValue.mProperty_mExtensionMethodMapForType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionMethodMapForBuildingContext::cMapElement_extensionMethodMapForBuildingContext (const GALGAS_lstring & inKey,
+                                                                                                    const GALGAS_extensionMethodMapForType & in_mExtensionMethodMapForType
+                                                                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mProperty_mExtensionMethodMapForType (in_mExtensionMethodMapForType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cMapElement_extensionMethodMapForBuildingContext::isValid (void) const {
+  return mProperty_lkey.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement * cMapElement_extensionMethodMapForBuildingContext::copy (void) {
+  cMapElement * result = nullptr ;
+  macroMyNew (result, cMapElement_extensionMethodMapForBuildingContext (mProperty_lkey, mProperty_mExtensionMethodMapForType COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cMapElement_extensionMethodMapForBuildingContext::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mExtensionMethodMapForType" ":") ;
+  mProperty_mExtensionMethodMapForType.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cMapElement_extensionMethodMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
+  cMapElement_extensionMethodMapForBuildingContext * operand = (cMapElement_extensionMethodMapForBuildingContext *) inOperand ;
+  ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mExtensionMethodMapForType.objectCompare (operand->mProperty_mExtensionMethodMapForType) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext::GALGAS_extensionMethodMapForBuildingContext (void) :
+AC_GALGAS_map () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext::GALGAS_extensionMethodMapForBuildingContext (const GALGAS_extensionMethodMapForBuildingContext & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext & GALGAS_extensionMethodMapForBuildingContext::operator = (const GALGAS_extensionMethodMapForBuildingContext & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuildingContext::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForBuildingContext result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuildingContext::class_func_emptyMap (LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForBuildingContext result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuildingContext::class_func_mapWithMapToOverride (const GALGAS_extensionMethodMapForBuildingContext & inMapToOverride
+                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForBuildingContext result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuildingContext::getter_overriddenMap (Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionMethodMapForBuildingContext result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForBuildingContext::enterElement (const GALGAS_extensionMethodMapForBuildingContext_2D_element & inValue,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionMethodMapForBuildingContext (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionMethodMapForBuildingContext insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForBuildingContext::addAssign_operation (const GALGAS_lstring & inKey,
+                                                                       const GALGAS_extensionMethodMapForType & inArgument0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionMethodMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionMethodMapForBuildingContext insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuildingContext::add_operation (const GALGAS_extensionMethodMapForBuildingContext & inOperand,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionMethodMapForBuildingContext result = *this ;
+  cEnumerator_extensionMethodMapForBuildingContext enumerator (inOperand, EnumerationOrder::up) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mExtensionMethodMapForType (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForBuildingContext::setter_insertKey (GALGAS_lstring inKey,
+                                                                    GALGAS_extensionMethodMapForType inArgument0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionMethodMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "internal error" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey = "internal error" ;
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForBuildingContext::method_searchKey (GALGAS_lstring inKey,
+                                                                    GALGAS_extensionMethodMapForType & outArgument0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) performSearch (inKey,
+                                                                                                                                         inCompiler,
+                                                                                                                                         kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey
+                                                                                                                                         COMMA_THERE) ;
+  if (nullptr == p) {
+    outArgument0.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
+    outArgument0 = p->mProperty_mExtensionMethodMapForType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForBuildingContext::getter_mExtensionMethodMapForTypeForKey (const GALGAS_string & inKey,
+                                                                                                                       Compiler * inCompiler
+                                                                                                                       COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) attributes ;
+  GALGAS_extensionMethodMapForType result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
+    result = p->mProperty_mExtensionMethodMapForType ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMethodMapForBuildingContext::setter_setMExtensionMethodMapForTypeForKey (GALGAS_extensionMethodMapForType inAttributeValue,
+                                                                                              GALGAS_string inKey,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_extensionMethodMapForBuildingContext * p = (cMapElement_extensionMethodMapForBuildingContext *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
+    p->mProperty_mExtensionMethodMapForType = inAttributeValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionMethodMapForBuildingContext * GALGAS_extensionMethodMapForBuildingContext::readWriteAccessForWithInstruction (Compiler * inCompiler,
+                                                                                                                                   const GALGAS_string & inKey
+                                                                                                                                   COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMethodMapForBuildingContext * result = (cMapElement_extensionMethodMapForBuildingContext *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_extensionMethodMapForBuildingContext) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_extensionMethodMapForBuildingContext::cEnumerator_extensionMethodMapForBuildingContext (const GALGAS_extensionMethodMapForBuildingContext & inEnumeratedObject,
+                                                                                                    const EnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext_2D_element cEnumerator_extensionMethodMapForBuildingContext::current (LOCATION_ARGS) const {
+  const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
+  return GALGAS_extensionMethodMapForBuildingContext_2D_element (p->mProperty_lkey, p->mProperty_mExtensionMethodMapForType) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_extensionMethodMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForType cEnumerator_extensionMethodMapForBuildingContext::current_mExtensionMethodMapForType (LOCATION_ARGS) const {
+  const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
+  return p->mProperty_mExtensionMethodMapForType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_extensionMethodMapForBuildingContext::optional_searchKey (const GALGAS_string & inKey,
+                                                                      GALGAS_extensionMethodMapForType & outArgument0) const {
+  const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) searchForKey (inKey) ;
+  const bool result = nullptr != p ;
+  if (result) {
+    macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
+    outArgument0 = p->mProperty_mExtensionMethodMapForType ;
+  }else{
+    outArgument0.drop () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @extensionMethodMapForBuildingContext generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext ("extensionMethodMapForBuildingContext",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_extensionMethodMapForBuildingContext::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_extensionMethodMapForBuildingContext::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionMethodMapForBuildingContext (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuildingContext::extractObject (const GALGAS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodMapForBuildingContext result ;
+  const GALGAS_extensionMethodMapForBuildingContext * p = (const GALGAS_extensionMethodMapForBuildingContext *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionMethodMapForBuildingContext *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionMethodMapForBuildingContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionSetterMapForType::cMapElement_extensionSetterMapForType (const GALGAS_extensionSetterMapForType_2D_element & inValue
+                                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mFormalParameterList (inValue.mProperty_mFormalParameterList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionSetterMapForType::cMapElement_extensionSetterMapForType (const GALGAS_lstring & inKey,
+                                                                              const GALGAS_formalParameterListAST & in_mFormalParameterList
+                                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mProperty_mFormalParameterList (in_mFormalParameterList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cMapElement_extensionSetterMapForType::isValid (void) const {
+  return mProperty_lkey.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement * cMapElement_extensionSetterMapForType::copy (void) {
+  cMapElement * result = nullptr ;
+  macroMyNew (result, cMapElement_extensionSetterMapForType (mProperty_lkey, mProperty_mFormalParameterList COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cMapElement_extensionSetterMapForType::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mFormalParameterList" ":") ;
+  mProperty_mFormalParameterList.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cMapElement_extensionSetterMapForType::compare (const cCollectionElement * inOperand) const {
+  cMapElement_extensionSetterMapForType * operand = (cMapElement_extensionSetterMapForType *) inOperand ;
+  ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mFormalParameterList.objectCompare (operand->mProperty_mFormalParameterList) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType::GALGAS_extensionSetterMapForType (void) :
+AC_GALGAS_map () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType::GALGAS_extensionSetterMapForType (const GALGAS_extensionSetterMapForType & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType & GALGAS_extensionSetterMapForType::operator = (const GALGAS_extensionSetterMapForType & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForType result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::class_func_emptyMap (LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForType result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::class_func_mapWithMapToOverride (const GALGAS_extensionSetterMapForType & inMapToOverride
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForType result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::getter_overriddenMap (Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionSetterMapForType result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForType::enterElement (const GALGAS_extensionSetterMapForType_2D_element & inValue,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForType * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionSetterMapForType (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionSetterMapForType insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForType::addAssign_operation (const GALGAS_lstring & inKey,
+                                                            const GALGAS_formalParameterListAST & inArgument0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForType * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionSetterMapForType (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionSetterMapForType insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::add_operation (const GALGAS_extensionSetterMapForType & inOperand,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionSetterMapForType result = *this ;
+  cEnumerator_extensionSetterMapForType enumerator (inOperand, EnumerationOrder::up) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mFormalParameterList (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForType::setter_insertKey (GALGAS_lstring inKey,
+                                                         GALGAS_formalParameterListAST inArgument0,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForType * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionSetterMapForType (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "the '%K' setter has been already declared in %L" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_formalParameterListAST GALGAS_extensionSetterMapForType::getter_mFormalParameterListForKey (const GALGAS_string & inKey,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_extensionSetterMapForType * p = (const cMapElement_extensionSetterMapForType *) attributes ;
+  GALGAS_formalParameterListAST result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
+    result = p->mProperty_mFormalParameterList ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForType::setter_setMFormalParameterListForKey (GALGAS_formalParameterListAST inAttributeValue,
+                                                                             GALGAS_string inKey,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_extensionSetterMapForType * p = (cMapElement_extensionSetterMapForType *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
+    p->mProperty_mFormalParameterList = inAttributeValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionSetterMapForType * GALGAS_extensionSetterMapForType::readWriteAccessForWithInstruction (Compiler * inCompiler,
+                                                                                                             const GALGAS_string & inKey
+                                                                                                             COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForType * result = (cMapElement_extensionSetterMapForType *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_extensionSetterMapForType) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_extensionSetterMapForType::cEnumerator_extensionSetterMapForType (const GALGAS_extensionSetterMapForType & inEnumeratedObject,
+                                                                              const EnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType_2D_element cEnumerator_extensionSetterMapForType::current (LOCATION_ARGS) const {
+  const cMapElement_extensionSetterMapForType * p = (const cMapElement_extensionSetterMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
+  return GALGAS_extensionSetterMapForType_2D_element (p->mProperty_lkey, p->mProperty_mFormalParameterList) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_extensionSetterMapForType::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_formalParameterListAST cEnumerator_extensionSetterMapForType::current_mFormalParameterList (LOCATION_ARGS) const {
+  const cMapElement_extensionSetterMapForType * p = (const cMapElement_extensionSetterMapForType *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
+  return p->mProperty_mFormalParameterList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_extensionSetterMapForType::optional_searchKey (const GALGAS_string & inKey,
+                                                           GALGAS_formalParameterListAST & outArgument0) const {
+  const cMapElement_extensionSetterMapForType * p = (const cMapElement_extensionSetterMapForType *) searchForKey (inKey) ;
+  const bool result = nullptr != p ;
+  if (result) {
+    macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
+    outArgument0 = p->mProperty_mFormalParameterList ;
+  }else{
+    outArgument0.drop () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @extensionSetterMapForType generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForType ("extensionSetterMapForType",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_extensionSetterMapForType::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterMapForType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_extensionSetterMapForType::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionSetterMapForType (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForType result ;
+  const GALGAS_extensionSetterMapForType * p = (const GALGAS_extensionSetterMapForType *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionSetterMapForType *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionSetterMapForType", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionSetterMapForBuildingContext::cMapElement_extensionSetterMapForBuildingContext (const GALGAS_extensionSetterMapForBuildingContext_2D_element & inValue
+                                                                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mExtensionSetterMapForType (inValue.mProperty_mExtensionSetterMapForType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionSetterMapForBuildingContext::cMapElement_extensionSetterMapForBuildingContext (const GALGAS_lstring & inKey,
+                                                                                                    const GALGAS_extensionSetterMapForType & in_mExtensionSetterMapForType
+                                                                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mProperty_mExtensionSetterMapForType (in_mExtensionSetterMapForType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cMapElement_extensionSetterMapForBuildingContext::isValid (void) const {
+  return mProperty_lkey.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement * cMapElement_extensionSetterMapForBuildingContext::copy (void) {
+  cMapElement * result = nullptr ;
+  macroMyNew (result, cMapElement_extensionSetterMapForBuildingContext (mProperty_lkey, mProperty_mExtensionSetterMapForType COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cMapElement_extensionSetterMapForBuildingContext::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mExtensionSetterMapForType" ":") ;
+  mProperty_mExtensionSetterMapForType.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult cMapElement_extensionSetterMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
+  cMapElement_extensionSetterMapForBuildingContext * operand = (cMapElement_extensionSetterMapForBuildingContext *) inOperand ;
+  ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
+  if (ComparisonResult::operandEqual == result) {
+    result = mProperty_mExtensionSetterMapForType.objectCompare (operand->mProperty_mExtensionSetterMapForType) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext::GALGAS_extensionSetterMapForBuildingContext (void) :
+AC_GALGAS_map () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext::GALGAS_extensionSetterMapForBuildingContext (const GALGAS_extensionSetterMapForBuildingContext & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext & GALGAS_extensionSetterMapForBuildingContext::operator = (const GALGAS_extensionSetterMapForBuildingContext & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuildingContext::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForBuildingContext result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuildingContext::class_func_emptyMap (LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForBuildingContext result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuildingContext::class_func_mapWithMapToOverride (const GALGAS_extensionSetterMapForBuildingContext & inMapToOverride
+                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForBuildingContext result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuildingContext::getter_overriddenMap (Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionSetterMapForBuildingContext result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForBuildingContext::enterElement (const GALGAS_extensionSetterMapForBuildingContext_2D_element & inValue,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionSetterMapForBuildingContext (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionSetterMapForBuildingContext insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForBuildingContext::addAssign_operation (const GALGAS_lstring & inKey,
+                                                                       const GALGAS_extensionSetterMapForType & inArgument0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionSetterMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionSetterMapForBuildingContext insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuildingContext::add_operation (const GALGAS_extensionSetterMapForBuildingContext & inOperand,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionSetterMapForBuildingContext result = *this ;
+  cEnumerator_extensionSetterMapForBuildingContext enumerator (inOperand, EnumerationOrder::up) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mExtensionSetterMapForType (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForBuildingContext::setter_insertKey (GALGAS_lstring inKey,
+                                                                    GALGAS_extensionSetterMapForType inArgument0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionSetterMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "internal error" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey = "internal error" ;
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForBuildingContext::method_searchKey (GALGAS_lstring inKey,
+                                                                    GALGAS_extensionSetterMapForType & outArgument0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) performSearch (inKey,
+                                                                                                                                         inCompiler,
+                                                                                                                                         kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey
+                                                                                                                                         COMMA_THERE) ;
+  if (nullptr == p) {
+    outArgument0.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
+    outArgument0 = p->mProperty_mExtensionSetterMapForType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForBuildingContext::getter_mExtensionSetterMapForTypeForKey (const GALGAS_string & inKey,
+                                                                                                                       Compiler * inCompiler
+                                                                                                                       COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) attributes ;
+  GALGAS_extensionSetterMapForType result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
+    result = p->mProperty_mExtensionSetterMapForType ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionSetterMapForBuildingContext::setter_setMExtensionSetterMapForTypeForKey (GALGAS_extensionSetterMapForType inAttributeValue,
+                                                                                              GALGAS_string inKey,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_extensionSetterMapForBuildingContext * p = (cMapElement_extensionSetterMapForBuildingContext *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
+    p->mProperty_mExtensionSetterMapForType = inAttributeValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionSetterMapForBuildingContext * GALGAS_extensionSetterMapForBuildingContext::readWriteAccessForWithInstruction (Compiler * inCompiler,
+                                                                                                                                   const GALGAS_string & inKey
+                                                                                                                                   COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForBuildingContext * result = (cMapElement_extensionSetterMapForBuildingContext *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_extensionSetterMapForBuildingContext) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_extensionSetterMapForBuildingContext::cEnumerator_extensionSetterMapForBuildingContext (const GALGAS_extensionSetterMapForBuildingContext & inEnumeratedObject,
+                                                                                                    const EnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext_2D_element cEnumerator_extensionSetterMapForBuildingContext::current (LOCATION_ARGS) const {
+  const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
+  return GALGAS_extensionSetterMapForBuildingContext_2D_element (p->mProperty_lkey, p->mProperty_mExtensionSetterMapForType) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_extensionSetterMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForType cEnumerator_extensionSetterMapForBuildingContext::current_mExtensionSetterMapForType (LOCATION_ARGS) const {
+  const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
+  return p->mProperty_mExtensionSetterMapForType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_extensionSetterMapForBuildingContext::optional_searchKey (const GALGAS_string & inKey,
+                                                                      GALGAS_extensionSetterMapForType & outArgument0) const {
+  const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) searchForKey (inKey) ;
+  const bool result = nullptr != p ;
+  if (result) {
+    macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
+    outArgument0 = p->mProperty_mExtensionSetterMapForType ;
+  }else{
+    outArgument0.drop () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @extensionSetterMapForBuildingContext generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext ("extensionSetterMapForBuildingContext",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_extensionSetterMapForBuildingContext::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_extensionSetterMapForBuildingContext::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionSetterMapForBuildingContext (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuildingContext::extractObject (const GALGAS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForBuildingContext result ;
+  const GALGAS_extensionSetterMapForBuildingContext * p = (const GALGAS_extensionSetterMapForBuildingContext *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_extensionSetterMapForBuildingContext *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionSetterMapForBuildingContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_extensionGetterMapForType::cMapElement_extensionGetterMapForType (const GALGAS_extensionGetterMapForType_2D_element & inValue
+                                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mResultTypeName (inValue.mProperty_mResultTypeName),
+mProperty_mInputFormalParameterList (inValue.mProperty_mInputFormalParameterList),
+mProperty_mQualifier (inValue.mProperty_mQualifier) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_extensionGetterMapForType::cMapElement_extensionGetterMapForType (const GALGAS_lstring & inKey,
                                                                               const GALGAS_lstring & in_mResultTypeName,
                                                                               const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList,
@@ -119,6 +1397,21 @@ GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::getter_overri
   GALGAS_extensionGetterMapForType result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionGetterMapForType::enterElement (const GALGAS_extensionGetterMapForType_2D_element & inValue,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  cMapElement_extensionGetterMapForType * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionGetterMapForType (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionGetterMapForType insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -381,6 +1674,14 @@ GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::extractObject
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_extensionGetterMapForBuildingContext::cMapElement_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext_2D_element & inValue
+                                                                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mExtensionGetterMapForType (inValue.mProperty_mExtensionGetterMapForType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_extensionGetterMapForBuildingContext::cMapElement_extensionGetterMapForBuildingContext (const GALGAS_lstring & inKey,
                                                                                                     const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType
                                                                                                     COMMA_LOCATION_ARGS) :
@@ -473,6 +1774,21 @@ GALGAS_extensionGetterMapForBuildingContext GALGAS_extensionGetterMapForBuilding
   GALGAS_extensionGetterMapForBuildingContext result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionGetterMapForBuildingContext::enterElement (const GALGAS_extensionGetterMapForBuildingContext_2D_element & inValue,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  cMapElement_extensionGetterMapForBuildingContext * p = nullptr ;
+  macroMyNew (p, cMapElement_extensionGetterMapForBuildingContext (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionGetterMapForBuildingContext insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -711,6 +2027,13 @@ void callExtensionMethod_enterDeclarationInSemanticContext (cPtr_semanticDeclara
 }
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_wrapperExtensionMap::cMapElement_wrapperExtensionMap (const GALGAS_wrapperExtensionMap_2D_element & inValue
+                                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_wrapperExtensionMap::cMapElement_wrapperExtensionMap (const GALGAS_lstring & inKey
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE) {
@@ -794,6 +2117,21 @@ GALGAS_wrapperExtensionMap GALGAS_wrapperExtensionMap::getter_overriddenMap (Com
   GALGAS_wrapperExtensionMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_wrapperExtensionMap::enterElement (const GALGAS_wrapperExtensionMap_2D_element & inValue,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  cMapElement_wrapperExtensionMap * p = nullptr ;
+  macroMyNew (p, cMapElement_wrapperExtensionMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@wrapperExtensionMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1367,6 +2705,19 @@ GALGAS_semanticExpressionListForGeneration GALGAS_semanticExpressionListForGener
 
 GALGAS_semanticExpressionListForGeneration GALGAS_semanticExpressionListForGeneration::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_semanticExpressionListForGeneration (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_semanticExpressionListForGeneration::enterElement (const GALGAS_semanticExpressionListForGeneration_2D_element & inValue,
+                                                               Compiler * /* inCompiler */
+                                                               COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_semanticExpressionListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3061,6 +4412,19 @@ GALGAS_actualParameterListForGeneration GALGAS_actualParameterListForGeneration:
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_actualParameterListForGeneration::enterElement (const GALGAS_actualParameterListForGeneration_2D_element & inValue,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_actualParameterListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_actualParameterListForGeneration GALGAS_actualParameterListForGeneration::class_func_listWithValue (const GALGAS_actualParameterForGeneration & inOperand0
                                                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_actualParameterListForGeneration result ;
@@ -4000,6 +5364,19 @@ GALGAS_listOfSemanticInstructionListForGeneration GALGAS_listOfSemanticInstructi
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_listOfSemanticInstructionListForGeneration::enterElement (const GALGAS_listOfSemanticInstructionListForGeneration_2D_element & inValue,
+                                                                      Compiler * /* inCompiler */
+                                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_listOfSemanticInstructionListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_listOfSemanticInstructionListForGeneration GALGAS_listOfSemanticInstructionListForGeneration::class_func_listWithValue (const GALGAS_semanticInstructionListForGeneration & inOperand0,
                                                                                                                                const GALGAS_location & inOperand1
                                                                                                                                COMMA_LOCATION_ARGS) {
@@ -4803,6 +6180,19 @@ GALGAS_semanticDeclarationListForGeneration GALGAS_semanticDeclarationListForGen
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_semanticDeclarationListForGeneration::enterElement (const GALGAS_semanticDeclarationListForGeneration_2D_element & inValue,
+                                                                Compiler * /* inCompiler */
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_semanticDeclarationListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_semanticDeclarationListForGeneration GALGAS_semanticDeclarationListForGeneration::class_func_listWithValue (const GALGAS_string & inOperand0,
                                                                                                                    const GALGAS_semanticDeclarationForGeneration & inOperand1
                                                                                                                    COMMA_LOCATION_ARGS) {
@@ -5283,6 +6673,19 @@ GALGAS_signatureForGrammarAnalysis GALGAS_signatureForGrammarAnalysis::init (Com
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_signatureForGrammarAnalysis::enterElement (const GALGAS_signatureForGrammarAnalysis_2D_element & inValue,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_signatureForGrammarAnalysis (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_signatureForGrammarAnalysis GALGAS_signatureForGrammarAnalysis::class_func_listWithValue (const GALGAS_formalArgumentPassingModeAST & inOperand0,
                                                                                                  const GALGAS_lstring & inOperand1
                                                                                                  COMMA_LOCATION_ARGS) {
@@ -5660,6 +7063,14 @@ GALGAS_signatureForGrammarAnalysis GALGAS_signatureForGrammarAnalysis::extractOb
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis (const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element & inValue
+                                                                                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mFormalParametersList (inValue.mProperty_mFormalParametersList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis (const GALGAS_lstring & inKey,
                                                                                                                   const GALGAS_signatureForGrammarAnalysis & in_mFormalParametersList
                                                                                                                   COMMA_LOCATION_ARGS) :
@@ -5752,6 +7163,21 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis GALGAS_nonterminalSymbolLabel
   GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::enterElement (const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element & inValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = nullptr ;
+  macroMyNew (p, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@nonterminalSymbolLabelMapForGrammarAnalysis insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5952,6 +7378,15 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis GALGAS_nonterminalSymbolLabel
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_nonTerminalSymbolMapForGrammarAnalysis::cMapElement_nonTerminalSymbolMapForGrammarAnalysis (const GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element & inValue
+                                                                                                        COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mNonTerminalIndex (inValue.mProperty_mNonTerminalIndex),
+mProperty_mNonterminalSymbolParametersMap (inValue.mProperty_mNonterminalSymbolParametersMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_nonTerminalSymbolMapForGrammarAnalysis::cMapElement_nonTerminalSymbolMapForGrammarAnalysis (const GALGAS_lstring & inKey,
                                                                                                         const GALGAS_uint & in_mNonTerminalIndex,
                                                                                                         const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap
@@ -6053,6 +7488,21 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis GALGAS_nonTerminalSymbolMapForGram
   GALGAS_nonTerminalSymbolMapForGrammarAnalysis result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::enterElement (const GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element & inValue,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = nullptr ;
+  macroMyNew (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@nonTerminalSymbolMapForGrammarAnalysis insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6397,6 +7847,19 @@ GALGAS_nonTerminalToAddList GALGAS_nonTerminalToAddList::class_func_emptyList (U
 
 GALGAS_nonTerminalToAddList GALGAS_nonTerminalToAddList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_nonTerminalToAddList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_nonTerminalToAddList::enterElement (const GALGAS_nonTerminalToAddList_2D_element & inValue,
+                                                Compiler * /* inCompiler */
+                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_nonTerminalToAddList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6883,6 +8346,19 @@ GALGAS_terminalCheckAssignementList GALGAS_terminalCheckAssignementList::class_f
 
 GALGAS_terminalCheckAssignementList GALGAS_terminalCheckAssignementList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_terminalCheckAssignementList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_terminalCheckAssignementList::enterElement (const GALGAS_terminalCheckAssignementList_2D_element & inValue,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_terminalCheckAssignementList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7659,6 +9135,19 @@ GALGAS_filewrapperTemplateListForGeneration GALGAS_filewrapperTemplateListForGen
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_filewrapperTemplateListForGeneration::enterElement (const GALGAS_filewrapperTemplateListForGeneration_2D_element & inValue,
+                                                                Compiler * /* inCompiler */
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_filewrapperTemplateListForGeneration (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_filewrapperTemplateListForGeneration GALGAS_filewrapperTemplateListForGeneration::class_func_listWithValue (const GALGAS_string & inOperand0,
                                                                                                                    const GALGAS_formalInputParameterListForGeneration & inOperand1,
                                                                                                                    const GALGAS_templateInstructionListForGeneration & inOperand2
@@ -8369,6 +9858,19 @@ GALGAS_localConstantList GALGAS_localConstantList::init (Compiler * COMMA_UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_localConstantList::enterElement (const GALGAS_localConstantList_2D_element & inValue,
+                                             Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_localConstantList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_localConstantList GALGAS_localConstantList::class_func_listWithValue (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                              const GALGAS_lstring & inOperand1,
                                                                              const GALGAS_bool & inOperand2,
@@ -8975,6 +10477,19 @@ GALGAS_localInitializedVariableList GALGAS_localInitializedVariableList::init (C
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_localInitializedVariableList::enterElement (const GALGAS_localInitializedVariableList_2D_element & inValue,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_localInitializedVariableList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_localInitializedVariableList GALGAS_localInitializedVariableList::class_func_listWithValue (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                    const GALGAS_lstring & inOperand1,
                                                                                                    const GALGAS_string & inOperand2
@@ -9576,6 +11091,14 @@ void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObjec
 }
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_propertyIndexMap::cMapElement_propertyIndexMap (const GALGAS_propertyIndexMap_2D_element & inValue
+                                                            COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mPropertyTypeIndex (inValue.mProperty_mPropertyTypeIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_propertyIndexMap::cMapElement_propertyIndexMap (const GALGAS_lstring & inKey,
                                                             const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeIndex
                                                             COMMA_LOCATION_ARGS) :
@@ -9668,6 +11191,21 @@ GALGAS_propertyIndexMap GALGAS_propertyIndexMap::getter_overriddenMap (Compiler 
   GALGAS_propertyIndexMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_propertyIndexMap::enterElement (const GALGAS_propertyIndexMap_2D_element & inValue,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  cMapElement_propertyIndexMap * p = nullptr ;
+  macroMyNew (p, cMapElement_propertyIndexMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@propertyIndexMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9868,6 +11406,16 @@ GALGAS_propertyIndexMap GALGAS_propertyIndexMap::extractObject (const GALGAS_obj
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_nonterminalLabelMap::cMapElement_nonterminalLabelMap (const GALGAS_nonterminalLabelMap_2D_element & inValue
+                                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mSignatureForGeneration (inValue.mProperty_mSignatureForGeneration),
+mProperty_mSignature (inValue.mProperty_mSignature),
+mProperty_mEndOfArgumentLocation (inValue.mProperty_mEndOfArgumentLocation) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_nonterminalLabelMap::cMapElement_nonterminalLabelMap (const GALGAS_lstring & inKey,
                                                                   const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
                                                                   const GALGAS_formalParameterSignature & in_mSignature,
@@ -9978,6 +11526,21 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalLabelMap::getter_overriddenMap (Com
   GALGAS_nonterminalLabelMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_nonterminalLabelMap::enterElement (const GALGAS_nonterminalLabelMap_2D_element & inValue,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  cMapElement_nonterminalLabelMap * p = nullptr ;
+  macroMyNew (p, cMapElement_nonterminalLabelMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@nonterminalLabelMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10268,6 +11831,14 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalLabelMap::extractObject (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_nonterminalMap::cMapElement_nonterminalMap (const GALGAS_nonterminalMap_2D_element & inValue
+                                                        COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mLabelMap (inValue.mProperty_mLabelMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_nonterminalMap::cMapElement_nonterminalMap (const GALGAS_lstring & inKey,
                                                         const GALGAS_nonterminalLabelMap & in_mLabelMap
                                                         COMMA_LOCATION_ARGS) :
@@ -10360,6 +11931,21 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::getter_overriddenMap (Compiler * in
   GALGAS_nonterminalMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_nonterminalMap::enterElement (const GALGAS_nonterminalMap_2D_element & inValue,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  cMapElement_nonterminalMap * p = nullptr ;
+  macroMyNew (p, cMapElement_nonterminalMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@nonterminalMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10677,6 +12263,19 @@ GALGAS_ruleLabelImplementationList GALGAS_ruleLabelImplementationList::class_fun
 
 GALGAS_ruleLabelImplementationList GALGAS_ruleLabelImplementationList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_ruleLabelImplementationList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ruleLabelImplementationList::enterElement (const GALGAS_ruleLabelImplementationList_2D_element & inValue,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_ruleLabelImplementationList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11343,6 +12942,19 @@ GALGAS_ruleDeclarationList GALGAS_ruleDeclarationList::class_func_emptyList (UNU
 
 GALGAS_ruleDeclarationList GALGAS_ruleDeclarationList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   return GALGAS_ruleDeclarationList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ruleDeclarationList::enterElement (const GALGAS_ruleDeclarationList_2D_element & inValue,
+                                               Compiler * /* inCompiler */
+                                               COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_ruleDeclarationList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12510,6 +14122,14 @@ GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::extractObject (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap_2D_element & inValue
+                                                                            COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mLocation (inValue.mProperty_mLocation) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (const GALGAS_lstring & inKey,
                                                                             const GALGAS_location & in_mLocation
                                                                             COMMA_LOCATION_ARGS) :
@@ -12602,6 +14222,21 @@ GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::getter_overridd
   GALGAS_uselessEntityLocationMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_uselessEntityLocationMap::enterElement (const GALGAS_uselessEntityLocationMap_2D_element & inValue,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  cMapElement_uselessEntityLocationMap * p = nullptr ;
+  macroMyNew (p, cMapElement_uselessEntityLocationMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@uselessEntityLocationMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13071,1890 +14706,6 @@ GALGAS_localVariableAttributes GALGAS_localVariableAttributes::extractObject (co
       result = *p ;
     }else{
       inCompiler->castError ("localVariableAttributes", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_localVarValuation_declared::cEnumAssociatedValues_localVarValuation_declared (const GALGAS_bool inAssociatedValue0
-                                                                                                    COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_localVarValuation_declared::description (String & ioString,
-                                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_localVarValuation_declared::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_localVarValuation_declared * ptr = dynamic_cast<const cEnumAssociatedValues_localVarValuation_declared *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation::GALGAS_localVarValuation (void) :
-mAssociatedValues (),
-mEnum (kNotBuilt) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_localVarValuation::class_func_invalid (UNUSED_LOCATION_ARGS) {
-  GALGAS_localVarValuation result ;
-  result.mEnum = kEnum_invalid ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_localVarValuation::class_func_declared (const GALGAS_bool & inAssociatedValue0
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_localVarValuation result ;
-  if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_declared ;
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_localVarValuation_declared (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_localVarValuation::class_func_initialized (UNUSED_LOCATION_ARGS) {
-  GALGAS_localVarValuation result ;
-  result.mEnum = kEnum_initialized ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_localVarValuation::class_func_read (UNUSED_LOCATION_ARGS) {
-  GALGAS_localVarValuation result ;
-  result.mEnum = kEnum_read ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_localVarValuation::class_func_mutated (UNUSED_LOCATION_ARGS) {
-  GALGAS_localVarValuation result ;
-  result.mEnum = kEnum_mutated ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarValuation::method_declared (GALGAS_bool & outAssociatedValue0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_declared) {
-    outAssociatedValue0.drop () ;
-    String s ;
-    s.appendCString ("method @localVarValuation declared invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_localVarValuation_declared * ptr = (const cEnumAssociatedValues_localVarValuation_declared *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_localVarValuation::optional_invalid () const {
-  const bool ok = mEnum == kEnum_invalid ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_localVarValuation::optional_declared (GALGAS_bool & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_declared ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_localVarValuation_declared *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_localVarValuation::optional_initialized () const {
-  const bool ok = mEnum == kEnum_initialized ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_localVarValuation::optional_read () const {
-  const bool ok = mEnum == kEnum_read ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_localVarValuation::optional_mutated () const {
-  const bool ok = mEnum == kEnum_mutated ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_localVarValuation [6] = {
-  "(not built)",
-  "invalid",
-  "declared",
-  "initialized",
-  "read",
-  "mutated"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_localVarValuation::getter_isInvalid (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_invalid == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_localVarValuation::getter_isDeclared (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_declared == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_localVarValuation::getter_isInitialized (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_initialized == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_localVarValuation::getter_isRead (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_read == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_localVarValuation::getter_isMutated (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_mutated == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarValuation::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @localVarValuation: ") ;
-  ioString.appendCString (gEnumNameArrayFor_localVarValuation [mEnum]) ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_localVarValuation::objectCompare (const GALGAS_localVarValuation & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @localVarValuation generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarValuation ("localVarValuation",
-                                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_localVarValuation::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVarValuation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_localVarValuation::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_localVarValuation (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_localVarValuation::extractObject (const GALGAS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_localVarValuation result ;
-  const GALGAS_localVarValuation * p = (const GALGAS_localVarValuation *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_localVarValuation *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("localVarValuation", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_scopeLocalVarMap::cMapElement_scopeLocalVarMap (const GALGAS_lstring & inKey,
-                                                            const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                            const GALGAS_string & in_mCppName,
-                                                            const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
-                                                            const GALGAS_localVariableAttributes & in_mAttributes,
-                                                            const GALGAS_localVarValuation & in_mState
-                                                            COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mType (in_mType),
-mProperty_mCppName (in_mCppName),
-mProperty_mNameForCheckingFormalParameterUsing (in_mNameForCheckingFormalParameterUsing),
-mProperty_mAttributes (in_mAttributes),
-mProperty_mState (in_mState) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_scopeLocalVarMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_scopeLocalVarMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_scopeLocalVarMap (mProperty_lkey, mProperty_mType, mProperty_mCppName, mProperty_mNameForCheckingFormalParameterUsing, mProperty_mAttributes, mProperty_mState COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_scopeLocalVarMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mType" ":") ;
-  mProperty_mType.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mCppName" ":") ;
-  mProperty_mCppName.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mNameForCheckingFormalParameterUsing" ":") ;
-  mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mAttributes" ":") ;
-  mProperty_mAttributes.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mState" ":") ;
-  mProperty_mState.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cMapElement_scopeLocalVarMap::compare (const cCollectionElement * inOperand) const {
-  cMapElement_scopeLocalVarMap * operand = (cMapElement_scopeLocalVarMap *) inOperand ;
-  ComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mType.objectCompare (operand->mProperty_mType) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mCppName.objectCompare (operand->mProperty_mCppName) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mNameForCheckingFormalParameterUsing.objectCompare (operand->mProperty_mNameForCheckingFormalParameterUsing) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mAttributes.objectCompare (operand->mProperty_mAttributes) ;
-  }
-  if (ComparisonResult::operandEqual == result) {
-    result = mProperty_mState.objectCompare (operand->mProperty_mState) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap::GALGAS_scopeLocalVarMap (void) :
-AC_GALGAS_map () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap::GALGAS_scopeLocalVarMap (const GALGAS_scopeLocalVarMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap & GALGAS_scopeLocalVarMap::operator = (const GALGAS_scopeLocalVarMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GALGAS_scopeLocalVarMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::class_func_emptyMap (LOCATION_ARGS) {
-  GALGAS_scopeLocalVarMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::class_func_mapWithMapToOverride (const GALGAS_scopeLocalVarMap & inMapToOverride
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_scopeLocalVarMap result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::getter_overriddenMap (Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_scopeLocalVarMap result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                                   const GALGAS_unifiedTypeMapEntry & inArgument0,
-                                                   const GALGAS_string & inArgument1,
-                                                   const GALGAS_string & inArgument2,
-                                                   const GALGAS_localVariableAttributes & inArgument3,
-                                                   const GALGAS_localVarValuation & inArgument4,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  cMapElement_scopeLocalVarMap * p = nullptr ;
-  macroMyNew (p, cMapElement_scopeLocalVarMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@scopeLocalVarMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::add_operation (const GALGAS_scopeLocalVarMap & inOperand,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_scopeLocalVarMap result = *this ;
-  cEnumerator_scopeLocalVarMap enumerator (inOperand, EnumerationOrder::up) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mType (HERE), enumerator.current_mCppName (HERE), enumerator.current_mNameForCheckingFormalParameterUsing (HERE), enumerator.current_mAttributes (HERE), enumerator.current_mState (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::setter_insertKey (GALGAS_lstring inKey,
-                                                GALGAS_unifiedTypeMapEntry inArgument0,
-                                                GALGAS_string inArgument1,
-                                                GALGAS_string inArgument2,
-                                                GALGAS_localVariableAttributes inArgument3,
-                                                GALGAS_localVarValuation inArgument4,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  cMapElement_scopeLocalVarMap * p = nullptr ;
-  macroMyNew (p, cMapElement_scopeLocalVarMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' local variable is already declared" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const char * kSearchErrorMessage_scopeLocalVarMap_searchKey = "there is no '%K' local variable" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::method_searchKey (GALGAS_lstring inKey,
-                                                GALGAS_unifiedTypeMapEntry & outArgument0,
-                                                GALGAS_string & outArgument1,
-                                                GALGAS_string & outArgument2,
-                                                GALGAS_localVariableAttributes & outArgument3,
-                                                GALGAS_localVarValuation & outArgument4,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) performSearch (inKey,
-                                                                                                 inCompiler,
-                                                                                                 kSearchErrorMessage_scopeLocalVarMap_searchKey
-                                                                                                 COMMA_THERE) ;
-  if (nullptr == p) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-    outArgument3.drop () ;
-    outArgument4.drop () ;
-  }else{
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    outArgument0 = p->mProperty_mType ;
-    outArgument1 = p->mProperty_mCppName ;
-    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
-    outArgument3 = p->mProperty_mAttributes ;
-    outArgument4 = p->mProperty_mState ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::setter_removeKey (GALGAS_lstring inKey,
-                                                GALGAS_unifiedTypeMapEntry & outArgument0,
-                                                GALGAS_string & outArgument1,
-                                                GALGAS_string & outArgument2,
-                                                GALGAS_localVariableAttributes & outArgument3,
-                                                GALGAS_localVarValuation & outArgument4,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  const char * kRemoveErrorMessage = "there is no '%K' local variable" ;
-  capCollectionElement attributes ;
-  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;
-  cMapElement_scopeLocalVarMap * p = (cMapElement_scopeLocalVarMap *) attributes.ptr () ;
-  if (nullptr == p) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-    outArgument3.drop () ;
-    outArgument4.drop () ;
-  }else{
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    outArgument0 = p->mProperty_mType ;
-    outArgument1 = p->mProperty_mCppName ;
-    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
-    outArgument3 = p->mProperty_mAttributes ;
-    outArgument4 = p->mProperty_mState ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapEntry GALGAS_scopeLocalVarMap::getter_mTypeForKey (const GALGAS_string & inKey,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) attributes ;
-  GALGAS_unifiedTypeMapEntry result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    result = p->mProperty_mType ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_scopeLocalVarMap::getter_mCppNameForKey (const GALGAS_string & inKey,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) attributes ;
-  GALGAS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    result = p->mProperty_mCppName ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_scopeLocalVarMap::getter_mNameForCheckingFormalParameterUsingForKey (const GALGAS_string & inKey,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) attributes ;
-  GALGAS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    result = p->mProperty_mNameForCheckingFormalParameterUsing ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVariableAttributes GALGAS_scopeLocalVarMap::getter_mAttributesForKey (const GALGAS_string & inKey,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) attributes ;
-  GALGAS_localVariableAttributes result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    result = p->mProperty_mAttributes ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation GALGAS_scopeLocalVarMap::getter_mStateForKey (const GALGAS_string & inKey,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) attributes ;
-  GALGAS_localVarValuation result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    result = p->mProperty_mState ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::setter_setMTypeForKey (GALGAS_unifiedTypeMapEntry inAttributeValue,
-                                                     GALGAS_string inKey,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_scopeLocalVarMap * p = (cMapElement_scopeLocalVarMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    p->mProperty_mType = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::setter_setMCppNameForKey (GALGAS_string inAttributeValue,
-                                                        GALGAS_string inKey,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_scopeLocalVarMap * p = (cMapElement_scopeLocalVarMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    p->mProperty_mCppName = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::setter_setMNameForCheckingFormalParameterUsingForKey (GALGAS_string inAttributeValue,
-                                                                                    GALGAS_string inKey,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_scopeLocalVarMap * p = (cMapElement_scopeLocalVarMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    p->mProperty_mNameForCheckingFormalParameterUsing = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::setter_setMAttributesForKey (GALGAS_localVariableAttributes inAttributeValue,
-                                                           GALGAS_string inKey,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_scopeLocalVarMap * p = (cMapElement_scopeLocalVarMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    p->mProperty_mAttributes = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_scopeLocalVarMap::setter_setMStateForKey (GALGAS_localVarValuation inAttributeValue,
-                                                      GALGAS_string inKey,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_scopeLocalVarMap * p = (cMapElement_scopeLocalVarMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    p->mProperty_mState = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_scopeLocalVarMap * GALGAS_scopeLocalVarMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                           const GALGAS_string & inKey
-                                                                                           COMMA_LOCATION_ARGS) {
-  cMapElement_scopeLocalVarMap * result = (cMapElement_scopeLocalVarMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_scopeLocalVarMap) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_scopeLocalVarMap::cEnumerator_scopeLocalVarMap (const GALGAS_scopeLocalVarMap & inEnumeratedObject,
-                                                            const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap_2D_element cEnumerator_scopeLocalVarMap::current (LOCATION_ARGS) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-  return GALGAS_scopeLocalVarMap_2D_element (p->mProperty_lkey, p->mProperty_mType, p->mProperty_mCppName, p->mProperty_mNameForCheckingFormalParameterUsing, p->mProperty_mAttributes, p->mProperty_mState) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring cEnumerator_scopeLocalVarMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapEntry cEnumerator_scopeLocalVarMap::current_mType (LOCATION_ARGS) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-  return p->mProperty_mType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string cEnumerator_scopeLocalVarMap::current_mCppName (LOCATION_ARGS) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-  return p->mProperty_mCppName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string cEnumerator_scopeLocalVarMap::current_mNameForCheckingFormalParameterUsing (LOCATION_ARGS) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-  return p->mProperty_mNameForCheckingFormalParameterUsing ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVariableAttributes cEnumerator_scopeLocalVarMap::current_mAttributes (LOCATION_ARGS) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-  return p->mProperty_mAttributes ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarValuation cEnumerator_scopeLocalVarMap::current_mState (LOCATION_ARGS) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-  return p->mProperty_mState ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_scopeLocalVarMap::optional_searchKey (const GALGAS_string & inKey,
-                                                  GALGAS_unifiedTypeMapEntry & outArgument0,
-                                                  GALGAS_string & outArgument1,
-                                                  GALGAS_string & outArgument2,
-                                                  GALGAS_localVariableAttributes & outArgument3,
-                                                  GALGAS_localVarValuation & outArgument4) const {
-  const cMapElement_scopeLocalVarMap * p = (const cMapElement_scopeLocalVarMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_scopeLocalVarMap) ;
-    outArgument0 = p->mProperty_mType ;
-    outArgument1 = p->mProperty_mCppName ;
-    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
-    outArgument3 = p->mProperty_mAttributes ;
-    outArgument4 = p->mProperty_mState ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-    outArgument3.drop () ;
-    outArgument4.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @scopeLocalVarMap generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_scopeLocalVarMap ("scopeLocalVarMap",
-                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_scopeLocalVarMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_scopeLocalVarMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_scopeLocalVarMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_scopeLocalVarMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap GALGAS_scopeLocalVarMap::extractObject (const GALGAS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_scopeLocalVarMap result ;
-  const GALGAS_scopeLocalVarMap * p = (const GALGAS_scopeLocalVarMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_scopeLocalVarMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("scopeLocalVarMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Class for element of '@localVarMapListForLLVM' list
-//
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_localVarMapListForLLVM : public cCollectionElement {
-  public: GALGAS_localVarMapListForLLVM_2D_element mObject ;
-
-//--- Class functions
-  public: cCollectionElement_localVarMapListForLLVM (const GALGAS_scopeLocalVarMap & in_mMap
-                                                     COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_localVarMapListForLLVM (const GALGAS_localVarMapListForLLVM_2D_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_localVarMapListForLLVM::cCollectionElement_localVarMapListForLLVM (const GALGAS_scopeLocalVarMap & in_mMap
-                                                                                      COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mMap) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_localVarMapListForLLVM::cCollectionElement_localVarMapListForLLVM (const GALGAS_localVarMapListForLLVM_2D_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mMap) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_localVarMapListForLLVM::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_localVarMapListForLLVM::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_localVarMapListForLLVM (mObject.mProperty_mMap COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_localVarMapListForLLVM::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mMap" ":") ;
-  mObject.mProperty_mMap.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_localVarMapListForLLVM::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_localVarMapListForLLVM * operand = (cCollectionElement_localVarMapListForLLVM *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_localVarMapListForLLVM) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM::GALGAS_localVarMapListForLLVM (void) :
-AC_GALGAS_list () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM::GALGAS_localVarMapListForLLVM (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVarMapListForLLVM (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GALGAS_localVarMapListForLLVM (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::class_func_listWithValue (const GALGAS_scopeLocalVarMap & inOperand0
-                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_localVarMapListForLLVM result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_localVarMapListForLLVM (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GALGAS_localVarMapListForLLVM::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                               const GALGAS_scopeLocalVarMap & in_mMap
-                                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement_localVarMapListForLLVM * p = nullptr ;
-  macroMyNew (p, cCollectionElement_localVarMapListForLLVM (in_mMap COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::addAssign_operation (const GALGAS_scopeLocalVarMap & inOperand0
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_localVarMapListForLLVM (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::setter_append (const GALGAS_scopeLocalVarMap inOperand0,
-                                                   Compiler * /* inCompiler */
-                                                   COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_localVarMapListForLLVM (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::setter_insertAtIndex (const GALGAS_scopeLocalVarMap inOperand0,
-                                                          const GALGAS_uint inInsertionIndex,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_localVarMapListForLLVM (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::setter_removeAtIndex (GALGAS_scopeLocalVarMap & outOperand0,
-                                                          const GALGAS_uint inRemoveIndex,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_localVarMapListForLLVM * p = (cCollectionElement_localVarMapListForLLVM *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-        outOperand0 = p->mObject.mProperty_mMap ;
-      }
-    }else{
-      outOperand0.drop () ;
-      drop () ;    
-    }
-  }else{
-    outOperand0.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::setter_popFirst (GALGAS_scopeLocalVarMap & outOperand0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_localVarMapListForLLVM * p = (cCollectionElement_localVarMapListForLLVM *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-    outOperand0 = p->mObject.mProperty_mMap ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::setter_popLast (GALGAS_scopeLocalVarMap & outOperand0,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_localVarMapListForLLVM * p = (cCollectionElement_localVarMapListForLLVM *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-    outOperand0 = p->mObject.mProperty_mMap ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::method_first (GALGAS_scopeLocalVarMap & outOperand0,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_localVarMapListForLLVM * p = (cCollectionElement_localVarMapListForLLVM *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-    outOperand0 = p->mObject.mProperty_mMap ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::method_last (GALGAS_scopeLocalVarMap & outOperand0,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_localVarMapListForLLVM * p = (cCollectionElement_localVarMapListForLLVM *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-    outOperand0 = p->mObject.mProperty_mMap ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::add_operation (const GALGAS_localVarMapListForLLVM & inOperand,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_localVarMapListForLLVM result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const {
-  GALGAS_localVarMapListForLLVM result = GALGAS_localVarMapListForLLVM::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const {
-  GALGAS_localVarMapListForLLVM result = GALGAS_localVarMapListForLLVM::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const {
-  GALGAS_localVarMapListForLLVM result = GALGAS_localVarMapListForLLVM::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::plusAssign_operation (const GALGAS_localVarMapListForLLVM inOperand,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_localVarMapListForLLVM::setter_setMMapAtIndex (GALGAS_scopeLocalVarMap inOperand,
-                                                           GALGAS_uint inIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement_localVarMapListForLLVM * p = (cCollectionElement_localVarMapListForLLVM *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mMap = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap GALGAS_localVarMapListForLLVM::getter_mMapAtIndex (const GALGAS_uint & inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_localVarMapListForLLVM * p = (cCollectionElement_localVarMapListForLLVM *) attributes.ptr () ;
-  GALGAS_scopeLocalVarMap result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-    result = p->mObject.mProperty_mMap ;
-  }
-  return result ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_localVarMapListForLLVM::cEnumerator_localVarMapListForLLVM (const GALGAS_localVarMapListForLLVM & inEnumeratedObject,
-                                                                        const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM_2D_element cEnumerator_localVarMapListForLLVM::current (LOCATION_ARGS) const {
-  const cCollectionElement_localVarMapListForLLVM * p = (const cCollectionElement_localVarMapListForLLVM *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-  return p->mObject ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_scopeLocalVarMap cEnumerator_localVarMapListForLLVM::current_mMap (LOCATION_ARGS) const {
-  const cCollectionElement_localVarMapListForLLVM * p = (const cCollectionElement_localVarMapListForLLVM *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_localVarMapListForLLVM) ;
-  return p->mObject.mProperty_mMap ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @localVarMapListForLLVM generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarMapListForLLVM ("localVarMapListForLLVM",
-                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_localVarMapListForLLVM::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVarMapListForLLVM ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_localVarMapListForLLVM::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_localVarMapListForLLVM (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::extractObject (const GALGAS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_localVarMapListForLLVM result ;
-  const GALGAS_localVarMapListForLLVM * p = (const GALGAS_localVarMapListForLLVM *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_localVarMapListForLLVM *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("localVarMapListForLLVM", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch::cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch (const GALGAS_currentVarManager inAssociatedValue0
-                                                                                                                            COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch::description (String & ioString,
-                                                                                const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * ptr = dynamic_cast<const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_overrideKind_selectOverrideNextBranches::cEnumAssociatedValues_overrideKind_selectOverrideNextBranches (const GALGAS_currentVarManager inAssociatedValue0,
-                                                                                                                              const GALGAS_currentVarManager inAssociatedValue1
-                                                                                                                              COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_overrideKind_selectOverrideNextBranches::description (String & ioString,
-                                                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  mAssociatedValue1.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_overrideKind_selectOverrideNextBranches::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * ptr = dynamic_cast<const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue1.objectCompare (ptr->mAssociatedValue1) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overrideKind::GALGAS_overrideKind (void) :
-mAssociatedValues (),
-mEnum (kNotBuilt) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overrideKind GALGAS_overrideKind::class_func_selectOverrideFirstBranch (const GALGAS_currentVarManager & inAssociatedValue0
-                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_overrideKind result ;
-  if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_selectOverrideFirstBranch ;
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overrideKind GALGAS_overrideKind::class_func_selectOverrideNextBranches (const GALGAS_currentVarManager & inAssociatedValue0,
-                                                                                const GALGAS_currentVarManager & inAssociatedValue1
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_overrideKind result ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_selectOverrideNextBranches ;
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_overrideKind_selectOverrideNextBranches (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
-    result.mAssociatedValues.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overrideKind GALGAS_overrideKind::class_func_repeatOverride (UNUSED_LOCATION_ARGS) {
-  GALGAS_overrideKind result ;
-  result.mEnum = kEnum_repeatOverride ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_overrideKind::method_selectOverrideFirstBranch (GALGAS_currentVarManager & outAssociatedValue0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_selectOverrideFirstBranch) {
-    outAssociatedValue0.drop () ;
-    String s ;
-    s.appendCString ("method @overrideKind selectOverrideFirstBranch invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_overrideKind::method_selectOverrideNextBranches (GALGAS_currentVarManager & outAssociatedValue0,
-                                                             GALGAS_currentVarManager & outAssociatedValue1,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_selectOverrideNextBranches) {
-    outAssociatedValue0.drop () ;
-    outAssociatedValue1.drop () ;
-    String s ;
-    s.appendCString ("method @overrideKind selectOverrideNextBranches invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_overrideKind::optional_selectOverrideFirstBranch (GALGAS_currentVarManager & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_selectOverrideFirstBranch ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-  }
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_overrideKind::optional_selectOverrideNextBranches (GALGAS_currentVarManager & outAssociatedValue0,
-                                                               GALGAS_currentVarManager & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_selectOverrideNextBranches ;
-  if (ok) {
-    const auto * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
-  }
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_overrideKind::optional_repeatOverride () const {
-  const bool ok = mEnum == kEnum_repeatOverride ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_overrideKind [4] = {
-  "(not built)",
-  "selectOverrideFirstBranch",
-  "selectOverrideNextBranches",
-  "repeatOverride"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_overrideKind::getter_isSelectOverrideFirstBranch (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_selectOverrideFirstBranch == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_overrideKind::getter_isSelectOverrideNextBranches (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_selectOverrideNextBranches == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_overrideKind::getter_isRepeatOverride (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_repeatOverride == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_overrideKind::description (String & ioString,
-                                       const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @overrideKind: ") ;
-  ioString.appendCString (gEnumNameArrayFor_overrideKind [mEnum]) ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_overrideKind::objectCompare (const GALGAS_overrideKind & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @overrideKind generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind ("overrideKind",
-                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_overrideKind::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overrideKind ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_overrideKind::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_overrideKind (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overrideKind GALGAS_overrideKind::extractObject (const GALGAS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_overrideKind result ;
-  const GALGAS_overrideKind * p = (const GALGAS_overrideKind *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_overrideKind *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("overrideKind", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Class for element of '@openedOverrideList' list
-//
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_openedOverrideList : public cCollectionElement {
-  public: GALGAS_openedOverrideList_2D_element mObject ;
-
-//--- Class functions
-  public: cCollectionElement_openedOverrideList (const GALGAS_overrideKind & in_mOverrideKind
-                                                 COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_openedOverrideList (const GALGAS_openedOverrideList_2D_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_openedOverrideList::cCollectionElement_openedOverrideList (const GALGAS_overrideKind & in_mOverrideKind
-                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mOverrideKind) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_openedOverrideList::cCollectionElement_openedOverrideList (const GALGAS_openedOverrideList_2D_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mOverrideKind) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_openedOverrideList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_openedOverrideList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_openedOverrideList (mObject.mProperty_mOverrideKind COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_openedOverrideList::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mOverrideKind" ":") ;
-  mObject.mProperty_mOverrideKind.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_openedOverrideList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_openedOverrideList * operand = (cCollectionElement_openedOverrideList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_openedOverrideList) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList::GALGAS_openedOverrideList (void) :
-AC_GALGAS_list () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList::GALGAS_openedOverrideList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_openedOverrideList (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GALGAS_openedOverrideList (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::class_func_listWithValue (const GALGAS_overrideKind & inOperand0
-                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_openedOverrideList result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_openedOverrideList (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GALGAS_openedOverrideList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                           const GALGAS_overrideKind & in_mOverrideKind
-                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement_openedOverrideList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_openedOverrideList (in_mOverrideKind COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::addAssign_operation (const GALGAS_overrideKind & inOperand0
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_openedOverrideList (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::setter_append (const GALGAS_overrideKind inOperand0,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_openedOverrideList (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::setter_insertAtIndex (const GALGAS_overrideKind inOperand0,
-                                                      const GALGAS_uint inInsertionIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_openedOverrideList (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::setter_removeAtIndex (GALGAS_overrideKind & outOperand0,
-                                                      const GALGAS_uint inRemoveIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_openedOverrideList * p = (cCollectionElement_openedOverrideList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-        outOperand0 = p->mObject.mProperty_mOverrideKind ;
-      }
-    }else{
-      outOperand0.drop () ;
-      drop () ;    
-    }
-  }else{
-    outOperand0.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::setter_popFirst (GALGAS_overrideKind & outOperand0,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_openedOverrideList * p = (cCollectionElement_openedOverrideList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-    outOperand0 = p->mObject.mProperty_mOverrideKind ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::setter_popLast (GALGAS_overrideKind & outOperand0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_openedOverrideList * p = (cCollectionElement_openedOverrideList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-    outOperand0 = p->mObject.mProperty_mOverrideKind ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::method_first (GALGAS_overrideKind & outOperand0,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_openedOverrideList * p = (cCollectionElement_openedOverrideList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-    outOperand0 = p->mObject.mProperty_mOverrideKind ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::method_last (GALGAS_overrideKind & outOperand0,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_openedOverrideList * p = (cCollectionElement_openedOverrideList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-    outOperand0 = p->mObject.mProperty_mOverrideKind ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::add_operation (const GALGAS_openedOverrideList & inOperand,
-                                                                    Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_openedOverrideList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_openedOverrideList result = GALGAS_openedOverrideList::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_openedOverrideList result = GALGAS_openedOverrideList::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
-  GALGAS_openedOverrideList result = GALGAS_openedOverrideList::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::plusAssign_operation (const GALGAS_openedOverrideList inOperand,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_openedOverrideList::setter_setMOverrideKindAtIndex (GALGAS_overrideKind inOperand,
-                                                                GALGAS_uint inIndex,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement_openedOverrideList * p = (cCollectionElement_openedOverrideList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mOverrideKind = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overrideKind GALGAS_openedOverrideList::getter_mOverrideKindAtIndex (const GALGAS_uint & inIndex,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_openedOverrideList * p = (cCollectionElement_openedOverrideList *) attributes.ptr () ;
-  GALGAS_overrideKind result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-    result = p->mObject.mProperty_mOverrideKind ;
-  }
-  return result ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_openedOverrideList::cEnumerator_openedOverrideList (const GALGAS_openedOverrideList & inEnumeratedObject,
-                                                                const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList_2D_element cEnumerator_openedOverrideList::current (LOCATION_ARGS) const {
-  const cCollectionElement_openedOverrideList * p = (const cCollectionElement_openedOverrideList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-  return p->mObject ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_overrideKind cEnumerator_openedOverrideList::current_mOverrideKind (LOCATION_ARGS) const {
-  const cCollectionElement_openedOverrideList * p = (const cCollectionElement_openedOverrideList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_openedOverrideList) ;
-  return p->mObject.mProperty_mOverrideKind ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @openedOverrideList generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedOverrideList ("openedOverrideList",
-                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_openedOverrideList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_openedOverrideList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_openedOverrideList::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_openedOverrideList (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_openedOverrideList GALGAS_openedOverrideList::extractObject (const GALGAS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_openedOverrideList result ;
-  const GALGAS_openedOverrideList * p = (const GALGAS_openedOverrideList *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_openedOverrideList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("openedOverrideList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

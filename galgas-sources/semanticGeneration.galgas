@@ -738,6 +738,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@operators SUPPORTED_OPERATORS
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
+    ?@bool SUPPORT_COLLECTION_VALUE
 
   template unifiedClassBodyForPackage "unified-class-body-for-package.h.galgasTemplate"
     ?@string TYPE_NAME
@@ -1486,6 +1487,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
         !selfTypeDefinition.mHandledOperatorFlags
         !selfTypeDefinition.mAddAssignOperatorArguments
         !selfTypeDefinition.mTypeForEnumeratedElement
+        !selfTypeDefinition.supportCollectionValue
       ]
     end
   }

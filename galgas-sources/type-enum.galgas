@@ -415,6 +415,7 @@ override method @enumTypeForGeneration appendDeclaration1
     !selfTypeDefinition.mHandledOperatorFlags
     !selfTypeDefinition.mAddAssignOperatorArguments
     !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
   ]
  }
 

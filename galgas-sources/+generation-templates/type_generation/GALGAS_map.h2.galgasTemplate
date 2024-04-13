@@ -11,7 +11,10 @@ class cMapElement_%!TYPE_IDENTIFIER% : public cMapElement {
       do %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     end
 %
-//--- Constructor
+//--- Constructors
+  public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inValue
+             %!^%COMMA_LOCATION_ARGS) ;
+ 
   public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
     do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]

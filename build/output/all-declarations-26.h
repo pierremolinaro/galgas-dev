@@ -99,7 +99,8 @@ GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHea
 GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                                      const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                      const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                                     const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST
+                                                                                                     const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST,
+                                                                                                     const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -718,7 +719,7 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GA
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_lstring function_initializerNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                     const class GALGAS_formalInputParameterListAST & constinArgument1,
+                                                                     const class GALGAS_string & constinArgument1,
                                                                      class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 

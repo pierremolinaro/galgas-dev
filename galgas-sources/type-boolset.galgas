@@ -303,27 +303,28 @@ override method @boolsetTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  let typedefinition = [self.mSelfTypeEntry definition]
+  let typeDefinition = [self.mSelfTypeEntry definition]
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
-    !typedefinition.typeName.string
-    ![typedefinition.typeName.string identifierRepresentation]
+    !typeDefinition.typeName.string
+    ![typeDefinition.typeName.string identifierRepresentation]
     !self.mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    !typedefinition.typeName.string
-    ![typedefinition.typeName.string identifierRepresentation]
-    !typedefinition.isConcrete
-    !typedefinition.initializerMap
-    !typedefinition.classFunctionMap
-    !typedefinition.getterMap
-    !typedefinition.setterMap
-    !typedefinition.instanceMethodMap
-    !typedefinition.classMethodMap
-    !typedefinition.optionalMethodMap
-    !typedefinition.enumerationDescriptorList
-    !typedefinition.mHandledOperatorFlags
-    !typedefinition.mAddAssignOperatorArguments
-    !typedefinition.mTypeForEnumeratedElement
+    !typeDefinition.typeName.string
+    ![typeDefinition.typeName.string identifierRepresentation]
+    !typeDefinition.isConcrete
+    !typeDefinition.initializerMap
+    !typeDefinition.classFunctionMap
+    !typeDefinition.getterMap
+    !typeDefinition.setterMap
+    !typeDefinition.instanceMethodMap
+    !typeDefinition.classMethodMap
+    !typeDefinition.optionalMethodMap
+    !typeDefinition.enumerationDescriptorList
+    !typeDefinition.mHandledOperatorFlags
+    !typeDefinition.mAddAssignOperatorArguments
+    !typeDefinition.mTypeForEnumeratedElement
+    !typeDefinition.supportCollectionValue
   ]
  }
 

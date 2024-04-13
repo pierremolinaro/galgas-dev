@@ -214,7 +214,8 @@ enum {galgasScanner3_1_,
   galgasScanner3_1__21__3D__3D_,
   galgasScanner3_1__3F__5E_,
   galgasScanner3_1__21__5E_,
-  galgasScanner3_1__A7__5B_
+  galgasScanner3_1__A7__5B_,
+  galgasScanner3_1__A7__A7_
 } ;
 
 //--------------------------------------------------------------------------------------------------

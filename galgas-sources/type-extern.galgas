@@ -570,6 +570,7 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     !selfTypeDefinition.mHandledOperatorFlags
     !selfTypeDefinition.mAddAssignOperatorArguments
     !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
   ]
 }
 

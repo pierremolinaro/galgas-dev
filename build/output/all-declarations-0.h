@@ -140,8 +140,13 @@ class GALGAS__32_lstringlist : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS__32_lstringlist_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator__32_lstringlist ;
  
 } ; // End of GALGAS__32_lstringlist class
@@ -508,7 +513,8 @@ class Lexique_galgasScanner_33_ : public Lexique {
    kToken__21__3D__3D_ /* 187 */ ,
    kToken__3F__5E_ /* 188 */ ,
    kToken__21__5E_ /* 189 */ ,
-   kToken__A7__5B_ /* 190 */ } ;
+   kToken__A7__5B_ /* 190 */ ,
+   kToken__A7__A7_ /* 191 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -612,7 +618,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 190 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 191 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -888,8 +894,13 @@ class GALGAS_templateInstructionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateInstructionListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateInstructionListAST ;
  
 } ; // End of GALGAS_templateInstructionListAST class
@@ -1292,8 +1303,13 @@ class GALGAS_templateExpressionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateExpressionListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateExpressionListAST ;
  
 } ; // End of GALGAS_templateExpressionListAST class
@@ -8149,8 +8165,13 @@ class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: void enterElement (const class GALGAS_templateInstructionIfBranchListAST_2D_element & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_templateInstructionIfBranchListAST ;
  
 } ; // End of GALGAS_templateInstructionIfBranchListAST class

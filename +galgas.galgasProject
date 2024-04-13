@@ -90,7 +90,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/galgasScanner4.galgas"
 
 #--- Type declaration
-#  "galgas-sources/type-array.galgas"
   "galgas-sources/type-boolset.galgas"
   "galgas-sources/type-class.galgas"
   "galgas-sources/type-weak-reference.galgas"
@@ -190,6 +189,7 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/expression-function-call.galgas"
   "galgas-sources/expression-literal-type.galgas"
   "galgas-sources/expression-collection-value.galgas"
+  "galgas-sources/expression-collection-value-EX.galgas"
   "galgas-sources/expression-self.galgas"
   "galgas-sources/expression-property-access.galgas"
   "galgas-sources/expression-not.galgas"

@@ -301,6 +301,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     !typeDefinition.mHandledOperatorFlags
     !typeDefinition.mAddAssignOperatorArguments
     !typeDefinition.mTypeForEnumeratedElement
+    !typeDefinition.supportCollectionValue
   ]
  }
 

@@ -1049,6 +1049,14 @@ GALGAS_stringset GALGAS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_stringset::enterElement (const GALGAS_string & inValue,
+                                     Compiler *
+                                     COMMA_LOCATION_ARGS) {
+  addAssign_operation (inValue COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_stringset GALGAS_stringset::class_func_setWithString (const GALGAS_string & inString
                                                               COMMA_LOCATION_ARGS) {
   GALGAS_stringset result ;

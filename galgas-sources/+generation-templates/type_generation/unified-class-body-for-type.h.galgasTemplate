@@ -398,9 +398,16 @@ if [SUPPORTED_OPERATORS supportWithAccessor] then
   !^%const GALGAS_string & inKey\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end
+if SUPPORT_COLLECTION_VALUE then
+%
+//--- Append element
+  public: void enterElement (const class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% & inValue,
+                             Compiler * /* inCompiler */
+                             COMMA_LOCATION_ARGS) ;\n\n%
+end
 
 if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
-%//--------------------------------- Friend\n
+%//--------------------------------- Friend
   friend class cEnumerator_%!TYPE_IDENTIFIER% ;
 %end
 % 
