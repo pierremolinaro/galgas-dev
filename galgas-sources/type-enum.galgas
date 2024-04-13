@@ -284,13 +284,12 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: ()
-    !.generateDescriptionGetterUtilityMethod | .isComparable
-    !()
-    !()
-    !()
+    !features: .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
+    !addAssignOperatorArguments: ()
+    !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !"enum-" + [self.mEnumTypeName fileNameRepresentation]
+    !typeForEnumeratedElement: .null
+    !headerFileName: "enum-" + [self.mEnumTypeName fileNameRepresentation]
     !headerKind: if hasAssociatedValues then .twoHeaders else .oneHeader end
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -412,9 +411,9 @@ override method @enumTypeForGeneration appendDeclaration1
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.enumerationDescriptorList
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]
  }

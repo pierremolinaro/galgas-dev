@@ -26,8 +26,8 @@ refclass @locationPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter getSupportedOperatorFlags -> @operators {
-    result = .generateDescriptionGetterUtilityMethod | .isComparable
+  override getter getSupportedOperatorFlags -> @typeFeatures {
+    result = .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
   }
 
   #-----------------------------------------------------------------------------------------------

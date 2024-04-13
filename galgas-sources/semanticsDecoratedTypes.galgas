@@ -260,7 +260,7 @@ abstract refclass @semanticTypeForGeneration : @semanticDeclarationForGeneration
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration getImplementationCppFileName -> @string {
-  result = [self.mSelfTypeEntry definition].mHeaderFileName
+  result = [self.mSelfTypeEntry definition].headerFileName
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

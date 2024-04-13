@@ -142,6 +142,9 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/predefinedType-uint64.galgas"
 
 #--- Semantics Component
+  "galgas-sources/unified-type-definition.galgas"
+  "galgas-sources/variable-manager.galgas"
+  "galgas-sources/unified-type-map.galgas"
   "galgas-sources/actual-parameters.galgas"
   "galgas-sources/extern-procedure-declaration.galgas"
   "galgas-sources/procedure-declaration.galgas"
@@ -161,9 +164,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/semanticInstructionGeneration.galgas"
   "galgas-sources/semanticGeneration.galgas"
   "galgas-sources/useful-entities-computation.galgas"
-  "galgas-sources/variable-manager.galgas"
-  "galgas-sources/unified-type-definition.galgas"
-  "galgas-sources/unified-type-map.galgas"
 
 #--- Expressions
   "galgas-sources/expression-if.galgas"

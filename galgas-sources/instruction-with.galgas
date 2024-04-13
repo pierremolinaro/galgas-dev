@@ -401,7 +401,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
-    for (mSearchMethodName *) in [receiverType definition].mMapSearchMethodList while not found do
+    for (mSearchMethodName *) in [receiverType definition].mapSearchMethodList while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then
@@ -432,7 +432,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
 #--- Check this type handle 'with' access
-  if not [[receiverType definition].mHandledOperatorFlags supportWithAccessor] then
+  if not [[receiverType definition].features supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].typeName.string + "' type cannot be used in a 'with' instruction"
   end
 #--- Enter in a select block
@@ -564,13 +564,13 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check this type handle 'with' access
-  if not [[targetType definition].mHandledOperatorFlags supportWithAccessor] then
+  if not [[targetType definition].features supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].typeName.string + "' type cannot be used in a 'with' instruction"
   end
 #--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
-    for (mSearchMethodName *) in [targetType definition].mMapSearchMethodList while not found do
+    for (mSearchMethodName *) in [targetType definition].mapSearchMethodList while not found do
       found = mSearchMethodName.string == self.mSearchMethodNameForErrorSignaling.string
     end
     if not found then

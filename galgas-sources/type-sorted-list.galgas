@@ -323,13 +323,12 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: enumerationDescriptor
-    !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression
-    !constructorAttributeTypeList
-    !()
-    !()
+    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithExpression
+    !addAssignOperatorArguments: constructorAttributeTypeList
+    !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !listElementTypeIndex # Type for enumerated element for "for" instruction
-    !"-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
+    !typeForEnumeratedElement: listElementTypeIndex
+    !headerFileName: "-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -449,9 +448,9 @@ override method @sortedListTypeForGeneration appendDeclaration1
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.enumerationDescriptorList
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]
  }

@@ -196,7 +196,7 @@ override method @orExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixOrOperator]
+    ![[leftExpression.mResultType definition].features infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?leftExpression
@@ -252,7 +252,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixOrOperator]
+    ![[leftExpression.mResultType definition].features infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?leftExpression
@@ -307,7 +307,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixXorOperator]
+    ![[leftExpression.mResultType definition].features infixXorOperator]
     !"^"
     !self.mOperatorLocation
     !?leftExpression

@@ -10861,7 +10861,7 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const ;
 
 //--- Extension getter initializers
   public: virtual class GALGAS_initializerSignatureList getter_initializers (Compiler * COMMA_LOCATION_ARGS) const ;
@@ -11878,9 +11878,9 @@ class cMapElement_optionalMethodMap : public cMapElement {
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+class GALGAS_typeFeatures callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12051,7 +12051,7 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter typeKind
   public: virtual class GALGAS_typeKindEnum getter_typeKind (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -12225,7 +12225,7 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
@@ -12406,7 +12406,7 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter initializers
   public: virtual class GALGAS_initializerSignatureList getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -12585,7 +12585,7 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
@@ -12756,7 +12756,7 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
@@ -12927,7 +12927,7 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter initializers
   public: virtual class GALGAS_initializerSignatureList getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
@@ -13117,7 +13117,7 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GALGAS_string getter_cppDeclarationString (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension getter getSupportedOperatorFlags
-  public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,

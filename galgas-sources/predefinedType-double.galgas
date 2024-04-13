@@ -26,10 +26,10 @@ refclass @doublePredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter getSupportedOperatorFlags -> @operators {
+  override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .prefixPlusOperator | .prefixMinusOperator | .infixModOperator | .infixDivOperatorNoOVF
-      | .generateDescriptionGetterUtilityMethod | .isComparable
+      | .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
       | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
       | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
   }

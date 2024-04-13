@@ -382,7 +382,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !lstringTypeEntry
     !@formalArgumentPassingModeAST.argumentIn
     !"inLKey"
-  for (* mFormalArgumentType mFormalArgumentName *) in [associatedListTypeEntry definition].mAddAssignOperatorArguments do
+  for (* mFormalArgumentType mFormalArgumentName *) in [associatedListTypeEntry definition].addAssignOperatorArguments do
     formalParameterList +=
       !["" nowhere]
       !mFormalArgumentType
@@ -488,13 +488,12 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: ()
-    !.doNotGenererateObjectCompare
-    !@functionSignature ()
-    !@mapSearchMethodListAST ()
-    !@mapSearchMethodListAST ()
+    !features: .doNotGenererateObjectCompare
+    !addAssignOperatorArguments: ()
+    !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !.null # Type for enumerated element for "for" instruction
-    !"graph-" + [self.mGraphTypeName fileNameRepresentation]
+    !typeForEnumeratedElement: .null # Type for enumerated element for "for" instruction
+    !headerFileName: "graph-" + [self.mGraphTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -578,9 +577,9 @@ override method @graphDeclarationForGeneration appendDeclaration1
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.enumerationDescriptorList
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]
  }

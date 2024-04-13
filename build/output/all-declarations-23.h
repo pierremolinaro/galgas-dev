@@ -649,19 +649,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGener
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@routineMap insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (class GALGAS_routineMap & ioObject,
-                                const class GALGAS_lstring constin_inRoutineName,
-                                const class GALGAS_formalParameterSignature constin_inRoutineSignature,
-                                const class GALGAS_bool constin_inIsFilePrivate,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension setter '@localVarManager insertDeclaredLocalVariable'
 //
 //--------------------------------------------------------------------------------------------------
@@ -673,6 +660,19 @@ void extensionSetter_insertDeclaredLocalVariable (class GALGAS_localVarManager &
                                                   const class GALGAS_string constin_inNameForCheckingFormalParameterUsing,
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@routineMap insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GALGAS_routineMap & ioObject,
+                                const class GALGAS_lstring constin_inRoutineName,
+                                const class GALGAS_formalParameterSignature constin_inRoutineSignature,
+                                const class GALGAS_bool constin_inIsFilePrivate,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

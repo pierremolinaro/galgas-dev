@@ -220,7 +220,7 @@ enum @unifiedTypeMapEntry {
   method addHeaderFileName ?!@stringset ioInclusions {
     let typeDefinition = [self definition]
     if (not typeDefinition.isPredefined) & (typeDefinition.headerKind != .noHeader) then
-      ioInclusions += !typeDefinition.mHeaderFileName
+      ioInclusions += !typeDefinition.headerFileName
     end
   }
 
@@ -232,9 +232,9 @@ enum @unifiedTypeMapEntry {
       switch typeDefinition.headerKind
       case noHeader :
       case oneHeader :
-        ioInclusions += !typeDefinition.mHeaderFileName
+        ioInclusions += !typeDefinition.headerFileName
       case twoHeaders :
-        ioInclusions += !typeDefinition.mHeaderFileName + "-1"
+        ioInclusions += !typeDefinition.headerFileName + "-1"
       end
     end
   }

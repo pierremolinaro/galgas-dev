@@ -181,7 +181,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !acceptSetters: true
     )
   #--- Synthetize an initializer, if the structure defines none
-    var features = @operators.generateDescriptionGetterUtilityMethod | .isComparable
+    var features = @typeFeatures.generateDescriptionGetterUtilityMethod | .isEquatable # | .isComparable
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
@@ -192,7 +192,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   #--- Enumeration by "for" instruction
     let @unifiedTypeMapEntry enumeratedType
     if self.mEnumeratedElementTypeName == "" then
-      enumeratedType = @unifiedTypeMapEntry.null
+      enumeratedType = .null
     else
      [!?ioTypeMap makeEntryFromString
        !self.mEnumeratedElementTypeName
@@ -218,13 +218,12 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: ()
       !optionalMethodMap: optionalMethodMap
       !enumerationDescriptorList: ()
-      !features
-      !@functionSignature ()
-      !@mapSearchMethodListAST ()
-      !@mapSearchMethodListAST ()
+      !features: features
+      !addAssignOperatorArguments: ()
+      !mapSearchMethodList: ()
       !generateHeaderInSeparateFile: false
-      !enumeratedType # Type for enumerated element for "for" instruction
-      !"struct-" + [self.structTypeName fileNameRepresentation]
+      !typeForEnumeratedElement: enumeratedType # Type for enumerated element for "for" instruction
+      !headerFileName: "struct-" + [self.structTypeName fileNameRepresentation]
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -301,7 +300,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         !constructorArgumentList
         !initializationCode
         !constructorNeedsCompilerVar
-        ![[structType definition].mHandledOperatorFlags generateSynthetizedInitializer]
+        ![[structType definition].features generateSynthetizedInitializer]
       }
   }
 
@@ -347,9 +346,9 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.classMethodMap
       !selfTypeDefinition.optionalMethodMap
       !selfTypeDefinition.enumerationDescriptorList
-      !selfTypeDefinition.mHandledOperatorFlags
-      !selfTypeDefinition.mAddAssignOperatorArguments
-      !selfTypeDefinition.mTypeForEnumeratedElement
+      !selfTypeDefinition.features
+      !selfTypeDefinition.addAssignOperatorArguments
+      !selfTypeDefinition.typeForEnumeratedElement
       !selfTypeDefinition.supportCollectionValue
     ]
   }

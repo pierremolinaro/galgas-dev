@@ -32,11 +32,11 @@ refclass @uintPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter getSupportedOperatorFlags -> @operators {
+  override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-      | .generateDescriptionGetterUtilityMethod | .incDecOperator | .incDecOperatorNoOVF | .isComparable
+      | .generateDescriptionGetterUtilityMethod | .incDecOperator | .incDecOperatorNoOVF | .isComparable | .isEquatable
       | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
       | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
       | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression

@@ -366,8 +366,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "templateEndMark" -> $%templateEndMark$,
   "templateReplacement" -> $%templateReplacement$,
   "translate" -> $%translate$,
-  "usefull" -> $%usefull$,
-  "useGrammar" -> $%useGrammar$
+  "usefull" -> $%usefull$
 }
 
 rule '%' {

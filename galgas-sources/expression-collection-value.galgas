@@ -123,7 +123,7 @@ refclass @collectionValueAST : @semanticExpressionAST {
       if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
         error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
       end
-      let elementType = [targetType definition].mTypeForEnumeratedElement
+      let elementType = [targetType definition].typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = ()
       for (expression location) in self.mExpressionList do
         [expression analyzeSemanticExpression

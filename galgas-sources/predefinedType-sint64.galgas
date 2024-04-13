@@ -26,12 +26,12 @@ refclass @sint64PredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter getSupportedOperatorFlags -> @operators {
+  override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .prefixMinusOperator | .prefixMinusOperatorNoOVF
       | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-      | .incDecOperator | .incDecOperatorNoOVF | .generateDescriptionGetterUtilityMethod | .isComparable
+      | .incDecOperator | .incDecOperatorNoOVF | .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
       | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
       | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
       | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression

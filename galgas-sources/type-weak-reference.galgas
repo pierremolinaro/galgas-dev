@@ -161,13 +161,12 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: ()
-    !.isReferenceEquatable
-    !()
-    !()
-    !()
+    !features: .isReferenceEquatable
+    !addAssignOperatorArguments: ()
+    !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile
-    !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-    !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
+    !typeForEnumeratedElement: .null
+    !headerFileName: "weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -298,9 +297,9 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     !typeDefinition.classMethodMap
     !typeDefinition.optionalMethodMap
     !typeDefinition.enumerationDescriptorList
-    !typeDefinition.mHandledOperatorFlags
-    !typeDefinition.mAddAssignOperatorArguments
-    !typeDefinition.mTypeForEnumeratedElement
+    !typeDefinition.features
+    !typeDefinition.addAssignOperatorArguments
+    !typeDefinition.typeForEnumeratedElement
     !typeDefinition.supportCollectionValue
   ]
  }

@@ -381,7 +381,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     end
   #--- Clonable ?
     var @initializerMap initializerMap = ()
-    var @operators features = if self.mIsReference then .isReferenceEquatable else .isComparable end
+    var @typeFeatures features = if self.mIsReference then .isReferenceEquatable else .isComparable end
     if self.clonable then
       features = features | .clonable
       var @functionSignature cloneInitializerArgumentList = ()
@@ -438,13 +438,12 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: ()
       !optionalMethodMap: ()
       !enumerationDescriptorList: ()
-      !features
-      !()
-      !()
-      !()
+      !features: features
+      !addAssignOperatorArguments: ()
+      !mapSearchMethodList: ()
       !generateHeaderInSeparateFile: generateHeaderInSeparateFile
-      !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-      !"class-" + [self.mClassTypeName fileNameRepresentation]
+      !typeForEnumeratedElement: .null
+      !headerFileName: "class-" + [self.mClassTypeName fileNameRepresentation]
       !headerKind: .twoHeaders
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -633,9 +632,9 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.classMethodMap
       !selfTypeDefinition.optionalMethodMap
       !selfTypeDefinition.enumerationDescriptorList
-      !selfTypeDefinition.mHandledOperatorFlags
-      !selfTypeDefinition.mAddAssignOperatorArguments
-      !selfTypeDefinition.mTypeForEnumeratedElement
+      !selfTypeDefinition.features
+      !selfTypeDefinition.addAssignOperatorArguments
+      !selfTypeDefinition.typeForEnumeratedElement
       !selfTypeDefinition.supportCollectionValue
     ]
   }
@@ -783,7 +782,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.mIsAbstract
         !self.initializerNeedsCompilerVariable
         !self.propertyInitializationCode
-        ![typedefinition.mHandledOperatorFlags generateSynthetizedInitializer]
+        ![typedefinition.features generateSynthetizedInitializer]
         !self.synthetizedInitializerArgumentList
         !self.inheritedSynthetizedInitializerArgumentList
         !typedefinition.initializerMap

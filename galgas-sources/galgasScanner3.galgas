@@ -368,8 +368,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "nonAtomicSelection" -> $%nonAtomicSelection$,
   "templateEndMark" -> $%templateEndMark$,
   "noArgumentLabel" -> $%noArgumentLabel$,
-  "preserved" -> $%preserved$,
-  "useGrammar" -> $%useGrammar$
+  "preserved" -> $%preserved$
 }
 
 rule '%' {

@@ -8379,6 +8379,326 @@ GALGAS_sortedListSortDescriptorListAST_2D_element GALGAS_sortedListSortDescripto
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_scopeLocalVarMap_2D_element::GALGAS_scopeLocalVarMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mType (),
+mProperty_mCppName (),
+mProperty_mNameForCheckingFormalParameterUsing (),
+mProperty_mAttributes (),
+mProperty_mState () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_scopeLocalVarMap_2D_element::~ GALGAS_scopeLocalVarMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_scopeLocalVarMap_2D_element GALGAS_scopeLocalVarMap_2D_element::init_21__21__21__21__21__21_ (const GALGAS_lstring & in_lkey,
+                                                                                                     const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                                     const GALGAS_string & in_mCppName,
+                                                                                                     const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                                                                                     const GALGAS_localVariableAttributes & in_mAttributes,
+                                                                                                     const GALGAS_localVarValuation & in_mState,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_scopeLocalVarMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mType = in_mType ;
+  result.mProperty_mCppName = in_mCppName ;
+  result.mProperty_mNameForCheckingFormalParameterUsing = in_mNameForCheckingFormalParameterUsing ;
+  result.mProperty_mAttributes = in_mAttributes ;
+  result.mProperty_mState = in_mState ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_scopeLocalVarMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_scopeLocalVarMap_2D_element::GALGAS_scopeLocalVarMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                        const GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                        const GALGAS_string & inOperand2,
+                                                                        const GALGAS_string & inOperand3,
+                                                                        const GALGAS_localVariableAttributes & inOperand4,
+                                                                        const GALGAS_localVarValuation & inOperand5) :
+mProperty_lkey (inOperand0),
+mProperty_mType (inOperand1),
+mProperty_mCppName (inOperand2),
+mProperty_mNameForCheckingFormalParameterUsing (inOperand3),
+mProperty_mAttributes (inOperand4),
+mProperty_mState (inOperand5) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_scopeLocalVarMap_2D_element GALGAS_scopeLocalVarMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                       const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                       const GALGAS_string & in_mCppName,
+                                                                                       const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
+                                                                                       const GALGAS_localVariableAttributes & in_mAttributes,
+                                                                                       const GALGAS_localVarValuation & in_mState,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_scopeLocalVarMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mType = in_mType ;
+  result.mProperty_mCppName = in_mCppName ;
+  result.mProperty_mNameForCheckingFormalParameterUsing = in_mNameForCheckingFormalParameterUsing ;
+  result.mProperty_mAttributes = in_mAttributes ;
+  result.mProperty_mState = in_mState ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_scopeLocalVarMap_2D_element::objectCompare (const GALGAS_scopeLocalVarMap_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mType.objectCompare (inOperand.mProperty_mType) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mCppName.objectCompare (inOperand.mProperty_mCppName) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mNameForCheckingFormalParameterUsing.objectCompare (inOperand.mProperty_mNameForCheckingFormalParameterUsing) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mAttributes.objectCompare (inOperand.mProperty_mAttributes) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mState.objectCompare (inOperand.mProperty_mState) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_scopeLocalVarMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mType.isValid () && mProperty_mCppName.isValid () && mProperty_mNameForCheckingFormalParameterUsing.isValid () && mProperty_mAttributes.isValid () && mProperty_mState.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_scopeLocalVarMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mType.drop () ;
+  mProperty_mCppName.drop () ;
+  mProperty_mNameForCheckingFormalParameterUsing.drop () ;
+  mProperty_mAttributes.drop () ;
+  mProperty_mState.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_scopeLocalVarMap_2D_element::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @scopeLocalVarMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mCppName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mAttributes.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mState.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @scopeLocalVarMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_scopeLocalVarMap_2D_element ("scopeLocalVarMap-element",
+                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_scopeLocalVarMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_scopeLocalVarMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_scopeLocalVarMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_scopeLocalVarMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_scopeLocalVarMap_2D_element GALGAS_scopeLocalVarMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_scopeLocalVarMap_2D_element result ;
+  const GALGAS_scopeLocalVarMap_2D_element * p = (const GALGAS_scopeLocalVarMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_scopeLocalVarMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("scopeLocalVarMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_element::GALGAS_unifiedTypeMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mElement () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_element::~ GALGAS_unifiedTypeMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::init_21__21_ (const GALGAS_lstring & in_lkey,
+                                                                                 const GALGAS_unifiedTypeMapElementClass & in_mElement,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mElement = in_mElement ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_unifiedTypeMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_element::GALGAS_unifiedTypeMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                    const GALGAS_unifiedTypeMapElementClass & inOperand1) :
+mProperty_lkey (inOperand0),
+mProperty_mElement (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_unifiedTypeMapElementClass & in_mElement,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mElement = in_mElement ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_unifiedTypeMap_2D_element::objectCompare (const GALGAS_unifiedTypeMap_2D_element & inOperand) const {
+   ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
+  }
+  if (result == ComparisonResult::operandEqual) {
+    result = mProperty_mElement.objectCompare (inOperand.mProperty_mElement) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_unifiedTypeMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mElement.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_unifiedTypeMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mElement.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_unifiedTypeMap_2D_element::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @unifiedTypeMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mElement.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @unifiedTypeMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2D_element ("unifiedTypeMap-element",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_unifiedTypeMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_unifiedTypeMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_unifiedTypeMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_element result ;
+  const GALGAS_unifiedTypeMap_2D_element * p = (const GALGAS_unifiedTypeMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_unifiedTypeMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("unifiedTypeMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_formalParameterListAST_2D_element::GALGAS_formalParameterListAST_2D_element (void) :
 mProperty_mFormalSelector (),
 mProperty_mFormalArgumentPassingMode (),
@@ -14569,274 +14889,6 @@ GALGAS_syntaxComponentMap_2D_element GALGAS_syntaxComponentMap_2D_element::extra
       result = *p ;
     }else{
       inCompiler->castError ("syntaxComponentMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element::GALGAS_extensionInitializerMapForType_2D_element (void) :
-mProperty_lkey (),
-mProperty_mFormalParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element::~ GALGAS_extensionInitializerMapForType_2D_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element GALGAS_extensionInitializerMapForType_2D_element::init_21__21_ (const GALGAS_lstring & in_lkey,
-                                                                                                                 const GALGAS_formalInputParameterListAST & in_mFormalParameterList,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionInitializerMapForType_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mFormalParameterList = in_mFormalParameterList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerMapForType_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element::GALGAS_extensionInitializerMapForType_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                    const GALGAS_formalInputParameterListAST & inOperand1) :
-mProperty_lkey (inOperand0),
-mProperty_mFormalParameterList (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element GALGAS_extensionInitializerMapForType_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                                                                   const GALGAS_formalInputParameterListAST & in_mFormalParameterList,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionInitializerMapForType_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mFormalParameterList = in_mFormalParameterList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_extensionInitializerMapForType_2D_element::objectCompare (const GALGAS_extensionInitializerMapForType_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mFormalParameterList.objectCompare (inOperand.mProperty_mFormalParameterList) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_extensionInitializerMapForType_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mFormalParameterList.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerMapForType_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mFormalParameterList.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerMapForType_2D_element::description (String & ioString,
-                                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @extensionInitializerMapForType-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalParameterList.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @extensionInitializerMapForType-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType_2D_element ("extensionInitializerMapForType-element",
-                                                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_extensionInitializerMapForType_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionInitializerMapForType_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_extensionInitializerMapForType_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionInitializerMapForType_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerMapForType_2D_element GALGAS_extensionInitializerMapForType_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_extensionInitializerMapForType_2D_element result ;
-  const GALGAS_extensionInitializerMapForType_2D_element * p = (const GALGAS_extensionInitializerMapForType_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_extensionInitializerMapForType_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionInitializerMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerForBuildingContext_2D_element::GALGAS_extensionInitializerForBuildingContext_2D_element (void) :
-mProperty_lkey (),
-mProperty_mExtensionInitializerMapForType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerForBuildingContext_2D_element::~ GALGAS_extensionInitializerForBuildingContext_2D_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_extensionInitializerForBuildingContext_2D_element GALGAS_extensionInitializerForBuildingContext_2D_element::init_21__21_ (const GALGAS_lstring & in_lkey,
-                                                                                                                                 const GALGAS_extensionInitializerMapForType & in_mExtensionInitializerMapForType,
-                                                                                                                                 Compiler * inCompiler
-                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionInitializerForBuildingContext_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mExtensionInitializerMapForType = in_mExtensionInitializerMapForType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerForBuildingContext_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerForBuildingContext_2D_element::GALGAS_extensionInitializerForBuildingContext_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                                    const GALGAS_extensionInitializerMapForType & inOperand1) :
-mProperty_lkey (inOperand0),
-mProperty_mExtensionInitializerMapForType (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerForBuildingContext_2D_element GALGAS_extensionInitializerForBuildingContext_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
-                                                                                                                                   const GALGAS_extensionInitializerMapForType & in_mExtensionInitializerMapForType,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionInitializerForBuildingContext_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mExtensionInitializerMapForType = in_mExtensionInitializerMapForType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_extensionInitializerForBuildingContext_2D_element::objectCompare (const GALGAS_extensionInitializerForBuildingContext_2D_element & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
-  }
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_mExtensionInitializerMapForType.objectCompare (inOperand.mProperty_mExtensionInitializerMapForType) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_extensionInitializerForBuildingContext_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mExtensionInitializerMapForType.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerForBuildingContext_2D_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mExtensionInitializerMapForType.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_extensionInitializerForBuildingContext_2D_element::description (String & ioString,
-                                                                            const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @extensionInitializerForBuildingContext-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mExtensionInitializerMapForType.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @extensionInitializerForBuildingContext-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext_2D_element ("extensionInitializerForBuildingContext-element",
-                                                                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_extensionInitializerForBuildingContext_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_extensionInitializerForBuildingContext_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionInitializerForBuildingContext_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_extensionInitializerForBuildingContext_2D_element GALGAS_extensionInitializerForBuildingContext_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                                  Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_extensionInitializerForBuildingContext_2D_element result ;
-  const GALGAS_extensionInitializerForBuildingContext_2D_element * p = (const GALGAS_extensionInitializerForBuildingContext_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_extensionInitializerForBuildingContext_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionInitializerForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

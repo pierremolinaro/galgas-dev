@@ -28,14 +28,14 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCA
 %//--------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [ASSOCIATED_LIST_TYPE definition].mAddAssignOperatorArguments do (IDX)
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments do (IDX)
     %,\n%!^%GALGAS_%![mFormalArgumentType identifierRepresentation]% inArgument_%![IDX string]
   end
   %,\n%!^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::makeAttributesFromObjects (attributes%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [ASSOCIATED_LIST_TYPE definition].mAddAssignOperatorArguments
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments
   do (IDX) %, inArgument_%![IDX string]
   end
   % COMMA_THERE) ;

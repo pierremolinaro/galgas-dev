@@ -271,7 +271,7 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
         var s = "@" + instanciedTypeDefinition.typeName + ".init("
         for formalArg in inInvocationArguments
         do
-          s += "."
+          s += "?"
           if formalArg.mActualSelector.string != "" then
             s += formalArg.mActualSelector.string + ":"
           end

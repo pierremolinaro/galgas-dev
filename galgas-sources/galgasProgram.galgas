@@ -71,7 +71,7 @@ before {
 
 case . "galgas"
 message "a GALGAS 3 source file"
-%useGrammar galgas3Grammar
+grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
@@ -98,7 +98,7 @@ message "a GALGAS 3 source file"
 
 case . "ggs"
 message "a GALGAS 4 source file"
-%useGrammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
+grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[.init ("ggsProject")]]
@@ -124,7 +124,7 @@ message "a GALGAS 4 source file"
 
 case . "galgasTemplate"
 message "a GALGAS Template source file"
-%useGrammar templateGrammar
+grammar templateGrammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar templateGrammar (?*) in inSourceFile
 }
@@ -137,7 +137,7 @@ message "a GALGAS Template source file"
 
 case . "galgasProject"
 message "a GALGAS project source file"
-%useGrammar galgas3ProjectGrammar
+grammar galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
 }
@@ -146,7 +146,7 @@ message "a GALGAS project source file"
 
 case . "ggsproject"
 message "a GALGAS project source file"
-%useGrammar galgas3ProjectGrammar
+grammar galgas3ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: true !"" )
 }

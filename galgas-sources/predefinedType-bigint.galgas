@@ -66,24 +66,6 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
       !.isBasic
       !"" # No error message
     ]
-  #  [!?outInstanceMethodMap insertKey
-  #    !.init {!"floorDivideBy" !.here}
-  #    !.definedAsMember
-  #    !argList
-  #    !.here
-  #    !true
-  #    !.isBasic
-  #    !"" # No error message
-  #  ]
-  #  [!?outInstanceMethodMap insertKey
-  #    !.init {!"ceilDivideBy" !.here}
-  #    !.definedAsMember
-  #    !argList
-  #    !.here
-  #    !true
-  #    !.isBasic
-  #    !"" # No error message
-  #  ]
   }
 
   #-----------------------------------------------------------------------------------------------
@@ -326,12 +308,12 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter getSupportedOperatorFlags -> @operators {
+  override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
                .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
                .infixShiftOperator | .infixModOperator |
                .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
-               .incDecOperator | .isComparable |
+               .incDecOperator | .isComparable | .isEquatable |
                .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression |
                .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
   }

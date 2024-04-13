@@ -40,18 +40,15 @@ struct @unifiedTypeDefinition {
   public let @classMethodMap classMethodMap %initArgLabel
   public let @optionalMethodMap optionalMethodMap %initArgLabel
   public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel # Empty List if cannot be enumerated
-  public let @operators mHandledOperatorFlags
-  public let @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
-  public let @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
-  public let @mapSearchMethodListAST mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
+  public let @typeFeatures features %initArgLabel
+  public let @functionSignature addAssignOperatorArguments %initArgLabel # Empty list if += operator is not supported
+  public let @mapSearchMethodListAST mapSearchMethodList %initArgLabel # For a map, the list of search methods
   public let @bool generateHeaderInSeparateFile %initArgLabel # Significant only for classes
-  public let @unifiedTypeMapEntry mTypeForEnumeratedElement
-  public let @string mHeaderFileName # Name of C++ header file that contains type declaration
+  public let @unifiedTypeMapEntry typeForEnumeratedElement %initArgLabel
+  public let @string headerFileName %initArgLabel # Name of C++ header file that contains type declaration
   public let @headerKind headerKind %initArgLabel
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#  T Y P E    K I N D    E N U M E R A T I O N
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @typeKindEnum {
@@ -95,6 +92,51 @@ enum @typeKindEnum {
 
   #-----------------------------------------------------------------------------------------------
 
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+boolset @typeFeatures {
+  infixAddOperator,
+  infixSubOperator,
+  infixMulOperator,
+  infixDivOperator,
+  infixModOperator,
+  infixShiftOperator,
+  prefixPlusOperator,
+  prefixMinusOperator,
+  prefixTildeOperator,
+  incDecOperator,
+
+  infixAndOperator,
+  infixOrOperator,
+  infixXorOperator,
+  prefixNotOperator,
+
+  isEquatable, # Supports ==, != operators
+  isComparable, # Supports <, <=, >, >= operators
+  isReferenceEquatable,  # Supports ===, !== operators
+
+  plusEqualOperatorWithExpression, # var += exp ;
+  minusEqualOperatorWithExpression, # var -= exp ;
+  mulEqualOperatorWithExpression, # var *= exp ;
+  divEqualOperatorWithExpression, # var /= exp ;
+
+  infixAddOperatorNoOVF,
+  infixSubOperatorNoOVF,
+  infixMulOperatorNoOVF,
+  infixDivOperatorNoOVF,
+  prefixMinusOperatorNoOVF,
+  incDecOperatorNoOVF,
+
+  supportWithAccessor,
+  plusEqualOperatorWithFieldListNeedsCompilerArg,
+  generateEnumerationHelperMethods,
+  doNotGenererateObjectCompare,
+  generateDescriptionGetterUtilityMethod,
+  generateCopyConstructorAndAssignmentOperator,
+  generateSynthetizedInitializer,
+  clonable
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

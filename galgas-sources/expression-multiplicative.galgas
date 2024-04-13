@@ -196,7 +196,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixMulOperatorNoOVF]
+    ![[leftExpression.mResultType definition].features infixMulOperatorNoOVF]
     !"&*"
     !self.mOperatorLocation
     !?leftExpression
@@ -254,7 +254,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixMulOperator]
+    ![[leftExpression.mResultType definition].features infixMulOperator]
     !"*"
     !self.mOperatorLocation
     !?leftExpression
@@ -311,7 +311,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixDivOperatorNoOVF]
+    ![[leftExpression.mResultType definition].features infixDivOperatorNoOVF]
     !"&/"
     !self.mOperatorLocation
     !?leftExpression
@@ -368,7 +368,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixDivOperator]
+    ![[leftExpression.mResultType definition].features infixDivOperator]
     !"/"
     !self.mOperatorLocation
     !?leftExpression
@@ -425,7 +425,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixModOperator]
+    ![[leftExpression.mResultType definition].features infixModOperator]
     !"mod"
     !self.mOperatorLocation
     !?leftExpression

@@ -1,4 +1,7 @@
 appel méthode super dans classe
 types optionnels
+type tableau [@T] === @array <@T>
+type @located <@T>
 accès lecture subscript
 accès écriture subscript
+comparable, égalable

@@ -498,11 +498,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @operators boolset
+// Phase 1: @typeFeatures boolset
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_operators : public AC_GALGAS_root {
+class GALGAS_typeFeatures : public AC_GALGAS_root {
 //--------------------------------- Properties
   private: uint64_t mFlags ;
   private: bool mIsValid ;
@@ -512,123 +512,125 @@ class GALGAS_operators : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_operators (void) ;
+  public: GALGAS_typeFeatures (void) ;
 
 //--------------------------------- Private constructor
-  private: GALGAS_operators (const uint64_t inFlags) ;
+  private: GALGAS_typeFeatures (const uint64_t inFlags) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_operators init (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_typeFeatures init (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_operators extractObject (const GALGAS_object & inObject,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_typeFeatures extractObject (const GALGAS_object & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_operators class_func_all (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_all (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_clonable (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_clonable (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_divEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_divEqualOperatorWithExpression (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_doNotGenererateObjectCompare (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_doNotGenererateObjectCompare (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_generateDescriptionGetterUtilityMethod (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_generateDescriptionGetterUtilityMethod (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_generateEnumerationHelperMethods (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_generateEnumerationHelperMethods (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_generateSynthetizedInitializer (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_generateSynthetizedInitializer (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_incDecOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_incDecOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_incDecOperatorNoOVF (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_incDecOperatorNoOVF (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixAddOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixAddOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixAddOperatorNoOVF (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixAddOperatorNoOVF (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixAndOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixAndOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixDivOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixDivOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixDivOperatorNoOVF (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixDivOperatorNoOVF (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixModOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixModOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixMulOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixMulOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixMulOperatorNoOVF (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixMulOperatorNoOVF (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixOrOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixOrOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixShiftOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixShiftOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixSubOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixSubOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixSubOperatorNoOVF (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixSubOperatorNoOVF (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_infixXorOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_infixXorOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_isComparable (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_isComparable (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_isReferenceEquatable (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_isEquatable (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_minusEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_isReferenceEquatable (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_mulEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_minusEqualOperatorWithExpression (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_none (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_mulEqualOperatorWithExpression (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_plusEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_none (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_plusEqualOperatorWithExpression (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_prefixMinusOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_prefixMinusOperatorNoOVF (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_prefixMinusOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_prefixNotOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_prefixMinusOperatorNoOVF (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_prefixPlusOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_prefixNotOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_prefixTildeOperator (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_prefixPlusOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_operators class_func_supportWithAccessor (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_prefixTildeOperator (LOCATION_ARGS) ;
+
+  public: static class GALGAS_typeFeatures class_func_supportWithAccessor (LOCATION_ARGS) ;
 
 //--------------------------------- & operator
-  public: VIRTUAL_IN_DEBUG GALGAS_operators operator_and (const GALGAS_operators & inOperand
-                                                          COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_typeFeatures operator_and (const GALGAS_typeFeatures & inOperand
+                                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- | operator
-  public: VIRTUAL_IN_DEBUG GALGAS_operators operator_or (const GALGAS_operators & inOperand
-                                                         COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_typeFeatures operator_or (const GALGAS_typeFeatures & inOperand
+                                                            COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- ^ operator
-  public: VIRTUAL_IN_DEBUG GALGAS_operators operator_xor (const GALGAS_operators & inOperand
-                                                          COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_typeFeatures operator_xor (const GALGAS_typeFeatures & inOperand
+                                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- ~ operator
-  public: VIRTUAL_IN_DEBUG GALGAS_operators operator_tilde (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_typeFeatures operator_tilde (LOCATION_ARGS) const ;
 
 //--------------------------------- - operator
-  public: VIRTUAL_IN_DEBUG GALGAS_operators substract_operation (const GALGAS_operators & inOperand,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_typeFeatures substract_operation (const GALGAS_typeFeatures & inOperand,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_operators & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeFeatures & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -684,6 +686,8 @@ class GALGAS_operators : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isComparable (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isEquatable (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isReferenceEquatable (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_minusEqualOperatorWithExpression (LOCATION_ARGS) const ;
@@ -714,12 +718,12 @@ class GALGAS_operators : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_operators class
+} ; // End of GALGAS_typeFeatures class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_operators ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeFeatures ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3141,24 +3145,19 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_enumerationDescriptorList ;
   }
 
-  public: GALGAS_operators mProperty_mHandledOperatorFlags ;
-  public: inline GALGAS_operators readProperty_mHandledOperatorFlags (void) const {
-    return mProperty_mHandledOperatorFlags ;
+  public: GALGAS_typeFeatures mProperty_features ;
+  public: inline GALGAS_typeFeatures readProperty_features (void) const {
+    return mProperty_features ;
   }
 
-  public: GALGAS_functionSignature mProperty_mAddAssignOperatorArguments ;
-  public: inline GALGAS_functionSignature readProperty_mAddAssignOperatorArguments (void) const {
-    return mProperty_mAddAssignOperatorArguments ;
+  public: GALGAS_functionSignature mProperty_addAssignOperatorArguments ;
+  public: inline GALGAS_functionSignature readProperty_addAssignOperatorArguments (void) const {
+    return mProperty_addAssignOperatorArguments ;
   }
 
-  public: GALGAS_mapSearchMethodListAST mProperty_mMapSearchMethodList ;
-  public: inline GALGAS_mapSearchMethodListAST readProperty_mMapSearchMethodList (void) const {
-    return mProperty_mMapSearchMethodList ;
-  }
-
-  public: GALGAS_mapSearchMethodListAST mProperty_mMapEntrySearchConstructorList ;
-  public: inline GALGAS_mapSearchMethodListAST readProperty_mMapEntrySearchConstructorList (void) const {
-    return mProperty_mMapEntrySearchConstructorList ;
+  public: GALGAS_mapSearchMethodListAST mProperty_mapSearchMethodList ;
+  public: inline GALGAS_mapSearchMethodListAST readProperty_mapSearchMethodList (void) const {
+    return mProperty_mapSearchMethodList ;
   }
 
   public: GALGAS_bool mProperty_generateHeaderInSeparateFile ;
@@ -3166,14 +3165,14 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_generateHeaderInSeparateFile ;
   }
 
-  public: GALGAS_unifiedTypeMapEntry mProperty_mTypeForEnumeratedElement ;
-  public: inline GALGAS_unifiedTypeMapEntry readProperty_mTypeForEnumeratedElement (void) const {
-    return mProperty_mTypeForEnumeratedElement ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_typeForEnumeratedElement ;
+  public: inline GALGAS_unifiedTypeMapEntry readProperty_typeForEnumeratedElement (void) const {
+    return mProperty_typeForEnumeratedElement ;
   }
 
-  public: GALGAS_string mProperty_mHeaderFileName ;
-  public: inline GALGAS_string readProperty_mHeaderFileName (void) const {
-    return mProperty_mHeaderFileName ;
+  public: GALGAS_string mProperty_headerFileName ;
+  public: inline GALGAS_string readProperty_headerFileName (void) const {
+    return mProperty_headerFileName ;
   }
 
   public: GALGAS_headerKind mProperty_headerKind ;
@@ -3257,32 +3256,28 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_enumerationDescriptorList = inValue ;
   }
 
-  public: inline void setter_setMHandledOperatorFlags (const GALGAS_operators & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHandledOperatorFlags = inValue ;
+  public: inline void setter_setFeatures (const GALGAS_typeFeatures & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_features = inValue ;
   }
 
-  public: inline void setter_setMAddAssignOperatorArguments (const GALGAS_functionSignature & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAddAssignOperatorArguments = inValue ;
+  public: inline void setter_setAddAssignOperatorArguments (const GALGAS_functionSignature & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_addAssignOperatorArguments = inValue ;
   }
 
-  public: inline void setter_setMMapSearchMethodList (const GALGAS_mapSearchMethodListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMapSearchMethodList = inValue ;
-  }
-
-  public: inline void setter_setMMapEntrySearchConstructorList (const GALGAS_mapSearchMethodListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMapEntrySearchConstructorList = inValue ;
+  public: inline void setter_setMapSearchMethodList (const GALGAS_mapSearchMethodListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mapSearchMethodList = inValue ;
   }
 
   public: inline void setter_setGenerateHeaderInSeparateFile (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_generateHeaderInSeparateFile = inValue ;
   }
 
-  public: inline void setter_setMTypeForEnumeratedElement (const GALGAS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTypeForEnumeratedElement = inValue ;
+  public: inline void setter_setTypeForEnumeratedElement (const GALGAS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_typeForEnumeratedElement = inValue ;
   }
 
-  public: inline void setter_setMHeaderFileName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHeaderFileName = inValue ;
+  public: inline void setter_setHeaderFileName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_headerFileName = inValue ;
   }
 
   public: inline void setter_setHeaderKind (const GALGAS_headerKind & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -3313,45 +3308,43 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
                                         const GALGAS_classMethodMap & in_classMethodMap,
                                         const GALGAS_optionalMethodMap & in_optionalMethodMap,
                                         const GALGAS_enumerationDescriptorList & in_enumerationDescriptorList,
-                                        const GALGAS_operators & in_mHandledOperatorFlags,
-                                        const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
-                                        const GALGAS_mapSearchMethodListAST & in_mMapSearchMethodList,
-                                        const GALGAS_mapSearchMethodListAST & in_mMapEntrySearchConstructorList,
+                                        const GALGAS_typeFeatures & in_features,
+                                        const GALGAS_functionSignature & in_addAssignOperatorArguments,
+                                        const GALGAS_mapSearchMethodListAST & in_mapSearchMethodList,
                                         const GALGAS_bool & in_generateHeaderInSeparateFile,
-                                        const GALGAS_unifiedTypeMapEntry & in_mTypeForEnumeratedElement,
-                                        const GALGAS_string & in_mHeaderFileName,
+                                        const GALGAS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
+                                        const GALGAS_string & in_headerFileName,
                                         const GALGAS_headerKind & in_headerKind) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_optionalMethodMap_21_enumerationDescriptorList_21__21__21__21__21_generateHeaderInSeparateFile_21__21__21_headerKind (const class GALGAS_lstring & inOperand0,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_bool & inOperand1,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_bool & inOperand2,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_typeKindEnum & inOperand4,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_bool & inOperand5,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_typedPropertyList & inOperand6,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_propertyMap & inOperand7,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_typedPropertyList & inOperand8,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_initializerMap & inOperand9,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_classFunctionMap & inOperand10,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_getterMap & inOperand11,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_setterMap & inOperand12,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_instanceMethodMap & inOperand13,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_classMethodMap & inOperand14,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_optionalMethodMap & inOperand15,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_enumerationDescriptorList & inOperand16,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_operators & inOperand17,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_functionSignature & inOperand18,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_mapSearchMethodListAST & inOperand19,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_mapSearchMethodListAST & inOperand20,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_bool & inOperand21,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand22,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_string & inOperand23,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   const class GALGAS_headerKind & inOperand24,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   Compiler * inCompiler
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_optionalMethodMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const class GALGAS_lstring & inOperand0,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand1,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand2,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typeKindEnum & inOperand4,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand5,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typedPropertyList & inOperand6,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_propertyMap & inOperand7,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typedPropertyList & inOperand8,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_initializerMap & inOperand9,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_classFunctionMap & inOperand10,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_getterMap & inOperand11,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_setterMap & inOperand12,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_instanceMethodMap & inOperand13,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_classMethodMap & inOperand14,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_optionalMethodMap & inOperand15,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_enumerationDescriptorList & inOperand16,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typeFeatures & inOperand17,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_functionSignature & inOperand18,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_mapSearchMethodListAST & inOperand19,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand20,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand21,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_string & inOperand22,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_headerKind & inOperand23,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Compiler * inCompiler
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3379,14 +3372,13 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
                                                                     const class GALGAS_classMethodMap & inOperand14,
                                                                     const class GALGAS_optionalMethodMap & inOperand15,
                                                                     const class GALGAS_enumerationDescriptorList & inOperand16,
-                                                                    const class GALGAS_operators & inOperand17,
+                                                                    const class GALGAS_typeFeatures & inOperand17,
                                                                     const class GALGAS_functionSignature & inOperand18,
                                                                     const class GALGAS_mapSearchMethodListAST & inOperand19,
-                                                                    const class GALGAS_mapSearchMethodListAST & inOperand20,
-                                                                    const class GALGAS_bool & inOperand21,
-                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand22,
-                                                                    const class GALGAS_string & inOperand23,
-                                                                    const class GALGAS_headerKind & inOperand24,
+                                                                    const class GALGAS_bool & inOperand20,
+                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand21,
+                                                                    const class GALGAS_string & inOperand22,
+                                                                    const class GALGAS_headerKind & inOperand23,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 

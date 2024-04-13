@@ -383,7 +383,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     end
   end
 #--- Check target variable type support '+= exp' operator
-  if not [[targetType definition].mHandledOperatorFlags plusEqualOperatorWithExpression] then
+  if not [[targetType definition].features plusEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
   end
@@ -465,7 +465,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     end
   end
 #--- Check target variable type support '-= exp' operator
-  if not [[targetType definition].mHandledOperatorFlags minusEqualOperatorWithExpression] then
+  if not [[targetType definition].features minusEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '-=' operator"
   end
@@ -548,7 +548,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     end
   end
 #--- Check target variable type support '*= exp' operator
-  if [[targetType definition].mHandledOperatorFlags mulEqualOperatorWithExpression] then
+  if [[targetType definition].features mulEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '*=' operator"
   end
@@ -631,7 +631,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     end
   end
 #--- Check target variable type support '/= exp' operator
-  if [[targetType definition].mHandledOperatorFlags divEqualOperatorWithExpression] then
+  if [[targetType definition].features divEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '/=' operator"
   end
@@ -719,7 +719,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check target variable type support '+=' operator
-  let addAssignOperatorArguments= [targetType definition].mAddAssignOperatorArguments # Empty list if += operator is not supported
+  let addAssignOperatorArguments= [targetType definition].addAssignOperatorArguments # Empty list if += operator is not supported
   if [addAssignOperatorArguments count] == 0 then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
@@ -808,7 +808,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if [[self.mTargetType definition].mHandledOperatorFlags plusEqualOperatorWithFieldListNeedsCompilerArg] then
+  if [[self.mTargetType definition].features plusEqualOperatorWithFieldListNeedsCompilerArg] then
     ioGeneratedCode  += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end

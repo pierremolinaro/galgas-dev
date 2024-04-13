@@ -55,7 +55,7 @@ refclass @dataPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter getSupportedOperatorFlags -> @operators {
+  override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod | .generateEnumerationHelperMethods
   }
 

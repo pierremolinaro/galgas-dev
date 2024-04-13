@@ -707,7 +707,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ]
 #--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
-  let enumeratedElementType = [outEnumerationExpression.mResultType definition].mTypeForEnumeratedElement
+  let enumeratedElementType = [outEnumerationExpression.mResultType definition].typeForEnumeratedElement
   if [enumeratedElementType isNull] then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   elsif self.mEnumerationVariable.string != "" then

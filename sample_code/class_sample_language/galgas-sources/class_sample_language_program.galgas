@@ -5,7 +5,7 @@ before {
 
 case . "classSampleLanguage"
 message "an '.class_sample_language' source file"
-%useGrammar class_sample_language_grammar
+grammar class_sample_language_grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Build Abstract Syntax Tree
   grammar class_sample_language_grammar (?let declarationListAST) in inSourceFile

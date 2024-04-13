@@ -7398,7 +7398,7 @@ static const int32_t gActionTable_galgas3Grammar [] = {
 , BOTTOM_UP_END ()
 // State S424 (index = 9240)
 , Lexique_galgasScanner_33_::kToken__3F_selector_3A_, BOTTOM_UP_REDUCE (897)
-, Lexique_galgasScanner_33_::kToken__25_useGrammar, BOTTOM_UP_SHIFT (706)
+, Lexique_galgasScanner_33_::kToken_grammar, BOTTOM_UP_SHIFT (706)
 , BOTTOM_UP_END ()
 // State S425 (index = 9245)
 , Lexique_galgasScanner_33_::kToken__29_, BOTTOM_UP_REDUCE (24)

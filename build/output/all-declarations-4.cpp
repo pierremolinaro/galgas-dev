@@ -13392,10 +13392,10 @@ void callExtensionMethod_getOptionalMethodMap (cPtr_predefinedTypeAST * inObject
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_operators cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (Compiler */* inCompiler */
-                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_operators result_outFlags ; // Returned variable
-  result_outFlags = GALGAS_operators::class_func_none (SOURCE_FILE ("predefinedTypeAST.galgas", 223)) ;
+GALGAS_typeFeatures cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (Compiler */* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_typeFeatures result_outFlags ; // Returned variable
+  result_outFlags = GALGAS_typeFeatures::class_func_none (SOURCE_FILE ("predefinedTypeAST.galgas", 222)) ;
 //---
   return result_outFlags ;
 }
@@ -13404,10 +13404,10 @@ GALGAS_operators cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_operators result ;
+GALGAS_typeFeatures callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_typeFeatures result ;
   if (nullptr != inObject) {
     result = inObject->getter_getSupportedOperatorFlags (inCompiler COMMA_THERE) ;
   }

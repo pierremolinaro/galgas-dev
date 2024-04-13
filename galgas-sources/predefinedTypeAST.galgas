@@ -140,13 +140,12 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !classMethodMap: classMethodMap
       !optionalMethodMap: optionalMethodMap
       !enumerationDescriptorList: enumerationList
-      ![self getSupportedOperatorFlags]
-      !addAssignArgumentList
-      !@mapSearchMethodListAST ()
-      !@mapSearchMethodListAST ()
+      !features: [self getSupportedOperatorFlags]
+      !addAssignOperatorArguments: addAssignArgumentList
+      !mapSearchMethodList: ()
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
-      !enumeratedTypeEntry
-      !"predefined-types"
+      !typeForEnumeratedElement: enumeratedTypeEntry
+      !headerFileName: "predefined-types"
       !headerKind: .twoHeaders
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -219,7 +218,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  getter getSupportedOperatorFlags -> @operators outFlags {
+  getter getSupportedOperatorFlags -> @typeFeatures outFlags {
     outFlags = .none # No supported operator
   }
 

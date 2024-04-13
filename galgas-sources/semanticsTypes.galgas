@@ -223,56 +223,6 @@ list @typedPropertyList {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  O P E R A T O R    Boolset
-#
-# This type is used for the mHandledOperatorFlags attribute of the @unifiedTypeMap map, for indicating the handled
-# operators.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-boolset @operators {
-  infixAddOperator,
-  infixSubOperator,
-  infixMulOperator,
-  infixDivOperator,
-  infixModOperator,
-  infixShiftOperator,
-  prefixPlusOperator,
-  prefixMinusOperator,
-  prefixTildeOperator,
-  incDecOperator,
-
-  infixAndOperator,
-  infixOrOperator,
-  infixXorOperator,
-  prefixNotOperator,
-
-  isComparable, # Supports <, <=, >, >=, ==, != operators
-  isReferenceEquatable,  # Supports ===, !== operators
-
-  plusEqualOperatorWithExpression, # var += exp ;
-  minusEqualOperatorWithExpression, # var -= exp ;
-  mulEqualOperatorWithExpression, # var *= exp ;
-  divEqualOperatorWithExpression, # var /= exp ;
-
-  infixAddOperatorNoOVF,
-  infixSubOperatorNoOVF,
-  infixMulOperatorNoOVF,
-  infixDivOperatorNoOVF,
-  prefixMinusOperatorNoOVF,
-  incDecOperatorNoOVF,
-
-  supportWithAccessor,
-  plusEqualOperatorWithFieldListNeedsCompilerArg,
-  generateEnumerationHelperMethods,
-  doNotGenererateObjectCompare,
-  generateDescriptionGetterUtilityMethod,
-  generateCopyConstructorAndAssignmentOperator,
-  generateSynthetizedInitializer,
-  clonable
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @propertyMap {
   public let @AccessControl mAccessControl

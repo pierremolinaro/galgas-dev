@@ -360,13 +360,12 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: enumerationDescriptor
-    !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
-    !argumentTypeListForAddAssignWithFieldExpressionList
-    !()
-    !()
+    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
+    !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
+    !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !elementTypeEntry # Type for enumerated element for "for" instruction
-    !"dict-" + [self.mDictTypeName fileNameRepresentation]
+    !typeForEnumeratedElement: elementTypeEntry
+    !headerFileName: "dict-" + [self.mDictTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -504,9 +503,9 @@ override method @dictTypeForGeneration appendDeclaration1
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.enumerationDescriptorList
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]
 }

@@ -490,13 +490,12 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: ()
       !optionalMethodMap: ()
       !enumerationDescriptorList: ()
-      !.none
-      !()
-      !()
-      !()
+      !features: .none
+      !addAssignOperatorArguments: ()
+      !mapSearchMethodList: ()
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
-      !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
-      !"externtype-" + [self.mExternTypeName fileNameRepresentation]
+      !typeForEnumeratedElement: .null
+      !headerFileName: "externtype-" + [self.mExternTypeName fileNameRepresentation]
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -567,9 +566,9 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.enumerationDescriptorList
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]
 }

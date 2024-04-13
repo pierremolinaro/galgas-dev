@@ -326,7 +326,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
                                                                                   const class GALGAS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
                                                                                   const class GALGAS_optionalMethodMap & in_OPTIONAL_5F_METHOD_5F_MAP,
                                                                                   const class GALGAS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
-                                                                                  const class GALGAS_operators & in_SUPPORTED_5F_OPERATORS,
+                                                                                  const class GALGAS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
                                                                                   const class GALGAS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
                                                                                   const class GALGAS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                                   const class GALGAS_bool & in_SUPPORT_5F_COLLECTION_5F_VALUE

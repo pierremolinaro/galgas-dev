@@ -268,13 +268,12 @@ refclass @typealiasDeclarationAST : @semanticDeclarationAST {
           !classMethodMap: def.classMethodMap
           !optionalMethodMap: def.optionalMethodMap
           !enumerationDescriptorList: def.enumerationDescriptorList
-          !def.mHandledOperatorFlags
-          !def.mAddAssignOperatorArguments # Empty list if += operator is not supported
-          !def.mMapSearchMethodList # For a map, the list of search methods
-          !def.mMapEntrySearchConstructorList # For a map entry, the list of search methods of the associated map
+          !features: def.features
+          !addAssignOperatorArguments: def.addAssignOperatorArguments
+          !mapSearchMethodList: def.mapSearchMethodList
           !generateHeaderInSeparateFile: def.generateHeaderInSeparateFile
-          !def.mTypeForEnumeratedElement
-          !"typealias-" + [self.mAliasTypeName fileNameRepresentation]
+          !typeForEnumeratedElement: def.typeForEnumeratedElement
+          !headerFileName: "typealias-" + [self.mAliasTypeName fileNameRepresentation]
           !headerKind: .oneHeader
         }
         [!?ioTypeMap insertType !self.mAliasTypeName !definition]

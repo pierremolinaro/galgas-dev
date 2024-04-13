@@ -262,13 +262,12 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: enumeratorDescriptor
-    !.doNotGenererateObjectCompare
-    !addAssignOperatorDescription
-    !@mapSearchMethodListAST ()
-    !@mapSearchMethodListAST ()
+    !features: .doNotGenererateObjectCompare
+    !addAssignOperatorArguments: addAssignOperatorDescription
+    !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !listElementTypeIndex # Type for enumerated element for "for" instruction
-    !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
+    !typeForEnumeratedElement: listElementTypeIndex
+    !headerFileName: "listmap-" + [self.mListmapTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -346,9 +345,9 @@ override method @listmapTypeForGeneration appendDeclaration1
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.enumerationDescriptorList
-    !selfTypeDefinition.mHandledOperatorFlags
-    !selfTypeDefinition.mAddAssignOperatorArguments
-    !selfTypeDefinition.mTypeForEnumeratedElement
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
     !selfTypeDefinition.supportCollectionValue
   ]
  }

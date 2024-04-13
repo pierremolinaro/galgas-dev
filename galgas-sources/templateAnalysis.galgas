@@ -328,7 +328,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixAndOperator]
+    ![[leftExpression.mResultType definition].features infixAndOperator]
     !"&"
     !self.mOperatorLocation
     !?leftExpression
@@ -371,7 +371,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixOrOperator]
+    ![[leftExpression.mResultType definition].features infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?leftExpression
@@ -414,7 +414,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixXorOperator]
+    ![[leftExpression.mResultType definition].features infixXorOperator]
     !"^"
     !self.mOperatorLocation
     !?leftExpression
@@ -577,7 +577,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type definition].mHandledOperatorFlags prefixNotOperator] then
+  if not [[type definition].features prefixNotOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'not' operator"
     :outExpression
@@ -610,7 +610,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type definition].mHandledOperatorFlags prefixTildeOperator] then
+  if not [[type definition].features prefixTildeOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the '~' operator"
     :outExpression
@@ -880,7 +880,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixAddOperator]
+    ![[leftExpression.mResultType definition].features infixAddOperator]
     !"+"
     !self.mOperatorLocation
     !?leftExpression
@@ -925,7 +925,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixSubOperator]
+    ![[leftExpression.mResultType definition].features infixSubOperator]
     !"-"
     !self.mOperatorLocation
     !?leftExpression
@@ -970,7 +970,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixMulOperator]
+    ![[leftExpression.mResultType definition].features infixMulOperator]
     !"*"
     !self.mOperatorLocation
     !?leftExpression
@@ -1015,7 +1015,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixDivOperator]
+    ![[leftExpression.mResultType definition].features infixDivOperator]
     !"/"
     !self.mOperatorLocation
     !?leftExpression
@@ -1060,7 +1060,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].mHandledOperatorFlags infixModOperator]
+    ![[leftExpression.mResultType definition].features infixModOperator]
     !"mod"
     !self.mOperatorLocation
     !?leftExpression
@@ -1097,7 +1097,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type definition].mHandledOperatorFlags prefixMinusOperator] then
+  if not [[type definition].features prefixMinusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix minus operator"
     :outExpression
@@ -1437,7 +1437,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
+  if not [[leftType definition].features infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
@@ -1485,7 +1485,7 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].mHandledOperatorFlags infixShiftOperator] then
+  if not [[leftType definition].features infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression

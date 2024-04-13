@@ -44,11 +44,11 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter getSupportedOperatorFlags -> @operators {
+  override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixSubOperator
       | .infixAndOperator | .infixOrOperator
       | .generateDescriptionGetterUtilityMethod | .plusEqualOperatorWithExpression
-      | .generateEnumerationHelperMethods | .isComparable
+      | .generateEnumerationHelperMethods | .isEquatable | .isComparable
       | .generateCopyConstructorAndAssignmentOperator
   }
 

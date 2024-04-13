@@ -75,7 +75,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     select
       referenceGrammar = ["" nowhere]
     or
-      $%useGrammar$
+      $grammar$
       $identifier$ ?referenceGrammar
     end
   #--- Source file
@@ -171,7 +171,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     select
       referenceGrammar = ["" nowhere]
     or
-      $%useGrammar$
+      $grammar$
       $identifier$ ?referenceGrammar
     end
   #--- Source file

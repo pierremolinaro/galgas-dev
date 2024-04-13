@@ -208,7 +208,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Operators
-  let operators = @operators.infixAndOperator | .infixOrOperator | .infixXorOperator
+  let operators = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .isComparable
 #--- Enter in type map
@@ -230,13 +230,12 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: ()
-    !operators
-    !()
-    !()
-    !()
+    !features: operators
+    !addAssignOperatorArguments: ()
+    !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !.null # No type for enumerated element for "for" instruction
-    !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
+    !typeForEnumeratedElement: .null
+    !headerFileName: "boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !headerKind: .oneHeader
   }
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -321,9 +320,9 @@ override method @boolsetTypeForGeneration appendDeclaration1
     !typeDefinition.classMethodMap
     !typeDefinition.optionalMethodMap
     !typeDefinition.enumerationDescriptorList
-    !typeDefinition.mHandledOperatorFlags
-    !typeDefinition.mAddAssignOperatorArguments
-    !typeDefinition.mTypeForEnumeratedElement
+    !typeDefinition.features
+    !typeDefinition.addAssignOperatorArguments
+    !typeDefinition.typeForEnumeratedElement
     !typeDefinition.supportCollectionValue
   ]
  }
