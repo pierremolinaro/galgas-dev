@@ -161,7 +161,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: ()
-    !features: .isReferenceEquatable
+    !features: .referenceEquatable
     !addAssignOperatorArguments: ()
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile

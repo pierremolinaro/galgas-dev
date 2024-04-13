@@ -37,7 +37,7 @@ refclass @sintPredefinedTypeAST : @predefinedTypeAST {
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .prefixMinusOperator | .prefixMinusOperatorNoOVF
       | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-      | .generateDescriptionGetterUtilityMethod  | .incDecOperator | .incDecOperatorNoOVF | .isComparable | .isEquatable
+      | .generateDescriptionGetterUtilityMethod  | .incDecOperator | .incDecOperatorNoOVF | .comparable | .equatable
       | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
       | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
       | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression

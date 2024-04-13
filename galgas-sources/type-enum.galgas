@@ -284,7 +284,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: ()
-    !features: .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
+    !features: .generateDescriptionGetterUtilityMethod | .comparable | .equatable
     !addAssignOperatorArguments: ()
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file

@@ -48,7 +48,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
     result = .infixSubOperator
       | .infixAndOperator | .infixOrOperator
       | .generateDescriptionGetterUtilityMethod | .plusEqualOperatorWithExpression
-      | .generateEnumerationHelperMethods | .isEquatable | .isComparable
+      | .generateEnumerationHelperMethods | .equatable | .comparable
       | .generateCopyConstructorAndAssignmentOperator
   }
 

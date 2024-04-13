@@ -1045,7 +1045,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .plusEqualOperatorWithExpression | .infixAddOperator
-      | .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
+      | .generateDescriptionGetterUtilityMethod | .comparable | .equatable
   }
 
   #-----------------------------------------------------------------------------------------------

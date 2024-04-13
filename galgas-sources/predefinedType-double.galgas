@@ -29,7 +29,7 @@ refclass @doublePredefinedTypeAST : @predefinedTypeAST {
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .prefixPlusOperator | .prefixMinusOperator | .infixModOperator | .infixDivOperatorNoOVF
-      | .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
+      | .generateDescriptionGetterUtilityMethod | .comparable | .equatable
       | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
       | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
   }

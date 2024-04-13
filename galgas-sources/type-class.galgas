@@ -381,7 +381,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     end
   #--- Clonable ?
     var @initializerMap initializerMap = ()
-    var @typeFeatures features = if self.mIsReference then .isReferenceEquatable else .isComparable end
+    var @typeFeatures features = if self.mIsReference then .referenceEquatable else .comparable end
     if self.clonable then
       features = features | .clonable
       var @functionSignature cloneInitializerArgumentList = ()

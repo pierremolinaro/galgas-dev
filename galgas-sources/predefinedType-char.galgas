@@ -27,7 +27,7 @@ refclass @charPredefinedTypeAST : @predefinedTypeAST {
   #-----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
-    result = .generateDescriptionGetterUtilityMethod | .isComparable | .isEquatable
+    result = .generateDescriptionGetterUtilityMethod | .comparable | .equatable
   }
 
   #-----------------------------------------------------------------------------------------------

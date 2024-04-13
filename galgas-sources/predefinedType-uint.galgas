@@ -36,7 +36,7 @@ refclass @uintPredefinedTypeAST : @predefinedTypeAST {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-      | .generateDescriptionGetterUtilityMethod | .incDecOperator | .incDecOperatorNoOVF | .isComparable | .isEquatable
+      | .generateDescriptionGetterUtilityMethod | .incDecOperator | .incDecOperatorNoOVF | .comparable | .equatable
       | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
       | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
       | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression

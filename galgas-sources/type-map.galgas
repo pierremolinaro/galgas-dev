@@ -609,7 +609,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: enumerationDescriptor
     !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
-      | .supportWithAccessor | .infixAddOperator | .isEquatable # | .isComparable
+      | .supportWithAccessor | .infixAddOperator | .equatable
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
     !mapSearchMethodList: self.mSearchMethodList
     !generateHeaderInSeparateFile: false # Do not generate header in separate file

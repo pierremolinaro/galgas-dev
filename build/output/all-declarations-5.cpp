@@ -8136,19 +8136,19 @@ GALGAS_typeFeatures GALGAS_typeFeatures::class_func_prefixNotOperator (UNUSED_LO
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_isEquatable (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_equatable (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 14) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_isComparable (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_comparable (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 15) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_isReferenceEquatable (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_referenceEquatable (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 16) ;
 }
 
@@ -8387,13 +8387,13 @@ void GALGAS_typeFeatures::description (String & ioString,
       ioString.appendCString (" prefixNotOperator") ;
     }
     if ((mFlags & ((uint64_t) 1) << 14) != 0) {
-      ioString.appendCString (" isEquatable") ;
+      ioString.appendCString (" equatable") ;
     }
     if ((mFlags & ((uint64_t) 1) << 15) != 0) {
-      ioString.appendCString (" isComparable") ;
+      ioString.appendCString (" comparable") ;
     }
     if ((mFlags & ((uint64_t) 1) << 16) != 0) {
-      ioString.appendCString (" isReferenceEquatable") ;
+      ioString.appendCString (" referenceEquatable") ;
     }
     if ((mFlags & ((uint64_t) 1) << 17) != 0) {
       ioString.appendCString (" plusEqualOperatorWithExpression") ;
@@ -8615,7 +8615,7 @@ GALGAS_bool GALGAS_typeFeatures::getter_prefixNotOperator (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_typeFeatures::getter_isEquatable (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_typeFeatures::getter_equatable (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
     result = GALGAS_bool ((mFlags & (uint64_t (1) << 14)) != 0) ;
@@ -8625,7 +8625,7 @@ GALGAS_bool GALGAS_typeFeatures::getter_isEquatable (UNUSED_LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_typeFeatures::getter_isComparable (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_typeFeatures::getter_comparable (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
     result = GALGAS_bool ((mFlags & (uint64_t (1) << 15)) != 0) ;
@@ -8635,7 +8635,7 @@ GALGAS_bool GALGAS_typeFeatures::getter_isComparable (UNUSED_LOCATION_ARGS) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_typeFeatures::getter_isReferenceEquatable (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_typeFeatures::getter_referenceEquatable (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
     result = GALGAS_bool ((mFlags & (uint64_t (1) << 16)) != 0) ;

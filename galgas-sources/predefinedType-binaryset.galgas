@@ -35,7 +35,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAndOperator | .infixOrOperator | .infixXorOperator
       | .prefixTildeOperator | .infixShiftOperator
-      | .generateDescriptionGetterUtilityMethod | .isEquatable // | .isComparable
+      | .generateDescriptionGetterUtilityMethod | .equatable
   }
 
   #-----------------------------------------------------------------------------------------------

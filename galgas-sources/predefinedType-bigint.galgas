@@ -313,7 +313,7 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
                .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
                .infixShiftOperator | .infixModOperator |
                .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
-               .incDecOperator | .isComparable | .isEquatable |
+               .incDecOperator | .comparable | .equatable |
                .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression |
                .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
   }

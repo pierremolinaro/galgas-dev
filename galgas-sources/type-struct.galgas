@@ -181,7 +181,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !acceptSetters: true
     )
   #--- Synthetize an initializer, if the structure defines none
-    var features = @typeFeatures.generateDescriptionGetterUtilityMethod | .isEquatable # | .isComparable
+    var features = @typeFeatures.generateDescriptionGetterUtilityMethod | .equatable
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey

@@ -113,9 +113,9 @@ boolset @typeFeatures {
   infixXorOperator,
   prefixNotOperator,
 
-  isEquatable, # Supports ==, != operators
-  isComparable, # Supports <, <=, >, >= operators
-  isReferenceEquatable,  # Supports ===, !== operators
+  equatable, # Supports ==, != operators
+  comparable, # Supports <, <=, >, >= operators
+  referenceEquatable,  # Supports ===, !== operators
 
   plusEqualOperatorWithExpression, # var += exp ;
   minusEqualOperatorWithExpression, # var -= exp ;

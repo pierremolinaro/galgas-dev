@@ -28,7 +28,7 @@ refclass @boolPredefinedTypeAST : @predefinedTypeAST {
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixNotOperator
-      | .generateDescriptionGetterUtilityMethod | .isEquatable | .isComparable
+      | .generateDescriptionGetterUtilityMethod | .equatable | .comparable
   }
 
   #-----------------------------------------------------------------------------------------------

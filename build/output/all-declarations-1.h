@@ -536,9 +536,13 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 
   public: static class GALGAS_typeFeatures class_func_clonable (LOCATION_ARGS) ;
 
+  public: static class GALGAS_typeFeatures class_func_comparable (LOCATION_ARGS) ;
+
   public: static class GALGAS_typeFeatures class_func_divEqualOperatorWithExpression (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_doNotGenererateObjectCompare (LOCATION_ARGS) ;
+
+  public: static class GALGAS_typeFeatures class_func_equatable (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) ;
 
@@ -578,12 +582,6 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 
   public: static class GALGAS_typeFeatures class_func_infixXorOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeFeatures class_func_isComparable (LOCATION_ARGS) ;
-
-  public: static class GALGAS_typeFeatures class_func_isEquatable (LOCATION_ARGS) ;
-
-  public: static class GALGAS_typeFeatures class_func_isReferenceEquatable (LOCATION_ARGS) ;
-
   public: static class GALGAS_typeFeatures class_func_minusEqualOperatorWithExpression (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_mulEqualOperatorWithExpression (LOCATION_ARGS) ;
@@ -603,6 +601,8 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
   public: static class GALGAS_typeFeatures class_func_prefixPlusOperator (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_prefixTildeOperator (LOCATION_ARGS) ;
+
+  public: static class GALGAS_typeFeatures class_func_referenceEquatable (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_supportWithAccessor (LOCATION_ARGS) ;
 
@@ -642,9 +642,13 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_clonable (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_comparable (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_divEqualOperatorWithExpression (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_doNotGenererateObjectCompare (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_equatable (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) const ;
 
@@ -684,12 +688,6 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixXorOperator (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isComparable (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isEquatable (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isReferenceEquatable (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_minusEqualOperatorWithExpression (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_mulEqualOperatorWithExpression (LOCATION_ARGS) const ;
@@ -709,6 +707,8 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_prefixPlusOperator (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_prefixTildeOperator (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_referenceEquatable (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_supportWithAccessor (LOCATION_ARGS) const ;
 
