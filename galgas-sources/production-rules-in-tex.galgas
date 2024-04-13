@@ -115,7 +115,7 @@ method @productionRuleListForGrammarAnalysis-element displayRule
   ?!@string ioGeneratedCode
 {
   var @string currentNode = "P0start"
-  var @rowList rowArray = §[!§[!currentNode !"[firstPoint] §[]"]]
+  var @rowList rowArray = §§ §[.init (§§ §[.init (currentNode, "[firstPoint] §[]")])]
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint column = 1
@@ -171,9 +171,9 @@ method @productionRuleListForGrammarAnalysis-element displayRuleVertically
   var @string currentNode = "P0start"
   var @rowList rowArray = §[]
   for * in 1 ..< [self.mInstructionList count] do
-    rowArray += !§[!"" !""]
+    rowArray += !§§ §[.init ("", "")]
   end
-  rowArray += !§[!currentNode !"[firstPoint] §[]"]
+  rowArray += !§§ §[.init (currentNode, "[firstPoint] §[]")]
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 # Unused

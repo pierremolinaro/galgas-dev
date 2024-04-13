@@ -82,9 +82,9 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionGetterMapForGlobalCheckings_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionGetterMapForGlobalCheckings_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionGetterMapForGlobalCheckings ;
@@ -352,9 +352,9 @@ class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_galgas_33_QualifiedFeatureList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_galgas_33_QualifiedFeatureList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_galgas_33_QualifiedFeatureList ;

@@ -2356,9 +2356,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
   const enumGalgasBool test_63 = in_SUPPORT_5F_COLLECTION_5F_VALUE.boolEnum () ;
   switch (test_63) {
   case kBoolTrue : {
-    result.appendString ("\n//--- Append element\n  public: void enterElement (const class GALGAS_") ;
+    result.appendString ("\n//--- Append element\n  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_") ;
     result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 404)).stringValue ()) ;
-    result.appendString (" & inValue,\n                             Compiler * /* inCompiler */\n                             COMMA_LOCATION_ARGS) ;\n\n") ;
+    result.appendString (" & inValue,\n                                              Compiler * /* inCompiler */\n                                              COMMA_LOCATION_ARGS) ;\n\n") ;
     } break ;
   case kBoolFalse : {
     } break ;
@@ -2394,17 +2394,17 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendString (" & inEnumeratedObject,\n     ") ;
     result.appendSpacesUntilColumn (columnMarker) ;
     result.appendString ("const EnumerationOrder inOrder) ;\n\n//--- Current element access\n") ;
-    GALGAS_uint index_19499_ (0) ;
+    GALGAS_uint index_19550_ (0) ;
     if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_19499 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, EnumerationOrder::up) ;
-      while (enumerator_19499.hasCurrentObject ()) {
+      cEnumerator_enumerationDescriptorList enumerator_19550 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, EnumerationOrder::up) ;
+      while (enumerator_19550.hasCurrentObject ()) {
         result.appendString ("  public: class GALGAS_") ;
-        result.appendString (extensionGetter_identifierRepresentation (enumerator_19499.current_mEnumeratedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 427)).stringValue ()) ;
+        result.appendString (extensionGetter_identifierRepresentation (enumerator_19550.current_mEnumeratedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 427)).stringValue ()) ;
         result.appendString (" current_") ;
-        result.appendString (enumerator_19499.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 427)).stringValue ()) ;
+        result.appendString (enumerator_19550.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 427)).stringValue ()) ;
         result.appendString (" (LOCATION_ARGS) const ;\n") ;
-        index_19499_.increment () ;
-        enumerator_19499.gotoNextObject () ;
+        index_19550_.increment () ;
+        enumerator_19550.gotoNextObject () ;
       }
     }
     const enumGalgasBool test_66 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 429)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 429)).boolEnum () ;

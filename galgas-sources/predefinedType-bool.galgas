@@ -29,7 +29,7 @@ refclass @boolPredefinedTypeAST : @predefinedTypeAST {
   override getter initializers -> @initializerSignatureList {
     var initializer = @formalInputParameterListAST ()
     initializer += !["" nowhere] !["bool" nowhere] !["inValue" nowhere] !false !true
-    result = §[!initializer]
+    result = §§ §[.init (initializer)]
   }
 
   #-----------------------------------------------------------------------------------------------

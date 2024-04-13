@@ -1572,9 +1572,9 @@ class GALGAS_collectionValueElementList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_collectionValueElementList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_collectionValueElementList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_collectionValueElementList ;
@@ -2008,9 +2008,9 @@ class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_collectionValueElementListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_collectionValueElementListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_collectionValueElementListForGeneration ;
@@ -2413,9 +2413,9 @@ class GALGAS_collectionValueElementListEX : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_collectionValueElementListEX_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_collectionValueElementListEX_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_collectionValueElementListEX ;
@@ -2945,9 +2945,9 @@ class GALGAS_collectionValueElementListForGenerationEX : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_collectionValueElementListForGenerationEX_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_collectionValueElementListForGenerationEX_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_collectionValueElementListForGenerationEX ;
@@ -8974,9 +8974,9 @@ class GALGAS_castInstructionBranchListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_castInstructionBranchListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_castInstructionBranchListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_castInstructionBranchListAST ;
@@ -9497,9 +9497,9 @@ class GALGAS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_castInstructionBranchListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_castInstructionBranchListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_castInstructionBranchListForGeneration ;
@@ -11642,9 +11642,9 @@ class GALGAS_fixitListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_fixitListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_fixitListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_fixitListAST ;
@@ -12228,9 +12228,9 @@ class GALGAS_fixitListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_fixitListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_fixitListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_fixitListForGeneration ;

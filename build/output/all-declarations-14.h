@@ -1969,9 +1969,9 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_headerCompositionMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_headerCompositionMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_headerCompositionMap ;
@@ -2229,9 +2229,9 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_headerRepartitionMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_headerRepartitionMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_headerRepartitionMap ;
@@ -2474,9 +2474,9 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_projectQualifiedFeatureMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_projectQualifiedFeatureMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_projectQualifiedFeatureMap ;
@@ -2797,9 +2797,9 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_XCodeGroupList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_XCodeGroupList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_XCodeGroupList ;
@@ -3248,9 +3248,9 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_XCodeToolTargetList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_XCodeToolTargetList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_XCodeToolTargetList ;
@@ -3847,9 +3847,9 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_XCodeAppTargetList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_XCodeAppTargetList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_XCodeAppTargetList ;

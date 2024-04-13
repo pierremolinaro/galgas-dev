@@ -218,7 +218,7 @@ proc performGalgas3ProjectGlobalCheckings
   end
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
-  var @descendantClassListMap descendantClassListMap = §[]
+  var @descendantClassListMap descendantClassListMap = ()
   for (lkey element) in ioTypeMap do
      let superType = [element definition].superType
      if not [superType isNull] then
@@ -228,18 +228,18 @@ proc performGalgas3ProjectGlobalCheckings
      end
   end
 #--- Build Extension method listmaps
-  var @genericExtensionMethodListMap abstractExtensionMethodListMap = §[]
-  var @genericExtensionMethodListMap extensionMethodListMap = §[]
-  var @genericExtensionMethodListMap overridingExtensionMethodListMap = §[]
-  var @genericExtensionMethodListMap overridingAbstractExtensionMethodListMap = §[]
-  var @genericExtensionMethodListMap abstractExtensionGetterListMap = §[]
-  var @genericExtensionMethodListMap extensionReaderListMap = §[]
-  var @genericExtensionMethodListMap overridingExtensionGetterListMap = §[]
-  var @genericExtensionMethodListMap overridingAbstractExtensionGetterListMap = §[]
-  var @genericExtensionMethodListMap abstractExtensionSetterListMap = §[]
-  var @genericExtensionMethodListMap extensionSetterListMap = §[]
-  var @genericExtensionMethodListMap overridingExtensionSetterListMap = §[]
-  var @genericExtensionMethodListMap overridingAbstractExtensionSetterListMap = §[]
+  var @genericExtensionMethodListMap abstractExtensionMethodListMap = ()
+  var @genericExtensionMethodListMap extensionMethodListMap = ()
+  var @genericExtensionMethodListMap overridingExtensionMethodListMap = ()
+  var @genericExtensionMethodListMap overridingAbstractExtensionMethodListMap = ()
+  var @genericExtensionMethodListMap abstractExtensionGetterListMap = ()
+  var @genericExtensionMethodListMap extensionReaderListMap = ()
+  var @genericExtensionMethodListMap overridingExtensionGetterListMap = ()
+  var @genericExtensionMethodListMap overridingAbstractExtensionGetterListMap = ()
+  var @genericExtensionMethodListMap abstractExtensionSetterListMap = ()
+  var @genericExtensionMethodListMap extensionSetterListMap = ()
+  var @genericExtensionMethodListMap overridingExtensionSetterListMap = ()
+  var @genericExtensionMethodListMap overridingAbstractExtensionSetterListMap = ()
   for (mSemanticDeclaration) in inSemanticDeclarationList do
     [mSemanticDeclaration buildExtensionListMaps
       !?abstractExtensionSetterListMap

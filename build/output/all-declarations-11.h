@@ -1562,9 +1562,9 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_switchBranchesAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_switchBranchesAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_switchBranchesAST ;
@@ -2072,9 +2072,9 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_switchBranchesForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_switchBranchesForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_switchBranchesForGeneration ;
@@ -7914,9 +7914,9 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_syntaxInstructionListForGrammarAnalysis ;
@@ -8193,9 +8193,9 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_productionRuleListForGrammarAnalysis ;
@@ -8424,9 +8424,9 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis ;
@@ -8660,9 +8660,9 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis ;
@@ -9028,9 +9028,9 @@ class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_branchListForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_branchListForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_branchListForGrammarAnalysis ;
@@ -9509,9 +9509,9 @@ class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_syntaxComponentListForGrammarAnalysis ;
@@ -9723,9 +9723,9 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_terminalSymbolsMapForGrammarAnalysis ;
@@ -10021,9 +10021,9 @@ class GALGAS_rowList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_rowList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_rowList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_rowList ;
@@ -10295,9 +10295,9 @@ class GALGAS_programListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_programListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_programListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_programListForGeneration ;
@@ -10452,12 +10452,6 @@ class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: void enterElement (const class GALGAS_genericExtensionMethodListMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class cEnumerator_genericExtensionMethodListMap ;
  
@@ -10646,12 +10640,6 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: void enterElement (const class GALGAS_descendantClassListMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Friend
   friend class cEnumerator_descendantClassListMap ;
  
@@ -10841,9 +10829,9 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionMethodMapForGlobalCheckings_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionMethodMapForGlobalCheckings_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionMethodMapForGlobalCheckings ;
@@ -11050,9 +11038,9 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionSetterMapForGlobalCheckings_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionSetterMapForGlobalCheckings_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionSetterMapForGlobalCheckings ;

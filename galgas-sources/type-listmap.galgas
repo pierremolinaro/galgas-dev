@@ -250,7 +250,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !isConcrete: true # Concrete Type
     !superType: .null
     !typeKind: .listMapType
-    !supportCollectionValue: true # Support collection value
+    !supportCollectionValue: false
     !allTypedPropertyList: §[]
     !propertyMap: §[]
     !currentTypedPropertyList: listTypedAttributeList

@@ -162,9 +162,9 @@ class GALGAS_typeNameFormalParameterNameList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_typeNameFormalParameterNameList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_typeNameFormalParameterNameList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_typeNameFormalParameterNameList ;
@@ -410,9 +410,9 @@ class GALGAS_externTypeConstructorList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_externTypeConstructorList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_externTypeConstructorList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_externTypeConstructorList ;
@@ -670,9 +670,9 @@ class GALGAS_externTypeGetterList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_externTypeGetterList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_externTypeGetterList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_externTypeGetterList ;
@@ -937,9 +937,9 @@ class GALGAS_externTypeSetterList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_externTypeSetterList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_externTypeSetterList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_externTypeSetterList ;
@@ -1157,9 +1157,9 @@ class GALGAS_formalParameterListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_formalParameterListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_formalParameterListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_formalParameterListAST ;
@@ -1649,9 +1649,9 @@ class GALGAS_externTypeMethodList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_externTypeMethodList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_externTypeMethodList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_externTypeMethodList ;
@@ -2147,9 +2147,9 @@ class GALGAS_graphInsertModifierList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_graphInsertModifierList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_graphInsertModifierList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_graphInsertModifierList ;
@@ -3237,9 +3237,9 @@ class GALGAS_insertMethodListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_insertMethodListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_insertMethodListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_insertMethodListAST ;
@@ -3595,9 +3595,9 @@ class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_mapRemoveMethodListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_mapRemoveMethodListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_mapRemoveMethodListAST ;
@@ -3830,9 +3830,9 @@ class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_insertOrReplaceDeclarationListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_insertOrReplaceDeclarationListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_insertOrReplaceDeclarationListAST ;
@@ -4238,9 +4238,9 @@ class GALGAS_insertMethodMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_insertMethodMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_insertMethodMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_insertMethodMap ;
@@ -4447,9 +4447,9 @@ class GALGAS_searchMethodMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_searchMethodMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_searchMethodMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_searchMethodMap ;
@@ -4717,9 +4717,9 @@ class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_sortedListSortDescriptorListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_sortedListSortDescriptorListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_sortedListSortDescriptorListAST ;
@@ -5197,9 +5197,9 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_sortDescriptorListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_sortDescriptorListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_sortDescriptorListForGeneration ;
@@ -5924,9 +5924,9 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_formalInputParameterListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_formalInputParameterListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_formalInputParameterListAST ;
@@ -6499,9 +6499,9 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_formalInputParameterListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_formalInputParameterListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_formalInputParameterListForGeneration ;
@@ -7067,9 +7067,9 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_formalParameterListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_formalParameterListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_formalParameterListForGeneration ;
@@ -7559,9 +7559,9 @@ class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_semanticInstructionListAST_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_semanticInstructionListAST_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_semanticInstructionListAST ;
@@ -8274,9 +8274,9 @@ class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_semanticInstructionListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_semanticInstructionListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_semanticInstructionListForGeneration ;
@@ -10679,9 +10679,9 @@ class GALGAS_initializerSignatureList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_initializerSignatureList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_initializerSignatureList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_initializerSignatureList ;
@@ -11459,9 +11459,9 @@ class GALGAS_formalParameterSignature : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_formalParameterSignature_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_formalParameterSignature_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_formalParameterSignature ;
@@ -11811,9 +11811,9 @@ class GALGAS_optionalMethodSignature : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_optionalMethodSignature_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_optionalMethodSignature_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_optionalMethodSignature ;

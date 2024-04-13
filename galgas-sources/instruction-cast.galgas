@@ -93,7 +93,7 @@ syntax extension galgas3InstructionsSyntax {
       outElseOrDefault += !@errorInstructionAST {
         !instructionLocation
         !errorLocationExpression
-        !@literalStringExpressionAST {!instructionLocation!§[!"cast instruction run-time error"]}
+        !@literalStringExpressionAST (instructionLocation, §§ §[.init ("cast instruction run-time error")])
         !§[]
         !§[]
       }

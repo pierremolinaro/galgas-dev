@@ -33,7 +33,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
   #-----------------------------------------------------------------------------------------------
 
   override getter initializers -> @initializerSignatureList {
-    result = §[!@formalInputParameterListAST §[]]
+    result = §§ §[.init (@formalInputParameterListAST §[])]
   }
 
   #-----------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
   override method getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
                                            !@functionSignature outAddAssignArgumentList {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringTypeIndex]
-    outAddAssignArgumentList = §[!["" nowhere] !stringTypeIndex !"inString" !true]
+    outAddAssignArgumentList = §§ §[.init (["" nowhere], stringTypeIndex, "inString", true)]
   }
 
   #-----------------------------------------------------------------------------------------------

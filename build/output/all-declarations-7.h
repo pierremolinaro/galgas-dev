@@ -106,9 +106,9 @@ class GALGAS_extensionMethodMapForType : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionMethodMapForType_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionMethodMapForType_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionMethodMapForType ;
@@ -366,9 +366,9 @@ class GALGAS_extensionMethodMapForBuildingContext : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionMethodMapForBuildingContext_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionMethodMapForBuildingContext_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionMethodMapForBuildingContext ;
@@ -602,9 +602,9 @@ class GALGAS_extensionSetterMapForType : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionSetterMapForType_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionSetterMapForType_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionSetterMapForType ;
@@ -847,9 +847,9 @@ class GALGAS_extensionSetterMapForBuildingContext : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionSetterMapForBuildingContext_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionSetterMapForBuildingContext_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionSetterMapForBuildingContext ;
@@ -1107,9 +1107,9 @@ class GALGAS_extensionGetterMapForType : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionGetterMapForType_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionGetterMapForType_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionGetterMapForType ;
@@ -1382,9 +1382,9 @@ class GALGAS_extensionGetterMapForBuildingContext : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_extensionGetterMapForBuildingContext_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_extensionGetterMapForBuildingContext_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_extensionGetterMapForBuildingContext ;
@@ -1632,9 +1632,9 @@ class GALGAS_wrapperExtensionMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_wrapperExtensionMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_wrapperExtensionMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_wrapperExtensionMap ;
@@ -2057,9 +2057,9 @@ class GALGAS_semanticExpressionListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_semanticExpressionListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_semanticExpressionListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_semanticExpressionListForGeneration ;
@@ -3704,9 +3704,9 @@ class GALGAS_listOfSemanticInstructionListForGeneration : public AC_GALGAS_list 
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_listOfSemanticInstructionListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_listOfSemanticInstructionListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_listOfSemanticInstructionListForGeneration ;
@@ -4205,9 +4205,9 @@ class GALGAS_semanticDeclarationListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_semanticDeclarationListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_semanticDeclarationListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_semanticDeclarationListForGeneration ;
@@ -4459,9 +4459,9 @@ class GALGAS_signatureForGrammarAnalysis : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_signatureForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_signatureForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_signatureForGrammarAnalysis ;
@@ -4673,9 +4673,9 @@ class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GALGAS_map 
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis ;
@@ -4931,9 +4931,9 @@ class GALGAS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_nonTerminalSymbolMapForGrammarAnalysis ;
@@ -5231,9 +5231,9 @@ class GALGAS_nonTerminalToAddList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_nonTerminalToAddList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_nonTerminalToAddList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_nonTerminalToAddList ;
@@ -5504,9 +5504,9 @@ class GALGAS_terminalCheckAssignementList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_terminalCheckAssignementList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_terminalCheckAssignementList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_terminalCheckAssignementList ;
@@ -5937,9 +5937,9 @@ class GALGAS_filewrapperTemplateListForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_filewrapperTemplateListForGeneration_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_filewrapperTemplateListForGeneration_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_filewrapperTemplateListForGeneration ;
@@ -6319,9 +6319,9 @@ class GALGAS_localConstantList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_localConstantList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_localConstantList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_localConstantList ;
@@ -6618,9 +6618,9 @@ class GALGAS_localInitializedVariableList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_localInitializedVariableList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_localInitializedVariableList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_localInitializedVariableList ;
@@ -6981,9 +6981,9 @@ class GALGAS_propertyIndexMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_propertyIndexMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_propertyIndexMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_propertyIndexMap ;
@@ -7252,9 +7252,9 @@ class GALGAS_nonterminalLabelMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_nonterminalLabelMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_nonterminalLabelMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_nonterminalLabelMap ;
@@ -7527,9 +7527,9 @@ class GALGAS_nonterminalMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_nonterminalMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_nonterminalMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_nonterminalMap ;
@@ -7869,9 +7869,9 @@ class GALGAS_ruleLabelImplementationList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_ruleLabelImplementationList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_ruleLabelImplementationList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_ruleLabelImplementationList ;
@@ -8181,9 +8181,9 @@ class GALGAS_ruleDeclarationList : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
 //--- Append element
-  public: void enterElement (const class GALGAS_ruleDeclarationList_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_ruleDeclarationList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_ruleDeclarationList ;
@@ -8685,9 +8685,9 @@ class GALGAS_uselessEntityLocationMap : public AC_GALGAS_map {
 
 
 //--- Append element
-  public: void enterElement (const class GALGAS_uselessEntityLocationMap_2D_element & inValue,
-                             Compiler * /* inCompiler */
-                             COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_uselessEntityLocationMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
   friend class cEnumerator_uselessEntityLocationMap ;

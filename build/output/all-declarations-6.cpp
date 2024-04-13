@@ -860,22 +860,14 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::init (Compiler * inComp
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_galgasDeclarationAST::setInitializedProperties (Compiler * inCompiler) {
-GALGAS_semanticDeclarationListAST temp_0 = GALGAS_semanticDeclarationListAST::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 458)) ;
-  mProperty_mDeclarationList = temp_0 ;
-GALGAS_stringset temp_1 = GALGAS_stringset::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 459)) ;
-  mProperty_mImplicitTypeDeclarationSet = temp_1 ;
-GALGAS_galgas_33_SyntaxComponentListAST temp_2 = GALGAS_galgas_33_SyntaxComponentListAST::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 460)) ;
-  mProperty_mSyntaxComponentList = temp_2 ;
-GALGAS_syntaxExtensions temp_3 = GALGAS_syntaxExtensions::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 461)) ;
-  mProperty_mSyntaxExtensions = temp_3 ;
-GALGAS_galgasGUIComponentListAST temp_4 = GALGAS_galgasGUIComponentListAST::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 462)) ;
-  mProperty_mGUIComponentList = temp_4 ;
-GALGAS_prologueEpilogueList temp_5 = GALGAS_prologueEpilogueList::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 463)) ;
-  mProperty_mPrologueDeclarationList = temp_5 ;
-GALGAS_programRuleList temp_6 = GALGAS_programRuleList::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 464)) ;
-  mProperty_mSourceRuleList = temp_6 ;
-GALGAS_prologueEpilogueList temp_7 = GALGAS_prologueEpilogueList::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 465)) ;
-  mProperty_mEpilogueDeclarationList = temp_7 ;
+  mProperty_mDeclarationList = GALGAS_semanticDeclarationListAST::init (inCompiler COMMA_HERE) ;
+  mProperty_mImplicitTypeDeclarationSet = GALGAS_stringset::init (inCompiler COMMA_HERE) ;
+  mProperty_mSyntaxComponentList = GALGAS_galgas_33_SyntaxComponentListAST::init (inCompiler COMMA_HERE) ;
+  mProperty_mSyntaxExtensions = GALGAS_syntaxExtensions::init (inCompiler COMMA_HERE) ;
+  mProperty_mGUIComponentList = GALGAS_galgasGUIComponentListAST::init (inCompiler COMMA_HERE) ;
+  mProperty_mPrologueDeclarationList = GALGAS_prologueEpilogueList::init (inCompiler COMMA_HERE) ;
+  mProperty_mSourceRuleList = GALGAS_programRuleList::init (inCompiler COMMA_HERE) ;
+  mProperty_mEpilogueDeclarationList = GALGAS_prologueEpilogueList::init (inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------

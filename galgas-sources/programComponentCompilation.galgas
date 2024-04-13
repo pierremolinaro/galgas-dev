@@ -110,12 +110,8 @@ private proc compileProgramRulesGalgas3
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
     [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
     ioUsefulnessRootEntities += !usefulnessName
-    let @formalParameterListAST argumentList = §[
-      !["" nowhere]
-      !@formalArgumentPassingModeAST. argumentConstantIn
-      !@lstring {!"lstring" !@location.here}
-      !mSourceFileVariableName
-      !mSourceFileVariableNameIsUnused
+    let @formalParameterListAST argumentList = §§ §[
+      .init (["" nowhere], .argumentConstantIn, @lstring {!"lstring" !@location.here}, mSourceFileVariableName, mSourceFileVariableNameIsUnused)
     ]
     analyzeRoutineBody (
       !usefulnessName

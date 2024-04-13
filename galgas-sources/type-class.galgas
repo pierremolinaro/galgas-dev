@@ -371,7 +371,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
           [!?setterMap insertKey
             !.init {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
-            !§[!["" nowhere] !property.typeEntry !.argumentIn !property.name.string]
+            !§§ §[.init (["" nowhere], property.typeEntry, .argumentIn, property.name.string)]
             !false # Compiler argument
             !.isBasicFinal
             !"" # No error message

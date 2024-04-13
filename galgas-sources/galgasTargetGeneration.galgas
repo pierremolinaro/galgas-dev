@@ -533,7 +533,7 @@ proc updateGalgasTargets
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
-    let @stringlist extensionList = §[!"icns"]
+    let @stringlist extensionList =§§ §[.init ("icns")]
     let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
@@ -551,58 +551,58 @@ proc updateGalgasTargets
     end
     headerSearchPaths += ")"
   #--- Default build configuration
-    var @stringlist xcodeSettingList = §[
-      !"ALWAYS_SEARCH_USER_PATHS = NO",
-      !"CLANG_CXX_LANGUAGE_STANDARD = \"c++17\"",
-      !"CLANG_ENABLE_OBJC_ARC = YES",
-      !"CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES",
-      !"CLANG_WARN_COMMA = YES",
-      !"CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES",
-      !"CLANG_WARN_EMPTY_BODY = YES",
-      !"CLANG_WARN_INFINITE_RECURSION = YES",
-      !"CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES",
-      !"CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES",
-      !"CLANG_WARN_RANGE_LOOP_ANALYSIS = YES",
-      !"CLANG_WARN_STRICT_PROTOTYPES = YES",
-      !"CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES",
-      !"CLANG_WARN_SUSPICIOUS_MOVE = YES",
-      !"CLANG_WARN_UNREACHABLE_CODE = YES",
-      !"CLANG_WARN__DUPLICATE_METHOD_MATCH = YES",
-      !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO",
-      !"GCC_NO_COMMON_BLOCKS = YES",
-      !"ENABLE_STRICT_OBJC_MSGSEND = YES",
-      !"GCC_PRECOMPILE_PREFIX_HEADER = YES",
-      !"GCC_THREADSAFE_STATICS = NO",
-      !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES",
-      !"GCC_TREAT_WARNINGS_AS_ERRORS = YES",
-      !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES",
-      !"GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO",
-      !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES",
-      !"CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES",
-      !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES",
-      !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES",
-      !"GCC_WARN_ABOUT_RETURN_TYPE = YES",
-      !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES",
-      !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES",
-      !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES",
-      !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO",
-      !"GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES",
-      !"GCC_WARN_MISSING_PARENTHESES = YES",
-      !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES",
-      !"GCC_WARN_PEDANTIC = NO",
-      !"GCC_WARN_SHADOW = YES",
-      !"GCC_WARN_SIGN_COMPARE = YES",
-      !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES",
-      !"GCC_WARN_UNDECLARED_SELECTOR = YES",
-      !"GCC_WARN_UNINITIALIZED_AUTOS = YES",
-      !"GCC_WARN_UNKNOWN_PRAGMAS = YES",
-      !"GCC_WARN_UNUSED_FUNCTION = YES",
-      !"GCC_WARN_UNUSED_LABEL = YES",
-      !"GCC_WARN_UNUSED_VALUE = YES",
-      !"GCC_WARN_UNUSED_VARIABLE = YES",
-      !headerSearchPaths,
-      !"SDKROOT = " + SDK,
-      !"COPY_PHASE_STRIP = NO"
+    var @stringlist xcodeSettingList = §§ §[
+      .init ("ALWAYS_SEARCH_USER_PATHS = NO"),
+      .init ("CLANG_CXX_LANGUAGE_STANDARD = \"c++17\""),
+      .init ("CLANG_ENABLE_OBJC_ARC = YES"),
+      .init ("CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES"),
+      .init ("CLANG_WARN_COMMA = YES"),
+      .init ("CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES"),
+      .init ("CLANG_WARN_EMPTY_BODY = YES"),
+      .init ("CLANG_WARN_INFINITE_RECURSION = YES"),
+      .init ("CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES"),
+      .init ("CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES"),
+      .init ("CLANG_WARN_RANGE_LOOP_ANALYSIS = YES"),
+      .init ("CLANG_WARN_STRICT_PROTOTYPES = YES"),
+      .init ("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES"),
+      .init ("CLANG_WARN_SUSPICIOUS_MOVE = YES"),
+      .init ("CLANG_WARN_UNREACHABLE_CODE = YES"),
+      .init ("CLANG_WARN__DUPLICATE_METHOD_MATCH = YES"),
+      .init ("GCC_GENERATE_DEBUGGING_SYMBOLS = NO"),
+      .init ("GCC_NO_COMMON_BLOCKS = YES"),
+      .init ("ENABLE_STRICT_OBJC_MSGSEND = YES"),
+      .init ("GCC_PRECOMPILE_PREFIX_HEADER = YES"),
+      .init ("GCC_THREADSAFE_STATICS = NO"),
+      .init ("GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES"),
+      .init ("GCC_TREAT_WARNINGS_AS_ERRORS = YES"),
+      .init ("GCC_WARN_64_TO_32_BIT_CONVERSION = YES"),
+      .init ("GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO"),
+      .init ("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES"),
+      .init ("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES"),
+      .init ("GCC_WARN_ABOUT_MISSING_NEWLINE = YES"),
+      .init ("GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES"),
+      .init ("GCC_WARN_ABOUT_RETURN_TYPE = YES"),
+      .init ("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES"),
+      .init ("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES"),
+      .init ("GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES"),
+      .init ("GCC_WARN_INHIBIT_ALL_WARNINGS = NO"),
+      .init ("GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES"),
+      .init ("GCC_WARN_MISSING_PARENTHESES = YES"),
+      .init ("GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES"),
+      .init ("GCC_WARN_PEDANTIC = NO"),
+      .init ("GCC_WARN_SHADOW = YES"),
+      .init ("GCC_WARN_SIGN_COMPARE = YES"),
+      .init ("GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES"),
+      .init ("GCC_WARN_UNDECLARED_SELECTOR = YES"),
+      .init ("GCC_WARN_UNINITIALIZED_AUTOS = YES"),
+      .init ("GCC_WARN_UNKNOWN_PRAGMAS = YES"),
+      .init ("GCC_WARN_UNUSED_FUNCTION = YES"),
+      .init ("GCC_WARN_UNUSED_LABEL = YES"),
+      .init ("GCC_WARN_UNUSED_VALUE = YES"),
+      .init ("GCC_WARN_UNUSED_VARIABLE = YES"),
+      .init (headerSearchPaths),
+      .init ("SDKROOT = " + SDK),
+      .init ("COPY_PHASE_STRIP = NO")
     ]
     if SDK == "macosx10.6" then
       xcodeSettingList += !"CLANG_ENABLE_OBJC_ARC = NO"
@@ -708,16 +708,16 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Binary Decision Diagrams"
       !groupPath:"bdd"
-      !fileNames: §[
-        !"BinaryDecisionDiagramRelationConfiguration.cpp",
-        !"BinaryDecisionDiagramRelationConfiguration.h",
-        !"BinaryDecisionDiagramRelation.cpp",
-        !"BinaryDecisionDiagramRelation.h",
-        !"BinaryDecisionDiagramRelationSingleType.cpp",
-        !"BinaryDecisionDiagramRelationSingleType.h",
-        !"BinaryDecisionDiagram-node.h",
-        !"BinaryDecisionDiagram.cpp",
-        !"BinaryDecisionDiagram.h"
+      !fileNames: §§ §[
+        "BinaryDecisionDiagramRelationConfiguration.cpp",
+        "BinaryDecisionDiagramRelationConfiguration.h",
+        "BinaryDecisionDiagramRelation.cpp",
+        "BinaryDecisionDiagramRelation.h",
+        "BinaryDecisionDiagramRelationSingleType.cpp",
+        "BinaryDecisionDiagramRelationSingleType.h",
+        "BinaryDecisionDiagram-node.h",
+        "BinaryDecisionDiagram.cpp",
+        "BinaryDecisionDiagram.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -732,44 +732,44 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Big Integers"
       !groupPath:"big-integers"
-      !fileNames: §[
-        !"BigSigned-add.cpp",
-        !"BigSigned-bit.cpp",
-        !"BigSigned-chunk-operations.cpp",
-        !"BigSigned-constructors.cpp",
-        !"BigSigned-conversions.cpp",
-        !"BigSigned-divide.cpp",
-        !"BigSigned-logic-operations.cpp",
-        !"BigSigned-multiply.cpp",
-        !"BigSigned-print.cpp",
-        !"BigSigned-shifts.cpp",
-        !"BigSigned-subtract.cpp",
-        !"BigSigned-utilities.cpp",
-        !"BigSigned.cpp",
-        !"BigSigned.h",
-        !"BigUnsigned-add.cpp",
-        !"BigUnsigned-bit.cpp",
-        !"BigUnsigned-chunk-operations.cpp",
-        !"BigUnsigned-constructors.cpp",
-        !"BigUnsigned-conversions.cpp",
-        !"BigUnsigned-divide-naive.cpp",
-        !"BigUnsigned-divide.cpp",
-        !"BigUnsigned-logic-operations.cpp",
-        !"BigUnsigned-multiply.cpp",
-        !"BigUnsigned-print.cpp",
-        !"BigUnsigned-shifts.cpp",
-        !"BigUnsigned-subtract.cpp",
-        !"BigUnsigned-utilities.cpp",
-        !"BigUnsigned.h",
-        !"ChunkSelectSize.h",
-        !"ChunkSharedArray.cpp",
-        !"ChunkSharedArray.h",
-        !"UInt128.cpp",
-        !"UInt128.h",
-        !"chunk-U16.h",
-        !"chunk-U32.h",
-        !"chunk-U64.h",
-        !"chunk-U8.h"
+      !fileNames: §§ §[
+        "BigSigned-add.cpp",
+        "BigSigned-bit.cpp",
+        "BigSigned-chunk-operations.cpp",
+        "BigSigned-constructors.cpp",
+        "BigSigned-conversions.cpp",
+        "BigSigned-divide.cpp",
+        "BigSigned-logic-operations.cpp",
+        "BigSigned-multiply.cpp",
+        "BigSigned-print.cpp",
+        "BigSigned-shifts.cpp",
+        "BigSigned-subtract.cpp",
+        "BigSigned-utilities.cpp",
+        "BigSigned.cpp",
+        "BigSigned.h",
+        "BigUnsigned-add.cpp",
+        "BigUnsigned-bit.cpp",
+        "BigUnsigned-chunk-operations.cpp",
+        "BigUnsigned-constructors.cpp",
+        "BigUnsigned-conversions.cpp",
+        "BigUnsigned-divide-naive.cpp",
+        "BigUnsigned-divide.cpp",
+        "BigUnsigned-logic-operations.cpp",
+        "BigUnsigned-multiply.cpp",
+        "BigUnsigned-print.cpp",
+        "BigUnsigned-shifts.cpp",
+        "BigUnsigned-subtract.cpp",
+        "BigUnsigned-utilities.cpp",
+        "BigUnsigned.h",
+        "ChunkSelectSize.h",
+        "ChunkSharedArray.cpp",
+        "ChunkSharedArray.h",
+        "UInt128.cpp",
+        "UInt128.h",
+        "chunk-U16.h",
+        "chunk-U32.h",
+        "chunk-U64.h",
+        "chunk-U8.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -784,12 +784,12 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Utilities"
       !groupPath:"cocoa_utilities"
-      !fileNames: §[
-        !"main.m",
-        !"PMCancelButtonForPanel.h",
-        !"PMCancelButtonForPanel.m",
-        !"PMOkButtonForPanel.h",
-        !"PMOkButtonForPanel.m"
+      !fileNames: §§ §[
+        "main.m",
+        "PMCancelButtonForPanel.h",
+        "PMCancelButtonForPanel.m",
+        "PMOkButtonForPanel.h",
+        "PMOkButtonForPanel.m"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -804,58 +804,58 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Objc GALGAS"
       !groupPath:"cocoa_objc_galgas"
-      !fileNames: §[
-        !"Base.lproj/OC_GGS_Document.xib",
-        !"Base.lproj/PMDebug.xib",
-        !"Base.lproj/MainMenu.xib",
-        !"enterDefaultCommandLineOptions.h",
-        !"enterDefaultCommandLineOptions.m",
-        !"F_CocoaWrapperForGalgas.h",
-        !"I_Stop.tiff",
-        !"NSString+identifierRepresentation.h",
-        !"NSString+identifierRepresentation.m",
-        !"OC_GGS_ApplicationDelegate.h",
-        !"OC_GGS_ApplicationDelegate.m",
-        !"OC_GGS_BuildTask.h",
-        !"OC_GGS_BuildTask.m",
-        !"OC_GGS_ColorTransformer.h",
-        !"OC_GGS_ColorTransformer.m",
-        !"OC_GGS_CommandLineOption.h",
-        !"OC_GGS_CommandLineOption.m",
-        !"OC_GGS_Document.h",
-        !"OC_GGS_Document.m",
-        !"OC_GGS_DocumentData.h",
-        !"OC_GGS_DocumentData.m",
-        !"OC_GGS_RulerViewForBuildOutput.h",
-        !"OC_GGS_RulerViewForBuildOutput.m",
-        !"OC_GGS_RulerViewForTextView.h",
-        !"OC_GGS_RulerViewForTextView.m",
-        !"OC_GGS_Scroller.h",
-        !"OC_GGS_Scroller.m",
-        !"OC_GGS_TextDisplayDescriptor.h",
-        !"OC_GGS_TextDisplayDescriptor.m",
-        !"OC_GGS_TextSyntaxColoring.h",
-        !"OC_GGS_TextSyntaxColoring.m",
-        !"OC_GGS_TextView.h",
-        !"OC_GGS_TextView.m",
-        !"OC_Lexique.h",
-        !"OC_Lexique.m",
-        !"OC_Token.h",
-        !"OC_Token.m",
-        !"PMDebug.h",
-        !"PMDebug.m",
-        !"PMFontButton.h",
-        !"PMFontButton.m",
-        !"PMIssueDescriptor.h",
-        !"PMIssueDescriptor.m",
-        !"PMIssueInRuler.h",
-        !"PMIssueInRuler.m",
-        !"PMSearchResultDescriptor.h",
-        !"PMSearchResultDescriptor.m",
-        !"PMTableViewHandlesContextualMenu.h",
-        !"PMTableViewHandlesContextualMenu.m",
-        !"PMUndoManager.h",
-        !"PMUndoManager.m"
+      !fileNames: §§ §[
+        "Base.lproj/OC_GGS_Document.xib",
+        "Base.lproj/PMDebug.xib",
+        "Base.lproj/MainMenu.xib",
+        "enterDefaultCommandLineOptions.h",
+        "enterDefaultCommandLineOptions.m",
+        "F_CocoaWrapperForGalgas.h",
+        "I_Stop.tiff",
+        "NSString+identifierRepresentation.h",
+        "NSString+identifierRepresentation.m",
+        "OC_GGS_ApplicationDelegate.h",
+        "OC_GGS_ApplicationDelegate.m",
+        "OC_GGS_BuildTask.h",
+        "OC_GGS_BuildTask.m",
+        "OC_GGS_ColorTransformer.h",
+        "OC_GGS_ColorTransformer.m",
+        "OC_GGS_CommandLineOption.h",
+        "OC_GGS_CommandLineOption.m",
+        "OC_GGS_Document.h",
+        "OC_GGS_Document.m",
+        "OC_GGS_DocumentData.h",
+        "OC_GGS_DocumentData.m",
+        "OC_GGS_RulerViewForBuildOutput.h",
+        "OC_GGS_RulerViewForBuildOutput.m",
+        "OC_GGS_RulerViewForTextView.h",
+        "OC_GGS_RulerViewForTextView.m",
+        "OC_GGS_Scroller.h",
+        "OC_GGS_Scroller.m",
+        "OC_GGS_TextDisplayDescriptor.h",
+        "OC_GGS_TextDisplayDescriptor.m",
+        "OC_GGS_TextSyntaxColoring.h",
+        "OC_GGS_TextSyntaxColoring.m",
+        "OC_GGS_TextView.h",
+        "OC_GGS_TextView.m",
+        "OC_Lexique.h",
+        "OC_Lexique.m",
+        "OC_Token.h",
+        "OC_Token.m",
+        "PMDebug.h",
+        "PMDebug.m",
+        "PMFontButton.h",
+        "PMFontButton.m",
+        "PMIssueDescriptor.h",
+        "PMIssueDescriptor.m",
+        "PMIssueInRuler.h",
+        "PMIssueInRuler.m",
+        "PMSearchResultDescriptor.h",
+        "PMSearchResultDescriptor.m",
+        "PMTableViewHandlesContextualMenu.h",
+        "PMTableViewHandlesContextualMenu.m",
+        "PMUndoManager.h",
+        "PMUndoManager.m"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -870,10 +870,10 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Generic Arraies"
       !groupPath:"generic-arraies"
-      !fileNames: §[
-        !"TC_Array.h",
-        !"TC_UniqueArray.h",
-        !"TC_UniqueArray2.h"
+      !fileNames: §§ §[
+        "TC_Array.h",
+        "TC_UniqueArray.h",
+        "TC_UniqueArray2.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -888,23 +888,23 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Command line Interface"
       !groupPath:"command_line_interface"
-      !fileNames: §[
-        !"F_mainForLIBPM.cpp",
-        !"F_mainForLIBPM.h",
-        !"builtin-command-line-options.cpp",
-        !"builtin-command-line-options.h",
-        !"analyzeCommandLineOptions.cpp",
-        !"analyzeCommandLineOptions.h",
-        !"AbstractCommandLineOption.cpp",
-        !"AbstractCommandLineOption.h",
-        !"BoolCommandLineOption.cpp",
-        !"BoolCommandLineOption.h",
-        !"UIntCommandLineOption.cpp",
-        !"UIntCommandLineOption.h",
-        !"StringCommandLineOption.cpp",
-        !"StringCommandLineOption.h",
-        !"StringListCommandLineOption.cpp",
-        !"StringListCommandLineOption.h"
+      !fileNames: §§ §[
+        "F_mainForLIBPM.cpp",
+        "F_mainForLIBPM.h",
+        "builtin-command-line-options.cpp",
+        "builtin-command-line-options.h",
+        "analyzeCommandLineOptions.cpp",
+        "analyzeCommandLineOptions.h",
+        "AbstractCommandLineOption.cpp",
+        "AbstractCommandLineOption.h",
+        "BoolCommandLineOption.cpp",
+        "BoolCommandLineOption.h",
+        "UIntCommandLineOption.cpp",
+        "UIntCommandLineOption.h",
+        "StringCommandLineOption.cpp",
+        "StringCommandLineOption.h",
+        "StringListCommandLineOption.cpp",
+        "StringListCommandLineOption.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -919,17 +919,17 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"File"
       !groupPath:"files"
-      !fileNames: §[
-        !"FileManager.cpp",
-        !"FileManager.h",
-        !"AbstractFileHandle.cpp",
-        !"AbstractFileHandle.h",
-        !"BinaryFileWrite.cpp",
-        !"BinaryFileWrite.h",
-        !"TextFileWrite.cpp",
-        !"TextFileWrite.h",
-        !"HTMLFileWrite.cpp",
-        !"HTMLFileWrite.h"
+      !fileNames: §§ §[
+        "FileManager.cpp",
+        "FileManager.h",
+        "AbstractFileHandle.cpp",
+        "AbstractFileHandle.h",
+        "BinaryFileWrite.cpp",
+        "BinaryFileWrite.h",
+        "TextFileWrite.cpp",
+        "TextFileWrite.h",
+        "HTMLFileWrite.cpp",
+        "HTMLFileWrite.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -944,106 +944,106 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Galgas"
       !groupPath:"galgas"
-      !fileNames: §[
-        !"AC_GALGAS_reference_class.cpp",
-        !"AC_GALGAS_reference_class.h",
-        !"AC_GALGAS_value_class.cpp",
-        !"AC_GALGAS_value_class.h",
-        !"AC_GALGAS_enumAssociatedValues.cpp",
-        !"AC_GALGAS_enumAssociatedValues.h",
-        !"AC_GALGAS_graph.cpp",
-        !"AC_GALGAS_graph.h",
-        !"AC_GALGAS_list.cpp",
-        !"AC_GALGAS_list.h",
-        !"AC_GALGAS_map.cpp",
-        !"AC_GALGAS_map.h",
-        !"AC_GALGAS_root.cpp",
-        !"AC_GALGAS_root.h",
-        !"AC_GALGAS_sortedlist.cpp",
-        !"AC_GALGAS_sortedlist.h",
-        !"AC_GALGAS_weak_reference.cpp",
-        !"AC_GALGAS_weak_reference.h",
-        !"acPtr_class.cpp",
-        !"acPtr_class.h",
-        !"acStrongPtr_class.cpp",
-        !"acStrongPtr_class.h",
-        !"cPtr_weakReference_proxy.cpp",
-        !"cPtr_weakReference_proxy.h",
-        !"Compiler.cpp",
-        !"Compiler.h",
-        !"C_galgas_class_inspector.cpp",
-        !"C_galgas_class_inspector.h",
-        !"C_galgas_CLI_Options.cpp",
-        !"C_galgas_CLI_Options.h",
-        !if inQuietOutputByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
-        !if inQuietOutputByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
-        !"F_verbose_output.h",
-        !"C_galgas_function_descriptor.cpp",
-        !"C_galgas_function_descriptor.h",
-        !"galgas-input-output.cpp",
-        !"galgas-input-output.h",
-        !"C_galgas_type_descriptor.cpp",
-        !"C_galgas_type_descriptor.h",
-        !"IssueWithFixIt.cpp",
-        !"IssueWithFixIt.h",
-        !"Lexique-parsing.cpp",
-        !"Lexique.cpp",
-        !"Lexique.h",
-        !"LocationInSource.cpp",
-        !"LocationInSource.h",
-        !"SourceTextInString.cpp",
-        !"SourceTextInString.h",
-        !"capCollectionElement.cpp",
-        !"capCollectionElement.h",
-        !"capCollectionElementArray.cpp",
-        !"capCollectionElementArray.h",
-        !"capSortedListElement.cpp",
-        !"capSortedListElement.h",
-        !"cCollectionElement.cpp",
-        !"cCollectionElement.h",
-        !"cEnumerator_range.cpp",
-        !"cEnumerator_range.h",
-        !"cGenericAbstractEnumerator.cpp",
-        !"cGenericAbstractEnumerator.h",
-        !"cIndexingDictionary.cpp",
-        !"cIndexingDictionary.h",
-        !"cIssueDescriptor.cpp",
-        !"cIssueDescriptor.h",
-        !"cLexiqueIntrospection.cpp",
-        !"cLexiqueIntrospection.h",
-        !"cObjectArray.cpp",
-        !"cObjectArray.h",
-        !"cProductionNameDescriptor.h",
-        !"cPtr_object.cpp",
-        !"cPtr_object.h",
-        !"cSortedListElement.cpp",
-        !"cSortedListElement.h",
-        !"TemplateDelimiter.h",
-        !"GALGAS_application.cpp",
-        !"GALGAS_binaryset.cpp",
-        !"GALGAS_bigint.cpp",
-        !"GALGAS_bool.cpp",
-        !"GALGAS_char.cpp",
-        !"GALGAS_data.cpp",
-        !"GALGAS_double.cpp",
-        !"GALGAS_filewrapper.cpp",
-        !"GALGAS_function.cpp",
-        !"GALGAS_location.cpp",
-        !"GALGAS_object.cpp",
-        !"GALGAS_sint_36__34_.cpp",
-        !"GALGAS_sint.cpp",
-        !"GALGAS_string.cpp",
-        !"GALGAS_string-getters.cpp",
-        !"GALGAS_stringset.cpp",
-        !"GALGAS_timer.cpp",
-        !"GALGAS_type.cpp",
-        !"GALGAS_uint_36__34_.cpp",
-        !"GALGAS_uint.cpp",
-        !"scanner_actions.cpp",
-        !"scanner_actions.h",
-        !"ComparisonResult.h",
-        !"ComparisonKind.h",
-        !"EnumerationOrder.h"
+      !fileNames: §§ §[
+        "AC_GALGAS_reference_class.cpp",
+        "AC_GALGAS_reference_class.h",
+        "AC_GALGAS_value_class.cpp",
+        "AC_GALGAS_value_class.h",
+        "AC_GALGAS_enumAssociatedValues.cpp",
+        "AC_GALGAS_enumAssociatedValues.h",
+        "AC_GALGAS_graph.cpp",
+        "AC_GALGAS_graph.h",
+        "AC_GALGAS_list.cpp",
+        "AC_GALGAS_list.h",
+        "AC_GALGAS_map.cpp",
+        "AC_GALGAS_map.h",
+        "AC_GALGAS_root.cpp",
+        "AC_GALGAS_root.h",
+        "AC_GALGAS_sortedlist.cpp",
+        "AC_GALGAS_sortedlist.h",
+        "AC_GALGAS_weak_reference.cpp",
+        "AC_GALGAS_weak_reference.h",
+        "acPtr_class.cpp",
+        "acPtr_class.h",
+        "acStrongPtr_class.cpp",
+        "acStrongPtr_class.h",
+        "cPtr_weakReference_proxy.cpp",
+        "cPtr_weakReference_proxy.h",
+        "Compiler.cpp",
+        "Compiler.h",
+        "C_galgas_class_inspector.cpp",
+        "C_galgas_class_inspector.h",
+        "C_galgas_CLI_Options.cpp",
+        "C_galgas_CLI_Options.h",
+        if inQuietOutputByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
+        if inQuietOutputByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
+        "F_verbose_output.h",
+        "C_galgas_function_descriptor.cpp",
+        "C_galgas_function_descriptor.h",
+        "galgas-input-output.cpp",
+        "galgas-input-output.h",
+        "C_galgas_type_descriptor.cpp",
+        "C_galgas_type_descriptor.h",
+        "IssueWithFixIt.cpp",
+        "IssueWithFixIt.h",
+        "Lexique-parsing.cpp",
+        "Lexique.cpp",
+        "Lexique.h",
+        "LocationInSource.cpp",
+        "LocationInSource.h",
+        "SourceTextInString.cpp",
+        "SourceTextInString.h",
+        "capCollectionElement.cpp",
+        "capCollectionElement.h",
+        "capCollectionElementArray.cpp",
+        "capCollectionElementArray.h",
+        "capSortedListElement.cpp",
+        "capSortedListElement.h",
+        "cCollectionElement.cpp",
+        "cCollectionElement.h",
+        "cEnumerator_range.cpp",
+        "cEnumerator_range.h",
+        "cGenericAbstractEnumerator.cpp",
+        "cGenericAbstractEnumerator.h",
+        "cIndexingDictionary.cpp",
+        "cIndexingDictionary.h",
+        "cIssueDescriptor.cpp",
+        "cIssueDescriptor.h",
+        "cLexiqueIntrospection.cpp",
+        "cLexiqueIntrospection.h",
+        "cObjectArray.cpp",
+        "cObjectArray.h",
+        "cProductionNameDescriptor.h",
+        "cPtr_object.cpp",
+        "cPtr_object.h",
+        "cSortedListElement.cpp",
+        "cSortedListElement.h",
+        "TemplateDelimiter.h",
+        "GALGAS_application.cpp",
+        "GALGAS_binaryset.cpp",
+        "GALGAS_bigint.cpp",
+        "GALGAS_bool.cpp",
+        "GALGAS_char.cpp",
+        "GALGAS_data.cpp",
+        "GALGAS_double.cpp",
+        "GALGAS_filewrapper.cpp",
+        "GALGAS_function.cpp",
+        "GALGAS_location.cpp",
+        "GALGAS_object.cpp",
+        "GALGAS_sint_36__34_.cpp",
+        "GALGAS_sint.cpp",
+        "GALGAS_string.cpp",
+        "GALGAS_string-getters.cpp",
+        "GALGAS_stringset.cpp",
+        "GALGAS_timer.cpp",
+        "GALGAS_type.cpp",
+        "GALGAS_uint_36__34_.cpp",
+        "GALGAS_uint.cpp",
+        "scanner_actions.cpp",
+        "scanner_actions.h",
+        "ComparisonResult.h",
+        "ComparisonKind.h",
+        "EnumerationOrder.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1058,13 +1058,13 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Streams"
       !groupPath:"streams"
-      !fileNames: §[
-        !"AbstractOutputStream.cpp",
-        !"AbstractOutputStream.h",
-        !"ConsoleOut.cpp",
-        !"ConsoleOut.h",
-        !"ColoredConsole.cpp",
-        !"ColoredConsole.h"
+      !fileNames: §§ §[
+        "AbstractOutputStream.cpp",
+        "AbstractOutputStream.h",
+        "ConsoleOut.cpp",
+        "ConsoleOut.h",
+        "ColoredConsole.cpp",
+        "ColoredConsole.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1079,20 +1079,20 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Strings"
       !groupPath:"strings"
-      !fileNames: §[
-        !"String-class-getters.cpp",
-        !"String-class.cpp",
-        !"String-class.h",
-        !"cUnicodeData.h",
-        !"string_encodings.h",
-        !"unicode_character_base.h",
-        !"unicode_character_cpp.cpp",
-        !"unicode_character_cpp.h",
-        !"unicode_character_implementation.h",
-        !"unicode_character_m.h",
-        !"unicode_character_m.m",
-        !"print.cpp",
-        !"print.h"
+      !fileNames: §§ §[
+        "String-class-getters.cpp",
+        "String-class.cpp",
+        "String-class.h",
+        "cUnicodeData.h",
+        "string_encodings.h",
+        "unicode_character_base.h",
+        "unicode_character_cpp.cpp",
+        "unicode_character_cpp.h",
+        "unicode_character_implementation.h",
+        "unicode_character_m.h",
+        "unicode_character_m.m",
+        "print.cpp",
+        "print.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1107,11 +1107,11 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Time"
       !groupPath:"time"
-      !fileNames: §[
-        !"DateTime.cpp",
-        !"DateTime.h",
-        !"Timer.cpp",
-        !"Timer.h"
+      !fileNames: §§ §[
+        "DateTime.cpp",
+        "DateTime.h",
+        "Timer.cpp",
+        "Timer.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1126,39 +1126,39 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Utilities"
       !groupPath:"utilities"
-      !fileNames: §[
-        !"basic-allocation.cpp",
-        !"basic-allocation.h",
-        !"U8Data.cpp",
-        !"U8Data.h",
-        !"DirectedGraph.cpp",
-        !"DirectedGraph.h",
-        !"PrologueEpilogue.cpp",
-        !"PrologueEpilogue.h",
-        !"SharedObject.cpp",
-        !"SharedObject.h",
-        !"UInt32Set.cpp",
-        !"UInt32Set.h",
-        !"cpp-allocation.cpp",
-        !"cpp-allocation.h",
-        !"F_DisplayException.cpp",
-        !"F_DisplayException.h",
-        !"F_GetPrime.cpp",
-        !"F_GetPrime.h",
-        !"M_machine.h",
-        !"M_SourceLocation.h",
-        !"md5.cpp",
-        !"md5.h",
-        !"SHA256.cpp",
-        !"SHA256.h",
-        !"macroAssert.cpp",
-        !"macroAssert.h",
-        !"MF_MemoryControl.cpp",
-        !"MF_MemoryControl.h",
-        !"switch-fallthrough.h",
-        !"TF_Swap.h",
-        !"galgas-random.cpp",
-        !"galgas-random.h"
+      !fileNames: §§ §[
+        "basic-allocation.cpp",
+        "basic-allocation.h",
+        "U8Data.cpp",
+        "U8Data.h",
+        "DirectedGraph.cpp",
+        "DirectedGraph.h",
+        "PrologueEpilogue.cpp",
+        "PrologueEpilogue.h",
+        "SharedObject.cpp",
+        "SharedObject.h",
+        "UInt32Set.cpp",
+        "UInt32Set.h",
+        "cpp-allocation.cpp",
+        "cpp-allocation.h",
+        "F_DisplayException.cpp",
+        "F_DisplayException.h",
+        "F_GetPrime.cpp",
+        "F_GetPrime.h",
+        "M_machine.h",
+        "M_SourceLocation.h",
+        "md5.cpp",
+        "md5.h",
+        "SHA256.cpp",
+        "SHA256.h",
+        "macroAssert.cpp",
+        "macroAssert.h",
+        "MF_MemoryControl.cpp",
+        "MF_MemoryControl.h",
+        "switch-fallthrough.h",
+        "TF_Swap.h",
+        "galgas-random.cpp",
+        "galgas-random.h"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1176,7 +1176,7 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Resources"
       !groupPath:"."
-      !fileNames: §[!"Info.plist"]
+      !fileNames: §§ §["Info.plist"]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1204,9 +1204,9 @@ proc updateGalgasTargets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Frameworks for App"
       !groupPath:"/System/Library/Frameworks"
-      !fileNames: §[
-        !"AppKit.framework",
-        !"Cocoa.framework"
+      !fileNames: §§ §[
+        "AppKit.framework",
+        "Cocoa.framework"
       ]
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
@@ -1220,28 +1220,28 @@ proc updateGalgasTargets
   #--- Code signing identity
     let @stringlist codeSigningSettingList
     if macCodeSign.string == "" then
-      codeSigningSettingList = §[!"CODE_SIGN_IDENTITY = \"-\""]
+      codeSigningSettingList = §§ §[.init ("CODE_SIGN_IDENTITY = \"-\"")]
     else
       let components = [macCodeSign.string componentsSeparatedByString !":"]
       if [components count] != 2 then
         error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" : codeSigningSettingList
       elsif [components mValueAtIndex !0] == "MacDeveloper" then
-        codeSigningSettingList = §[
-          !"CODE_SIGN_IDENTITY = \"Mac Developer\"",
-          !"DEVELOPMENT_TEAM = \"" + [components mValueAtIndex !1] + "\""
+        codeSigningSettingList = §§ §[
+          .init ("CODE_SIGN_IDENTITY = \"Mac Developer\""),
+          .init ("DEVELOPMENT_TEAM = \"" + [components mValueAtIndex !1] + "\"")
         ]
       elsif [components mValueAtIndex !0] == "Certificate" then
-        codeSigningSettingList = §[!"CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\""]
+        codeSigningSettingList = §§ §[.init ("CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\"")]
       else
         error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" : codeSigningSettingList
       end
     end
   #--- Add Mach O release target
-    var @stringlist settingList = §[
-      !"GCC_OPTIMIZATION_LEVEL = 2",
-      !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
-      !"GCC_WARN_UNUSED_PARAMETER = YES",
-      !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\""
+    var @stringlist settingList = §§ §[
+      .init ("GCC_OPTIMIZATION_LEVEL = 2"),
+      .init ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)"),
+      .init ("GCC_WARN_UNUSED_PARAMETER = YES"),
+      .init ("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\"")
     ] + codeSigningSettingList
     if [inHandCodedLinkToolFileList count] > 0 then
       var s = "OTHER_LDFLAGS=("
@@ -1262,12 +1262,12 @@ proc updateGalgasTargets
       ?productFileRef:let releaseProductFileRef
     ]
   #--- Add Mach O debug target
-    settingList = §[
-      !"GCC_OPTIMIZATION_LEVEL = 0",
-      !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
-      !"GCC_PREPROCESSOR_DEFINITIONS = ()",
-      !"GCC_WARN_UNUSED_PARAMETER = YES",
-      !"PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\""
+    settingList = §§ §[
+      .init ("GCC_OPTIMIZATION_LEVEL = 0"),
+      .init ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"),
+      .init ("GCC_PREPROCESSOR_DEFINITIONS = ()"),
+      .init ("GCC_WARN_UNUSED_PARAMETER = YES"),
+      .init ("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\"")
     ] + codeSigningSettingList
     if [inHandCodedLinkToolFileList count] > 0 then
       var s = "OTHER_LDFLAGS=("
@@ -1288,9 +1288,9 @@ proc updateGalgasTargets
       ?productFileRef:let debugProductFileRef
     ]
   #--- Add Cocoa target
-    let @stringlist cocoaConfigurationSettingList = §[
-      !"GCC_OPTIMIZATION_LEVEL = 0",
-      !"GCC_PREPROCESSOR_DEFINITIONS = ()"
+    let @stringlist cocoaConfigurationSettingList = §§ §[
+      .init ("GCC_OPTIMIZATION_LEVEL = 0"),
+      .init (!"GCC_PREPROCESSOR_DEFINITIONS = ()")
     ] + codeSigningSettingList
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName
@@ -1299,8 +1299,8 @@ proc updateGalgasTargets
       !frameworkFileRefs:frameworksFileRefList + appFrameworksFileRefList
       !resourceFileRefs:resourceFileBuildRefs + m_HandCodedResourceFileRefForAppList
       !buildConfigurationSettingList: cocoaConfigurationSettingList
-      !dependantTargetList: §[!releaseTargetRef, !debugTargetRef]
-      !productCopyList: §[!releaseProductFileRef !inTargetName, !debugProductFileRef !inTargetName + "-debug"]
+      !dependantTargetList: §§ §[.init (releaseTargetRef), .init (debugTargetRef)]
+      !productCopyList: §§ §[.init (releaseProductFileRef, inTargetName), .init (debugProductFileRef, inTargetName + "-debug")]
       ?productFileRef:*
     ]
   #--- Generate project

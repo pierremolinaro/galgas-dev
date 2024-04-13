@@ -263,7 +263,7 @@ GALGAS_initializerSignatureList cPtr_stringsetPredefinedTypeAST::getter_initiali
   GALGAS_initializerSignatureList result_result ; // Returned variable
   GALGAS_initializerSignatureList temp_0 = GALGAS_initializerSignatureList::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 36)) ;
   GALGAS_formalInputParameterListAST temp_1 = GALGAS_formalInputParameterListAST::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 36)) ;
-  temp_0.addAssign_operation (temp_1  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 36)) ;
+  temp_0.enterElement (GALGAS_initializerSignatureList_2D_element::init_21_ (temp_1, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 36)) ;
   result_result = temp_0 ;
 //---
   return result_result ;
@@ -335,14 +335,14 @@ void cPtr_stringsetPredefinedTypeAST::method_getSetterMap (GALGAS_unifiedTypeMap
                                                            GALGAS_setterMap & outArgument_outSetterMap,
                                                            Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_stringType_3918 ;
+  GALGAS_unifiedTypeMapEntry var_stringType_3928 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringType_3918, inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 100)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringType_3928, inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 100)) ;
   }
   GALGAS_setterMap temp_0 = GALGAS_setterMap::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 101)) ;
   outArgument_outSetterMap = temp_0 ;
   {
-  outArgument_outSetterMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("removeKey"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 103)), inCompiler COMMA_HERE), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("predefinedType-stringset.galgas", 104)), GALGAS_formalParameterSignature::class_func_listWithValue (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("predefinedType-stringset.galgas", 105)), var_stringType_3918, GALGAS_formalArgumentPassingModeAST::class_func_argumentIn (SOURCE_FILE ("predefinedType-stringset.galgas", 105)), GALGAS_string ("inKey")  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 105)), GALGAS_bool (false), GALGAS_methodQualifier::class_func_isBasic (SOURCE_FILE ("predefinedType-stringset.galgas", 107)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 102)) ;
+  outArgument_outSetterMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("removeKey"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 103)), inCompiler COMMA_HERE), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("predefinedType-stringset.galgas", 104)), GALGAS_formalParameterSignature::class_func_listWithValue (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("predefinedType-stringset.galgas", 105)), var_stringType_3928, GALGAS_formalArgumentPassingModeAST::class_func_argumentIn (SOURCE_FILE ("predefinedType-stringset.galgas", 105)), GALGAS_string ("inKey")  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 105)), GALGAS_bool (false), GALGAS_methodQualifier::class_func_isBasic (SOURCE_FILE ("predefinedType-stringset.galgas", 107)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 102)) ;
   }
   {
   routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), GALGAS_string ("inValue"), GALGAS_string ("insert"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 110)) ;
@@ -359,13 +359,13 @@ void cPtr_stringsetPredefinedTypeAST::method_getEnumerationList (GALGAS_unifiedT
                                                                  GALGAS_string & outArgument_outEnumeratedType,
                                                                  Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_stringTypeIndex_4831 ;
+  GALGAS_unifiedTypeMapEntry var_stringTypeIndex_4841 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringTypeIndex_4831, inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 125)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringTypeIndex_4841, inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 125)) ;
   }
   GALGAS_enumerationDescriptorList temp_0 = GALGAS_enumerationDescriptorList::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 126)) ;
   outArgument_outEnumerationList = temp_0 ;
-  outArgument_outEnumerationList.addAssign_operation (var_stringTypeIndex_4831, GALGAS_string ("key")  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 127)) ;
+  outArgument_outEnumerationList.addAssign_operation (var_stringTypeIndex_4841, GALGAS_string ("key")  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 127)) ;
   outArgument_outEnumeratedType = GALGAS_string ("string") ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -378,12 +378,12 @@ void cPtr_stringsetPredefinedTypeAST::method_getAddAssignArgumentList (GALGAS_un
                                                                        GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_stringTypeIndex_5313 ;
+  GALGAS_unifiedTypeMapEntry var_stringTypeIndex_5323 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringTypeIndex_5313, inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 135)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringTypeIndex_5323, inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 135)) ;
   }
   GALGAS_functionSignature temp_0 = GALGAS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 136)) ;
-  temp_0.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("predefinedType-stringset.galgas", 136)), var_stringTypeIndex_5313, GALGAS_string ("inString"), GALGAS_bool (true)  COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 136)) ;
+  temp_0.enterElement (GALGAS_functionSignature_2D_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("predefinedType-stringset.galgas", 136)), var_stringTypeIndex_5323, GALGAS_string ("inString"), GALGAS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedType-stringset.galgas", 136)) ;
   outArgument_outAddAssignArgumentList = temp_0 ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -1121,8 +1121,7 @@ GALGAS_initializerSignatureList cPtr_timerPredefinedTypeAST::getter_initializers
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_initializerSignatureList result_result ; // Returned variable
   GALGAS_initializerSignatureList temp_0 = GALGAS_initializerSignatureList::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-timer.galgas", 30)) ;
-  GALGAS_formalInputParameterListAST temp_1 = GALGAS_formalInputParameterListAST::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-timer.galgas", 30)) ;
-  temp_0.addAssign_operation (temp_1  COMMA_SOURCE_FILE ("predefinedType-timer.galgas", 30)) ;
+  temp_0.enterElement (GALGAS_initializerSignatureList_2D_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedType-timer.galgas", 30)) ;
   result_result = temp_0 ;
 //---
   return result_result ;
@@ -1298,7 +1297,7 @@ GALGAS_initializerSignatureList cPtr_uintPredefinedTypeAST::getter_initializers 
   GALGAS_formalInputParameterListAST var_initializer_1576 = GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE) ;
   var_initializer_1576.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("predefinedType-uint.galgas", 31)), GALGAS_string ("uint").getter_nowhere (SOURCE_FILE ("predefinedType-uint.galgas", 31)), GALGAS_string ("inValue").getter_nowhere (SOURCE_FILE ("predefinedType-uint.galgas", 31)), GALGAS_bool (false), GALGAS_bool (true)  COMMA_SOURCE_FILE ("predefinedType-uint.galgas", 31)) ;
   GALGAS_initializerSignatureList temp_0 = GALGAS_initializerSignatureList::init (inCompiler COMMA_SOURCE_FILE ("predefinedType-uint.galgas", 32)) ;
-  temp_0.addAssign_operation (var_initializer_1576  COMMA_SOURCE_FILE ("predefinedType-uint.galgas", 32)) ;
+  temp_0.enterElement (GALGAS_initializerSignatureList_2D_element::init_21_ (var_initializer_1576, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedType-uint.galgas", 32)) ;
   result_result = temp_0 ;
 //---
   return result_result ;
@@ -3395,7 +3394,7 @@ void routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_ar
   }
   {
   GALGAS_functionSignature temp_0 = GALGAS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 59)) ;
-  temp_0.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 59)), var_t_2483, constinArgument_inArgument_31_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 59)) ;
+  temp_0.enterElement (GALGAS_functionSignature_2D_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 59)), var_t_2483, constinArgument_inArgument_31_Name, GALGAS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 59)) ;
   ioArgument_ioClassFunctionMap.setter_insertOrReplace (GALGAS_lstring::init_21__21_ (constinArgument_inClassFunctionName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 58)), inCompiler COMMA_HERE), temp_0, constinArgument_inHasLexiqueArgument, var_returnedTypeIndex_2396 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 57)) ;
   }
 }
@@ -3418,23 +3417,23 @@ void routine_enterClassFunctionWith_32_Arguments_26__26__3F_name_3F_argTypeName_
                                                                                                                                                                          const GALGAS_bool constinArgument_inHasLexiqueArgument,
                                                                                                                                                                          Compiler * inCompiler
                                                                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_3300 ;
+  GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_3310 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex_3300, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 78)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex_3310, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 78)) ;
   }
   GALGAS_functionSignature temp_0 = GALGAS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 79)) ;
-  GALGAS_functionSignature var_argumentTypeList_3325 = temp_0 ;
-  GALGAS_unifiedTypeMapEntry var_t_3394 ;
+  GALGAS_functionSignature var_argumentTypeList_3335 = temp_0 ;
+  GALGAS_unifiedTypeMapEntry var_t_3404 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_3394, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 81)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_3404, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 81)) ;
   }
-  var_argumentTypeList_3325.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 82)), var_t_3394, constinArgument_inArgument_31_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 82)) ;
+  var_argumentTypeList_3335.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 82)), var_t_3404, constinArgument_inArgument_31_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 82)) ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t_3394, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 83)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t_3404, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 83)) ;
   }
-  var_argumentTypeList_3325.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 84)), var_t_3394, constinArgument_inArgument_32_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 84)) ;
+  var_argumentTypeList_3335.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 84)), var_t_3404, constinArgument_inArgument_32_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 84)) ;
   {
-  ioArgument_ioClassFunctionMap.setter_insertOrReplace (GALGAS_lstring::init_21__21_ (constinArgument_inClassFunctionName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 86)), inCompiler COMMA_HERE), var_argumentTypeList_3325, constinArgument_inHasLexiqueArgument, var_returnedTypeIndex_3300 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 85)) ;
+  ioArgument_ioClassFunctionMap.setter_insertOrReplace (GALGAS_lstring::init_21__21_ (constinArgument_inClassFunctionName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 86)), inCompiler COMMA_HERE), var_argumentTypeList_3335, constinArgument_inHasLexiqueArgument, var_returnedTypeIndex_3310 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 85)) ;
   }
 }
 
@@ -3458,27 +3457,27 @@ void routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_
                                                                                                                                                                                                            const GALGAS_bool constinArgument_inHasLexiqueArgument,
                                                                                                                                                                                                            Compiler * inCompiler
                                                                                                                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_4511 ;
+  GALGAS_unifiedTypeMapEntry var_returnedTypeIndex_4521 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex_4511, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 108)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex_4521, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 108)) ;
   }
-  GALGAS_unifiedTypeMapEntry var_t_4598 ;
+  GALGAS_unifiedTypeMapEntry var_t_4608 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_4598, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 109)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_4608, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 109)) ;
   }
   GALGAS_functionSignature temp_0 = GALGAS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 110)) ;
-  GALGAS_functionSignature var_argumentTypeList_4626 = temp_0 ;
-  var_argumentTypeList_4626.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 111)), var_t_4598, constinArgument_inArgument_31_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 111)) ;
+  GALGAS_functionSignature var_argumentTypeList_4636 = temp_0 ;
+  var_argumentTypeList_4636.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 111)), var_t_4608, constinArgument_inArgument_31_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 111)) ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t_4598, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 112)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t_4608, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 112)) ;
   }
-  var_argumentTypeList_4626.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 113)), var_t_4598, constinArgument_inArgument_32_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 113)) ;
+  var_argumentTypeList_4636.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 113)), var_t_4608, constinArgument_inArgument_32_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 113)) ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_33_TypeName, var_t_4598, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 114)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_33_TypeName, var_t_4608, inCompiler COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 114)) ;
   }
-  var_argumentTypeList_4626.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 115)), var_t_4598, constinArgument_inArgument_33_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 115)) ;
+  var_argumentTypeList_4636.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsConstructors.galgas", 115)), var_t_4608, constinArgument_inArgument_33_Name, GALGAS_bool (true)  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 115)) ;
   {
-  ioArgument_ioClassFunctionMap.setter_insertOrReplace (GALGAS_lstring::init_21__21_ (constinArgument_inClassFunctionName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 117)), inCompiler COMMA_HERE), var_argumentTypeList_4626, constinArgument_inHasLexiqueArgument, var_returnedTypeIndex_4511 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 116)) ;
+  ioArgument_ioClassFunctionMap.setter_insertOrReplace (GALGAS_lstring::init_21__21_ (constinArgument_inClassFunctionName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 117)), inCompiler COMMA_HERE), var_argumentTypeList_4636, constinArgument_inHasLexiqueArgument, var_returnedTypeIndex_4521 COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 116)) ;
   }
 }
 
