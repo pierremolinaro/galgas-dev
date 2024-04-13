@@ -3,7 +3,7 @@ set -x
 DIR=`dirname $0` &&
 cd $DIR &&
 #--- Build GALGAS generated tex parts
-$DIR/+build-from-galgas.command &&
+$DIR/+build-lexical-lists-from-galgas.command &&
 #--- Compilation LaTex
 rm -f galgas-book.pdf ref.* galgas-book.ilg galgas-book.ind &&
 rm -f galgas-book.aux galgas-book.idx galgas-book.lof galgas-book.lot galgas-book.toc &&
