@@ -398,14 +398,14 @@ list @openedOverrideList {
 
 struct @localVarManager {
   private var @currentVarManager mCurrentManager = .init {}
-  private var @openedOverrideList mOverridenManagers = §[]
+  private var @openedOverrideList mOverridenManagers = ()
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @currentVarManager {
-  private var @scopeLocalVarMap mLocalVarMap = §[]
-  private var @localVarMapListForLLVM mSubMaps = §[]
+  private var @scopeLocalVarMap mLocalVarMap = ()
+  private var @localVarMapListForLLVM mSubMaps = ()
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -819,7 +819,7 @@ setter @localVarValuation readWriteTransition ?let @lstring inVarName
 
 setter @currentVarManager openScope {
   [!?self.mSubMaps insertAtIndex !self.mLocalVarMap !0]
-  self.mLocalVarMap = §[]
+  self.mLocalVarMap = ()
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -993,7 +993,7 @@ setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManag
   if [self.mSubMaps count] != [inOtherManager.mSubMaps count] then
     s += "Scope deepth error, " + [self.mSubMaps count] + " != " + [inOtherManager.mSubMaps count]
   else
-    var @localVarMapListForLLVM newSubMapList = §[]
+    var @localVarMapListForLLVM newSubMapList = ()
     for (subMap) in self.mSubMaps, (otherSubMap) in inOtherManager.mSubMaps do
       var mutableSubMap = subMap
      [!?mutableSubMap combineMapWith

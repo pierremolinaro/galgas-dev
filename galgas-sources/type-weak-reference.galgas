@@ -105,18 +105,18 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
      ?let @unifiedTypeMapEntry weakReferenceIndex
   ]
 #--- Class functions
-  var @classFunctionMap classFunctionMap = §[]
+  var @classFunctionMap classFunctionMap = ()
   [!?classFunctionMap insertKey
     !@lstring {!"nil" !self.mWeakReferenceTypeName.location}
-    !§[]
+    !()
     !false
     !weakReferenceIndex
   ]
 #--- Add Extensions
-  var @getterMap getterMap = §[]
-  var @setterMap setterMap = §[]
-  var @instanceMethodMap instanceMethodMap = §[]
-  var @initializerMap initializerMap = §[]
+  var @getterMap getterMap = ()
+  var @setterMap setterMap = ()
+  var @instanceMethodMap instanceMethodMap = ()
+  var @initializerMap initializerMap = ()
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -150,21 +150,21 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !superType: superClassIndex
     !typeKind: .weakReferenceType {!referenceType: classIndex}
     !supportCollectionValue: false # Does not support collection value
-    !allTypedPropertyList: §[]
-    !propertyMap: §[] # attributeMap
-    !currentTypedPropertyList: §[]
+    !allTypedPropertyList: ()
+    !propertyMap: () # attributeMap
+    !currentTypedPropertyList: ()
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
-    !getterMap: §[]
-    !setterMap: §[]
-    !instanceMethodMap: §[]
-    !classMethodMap: §[]
-    !optionalMethodMap: §[]
-    !enumerationDescriptorList: §[]
+    !getterMap: ()
+    !setterMap: ()
+    !instanceMethodMap: ()
+    !classMethodMap: ()
+    !optionalMethodMap: ()
+    !enumerationDescriptorList: ()
     !.isReferenceEquatable
-    !§[]
-    !§[]
-    !§[]
+    !()
+    !()
+    !()
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile
     !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
     !"weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]
@@ -205,7 +205,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 # A class without a super class admits the 'generatedInSeparateFile' feature
   var @typedPropertyList allAttributeList
   if superClassEntry == .null then
-    allAttributeList = §[]
+    allAttributeList = ()
 #    var @bool generatedInSeparateFileFeature = self.mGenerateInSeparateFile
 #    if [self.mClassFeatureList count] > 0 then
 #      for (mValue) in self.mClassFeatureList do
@@ -226,8 +226,8 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     end
   end
 #------ Enter attributes
-  var @typedPropertyList typedAttributeList = §[]
-  var @propertyIndexMap attributeMap = §[]
+  var @typedPropertyList typedAttributeList = ()
+  var @propertyIndexMap attributeMap = ()
   for (isConstant propertyTypeName mPropertyName unused accessControl hasSelector initialization) in self.mPropertyList do
     let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     typedAttributeList +=

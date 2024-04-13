@@ -508,7 +508,7 @@ override method @lexicalImplicitRuleAST checkLexicalRule
 override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [self.mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
-  var @lexicalTagMap tagMap = §[]
+  var @lexicalTagMap tagMap = ()
   for (mInstruction) in self.mInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end

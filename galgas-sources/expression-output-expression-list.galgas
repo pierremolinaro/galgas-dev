@@ -55,7 +55,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@actualOutputArgumentList outExpressionList {
-    outExpressionList = §[]
+    outExpressionList = ()
     repeat
     while
       $!selector:$ ?let selector
@@ -73,7 +73,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <output_expression_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                       !@actualOutputArgumentList outExpressionList {
-    outExpressionList = §[]
+    outExpressionList = ()
     $($
     select
     or
@@ -103,7 +103,7 @@ syntax extension galgas3ExpressionSyntax {
 
 #  rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
 #                                                !@actualOutputArgumentList outExpressionList {
-#    outExpressionList = §[]
+#    outExpressionList = ()
 #    repeat
 #      let @lstring selector
 #      select
@@ -132,7 +132,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <output_expression_list> ?!@galgasDeclarationAST ioDeclarations
                                 !@actualOutputArgumentList outExpressionList {
-    outExpressionList = §[]
+    outExpressionList = ()
     select
       repeat
         let @lstring selector
@@ -157,7 +157,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <non_empty_output_expression_list> ?!@galgasDeclarationAST ioDeclarations
                                           !@actualOutputArgumentList outExpressionList {
-    outExpressionList = §[]
+    outExpressionList = ()
     repeat
       let @lstring selector
       select

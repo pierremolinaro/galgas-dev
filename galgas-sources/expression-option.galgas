@@ -175,7 +175,7 @@ override method @optionExpressionAST analyzeSemanticExpression
       error self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
-    var @stringlist s = §[]
+    var @stringlist s = ()
     for (lkey * * * *) in boolOptionMap do
       s += !lkey
     end

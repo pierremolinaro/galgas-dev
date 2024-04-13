@@ -46,15 +46,15 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $identifier$ ?let @lstring lexiqueComponentName
     ${$
   #--- Parse lexique body
-    var @templateDelimitorListAST templateDelimitorList = §[]
-    var @templateReplacementListAST templateReplacementList = §[]
-    var @lexicalAttributeListAST lexicalAttributeList = §[]
-    var @lexicalStyleListAST lexicalStyleList = §[]
-    var @terminalDeclarationListAST terminalDeclarationList = §[]
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = §[]
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = §[]
-    var @lexicalRuleListAST lexicalRuleList = §[]
-    var @indexingListAST indexingListAST = §[]
+    var @templateDelimitorListAST templateDelimitorList = ()
+    var @templateReplacementListAST templateReplacementList = ()
+    var @lexicalAttributeListAST lexicalAttributeList = ()
+    var @lexicalStyleListAST lexicalStyleList = ()
+    var @terminalDeclarationListAST terminalDeclarationList = ()
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = ()
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = ()
+    var @lexicalRuleListAST lexicalRuleList = ()
+    var @indexingListAST indexingListAST = ()
     repeat
     while
       <template_delimitor_ggs3> !? templateDelimitorList
@@ -103,15 +103,15 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $identifier$ ?let @lstring lexiqueComponentName
     ${$
   #--- Parse lexique body
-    var @templateDelimitorListAST templateDelimitorList = §[]
-    var @templateReplacementListAST templateReplacementList = §[]
-    var @lexicalAttributeListAST lexicalAttributeList = §[]
-    var @lexicalStyleListAST lexicalStyleList = §[]
-    var @terminalDeclarationListAST terminalDeclarationList = §[]
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = §[]
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = §[]
-    var @lexicalRuleListAST lexicalRuleList = §[]
-    var @indexingListAST indexingListAST = §[]
+    var @templateDelimitorListAST templateDelimitorList = ()
+    var @templateReplacementListAST templateReplacementList = ()
+    var @lexicalAttributeListAST lexicalAttributeList = ()
+    var @lexicalStyleListAST lexicalStyleList = ()
+    var @terminalDeclarationListAST terminalDeclarationList = ()
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = ()
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = ()
+    var @lexicalRuleListAST lexicalRuleList = ()
+    var @indexingListAST indexingListAST = ()
     repeat
     while
       <template_delimitor_ggs3> !? templateDelimitorList
@@ -187,7 +187,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $rule$
     <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
     ${$
-    var @lexicalInstructionListAST instructionList = §[]
+    var @lexicalInstructionListAST instructionList = ()
     repeat
     while
       <lexical_instruction> !?instructionList
@@ -210,7 +210,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $while$
     <lexical_expression> ?let @lexicalExpressionAST whileExpression
     $:$
-    var @lexicalInstructionListAST whileInstructionList = §[]
+    var @lexicalInstructionListAST whileInstructionList = ()
     repeat
     while
       <lexical_instruction> !?whileInstructionList
@@ -248,7 +248,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       outEffectiveArgument = @lexicalAttributeInputArgumentAST {!idf}
     or
       $($
-      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = §[]
+      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = ()
       repeat
       while
         $!$
@@ -320,7 +320,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   rule <lexical_list_declaration_ggs3> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
     $list$
     $identifier$ ?let name
-    var @sentLexicalAttributeListAST sentAttributeList = §[]
+    var @sentLexicalAttributeListAST sentAttributeList = ()
     repeat
     while
       $!selector:$ ?let selector
@@ -337,7 +337,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $error$ ; $message$
     $"string"$ ?let @lstring errorMessage
     ${$
-    var entryList = @lexicalListEntryListAST §[]
+    var entryList = @lexicalListEntryListAST ()
     repeat
       <lexical_list_entry> !?entryList
     while
@@ -387,7 +387,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
 
   rule <terminal_declaration_ggs3> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
     $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
-    var sentAttributeList = @sentLexicalAttributeListAST §[]
+    var sentAttributeList = @sentLexicalAttributeListAST ()
     repeat
     while
       $!$
@@ -455,15 +455,15 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $identifier$ ?let @lstring lexiqueComponentName
     ${$
   #--- Parse lexique body
-    var @templateDelimitorListAST templateDelimitorList = §[]
-    var @templateReplacementListAST templateReplacementList = §[]
-    var @lexicalAttributeListAST lexicalAttributeList = §[]
-    var @lexicalStyleListAST lexicalStyleList = §[]
-    var @terminalDeclarationListAST terminalDeclarationList = §[]
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = §[]
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = §[]
-    var @lexicalRuleListAST lexicalRuleList = §[]
-    var @indexingListAST indexingListAST = §[]
+    var @templateDelimitorListAST templateDelimitorList = ()
+    var @templateReplacementListAST templateReplacementList = ()
+    var @lexicalAttributeListAST lexicalAttributeList = ()
+    var @lexicalStyleListAST lexicalStyleList = ()
+    var @terminalDeclarationListAST terminalDeclarationList = ()
+    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = ()
+    var @lexicalListDeclarationListAST lexicalListDeclarationList = ()
+    var @lexicalRuleListAST lexicalRuleList = ()
+    var @indexingListAST indexingListAST = ()
     repeat
     while
       <template_delimitor> !? templateDelimitorList
@@ -539,7 +539,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $rule$
     <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
     ${$
-    var @lexicalInstructionListAST instructionList = §[]
+    var @lexicalInstructionListAST instructionList = ()
     repeat
     while
       <lexical_instruction> !?instructionList
@@ -562,7 +562,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $while$
     <lexical_expression> ?let @lexicalExpressionAST whileExpression
     $:$
-    var @lexicalInstructionListAST whileInstructionList = §[]
+    var @lexicalInstructionListAST whileInstructionList = ()
     repeat
     while
       <lexical_instruction> !?whileInstructionList
@@ -600,7 +600,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       outEffectiveArgument = @lexicalAttributeInputArgumentAST {!idf}
     or
       $($
-      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = §[]
+      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = ()
       repeat
       while
         $!$
@@ -672,7 +672,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
     $list$
     $identifier$ ?let name
-    var @sentLexicalAttributeListAST sentAttributeList = §[]
+    var @sentLexicalAttributeListAST sentAttributeList = ()
     repeat
     while
       $!selector:$ ?let selector
@@ -694,7 +694,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $%errorMessage$
     $"string"$ ?let @lstring errorMessage
     ${$
-    var entryList = @lexicalListEntryListAST §[]
+    var entryList = @lexicalListEntryListAST ()
     repeat
       <lexical_list_entry> !?entryList
     while
@@ -744,7 +744,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
     $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
-    var sentAttributeList = @sentLexicalAttributeListAST §[]
+    var sentAttributeList = @sentLexicalAttributeListAST ()
     repeat
     while
       $!selector:$ ?let selector
@@ -834,16 +834,16 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--------------------------------------- Build lexical attribute map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
-  var @lexicalAttributeMap lexicalAttributeMap = §[]
+  var @lexicalAttributeMap lexicalAttributeMap = ()
   buildLexicalAttributeMap (
    !lexicalTypeMap
    !self.mLexicalAttributeListAST
    !?lexicalAttributeMap
   )
 #---------------------------------------
-  var @terminalMap terminalMap = §[]
+  var @terminalMap terminalMap = ()
   for (name sentAttributeList 4*) in self.mTerminalDeclarationListAST do
-    var argumentTypeList = @lexicalSentValueList §[]
+    var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in sentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -852,7 +852,7 @@ override method @lexiqueComponentAST enterDeclarationInSemanticContext
   end
 #---
   for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
-    var argumentTypeList = @lexicalSentValueList §[]
+    var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -900,14 +900,14 @@ override method @lexiqueComponentAST semanticAnalysis
     !self.mLexiqueComponentName.string
     !lexicalRoutineMap
     !lexicalFunctionMap
-    !@lexicalMessageMap §[]
-    !@terminalMap §[]
-    !@terminalList §[]
-    !@lexicalAttributeMap §[]
-    !@lexicalExplicitTokenListMapMap §[]
-    !§[]
-    !@templateDelimitorList §[]
-    !@styleMap §[]
+    !@lexicalMessageMap ()
+    !@terminalMap ()
+    !@terminalList ()
+    !@lexicalAttributeMap ()
+    !@lexicalExplicitTokenListMapMap ()
+    !()
+    !@templateDelimitorList ()
+    !@styleMap ()
     !unicodeTestFunctions
   }
 #--------------------------------------- Build style map
@@ -928,7 +928,7 @@ override method @lexiqueComponentAST semanticAnalysis
     if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList = @lexicalSentValueList §[]
+    var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -964,13 +964,13 @@ override method @lexiqueComponentAST semanticAnalysis
     if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList = @lexicalSentValueList §[]
+    var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    var @lexicalExplicitTokenListMap lexicalTokenListMap = §[]
-    var tokenSortedlist = @tokenSortedlist §[]
+    var @lexicalExplicitTokenListMap lexicalTokenListMap = ()
+    var tokenSortedlist = @tokenSortedlist ()
     for (mEntrySpelling mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
       let syntaxErrorMessage = [mSyntaxErrorMessage.string stringByReplacingStringByString !"%K" !mTerminalSpelling.string]
       lexiqueAnalysisContext.mTerminalList +=
@@ -1012,7 +1012,7 @@ override method @lexiqueComponentAST semanticAnalysis
    lexiqueAnalysisContext.mUnicodeStringToGenerate += !mEndString.string
    lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
-  var @stringset indexNameSet = §[]
+  var @stringset indexNameSet = ()
   for (mIndexName *) in self.mIndexingListAST do
     if [indexNameSet hasKey !mIndexName.string] then
       error mIndexName : "the '" + mIndexName + "' index is already declared"

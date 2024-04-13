@@ -40,7 +40,7 @@ refclass @filewrapperPredefinedTypeAST : @predefinedTypeAST {
 
   override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
-    outSetterMap = §[]
+    outSetterMap = ()
     enterModifierWithInputArgument (
       !?outSetterMap
       !?ioUnifiedTypeMap

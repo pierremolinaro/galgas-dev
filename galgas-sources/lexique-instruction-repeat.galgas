@@ -35,13 +35,13 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
-    var @lexicalInstructionListAST repeatedInstructionList = §[]
+    var @lexicalInstructionListAST repeatedInstructionList = ()
     let location = @location.here
     repeat
     while
       <lexical_instruction> !?repeatedInstructionList
     end
-    var @lexicalWhileBranchListAST lexicalWhileBranchList = §[]
+    var @lexicalWhileBranchListAST lexicalWhileBranchList = ()
     repeat
       <repeat_while_branch> !?lexicalWhileBranchList
     while
@@ -67,12 +67,12 @@ syntax extension galgas4LexiqueComponentSyntax {
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
     let location = @location.here
-    var @lexicalInstructionListAST repeatedInstructionList = §[]
+    var @lexicalInstructionListAST repeatedInstructionList = ()
     repeat
     while
       <lexical_instruction> !?repeatedInstructionList
     end
-    var @lexicalWhileBranchListAST lexicalWhileBranchList = §[]
+    var @lexicalWhileBranchListAST lexicalWhileBranchList = ()
     repeat
       <repeat_while_branch> !?lexicalWhileBranchList
     while

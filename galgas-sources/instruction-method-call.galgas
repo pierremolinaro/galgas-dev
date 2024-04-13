@@ -211,9 +211,9 @@ override method @methodCallInstructionForGeneration generateInstruction
   [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
   [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
 #---
-  var parameterCppNameList = @stringlist §[]
-  var jokerParametersToReleaseList = @stringlist §[]
-  var inputVariableList = @stringlist §[]
+  var parameterCppNameList = @stringlist ()
+  var jokerParametersToReleaseList = @stringlist ()
+  var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName]
     parameterCppNameList += !parameterCppName

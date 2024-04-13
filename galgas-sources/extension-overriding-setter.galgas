@@ -147,7 +147,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
 #--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
-  var inheritedSignature = @formalParameterSignature §[]
+  var inheritedSignature = @formalParameterSignature ()
   let @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
@@ -177,7 +177,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !self.mOverridingExtensionSetterFormalParameterList
-    !nonMutablePropertyList: @typedPropertyList §[]
+    !nonMutablePropertyList: @typedPropertyList ()
     !mutablePropertyList: [selfType definition].allTypedPropertyList
     !self.mOverridingExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation

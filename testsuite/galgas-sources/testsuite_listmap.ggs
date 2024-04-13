@@ -9,7 +9,7 @@ listmap @myListMap (@aList)
 
 proc testsuite_listmap() {
   println ("*************************************** begin of listmap")
-  var m = @myListMap []
+  var m = @myListMap ()
   !?m.insert ("d", "g", 37)
   !?m.insert ("a", "b", 23)
   !?m.insert ("c", "f", 11)

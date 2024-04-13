@@ -27,7 +27,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
   #-----------------------------------------------------------------------------------------------
 
   override getter initializers -> @initializerSignatureList {
-    result = §[.init (@formalInputParameterListAST §[])]
+    result = §[.init (@formalInputParameterListAST ())]
   }
 
   #-----------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = §[]
+    outMap = ()
     enterClassFunctionWithArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -548,7 +548,7 @@ refclass @binarysetPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                     !@classMethodMap outClassMethodMap {
-    outClassMethodMap = §[]
+    outClassMethodMap = ()
     enterClassMethodWithInputArgument (
       !?outClassMethodMap
       !?ioUnifiedTypeMap

@@ -42,8 +42,8 @@ syntax extension galgas3LexiqueComponentSyntax {
     $identifier$ ?let @lstring lexiqueSuperComponentName
   #--- Parse lexique body
     ${$
-    var @templateDelimitorListAST templateDelimitorList = §[]
-    var @templateReplacementListAST templateReplacementList = §[]
+    var @templateDelimitorListAST templateDelimitorList = ()
+    var @templateReplacementListAST templateReplacementList = ()
     repeat
     while
       <template_delimitor_ggs3> !? templateDelimitorList
@@ -137,8 +137,8 @@ syntax extension galgas4LexiqueComponentSyntax {
     $identifier$ ?let @lstring lexiqueSuperComponentName
   #--- Parse lexique body
     ${$
-    var @templateDelimitorListAST templateDelimitorList = §[]
-    var @templateReplacementListAST templateReplacementList = §[]
+    var @templateDelimitorListAST templateDelimitorList = ()
+    var @templateReplacementListAST templateReplacementList = ()
     repeat
     while
       <template_delimitor> !? templateDelimitorList
@@ -312,14 +312,14 @@ override method @templateLexiqueComponentAST semanticAnalysis
     !self.mLexiqueComponentName.string
     !lexicalRoutineMap
     !lexicalFunctionMap
-    !@lexicalMessageMap §[]
-    !@terminalMap §[]
-    !@terminalList §[]
-    !@lexicalAttributeMap §[]
-    !@lexicalExplicitTokenListMapMap §[]
-    !§[]
-    !@templateDelimitorList §[]
-    !@styleMap §[]
+    !@lexicalMessageMap ()
+    !@terminalMap ()
+    !@terminalList ()
+    !@lexicalAttributeMap ()
+    !@lexicalExplicitTokenListMapMap ()
+    !()
+    !@templateDelimitorList ()
+    !@styleMap ()
     !unicodeTestFunctions
   }
 #--------------------------------------- Build style map
@@ -335,13 +335,13 @@ override method @templateLexiqueComponentAST semanticAnalysis
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
-  var @terminalList terminalList = §[]
+  var @terminalList terminalList = ()
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList = @lexicalSentValueList §[]
+    var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -360,7 +360,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
     if [mStyle.string count] > 0 then
       [lexiqueAnalysisContext.mStyleMap searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList = @lexicalSentValueList §[]
+    var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?let attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -377,8 +377,8 @@ override method @templateLexiqueComponentAST semanticAnalysis
     end
   end
 #--------------------------------------- Template delimiters
-  var @stringset unicodeStringToGenerate = §[]
-  var @templateDelimitorList templateDelimitorList = §[]
+  var @stringset unicodeStringToGenerate = ()
+  var @templateDelimitorList templateDelimitorList = ()
   for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorList do
    unicodeStringToGenerate += !mStartString.string
    unicodeStringToGenerate += !mEndString.string

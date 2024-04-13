@@ -45,7 +45,7 @@ syntax extension galgas3ExpressionSyntax {
   #--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
-      expressionList = §[]
+      expressionList = ()
     or
       ${$
       <output_expression_list_ggs3> !?ioDeclarations ?expressionList
@@ -91,7 +91,7 @@ syntax extension galgas4ExpressionSyntax {
   #--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
-      expressionList = §[]
+      expressionList = ()
     or
       $($
       <output_expression_list> !?ioDeclarations ?expressionList
@@ -238,7 +238,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
       + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
     end
-    outConstructorEffectiveParameterList = §[]
+    outConstructorEffectiveParameterList = ()
     for effectiveParameter in inInitializerEffectiveParameterExpressions,
         formalArg in constructorFormalArgumentTypeList do
       [effectiveParameter.mExpression analyzeSemanticExpression
@@ -274,7 +274,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
     if [oldCollectionInitializers hasKey !inConstructorName.string] then
       error inLocationForOldStyleCollectionInitializerError
       : "old style collection initializer call (due to '--error-old-syle-collection-initializer' option)"
-      fixit { replace " §[]" }
+      fixit { replace " ()" }
     end
   end
   if [option galgas_cli_options.errorUsingNewInsteadOfInit value] then
@@ -305,7 +305,7 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
     !@string outCppExpression
   {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-    var @stringlist parameterList = §[]
+    var @stringlist parameterList = ()
     for (mExpression) in self.mEffectiveParameterList do
       [mExpression generateExpression
         !?ioGeneratedCode

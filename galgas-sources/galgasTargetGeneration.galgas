@@ -368,7 +368,7 @@ proc updateGalgasTargets
   end
 #---------------------------------------- Check target names, file base name uniqueness, and build target file list
 #--- Parse features
-  var @stringset availableGenerationFeatures = §[]
+  var @stringset availableGenerationFeatures = ()
   availableGenerationFeatures += !"quietOutputByDefault"
   availableGenerationFeatures += !"codeblocks-windows"
   availableGenerationFeatures += !"codeblocks-linux32"
@@ -379,7 +379,7 @@ proc updateGalgasTargets
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx"
   availableGenerationFeatures += !"makefile-win32-on-macosx"
   availableGenerationFeatures += !"MacOS"
-  var @stringset generationFeatures = §[]
+  var @stringset generationFeatures = ()
 #--- Check xcode target architectures
   var @string SDK = ""
   for (value) in inTargetFeatureList do
@@ -397,7 +397,7 @@ proc updateGalgasTargets
         generationFeatures += !value.string
       end
     else
-      var @stringlist s = §[]
+      var @stringlist s = ()
       for (key) in availableGenerationFeatures do
         s += !"%" + key
       end
@@ -470,7 +470,7 @@ proc updateGalgasTargets
     )
   end
 #--- Frameworks to link with tool
-  var @stringlist linkOptionForLinkingFrameworkWithTool = §[]
+  var @stringlist linkOptionForLinkingFrameworkWithTool = ()
   if [inFrameworkToolFileList count] > 0 then
     if SDK != "macosx" then
       linkOptionForLinkingFrameworkWithTool += !"-isysroot"
@@ -482,7 +482,7 @@ proc updateGalgasTargets
     end
   end
 #--- Update json file list
-  var @stringlist handCodedSourceToolFileList = §[]
+  var @stringlist handCodedSourceToolFileList = ()
   for (f) in inHandCodedSourceToolFileList do
     if [f pathExtension] != "h" then
       handCodedSourceToolFileList += ![f lastPathComponent]
@@ -615,8 +615,8 @@ proc updateGalgasTargets
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList:xcodeSettingList]
   #--- Add "Hand coded sources (App)" group
-    var @stringlist m_HandCodedSourceFileRefForAppList = §[]
-    var @stringlist m_HandCodedResourceFileRefForAppList = §[]
+    var @stringlist m_HandCodedSourceFileRefForAppList = ()
+    var @stringlist m_HandCodedResourceFileRefForAppList = ()
     if [inHandCodedSourceAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (App)"
@@ -633,7 +633,7 @@ proc updateGalgasTargets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
   #--- Add "Frameworks for App" group
-    var @stringlist appFrameworksFileRefList = §[]
+    var @stringlist appFrameworksFileRefList = ()
     if [inHandCodedLinkAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName: "Frameworks (App)"
@@ -650,12 +650,12 @@ proc updateGalgasTargets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
     end
   #--- Mach O target
-    var @stringlist buildCFileRefListForTool = §[]
-    var @stringlist buildCppFileRefListForTool = §[]
-    var @stringlist m_FileRefList = §[]
-    var @stringlist mm_FileRefList = §[]
-    var @stringlist frameworksFileRefList = §[]
-    var @stringlist resourceFileBuildRefs = §[]
+    var @stringlist buildCFileRefListForTool = ()
+    var @stringlist buildCppFileRefListForTool = ()
+    var @stringlist m_FileRefList = ()
+    var @stringlist mm_FileRefList = ()
+    var @stringlist frameworksFileRefList = ()
+    var @stringlist resourceFileBuildRefs = ()
   #--- Add "Hand coded sources (Tool)" group
     if [inHandCodedSourceToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
@@ -673,7 +673,7 @@ proc updateGalgasTargets
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
   #--- Add "Frameworks for tool" group
-    var @stringlist toolFrameworksFileRefList = §[]
+    var @stringlist toolFrameworksFileRefList = ()
     if [inFrameworkToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (Tool)"
@@ -703,7 +703,7 @@ proc updateGalgasTargets
       ?groupRef:var @string groupRef
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
-    var @stringlist libpmReferenceGroupList = §[]
+    var @stringlist libpmReferenceGroupList = ()
   #--- Add "BDD" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Binary Decision Diagrams"

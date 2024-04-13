@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
     ${$
-    var @propertyInCollectionListAST propertyList = §[]
+    var @propertyInCollectionListAST propertyList = ()
     repeat
     while
       <property_declaration_ggs3> !?ioDeclarations !?propertyList
@@ -55,7 +55,7 @@ syntax extension galgas4DeclarationsSyntax {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
     ${$
-    var @propertyInCollectionListAST propertyList = §[]
+    var @propertyInCollectionListAST propertyList = ()
     repeat
     while
       <property_declaration> !?ioDeclarations !?propertyList
@@ -78,7 +78,7 @@ syntax extension galgas4DeclarationsSyntax {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once forbiddenKeysForStruct -> @stringset {
-  result = §[]
+  result = ()
   result += !"description"
   result += !"object"
   result += !"dynamicType"
@@ -124,15 +124,15 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext {
-    let optionalMethodMap = @optionalMethodMap §[]
+    let optionalMethodMap = @optionalMethodMap ()
   #--- Struct type index
     [!?ioTypeMap makeEntry !self.structTypeName ?let structTypeIndex]
   #--- Class functions and property map
-    var @propertyMap propertyMap = §[]
-    var @classFunctionMap classFunctionMap = §[]
-    var @functionSignature constructorPropertyTypeList = §[]
-    var @typedPropertyList typedPropertyList = §[]
-    var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = §[]
+    var @propertyMap propertyMap = ()
+    var @classFunctionMap classFunctionMap = ()
+    var @functionSignature constructorPropertyTypeList = ()
+    var @typedPropertyList typedPropertyList = ()
+    var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = ()
     for property in self.mStructurePropertyListAST do
       [!?ioTypeMap makeEntry !property.propertyTypeName ?let propertyTypeEntry]
       let selector = [if property.hasSelector then property.propertyName.string else "" end nowhere]
@@ -162,9 +162,9 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   #--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   #--- Add Extensions
-    var @setterMap setterMap = §[]
-    var @initializerMap initializerMap = §[]
-    var @instanceMethodMap instanceMethodMap = §[]
+    var @setterMap setterMap = ()
+    var @initializerMap initializerMap = ()
+    var @instanceMethodMap instanceMethodMap = ()
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -215,13 +215,13 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
-      !classMethodMap: §[]
+      !classMethodMap: ()
       !optionalMethodMap: optionalMethodMap
-      !enumerationDescriptorList: §[]
+      !enumerationDescriptorList: ()
       !features
-      !@functionSignature §[]
-      !@mapSearchMethodListAST §[]
-      !@mapSearchMethodListAST §[]
+      !@functionSignature ()
+      !@mapSearchMethodListAST ()
+      !@mapSearchMethodListAST ()
       !generateHeaderInSeparateFile: false
       !enumeratedType # Type for enumerated element for "for" instruction
       !"struct-" + [self.structTypeName fileNameRepresentation]
@@ -247,9 +247,9 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     if [self.mStructurePropertyListAST count] == 0 then
       error self.structTypeName: "a structure cannot be empty: it must have at least one property"
     end
-    var @typedPropertyList typedPropertyList = §[]
-    var @typedPropertyList constructorArgumentList = §[]
-    var @propertyIndexMap propertyMap = §[]
+    var @typedPropertyList typedPropertyList = ()
+    var @typedPropertyList constructorArgumentList = ()
+    var @propertyIndexMap propertyMap = ()
     for property in self.mStructurePropertyListAST do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.propertyTypeName)
       [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]

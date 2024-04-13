@@ -584,19 +584,18 @@ GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMa
                                                       Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstringlist result_result ; // Returned variable
-  GALGAS_lstringlist temp_0 = GALGAS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 34)) ;
-  result_result = temp_0 ;
-  const GALGAS_unifiedTypeMap temp_1 = inObject ;
-  cEnumerator_unifiedTypeMap enumerator_1820 (temp_1, EnumerationOrder::up) ;
-  while (enumerator_1820.hasCurrentObject ()) {
-    enumGalgasBool test_2 = kBoolTrue ;
-    if (kBoolTrue == test_2) {
-      test_2 = enumerator_1820.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 36)).boolEnum () ;
-      if (kBoolTrue == test_2) {
-        result_result.addAssign_operation (enumerator_1820.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 37)) ;
+  result_result = GALGAS_lstringlist::init (inCompiler COMMA_HERE) ;
+  const GALGAS_unifiedTypeMap temp_0 = inObject ;
+  cEnumerator_unifiedTypeMap enumerator_1819 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_1819.hasCurrentObject ()) {
+    enumGalgasBool test_1 = kBoolTrue ;
+    if (kBoolTrue == test_1) {
+      test_1 = enumerator_1819.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 36)).boolEnum () ;
+      if (kBoolTrue == test_1) {
+        result_result.addAssign_operation (enumerator_1819.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 37)) ;
       }
     }
-    enumerator_1820.gotoNextObject () ;
+    enumerator_1819.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -816,9 +815,9 @@ GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition 
     break ;
   case GALGAS_typeDefinition::kEnum_solved:
     {
-      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_6477 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
-      const GALGAS_unifiedTypeDefinition extractedValue_6448_definition = extractPtr_6477->mAssociatedValue0 ;
-      result_result = extractedValue_6448_definition ;
+      const cEnumAssociatedValues_typeDefinition_solved * extractPtr_6476 = (const cEnumAssociatedValues_typeDefinition_solved *) (temp_0.readProperty_mDefinition ().unsafePointer ()) ;
+      const GALGAS_unifiedTypeDefinition extractedValue_6447_definition = extractPtr_6476->mAssociatedValue0 ;
+      result_result = extractedValue_6447_definition ;
     }
     break ;
   }

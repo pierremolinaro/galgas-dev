@@ -70,7 +70,7 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
 #}
 #
 #proc @adjMat.addNode() {
-#   let tmp = @stringlist §[]
+#   let tmp = @stringlist ()
 #   self.nodes = tmp
 #}
 

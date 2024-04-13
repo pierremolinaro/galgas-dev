@@ -75,9 +75,9 @@ rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectCom
     ?let @lbigint revisionVersion
     ?let @lstring targetName
   ${$
-  var @lstringlist projectSourceList = §[]
-  var @lstringlist generateFeatureList = §[]
-  var @galgas3QualifiedFeatureList qualifiedFeatureList = §[]
+  var @lstringlist projectSourceList = ()
+  var @lstringlist generateFeatureList = ()
+  var @galgas3QualifiedFeatureList qualifiedFeatureList = ()
   repeat
   while
     $%quietOutputByDefault$

@@ -125,7 +125,7 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
         end
         [ioVariableMap checkSelfObjectIsFullyInitialized !self.mInstructionLocation]
      #--- Analyze argument list
-        var actualParameterListForGeneration = @semanticExpressionListForGeneration §[]
+        var actualParameterListForGeneration = @semanticExpressionListForGeneration ()
         for formalArg in formalSignature, actualArg in self.mActualParameterList do
           [actualArg.mExpression analyzeSemanticExpression
             !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -188,7 +188,7 @@ refclass @superInitInstructionForGeneration : @semanticInstructionForGeneration 
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString
                                       ?!@string ioGeneratedCode {
-    var @stringlist getterArgumentCppNameList = §[]
+    var @stringlist getterArgumentCppNameList = ()
     for (mExpression) in self.mActualParameterList do
       [mExpression generateExpression
         !?ioGeneratedCode

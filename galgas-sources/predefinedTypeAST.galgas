@@ -48,7 +48,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   #-----------------------------------------------------------------------------------------------
 
   getter initializers -> @initializerSignatureList {
-    result = §[]
+    result = ()
   }
 
   #-----------------------------------------------------------------------------------------------
@@ -94,9 +94,9 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       [!?ioTypeMap makeEntryFromString !enumeratedTypeName ?enumeratedTypeEntry]
     end
   #--- Add Extensions
-    var @initializerMap initializerMap = §[]
+    var @initializerMap initializerMap = ()
     for (initializer) in [self initializers] do
-      var @functionSignature formalParameterList = §[]
+      var @functionSignature formalParameterList = ()
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in initializer do
         formalParameterList +=
           !mFormalSelector
@@ -129,9 +129,9 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !superType: .null
       !typeKind: [self typeKind]
       !supportCollectionValue: [self supportsCollectionValue]
-      !allTypedPropertyList: §[]
-      !propertyMap: §[]
-      !currentTypedPropertyList: §[]
+      !allTypedPropertyList: ()
+      !propertyMap: ()
+      !currentTypedPropertyList: ()
       !initializerMap: initializerMap
       !classFunctionMap: constructorMap
       !getterMap: getterMap
@@ -142,8 +142,8 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !enumerationDescriptorList: enumerationList
       ![self getSupportedOperatorFlags]
       !addAssignArgumentList
-      !@mapSearchMethodListAST §[]
-      !@mapSearchMethodListAST §[]
+      !@mapSearchMethodListAST ()
+      !@mapSearchMethodListAST ()
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !enumeratedTypeEntry
       !"predefined-types"
@@ -179,42 +179,42 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 
   method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                              !@classFunctionMap outClassFunctionMap {
-    outClassFunctionMap = §[]
+    outClassFunctionMap = ()
   }
 
   #-----------------------------------------------------------------------------------------------
 
   method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@getterMap outGetterMap {
-    outGetterMap = §[]
+    outGetterMap = ()
   }
 
   #-----------------------------------------------------------------------------------------------
 
   method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@setterMap outSetterMap {
-    outSetterMap = §[]
+    outSetterMap = ()
   }
 
   #-----------------------------------------------------------------------------------------------
 
   method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                               !@instanceMethodMap outInstanceMethodMap {
-    outInstanceMethodMap = §[]
+    outInstanceMethodMap = ()
   }
 
   #-----------------------------------------------------------------------------------------------
 
   method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@classMethodMap outClassMethodMap {
-    outClassMethodMap = §[]
+    outClassMethodMap = ()
   }
 
   #-----------------------------------------------------------------------------------------------
 
   method getOptionalMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                !@optionalMethodMap outMap {
-    outMap = §[]
+    outMap = ()
   }
 
   #-----------------------------------------------------------------------------------------------
@@ -233,7 +233,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 
   method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                   !@functionSignature outAddAssignArgumentList {
-    outAddAssignArgumentList = §[]
+    outAddAssignArgumentList = ()
   }
 
   #-----------------------------------------------------------------------------------------------
@@ -241,7 +241,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@enumerationDescriptorList outEnumerationList
                             !@string outEnumeratedType {
-    outEnumerationList = §[] # Enumeration is not supported
+    outEnumerationList = () # Enumeration is not supported
     outEnumeratedType = "" # Enumeration is not supported
   }
 
@@ -254,7 +254,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
 private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
                                           ?let @string inElementTypeName
                                           ?!@lstringlist ioUsefulnessRootEntities {
-  var @propertyInCollectionListAST attributeList = §[]
+  var @propertyInCollectionListAST attributeList = ()
   attributeList +=
     !isConstant: false
     !@lstring {!inElementTypeName !@location.here}
@@ -275,7 +275,7 @@ private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclara
 
 private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
                                                 ?!@lstringlist ioUsefulnessRootEntities {
-  var attributeList = @propertyInCollectionListAST §[]
+  var attributeList = @propertyInCollectionListAST ()
   attributeList +=
     !isConstant: false
     !@lstring {!"string" !@location.here}
@@ -305,7 +305,7 @@ private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST io
 private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST ioDeclarationListASTs
                                                 ?let @string inElementTypeName
                                                 ?!@lstringlist ioUsefulnessRootEntities {
-  var attributeList = @propertyInCollectionListAST §[]
+  var attributeList = @propertyInCollectionListAST ()
   attributeList +=
     !isConstant: false
     !@lstring {!inElementTypeName !@location.here}
@@ -333,7 +333,7 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
 
 private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclarationListASTs
                                          ?!@lstringlist ioUsefulnessRootEntities {
-  var @propertyInCollectionListAST attributeList = §[]
+  var @propertyInCollectionListAST attributeList = ()
   attributeList +=
     !isConstant: false
     !@lstring {!"uint" !@location.here}

@@ -7321,23 +7321,15 @@ GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::init (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_guiAnalysisContext::setInitializedProperties (Compiler * inCompiler) {
-GALGAS_stringlist temp_0 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 389)) ;
-  mProperty_mImportedOptionComponentList = temp_0 ;
-GALGAS_guiCommandLineOptionList temp_1 = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 390)) ;
-  mProperty_mBoolOptionList = temp_1 ;
-GALGAS_guiCommandLineOptionList temp_2 = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 391)) ;
-  mProperty_mUIntOptionList = temp_2 ;
-GALGAS_guiCommandLineOptionList temp_3 = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 392)) ;
-  mProperty_mStringOptionList = temp_3 ;
-GALGAS_stringlist temp_4 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 393)) ;
-  mProperty_mNibAndClassList = temp_4 ;
-GALGAS_extensionMap temp_5 = GALGAS_extensionMap::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 394)) ;
-  mProperty_mExtensionMap = temp_5 ;
-GALGAS_importedLexiqueList temp_6 = GALGAS_importedLexiqueList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 395)) ;
-  mProperty_mWithLexiqueList = temp_6 ;
+  mProperty_mImportedOptionComponentList = GALGAS_stringlist::init (inCompiler COMMA_HERE) ;
+  mProperty_mBoolOptionList = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
+  mProperty_mUIntOptionList = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
+  mProperty_mStringOptionList = GALGAS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
+  mProperty_mNibAndClassList = GALGAS_stringlist::init (inCompiler COMMA_HERE) ;
+  mProperty_mExtensionMap = GALGAS_extensionMap::init (inCompiler COMMA_HERE) ;
+  mProperty_mWithLexiqueList = GALGAS_importedLexiqueList::init (inCompiler COMMA_HERE) ;
   mProperty_mBuildRunOption = GALGAS_string::makeEmptyString () ;
-GALGAS_projectIndexingDescriptorList temp_7 = GALGAS_projectIndexingDescriptorList::init (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 397)) ;
-  mProperty_mProjectIndexingDescriptorList = temp_7 ;
+  mProperty_mProjectIndexingDescriptorList = GALGAS_projectIndexingDescriptorList::init (inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------

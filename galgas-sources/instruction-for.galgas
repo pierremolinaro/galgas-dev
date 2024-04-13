@@ -134,7 +134,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
-    var elementList = @forInstructionEnumeratedObjectElementListAST §[]
+    var elementList = @forInstructionEnumeratedObjectElementListAST ()
     let @bool endsWithEllipsis
     select
       $...$
@@ -219,7 +219,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
-    var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST §[]
+    var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST ()
     repeat
       let @bool ascending
       select
@@ -243,7 +243,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList
     select
-      mBeforeInstructionList = @semanticInstructionListAST §[]
+      mBeforeInstructionList = @semanticInstructionListAST ()
     or
       $before$
       <semantic_instruction_list_ggs3> !?ioDeclarations ?mBeforeInstructionList
@@ -262,7 +262,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
-      mBetweenInstructionList = @semanticInstructionListAST §[]
+      mBetweenInstructionList = @semanticInstructionListAST ()
     or
       $between$
       <semantic_instruction_list_ggs3> !?ioDeclarations ?mBetweenInstructionList
@@ -270,7 +270,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
     select
-      mAfterInstructionList = @semanticInstructionListAST §[]
+      mAfterInstructionList = @semanticInstructionListAST ()
     or
       $after$
       <semantic_instruction_list_ggs3> !?ioDeclarations ?mAfterInstructionList
@@ -351,7 +351,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
-    var elementList = @forInstructionEnumeratedObjectElementListAST §[]
+    var elementList = @forInstructionEnumeratedObjectElementListAST ()
     repeat
       <for_instruction_element> !?ioDeclarations !?elementList
     while
@@ -425,7 +425,7 @@ syntax extension galgas4InstructionsSyntax {
                               !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
-    var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST §[]
+    var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST ()
     repeat
       let @bool ascending
       select
@@ -449,7 +449,7 @@ syntax extension galgas4InstructionsSyntax {
     let endof_while_expression = @location.here
     let @semanticInstructionListAST mBeforeInstructionList
     select
-      mBeforeInstructionList = @semanticInstructionListAST §[]
+      mBeforeInstructionList = @semanticInstructionListAST ()
     or
       $before$
       <semantic_instruction_list> !?ioDeclarations ? mBeforeInstructionList
@@ -468,7 +468,7 @@ syntax extension galgas4InstructionsSyntax {
     let endof_do_branch = @location.here
     let @semanticInstructionListAST mBetweenInstructionList
     select
-      mBetweenInstructionList = @semanticInstructionListAST §[]
+      mBetweenInstructionList = @semanticInstructionListAST ()
     or
       $between$
       <semantic_instruction_list> !?ioDeclarations ? mBetweenInstructionList
@@ -476,7 +476,7 @@ syntax extension galgas4InstructionsSyntax {
     let endof_between_branch = @location.here
     let @semanticInstructionListAST mAfterInstructionList
     select
-      mAfterInstructionList = @semanticInstructionListAST §[]
+      mAfterInstructionList = @semanticInstructionListAST ()
     or
       $after$
       <semantic_instruction_list> !?ioDeclarations ? mAfterInstructionList
@@ -743,9 +743,9 @@ override method @forInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: §[]
-    !localInitializedVariableListWarnsIfNotMutated: §[]
-    !localInitializedVariableListNoWarnsIfNotMutated: §[]
+    !localConstantList: ()
+    !localInitializedVariableListWarnsIfNotMutated: ()
+    !localInitializedVariableListNoWarnsIfNotMutated: ()
     !self.mBeforeInstructionList
     !self.mEndOf_before_branch
     !?ioVariableMap
@@ -759,9 +759,9 @@ override method @forInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: §[]
-    !localInitializedVariableListWarnsIfNotMutated: §[]
-    !localInitializedVariableListNoWarnsIfNotMutated: §[]
+    !localConstantList: ()
+    !localInitializedVariableListWarnsIfNotMutated: ()
+    !localInitializedVariableListNoWarnsIfNotMutated: ()
     !self.mBetweenInstructionList
     !self.mEndOf_between_branch
     !?ioVariableMap
@@ -775,9 +775,9 @@ override method @forInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: §[]
-    !localInitializedVariableListWarnsIfNotMutated: §[]
-    !localInitializedVariableListNoWarnsIfNotMutated: §[]
+    !localConstantList: ()
+    !localInitializedVariableListWarnsIfNotMutated: ()
+    !localInitializedVariableListNoWarnsIfNotMutated: ()
     !self.mAfterInstructionList
     !self.mEndOf_after_branch
     !?ioVariableMap
@@ -785,8 +785,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !self.mEndOf_after_branch]
 #--- Analyze enumerated objects
-  var @localConstantList localConstantListForDoBranch = §[]
-  var @forInstructionEnumeratedObjectListForGeneration enumerationList = §[]
+  var @localConstantList localConstantListForDoBranch = ()
+  var @forInstructionEnumeratedObjectListForGeneration enumerationList = ()
   for (mAscending mEnumeratedCollection) in self.mEnumeratedObjectList do
     [mEnumeratedCollection analyzeEnumeration
       !inUsefulnessCallerEntityName
@@ -853,8 +853,8 @@ override method @forInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !?ioTypeMap
     !localConstantList: localConstantListForDoBranch # indexDeclaration
-    !localInitializedVariableListWarnsIfNotMutated: §[]
-    !localInitializedVariableListNoWarnsIfNotMutated: §[]
+    !localInitializedVariableListWarnsIfNotMutated: ()
+    !localInitializedVariableListNoWarnsIfNotMutated: ()
     !self.mDoInstructionList
     !self.mEndOf_do_branch
     !?ioVariableMap
@@ -912,7 +912,7 @@ override method @forInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  var @stringlist enumerationVarCppNameList = §[]
+  var @stringlist enumerationVarCppNameList = ()
   for (* mEnumeratedExpression *) in self.mEnumeratedObjectList do
     [mEnumeratedExpression generateExpression
       !?ioGeneratedCode

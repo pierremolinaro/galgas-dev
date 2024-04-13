@@ -207,12 +207,12 @@ map @syntaxComponentMap {
 
 struct @semanticContext {
   public var @routineMap routineMap = .init {}
-  public var @functionMap mFunctionMap = §[]
-  public var @filewrapperMap mFilewrapperMap = §[]
-  public var @grammarMap grammarMap = §[]
-  public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = §[]
-  public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = §[]
-  public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = §[]
+  public var @functionMap mFunctionMap = ()
+  public var @filewrapperMap mFilewrapperMap = ()
+  public var @grammarMap grammarMap = ()
+  public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = ()
+  public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = ()
+  public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = ()
   public var @bool galgas4 %initArgLabel
 }
 
@@ -429,7 +429,7 @@ proc addExtensions
   if [inExtensionGetterMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
     for (lkey mResultTypeName mInputFormalParameterList qualifier) in extensionGetterMapForType do
-      var @functionSignature formalArgumentList = §[]
+      var @functionSignature formalArgumentList = ()
       for formalInputArgument in mInputFormalParameterList do
         [!?ioTypeMap makeEntry !formalInputArgument.mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList +=
@@ -476,7 +476,7 @@ proc addExtensions
   if [inExtensionMethodMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?let extensionMethodMapForType]
     for (lkey mFormalParameterList qualifier) in extensionMethodMapForType do
-      var formalArgumentList = @formalParameterSignature §[]
+      var formalArgumentList = @formalParameterSignature ()
       for parameter in mFormalParameterList do
         [!?ioTypeMap makeEntry
           !parameter.mFormalArgumentTypeName
@@ -523,7 +523,7 @@ proc addExtensions
   if [inExtensionSetterMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?let extensionSetterMapForType]
     for (lkey mFormalParameterList) in extensionSetterMapForType do
-      var @formalParameterSignature formalArgumentList = §[]
+      var @formalParameterSignature formalArgumentList = ()
       for parameter in mFormalParameterList do
         [!?ioTypeMap makeEntry  !parameter.mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList +=
@@ -549,7 +549,7 @@ proc addExtensions
   if [inExtensionInitializerMapForBuildingContext hasKey !inTypeName.string] then
     [inExtensionInitializerMapForBuildingContext searchKey !inTypeName ?let initializerMapForType]
     for (lkey mFormalParameterList) in initializerMapForType do
-      var @functionSignature formalArgumentList = §[]
+      var @functionSignature formalArgumentList = ()
      for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * isConstant) in mFormalParameterList do
         [!?ioTypeMap makeEntry !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string !isConstant
@@ -609,7 +609,7 @@ proc recursivelyEnumerateDirectories
   ioWrapperDirectoryIndex += 1
 #--- Enumerates regular files
   let @stringlist files = [inAbsoluteSourcePath regularFiles !false]
-  outWrapperFileMap = §[]
+  outWrapperFileMap = ()
   for (mValue) in files do
     if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
@@ -635,7 +635,7 @@ proc recursivelyEnumerateDirectories
   end
 #--- Enumerates regular directories
   let @stringlist directories = [inAbsoluteSourcePath directories !false]
-  outWrapperDirectoryMap = §[]
+  outWrapperDirectoryMap = ()
   for (mValue) in directories do
     let @uint theDirectoryIndex = ioWrapperDirectoryIndex
     recursivelyEnumerateDirectories (
@@ -668,9 +668,9 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Templates
-  var @filewrapperTemplateMap filewrapperTemplateMap = §[]
+  var @filewrapperTemplateMap filewrapperTemplateMap = ()
   for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
-    var @functionSignature templateSignature = §[]
+    var @functionSignature templateSignature = ()
     for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName isConstant) in mFilewrapperTemplateFormalInputParameters do
       [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string !isConstant
@@ -682,12 +682,12 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #--- Build text file extension map
-  var @wrapperExtensionMap textExtensionMap = §[]
+  var @wrapperExtensionMap textExtensionMap = ()
   for (mValue) in self.mFilewrapperTextFileExtensionList do
     [!?textExtensionMap insertKey !mValue]
   end
 #--- Build binary file extension map
-  var @wrapperExtensionMap binaryFileExtensionMap = §[]
+  var @wrapperExtensionMap binaryFileExtensionMap = ()
   for (mValue) in self.mFilewrapperBinaryFileExtensionList do
     if [textExtensionMap hasKey !mValue.string] then
       error mValue:"the '" + mValue + "' extension is already used for text files"
@@ -744,7 +744,7 @@ override method @externFunctionDeclarationAST enterDeclarationInSemanticContext 
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
-  var functionSignature = @functionSignature §[]
+  var functionSignature = @functionSignature ()
   for (mFormalSelector mFormalArgumentTypeName * * isConstant) in self.mFormalArgumentList do
     [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string !isConstant
@@ -772,7 +772,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInSemanticContext
 #--- Result type
   [!?ioTypeMap makeEntry  !self.mResultTypeName ?let @unifiedTypeMapEntry resultTypeIndex]
 #--- Enter function in routine map
-  [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !§[] !resultTypeIndex !self.mIsInternal]
+  [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !() !resultTypeIndex !self.mIsInternal]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -805,10 +805,10 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Analyze start symbol labels
-  var @grammarLabelMap grammarLabelMap = §[]
+  var @grammarLabelMap grammarLabelMap = ()
   for (mLabelName mFormalArgumentList *) in self.mStartSymbolLabelList do
   #--- Analyze signature
-    var @formalParameterSignature formalArgumentList = §[]
+    var @formalParameterSignature formalArgumentList = ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
       [!?ioTypeMap makeEntry  !mFormalArgumentTypeName ?let argumentType]
       formalArgumentList +=

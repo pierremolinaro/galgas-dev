@@ -166,7 +166,7 @@ refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
   #--- Find base type name
     var @string baseTypeName = ""
     var @unifiedTypeMapEntry superType = [selfType definition].superType
-    var inheritedSignature = @formalParameterSignature §[]
+    var inheritedSignature = @formalParameterSignature ()
     let inheritedDeclarationLocation = @location.here
     loop ([ioTypeMap count] + 1)
     while (not [superType isNull]) & (baseTypeName == "") do

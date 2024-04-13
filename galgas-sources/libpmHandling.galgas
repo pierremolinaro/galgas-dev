@@ -35,7 +35,7 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     [actualDirectory makeDirectory]
   end
 #--- Update text files
-  var @stringset allNeededFileSet = §[]
+  var @stringset allNeededFileSet = ()
   for (path) in [fw allTextFilePathes] do
     let contents = [fw textFileContentsAtPath !path]
     let actualFilePath = inLIBPMPath + path
@@ -54,7 +54,7 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     allNeededFileSet += !mValue
   end
 #--- Remove useless files
-  var @stringset allActualFileSet = §[]
+  var @stringset allActualFileSet = ()
   for (mValue) in [inLIBPMPath regularFiles !true] do
     allActualFileSet += !"/" + mValue
   end

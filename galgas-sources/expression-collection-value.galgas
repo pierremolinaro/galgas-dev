@@ -26,7 +26,7 @@ syntax extension galgas3ExpressionSyntax {
     <optional_type_ggs3> ?let @lstring typeName
 #    $§§$
     $§[$
-    var @collectionValueElementList expressionList = §[]
+    var @collectionValueElementList expressionList = ()
     select
     or
       repeat
@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     <optional_type> ?let @lstring typeName
 #    $§§$
     $[$
-    var @collectionValueElementList expressionList = §[]
+    var @collectionValueElementList expressionList = ()
     select
     or
       repeat
@@ -120,12 +120,12 @@ refclass @collectionValueAST : @semanticExpressionAST {
       + " type does not support collection value" : outExpression
     else
       let initializerMap = [targetType definition].initializerMap
-      let @functionSignature emptyArgumentList = §[]
+      let @functionSignature emptyArgumentList = ()
       if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
         error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
       end
       let elementType = [targetType definition].mTypeForEnumeratedElement
-      var @collectionValueElementListForGeneration expressionListForGeneration = §[]
+      var @collectionValueElementListForGeneration expressionListForGeneration = ()
       for (expression location) in self.mExpressionList do
         [expression analyzeSemanticExpression
           !usefulnessCallerEntityName: inUsefulnessCallerEntityName

@@ -61,16 +61,16 @@ proc compileBeforeClauseGalgas3
   [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
   ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'before' routines
-  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration §[]
+  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in inPrologueList do
     analyzeRoutineBody (
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
-      !@formalParameterListAST §[] # Routine signature : no argument
-      !nonMutablePropertyList: @typedPropertyList §[] # No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList §[] # No attribute (not a method)
+      !@formalParameterListAST () # Routine signature : no argument
+      !nonMutablePropertyList: @typedPropertyList () # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList () # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -85,7 +85,7 @@ proc compileBeforeClauseGalgas3
       !generateHeader: false # Has no header
       !implementationCppFileName: "proc-before"
       !routineMangledName:"before"
-      !@formalParameterListForGeneration §[]
+      !@formalParameterListForGeneration ()
       !true # Generate static
       !semanticInstructionListForGeneration
     }
@@ -119,8 +119,8 @@ private proc compileProgramRulesGalgas3
       !inAnalysisContext
       !?ioTypeMap
       !argumentList
-      !nonMutablePropertyList: @typedPropertyList §[] # No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList §[] # No attribute (not a method)
+      !nonMutablePropertyList: @typedPropertyList () # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList () # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let semanticInstructionListForGeneration
@@ -157,17 +157,17 @@ proc compileAfterClauseGalgas3
   [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
   ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'after' routines
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration = §[]
+  var @semanticInstructionListForGeneration semanticInstructionListForGeneration = ()
   for (mInstructionList mEndOfInstructionList) in inEpilogueList do
     analyzeRoutineBody (
       !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
-      !@formalParameterListAST §[] # Routine signature : no argument
-#      !localConstantList: §[] # No local constant
-      !nonMutablePropertyList: @typedPropertyList §[] # No attribute (not a method)
-      !mutablePropertyList: @typedPropertyList §[] # No attribute (not a method)
+      !@formalParameterListAST () # Routine signature : no argument
+#      !localConstantList: () # No local constant
+      !nonMutablePropertyList: @typedPropertyList () # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList () # No attribute (not a method)
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -180,7 +180,7 @@ proc compileAfterClauseGalgas3
     !generateHeader: false # Has no header
     !implementationCppFileName: "proc-after"
     !routineMangledName: "after"
-    !@formalParameterListForGeneration §[]
+    !@formalParameterListForGeneration ()
     !true # Generate static
     !semanticInstructionListForGeneration
   }
@@ -213,7 +213,7 @@ proc compileProgramComponentGalgas3
     !requiresSelfForAccessingProperty: false # self.requiresSelfForAccessingProperty
   }
 #--- Analyse 'before' instructions
-  var @programListForGeneration decoratedDeclarationListForGeneration = §[]
+  var @programListForGeneration decoratedDeclarationListForGeneration = ()
   compileBeforeClauseGalgas3 (
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
@@ -241,7 +241,7 @@ proc compileProgramComponentGalgas3
     !?decoratedDeclarationListForGeneration
   )
 #------------ Build Implementation File
-  var @stringset inclusionSet = §[]
+  var @stringset inclusionSet = ()
   var beforeAfterRulesString = ""
   for (mDeclaration) in decoratedDeclarationListForGeneration do
     beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation]
@@ -255,7 +255,7 @@ proc compileProgramComponentGalgas3
   end
   let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation
     !"program"
-    !§[] # [inclusionSet stringList]
+    !() # [inclusionSet stringList]
     !beforeAfterRulesString
     !inProgramRules
     !inProjectVersionString

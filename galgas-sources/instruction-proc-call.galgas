@@ -144,9 +144,9 @@ refclass @procCallInstructionForGeneration : @semanticInstructionForGeneration {
     ioInclusionSet += !"proc-" + [self.routineMangledName fileNameRepresentation]
     ioGeneratedCode += "{\n"
   #--- Parameters
-    var @stringlist parameterCppNameList = §[]
-    var @stringlist jokerParametersToReleaseList = §[]
-    var @stringlist inputVariableList = §[]
+    var @stringlist parameterCppNameList = ()
+    var @stringlist jokerParametersToReleaseList = ()
+    var @stringlist inputVariableList = ()
     for (actualParameter) in self.mActualParameterList do
       [actualParameter generateActualParameter
         !?ioInclusionSet

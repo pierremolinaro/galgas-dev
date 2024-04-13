@@ -27,19 +27,19 @@ proc testsuite_list() {
   strList += strList
   log s
   println ("*************************************** begin of list compare")
-  let aList = @myList [!"az"]
-  let bList = @myList [!"az"]
+  let aList = @myList [.init ("az")]
+  let bList = @myList [.init ("az")]
   let @bool comp = aList == bList
   log comp
   println ("*************************************** begin of collection value")
-  var s1 = @stringlist [!"a"]
+  var s1 = @stringlist [.init ("a")]
   !?s1.append ("b")
-  var s2 = @stringlist [!"c"]
+  var s2 = @stringlist [.init ("c")]
   !?s2.append ("d")
-  s2 += ["e"]
+  s2 += [.init ("e")]
   let str = s1 + s2
   log str
-  let str2 = @stringlist ["a" : !"b" : !"c" : !"d" : !"e"]
+  let str2 = @stringlist [.init ("a"), .init ("b"), .init ("c"), .init ("d"), .init ("e")]
   log str2
 }
 

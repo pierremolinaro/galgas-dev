@@ -243,7 +243,7 @@ list @propertyInCollectionListAST {
                                           !@stringset outUnusedVariableCppNameSet
                                           !@string outInitializationCode {
     outInitializationCode = ""
-    var inclusionSet = @stringset §[]
+    var inclusionSet = @stringset ()
     var @uint temporaryVariableIndex = 0
     outUnusedVariableCppNameSet = @stringset §[compilerCppName ()]
     for (* propertyTypeName propertyName 2* initExpression) in self do

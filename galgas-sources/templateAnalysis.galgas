@@ -108,7 +108,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     var @methodKind kind
     var @bool hasCompilerArgument
     var @unifiedTypeMapEntry returnedType
-    var fieldList = @stringlist §[]
+    var fieldList = @stringlist ()
     var actualGetterName = self.mGetterName.string
     if [getterMap hasKey !self.mGetterName.string] then
       [getterMap searchKey !self.mGetterName
@@ -129,7 +129,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     else
       var @uint matchingReaderCount = 0
       if [receiverType definition].typeKind == @typeKindEnum.structType then
-        getterFormalArgumentTypeList =§[]
+        getterFormalArgumentTypeList =()
         hasCompilerArgument = true
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
@@ -180,7 +180,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
       + [[self.mExpressionList count] string] + " parameter(s)" : outExpression
     else
-      var @semanticExpressionListForGeneration constructorEffectiveParameterList = §[]
+      var @semanticExpressionListForGeneration constructorEffectiveParameterList = ()
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList,
           (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
         if mFormalSelector.string != mActualSelector.string then
@@ -257,7 +257,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     + [[self.mExpressionList count] string] + " parameter(s)"
     : classFunctionEffectiveParameterList
   else
-    classFunctionEffectiveParameterList = @semanticExpressionListForGeneration §[]
+    classFunctionEffectiveParameterList = @semanticExpressionListForGeneration ()
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType 2*) in classFuncFormalArgumentTypeList do
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
@@ -739,7 +739,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
       error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
-    var @stringset s = §[]
+    var @stringset s = ()
     for (lkey * * * *) in boolOptionMap do
       s += !lkey
     end
@@ -791,7 +791,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
       + " effective argument(s)"
     : outExpression
   else
-    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration §[]
+    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
     for (mFormalSelector mFormalArgumentType 2*) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
       [mExpression templateExpressionAnalysis
         !inUsefulnessCallerEntityName
@@ -1595,16 +1595,16 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
       !expression.mLocation
       !.definedAsMember
       !expression
-      !§[]
+      !()
       !"uint"
-      !§[]
+      !()
       !true
     }
     expression = conversionExpression
   elsif [expression.mResultType definition].typeName.string != "uint" then
     error self.mLocation:"expression type should be '@uint' (it is '@" + [expression.mResultType definition].typeName.string + "')"
   end
-  var blockInstructionList = @templateInstructionListForGeneration §[]
+  var blockInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -1650,7 +1650,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
   ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
 {
-  var templateInstructionIfBranchList = @templateInstructionIfBranchListForGeneration §[]
+  var templateInstructionIfBranchList = @templateInstructionIfBranchListForGeneration ()
   for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
     [mExpression templateExpressionAnalysis
       !inUsefulnessCallerEntityName
@@ -1662,7 +1662,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
     if [expression.mResultType definition].typeName.string != "bool" then
       error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + [expression.mResultType definition].typeName.string + "')"
     end
-    var instructionList = @templateInstructionListForGeneration §[]
+    var instructionList = @templateInstructionListForGeneration ()
     templateInstructionListAnalysis (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -1674,7 +1674,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
     templateInstructionIfBranchList += !expression !instructionList
   end
 #---
-  var elseInstructionList = @templateInstructionListForGeneration §[]
+  var elseInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph

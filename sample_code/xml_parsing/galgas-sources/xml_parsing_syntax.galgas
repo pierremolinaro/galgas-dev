@@ -43,7 +43,7 @@ rule <start_symbol>
   end
   $?>$
 #--- Element list
-  outRootNodes = §[]
+  outRootNodes = ()
   <element_list>
     !?outRootNodes
     !inIncludeComments
@@ -90,8 +90,8 @@ rule <element>
     let node = @xmlNode {
       !@xmlNodeType. comment
       !commentString.string
-      !§[]
-      !§[]
+      !()
+      !()
     }
     ioNodes += !node
   end
@@ -120,7 +120,7 @@ rule <element>
   ?let @string inIndendation {
   $<$
   $name$ ?let @lstring name
-  var @xmlAttributeMap attributeMap = §[]
+  var @xmlAttributeMap attributeMap = ()
   repeat
   while 
     $name$ ?let @lstring attributeName
@@ -150,7 +150,7 @@ rule <element>
     print (!s)
   end
 
-  var nodeList = @xmlNodeList §[]
+  var nodeList = @xmlNodeList ()
   select
     $/>$
   or
@@ -206,8 +206,8 @@ proc addText
     let node = @xmlNode.init{
       !@xmlNodeType. text
       !ls
-      !§[]
-      !§[]
+      !()
+      !()
     }
     ioNodes += !node
     if inPrintDuringParsing then

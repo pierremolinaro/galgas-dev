@@ -211,7 +211,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     + [[self.mExpressions count] string] + " parameter(s)"
     : effectiveParameterList
   else
-    effectiveParameterList = §[]
+    effectiveParameterList = ()
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in templateSignature do
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
@@ -302,7 +302,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
       ]
     else
       error self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" : filewrapperFileMap
-      directoryList = @stringlist §[] # For exiting loop
+      directoryList = @stringlist () # For exiting loop
     end
   end
   let @uint fileIndex
@@ -365,7 +365,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   !@string outCppExpression {
 #---
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
-  var parameterList = @stringlist §[]
+  var parameterList = @stringlist ()
   for (mExpression) in self.mActualOutputParameterList do
     [mExpression generateExpression
       !?ioGeneratedCode

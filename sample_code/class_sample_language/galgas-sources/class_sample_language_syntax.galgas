@@ -3,7 +3,7 @@ syntax class_sample_language_syntax (class_sample_language_lexique) {
 rule <start_symbol> !@declarationListAST outDeclarationListAST
 
 rule <start_symbol> !@declarationListAST outDeclarationListAST {
-  outDeclarationListAST = §[]
+  outDeclarationListAST = ()
   repeat
   while
     $class$

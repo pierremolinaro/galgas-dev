@@ -121,10 +121,10 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
-    var @lstringlist importedOptionList = §[]
-    var @guiSimpleAttributeListAST simpleGlobalAttributes = §[]
-    var @withLexiqueListAST withLexiqueList = §[]
-    var @projectIndexingDescriptorList projectExtensionList = §[]
+    var @lstringlist importedOptionList = ()
+    var @guiSimpleAttributeListAST simpleGlobalAttributes = ()
+    var @withLexiqueListAST withLexiqueList = ()
+    var @projectIndexingDescriptorList projectExtensionList = ()
     repeat
     while
       $project$
@@ -156,9 +156,9 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     $with$
     $lexique$
     $identifier$ ?let @lstring lexiqueReference
-    var @guiLabelListAST labels = §[]
-    var @guiSimpleAttributeListAST simpleAttributes = §[]
-    var @guiCompoundAttributeListAST compoundAttributes = §[]
+    var @guiLabelListAST labels = ()
+    var @guiSimpleAttributeListAST simpleAttributes = ()
+    var @guiCompoundAttributeListAST compoundAttributes = ()
     ${$
     repeat
     while
@@ -170,7 +170,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
         $*$
         displayStyle = 1
       end
-      var @terminalLabelListAST terminalList = §[]
+      var @terminalLabelListAST terminalList = ()
       repeat
         $\$terminal\$$ ?let  @lstring terminal
         let @uint displayFlags
@@ -256,10 +256,10 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     $gui$
     $identifier$ ?let @lstring mGUIName
     ${$
-    var @lstringlist importedOptionList = §[]
-    var @guiSimpleAttributeListAST simpleGlobalAttributes = §[]
-    var @withLexiqueListAST withLexiqueList = §[]
-    var @projectIndexingDescriptorList projectExtensionList = §[]
+    var @lstringlist importedOptionList = ()
+    var @guiSimpleAttributeListAST simpleGlobalAttributes = ()
+    var @withLexiqueListAST withLexiqueList = ()
+    var @projectIndexingDescriptorList projectExtensionList = ()
     repeat
     while
       $project$
@@ -291,9 +291,9 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     $with$
     $lexique$
     $identifier$ ?let @lstring lexiqueReference
-    var @guiLabelListAST labels = §[]
-    var @guiSimpleAttributeListAST simpleAttributes = §[]
-    var @guiCompoundAttributeListAST compoundAttributes = §[]
+    var @guiLabelListAST labels = ()
+    var @guiSimpleAttributeListAST simpleAttributes = ()
+    var @guiCompoundAttributeListAST compoundAttributes = ()
     ${$
     repeat
     while
@@ -305,7 +305,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
         $*$
         displayStyle = 1
       end
-      var @terminalLabelListAST terminalList = §[]
+      var @terminalLabelListAST terminalList = ()
       repeat
         $\$terminal\$$ ?let  @lstring terminal
         let @uint displayFlags
@@ -386,15 +386,15 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @guiAnalysisContext {
-  public var @stringlist mImportedOptionComponentList = §[]
-  public let @guiCommandLineOptionList mBoolOptionList = §[]
-  public let @guiCommandLineOptionList mUIntOptionList = §[]
-  public let @guiCommandLineOptionList mStringOptionList = §[]
-  public var @stringlist mNibAndClassList = §[]
-  public var @extensionMap mExtensionMap = §[]
-  public var @importedLexiqueList mWithLexiqueList = §[]
+  public var @stringlist mImportedOptionComponentList = ()
+  public let @guiCommandLineOptionList mBoolOptionList = ()
+  public let @guiCommandLineOptionList mUIntOptionList = ()
+  public let @guiCommandLineOptionList mStringOptionList = ()
+  public var @stringlist mNibAndClassList = ()
+  public var @extensionMap mExtensionMap = ()
+  public var @importedLexiqueList mWithLexiqueList = ()
   public var @string mBuildRunOption = ""
-  public var @projectIndexingDescriptorList mProjectIndexingDescriptorList = §[]
+  public var @projectIndexingDescriptorList mProjectIndexingDescriptorList = ()
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -411,7 +411,7 @@ proc compileAllGuiComponentFromASTGalgas3
   ?let @semanticContext inSemanticContext
   !@optionComponentMapForGeneration outOptionComponentMapForGeneration
 {
-  outOptionComponentMapForGeneration = §[]
+  outOptionComponentMapForGeneration = ()
   for guiAST in inGuiComponentListAST do
     guiComponentSemanticAnalysis (
       !guiAST
@@ -486,7 +486,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST-elemen
       end
     end
   #--- Compound attributes
-    var @textMacroList textMacroList = §[]
+    var @textMacroList textMacroList = ()
     for (mKey mAttributeName mValue) in compoundAttributes do
       if mKey.string != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"

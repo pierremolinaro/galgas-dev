@@ -155,7 +155,7 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionMethodMapForBuildingContext insertKey
         ! self.mTypeName
-        !§[]
+        !()
       ]
     end
     with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
@@ -223,8 +223,8 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
     if let [[selfType definition].typeKind classType ?isReference: let reference] then
       isRefClass = reference
     end
-    var mutableProperties = @typedPropertyList §[]
-    var nonMutableProperties = @typedPropertyList §[]
+    var mutableProperties = @typedPropertyList ()
+    var nonMutableProperties = @typedPropertyList ()
     if [selfType definition].typeKind == .structType then
       nonMutableProperties = [selfType definition].allTypedPropertyList
     elsif let [[selfType definition].typeKind classType ?isReference: let isReference] then

@@ -35,7 +35,7 @@ syntax extension galgas3InstructionsSyntax {
                                    !@semanticInstructionAST outInstruction {
     $drop$
     let instructionLocation = @location.here
-    var @lstringlist dropList = §[]
+    var @lstringlist dropList = ()
     repeat
       $identifier$ ?let variableName
       dropList += !variableName
@@ -59,7 +59,7 @@ syntax extension galgas4InstructionsSyntax {
                               !@semanticInstructionAST outInstruction {
     $drop$
     let instructionLocation = @location.here
-    var @lstringlist dropList = §[]
+    var @lstringlist dropList = ()
     repeat
       $identifier$ ?let variableName
       dropList += !variableName

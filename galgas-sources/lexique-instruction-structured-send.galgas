@@ -33,7 +33,7 @@ syntax extension galgas3LexiqueComponentSyntax {
   #·······························································································
 
   rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    var @lexicalSendSearchListAST lexicalSendSearchList = §[]
+    var @lexicalSendSearchListAST lexicalSendSearchList = ()
     $search$
     repeat
       $identifier$ ?let @lstring attributeName
@@ -70,7 +70,7 @@ syntax extension galgas4LexiqueComponentSyntax {
   #·······························································································
 
   rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    var @lexicalSendSearchListAST lexicalSendSearchList = §[]
+    var @lexicalSendSearchListAST lexicalSendSearchList = ()
     $%searchString$
     repeat
       $identifier$ ?let @lstring attributeName

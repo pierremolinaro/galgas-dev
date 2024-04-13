@@ -16,7 +16,7 @@ func @B_B.otherReader( ?@uint inA, ?let @string inB) -> @string {
   result = inB + inA + self.aReader (inA, !inB) + self.aReader (inA, !inB)
 }
 
-#abstract class @C_C : @B_B §[]
+#abstract class @C_C : @B_B ()
 #
 #override abstract func @C_C.aReader( ?@uint inA ?let@string inB) -> @string
 

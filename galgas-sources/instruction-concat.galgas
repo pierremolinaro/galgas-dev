@@ -91,7 +91,7 @@ syntax extension galgas3InstructionsSyntax {
                                                         !@semanticInstructionAST outInstruction {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
-    var @lstringlist mStructAttributeList = §[]
+    var @lstringlist mStructAttributeList = ()
     repeat
     while
       $.$
@@ -156,7 +156,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                                !@actualOutputArgumentList outExpressionList {
-    outExpressionList = §[]
+    outExpressionList = ()
     repeat
       let @lstring selector
       select
@@ -200,7 +200,7 @@ syntax extension galgas4InstructionsSyntax {
                                                         !@semanticInstructionAST outInstruction {
     $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
-    var @lstringlist propertyList = §[]
+    var @lstringlist propertyList = ()
     repeat
     while
       $.$
@@ -730,7 +730,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
     + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
     + [[self.mExpressions count] string] + " parameter(s)"
   else
-    var @semanticExpressionListForGeneration effectiveParameterList = §[]
+    var @semanticExpressionListForGeneration effectiveParameterList = ()
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -784,7 +784,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
 #--- Parameters
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  var parameterList = @stringlist §[]
+  var parameterList = @stringlist ()
   for (mExpression) in self.mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode

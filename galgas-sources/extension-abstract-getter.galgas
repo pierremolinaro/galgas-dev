@@ -169,7 +169,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !self.mTypeName
-      !§[]
+      !()
     ]
   end
   with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
@@ -220,7 +220,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
       : "cannot declare an abstract extension getter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
   end
 #--- Compute method signature
-  var @formalInputParameterListForGeneration formalParameterListForGeneration = §[]
+  var @formalInputParameterListForGeneration formalParameterListForGeneration = ()
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector

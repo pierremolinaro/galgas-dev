@@ -29,10 +29,10 @@ syntax extension galgas3DeclarationsSyntax {
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode
     <externtype_cpp_classdeclaration> ?let cppClassCode
     ${$
-    var @externTypeConstructorList externTypeConstructorList =  §[]
-    var @externTypeGetterList externTypeGetterList = §[]
-    var @externTypeSetterList externTypeSetterList = §[]
-    var @externTypeMethodList externTypeMethodList = §[]
+    var @externTypeConstructorList externTypeConstructorList =  ()
+    var @externTypeGetterList externTypeGetterList = ()
+    var @externTypeSetterList externTypeSetterList = ()
+    var @externTypeMethodList externTypeMethodList = ()
     repeat
     while
       <externtype_constructor_ggs3> !?ioDeclarations !?externTypeConstructorList
@@ -88,7 +88,7 @@ syntax extension galgas3DeclarationsSyntax {
                                      ?!@externTypeConstructorList ioExternTypeConstructorList {
     $init$
     $($
-    var @typeNameFormalParameterNameList argumentTypeList = §[]
+    var @typeNameFormalParameterNameList argumentTypeList = ()
     repeat
     while
       $?selector:$ ?let selector
@@ -112,7 +112,7 @@ syntax extension galgas3DeclarationsSyntax {
                                 ?!@externTypeGetterList ioExternTypeGetterList {
     $getter$
     $identifier$ ?let @lstring getterName
-    var @typeNameFormalParameterNameList argumentTypeList = §[]
+    var @typeNameFormalParameterNameList argumentTypeList = ()
     repeat
     while
       $?selector:$ ?let selector
@@ -167,10 +167,10 @@ syntax extension galgas4DeclarationsSyntax {
     <externtype_cpp_predeclaration> ?let cppPredeclarationCode
     <externtype_cpp_classdeclaration> ?let cppClassCode
     ${$
-    var @externTypeConstructorList externTypeConstructorList =  §[]
-    var @externTypeGetterList externTypeGetterList = §[]
-    var @externTypeSetterList externTypeSetterList = §[]
-    var @externTypeMethodList externTypeMethodList = §[]
+    var @externTypeConstructorList externTypeConstructorList =  ()
+    var @externTypeGetterList externTypeGetterList = ()
+    var @externTypeSetterList externTypeSetterList = ()
+    var @externTypeMethodList externTypeMethodList = ()
     repeat
     while
       <externtype_constructor> !?ioDeclarations !?externTypeConstructorList
@@ -226,7 +226,7 @@ syntax extension galgas4DeclarationsSyntax {
                                 ?!@externTypeConstructorList ioExternTypeConstructorList {
     $init$
     $($
-    var @typeNameFormalParameterNameList argumentTypeList = §[]
+    var @typeNameFormalParameterNameList argumentTypeList = ()
     select
     or
       repeat
@@ -256,7 +256,7 @@ syntax extension galgas4DeclarationsSyntax {
                            ?!@externTypeGetterList ioExternTypeGetterList {
     $func$
     $identifier$ ?let @lstring getterName
-    var @typeNameFormalParameterNameList argumentTypeList = §[]
+    var @typeNameFormalParameterNameList argumentTypeList = ()
     repeat
     while
       $?selector:$ ?let selector
@@ -385,15 +385,15 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
     ?!@semanticContext unused ioSemanticContext {
   #---
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-#    var @classFunctionMap classFunctionMap = §[]
-    var @setterMap setterMap = §[]
-    var @instanceMethodMap instanceMethodMap = §[]
+#    var @classFunctionMap classFunctionMap = ()
+    var @setterMap setterMap = ()
+    var @instanceMethodMap instanceMethodMap = ()
   #--- Class functions
-    var @initializerMap initializerMap = §[]
+    var @initializerMap initializerMap = ()
     for initializer in self.externTypeInitializerList do
 #      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
     #---
-      var @functionSignature arguments = §[]
+      var @functionSignature arguments = ()
       for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in initializer.mParameterList do
         [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
         arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
@@ -413,7 +413,7 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
     for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
       [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
     #---
-      var @functionSignature arguments = §[]
+      var @functionSignature arguments = ()
       for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
         [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
         arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
@@ -432,7 +432,7 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
     end
   #--- Modifiers
     for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
-      var @formalParameterSignature routineSignature = §[]
+      var @formalParameterSignature routineSignature = ()
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
         [!?ioTypeMap makeEntry
           !mFormalArgumentTypeName
@@ -452,7 +452,7 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
     end
   #--- Methods
     for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
-      var routineSignature = @formalParameterSignature §[]
+      var routineSignature = @formalParameterSignature ()
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
         [!?ioTypeMap makeEntry
           !mFormalArgumentTypeName
@@ -479,21 +479,21 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
       !superType: .null
       !typeKind: .externType
       !supportCollectionValue: false # Does not support collection value
-      !allTypedPropertyList: §[]
-      !propertyMap: §[]
-      !currentTypedPropertyList: §[]
+      !allTypedPropertyList: ()
+      !propertyMap: ()
+      !currentTypedPropertyList: ()
       !initializerMap: initializerMap
-      !classFunctionMap: §[]
+      !classFunctionMap: ()
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
-      !classMethodMap: §[]
-      !optionalMethodMap: §[]
-      !enumerationDescriptorList: §[]
+      !classMethodMap: ()
+      !optionalMethodMap: ()
+      !enumerationDescriptorList: ()
       !.none
-      !§[]
-      !§[]
-      !§[]
+      !()
+      !()
+      !()
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !@unifiedTypeMapEntry.null # Type for enumerated element for "for" instruction
       !"externtype-" + [self.mExternTypeName fileNameRepresentation]

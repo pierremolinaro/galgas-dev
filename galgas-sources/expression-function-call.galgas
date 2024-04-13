@@ -36,7 +36,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
-    var @actualOutputArgumentList expressionList = §[]
+    var @actualOutputArgumentList expressionList = ()
     select
       let selector = ["" here]
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
@@ -146,7 +146,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       + " effective argument(s)"
     : outExpression
   else
-    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration §[]
+    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
     for formalArg in functionSignature, actualArg in self.mExpressionList do
       [actualArg.mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -202,7 +202,7 @@ refclass @functionCallExpressionForGeneration : @semanticExpressionForGeneration
   #--- Add function header
     ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
   #---
-    var parameterList = @stringlist §[]
+    var parameterList = @stringlist ()
     for (mExpression) in self.mExpressions do
       [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let parameter]
       parameterList += !parameter
