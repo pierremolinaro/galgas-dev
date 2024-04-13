@@ -12587,9 +12587,6 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_operators getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension getter initializers
-  public: virtual class GALGAS_initializerSignatureList getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
-
 //--- Extension method getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GALGAS_classFunctionMap & arg_outClassFunctionMap,

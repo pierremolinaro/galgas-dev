@@ -1,5 +1,3 @@
-initialiseur structure
-initialiseur classe
 appel méthode super dans classe
 types optionnels
 accès lecture subscript

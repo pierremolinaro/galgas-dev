@@ -26,14 +26,6 @@ refclass @uintPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override getter initializers -> @initializerSignatureList {
-    var initializer = @formalInputParameterListAST ()
-    initializer += !["" nowhere] !["uint" nowhere] !["inValue" nowhere] !false !true
-    result = §[.init (initializer)]
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.uint_type]
   }

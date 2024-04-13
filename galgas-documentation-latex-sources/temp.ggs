@@ -1,3 +1,4 @@
-for > i in 12 ..< 17 do
-  # i prend successivement les valeurs 16, 15, 14, 13, 12
-end
+  let x = "string".sha256
+   // x = "473287F8298DBA7163A897908958F7C0EAE733E25D2E027992EA2EDC9BED2FA8"
+  let y = "string2".sha256
+   // y = "B993212A26658C9077096B804CDFB92AD21CF1E199E272C44EB028E45D07B6E0"

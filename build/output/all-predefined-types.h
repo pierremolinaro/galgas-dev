@@ -647,9 +647,6 @@ class GALGAS_bool : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_bool init_21_ (const class GALGAS_bool & inOperand0,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -740,9 +737,6 @@ class GALGAS_uint : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_uint init_21_ (const class GALGAS_uint & inOperand0,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
