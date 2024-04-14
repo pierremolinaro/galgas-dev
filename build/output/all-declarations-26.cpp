@@ -116,46 +116,6 @@ void cPtr_overridingExtensionSetterForGeneration::method_appendSpecificImplement
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'generateAlwaysCppObjectCompare'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool function_generateAlwaysCppObjectCompare (Compiler *
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result_result ; // Returned variable
-  result_result = GALGAS_bool (false) ;
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const C_galgas_type_descriptor * functionArgs_generateAlwaysCppObjectCompare [1] = {
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GALGAS_object functionWithGenericHeader_generateAlwaysCppObjectCompare (Compiler * inCompiler,
-                                                                               const cObjectArray & /* inEffectiveParameterArray */,
-                                                                               const GALGAS_location & /* inErrorLocation */
-                                                                               COMMA_LOCATION_ARGS) {
-  return function_generateAlwaysCppObjectCompare (inCompiler COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_generateAlwaysCppObjectCompare ("generateAlwaysCppObjectCompare",
-                                                                                functionWithGenericHeader_generateAlwaysCppObjectCompare,
-                                                                                & kTypeDescriptor_GALGAS_bool,
-                                                                                0,
-                                                                                functionArgs_generateAlwaysCppObjectCompare) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@outputActualParameterAST enterParameterInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------

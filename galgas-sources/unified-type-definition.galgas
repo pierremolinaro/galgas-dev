@@ -22,10 +22,6 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func generateAlwaysCppObjectCompare -> @bool { result = false }
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 struct @unifiedTypeDefinition {
   public let @lstring typeName %initArgLabel
   public let @bool isPredefined %initArgLabel
@@ -147,7 +143,7 @@ boolset @typeFeatures {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @typeFeatures generateCppObjectComparison -> @bool {
-  result = [self equatable] | generateAlwaysCppObjectCompare ()
+  result = [self equatable]
   if not result then
     result = [self referenceEquatable]
   end

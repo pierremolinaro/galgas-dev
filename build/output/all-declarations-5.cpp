@@ -8012,10 +8012,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_3977 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_3896_isReference = extractPtr_3977->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_3812 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_3731_isReference = extractPtr_3812->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_3896_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_3731_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {
@@ -8109,25 +8109,25 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool extensionGetter_generateCppObjectComparison (const GALGAS_typeFeatures & inObject,
-                                                         Compiler * inCompiler
+                                                         Compiler *
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_typeFeatures temp_0 = inObject ;
-  result_result = temp_0.getter_equatable (SOURCE_FILE ("unified-type-definition.galgas", 150)).operator_or (function_generateAlwaysCppObjectCompare (inCompiler COMMA_SOURCE_FILE ("unified-type-definition.galgas", 150)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 150)) ;
+  result_result = temp_0.getter_equatable (SOURCE_FILE ("unified-type-definition.galgas", 146)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 151)).boolEnum () ;
+    test_1 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 147)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_typeFeatures temp_2 = inObject ;
-      result_result = temp_2.getter_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 152)) ;
+      result_result = temp_2.getter_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 148)) ;
     }
   }
   enumGalgasBool test_3 = kBoolTrue ;
   if (kBoolTrue == test_3) {
-    test_3 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 154)).boolEnum () ;
+    test_3 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 150)).boolEnum () ;
     if (kBoolTrue == test_3) {
       const GALGAS_typeFeatures temp_4 = inObject ;
-      result_result = temp_4.getter_comparable (SOURCE_FILE ("unified-type-definition.galgas", 155)) ;
+      result_result = temp_4.getter_comparable (SOURCE_FILE ("unified-type-definition.galgas", 151)) ;
     }
   }
 //---

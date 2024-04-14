@@ -4781,15 +4781,6 @@ class GALGAS_bool extensionGetter_generateCppObjectComparison (const class GALGA
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'generateAlwaysCppObjectCompare'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_bool function_generateAlwaysCppObjectCompare (class Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @localVariableAttributes boolset
 //
 //--------------------------------------------------------------------------------------------------
