@@ -22,6 +22,10 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+func generateAlwaysCppObjectCompare -> @bool { result = false }
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct @unifiedTypeDefinition {
   public let @lstring typeName %initArgLabel
   public let @bool isPredefined %initArgLabel
@@ -51,7 +55,7 @@ struct @unifiedTypeDefinition {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @typeKindEnum {
+enum @typeKindEnum %equatable {
   case classType (@bool isReference)
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
@@ -137,7 +141,21 @@ boolset @typeFeatures {
   generateCopyConstructorAndAssignmentOperator,
   generateSynthetizedInitializer,
   clonable
+
 }
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+getter @typeFeatures generateCppObjectComparison -> @bool {
+  result = [self equatable] | generateAlwaysCppObjectCompare ()
+  if not result then
+    result = [self referenceEquatable]
+  end
+  if not result then
+    result = [self comparable]
+  end
+}
+
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

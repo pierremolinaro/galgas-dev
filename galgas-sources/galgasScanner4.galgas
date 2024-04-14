@@ -335,6 +335,8 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "codeblocks-linux32" -> $%codeblocks-linux32$,
   "codeblocks-linux64" -> $%codeblocks-linux64$,
   "codeblocks-windows" -> $%codeblocks-windows$,
+  "comparable" -> $%comparable$,
+  "equatable" -> $%equatable$,
   "errorMessage" -> $%errorMessage$,
   "from" -> $%from$,
   "generatedInSeparateFile" -> $%generatedInSeparateFile$,

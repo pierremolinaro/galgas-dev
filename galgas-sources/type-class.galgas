@@ -317,23 +317,23 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       end
     end
     for property in self.mPropertyList do
-      [!?ioTypeMap makeEntry !property.propertyTypeName ?let attributeTypeIndex]
+      [!?ioTypeMap makeEntry !property.typeName ?let attributeTypeIndex]
       if property.initialization == .none then
         synthetizedInitializerArgumentList +=
-          !if property.hasSelector then property.propertyName else ["" nowhere] end
+          !if property.hasSelector then property.name else ["" nowhere] end
           !attributeTypeIndex
-          !property.propertyName.string
+          !property.name.string
           !true
       end
       [!?attributeMap insertKey
-        !property.propertyName
+        !property.name
         ![property.accessControl accessControl !forDeclaringType: classIndex]
         !property.isConstant
         !attributeTypeIndex
       ]
-      if [getterMap hasKey !property.propertyName.string] then
-        error property.propertyName
-        : "'" + property.propertyName + "' is the name of a prefefined or a user defined getter"
+      if [getterMap hasKey !property.name.string] then
+        error property.name
+        : "'" + property.name + "' is the name of a prefefined or a user defined getter"
       end
     end
   #--- Class functions
@@ -350,16 +350,16 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList currentClassTypedPropertyList = ()
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
     for property in self.mPropertyList do
-      [!?ioTypeMap makeEntry !property.propertyTypeName ?let attributeTypeIndex]
+      [!?ioTypeMap makeEntry !property.typeName ?let attributeTypeIndex]
       currentClassTypedPropertyList +=
         !attributeTypeIndex
-        !property.propertyName
+        !property.name
         !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
       allTypedAttributeList +=
         !attributeTypeIndex
-        !property.propertyName
+        !property.name
         !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
@@ -514,22 +514,22 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList typedAttributeList = ()
     var @propertyIndexMap attributeMap = ()
     for property in self.mPropertyList do
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.propertyTypeName)
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
-      let t = [ioTypeMap typeMapEntryForLKey !property.propertyTypeName]
+      let t = [ioTypeMap typeMapEntryForLKey !property.typeName]
       typedAttributeList +=
         !t
-        !property.propertyName
+        !property.name
         !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
       allAttributeList +=
         !t
-        !property.propertyName
+        !property.name
         !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
-      [!?attributeMap insertKey !property.propertyName !t]
+      [!?attributeMap insertKey !property.name !t]
     end
   #--- Build property initialization code
     var @typedPropertyList synthetizedInitialzerArgumentList = ()
@@ -647,11 +647,11 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
     for (t 4*) in self.mCurrentTypedAttributeList do
       [t addHeaderFileName !?ioInclusionSet]
     end
-    let typedefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
     if self.mIsReference then
       if self.generateHeaderInSeparateFile then
         let @string part1 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
@@ -662,13 +662,14 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.initializerMap
         ]
         let @string part2 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
           !self.synthetizedInitializerArgumentList
+          !generateAlwaysCppObjectCompare () // [selfTypeDefinition.features generateCppObjectComparison]
         ]
         let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
         [@string generateFileWithPattern
@@ -685,7 +686,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         outHeader = "#include \"" + headerFileName + "\"\n\n"
       else
         outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
@@ -696,19 +697,20 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.initializerMap
         ]
         outHeader += [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
           !self.synthetizedInitializerArgumentList
+          !generateAlwaysCppObjectCompare () // [selfTypeDefinition.features generateCppObjectComparison]
         ]
       end
     else
       if self.generateHeaderInSeparateFile then
         let part1 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
@@ -718,7 +720,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           ![self.mSelfTypeEntry definition].instanceMethodMap
         ]
         let part2 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
@@ -740,7 +742,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         outHeader = "#include \"" + headerFileName + "\"\n\n"
       else
         outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
@@ -750,7 +752,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           ![self.mSelfTypeEntry definition].instanceMethodMap
         ]
         outHeader += [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
-          !typedefinition.typeName.string
+          !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
           !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
@@ -767,13 +769,13 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
                                                ?!@stringset ioInclusionSet
                                                !@string outImplementation {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
-    let typedefinition = [self.mSelfTypeEntry definition]
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
     let at = [self.mAllTypedAttributeList subListWithRange
       !.init {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
     ]
     if self.mIsReference then
       outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation
-        !typedefinition.typeName.string
+        !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !currentPropertyList: self.mCurrentTypedAttributeList
@@ -782,15 +784,16 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.mIsAbstract
         !self.initializerNeedsCompilerVariable
         !self.propertyInitializationCode
-        ![typedefinition.features generateSynthetizedInitializer]
+        ![selfTypeDefinition.features generateSynthetizedInitializer]
         !self.synthetizedInitializerArgumentList
         !self.inheritedSynthetizedInitializerArgumentList
-        !typedefinition.initializerMap
+        !selfTypeDefinition.initializerMap
         !self.clonable
+        !generateAlwaysCppObjectCompare () // [selfTypeDefinition.features generateCppObjectComparison]
       ]
     else
       outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
-        !typedefinition.typeName.string
+        !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
         !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
@@ -988,6 +991,7 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
     ?@typedPropertyList INITIALIZER_ARGUMENT_LIST
+    ?@bool GENERATE_COMPARISON
 
   template referenceClassTypeSpecificImplementation "GALGAS_reference_class.cpp.galgasTemplate"
     ?@string TYPE_NAME
@@ -1004,6 +1008,7 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList INHERITED_INITIALIZER_ARGUMENT_LIST
     ?@initializerMap INITIALIZER_MAP
     ?@bool CLONABLE
+    ?@bool GENERATE_COMPARISON
 
 #---------- Weak Reference Class
   template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"

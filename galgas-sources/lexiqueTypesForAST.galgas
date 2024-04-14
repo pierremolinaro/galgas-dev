@@ -272,8 +272,9 @@ refclass @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInput
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @lexicalArgumentModeAST {
-  case lexicalInputMode  case lexicalInputOutputMode
+enum @lexicalArgumentModeAST %equatable {
+  case lexicalInputMode
+  case lexicalInputOutputMode
 }
 
 getter @lexicalArgumentModeAST lexicalFormalModeName -> @string {
@@ -348,7 +349,7 @@ list @indexingListAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @lexicalTypeEnum {
+enum @lexicalTypeEnum %equatable {
   case lexicalType_string
   case lexicalType_char
   case lexicalType_uint

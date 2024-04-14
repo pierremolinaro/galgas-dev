@@ -55,7 +55,7 @@ method @semanticDeclarationAST buildExtensionListMaps
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @unifiedTypeMapEntryList {
+list @unifiedTypeMapEntryList %equatable {
   public var @unifiedTypeMapEntry mEntry
 }
 

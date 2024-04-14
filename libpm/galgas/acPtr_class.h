@@ -38,7 +38,9 @@ class acPtr_class : public SharedObject {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const = 0 ;
 
-  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual ComparisonResult dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
+    return ComparisonResult::invalid ;
+  }
 
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
 

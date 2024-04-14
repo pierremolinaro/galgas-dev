@@ -23,6 +23,7 @@ refclass @listDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListTypeName
   private let @propertyInCollectionListAST mPropertyList
   private let @bool usefullList %initArgLabel
+  private let @bool equatable %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -37,7 +38,14 @@ syntax extension galgas3DeclarationsSyntax {
     $list$
     $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
     var isUsefull = false
+    var isEquatable = false
     repeat
+    while
+      $%equatable$
+      if isEquatable then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isEquatable = true
     while
       $%usefull$
       if isUsefull then
@@ -62,6 +70,7 @@ syntax extension galgas3DeclarationsSyntax {
       !listTypeName
       !propertyList
       !usefullList: isUsefull
+      !equatable: isEquatable
     }
   }
 
@@ -79,7 +88,14 @@ syntax extension galgas4DeclarationsSyntax {
     $list$
     $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
     var isUsefull = false
+    var isEquatable = false
     repeat
+    while
+      $%equatable$
+      if isEquatable then
+        error .here : "duplicate attribute" fixit { remove }
+      end
+      isEquatable = true
     while
       $%usefull$
       if isUsefull then
@@ -101,6 +117,7 @@ syntax extension galgas4DeclarationsSyntax {
       !listTypeName
       !propertyList
       !usefullList: isUsefull
+      !equatable: isEquatable
     }
   }
 
@@ -150,7 +167,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 #--- uint type index
   [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
 #--- List type index
-  [!?ioTypeMap makeEntry  !self.mListTypeName ?let listTypeIndex]
+  [!?ioTypeMap makeEntry !self.mListTypeName ?let listTypeIndex]
 #--- Element type index
   [!?ioTypeMap makeEntry
     !@lstring {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
@@ -352,6 +369,11 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
+#--- features
+  var features = @typeFeatures.plusEqualOperatorWithExpression | .infixAddOperator | .doNotGenererateObjectCompare
+  if self.equatable then
+    features = features | .equatable
+  end
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mListTypeName
@@ -371,7 +393,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: enumerationDescriptor
-    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator | .equatable
+    !features: features
     !addAssignOperatorArguments: constructorAttributeTypeList
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false
@@ -385,8 +407,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 #·······················································································································
 
 override method @listDeclarationAST addAssociatedElement
-  ?!@semanticDeclarationListAST ioSemanticDeclarationList
-{
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var @propertyInCollectionListAST structAttributeList = ()
   for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
@@ -401,7 +422,8 @@ override method @listDeclarationAST addAssociatedElement
     !isPredefined: self.isPredefined
     !.init {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
     !structAttributeList
-    !""
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
   }
 }
 
@@ -480,6 +502,7 @@ filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
     ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
 }
 
 #·······················································································································
@@ -529,7 +552,8 @@ override method @listTypeForGeneration appendSpecificImplementation
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
-    ![[self.mSelfTypeEntry definition].typeForEnumeratedElement identifierRepresentation]
+    ![selfTypeDefinition.typeForEnumeratedElement identifierRepresentation]
+    ![selfTypeDefinition.features generateCppObjectComparison]
   ]
  }
 

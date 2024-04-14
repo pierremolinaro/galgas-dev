@@ -26,7 +26,7 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @selfMutability {
+enum @selfMutability %equatable {
   case none
   case propertiesAreMutableSelfIsNot
   case selfAndPropertiesAreMutable
@@ -56,7 +56,7 @@ enum @selfMutability {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @selfAvailability {
+enum @selfAvailability %equatable {
   case none
   case available (@unifiedTypeMapEntry type @selfMutability selfMutability)
 }
@@ -201,7 +201,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc checkDiadicOperator ?let @bool inOperandIsHandled
+proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
                           ?let @string inOperatorNameForErrorMessage
                           ?let @location inErrorLocation
                           ?!@semanticExpressionForGeneration ioLeftExpression

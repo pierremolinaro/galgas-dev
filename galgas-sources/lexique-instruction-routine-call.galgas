@@ -226,7 +226,7 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
     + " type"
   end
 #--- Passing mode check
-  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST. lexicalInputOutputMode then
+  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputOutputMode then
     error self.mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode"
   end
 }

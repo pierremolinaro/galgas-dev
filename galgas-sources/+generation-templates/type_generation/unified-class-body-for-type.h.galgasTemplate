@@ -217,7 +217,7 @@ if [SUPPORTED_OPERATORS generateDescriptionGetterUtilityMethod] then
   %                                             const int32_t inIndentation) const override ;\n%
 end
 
-if not [SUPPORTED_OPERATORS doNotGenererateObjectCompare] then
+if [SUPPORTED_OPERATORS generateCppObjectComparison] & not [SUPPORTED_OPERATORS doNotGenererateObjectCompare] then
 %//--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
 %end

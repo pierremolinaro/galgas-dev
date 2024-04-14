@@ -18,8 +18,9 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public: cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
+%if GENERATE_COMPARISON then
+%  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
+%end%
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
@@ -91,7 +92,8 @@ void cCollectionElement_%!TYPE_IDENTIFIER%::description (String & ioString, cons
   end
 %}
 
-//--------------------------------------------------------------------------------------------------
+%if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
 
 ComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -99,7 +101,9 @@ ComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollecti
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%
+end
+%//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_list () {

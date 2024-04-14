@@ -43,7 +43,9 @@ class cCollectionElement : public SharedObject {
   public: virtual bool isValid (void) const = 0 ;
 
 //--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const = 0 ;
+  public: virtual ComparisonResult compare (const cCollectionElement * /* inOperand */) const {
+    return ComparisonResult::invalid ;
+  }
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) = 0 ;

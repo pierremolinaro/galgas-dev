@@ -24,6 +24,16 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
+    let @structComparison comparison
+    select
+      comparison = .none
+    or
+      $%comparable$
+      comparison = .comparable
+    or
+      $%equatable$
+      comparison = .equatable
+    end
     ${$
     var @propertyInCollectionListAST propertyList = ()
     repeat
@@ -37,7 +47,8 @@ syntax extension galgas3DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !structTypeName
       !propertyList
-      !""
+      !enumeratedElementTypeName: ""
+      !comparison: comparison
     }
   }
 
@@ -54,6 +65,16 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
+    let @structComparison comparison
+    select
+      comparison = .none
+    or
+      $%comparable$
+      comparison = .comparable
+    or
+      $%equatable$
+      comparison = .equatable
+    end
     ${$
     var @propertyInCollectionListAST propertyList = ()
     repeat
@@ -67,7 +88,8 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !structTypeName
       !propertyList
-      !""
+      !enumeratedElementTypeName: ""
+      !comparison: comparison
     }
   }
 
@@ -86,10 +108,19 @@ private func %once forbiddenKeysForStruct -> @stringset {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum @structComparison {
+  case none
+  case equatable
+  case comparable
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 refclass @structDeclarationAST : @semanticDeclarationAST {
   private let @lstring structTypeName
   private let @propertyInCollectionListAST mStructurePropertyListAST
-  private let @string mEnumeratedElementTypeName # Empty string if not enumerable
+  private let @string enumeratedElementTypeName %initArgLabel # Empty string if not enumerable
+  private let @structComparison comparison %initArgLabel
 
   #·······························································································
 
@@ -104,7 +135,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     let key = @lstring {!"@" + self.structTypeName !self.structTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     for property in self.mStructurePropertyListAST do
-      let propertyKey = @lstring {!"@" + property.propertyTypeName !property.propertyTypeName.location}
+      let propertyKey = @lstring {!"@" + property.typeName !property.typeName.location}
       [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
     end
   }
@@ -134,20 +165,20 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList typedPropertyList = ()
     var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = ()
     for property in self.mStructurePropertyListAST do
-      [!?ioTypeMap makeEntry !property.propertyTypeName ?let propertyTypeEntry]
-      let selector = [if property.hasSelector then property.propertyName.string else "" end nowhere]
+      [!?ioTypeMap makeEntry !property.typeName ?let propertyTypeEntry]
+      let selector = [if property.hasSelector then property.name.string else "" end nowhere]
       if [property.initialization isNone] then
-        constructorPropertyTypeList += !selector !propertyTypeEntry !property.propertyName.string !true
+        constructorPropertyTypeList += !selector !propertyTypeEntry !property.name.string !true
       end
       typesToIncludeInHeaderCompilation += !propertyTypeEntry
       typedPropertyList +=
         !propertyTypeEntry
-        !property.propertyName
+        !property.name
         !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
       [!?propertyMap insertKey
-        !property.propertyName
+        !property.name
         ![property.accessControl accessControl !forDeclaringType: structTypeIndex]
         !property.isConstant
         !propertyTypeEntry
@@ -180,8 +211,8 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: true
     )
+    var features = @typeFeatures.generateDescriptionGetterUtilityMethod
   #--- Synthetize an initializer, if the structure defines none
-    var features = @typeFeatures.generateDescriptionGetterUtilityMethod | .equatable
     if [initializerMap count] == 0 then
       features = features | .generateSynthetizedInitializer
       [!?initializerMap insertKey
@@ -189,13 +220,21 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         !constructorPropertyTypeList
       ]
     end
+  #--- Comparison
+    switch self.comparison
+    case none :
+    case equatable :
+      features = features | .equatable
+    case comparable :
+      features = features | .comparable | .equatable
+    end  
   #--- Enumeration by "for" instruction
     let @unifiedTypeMapEntry enumeratedType
-    if self.mEnumeratedElementTypeName == "" then
+    if self.enumeratedElementTypeName == "" then
       enumeratedType = .null
     else
      [!?ioTypeMap makeEntryFromString
-       !self.mEnumeratedElementTypeName
+       !self.enumeratedElementTypeName
        ?enumeratedType
       ]
     end
@@ -250,23 +289,23 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList constructorArgumentList = ()
     var @propertyIndexMap propertyMap = ()
     for property in self.mStructurePropertyListAST do
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.propertyTypeName)
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
       [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-      let t = [ioTypeMap typeMapEntryForLKey !property.propertyTypeName]
-      if [forbiddenKeysForStruct () hasKey !property.propertyName.string] then
+      let t = [ioTypeMap typeMapEntryForLKey !property.typeName]
+      if [forbiddenKeysForStruct () hasKey !property.name.string] then
         var @string m = "an property cannot be named:"
         for s in forbiddenKeysForStruct () do
           m += " " + s
         end
         m += "; theses names are reserved"
-        error property.propertyName : m
+        error property.name : m
       end
-      [!?propertyMap insertKey !property.propertyName !t]
+      [!?propertyMap insertKey !property.name !t]
       switch property.initialization
       case none :
         constructorArgumentList +=
           !t
-          !property.propertyName
+          !property.name
           !property.initialization
           !hasSetter: not property.isConstant
           !hasSelector: property.hasSelector
@@ -274,10 +313,25 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       end
       typedPropertyList +=
         !t
-        !property.propertyName
+        !property.name
         !property.initialization
         !hasSetter: not property.isConstant
         !hasSelector: property.hasSelector
+    #--- Check comparison
+      switch self.comparison
+      case none :
+      case equatable :
+        let propertyFeatures = [t definition].features
+        if (not [propertyFeatures equatable]) & not [propertyFeatures comparable] & not [propertyFeatures referenceEquatable] then
+          error property.name
+          : "the structure is not equatable, because '" + property.name + "' is not"
+        end
+      case comparable :
+        if not [[t definition].features comparable] then
+          error property.name
+          : "the structure is not comparable, because '" + property.name + "' is not"
+        end
+      end  
     end
   #--- Build property initialization code
     [self.mStructurePropertyListAST buildPropertyInitializationCode
@@ -370,6 +424,7 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       !self.mConstructorInitializationCode
       !self.mConstructorNeedsCompilerVar
       !self.synthetizeAnInitializer
+      ![selfTypeDefinition.features generateCppObjectComparison]
     ]
   }
 
@@ -395,6 +450,7 @@ filewrapper structureGenerationTemplate in "+generation-templates/type_generatio
     ?@string CONSTRUCTOR_INITIALIZATION_CODE
     ?@bool CONSTRUCTOR_NEEDS_COMPILER_VAR
     ?@bool GENERATE_SYNTHETIZED_INITIALIZER
+    ?@bool GENERATE_COMPARISON
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

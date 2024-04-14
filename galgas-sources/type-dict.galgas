@@ -23,6 +23,7 @@ refclass @dictDeclarationAST : @semanticDeclarationAST {
   private let @lstring mDictTypeName
   private let @lstring mKeyTypeName
   private let @propertyInCollectionListAST mPropertyList
+  private let @bool equatable %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -43,7 +44,13 @@ syntax extension galgas3DeclarationsSyntax {
     $dict$
   #--- Dict type name
     $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
-  #--- Dict key type name
+    let @bool equatable
+    select
+      equatable = false
+    or
+      $%equatable$
+      equatable = true
+    end
     $:$
     <type_definition_ggs3> !?ioDeclarations ?let keyTypeName
   #--- Map properties
@@ -61,6 +68,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mDictTypeName
       !keyTypeName
       !propertyList
+      !equatable: equatable
     }
   }
 
@@ -78,7 +86,13 @@ syntax extension galgas4DeclarationsSyntax {
     $dict$
   #--- Dict type name
     $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
-  #--- Dict key type name
+    let @bool equatable
+    select
+      equatable = false
+    or
+      $%equatable$
+      equatable = true
+    end
     $:$
     <type_definition> !?ioDeclarations ?let keyTypeName
   #--- Map properties
@@ -96,6 +110,7 @@ syntax extension galgas4DeclarationsSyntax {
       !mDictTypeName
       !keyTypeName
       !propertyList
+      !equatable: equatable
     }
   }
 
@@ -129,7 +144,8 @@ override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationL
     !isPredefined: self.isPredefined
     !.init {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
     !structAttributeList
-    !""
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
   }
 }
 
@@ -341,6 +357,11 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
 #--- Add Optional method
   var optionalMethodMap = @optionalMethodMap ()
   [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
+#--- Features
+  var features = @typeFeatures.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
+  if self.equatable then
+    features = features | .equatable
+  end
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mDictTypeName
@@ -360,7 +381,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: enumerationDescriptor
-    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
+    !features: features
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
@@ -427,6 +448,11 @@ override method @dictDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
+#--- Check key is comparable
+  let keyType = [ioTypeMap typeMapEntryForLKey !self.mKeyTypeName]
+  if not [[keyType definition].features comparable] then
+    error self.mKeyTypeName : "the @" + self.mKeyTypeName + " type is not comparable"
+  end
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -519,9 +545,10 @@ override method @dictTypeForGeneration appendSpecificImplementation
   [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.dictTypeSpecificImplementation
-    ![self.mSelfTypeEntry  identifierRepresentation]
+    ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
     ![self.mKeyTypeName identifierRepresentation]
+    ![[self.mSelfTypeEntry definition].features generateCppObjectComparison]
   ]
 }
 

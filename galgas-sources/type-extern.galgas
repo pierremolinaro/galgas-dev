@@ -490,7 +490,7 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: ()
       !optionalMethodMap: ()
       !enumerationDescriptorList: ()
-      !features: .none
+      !features: .equatable // .none
       !addAssignOperatorArguments: ()
       !mapSearchMethodList: ()
       !generateHeaderInSeparateFile: false # Do not generate header in separate file

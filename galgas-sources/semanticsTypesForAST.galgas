@@ -31,7 +31,7 @@ abstract refclass @semanticExpressionAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @formalArgumentPassingModeAST {
+enum @formalArgumentPassingModeAST %equatable {
   case argumentIn
   case argumentOut
   case argumentInOut
@@ -229,8 +229,8 @@ refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 
 list @propertyInCollectionListAST {
   public let @bool isConstant %initArgLabel
-  public let @lstring propertyTypeName
-  public let @lstring propertyName
+  public let @lstring typeName
+  public let @lstring name
   public let @AccessControlAST accessControl
   public let @bool hasSelector %initArgLabel
   public let @propertyInCollectionInitializationAST initialization %initArgLabel
@@ -293,7 +293,7 @@ list @propertyInCollectionListAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @propertyInCollectionInitializationAST {
+enum @propertyInCollectionInitializationAST %equatable {
   case none
   case some (@semanticExpressionAST expression)
 }

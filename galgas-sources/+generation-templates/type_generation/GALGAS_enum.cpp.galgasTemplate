@@ -23,18 +23,20 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     end
     %  ioString.appendCString (")") ;\n%
     %}\n\n%
-    %//--------------------------------------------------------------------------------------------------\n\n%
-    %ComparisonResult cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::compare (const cEnumAssociatedValues * inOperand) const {\n%
-    %  const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = dynamic_cast<const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *> (inOperand) ;\n%
-    %  macroValidPointer (ptr) ;\n%
-    %  ComparisonResult result = ComparisonResult::operandEqual ;\n%
-    for (mType) in mAssociatedValueTypeList do (idx)
-      %  if (result == ComparisonResult::operandEqual) {\n%
-      %    result = mAssociatedValue%![idx string]%.objectCompare (ptr->mAssociatedValue%![idx string]%) ;\n%
-      %  }\n%
+    if GENERATE_COMPARISON then
+      %//--------------------------------------------------------------------------------------------------\n\n%
+      %ComparisonResult cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::compare (const cEnumAssociatedValues * inOperand) const {\n%
+      %  const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = dynamic_cast<const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *> (inOperand) ;\n%
+      %  macroValidPointer (ptr) ;\n%
+      %  ComparisonResult result = ComparisonResult::operandEqual ;\n%
+      for (mType) in mAssociatedValueTypeList do (idx)
+        %  if (result == ComparisonResult::operandEqual) {\n%
+        %    result = mAssociatedValue%![idx string]%.objectCompare (ptr->mAssociatedValue%![idx string]%) ;\n%
+        %  }\n%
+      end
+      %  return result ;\n%
+      %}\n\n%
     end
-    %  return result ;\n%
-    %}\n\n%
   end
 end
 
@@ -174,7 +176,8 @@ end
 %  ioString.appendCString (">") ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -194,4 +197,4 @@ end
   }
   return result ;
 }
-
+%end%

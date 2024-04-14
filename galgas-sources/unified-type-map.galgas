@@ -170,7 +170,7 @@ refclass @unifiedTypeMapElementClass {
 #! @unifiedTypeMapEntry
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @unifiedTypeMapEntry {
+enum @unifiedTypeMapEntry %equatable {
   case null
   case element (@unifiedTypeMapElementClass-weak weakElement)
 

@@ -724,11 +724,12 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public: virtual bool isValid (void) const { return mElement.isValid () ; }
 
 //--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const {
+%if GENERATE_COMPARISON then
+%  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const {
     const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
     return mElement.objectCompare (p->mElement) ;
   }
-
+%end%
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) {
     cCollectionElement * p = nullptr ;

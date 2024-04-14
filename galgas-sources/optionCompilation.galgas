@@ -19,8 +19,10 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @optionDefaultValueEnumAST {
-  case noDefaultValue  case unsignedDefaultValue  case stringDefaultValue
+enum @optionDefaultValueEnumAST %equatable {
+  case noDefaultValue
+  case unsignedDefaultValue
+  case stringDefaultValue
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

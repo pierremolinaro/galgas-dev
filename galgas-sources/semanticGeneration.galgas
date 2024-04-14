@@ -790,6 +790,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@bool GENERATE_COMPARISON
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
@@ -798,6 +799,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE
+    ?@bool GENERATE_COMPARISON
 
 #---------- dict
   template dictTypeHeader1 "GALGAS_dict.h1.galgasTemplate"
@@ -809,6 +811,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@string KEY_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
 
 #---------- Type alias
   template typeAliasTypeHeader1 "GALGAS_type_alias.h1.galgasTemplate"

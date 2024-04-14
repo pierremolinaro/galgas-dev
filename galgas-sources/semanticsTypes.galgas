@@ -67,7 +67,7 @@ map @initializerMap { // Key is argument signature
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @methodQualifier { # NE PAS CHANGER L'ORDRE
+enum @methodQualifier %comparable { # NE PAS CHANGER L'ORDRE
   case isVirtual
   case isVirtualAbstract
   case isBasic
@@ -79,7 +79,7 @@ enum @methodQualifier { # NE PAS CHANGER L'ORDRE
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @methodKind {
+enum @methodKind %equatable {
   case definedAsMember
   case definedAsExtension
 }
@@ -234,7 +234,7 @@ map @propertyMap {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @headerKind {
+enum @headerKind %equatable {
   case noHeader
   case oneHeader
   case twoHeaders
@@ -242,7 +242,7 @@ enum @headerKind {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @constantIndexMap {
+map @constantIndexMap %equatable {
   public let @uint mIndex
   public let @unifiedTypeMapEntryList mAssociatedTypeList
   insert insertKey error message "the '%K' constant is already declared"

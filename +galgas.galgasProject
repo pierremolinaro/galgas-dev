@@ -89,6 +89,29 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/galgasScanner3.galgas"
   "galgas-sources/galgasScanner4.galgas"
 
+
+#--- Predefined types
+  "galgas-sources/predefinedTypeAST.galgas"
+  "galgas-sources/predefinedType-application.galgas"
+  "galgas-sources/predefinedType-bigint.galgas"
+  "galgas-sources/predefinedType-binaryset.galgas"
+  "galgas-sources/predefinedType-bool.galgas"
+  "galgas-sources/predefinedType-char.galgas"
+  "galgas-sources/predefinedType-data.galgas"
+  "galgas-sources/predefinedType-double.galgas"
+  "galgas-sources/predefinedType-filewrapper.galgas"
+  "galgas-sources/predefinedType-function.galgas"
+  "galgas-sources/predefinedType-location.galgas"
+  "galgas-sources/predefinedType-object.galgas"
+  "galgas-sources/predefinedType-stringset.galgas"
+  "galgas-sources/predefinedType-sint.galgas"
+  "galgas-sources/predefinedType-sint64.galgas"
+  "galgas-sources/predefinedType-string.galgas"
+  "galgas-sources/predefinedType-timer.galgas"
+  "galgas-sources/predefinedType-type.galgas"
+  "galgas-sources/predefinedType-uint.galgas"
+  "galgas-sources/predefinedType-uint64.galgas"
+
 #--- Type declaration
   "galgas-sources/type-boolset.galgas"
   "galgas-sources/type-class.galgas"
@@ -118,28 +141,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/extension-overriding-getter.galgas"
   "galgas-sources/extension-overriding-method.galgas"
   "galgas-sources/extension-overriding-setter.galgas"
-
-#--- Predefined types
-  "galgas-sources/predefinedTypeAST.galgas"
-  "galgas-sources/predefinedType-application.galgas"
-  "galgas-sources/predefinedType-bigint.galgas"
-  "galgas-sources/predefinedType-binaryset.galgas"
-  "galgas-sources/predefinedType-bool.galgas"
-  "galgas-sources/predefinedType-char.galgas"
-  "galgas-sources/predefinedType-data.galgas"
-  "galgas-sources/predefinedType-double.galgas"
-  "galgas-sources/predefinedType-filewrapper.galgas"
-  "galgas-sources/predefinedType-function.galgas"
-  "galgas-sources/predefinedType-location.galgas"
-  "galgas-sources/predefinedType-object.galgas"
-  "galgas-sources/predefinedType-stringset.galgas"
-  "galgas-sources/predefinedType-sint.galgas"
-  "galgas-sources/predefinedType-sint64.galgas"
-  "galgas-sources/predefinedType-string.galgas"
-  "galgas-sources/predefinedType-timer.galgas"
-  "galgas-sources/predefinedType-type.galgas"
-  "galgas-sources/predefinedType-uint.galgas"
-  "galgas-sources/predefinedType-uint64.galgas"
 
 #--- Semantics Component
   "galgas-sources/unified-type-definition.galgas"

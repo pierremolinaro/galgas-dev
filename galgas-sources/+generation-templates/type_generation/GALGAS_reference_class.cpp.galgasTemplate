@@ -38,7 +38,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%
 
 //--------------------------------------------------------------------------------------------------
 
-%if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] == 0) then
+%if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] == 0) & GENERATE_COMPARISON then
 %ComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return ComparisonResult::operandEqual ;
 }
@@ -46,7 +46,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%
 //--------------------------------------------------------------------------------------------------
 %end
 
-if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) then
+if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) & GENERATE_COMPARISON then
 %ComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   ComparisonResult result = ComparisonResult::operandEqual ;
   const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) inOperandPtr ;

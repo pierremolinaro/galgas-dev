@@ -22,6 +22,7 @@
 refclass @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring mEnumTypeName
   private let @enumConstantList mConstantList
+  private let @structComparison comparison %initArgLabel
 }
 
 #·······················································································································
@@ -42,6 +43,16 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
+    let @structComparison comparison
+    select
+      comparison = .none
+    or
+      $%comparable$
+      comparison = .comparable
+    or
+      $%equatable$
+      comparison = .equatable
+    end
     ${$
     var @enumConstantList mConstantList = ()
     repeat
@@ -71,6 +82,7 @@ syntax extension galgas3DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !mEnumTypeName
       !mConstantList
+      !comparison: comparison
     }
   }
 
@@ -87,6 +99,16 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let mEnumTypeName indexing enumDefinition
+    let @structComparison comparison
+    select
+      comparison = .none
+    or
+      $%comparable$
+      comparison = .comparable
+    or
+      $%equatable$
+      comparison = .equatable
+    end
     ${$
     var @enumConstantList mConstantList = ()
     repeat
@@ -116,6 +138,7 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !mEnumTypeName
       !mConstantList
+      !comparison: comparison
     }
   }
 
@@ -178,7 +201,6 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
   var @classFunctionMap classFunctionMap = ()
   var @setterMap setterMap = ()
   var @instanceMethodMap instanceMethodMap = ()
-#  let @classMethodMap classMethodMap = ()
   var @optionalMethodMap optionalMethodMap = ()
 #--- currentType type index
   [!?ioTypeMap makeEntry  !self.mEnumTypeName ?let enumTypeEntry]
@@ -265,11 +287,21 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
+#--- Features
+  var features = @typeFeatures.generateDescriptionGetterUtilityMethod
+#--- Comparison
+  switch self.comparison
+  case none :
+  case equatable :
+    features = features | .equatable
+  case comparable :
+    features = features | .comparable | .equatable
+  end  
 #--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mEnumTypeName
     !isPredefined: self.isPredefined
-    !isConcrete: true # Concrete Type
+    !isConcrete: true
     !superType: .null
     !typeKind: .enumType {!constantMap: constantMap}
     !supportCollectionValue: false # Does not support collection value
@@ -284,7 +316,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: ()
-    !features: .generateDescriptionGetterUtilityMethod | .comparable | .equatable
+    !features: features
     !addAssignOperatorArguments: ()
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
@@ -328,6 +360,22 @@ override method @enumDeclarationAST semanticAnalysis
         error mValue1 : "duplicated name"
       end
       associatedValueNameSet += !mValue1.string
+    #--- Comparison
+      switch self.comparison
+      case none :
+      case equatable :
+        let associatedType = [associatedTypeEntry definition]
+        if (not [associatedType.features comparable])
+          & not [associatedType.features equatable]
+          & not [associatedType.features referenceEquatable] then
+          error mValue0 : "the @" + mValue0 + " should be equatable"
+        end
+      case comparable :
+        let associatedType = [associatedTypeEntry definition]
+        if not [associatedType.features comparable] then
+          error mValue0 : "the @" + mValue0 + " should be comparable"
+        end
+      end  
     end
     [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList]
     enumConstantListForGeneration += !mConstantName.string !associatedTypeList
@@ -374,12 +422,14 @@ filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
+    ?@bool GENERATE_COMPARISON
 
   template enumTypeSpecificImplementation "GALGAS_enum.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
+    ?@bool GENERATE_COMPARISON
 }
 
 #·······················································································································
@@ -440,6 +490,7 @@ override method @enumTypeForGeneration appendDeclaration2
     ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
+    ![selfTypeDefinition.features generateCppObjectComparison]
   ]
  }
 
@@ -461,6 +512,7 @@ override method @enumTypeForGeneration appendSpecificImplementation
     ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mConstantList
     !hasAssociatedValues
+    ![selfTypeDefinition.features generateCppObjectComparison]
   ]
  }
 

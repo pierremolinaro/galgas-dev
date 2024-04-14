@@ -343,6 +343,8 @@ message undefinedAttribute : "undefined attribute"
 list attributeKeyWordList style attributeStyle error message "the '%K' keyword" {
   "app-link" -> $%app-link$,
   "app-source" -> $%app-source$,
+  "comparable" -> $%comparable$,
+  "equatable" -> $%equatable$,
   "makefile-macosx" -> $%makefile-macosx$,
   "makefile-unix" -> $%makefile-unix$,
   "makefile-x86linux32-on-macosx" -> $%makefile-x86linux32-on-macosx$,

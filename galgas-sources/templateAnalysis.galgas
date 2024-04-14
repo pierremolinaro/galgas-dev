@@ -328,7 +328,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixAndOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixAndOperator]
     !"&"
     !self.mOperatorLocation
     !?leftExpression
@@ -371,7 +371,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixOrOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?leftExpression
@@ -414,7 +414,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixXorOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixXorOperator]
     !"^"
     !self.mOperatorLocation
     !?leftExpression
@@ -880,7 +880,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixAddOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixAddOperator]
     !"+"
     !self.mOperatorLocation
     !?leftExpression
@@ -925,7 +925,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixSubOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixSubOperator]
     !"-"
     !self.mOperatorLocation
     !?leftExpression
@@ -970,7 +970,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixMulOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixMulOperator]
     !"*"
     !self.mOperatorLocation
     !?leftExpression
@@ -1015,7 +1015,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixDivOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixDivOperator]
     !"/"
     !self.mOperatorLocation
     !?leftExpression
@@ -1060,7 +1060,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    ![[leftExpression.mResultType definition].features infixModOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features infixModOperator]
     !"mod"
     !self.mOperatorLocation
     !?leftExpression
@@ -1178,7 +1178,7 @@ override method @templateEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !true
+    !operatorIsHandled: [[leftExpression.mResultType definition].features equatable] | [[leftExpression.mResultType definition].features comparable]
     !"=="
     !self.mOperatorLocation
     !?leftExpression
@@ -1221,7 +1221,7 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !true
+    !operatorIsHandled: [[leftExpression.mResultType definition].features equatable] | [[leftExpression.mResultType definition].features comparable]
     !"!="
     !self.mOperatorLocation
     !?leftExpression
@@ -1264,7 +1264,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !true
+    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
     !"<"
     !self.mOperatorLocation
     !?leftExpression
@@ -1307,7 +1307,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !true
+    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
     !"<="
     !self.mOperatorLocation
     !?leftExpression
@@ -1350,7 +1350,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !true
+    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
     !">"
     !self.mOperatorLocation
     !?leftExpression
@@ -1393,7 +1393,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !true
+    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
     !">="
     !self.mOperatorLocation
     !?leftExpression

@@ -266,6 +266,7 @@ private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclara
     !@lstring {!inElementTypeName + "list" !@location.here}
     !attributeList
     !usefullList: true
+    !equatable: true
   }
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !inElementTypeName + "list")
 }
@@ -295,6 +296,7 @@ private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST io
     !@lstring {!"2stringlist" !@location.here}
     !attributeList
     !usefullList: true
+    !equatable: true
   }
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2stringlist")
 }
@@ -323,7 +325,8 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
     !isPredefined: true # Is prefined
     !@lstring {!"l" + inElementTypeName !@location.here}
     !attributeList
-    !""
+    !enumeratedElementTypeName: ""
+    !comparison: .equatable
   }
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"l" + inElementTypeName)
 }
@@ -351,7 +354,8 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
     !isPredefined: true # Is prefined
     !@lstring {!"range" !@location.here}
     !attributeList
-    !"uint"
+    !enumeratedElementTypeName: "uint"
+    !comparison: .equatable
   }
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"range")
 }

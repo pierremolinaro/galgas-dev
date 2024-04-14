@@ -57,7 +57,8 @@ else
 end
 %}
 
-//--------------------------------------------------------------------------------------------------
+%if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
 
 ComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -70,7 +71,7 @@ ComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionEleme
 %  return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%end%//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_map () {

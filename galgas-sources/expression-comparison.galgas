@@ -247,7 +247,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   end
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsAvailable
+    !operatorIsHandled: operatorIsAvailable
     !operatorName
     !self.mOperatorLocation
     !?leftExpression

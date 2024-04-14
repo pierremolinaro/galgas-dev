@@ -26,8 +26,8 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   public: virtual cSortedListElement * copy (void) ;
 
 //--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
+%if GENERATE_COMPARISON then%  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
+%end%
 //--- Description
  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 
@@ -93,7 +93,7 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (String & ioString, cons
   end
 %}
 
-//--------------------------------------------------------------------------------------------------
+%if GENERATE_COMPARISON then%//--------------------------------------------------------------------------------------------------
 
 ComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cSortedListElement_%!TYPE_IDENTIFIER% * operand = (cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -101,7 +101,7 @@ ComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollecti
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%end%//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_sortedlist () {

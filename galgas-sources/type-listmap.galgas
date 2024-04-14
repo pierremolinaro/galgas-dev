@@ -22,6 +22,7 @@
 refclass @listmapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListmapTypeName
   private let @lstring mAssociatedListTypeName
+  private let @bool equatable %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -35,6 +36,13 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     $($
     <type_definition_ggs3> !?ioDeclarations ?let associatedListTypeName
     $)$
@@ -42,6 +50,7 @@ syntax extension galgas3DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
       !associatedListTypeName
+      !equatable: isEquatable
     }
   }
 
@@ -58,6 +67,13 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     $($
     <type_definition> !?ioDeclarations ?let associatedListTypeName
     $)$
@@ -65,6 +81,7 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !mListmapTypeName
       !associatedListTypeName
+      !equatable: isEquatable
     }
   }
 
@@ -98,7 +115,8 @@ override method @listmapDeclarationAST addAssociatedElement
     !isPredefined: self.isPredefined
     !@lstring {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     !structAttributeList
-    !""
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
   }
 }
 
@@ -243,6 +261,11 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !@lstring {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
+#--- Features
+  var features = @typeFeatures.doNotGenererateObjectCompare
+  if self.equatable then
+    features = features | .equatable
+  end
 #--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mListmapTypeName
@@ -262,7 +285,7 @@ override method @listmapDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: ()
     !enumerationDescriptorList: enumeratorDescriptor
-    !features: .doNotGenererateObjectCompare
+    !features: features
     !addAssignOperatorArguments: addAssignOperatorDescription
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file

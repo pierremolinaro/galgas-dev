@@ -30,6 +30,7 @@ refclass @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
   private let @propertyInCollectionListAST mPropertyList
   private let @sortedListSortDescriptorListAST mSortDescriptorList
+  private let @bool equatable %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -43,6 +44,13 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $sortedlist$
     $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     ${$
     var @propertyInCollectionListAST attributeList = ()
     repeat
@@ -63,6 +71,7 @@ syntax extension galgas3DeclarationsSyntax {
       !sortedListTypeName
       !attributeList
       !sortDescriptorList
+      !equatable: isEquatable
     }
   }
 
@@ -94,6 +103,13 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $sortedlist$
     $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     ${$
     var @propertyInCollectionListAST attributeList = ()
     repeat
@@ -114,6 +130,7 @@ syntax extension galgas4DeclarationsSyntax {
       !sortedListTypeName
       !attributeList
       !sortDescriptorList
+      !equatable: isEquatable
     }
   }
 
@@ -173,7 +190,8 @@ override method @sortedListDeclarationAST addAssociatedElement
     !isPredefined: self.isPredefined
     !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     !structAttributeList
-    !""
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
   }
 }
 
@@ -304,6 +322,11 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
+#--- features
+  var features = @typeFeatures.plusEqualOperatorWithExpression | .doNotGenererateObjectCompare
+  if self.equatable then
+    features = features | .equatable
+  end
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mSortedListTypeName
@@ -323,7 +346,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: enumerationDescriptor
-    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithExpression
+    !features: features 
     !addAssignOperatorArguments: constructorAttributeTypeList
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
@@ -378,6 +401,9 @@ override method @sortedListDeclarationAST semanticAnalysis
       error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
     end
     attributesUsedForSorting += !mSortedAttributeName.string
+    if not [[type definition].features comparable] then
+      error mSortedAttributeName : "the @" + [type definition].typeName + " type is not comparable"
+    end
   end
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=
@@ -423,6 +449,7 @@ filewrapper sortedListGenerationTemplate in "+generation-templates/type_generati
     ?@typedPropertyList ATTRIBUTE_LIST
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
     ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
 }
 
 #·······················································································································
@@ -466,11 +493,13 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   end
   [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  let t = [self.mListElementTypeIndex definition]
   outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
     !self.mSortDescriptorList
-    ![[self.mListElementTypeIndex definition].typeName identifierRepresentation]
+    ![t.typeName identifierRepresentation]
+    ![t.features generateCppObjectComparison]
   ]
  }
 

@@ -201,23 +201,6 @@ GALGAS_stringlist GALGAS_filewrapper::getter_allFilePathesWithExtension (const G
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_filewrapper::objectCompare (const GALGAS_filewrapper & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const ptrdiff_t diff = mRootDirectoryPtr - inOperand.mRootDirectoryPtr ;
-    if (diff < 0) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (diff > 0) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 static void enumerateWrapper (String & ioString,
                               const cDirectoryWrapper * inDir,
                               const String & inPath,

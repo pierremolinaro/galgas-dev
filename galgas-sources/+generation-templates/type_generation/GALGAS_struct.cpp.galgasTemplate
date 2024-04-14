@@ -81,7 +81,7 @@ for (mPropertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST do
 %  return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%if GENERATE_COMPARISON then%//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
@@ -93,7 +93,7 @@ end
 %  return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%end%//--------------------------------------------------------------------------------------------------
 
 bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return %

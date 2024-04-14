@@ -33,8 +33,10 @@ class cEnumAssociatedValues : public SharedObject {
 
   public: virtual void description (class String & ioString,
                                      const int32_t inIndentation) const = 0 ;
-  public: virtual ComparisonResult compare (const cEnumAssociatedValues * inOperand) const = 0 ;
-  
+  public: virtual ComparisonResult compare (const cEnumAssociatedValues * /* inOperand */) const {
+    return ComparisonResult::invalid ;
+  }
+
   public: virtual ~ cEnumAssociatedValues (void) {}
 } ;
 

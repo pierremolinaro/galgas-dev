@@ -54,6 +54,7 @@ refclass @mapDeclarationAST : @semanticDeclarationAST {
   private let @mapSearchMethodListAST mSearchMethodList
   private let @mapRemoveMethodListAST mRemoveMethodList
   private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
+  private let @bool equatable %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -72,9 +73,14 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $map$
-  #--- Map type name
     $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
-  #--- Map properties
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     ${$
     var propertyList = @propertyInCollectionListAST ()
     var mInsertMethodList = @insertMethodListAST ()
@@ -104,6 +110,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mSearchMethodList
       !mRemoveMethodList
       !insertOrReplaceDeclarationListAST
+      !equatable: isEquatable
     }
   }
 
@@ -170,9 +177,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $map$
-  #--- Map type name
     $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
-  #--- Map properties
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     ${$
     var propertyList = @propertyInCollectionListAST ()
     var mInsertMethodList = @insertMethodListAST ()
@@ -202,6 +214,7 @@ syntax extension galgas4DeclarationsSyntax {
       !mSearchMethodList
       !mRemoveMethodList
       !insertOrReplaceDeclarationListAST
+      !equatable: isEquatable
     }
   }
 
@@ -283,7 +296,8 @@ override method @mapDeclarationAST addAssociatedElement
     !isPredefined: self.isPredefined
     !@lstring {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
     !structAttributeList
-    !""
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
   }
 }
 
@@ -510,9 +524,9 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #--- Enter "attributeForKey" getters
-  for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
-    let accessorName = @lstring {!mPropertyName.string + "ForKey" !mPropertyName.location}
-    [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
+  for property in self.mPropertyList do
+    let accessorName = @lstring {!property.name.string + "ForKey" !property.name.location}
+    [!?ioTypeMap makeEntry !property.typeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
@@ -537,17 +551,17 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for (* propertyTypeName mPropertyName 3*) in self.mPropertyList do
+  for property in self.mPropertyList do
     let accessorName = @lstring {
-      !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
-      !mPropertyName.location
+      !"set" + [property.name.string stringByCapitalizingFirstCharacter] + "ForKey"
+      !property.name.location
     }
     [!?ioTypeMap makeEntry
-      !propertyTypeName
+      !property.typeName
       ?let @unifiedTypeMapEntry attributeTypeIndex
     ]
     var @formalParameterSignature accessorFormalArgumentList = ()
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !property.name.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace
       !accessorName
@@ -568,6 +582,12 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !.init {![emptyArgumentList initializerSignature] !self.mMapTypeName}
     !emptyArgumentList
   ]
+#--- Features
+  var features = @typeFeatures.plusEqualOperatorWithFieldListNeedsCompilerArg
+           | .supportWithAccessor | .infixAddOperator | .doNotGenererateObjectCompare
+  if self.equatable then
+    features = features | .equatable
+  end
 #--- Add extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
@@ -608,8 +628,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
     !enumerationDescriptorList: enumerationDescriptor
-    !features: .doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
-      | .supportWithAccessor | .infixAddOperator | .equatable
+    !features: features
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
     !mapSearchMethodList: self.mSearchMethodList
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
@@ -779,6 +798,7 @@ override method @mapTypeForGeneration appendDeclaration2
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
+    ![selfTypeDefinition.features generateCppObjectComparison]
   ]
 }
 
@@ -798,6 +818,7 @@ override method @mapTypeForGeneration appendSpecificImplementation
     !self.mSearchMethodList
     !self.mRemoveMethodList
     !self.mHasInsertOrReplaceModifier
+    ![selfTypeDefinition.features generateCppObjectComparison]
   ]
 }
 

@@ -353,7 +353,7 @@ boolset @localVariableAttributes {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @localVarValuation {
+enum @localVarValuation %equatable {
   case invalid #--- Error state, for disabled further error messages
   case declared (@bool usedInSubscope) # The variable has no value
   case initialized # The variable has been written once
