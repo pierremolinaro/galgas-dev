@@ -455,8 +455,6 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1406,8 +1404,6 @@ class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGenera
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1599,8 +1595,6 @@ class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_sem
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1777,8 +1771,6 @@ class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructio
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -1957,8 +1949,6 @@ class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstr
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -2126,8 +2116,6 @@ class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semantic
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -2310,8 +2298,6 @@ class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration :
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -2735,8 +2721,6 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -2904,8 +2888,6 @@ class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGener
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -3133,8 +3115,6 @@ class cPtr_loopInstructionWithVariantAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -3323,8 +3303,6 @@ class cPtr_loopInstructionWithVariantForGeneration : public cPtr_semanticInstruc
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -3538,8 +3516,6 @@ class cPtr_loopInstructionWithoutVariantAST : public cPtr_semanticInstructionAST
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -3722,8 +3698,6 @@ class cPtr_loopInstructionWithoutVariantForGeneration : public cPtr_semanticInst
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -3894,8 +3868,6 @@ class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -4063,8 +4035,6 @@ class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForG
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -4249,8 +4219,6 @@ class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -4462,8 +4430,6 @@ class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionF
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -4633,8 +4599,6 @@ class cPtr_superInitInstructionAST : public cPtr_semanticInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -4818,8 +4782,6 @@ class cPtr_superInitInstructionForGeneration : public cPtr_semanticInstructionFo
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -4997,8 +4959,6 @@ class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -5166,8 +5126,6 @@ class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionFor
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -5339,8 +5297,6 @@ class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -5510,8 +5466,6 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -5683,8 +5637,6 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -5854,8 +5806,6 @@ class cPtr_selfMinusEqualExpressionInstructionAST : public cPtr_semanticInstruct
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -6027,8 +5977,6 @@ class cPtr_selfMulEqualExpressionInstructionAST : public cPtr_semanticInstructio
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -6198,8 +6146,6 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -6406,8 +6352,6 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -6584,8 +6528,6 @@ class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -6818,8 +6760,6 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -7015,8 +6955,6 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -7525,8 +7463,6 @@ class cPtr_switchInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8018,8 +7954,6 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8204,8 +8138,6 @@ class cPtr_typeMethodCallInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8388,8 +8320,6 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8566,8 +8496,6 @@ class cPtr_localVariableDeclarationWithAssignmentAST : public cPtr_semanticInstr
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -8746,8 +8674,6 @@ class cPtr_localVariableDeclarationNoAssignmentAST : public cPtr_semanticInstruc
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8915,8 +8841,6 @@ class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructi
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -9102,8 +9026,6 @@ class cPtr_warningInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -9285,8 +9207,6 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -9520,8 +9440,6 @@ class cPtr_readAccessWithInstructionAST : public cPtr_semanticInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -9770,8 +9688,6 @@ class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAS
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -9974,8 +9890,6 @@ class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructio
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -10194,8 +10108,6 @@ class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructi
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -10397,8 +10309,6 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -10593,8 +10503,6 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -10796,8 +10704,6 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -11001,8 +10907,6 @@ class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGene
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -11189,8 +11093,6 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -11379,8 +11281,6 @@ class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGene
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -11589,8 +11489,6 @@ class cPtr_terminalCheckInstructionAST : public cPtr_syntaxInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -11911,8 +11809,6 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -12127,8 +12023,6 @@ class cPtr_parseLoopInstruction : public cPtr_syntaxInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;

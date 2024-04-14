@@ -5096,8 +5096,6 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
@@ -6215,8 +6213,6 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -6397,8 +6393,6 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -6577,8 +6571,6 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -6749,8 +6741,6 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -6920,8 +6910,6 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -7112,8 +7100,6 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -7283,8 +7269,6 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -7456,8 +7440,6 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -7627,8 +7609,6 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -7800,8 +7780,6 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -7966,8 +7944,6 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;

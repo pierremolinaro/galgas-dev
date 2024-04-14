@@ -669,7 +669,6 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.mAllTypedAttributeList
           !self.mIsAbstract
           !self.synthetizedInitializerArgumentList
-          !generateAlwaysCppObjectCompare () // [selfTypeDefinition.features generateCppObjectComparison]
         ]
         let @string headerFileName = "separateHeaderFor_" + [self.mSelfTypeEntry identifierRepresentation] + ".h"
         [@string generateFileWithPattern
@@ -704,7 +703,6 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
           !self.mAllTypedAttributeList
           !self.mIsAbstract
           !self.synthetizedInitializerArgumentList
-          !generateAlwaysCppObjectCompare () // [selfTypeDefinition.features generateCppObjectComparison]
         ]
       end
     else
@@ -991,7 +989,6 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList ALL_PROPERTY_LIST
     ?@bool IS_ABSTRACT
     ?@typedPropertyList INITIALIZER_ARGUMENT_LIST
-    ?@bool GENERATE_COMPARISON
 
   template referenceClassTypeSpecificImplementation "GALGAS_reference_class.cpp.galgasTemplate"
     ?@string TYPE_NAME

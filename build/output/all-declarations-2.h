@@ -104,8 +104,6 @@ class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
@@ -275,8 +273,6 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -445,8 +441,6 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -1111,8 +1105,6 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
@@ -1505,8 +1497,6 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1678,8 +1668,6 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -1853,8 +1841,6 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -2026,8 +2012,6 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -2207,8 +2191,6 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -7601,8 +7583,6 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -7778,8 +7758,6 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -7957,8 +7935,6 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8127,8 +8103,6 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -8320,8 +8294,6 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8505,8 +8477,6 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -8669,8 +8639,6 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
@@ -8846,8 +8814,6 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -9021,8 +8987,6 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -9434,8 +9398,6 @@ class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -9664,8 +9626,6 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -9841,8 +9801,6 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -10020,8 +9978,6 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -10197,8 +10153,6 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -10888,8 +10842,6 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;

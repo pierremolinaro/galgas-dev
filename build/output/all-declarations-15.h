@@ -553,8 +553,6 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -774,8 +772,6 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
 
@@ -946,8 +942,6 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override = 0 ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
@@ -1200,8 +1194,6 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1398,8 +1390,6 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1573,8 +1563,6 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -1762,8 +1750,6 @@ class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGener
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1946,8 +1932,6 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -2122,8 +2106,6 @@ class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -2306,8 +2288,6 @@ class cPtr_listmapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;

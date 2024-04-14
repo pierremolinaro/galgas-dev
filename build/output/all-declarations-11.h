@@ -132,8 +132,6 @@ class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForG
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -321,8 +319,6 @@ class cPtr_parseRewindInstruction : public cPtr_syntaxInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -492,8 +488,6 @@ class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionFo
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
@@ -710,8 +704,6 @@ class cPtr_parseWhenInstruction : public cPtr_syntaxInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -896,8 +888,6 @@ class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForG
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1078,8 +1068,6 @@ class cPtr_syntaxSendInstructionAST : public cPtr_syntaxInstructionAST {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -1244,8 +1232,6 @@ class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionFor
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;

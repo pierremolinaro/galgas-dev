@@ -417,8 +417,6 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Comparison
-
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
@@ -586,8 +584,6 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--- Comparison
 
 //--- Class descriptor
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;

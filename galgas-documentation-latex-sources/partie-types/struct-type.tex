@@ -124,6 +124,8 @@ var aVariable = @maStructure ()
 var @maStructure aVariable = .init ()
 // Ou :
 var @maStructure aVariable = .init
+// Ou :
+var @maStructure aVariable = ()
 \end{galgas34}
 \begin{galgas3}
 var aVariable = @maStructure.init {}
@@ -319,6 +321,49 @@ On peut écrire~:
 \sectionLabel{Setters}{setterStruct}
 
 
+
+
+
+
+
+\section{Comparaison}
+
+Par défaut, une instance de structure n'est ni égalable, ni comparable.
+
+Pour la rendre égalable (on peut alors tester l'égalité \ggsq!==! et l'inégalité \ggsq@!=@ entre deux instances), il faut ajouter l'attribut \ggsq!%equatable! dans la déclaration de structure~:
+
+\begin{galgas34}
+struct @maStructure %equatable {
+  public var @uint propriété1
+  public var @bool propriété2
+}
+\end{galgas34}
+
+Ceci impose à toutes les propriétés~:
+\begin{itemize}
+  \item soit être des références~;
+  \item soit être égalables ;
+  \item soit être comparables.
+\end{itemize}
+
+
+
+Pour rendre une structure comparable (on peut alors utiliser les opérateurs \ggsq!==!, \ggsq@!=@, \ggsq@<=@, \ggsq@<@, \ggsq@>=@, \ggsq@>@ entre deux instances), il faut ajouter l'attribut \ggsq!%comparable! dans la déclaration de structure~:
+
+\begin{galgas34}
+struct @maStructure %comparable {
+  public var @uint propriété1
+  public var @bool propriété2
+}
+\end{galgas34}
+
+Ceci impose à toutes les propriétés d'être comparables. La relation d'ordre induite est celle obtenue en comparant successivement les propriétés dans leur ordre de déclaration (dans l'exemple ci-dessus, d'abord \ggsq!propriété1!, puis \ggsq!propriété2!).
+
+
+
+
+
+
 \section{Types structure prédéfinis}
 
 Plusieurs types préféfinis GALGAS sont des structures.
@@ -326,7 +371,7 @@ Plusieurs types préféfinis GALGAS sont des structures.
 \subsectionTypePredefiniLabelIndex{lbigint}
 
 \begin{galgas34}
-struct @lbigint {
+struct @lbigint %equatable {
   public var @bigint bigint
   public var @location location
 }
@@ -337,7 +382,7 @@ struct @lbigint {
 \subsectionTypePredefiniLabelIndex{lbool}
 
 \begin{galgas34}
-struct @lbool {
+struct @lbool %equatable {
   public var @bool bool
   public var @location location
 }
@@ -348,7 +393,7 @@ struct @lbool {
 \subsectionTypePredefiniLabelIndex{lchar}
 
 \begin{galgas34}
-struct @lchar {
+struct @lchar %equatable {
   public var @char char
   public var @location location
 }
@@ -358,7 +403,7 @@ struct @lchar {
 \subsectionTypePredefiniLabelIndex{ldouble}
 
 \begin{galgas34}
-struct @ldouble {
+struct @ldouble %equatable {
   public var @double double
   public var @location location
 }
@@ -373,7 +418,7 @@ struct @ldouble {
 \subsectionTypePredefiniLabelIndex{lsint}
 
 \begin{galgas34}
-struct @lsint {
+struct @lsint %equatable {
   public var @sint sint
   public var @location location
 }
@@ -389,7 +434,7 @@ struct @lsint {
 \subsectionTypePredefiniLabelIndex{lsint64}
 
 \begin{galgas34}
-struct @lsint64 {
+struct @lsint64 %equatable {
   public var @sint64 sint64
   public var @location location
 }
@@ -404,7 +449,7 @@ struct @lsint64 {
 \subsectionTypePredefiniLabelIndex{lstring}
 
 \begin{galgas34}
-struct @lstring {
+struct @lstring %equatable {
   public var @string string
   public var @location location
 }
@@ -419,7 +464,7 @@ struct @lstring {
 \subsectionTypePredefiniLabelIndex{luint}
 
 \begin{galgas34}
-struct @luint {
+struct @luint %equatable {
   public var @uint uint
   public var @location location
 }
@@ -433,7 +478,7 @@ struct @luint {
 
 
 \begin{galgas34}
-struct @luint64 {
+struct @luint64 %equatable {
   public var @uint64 uint64
   public var @location location
 }
@@ -445,7 +490,7 @@ struct @luint64 {
 Le type \ggsq!@range! définit les intervalles d'entiers non signés 32 bits (\ggsq!@uint!).
 
 \begin{galgas34}
-struct @range {
+struct @range %equatable {
   public var @uint start
   public var @uint length
 }
