@@ -5320,8 +5320,6 @@ acStrongPtr_class (THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateInstructionAST::objectCompare (const GALGAS_templateInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5946,8 +5944,6 @@ acStrongPtr_class (THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateExpressionAST::objectCompare (const GALGAS_templateExpressionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -7042,8 +7038,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateAndOperationAST::objectCompare (const GALGAS_templateAndOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7365,8 +7359,6 @@ mProperty_mRightExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateOrOperationAST::objectCompare (const GALGAS_templateOrOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -7690,8 +7682,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateXorOperationAST::objectCompare (const GALGAS_templateXorOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8010,8 +8000,6 @@ mProperty_mLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateTrueBoolAST::objectCompare (const GALGAS_templateTrueBoolAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8287,8 +8275,6 @@ mProperty_mLocation () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateFalseBoolAST::objectCompare (const GALGAS_templateFalseBoolAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -9118,8 +9104,6 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateNotOperatorAST::objectCompare (const GALGAS_templateNotOperatorAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -9418,8 +9402,6 @@ mProperty_mExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateLogicalNegateAST::objectCompare (const GALGAS_templateLogicalNegateAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -10292,8 +10274,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateAddOperationAST::objectCompare (const GALGAS_templateAddOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -10615,8 +10595,6 @@ mProperty_mRightExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateSubOperationAST::objectCompare (const GALGAS_templateSubOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -10940,8 +10918,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateMultiplyOperationAST::objectCompare (const GALGAS_templateMultiplyOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11263,8 +11239,6 @@ mProperty_mRightExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateDivideOperationAST::objectCompare (const GALGAS_templateDivideOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -11588,8 +11562,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateModuloOperationAST::objectCompare (const GALGAS_templateModuloOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11910,8 +11882,6 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateUnaryMinusOperationAST::objectCompare (const GALGAS_templateUnaryMinusOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12212,8 +12182,6 @@ mProperty_mRightExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateEqualTestAST::objectCompare (const GALGAS_templateEqualTestAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -12537,8 +12505,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateNonEqualTestAST::objectCompare (const GALGAS_templateNonEqualTestAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12860,8 +12826,6 @@ mProperty_mRightExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateStrictInfTestAST::objectCompare (const GALGAS_templateStrictInfTestAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -13185,8 +13149,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateInfOrEqualTestAST::objectCompare (const GALGAS_templateInfOrEqualTestAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13508,8 +13470,6 @@ mProperty_mRightExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateStrictSupTestAST::objectCompare (const GALGAS_templateStrictSupTestAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -13833,8 +13793,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateSupOrEqualTestAST::objectCompare (const GALGAS_templateSupOrEqualTestAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -14157,8 +14115,6 @@ mProperty_mRightExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateLeftShiftOperationAST::objectCompare (const GALGAS_templateLeftShiftOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -14480,8 +14436,6 @@ mProperty_mRightExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateRightShiftOperationAST::objectCompare (const GALGAS_templateRightShiftOperationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -14913,8 +14867,6 @@ mProperty_mLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateInstructionExpressionAST::objectCompare (const GALGAS_templateInstructionExpressionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -15215,8 +15167,6 @@ mProperty_mBlockInstructionList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateBlockInstructionAST::objectCompare (const GALGAS_templateBlockInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -15534,8 +15484,6 @@ cPtr_templateInstructionAST (inCompiler COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateInstructionGetColumnLocationAST::objectCompare (const GALGAS_templateInstructionGetColumnLocationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -15788,8 +15736,6 @@ cPtr_templateInstructionAST (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateInstructionGotoColumnLocationAST::objectCompare (const GALGAS_templateInstructionGotoColumnLocationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -16532,8 +16478,6 @@ mProperty_mElseInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateInstructionIfAST::objectCompare (const GALGAS_templateInstructionIfAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -16828,8 +16772,6 @@ acStrongPtr_class (THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateInstructionForGeneration::objectCompare (const GALGAS_templateInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;

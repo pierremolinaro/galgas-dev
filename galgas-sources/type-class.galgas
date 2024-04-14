@@ -787,7 +787,6 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.inheritedSynthetizedInitializerArgumentList
         !selfTypeDefinition.initializerMap
         !self.clonable
-        !generateAlwaysCppObjectCompare () // [selfTypeDefinition.features generateCppObjectComparison]
       ]
     else
       outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
@@ -1005,7 +1004,6 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList INHERITED_INITIALIZER_ARGUMENT_LIST
     ?@initializerMap INITIALIZER_MAP
     ?@bool CLONABLE
-    ?@bool GENERATE_COMPARISON
 
 #---------- Weak Reference Class
   template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"

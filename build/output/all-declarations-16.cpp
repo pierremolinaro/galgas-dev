@@ -143,8 +143,6 @@ mProperty_equatable () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_dictDeclarationAST::objectCompare (const GALGAS_dictDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -387,8 +385,6 @@ mProperty_mKeyTypeName () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_dictTypeForGeneration::objectCompare (const GALGAS_dictTypeForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -749,8 +745,6 @@ mProperty_equatable () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_mapDeclarationAST::objectCompare (const GALGAS_mapDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -1062,8 +1056,6 @@ mProperty_mHasInsertOrReplaceModifier () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_mapTypeForGeneration::objectCompare (const GALGAS_mapTypeForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1481,8 +1473,6 @@ mProperty_equatable () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_sortedListDeclarationAST::objectCompare (const GALGAS_sortedListDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -1723,8 +1713,6 @@ mProperty_mSortDescriptorList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_sortedListTypeForGeneration::objectCompare (const GALGAS_sortedListTypeForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -2058,8 +2046,6 @@ mProperty_comparison () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_structDeclarationAST::objectCompare (const GALGAS_structDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2304,8 +2290,6 @@ mProperty_synthetizeAnInitializer () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_structTypeForGeneration::objectCompare (const GALGAS_structTypeForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -2677,8 +2661,6 @@ mProperty_mDefinedTypeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_typealiasDeclarationAST::objectCompare (const GALGAS_typealiasDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2875,8 +2857,6 @@ mProperty_mReferencedType () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_aliasTypeForGeneration::objectCompare (const GALGAS_aliasTypeForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -3189,8 +3169,6 @@ mProperty_mAbstractExtensionGetterReturnedTypeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_abstractExtensionGetterAST::objectCompare (const GALGAS_abstractExtensionGetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3433,8 +3411,6 @@ mProperty_mAbstractExtensionGetterFormalParameterList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_abstractExtensionGetterForGeneration::objectCompare (const GALGAS_abstractExtensionGetterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -3795,8 +3771,6 @@ mProperty_mAbstractExtensionMethodFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_abstractExtensionMethodAST::objectCompare (const GALGAS_abstractExtensionMethodAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4016,8 +3990,6 @@ mProperty_mAbstractExtensionMethodFormalParameterList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_abstractExtensionMethodForGeneration::objectCompare (const GALGAS_abstractExtensionMethodForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -4357,8 +4329,6 @@ mProperty_mAbstractExtensionSetterFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_abstractExtensionSetterAST::objectCompare (const GALGAS_abstractExtensionSetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4578,8 +4548,6 @@ mProperty_mAbstractExtensionSetterFormalParameterList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_abstractExtensionSetterForGeneration::objectCompare (const GALGAS_abstractExtensionSetterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -4929,8 +4897,6 @@ mProperty_mEndOfReaderLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_extensionGetterAST::objectCompare (const GALGAS_extensionGetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5265,8 +5231,6 @@ mProperty_mSemanticInstructionListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_extensionGetterForGeneration::objectCompare (const GALGAS_extensionGetterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -5717,8 +5681,6 @@ mProperty_mEndOfMethodLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_extensionMethodAST::objectCompare (const GALGAS_extensionMethodAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -6007,8 +5969,6 @@ mProperty_mSemanticInstructionListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_extensionMethodForGeneration::objectCompare (const GALGAS_extensionMethodForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -6417,8 +6377,6 @@ mProperty_mEndOfSetterDeclarationLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_extensionSetterAST::objectCompare (const GALGAS_extensionSetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -6707,8 +6665,6 @@ mProperty_mSemanticInstructionListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_extensionSetterForGeneration::objectCompare (const GALGAS_extensionSetterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -7113,8 +7069,6 @@ mProperty_mEndOfInitializerLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_initializerAST::objectCompare (const GALGAS_initializerAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7359,8 +7313,6 @@ mProperty_semanticInstructionListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_extensionInitializerForGeneration::objectCompare (const GALGAS_extensionInitializerForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -7744,8 +7696,6 @@ mProperty_mAbstractExtensionGetterReturnedTypeName () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_overridingAbstractExtensionGetterAST::objectCompare (const GALGAS_overridingAbstractExtensionGetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7987,8 +7937,6 @@ mProperty_mOverridingExtensionMethodFormalParameterList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_overridingAbstractExtensionMethodAST::objectCompare (const GALGAS_overridingAbstractExtensionMethodAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8208,8 +8156,6 @@ mProperty_mOverridingExtensionSetterFormalParameterList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_overridingAbstractExtensionSetterAST::objectCompare (const GALGAS_overridingAbstractExtensionSetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -8440,8 +8386,6 @@ mProperty_mEndOfReaderLocation () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_overridingExtensionGetterAST::objectCompare (const GALGAS_overridingExtensionGetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -8777,8 +8721,6 @@ mProperty_mSemanticInstructionListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_overrideExtensionGetterForGeneration::objectCompare (const GALGAS_overrideExtensionGetterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -9229,8 +9171,6 @@ mProperty_mEndOfMethodLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_overridingExtensionMethodAST::objectCompare (const GALGAS_overridingExtensionMethodAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -9519,8 +9459,6 @@ mProperty_mSemanticInstructionListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_overridingExtensionMethodForGeneration::objectCompare (const GALGAS_overridingExtensionMethodForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -9929,8 +9867,6 @@ mProperty_mEndOfSetterDeclarationLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_overridingExtensionSetterAST::objectCompare (const GALGAS_overridingExtensionSetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -10219,8 +10155,6 @@ mProperty_mSemanticInstructionListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_overridingExtensionSetterForGeneration::objectCompare (const GALGAS_overridingExtensionSetterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -11670,8 +11604,6 @@ mProperty_mDefinition () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_unifiedTypeMapElementClass::objectCompare (const GALGAS_unifiedTypeMapElementClass & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11944,8 +11876,6 @@ mProperty_mEndOfExpressionLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_outputActualParameterAST::objectCompare (const GALGAS_outputActualParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12158,8 +12088,6 @@ mProperty_mStructAttributeList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_outputInputActualParameterAST::objectCompare (const GALGAS_outputInputActualParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12370,8 +12298,6 @@ mProperty_expression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_outputInputJokerParameterAST::objectCompare (const GALGAS_outputInputJokerParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12559,8 +12485,6 @@ mProperty_mActualSelector () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_outputInputSelfParameterAST::objectCompare (const GALGAS_outputInputSelfParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12730,8 +12654,6 @@ mProperty_mPoisonedVarNameList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_inputActualExistingVariableParameterAST::objectCompare (const GALGAS_inputActualExistingVariableParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -12945,8 +12867,6 @@ mProperty_mPoisonedVarNameList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_inputActualSelfPropertyParameterAST::objectCompare (const GALGAS_inputActualSelfPropertyParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13158,8 +13078,6 @@ mProperty_mPoisonedVarNameList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_inputActualSelfParameterAST::objectCompare (const GALGAS_inputActualSelfParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -13374,8 +13292,6 @@ mProperty_mPoisonedVarNameList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_inputActualNewVariableParameterAST::objectCompare (const GALGAS_inputActualNewVariableParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -13613,8 +13529,6 @@ mProperty_mPoisonedVarNameList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_inputActualNewConstantParameterAST::objectCompare (const GALGAS_inputActualNewConstantParameterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;

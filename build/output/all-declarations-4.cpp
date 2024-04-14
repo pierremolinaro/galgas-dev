@@ -135,8 +135,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_stringsetPredefinedTypeAST::objectCompare (const GALGAS_stringsetPredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -405,8 +403,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_sintPredefinedTypeAST::objectCompare (const GALGAS_sintPredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -677,8 +673,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_sint_36__34_PredefinedTypeAST::objectCompare (const GALGAS_sint_36__34_PredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -947,8 +941,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_stringPredefinedTypeAST::objectCompare (const GALGAS_stringPredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1219,8 +1211,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_timerPredefinedTypeAST::objectCompare (const GALGAS_timerPredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -1489,8 +1479,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_typePredefinedTypeAST::objectCompare (const GALGAS_typePredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1761,8 +1749,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_uintPredefinedTypeAST::objectCompare (const GALGAS_uintPredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2031,8 +2017,6 @@ cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_uint_36__34_PredefinedTypeAST::objectCompare (const GALGAS_uint_36__34_PredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;

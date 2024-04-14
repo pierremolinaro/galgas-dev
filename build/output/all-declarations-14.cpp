@@ -14158,8 +14158,6 @@ mProperty_mExpressionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_templateClassFunctionAST::objectCompare (const GALGAS_templateClassFunctionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -14371,8 +14369,6 @@ mProperty_mOutExpressionList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_templateFileWrapperTemplateCallAST::objectCompare (const GALGAS_templateFileWrapperTemplateCallAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;

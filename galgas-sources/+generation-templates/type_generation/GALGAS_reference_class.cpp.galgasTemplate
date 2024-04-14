@@ -38,30 +38,6 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%
 
 //--------------------------------------------------------------------------------------------------
 
-%if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] == 0) & GENERATE_COMPARISON then
-%ComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
-  return ComparisonResult::operandEqual ;
-}
-
-//--------------------------------------------------------------------------------------------------
-%end
-
-if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) & GENERATE_COMPARISON then
-%ComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;
-% for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
-    %  if (ComparisonResult::operandEqual == result) {\n%
-    %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (p->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
-    %  }\n%
-  end
-%  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-%end%
-
 ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {

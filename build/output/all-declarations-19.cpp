@@ -37,8 +37,6 @@ mProperty_mHasCompilerArgument () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_selfSetterCallInstructionForGeneration::objectCompare (const GALGAS_selfSetterCallInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -314,8 +312,6 @@ mProperty_mBranches () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_switchInstructionForGeneration::objectCompare (const GALGAS_switchInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -527,8 +523,6 @@ mProperty_mActualParameterList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_typeMethodCallInstructionAST::objectCompare (const GALGAS_typeMethodCallInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -751,8 +745,6 @@ mProperty_mHasCompilerArgument () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_typeMethodCallInstructionForGeneration::objectCompare (const GALGAS_typeMethodCallInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -985,8 +977,6 @@ mProperty_mSourceExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_localVariableDeclarationWithAssignmentAST::objectCompare (const GALGAS_localVariableDeclarationWithAssignmentAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -1183,8 +1173,6 @@ mProperty_mVariableName () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_localVariableDeclarationNoAssignmentAST::objectCompare (const GALGAS_localVariableDeclarationNoAssignmentAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1386,8 +1374,6 @@ mProperty_mFixitListForGeneration () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_warningInstructionForGeneration::objectCompare (const GALGAS_warningInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1635,8 +1621,6 @@ mProperty_mEndOf_5F_else_5F_instructions () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_readAccessWithInstructionAST::objectCompare (const GALGAS_readAccessWithInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -2022,8 +2006,6 @@ mProperty_mEndOf_5F_else_5F_instructions () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_readWriteAccessWithInstructionAST::objectCompare (const GALGAS_readWriteAccessWithInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -2442,8 +2424,6 @@ mProperty_mElseBranchInstructions () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_readOnlyWithInstructionForGeneration::objectCompare (const GALGAS_readOnlyWithInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2751,8 +2731,6 @@ mProperty_mElseBranchInstructions () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_readWriteWithInstructionForGeneration::objectCompare (const GALGAS_readWriteWithInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -3094,8 +3072,6 @@ mProperty_mGrammarInstructionSyntaxDirectedTranslationResult () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_nonterminalCallInstruction::objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3340,8 +3316,6 @@ mProperty_mGrammarInstructionSyntaxDirectedTranslationToken () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_terminalCheckInstructionAST::objectCompare (const GALGAS_terminalCheckInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -3602,8 +3576,6 @@ mProperty_mTerminalSymbolIndex () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_terminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -3920,8 +3892,6 @@ mProperty_mGrammarInstructionSyntaxDirectedTranslationToken () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_terminalCheckInstructionForGeneration::objectCompare (const GALGAS_terminalCheckInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4205,8 +4175,6 @@ mProperty_mInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_parseLoopInstructionForGeneration::objectCompare (const GALGAS_parseLoopInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4427,8 +4395,6 @@ mProperty_mElseInstructionList () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_parseWhenInstructionForGeneration::objectCompare (const GALGAS_parseWhenInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4645,8 +4611,6 @@ mProperty_mExpression () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_syntaxSendInstructionForGeneration::objectCompare (const GALGAS_syntaxSendInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4822,8 +4786,6 @@ mProperty_mNonterminalSymbolIndex () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_nonTerminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_nonTerminalInstructionForGrammarAnalysis & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;

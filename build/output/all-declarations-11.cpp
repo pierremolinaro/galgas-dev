@@ -139,8 +139,6 @@ mProperty_mEndOfParseDoInstruction () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_parseRewindInstruction::objectCompare (const GALGAS_parseRewindInstruction & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -446,8 +444,6 @@ mProperty_mListOfSemanticInstructionListForGeneration () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_parseRewindInstructionForGeneration::objectCompare (const GALGAS_parseRewindInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -741,8 +737,6 @@ mProperty_mEndOfElseInstructionList () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_parseWhenInstruction::objectCompare (const GALGAS_parseWhenInstruction & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1242,8 +1236,6 @@ mProperty_mExpression () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_syntaxSendInstructionAST::objectCompare (const GALGAS_syntaxSendInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -3900,8 +3892,6 @@ mProperty_mAddedNonTerminalSymbolIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-
-
 ComparisonResult GALGAS_selectInstructionForGrammarAnalysis::objectCompare (const GALGAS_selectInstructionForGrammarAnalysis & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4208,8 +4198,6 @@ mProperty_mAddedNonTerminalSymbolIndex () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-
-
 
 ComparisonResult GALGAS_repeatInstructionForGrammarAnalysis::objectCompare (const GALGAS_repeatInstructionForGrammarAnalysis & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
