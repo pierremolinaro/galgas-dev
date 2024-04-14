@@ -183,10 +183,10 @@ refclass @initializerAST : @semanticDeclarationAST {
       !self.mTypeName
       ![self.mFormalParameterList initializerSignature]
     )
-#    println (!"DEF " + nameForUsefulness)
 #    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #    let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mTypeName)
-#    [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+#  #  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+#    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !typeNameForUsefulness]
   #--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
     let @string selfObjectNameString

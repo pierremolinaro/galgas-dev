@@ -213,12 +213,14 @@ refclass @initializerCallAST : @semanticExpressionAST {
       ?let @lstring initializerName
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     )
+  #--- Usefull entity graph
 #    let initializerUsefulnessName = initializerNameForUsefulEntitiesGraph (
 #      [instanciedType definition].typeName,
 #      [self.mExpressions initializerSignature]
 #    )
-#    println (!"USE " + initializerUsefulnessName)
 #    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !initializerUsefulnessName]
+    let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([instanciedType definition].typeName)
+    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !typeUsefulnessName]
   #---
     outExpression = @initializerCallForGeneration {
       !instanciedType

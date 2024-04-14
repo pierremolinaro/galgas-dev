@@ -99,13 +99,6 @@ func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-#func initializerNameForUsefulEntitiesGraph ?let @lstring inTypeName
-#                          ?let @formalInputParameterListAST inFormalParameterList -> @lstring {
-#  result = "@" + inTypeName + ".init" + [inFormalParameterList initializerSignature]
-#}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 func lexiqueNameForUsefulEntitiesGraph ?let @lstring inLexiqueName -> @lstring {
   result = .init {!"lexique " + inLexiqueName !inLexiqueName.location}
 }
