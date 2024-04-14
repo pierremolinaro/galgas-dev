@@ -13665,7 +13665,7 @@ static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [192] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [191] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -13785,34 +13785,33 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [192] = {
   false /* with */,
   false /* %app-link */,
   false /* %app-source */,
+  false /* %applicationBundleBase */,
+  false /* %clonable */,
+  false /* %codeblocks-linux32 */,
+  false /* %codeblocks-linux64 */,
+  false /* %codeblocks-windows */,
   false /* %comparable */,
   false /* %equatable */,
+  false /* %from */,
+  false /* %generatedInSeparateFile */,
+  false /* %initArgLabel */,
+  false /* %libpmAtPath */,
+  false /* %MacOS */,
+  false /* %MacOSDeployment */,
+  false /* %macCodeSign */,
   false /* %makefile-macosx */,
   false /* %makefile-unix */,
   false /* %makefile-x86linux32-on-macosx */,
   false /* %makefile-x86linux64-on-macosx */,
   false /* %makefile-win32-on-macosx */,
-  false /* %clonable */,
-  false /* %codeblocks-windows */,
-  false /* %codeblocks-linux32 */,
-  false /* %codeblocks-linux64 */,
-  false /* %initArgLabel */,
-  false /* %from */,
-  false /* %applicationBundleBase */,
-  false /* %MacOS */,
-  false /* %MacOSDeployment */,
+  false /* %nonAtomicSelection */,
+  false /* %once */,
+  false /* %preserved */,
   false /* %quietOutputByDefault */,
-  false /* %macCodeSign */,
-  false /* %libpmAtPath */,
+  false /* %templateEndMark */,
   false /* %tool-source */,
   false /* %translate */,
-  false /* %once */,
   false /* %usefull */,
-  false /* %generatedInSeparateFile */,
-  false /* %nonAtomicSelection */,
-  false /* %templateEndMark */,
-  false /* %noArgumentLabel */,
-  false /* %preserved */,
   false /* * */,
   false /* , */,
   false /* + */,
@@ -14040,34 +14039,33 @@ GALGAS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("with") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%app-link") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%app-source") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%applicationBundleBase") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%clonable") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%codeblocks-linux32") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%codeblocks-linux64") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%codeblocks-windows") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%comparable") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%equatable") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%from") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%generatedInSeparateFile") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%initArgLabel") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%libpmAtPath") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%MacOS") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%MacOSDeployment") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%macCodeSign") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%makefile-macosx") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%makefile-unix") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%makefile-x86linux32-on-macosx") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%makefile-x86linux64-on-macosx") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%makefile-win32-on-macosx") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%clonable") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%codeblocks-windows") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%codeblocks-linux32") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%codeblocks-linux64") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%initArgLabel") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%from") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%applicationBundleBase") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%MacOS") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%MacOSDeployment") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%nonAtomicSelection") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%once") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%preserved") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%quietOutputByDefault") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%macCodeSign") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%libpmAtPath") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("%templateEndMark") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%tool-source") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%translate") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%once") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%usefull") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%generatedInSeparateFile") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%nonAtomicSelection") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%templateEndMark") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%noArgumentLabel") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%preserved") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("*") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string (",") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("+") COMMA_HERE) ;

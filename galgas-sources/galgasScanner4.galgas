@@ -354,7 +354,6 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "makefile-win32-on-macosx" -> $%makefile-win32-on-macosx$,
   "MacOS" -> $%MacOS$,
   "MacOSDeployment" -> $%MacOSDeployment$,
-  "noArgumentLabel" -> $%noArgumentLabel$,
   "nonAtomicSelection" -> $%nonAtomicSelection$,
   "once" -> $%once$,
   "preserved" -> $%preserved$,
