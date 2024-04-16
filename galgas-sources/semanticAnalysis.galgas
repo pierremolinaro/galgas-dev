@@ -45,7 +45,7 @@ proc checkMethodSignatures
       if mFormalSelector.string != ref_mFormalSelector.string then
         var @string s
         switch ref_mFormalArgumentPassingMode
-        case argumentConstantIn, argumentIn :
+        case argumentConstantIn, argumentVarIn :
           s = "?"
         case argumentInOut :
           s = "?!"
@@ -145,7 +145,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
     let type = [ioTypeMap typeMapEntryForLKey !formalArgument.mFormalArgumentTypeName]
     let @string formalArgumentCppName
     switch formalArgument.mFormalArgumentPassingMode
-    case argumentIn :
+    case argumentVarIn :
       formalArgumentCppName = "inArgument_"
          + [formalArgument.mFormalArgumentName.string identifierRepresentation]
       if formalArgument.mIsUnused then
@@ -834,7 +834,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
       for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
-        case argumentIn, argumentConstantIn :
+        case argumentVarIn, argumentConstantIn :
           let t = [ioTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
           [t addHeaderFileName !?implementationFileHeader]
         case argumentInOut, argumentOut :

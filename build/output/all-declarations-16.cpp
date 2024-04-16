@@ -2704,10 +2704,10 @@ GALGAS_string extensionGetter_initializerSignature (const GALGAS_typeNameFormalP
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("init") ;
   const GALGAS_typeNameFormalParameterNameList temp_0 = inObject ;
-  cEnumerator_typeNameFormalParameterNameList enumerator_12085 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_12085.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GALGAS_string ("!").add_operation (enumerator_12085.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 323)), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 323)) ;
-    enumerator_12085.gotoNextObject () ;
+  cEnumerator_typeNameFormalParameterNameList enumerator_11787 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_11787.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GALGAS_string ("!").add_operation (enumerator_11787.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 313)), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 313)) ;
+    enumerator_11787.gotoNextObject () ;
   }
 //---
   return result_result ;

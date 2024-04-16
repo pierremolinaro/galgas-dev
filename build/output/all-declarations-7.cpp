@@ -14186,7 +14186,7 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
       result_result = GALGAS_string ("!") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
+  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn:
     {
       result_result = GALGAS_string ("!") ;
     }

@@ -226,7 +226,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
     setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
-    setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentIn !mPropertyName.string
+    setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentVarIn !mPropertyName.string
   end
 #--- Class functions
   var @classFunctionMap classFunctionMap = ()

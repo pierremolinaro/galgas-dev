@@ -371,7 +371,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
           [!?setterMap insertKey
             !.init {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
-            !§[.init (["" nowhere], property.typeEntry, .argumentIn, property.name.string)]
+            !§[.init (["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
             !false # Compiler argument
             !.isBasicFinal
             !"" # No error message
@@ -899,7 +899,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
         result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
       case argumentOut :
         result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
-      case argumentIn :
+      case argumentVarIn :
         result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
       end
       result += " arg_" + formalArgument.mFormalArgumentName

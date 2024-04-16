@@ -32,7 +32,12 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
     end
     $identifier$ ?let getterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
+    let @formalInputParameterListAST formalInputParameterList
+    select
+      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+    or
+      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+    end
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring returnedTypeName
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {

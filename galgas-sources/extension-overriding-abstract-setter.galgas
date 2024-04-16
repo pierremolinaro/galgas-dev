@@ -35,12 +35,7 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
     end
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    let @formalParameterListAST formalParameterList
-    select
-      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
-    or
-      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
-    end
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !typeName
@@ -63,12 +58,7 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
-    let @formalParameterListAST formalParameterList
-    select
-      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
-    or
-      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
-    end
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
       !isPredefined: false
       !typeName

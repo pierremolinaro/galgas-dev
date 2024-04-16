@@ -242,7 +242,7 @@ if [[element definition].instanceMethodMap count] > 0 then
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%
-      case argumentIn         : % <span class="selecteur">?%
+      case argumentVarIn      : % <span class="selecteur">?%
       case argumentInOut      : % <span class="selecteur">?!%
       case argumentOut        : % <span class="selecteur">!%
       end
@@ -275,7 +275,7 @@ if [[element definition].setterMap count] > 0 then
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%
-      case argumentIn         : % <span class="selecteur">?%
+      case argumentVarIn      : % <span class="selecteur">?%
       case argumentInOut      : % <span class="selecteur">?!%
       case argumentOut        : % <span class="selecteur">!%
       end
@@ -295,7 +295,7 @@ if [[element definition].classMethodMap count] > 0 then
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%
-      case argumentIn         : % <span class="selecteur">?%
+      case argumentVarIn      : % <span class="selecteur">?%
       case argumentInOut      : % <span class="selecteur">?!%
       case argumentOut        : % <span class="selecteur">!%
       end

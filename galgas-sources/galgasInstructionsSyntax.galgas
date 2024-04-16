@@ -32,14 +32,11 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@ifExpressionList outExpressionList
 
-  rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                    !@formalParameterListAST outFormalParameterList
-
   rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList
 
   rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                                          !@formalInputParameterListAST outFormalInputParameterList
+                                           !@formalInputParameterListAST outFormalInputParameterList
 
   rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                            !@formalInputParameterListAST outFormalInputParameterList
@@ -124,7 +121,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       resultVariableName = .init {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let functionInstructionList
     $}$
     let endOfFunctionInstructionList = @location.here
     if inIsOnce then
@@ -239,12 +236,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       isUsefull = true
     end
     $identifier$ ?let mActionName indexing functionDefinition
-    let @formalInputParameterListAST formalInputParameterList
-    select
-      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
-    or
-      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
-    end
+    <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST {

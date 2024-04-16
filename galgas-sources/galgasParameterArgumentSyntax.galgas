@@ -34,72 +34,12 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   #          F O R M A L    P A R A M E T E R    L I S T
   #·······························································································
 
-  rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
+  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList {
     outFormalParameterList = ()
-    repeat
-    while
-      let @lstring selector
-      let @formalArgumentPassingModeAST formalParameterPassingMode
-      select
-        select
-          $?selector:$ ?selector
-        or
-          $?$
-          selector = ["" here]
-        end
-        select
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
-        or
-          $let$
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
-        end
-      or
-        select
-          $?!selector:$ ?selector
-        or
-          $?!$
-          selector = ["" here]
-        end
-        formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
-      or
-        select
-          $!selector:$ ?selector
-        or
-          $!$
-          selector = ["" here]
-        end
-        formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
-      end
-      <type_definition_ggs3> !?ioDeclarations ?let @lstring formalParameterTypeName
-      let @bool isUnused
-      select
-        isUnused = false
-      or
-        $unused$
-        isUnused = true
-      end
-      $identifier$ ?let @lstring formalParameterName
-      outFormalParameterList +=
-        !selector
-        !formalParameterPassingMode
-        !formalParameterTypeName
-        !formalParameterName
-        !isUnused
-    end
-  }
-
-  #·······························································································
-  #    F O R M A L    P A R A M E T E R    L I S T (compatible with GGS4)
-  #·······························································································
-
-  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
-                                     !@formalParameterListAST outFormalParameterList {
-    outFormalParameterList = ()
-    $($
-    select
-    or
+    select // GGS3
       repeat
+      while
         let @lstring selector
         let @formalArgumentPassingModeAST formalParameterPassingMode
         select
@@ -110,10 +50,10 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
             selector = ["" here]
           end
           select
-            formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+            formalParameterPassingMode = .argumentVarIn
           or
             $let$
-            formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+            formalParameterPassingMode = .argumentConstantIn
           end
         or
           select
@@ -147,11 +87,70 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !formalParameterTypeName
           !formalParameterName
           !isUnused
-      while
-        $,$
       end
+    or // GGS4
+      $($
+      select
+      or
+        repeat
+          let @lstring selector
+          let @formalArgumentPassingModeAST formalParameterPassingMode
+          select
+            select
+              $?selector:$ ?selector
+            or
+              $?$
+              selector = ["" here]
+            or
+              selector = ["" here]
+            end
+            select
+              formalParameterPassingMode = .argumentVarIn
+            or
+              $var$
+              formalParameterPassingMode = .argumentVarIn
+            or
+              $let$
+              formalParameterPassingMode = .argumentConstantIn
+            end
+          or
+            select
+              $?!selector:$ ?selector
+            or
+              $?!$
+              selector = ["" here]
+            end
+            formalParameterPassingMode = .argumentInOut
+          or
+            select
+              $!selector:$ ?selector
+            or
+              $!$
+              selector = ["" here]
+            end
+            formalParameterPassingMode = .argumentOut
+          end
+          <type_definition_ggs3> !?ioDeclarations ?let @lstring formalParameterTypeName
+          let @bool isUnused
+          select
+            isUnused = false
+          or
+            $unused$
+            isUnused = true
+          end
+          $identifier$ ?let @lstring formalParameterName
+          outFormalParameterList +=
+            !selector
+            !formalParameterPassingMode
+            !formalParameterTypeName
+            !formalParameterName
+            !isUnused
+        while
+          $,$
+        end
+      end
+      $)$
     end
-    $)$
   }
 
   #·······························································································
@@ -464,14 +463,14 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         let @formalArgumentPassingModeAST formalParameterPassingMode
         select
           $?selector:$ ?selector
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentVarIn
         or
           $?$
           selector = ["" here]
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentVarIn
         or
           selector = ["" here]
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentVarIn
         or
           $?$
           selector = ["" here]

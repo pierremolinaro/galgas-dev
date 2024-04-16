@@ -76,7 +76,7 @@ abstract refclass @semanticExpressionAST {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @formalArgumentPassingModeAST %equatable {
-  case argumentIn
+  case argumentVarIn
   case argumentOut
   case argumentInOut
   case argumentConstantIn
@@ -87,7 +87,7 @@ enum @formalArgumentPassingModeAST %equatable {
 getter @formalArgumentPassingModeAST string -> @string {
   switch self
     case argumentConstantIn : result = "?let"
-    case argumentIn : result = "?"
+    case argumentVarIn : result = "?"
     case argumentOut : result = "!"
     case argumentInOut : result = "?!"
   end
@@ -98,7 +98,7 @@ getter @formalArgumentPassingModeAST string -> @string {
 getter @formalArgumentPassingModeAST formalArgumentMessage -> @string {
   switch self
     case argumentConstantIn : result = "a constant input (?let) formal argument"
-    case argumentIn : result = "an input (?) formal argument"
+    case argumentVarIn : result = "an input (?) formal argument"
     case argumentOut : result = "an output (!) formal argument"
     case argumentInOut : result = "an input/output (?!) formal argument"
   end
@@ -122,7 +122,7 @@ list @formalParameterListAST {
       for parameter in self
     do
       switch parameter.mFormalArgumentPassingMode
-      case argumentConstantIn, argumentIn :
+      case argumentConstantIn, argumentVarIn :
         result +="?"
       case argumentInOut :
         result +="?!"

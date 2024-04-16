@@ -46,18 +46,13 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    let @formalParameterListAST formalParameterList
-    select
-      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
-    or
-      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
-    end
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionSetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !setterName
@@ -79,12 +74,7 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    let @formalParameterListAST formalParameterList
-    select
-      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
-    or
-      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
-    end
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here

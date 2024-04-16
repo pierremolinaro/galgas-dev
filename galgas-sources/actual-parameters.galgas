@@ -119,7 +119,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
 
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string inSelector -> @bool {
-    result = (inFormalPassingMode == .argumentConstantIn) || (inFormalPassingMode == .argumentIn)
+    result = (inFormalPassingMode == .argumentConstantIn) || (inFormalPassingMode == .argumentVarIn)
     if result then
       result = self.mActualSelector.string == inSelector
     end
@@ -148,8 +148,8 @@ refclass @outputActualParameterAST : @actualParameterAST {
                                   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
                                   ?!@stringset unused ioExclusiveVariableSet
                                   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
-    if (inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentIn)
-     & (inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentConstantIn) then
+    if (inFormalArgumentPassingMode != .argumentVarIn)
+     & (inFormalArgumentPassingMode != .argumentConstantIn) then
       error self.mActualSelector
       :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
       + "' passing mode: this parameter should be passed with '"

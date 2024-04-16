@@ -62,7 +62,7 @@ refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
       for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
         for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
           switch mFormalArgumentPassingModeForGrammarAnalysis
-          case argumentConstantIn, argumentIn :
+          case argumentConstantIn, argumentVarIn :
             let t = [inUnifiedTypeMap typeMapEntryForLKey !mGalgasTypeNameForGrammarAnalysis]
             [t addHeaderFileName !?ioInclusionSet]
           case argumentInOut, argumentOut :
@@ -310,7 +310,7 @@ proc generateProcedure
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentOut :
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
-    case argumentIn :
+    case argumentVarIn :
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
@@ -352,7 +352,7 @@ proc generateProcedure
     switch mFormalArgumentPassingMode
     case argumentOut :
       outGeneratedCode += "  " + mFormalArgumentCppName + ".drop () ; // Release 'out' argument\n"
-    case argumentConstantIn, argumentIn, argumentInOut :
+    case argumentConstantIn, argumentVarIn, argumentInOut :
     end
   end
 #--- Generate routine body
@@ -588,7 +588,7 @@ proc generateExtensionSetter
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentOut :
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
-    case argumentIn :
+    case argumentVarIn :
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
@@ -687,7 +687,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentOut :
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
-    case argumentIn :
+    case argumentVarIn :
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then

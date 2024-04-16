@@ -380,15 +380,14 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   formalParameterList +=
     !["" nowhere]
     !lstringTypeEntry
-    !@formalArgumentPassingModeAST.argumentIn
+    !.argumentVarIn
     !"inLKey"
   for (* mFormalArgumentType mFormalArgumentName *) in [associatedListTypeEntry definition].addAssignOperatorArguments do
     formalParameterList +=
       !["" nowhere]
       !mFormalArgumentType
-      !@formalArgumentPassingModeAST.argumentIn
+      !.argumentVarIn
       !mFormalArgumentName
-#      !isConstant
   end
   for (mInsertModifierName *) in self.mInsertModifierList do
     [!?setterMap insertOrReplace
@@ -412,7 +411,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #--- setter 'removeEdgesToNode'
   formalParameterList = @formalParameterSignature ()
-  formalParameterList += !["" nowhere] !stringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
+  formalParameterList += !["" nowhere] !stringTypeEntry !.argumentVarIn !"inNodeName"
   [!?setterMap insertKey
     !@lstring {!"removeEdgesToNode" !@location.here}
     !@methodKind.definedAsMember
@@ -424,8 +423,8 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
 #  drop formalParameterList
 #--- setter 'addEdge'
   formalParameterList = @formalParameterSignature ()
-  formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
-  formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeEntry !.argumentVarIn !"inSourceNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeEntry !.argumentVarIn !"inTargetNodeLKey"
   [!?setterMap insertKey
     !@lstring {!"addEdge" !@location.here}
     !@methodKind.definedAsMember
@@ -437,7 +436,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
 #  drop formalParameterList
 #--- setter 'noteNode'
   formalParameterList = @formalParameterSignature ()
-  formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentVarIn !"inNodeLKey"
   [!?setterMap insertKey
     !@lstring {!"noteNode" !@location.here}
     !@methodKind.definedAsMember

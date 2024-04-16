@@ -129,7 +129,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
-      !@formalArgumentPassingModeAST. argumentIn
+      !.argumentVarIn
       !mTypeName
       !outArgumentName
       !false
@@ -321,12 +321,12 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
     or
-     $unused$
+      $unused$
     end
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
-      !@formalArgumentPassingModeAST. argumentIn
+      !.argumentVarIn
       !mTypeName
       !outArgumentName
       !false
@@ -347,7 +347,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
-      !@formalArgumentPassingModeAST. argumentIn
+      !.argumentVarIn
       !mTypeName
       !outArgumentName
       !false

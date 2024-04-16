@@ -137,12 +137,7 @@ syntax extension galgas3DeclarationsSyntax {
                                 ?!@externTypeSetterList ioExternTypeSetterList {
     $setter$
     $identifier$ ?let @lstring setterName
-    let @formalParameterListAST formalParameterList
-    select
-      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
-    or
-      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
-    end
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioExternTypeSetterList += !setterName !formalParameterList
   }
 
@@ -152,12 +147,7 @@ syntax extension galgas3DeclarationsSyntax {
                                 ?!@externTypeMethodList ioExternTypeMethodList {
     $method$
     $identifier$ ?let @lstring methodName
-    let @formalParameterListAST formalParameterList
-    select
-      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
-    or
-      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
-    end
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
 

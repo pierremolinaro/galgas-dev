@@ -652,7 +652,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
           ioCppFileContents.appendCString (" ") ;
           break ;
-        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
+        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn :
           ioCppFileContents.appendCString (" ") ;
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
@@ -801,7 +801,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
+          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
@@ -923,7 +923,7 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
+          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :

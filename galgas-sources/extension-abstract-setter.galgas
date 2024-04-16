@@ -28,12 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     $setter$
     $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
     $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
-    let @formalParameterListAST formalParameterList
-    select
-      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
-    or
-      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
-    end
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !className
@@ -48,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $setter$
     $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !inClassName

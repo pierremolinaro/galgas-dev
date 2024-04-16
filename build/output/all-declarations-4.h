@@ -5282,7 +5282,7 @@ class GALGAS_formalArgumentPassingModeAST : public AC_GALGAS_root {
 //--------------------------------- Enumeration
   public: typedef enum {
     kNotBuilt,
-    kEnum_argumentIn,
+    kEnum_argumentVarIn,
     kEnum_argumentOut,
     kEnum_argumentInOut,
     kEnum_argumentConstantIn
@@ -5311,11 +5311,11 @@ class GALGAS_formalArgumentPassingModeAST : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentConstantIn (LOCATION_ARGS) ;
 
-  public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentIn (LOCATION_ARGS) ;
-
   public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentInOut (LOCATION_ARGS) ;
 
   public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentOut (LOCATION_ARGS) ;
+
+  public: static class GALGAS_formalArgumentPassingModeAST class_func_argumentVarIn (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -5331,21 +5331,21 @@ class GALGAS_formalArgumentPassingModeAST : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentConstantIn (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentIn (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentInOut (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentOut (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArgumentVarIn (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_argumentConstantIn () const ;
 
-  public: VIRTUAL_IN_DEBUG bool optional_argumentIn () const ;
-
   public: VIRTUAL_IN_DEBUG bool optional_argumentInOut () const ;
 
   public: VIRTUAL_IN_DEBUG bool optional_argumentOut () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_argumentVarIn () const ;
 
 
 //--------------------------------- Introspection

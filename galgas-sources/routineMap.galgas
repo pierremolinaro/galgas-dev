@@ -25,7 +25,7 @@ func routineMangledName ?let @lstring inRoutineName
   var str = inRoutineName.string
   for parameter in inRoutineFormalParameters do
     switch parameter.mFormalArgumentPassingMode
-    case argumentConstantIn, argumentIn :
+    case argumentConstantIn, argumentVarIn :
       str +="?"
     case argumentInOut :
       str +="&"
@@ -44,7 +44,7 @@ private func routineArgumentFromFormalParameters ?let @formalParameterSignature 
   for parameter in inRoutineFormalParameters
   do
     switch parameter.mFormalArgumentPassingMode
-    case argumentConstantIn, argumentIn :
+    case argumentConstantIn, argumentVarIn :
       result +="?"
     case argumentInOut :
       result +="!?"

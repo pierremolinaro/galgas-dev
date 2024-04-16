@@ -880,7 +880,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
     for (* mFormalArguments * * *) in mLabelList do
       for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArguments do
         switch mFormalArgumentPassingMode
-          case argumentIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}]
+          case argumentVarIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}]
           case argumentOut, argumentInOut, argumentConstantIn :
         end
       end
