@@ -102,11 +102,17 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     end
   #--- end
     $}$
-    ioDeclarations.mSyntaxExtensions +=
+    [!?ioDeclarations.mSyntaxExtensions insertKey
       !syntaxComponentName.string
       !syntaxComponentName
       !nonterminalDeclarationList
       !ruleList
+    ]
+#    ioDeclarations.mSyntaxExtensions +=
+#      !syntaxComponentName.string
+#      !syntaxComponentName
+#      !nonterminalDeclarationList
+#      !ruleList
   }
 
   #·······························································································
@@ -298,11 +304,17 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     end
   #--- end
     $}$
-    ioDeclarations.mSyntaxExtensions +=
+    [!?ioDeclarations.mSyntaxExtensions insertKey
       !syntaxComponentName.string
       !syntaxComponentName
       !nonterminalDeclarationList
       !ruleList
+    ]
+#    ioDeclarations.mSyntaxExtensions +=
+#      !syntaxComponentName.string
+#      !syntaxComponentName
+#      !nonterminalDeclarationList
+#      !ruleList
   }
 
   #·······························································································

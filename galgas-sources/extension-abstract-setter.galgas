@@ -211,9 +211,8 @@ refclass @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
   {
-    ioAbstractExtensionSetterListMap +=
-      !self.mTypeName.string
-      !self.mAbstractExtensionSetterName
+#    ioAbstractExtensionSetterListMap += !self.mTypeName.string !self.mAbstractExtensionSetterName
+    [!?ioAbstractExtensionSetterListMap insertKey !self.mTypeName.string !self.mAbstractExtensionSetterName]
   }
 
   #·······························································································

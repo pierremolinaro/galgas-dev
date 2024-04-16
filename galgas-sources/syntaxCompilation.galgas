@@ -46,7 +46,7 @@ proc groupSyntaxComponentsGalgas3
       !component.mHasTranslateFeature}
   end
 #--- Check all extensions are handled
-  for (key theLists) in inSyntaxExtensions do
+  for (key theLists) in inSyntaxExtensions.dictionary do
     if not [componentNameSet hasKey !key] then
       for (mSyntaxComponentName * *) in theLists do
         error mSyntaxComponentName : "there is no '" + mSyntaxComponentName +"' syntax component"

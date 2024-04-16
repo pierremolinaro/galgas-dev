@@ -38,9 +38,15 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $getter$
-    $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
+    $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionGetter
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let returnedTypeName
     select
@@ -50,7 +56,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
-      !className
+      !typeName
       !getterName
       !formalInputParameterList
       !returnedTypeName
@@ -288,9 +294,13 @@ override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap {
-  ioOverridingAbstractExtensionGetterListMap +=
+#  ioOverridingAbstractExtensionGetterListMap +=
+#    !self.mTypeName.string
+#    !self.mAbstractExtensionGetterName
+  [!? ioOverridingAbstractExtensionGetterListMap insertKey
     !self.mTypeName.string
     !self.mAbstractExtensionGetterName
+  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -75,13 +75,19 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $proc$
-    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
+    $@type$ ?var @lstring typeName indexing typeReferenceAbstractExtensionMethod
     $.$
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !className
+      !typeName
       !mMethodName
       !formalParameterList
     }
@@ -224,9 +230,13 @@ override method @abstractExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioAbstractExtensionMethodListMapAST +=
+#  ioAbstractExtensionMethodListMapAST +=
+#    !self.mTypeName.string
+#    !self.mAbstractExtensionMethodName
+  [!?ioAbstractExtensionMethodListMapAST insertKey
     !self.mTypeName.string
     !self.mAbstractExtensionMethodName
+  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

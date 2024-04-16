@@ -151,6 +151,30 @@ class GALGAS_string function_escapeForTex (const class GALGAS_string & constinAr
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@genericExtensionMethodListMap insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GALGAS_genericExtensionMethodListMap & ioObject,
+                                const class GALGAS_string constin_inKey,
+                                const class GALGAS_lstring constin_inValue,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@descendantClassListMap insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GALGAS_descendantClassListMap & ioObject,
+                                const class GALGAS_string constin_inKey,
+                                const class GALGAS_unifiedTypeMapEntry constin_inType,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 //  GRAMMAR galgas3ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 
@@ -1666,6 +1690,18 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_55 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_DeclarationsSyntax_56 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_57 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_58 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_59 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_60 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_61 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_DeclarationsSyntax_62 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_LexiqueComponentSyntax_0 (Lexique_galgasScanner_33_ *) ;
 

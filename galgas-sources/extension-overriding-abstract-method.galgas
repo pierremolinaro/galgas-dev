@@ -37,12 +37,18 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $method$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
+    $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionMethod
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !className
+      !typeName
       !mMethodName
       !formalParameterList
     }
@@ -251,9 +257,13 @@ override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-  ioOverridingAbstractExtensionMethodListMap +=
+#  ioOverridingAbstractExtensionMethodListMap +=
+#    !self.mTypeName.string
+#    !self.mOverridingExtensionMethodName
+  [!?ioOverridingAbstractExtensionMethodListMap insertKey
     !self.mTypeName.string
     !self.mOverridingExtensionMethodName
+  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

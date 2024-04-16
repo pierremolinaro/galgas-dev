@@ -41,7 +41,13 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $getter$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
+    $@type$ ?var typeName indexing typeReferenceOverrideExtensionGetter
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     $->$
@@ -53,13 +59,13 @@ syntax extension galgas3DeclarationsSyntax {
       resultVariableName = .init {!"result" !.here}
     end
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !className
+      !typeName
       !mMethodName
       !formalInputParameterList
       !mReturnedTypeName
@@ -357,9 +363,13 @@ override method @overridingExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioOverridingExtensionGetterListMap +=
+#  ioOverridingExtensionGetterListMap +=
+#    !self.mTypeName.string
+#    !self.mOverridingExtensionGetterName
+  [!?ioOverridingExtensionGetterListMap insertKey
     !self.mTypeName.string
     !self.mOverridingExtensionGetterName
+  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

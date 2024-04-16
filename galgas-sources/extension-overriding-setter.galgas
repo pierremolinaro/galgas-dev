@@ -39,17 +39,23 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $setter$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionSetterDefinition
+    $@type$ ?var typeName indexing typeReferenceOverrideExtensionSetterDefinition
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let @lstring setterName indexing overrideExtensionSetterDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !className
+      !typeName
       !setterName
       !formalParameterList
       !routineInstructionList
@@ -226,9 +232,13 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-  ioOverridingExtensionSetterListMap +=
+#  ioOverridingExtensionSetterListMap +=
+#    !self.mTypeName.string
+#    !self.mOverridingExtensionSetterName
+  [!?ioOverridingExtensionSetterListMap insertKey
     !self.mTypeName.string
     !self.mOverridingExtensionSetterName
+  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

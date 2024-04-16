@@ -23,8 +23,14 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extension$
-    $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
+    $@type$ ?var @lstring typeName indexing typeReferenceExtensionMethod
     $.$
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $init$
     <formal_input_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ${$
@@ -33,7 +39,7 @@ syntax extension galgas3DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
-      !className
+      !typeName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation

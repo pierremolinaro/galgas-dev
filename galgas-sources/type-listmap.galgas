@@ -36,6 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $listmap$
     $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
+    error mListmapTypeName : "OBSOLETE"
     let @bool isEquatable
     select
       isEquatable = false
@@ -64,26 +65,27 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $listmap$
-    $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
-    let @bool isEquatable
-    select
-      isEquatable = false
-    or
-      $%equatable$
-      isEquatable = true
-    end
-    $($
-    <type_definition> !?ioDeclarations ?let associatedListTypeName
-    $)$
-    ioDeclarations.mDeclarationList += !@listmapDeclarationAST {
-      !isPredefined: false # Is not predefined
-      !mListmapTypeName
-      !associatedListTypeName
-      !equatable: isEquatable
-    }
-  }
+#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+#    $listmap$
+#    $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
+#    error mListmapTypeName : "OBSOLETE"
+#    let @bool isEquatable
+#    select
+#      isEquatable = false
+#    or
+#      $%equatable$
+#      isEquatable = true
+#    end
+#    $($
+#    <type_definition> !?ioDeclarations ?let associatedListTypeName
+#    $)$
+#    ioDeclarations.mDeclarationList += !@listmapDeclarationAST {
+#      !isPredefined: false # Is not predefined
+#      !mListmapTypeName
+#      !associatedListTypeName
+#      !equatable: isEquatable
+#    }
+#  }
 
   #·······························································································
 

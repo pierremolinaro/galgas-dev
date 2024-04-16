@@ -26,7 +26,45 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-listmap @genericExtensionMethodListMap (@lstringlist)
+//listmap @genericExtensionMethodListMap (@lstringlist)
+
+//——————————————————————————————————————————————————————————————————————————————————————————————
+
+dict @genericExtensionMethodListMapDictionary : @string {
+  public var @lstringlist mList
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @genericExtensionMethodListMap {
+  private(set) var @genericExtensionMethodListMapDictionary dictionary = ()
+
+  //·····························································································
+
+  setter insertKey  ?let @string inKey
+                    ?let @lstring inValue {
+    if [self.dictionary hasKey !inKey] then
+      [self.dictionary searchKey !inKey ?var aList]
+      [!?aList append !inValue]
+      self.dictionary += !inKey !aList
+    else
+      self.dictionary += !inKey !§[.init (inValue)]
+    end
+  }
+
+  //·····························································································
+
+  getter listForKey ?let @string inKey -> @lstringlist {
+    if [self.dictionary hasKey !inKey] then
+      [self.dictionary searchKey !inKey ?result]
+   else
+      result = ()
+    end
+  }
+
+  //·····························································································
+
+}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
@@ -61,7 +99,45 @@ list @unifiedTypeMapEntryList %equatable {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-listmap @descendantClassListMap (@unifiedTypeMapEntryList)
+// listmap @descendantClassListMap (@unifiedTypeMapEntryList)
+
+//——————————————————————————————————————————————————————————————————————————————————————————————
+
+dict @descendantClassListMapDictionary : @string {
+  public var @unifiedTypeMapEntryList typeList
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @descendantClassListMap {
+  private(set) var @descendantClassListMapDictionary dictionary = ()
+
+  //·····························································································
+
+  setter insertKey  ?let @string inKey
+                    ?let @unifiedTypeMapEntry inType {
+    if [self.dictionary hasKey !inKey] then
+      [self.dictionary searchKey !inKey ?var aList]
+      [!?aList append !inType]
+      self.dictionary += !inKey !aList
+    else
+      self.dictionary += !inKey !§[.init (inType)]
+    end
+  }
+
+  //·····························································································
+
+  getter listForKey ?let @string inKey -> @unifiedTypeMapEntryList {
+    if [self.dictionary hasKey !inKey] then
+      [self.dictionary searchKey !inKey ?result]
+   else
+      result = ()
+    end
+  }
+
+  //·····························································································
+
+}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
@@ -222,9 +298,13 @@ proc performGalgas3ProjectGlobalCheckings
   for (lkey element) in ioTypeMap do
      let superType = [element definition].superType
      if not [superType isNull] then
-       descendantClassListMap +=
+#       descendantClassListMap +=
+#         ![superType definition].typeName.string
+#         ![ioTypeMap typeMapEntryForLKey !lkey]
+       [!?descendantClassListMap insertKey
          ![superType definition].typeName.string
          ![ioTypeMap typeMapEntryForLKey !lkey]
+       ]
      end
   end
 #--- Build Extension method listmaps
@@ -259,35 +339,35 @@ proc performGalgas3ProjectGlobalCheckings
 #------ Check Extension
   if @uint.errorCount == 0 then
   #--- A given abstract extension setter is defined only once for a class
-    for (* mList) in abstractExtensionSetterListMap do
+    for (* mList) in abstractExtensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
   #--- A given base extension setter is defined only once for a class
-    for (* mList) in extensionSetterListMap do
+    for (* mList) in extensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
   #--- A given overriding extension setter is defined only once for a class
-    for (* mList) in overridingExtensionSetterListMap do
+    for (* mList) in overridingExtensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
   #--- A given overriding abstract extension setter is defined only once for a class
-    for (* mList) in overridingAbstractExtensionMethodListMap do
+    for (* mList) in overridingAbstractExtensionMethodListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
   #------ Check that for every abstract extension setter, an overridden extension setter defined in an concrete subclass
-    for (key mList) in abstractExtensionSetterListMap do
+    for (key mList) in abstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (
           !key
@@ -300,7 +380,7 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #------ Check that for every overriding abstract extension setter, an overridden extension setter defined in an concrete subclass
-    for (key mList) in overridingAbstractExtensionSetterListMap do
+    for (key mList) in overridingAbstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (
           !key
@@ -313,35 +393,35 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #--- A given abstract extension method is defined only once for a class
-    for (* mList) in abstractExtensionMethodListMap do
+    for (* mList) in abstractExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
   #--- A given base extension method is defined only once for a class
-    for (* mList) in extensionMethodListMap do
+    for (* mList) in extensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
   #--- A given overriding extension method is defined only once for a class
-    for (* mList) in overridingExtensionMethodListMap do
+    for (* mList) in overridingExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
   #--- A given overriding abstract extension method is defined only once for a class
-    for (* mList) in overridingAbstractExtensionMethodListMap do
+    for (* mList) in overridingAbstractExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
   #------ Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
-    for (key mList) in abstractExtensionMethodListMap do
+    for (key mList) in abstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (
           !key
@@ -354,7 +434,7 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #------ Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
-    for (key mList) in overridingAbstractExtensionMethodListMap do
+    for (key mList) in overridingAbstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (
           !key
@@ -369,28 +449,28 @@ proc performGalgas3ProjectGlobalCheckings
   #------ Check Extension getters
 ##--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
   #--- A given abstract extension getter is defined only once for a class
-    for (* mList) in abstractExtensionGetterListMap do
+    for (* mList) in abstractExtensionGetterListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = ()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
   #--- A given base extension getter is defined only once for a class
-    for (* mList) in extensionReaderListMap do
+    for (* mList) in extensionReaderListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = ()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
   #--- A given overriding extension getter is defined only once for a class
-    for (* mList) in overridingExtensionGetterListMap do
+    for (* mList) in overridingExtensionGetterListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = ()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
   #--- Check every abstract extension getter is implemented by every inherited concrete type
-    for (key mList) in abstractExtensionGetterListMap do
+    for (key mList) in abstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (
           !key
@@ -403,7 +483,7 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #--- Check every abstract extension getter is implemented by every inherited concrete type
-    for (key mList) in overridingAbstractExtensionGetterListMap do
+    for (key mList) in overridingAbstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (
           !key

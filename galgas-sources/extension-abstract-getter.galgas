@@ -37,21 +37,22 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $getter$
-    $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
-    $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
+    $@type$ ?let typeName indexing typeReferenceAbstractExtensionGetter
+#    repeat
+#    while
+#      $@type$ ?let t
+#      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+#      $.$
+#    end
+    $identifier$ ?let getterName indexing abstractExtensionGetterDefinition
+    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring returnedTypeName
-    select
-    or
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    end
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
-      !className
-      !mGetterName
-      !mFormalInputParameterList
+      !typeName
+      !getterName
+      !formalInputParameterList
       !returnedTypeName
     }
   }
@@ -92,8 +93,14 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $func$
-    $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
+    $@type$ ?var typeName indexing typeReferenceAbstractExtensionGetter
     $.$
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
@@ -105,7 +112,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
-      !className
+      !typeName
       !mGetterName
       !mFormalInputParameterList
       !returnedTypeName
@@ -260,7 +267,8 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-  ioAbstractExtensionGetterListMap += !self.mTypeName.string !self.mAbstractExtensionGetterName
+//  ioAbstractExtensionGetterListMap += !self.mTypeName.string !self.mAbstractExtensionGetterName
+  [!?ioAbstractExtensionGetterListMap insertKey !self.mTypeName.string !self.mAbstractExtensionGetterName]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

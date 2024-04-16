@@ -96,8 +96,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $func$
-    $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
+    $@type$ ?var @lstring typeName indexing typeReferenceExtensionGetter
     $.$
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let mFormalInputParameterList
     $->$
@@ -115,7 +121,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
-      !className
+      !typeName
       !mMethodName
       !mFormalInputParameterList
       !returnedTypeName
@@ -316,9 +322,8 @@ override method @extensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioExtensionGetterListMap +=
-    !self.mTypeName.string
-    !self.mExtensionGetterName
+#  ioExtensionGetterListMap += !self.mTypeName.string !self.mExtensionGetterName
+  [!?ioExtensionGetterListMap insertKey !self.mTypeName.string !self.mExtensionGetterName]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

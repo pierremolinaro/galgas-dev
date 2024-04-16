@@ -26,18 +26,24 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $method$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    $@type$ ?var typeName indexing typeReferenceOverrideExtensionMethodDefinition
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
+    <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ${$
-    <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
-    let @location endOfMethodLocation = @location.here
+    <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
+    let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !className
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -315,9 +321,13 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioOverridingExtensionMethodListMap +=
+#  ioOverridingExtensionMethodListMap +=
+#    !self.mTypeName.string
+#    !self.mOverridingExtensionMethodName
+  [!?ioOverridingExtensionMethodListMap insertKey
     !self.mTypeName.string
     !self.mOverridingExtensionMethodName
+  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -22,6 +22,50 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+//listmap @syntaxExtensions (@galgas3SyntaxExtensionListAST)
+
+//——————————————————————————————————————————————————————————————————————————————————————————————
+
+dict @syntaxExtensionsDictionary : @string {
+  public var @galgas3SyntaxExtensionListAST extensionList
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————
+
+struct @syntaxExtensions {
+  private(set) var @syntaxExtensionsDictionary dictionary = ()
+
+  //·····························································································
+
+  setter insertKey  ?let @string inKey
+                    ?let @lstring inSyntaxComponentName
+                    ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
+                    ?let @syntaxRuleListAST inRuleList {
+    if [self.dictionary hasKey !inKey] then
+      [self.dictionary searchKey !inKey ?var aList]
+      [!?aList append !inSyntaxComponentName !inNonterminalDeclarationList !inRuleList]
+      self.dictionary += !inKey !aList
+    else
+      self.dictionary += !inKey !§[.init (inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)]
+    end
+  }
+
+  //·····························································································
+
+  getter listForKey ?let @string inKey -> @galgas3SyntaxExtensionListAST {
+    if [self.dictionary hasKey !inKey] then
+      [self.dictionary searchKey !inKey ?result]
+   else
+      result = ()
+    end
+  }
+
+  //·····························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 abstract refclass @semanticExpressionAST {
 }
 
@@ -72,7 +116,7 @@ list @formalParameterListAST {
   public let @lstring mFormalArgumentTypeName
   public let @lstring mFormalArgumentName
   public let @bool mIsUnused
-  
+
   getter keyRepresentation -> @string {
     result = "("
       for parameter in self
@@ -91,7 +135,7 @@ list @formalParameterListAST {
     end
     result += ")"
   }
-  
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -428,10 +472,6 @@ list @galgas3SyntaxExtensionListAST {
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
   public let @syntaxRuleListAST mRuleList
 }
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-listmap @syntaxExtensions (@galgas3SyntaxExtensionListAST)
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
