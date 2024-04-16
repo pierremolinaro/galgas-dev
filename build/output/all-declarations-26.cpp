@@ -6238,8 +6238,8 @@ void routine_emitClassGraphFile_3F__3F_ (const GALGAS_string constinArgument_inD
       break ;
     case GALGAS_typeDefinition::kEnum_solved:
       {
-        const cEnumAssociatedValues_typeDefinition_solved * extractPtr_72733 = (const cEnumAssociatedValues_typeDefinition_solved *) (enumerator_72064.current_mElement (HERE).readProperty_mDefinition ().unsafePointer ()) ;
-        const GALGAS_unifiedTypeDefinition extractedValue_72176_definition = extractPtr_72733->mAssociatedValue0 ;
+        const cEnumAssociatedValues_typeDefinition_solved * extractPtr_72734 = (const cEnumAssociatedValues_typeDefinition_solved *) (enumerator_72064.current_mElement (HERE).readProperty_mDefinition ().unsafePointer ()) ;
+        const GALGAS_unifiedTypeDefinition extractedValue_72176_definition = extractPtr_72734->mAssociatedValue0 ;
         enumGalgasBool test_0 = kBoolTrue ;
         if (kBoolTrue == test_0) {
           test_0 = extractedValue_72176_definition.readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("semanticAnalysis.galgas", 1635)).boolEnum () ;
@@ -6254,23 +6254,23 @@ void routine_emitClassGraphFile_3F__3F_ (const GALGAS_string constinArgument_inD
               break ;
             case GALGAS_unifiedTypeMapEntry::kEnum_element:
               {
-                const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_72711 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (extractedValue_72176_definition.readProperty_superType ().unsafePointer ()) ;
-                const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_72412_superType = extractPtr_72711->mAssociatedValue0 ;
+                const cEnumAssociatedValues_unifiedTypeMapEntry_element * extractPtr_72712 = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) (extractedValue_72176_definition.readProperty_superType ().unsafePointer ()) ;
+                const GALGAS_unifiedTypeMapElementClass_2D_weak extractedValue_72413_superType = extractPtr_72712->mAssociatedValue0 ;
                 enumGalgasBool test_1 = kBoolTrue ;
                 if (kBoolTrue == test_1) {
-                  GALGAS_unifiedTypeMapElementClass var_t_72442 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_72412_superType.ptr ())) ;
-                  if (nullptr == var_t_72442.ptr ()) {
+                  GALGAS_unifiedTypeMapElementClass var_t_72443 (dynamic_cast <const cPtr_unifiedTypeMapElementClass *> (extractedValue_72413_superType.ptr ())) ;
+                  if (nullptr == var_t_72443.ptr ()) {
                     test_1 = kBoolFalse ;
                   }
                   if (kBoolTrue == test_1) {
-                    GALGAS_unifiedTypeDefinition var_superTypeDefinition_72500 ;
-                    const bool optionalResult72476 = var_t_72442.readProperty_mDefinition ().optional_solved (var_superTypeDefinition_72500) ;
-                    if (!optionalResult72476) {
+                    GALGAS_unifiedTypeDefinition var_superTypeDefinition_72501 ;
+                    const bool optionalResult72477 = var_t_72443.readProperty_mDefinition ().optional_solved (var_superTypeDefinition_72501) ;
+                    if (!optionalResult72477) {
                       test_1 = kBoolFalse ;
                     }
                     if (kBoolTrue == test_1) {
                       var_document_71920.plusAssign_operation(GALGAS_string ("  \"@").add_operation (extractedValue_72176_definition.readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1641)).add_operation (GALGAS_string ("\" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1641)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1641)) ;
-                      var_document_71920.plusAssign_operation(GALGAS_string ("  \"@").add_operation (extractedValue_72176_definition.readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)).add_operation (GALGAS_string ("\" -> \"@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)).add_operation (var_superTypeDefinition_72500.readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)).add_operation (GALGAS_string ("\" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)) ;
+                      var_document_71920.plusAssign_operation(GALGAS_string ("  \"@").add_operation (extractedValue_72176_definition.readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)).add_operation (GALGAS_string ("\" -> \"@"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)).add_operation (var_superTypeDefinition_72501.readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)).add_operation (GALGAS_string ("\" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1642)) ;
                     }
                   }
                 }
@@ -6285,8 +6285,8 @@ void routine_emitClassGraphFile_3F__3F_ (const GALGAS_string constinArgument_inD
     enumerator_72064.gotoNextObject () ;
   }
   var_document_71920.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1648)) ;
-  GALGAS_bool joker_72839 ; // Joker input parameter
-  var_document_71920.method_writeToFileWhenDifferentContents (constinArgument_inDotDocumentFilePath, joker_72839, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1649)) ;
+  GALGAS_bool joker_72840 ; // Joker input parameter
+  var_document_71920.method_writeToFileWhenDifferentContents (constinArgument_inDotDocumentFilePath, joker_72840, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1649)) ;
 }
 
 

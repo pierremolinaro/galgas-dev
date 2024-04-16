@@ -32,9 +32,6 @@ indexing sortedListDefinition : "Sorted List Definition"
 indexing mapDefinition : "Map Definition"
 indexing dictionaryDefinition : "Dictionary Definition"
 indexing externTypeDefinition : "Extern Type Definition"
-indexing mapEntryDefinition : "Shared Map Entry Definition"
-indexing arrayTypeDefinition : "Array Definition"
-indexing arrayElementTypeReference : "Reference as array element"
 indexing filewrapperDefinition : "Filewrapper Definition"
 indexing filewrapperReference : "Filewrapper Reference"
 indexing graphDefinition : "Graph Definition"
@@ -316,14 +313,14 @@ rule '@' {
       enterCharacterIntoString (!?tokenString !* )
     while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     end
-    select
-    case '-' :
-      repeat
-        enterCharacterIntoString (!?tokenString !* )
-      while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-      end
-    default
-    end
+#    select
+#    case '-' :
+#      repeat
+#        enterCharacterIntoString (!?tokenString !* )
+#      while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+#      end
+#    default
+#    end
   default
     error incorrectTypeNameError
   end

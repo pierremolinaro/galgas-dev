@@ -110,7 +110,7 @@ proc emitProductionRulesInTexFile
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @productionRuleListForGrammarAnalysis-element displayRule
+method @productionRuleListForGrammarAnalysis.@element displayRule
   ?let @string inSyntaxComponentName
   ?!@string ioGeneratedCode
 {
@@ -164,7 +164,7 @@ method @productionRuleListForGrammarAnalysis-element displayRule
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @productionRuleListForGrammarAnalysis-element displayRuleVertically
+method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   ?let @string inSyntaxComponentName
   ?!@string ioGeneratedCode
 {

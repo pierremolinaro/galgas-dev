@@ -172,7 +172,7 @@ refclass @unifiedTypeMapElementClass {
 
 enum @unifiedTypeMapEntry %equatable {
   case null
-  case element (@unifiedTypeMapElementClass-weak weakElement)
+  case element (@unifiedTypeMapElementClass.@weak weakElement)
 
   #-----------------------------------------------------------------------------------------------
 

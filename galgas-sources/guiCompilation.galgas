@@ -423,7 +423,7 @@ proc compileAllGuiComponentFromASTGalgas3
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST-element inGUIComponentAST
+private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@element inGUIComponentAST
                                           ?let @semanticContext inSemanticContext
                                           ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then

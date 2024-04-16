@@ -821,9 +821,6 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       "Map Definition" /* mapDefinition */,
       "Dictionary Definition" /* dictionaryDefinition */,
       "Extern Type Definition" /* externTypeDefinition */,
-      "Shared Map Entry Definition" /* mapEntryDefinition */,
-      "Array Definition" /* arrayTypeDefinition */,
-      "Reference as array element" /* arrayElementTypeReference */,
       "Filewrapper Definition" /* filewrapperDefinition */,
       "Filewrapper Reference" /* filewrapperReference */,
       "Graph Definition" /* graphDefinition */,
@@ -1012,16 +1009,6 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
           }
         }
         loop = true
-        if scanningOk && (self.testForInputChar (45)) {
-          while (loop && scanningOk) {
-            scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-            if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
-            }else{
-              loop = false
-            }
-          }
-          loop = true
-        }
       }else{
         scanningOk = false
       }

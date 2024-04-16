@@ -1636,7 +1636,7 @@ private proc emitClassGraphFile ?let @string inDotDocumentFilePath
         switch definition.superType
         case null :
           document += "  \"@" + definition.typeName + "\" ;\n"
-        case element (@unifiedTypeMapElementClass-weak superType) :
+        case element (@unifiedTypeMapElementClass.@weak superType) :
           if let t = superType, let [t.mDefinition solved ?definition: let superTypeDefinition] then
             document += "  \"@" + definition.typeName + "\" ;\n"
             document += "  \"@" + definition.typeName + "\" -> \"@" + superTypeDefinition.typeName + "\" ;\n"
