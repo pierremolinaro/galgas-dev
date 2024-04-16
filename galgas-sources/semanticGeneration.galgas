@@ -804,9 +804,9 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool GENERATE_COMPARISON
 
 #---------- Type alias
-  template typeAliasTypeHeader1 "GALGAS_type_alias.h1.galgasTemplate"
-    ?@string ALIAS_TYPE_IDENTIFIER
-    ?@string REFERENCED_TYPE_IDENTIFIER
+#  template typeAliasTypeHeader1 "GALGAS_type_alias.h1.galgasTemplate"
+#    ?@string ALIAS_TYPE_IDENTIFIER
+#    ?@string REFERENCED_TYPE_IDENTIFIER
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
