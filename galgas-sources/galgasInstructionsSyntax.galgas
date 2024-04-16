@@ -35,6 +35,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList
 
+  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList
+
   rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@formalInputParameterListAST outFormalInputParameterList
 

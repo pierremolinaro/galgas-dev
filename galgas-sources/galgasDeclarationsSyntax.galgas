@@ -40,6 +40,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList
 
+  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList
+
   rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                         !@semanticInstructionListAST outInstructionsList
 

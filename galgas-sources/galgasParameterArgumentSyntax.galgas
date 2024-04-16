@@ -90,6 +90,71 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   }
 
   #·······························································································
+  #    F O R M A L    P A R A M E T E R    L I S T (compatible with GGS4)
+  #·······························································································
+
+  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                     !@formalParameterListAST outFormalParameterList {
+    outFormalParameterList = ()
+    $($
+    select
+    or
+      repeat
+        let @lstring selector
+        let @formalArgumentPassingModeAST formalParameterPassingMode
+        select
+          select
+            $?selector:$ ?selector
+          or
+            $?$
+            selector = ["" here]
+          end
+          select
+            formalParameterPassingMode = @formalArgumentPassingModeAST.argumentIn
+          or
+            $let$
+            formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+          end
+        or
+          select
+            $?!selector:$ ?selector
+          or
+            $?!$
+            selector = ["" here]
+          end
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
+        or
+          select
+            $!selector:$ ?selector
+          or
+            $!$
+            selector = ["" here]
+          end
+          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
+        end
+        <type_definition_ggs3> !?ioDeclarations ?let @lstring formalParameterTypeName
+        let @bool isUnused
+        select
+          isUnused = false
+        or
+          $unused$
+          isUnused = true
+        end
+        $identifier$ ?let @lstring formalParameterName
+        outFormalParameterList +=
+          !selector
+          !formalParameterPassingMode
+          !formalParameterTypeName
+          !formalParameterName
+          !isUnused
+      while
+        $,$
+      end
+    end
+    $)$
+  }
+
+  #·······························································································
   #  A C T U A L    P A R A M E T E R    L I S T
   #·······························································································
 

@@ -8,7 +8,6 @@ before {
   testsuite_list ()
   testsuite_sortedlist ()
   testsuite_struct ()
-  testsuite_listmap ()
   testsuite_map ()
   testsuite_functions ()
   testsuite_introspection ()

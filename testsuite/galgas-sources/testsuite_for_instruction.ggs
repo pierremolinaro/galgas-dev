@@ -47,7 +47,7 @@ proc testsuite_for_instruction() {
   end
 
   println ("--- begin of for instruction test 4")
-  for @stringlist-element s in strList while s.mValue != "c"
+  for @stringlist.@element s in strList while s.mValue != "c"
   before
     println ("  before")
   do

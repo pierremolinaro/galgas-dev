@@ -46,7 +46,12 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    let @formalParameterListAST formalParameterList
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
+    end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here
@@ -74,7 +79,12 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    let @formalParameterListAST formalParameterList
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
+    end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfSetterLocation = @location.here

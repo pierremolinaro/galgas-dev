@@ -45,7 +45,12 @@ syntax extension galgas3DeclarationsSyntax {
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
     end
     $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
+    let @formalParameterListAST formalParameterList
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
+    end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !typeName
@@ -68,7 +73,12 @@ syntax extension galgas3DeclarationsSyntax {
       $.$
     end
     $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    let @formalParameterListAST formalParameterList
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
+    end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !typeName

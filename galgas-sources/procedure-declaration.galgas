@@ -39,7 +39,12 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
+    let @formalParameterListAST formalParameterList
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
+    end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
@@ -48,7 +53,7 @@ syntax extension galgas3InstructionsSyntax {
       !isPredefined: false # Is not predefined
       !isFilePrivate: false # private
       !mRoutineName
-      !mFormalParameterList
+      !formalParameterList
       !usefullProcedure: isUsefull
       !mRoutineInstructionList
       !endOfInstructionList
@@ -70,7 +75,12 @@ syntax extension galgas3InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ ?let mRoutineName indexing routineDefinition
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
+    let @formalParameterListAST formalParameterList
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameterList
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameterList
+    end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mRoutineInstructionList
     $}$
@@ -79,7 +89,7 @@ syntax extension galgas3InstructionsSyntax {
       !isPredefined: false # Is not predefined
       !isFilePrivate: true # private
       !mRoutineName
-      !mFormalParameterList
+      !formalParameterList
       !usefullProcedure: isUsefull
       !mRoutineInstructionList
       !endOfInstructionList

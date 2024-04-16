@@ -35,6 +35,9 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   rule <formal_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList
 
+  rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
+                                    !@formalParameterListAST outFormalParameterList
+
   rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@actualParameterListAST outActualParameterList
 
@@ -124,13 +127,23 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     $rule$
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
     var @nonTerminalLabelListAST labels = ()
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST firstBranchFormalParameters
+    let @formalParameterListAST firstBranchFormalParameters
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?firstBranchFormalParameters
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?firstBranchFormalParameters
+    end
     labels += !.init {!"" !.here} !firstBranchFormalParameters !.here
     repeat
     while
       $label$
       $identifier$ ?let @lstring labelName
-      <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameters
+      let @formalParameterListAST formalParameters
+      select
+        <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameters
+      or
+        <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameters
+      end
       labels += !labelName !formalParameters !.here
     end
     ioNonterminalDeclarationList += !mNonterminalName !labels
@@ -143,13 +156,18 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   rule <syntax_rule_label> ?!@galgasDeclarationAST ioDeclarations
                            ?let @lstring inLabelName
                            ?!@syntaxRuleLabelListAST ioLabelList {
-    <formal_parameter_list_ggs3> !?ioDeclarations ?let mFormalParameters
+    let @formalParameterListAST formalParameters
+    select
+      <formal_parameter_list_ggs3> !?ioDeclarations ?formalParameters
+    or
+      <formal_parameter_list_ggs34> !?ioDeclarations ?formalParameters
+    end
     let endOfArguments = @location.here
     ${$
     <syntax_instruction_list_ggs3> !?ioDeclarations ?let @syntaxInstructionList mSyntaxInstructionList
     ioLabelList +=
       !inLabelName
-      !mFormalParameters
+      !formalParameters
       !endOfArguments
       !mSyntaxInstructionList
       !@location.here

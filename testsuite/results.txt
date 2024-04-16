@@ -180,58 +180,6 @@ LOGGING str2: <list @stringlist (5 objects):
   index 3 : a
 *************************************** begin of struct logging
 LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
-*************************************** begin of listmap
-LOGGING m: <@myListMap: 3 objects (3 objects): 
-|-at 0: key 'a' 
-| |-at 0
-| | mString:<@string:"b">
-| | mInt:<@uint:23>
-| |-at 1
-| | mString:<@string:"c">
-| | mInt:<@uint:98>
-|-at 1: key 'c' 
-| |-at 0
-| | mString:<@string:"f">
-| | mInt:<@uint:11>
-|-at 2: key 'd' 
-| |-at 0
-| | mString:<@string:"g">
-| | mInt:<@uint:37>>>
-LOGGING c: <@uint:3>
-LOGGING s: <@stringset:3 entries 'a' 'c' 'd'>
-LOGGING sl: <list @stringlist (3 objects):
-|-at 0
-| mValue:<@string:"a">
-|-at 1
-| mValue:<@string:"c">
-|-at 2
-| mValue:<@string:"d">>
-LOGGING aList: <list @aList (2 objects):
-|-at 0
-| mString:<@string:"b">
-| mInt:<@uint:23>
-|-at 1
-| mString:<@string:"c">
-| mInt:<@uint:98>>
---- test foreach for listmap
-LOGGING key: : <@string:"a">
-LOGGING list: : <list @aList (2 objects):
-|-at 0
-| mString:<@string:"b">
-| mInt:<@uint:23>
-|-at 1
-| mString:<@string:"c">
-| mInt:<@uint:98>>
-LOGGING key: : <@string:"c">
-LOGGING list: : <list @aList (1 object):
-|-at 0
-| mString:<@string:"f">
-| mInt:<@uint:11>>
-LOGGING key: : <@string:"d">
-LOGGING list: : <list @aList (1 object):
-|-at 0
-| mString:<@string:"g">
-| mInt:<@uint:37>>
 *************************************** begin of map
 LOGGING m: <map @aMap (1 object): 
 |-at 0: key 'g' 
@@ -309,7 +257,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (102 types)
+--- Type list (98 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -322,8 +270,6 @@ LOGGING r: <@uint:5>
   @TestExtensionMethod-weak
   @TestExtensionSetter
   @TestExtensionSetter-weak
-  @aList
-  @aList-element
   @aMap
   @aMap-element
   @abstractOverridingTestExtensionSetter
@@ -383,8 +329,6 @@ LOGGING r: <@uint:5>
   @luintlist-element
   @myList
   @myList-element
-  @myListMap
-  @myListMap-element
   @myMap
   @myMap-element
   @mySortedList
