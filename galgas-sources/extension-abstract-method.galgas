@@ -16,16 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @abstractExtensionMethodAST : @semanticDeclarationAST {
-  public let @lstring mTypeName
-  public let @lstring mAbstractExtensionMethodName
-  public let @formalParameterListAST mAbstractExtensionMethodFormalParameterList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -36,28 +26,41 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $method$
-    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
-    $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
+    $@type$ ?var typeName indexing typeReferenceAbstractExtensionMethod
+    repeat
+    while
+      $.$
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+    end
+    $identifier$ ?let @lstring methodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !className
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
     }
   }
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $method$
-    $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !inClassName
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
     }
   }
@@ -95,16 +98,23 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $proc$
-    $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing abstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !inClassName
-      !mMethodName
+      !inTypeName
+      !methodName
       !formalParameterList
     }
   }
@@ -114,129 +124,132 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+#   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @abstractExtensionMethodAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring {
-    !"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
-    !self.mAbstractExtensionMethodName.location
-  }
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
-#---
-  if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
-    [!?ioExtensionMethodMapForBuildingContext insertKey
-      !self.mTypeName
-      !()
-    ]
-  end
-  with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
-    [!?mExtensionMethodMapForType insertKey
-      !self.mAbstractExtensionMethodName
-      !self.mAbstractExtensionMethodFormalParameterList
-      !.isVirtualAbstract
-    ]
-  end
-}
+refclass @abstractExtensionMethodAST : @semanticDeclarationAST {
+  public let @lstring mTypeName
+  public let @lstring mAbstractExtensionMethodName
+  public let @formalParameterListAST mAbstractExtensionMethodFormalParameterList
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override getter @abstractExtensionMethodAST keyRepresentation -> @string {
-  result = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @abstractExtensionMethodAST enterDeclarationInSemanticContext
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@unifiedTypeMap unused ioTypeMap
-  ?!@semanticContext unused ioSemanticContext {
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @abstractExtensionMethodAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext unused inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-{
-#--- Useful entities graph
-#  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionMethodName)
-#  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- Check self type is an abstract class
-  if not [[selfType definition].typeKind isClassType]then
-    error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
-  elsif [selfType definition].isConcrete then
-    error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].typeName.string + "' is not an abstract class"
-  end
-#--- Compute method signature
-  var formalParameterListForGeneration = @formalParameterListForGeneration ()
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
-    formalParameterListForGeneration +=
-      !mFormalSelector
-      !mFormalArgumentPassingMode
-      ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
-      !mFormalArgumentName
-      !mFormalArgumentName.string
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
-    !@abstractExtensionMethodForGeneration {
-      !generateHeader: true # Generate Cpp header file
-      !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
-      !selfType
-      !self.mAbstractExtensionMethodName.string
-      !formalParameterListForGeneration
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+    ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring {
+      !"extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
+      !self.mAbstractExtensionMethodName.location
     }
-}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
+  #---
+    if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
+      [!?ioExtensionMethodMapForBuildingContext insertKey
+        !self.mTypeName
+        !()
+      ]
+    end
+    with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+      [!?mExtensionMethodMapForType insertKey
+        !self.mAbstractExtensionMethodName
+        !self.mAbstractExtensionMethodFormalParameterList
+        !.isVirtualAbstract
+      ]
+    end
+  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAPS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @abstractExtensionMethodAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
-  ?!@genericExtensionMethodListMap ioAbstractExtensionMethodListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-#  ioAbstractExtensionMethodListMapAST +=
-#    !self.mTypeName.string
-#    !self.mAbstractExtensionMethodName
-  [!?ioAbstractExtensionMethodListMapAST insertKey
-    !self.mTypeName.string
-    !self.mAbstractExtensionMethodName
-  ]
+  override getter keyRepresentation -> @string {
+    result = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInSemanticContext
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap unused ioTypeMap
+    ?!@semanticContext unused ioSemanticContext {
+  }
+
+  #·······························································································
+
+  override method semanticAnalysis
+    ?!@lstringlist unused ioUsefulnessRootEntities
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+    ?let @string unused inProductDirectory
+    ?let @semanticContext unused inSemanticContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?let @predefinedTypes unused inPredefinedTypes
+    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  {
+  #--- Useful entities graph
+  #  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionMethodName)
+  #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  #--- Self type
+    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
+  #--- Check self type is an abstract class
+    if not [[selfType definition].typeKind isClassType]then
+      error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
+    elsif [selfType definition].isConcrete then
+      error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].typeName.string + "' is not an abstract class"
+    end
+  #--- Compute method signature
+    var formalParameterListForGeneration = @formalParameterListForGeneration ()
+    for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
+      formalParameterListForGeneration +=
+        !mFormalSelector
+        !mFormalArgumentPassingMode
+        ![ioTypeMap typeMapEntryForLKey !mFormalArgumentTypeName]
+        !mFormalArgumentName
+        !mFormalArgumentName.string
+    end
+  #---
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
+      !@abstractExtensionMethodForGeneration {
+        !generateHeader: true # Generate Cpp header file
+        !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+        !selfType
+        !self.mAbstractExtensionMethodName.string
+        !formalParameterListForGeneration
+      }
+  }
+
+  #·······························································································
+
+  override method buildExtensionListMaps
+    ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
+    ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
+    ?!@genericExtensionMethodListMap ioAbstractExtensionMethodListMapAST
+    ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+    ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+    ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  #  ioAbstractExtensionMethodListMapAST +=
+  #    !self.mTypeName.string
+  #    !self.mAbstractExtensionMethodName
+    [!?ioAbstractExtensionMethodListMapAST insertKey
+      !self.mTypeName.string
+      !self.mAbstractExtensionMethodName
+    ]
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -247,42 +260,46 @@ refclass @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderF
   public let @unifiedTypeMapEntry mReceiverType
   public let @string mAbstractExtensionMethodName
   public let @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList
-}
 
-#·······················································································································
+  #·······························································································
 
-override method @abstractExtensionMethodForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
-    ![self.mReceiverType definition].typeName.string
-    !self.mAbstractExtensionMethodName
-    !self.mAbstractExtensionMethodFormalParameterList
-  ]
-}
+  override method appendDeclaration1
+    ?!@stringset unused ioInclusionSet
+    !@string outHeader {
+    outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
+      ![self.mReceiverType definition].typeName.string
+      !self.mAbstractExtensionMethodName
+      !self.mAbstractExtensionMethodFormalParameterList
+    ]
+  }
 
-#·······················································································································
+  #·······························································································
 
-override getter @abstractExtensionMethodForGeneration headerKind -> @headerKind {
-  result = @headerKind.oneHeader
-}
+  override getter headerKind -> @headerKind {
+    result = @headerKind.oneHeader
+  }
 
-#·······················································································································
+  #·······························································································
 
-override method @abstractExtensionMethodForGeneration appendSpecificImplementation
-                                                                            ?let @unifiedTypeMap unused inTypeMap
-                                                                            ?!@stringset ioInclusionSet
-                                                                            !@string outImplementation {
-  ioInclusionSet += !"method-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation]+ "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
-  [self.mReceiverType addHeaderFileName !?ioInclusionSet]
-  for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do
-    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-  end
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation
-    !self.mReceiverType
-    !self.mAbstractExtensionMethodName
-    !self.mAbstractExtensionMethodFormalParameterList
-  ]
+  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+                                                ?!@stringset ioInclusionSet
+                                                !@string outImplementation {
+    ioInclusionSet += !"method-"
+         + [[self.mReceiverType definition].typeName.string fileNameRepresentation]
+         + "-" + [self.mAbstractExtensionMethodName fileNameRepresentation]
+    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+    for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do
+      [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+    end
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation
+      !self.mReceiverType
+      !self.mAbstractExtensionMethodName
+      !self.mAbstractExtensionMethodFormalParameterList
+    ]
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

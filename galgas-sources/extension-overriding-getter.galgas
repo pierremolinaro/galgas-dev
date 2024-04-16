@@ -44,11 +44,11 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?var typeName indexing typeReferenceOverrideExtensionGetter
     repeat
     while
+      $.$
       $@type$ ?let t
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
     end
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
+    $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
@@ -66,7 +66,7 @@ syntax extension galgas3DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
-      !mMethodName
+      !getterName
       !formalInputParameterList
       !mReturnedTypeName
       !resultVariableName
@@ -77,10 +77,17 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $getter$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
@@ -97,8 +104,8 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !inClassName
-      !mMethodName
+      !typeName
+      !getterName
       !formalInputParameterList
       !mReturnedTypeName
       !resultVariableName
@@ -120,9 +127,15 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $func$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionGetter
+    $@type$ ?var typeName indexing typeReferenceOverrideExtensionGetter
     $.$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
@@ -137,10 +150,10 @@ syntax extension galgas4DeclarationsSyntax {
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !requiresSelfForAccessingProperty: true
-      !className
-      !mMethodName
+      !typeName
+      !getterName
       !formalInputParameterList
       !returnedTypeName
       !resultVariableName
@@ -151,11 +164,18 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $func$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionGetterDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring getterName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
@@ -170,10 +190,10 @@ syntax extension galgas4DeclarationsSyntax {
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !requiresSelfForAccessingProperty: true
-      !inClassName
-      !mMethodName
+      !typeName
+      !getterName
       !formalInputParameterList
       !returnedTypeName
       !resultVariableName

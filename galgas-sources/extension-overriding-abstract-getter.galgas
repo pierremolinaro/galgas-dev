@@ -41,21 +41,21 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionGetter
     repeat
     while
+      $.$
       $@type$ ?let t
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
     end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let formalInputParameterList
+    let @formalInputParameterListAST formalInputParameterList
+    select
+      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+    or
+      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+    end
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let returnedTypeName
-    select
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    or
-    end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !typeName
       !getterName
       !formalInputParameterList
@@ -65,22 +65,29 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $getter$
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
+    let @formalInputParameterListAST formalInputParameterList
+    select
+      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+    or
+      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+    end
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let returnedTypeName
-    select
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    or
-    end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
-      !isPredefined: false # Is not predefined
-      !inClassName
+      !isPredefined: false
+      !typeName
       !getterName
       !formalInputParameterList
       !returnedTypeName
@@ -101,20 +108,21 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $func$
-    $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
+    $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionGetter
     $.$
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
-    select
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    or
-    end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
-      !className
+      !typeName
       !getterName
       !formalInputParameterList
       !returnedTypeName
@@ -123,23 +131,25 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $func$
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
-    select
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    or
-    end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
-      !isPredefined: false # Is not predefined
-      !inClassName
+      !isPredefined: false
+      !typeName
       !getterName
       !formalInputParameterList
       !returnedTypeName

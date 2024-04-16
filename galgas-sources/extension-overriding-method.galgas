@@ -29,9 +29,9 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?var typeName indexing typeReferenceOverrideExtensionMethodDefinition
     repeat
     while
+      $.$
       $@type$ ?let t
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
     end
     $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
@@ -52,10 +52,17 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $method$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -64,8 +71,8 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !inClassName
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -85,19 +92,25 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $proc$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
+    $@type$ ?var typeName indexing typeReferenceOverrideExtensionMethodDefinition
     $.$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !requiresSelfForAccessingProperty: true
-      !className
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -106,11 +119,18 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $proc$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing overrideExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -119,8 +139,8 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
-      !inClassName
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation

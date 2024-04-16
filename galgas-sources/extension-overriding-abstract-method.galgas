@@ -40,32 +40,39 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionMethod
     repeat
     while
+      $.$
       $@type$ ?let t
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
     end
-    $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
+    $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
       !typeName
-      !mMethodName
+      !methodName
       !formalParameterList
     }
   }
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $method$
-    $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !inClassName
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
     }
   }
@@ -84,31 +91,44 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $proc$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
+    $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionMethod
     $.$
-    $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list>!?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !className
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
     }
   }
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $proc$
-    $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
       !isPredefined: false # Is not predefined
-      !inClassName
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
     }
   }

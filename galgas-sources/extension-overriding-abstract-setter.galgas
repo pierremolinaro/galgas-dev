@@ -30,9 +30,9 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?var typeName indexing typeReferenceOverrideAbstractExtensionSetter
     repeat
     while
+      $.$
       $@type$ ?let t
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
     end
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
@@ -46,15 +46,22 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $override$
     $abstract$
     $setter$
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $identifier$ ?let @lstring setterName indexing overrideabstractExtensionSetterDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionSetterAST {
-      !isPredefined: false # Is not predefined
-      !inClassName
+      !isPredefined: false
+      !typeName
       !setterName
       !formalParameterList}
   }

@@ -23,8 +23,14 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $method$
-    $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
-    $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
+    $@type$ ?var typeName indexing typeReferenceExtensionMethod
+    repeat
+    while
+      $.$
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+    end
+    $identifier$ ?let @lstring methodName indexing extensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -33,8 +39,8 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !className
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -43,10 +49,17 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName
+  rule <method_declaration_ggs3> ?let @lstring inTypeName
                                  ?!@galgasDeclarationAST ioDeclarations {
     $method$
-    $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing extensionMethodDefinition
     <formal_parameter_list_ggs3> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -55,8 +68,8 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !inClassName
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -83,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
       $.$
     end
-    $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
+    $identifier$ ?let @lstring methodName indexing extensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -93,7 +106,7 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !typeName
-      !mMethodName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -102,20 +115,27 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $proc$
-    $identifier$ ?let @lstring mMethodName indexing extensionMethodDefinition
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring methodName indexing extensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !requiresSelfForAccessingProperty: true
-      !inClassName
-      !mMethodName
+      !typeName
+      !methodName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation

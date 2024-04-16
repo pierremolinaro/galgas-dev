@@ -25,9 +25,20 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $getter$
-    $@type$ ?let @lstring className indexing typeReferenceExtensionGetter
-    $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let mFormalInputParameterList
+    $@type$ ?var typeName indexing typeReferenceExtensionGetter
+    repeat
+    while
+      $.$
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+    end
+    $identifier$ ?let @lstring getterName indexing extensionGetterDefinition
+    let @formalInputParameterListAST formalInputParameterList
+    select
+      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+    or
+      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+    end
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
     let @lstring resultVariableName
@@ -43,9 +54,9 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !className
-      !mMethodName
-      !mFormalInputParameterList
+      !typeName
+      !getterName
+      !formalInputParameterList
       !mReturnedTypeName
       !resultVariableName
       !routineInstructionList
@@ -55,10 +66,22 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration_ggs3> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+  rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $getter$
-    $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list_ggs3> !?ioDeclarations ?let mFormalInputParameterList
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring getterName indexing extensionGetterDefinition
+    let @formalInputParameterListAST formalInputParameterList
+    select
+      <formal_input_parameter_list_ggs3> !?ioDeclarations ?formalInputParameterList
+    or
+      <formal_input_parameter_list_ggs34> !?ioDeclarations ?formalInputParameterList
+    end
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let mReturnedTypeName
     let @lstring resultVariableName
@@ -74,9 +97,9 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
-      !inClassName
-      !mMethodName
-      !mFormalInputParameterList
+      !inTypeName
+      !getterName
+      !formalInputParameterList
       !mReturnedTypeName
       !resultVariableName
       !routineInstructionList
@@ -104,8 +127,8 @@ syntax extension galgas4DeclarationsSyntax {
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
       $.$
     end
-    $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let mFormalInputParameterList
+    $identifier$ ?let @lstring getterName indexing extensionGetterDefinition
+    <formal_input_parameter_list> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName
@@ -122,8 +145,8 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
       !typeName
-      !mMethodName
-      !mFormalInputParameterList
+      !getterName
+      !formalInputParameterList
       !returnedTypeName
       !resultVariableName
       !routineInstructionList
@@ -133,11 +156,18 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $func$
-    $identifier$ ?let @lstring mMethodName indexing extensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let mFormalInputParameterList
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
+    $identifier$ ?let @lstring getterName indexing extensionGetterDefinition
+    <formal_input_parameter_list> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     let @lstring resultVariableName = .init {!"result" !.here}
@@ -148,9 +178,9 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
       !isPredefined: false # Is not predefined
       !requiresSelfForAccessingProperty: true
-      !inClassName
-      !mMethodName
-      !mFormalInputParameterList
+      !typeName
+      !getterName
+      !formalInputParameterList
       !returnedTypeName
       !resultVariableName
       !routineInstructionList
