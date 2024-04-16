@@ -366,13 +366,6 @@ override getter @listDeclarationAST keyRepresentation
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @listmapDeclarationAST keyRepresentation
-  ->@string {
-  result = "listmap @" + self.mListmapTypeName
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @filewrapperDeclarationAST keyRepresentation
   ->@string {
   result = "filewrapper @" + self.mFilewrapperName

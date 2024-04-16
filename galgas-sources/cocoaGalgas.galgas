@@ -97,12 +97,6 @@ gui cocoa {
       "  public let @aType mProperty\n"
       "}\n"
 
-    textMacro "List Map" :
-      "list @type {\n"
-      "  public let @aType mAProperty\n"
-      "}\n"
-      "listmap @myListMap (@aList)\n"
-
     textMacro "Map" :
       "map @type {\n"
       "  public let @aType mProperty\n"

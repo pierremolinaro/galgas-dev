@@ -908,29 +908,6 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'typeGenerationTemplate listmapTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                const class GALGAS_string & in_TYPE_5F_IDENTIFIER
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate listmapTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                            const class GALGAS_string & in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER,
-                                                                                            const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
-                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'typeGenerationTemplate mapTypeHeader1'
 //
 //--------------------------------------------------------------------------------------------------

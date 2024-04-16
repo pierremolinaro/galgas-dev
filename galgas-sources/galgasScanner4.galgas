@@ -29,7 +29,6 @@ indexing enumDefinition : "Enum Definition"
 indexing structDefinition : "Struct Definition"
 indexing listDefinition : "List Definition"
 indexing sortedListDefinition : "Sorted List Definition"
-indexing listmapDefinition : "Listmap Definition"
 indexing mapDefinition : "Map Definition"
 indexing dictionaryDefinition : "Dictionary Definition"
 indexing externTypeDefinition : "Extern Type Definition"
@@ -156,7 +155,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "let",
   "lexique",
   "list",
-  "listmap",
   "log",
   "loop",
   "map",

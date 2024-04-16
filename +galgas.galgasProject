@@ -120,7 +120,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/type-extern.galgas"
   "galgas-sources/type-graph.galgas"
   "galgas-sources/type-list.galgas"
-  "galgas-sources/type-listmap.galgas"
   "galgas-sources/type-dict.galgas"
   "galgas-sources/type-map.galgas"
   "galgas-sources/type-sorted-list.galgas"

@@ -54,7 +54,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* "string" */,
   false /* abstract */,
   false /* after */,
-  false /* array */,
   false /* as */,
   false /* bang */,
   false /* before */,
@@ -96,7 +95,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* let */,
   false /* lexique */,
   false /* list */,
-  false /* listmap */,
   false /* log */,
   false /* loop */,
   false /* map */,
@@ -352,7 +350,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [191] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [189] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -379,7 +377,6 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [191] = {
   NO /* "string" */,
   NO /* abstract */,
   NO /* after */,
-  NO /* array */,
   NO /* as */,
   NO /* bang */,
   NO /* before */,
@@ -421,7 +418,6 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [191] = {
   NO /* let */,
   NO /* lexique */,
   NO /* list */,
-  NO /* listmap */,
   NO /* log */,
   NO /* loop */,
   NO /* map */,

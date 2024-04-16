@@ -568,8 +568,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 192)) {
-    static const char * syntaxErrorMessageArray [192] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 190)) {
+    static const char * syntaxErrorMessageArray [190] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -596,7 +596,6 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "a character string constant \"...\"",
         "the 'abstract' keyword",
         "the 'after' keyword",
-        "the 'array' keyword",
         "the 'as' keyword",
         "the 'bang' keyword",
         "the 'before' keyword",
@@ -638,7 +637,6 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the 'let' keyword",
         "the 'lexique' keyword",
         "the 'list' keyword",
-        "the 'listmap' keyword",
         "the 'log' keyword",
         "the 'loop' keyword",
         "the 'map' keyword",
@@ -1139,15 +1137,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__appl
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-} ;
-
-//--- Unicode string for '$array$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__array = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('y'),
 } ;
 
 //--- Unicode string for '$as$'
@@ -1688,17 +1677,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__list
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-} ;
-
-//--- Unicode string for '$listmap$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__listmap = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
 } ;
 
 //--- Unicode string for '$log$'
@@ -2569,7 +2547,7 @@ int32_t Lexique_galgasScanner_33_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__galgasKeyWordList = 93 ;
+static const int32_t ktable_size_galgasScanner_33__galgasKeyWordList = 91 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasKeyWordList [ktable_size_galgasScanner_33__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__as, Lexique_galgasScanner_33_::kToken_as),
@@ -2608,7 +2586,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__true, Lexique_galgasScanner_33_::kToken_true),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__with, Lexique_galgasScanner_33_::kToken_with),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__after, Lexique_galgasScanner_33_::kToken_after),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__array, Lexique_galgasScanner_33_::kToken_array),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__block, Lexique_galgasScanner_33_::kToken_block),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__class, Lexique_galgasScanner_33_::kToken_class),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__elsif, Lexique_galgasScanner_33_::kToken_elsif),
@@ -2645,7 +2622,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__default, Lexique_galgasScanner_33_::kToken_default),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__grammar, Lexique_galgasScanner_33_::kToken_grammar),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__lexique, Lexique_galgasScanner_33_::kToken_lexique),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__listmap, Lexique_galgasScanner_33_::kToken_listmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__message, Lexique_galgasScanner_33_::kToken_message),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__private, Lexique_galgasScanner_33_::kToken_private),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__project, Lexique_galgasScanner_33_::kToken_project),
@@ -2840,11 +2816,6 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken_after:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("after") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      break ;
-    case kToken_array:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("array") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_as:
@@ -3050,11 +3021,6 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken_list:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("list") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      break ;
-    case kToken_listmap:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("listmap") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_log:
@@ -4676,7 +4642,6 @@ GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("\"string\"") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("abstract") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("after") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("array") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("as") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("bang") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("before") COMMA_HERE) ;
@@ -4718,7 +4683,6 @@ GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("let") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("lexique") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("list") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("listmap") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("log") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("loop") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("map") COMMA_HERE) ;
@@ -4977,7 +4941,6 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("true") ;
     ioList.appendObject ("with") ;
     ioList.appendObject ("after") ;
-    ioList.appendObject ("array") ;
     ioList.appendObject ("block") ;
     ioList.appendObject ("class") ;
     ioList.appendObject ("elsif") ;
@@ -5014,7 +4977,6 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("default") ;
     ioList.appendObject ("grammar") ;
     ioList.appendObject ("lexique") ;
-    ioList.appendObject ("listmap") ;
     ioList.appendObject ("message") ;
     ioList.appendObject ("private") ;
     ioList.appendObject ("project") ;
@@ -5049,7 +5011,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [192] = {0,
+  static const uint32_t kTerminalSymbolStyles [190] = {0,
     0 /* galgasScanner3_1_identifier */,
     8 /* galgasScanner3_1_double_2E_xxx */,
     7 /* galgasScanner3_1_literalInt */,
@@ -5076,7 +5038,6 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     10 /* galgasScanner3_1__22_string_22_ */,
     1 /* galgasScanner3_1_abstract */,
     1 /* galgasScanner3_1_after */,
-    1 /* galgasScanner3_1_array */,
     1 /* galgasScanner3_1_as */,
     1 /* galgasScanner3_1_bang */,
     1 /* galgasScanner3_1_before */,
@@ -5118,7 +5079,6 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner3_1_let */,
     1 /* galgasScanner3_1_lexique */,
     1 /* galgasScanner3_1_list */,
-    1 /* galgasScanner3_1_listmap */,
     1 /* galgasScanner3_1_log */,
     1 /* galgasScanner3_1_loop */,
     1 /* galgasScanner3_1_map */,

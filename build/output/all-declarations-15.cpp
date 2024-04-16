@@ -3955,7 +3955,7 @@ static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [191] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [189] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -3982,7 +3982,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [191] = {
   false /* "string" */,
   false /* abstract */,
   false /* after */,
-  false /* array */,
   false /* as */,
   false /* bang */,
   false /* before */,
@@ -4024,7 +4023,6 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [191] = {
   false /* let */,
   false /* lexique */,
   false /* list */,
-  false /* listmap */,
   false /* log */,
   false /* loop */,
   false /* map */,
@@ -4236,7 +4234,6 @@ GALGAS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("\"string\"") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("abstract") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("after") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("array") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("as") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("bang") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("before") COMMA_HERE) ;
@@ -4278,7 +4275,6 @@ GALGAS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("let") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("lexique") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("list") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("listmap") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("log") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("loop") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("map") COMMA_HERE) ;

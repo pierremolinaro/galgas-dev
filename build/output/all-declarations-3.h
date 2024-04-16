@@ -4109,132 +4109,131 @@ class Lexique_galgasScanner_34_ : public Lexique {
    kToken_let /* 62 */ ,
    kToken_lexique /* 63 */ ,
    kToken_list /* 64 */ ,
-   kToken_listmap /* 65 */ ,
-   kToken_log /* 66 */ ,
-   kToken_loop /* 67 */ ,
-   kToken_map /* 68 */ ,
-   kToken_mod /* 69 */ ,
-   kToken_mutating /* 70 */ ,
-   kToken_not /* 71 */ ,
-   kToken_on /* 72 */ ,
-   kToken_operator /* 73 */ ,
-   kToken_option /* 74 */ ,
-   kToken_or /* 75 */ ,
-   kToken_override /* 76 */ ,
-   kToken_package /* 77 */ ,
-   kToken_parse /* 78 */ ,
-   kToken_public /* 79 */ ,
-   kToken_protected /* 80 */ ,
-   kToken_private /* 81 */ ,
-   kToken_proc /* 82 */ ,
-   kToken_project /* 83 */ ,
-   kToken_repeat /* 84 */ ,
-   kToken_rewind /* 85 */ ,
-   kToken_rule /* 86 */ ,
-   kToken_select /* 87 */ ,
-   kToken_self /* 88 */ ,
-   kToken_send /* 89 */ ,
-   kToken_sortedlist /* 90 */ ,
-   kToken_spoil /* 91 */ ,
-   kToken_super /* 92 */ ,
-   kToken_struct /* 93 */ ,
-   kToken_style /* 94 */ ,
-   kToken_switch /* 95 */ ,
-   kToken_syntax /* 96 */ ,
-   kToken_tag /* 97 */ ,
-   kToken_template /* 98 */ ,
-   kToken_then /* 99 */ ,
-   kToken_true /* 100 */ ,
-   kToken_typealias /* 101 */ ,
-   kToken_unused /* 102 */ ,
-   kToken_var /* 103 */ ,
-   kToken_warning /* 104 */ ,
-   kToken_while /* 105 */ ,
-   kToken_with /* 106 */ ,
-   kToken__25_app_2D_link /* 107 */ ,
-   kToken__25_app_2D_source /* 108 */ ,
-   kToken__25_applicationBundleBase /* 109 */ ,
-   kToken__25_clonable /* 110 */ ,
-   kToken__25_codeblocks_2D_linux_33__32_ /* 111 */ ,
-   kToken__25_codeblocks_2D_linux_36__34_ /* 112 */ ,
-   kToken__25_codeblocks_2D_windows /* 113 */ ,
-   kToken__25_comparable /* 114 */ ,
-   kToken__25_equatable /* 115 */ ,
-   kToken__25_errorMessage /* 116 */ ,
-   kToken__25_from /* 117 */ ,
-   kToken__25_generatedInSeparateFile /* 118 */ ,
-   kToken__25_initArgLabel /* 119 */ ,
-   kToken__25_insertAfter /* 120 */ ,
-   kToken__25_insertBefore /* 121 */ ,
-   kToken__25_insertOrReplaceSetter /* 122 */ ,
-   kToken__25_insertSetter /* 123 */ ,
-   kToken__25_libpmAtPath /* 124 */ ,
-   kToken__25_macCodeSign /* 125 */ ,
-   kToken__25_makefile_2D_macosx /* 126 */ ,
-   kToken__25_makefile_2D_unix /* 127 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 128 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 129 */ ,
-   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 130 */ ,
-   kToken__25_MacOS /* 131 */ ,
-   kToken__25_MacOSDeployment /* 132 */ ,
-   kToken__25_nonAtomicSelection /* 133 */ ,
-   kToken__25_once /* 134 */ ,
-   kToken__25_preserved /* 135 */ ,
-   kToken__25_quietOutputByDefault /* 136 */ ,
-   kToken__25_replaceBy /* 137 */ ,
-   kToken__25_remove /* 138 */ ,
-   kToken__25_removeSetter /* 139 */ ,
-   kToken__25_searchMethod /* 140 */ ,
-   kToken__25_searchString /* 141 */ ,
-   kToken__25_tool_2D_source /* 142 */ ,
-   kToken__25_templateEndMark /* 143 */ ,
-   kToken__25_templateReplacement /* 144 */ ,
-   kToken__25_translate /* 145 */ ,
-   kToken__25_usefull /* 146 */ ,
-   kToken__2A_ /* 147 */ ,
-   kToken__2C_ /* 148 */ ,
-   kToken__2B_ /* 149 */ ,
-   kToken__26__2B_ /* 150 */ ,
-   kToken__26__2D_ /* 151 */ ,
-   kToken__26__2A_ /* 152 */ ,
-   kToken__26__2F_ /* 153 */ ,
-   kToken__3E_ /* 154 */ ,
-   kToken__3B_ /* 155 */ ,
-   kToken__3A_ /* 156 */ ,
-   kToken__3A__3E_ /* 157 */ ,
-   kToken__2D_ /* 158 */ ,
-   kToken__28_ /* 159 */ ,
-   kToken__29_ /* 160 */ ,
-   kToken__2D__3E_ /* 161 */ ,
-   kToken__3D__3D_ /* 162 */ ,
-   kToken__3D_ /* 163 */ ,
-   kToken__26__26_ /* 164 */ ,
-   kToken__5B_ /* 165 */ ,
-   kToken__5D_ /* 166 */ ,
-   kToken__2B__3D_ /* 167 */ ,
-   kToken__2D__3D_ /* 168 */ ,
-   kToken__2A__3D_ /* 169 */ ,
-   kToken__2F__3D_ /* 170 */ ,
-   kToken__2F_ /* 171 */ ,
-   kToken__21__3D_ /* 172 */ ,
-   kToken__3E__3D_ /* 173 */ ,
-   kToken__26_ /* 174 */ ,
-   kToken__7B_ /* 175 */ ,
-   kToken__7D_ /* 176 */ ,
-   kToken__60_ /* 177 */ ,
-   kToken__7C__7C_ /* 178 */ ,
-   kToken__7C_ /* 179 */ ,
-   kToken__5E_ /* 180 */ ,
-   kToken__3E__3E_ /* 181 */ ,
-   kToken__7E_ /* 182 */ ,
-   kToken__2D__2D_ /* 183 */ ,
-   kToken__2B__2B_ /* 184 */ ,
-   kToken__26__2D__2D_ /* 185 */ ,
-   kToken__26__2B__2B_ /* 186 */ ,
-   kToken__3D__3D__3D_ /* 187 */ ,
-   kToken__21__3D__3D_ /* 188 */ ,
-   kToken__3F__5E_ /* 189 */ ,
-   kToken__21__5E_ /* 190 */ } ;
+   kToken_log /* 65 */ ,
+   kToken_loop /* 66 */ ,
+   kToken_map /* 67 */ ,
+   kToken_mod /* 68 */ ,
+   kToken_mutating /* 69 */ ,
+   kToken_not /* 70 */ ,
+   kToken_on /* 71 */ ,
+   kToken_operator /* 72 */ ,
+   kToken_option /* 73 */ ,
+   kToken_or /* 74 */ ,
+   kToken_override /* 75 */ ,
+   kToken_package /* 76 */ ,
+   kToken_parse /* 77 */ ,
+   kToken_public /* 78 */ ,
+   kToken_protected /* 79 */ ,
+   kToken_private /* 80 */ ,
+   kToken_proc /* 81 */ ,
+   kToken_project /* 82 */ ,
+   kToken_repeat /* 83 */ ,
+   kToken_rewind /* 84 */ ,
+   kToken_rule /* 85 */ ,
+   kToken_select /* 86 */ ,
+   kToken_self /* 87 */ ,
+   kToken_send /* 88 */ ,
+   kToken_sortedlist /* 89 */ ,
+   kToken_spoil /* 90 */ ,
+   kToken_super /* 91 */ ,
+   kToken_struct /* 92 */ ,
+   kToken_style /* 93 */ ,
+   kToken_switch /* 94 */ ,
+   kToken_syntax /* 95 */ ,
+   kToken_tag /* 96 */ ,
+   kToken_template /* 97 */ ,
+   kToken_then /* 98 */ ,
+   kToken_true /* 99 */ ,
+   kToken_typealias /* 100 */ ,
+   kToken_unused /* 101 */ ,
+   kToken_var /* 102 */ ,
+   kToken_warning /* 103 */ ,
+   kToken_while /* 104 */ ,
+   kToken_with /* 105 */ ,
+   kToken__25_app_2D_link /* 106 */ ,
+   kToken__25_app_2D_source /* 107 */ ,
+   kToken__25_applicationBundleBase /* 108 */ ,
+   kToken__25_clonable /* 109 */ ,
+   kToken__25_codeblocks_2D_linux_33__32_ /* 110 */ ,
+   kToken__25_codeblocks_2D_linux_36__34_ /* 111 */ ,
+   kToken__25_codeblocks_2D_windows /* 112 */ ,
+   kToken__25_comparable /* 113 */ ,
+   kToken__25_equatable /* 114 */ ,
+   kToken__25_errorMessage /* 115 */ ,
+   kToken__25_from /* 116 */ ,
+   kToken__25_generatedInSeparateFile /* 117 */ ,
+   kToken__25_initArgLabel /* 118 */ ,
+   kToken__25_insertAfter /* 119 */ ,
+   kToken__25_insertBefore /* 120 */ ,
+   kToken__25_insertOrReplaceSetter /* 121 */ ,
+   kToken__25_insertSetter /* 122 */ ,
+   kToken__25_libpmAtPath /* 123 */ ,
+   kToken__25_macCodeSign /* 124 */ ,
+   kToken__25_makefile_2D_macosx /* 125 */ ,
+   kToken__25_makefile_2D_unix /* 126 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 127 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 128 */ ,
+   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 129 */ ,
+   kToken__25_MacOS /* 130 */ ,
+   kToken__25_MacOSDeployment /* 131 */ ,
+   kToken__25_nonAtomicSelection /* 132 */ ,
+   kToken__25_once /* 133 */ ,
+   kToken__25_preserved /* 134 */ ,
+   kToken__25_quietOutputByDefault /* 135 */ ,
+   kToken__25_replaceBy /* 136 */ ,
+   kToken__25_remove /* 137 */ ,
+   kToken__25_removeSetter /* 138 */ ,
+   kToken__25_searchMethod /* 139 */ ,
+   kToken__25_searchString /* 140 */ ,
+   kToken__25_tool_2D_source /* 141 */ ,
+   kToken__25_templateEndMark /* 142 */ ,
+   kToken__25_templateReplacement /* 143 */ ,
+   kToken__25_translate /* 144 */ ,
+   kToken__25_usefull /* 145 */ ,
+   kToken__2A_ /* 146 */ ,
+   kToken__2C_ /* 147 */ ,
+   kToken__2B_ /* 148 */ ,
+   kToken__26__2B_ /* 149 */ ,
+   kToken__26__2D_ /* 150 */ ,
+   kToken__26__2A_ /* 151 */ ,
+   kToken__26__2F_ /* 152 */ ,
+   kToken__3E_ /* 153 */ ,
+   kToken__3B_ /* 154 */ ,
+   kToken__3A_ /* 155 */ ,
+   kToken__3A__3E_ /* 156 */ ,
+   kToken__2D_ /* 157 */ ,
+   kToken__28_ /* 158 */ ,
+   kToken__29_ /* 159 */ ,
+   kToken__2D__3E_ /* 160 */ ,
+   kToken__3D__3D_ /* 161 */ ,
+   kToken__3D_ /* 162 */ ,
+   kToken__26__26_ /* 163 */ ,
+   kToken__5B_ /* 164 */ ,
+   kToken__5D_ /* 165 */ ,
+   kToken__2B__3D_ /* 166 */ ,
+   kToken__2D__3D_ /* 167 */ ,
+   kToken__2A__3D_ /* 168 */ ,
+   kToken__2F__3D_ /* 169 */ ,
+   kToken__2F_ /* 170 */ ,
+   kToken__21__3D_ /* 171 */ ,
+   kToken__3E__3D_ /* 172 */ ,
+   kToken__26_ /* 173 */ ,
+   kToken__7B_ /* 174 */ ,
+   kToken__7D_ /* 175 */ ,
+   kToken__60_ /* 176 */ ,
+   kToken__7C__7C_ /* 177 */ ,
+   kToken__7C_ /* 178 */ ,
+   kToken__5E_ /* 179 */ ,
+   kToken__3E__3E_ /* 180 */ ,
+   kToken__7E_ /* 181 */ ,
+   kToken__2D__2D_ /* 182 */ ,
+   kToken__2B__2B_ /* 183 */ ,
+   kToken__26__2D__2D_ /* 184 */ ,
+   kToken__26__2B__2B_ /* 185 */ ,
+   kToken__3D__3D__3D_ /* 186 */ ,
+   kToken__21__3D__3D_ /* 187 */ ,
+   kToken__3F__5E_ /* 188 */ ,
+   kToken__21__5E_ /* 189 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -4277,7 +4276,6 @@ class Lexique_galgasScanner_34_ : public Lexique {
     kIndexing_structDefinition,
     kIndexing_listDefinition,
     kIndexing_sortedListDefinition,
-    kIndexing_listmapDefinition,
     kIndexing_mapDefinition,
     kIndexing_dictionaryDefinition,
     kIndexing_externTypeDefinition,
@@ -4338,7 +4336,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 190 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 189 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -7948,4 +7946,59 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @objectPredefinedTypeAST_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_objectPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_objectPredefinedTypeAST_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_objectPredefinedTypeAST_2D_weak (const class GALGAS_objectPredefinedTypeAST & inSource) ;
+
+  public: GALGAS_objectPredefinedTypeAST_2D_weak & operator = (const class GALGAS_objectPredefinedTypeAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_objectPredefinedTypeAST bang_objectPredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_objectPredefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_objectPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_objectPredefinedTypeAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_objectPredefinedTypeAST_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTypeAST_2D_weak ;
 

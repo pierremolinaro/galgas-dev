@@ -278,7 +278,7 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
 //--------------------------------------------------------------------------------------------------
 
 - (NSUInteger) textMacroCount {
-  return 7 ;
+  return 6 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -286,11 +286,10 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
 //--------------------------------------------------------------------------------------------------
 
 - (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroTitle [8] = {
+  static NSString * kTextMacroTitle [7] = {
     @"Class",
     @"Enum",
     @"List",
-    @"List Map",
     @"Map",
     @"Sorted List",
     @"Struct",
@@ -302,11 +301,10 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
 //--------------------------------------------------------------------------------------------------
 
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroContent [8] = {
+  static NSString * kTextMacroContent [7] = {
     @"refclass @aClassName : @superClassName {\n  public let @aType mProperty\n}\n",
     @"enum @aType {\n  constant1, constant2\n}\n",
     @"list @type {\n  public let @aType mProperty\n}\n",
-    @"list @type {\n  public let @aType mAProperty\n}\nlistmap @myListMap (@aList)\n",
     @"map @type {\n  public let @aType mProperty\n  insert insertKey error message\"the '%K' key is already declared in %L\"\n  search searchKey error message\"there is no '%K' key\"\n}\n",
     @"sortedlist @type {\n  public let @string mFirstAttribute\n  public let @bool mSecondAttribute\n}{\n  mFirstAttribute >, mSecondAttribute <\n}\n",
     @"struct @type {\n  public let @aType mProperty\n}\n",
