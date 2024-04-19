@@ -40,7 +40,6 @@ class SharedObject {
     private: SharedObject * mPtrToNextObject ;
   #endif
 
-
 //--- Retain count
   private: mutable int32_t mRetainCount ;
 

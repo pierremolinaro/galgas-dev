@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -109,6 +109,9 @@ template <typename TYPE> class TC_Array final {
 
 //--- Get Count
   public: inline int32_t count (void) const ;
+
+//--- Is allocated
+  public: inline bool isAllocated (void) const { return mSharedArray != nullptr ; }
 
 //--- Array Pointer
   public: const TYPE * unsafeArrayPointer (void) const ;

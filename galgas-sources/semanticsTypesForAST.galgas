@@ -496,7 +496,7 @@ list @programRuleList {
 
 struct @galgasDeclarationAST {
   public var @semanticDeclarationListAST mDeclarationList = ()
-  public var @stringset mImplicitTypeDeclarationSet = ()
+  public var @stringset implicitTypeDeclarationSet = ()
   public var @galgas3SyntaxComponentListAST mSyntaxComponentList = ()
   public var @syntaxExtensions mSyntaxExtensions = ()
   public var @galgasGUIComponentListAST mGUIComponentList = ()

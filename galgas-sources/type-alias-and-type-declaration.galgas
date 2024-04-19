@@ -57,16 +57,6 @@ syntax extension galgas3DeclarationsSyntax {
                               !@lstring outTypeName {
     $[$
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
-    error .here : "Not handled yet"
-    $]$
-  }
-
-  #·······························································································
-
-  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-                              !@lstring outTypeName {
-    $[$
-    <type_definition_ggs3> !?ioDeclarations ?outTypeName
     $:$
     <type_definition_ggs3> !?ioDeclarations ?*
     error .here : "Not handled yet"
@@ -146,16 +136,6 @@ syntax extension galgas4DeclarationsSyntax {
       outTypeName = .init (outTypeName.string + "-" + typeName.string,
                            [outTypeName.location union !typeName])
     end
-  }
-
-  #·······························································································
-
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName {
-    $[$
-    <type_definition> !?ioDeclarations ?outTypeName
-    error .here : "Not handled yet"
-    $]$
   }
 
   #·······························································································

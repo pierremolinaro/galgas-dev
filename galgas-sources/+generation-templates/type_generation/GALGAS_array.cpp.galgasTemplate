@@ -1,0 +1,224 @@
+//--------------------------------------------------------------------------------------------------
+//
+//%!"Class for element of '@" + TYPE_IDENTIFIER + "' array"%
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+AC_GALGAS_root (),
+mSharedArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.mSharedArray.setCapacity (16) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
+  return mSharedArray.isAllocated () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
+  mSharedArray.free () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  mSharedArray.appendObject (inValue) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS__5B_string_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+     %!^%const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (", ") ;
+  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+      %!^%const GALGAS_uint inInsertionIndex,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%const GALGAS_uint inRemoveIndex,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    outValue = mSharedArray (idx COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    outValue = mSharedArray.lastObject (THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) const {
+  if (isValid ()) {
+    outValue = mSharedArray (0 COMMA_THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_LOCATION_ARGS) const {
+  if (isValid ()) {
+    outValue = mSharedArray.lastObject (THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+                   %!^%const EnumerationOrder inOrder) :
+mSharedArray (inEnumeratedObject.mSharedArray),
+mCurrent (0),
+mEnumerationOrder (inOrder) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cEnumerator_%!TYPE_IDENTIFIER%::hasCurrentObject (void) const {
+  return mCurrent < mSharedArray.count () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cEnumerator_%!TYPE_IDENTIFIER%::hasNextObject (void) const {
+  return (mCurrent + 1) < mSharedArray.count () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cEnumerator_%!TYPE_IDENTIFIER%::gotoNextObject (void) {
+  mCurrent += 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (mCurrent < mSharedArray.count ()) {
+    switch (mEnumerationOrder) {
+    case EnumerationOrder::up :
+      result = mSharedArray (mCurrent COMMA_THERE) ;
+      break ;
+    case EnumerationOrder::down :
+      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
+      break ;
+    }
+  }
+  return result ;
+}
+
+

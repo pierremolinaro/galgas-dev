@@ -479,43 +479,43 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForG
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @boolsetTypeForGeneration reference class
+// Phase 1: @arrayTypeForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration {
+class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Default constructor
-  public: GALGAS_boolsetTypeForGeneration (void) ;
+  public: GALGAS_arrayTypeForGeneration (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GALGAS_boolsetTypeForGeneration (const class cPtr_boolsetTypeForGeneration * inSourcePtr) ;
+  public: GALGAS_arrayTypeForGeneration (const class cPtr_arrayTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mListElementTypeIndex (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_boolsetTypeForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                               const class GALGAS_lstringlist & inOperand1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_arrayTypeForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                             const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_boolsetTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_arrayTypeForGeneration extractObject (const GALGAS_object & inObject,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_boolsetTypeForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GALGAS_lstringlist & inOperand1
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_arrayTypeForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand1
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_boolsetTypeForGeneration & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_arrayTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -529,29 +529,29 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_boolsetTypeForGeneration class
+} ; // End of GALGAS_arrayTypeForGeneration class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGeneration ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 2: pointer class for @boolsetTypeForGeneration class
+// Phase 2: pointer class for @arrayTypeForGeneration class
 //
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
+class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 
 //--------------------------------- Initializers
-  public: void boolsetTypeForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                      const class GALGAS_lstringlist & inOperand1,
-                                                      Compiler * inCompiler) ;
+  public: void arrayTypeForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                    const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -566,16 +566,16 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_lstringlist mProperty_mFlagList ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mListElementTypeIndex ;
 
 
 //--- Default constructor
-  public: cPtr_boolsetTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: cPtr_arrayTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                         const GALGAS_lstringlist & in_mFlagList
-                                         COMMA_LOCATION_ARGS) ;
+  public: cPtr_arrayTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                       const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex
+                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
@@ -592,21 +592,21 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @boolsetTypeForGeneration_2D_weak weak reference class
+// Phase 1: @arrayTypeForGeneration_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_boolsetTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGeneration_2D_weak {
+class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGeneration_2D_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_boolsetTypeForGeneration_2D_weak (void) ;
+  public: GALGAS_arrayTypeForGeneration_2D_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_boolsetTypeForGeneration_2D_weak (const class GALGAS_boolsetTypeForGeneration & inSource) ;
+  public: GALGAS_arrayTypeForGeneration_2D_weak (const class GALGAS_arrayTypeForGeneration & inSource) ;
 
-  public: GALGAS_boolsetTypeForGeneration_2D_weak & operator = (const class GALGAS_boolsetTypeForGeneration & inSource) ;
+  public: GALGAS_arrayTypeForGeneration_2D_weak & operator = (const class GALGAS_arrayTypeForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_boolsetTypeForGeneration bang_boolsetTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_arrayTypeForGeneration bang_arrayTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -616,15 +616,15 @@ class GALGAS_boolsetTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGen
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_boolsetTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_arrayTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_boolsetTypeForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_arrayTypeForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_boolsetTypeForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_arrayTypeForGeneration_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -638,12 +638,12 @@ class GALGAS_boolsetTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGen
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_boolsetTypeForGeneration_2D_weak class
+} ; // End of GALGAS_arrayTypeForGeneration_2D_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2D_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //

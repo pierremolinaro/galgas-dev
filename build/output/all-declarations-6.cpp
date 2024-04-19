@@ -8,6 +8,114 @@
 #include "all-declarations-6.h"
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxExtensions::GALGAS_syntaxExtensions (void) :
+mProperty_dictionary () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxExtensions::~ GALGAS_syntaxExtensions (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_syntaxExtensions GALGAS_syntaxExtensions::init (Compiler * inCompiler
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_syntaxExtensions result ;
+  result.setInitializedProperties (inCompiler) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_syntaxExtensions::setInitializedProperties (Compiler * inCompiler) {
+  mProperty_dictionary = GALGAS_syntaxExtensionsDictionary::init (inCompiler COMMA_HERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxExtensions::GALGAS_syntaxExtensions (const GALGAS_syntaxExtensionsDictionary & inOperand0) :
+mProperty_dictionary (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxExtensions GALGAS_syntaxExtensions::class_func_new (Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_syntaxExtensions result ;
+  result.setInitializedProperties (inCompiler) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_syntaxExtensions::isValid (void) const {
+  return mProperty_dictionary.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_syntaxExtensions::drop (void) {
+  mProperty_dictionary.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_syntaxExtensions::description (String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @syntaxExtensions:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_dictionary.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @syntaxExtensions generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions ("syntaxExtensions",
+                                                                        nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_syntaxExtensions::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxExtensions ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_syntaxExtensions::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_syntaxExtensions (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_syntaxExtensions GALGAS_syntaxExtensions::extractObject (const GALGAS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_syntaxExtensions result ;
+  const GALGAS_syntaxExtensions * p = (const GALGAS_syntaxExtensions *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_syntaxExtensions *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("syntaxExtensions", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //Extension Getter '@syntaxExtensions listForKey'
 //
@@ -10054,7 +10162,7 @@ GALGAS_programRuleList GALGAS_programRuleList::extractObject (const GALGAS_objec
 
 GALGAS_galgasDeclarationAST::GALGAS_galgasDeclarationAST (void) :
 mProperty_mDeclarationList (),
-mProperty_mImplicitTypeDeclarationSet (),
+mProperty_implicitTypeDeclarationSet (),
 mProperty_mSyntaxComponentList (),
 mProperty_mSyntaxExtensions (),
 mProperty_mGUIComponentList (),
@@ -10081,7 +10189,7 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::init (Compiler * inComp
 
 void GALGAS_galgasDeclarationAST::setInitializedProperties (Compiler * inCompiler) {
   mProperty_mDeclarationList = GALGAS_semanticDeclarationListAST::init (inCompiler COMMA_HERE) ;
-  mProperty_mImplicitTypeDeclarationSet = GALGAS_stringset::init (inCompiler COMMA_HERE) ;
+  mProperty_implicitTypeDeclarationSet = GALGAS_stringset::init (inCompiler COMMA_HERE) ;
   mProperty_mSyntaxComponentList = GALGAS_galgas_33_SyntaxComponentListAST::init (inCompiler COMMA_HERE) ;
   mProperty_mSyntaxExtensions = GALGAS_syntaxExtensions::init (inCompiler COMMA_HERE) ;
   mProperty_mGUIComponentList = GALGAS_galgasGUIComponentListAST::init (inCompiler COMMA_HERE) ;
@@ -10101,7 +10209,7 @@ GALGAS_galgasDeclarationAST::GALGAS_galgasDeclarationAST (const GALGAS_semanticD
                                                           const GALGAS_programRuleList & inOperand6,
                                                           const GALGAS_prologueEpilogueList & inOperand7) :
 mProperty_mDeclarationList (inOperand0),
-mProperty_mImplicitTypeDeclarationSet (inOperand1),
+mProperty_implicitTypeDeclarationSet (inOperand1),
 mProperty_mSyntaxComponentList (inOperand2),
 mProperty_mSyntaxExtensions (inOperand3),
 mProperty_mGUIComponentList (inOperand4),
@@ -10122,14 +10230,14 @@ GALGAS_galgasDeclarationAST GALGAS_galgasDeclarationAST::class_func_new (Compile
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_galgasDeclarationAST::isValid (void) const {
-  return mProperty_mDeclarationList.isValid () && mProperty_mImplicitTypeDeclarationSet.isValid () && mProperty_mSyntaxComponentList.isValid () && mProperty_mSyntaxExtensions.isValid () && mProperty_mGUIComponentList.isValid () && mProperty_mPrologueDeclarationList.isValid () && mProperty_mSourceRuleList.isValid () && mProperty_mEpilogueDeclarationList.isValid () ;
+  return mProperty_mDeclarationList.isValid () && mProperty_implicitTypeDeclarationSet.isValid () && mProperty_mSyntaxComponentList.isValid () && mProperty_mSyntaxExtensions.isValid () && mProperty_mGUIComponentList.isValid () && mProperty_mPrologueDeclarationList.isValid () && mProperty_mSourceRuleList.isValid () && mProperty_mEpilogueDeclarationList.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_galgasDeclarationAST::drop (void) {
   mProperty_mDeclarationList.drop () ;
-  mProperty_mImplicitTypeDeclarationSet.drop () ;
+  mProperty_implicitTypeDeclarationSet.drop () ;
   mProperty_mSyntaxComponentList.drop () ;
   mProperty_mSyntaxExtensions.drop () ;
   mProperty_mGUIComponentList.drop () ;
@@ -10148,7 +10256,7 @@ void GALGAS_galgasDeclarationAST::description (String & ioString,
   }else{
     mProperty_mDeclarationList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mImplicitTypeDeclarationSet.description (ioString, inIndentation+1) ;
+    mProperty_implicitTypeDeclarationSet.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mSyntaxComponentList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;

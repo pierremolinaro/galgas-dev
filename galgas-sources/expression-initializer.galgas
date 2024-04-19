@@ -158,6 +158,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression {
   #--- Type name
     $@type$ ?let typeName indexing typeReferenceInConstructor
+#    <type_definition> !?ioDeclarations ?let typeName
     $($
     <output_expression_list> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here

@@ -37,14 +37,14 @@ class cPtr_object : public SharedObject {
 
 //--- Constructor with embedded object
   public: cPtr_object (AC_GALGAS_root * inObjectPointer
-                        COMMA_LOCATION_ARGS) ;
+                       COMMA_LOCATION_ARGS) ;
 
 //--- Destructor
   public: virtual ~cPtr_object (void) ;
 
 //--- No Copy
-  private: cPtr_object (const cPtr_object &) ;
-  private: cPtr_object & operator = (const cPtr_object &) ;
+  private: cPtr_object (const cPtr_object &) = delete ;
+  private: cPtr_object & operator = (const cPtr_object &) = delete ;
 
 //--- Private attribute
   private: AC_GALGAS_root * mEmbeddedObjectPtr ;

@@ -359,13 +359,6 @@ override getter @sortedListDeclarationAST keyRepresentation
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @listDeclarationAST keyRepresentation
-  ->@string {
-  result = "list @" + self.mListTypeName
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @filewrapperDeclarationAST keyRepresentation
   ->@string {
   result = "filewrapper @" + self.mFilewrapperName

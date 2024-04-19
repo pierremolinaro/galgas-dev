@@ -36,12 +36,12 @@ class cEnumerator_range final {
   public: cEnumerator_range (const GALGAS_range & inEnumeratedRange,
                              const EnumerationOrder inOrder) ;
 
-//--- Virtual destructor
+//--- Destructor
   public: ~ cEnumerator_range (void) ;
 
 //--- No copy
-  private: cEnumerator_range (const cEnumerator_range &) ;
-  private: cEnumerator_range & operator = (const cEnumerator_range &) ;
+  private: cEnumerator_range (const cEnumerator_range &) = delete ;
+  private: cEnumerator_range & operator = (const cEnumerator_range &) = delete ;
 
 //--- 
   public: bool hasCurrentObject (void) const ;
@@ -51,7 +51,7 @@ class cEnumerator_range final {
 //--- Current element access
   public: GALGAS_uint current (LOCATION_ARGS) const ;
 
-//---- Attributes
+//---- Properties
   private: const bool mIsValid ;
   private: const bool mAscending ;
   private: const int64_t mStart ;

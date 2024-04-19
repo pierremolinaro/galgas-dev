@@ -10,6 +10,81 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @syntaxExtensions struct
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_syntaxExtensions : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_syntaxExtensionsDictionary mProperty_dictionary ;
+  public: inline GALGAS_syntaxExtensionsDictionary readProperty_dictionary (void) const {
+    return mProperty_dictionary ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_syntaxExtensions (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setDictionary (const GALGAS_syntaxExtensionsDictionary & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_dictionary = inValue ;
+  }
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GALGAS_syntaxExtensions (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_syntaxExtensions (const GALGAS_syntaxExtensionsDictionary & in_dictionary) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_syntaxExtensions init (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_syntaxExtensions extractObject (const GALGAS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_syntaxExtensions class_func_new (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_syntaxExtensions class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension getter '@syntaxExtensions listForKey' (as function)
 //
 //--------------------------------------------------------------------------------------------------
@@ -5915,9 +5990,9 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
     return mProperty_mDeclarationList ;
   }
 
-  public: GALGAS_stringset mProperty_mImplicitTypeDeclarationSet ;
-  public: inline GALGAS_stringset readProperty_mImplicitTypeDeclarationSet (void) const {
-    return mProperty_mImplicitTypeDeclarationSet ;
+  public: GALGAS_stringset mProperty_implicitTypeDeclarationSet ;
+  public: inline GALGAS_stringset readProperty_implicitTypeDeclarationSet (void) const {
+    return mProperty_implicitTypeDeclarationSet ;
   }
 
   public: GALGAS_galgas_33_SyntaxComponentListAST mProperty_mSyntaxComponentList ;
@@ -5962,8 +6037,8 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
     mProperty_mDeclarationList = inValue ;
   }
 
-  public: inline void setter_setMImplicitTypeDeclarationSet (const GALGAS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mImplicitTypeDeclarationSet = inValue ;
+  public: inline void setter_setImplicitTypeDeclarationSet (const GALGAS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_implicitTypeDeclarationSet = inValue ;
   }
 
   public: inline void setter_setMSyntaxComponentList (const GALGAS_galgas_33_SyntaxComponentListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -5998,7 +6073,7 @@ class GALGAS_galgasDeclarationAST : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GALGAS_galgasDeclarationAST (const GALGAS_semanticDeclarationListAST & in_mDeclarationList,
-                                       const GALGAS_stringset & in_mImplicitTypeDeclarationSet,
+                                       const GALGAS_stringset & in_implicitTypeDeclarationSet,
                                        const GALGAS_galgas_33_SyntaxComponentListAST & in_mSyntaxComponentList,
                                        const GALGAS_syntaxExtensions & in_mSyntaxExtensions,
                                        const GALGAS_galgasGUIComponentListAST & in_mGUIComponentList,
