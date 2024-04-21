@@ -68,13 +68,6 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
     $getter$
-    var typeName = inTypeName
-    repeat
-    while
-      $@type$ ?let t
-      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
-    end
     $identifier$ ?let @lstring getterName indexing extensionGetterDefinition
     let @formalInputParameterListAST formalInputParameterList
     select

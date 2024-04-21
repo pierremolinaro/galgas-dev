@@ -111,8 +111,6 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
-  #--- Type name
-#   $@type$ ?let typeName indexing typeReferenceInConstructor
     <simple_type_definition> !?ioDeclarations ?let typeName
     select
       <primary_beginning_by_type> !typeName !?ioDeclarations ?outExpression

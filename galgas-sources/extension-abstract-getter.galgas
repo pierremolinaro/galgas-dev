@@ -119,20 +119,13 @@ syntax extension galgas4DeclarationsSyntax {
                             ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
     $func$
-    var typeName = inTypeName
-    repeat
-    while
-      <simple_type_definition> !?ioDeclarations ?let t
-      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
-    end
     $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST {
       !isPredefined: false # Is not predefined
-      !typeName
+      !inTypeName
       !mGetterName
       !mFormalInputParameterList
       !returnedTypeName

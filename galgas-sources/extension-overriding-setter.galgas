@@ -53,7 +53,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !setterName

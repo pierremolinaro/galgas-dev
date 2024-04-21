@@ -136,20 +136,13 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $abstract$
     $func$
-    var typeName = inTypeName
-    repeat
-    while
-      <simple_type_definition> !?ioDeclarations ?let t
-      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
-    end
     $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
     <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
       !isPredefined: false
-      !typeName
+      !inTypeName
       !getterName
       !formalInputParameterList
       !returnedTypeName

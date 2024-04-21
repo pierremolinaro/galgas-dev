@@ -118,13 +118,6 @@ syntax extension galgas4DeclarationsSyntax {
   rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $proc$
-    var typeName = inTypeName
-    repeat
-    while
-      <simple_type_definition> !?ioDeclarations ?let t
-      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
-      $.$
-    end
     $identifier$ ?let @lstring methodName indexing extensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ${$
@@ -134,7 +127,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
       !isPredefined: false
       !requiresSelfForAccessingProperty: true
-      !typeName
+      !inTypeName
       !methodName
       !formalParameterList
       !routineInstructionList
