@@ -6326,10 +6326,11 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_typ
   if (kBoolTrue == test_0) {
     test_0 = ioArgument_ioDeclarations.readProperty_implicitTypeDeclarationSet ().getter_hasKey (outArgument_outTypeName.readProperty_string () COMMA_SOURCE_FILE ("type-array.galgas", 31)).operator_not (SOURCE_FILE ("type-array.galgas", 31)).boolEnum () ;
     if (kBoolTrue == test_0) {
-      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_arrayTypeDeclarationAST::init_21_isPredefined_21__21__21_isUsefull_21_equatable (GALGAS_bool (false), outArgument_outTypeName, var_elementTypeName_1604, GALGAS_bool (true), GALGAS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-array.galgas", 32)) ;
+      ioArgument_ioDeclarations.mProperty_implicitTypeDeclarationSet.addAssign_operation (outArgument_outTypeName.readProperty_string ()  COMMA_SOURCE_FILE ("type-array.galgas", 32)) ;
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_arrayTypeDeclarationAST::init_21_isPredefined_21__21__21_isUsefull_21_equatable (GALGAS_bool (false), outArgument_outTypeName, var_elementTypeName_1604, GALGAS_bool (true), GALGAS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-array.galgas", 33)) ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("type-array.galgas", 40)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("type-array.galgas", 41)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -6337,7 +6338,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_typ
 void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_type_5F_definition_5F_ggs_33__i8_parse (Lexique_galgasScanner_33_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5B_ COMMA_SOURCE_FILE ("type-array.galgas", 28)) ;
   nt_type_5F_definition_5F_ggs_33__parse (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("type-array.galgas", 40)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("type-array.galgas", 41)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -6346,7 +6347,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_typ
 void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_type_5F_definition_5F_ggs_33__i8_indexing (Lexique_galgasScanner_33_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5B_ COMMA_SOURCE_FILE ("type-array.galgas", 28)) ;
   nt_type_5F_definition_5F_ggs_33__indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("type-array.galgas", 40)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5D_ COMMA_SOURCE_FILE ("type-array.galgas", 41)) ;
 }
 
 //------------------------------------------------------------------------------------------------

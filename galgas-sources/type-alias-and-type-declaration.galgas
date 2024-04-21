@@ -123,25 +123,16 @@ syntax extension galgas4DeclarationsSyntax {
 #  }
 
   #·······························································································
-  # SIMPLE ALIAS
-  #·······························································································
 
-  rule <type_definition> ?!@galgasDeclarationAST unused ioDeclarations
-                         !@lstring outTypeName {
+  rule <simple_type_definition> ?!@galgasDeclarationAST unused ioDeclarations
+                                !@lstring outTypeName {
     $@type$ ?outTypeName
-    repeat
-    while
-      $.$
-      $@type$ ?let typeName
-      outTypeName = .init (outTypeName.string + "-" + typeName.string,
-                           [outTypeName.location union !typeName])
-    end
   }
-
+  
   #·······························································································
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName {
+  rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outTypeName {
     $[$
     <type_definition> !?ioDeclarations ?outTypeName
     $:$
@@ -154,39 +145,49 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName {
-    <type_definition> !?ioDeclarations ?outTypeName
-    $?$
-    error .here : "Not handled yet"
+    <simple_type_definition> !?ioDeclarations ?outTypeName
+    repeat
+    while
+      $.$
+      <simple_type_definition> !?ioDeclarations ?let typeName
+      outTypeName = .init (outTypeName.string + "-" + typeName.string,
+                           [outTypeName.location union !typeName])
+    end
+    select
+    or
+      $?$
+      error .here : "Not handled yet"
+    end
   }
 
   #·······························································································
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName {
-    <type_definition> !?ioDeclarations ?outTypeName
-     $<$
-    repeat
-      <type_definition> !?ioDeclarations ?let t
-      error t : "not handled yet"
-    while
-      $,$
-    end
-    $>$
-  }
+#  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+#                         !@lstring outTypeName {
+#    <type_definition> !?ioDeclarations ?outTypeName
+#     $<$
+#    repeat
+#      <type_definition> !?ioDeclarations ?let t
+#      error t : "not handled yet"
+#    while
+#      $,$
+#    end
+#    $>$
+#  }
 
   #·······························································································
 
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName {
-    $($
-    repeat
-      <type_definition> !?ioDeclarations ?outTypeName
-    while
-      $,$
-    end
-    error .here : "Not handled yet"
-    $)$
-  }
+#  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+#                         !@lstring outTypeName {
+#    $($
+#    repeat
+#      <type_definition> !?ioDeclarations ?outTypeName
+#    while
+#      $,$
+#    end
+#    error .here : "Not handled yet"
+#    $)$
+#  }
 
   #·······························································································
 

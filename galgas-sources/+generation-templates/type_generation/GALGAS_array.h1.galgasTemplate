@@ -14,12 +14,22 @@ class cEnumerator_%!TYPE_IDENTIFIER% final {
   private: cEnumerator_%!TYPE_IDENTIFIER% & operator = (const cEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
 
 //--- 
-  public: bool hasCurrentObject (void) const ;
-  public: bool hasNextObject (void) const ;
-  public: void gotoNextObject (void) ;
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+  
+//--- 
+  public: inline bool hasNextObject (void) const {
+    return (mCurrent + 1) < mSharedArray.count () ;
+  }
+
+//--- 
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
 
 //--- Current element access
-  public: GALGAS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
+  public: class GALGAS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
 
 //---- Properties
   private: const TC_Array <GALGAS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;

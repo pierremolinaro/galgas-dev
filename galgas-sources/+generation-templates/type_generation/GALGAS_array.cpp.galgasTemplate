@@ -66,7 +66,7 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS__5B_string_5D_ result ;
+  GALGAS_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.mSharedArray.appendDataFromPointer (
@@ -88,6 +88,19 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -184,24 +197,6 @@ cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS
 mSharedArray (inEnumeratedObject.mSharedArray),
 mCurrent (0),
 mEnumerationOrder (inOrder) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cEnumerator_%!TYPE_IDENTIFIER%::hasCurrentObject (void) const {
-  return mCurrent < mSharedArray.count () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cEnumerator_%!TYPE_IDENTIFIER%::hasNextObject (void) const {
-  return (mCurrent + 1) < mSharedArray.count () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumerator_%!TYPE_IDENTIFIER%::gotoNextObject (void) {
-  mCurrent += 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------

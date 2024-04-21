@@ -24,7 +24,6 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
-#    $§§$
     $§[$
     var @collectionValueElementList expressionList = ()
     select
@@ -52,7 +51,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
-    <optional_type> ?let @lstring typeName
+    let startLocation = @location.here
     $[$
     var @collectionValueElementList expressionList = ()
     select
@@ -64,7 +63,27 @@ syntax extension galgas4ExpressionSyntax {
         $,$
       end
     end
-    outExpression = @collectionValueAST (typeName, expressionList, .here)
+    outExpression = @collectionValueAST (.init ("", startLocation), expressionList, .here)
+    $]$
+  }
+
+  #·······························································································
+
+  rule <primary_beginning_by_type> ?let @lstring inTypeName
+                                   ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticExpressionAST outExpression {
+    $[$
+    var @collectionValueElementList expressionList = ()
+    select
+    or
+      repeat
+        <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+        expressionList += !expression !.here
+      while
+        $,$
+      end
+    end
+    outExpression = @collectionValueAST (inTypeName, expressionList, .here)
     $]$
   }
 
@@ -96,13 +115,14 @@ refclass @collectionValueAST : @semanticExpressionAST {
 
   #·······························································································
 
-  override method analyzeSemanticExpression  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                            ?inferenceType: let @unifiedTypeMapEntry inType
-                                            ?let @analysisContext inAnalysisContext
-                                           ?!@unifiedTypeMap ioTypeMap
-                                          ?!@localVarManager ioVariableMap
-                                          !@semanticExpressionForGeneration outExpression {
+  override method analyzeSemanticExpression
+        ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+        ?inferenceType: let @unifiedTypeMapEntry inType
+        ?let @analysisContext inAnalysisContext
+        ?!@unifiedTypeMap ioTypeMap
+        ?!@localVarManager ioVariableMap
+        !@semanticExpressionForGeneration outExpression {
   #--- Type
     let @unifiedTypeMapEntry targetType
     if self.mTypeName.string == "" then
@@ -149,8 +169,10 @@ refclass @collectionValueAST : @semanticExpressionAST {
         !self.mEndOfCollectionValue
         !expressionListForGeneration
       }
+    #--- Usefull entity graph
+      let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([targetType definition].typeName)
+      [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !typeUsefulnessName]
     end
-  #---
   }
 
   #·······························································································

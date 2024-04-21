@@ -219,7 +219,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !false
     !listTypeIndex
   ]
-#--- Readers
+#--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -319,7 +319,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-  setterOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex"
+  setterOutputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inIndex"
   [!?setterMap insertOrReplace
     !@lstring {!"removeAtIndex" !@location.here}
     !@methodKind.definedAsMember

@@ -713,21 +713,6 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   #·······························································································
 
-#  rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
-#                          ?!@actualParameterListAST ioActualParameterList {
-#    $!$
-#    let selector = ["" here]
-#    <expression> !?ioDeclarations ?let @semanticExpressionAST e
-#    let @location endOfExpressionLocation = @location.here
-#    ioActualParameterList += !@outputActualParameterAST {
-#      !selector
-#      !e
-#      !endOfExpressionLocation
-#    }
-#  }
-
-  #·······························································································
-
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
     let selector = ["" here]

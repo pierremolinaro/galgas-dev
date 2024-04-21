@@ -70,20 +70,37 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <optional_type> !@lstring outTypeName {
+  rule <primary_beginning_by_dot> ?!@galgasDeclarationAST ioDeclarations
+                                  !@semanticExpressionAST outExpression {
+  #--- Type name
+#    <optional_type> !?ioDeclarations ?let @lstring typeName
+#    $.$
+    let startOfExpression = @location.here
+  #--- Constructor name
+    $identifier$ ?let @lstring constructorName
+  #--- Actual arguments
+    let @actualOutputArgumentList expressionList
     select
-      outTypeName = .init {!"" !.here}
+      expressionList = ()
     or
-      $@type$ ?outTypeName indexing typeReferenceInConstructor
+      $($
+      <output_expression_list> !?ioDeclarations ?expressionList
+      $)$
     end
+    let endOfExpression = @location.here
+    outExpression = @classFuncExpressionAST {
+      !.init ("", startOfExpression)
+      !constructorName
+      !expressionList
+      ![startOfExpression union !endOfExpression]
+    }
   }
 
   #·······························································································
 
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
-  #--- Type name
-    <optional_type> ?let @lstring typeName
+  rule <primary_beginning_by_type> ?let @lstring inTypeName
+                                   ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticExpressionAST outExpression {
     $.$
     let startOfExpression = @location.here
   #--- Constructor name
@@ -99,7 +116,7 @@ syntax extension galgas4ExpressionSyntax {
     end
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST {
-      !typeName
+      !inTypeName
       !constructorName
       !expressionList
       ![startOfExpression union !endOfExpression]

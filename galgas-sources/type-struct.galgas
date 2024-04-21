@@ -233,10 +233,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     if self.enumeratedElementTypeName == "" then
       enumeratedType = .null
     else
-     [!?ioTypeMap makeEntryFromString
-       !self.enumeratedElementTypeName
-       ?enumeratedType
-      ]
+     [!?ioTypeMap makeEntryFromString !self.enumeratedElementTypeName ?enumeratedType]
     end
   #--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition {

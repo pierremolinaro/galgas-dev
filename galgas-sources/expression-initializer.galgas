@@ -106,52 +106,7 @@ syntax extension galgas3ExpressionSyntax {
 syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    <optional_type> ?let @lstring typeName
-    $.$
-    $init$
-    $($
-    <output_expression_list> !?ioDeclarations ?let expressionList
-    let endOfExpression = @location.here
-    $)$
-    outExpression = @initializerCallAST {
-      !typeName
-      !expressionList
-      !endOfExpression
-    }
-  }
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    <optional_type> ?let @lstring typeName
-    $.$
-    $init$
-    let endOfExpression = @location.here
-    outExpression = @initializerCallAST {
-      !typeName
-      !()
-      !endOfExpression
-    }
-  }
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    $($
-    $)$
-    let endOfExpression = @location.here
-    outExpression = @initializerCallAST {
-      !["" nowhere]
-      !()
-      !endOfExpression
-    }
-  }
-
+  #  Primary beginning with a type
   #·······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
@@ -159,13 +114,88 @@ syntax extension galgas4ExpressionSyntax {
   #--- Type name
     $@type$ ?let typeName indexing typeReferenceInConstructor
 #    <type_definition> !?ioDeclarations ?let typeName
+    <primary_beginning_by_type> !typeName !?ioDeclarations ?outExpression
+  }
+  
+  #·······························································································
+  #  Primary beginning with a dot
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+                 !@semanticExpressionAST outExpression {
+    $.$
+    <primary_beginning_by_dot> !?ioDeclarations ?outExpression
+  }
+  
+  #·······························································································
+
+  rule <primary_beginning_by_dot> ?!@galgasDeclarationAST ioDeclarations
+                                  !@semanticExpressionAST outExpression {
+    $init$
+    let initLocation = @location.here
+    select
+      outExpression = @initializerCallAST {
+        !.init ("", initLocation)
+        !()
+        !initLocation
+      }
+    or
+      $($
+      <output_expression_list> !?ioDeclarations ?let expressionList
+      let endOfExpression = @location.here
+      $)$
+      outExpression = @initializerCallAST {
+        !.init ("", initLocation)
+        !expressionList
+        !endOfExpression
+      }
+    end
+  }
+
+  #·······························································································
+
+  rule <primary_beginning_by_type> ?let @lstring inTypeName
+                                   ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticExpressionAST outExpression {
+    $.$
+    $init$
     $($
     <output_expression_list> !?ioDeclarations ?let expressionList
     let endOfExpression = @location.here
     $)$
     outExpression = @initializerCallAST {
-      !typeName
+      !inTypeName
       !expressionList
+      !endOfExpression
+    }
+  }
+
+  #·······························································································
+
+  rule <primary_beginning_by_type> ?let @lstring inTypeName
+                                   ?!@galgasDeclarationAST ioDeclarations
+                                   !@semanticExpressionAST outExpression {
+    $($
+    <output_expression_list> !?ioDeclarations ?let expressionList
+    let endOfExpression = @location.here
+    $)$
+    outExpression = @initializerCallAST {
+      !inTypeName
+      !expressionList
+      !endOfExpression
+    }
+  }
+
+  #·······························································································
+
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
+    $($
+    let endOfExpression = @location.here
+    $)$
+    outExpression = @initializerCallAST {
+      !.init ("", endOfExpression)
+      !()
       !endOfExpression
     }
   }
