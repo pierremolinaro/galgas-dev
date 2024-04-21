@@ -103,11 +103,11 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $mutating$
     $proc$
-    $@type$ ?var @lstring typeName indexing typeReferenceExtensionSetter
+    <simple_type_definition> !?ioDeclarations ?var @lstring typeName
     $.$
     repeat
     while
-      $@type$ ?let t
+      <simple_type_definition> !?ioDeclarations ?let t
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
       $.$
     end
@@ -137,7 +137,7 @@ syntax extension galgas4DeclarationsSyntax {
     var typeName = inTypeName
     repeat
     while
-      $@type$ ?let t
+      <simple_type_definition> !?ioDeclarations ?let t
       typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
       $.$
     end

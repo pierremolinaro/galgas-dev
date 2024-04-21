@@ -77,8 +77,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extension$
-    $@type$ ?let @lstring className indexing typeReferenceExtensionMethod
+    <simple_type_definition> !?ioDeclarations ?var typeName
     $.$
+    repeat
+    while
+      <simple_type_definition> !?ioDeclarations ?let t
+      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      $.$
+    end
     $init$
     <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
@@ -87,7 +93,7 @@ syntax extension galgas4DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
-      !className
+      !typeName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -96,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <method_declaration> ?let @lstring inClassName
+  rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $init$
     <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
@@ -106,7 +112,7 @@ syntax extension galgas4DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
-      !inClassName
+      !inTypeName
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
