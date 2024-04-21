@@ -51,6 +51,9 @@ syntax galgas4ExpressionSyntax (galgasScanner4) {
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName
 
+  rule <simple_type_definition> ?!@galgasDeclarationAST unused ioDeclarations
+                                !@lstring outTypeName
+
   #·······························································································
 
   rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations

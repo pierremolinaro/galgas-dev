@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression {
     let operatorLocation = @location.here
     <primary> !?ioDeclarations ?outExpression
-#    $°$
+#    $!$
     $.$
     $bang$
     outExpression = @bangExpressionAST {!operatorLocation !outExpression}

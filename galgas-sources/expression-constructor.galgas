@@ -72,13 +72,10 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary_beginning_by_dot> ?!@galgasDeclarationAST ioDeclarations
                                   !@semanticExpressionAST outExpression {
-  #--- Type name
-#    <optional_type> !?ioDeclarations ?let @lstring typeName
-#    $.$
-    let startOfExpression = @location.here
   #--- Constructor name
     $identifier$ ?let @lstring constructorName
   #--- Actual arguments
+    let startOfExpression = @location.here
     let @actualOutputArgumentList expressionList
     select
       expressionList = ()
@@ -98,15 +95,13 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_beginning_by_type> ?let @lstring inTypeName
-                                   ?!@galgasDeclarationAST ioDeclarations
-                                   !@semanticExpressionAST outExpression {
-    $.$
-    let startOfExpression = @location.here
-  #--- Constructor name
-    $identifier$ ?let @lstring constructorName
+  rule <primary_beginning_by_type_dot_name> ?let @lstring inTypeName
+                                       ?let @lstring inClassFunctionName
+                                       ?!@galgasDeclarationAST ioDeclarations
+                                       !@semanticExpressionAST outExpression {
   #--- Actual arguments
     let @actualOutputArgumentList expressionList
+    let startOfExpression = @location.here
     select
       expressionList = ()
     or
@@ -117,7 +112,7 @@ syntax extension galgas4ExpressionSyntax {
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST {
       !inTypeName
-      !constructorName
+      !inClassFunctionName
       !expressionList
       ![startOfExpression union !endOfExpression]
     }

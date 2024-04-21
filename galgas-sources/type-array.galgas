@@ -52,26 +52,6 @@ syntax extension galgas4DeclarationsSyntax {
 
   #·······························································································
 
-  rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
-                                !@lstring outTypeName {
-    $[$
-    <type_definition> !?ioDeclarations ?let elementTypeName
-    outTypeName = .init ("[" + elementTypeName.string + "]", elementTypeName.location)
-    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
-      ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
-      ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
-        !isPredefined: false,
-        outTypeName,
-        elementTypeName,
-        !isUsefull: true,
-        !equatable: false
-      )
-    end
-    $]$
-  }
-
-  #·······························································································
-
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

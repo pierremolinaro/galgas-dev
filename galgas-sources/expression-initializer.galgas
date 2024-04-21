@@ -112,9 +112,47 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
   #--- Type name
-    $@type$ ?let typeName indexing typeReferenceInConstructor
-#    <type_definition> !?ioDeclarations ?let typeName
-    <primary_beginning_by_type> !typeName !?ioDeclarations ?outExpression
+#   $@type$ ?let typeName indexing typeReferenceInConstructor
+    <simple_type_definition> !?ioDeclarations ?let typeName
+    select
+      <primary_beginning_by_type> !typeName !?ioDeclarations ?outExpression
+    or
+      $.$
+      select
+        $init$
+        <primary_beginning_by_type_dot_init> !typeName !?ioDeclarations ?outExpression
+      or
+        $identifier$ ?let @lstring classFuncName
+        <primary_beginning_by_type_dot_name> !typeName !classFuncName !?ioDeclarations ?outExpression
+      or
+        <simple_type_followed_by_dot_type> !typeName !?ioDeclarations ?outExpression
+      end
+    end
+  }
+  
+  #·······························································································
+
+  rule <simple_type_followed_by_dot_type> ?let @lstring inTypeName 
+                                          ?!@galgasDeclarationAST ioDeclarations
+                                          !@semanticExpressionAST outExpression {
+  #--- Type name
+    <simple_type_definition> !?ioDeclarations ?let t
+    let typeName = @lstring (inTypeName.string + "-" + t.string,
+                             [inTypeName.location union !t])
+    select
+      <primary_beginning_by_type> !typeName !?ioDeclarations ?outExpression
+    or
+      $.$
+      select
+        $init$
+        <primary_beginning_by_type_dot_init> !typeName !?ioDeclarations ?outExpression
+      or
+        $identifier$ ?let @lstring classFuncName
+        <primary_beginning_by_type_dot_name> !typeName !classFuncName !?ioDeclarations ?outExpression
+      or
+        <simple_type_followed_by_dot_type> !typeName !?ioDeclarations ?outExpression
+      end
+    end
   }
   
   #·······························································································
@@ -154,20 +192,26 @@ syntax extension galgas4ExpressionSyntax {
 
   #·······························································································
 
-  rule <primary_beginning_by_type> ?let @lstring inTypeName
+  rule <primary_beginning_by_type_dot_init> ?let @lstring inTypeName
                                    ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticExpressionAST outExpression {
-    $.$
-    $init$
-    $($
-    <output_expression_list> !?ioDeclarations ?let expressionList
-    let endOfExpression = @location.here
-    $)$
-    outExpression = @initializerCallAST {
-      !inTypeName
-      !expressionList
-      !endOfExpression
-    }
+    select
+      outExpression = @initializerCallAST {
+        !inTypeName
+        !()
+        !.here
+      }
+    or
+      $($
+      <output_expression_list> !?ioDeclarations ?let expressionList
+      let endOfExpression = @location.here
+      $)$
+      outExpression = @initializerCallAST {
+        !inTypeName
+        !expressionList
+        !endOfExpression
+      }
+    end
   }
 
   #·······························································································
@@ -245,11 +289,6 @@ refclass @initializerCallAST : @semanticExpressionAST {
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     )
   #--- Usefull entity graph
-#    let initializerUsefulnessName = initializerNameForUsefulEntitiesGraph (
-#      [instanciedType definition].typeName,
-#      [self.mExpressions initializerSignature]
-#    )
-#    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !initializerUsefulnessName]
     let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([instanciedType definition].typeName)
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !typeUsefulnessName]
   #---

@@ -223,7 +223,7 @@ display (const cPureBNFproductionsList & inProductionRules,
     inHTMLfile.appendCString (" ->") ;
     for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
-        inHTMLfile.appendCString (" .") ;
+        inHTMLfile.addRawData (" &oplus;") ;
       }
       inHTMLfile.appendCString (" ") ;
       inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
@@ -497,14 +497,14 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
 //
 //--------------------------------------------------------------------------------------------------
 
-class c_LR0_items_sets_collection {
+class c_LR0_items_sets_collection final {
 //--- Default constructor and destructor
   public: c_LR0_items_sets_collection (void) ;
-  public: virtual ~c_LR0_items_sets_collection (void) ;
+  public: ~ c_LR0_items_sets_collection (void) ;
 
 //--- No copy
-  private: c_LR0_items_sets_collection (c_LR0_items_sets_collection &) ;
-  private: c_LR0_items_sets_collection & operator = (c_LR0_items_sets_collection &) ;
+  private: c_LR0_items_sets_collection (c_LR0_items_sets_collection &) = delete ;
+  private: c_LR0_items_sets_collection & operator = (c_LR0_items_sets_collection &) = delete ;
 
 //--- Search or insert a LR0 items set (return set index)
   public: int32_t searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) ;
@@ -1472,7 +1472,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
 //--- Display automaton states
   if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.addRawData ("<table class=\"result\">"
-                              "<tr><td class=\"result_title\" colspan=\"2\">") ;
+                                   "<tr><td class=\"result_title\" colspan=\"2\">") ;
     ioHTMLFileContents.appendCString ("LR0 automaton states") ;
     ioHTMLFileContents.addRawData ("</td></tr>") ;
     LR0_items_sets_collection.display (inProductionRules, inVocabulary, ioHTMLFileContents) ;
