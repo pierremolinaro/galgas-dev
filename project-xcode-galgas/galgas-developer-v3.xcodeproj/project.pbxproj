@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF01558F1267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
 		CF0155901267796800917801 /* cObjectArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01558B1267796800917801 /* cObjectArray.cpp */; };
+		CF052E312BD666D200B079FB /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF052E2F2BD666D200B079FB /* all-declarations-31.cpp */; };
+		CF052E322BD666D200B079FB /* all-declarations-31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF052E2F2BD666D200B079FB /* all-declarations-31.cpp */; };
 		CF0676460E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
 		CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C51049592F005F03FA /* MainMenu.xib */; };
 		CF074BC71000BB6E00F45986 /* BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074BC31000BB6E00F45986 /* BoolCommandLineOption.cpp */; };
@@ -447,6 +449,8 @@
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF04281411175895002EEB98 /* GALGAS_double.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_double.cpp; sourceTree = "<group>"; };
 		CF04285D1117611F002EEB98 /* GALGAS_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_data.cpp; sourceTree = "<group>"; };
+		CF052E2F2BD666D200B079FB /* all-declarations-31.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
+		CF052E302BD666D200B079FB /* all-declarations-31.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-31.h"; sourceTree = "<group>"; };
 		CF0676080E7EDE29008B9D1F /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = md5.h; sourceTree = "<group>"; };
 		CF0676430E7EE037008B9D1F /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = md5.cpp; sourceTree = "<group>"; };
 		CF074BC21000BB6E00F45986 /* BoolCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BoolCommandLineOption.h; sourceTree = "<group>"; };
@@ -961,6 +965,8 @@
 		CF23743419967BEF0061D2D8 /* C++ files */ = {
 			isa = PBXGroup;
 			children = (
+				CF052E2F2BD666D200B079FB /* all-declarations-31.cpp */,
+				CF052E302BD666D200B079FB /* all-declarations-31.h */,
 				CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */,
 				CF4C996827301EDB000A6A07 /* all-declarations-0.h */,
 				CF23743919967C4F0061D2D8 /* all-declarations-1.cpp */,
@@ -1693,6 +1699,7 @@
 				CF23746A19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
 				CF12C0BE1D043E610060778F /* all-predefined-types.cpp in Sources */,
 				CF23746419967C4F0061D2D8 /* all-declarations-12.cpp in Sources */,
+				CF052E312BD666D200B079FB /* all-declarations-31.cpp in Sources */,
 				CFCB7A312B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */,
 				CF2382D3124D126000A57965 /* C_galgas_function_descriptor.cpp in Sources */,
 				CF3D9FD61257733E0037D473 /* capCollectionElement.cpp in Sources */,
@@ -1873,6 +1880,7 @@
 				CF2382A8124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,
 				CFCDC7EF2AB358C800FD6CB0 /* print.cpp in Sources */,
 				CF23746919967C4F0061D2D8 /* all-declarations-14.cpp in Sources */,
+				CF052E322BD666D200B079FB /* all-declarations-31.cpp in Sources */,
 				CFCB7A2E2B2DAECF008DD653 /* BigSigned.cpp in Sources */,
 				CF23746B19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
 				CF23746519967C4F0061D2D8 /* all-declarations-12.cpp in Sources */,

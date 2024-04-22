@@ -327,65 +327,74 @@ syntax extension galgas4InstructionsSyntax {
         $identifier$ ?let @lstring optionalMethodName
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = ()
         repeat
-        while
-          $!selector:$ ?let selector
-          <expression> !?ioDeclarations ?let expression
-          optionalMethodActualArgumentList +=
-            !selector
-            !.actualOutput {!expression: expression !location: .here}
-        while
-          $!$
-          let selector = ["" here]
-          <expression> !?ioDeclarations ?let expression
-          optionalMethodActualArgumentList +=
-            !selector
-            !.actualOutput {!expression: expression !location: .here}
-        while
-          let @lstring selector
           select
-            $?selector:$ ?selector
-          or
-            $?$
-            selector = ["" here]
-          end
-          select
-            $let$
-            let @lstring typeName
-            select
-              typeName = ["" nowhere]
-            or
-              <type_definition> !?ioDeclarations ?typeName
-            end
-            $identifier$ ?let constantName
+            $!selector:$ ?let selector
+            <expression> !?ioDeclarations ?let expression
             optionalMethodActualArgumentList +=
               !selector
-              !.actualLetInput {!typeName: typeName !constantName: constantName}
+              !.actualOutput {!expression: expression !location: .here}
           or
-            $var$
-            let @lstring typeName
+            $!$
+            let selector = ["" here]
+            <expression> !?ioDeclarations ?let expression
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualOutput {!expression: expression !location: .here}
+          or
+            let selector = ["" here]
+            <expression> !?ioDeclarations ?let expression
+            optionalMethodActualArgumentList +=
+              !selector
+              !.actualOutput {!expression: expression !location: .here}
+          or
+            let @lstring selector
             select
-              typeName = ["" nowhere]
+              $?selector:$ ?selector
             or
-              <type_definition> !?ioDeclarations ?typeName
+              $?$
+              selector = ["" here]
             end
-            $identifier$ ?let variableName
-            optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
-          or
-            $*$
-            optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
-          or
-            $literalInt$ ?let repetitionCount
-            $*$
-            if selector.string != "" then
-              error selector : "the selector should be '?'"  fixit { replace "?" }
-            end
-            if repetitionCount.bigint == 0 then
-              error repetitionCount : "the repetition count should be > 0"
-            end
-            for i in 0 ..< repetitionCount.bigint do
-              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
+            select
+              $let$
+              let @lstring typeName
+              select
+                typeName = ["" nowhere]
+              or
+                <type_definition> !?ioDeclarations ?typeName
+              end
+              $identifier$ ?let constantName
+              optionalMethodActualArgumentList +=
+                !selector
+                !.actualLetInput {!typeName: typeName !constantName: constantName}
+            or
+              $var$
+              let @lstring typeName
+              select
+                typeName = ["" nowhere]
+              or
+                <type_definition> !?ioDeclarations ?typeName
+              end
+              $identifier$ ?let variableName
+              optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
+            or
+              $*$
+              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
+            or
+              $literalInt$ ?let repetitionCount
+              $*$
+              if selector.string != "" then
+                error selector : "the selector should be '?'"  fixit { replace "?" }
+              end
+              if repetitionCount.bigint == 0 then
+                error repetitionCount : "the repetition count should be > 0"
+              end
+              for i in 0 ..< repetitionCount.bigint do
+                optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
+              end
             end
           end
+        while
+          $,$
         end
         $]$
         outExpressionList += !.optionalMethodCall {

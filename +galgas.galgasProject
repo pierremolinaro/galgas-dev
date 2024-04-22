@@ -168,6 +168,7 @@ project (3:7:0) -> "galgas" {
 
 #--- Expressions
   "galgas-sources/expression-if.galgas"
+  "galgas-sources/expression-bang.galgas"
   "galgas-sources/expression-unary-plus.galgas"
   "galgas-sources/expression-unary-minus.galgas"
   "galgas-sources/expression-var.galgas"
@@ -194,7 +195,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/expression-property-access.galgas"
   "galgas-sources/expression-not.galgas"
   "galgas-sources/expression-tilde.galgas"
-  "galgas-sources/expression-bang.galgas"
   "galgas-sources/expression-unary-wrapping-minus.galgas"
   "galgas-sources/expression-or.galgas"
   "galgas-sources/expression-and.galgas"
