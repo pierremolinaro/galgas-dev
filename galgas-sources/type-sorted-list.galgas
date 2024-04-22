@@ -345,6 +345,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
+    !readSubscriptMap: ()
     !enumerationDescriptorList: enumerationDescriptor
     !features: features 
     !addAssignOperatorArguments: constructorAttributeTypeList
@@ -474,6 +475,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments

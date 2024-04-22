@@ -94,7 +94,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end
     [accessControl checkSetAccess !.none !self.mGetterName]
-    outExpression = @structPropertyAccessExpressionForGeneration {
+    outExpression = @propertyAccessExpressionForGeneration {
       !propertyType
       !self.mGetterName.location
       !receiverExpression
@@ -1141,7 +1141,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
 #    error self.self.mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
 #  end
 #--- Generate expression
-  outExpression = @structPropertyAccessExpressionForGeneration {
+  outExpression = @propertyAccessExpressionForGeneration {
     !type
     !self.mOperatorLocation
     !expression

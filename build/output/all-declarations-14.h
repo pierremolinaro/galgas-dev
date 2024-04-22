@@ -1965,6 +1965,8 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
                                                     class GALGAS_stringset & outOperand1,
@@ -2129,6 +2131,8 @@ class GALGAS_headerCompositionMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2222,6 +2226,8 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_headerRepartitionMap getter_overriddenMap (Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -2371,6 +2377,8 @@ class GALGAS_headerRepartitionMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2464,6 +2472,8 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_projectQualifiedFeatureMap getter_overriddenMap (Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -2612,6 +2622,8 @@ class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2792,6 +2804,8 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2928,6 +2942,8 @@ class GALGAS_XCodeGroupList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3241,6 +3257,8 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3468,6 +3486,8 @@ class GALGAS_XCodeToolTargetList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3838,6 +3858,8 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
                                                                                     COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4104,6 +4126,8 @@ class GALGAS_XCodeAppTargetList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 

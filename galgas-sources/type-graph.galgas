@@ -486,6 +486,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !optionalMethodMap: ()
+    !readSubscriptMap: ()
     !enumerationDescriptorList: ()
     !features: .doNotGenererateObjectCompare
     !addAssignOperatorArguments: ()
@@ -575,6 +576,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments

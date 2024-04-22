@@ -192,6 +192,29 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIE
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%const GALGAS_uint & inIndex,
+      %!^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const EnumerationOrder inOrder) :
 mSharedArray (inEnumeratedObject.mSharedArray),

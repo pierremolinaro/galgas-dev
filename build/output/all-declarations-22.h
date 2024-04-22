@@ -291,6 +291,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection

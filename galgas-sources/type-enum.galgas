@@ -315,6 +315,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
+    !readSubscriptMap: ()
     !enumerationDescriptorList: ()
     !features: features
     !addAssignOperatorArguments: ()
@@ -460,6 +461,7 @@ override method @enumTypeForGeneration appendDeclaration1
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments

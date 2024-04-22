@@ -7509,6 +7509,137 @@ GALGAS_sortedListSortDescriptorListAST_2D_element GALGAS_sortedListSortDescripto
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_subscriptMap_2D_element::GALGAS_subscriptMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_argumentTypeList (),
+mProperty_valueType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap_2D_element::~ GALGAS_subscriptMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_subscriptMap_2D_element GALGAS_subscriptMap_2D_element::init_21__21__21_ (const GALGAS_lstring & in_lkey,
+                                                                                 const GALGAS_functionSignature & in_argumentTypeList,
+                                                                                 const GALGAS_unifiedTypeMapEntry & in_valueType,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_subscriptMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_argumentTypeList = in_argumentTypeList ;
+  result.mProperty_valueType = in_valueType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap_2D_element::GALGAS_subscriptMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                const GALGAS_functionSignature & inOperand1,
+                                                                const GALGAS_unifiedTypeMapEntry & inOperand2) :
+mProperty_lkey (inOperand0),
+mProperty_argumentTypeList (inOperand1),
+mProperty_valueType (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap_2D_element GALGAS_subscriptMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                               const GALGAS_functionSignature & in_argumentTypeList,
+                                                                               const GALGAS_unifiedTypeMapEntry & in_valueType,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_subscriptMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_argumentTypeList = in_argumentTypeList ;
+  result.mProperty_valueType = in_valueType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_subscriptMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_argumentTypeList.isValid () && mProperty_valueType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_argumentTypeList.drop () ;
+  mProperty_valueType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap_2D_element::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @subscriptMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_argumentTypeList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_valueType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @subscriptMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap_2D_element ("subscriptMap-element",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_subscriptMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_subscriptMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_subscriptMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_subscriptMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap_2D_element GALGAS_subscriptMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_subscriptMap_2D_element result ;
+  const GALGAS_subscriptMap_2D_element * p = (const GALGAS_subscriptMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_subscriptMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("subscriptMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_scopeLocalVarMap_2D_element::GALGAS_scopeLocalVarMap_2D_element (void) :
 mProperty_lkey (),
 mProperty_mType (),

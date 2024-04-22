@@ -34,6 +34,15 @@ list @actualOutputArgumentList {
   }
 
   #·······························································································
+  
+  getter subscriptSignature -> @string {
+    result = ""
+    for effectiveParameter in self do
+      result += "?" + effectiveParameter.mActualSelector
+    end
+  }
+
+  #·······························································································
 
   method enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (* mExpression *) in self do

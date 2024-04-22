@@ -156,6 +156,8 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -279,6 +281,8 @@ class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -826,6 +830,8 @@ class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInst
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -929,6 +935,8 @@ class GALGAS_templateInstructionStringForGeneration_2D_weak : public GALGAS_temp
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 

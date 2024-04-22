@@ -48,7 +48,11 @@ syntax extension galgas3ExpressionSyntax {
       while
         $,$
       end
-      error .here : "not handled yet"
+      outExpression = @subscriptReadAccessExpressionAST {
+        !outExpression
+        !expressionList
+        !.here
+      }
       $]$
     while
       $.$
@@ -73,14 +77,18 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
-    <primary> !?ioDeclarations ? outExpression
+    <primary> !?ioDeclarations ?outExpression
     repeat
     while 
       $[$
       <non_empty_output_expression_list>
         !?ioDeclarations
-        ?let @actualOutputArgumentList unused expressionList
-      error .here : "not handled yet"
+        ?let @actualOutputArgumentList expressionList
+      outExpression = @subscriptReadAccessExpressionAST {
+        !outExpression
+        !expressionList
+        !.here
+      }
       $]$
     while
       $.$
@@ -96,8 +104,8 @@ syntax extension galgas4ExpressionSyntax {
         let startLocation = @location.next
         $($
         <output_expression_list> !?ioDeclarations ?let @actualOutputArgumentList expressionList
-        $)$
         let endLocation = @location.here
+        $)$
         outExpression = @getterCallExpressionAST {
           !errorOnGetterCallInsteadOfPropertyRead: true
           !outExpression
@@ -163,7 +171,7 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
       end
       [accessControl checkGetAccess !inAnalysisContext.selfAvailability !self.propertyName]
     #--- Generate expression
-      outExpression = @structPropertyAccessExpressionForGeneration {
+      outExpression = @propertyAccessExpressionForGeneration {
         !type
         !self.operatorLocation
         !expression
@@ -209,10 +217,8 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @structPropertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
+refclass @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration expression
   private let @string structFieldName
 
@@ -234,6 +240,143 @@ refclass @structPropertyAccessExpressionForGeneration : @semanticExpressionForGe
     ]
   #--- Generate
     outCppExpression = operand + ".readProperty_" + [self.structFieldName identifierRepresentation] + " ()"
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!   Subscript read Access
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @subscriptReadAccessExpressionAST : @semanticExpressionAST {
+  private let @semanticExpressionAST expression
+  private let @actualOutputArgumentList actualArgumentList
+  private let @location endOfArgsLocation
+
+  #·······························································································
+
+  override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    for expression in self.actualArgumentList do
+      [expression.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+    end
+  }
+
+  #·······························································································
+
+  override method analyzeSemanticExpression
+                                  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                  ?inferenceType: let @unifiedTypeMapEntry unused inType
+                                  ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+                                  ?!@localVarManager ioVariableMap
+                                  !@semanticExpressionForGeneration outExpression {
+  #--- Receiver analysis
+    [self.expression analyzeSemanticExpression
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: .null
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration expression
+    ]
+    let @unifiedTypeMapEntry expressionType = expression.mResultType
+  #--- subscript invocation signature
+    let invocationSignature = [self.actualArgumentList subscriptSignature]
+  #--- Check subscript availability
+    let subscriptMap = [expressionType definition].readSubscriptMap
+    if let [subscriptMap searchKey !invocationSignature ?let formalArgumentList ?let resultType] then
+    #--- Check effective argument list
+      var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
+      for formalArg in formalArgumentList, actualArg in self.actualArgumentList do
+        [actualArg.mExpression analyzeSemanticExpression
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: formalArg.mFormalArgumentType
+          !inAnalysisContext
+          !?ioTypeMap
+          !?ioVariableMap
+          ?@semanticExpressionForGeneration expression
+        ]
+        checkAssignmentTypeWithImplicitGetterCall (
+          !formalArg.mFormalArgumentType
+          !expression.mResultType
+          !actualArg.mEndOfExpressionLocation
+          !?expression
+        )
+        if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
+          let @string s = "!" + if formalArg.mFormalSelector.string != ""
+            then formalArg.mFormalSelector.string + ":"
+            else ""
+          end
+          error actualArg.mActualSelector : "the selector should be '" + s + "'"
+          fixit { replace s }
+        end
+        semanticExpressionListForGeneration += !expression
+      end 
+    #--- Generate expression
+      outExpression = @subscriptReadAccessExpressionForGeneration (
+        resultType,
+        self.endOfArgsLocation,
+        expression,
+        invocationSignature,
+        semanticExpressionListForGeneration
+      )
+    else # Unknown subscript signature
+      error self.endOfArgsLocation : "unknown subscript signature" : outExpression
+    end
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGeneration {
+  private let @semanticExpressionForGeneration expression
+  private let @string subscriptInvocationName
+  private let @semanticExpressionListForGeneration actualExpressionList
+
+  #·······························································································
+
+  override method generateExpression ?!@string ioGeneratedCode
+                                      ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      !@string outCppExpression {
+    [self.mResultType addHeaderFileName !?ioInclusionSet]
+  #--- Operand
+    [self.expression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string operand
+    ]
+  #--- subscript arments
+    var [@string] subscriptArgumentList = ()
+    for actualArg in self.actualExpressionList do
+      [actualArg.mExpression generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let @string actualArgOperand
+      ]
+      [!?subscriptArgumentList append !actualArgOperand]
+    end
+  #--- Generate
+    outCppExpression = operand + ".readSubscript_" + [self.subscriptInvocationName identifierRepresentation]
+    outCppExpression += " ("
+    for operand in subscriptArgumentList do
+      outCppExpression += operand + ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    outCppExpression += compilerCppName () + " COMMA_HERE)"
   }
 
   #·······························································································

@@ -39,6 +39,7 @@ struct @unifiedTypeDefinition {
   public let @instanceMethodMap instanceMethodMap %initArgLabel
   public let @classMethodMap classMethodMap %initArgLabel
   public let @optionalMethodMap optionalMethodMap %initArgLabel
+  public let @subscriptMap readSubscriptMap %initArgLabel # Read access
   public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel # Empty List if cannot be enumerated
   public let @typeFeatures features %initArgLabel
   public let @functionSignature addAssignOperatorArguments %initArgLabel # Empty list if += operator is not supported
@@ -152,6 +153,17 @@ getter @typeFeatures generateCppObjectComparison -> @bool {
   end
 }
 
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#  SUBSCRIPT MAP
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @subscriptMap {
+  public let @functionSignature argumentTypeList
+  public let @unifiedTypeMapEntry valueType
+  insert insertKey error message "the '%K' subscript has been already defined"
+  search searchKey error message "the '%K' subscript is not declared"
+}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

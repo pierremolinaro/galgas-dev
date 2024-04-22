@@ -126,6 +126,8 @@ class GALGAS_commandLineOptionMap : public AC_GALGAS_map {
                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
                                                     class GALGAS_char & outOperand1,
@@ -322,6 +324,8 @@ class GALGAS_commandLineOptionMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -463,6 +467,8 @@ class GALGAS_guiSimpleAttributeListAST : public AC_GALGAS_list {
                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -573,6 +579,8 @@ class GALGAS_guiSimpleAttributeListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -734,6 +742,8 @@ class GALGAS_guiCompoundAttributeListAST : public AC_GALGAS_list {
                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -857,6 +867,8 @@ class GALGAS_guiCompoundAttributeListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -999,6 +1011,8 @@ class GALGAS_terminalLabelListAST : public AC_GALGAS_list {
                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1109,6 +1123,8 @@ class GALGAS_terminalLabelListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1270,6 +1286,8 @@ class GALGAS_guiLabelListAST : public AC_GALGAS_list {
                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1393,6 +1411,8 @@ class GALGAS_guiLabelListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1573,6 +1593,8 @@ class GALGAS_withLexiqueListAST : public AC_GALGAS_list {
                                                                                     COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1709,6 +1731,8 @@ class GALGAS_withLexiqueListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1908,6 +1932,8 @@ class GALGAS_guiCommandLineOptionList : public AC_GALGAS_list {
                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2058,6 +2084,8 @@ class GALGAS_guiCommandLineOptionList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2153,6 +2181,8 @@ class GALGAS_extensionMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_extensionMap getter_overriddenMap (Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -2318,6 +2348,8 @@ class GALGAS_extensionMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2459,6 +2491,8 @@ class GALGAS_textMacroList : public AC_GALGAS_list {
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2569,6 +2603,8 @@ class GALGAS_textMacroList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2806,6 +2842,8 @@ class GALGAS_importedLexiqueList : public AC_GALGAS_list {
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2982,6 +3020,8 @@ class GALGAS_importedLexiqueList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3123,6 +3163,8 @@ class GALGAS_projectIndexingDescriptorList : public AC_GALGAS_list {
                                                                                                COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3233,6 +3275,8 @@ class GALGAS_projectIndexingDescriptorList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3432,6 +3476,8 @@ class GALGAS_galgasGUIComponentListAST : public AC_GALGAS_list {
                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3581,6 +3627,8 @@ class GALGAS_galgasGUIComponentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3737,6 +3785,8 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3821,6 +3871,8 @@ class GALGAS_optionComponentMapForGeneration : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_optionComponentMapForGeneration getter_overriddenMap (Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -3969,6 +4021,8 @@ class GALGAS_optionComponentMapForGeneration_2D_element : public AC_GALGAS_root 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4455,6 +4509,8 @@ class GALGAS_initializerSignatureList : public AC_GALGAS_list {
                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4674,6 +4730,8 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4775,6 +4833,8 @@ class GALGAS_initializerSignatureList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4901,6 +4961,8 @@ class GALGAS_formalInputParameterListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4954,6 +5016,8 @@ class GALGAS_predefinedTypeAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5231,6 +5295,8 @@ class GALGAS_methodKind : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDefinedAsMember (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_definedAsExtension () const ;
 
@@ -5330,6 +5396,8 @@ class GALGAS_methodQualifier : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsVirtualOverridingAbstract (LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_isBasic () const ;
@@ -5577,6 +5645,8 @@ class GALGAS_formalParameterSignature : public AC_GALGAS_list {
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5927,6 +5997,8 @@ class GALGAS_optionalMethodSignature : public AC_GALGAS_list {
                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6081,6 +6153,8 @@ class GALGAS_predefinedTypeAST_2D_weak : public GALGAS_semanticDeclarationAST_2D
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6137,6 +6211,8 @@ class GALGAS_applicationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6254,6 +6330,8 @@ class GALGAS_applicationPredefinedTypeAST_2D_weak : public GALGAS_predefinedType
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6310,6 +6388,8 @@ class GALGAS_bigintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6434,6 +6514,8 @@ class GALGAS_bigintPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6490,6 +6572,8 @@ class GALGAS_binarysetPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6612,6 +6696,8 @@ class GALGAS_binarysetPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAS
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6668,6 +6754,8 @@ class GALGAS_boolPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6782,6 +6870,8 @@ class GALGAS_boolPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6838,6 +6928,8 @@ class GALGAS_charPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6952,6 +7044,8 @@ class GALGAS_charPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7008,6 +7102,8 @@ class GALGAS_dataPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7141,6 +7237,8 @@ class GALGAS_dataPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7197,6 +7295,8 @@ class GALGAS_doublePredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7311,6 +7411,8 @@ class GALGAS_doublePredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7367,6 +7469,8 @@ class GALGAS_filewrapperPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7481,6 +7585,8 @@ class GALGAS_filewrapperPredefinedTypeAST_2D_weak : public GALGAS_predefinedType
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7537,6 +7643,8 @@ class GALGAS_functionPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7651,6 +7759,8 @@ class GALGAS_functionPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7707,6 +7817,8 @@ class GALGAS_locationPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7821,6 +7933,8 @@ class GALGAS_locationPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7877,6 +7991,8 @@ class GALGAS_objectPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7985,6 +8101,8 @@ class GALGAS_objectPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 

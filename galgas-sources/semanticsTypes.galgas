@@ -40,6 +40,13 @@ list @functionSignature {
       result += "!" + parameter.mFormalSelector
     end
   }
+
+  getter subcriptSignature -> @string {
+    result = ""
+    for parameter in self do
+      result += "?" + parameter.mFormalSelector
+    end
+  }
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

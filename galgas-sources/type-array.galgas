@@ -90,69 +90,19 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext
-  {
-  #--- Handle attributes
-#    var @typedPropertyList typedAttributeList = ()
-#    for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
-#      if [initExpression isSome] then
-#        error mPropertyName : "property initialization is not handled for a list"
-#      end
-#      [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
-#      typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
-#    end
+    ?!@semanticContext ioSemanticContext {
   #--- uint type index
     [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
-  #--- List type index
-#    [!?ioTypeMap makeEntry !self.arrayTypeName ?let listTypeIndex]
   #--- Element type index
-    [!?ioTypeMap makeEntry !self.elementTypeName ?let listElementTypeIndex]
-  #--- Property description
-#    let @enumerationDescriptorList enumerationDescriptor = §[
-#      .init (listElementTypeIndex, "mValue")
-#    ]
-#    var @functionSignature constructorAttributeTypeList = ()
+    [!?ioTypeMap makeEntry !self.elementTypeName ?let elementType]
+  #--- Setter argument list
     var @formalParameterSignature setterInputFormalArgumentList = §[
-      .init (["" nowhere], listElementTypeIndex, .argumentConstantIn, "inElement")
+      .init (["" nowhere], elementType, .argumentConstantIn, "inElement")
     ]
     var @formalParameterSignature setterOutputFormalArgumentList = §[
-      .init (["" nowhere], listElementTypeIndex, .argumentOut, "outElement")
+      .init (["" nowhere], elementType, .argumentOut, "outElement")
     ]
-#    for (mPropertyTypeEntry mPropertyName * * mHasSelector) in typedAttributeList do
-#      let selector = if mHasSelector then mPropertyName.string else "" end
-#      enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
-#      constructorAttributeTypeList +=
-#        ![selector nowhere]
-#        !mPropertyTypeEntry
-#        !mPropertyName.string
-#        !true
-#      setterOutputFormalArgumentList +=
-#        ![selector nowhere]
-#        !mPropertyTypeEntry
-#        !.argumentOut
-#        !mPropertyName.string
-#      setterInputFormalArgumentList +=
-#        ![selector nowhere]
-#        !mPropertyTypeEntry
-#        !.argumentConstantIn
-#        !mPropertyName.string
-#    end
-  #--- Class functions
-#    var @classFunctionMap classFunctionMap = ()
-#    enterClassFunctionWithoutArgument (
-#      !?classFunctionMap
-#      !?ioTypeMap
-#      !name:"emptyList"
-#      !resultTypeName:self.arrayTypeName.string
-#      !hasLexiqueArg:false
-#    )
-#    [!?classFunctionMap insertKey
-#      !@lstring {!"listWithValue" !@location.here}
-#      !constructorAttributeTypeList
-#      !false
-#      !listTypeIndex
-#    ]
-  #--- Readers
+  #--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
     enterBaseGetterWithoutArgument (
       !?getterMap
@@ -194,18 +144,6 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #      !returnedTypeName:self.arrayTypeName.string
 #      !hasCompilerArgument:true
 #    )
-#    for (mPropertyTypeEntry mPropertyName 3*) in typedAttributeList do
-#      [!?getterMap insertKey
-#        !@lstring {!mPropertyName.string + "AtIndex" !mPropertyName.location}
-#        !@methodKind.definedAsMember
-#        !@functionSignature §[.init (["" nowhere], uintType, "inIndex", true)]
-#        !@location.here
-#        !true
-#        !mPropertyTypeEntry
-#        !@methodQualifier.isBasic
-#        !"" # getter name is not obsolete, no replacement getter
-#      ]
-#    end
   #------------------------- Instance methods
     var @instanceMethodMap instanceMethodMap = ()
     [!?instanceMethodMap insertKey
@@ -231,7 +169,7 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?setterMap insertKey
       !@lstring {!"append" !.here}
       !.definedAsMember
-      !§[.init (["" nowhere], listElementTypeIndex, .argumentConstantIn, "inElement")]
+      !§[.init (["" nowhere], elementType, .argumentConstantIn, "inElement")]
       !true
       !@methodQualifier.isBasic
       !""
@@ -261,21 +199,6 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !@methodQualifier.isBasic
       !""
     ]
-#    for (mPropertyTypeEntry mPropertyName * mHasSetter *) in typedAttributeList do
-#      if mHasSetter then
-#        var setterFormalArgumentList = @formalParameterSignature ()
-#        setterFormalArgumentList += !["" nowhere] !mPropertyTypeEntry !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
-#        setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
-#        [!?setterMap insertKey
-#          !@lstring {!"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "AtIndex" !mPropertyName.location}
-#          !@methodKind.definedAsMember
-#          !setterFormalArgumentList
-#          !true
-#          !@methodQualifier.isBasic
-#          !"" # No error message
-#        ]
-#      end
-#    end
   #--- setter 'insertAtIndex'
     setterInputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inInsertionIndex"
     [!?setterMap insertKey
@@ -292,6 +215,14 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?initializerMap insertKey
       !.init {![emptyArgumentList initializerSignature] !self.arrayTypeName}
       !emptyArgumentList
+    ]
+  #--- Read subscripts
+    var @subscriptMap readSubscriptMap = ()
+    let @functionSignature argumentTypeList = §[.init (["" nowhere], uintType, "inIndex", true)]
+    [!?readSubscriptMap insertKey
+      !.init ([argumentTypeList subcriptSignature], .nowhere)
+      !argumentTypeList
+      !elementType
     ]
   #--- Add extensions
     addExtensions (
@@ -321,8 +252,8 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true # Concrete Type
       !superType: .null
       !typeKind: .listType
-      !supportCollectionValue: true # Support collection value
-      !allTypedPropertyList: () // typedAttributeList
+      !supportCollectionValue: true 
+      !allTypedPropertyList: ()
       !propertyMap: ()
       !currentTypedPropertyList: ()
       !initializerMap: initializerMap
@@ -332,13 +263,14 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
       !optionalMethodMap: ()
-      !enumerationDescriptorList: () // enumerationDescriptor
+      !readSubscriptMap: readSubscriptMap
+      !enumerationDescriptorList: ()
       !features: features
-      !addAssignOperatorArguments: () // constructorAttributeTypeList
+      !addAssignOperatorArguments: ()
       !mapSearchMethodList: ()
       !generateHeaderInSeparateFile: false
-      !typeForEnumeratedElement: listElementTypeIndex
-      !headerFileName: "list-" + [self.arrayTypeName fileNameRepresentation]
+      !typeForEnumeratedElement: elementType
+      !headerFileName: "array-" + [self.arrayTypeName fileNameRepresentation]
       !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
@@ -424,7 +356,7 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMapEntry mListElementTypeIndex
+  private let @unifiedTypeMapEntry elementType
 
   #·······························································································
 
@@ -447,6 +379,7 @@ refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.instanceMethodMap
       !selfTypeDefinition.classMethodMap
       !selfTypeDefinition.optionalMethodMap
+      !selfTypeDefinition.readSubscriptMap
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features
       !selfTypeDefinition.addAssignOperatorArguments
@@ -460,10 +393,7 @@ refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
   override method appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
                                           !@string outImplementation {
-#    for (t 4*) in self.mTypedAttributeList do
-#      [t addHeaderFileName !?ioInclusionSet]
-#    end
-    [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
+    [self.elementType addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     outImplementation = [filewrapper arrayTypeGenerationTemplate.arrayTypeSpecificImplementation

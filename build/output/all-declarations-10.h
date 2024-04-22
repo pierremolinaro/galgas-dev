@@ -10,6 +10,1023 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @grammarInstructionWithSourceFileForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_grammarInstructionWithSourceFileForGeneration : public GALGAS_semanticInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_grammarInstructionWithSourceFileForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_grammarInstructionWithSourceFileForGeneration (const class cPtr_grammarInstructionWithSourceFileForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_location readProperty_mInstructionLocation (void) const ;
+
+  public: class GALGAS_string readProperty_mGrammarName (void) const ;
+
+  public: class GALGAS_string readProperty_mLabelName (void) const ;
+
+  public: class GALGAS_semanticExpressionForGeneration readProperty_mSourceFileExpression (void) const ;
+
+  public: class GALGAS_actualParameterListForGeneration readProperty_mActualParameterList (void) const ;
+
+  public: class GALGAS_bool readProperty_mGrammarHasTranslateFeature (void) const ;
+
+  public: class GALGAS_stringlist readProperty_mAssignementList (void) const ;
+
+  public: class GALGAS_string readProperty_mSyntaxDirectedTranslationResultVarName (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_grammarInstructionWithSourceFileForGeneration init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                            const class GALGAS_string & inOperand1,
+                                                                                                            const class GALGAS_string & inOperand2,
+                                                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                            const class GALGAS_actualParameterListForGeneration & inOperand4,
+                                                                                                            const class GALGAS_bool & inOperand5,
+                                                                                                            const class GALGAS_stringlist & inOperand6,
+                                                                                                            const class GALGAS_string & inOperand7,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_grammarInstructionWithSourceFileForGeneration extractObject (const GALGAS_object & inObject,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_grammarInstructionWithSourceFileForGeneration class_func_new (const class GALGAS_location & inOperand0,
+                                                                                            const class GALGAS_string & inOperand1,
+                                                                                            const class GALGAS_string & inOperand2,
+                                                                                            const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                            const class GALGAS_actualParameterListForGeneration & inOperand4,
+                                                                                            const class GALGAS_bool & inOperand5,
+                                                                                            const class GALGAS_stringlist & inOperand6,
+                                                                                            const class GALGAS_string & inOperand7
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceFileForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_grammarInstructionWithSourceFileForGeneration class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @grammarInstructionWithSourceFileForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void grammarInstructionWithSourceFileForGeneration_init_21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                   const class GALGAS_string & inOperand1,
+                                                                                                   const class GALGAS_string & inOperand2,
+                                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                   const class GALGAS_actualParameterListForGeneration & inOperand4,
+                                                                                                   const class GALGAS_bool & inOperand5,
+                                                                                                   const class GALGAS_stringlist & inOperand6,
+                                                                                                   const class GALGAS_string & inOperand7,
+                                                                                                   Compiler * inCompiler) ;
+
+
+//--- Extension method generateInstruction
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_location mProperty_mInstructionLocation ;
+  public: GALGAS_string mProperty_mGrammarName ;
+  public: GALGAS_string mProperty_mLabelName ;
+  public: GALGAS_semanticExpressionForGeneration mProperty_mSourceFileExpression ;
+  public: GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public: GALGAS_bool mProperty_mGrammarHasTranslateFeature ;
+  public: GALGAS_stringlist mProperty_mAssignementList ;
+  public: GALGAS_string mProperty_mSyntaxDirectedTranslationResultVarName ;
+
+
+//--- Default constructor
+  public: cPtr_grammarInstructionWithSourceFileForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_grammarInstructionWithSourceFileForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                              const GALGAS_string & in_mGrammarName,
+                                                              const GALGAS_string & in_mLabelName,
+                                                              const GALGAS_semanticExpressionForGeneration & in_mSourceFileExpression,
+                                                              const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                              const GALGAS_bool & in_mGrammarHasTranslateFeature,
+                                                              const GALGAS_stringlist & in_mAssignementList,
+                                                              const GALGAS_string & in_mSyntaxDirectedTranslationResultVarName
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @grammarInstructionWithSourceFileForGeneration_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak : public GALGAS_semanticInstructionForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak (const class GALGAS_grammarInstructionWithSourceFileForGeneration & inSource) ;
+
+  public: GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak & operator = (const class GALGAS_grammarInstructionWithSourceFileForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_grammarInstructionWithSourceFileForGeneration bang_grammarInstructionWithSourceFileForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @grammarInstructionWithSourceExpressionForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_grammarInstructionWithSourceExpressionForGeneration : public GALGAS_semanticInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GALGAS_grammarInstructionWithSourceExpressionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_grammarInstructionWithSourceExpressionForGeneration (const class cPtr_grammarInstructionWithSourceExpressionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_location readProperty_mInstructionLocation (void) const ;
+
+  public: class GALGAS_string readProperty_mGrammarName (void) const ;
+
+  public: class GALGAS_string readProperty_mLabelName (void) const ;
+
+  public: class GALGAS_semanticExpressionForGeneration readProperty_mSourceStringExpression (void) const ;
+
+  public: class GALGAS_semanticExpressionForGeneration readProperty_mNameStringExpression (void) const ;
+
+  public: class GALGAS_actualParameterListForGeneration readProperty_mActualParameterList (void) const ;
+
+  public: class GALGAS_bool readProperty_mGrammarHasTranslateFeature (void) const ;
+
+  public: class GALGAS_stringlist readProperty_mAssignementList (void) const ;
+
+  public: class GALGAS_string readProperty_mSyntaxDirectedTranslationResultVarName (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_grammarInstructionWithSourceExpressionForGeneration init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                                      const class GALGAS_string & inOperand1,
+                                                                                                                      const class GALGAS_string & inOperand2,
+                                                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                                                      const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                                                      const class GALGAS_bool & inOperand6,
+                                                                                                                      const class GALGAS_stringlist & inOperand7,
+                                                                                                                      const class GALGAS_string & inOperand8,
+                                                                                                                      Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_grammarInstructionWithSourceExpressionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_grammarInstructionWithSourceExpressionForGeneration class_func_new (const class GALGAS_location & inOperand0,
+                                                                                                  const class GALGAS_string & inOperand1,
+                                                                                                  const class GALGAS_string & inOperand2,
+                                                                                                  const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                  const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                                  const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                                  const class GALGAS_bool & inOperand6,
+                                                                                                  const class GALGAS_stringlist & inOperand7,
+                                                                                                  const class GALGAS_string & inOperand8
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceExpressionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_grammarInstructionWithSourceExpressionForGeneration class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @grammarInstructionWithSourceExpressionForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void grammarInstructionWithSourceExpressionForGeneration_init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                                                             const class GALGAS_string & inOperand1,
+                                                                                                             const class GALGAS_string & inOperand2,
+                                                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand4,
+                                                                                                             const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                                             const class GALGAS_bool & inOperand6,
+                                                                                                             const class GALGAS_stringlist & inOperand7,
+                                                                                                             const class GALGAS_string & inOperand8,
+                                                                                                             Compiler * inCompiler) ;
+
+
+//--- Extension method generateInstruction
+  public: virtual void method_generateInstruction (class GALGAS_stringset & arg_ioInclusionSet,
+           class GALGAS_uint & arg_ioTemporaryVariableIndex,
+           class GALGAS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GALGAS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GALGAS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_location mProperty_mInstructionLocation ;
+  public: GALGAS_string mProperty_mGrammarName ;
+  public: GALGAS_string mProperty_mLabelName ;
+  public: GALGAS_semanticExpressionForGeneration mProperty_mSourceStringExpression ;
+  public: GALGAS_semanticExpressionForGeneration mProperty_mNameStringExpression ;
+  public: GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public: GALGAS_bool mProperty_mGrammarHasTranslateFeature ;
+  public: GALGAS_stringlist mProperty_mAssignementList ;
+  public: GALGAS_string mProperty_mSyntaxDirectedTranslationResultVarName ;
+
+
+//--- Default constructor
+  public: cPtr_grammarInstructionWithSourceExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_grammarInstructionWithSourceExpressionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                    const GALGAS_string & in_mGrammarName,
+                                                                    const GALGAS_string & in_mLabelName,
+                                                                    const GALGAS_semanticExpressionForGeneration & in_mSourceStringExpression,
+                                                                    const GALGAS_semanticExpressionForGeneration & in_mNameStringExpression,
+                                                                    const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                                    const GALGAS_bool & in_mGrammarHasTranslateFeature,
+                                                                    const GALGAS_stringlist & in_mAssignementList,
+                                                                    const GALGAS_string & in_mSyntaxDirectedTranslationResultVarName
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @grammarInstructionWithSourceExpressionForGeneration_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak : public GALGAS_semanticInstructionForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak (const class GALGAS_grammarInstructionWithSourceExpressionForGeneration & inSource) ;
+
+  public: GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak & operator = (const class GALGAS_grammarInstructionWithSourceExpressionForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_grammarInstructionWithSourceExpressionForGeneration bang_grammarInstructionWithSourceExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                                              Phase 1: @incDecKind enum                                              *
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_incDecKind : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_incDecKind (void) ;
+
+//--------------------------------- Enumeration
+  public: typedef enum {
+    kNotBuilt,
+    kEnum_increment,
+    kEnum_decrement
+  } enumeration ;
+  
+//--------------------------------- Private data member
+  private: enumeration mEnum ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_incDecKind extractObject (const GALGAS_object & inObject,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_incDecKind class_func_decrement (LOCATION_ARGS) ;
+
+  public: static class GALGAS_incDecKind class_func_increment (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDecrement (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIncrement (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_decrement () const ;
+
+  public: VIRTUAL_IN_DEBUG bool optional_increment () const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_incDecKind class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecKind ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @incDecInstructionAST reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
+//--------------------------------- Default constructor
+  public: GALGAS_incDecInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_incDecInstructionAST (const class cPtr_incDecInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (void) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (void) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (void) const ;
+
+  public: class GALGAS_incDecKind readProperty_mKind (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_incDecInstructionAST init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_bool & inOperand1,
+                                                                       const class GALGAS_lstring & inOperand2,
+                                                                       const class GALGAS_lstringlist & inOperand3,
+                                                                       const class GALGAS_incDecKind & inOperand4,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_incDecInstructionAST extractObject (const GALGAS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_incDecInstructionAST class_func_new (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_bool & inOperand1,
+                                                                   const class GALGAS_lstring & inOperand2,
+                                                                   const class GALGAS_lstringlist & inOperand3,
+                                                                   const class GALGAS_incDecKind & inOperand4
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_incDecInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_incDecInstructionAST class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @incDecInstructionAST class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void incDecInstructionAST_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                              const class GALGAS_bool & inOperand1,
+                                                              const class GALGAS_lstring & inOperand2,
+                                                              const class GALGAS_lstringlist & inOperand3,
+                                                              const class GALGAS_incDecKind & inOperand4,
+                                                              Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSemanticInstruction
+  public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInstructionInSemanticContext
+  public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_bool mProperty_mPrefixedBySelf ;
+  public: GALGAS_lstring mProperty_mReceiverName ;
+  public: GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public: GALGAS_incDecKind mProperty_mKind ;
+
+
+//--- Default constructor
+  public: cPtr_incDecInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_incDecInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                     const GALGAS_bool & in_mPrefixedBySelf,
+                                     const GALGAS_lstring & in_mReceiverName,
+                                     const GALGAS_lstringlist & in_mStructAttributeList,
+                                     const GALGAS_incDecKind & in_mKind
+                                     COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @incDecInstructionAST_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_incDecInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_incDecInstructionAST_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_incDecInstructionAST_2D_weak (const class GALGAS_incDecInstructionAST & inSource) ;
+
+  public: GALGAS_incDecInstructionAST_2D_weak & operator = (const class GALGAS_incDecInstructionAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_incDecInstructionAST bang_incDecInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_incDecInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_incDecInstructionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_incDecInstructionAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_incDecInstructionAST_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAST_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @incDecNoOVFInstructionAST reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
+//--------------------------------- Default constructor
+  public: GALGAS_incDecNoOVFInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_incDecNoOVFInstructionAST (const class cPtr_incDecNoOVFInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_bool readProperty_mPrefixedBySelf (void) const ;
+
+  public: class GALGAS_lstring readProperty_mReceiverName (void) const ;
+
+  public: class GALGAS_lstringlist readProperty_mStructAttributeList (void) const ;
+
+  public: class GALGAS_incDecKind readProperty_mKind (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_incDecNoOVFInstructionAST init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                            const class GALGAS_bool & inOperand1,
+                                                                            const class GALGAS_lstring & inOperand2,
+                                                                            const class GALGAS_lstringlist & inOperand3,
+                                                                            const class GALGAS_incDecKind & inOperand4,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_incDecNoOVFInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_incDecNoOVFInstructionAST class_func_new (const class GALGAS_location & inOperand0,
+                                                                        const class GALGAS_bool & inOperand1,
+                                                                        const class GALGAS_lstring & inOperand2,
+                                                                        const class GALGAS_lstringlist & inOperand3,
+                                                                        const class GALGAS_incDecKind & inOperand4
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_incDecNoOVFInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_incDecNoOVFInstructionAST class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @incDecNoOVFInstructionAST class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void incDecNoOVFInstructionAST_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_bool & inOperand1,
+                                                                   const class GALGAS_lstring & inOperand2,
+                                                                   const class GALGAS_lstringlist & inOperand3,
+                                                                   const class GALGAS_incDecKind & inOperand4,
+                                                                   Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSemanticInstruction
+  public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInstructionInSemanticContext
+  public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_bool mProperty_mPrefixedBySelf ;
+  public: GALGAS_lstring mProperty_mReceiverName ;
+  public: GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public: GALGAS_incDecKind mProperty_mKind ;
+
+
+//--- Default constructor
+  public: cPtr_incDecNoOVFInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_incDecNoOVFInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                          const GALGAS_bool & in_mPrefixedBySelf,
+                                          const GALGAS_lstring & in_mReceiverName,
+                                          const GALGAS_lstringlist & in_mStructAttributeList,
+                                          const GALGAS_incDecKind & in_mKind
+                                          COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @incDecNoOVFInstructionAST_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_incDecNoOVFInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_incDecNoOVFInstructionAST_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_incDecNoOVFInstructionAST_2D_weak (const class GALGAS_incDecNoOVFInstructionAST & inSource) ;
+
+  public: GALGAS_incDecNoOVFInstructionAST_2D_weak & operator = (const class GALGAS_incDecNoOVFInstructionAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_incDecNoOVFInstructionAST bang_incDecNoOVFInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_incDecNoOVFInstructionAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_incDecNoOVFInstructionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_incDecNoOVFInstructionAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_incDecNoOVFInstructionAST_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionAST_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @selfIncDecInstructionAST reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_selfIncDecInstructionAST : public GALGAS_semanticInstructionAST {
+//--------------------------------- Default constructor
+  public: GALGAS_selfIncDecInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_selfIncDecInstructionAST (const class cPtr_selfIncDecInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_incDecKind readProperty_mKind (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_selfIncDecInstructionAST init_21__21_ (const class GALGAS_location & inOperand0,
+                                                               const class GALGAS_incDecKind & inOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selfIncDecInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_selfIncDecInstructionAST class_func_new (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_incDecKind & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_selfIncDecInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_selfIncDecInstructionAST class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructionAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @selfIncDecInstructionAST class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void selfIncDecInstructionAST_init_21__21_ (const class GALGAS_location & inOperand0,
+                                                      const class GALGAS_incDecKind & inOperand1,
+                                                      Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSemanticInstruction
+  public: virtual void method_analyzeSemanticInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterInstructionInSemanticContext
+  public: virtual void method_enterInstructionInSemanticContext (class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_incDecKind mProperty_mKind ;
+
+
+//--- Default constructor
+  public: cPtr_selfIncDecInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_selfIncDecInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                         const GALGAS_incDecKind & in_mKind
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @selfIncDecInstructionAST_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -50,6 +1067,8 @@ class GALGAS_selfIncDecInstructionAST_2D_weak : public GALGAS_semanticInstructio
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -109,6 +1128,8 @@ class GALGAS_selfIncDecNoOVFInstructionAST : public GALGAS_semanticInstructionAS
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -221,6 +1242,8 @@ class GALGAS_selfIncDecNoOVFInstructionAST_2D_weak : public GALGAS_semanticInstr
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -293,6 +1316,8 @@ class GALGAS_incDecInstructionForGeneration : public GALGAS_semanticInstructionF
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -410,6 +1435,8 @@ class GALGAS_incDecInstructionForGeneration_2D_weak : public GALGAS_semanticInst
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -482,6 +1509,8 @@ class GALGAS_incDecNoOVFInstructionForGeneration : public GALGAS_semanticInstruc
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -599,6 +1628,8 @@ class GALGAS_incDecNoOVFInstructionForGeneration_2D_weak : public GALGAS_semanti
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -704,6 +1735,8 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isRegularExp (LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_letExp (class GALGAS_lstring & outOperand0,
@@ -857,6 +1890,8 @@ class GALGAS_optionalMethodActualArgumentList : public AC_GALGAS_list {
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1052,6 +2087,8 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isActualVarInput (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_actualInputJoker (class GALGAS_bool & outOperand0,
                                                            class GALGAS_location & outOperand1,
@@ -1224,6 +2261,8 @@ class GALGAS_optionalMethodActualArgumentList_2D_element : public AC_GALGAS_root
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1346,6 +2385,8 @@ class GALGAS_ifExpressionList : public AC_GALGAS_list {
                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1444,6 +2485,8 @@ class GALGAS_ifExpressionList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1518,6 +2561,8 @@ class GALGAS_ifInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1642,6 +2687,8 @@ class GALGAS_ifInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2D_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1745,6 +2792,8 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isRegular (LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_letExp (class GALGAS_string & outOperand0,
@@ -1878,6 +2927,8 @@ class GALGAS_optionalMethodActualArgumentListForGeneration : public AC_GALGAS_li
                                                                                                                Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2054,6 +3105,8 @@ class GALGAS_optionalMethodActualArgumentForGeneration : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isActualVarInput (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_actualLetInput (class GALGAS_string & outOperand0,
                                                          class GALGAS_string & outOperand1) const ;
@@ -2189,6 +3242,8 @@ class GALGAS_optionalMethodActualArgumentListForGeneration_2D_element : public A
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2311,6 +3366,8 @@ class GALGAS_ifTestListForGeneration : public AC_GALGAS_list {
                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2409,6 +3466,8 @@ class GALGAS_ifTestListForGeneration_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2477,6 +3536,8 @@ class GALGAS_ifInstructionForGeneration : public GALGAS_semanticInstructionForGe
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2591,6 +3652,8 @@ class GALGAS_ifInstructionForGeneration_2D_weak : public GALGAS_semanticInstruct
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2661,6 +3724,8 @@ class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST : public GALGAS
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2782,6 +3847,8 @@ class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST_2D_weak : publi
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2844,6 +3911,8 @@ class GALGAS_undefinedLocalConstantDeclarationAST : public GALGAS_semanticInstru
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2959,6 +4028,8 @@ class GALGAS_undefinedLocalConstantDeclarationAST_2D_weak : public GALGAS_semant
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3021,6 +4092,8 @@ class GALGAS_localConstantDeclarationWithAssignmentAST : public GALGAS_semanticI
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3136,6 +4209,8 @@ class GALGAS_localConstantDeclarationWithAssignmentAST_2D_weak : public GALGAS_s
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3196,6 +4271,8 @@ class GALGAS_undefinedLocalConstantDeclarationForGeneration : public GALGAS_sema
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3304,6 +4381,8 @@ class GALGAS_undefinedLocalConstantDeclarationForGeneration_2D_weak : public GAL
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3372,6 +4451,8 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3485,6 +4566,8 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3627,6 +4710,8 @@ class GALGAS_logListAST : public AC_GALGAS_list {
                                                                             COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3738,6 +4823,8 @@ class GALGAS_logListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3796,6 +4883,8 @@ class GALGAS_logInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3908,6 +4997,8 @@ class GALGAS_logInstructionAST_2D_weak : public GALGAS_semanticInstructionAST_2D
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3968,6 +5059,8 @@ class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForG
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4076,6 +5169,8 @@ class GALGAS_logInstructionForGeneration_2D_weak : public GALGAS_semanticInstruc
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4166,6 +5261,8 @@ class GALGAS_loopInstructionWithVariantAST : public GALGAS_semanticInstructionAS
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4302,6 +5399,8 @@ class GALGAS_loopInstructionWithVariantAST_2D_weak : public GALGAS_semanticInstr
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4374,6 +5473,8 @@ class GALGAS_loopInstructionWithVariantForGeneration : public GALGAS_semanticIns
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4491,6 +5592,8 @@ class GALGAS_loopInstructionWithVariantForGeneration_2D_weak : public GALGAS_sem
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4573,6 +5676,8 @@ class GALGAS_loopInstructionWithoutVariantAST : public GALGAS_semanticInstructio
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4703,6 +5808,8 @@ class GALGAS_loopInstructionWithoutVariantAST_2D_weak : public GALGAS_semanticIn
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4771,6 +5878,8 @@ class GALGAS_loopInstructionWithoutVariantForGeneration : public GALGAS_semantic
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4885,6 +5994,8 @@ class GALGAS_loopInstructionWithoutVariantForGeneration_2D_weak : public GALGAS_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4943,6 +6054,8 @@ class GALGAS_messageInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5055,6 +6168,8 @@ class GALGAS_messageInstructionAST_2D_weak : public GALGAS_semanticInstructionAS
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5115,6 +6230,8 @@ class GALGAS_messageInstructionForGeneration : public GALGAS_semanticInstruction
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5223,6 +6340,8 @@ class GALGAS_messageInstructionForGeneration_2D_weak : public GALGAS_semanticIns
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5289,6 +6408,8 @@ class GALGAS_methodCallInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5407,6 +6528,8 @@ class GALGAS_methodCallInstructionAST_2D_weak : public GALGAS_semanticInstructio
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5491,6 +6614,8 @@ class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstruct
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5617,6 +6742,8 @@ class GALGAS_methodCallInstructionForGeneration_2D_weak : public GALGAS_semantic
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5675,6 +6802,8 @@ class GALGAS_superInitInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5787,6 +6916,8 @@ class GALGAS_superInitInstructionAST_2D_weak : public GALGAS_semanticInstruction
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5855,6 +6986,8 @@ class GALGAS_superInitInstructionForGeneration : public GALGAS_semanticInstructi
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5969,6 +7102,8 @@ class GALGAS_superInitInstructionForGeneration_2D_weak : public GALGAS_semanticI
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6031,6 +7166,8 @@ class GALGAS_procCallInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6146,6 +7283,8 @@ class GALGAS_procCallInstructionAST_2D_weak : public GALGAS_semanticInstructionA
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6206,6 +7345,8 @@ class GALGAS_procCallInstructionForGeneration : public GALGAS_semanticInstructio
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6314,6 +7455,8 @@ class GALGAS_procCallInstructionForGeneration_2D_weak : public GALGAS_semanticIn
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6372,6 +7515,8 @@ class GALGAS_selfAssignmentInstructionAST : public GALGAS_semanticInstructionAST
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6484,6 +7629,8 @@ class GALGAS_selfAssignmentInstructionAST_2D_weak : public GALGAS_semanticInstru
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6542,6 +7689,8 @@ class GALGAS_selfPlusEqualElementsInstructionAST : public GALGAS_semanticInstruc
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6654,6 +7803,8 @@ class GALGAS_selfPlusEqualElementsInstructionAST_2D_weak : public GALGAS_semanti
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6712,6 +7863,8 @@ class GALGAS_selfPlusEqualExpressionInstructionAST : public GALGAS_semanticInstr
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6824,6 +7977,8 @@ class GALGAS_selfPlusEqualExpressionInstructionAST_2D_weak : public GALGAS_seman
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6882,6 +8037,8 @@ class GALGAS_selfMinusEqualExpressionInstructionAST : public GALGAS_semanticInst
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6994,6 +8151,8 @@ class GALGAS_selfMinusEqualExpressionInstructionAST_2D_weak : public GALGAS_sema
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7052,6 +8211,8 @@ class GALGAS_selfMulEqualExpressionInstructionAST : public GALGAS_semanticInstru
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7164,6 +8325,8 @@ class GALGAS_selfMulEqualExpressionInstructionAST_2D_weak : public GALGAS_semant
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7222,6 +8385,8 @@ class GALGAS_selfDivEqualExpressionInstructionAST : public GALGAS_semanticInstru
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7334,6 +8499,8 @@ class GALGAS_selfDivEqualExpressionInstructionAST_2D_weak : public GALGAS_semant
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7412,6 +8579,8 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7539,6 +8708,8 @@ class GALGAS_setterCallInstructionAST_2D_weak : public GALGAS_semanticInstructio
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7601,6 +8772,8 @@ class GALGAS_selfSetterCallInstructionAST : public GALGAS_semanticInstructionAST
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7716,6 +8889,8 @@ class GALGAS_selfSetterCallInstructionAST_2D_weak : public GALGAS_semanticInstru
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7812,6 +8987,8 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -7947,6 +9124,8 @@ class GALGAS_setterCallInstructionForGeneration_2D_weak : public GALGAS_semantic
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -8023,6 +9202,8 @@ class GALGAS_selfSetterCallInstructionForGeneration : public GALGAS_semanticInst
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -8142,6 +9323,8 @@ class GALGAS_selfSetterCallInstructionForGeneration_2D_weak : public GALGAS_sema
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -8322,6 +9505,8 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -8459,6 +9644,8 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -8529,6 +9716,8 @@ class GALGAS_switchInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -8649,6 +9838,8 @@ class GALGAS_switchInstructionAST_2D_weak : public GALGAS_semanticInstructionAST
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -8829,6 +10020,8 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -8966,6 +10159,8 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -9030,6 +10225,8 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -9141,6 +10338,8 @@ class GALGAS_switchInstructionForGeneration_2D_weak : public GALGAS_semanticInst
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -9207,6 +10406,8 @@ class GALGAS_typeMethodCallInstructionAST : public GALGAS_semanticInstructionAST
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -9325,6 +10526,8 @@ class GALGAS_typeMethodCallInstructionAST_2D_weak : public GALGAS_semanticInstru
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -9393,6 +10596,8 @@ class GALGAS_typeMethodCallInstructionForGeneration : public GALGAS_semanticInst
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -9507,6 +10712,8 @@ class GALGAS_typeMethodCallInstructionForGeneration_2D_weak : public GALGAS_sema
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -9569,6 +10776,8 @@ class GALGAS_localVariableDeclarationWithAssignmentAST : public GALGAS_semanticI
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -9684,6 +10893,8 @@ class GALGAS_localVariableDeclarationWithAssignmentAST_2D_weak : public GALGAS_s
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -9746,6 +10957,8 @@ class GALGAS_localVariableDeclarationNoAssignmentAST : public GALGAS_semanticIns
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -9861,6 +11074,8 @@ class GALGAS_localVariableDeclarationNoAssignmentAST_2D_weak : public GALGAS_sem
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -9921,6 +11136,8 @@ class GALGAS_localVariableDeclarationForGeneration : public GALGAS_semanticInstr
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -10029,6 +11246,8 @@ class GALGAS_localVariableDeclarationForGeneration_2D_weak : public GALGAS_seman
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -10095,6 +11314,8 @@ class GALGAS_warningInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -10213,6 +11434,8 @@ class GALGAS_warningInstructionAST_2D_weak : public GALGAS_semanticInstructionAS
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -10281,6 +11504,8 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -10395,6 +11620,8 @@ class GALGAS_warningInstructionForGeneration_2D_weak : public GALGAS_semanticIns
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -10489,6 +11716,8 @@ class GALGAS_readAccessWithInstructionAST : public GALGAS_semanticInstructionAST
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -10628,6 +11857,8 @@ class GALGAS_readAccessWithInstructionAST_2D_weak : public GALGAS_semanticInstru
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -10730,6 +11961,8 @@ class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructi
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -10875,6 +12108,8 @@ class GALGAS_readWriteAccessWithInstructionAST_2D_weak : public GALGAS_semanticI
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -10955,6 +12190,8 @@ class GALGAS_readOnlyWithInstructionForGeneration : public GALGAS_semanticInstru
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -11078,6 +12315,8 @@ class GALGAS_readOnlyWithInstructionForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -11166,6 +12405,8 @@ class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstr
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -11295,6 +12536,8 @@ class GALGAS_readWriteWithInstructionForGeneration_2D_weak : public GALGAS_seman
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -11365,6 +12608,8 @@ class GALGAS_nonterminalCallInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -11496,6 +12741,8 @@ class GALGAS_nonterminalCallInstruction_2D_weak : public GALGAS_syntaxInstructio
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -11566,6 +12813,8 @@ class GALGAS_nonterminalInstructionForGeneration : public GALGAS_syntaxInstructi
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -11647,260 +12896,4 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @nonterminalInstructionForGeneration_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_nonterminalInstructionForGeneration_2D_weak : public GALGAS_syntaxInstructionForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_nonterminalInstructionForGeneration_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_nonterminalInstructionForGeneration_2D_weak (const class GALGAS_nonterminalInstructionForGeneration & inSource) ;
-
-  public: GALGAS_nonterminalInstructionForGeneration_2D_weak & operator = (const class GALGAS_nonterminalInstructionForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_nonterminalInstructionForGeneration bang_nonterminalInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_nonterminalInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_nonterminalInstructionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_nonterminalInstructionForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_nonterminalInstructionForGeneration_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @repeatInstruction reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_repeatInstruction : public GALGAS_syntaxInstructionAST {
-//--------------------------------- Default constructor
-  public: GALGAS_repeatInstruction (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_repeatInstruction (const class cPtr_repeatInstruction * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GALGAS_syntaxInstructionList readProperty_mRepeatedInstructionList (void) const ;
-
-  public: class GALGAS_location readProperty_mEndOf_5F_repeated_5F_instructions_5F_branch (void) const ;
-
-  public: class GALGAS_listOfSyntaxInstructionList readProperty_mRepeatBranchList (void) const ;
-
-  public: class GALGAS_location readProperty_mEndOf_5F_repeat_5F_instruction (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_repeatInstruction init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
-                                                                    const class GALGAS_syntaxInstructionList & inOperand1,
-                                                                    const class GALGAS_location & inOperand2,
-                                                                    const class GALGAS_listOfSyntaxInstructionList & inOperand3,
-                                                                    const class GALGAS_location & inOperand4,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_repeatInstruction extractObject (const GALGAS_object & inObject,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_repeatInstruction class_func_new (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_syntaxInstructionList & inOperand1,
-                                                                const class GALGAS_location & inOperand2,
-                                                                const class GALGAS_listOfSyntaxInstructionList & inOperand3,
-                                                                const class GALGAS_location & inOperand4
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_repeatInstruction & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_repeatInstruction class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @repeatInstruction class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void repeatInstruction_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
-                                                           const class GALGAS_syntaxInstructionList & inOperand1,
-                                                           const class GALGAS_location & inOperand2,
-                                                           const class GALGAS_listOfSyntaxInstructionList & inOperand3,
-                                                           const class GALGAS_location & inOperand4,
-                                                           Compiler * inCompiler) ;
-
-
-//--- Extension method analyzeSyntaxInstruction
-  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
-           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GALGAS_analysisContext arg_inAnalysisContext,
-           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
-           const class GALGAS_bool arg_inHasTranslateFeature,
-           const class GALGAS_terminalMap arg_inTerminalMap,
-           const class GALGAS_string arg_inLexiqueName,
-           const class GALGAS_nonterminalMap arg_inNonterminalMap,
-           const class GALGAS_string arg_inComponentName,
-           const class GALGAS_stringset arg_inIndexNameSet,
-           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
-           class GALGAS_localVarManager & arg_ioVariableMap,
-           class GALGAS_uint & arg_ioSelectMethodCount,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
-           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
-           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
-           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_syntaxInstructionList mProperty_mRepeatedInstructionList ;
-  public: GALGAS_location mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch ;
-  public: GALGAS_listOfSyntaxInstructionList mProperty_mRepeatBranchList ;
-  public: GALGAS_location mProperty_mEndOf_5F_repeat_5F_instruction ;
-
-
-//--- Default constructor
-  public: cPtr_repeatInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_repeatInstruction (const GALGAS_location & in_mInstructionLocation,
-                                  const GALGAS_syntaxInstructionList & in_mRepeatedInstructionList,
-                                  const GALGAS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
-                                  const GALGAS_listOfSyntaxInstructionList & in_mRepeatBranchList,
-                                  const GALGAS_location & in_mEndOf_5F_repeat_5F_instruction
-                                  COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @repeatInstruction_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_repeatInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_repeatInstruction_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_repeatInstruction_2D_weak (const class GALGAS_repeatInstruction & inSource) ;
-
-  public: GALGAS_repeatInstruction_2D_weak & operator = (const class GALGAS_repeatInstruction & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_repeatInstruction bang_repeatInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_repeatInstruction_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_repeatInstruction_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_repeatInstruction_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_repeatInstruction_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction_2D_weak ;
 

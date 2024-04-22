@@ -151,7 +151,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
   #--------------------------------------- The getter does not exist, it is a property ?
     elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].propertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
-      outExpression = @structPropertyAccessExpressionForGeneration {
+      outExpression = @propertyAccessExpressionForGeneration {
         !propertyType
         !self.mGetterName.location
         !receiverExpression
@@ -179,7 +179,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
               getterFormalArgumentTypeList = mArgumentTypeList
               hasCompilerArgument = mHasCompilerArgument
               returnedType = mReturnedType
-              receiverExpression = @structPropertyAccessExpressionForGeneration {
+              receiverExpression = @propertyAccessExpressionForGeneration {
                 !returnedType
                 !self.mGetterName.location
                 !receiverExpression

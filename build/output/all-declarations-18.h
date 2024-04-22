@@ -51,6 +51,8 @@ class GALGAS_filewrapperDeclarationForGeneration_2D_weak : public GALGAS_semanti
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -115,6 +117,8 @@ class GALGAS_programComponentForGeneration : public GALGAS_semanticDeclarationWi
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -228,6 +232,8 @@ class GALGAS_programComponentForGeneration_2D_weak : public GALGAS_semanticDecla
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -332,6 +338,8 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -477,6 +485,8 @@ class GALGAS_grammarForGeneration_2D_weak : public GALGAS_semanticDeclarationWit
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -543,6 +553,8 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -655,6 +667,8 @@ class GALGAS_primitiveTypeForGeneration_2D_weak : public GALGAS_semanticTypeForG
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -666,16 +680,6 @@ class GALGAS_primitiveTypeForGeneration_2D_weak : public GALGAS_semanticTypeForG
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_primitiveTypeForGeneration_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension getter '@actualOutputArgumentList initializerSignature' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_string extensionGetter_initializerSignature (const class GALGAS_actualOutputArgumentList & inObject,
-                                                          class Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

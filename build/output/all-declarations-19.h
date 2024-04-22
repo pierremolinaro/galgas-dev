@@ -59,6 +59,8 @@ class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSynta
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -115,6 +117,8 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 

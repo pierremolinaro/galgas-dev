@@ -164,7 +164,7 @@ proc checkExpressionIsBoolean
 #        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
 #      end
       if attributeType == boolType then
-        outExpression = @structPropertyAccessExpressionForGeneration {
+        outExpression = @propertyAccessExpressionForGeneration {
           !boolType
           !inErrorLocation
           !inExpression

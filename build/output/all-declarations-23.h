@@ -327,6 +327,8 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -465,6 +467,8 @@ class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -491,7 +495,7 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
   public: GALGAS_arrayTypeForGeneration (const class cPtr_arrayTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_unifiedTypeMapEntry readProperty_mListElementTypeIndex (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_elementType (void) const ;
 
 //-- Start of type generic part
 
@@ -523,6 +527,8 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -566,7 +572,7 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_unifiedTypeMapEntry mProperty_mListElementTypeIndex ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_elementType ;
 
 
 //--- Default constructor
@@ -574,7 +580,7 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Constructor
   public: cPtr_arrayTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                       const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex
+                                       const GALGAS_unifiedTypeMapEntry & in_elementType
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -632,6 +638,8 @@ class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 

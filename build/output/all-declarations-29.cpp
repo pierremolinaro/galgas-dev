@@ -9,393 +9,650 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@orShortExpressionAST enterExpressionInSemanticContext'
+//Overriding extension method '@propertyAccessExpressionForGeneration generateExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_orShortExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_orShortExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 219)) ;
-  const GALGAS_orShortExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 220)) ;
+void cPtr_propertyAccessExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                            GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                            GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                            GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                            GALGAS_string & outArgument_outCppExpression,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_propertyAccessExpressionForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 232)) ;
+  GALGAS_string var_operand_9098 ;
+  const GALGAS_propertyAccessExpressionForGeneration temp_1 = this ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_expression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_9098, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 234)) ;
+  const GALGAS_propertyAccessExpressionForGeneration temp_2 = this ;
+  outArgument_outCppExpression = var_operand_9098.add_operation (GALGAS_string (".readProperty_"), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 242)).add_operation (temp_2.readProperty_structFieldName ().getter_identifierRepresentation (SOURCE_FILE ("expression-property-subscript-access.galgas", 242)), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 242)).add_operation (GALGAS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 242)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@orShortExpressionAST analyzeSemanticExpression'
+//Overriding extension method '@subscriptReadAccessExpressionAST enterExpressionInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_orShortExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                  GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                  const GALGAS_unifiedTypeMapEntry constinArgument_inInferenceType,
-                                                                  const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                  GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                  GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                  GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_9861 ;
-  const GALGAS_orShortExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_9861, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 234)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_10197 ;
-  const GALGAS_orShortExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_9861.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_10197, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 244)) ;
-  {
-  const GALGAS_orShortExpressionAST temp_2 = this ;
-  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_9861.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 255)).readProperty_features ().getter_infixOrOperator (SOURCE_FILE ("expression-or.galgas", 255)), GALGAS_string ("|"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_9861, var_rightExpression_10197, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 254)) ;
+void cPtr_subscriptReadAccessExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_subscriptReadAccessExpressionAST temp_0 = this ;
+  cEnumerator_actualOutputArgumentList enumerator_9998 (temp_0.readProperty_actualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_9998.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_9998.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 262)) ;
+    enumerator_9998.gotoNextObject () ;
   }
-  const GALGAS_orShortExpressionAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_orShortExpressionForGeneration::init_21__21__21__21_ (var_leftExpression_9861.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_9861, var_rightExpression_10197, inCompiler COMMA_HERE) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@xorExpressionAST enterExpressionInSemanticContext'
+//Overriding extension method '@subscriptReadAccessExpressionAST analyzeSemanticExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_xorExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_xorExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 274)) ;
-  const GALGAS_xorExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 275)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@xorExpressionAST analyzeSemanticExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_xorExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                              GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                              const GALGAS_unifiedTypeMapEntry constinArgument_inInferenceType,
-                                                              const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                              GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                              GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                              Compiler * inCompiler
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_11830 ;
-  const GALGAS_xorExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_11830, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 289)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_12166 ;
-  const GALGAS_xorExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_11830.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_12166, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 299)) ;
-  {
-  const GALGAS_xorExpressionAST temp_2 = this ;
-  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_11830.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 310)).readProperty_features ().getter_infixXorOperator (SOURCE_FILE ("expression-or.galgas", 310)), GALGAS_string ("^"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_11830, var_rightExpression_12166, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 309)) ;
-  }
-  const GALGAS_xorExpressionAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_11830.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_11830, GALGAS_binaryOperator::class_func_operator_5F_xor (SOURCE_FILE ("expression-or.galgas", 321)), var_rightExpression_12166, inCompiler COMMA_HERE) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@closedSliceExpressionAST enterExpressionInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_closedSliceExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_closedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 331)) ;
-  const GALGAS_closedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 332)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@closedSliceExpressionAST analyzeSemanticExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_closedSliceExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                      GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                      const GALGAS_unifiedTypeMapEntry /* constinArgument_inInferenceType */,
-                                                                      const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                      GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                      GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_13880 ;
-  const GALGAS_closedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_13880, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 347)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_14237 ;
-  const GALGAS_closedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_14237, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 357)) ;
-  GALGAS_unifiedTypeMapEntry var_leftType_14317 = var_leftExpression_13880.readProperty_mResultType () ;
+void cPtr_subscriptReadAccessExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                              GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                              const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                              const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                              GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                              GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_semanticExpressionForGeneration var_expression_11116 ;
+  const GALGAS_subscriptReadAccessExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_expression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-property-subscript-access.galgas", 280)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_11116, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 277)) ;
+  GALGAS_unifiedTypeMapEntry var_expressionType_11162 = var_expression_11116.readProperty_mResultType () ;
+  const GALGAS_subscriptReadAccessExpressionAST temp_1 = this ;
+  GALGAS_string var_invocationSignature_11248 = extensionGetter_subscriptSignature (temp_1.readProperty_actualArgumentList (), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 288)) ;
+  GALGAS_subscriptMap var_subscriptMap_11359 = extensionGetter_definition (var_expressionType_11162, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 290)).readProperty_readSubscriptMap () ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_definition (var_leftType_14317, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 368)).readProperty_typeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+    GALGAS_functionSignature var_formalArgumentList_11480 ;
+    GALGAS_unifiedTypeMapEntry var_resultType_11504 ;
+    const bool optionalResult11444 = var_subscriptMap_11359.optional_searchKey (var_invocationSignature_11248, var_formalArgumentList_11480, var_resultType_11504) ;
+    if (!optionalResult11444) {
+      test_2 = kBoolFalse ;
+    }
     if (kBoolTrue == test_2) {
-      TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (var_leftExpression_13880.readProperty_mLocation (), GALGAS_string ("the left expression or '...' operator should an @uint"), fixItArray3  COMMA_SOURCE_FILE ("expression-or.galgas", 369)) ;
+      GALGAS_semanticExpressionListForGeneration var_semanticExpressionListForGeneration_11570 = GALGAS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
+      const GALGAS_subscriptReadAccessExpressionAST temp_3 = this ;
+      cEnumerator_functionSignature enumerator_11671 (var_formalArgumentList_11480, EnumerationOrder::up) ;
+      cEnumerator_actualOutputArgumentList enumerator_11709 (temp_3.readProperty_actualArgumentList (), EnumerationOrder::up) ;
+      while (enumerator_11671.hasCurrentObject () && enumerator_11709.hasCurrentObject ()) {
+        GALGAS_semanticExpressionForGeneration var_expression_12067 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_11709.current (HERE).readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_11671.current (HERE).readProperty_mFormalArgumentType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_12067, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 295)) ;
+        {
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_11671.current (HERE).readProperty_mFormalArgumentType (), var_expression_12067.readProperty_mResultType (), enumerator_11709.current (HERE).readProperty_mEndOfExpressionLocation (), var_expression_12067, inCompiler  COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 304)) ;
+        }
+        enumGalgasBool test_4 = kBoolTrue ;
+        if (kBoolTrue == test_4) {
+          test_4 = GALGAS_bool (ComparisonKind::notEqual, enumerator_11671.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (enumerator_11709.current (HERE).readProperty_mActualSelector ().readProperty_string ())).boolEnum () ;
+          if (kBoolTrue == test_4) {
+            GALGAS_string temp_5 ;
+            const enumGalgasBool test_6 = GALGAS_bool (ComparisonKind::notEqual, enumerator_11671.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+            if (kBoolTrue == test_6) {
+              temp_5 = enumerator_11671.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 312)) ;
+            }else if (kBoolFalse == test_6) {
+              temp_5 = GALGAS_string::makeEmptyString () ;
+            }
+            GALGAS_string var_s_12401 = GALGAS_string ("!").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 311)) ;
+            TC_Array <FixItDescription> fixItArray7 ;
+            appendFixItActions (fixItArray7, kFixItReplace, var_s_12401) ;
+            inCompiler->emitSemanticError (enumerator_11709.current (HERE).readProperty_mActualSelector ().readProperty_location (), GALGAS_string ("the selector should be '").add_operation (var_s_12401, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 315)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 315)), fixItArray7  COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 315)) ;
+          }
+        }
+        var_semanticExpressionListForGeneration_11570.addAssign_operation (var_expression_12067  COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 318)) ;
+        enumerator_11671.gotoNextObject () ;
+        enumerator_11709.gotoNextObject () ;
+      }
+      const GALGAS_subscriptReadAccessExpressionAST temp_8 = this ;
+      outArgument_outExpression = GALGAS_subscriptReadAccessExpressionForGeneration::init_21__21__21__21__21_ (var_resultType_11504, temp_8.readProperty_endOfArgsLocation (), var_expression_11116, var_invocationSignature_11248, var_semanticExpressionListForGeneration_11570, inCompiler COMMA_HERE) ;
     }
   }
-  GALGAS_unifiedTypeMapEntry var_rightType_14539 = var_rightExpression_14237.readProperty_mResultType () ;
-  enumGalgasBool test_4 = kBoolTrue ;
-  if (kBoolTrue == test_4) {
-    test_4 = GALGAS_bool (ComparisonKind::notEqual, extensionGetter_definition (var_rightType_14539, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 372)).readProperty_typeName ().readProperty_string ().objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-    if (kBoolTrue == test_4) {
-      TC_Array <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (var_rightExpression_14237.readProperty_mLocation (), GALGAS_string ("the right expression or '...' operator should an @uint"), fixItArray5  COMMA_SOURCE_FILE ("expression-or.galgas", 373)) ;
+  if (kBoolFalse == test_2) {
+    const GALGAS_subscriptReadAccessExpressionAST temp_9 = this ;
+    TC_Array <FixItDescription> fixItArray10 ;
+    inCompiler->emitSemanticError (temp_9.readProperty_endOfArgsLocation (), GALGAS_string ("unknown subscript signature"), fixItArray10  COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 329)) ;
+    outArgument_outExpression.drop () ; // Release error dropped variable
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@subscriptReadAccessExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_subscriptReadAccessExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                 GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                 GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                 GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                 GALGAS_string & outArgument_outCppExpression,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_subscriptReadAccessExpressionForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 351)) ;
+  GALGAS_string var_operand_14282 ;
+  const GALGAS_subscriptReadAccessExpressionForGeneration temp_1 = this ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_expression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_14282, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 353)) ;
+  GALGAS__5B_string_5D_ var_subscriptArgumentList_14339 = GALGAS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  const GALGAS_subscriptReadAccessExpressionForGeneration temp_2 = this ;
+  cEnumerator_semanticExpressionListForGeneration enumerator_14392 (temp_2.readProperty_actualExpressionList (), EnumerationOrder::up) ;
+  while (enumerator_14392.hasCurrentObject ()) {
+    GALGAS_string var_actualArgOperand_14608 ;
+    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_14392.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_actualArgOperand_14608, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 363)) ;
+    {
+    var_subscriptArgumentList_14339.setter_append (var_actualArgOperand_14608, inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 370)) ;
+    }
+    enumerator_14392.gotoNextObject () ;
+  }
+  const GALGAS_subscriptReadAccessExpressionForGeneration temp_3 = this ;
+  outArgument_outCppExpression = var_operand_14282.add_operation (GALGAS_string (".readSubscript_"), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 373)).add_operation (temp_3.readProperty_subscriptInvocationName ().getter_identifierRepresentation (SOURCE_FILE ("expression-property-subscript-access.galgas", 373)), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 373)) ;
+  outArgument_outCppExpression.plusAssign_operation(GALGAS_string (" ("), inCompiler  COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 374)) ;
+  cEnumerator__5B_string_5D_ enumerator_14871 (var_subscriptArgumentList_14339, EnumerationOrder::up) ;
+  while (enumerator_14871.hasCurrentObject ()) {
+    outArgument_outCppExpression.plusAssign_operation(enumerator_14871.current (HERE).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 376)), inCompiler  COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 376)) ;
+    enumerator_14871.gotoNextObject () ;
+  }
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 378)) COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 378)) ;
+  }
+  outArgument_outCppExpression.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 379)).add_operation (GALGAS_string (" COMMA_HERE)"), inCompiler COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 379)), inCompiler  COMMA_SOURCE_FILE ("expression-property-subscript-access.galgas", 379)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@selfInExpressionAST enterExpressionInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfInExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@selfInExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfInExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                 GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                 const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                 const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                 GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                 GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
+                                                                 GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    GALGAS_unifiedTypeMapEntry var_selfType_3544 ;
+    GALGAS_selfMutability var_unused_0_3555 ;
+    const bool optionalResult3523 = constinArgument_inAnalysisContext.readProperty_selfAvailability ().optional_available (var_selfType_3544, var_unused_0_3555) ;
+    if (!optionalResult3523) {
+      test_0 = kBoolFalse ;
+    }
+    if (kBoolTrue == test_0) {
+      GALGAS_string var_selfCppName_3579 = constinArgument_inAnalysisContext.readProperty_selfObjectCppName () ;
+      const GALGAS_selfInExpressionAST temp_1 = this ;
+      outArgument_outExpression = GALGAS_selfInExpressionForGeneration::init_21__21__21_ (var_selfType_3544, temp_1.readProperty_mSelfLocation (), var_selfCppName_3579, inCompiler COMMA_HERE) ;
     }
   }
-  const GALGAS_closedSliceExpressionAST temp_6 = this ;
-  outArgument_outExpression = GALGAS_closedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GALGAS_lstring::init_21__21_ (GALGAS_string ("range"), var_leftExpression_13880.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 377)), temp_6.readProperty_mOperatorLocation (), var_leftExpression_13880, var_rightExpression_14237, inCompiler COMMA_HERE) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@openedSliceExpressionAST enterExpressionInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_openedSliceExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_openedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 389)) ;
-  const GALGAS_openedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 390)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@openedSliceExpressionAST analyzeSemanticExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_openedSliceExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                      GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                      const GALGAS_unifiedTypeMapEntry /* constinArgument_inInferenceType */,
-                                                                      const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                      GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                      GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_16491 ;
-  const GALGAS_openedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_16491, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 404)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_16848 ;
-  const GALGAS_openedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_16848, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 414)) ;
-  {
-  routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), var_leftExpression_16491.readProperty_mResultType (), var_leftExpression_16491.readProperty_mLocation (), var_leftExpression_16491, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 424)) ;
+  if (kBoolFalse == test_0) {
+    const GALGAS_selfInExpressionAST temp_2 = this ;
+    TC_Array <FixItDescription> fixItArray3 ;
+    inCompiler->emitSemanticError (temp_2.readProperty_mSelfLocation (), GALGAS_string ("'self' not available in this context"), fixItArray3  COMMA_SOURCE_FILE ("expression-self.galgas", 84)) ;
+    outArgument_outExpression.drop () ; // Release error dropped variable
   }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@selfInExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfInExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                    GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                    GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                    GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                    GALGAS_string & outArgument_outCppExpression,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outCppExpression = GALGAS_string ("temp_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("expression-self.galgas", 104)), inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 104)) ;
+  ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("expression-self.galgas", 105)) ;
+  const GALGAS_selfInExpressionForGeneration temp_0 = this ;
+  const GALGAS_selfInExpressionForGeneration temp_1 = this ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("const GALGAS_").add_operation (extensionGetter_identifierRepresentation (temp_0.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 106)), inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 106)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 106)).add_operation (outArgument_outCppExpression, inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 106)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 106)).add_operation (temp_1.readProperty_mSelfCppName (), inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 106)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-self.galgas", 106)), inCompiler  COMMA_SOURCE_FILE ("expression-self.galgas", 106)) ;
   {
-  routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), var_rightExpression_16848.readProperty_mResultType (), var_rightExpression_16848.readProperty_mLocation (), var_rightExpression_16848, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 434)) ;
+  const GALGAS_selfInExpressionForGeneration temp_2 = this ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mSelfCppName () COMMA_SOURCE_FILE ("expression-self.galgas", 107)) ;
   }
-  const GALGAS_openedSliceExpressionAST temp_2 = this ;
-  outArgument_outExpression = GALGAS_openedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GALGAS_lstring::init_21__21_ (GALGAS_string ("range"), var_leftExpression_16491.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 446)), temp_2.readProperty_mOperatorLocation (), var_leftExpression_16491, var_rightExpression_16848, inCompiler COMMA_HERE) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@orShortExpressionForGeneration generateExpression'
+//Overriding extension method '@tildeExpressionAST enterExpressionInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_orShortExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                     GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                     GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                     GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                     GALGAS_string & outArgument_outCppExpression,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_orShortExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 484)) ;
-  GALGAS_string var_leftTemporaryOperand_19664 ;
-  const GALGAS_orShortExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_19664, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 486)) ;
-  GALGAS_string var_testVar_19720 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("expression-or.galgas", 494)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 494)) ;
-  ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 495)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_bool ").add_operation (var_testVar_19720, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 496)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 496)).add_operation (var_leftTemporaryOperand_19664, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 496)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 496)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 496)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue != ").add_operation (var_testVar_19720, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 497)).add_operation (GALGAS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 497)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 497)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 499)) ;
+void cPtr_tildeExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_tildeExpressionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 72)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@tildeExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_tildeExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                Compiler * inCompiler
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_semanticExpressionForGeneration var_expression_4054 ;
+  const GALGAS_tildeExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-tilde.galgas", 90)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_4054, inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 87)) ;
+  GALGAS_unifiedTypeMapEntry var_type_4129 = var_expression_4054.readProperty_mResultType () ;
+  enumGalgasBool test_1 = kBoolTrue ;
+  if (kBoolTrue == test_1) {
+    GALGAS_literalBigIntExpressionForGeneration var_exp_4168 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_expression_4054.ptr ())) ;
+    if (nullptr == var_exp_4168.ptr ()) {
+      test_1 = kBoolFalse ;
+    }
+    if (kBoolTrue == test_1) {
+      outArgument_outExpression = GALGAS_literalBigIntExpressionForGeneration::init_21__21__21_ (var_exp_4168.readProperty_mResultType (), var_exp_4168.readProperty_mLocation (), var_exp_4168.readProperty_mValue ().operator_tilde (SOURCE_FILE ("expression-tilde.galgas", 102)), inCompiler COMMA_HERE) ;
+    }
   }
-  GALGAS_string var_rightTemporaryOperand_20192 ;
-  const GALGAS_orShortExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_20192, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 500)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_19720.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 507)).add_operation (var_rightTemporaryOperand_20192, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 507)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 507)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 507)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 508)) ;
+  if (kBoolFalse == test_1) {
+    enumGalgasBool test_2 = kBoolTrue ;
+    if (kBoolTrue == test_2) {
+      test_2 = extensionGetter_definition (var_type_4129, inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 104)).readProperty_features ().getter_prefixTildeOperator (SOURCE_FILE ("expression-tilde.galgas", 104)).operator_not (SOURCE_FILE ("expression-tilde.galgas", 104)).boolEnum () ;
+      if (kBoolTrue == test_2) {
+        const GALGAS_tildeExpressionAST temp_3 = this ;
+        TC_Array <FixItDescription> fixItArray4 ;
+        inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_4129, inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 106)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 106)).add_operation (GALGAS_string ("' and does not support the '~' operator"), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 106)), fixItArray4  COMMA_SOURCE_FILE ("expression-tilde.galgas", 105)) ;
+        outArgument_outExpression.drop () ; // Release error dropped variable
+      }
+    }
+    if (kBoolFalse == test_2) {
+      const GALGAS_tildeExpressionAST temp_5 = this ;
+      outArgument_outExpression = GALGAS_tildeExpressionForGeneration::init_21__21__21_ (var_type_4129, temp_5.readProperty_mOperatorLocation (), var_expression_4054, inCompiler COMMA_HERE) ;
+    }
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 509)) ;
-  outArgument_outCppExpression = var_testVar_19720 ;
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@closedSliceExpressionForGeneration generateExpression'
+//Overriding extension method '@tildeExpressionForGeneration generateExpression'
 //
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_closedSliceExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                         GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                         GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                         GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                         GALGAS_string & outArgument_outCppExpression,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_closedSliceExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 521)) ;
-  GALGAS_string var_leftTemporaryOperand_20992 ;
-  const GALGAS_closedSliceExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_20992, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 523)) ;
-  GALGAS_string var_rightTemporaryOperand_21196 ;
-  const GALGAS_closedSliceExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_21196, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 531)) ;
-  const GALGAS_closedSliceExpressionForGeneration temp_3 = this ;
-  const GALGAS_closedSliceExpressionForGeneration temp_4 = this ;
-  outArgument_outCppExpression = GALGAS_string ("GALGAS_range (").add_operation (var_leftTemporaryOperand_20992, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 540)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 540)).add_operation (var_rightTemporaryOperand_21196, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 540)).add_operation (GALGAS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (var_leftTemporaryOperand_20992, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (GALGAS_string (").add_operation (GALGAS_uint (1), "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (extensionGetter_commaSourceFile (temp_4.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 541)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@openedSliceExpressionForGeneration generateExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_openedSliceExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                         GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                         GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                         GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                         GALGAS_string & outArgument_outCppExpression,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_openedSliceExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 553)) ;
-  GALGAS_string var_leftTemporaryOperand_22169 ;
-  const GALGAS_openedSliceExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_22169, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 555)) ;
-  GALGAS_string var_rightTemporaryOperand_22373 ;
-  const GALGAS_openedSliceExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_22373, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 563)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 571)) COMMA_SOURCE_FILE ("expression-or.galgas", 571)) ;
-  }
-  const GALGAS_openedSliceExpressionForGeneration temp_3 = this ;
-  outArgument_outCppExpression = GALGAS_string ("GALGAS_range (").add_operation (var_leftTemporaryOperand_22169, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 573)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 573)).add_operation (var_rightTemporaryOperand_22373, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 573)).add_operation (GALGAS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (var_leftTemporaryOperand_22169, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 575)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 574)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 575)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@andExpressionAST enterExpressionInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_andExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_andExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 103)) ;
-  const GALGAS_andExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 104)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@andExpressionAST analyzeSemanticExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_andExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                              GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                              const GALGAS_unifiedTypeMapEntry constinArgument_inInferenceType,
-                                                              const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                              GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                              GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                              Compiler * inCompiler
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_5455 ;
-  const GALGAS_andExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_5455, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 118)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_5790 ;
-  const GALGAS_andExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_5455.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_5790, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 128)) ;
-  {
-  const GALGAS_andExpressionAST temp_2 = this ;
-  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_5455.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 139)).readProperty_features ().getter_infixAndOperator (SOURCE_FILE ("expression-and.galgas", 139)), GALGAS_string ("&"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_5455, var_rightExpression_5790, inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 138)) ;
-  }
-  const GALGAS_andExpressionAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_5455.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_5455, GALGAS_binaryOperator::class_func_operator_5F_and (SOURCE_FILE ("expression-and.galgas", 150)), var_rightExpression_5790, inCompiler COMMA_HERE) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@andShortExpressionAST enterExpressionInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_andShortExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_andShortExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 160)) ;
-  const GALGAS_andShortExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 161)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@andShortExpressionAST analyzeSemanticExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_andShortExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                   GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                   const GALGAS_unifiedTypeMapEntry constinArgument_inInferenceType,
-                                                                   const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                   GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                   GALGAS_localVarManager & ioArgument_ioVariableMap,
-                                                                   GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+void cPtr_tildeExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                   GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                   GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                   GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                   GALGAS_string & outArgument_outCppExpression,
                                                                    Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_semanticExpressionForGeneration var_leftExpression_7462 ;
-  const GALGAS_andShortExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_7462, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 175)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_7797 ;
-  const GALGAS_andShortExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_7462.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_7797, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 185)) ;
-  {
-  const GALGAS_andShortExpressionAST temp_2 = this ;
-  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_7462.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 196)).readProperty_features ().getter_infixAndOperator (SOURCE_FILE ("expression-and.galgas", 196)), GALGAS_string ("&"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_7462, var_rightExpression_7797, inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 195)) ;
-  }
-  const GALGAS_andShortExpressionAST temp_3 = this ;
-  outArgument_outExpression = GALGAS_andShortExpressionForGeneration::init_21__21__21__21_ (var_leftExpression_7462.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_7462, var_rightExpression_7797, inCompiler COMMA_HERE) ;
+  const GALGAS_tildeExpressionForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 134)) ;
+  GALGAS_string var_operand_5669 ;
+  const GALGAS_tildeExpressionForGeneration temp_1 = this ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_5669, inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 136)) ;
+  const GALGAS_tildeExpressionForGeneration temp_2 = this ;
+  outArgument_outCppExpression = var_operand_5669.add_operation (GALGAS_string (".operator_tilde ("), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 138)).add_operation (extensionGetter_sourceFile (temp_2.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 138)), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 138)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-tilde.galgas", 138)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@andShortExpressionForGeneration generateExpression'
+//Overriding extension method '@trueExpressionAST enterExpressionInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_andShortExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                      GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                      GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                      GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                      GALGAS_string & outArgument_outCppExpression,
-                                                                      Compiler * inCompiler
+void cPtr_trueExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                      Compiler * /* inCompiler */
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_andShortExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 227)) ;
-  GALGAS_string var_leftTemporaryOperand_9268 ;
-  const GALGAS_andShortExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_9268, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 229)) ;
-  GALGAS_string var_testVar_9324 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("expression-and.galgas", 237)), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 237)) ;
-  ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 237)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_bool ").add_operation (var_testVar_9324, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 238)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 238)).add_operation (var_leftTemporaryOperand_9268, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 238)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 238)), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 238)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_9324, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 239)).add_operation (GALGAS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 239)), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 239)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 241)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@trueExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_trueExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                               GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                               const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                               const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                               GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                               GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
+                                                               GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                               Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_trueExpressionAST temp_0 = this ;
+  outArgument_outExpression = GALGAS_trueExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@falseExpressionAST enterExpressionInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_falseExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@falseExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_falseExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
+                                                                GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                Compiler * inCompiler
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_falseExpressionAST temp_0 = this ;
+  outArgument_outExpression = GALGAS_falseExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@trueExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_trueExpressionForGeneration::method_generateExpression (GALGAS_string & /* ioArgument_ioGeneratedCode */,
+                                                                  GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                  GALGAS_uint & /* ioArgument_ioTemporaryVariableIndex */,
+                                                                  GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
+                                                                  GALGAS_string & outArgument_outCppExpression,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outCppExpression = GALGAS_string ("GALGAS_bool (true)") ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@falseExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_falseExpressionForGeneration::method_generateExpression (GALGAS_string & /* ioArgument_ioGeneratedCode */,
+                                                                   GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                   GALGAS_uint & /* ioArgument_ioTemporaryVariableIndex */,
+                                                                   GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
+                                                                   GALGAS_string & outArgument_outCppExpression,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outCppExpression = GALGAS_string ("GALGAS_bool (false)") ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@trueExpressionForGeneration isTrueExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool cPtr_trueExpressionForGeneration::getter_isTrueExpression (Compiler */* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result_result ; // Returned variable
+  result_result = GALGAS_bool (true) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryMinusExpressionAST enterExpressionInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryMinusExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unaryMinusExpressionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 72)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryMinusExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryMinusExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                     GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                     const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                     const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                     GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                     GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                     GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_semanticExpressionForGeneration var_expression_4052 ;
+  const GALGAS_unaryMinusExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-unary-minus.galgas", 90)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_4052, inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 87)) ;
+  GALGAS_unifiedTypeMapEntry var_type_4127 = var_expression_4052.readProperty_mResultType () ;
+  enumGalgasBool test_1 = kBoolTrue ;
+  if (kBoolTrue == test_1) {
+    GALGAS_literalBigIntExpressionForGeneration var_exp_4166 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (var_expression_4052.ptr ())) ;
+    if (nullptr == var_exp_4166.ptr ()) {
+      test_1 = kBoolFalse ;
+    }
+    if (kBoolTrue == test_1) {
+      outArgument_outExpression = GALGAS_literalBigIntExpressionForGeneration::init_21__21__21_ (var_exp_4166.readProperty_mResultType (), var_exp_4166.readProperty_mLocation (), var_exp_4166.readProperty_mValue ().operator_unary_minus (inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 102)), inCompiler COMMA_HERE) ;
+    }
   }
-  GALGAS_string var_rightTemporaryOperand_9796 ;
-  const GALGAS_andShortExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_9796, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 242)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_9324.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 249)).add_operation (var_rightTemporaryOperand_9796, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 249)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 249)), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 249)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 250)) ;
+  if (kBoolFalse == test_1) {
+    enumGalgasBool test_2 = kBoolTrue ;
+    if (kBoolTrue == test_2) {
+      test_2 = extensionGetter_definition (var_type_4127, inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 104)).readProperty_features ().getter_prefixMinusOperator (SOURCE_FILE ("expression-unary-minus.galgas", 104)).operator_not (SOURCE_FILE ("expression-unary-minus.galgas", 104)).boolEnum () ;
+      if (kBoolTrue == test_2) {
+        const GALGAS_unaryMinusExpressionAST temp_3 = this ;
+        TC_Array <FixItDescription> fixItArray4 ;
+        inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_4127, inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 106)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 106)).add_operation (GALGAS_string ("' and does not support the prefix minus operator"), inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 106)), fixItArray4  COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 105)) ;
+        outArgument_outExpression.drop () ; // Release error dropped variable
+      }
+    }
+    if (kBoolFalse == test_2) {
+      const GALGAS_unaryMinusExpressionAST temp_5 = this ;
+      outArgument_outExpression = GALGAS_unaryMinusExpressionForGeneration::init_21__21__21_ (var_type_4127, temp_5.readProperty_mOperatorLocation (), var_expression_4052, inCompiler COMMA_HERE) ;
+    }
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 251)) ;
-  outArgument_outCppExpression = var_testVar_9324 ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryMinusExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryMinusExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                        GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                        GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                        GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                        GALGAS_string & outArgument_outCppExpression,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unaryMinusExpressionForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 133)) ;
+  GALGAS_string var_operand_5983 ;
+  const GALGAS_unaryMinusExpressionForGeneration temp_1 = this ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_5983, inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 135)) ;
+  const GALGAS_unaryMinusExpressionForGeneration temp_2 = this ;
+  outArgument_outCppExpression = var_operand_5983.add_operation (GALGAS_string (".operator_unary_minus ("), inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 143)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 143)), inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 143)).add_operation (extensionGetter_commaSourceFile (temp_2.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 143)), inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 143)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 143)) ;
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 144)) COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 144)) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryPlusExpressionAST enterExpressionInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryPlusExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unaryPlusExpressionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 72)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryPlusExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryPlusExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                    GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                    const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                    const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                    GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                    GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unaryPlusExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-unary-plus.galgas", 89)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, outArgument_outExpression, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 86)) ;
+  GALGAS_unifiedTypeMapEntry var_type_4068 = outArgument_outExpression.readProperty_mResultType () ;
+  enumGalgasBool test_1 = kBoolTrue ;
+  if (kBoolTrue == test_1) {
+    test_1 = extensionGetter_definition (var_type_4068, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 97)).readProperty_features ().getter_prefixPlusOperator (SOURCE_FILE ("expression-unary-plus.galgas", 97)).operator_not (SOURCE_FILE ("expression-unary-plus.galgas", 97)).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      const GALGAS_unaryPlusExpressionAST temp_2 = this ;
+      TC_Array <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_4068, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 99)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 99)).add_operation (GALGAS_string ("' and does not support the prefix '+' operator"), inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 99)), fixItArray3  COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 98)) ;
+      outArgument_outExpression.drop () ; // Release error dropped variable
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryWrappingMinusExpressionAST enterExpressionInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryWrappingMinusExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unaryWrappingMinusExpressionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 72)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryWrappingMinusExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryWrappingMinusExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                             GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                             const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                             const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                             GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                             GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_semanticExpressionForGeneration var_expression_4088 ;
+  const GALGAS_unaryWrappingMinusExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 89)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_4088, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 86)) ;
+  GALGAS_unifiedTypeMapEntry var_type_4163 = var_expression_4088.readProperty_mResultType () ;
+  enumGalgasBool test_1 = kBoolTrue ;
+  if (kBoolTrue == test_1) {
+    test_1 = extensionGetter_definition (var_type_4163, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 97)).readProperty_features ().getter_prefixMinusOperatorNoOVF (SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 97)).operator_not (SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 97)).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      const GALGAS_unaryWrappingMinusExpressionAST temp_2 = this ;
+      TC_Array <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GALGAS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_4163, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 99)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 99)).add_operation (GALGAS_string ("' and does not support the prefix minus operator"), inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 99)), fixItArray3  COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 98)) ;
+      outArgument_outExpression.drop () ; // Release error dropped variable
+    }
+  }
+  if (kBoolFalse == test_1) {
+    const GALGAS_unaryWrappingMinusExpressionAST temp_4 = this ;
+    outArgument_outExpression = GALGAS_unaryWrappingMinusExpressionForGeneration::init_21__21__21_ (var_type_4163, temp_4.readProperty_mOperatorLocation (), var_expression_4088, inCompiler COMMA_HERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@unaryWrappingMinusExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryWrappingMinusExpressionForGeneration::method_generateExpression (GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                GALGAS_string & outArgument_outCppExpression,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_unaryWrappingMinusExpressionForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 126)) ;
+  GALGAS_string var_operand_5579 ;
+  const GALGAS_unaryWrappingMinusExpressionForGeneration temp_1 = this ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_5579, inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 128)) ;
+  outArgument_outCppExpression = var_operand_5579.add_operation (GALGAS_string (".operator_unary_minus_no_ovf ()"), inCompiler COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 136)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@varInExpressionAST enterExpressionInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_varInExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@varInExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_varInExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                                GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                                const GALGAS_unifiedTypeMapEntry /* constinArgument_inType */,
+                                                                const GALGAS_analysisContext /* constinArgument_inAnalysisContext */,
+                                                                GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                Compiler * inCompiler
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMapEntry var_type_3515 ;
+  GALGAS_string var_sourceVariableCppName_3539 ;
+  GALGAS_string var_nameForCheckingFormalParameterUsing_3580 ;
+  {
+  const GALGAS_varInExpressionAST temp_0 = this ;
+  extensionSetter_searchForReadAccess (ioArgument_ioVariableMap, temp_0.readProperty_mVarName (), var_type_3515, var_sourceVariableCppName_3539, var_nameForCheckingFormalParameterUsing_3580, inCompiler COMMA_SOURCE_FILE ("expression-var.galgas", 73)) ;
+  }
+  const GALGAS_varInExpressionAST temp_1 = this ;
+  outArgument_outExpression = GALGAS_varInExpressionForGeneration::init_21__21__21__21_ (var_type_3515, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_3539, var_nameForCheckingFormalParameterUsing_3580, inCompiler COMMA_HERE) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@varInExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_varInExpressionForGeneration::method_generateExpression (GALGAS_string & /* ioArgument_ioGeneratedCode */,
+                                                                   GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                   GALGAS_uint & /* ioArgument_ioTemporaryVariableIndex */,
+                                                                   GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                   GALGAS_string & outArgument_outCppExpression,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_varInExpressionForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-var.galgas", 107)) ;
+  const GALGAS_varInExpressionForGeneration temp_1 = this ;
+  outArgument_outCppExpression = temp_1.readProperty_mCppVarName () ;
+  {
+  const GALGAS_varInExpressionForGeneration temp_2 = this ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (temp_2.readProperty_mNameForCheckingFormalParameterUsing () COMMA_SOURCE_FILE ("expression-var.galgas", 109)) ;
+  }
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -642,7 +899,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const GA
           }
           if (kBoolTrue == test_15) {
             extensionMethod_checkSetAccess (var_accessControl_7379, GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 157)), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 157)) ;
-            GALGAS_structPropertyAccessExpressionForGeneration var_conversionExpression_7621 = GALGAS_structPropertyAccessExpressionForGeneration::init_21__21__21__21_ (var_propertyType_7401, constinArgument_inErrorLocation, ioArgument_ioExpression, extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 165)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_HERE) ;
+            GALGAS_propertyAccessExpressionForGeneration var_conversionExpression_7621 = GALGAS_propertyAccessExpressionForGeneration::init_21__21__21__21_ (var_propertyType_7401, constinArgument_inErrorLocation, ioArgument_ioExpression, extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 165)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_HERE) ;
             ioArgument_ioExpression = var_conversionExpression_7621 ;
             var_ok_6524 = GALGAS_bool (ComparisonKind::equal, var_propertyType_7401.objectCompare (constinArgument_inTargetType)) ;
           }
@@ -657,17 +914,17 @@ void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const GA
           }
           test_16 = test_17.boolEnum () ;
           if (kBoolTrue == test_16) {
-            GALGAS_methodKind var_kind_8126 ;
-            GALGAS_functionSignature var_argumentTypeList_8163 ;
-            GALGAS_bool var_hasCompilerArgument_8204 ;
-            GALGAS_unifiedTypeMapEntry var_returnedType_8237 ;
-            GALGAS_location joker_8188 ; // Joker input parameter
-            GALGAS_methodQualifier joker_8258_2 ; // Joker input parameter
-            GALGAS_string joker_8258_1 ; // Joker input parameter
-            extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 170)).readProperty_getterMap ().method_searchKey (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 171)).readProperty_typeName (), var_kind_8126, var_argumentTypeList_8163, joker_8188, var_hasCompilerArgument_8204, var_returnedType_8237, joker_8258_2, joker_8258_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 170)) ;
-            var_ok_6524 = GALGAS_bool (ComparisonKind::equal, var_argumentTypeList_8163.getter_count (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 179)).objectCompare (GALGAS_uint (uint32_t (0U)))).operator_and (GALGAS_bool (ComparisonKind::equal, var_returnedType_8237.objectCompare (constinArgument_inTargetType)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 179)) ;
-            GALGAS_getterCallExpressionForGeneration var_conversionExpression_8390 = GALGAS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (constinArgument_inTargetType, constinArgument_inErrorLocation, var_kind_8126, ioArgument_ioExpression, GALGAS_stringlist::init (inCompiler COMMA_HERE), extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 187)).readProperty_typeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE), var_hasCompilerArgument_8204, inCompiler COMMA_HERE) ;
-            ioArgument_ioExpression = var_conversionExpression_8390 ;
+            GALGAS_methodKind var_kind_8120 ;
+            GALGAS_functionSignature var_argumentTypeList_8157 ;
+            GALGAS_bool var_hasCompilerArgument_8198 ;
+            GALGAS_unifiedTypeMapEntry var_returnedType_8231 ;
+            GALGAS_location joker_8182 ; // Joker input parameter
+            GALGAS_methodQualifier joker_8252_2 ; // Joker input parameter
+            GALGAS_string joker_8252_1 ; // Joker input parameter
+            extensionGetter_definition (constinArgument_inSourceType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 170)).readProperty_getterMap ().method_searchKey (extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 171)).readProperty_typeName (), var_kind_8120, var_argumentTypeList_8157, joker_8182, var_hasCompilerArgument_8198, var_returnedType_8231, joker_8252_2, joker_8252_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 170)) ;
+            var_ok_6524 = GALGAS_bool (ComparisonKind::equal, var_argumentTypeList_8157.getter_count (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 179)).objectCompare (GALGAS_uint (uint32_t (0U)))).operator_and (GALGAS_bool (ComparisonKind::equal, var_returnedType_8231.objectCompare (constinArgument_inTargetType)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 179)) ;
+            GALGAS_getterCallExpressionForGeneration var_conversionExpression_8384 = GALGAS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (constinArgument_inTargetType, constinArgument_inErrorLocation, var_kind_8120, ioArgument_ioExpression, GALGAS_stringlist::init (inCompiler COMMA_HERE), extensionGetter_definition (constinArgument_inTargetType, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 187)).readProperty_typeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE), var_hasCompilerArgument_8198, inCompiler COMMA_HERE) ;
+            ioArgument_ioExpression = var_conversionExpression_8384 ;
           }
         }
       }
@@ -697,116 +954,116 @@ void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const GAL
                                                                        GALGAS_semanticExpressionForGeneration & ioArgument_ioRightExpression,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapEntry var_leftResultType_9584 = ioArgument_ioLeftExpression.readProperty_mResultType () ;
-  GALGAS_unifiedTypeMapEntry var_rightResultType_9637 = ioArgument_ioRightExpression.readProperty_mResultType () ;
+  GALGAS_unifiedTypeMapEntry var_leftResultType_9578 = ioArgument_ioLeftExpression.readProperty_mResultType () ;
+  GALGAS_unifiedTypeMapEntry var_rightResultType_9631 = ioArgument_ioRightExpression.readProperty_mResultType () ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = constinArgument_inOperandIsHandled.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 211)).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).add_operation (GALGAS_string ("' and does not accept '"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).add_operation (constinArgument_inOperatorNameForErrorMessage, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).add_operation (GALGAS_string ("' operator (right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 214)).add_operation (extensionGetter_definition (var_rightResultType_9637, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 215)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 215)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 215)), fixItArray1  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 212)) ;
+      inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("left operand type is '@").add_operation (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).add_operation (GALGAS_string ("' and does not accept '"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).add_operation (constinArgument_inOperatorNameForErrorMessage, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 213)).add_operation (GALGAS_string ("' operator (right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 214)).add_operation (extensionGetter_definition (var_rightResultType_9631, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 215)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 215)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 215)), fixItArray1  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 212)) ;
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_unifiedTypeMapEntry var_rightType_10024 = var_rightResultType_9637 ;
-    GALGAS_bool var_ok_10066 = GALGAS_bool (ComparisonKind::equal, var_leftResultType_9584.objectCompare (var_rightType_10024)) ;
+    GALGAS_unifiedTypeMapEntry var_rightType_10018 = var_rightResultType_9631 ;
+    GALGAS_bool var_ok_10060 = GALGAS_bool (ComparisonKind::equal, var_leftResultType_9578.objectCompare (var_rightType_10018)) ;
     if (GALGAS_uint::class_func_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).isValid ()) {
-      uint32_t variant_10103 = GALGAS_uint::class_func_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).uintValue () ;
-      bool loop_10103 = true ;
-      while (loop_10103) {
-        loop_10103 = var_ok_10066.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_and (extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).readProperty_superType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).isValid () ;
-        if (loop_10103) {
-          loop_10103 = var_ok_10066.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_and (extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).readProperty_superType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).boolValue () ;
+      uint32_t variant_10097 = GALGAS_uint::class_func_max (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).uintValue () ;
+      bool loop_10097 = true ;
+      while (loop_10097) {
+        loop_10097 = var_ok_10060.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_and (extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).readProperty_superType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).isValid () ;
+        if (loop_10097) {
+          loop_10097 = var_ok_10060.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_and (extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).readProperty_superType ().getter_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)).boolValue () ;
         }
-        if (loop_10103 && (0 == variant_10103)) {
-          loop_10103 = false ;
+        if (loop_10097 && (0 == variant_10097)) {
+          loop_10097 = false ;
           inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 219)) ;
         }
-        if (loop_10103) {
-          variant_10103 -- ;
-          var_rightType_10024 = extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 220)).readProperty_superType () ;
-          var_ok_10066 = GALGAS_bool (ComparisonKind::equal, var_leftResultType_9584.objectCompare (var_rightType_10024)) ;
+        if (loop_10097) {
+          variant_10097 -- ;
+          var_rightType_10018 = extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 220)).readProperty_superType () ;
+          var_ok_10060 = GALGAS_bool (ComparisonKind::equal, var_leftResultType_9578.objectCompare (var_rightType_10018)) ;
         }
       }
     }
     enumGalgasBool test_2 = kBoolTrue ;
     if (kBoolTrue == test_2) {
-      test_2 = var_ok_10066.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 224)).boolEnum () ;
+      test_2 = var_ok_10060.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 224)).boolEnum () ;
       if (kBoolTrue == test_2) {
-        GALGAS_literalBigIntExpressionForGeneration var_bigIntSource_10336 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (ioArgument_ioRightExpression.ptr ())) ;
-        if (nullptr == var_bigIntSource_10336.ptr ()) {
+        GALGAS_literalBigIntExpressionForGeneration var_bigIntSource_10330 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (ioArgument_ioRightExpression.ptr ())) ;
+        if (nullptr == var_bigIntSource_10330.ptr ()) {
           test_2 = kBoolFalse ;
         }
         if (kBoolTrue == test_2) {
           enumGalgasBool test_3 = kBoolTrue ;
           if (kBoolTrue == test_3) {
-            test_3 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint").objectCompare (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 225)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+            test_3 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint").objectCompare (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 225)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
             if (kBoolTrue == test_3) {
-              GALGAS_bigint var_bigIntValue_10488 = var_bigIntSource_10336.readProperty_mValue () ;
+              GALGAS_bigint var_bigIntValue_10482 = var_bigIntSource_10330.readProperty_mValue () ;
               enumGalgasBool test_4 = kBoolTrue ;
               if (kBoolTrue == test_4) {
-                test_4 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_10488.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 227)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_10488.objectCompare (GALGAS_bigint ("4294967296", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 227)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 227)).boolEnum () ;
+                test_4 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_10482.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 227)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_10482.objectCompare (GALGAS_bigint ("4294967296", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 227)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 227)).boolEnum () ;
                 if (kBoolTrue == test_4) {
                   TC_Array <FixItDescription> fixItArray5 ;
-                  inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_10488.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)).add_operation (GALGAS_string (") does not fit in an @uint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)), fixItArray5  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)) ;
+                  inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_10482.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)).add_operation (GALGAS_string (") does not fit in an @uint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)), fixItArray5  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 228)) ;
                 }
               }
-              ioArgument_ioRightExpression = GALGAS_literalUIntExpressionForGeneration::init_21__21__21_ (var_leftResultType_9584, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_10488.getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 230)), inCompiler COMMA_HERE) ;
-              var_ok_10066 = GALGAS_bool (true) ;
+              ioArgument_ioRightExpression = GALGAS_literalUIntExpressionForGeneration::init_21__21__21_ (var_leftResultType_9578, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_10482.getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 230)), inCompiler COMMA_HERE) ;
+              var_ok_10060 = GALGAS_bool (true) ;
             }
           }
           if (kBoolFalse == test_3) {
             enumGalgasBool test_6 = kBoolTrue ;
             if (kBoolTrue == test_6) {
-              test_6 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint").objectCompare (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 232)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+              test_6 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint").objectCompare (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 232)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
               if (kBoolTrue == test_6) {
-                GALGAS_bigint var_bigIntValue_10931 = var_bigIntSource_10336.readProperty_mValue () ;
+                GALGAS_bigint var_bigIntValue_10925 = var_bigIntSource_10330.readProperty_mValue () ;
                 enumGalgasBool test_7 = kBoolTrue ;
                 if (kBoolTrue == test_7) {
-                  test_7 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_10931.objectCompare (GALGAS_bigint ("-2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 234)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_10931.objectCompare (GALGAS_bigint ("2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 234)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 234)).boolEnum () ;
+                  test_7 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_10925.objectCompare (GALGAS_bigint ("-2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 234)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_10925.objectCompare (GALGAS_bigint ("2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 234)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 234)).boolEnum () ;
                   if (kBoolTrue == test_7) {
                     TC_Array <FixItDescription> fixItArray8 ;
-                    inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_10931.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)).add_operation (GALGAS_string (") does not fit in an @sint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)), fixItArray8  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)) ;
+                    inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_10925.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)).add_operation (GALGAS_string (") does not fit in an @sint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)), fixItArray8  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 235)) ;
                   }
                 }
-                ioArgument_ioRightExpression = GALGAS_literalSIntExpressionForGeneration::init_21__21__21_ (var_leftResultType_9584, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_10931.getter_sint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 237)), inCompiler COMMA_HERE) ;
-                var_ok_10066 = GALGAS_bool (true) ;
+                ioArgument_ioRightExpression = GALGAS_literalSIntExpressionForGeneration::init_21__21__21_ (var_leftResultType_9578, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_10925.getter_sint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 237)), inCompiler COMMA_HERE) ;
+                var_ok_10060 = GALGAS_bool (true) ;
               }
             }
             if (kBoolFalse == test_6) {
               enumGalgasBool test_9 = kBoolTrue ;
               if (kBoolTrue == test_9) {
-                test_9 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint64").objectCompare (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 239)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+                test_9 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint64").objectCompare (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 239)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
                 if (kBoolTrue == test_9) {
-                  GALGAS_bigint var_bigIntValue_11385 = var_bigIntSource_10336.readProperty_mValue () ;
+                  GALGAS_bigint var_bigIntValue_11379 = var_bigIntSource_10330.readProperty_mValue () ;
                   enumGalgasBool test_10 = kBoolTrue ;
                   if (kBoolTrue == test_10) {
-                    test_10 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_11385.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 241)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_11385.objectCompare (GALGAS_bigint ("18446744073709551616", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 241)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 241)).boolEnum () ;
+                    test_10 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_11379.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 241)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_11379.objectCompare (GALGAS_bigint ("18446744073709551616", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 241)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 241)).boolEnum () ;
                     if (kBoolTrue == test_10) {
                       TC_Array <FixItDescription> fixItArray11 ;
-                      inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_11385.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)).add_operation (GALGAS_string (") does not fit in an @uint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)), fixItArray11  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)) ;
+                      inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_11379.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)).add_operation (GALGAS_string (") does not fit in an @uint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)), fixItArray11  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 242)) ;
                     }
                   }
-                  ioArgument_ioRightExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_leftResultType_9584, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_11385.getter_uint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 244)), inCompiler COMMA_HERE) ;
-                  var_ok_10066 = GALGAS_bool (true) ;
+                  ioArgument_ioRightExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_leftResultType_9578, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_11379.getter_uint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 244)), inCompiler COMMA_HERE) ;
+                  var_ok_10060 = GALGAS_bool (true) ;
                 }
               }
               if (kBoolFalse == test_9) {
                 enumGalgasBool test_12 = kBoolTrue ;
                 if (kBoolTrue == test_12) {
-                  test_12 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint64").objectCompare (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 246)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+                  test_12 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint64").objectCompare (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 246)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
                   if (kBoolTrue == test_12) {
-                    GALGAS_bigint var_bigIntValue_11836 = var_bigIntSource_10336.readProperty_mValue () ;
+                    GALGAS_bigint var_bigIntValue_11830 = var_bigIntSource_10330.readProperty_mValue () ;
                     enumGalgasBool test_13 = kBoolTrue ;
                     if (kBoolTrue == test_13) {
-                      test_13 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_11836.objectCompare (GALGAS_bigint ("-9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 248)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_11836.objectCompare (GALGAS_bigint ("9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 248)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 248)).boolEnum () ;
+                      test_13 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_11830.objectCompare (GALGAS_bigint ("-9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 248)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_11830.objectCompare (GALGAS_bigint ("9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 248)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 248)).boolEnum () ;
                       if (kBoolTrue == test_13) {
                         TC_Array <FixItDescription> fixItArray14 ;
-                        inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_11836.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)).add_operation (GALGAS_string (") does not fit in an @sint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)), fixItArray14  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)) ;
+                        inCompiler->emitSemanticError (ioArgument_ioRightExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_11830.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)).add_operation (GALGAS_string (") does not fit in an @sint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)), fixItArray14  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 249)) ;
                       }
                     }
-                    ioArgument_ioRightExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_leftResultType_9584, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_11836.getter_sint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 251)), inCompiler COMMA_HERE) ;
-                    var_ok_10066 = GALGAS_bool (true) ;
+                    ioArgument_ioRightExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_leftResultType_9578, ioArgument_ioRightExpression.readProperty_mLocation (), var_bigIntValue_11830.getter_sint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 251)), inCompiler COMMA_HERE) ;
+                    var_ok_10060 = GALGAS_bool (true) ;
                   }
                 }
               }
@@ -817,82 +1074,82 @@ void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const GAL
     }
     enumGalgasBool test_15 = kBoolTrue ;
     if (kBoolTrue == test_15) {
-      test_15 = var_ok_10066.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 256)).boolEnum () ;
+      test_15 = var_ok_10060.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 256)).boolEnum () ;
       if (kBoolTrue == test_15) {
-        GALGAS_literalBigIntExpressionForGeneration var_bigIntSource_12285 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (ioArgument_ioLeftExpression.ptr ())) ;
-        if (nullptr == var_bigIntSource_12285.ptr ()) {
+        GALGAS_literalBigIntExpressionForGeneration var_bigIntSource_12279 (dynamic_cast <const cPtr_literalBigIntExpressionForGeneration *> (ioArgument_ioLeftExpression.ptr ())) ;
+        if (nullptr == var_bigIntSource_12279.ptr ()) {
           test_15 = kBoolFalse ;
         }
         if (kBoolTrue == test_15) {
           enumGalgasBool test_16 = kBoolTrue ;
           if (kBoolTrue == test_16) {
-            test_16 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint").objectCompare (extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 257)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+            test_16 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint").objectCompare (extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 257)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
             if (kBoolTrue == test_16) {
-              GALGAS_bigint var_bigIntValue_12431 = var_bigIntSource_12285.readProperty_mValue () ;
+              GALGAS_bigint var_bigIntValue_12425 = var_bigIntSource_12279.readProperty_mValue () ;
               enumGalgasBool test_17 = kBoolTrue ;
               if (kBoolTrue == test_17) {
-                test_17 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_12431.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 259)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_12431.objectCompare (GALGAS_bigint ("4294967296", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 259)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 259)).boolEnum () ;
+                test_17 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_12425.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 259)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_12425.objectCompare (GALGAS_bigint ("4294967296", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 259)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 259)).boolEnum () ;
                 if (kBoolTrue == test_17) {
                   TC_Array <FixItDescription> fixItArray18 ;
-                  inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_12431.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)).add_operation (GALGAS_string (") does not fit in an @uint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)), fixItArray18  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)) ;
+                  inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_12425.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)).add_operation (GALGAS_string (") does not fit in an @uint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)), fixItArray18  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 260)) ;
                 }
               }
-              ioArgument_ioLeftExpression = GALGAS_literalUIntExpressionForGeneration::init_21__21__21_ (var_rightType_10024, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_12431.getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 262)), inCompiler COMMA_HERE) ;
-              var_ok_10066 = GALGAS_bool (true) ;
+              ioArgument_ioLeftExpression = GALGAS_literalUIntExpressionForGeneration::init_21__21__21_ (var_rightType_10018, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_12425.getter_uint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 262)), inCompiler COMMA_HERE) ;
+              var_ok_10060 = GALGAS_bool (true) ;
             }
           }
           if (kBoolFalse == test_16) {
             enumGalgasBool test_19 = kBoolTrue ;
             if (kBoolTrue == test_19) {
-              test_19 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint").objectCompare (extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 264)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+              test_19 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint").objectCompare (extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 264)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
               if (kBoolTrue == test_19) {
-                GALGAS_bigint var_bigIntValue_12861 = var_bigIntSource_12285.readProperty_mValue () ;
+                GALGAS_bigint var_bigIntValue_12855 = var_bigIntSource_12279.readProperty_mValue () ;
                 enumGalgasBool test_20 = kBoolTrue ;
                 if (kBoolTrue == test_20) {
-                  test_20 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_12861.objectCompare (GALGAS_bigint ("-2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 266)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_12861.objectCompare (GALGAS_bigint ("2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 266)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 266)).boolEnum () ;
+                  test_20 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_12855.objectCompare (GALGAS_bigint ("-2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 266)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_12855.objectCompare (GALGAS_bigint ("2147483648", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 266)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 266)).boolEnum () ;
                   if (kBoolTrue == test_20) {
                     TC_Array <FixItDescription> fixItArray21 ;
-                    inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_12861.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)).add_operation (GALGAS_string (") does not fit in an @sint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)), fixItArray21  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)) ;
+                    inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_12855.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)).add_operation (GALGAS_string (") does not fit in an @sint"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)), fixItArray21  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 267)) ;
                   }
                 }
-                ioArgument_ioLeftExpression = GALGAS_literalSIntExpressionForGeneration::init_21__21__21_ (var_rightType_10024, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_12861.getter_sint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 269)), inCompiler COMMA_HERE) ;
-                var_ok_10066 = GALGAS_bool (true) ;
+                ioArgument_ioLeftExpression = GALGAS_literalSIntExpressionForGeneration::init_21__21__21_ (var_rightType_10018, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_12855.getter_sint (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 269)), inCompiler COMMA_HERE) ;
+                var_ok_10060 = GALGAS_bool (true) ;
               }
             }
             if (kBoolFalse == test_19) {
               enumGalgasBool test_22 = kBoolTrue ;
               if (kBoolTrue == test_22) {
-                test_22 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint64").objectCompare (extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 271)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+                test_22 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("uint64").objectCompare (extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 271)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
                 if (kBoolTrue == test_22) {
-                  GALGAS_bigint var_bigIntValue_13302 = var_bigIntSource_12285.readProperty_mValue () ;
+                  GALGAS_bigint var_bigIntValue_13296 = var_bigIntSource_12279.readProperty_mValue () ;
                   enumGalgasBool test_23 = kBoolTrue ;
                   if (kBoolTrue == test_23) {
-                    test_23 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_13302.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 273)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_13302.objectCompare (GALGAS_bigint ("18446744073709551616", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 273)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 273)).boolEnum () ;
+                    test_23 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_13296.objectCompare (GALGAS_bigint ("0", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 273)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_13296.objectCompare (GALGAS_bigint ("18446744073709551616", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 273)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 273)).boolEnum () ;
                     if (kBoolTrue == test_23) {
                       TC_Array <FixItDescription> fixItArray24 ;
-                      inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_13302.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)).add_operation (GALGAS_string (") does not fit in an @uint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)), fixItArray24  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)) ;
+                      inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_13296.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)).add_operation (GALGAS_string (") does not fit in an @uint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)), fixItArray24  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 274)) ;
                     }
                   }
-                  ioArgument_ioLeftExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_rightType_10024, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_13302.getter_uint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 276)), inCompiler COMMA_HERE) ;
-                  var_ok_10066 = GALGAS_bool (true) ;
+                  ioArgument_ioLeftExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_rightType_10018, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_13296.getter_uint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 276)), inCompiler COMMA_HERE) ;
+                  var_ok_10060 = GALGAS_bool (true) ;
                 }
               }
               if (kBoolFalse == test_22) {
                 enumGalgasBool test_25 = kBoolTrue ;
                 if (kBoolTrue == test_25) {
-                  test_25 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint64").objectCompare (extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 278)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
+                  test_25 = GALGAS_bool (ComparisonKind::equal, GALGAS_string ("sint64").objectCompare (extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 278)).readProperty_typeName ().readProperty_string ())).boolEnum () ;
                   if (kBoolTrue == test_25) {
-                    GALGAS_bigint var_bigIntValue_13740 = var_bigIntSource_12285.readProperty_mValue () ;
+                    GALGAS_bigint var_bigIntValue_13734 = var_bigIntSource_12279.readProperty_mValue () ;
                     enumGalgasBool test_26 = kBoolTrue ;
                     if (kBoolTrue == test_26) {
-                      test_26 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_13740.objectCompare (GALGAS_bigint ("-9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 280)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_13740.objectCompare (GALGAS_bigint ("9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 280)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 280)).boolEnum () ;
+                      test_26 = GALGAS_bool (ComparisonKind::lowerThan, var_bigIntValue_13734.objectCompare (GALGAS_bigint ("-9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 280)))).operator_or (GALGAS_bool (ComparisonKind::greaterOrEqual, var_bigIntValue_13734.objectCompare (GALGAS_bigint ("9223372036854775808", inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 280)))) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 280)).boolEnum () ;
                       if (kBoolTrue == test_26) {
                         TC_Array <FixItDescription> fixItArray27 ;
-                        inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_13740.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)).add_operation (GALGAS_string (") does not fit in an @sint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)), fixItArray27  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)) ;
+                        inCompiler->emitSemanticError (ioArgument_ioLeftExpression.readProperty_mLocation (), GALGAS_string ("literal value (").add_operation (var_bigIntValue_13734.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)).add_operation (GALGAS_string (") does not fit in an @sint64"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)), fixItArray27  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 281)) ;
                       }
                     }
-                    ioArgument_ioLeftExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_rightType_10024, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_13740.getter_sint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 283)), inCompiler COMMA_HERE) ;
-                    var_ok_10066 = GALGAS_bool (true) ;
+                    ioArgument_ioLeftExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::init_21__21__21_ (var_rightType_10018, ioArgument_ioLeftExpression.readProperty_mLocation (), var_bigIntValue_13734.getter_sint_36__34_ (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 283)), inCompiler COMMA_HERE) ;
+                    var_ok_10060 = GALGAS_bool (true) ;
                   }
                 }
               }
@@ -903,52 +1160,52 @@ void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const GAL
     }
     enumGalgasBool test_28 = kBoolTrue ;
     if (kBoolTrue == test_28) {
-      test_28 = var_ok_10066.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 288)).boolEnum () ;
+      test_28 = var_ok_10060.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 288)).boolEnum () ;
       if (kBoolTrue == test_28) {
-        GALGAS_AccessControl var_accessControl_14316 ;
-        GALGAS_bool var_unused_0_14331 ;
-        GALGAS_unifiedTypeMapEntry var_propertyType_14338 ;
-        const bool optionalResult14256 = extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 288)).readProperty_propertyMap ().optional_searchKey (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 288)).readProperty_typeName ().readProperty_string (), var_accessControl_14316, var_unused_0_14331, var_propertyType_14338) ;
-        if (!optionalResult14256) {
+        GALGAS_AccessControl var_accessControl_14310 ;
+        GALGAS_bool var_unused_0_14325 ;
+        GALGAS_unifiedTypeMapEntry var_propertyType_14332 ;
+        const bool optionalResult14250 = extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 288)).readProperty_propertyMap ().optional_searchKey (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 288)).readProperty_typeName ().readProperty_string (), var_accessControl_14310, var_unused_0_14325, var_propertyType_14332) ;
+        if (!optionalResult14250) {
           test_28 = kBoolFalse ;
         }
         if (kBoolTrue == test_28) {
-          extensionMethod_checkSetAccess (var_accessControl_14316, GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 289)), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 289)) ;
-          GALGAS_structPropertyAccessExpressionForGeneration var_conversionExpression_14428 = GALGAS_structPropertyAccessExpressionForGeneration::init_21__21__21__21_ (var_propertyType_14338, constinArgument_inErrorLocation, ioArgument_ioRightExpression, extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 294)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_HERE) ;
-          ioArgument_ioRightExpression = var_conversionExpression_14428 ;
-          var_ok_10066 = GALGAS_bool (ComparisonKind::equal, var_propertyType_14338.objectCompare (var_leftResultType_9584)) ;
+          extensionMethod_checkSetAccess (var_accessControl_14310, GALGAS_selfAvailability::class_func_none (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 289)), constinArgument_inErrorLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 289)) ;
+          GALGAS_propertyAccessExpressionForGeneration var_conversionExpression_14422 = GALGAS_propertyAccessExpressionForGeneration::init_21__21__21__21_ (var_propertyType_14332, constinArgument_inErrorLocation, ioArgument_ioRightExpression, extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 294)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_HERE) ;
+          ioArgument_ioRightExpression = var_conversionExpression_14422 ;
+          var_ok_10060 = GALGAS_bool (ComparisonKind::equal, var_propertyType_14332.objectCompare (var_leftResultType_9578)) ;
         }
       }
     }
     if (kBoolFalse == test_28) {
       enumGalgasBool test_29 = kBoolTrue ;
       if (kBoolTrue == test_29) {
-        GALGAS_bool test_30 = var_ok_10066.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)) ;
+        GALGAS_bool test_30 = var_ok_10060.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)) ;
         if (kBoolTrue == test_30.boolEnum ()) {
-          test_30 = extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)).readProperty_getterMap ().getter_hasKey (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)).readProperty_typeName ().readProperty_string () COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)) ;
+          test_30 = extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)).readProperty_getterMap ().getter_hasKey (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)).readProperty_typeName ().readProperty_string () COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 298)) ;
         }
         test_29 = test_30.boolEnum () ;
         if (kBoolTrue == test_29) {
-          GALGAS_methodKind var_kind_14945 ;
-          GALGAS_functionSignature var_argumentTypeList_14982 ;
-          GALGAS_bool var_hasCompilerArgument_15023 ;
-          GALGAS_unifiedTypeMapEntry var_returnedType_15056 ;
-          GALGAS_location joker_15007 ; // Joker input parameter
-          GALGAS_methodQualifier joker_15077_2 ; // Joker input parameter
-          GALGAS_string joker_15077_1 ; // Joker input parameter
-          extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 299)).readProperty_getterMap ().method_searchKey (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 300)).readProperty_typeName (), var_kind_14945, var_argumentTypeList_14982, joker_15007, var_hasCompilerArgument_15023, var_returnedType_15056, joker_15077_2, joker_15077_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 299)) ;
-          var_ok_10066 = GALGAS_bool (ComparisonKind::equal, var_argumentTypeList_14982.getter_count (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 308)).objectCompare (GALGAS_uint (uint32_t (0U)))).operator_and (GALGAS_bool (ComparisonKind::equal, var_returnedType_15056.objectCompare (var_leftResultType_9584)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 308)) ;
-          GALGAS_getterCallExpressionForGeneration var_conversionExpression_15211 = GALGAS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_leftResultType_9584, constinArgument_inErrorLocation, var_kind_14945, ioArgument_ioRightExpression, GALGAS_stringlist::init (inCompiler COMMA_HERE), extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 316)).readProperty_typeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE), var_hasCompilerArgument_15023, inCompiler COMMA_HERE) ;
-          ioArgument_ioRightExpression = var_conversionExpression_15211 ;
+          GALGAS_methodKind var_kind_14933 ;
+          GALGAS_functionSignature var_argumentTypeList_14970 ;
+          GALGAS_bool var_hasCompilerArgument_15011 ;
+          GALGAS_unifiedTypeMapEntry var_returnedType_15044 ;
+          GALGAS_location joker_14995 ; // Joker input parameter
+          GALGAS_methodQualifier joker_15065_2 ; // Joker input parameter
+          GALGAS_string joker_15065_1 ; // Joker input parameter
+          extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 299)).readProperty_getterMap ().method_searchKey (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 300)).readProperty_typeName (), var_kind_14933, var_argumentTypeList_14970, joker_14995, var_hasCompilerArgument_15011, var_returnedType_15044, joker_15065_2, joker_15065_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 299)) ;
+          var_ok_10060 = GALGAS_bool (ComparisonKind::equal, var_argumentTypeList_14970.getter_count (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 308)).objectCompare (GALGAS_uint (uint32_t (0U)))).operator_and (GALGAS_bool (ComparisonKind::equal, var_returnedType_15044.objectCompare (var_leftResultType_9578)) COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 308)) ;
+          GALGAS_getterCallExpressionForGeneration var_conversionExpression_15199 = GALGAS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_leftResultType_9578, constinArgument_inErrorLocation, var_kind_14933, ioArgument_ioRightExpression, GALGAS_stringlist::init (inCompiler COMMA_HERE), extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 316)).readProperty_typeName ().readProperty_string (), GALGAS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE), var_hasCompilerArgument_15011, inCompiler COMMA_HERE) ;
+          ioArgument_ioRightExpression = var_conversionExpression_15199 ;
         }
       }
     }
     enumGalgasBool test_31 = kBoolTrue ;
     if (kBoolTrue == test_31) {
-      test_31 = var_ok_10066.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 322)).boolEnum () ;
+      test_31 = var_ok_10060.operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 322)).boolEnum () ;
       if (kBoolTrue == test_31) {
         TC_Array <FixItDescription> fixItArray32 ;
-        inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("left operand type of '").add_operation (constinArgument_inOperatorNameForErrorMessage, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (GALGAS_string ("' operator is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (extensionGetter_definition (var_rightType_10024, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 325)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 325)).add_operation (GALGAS_string ("', it should be either the same, either inherits from left operand type, either have a '"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 325)).add_operation (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 326)).add_operation (GALGAS_string ("' getter without argument that returns a '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).add_operation (extensionGetter_definition (var_leftResultType_9584, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).add_operation (GALGAS_string ("' object"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)), fixItArray32  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 323)) ;
+        inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("left operand type of '").add_operation (constinArgument_inOperatorNameForErrorMessage, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (GALGAS_string ("' operator is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (GALGAS_string ("', right operand type is '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 324)).add_operation (extensionGetter_definition (var_rightType_10018, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 325)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 325)).add_operation (GALGAS_string ("', it should be either the same, either inherits from left operand type, either have a '"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 325)).add_operation (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 326)).add_operation (GALGAS_string ("' getter without argument that returns a '@"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).add_operation (extensionGetter_definition (var_leftResultType_9578, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)).add_operation (GALGAS_string ("' object"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 327)), fixItArray32  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 323)) ;
       }
     }
   }

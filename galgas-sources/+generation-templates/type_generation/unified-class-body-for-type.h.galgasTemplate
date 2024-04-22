@@ -366,6 +366,17 @@ for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier rep
 end
 
 %
+//--------------------------------- Read subscripts
+%
+for (key argumentList resultType) in READ_SUBSCRIPT_MAP do
+%  public: VIRTUAL_IN_DEBUG GALGAS_%![resultType identifierRepresentation]% readSubscript_%
+   ![key identifierRepresentation]% (%?^
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in argumentList do (IDX) 
+    %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & in% ![IDX string] %,\n% !^
+  end
+  %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) const ;\n\n%
+end
+%
 //--------------------------------- Optional Methods
 %
 for (lkey mArgumentTypeList) in OPTIONAL_METHOD_MAP do

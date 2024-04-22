@@ -51,6 +51,8 @@ class GALGAS_extensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -131,6 +133,8 @@ class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -261,6 +265,8 @@ class GALGAS_extensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -337,6 +343,8 @@ class GALGAS_extensionInitializerForGeneration : public GALGAS_semanticDeclarati
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -459,6 +467,8 @@ class GALGAS_extensionInitializerForGeneration_2D_weak : public GALGAS_semanticD
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -547,6 +557,8 @@ class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -678,6 +690,8 @@ class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -758,6 +772,8 @@ class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDecl
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -883,6 +899,8 @@ class GALGAS_overridingExtensionMethodForGeneration_2D_weak : public GALGAS_sema
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -963,6 +981,8 @@ class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDecl
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1087,6 +1107,8 @@ class GALGAS_overridingExtensionSetterForGeneration_2D_weak : public GALGAS_sema
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1533,6 +1555,8 @@ class GALGAS_routinePrototypeDeclarationForGeneration : public GALGAS_semanticDe
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1644,6 +1668,8 @@ class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak : public GALGAS_se
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1712,6 +1738,8 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1825,6 +1853,8 @@ class GALGAS_routineImplementationForGeneration_2D_weak : public GALGAS_routineP
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1957,6 +1987,8 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2096,6 +2128,8 @@ class GALGAS_lexiqueDeclarationForGeneration_2D_weak : public GALGAS_semanticDec
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2164,6 +2198,8 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2279,6 +2315,8 @@ class GALGAS_functionPrototypeDeclarationForGeneration_2D_weak : public GALGAS_s
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2349,6 +2387,8 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2465,6 +2505,8 @@ class GALGAS_functionImplementationForGeneration_2D_weak : public GALGAS_functio
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2537,6 +2579,8 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2661,6 +2705,8 @@ class GALGAS_onceFunctionDeclarationForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2737,6 +2783,8 @@ class GALGAS_filewrapperDeclarationForGeneration : public GALGAS_semanticDeclara
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 

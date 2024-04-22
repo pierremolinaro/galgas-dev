@@ -380,6 +380,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !optionalMethodMap: optionalMethodMap
+    !readSubscriptMap: ()
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
@@ -528,6 +529,7 @@ override method @dictTypeForGeneration appendDeclaration1
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
     !selfTypeDefinition.optionalMethodMap
+    !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features
     !selfTypeDefinition.addAssignOperatorArguments

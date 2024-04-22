@@ -5903,6 +5903,362 @@ GALGAS_optionalMethodMap GALGAS_optionalMethodMap::extractObject (const GALGAS_o
 }
 
 //--------------------------------------------------------------------------------------------------
+
+cMapElement_subscriptMap::cMapElement_subscriptMap (const GALGAS_subscriptMap_2D_element & inValue
+                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_argumentTypeList (inValue.mProperty_argumentTypeList),
+mProperty_valueType (inValue.mProperty_valueType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_subscriptMap::cMapElement_subscriptMap (const GALGAS_lstring & inKey,
+                                                    const GALGAS_functionSignature & in_argumentTypeList,
+                                                    const GALGAS_unifiedTypeMapEntry & in_valueType
+                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mProperty_argumentTypeList (in_argumentTypeList),
+mProperty_valueType (in_valueType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cMapElement_subscriptMap::isValid (void) const {
+  return mProperty_lkey.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement * cMapElement_subscriptMap::copy (void) {
+  cMapElement * result = nullptr ;
+  macroMyNew (result, cMapElement_subscriptMap (mProperty_lkey, mProperty_argumentTypeList, mProperty_valueType COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cMapElement_subscriptMap::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("argumentTypeList" ":") ;
+  mProperty_argumentTypeList.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("valueType" ":") ;
+  mProperty_valueType.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap::GALGAS_subscriptMap (void) :
+AC_GALGAS_map () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap::GALGAS_subscriptMap (const GALGAS_subscriptMap & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap & GALGAS_subscriptMap::operator = (const GALGAS_subscriptMap & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap GALGAS_subscriptMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_subscriptMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap GALGAS_subscriptMap::class_func_emptyMap (LOCATION_ARGS) {
+  GALGAS_subscriptMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap GALGAS_subscriptMap::class_func_mapWithMapToOverride (const GALGAS_subscriptMap & inMapToOverride
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_subscriptMap result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap GALGAS_subscriptMap::getter_overriddenMap (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_subscriptMap result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap::enterElement (const GALGAS_subscriptMap_2D_element & inValue,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
+  cMapElement_subscriptMap * p = nullptr ;
+  macroMyNew (p, cMapElement_subscriptMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@subscriptMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap::addAssign_operation (const GALGAS_lstring & inKey,
+                                               const GALGAS_functionSignature & inArgument0,
+                                               const GALGAS_unifiedTypeMapEntry & inArgument1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  cMapElement_subscriptMap * p = nullptr ;
+  macroMyNew (p, cMapElement_subscriptMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@subscriptMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap GALGAS_subscriptMap::add_operation (const GALGAS_subscriptMap & inOperand,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_subscriptMap result = *this ;
+  cEnumerator_subscriptMap enumerator (inOperand, EnumerationOrder::up) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_argumentTypeList (HERE), enumerator.current_valueType (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap::setter_insertKey (GALGAS_lstring inKey,
+                                            GALGAS_functionSignature inArgument0,
+                                            GALGAS_unifiedTypeMapEntry inArgument1,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  cMapElement_subscriptMap * p = nullptr ;
+  macroMyNew (p, cMapElement_subscriptMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "the '%K' subscript has been already defined" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const char * kSearchErrorMessage_subscriptMap_searchKey = "the '%K' subscript is not declared" ;
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap::method_searchKey (GALGAS_lstring inKey,
+                                            GALGAS_functionSignature & outArgument0,
+                                            GALGAS_unifiedTypeMapEntry & outArgument1,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) performSearch (inKey,
+                                                                                         inCompiler,
+                                                                                         kSearchErrorMessage_subscriptMap_searchKey
+                                                                                         COMMA_THERE) ;
+  if (nullptr == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_subscriptMap) ;
+    outArgument0 = p->mProperty_argumentTypeList ;
+    outArgument1 = p->mProperty_valueType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_functionSignature GALGAS_subscriptMap::getter_argumentTypeListForKey (const GALGAS_string & inKey,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) attributes ;
+  GALGAS_functionSignature result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_subscriptMap) ;
+    result = p->mProperty_argumentTypeList ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_subscriptMap::getter_valueTypeForKey (const GALGAS_string & inKey,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) attributes ;
+  GALGAS_unifiedTypeMapEntry result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_subscriptMap) ;
+    result = p->mProperty_valueType ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap::setter_setArgumentTypeListForKey (GALGAS_functionSignature inAttributeValue,
+                                                            GALGAS_string inKey,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_subscriptMap * p = (cMapElement_subscriptMap *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_subscriptMap) ;
+    p->mProperty_argumentTypeList = inAttributeValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_subscriptMap::setter_setValueTypeForKey (GALGAS_unifiedTypeMapEntry inAttributeValue,
+                                                     GALGAS_string inKey,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_subscriptMap * p = (cMapElement_subscriptMap *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_subscriptMap) ;
+    p->mProperty_valueType = inAttributeValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cMapElement_subscriptMap * GALGAS_subscriptMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
+                                                                                   const GALGAS_string & inKey
+                                                                                   COMMA_LOCATION_ARGS) {
+  cMapElement_subscriptMap * result = (cMapElement_subscriptMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_subscriptMap) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_subscriptMap::cEnumerator_subscriptMap (const GALGAS_subscriptMap & inEnumeratedObject,
+                                                    const EnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap_2D_element cEnumerator_subscriptMap::current (LOCATION_ARGS) const {
+  const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_subscriptMap) ;
+  return GALGAS_subscriptMap_2D_element (p->mProperty_lkey, p->mProperty_argumentTypeList, p->mProperty_valueType) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_subscriptMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_functionSignature cEnumerator_subscriptMap::current_argumentTypeList (LOCATION_ARGS) const {
+  const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_subscriptMap) ;
+  return p->mProperty_argumentTypeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry cEnumerator_subscriptMap::current_valueType (LOCATION_ARGS) const {
+  const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_subscriptMap) ;
+  return p->mProperty_valueType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_subscriptMap::optional_searchKey (const GALGAS_string & inKey,
+                                              GALGAS_functionSignature & outArgument0,
+                                              GALGAS_unifiedTypeMapEntry & outArgument1) const {
+  const cMapElement_subscriptMap * p = (const cMapElement_subscriptMap *) searchForKey (inKey) ;
+  const bool result = nullptr != p ;
+  if (result) {
+    macroValidSharedObject (p, cMapElement_subscriptMap) ;
+    outArgument0 = p->mProperty_argumentTypeList ;
+    outArgument1 = p->mProperty_valueType ;
+  }else{
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @subscriptMap generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap ("subscriptMap",
+                                                                    nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_subscriptMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_subscriptMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_subscriptMap::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_subscriptMap (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_subscriptMap GALGAS_subscriptMap::extractObject (const GALGAS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_subscriptMap result ;
+  const GALGAS_subscriptMap * p = (const GALGAS_subscriptMap *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_subscriptMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("subscriptMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //Class for element of '@enumerationDescriptorList' list
 //
@@ -8012,10 +8368,10 @@ GALGAS_string extensionGetter_string (const GALGAS_typeKindEnum & inObject,
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_3812 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
-      const GALGAS_bool extractedValue_3731_isReference = extractPtr_3812->mAssociatedValue0 ;
+      const cEnumAssociatedValues_typeKindEnum_classType * extractPtr_3884 = (const cEnumAssociatedValues_typeKindEnum_classType *) (temp_0.unsafePointer ()) ;
+      const GALGAS_bool extractedValue_3803_isReference = extractPtr_3884->mAssociatedValue0 ;
       GALGAS_string temp_1 ;
-      const enumGalgasBool test_2 = extractedValue_3731_isReference.boolEnum () ;
+      const enumGalgasBool test_2 = extractedValue_3803_isReference.boolEnum () ;
       if (kBoolTrue == test_2) {
         temp_1 = GALGAS_string ("reference class") ;
       }else if (kBoolFalse == test_2) {
@@ -8113,21 +8469,21 @@ GALGAS_bool extensionGetter_generateCppObjectComparison (const GALGAS_typeFeatur
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_typeFeatures temp_0 = inObject ;
-  result_result = temp_0.getter_equatable (SOURCE_FILE ("unified-type-definition.galgas", 146)) ;
+  result_result = temp_0.getter_equatable (SOURCE_FILE ("unified-type-definition.galgas", 147)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 147)).boolEnum () ;
+    test_1 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 148)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_typeFeatures temp_2 = inObject ;
-      result_result = temp_2.getter_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 148)) ;
+      result_result = temp_2.getter_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 149)) ;
     }
   }
   enumGalgasBool test_3 = kBoolTrue ;
   if (kBoolTrue == test_3) {
-    test_3 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 150)).boolEnum () ;
+    test_3 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 151)).boolEnum () ;
     if (kBoolTrue == test_3) {
       const GALGAS_typeFeatures temp_4 = inObject ;
-      result_result = temp_4.getter_comparable (SOURCE_FILE ("unified-type-definition.galgas", 151)) ;
+      result_result = temp_4.getter_comparable (SOURCE_FILE ("unified-type-definition.galgas", 152)) ;
     }
   }
 //---

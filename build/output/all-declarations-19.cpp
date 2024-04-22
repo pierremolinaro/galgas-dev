@@ -8,6 +8,249 @@
 #include "all-declarations-19.h"
 
 //--------------------------------------------------------------------------------------------------
+// @mulEqualExpressionInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_mulEqualExpressionInstructionAST::cPtr_mulEqualExpressionInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_mulEqualExpressionInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mPrefixedBySelf.printNonNullClassInstanceProperties ("mPrefixedBySelf") ;
+    mProperty_mReceiverName.printNonNullClassInstanceProperties ("mReceiverName") ;
+    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_mulEqualExpressionInstructionAST::objectCompare (const GALGAS_mulEqualExpressionInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_mulEqualExpressionInstructionAST::GALGAS_mulEqualExpressionInstructionAST (void) :
+GALGAS_semanticInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_mulEqualExpressionInstructionAST GALGAS_mulEqualExpressionInstructionAST::
+init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                          const GALGAS_bool & in_mPrefixedBySelf,
+                          const GALGAS_lstring & in_mReceiverName,
+                          const GALGAS_lstringlist & in_mStructAttributeList,
+                          const GALGAS_semanticExpressionAST & in_mExpression,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_mulEqualExpressionInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_mulEqualExpressionInstructionAST (inCompiler COMMA_THERE)) ;
+  object->mulEqualExpressionInstructionAST_init_21__21__21__21__21_ (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpression, inCompiler) ;
+  const GALGAS_mulEqualExpressionInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_mulEqualExpressionInstructionAST::
+mulEqualExpressionInstructionAST_init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                           const GALGAS_bool & in_mPrefixedBySelf,
+                                                           const GALGAS_lstring & in_mReceiverName,
+                                                           const GALGAS_lstringlist & in_mStructAttributeList,
+                                                           const GALGAS_semanticExpressionAST & in_mExpression,
+                                                           Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_mulEqualExpressionInstructionAST::GALGAS_mulEqualExpressionInstructionAST (const cPtr_mulEqualExpressionInstructionAST * inSourcePtr) :
+GALGAS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_mulEqualExpressionInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_mulEqualExpressionInstructionAST GALGAS_mulEqualExpressionInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                 const GALGAS_bool & in_mPrefixedBySelf,
+                                                                                                 const GALGAS_lstring & in_mReceiverName,
+                                                                                                 const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                                 const GALGAS_semanticExpressionAST & in_mExpression
+                                                                                                 COMMA_LOCATION_ARGS) {
+  GALGAS_mulEqualExpressionInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_mulEqualExpressionInstructionAST (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpression COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_mulEqualExpressionInstructionAST::readProperty_mPrefixedBySelf (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_mulEqualExpressionInstructionAST * p = (cPtr_mulEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mulEqualExpressionInstructionAST) ;
+    return p->mProperty_mPrefixedBySelf ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_mulEqualExpressionInstructionAST::readProperty_mReceiverName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_mulEqualExpressionInstructionAST * p = (cPtr_mulEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mulEqualExpressionInstructionAST) ;
+    return p->mProperty_mReceiverName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_mulEqualExpressionInstructionAST::readProperty_mStructAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstringlist () ;
+  }else{
+    cPtr_mulEqualExpressionInstructionAST * p = (cPtr_mulEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mulEqualExpressionInstructionAST) ;
+    return p->mProperty_mStructAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionAST GALGAS_mulEqualExpressionInstructionAST::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionAST () ;
+  }else{
+    cPtr_mulEqualExpressionInstructionAST * p = (cPtr_mulEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mulEqualExpressionInstructionAST) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @mulEqualExpressionInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_mulEqualExpressionInstructionAST::cPtr_mulEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                                              const GALGAS_bool & in_mPrefixedBySelf,
+                                                                              const GALGAS_lstring & in_mReceiverName,
+                                                                              const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                              const GALGAS_semanticExpressionAST & in_mExpression
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpression () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_mulEqualExpressionInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_mulEqualExpressionInstructionAST ;
+}
+
+void cPtr_mulEqualExpressionInstructionAST::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@mulEqualExpressionInstructionAST:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPrefixedBySelf.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mReceiverName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_mulEqualExpressionInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_mulEqualExpressionInstructionAST (mProperty_mInstructionLocation, mProperty_mPrefixedBySelf, mProperty_mReceiverName, mProperty_mStructAttributeList, mProperty_mExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @mulEqualExpressionInstructionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mulEqualExpressionInstructionAST ("mulEqualExpressionInstructionAST",
+                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_mulEqualExpressionInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_mulEqualExpressionInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_mulEqualExpressionInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_mulEqualExpressionInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_mulEqualExpressionInstructionAST GALGAS_mulEqualExpressionInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_mulEqualExpressionInstructionAST result ;
+  const GALGAS_mulEqualExpressionInstructionAST * p = (const GALGAS_mulEqualExpressionInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_mulEqualExpressionInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("mulEqualExpressionInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @divEqualExpressionInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 

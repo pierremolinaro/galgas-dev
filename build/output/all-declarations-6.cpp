@@ -10340,6 +10340,30 @@ GALGAS_string extensionGetter_initializerSignature (const GALGAS_functionSignatu
 
 
 //--------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@functionSignature subcriptSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string extensionGetter_subcriptSignature (const GALGAS_functionSignature & inObject,
+                                                 Compiler * inCompiler
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  result_result = GALGAS_string::makeEmptyString () ;
+  const GALGAS_functionSignature temp_0 = inObject ;
+  cEnumerator_functionSignature enumerator_1954 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_1954.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_1954.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)) ;
+    enumerator_1954.gotoNextObject () ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_methodQualifier::GALGAS_methodQualifier (void) :
 mEnum (kNotBuilt) {
@@ -11939,23 +11963,23 @@ GALGAS_string extensionGetter_initializerSignature (const GALGAS_typedPropertyLi
   GALGAS_string result_result ; // Returned variable
   result_result = GALGAS_string ("init") ;
   const GALGAS_typedPropertyList temp_0 = inObject ;
-  cEnumerator_typedPropertyList enumerator_8366 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_8366.hasCurrentObject ()) {
+  cEnumerator_typedPropertyList enumerator_8512 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_8512.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8366.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 215)))).boolEnum () ;
+      test_1 = GALGAS_bool (ComparisonKind::equal, enumerator_8512.current (HERE).readProperty_initialization ().objectCompare (GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas", 222)))).boolEnum () ;
       if (kBoolTrue == test_1) {
-        result_result.plusAssign_operation(GALGAS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 216)) ;
+        result_result.plusAssign_operation(GALGAS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 223)) ;
         enumGalgasBool test_2 = kBoolTrue ;
         if (kBoolTrue == test_2) {
-          test_2 = enumerator_8366.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_2 = enumerator_8512.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (kBoolTrue == test_2) {
-            result_result.plusAssign_operation(enumerator_8366.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 218)) ;
+            result_result.plusAssign_operation(enumerator_8512.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 225)) ;
           }
         }
       }
     }
-    enumerator_8366.gotoNextObject () ;
+    enumerator_8512.gotoNextObject () ;
   }
 //---
   return result_result ;

@@ -253,6 +253,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
       !optionalMethodMap: optionalMethodMap
+      !readSubscriptMap: ()
       !enumerationDescriptorList: ()
       !features: features
       !addAssignOperatorArguments: ()
@@ -396,6 +397,7 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.instanceMethodMap
       !selfTypeDefinition.classMethodMap
       !selfTypeDefinition.optionalMethodMap
+      !selfTypeDefinition.readSubscriptMap
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features
       !selfTypeDefinition.addAssignOperatorArguments

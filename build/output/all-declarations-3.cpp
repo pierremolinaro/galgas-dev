@@ -13281,7 +13281,7 @@ void callExtensionMethod_getOptionalMethodMap (cPtr_predefinedTypeAST * inObject
 GALGAS_typeFeatures cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (Compiler */* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_typeFeatures result_outFlags ; // Returned variable
-  result_outFlags = GALGAS_typeFeatures::class_func_none (SOURCE_FILE ("predefinedTypeAST.galgas", 222)) ;
+  result_outFlags = GALGAS_typeFeatures::class_func_none (SOURCE_FILE ("predefinedTypeAST.galgas", 223)) ;
 //---
   return result_outFlags ;
 }

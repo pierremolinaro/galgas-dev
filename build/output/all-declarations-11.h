@@ -10,6 +10,268 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @nonterminalInstructionForGeneration_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_nonterminalInstructionForGeneration_2D_weak : public GALGAS_syntaxInstructionForGeneration_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_nonterminalInstructionForGeneration_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_nonterminalInstructionForGeneration_2D_weak (const class GALGAS_nonterminalInstructionForGeneration & inSource) ;
+
+  public: GALGAS_nonterminalInstructionForGeneration_2D_weak & operator = (const class GALGAS_nonterminalInstructionForGeneration & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_nonterminalInstructionForGeneration bang_nonterminalInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_nonterminalInstructionForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_nonterminalInstructionForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_nonterminalInstructionForGeneration_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_nonterminalInstructionForGeneration_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @repeatInstruction reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_repeatInstruction : public GALGAS_syntaxInstructionAST {
+//--------------------------------- Default constructor
+  public: GALGAS_repeatInstruction (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_repeatInstruction (const class cPtr_repeatInstruction * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_syntaxInstructionList readProperty_mRepeatedInstructionList (void) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_repeated_5F_instructions_5F_branch (void) const ;
+
+  public: class GALGAS_listOfSyntaxInstructionList readProperty_mRepeatBranchList (void) const ;
+
+  public: class GALGAS_location readProperty_mEndOf_5F_repeat_5F_instruction (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_repeatInstruction init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_syntaxInstructionList & inOperand1,
+                                                                    const class GALGAS_location & inOperand2,
+                                                                    const class GALGAS_listOfSyntaxInstructionList & inOperand3,
+                                                                    const class GALGAS_location & inOperand4,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_repeatInstruction extractObject (const GALGAS_object & inObject,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_repeatInstruction class_func_new (const class GALGAS_location & inOperand0,
+                                                                const class GALGAS_syntaxInstructionList & inOperand1,
+                                                                const class GALGAS_location & inOperand2,
+                                                                const class GALGAS_listOfSyntaxInstructionList & inOperand3,
+                                                                const class GALGAS_location & inOperand4
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_repeatInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_repeatInstruction class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @repeatInstruction class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void repeatInstruction_init_21__21__21__21__21_ (const class GALGAS_location & inOperand0,
+                                                           const class GALGAS_syntaxInstructionList & inOperand1,
+                                                           const class GALGAS_location & inOperand2,
+                                                           const class GALGAS_listOfSyntaxInstructionList & inOperand3,
+                                                           const class GALGAS_location & inOperand4,
+                                                           Compiler * inCompiler) ;
+
+
+//--- Extension method analyzeSyntaxInstruction
+  public: virtual void method_analyzeSyntaxInstruction (const class GALGAS_lstring arg_inUsefulnessCallerEntityName,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_analysisContext arg_inAnalysisContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_bool arg_inHasTranslateFeature,
+           const class GALGAS_terminalMap arg_inTerminalMap,
+           const class GALGAS_string arg_inLexiqueName,
+           const class GALGAS_nonterminalMap arg_inNonterminalMap,
+           const class GALGAS_string arg_inComponentName,
+           const class GALGAS_stringset arg_inIndexNameSet,
+           class GALGAS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GALGAS_localVarManager & arg_ioVariableMap,
+           class GALGAS_uint & arg_ioSelectMethodCount,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method transformInstruction
+  public: virtual void method_transformInstruction (class GALGAS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
+           class GALGAS_uint & arg_ioAddedNonTerminalIndex,
+           class GALGAS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_syntaxInstructionList mProperty_mRepeatedInstructionList ;
+  public: GALGAS_location mProperty_mEndOf_5F_repeated_5F_instructions_5F_branch ;
+  public: GALGAS_listOfSyntaxInstructionList mProperty_mRepeatBranchList ;
+  public: GALGAS_location mProperty_mEndOf_5F_repeat_5F_instruction ;
+
+
+//--- Default constructor
+  public: cPtr_repeatInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_repeatInstruction (const GALGAS_location & in_mInstructionLocation,
+                                  const GALGAS_syntaxInstructionList & in_mRepeatedInstructionList,
+                                  const GALGAS_location & in_mEndOf_5F_repeated_5F_instructions_5F_branch,
+                                  const GALGAS_listOfSyntaxInstructionList & in_mRepeatBranchList,
+                                  const GALGAS_location & in_mEndOf_5F_repeat_5F_instruction
+                                  COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @repeatInstruction_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_repeatInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_repeatInstruction_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_repeatInstruction_2D_weak (const class GALGAS_repeatInstruction & inSource) ;
+
+  public: GALGAS_repeatInstruction_2D_weak & operator = (const class GALGAS_repeatInstruction & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_repeatInstruction bang_repeatInstruction_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_repeatInstruction_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_repeatInstruction_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_repeatInstruction_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_repeatInstruction_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstruction_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @repeatInstructionForGeneration reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -70,6 +332,8 @@ class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionFor
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -198,6 +462,8 @@ class GALGAS_repeatInstructionForGeneration_2D_weak : public GALGAS_syntaxInstru
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -260,6 +526,8 @@ class GALGAS_selectInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -385,6 +653,8 @@ class GALGAS_selectInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2D_w
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -451,6 +721,8 @@ class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionFor
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -573,6 +845,8 @@ class GALGAS_selectInstructionForGeneration_2D_weak : public GALGAS_syntaxInstru
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -647,6 +921,8 @@ class GALGAS_terminalCheckInstructionAST : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -781,6 +1057,8 @@ class GALGAS_terminalCheckInstructionAST_2D_weak : public GALGAS_syntaxInstructi
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -833,6 +1111,8 @@ class GALGAS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_refe
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -890,6 +1170,8 @@ class GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak : public AC_GAL
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -969,6 +1251,8 @@ class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstruc
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1100,6 +1384,8 @@ class GALGAS_terminalCheckInstructionForGeneration_2D_weak : public GALGAS_synta
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1178,6 +1464,8 @@ class GALGAS_parseLoopInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1315,6 +1603,8 @@ class GALGAS_parseLoopInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1381,6 +1671,8 @@ class GALGAS_parseLoopInstructionForGeneration : public GALGAS_syntaxInstruction
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1499,6 +1791,8 @@ class GALGAS_parseLoopInstructionForGeneration_2D_weak : public GALGAS_syntaxIns
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1561,6 +1855,8 @@ class GALGAS_parseRewindInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1686,6 +1982,8 @@ class GALGAS_parseRewindInstruction_2D_weak : public GALGAS_syntaxInstructionAST
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1744,6 +2042,8 @@ class GALGAS_parseRewindInstructionForGeneration : public GALGAS_syntaxInstructi
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -1856,6 +2156,8 @@ class GALGAS_parseRewindInstructionForGeneration_2D_weak : public GALGAS_syntaxI
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -1934,6 +2236,8 @@ class GALGAS_parseWhenInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2071,6 +2375,8 @@ class GALGAS_parseWhenInstruction_2D_weak : public GALGAS_syntaxInstructionAST_2
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2137,6 +2443,8 @@ class GALGAS_parseWhenInstructionForGeneration : public GALGAS_syntaxInstruction
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2255,6 +2563,8 @@ class GALGAS_parseWhenInstructionForGeneration_2D_weak : public GALGAS_syntaxIns
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2313,6 +2623,8 @@ class GALGAS_syntaxSendInstructionAST : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2435,6 +2747,8 @@ class GALGAS_syntaxSendInstructionAST_2D_weak : public GALGAS_syntaxInstructionA
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2493,6 +2807,8 @@ class GALGAS_syntaxSendInstructionForGeneration : public GALGAS_syntaxInstructio
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2599,6 +2915,8 @@ class GALGAS_syntaxSendInstructionForGeneration_2D_weak : public GALGAS_syntaxIn
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -2745,6 +3063,8 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
                                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -2842,6 +3162,8 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element : public AC_GALG
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3022,6 +3344,8 @@ class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
                                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3159,6 +3483,8 @@ class GALGAS_productionRuleListForGrammarAnalysis_2D_element : public AC_GALGAS_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3243,6 +3569,8 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
   public: VIRTUAL_IN_DEBUG class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis getter_overriddenMap (Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -3392,6 +3720,8 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element : public AC
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3483,6 +3813,8 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_so
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3608,6 +3940,8 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element : public A
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3671,6 +4005,8 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSy
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3727,6 +4063,8 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_ab
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -3850,6 +4188,8 @@ class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
                                                                                               COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -3948,6 +4288,8 @@ class GALGAS_branchListForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4011,6 +4353,8 @@ class GALGAS_selectInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4067,6 +4411,8 @@ class GALGAS_selectInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstrac
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4131,6 +4477,8 @@ class GALGAS_repeatInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4187,6 +4535,8 @@ class GALGAS_repeatInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstrac
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4329,6 +4679,8 @@ class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
                                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4440,6 +4792,8 @@ class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element : public AC_GALGAS
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4533,6 +4887,8 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_terminalSymbolsMapForGrammarAnalysis getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -4681,6 +5037,8 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element : public AC_GALGAS_
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -4836,6 +5194,8 @@ class GALGAS_rowList : public AC_GALGAS_list {
                                                                          COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -4965,6 +5325,8 @@ class GALGAS_rowList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5108,6 +5470,8 @@ class GALGAS_programListForGeneration : public AC_GALGAS_list {
                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5205,6 +5569,8 @@ class GALGAS_programListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5320,6 +5686,8 @@ class GALGAS_genericExtensionMethodListMapDictionary : public AC_GALGAS_root {
                                                                         COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
                                                     class GALGAS_lstringlist & outOperand1) const ;
@@ -5434,6 +5802,8 @@ class GALGAS_genericExtensionMethodListMapDictionary_2D_element : public AC_GALG
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5508,6 +5878,8 @@ class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5656,6 +6028,8 @@ class GALGAS_descendantClassListMapDictionary : public AC_GALGAS_root {
                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
                                                     class GALGAS_unifiedTypeMapEntryList & outOperand1) const ;
@@ -5770,6 +6144,8 @@ class GALGAS_descendantClassListMapDictionary_2D_element : public AC_GALGAS_root
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -5844,6 +6220,8 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -5929,6 +6307,8 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_extensionMethodMapForGlobalCheckings getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0) const ;
@@ -6062,6 +6442,8 @@ class GALGAS_extensionMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6135,6 +6517,8 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_extensionSetterMapForGlobalCheckings getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0) const ;
@@ -6268,6 +6652,8 @@ class GALGAS_extensionSetterMapForGlobalCheckings_2D_element : public AC_GALGAS_
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6341,6 +6727,8 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_extensionGetterMapForGlobalCheckings getter_overriddenMap (Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0) const ;
@@ -6473,6 +6861,8 @@ class GALGAS_extensionGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6615,6 +7005,8 @@ class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
                                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -6725,6 +7117,8 @@ class GALGAS_galgas_33_QualifiedFeatureList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+
+//--------------------------------- Read subscripts
 
 //--------------------------------- Optional Methods
 
@@ -6942,6 +7336,8 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
+//--------------------------------- Read subscripts
+
 //--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
@@ -7116,61 +7512,60 @@ class cParser_galgas_33_ExpressionSyntax {
 
   protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i0_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i1_ (GALGAS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i1_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                                       GALGAS_semanticExpressionAST & outArgument1,
+                                                                                       Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i1_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i1_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i2_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                                    GALGAS_semanticExpressionAST & outArgument1,
+                                                                                    Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i2_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i2_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i3_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                           GALGAS_semanticExpressionAST & outArgument1,
                                                                           Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i1_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i3_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i1_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i3_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i2_ (GALGAS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i4_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                           GALGAS_semanticExpressionAST & outArgument1,
                                                                           Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i2_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i4_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i2_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i4_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i3_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                         GALGAS_semanticExpressionAST & outArgument1,
-                                                                         Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i5_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                                     GALGAS_semanticExpressionAST & outArgument1,
+                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i3_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i5_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i3_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i5_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i4_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                         GALGAS_semanticExpressionAST & outArgument1,
-                                                                         Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_optional_5F_type_5F_ggs_33__i6_ (GALGAS_lstring & outArgument0,
+                                                                                   Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i4_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_optional_5F_type_5F_ggs_33__i6_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i4_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_optional_5F_type_5F_ggs_33__i6_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i5_ (GALGAS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i7_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                           GALGAS_semanticExpressionAST & outArgument1,
                                                                           Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i5_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i7_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i5_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i6_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                                               GALGAS_actualOutputArgumentList & outArgument1,
-                                                                                               Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i6_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i6_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__34__i7_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                                                   GALGAS_actualOutputArgumentList & outArgument1,
-                                                                                                   Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__34__i7_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__34__i7_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i7_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i8_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                           GALGAS_semanticExpressionAST & outArgument1,
@@ -7220,37 +7615,37 @@ class cParser_galgas_33_ExpressionSyntax {
 
   protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i13_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i14_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                                      GALGAS_semanticExpressionAST & outArgument1,
-                                                                                      Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i14_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                           GALGAS_semanticExpressionAST & outArgument1,
+                                                                           Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i14_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i14_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_relation_5F_factor_5F_ggs_33__i14_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i14_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i15_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                                        GALGAS_semanticExpressionAST & outArgument1,
-                                                                                        Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i15_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                           GALGAS_semanticExpressionAST & outArgument1,
+                                                                           Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i15_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i15_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_simple_5F_expression_5F_ggs_33__i15_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i15_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i16_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                        GALGAS_semanticExpressionAST & outArgument1,
-                                                                        Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i16_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i16_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i17_ (GALGAS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i16_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                               GALGAS_semanticExpressionAST & outArgument1,
                                                                               Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i17_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i16_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i17_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_ggs_33__i16_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i17_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                           GALGAS_semanticExpressionAST & outArgument1,
+                                                                           Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i17_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i17_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i18_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                            GALGAS_semanticExpressionAST & outArgument1,
@@ -7308,52 +7703,53 @@ class cParser_galgas_33_ExpressionSyntax {
 
   protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i24_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i25_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                           GALGAS_semanticExpressionAST & outArgument1,
-                                                                           Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i25_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                        GALGAS_semanticExpressionAST & outArgument1,
+                                                                        Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i25_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i25_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i25_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_term_5F_ggs_33__i25_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i26_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                           GALGAS_semanticExpressionAST & outArgument1,
-                                                                           Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i26_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                          GALGAS_semanticExpressionAST & outArgument1,
+                                                                          Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i26_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i26_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i26_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i26_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_optional_5F_type_5F_ggs_33__i27_ (GALGAS_lstring & outArgument0,
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i27_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                                    GALGAS_semanticExpressionAST & outArgument1,
                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_optional_5F_type_5F_ggs_33__i27_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i27_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_optional_5F_type_5F_ggs_33__i27_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i27_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i28_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                           GALGAS_semanticExpressionAST & outArgument1,
-                                                                           Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i28_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                                                GALGAS_actualOutputArgumentList & outArgument1,
+                                                                                                Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i28_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i28_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i28_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__i28_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i29_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                           GALGAS_semanticExpressionAST & outArgument1,
-                                                                           Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__34__i29_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                                                    GALGAS_actualOutputArgumentList & outArgument1,
+                                                                                                    Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i29_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__34__i29_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i29_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_5F_ggs_33__34__i29_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i30_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                           GALGAS_semanticExpressionAST & outArgument1,
-                                                                           Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i30_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                          GALGAS_semanticExpressionAST & outArgument1,
+                                                                          Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i30_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i30_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i30_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i30_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i31_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                            GALGAS_semanticExpressionAST & outArgument1,
@@ -7363,29 +7759,29 @@ class cParser_galgas_33_ExpressionSyntax {
 
   protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i31_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i32_ (GALGAS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i32_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                          GALGAS_semanticExpressionAST & outArgument1,
+                                                                          Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i32_parse (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i32_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i33_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                            GALGAS_semanticExpressionAST & outArgument1,
                                                                            Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i32_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i33_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i32_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i33_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i33_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                          GALGAS_semanticExpressionAST & outArgument1,
-                                                                          Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i34_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                           GALGAS_semanticExpressionAST & outArgument1,
+                                                                           Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i33_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i34_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i33_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i34_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                          GALGAS_semanticExpressionAST & outArgument1,
-                                                                          Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i34_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i34_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i34_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
   protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i35_ (GALGAS_galgasDeclarationAST & ioArgument0,
                                                                           GALGAS_semanticExpressionAST & outArgument1,
@@ -7403,21 +7799,21 @@ class cParser_galgas_33_ExpressionSyntax {
 
   protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i36_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i37_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                                    GALGAS_semanticExpressionAST & outArgument1,
-                                                                                    Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i37_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                          GALGAS_semanticExpressionAST & outArgument1,
+                                                                          Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i37_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i37_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_or_5F_ggs_33__i37_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_factor_5F_ggs_33__i37_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i38_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                                     GALGAS_semanticExpressionAST & outArgument1,
-                                                                                     Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i38_ (GALGAS_galgasDeclarationAST & ioArgument0,
+                                                                           GALGAS_semanticExpressionAST & outArgument1,
+                                                                           Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i38_parse (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i38_parse (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ExpressionSyntax_expression_5F_and_5F_ggs_33__i38_indexing (Lexique_galgasScanner_33_ * inLexique) ;
+  protected: void rule_galgas_33_ExpressionSyntax_primary_5F_ggs_33__i38_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
 
 

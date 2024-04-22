@@ -437,6 +437,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
       !optionalMethodMap: ()
+      !readSubscriptMap: ()
       !enumerationDescriptorList: ()
       !features: features
       !addAssignOperatorArguments: ()
@@ -631,6 +632,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.instanceMethodMap
       !selfTypeDefinition.classMethodMap
       !selfTypeDefinition.optionalMethodMap
+      !selfTypeDefinition.readSubscriptMap
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features
       !selfTypeDefinition.addAssignOperatorArguments
