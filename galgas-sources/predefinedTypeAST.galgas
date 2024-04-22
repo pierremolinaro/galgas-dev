@@ -138,6 +138,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: classMethodMap
+      !unwrappedType: .null
       !optionalMethodMap: optionalMethodMap
       !readSubscriptMap: ()
       !enumerationDescriptorList: enumerationList

@@ -74,11 +74,9 @@ struct @analysisContext {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc checkAssignmentTypes
-  ?let @unifiedTypeMapEntry inTargetType
-  ?let @unifiedTypeMapEntry inSourceType
-  ?let @location inErrorLocation
-{
+proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
+                          ?let @unifiedTypeMapEntry inSourceType
+                          ?let @location inErrorLocation {
   var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == sourceType
   loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
@@ -105,46 +103,76 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
                                                 ?let @unifiedTypeMapEntry inSourceType
                                                 ?let @location inErrorLocation
                                                 ?!@semanticExpressionForGeneration ioExpression {
+#--- Optional ?
+  let targetTypeDef = [inTargetType definition]
+  let targetTypeForBigIntAssignment = if not [targetTypeDef.unwrappedType isNull]
+    then targetTypeDef.unwrappedType
+    else inTargetType
+  end
+#--- Assignment from a @bigint ?
   var handled = false
   if let bigIntSource = ioExpression as @literalBigIntExpressionForGeneration then
-    if "uint" == [inTargetType definition].typeName then
+    if "uint" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
       end
-      ioExpression = @literalUIntExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue uint]}
+      ioExpression = @literalUIntExpressionForGeneration {
+        !targetTypeForBigIntAssignment
+        !ioExpression.mLocation
+        ![bigIntValue uint]
+      }
       handled = true
-    elsif "sint" == [inTargetType definition].typeName then
+    elsif "sint" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
       end
-      ioExpression = @literalSIntExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue sint]}
+      ioExpression = @literalSIntExpressionForGeneration {
+        !targetTypeForBigIntAssignment
+        !ioExpression.mLocation
+        ![bigIntValue sint]
+      }
       handled = true
-    elsif "uint64" == [inTargetType definition].typeName then
+    elsif "uint64" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
       end
-      ioExpression = @literalUInt64ExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue uint64]}
+      ioExpression = @literalUInt64ExpressionForGeneration {
+        !targetTypeForBigIntAssignment
+        !ioExpression.mLocation
+        ![bigIntValue uint64]
+      }
       handled = true
-    elsif "sint64" == [inTargetType definition].typeName then
+    elsif "sint64" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
         error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
       end
-      ioExpression = @literalSInt64ExpressionForGeneration {!inTargetType !ioExpression.mLocation ![bigIntValue sint64]}
+      ioExpression = @literalSInt64ExpressionForGeneration {
+        !targetTypeForBigIntAssignment
+        !ioExpression.mLocation
+        ![bigIntValue sint64]
+      }
       handled = true
     end
   end
+#---
+  if not handled,
+        not [[inTargetType definition].unwrappedType isNull],
+        [[inTargetType definition].unwrappedType typeName] == [inSourceType typeName] then
+    handled = true
+  end
+#---
   if not handled then
-    var @unifiedTypeMapEntry sourceType = inSourceType
-    var @bool ok = [inTargetType typeName] == [inSourceType typeName]
+    var sourceType = inSourceType
+    var ok = [inTargetType typeName] == [inSourceType typeName]
     loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
       sourceType = [sourceType definition].superType
       ok = inTargetType == sourceType
     end
-    if not ok, let [[inTargetType definition].typeKind weakReferenceType ?referenceType: let targetType] then
+    if not ok, let [targetTypeDef.typeKind weakReferenceType ?referenceType: let targetType] then
       sourceType = inSourceType
       ok = [targetType typeName] == [sourceType typeName]
       loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
@@ -153,22 +181,19 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inSourceType definition].propertyMap searchKey ![inTargetType definition].typeName.string ?let accessControl ?* ?let propertyType] then
+    if not ok, let [[inSourceType definition].propertyMap searchKey !targetTypeDef.typeName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkSetAccess !.none !inErrorLocation]
-#      if not isPublic then
-#        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
-#      end
       let conversionExpression = @propertyAccessExpressionForGeneration {
         !propertyType
         !inErrorLocation
         !ioExpression
-        ![inTargetType definition].typeName.string
+        !targetTypeDef.typeName.string
       }
       ioExpression = conversionExpression
       ok = propertyType == inTargetType
-    elsif (not ok) && [[inSourceType definition].getterMap hasKey ![inTargetType definition].typeName.string] then
+    elsif (not ok) && [[inSourceType definition].getterMap hasKey !targetTypeDef.typeName.string] then
       [[inSourceType definition].getterMap searchKey
-        ![inTargetType definition].typeName
+        !targetTypeDef.typeName
         ?let kind
         ?let @functionSignature argumentTypeList
         ?*
@@ -184,7 +209,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         !kind
         !ioExpression
         !()
-        ![inTargetType definition].typeName.string
+        !targetTypeDef.typeName.string
         !()
         !hasCompilerArgument
       }
@@ -192,9 +217,12 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
     end
     if not ok then
       error inErrorLocation
-       : "target object type is '@" + [inTargetType definition].typeName.string + "' and cannot be assigned from an '@" + [inSourceType definition].typeName.string
+       : "target object type is '@" + targetTypeDef.typeName.string
+       + "' and cannot be assigned from an '@" + [inSourceType definition].typeName.string
        + "' object; this type have no '"
-      + [inTargetType definition].typeName.string + "' getter without argument that returns a '@" + [inTargetType definition].typeName.string + "' object"
+       + targetTypeDef.typeName.string
+       + "' getter without argument that returns a '@"
+       + targetTypeDef.typeName.string + "' object"
     end
   end
 }

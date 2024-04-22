@@ -344,6 +344,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
+    !unwrappedType: .null
     !optionalMethodMap: optionalMethodMap
     !readSubscriptMap: ()
     !enumerationDescriptorList: enumerationDescriptor

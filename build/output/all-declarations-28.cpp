@@ -8126,6 +8126,75 @@ void cPtr_moduloExpressionAST::method_analyzeSemanticExpression (const GALGAS_ls
 }
 //--------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@nilExpressionAST enterExpressionInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_nilExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                     Compiler * /* inCompiler */
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@nilExpressionAST analyzeSemanticExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_nilExpressionAST::method_analyzeSemanticExpression (const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
+                                                              GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
+                                                              const GALGAS_unifiedTypeMapEntry constinArgument_inType,
+                                                              const GALGAS_analysisContext /* constinArgument_inAnalysisContext */,
+                                                              GALGAS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                              GALGAS_localVarManager & /* ioArgument_ioVariableMap */,
+                                                              GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                              Compiler * inCompiler
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = constinArgument_inType.getter_isNull (SOURCE_FILE ("expression-nil.galgas", 72)).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      const GALGAS_nilExpressionAST temp_1 = this ;
+      TC_Array <FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (temp_1.readProperty_mLocation (), GALGAS_string ("cannot infer type"), fixItArray2  COMMA_SOURCE_FILE ("expression-nil.galgas", 73)) ;
+      outArgument_outExpression.drop () ; // Release error dropped variable
+    }
+  }
+  if (kBoolFalse == test_0) {
+    GALGAS_unifiedTypeMapEntry var_unwrappedType_3373 = extensionGetter_definition (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("expression-nil.galgas", 75)).readProperty_unwrappedType () ;
+    enumGalgasBool test_3 = kBoolTrue ;
+    if (kBoolTrue == test_3) {
+      test_3 = var_unwrappedType_3373.getter_isNull (SOURCE_FILE ("expression-nil.galgas", 76)).boolEnum () ;
+      if (kBoolTrue == test_3) {
+        const GALGAS_nilExpressionAST temp_4 = this ;
+        TC_Array <FixItDescription> fixItArray5 ;
+        inCompiler->emitSemanticError (temp_4.readProperty_mLocation (), GALGAS_string ("the inferred type @").add_operation (extensionGetter_typeName (var_unwrappedType_3373, inCompiler COMMA_SOURCE_FILE ("expression-nil.galgas", 77)), inCompiler COMMA_SOURCE_FILE ("expression-nil.galgas", 77)).add_operation (GALGAS_string (" is not an optional type"), inCompiler COMMA_SOURCE_FILE ("expression-nil.galgas", 77)), fixItArray5  COMMA_SOURCE_FILE ("expression-nil.galgas", 77)) ;
+        outArgument_outExpression.drop () ; // Release error dropped variable
+      }
+    }
+    if (kBoolFalse == test_3) {
+      const GALGAS_nilExpressionAST temp_6 = this ;
+      outArgument_outExpression = GALGAS_nilExpressionForGeneration::init_21__21_ (constinArgument_inType, temp_6.readProperty_mLocation (), inCompiler COMMA_HERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@nilExpressionForGeneration generateExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_nilExpressionForGeneration::method_generateExpression (GALGAS_string & /* ioArgument_ioGeneratedCode */,
+                                                                 GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                 GALGAS_uint & /* ioArgument_ioTemporaryVariableIndex */,
+                                                                 GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
+                                                                 GALGAS_string & outArgument_outCppExpression,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  const GALGAS_nilExpressionForGeneration temp_0 = this ;
+  outArgument_outCppExpression = GALGAS_string ("GALGAS_").add_operation (extensionGetter_identifierRepresentation (temp_0.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-nil.galgas", 102)), inCompiler COMMA_SOURCE_FILE ("expression-nil.galgas", 102)).add_operation (GALGAS_string ("::init_nil ()"), inCompiler COMMA_SOURCE_FILE ("expression-nil.galgas", 102)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
 //Overriding extension method '@notExpressionAST enterExpressionInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------

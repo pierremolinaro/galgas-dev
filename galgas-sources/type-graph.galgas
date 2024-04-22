@@ -485,6 +485,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
+    !unwrappedType: .null
     !optionalMethodMap: ()
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()

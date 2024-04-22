@@ -398,6 +398,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
+    !unwrappedType: .null
     !optionalMethodMap: ()
     !readSubscriptMap: ()
     !enumerationDescriptorList: enumerationDescriptor

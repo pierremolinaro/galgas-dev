@@ -1,0 +1,30 @@
+//--------------------------------------------------------------------------------------------------
+//
+//%!" Phase 1: " + TYPE_NAME + " optional"%
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% & inValue) ;
+  public: static GALGAS_%!TYPE_IDENTIFIER% init_nil (void) ;
+
+//--------------------------------- Handle copy
+//  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+//  public: GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+

@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -95,6 +95,12 @@ class AC_GALGAS_root {
     public: virtual void checkIsValid (LOCATION_ARGS) const ;
     public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const ;
   #endif
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+enum class OptionalState {
+  invalid, isNil, valuated
 } ;
 
 //--------------------------------------------------------------------------------------------------

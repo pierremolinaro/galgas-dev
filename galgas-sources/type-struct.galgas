@@ -252,6 +252,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
+      !unwrappedType: .null
       !optionalMethodMap: optionalMethodMap
       !readSubscriptMap: ()
       !enumerationDescriptorList: ()

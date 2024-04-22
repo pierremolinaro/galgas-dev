@@ -568,8 +568,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 190)) {
-    static const char * syntaxErrorMessageArray [190] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 191)) {
+    static const char * syntaxErrorMessageArray [191] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -644,6 +644,7 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the 'method' keyword",
         "the 'mod' keyword",
         "the 'mutating' keyword",
+        "the 'nil' keyword",
         "the 'not' keyword",
         "the 'on' keyword",
         "the 'operator' keyword",
@@ -1886,6 +1887,13 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__muta
   TO_UNICODE ('g'),
 } ;
 
+//--- Unicode string for '$nil$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__nil = {
+  TO_UNICODE ('n'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+} ;
+
 //--- Unicode string for '$nonAtomicSelection$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__nonAtomicSelection = {
   TO_UNICODE ('n'),
@@ -2547,7 +2555,7 @@ int32_t Lexique_galgasScanner_33_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__galgasKeyWordList = 91 ;
+static const int32_t ktable_size_galgasScanner_33__galgasKeyWordList = 92 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasKeyWordList [ktable_size_galgasScanner_33__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__as, Lexique_galgasScanner_33_::kToken_as),
@@ -2564,6 +2572,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__log, Lexique_galgasScanner_33_::kToken_log),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__map, Lexique_galgasScanner_33_::kToken_map),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__mod, Lexique_galgasScanner_33_::kToken_mod),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__nil, Lexique_galgasScanner_33_::kToken_nil),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__not, Lexique_galgasScanner_33_::kToken_not),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__tag, Lexique_galgasScanner_33_::kToken_tag),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__var, Lexique_galgasScanner_33_::kToken_var),
@@ -3056,6 +3065,11 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken_mutating:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("mutating") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken_nil:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("nil") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_not:
@@ -4680,6 +4694,7 @@ GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("method") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("mod") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("mutating") COMMA_HERE) ;
+  result.addAssign_operation (GALGAS_string ("nil") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("not") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("on") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("operator") COMMA_HERE) ;
@@ -4909,6 +4924,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("log") ;
     ioList.appendObject ("map") ;
     ioList.appendObject ("mod") ;
+    ioList.appendObject ("nil") ;
     ioList.appendObject ("not") ;
     ioList.appendObject ("tag") ;
     ioList.appendObject ("var") ;
@@ -5001,7 +5017,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [190] = {0,
+  static const uint32_t kTerminalSymbolStyles [191] = {0,
     0 /* galgasScanner3_1_identifier */,
     8 /* galgasScanner3_1_double_2E_xxx */,
     7 /* galgasScanner3_1_literalInt */,
@@ -5076,6 +5092,7 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner3_1_method */,
     1 /* galgasScanner3_1_mod */,
     1 /* galgasScanner3_1_mutating */,
+    1 /* galgasScanner3_1_nil */,
     1 /* galgasScanner3_1_not */,
     1 /* galgasScanner3_1_on */,
     1 /* galgasScanner3_1_operator */,

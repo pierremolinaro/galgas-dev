@@ -159,6 +159,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !setterMap: ()
     !instanceMethodMap: ()
     !classMethodMap: ()
+    !unwrappedType: .null
     !optionalMethodMap: ()
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()

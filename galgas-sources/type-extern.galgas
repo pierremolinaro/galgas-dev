@@ -488,6 +488,7 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
+      !unwrappedType: .null
       !optionalMethodMap: ()
       !readSubscriptMap: ()
       !enumerationDescriptorList: ()

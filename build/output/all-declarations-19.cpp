@@ -8,6 +8,947 @@
 #include "all-declarations-19.h"
 
 //--------------------------------------------------------------------------------------------------
+// @structuredCastInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_structuredCastInstructionForGeneration::cPtr_structuredCastInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mExpression (),
+mProperty_mCastBranchList (),
+mProperty_mElseInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_structuredCastInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+    mProperty_mCastBranchList.printNonNullClassInstanceProperties ("mCastBranchList") ;
+    mProperty_mElseInstructionList.printNonNullClassInstanceProperties ("mElseInstructionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_structuredCastInstructionForGeneration::objectCompare (const GALGAS_structuredCastInstructionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_structuredCastInstructionForGeneration::GALGAS_structuredCastInstructionForGeneration (void) :
+GALGAS_semanticInstructionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_structuredCastInstructionForGeneration GALGAS_structuredCastInstructionForGeneration::
+init_21__21__21_ (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                  const GALGAS_castInstructionBranchListForGeneration & in_mCastBranchList,
+                  const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_structuredCastInstructionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_structuredCastInstructionForGeneration (inCompiler COMMA_THERE)) ;
+  object->structuredCastInstructionForGeneration_init_21__21__21_ (in_mExpression, in_mCastBranchList, in_mElseInstructionList, inCompiler) ;
+  const GALGAS_structuredCastInstructionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_structuredCastInstructionForGeneration::
+structuredCastInstructionForGeneration_init_21__21__21_ (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                         const GALGAS_castInstructionBranchListForGeneration & in_mCastBranchList,
+                                                         const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList,
+                                                         Compiler * /* inCompiler */) {
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mCastBranchList = in_mCastBranchList ;
+  mProperty_mElseInstructionList = in_mElseInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_structuredCastInstructionForGeneration::GALGAS_structuredCastInstructionForGeneration (const cPtr_structuredCastInstructionForGeneration * inSourcePtr) :
+GALGAS_semanticInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_structuredCastInstructionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_structuredCastInstructionForGeneration GALGAS_structuredCastInstructionForGeneration::class_func_new (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                                                                             const GALGAS_castInstructionBranchListForGeneration & in_mCastBranchList,
+                                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
+                                                                                                             COMMA_LOCATION_ARGS) {
+  GALGAS_structuredCastInstructionForGeneration result ;
+  macroMyNew (result.mObjectPtr, cPtr_structuredCastInstructionForGeneration (in_mExpression, in_mCastBranchList, in_mElseInstructionList COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionForGeneration GALGAS_structuredCastInstructionForGeneration::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionForGeneration () ;
+  }else{
+    cPtr_structuredCastInstructionForGeneration * p = (cPtr_structuredCastInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structuredCastInstructionForGeneration) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_castInstructionBranchListForGeneration GALGAS_structuredCastInstructionForGeneration::readProperty_mCastBranchList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_castInstructionBranchListForGeneration () ;
+  }else{
+    cPtr_structuredCastInstructionForGeneration * p = (cPtr_structuredCastInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structuredCastInstructionForGeneration) ;
+    return p->mProperty_mCastBranchList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticInstructionListForGeneration GALGAS_structuredCastInstructionForGeneration::readProperty_mElseInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticInstructionListForGeneration () ;
+  }else{
+    cPtr_structuredCastInstructionForGeneration * p = (cPtr_structuredCastInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_structuredCastInstructionForGeneration) ;
+    return p->mProperty_mElseInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @structuredCastInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_structuredCastInstructionForGeneration::cPtr_structuredCastInstructionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                                                          const GALGAS_castInstructionBranchListForGeneration & in_mCastBranchList,
+                                                                                          const GALGAS_semanticInstructionListForGeneration & in_mElseInstructionList
+                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (THERE),
+mProperty_mExpression (),
+mProperty_mCastBranchList (),
+mProperty_mElseInstructionList () {
+  mProperty_mExpression = in_mExpression ;
+  mProperty_mCastBranchList = in_mCastBranchList ;
+  mProperty_mElseInstructionList = in_mElseInstructionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_structuredCastInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
+}
+
+void cPtr_structuredCastInstructionForGeneration::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@structuredCastInstructionForGeneration:") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mCastBranchList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_structuredCastInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_structuredCastInstructionForGeneration (mProperty_mExpression, mProperty_mCastBranchList, mProperty_mElseInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @structuredCastInstructionForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ("structuredCastInstructionForGeneration",
+                                                                                              & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_structuredCastInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_structuredCastInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_structuredCastInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_structuredCastInstructionForGeneration GALGAS_structuredCastInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_structuredCastInstructionForGeneration result ;
+  const GALGAS_structuredCastInstructionForGeneration * p = (const GALGAS_structuredCastInstructionForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_structuredCastInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("structuredCastInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @plusEqualElementsInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_plusEqualElementsInstructionAST::cPtr_plusEqualElementsInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpressions () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_plusEqualElementsInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mPrefixedBySelf.printNonNullClassInstanceProperties ("mPrefixedBySelf") ;
+    mProperty_mReceiverName.printNonNullClassInstanceProperties ("mReceiverName") ;
+    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
+    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_plusEqualElementsInstructionAST::objectCompare (const GALGAS_plusEqualElementsInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualElementsInstructionAST::GALGAS_plusEqualElementsInstructionAST (void) :
+GALGAS_semanticInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_plusEqualElementsInstructionAST GALGAS_plusEqualElementsInstructionAST::
+init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                          const GALGAS_bool & in_mPrefixedBySelf,
+                          const GALGAS_lstring & in_mReceiverName,
+                          const GALGAS_lstringlist & in_mStructAttributeList,
+                          const GALGAS_actualOutputArgumentList & in_mExpressions,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_plusEqualElementsInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_plusEqualElementsInstructionAST (inCompiler COMMA_THERE)) ;
+  object->plusEqualElementsInstructionAST_init_21__21__21__21__21_ (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpressions, inCompiler) ;
+  const GALGAS_plusEqualElementsInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_plusEqualElementsInstructionAST::
+plusEqualElementsInstructionAST_init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                          const GALGAS_bool & in_mPrefixedBySelf,
+                                                          const GALGAS_lstring & in_mReceiverName,
+                                                          const GALGAS_lstringlist & in_mStructAttributeList,
+                                                          const GALGAS_actualOutputArgumentList & in_mExpressions,
+                                                          Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpressions = in_mExpressions ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualElementsInstructionAST::GALGAS_plusEqualElementsInstructionAST (const cPtr_plusEqualElementsInstructionAST * inSourcePtr) :
+GALGAS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_plusEqualElementsInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualElementsInstructionAST GALGAS_plusEqualElementsInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                               const GALGAS_bool & in_mPrefixedBySelf,
+                                                                                               const GALGAS_lstring & in_mReceiverName,
+                                                                                               const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                               const GALGAS_actualOutputArgumentList & in_mExpressions
+                                                                                               COMMA_LOCATION_ARGS) {
+  GALGAS_plusEqualElementsInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_plusEqualElementsInstructionAST (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpressions COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_plusEqualElementsInstructionAST::readProperty_mPrefixedBySelf (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_plusEqualElementsInstructionAST * p = (cPtr_plusEqualElementsInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualElementsInstructionAST) ;
+    return p->mProperty_mPrefixedBySelf ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_plusEqualElementsInstructionAST::readProperty_mReceiverName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_plusEqualElementsInstructionAST * p = (cPtr_plusEqualElementsInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualElementsInstructionAST) ;
+    return p->mProperty_mReceiverName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_plusEqualElementsInstructionAST::readProperty_mStructAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstringlist () ;
+  }else{
+    cPtr_plusEqualElementsInstructionAST * p = (cPtr_plusEqualElementsInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualElementsInstructionAST) ;
+    return p->mProperty_mStructAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_actualOutputArgumentList GALGAS_plusEqualElementsInstructionAST::readProperty_mExpressions (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_actualOutputArgumentList () ;
+  }else{
+    cPtr_plusEqualElementsInstructionAST * p = (cPtr_plusEqualElementsInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualElementsInstructionAST) ;
+    return p->mProperty_mExpressions ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @plusEqualElementsInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_plusEqualElementsInstructionAST::cPtr_plusEqualElementsInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                                            const GALGAS_bool & in_mPrefixedBySelf,
+                                                                            const GALGAS_lstring & in_mReceiverName,
+                                                                            const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                            const GALGAS_actualOutputArgumentList & in_mExpressions
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpressions () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpressions = in_mExpressions ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_plusEqualElementsInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ;
+}
+
+void cPtr_plusEqualElementsInstructionAST::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("[@plusEqualElementsInstructionAST:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPrefixedBySelf.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mReceiverName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressions.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_plusEqualElementsInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_plusEqualElementsInstructionAST (mProperty_mInstructionLocation, mProperty_mPrefixedBySelf, mProperty_mReceiverName, mProperty_mStructAttributeList, mProperty_mExpressions COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @plusEqualElementsInstructionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ("plusEqualElementsInstructionAST",
+                                                                                       & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_plusEqualElementsInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_plusEqualElementsInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_plusEqualElementsInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualElementsInstructionAST GALGAS_plusEqualElementsInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_plusEqualElementsInstructionAST result ;
+  const GALGAS_plusEqualElementsInstructionAST * p = (const GALGAS_plusEqualElementsInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_plusEqualElementsInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("plusEqualElementsInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @plusEqualExpressionInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_plusEqualExpressionInstructionAST::cPtr_plusEqualExpressionInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_plusEqualExpressionInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mPrefixedBySelf.printNonNullClassInstanceProperties ("mPrefixedBySelf") ;
+    mProperty_mReceiverName.printNonNullClassInstanceProperties ("mReceiverName") ;
+    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_plusEqualExpressionInstructionAST::objectCompare (const GALGAS_plusEqualExpressionInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualExpressionInstructionAST::GALGAS_plusEqualExpressionInstructionAST (void) :
+GALGAS_semanticInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_plusEqualExpressionInstructionAST GALGAS_plusEqualExpressionInstructionAST::
+init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                          const GALGAS_bool & in_mPrefixedBySelf,
+                          const GALGAS_lstring & in_mReceiverName,
+                          const GALGAS_lstringlist & in_mStructAttributeList,
+                          const GALGAS_semanticExpressionAST & in_mExpression,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_plusEqualExpressionInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_plusEqualExpressionInstructionAST (inCompiler COMMA_THERE)) ;
+  object->plusEqualExpressionInstructionAST_init_21__21__21__21__21_ (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpression, inCompiler) ;
+  const GALGAS_plusEqualExpressionInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_plusEqualExpressionInstructionAST::
+plusEqualExpressionInstructionAST_init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                            const GALGAS_bool & in_mPrefixedBySelf,
+                                                            const GALGAS_lstring & in_mReceiverName,
+                                                            const GALGAS_lstringlist & in_mStructAttributeList,
+                                                            const GALGAS_semanticExpressionAST & in_mExpression,
+                                                            Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualExpressionInstructionAST::GALGAS_plusEqualExpressionInstructionAST (const cPtr_plusEqualExpressionInstructionAST * inSourcePtr) :
+GALGAS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_plusEqualExpressionInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualExpressionInstructionAST GALGAS_plusEqualExpressionInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                   const GALGAS_bool & in_mPrefixedBySelf,
+                                                                                                   const GALGAS_lstring & in_mReceiverName,
+                                                                                                   const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                                   const GALGAS_semanticExpressionAST & in_mExpression
+                                                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_plusEqualExpressionInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_plusEqualExpressionInstructionAST (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpression COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_plusEqualExpressionInstructionAST::readProperty_mPrefixedBySelf (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_plusEqualExpressionInstructionAST * p = (cPtr_plusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualExpressionInstructionAST) ;
+    return p->mProperty_mPrefixedBySelf ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_plusEqualExpressionInstructionAST::readProperty_mReceiverName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_plusEqualExpressionInstructionAST * p = (cPtr_plusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualExpressionInstructionAST) ;
+    return p->mProperty_mReceiverName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_plusEqualExpressionInstructionAST::readProperty_mStructAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstringlist () ;
+  }else{
+    cPtr_plusEqualExpressionInstructionAST * p = (cPtr_plusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualExpressionInstructionAST) ;
+    return p->mProperty_mStructAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionAST GALGAS_plusEqualExpressionInstructionAST::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionAST () ;
+  }else{
+    cPtr_plusEqualExpressionInstructionAST * p = (cPtr_plusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_plusEqualExpressionInstructionAST) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @plusEqualExpressionInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_plusEqualExpressionInstructionAST::cPtr_plusEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                                                const GALGAS_bool & in_mPrefixedBySelf,
+                                                                                const GALGAS_lstring & in_mReceiverName,
+                                                                                const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                const GALGAS_semanticExpressionAST & in_mExpression
+                                                                                COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpression () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_plusEqualExpressionInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_plusEqualExpressionInstructionAST ;
+}
+
+void cPtr_plusEqualExpressionInstructionAST::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("[@plusEqualExpressionInstructionAST:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPrefixedBySelf.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mReceiverName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_plusEqualExpressionInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_plusEqualExpressionInstructionAST (mProperty_mInstructionLocation, mProperty_mPrefixedBySelf, mProperty_mReceiverName, mProperty_mStructAttributeList, mProperty_mExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @plusEqualExpressionInstructionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualExpressionInstructionAST ("plusEqualExpressionInstructionAST",
+                                                                                         & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_plusEqualExpressionInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_plusEqualExpressionInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_plusEqualExpressionInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_plusEqualExpressionInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_plusEqualExpressionInstructionAST GALGAS_plusEqualExpressionInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_plusEqualExpressionInstructionAST result ;
+  const GALGAS_plusEqualExpressionInstructionAST * p = (const GALGAS_plusEqualExpressionInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_plusEqualExpressionInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("plusEqualExpressionInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @minusEqualExpressionInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_minusEqualExpressionInstructionAST::cPtr_minusEqualExpressionInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_minusEqualExpressionInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mPrefixedBySelf.printNonNullClassInstanceProperties ("mPrefixedBySelf") ;
+    mProperty_mReceiverName.printNonNullClassInstanceProperties ("mReceiverName") ;
+    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_minusEqualExpressionInstructionAST::objectCompare (const GALGAS_minusEqualExpressionInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_minusEqualExpressionInstructionAST::GALGAS_minusEqualExpressionInstructionAST (void) :
+GALGAS_semanticInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_minusEqualExpressionInstructionAST GALGAS_minusEqualExpressionInstructionAST::
+init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                          const GALGAS_bool & in_mPrefixedBySelf,
+                          const GALGAS_lstring & in_mReceiverName,
+                          const GALGAS_lstringlist & in_mStructAttributeList,
+                          const GALGAS_semanticExpressionAST & in_mExpression,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_minusEqualExpressionInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_minusEqualExpressionInstructionAST (inCompiler COMMA_THERE)) ;
+  object->minusEqualExpressionInstructionAST_init_21__21__21__21__21_ (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpression, inCompiler) ;
+  const GALGAS_minusEqualExpressionInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_minusEqualExpressionInstructionAST::
+minusEqualExpressionInstructionAST_init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                             const GALGAS_bool & in_mPrefixedBySelf,
+                                                             const GALGAS_lstring & in_mReceiverName,
+                                                             const GALGAS_lstringlist & in_mStructAttributeList,
+                                                             const GALGAS_semanticExpressionAST & in_mExpression,
+                                                             Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_minusEqualExpressionInstructionAST::GALGAS_minusEqualExpressionInstructionAST (const cPtr_minusEqualExpressionInstructionAST * inSourcePtr) :
+GALGAS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_minusEqualExpressionInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_minusEqualExpressionInstructionAST GALGAS_minusEqualExpressionInstructionAST::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                                     const GALGAS_bool & in_mPrefixedBySelf,
+                                                                                                     const GALGAS_lstring & in_mReceiverName,
+                                                                                                     const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                                     const GALGAS_semanticExpressionAST & in_mExpression
+                                                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_minusEqualExpressionInstructionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_minusEqualExpressionInstructionAST (in_mInstructionLocation, in_mPrefixedBySelf, in_mReceiverName, in_mStructAttributeList, in_mExpression COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_minusEqualExpressionInstructionAST::readProperty_mPrefixedBySelf (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_minusEqualExpressionInstructionAST * p = (cPtr_minusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_minusEqualExpressionInstructionAST) ;
+    return p->mProperty_mPrefixedBySelf ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_minusEqualExpressionInstructionAST::readProperty_mReceiverName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_minusEqualExpressionInstructionAST * p = (cPtr_minusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_minusEqualExpressionInstructionAST) ;
+    return p->mProperty_mReceiverName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstringlist GALGAS_minusEqualExpressionInstructionAST::readProperty_mStructAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstringlist () ;
+  }else{
+    cPtr_minusEqualExpressionInstructionAST * p = (cPtr_minusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_minusEqualExpressionInstructionAST) ;
+    return p->mProperty_mStructAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionAST GALGAS_minusEqualExpressionInstructionAST::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionAST () ;
+  }else{
+    cPtr_minusEqualExpressionInstructionAST * p = (cPtr_minusEqualExpressionInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_minusEqualExpressionInstructionAST) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @minusEqualExpressionInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_minusEqualExpressionInstructionAST::cPtr_minusEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                                                  const GALGAS_bool & in_mPrefixedBySelf,
+                                                                                  const GALGAS_lstring & in_mReceiverName,
+                                                                                  const GALGAS_lstringlist & in_mStructAttributeList,
+                                                                                  const GALGAS_semanticExpressionAST & in_mExpression
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
+mProperty_mPrefixedBySelf (),
+mProperty_mReceiverName (),
+mProperty_mStructAttributeList (),
+mProperty_mExpression () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mPrefixedBySelf = in_mPrefixedBySelf ;
+  mProperty_mReceiverName = in_mReceiverName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_minusEqualExpressionInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_minusEqualExpressionInstructionAST ;
+}
+
+void cPtr_minusEqualExpressionInstructionAST::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@minusEqualExpressionInstructionAST:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPrefixedBySelf.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mReceiverName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_minusEqualExpressionInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_minusEqualExpressionInstructionAST (mProperty_mInstructionLocation, mProperty_mPrefixedBySelf, mProperty_mReceiverName, mProperty_mStructAttributeList, mProperty_mExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @minusEqualExpressionInstructionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_minusEqualExpressionInstructionAST ("minusEqualExpressionInstructionAST",
+                                                                                          & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_minusEqualExpressionInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_minusEqualExpressionInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_minusEqualExpressionInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_minusEqualExpressionInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_minusEqualExpressionInstructionAST GALGAS_minusEqualExpressionInstructionAST::extractObject (const GALGAS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_minusEqualExpressionInstructionAST result ;
+  const GALGAS_minusEqualExpressionInstructionAST * p = (const GALGAS_minusEqualExpressionInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_minusEqualExpressionInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("minusEqualExpressionInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @mulEqualExpressionInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -13122,876 +14063,4 @@ GALGAS_nonTerminalInstructionForGrammarAnalysis GALGAS_nonTerminalInstructionFor
   }
   return result ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_productionRuleListForGrammarAnalysis_2D_element::GALGAS_productionRuleListForGrammarAnalysis_2D_element (void) :
-mProperty_mLeftNonterminalSymbol (),
-mProperty_mLeftNonterminalSymbolIndex (),
-mProperty_mInstructionList (),
-mProperty_mProductionIndex () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_productionRuleListForGrammarAnalysis_2D_element::~ GALGAS_productionRuleListForGrammarAnalysis_2D_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::init_21__21__21__21_ (const GALGAS_lstring & in_mLeftNonterminalSymbol,
-                                                                                                                                     const GALGAS_uint & in_mLeftNonterminalSymbolIndex,
-                                                                                                                                     const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mInstructionList,
-                                                                                                                                     const GALGAS_uint & in_mProductionIndex,
-                                                                                                                                     Compiler * inCompiler
-                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mLeftNonterminalSymbol = in_mLeftNonterminalSymbol ;
-  result.mProperty_mLeftNonterminalSymbolIndex = in_mLeftNonterminalSymbolIndex ;
-  result.mProperty_mInstructionList = in_mInstructionList ;
-  result.mProperty_mProductionIndex = in_mProductionIndex ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_productionRuleListForGrammarAnalysis_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_productionRuleListForGrammarAnalysis_2D_element::GALGAS_productionRuleListForGrammarAnalysis_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                                const GALGAS_uint & inOperand1,
-                                                                                                                const GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand2,
-                                                                                                                const GALGAS_uint & inOperand3) :
-mProperty_mLeftNonterminalSymbol (inOperand0),
-mProperty_mLeftNonterminalSymbolIndex (inOperand1),
-mProperty_mInstructionList (inOperand2),
-mProperty_mProductionIndex (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::class_func_new (const GALGAS_lstring & in_mLeftNonterminalSymbol,
-                                                                                                                               const GALGAS_uint & in_mLeftNonterminalSymbolIndex,
-                                                                                                                               const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mInstructionList,
-                                                                                                                               const GALGAS_uint & in_mProductionIndex,
-                                                                                                                               Compiler * inCompiler
-                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mLeftNonterminalSymbol = in_mLeftNonterminalSymbol ;
-  result.mProperty_mLeftNonterminalSymbolIndex = in_mLeftNonterminalSymbolIndex ;
-  result.mProperty_mInstructionList = in_mInstructionList ;
-  result.mProperty_mProductionIndex = in_mProductionIndex ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_productionRuleListForGrammarAnalysis_2D_element::isValid (void) const {
-  return mProperty_mLeftNonterminalSymbol.isValid () && mProperty_mLeftNonterminalSymbolIndex.isValid () && mProperty_mInstructionList.isValid () && mProperty_mProductionIndex.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_productionRuleListForGrammarAnalysis_2D_element::drop (void) {
-  mProperty_mLeftNonterminalSymbol.drop () ;
-  mProperty_mLeftNonterminalSymbolIndex.drop () ;
-  mProperty_mInstructionList.drop () ;
-  mProperty_mProductionIndex.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_productionRuleListForGrammarAnalysis_2D_element::description (String & ioString,
-                                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @productionRuleListForGrammarAnalysis-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mLeftNonterminalSymbol.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLeftNonterminalSymbolIndex.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mProductionIndex.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @productionRuleListForGrammarAnalysis-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis_2D_element ("productionRuleListForGrammarAnalysis-element",
-                                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_productionRuleListForGrammarAnalysis_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_productionRuleListForGrammarAnalysis_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_productionRuleListForGrammarAnalysis_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                              Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element * p = (const GALGAS_productionRuleListForGrammarAnalysis_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_productionRuleListForGrammarAnalysis_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("productionRuleListForGrammarAnalysis-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@productionRuleListForGrammarAnalysis-element displayRuleVertically'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
-                                            const GALGAS_string constinArgument_inSyntaxComponentName,
-                                            GALGAS_string & ioArgument_ioGeneratedCode,
-                                            Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_currentNode_6877 = GALGAS_string ("P0start") ;
-  GALGAS_rowList var_rowArray_6916 = GALGAS_rowList::init (inCompiler COMMA_HERE) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_0 = inObject ;
-  cEnumerator_range enumerator_6975 (GALGAS_range (GALGAS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 173)).substract_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 173))), EnumerationOrder::up) ;
-  while (enumerator_6975.hasCurrentObject ()) {
-    GALGAS__32_stringlist temp_1 = GALGAS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
-    temp_1.enterElement (GALGAS__32_stringlist_2D_element::init_21__21_ (GALGAS_string::makeEmptyString (), GALGAS_string::makeEmptyString (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
-    var_rowArray_6916.addAssign_operation (temp_1  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
-    enumerator_6975.gotoNextObject () ;
-  }
-  GALGAS__32_stringlist temp_2 = GALGAS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 176)) ;
-  temp_2.enterElement (GALGAS__32_stringlist_2D_element::init_21__21_ (var_currentNode_6877, GALGAS_string ("[firstPoint] ()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 176)) ;
-  var_rowArray_6916.addAssign_operation (temp_2  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 176)) ;
-  GALGAS_string var_arrows_7092 = GALGAS_string::makeEmptyString () ;
-  GALGAS_string var_arrowStyle_7118 = GALGAS_string ("--") ;
-  GALGAS_uint var_unusedMaxUsedRowIndex_7148 = GALGAS_uint (uint32_t (0U)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_3 = inObject ;
-  GALGAS_uint var_row_7189 = temp_3.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 180)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_4 = inObject ;
-  cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7232 (temp_4.readProperty_mInstructionList (), EnumerationOrder::up) ;
-  while (enumerator_7232.hasCurrentObject ()) {
-    var_row_7189.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 182)) ;
-    GALGAS_uint var_column_7300 = GALGAS_uint (uint32_t (1U)) ;
-    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_7232.current_mInstruction (HERE).ptr (), var_rowArray_6916, var_row_7189, var_column_7300, var_currentNode_6877, var_arrowStyle_7118, var_arrows_7092, var_unusedMaxUsedRowIndex_7148, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 184)) ;
-    enumerator_7232.gotoNextObject () ;
-  }
-  GALGAS_string var_lastNodeName_7666 ;
-  {
-  extensionSetter_appendRow (var_rowArray_6916, GALGAS_string ("[lastPoint] ()"), var_row_7189, GALGAS_uint (uint32_t (2U)), var_lastNodeName_7666, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 196)) ;
-  }
-  var_arrows_7092.plusAssign_operation(GALGAS_string ("  \\draw[->] (").add_operation (var_currentNode_6877, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)).add_operation (GALGAS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)).add_operation (var_lastNodeName_7666, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_5 = inObject ;
-  GALGAS_location var_loc_7785 = temp_5.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)).add_operation (function_escapeForTex (var_loc_7785.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 202)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).add_operation (function_escapeForTex (var_loc_7785.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GALGAS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GALGAS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 205)).add_operation (GALGAS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 206)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)) ;
-  cEnumerator_rowList enumerator_8207 (var_rowArray_6916, EnumerationOrder::down) ;
-  while (enumerator_8207.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 209)) ;
-    cEnumerator__32_stringlist enumerator_8279 (enumerator_8207.current_columns (HERE), EnumerationOrder::up) ;
-    while (enumerator_8279.hasCurrentObject ()) {
-      enumGalgasBool test_6 = kBoolTrue ;
-      if (kBoolTrue == test_6) {
-        test_6 = GALGAS_bool (ComparisonKind::equal, enumerator_8279.current (HERE).readProperty_mValue_30_ ().objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-        if (kBoolTrue == test_6) {
-          ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 212)) ;
-        }
-      }
-      if (kBoolFalse == test_6) {
-        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\node (").add_operation (enumerator_8279.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)).add_operation (GALGAS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)).add_operation (enumerator_8279.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)).add_operation (GALGAS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)) ;
-      }
-      enumerator_8279.gotoNextObject () ;
-    }
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\\\\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 217)) ;
-    enumerator_8207.gotoNextObject () ;
-  }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 219)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(var_arrows_7092, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 221)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 222)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@genericExtensionMethodListMap insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (GALGAS_genericExtensionMethodListMap & ioObject,
-                                const GALGAS_string constinArgument_inKey,
-                                const GALGAS_lstring constinArgument_inValue,
-                                Compiler * inCompiler
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_genericExtensionMethodListMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 46)).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      GALGAS_lstringlist var_aList_2221 ;
-      const GALGAS_genericExtensionMethodListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2221, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 47)) ;
-      {
-      var_aList_2221.setter_append (constinArgument_inValue, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 48)) ;
-      }
-      ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, var_aList_2221, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 49)) ;
-    }
-  }
-  if (kBoolFalse == test_0) {
-    GALGAS_lstringlist temp_3 = GALGAS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
-    temp_3.enterElement (GALGAS_lstringlist_2D_element::init_21_ (constinArgument_inValue, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
-    ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@descendantClassListMap insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (GALGAS_descendantClassListMap & ioObject,
-                                const GALGAS_string constinArgument_inKey,
-                                const GALGAS_unifiedTypeMapEntry constinArgument_inType,
-                                Compiler * inCompiler
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    const GALGAS_descendantClassListMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 119)).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      GALGAS_unifiedTypeMapEntryList var_aList_5189 ;
-      const GALGAS_descendantClassListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5189, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
-      {
-      var_aList_5189.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 121)) ;
-      }
-      ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, var_aList_5189, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 122)) ;
-    }
-  }
-  if (kBoolFalse == test_0) {
-    GALGAS_unifiedTypeMapEntryList temp_3 = GALGAS_unifiedTypeMapEntryList::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 124)) ;
-    temp_3.enterElement (GALGAS_unifiedTypeMapEntryList_2D_element::init_21_ (constinArgument_inType, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 124)) ;
-    ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 124)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST::GALGAS_galgas_33_ProjectComponentAST (void) :
-mProperty_mProjectSourceList (),
-mProperty_mMajorVersion (),
-mProperty_mMinorVersion (),
-mProperty_mRevisionVersion (),
-mProperty_mGenerationFeatureList (),
-mProperty_mQualifiedFeatureList (),
-mProperty_mTargetName (),
-mProperty_mEndOfSourceFile () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST::~ GALGAS_galgas_33_ProjectComponentAST (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::init_21__21__21__21__21__21__21__21_ (const GALGAS_lstringlist & in_mProjectSourceList,
-                                                                                                                 const GALGAS_lbigint & in_mMajorVersion,
-                                                                                                                 const GALGAS_lbigint & in_mMinorVersion,
-                                                                                                                 const GALGAS_lbigint & in_mRevisionVersion,
-                                                                                                                 const GALGAS_lstringlist & in_mGenerationFeatureList,
-                                                                                                                 const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
-                                                                                                                 const GALGAS_lstring & in_mTargetName,
-                                                                                                                 const GALGAS_location & in_mEndOfSourceFile,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_galgas_33_ProjectComponentAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mProjectSourceList = in_mProjectSourceList ;
-  result.mProperty_mMajorVersion = in_mMajorVersion ;
-  result.mProperty_mMinorVersion = in_mMinorVersion ;
-  result.mProperty_mRevisionVersion = in_mRevisionVersion ;
-  result.mProperty_mGenerationFeatureList = in_mGenerationFeatureList ;
-  result.mProperty_mQualifiedFeatureList = in_mQualifiedFeatureList ;
-  result.mProperty_mTargetName = in_mTargetName ;
-  result.mProperty_mEndOfSourceFile = in_mEndOfSourceFile ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_galgas_33_ProjectComponentAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST::GALGAS_galgas_33_ProjectComponentAST (const GALGAS_lstringlist & inOperand0,
-                                                                            const GALGAS_lbigint & inOperand1,
-                                                                            const GALGAS_lbigint & inOperand2,
-                                                                            const GALGAS_lbigint & inOperand3,
-                                                                            const GALGAS_lstringlist & inOperand4,
-                                                                            const GALGAS_galgas_33_QualifiedFeatureList & inOperand5,
-                                                                            const GALGAS_lstring & inOperand6,
-                                                                            const GALGAS_location & inOperand7) :
-mProperty_mProjectSourceList (inOperand0),
-mProperty_mMajorVersion (inOperand1),
-mProperty_mMinorVersion (inOperand2),
-mProperty_mRevisionVersion (inOperand3),
-mProperty_mGenerationFeatureList (inOperand4),
-mProperty_mQualifiedFeatureList (inOperand5),
-mProperty_mTargetName (inOperand6),
-mProperty_mEndOfSourceFile (inOperand7) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::class_func_new (const GALGAS_lstringlist & in_mProjectSourceList,
-                                                                                           const GALGAS_lbigint & in_mMajorVersion,
-                                                                                           const GALGAS_lbigint & in_mMinorVersion,
-                                                                                           const GALGAS_lbigint & in_mRevisionVersion,
-                                                                                           const GALGAS_lstringlist & in_mGenerationFeatureList,
-                                                                                           const GALGAS_galgas_33_QualifiedFeatureList & in_mQualifiedFeatureList,
-                                                                                           const GALGAS_lstring & in_mTargetName,
-                                                                                           const GALGAS_location & in_mEndOfSourceFile,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_galgas_33_ProjectComponentAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mProjectSourceList = in_mProjectSourceList ;
-  result.mProperty_mMajorVersion = in_mMajorVersion ;
-  result.mProperty_mMinorVersion = in_mMinorVersion ;
-  result.mProperty_mRevisionVersion = in_mRevisionVersion ;
-  result.mProperty_mGenerationFeatureList = in_mGenerationFeatureList ;
-  result.mProperty_mQualifiedFeatureList = in_mQualifiedFeatureList ;
-  result.mProperty_mTargetName = in_mTargetName ;
-  result.mProperty_mEndOfSourceFile = in_mEndOfSourceFile ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_galgas_33_ProjectComponentAST::isValid (void) const {
-  return mProperty_mProjectSourceList.isValid () && mProperty_mMajorVersion.isValid () && mProperty_mMinorVersion.isValid () && mProperty_mRevisionVersion.isValid () && mProperty_mGenerationFeatureList.isValid () && mProperty_mQualifiedFeatureList.isValid () && mProperty_mTargetName.isValid () && mProperty_mEndOfSourceFile.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_galgas_33_ProjectComponentAST::drop (void) {
-  mProperty_mProjectSourceList.drop () ;
-  mProperty_mMajorVersion.drop () ;
-  mProperty_mMinorVersion.drop () ;
-  mProperty_mRevisionVersion.drop () ;
-  mProperty_mGenerationFeatureList.drop () ;
-  mProperty_mQualifiedFeatureList.drop () ;
-  mProperty_mTargetName.drop () ;
-  mProperty_mEndOfSourceFile.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_galgas_33_ProjectComponentAST::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @galgas3ProjectComponentAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mProjectSourceList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mMajorVersion.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mMinorVersion.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mRevisionVersion.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mGenerationFeatureList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mQualifiedFeatureList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mTargetName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mEndOfSourceFile.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @galgas3ProjectComponentAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ("galgas3ProjectComponentAST",
-                                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_galgas_33_ProjectComponentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_galgas_33_ProjectComponentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_galgas_33_ProjectComponentAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_galgas_33_ProjectComponentAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_galgas_33_ProjectComponentAST GALGAS_galgas_33_ProjectComponentAST::extractObject (const GALGAS_object & inObject,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_galgas_33_ProjectComponentAST result ;
-  const GALGAS_galgas_33_ProjectComponentAST * p = (const GALGAS_galgas_33_ProjectComponentAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_galgas_33_ProjectComponentAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("galgas3ProjectComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#include "MF_MemoryControl.h"
-#include "C_galgas_CLI_Options.h"
-
-#include "FileManager.h"
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//                                     LL(1) PRODUCTION RULES                                       
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gProductions_galgas3ProjectGrammar [] = {
-// At index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 56
-  TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken_project) // $project$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__28_) // $($
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken_literalInt) // $literalInt$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken_literalInt) // $literalInt$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken_literalInt) // $literalInt$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__29_) // $)$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__2D__3E_) // $->$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_END_PRODUCTION ()
-// At index 11 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 71
-, TOP_DOWN_NONTERMINAL (0) // <project_header>
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__7B_) // ${$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__7D_) // $}$
-, TOP_DOWN_END_PRODUCTION ()
-//---- Added productions from 'select' and 'repeat' instructions
-// At index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_END_PRODUCTION ()
-// At index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_quietOutputByDefault) // $%quietOutputByDefault$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 20 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_MacOS) // $%MacOS$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 23 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_macosx) // $%makefile-macosx$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 26 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix) // $%makefile-unix$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 29 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx) // $%makefile-x86linux32-on-macosx$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 32 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx) // $%makefile-x86linux64-on-macosx$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 35 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx) // $%makefile-win32-on-macosx$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 38 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_windows) // $%codeblocks-windows$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 41 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_33__32_) // $%codeblocks-linux32$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 44 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_36__34_) // $%codeblocks-linux64$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 47 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_applicationBundleBase) // $%applicationBundleBase$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 52 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_libpmAtPath) // $%libpmAtPath$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 57 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_tool_2D_source) // $%tool-source$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 62 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_MacOSDeployment) // $%MacOSDeployment$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 67 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_macCodeSign) // $%macCodeSign$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 72 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_app_2D_source) // $%app-source$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 77 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_app_2D_link) // $%app-link$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 82 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
-, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
-, TOP_DOWN_END_PRODUCTION ()
-// At index 85 : <>, in file '.ggs', line 0
-, TOP_DOWN_NONTERMINAL (1) // <project_component_start_symbol>
-, TOP_DOWN_END_PRODUCTION ()
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                                P R O D U C T I O N    N A M E S                                  
-//
-//--------------------------------------------------------------------------------------------------
-
-static const ProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [22] = {
- {"<project_header>", "galgas3ProjectSyntax", 0}, // at index 0
- {"<project_component_start_symbol>", "galgas3ProjectSyntax", 11}, // at index 1
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 16}, // at index 2
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 17}, // at index 3
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 20}, // at index 4
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 23}, // at index 5
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 26}, // at index 6
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 29}, // at index 7
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 32}, // at index 8
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 35}, // at index 9
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 38}, // at index 10
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 41}, // at index 11
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 44}, // at index 12
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 47}, // at index 13
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 52}, // at index 14
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 57}, // at index 15
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 62}, // at index 16
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 67}, // at index 17
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 72}, // at index 18
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 77}, // at index 19
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 82}, // at index 20
- {"<>", "", 85} // at index 21
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                       L L ( 1 )    P R O D U C T I O N    I N D E X E S                          
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gProductionIndexes_galgas3ProjectGrammar [22] = {
-0, // index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 56
-11, // index 1 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 71
-16, // index 2 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-17, // index 3 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-20, // index 4 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-23, // index 5 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-26, // index 6 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-29, // index 7 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-32, // index 8 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-35, // index 9 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-38, // index 10 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-41, // index 11 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-44, // index 12 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-47, // index 13 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-52, // index 14 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-57, // index 15 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-62, // index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-67, // index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-72, // index 18 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-77, // index 19 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-82, // index 20 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 81
-85 // index 21 : <>, in file '.ggs', line 0
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                 L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S                   
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gFirstProductionIndexes_galgas3ProjectGrammar [5] = {
-0, // at 0 : <project_header>
-1, // at 1 : <project_component_start_symbol>
-2, // at 2 : <select_galgas_33_ProjectSyntax_0>
-21, // at 3 : <>
-0} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                          L L ( 1 )    D E C I S I O N    T A B L E S                             
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gDecision_galgas3ProjectGrammar [] = {
-// At index 0 : <project_header> only one production, no choice
-  -1,
-// At index 1 : <project_component_start_symbol> only one production, no choice
-  -1,
-//---- Added non terminal symbols from 'select' and 'repeat' instructions
-// At index 2 : <select_galgas_33_ProjectSyntax_0>
-Lexique_galgasScanner_33_::kToken__7D_, -1, // Choice 1
-Lexique_galgasScanner_33_::kToken__25_quietOutputByDefault, -1, // Choice 2
-Lexique_galgasScanner_33_::kToken__25_MacOS, -1, // Choice 3
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_macosx, -1, // Choice 4
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix, -1, // Choice 5
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, -1, // Choice 6
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, -1, // Choice 7
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx, -1, // Choice 8
-Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_windows, -1, // Choice 9
-Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_33__32_, -1, // Choice 10
-Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_36__34_, -1, // Choice 11
-Lexique_galgasScanner_33_::kToken__25_applicationBundleBase, -1, // Choice 12
-Lexique_galgasScanner_33_::kToken__25_libpmAtPath, -1, // Choice 13
-Lexique_galgasScanner_33_::kToken__25_tool_2D_source, -1, // Choice 14
-Lexique_galgasScanner_33_::kToken__25_MacOSDeployment, -1, // Choice 15
-Lexique_galgasScanner_33_::kToken__25_macCodeSign, -1, // Choice 16
-Lexique_galgasScanner_33_::kToken__25_app_2D_source, -1, // Choice 17
-Lexique_galgasScanner_33_::kToken__25_app_2D_link, -1, // Choice 18
-Lexique_galgasScanner_33_::kToken__22_string_22_, -1, // Choice 19
-  -1,
-// At index 41 : <> only one production, no choice
-  -1,
-0} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                  L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S                    
-//
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t gDecisionIndexes_galgas3ProjectGrammar [5] = {
-0, // at 0 : <project_header>
-1, // at 1 : <project_component_start_symbol>
-2, // at 2 : <select_galgas_33_ProjectSyntax_0>
-41, // at 3 : <>
-0} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                          'project_header' non terminal implementation                            
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_header_parse (Lexique_galgasScanner_33_ * inLexique) {
-  rule_galgas_33_ProjectSyntax_project_5F_header_i0_parse(inLexique) ;
-}
-
-void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_header_indexing (Lexique_galgasScanner_33_ * inLexique) {
-  rule_galgas_33_ProjectSyntax_project_5F_header_i0_indexing(inLexique) ;
-}
-
-void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_header_ (GALGAS_lbigint & parameter_1,
-                                GALGAS_lbigint & parameter_2,
-                                GALGAS_lbigint & parameter_3,
-                                GALGAS_lstring & parameter_4,
-                                Lexique_galgasScanner_33_ * inLexique) {
-  rule_galgas_33_ProjectSyntax_project_5F_header_i0_(parameter_1, parameter_2, parameter_3, parameter_4, inLexique) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                  'project_component_start_symbol' non terminal implementation                    
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_component_5F_start_5F_symbol_parse (Lexique_galgasScanner_33_ * inLexique) {
-  rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_parse(inLexique) ;
-}
-
-void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_component_5F_start_5F_symbol_indexing (Lexique_galgasScanner_33_ * inLexique) {
-  rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_indexing(inLexique) ;
-}
-
-void cGrammar_galgas_33_ProjectGrammar::nt_project_5F_component_5F_start_5F_symbol_ (GALGAS_galgas_33_ProjectComponentAST & parameter_1,
-                                Lexique_galgasScanner_33_ * inLexique) {
-  rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_(parameter_1, inLexique) ;
-}
-
-void cGrammar_galgas_33_ProjectGrammar::performIndexing (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_galgasScanner_33_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  scanner->enableIndexing () ;
-  if (scanner->sourceText ().isValid ()) {
-    const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
-    if (ok) {
-      cGrammar_galgas_33_ProjectGrammar grammar ;
-      grammar.nt_project_5F_component_5F_start_5F_symbol_indexing (scanner) ;
-    }
-    scanner->generateIndexFile () ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_galgasScanner_33_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText ().isValid ()) {
-    scanner->performLexicalAnalysis () ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
-             const String & inSourceFilePath) {
-  Lexique_galgasScanner_33_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText ().isValid ()) {
-    scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
-  }
-  macroDetachSharedObject (scanner) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              Grammar start symbol implementation                                 
-//
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * inCompiler,
-                                GALGAS_lstring inFilePath,
-                                GALGAS_galgas_33_ProjectComponentAST &  parameter_1
-                                COMMA_LOCATION_ARGS) {
-  if (inFilePath.isValid ()) {
-    const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;
-    String filePath = filePathAsString.stringValue () ;
-    if (! FileManager::isAbsolutePath (filePath)) {
-      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
-    }
-    if (FileManager::fileExistsAtPath (filePath)) {
-    Lexique_galgasScanner_33_ * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, filePath COMMA_HERE)) ;
-    if (scanner->sourceText ().isValid ()) {
-      const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                      gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
-      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
-        cGrammar_galgas_33_ProjectGrammar grammar ;
-        grammar.nt_project_5F_component_5F_start_5F_symbol_ (parameter_1, scanner) ;
-        }
-      }else{
-        String message ;
-        message.appendString ("the '") ;
-        message.appendString (filePath) ;
-        message.appendString ("' file exists, but cannot be read") ;
-        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
-        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
-      }
-      macroDetachSharedObject (scanner) ;
-    }else{
-      String message ;
-      message.appendString ("the '") ;
-      message.appendString (filePath) ;
-      message.appendString ("' file does not exist") ;
-      const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
-      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (Compiler * inCompiler,
-                                GALGAS_string inSourceString,
-                                GALGAS_string inNameString,
-                                GALGAS_galgas_33_ProjectComponentAST &  parameter_1
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (inSourceString.isValid () && inNameString.isValid ()) {
-    const String sourceString = inSourceString.stringValue () ;
-    const String nameString = inNameString.stringValue () ;
-    Lexique_galgasScanner_33_ * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, sourceString, nameString COMMA_HERE)) ;
-    const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
-    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
-      cGrammar_galgas_33_ProjectGrammar grammar ;
-      grammar.nt_project_5F_component_5F_start_5F_symbol_ (parameter_1, scanner) ;
-    }
-    macroDetachSharedObject (scanner) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//              'select_galgas_33_ProjectSyntax_0' added non terminal implementation                
-//
-//--------------------------------------------------------------------------------------------------
-
-int32_t cGrammar_galgas_33_ProjectGrammar::select_galgas_33_ProjectSyntax_0 (Lexique_galgasScanner_33_ * inLexique) {
-  return inLexique->nextProductionIndex () ;
-}
-
-//--------------------------------------------------------------------------------------------------
 

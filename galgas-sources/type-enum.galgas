@@ -314,6 +314,7 @@ override method @enumDeclarationAST enterDeclarationInSemanticContext
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
+    !unwrappedType: .null
     !optionalMethodMap: optionalMethodMap
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()

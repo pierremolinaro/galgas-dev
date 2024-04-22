@@ -228,6 +228,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
+    !unwrappedType: .null
     !optionalMethodMap: ()
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()

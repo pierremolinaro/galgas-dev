@@ -84,6 +84,18 @@ syntax extension galgas3DeclarationsSyntax {
                               !@lstring outTypeName {
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
     $?$
+    let unwrappedTypeName = outTypeName 
+    outTypeName.string += "?"
+    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
+      ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
+      ioDeclarations.mDeclarationList += !@optionalTypeDeclarationAST (
+        !isPredefined: false,
+        outTypeName,
+        unwrappedTypeName,
+        !isUsefull: true,
+        !equatable: false
+      )
+    end
   }
 
   #·······························································································
@@ -143,10 +155,22 @@ syntax extension galgas4DeclarationsSyntax {
       end
       $>$
     end
+  #--- Optional ?
     select
     or
       $?$
-      error .here : "Not handled yet"
+      let unwrappedTypeName = outTypeName 
+      outTypeName.string += "?"
+      if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
+        ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
+        ioDeclarations.mDeclarationList += !@optionalTypeDeclarationAST (
+          !isPredefined: false,
+          outTypeName,
+          unwrappedTypeName,
+          !isUsefull: true,
+          !equatable: false
+        )
+      end
     end
   }
 

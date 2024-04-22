@@ -14182,45 +14182,41 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @notExpressionAST reference class
+// Phase 1: @nilExpressionAST reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_notExpressionAST : public GALGAS_semanticExpressionAST {
+class GALGAS_nilExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Default constructor
-  public: GALGAS_notExpressionAST (void) ;
+  public: GALGAS_nilExpressionAST (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GALGAS_notExpressionAST (const class cPtr_notExpressionAST * inSourcePtr) ;
+  public: GALGAS_nilExpressionAST (const class cPtr_nilExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_location readProperty_mOperatorLocation (void) const ;
-
-  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
+  public: class GALGAS_location readProperty_mLocation (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_notExpressionAST init_21__21_ (const class GALGAS_location & inOperand0,
-                                                       const class GALGAS_semanticExpressionAST & inOperand1,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_nilExpressionAST init_21_ (const class GALGAS_location & inOperand0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_notExpressionAST extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_nilExpressionAST extractObject (const GALGAS_object & inObject,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_notExpressionAST class_func_new (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_semanticExpressionAST & inOperand1
+  public: static class GALGAS_nilExpressionAST class_func_new (const class GALGAS_location & inOperand0
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_notExpressionAST & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_nilExpressionAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -14236,29 +14232,28 @@ class GALGAS_notExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_notExpressionAST class
+} ; // End of GALGAS_nilExpressionAST class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionAST ;
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 2: pointer class for @notExpressionAST class
+// Phase 2: pointer class for @nilExpressionAST class
 //
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_notExpressionAST : public cPtr_semanticExpressionAST {
+class cPtr_nilExpressionAST : public cPtr_semanticExpressionAST {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 
 //--------------------------------- Initializers
-  public: void notExpressionAST_init_21__21_ (const class GALGAS_location & inOperand0,
-                                              const class GALGAS_semanticExpressionAST & inOperand1,
-                                              Compiler * inCompiler) ;
+  public: void nilExpressionAST_init_21_ (const class GALGAS_location & inOperand0,
+                                          Compiler * inCompiler) ;
 
 
 //--- Extension method analyzeSemanticExpression
@@ -14276,16 +14271,14 @@ class cPtr_notExpressionAST : public cPtr_semanticExpressionAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_location mProperty_mOperatorLocation ;
-  public: GALGAS_semanticExpressionAST mProperty_mExpression ;
+  public: GALGAS_location mProperty_mLocation ;
 
 
 //--- Default constructor
-  public: cPtr_notExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: cPtr_nilExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_notExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                 const GALGAS_semanticExpressionAST & in_mExpression
+  public: cPtr_nilExpressionAST (const GALGAS_location & in_mLocation
                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -14303,21 +14296,21 @@ class cPtr_notExpressionAST : public cPtr_semanticExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @notExpressionAST_2D_weak weak reference class
+// Phase 1: @nilExpressionAST_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_notExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_weak {
+class GALGAS_nilExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_notExpressionAST_2D_weak (void) ;
+  public: GALGAS_nilExpressionAST_2D_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_notExpressionAST_2D_weak (const class GALGAS_notExpressionAST & inSource) ;
+  public: GALGAS_nilExpressionAST_2D_weak (const class GALGAS_nilExpressionAST & inSource) ;
 
-  public: GALGAS_notExpressionAST_2D_weak & operator = (const class GALGAS_notExpressionAST & inSource) ;
+  public: GALGAS_nilExpressionAST_2D_weak & operator = (const class GALGAS_nilExpressionAST & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_notExpressionAST bang_notExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_nilExpressionAST bang_nilExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -14327,15 +14320,15 @@ class GALGAS_notExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_w
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_notExpressionAST_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_nilExpressionAST_2D_weak extractObject (const GALGAS_object & inObject,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_notExpressionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_nilExpressionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_notExpressionAST_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_nilExpressionAST_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -14351,10 +14344,10 @@ class GALGAS_notExpressionAST_2D_weak : public GALGAS_semanticExpressionAST_2D_w
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_notExpressionAST_2D_weak class
+} ; // End of GALGAS_nilExpressionAST_2D_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionAST_2D_weak ;
 

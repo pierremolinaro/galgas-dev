@@ -262,6 +262,7 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
+      !unwrappedType: .null
       !optionalMethodMap: ()
       !readSubscriptMap: readSubscriptMap
       !enumerationDescriptorList: ()
