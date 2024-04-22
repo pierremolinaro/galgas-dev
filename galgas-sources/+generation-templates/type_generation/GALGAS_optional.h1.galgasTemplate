@@ -16,10 +16,11 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% & inValue) ;
   public: static GALGAS_%!TYPE_IDENTIFIER% init_nil (void) ;
 
-//--------------------------------- Handle copy
-//  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-//  public: GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% unwrappedValue (void) const {
+    return mValue ;
+  }
+  
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
   

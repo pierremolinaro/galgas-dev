@@ -289,9 +289,7 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
     end
   #---
     let optionalType = [ioTypeMap typeMapEntryForLKey !self.optionalTypeName]
-    println (!"UNWRAPPED")
     let unwrappedType = [ioTypeMap typeMapEntryForLKey !self.unwrappedTypeName]
-    println (!"END")
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "optional type " + self.optionalTypeName
       !@optionalTypeForGeneration (optionalType, unwrappedType)

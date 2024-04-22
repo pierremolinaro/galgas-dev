@@ -45,6 +45,12 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+bool GALGAS_%!TYPE_IDENTIFIER%::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% () ;

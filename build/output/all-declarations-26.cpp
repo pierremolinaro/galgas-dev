@@ -3742,16 +3742,10 @@ void cPtr_optionalTypeDeclarationAST::method_semanticAnalysis (GALGAS_lstringlis
   }
   const GALGAS_optionalTypeDeclarationAST temp_4 = this ;
   GALGAS_unifiedTypeMapEntry var_optionalType_11537 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_4.readProperty_optionalTypeName (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 291)) ;
-  {
-  routine_println_3F_ (GALGAS_string ("UNWRAPPED"), inCompiler  COMMA_SOURCE_FILE ("type-optional.galgas", 292)) ;
-  }
   const GALGAS_optionalTypeDeclarationAST temp_5 = this ;
-  GALGAS_unifiedTypeMapEntry var_unwrappedType_11642 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_5.readProperty_unwrappedTypeName (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 293)) ;
-  {
-  routine_println_3F_ (GALGAS_string ("END"), inCompiler  COMMA_SOURCE_FILE ("type-optional.galgas", 294)) ;
-  }
+  GALGAS_unifiedTypeMapEntry var_unwrappedType_11615 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_5.readProperty_unwrappedTypeName (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 292)) ;
   const GALGAS_optionalTypeDeclarationAST temp_6 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("optional type ").add_operation (temp_6.readProperty_optionalTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 296)), GALGAS_optionalTypeForGeneration::init_21__21_ (var_optionalType_11537, var_unwrappedType_11642, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-optional.galgas", 295)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("optional type ").add_operation (temp_6.readProperty_optionalTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 294)), GALGAS_optionalTypeForGeneration::init_21__21_ (var_optionalType_11537, var_unwrappedType_11615, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-optional.galgas", 293)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3764,12 +3758,12 @@ void cPtr_optionalTypeForGeneration::method_appendDeclaration_31_ (GALGAS_string
                                                                    Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_optionalTypeForGeneration temp_0 = this ;
-  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_12588 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 315)) ;
+  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_12540 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 313)) ;
   const GALGAS_optionalTypeForGeneration temp_1 = this ;
   const GALGAS_optionalTypeForGeneration temp_2 = this ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (inCompiler, var_selfTypeDefinition_12588.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 318)), extensionGetter_identifierRepresentation (temp_2.readProperty_unwrappedType (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 319)) COMMA_SOURCE_FILE ("type-optional.galgas", 316))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (inCompiler, var_selfTypeDefinition_12540.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 316)), extensionGetter_identifierRepresentation (temp_2.readProperty_unwrappedType (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 317)) COMMA_SOURCE_FILE ("type-optional.galgas", 314))) ;
   const GALGAS_optionalTypeForGeneration temp_3 = this ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_12588.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 323)), var_selfTypeDefinition_12588.readProperty_isConcrete (), var_selfTypeDefinition_12588.readProperty_initializerMap (), var_selfTypeDefinition_12588.readProperty_classFunctionMap (), var_selfTypeDefinition_12588.readProperty_getterMap (), var_selfTypeDefinition_12588.readProperty_setterMap (), var_selfTypeDefinition_12588.readProperty_instanceMethodMap (), var_selfTypeDefinition_12588.readProperty_classMethodMap (), var_selfTypeDefinition_12588.readProperty_optionalMethodMap (), var_selfTypeDefinition_12588.readProperty_readSubscriptMap (), var_selfTypeDefinition_12588.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_12588.readProperty_features (), var_selfTypeDefinition_12588.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_12588.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_12588.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("type-optional.galgas", 321))), inCompiler  COMMA_SOURCE_FILE ("type-optional.galgas", 321)) ;
+  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_12540.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 321)), var_selfTypeDefinition_12540.readProperty_isConcrete (), var_selfTypeDefinition_12540.readProperty_initializerMap (), var_selfTypeDefinition_12540.readProperty_classFunctionMap (), var_selfTypeDefinition_12540.readProperty_getterMap (), var_selfTypeDefinition_12540.readProperty_setterMap (), var_selfTypeDefinition_12540.readProperty_instanceMethodMap (), var_selfTypeDefinition_12540.readProperty_classMethodMap (), var_selfTypeDefinition_12540.readProperty_optionalMethodMap (), var_selfTypeDefinition_12540.readProperty_readSubscriptMap (), var_selfTypeDefinition_12540.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_12540.readProperty_features (), var_selfTypeDefinition_12540.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_12540.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_12540.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("type-optional.galgas", 319))), inCompiler  COMMA_SOURCE_FILE ("type-optional.galgas", 319)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3783,14 +3777,14 @@ void cPtr_optionalTypeForGeneration::method_appendSpecificImplementation (const 
                                                                           Compiler * inCompiler
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_optionalTypeForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_unwrappedType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 346)) ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_unwrappedType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 344)) ;
   const GALGAS_optionalTypeForGeneration temp_1 = this ;
-  extensionMethod_addHeaderFileName (temp_1.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 347)) ;
+  extensionMethod_addHeaderFileName (temp_1.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 345)) ;
   const GALGAS_optionalTypeForGeneration temp_2 = this ;
-  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_14122 = extensionGetter_definition (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 348)) ;
+  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_14074 = extensionGetter_definition (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 346)) ;
   const GALGAS_optionalTypeForGeneration temp_3 = this ;
   const GALGAS_optionalTypeForGeneration temp_4 = this ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_14122.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 351)), extensionGetter_identifierRepresentation (temp_4.readProperty_unwrappedType (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 352)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_14122.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 353)) COMMA_SOURCE_FILE ("type-optional.galgas", 349))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_14074.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 349)), extensionGetter_identifierRepresentation (temp_4.readProperty_unwrappedType (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 350)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_14074.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("type-optional.galgas", 351)) COMMA_SOURCE_FILE ("type-optional.galgas", 347))) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3847,15 +3841,9 @@ GALGAS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHea
   result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" & inValue) ;\n  public: static GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" init_nil (void) ;\n\n//--------------------------------- Handle copy\n//  public: GALGAS_") ;
-  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" (const GALGAS_") ;
-  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" & inSource) ;\n//  public: GALGAS_") ;
-  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" & operator = (const GALGAS_") ;
-  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" & inSource) ;\n\n//--- Methods that every type should implement\n  public: virtual bool isValid (void) const override ;\n  \n  public: virtual void drop (void) override ;\n\n  public: virtual void description (String & ioString,\n                                    const int32_t inIndentation) const override ;\n\n") ;
+  result.appendString (" init_nil (void) ;\n\n  public: bool isValuated (void) const ;\n  public: inline GALGAS_") ;
+  result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" unwrappedValue (void) const {\n    return mValue ;\n  }\n  \n//--- Methods that every type should implement\n  public: virtual bool isValid (void) const override ;\n  \n  public: virtual void drop (void) override ;\n\n  public: virtual void description (String & ioString,\n                                    const int32_t inIndentation) const override ;\n\n") ;
   return GALGAS_string (result) ;
 }
 
@@ -3893,7 +3881,9 @@ GALGAS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpe
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" result ;\n  result.mState = OptionalState::isNil ;\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nbool GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString ("::isValid (void) const {\n  bool result = false ;\n  switch (mState) {\n  case OptionalState::invalid :\n    break ;\n  case OptionalState::isNil :\n    result = true ;\n    break ;\n  case OptionalState::valuated :\n    result = mValue.isValid () ;\n    break ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GALGAS_") ;
+  result.appendString ("::isValid (void) const {\n  bool result = false ;\n  switch (mState) {\n  case OptionalState::invalid :\n    break ;\n  case OptionalState::isNil :\n    result = true ;\n    break ;\n  case OptionalState::valuated :\n    result = mValue.isValid () ;\n    break ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nbool GALGAS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::isValuated (void) const {\n  return (mState == OptionalState::valuated) && mValue.isValid () ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::drop (void) {\n  mState = OptionalState::invalid ;\n  mValue = GALGAS_") ;
   result.appendString (in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
