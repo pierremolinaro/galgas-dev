@@ -27,8 +27,7 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
   #-----------------------------------------------------------------------------------------------
 
   override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
-  //--- Add optional element
-    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: .init ("bigint", .nowhere)]
+    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: .init ("bigint", .nowhere) !isPredefined: true]
   }
 
   #-----------------------------------------------------------------------------------------------
@@ -1062,20 +1061,6 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
     result = .plusEqualOperatorWithExpression | .infixAddOperator
       | .generateDescriptionGetterUtilityMethod | .comparable | .equatable
   }
-
-  #-----------------------------------------------------------------------------------------------
-
-#  override method getOptionalMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
-#                                       !@optionalMethodMap outMap {
-#    outMap = ()
-#    enterBaseOptionalMethodWithArgument (
-#      !?outMap
-#      !?ioUnifiedTypeMap
-#      !optionalMethodName: "extractBigInt"
-#      !"bigint"
-#      !"outBigInt"
-#    )
-#  }
 
   #-----------------------------------------------------------------------------------------------
 

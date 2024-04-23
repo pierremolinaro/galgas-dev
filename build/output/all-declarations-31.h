@@ -10,6 +10,37 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'programFileGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'programFileGenerationTemplate programFileImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (class Compiler * inCompiler,
+                                                                                           const class GALGAS_string & in_COMPONENT_5F_NAME,
+                                                                                           const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST,
+                                                                                           const class GALGAS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
+                                                                                           const class GALGAS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
+                                                                                           const class GALGAS_string & in_PROJECT_5F_VERSION_5F_STRING
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'compileBeforeClauseGalgas3&&?&?&'
 //
 //--------------------------------------------------------------------------------------------------

@@ -1909,12 +1909,12 @@ GALGAS_templateVariableMap GALGAS_templateVariableMap::class_func_emptyMap (LOCA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateVariableMap_2D_element_3F_ GALGAS_templateVariableMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_templateVariableMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_templateVariableMap_2D_element_3F_::init_nil () ;
     }else{
@@ -2235,14 +2235,14 @@ ComparisonResult cEnumAssociatedValues_unifiedTypeMapEntry_element::compare (con
 
 GALGAS_unifiedTypeMapEntry::GALGAS_unifiedTypeMapEntry (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_null (UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry result ;
-  result.mEnum = kEnum_null ;
+  result.mEnum = Enumeration::enum_null ;
   return result ;
 }
 
@@ -2252,7 +2252,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_element (const
                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_element ;
+    result.mEnum = Enumeration::enum_element ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_unifiedTypeMapEntry_element (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -2266,7 +2266,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_element (const
 void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue0,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_element) {
+  if (mEnum != Enumeration::enum_element) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @unifiedTypeMapEntry element invoked with an invalid enum value") ;
@@ -2280,14 +2280,14 @@ void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementCla
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_unifiedTypeMapEntry::optional_null () const {
-  const bool ok = mEnum == kEnum_null ;
+  const bool ok = mEnum == Enumeration::enum_null ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_unifiedTypeMapEntry::optional_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_element ;
+  const bool ok = mEnum == Enumeration::enum_element ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -2306,13 +2306,13 @@ static const char * gEnumNameArrayFor_unifiedTypeMapEntry [3] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isNull (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_null == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_null == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isElement (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_element == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_element == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2320,7 +2320,7 @@ GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isElement (UNUSED_LOCATION_ARGS) 
 void GALGAS_unifiedTypeMapEntry::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString.appendCString ("<enum @unifiedTypeMapEntry: ") ;
-  ioString.appendCString (gEnumNameArrayFor_unifiedTypeMapEntry [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_unifiedTypeMapEntry [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -2922,7 +2922,7 @@ void cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit::descri
 
 GALGAS_templateInstructionForEnumerationAST::GALGAS_templateInstructionForEnumerationAST (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2932,7 +2932,7 @@ GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumera
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionForEnumerationAST result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_implicit ;
+    result.mEnum = Enumeration::enum_implicit ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -2948,7 +2948,7 @@ GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumera
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionForEnumerationAST result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_explicit ;
+    result.mEnum = Enumeration::enum_explicit ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -2963,7 +2963,7 @@ void GALGAS_templateInstructionForEnumerationAST::method_implicit (GALGAS_string
                                                                    GALGAS_location & outAssociatedValue1,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_implicit) {
+  if (mEnum != Enumeration::enum_implicit) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -2982,7 +2982,7 @@ void GALGAS_templateInstructionForEnumerationAST::method_explicit (GALGAS_lstrin
                                                                    GALGAS_location & outAssociatedValue1,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_explicit) {
+  if (mEnum != Enumeration::enum_explicit) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -2999,7 +2999,7 @@ void GALGAS_templateInstructionForEnumerationAST::method_explicit (GALGAS_lstrin
 
 bool GALGAS_templateInstructionForEnumerationAST::optional_implicit (GALGAS_string & outAssociatedValue0,
                                                                      GALGAS_location & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_implicit ;
+  const bool ok = mEnum == Enumeration::enum_implicit ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3012,7 +3012,7 @@ bool GALGAS_templateInstructionForEnumerationAST::optional_implicit (GALGAS_stri
 
 bool GALGAS_templateInstructionForEnumerationAST::optional_explicit (GALGAS_lstringlist & outAssociatedValue0,
                                                                      GALGAS_location & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_explicit ;
+  const bool ok = mEnum == Enumeration::enum_explicit ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3032,13 +3032,13 @@ static const char * gEnumNameArrayFor_templateInstructionForEnumerationAST [3] =
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_templateInstructionForEnumerationAST::getter_isImplicit (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_implicit == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_implicit == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_templateInstructionForEnumerationAST::getter_isExplicit (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_explicit == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_explicit == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3046,7 +3046,7 @@ GALGAS_bool GALGAS_templateInstructionForEnumerationAST::getter_isExplicit (UNUS
 void GALGAS_templateInstructionForEnumerationAST::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString.appendCString ("<enum @templateInstructionForEnumerationAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_templateInstructionForEnumerationAST [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_templateInstructionForEnumerationAST [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }

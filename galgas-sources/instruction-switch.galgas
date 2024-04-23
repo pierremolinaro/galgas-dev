@@ -396,11 +396,11 @@ override method @switchInstructionForGeneration generateInstruction
     ?let @string switchVar
   ]
   ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
-  ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::kNotBuilt:\n"
+  ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::Enumeration::invalid:\n"
   ioGeneratedCode += "  break ;\n"
   for (mSwitchConstantList mExtractedAssociatedValuesForGeneration mEndOfBranchLocationIndex mInstructions) in self.mBranches do
     for (mValue) in mSwitchConstantList do
-      ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::kEnum_" + [mValue.string identifierRepresentation] + ":\n"
+      ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::Enumeration::enum_" + [mValue.string identifierRepresentation] + ":\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"

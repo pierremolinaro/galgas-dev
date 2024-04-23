@@ -267,13 +267,13 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ]
 #---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
-  ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::kNotBuilt :\n"
+  ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::Enumeration::invalid :\n"
   ioGeneratedCode += "  break ;\n"
 #---
   for (mConstantList mExtractedAssociatedValuesForGeneration mEndOfBranchLocationIndex mInstructionList) in self.mTemplateInstructionSwitchBranchList do
     for (mValue) in mConstantList do
       ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation]
-                      + "::kEnum_" + [mValue.string identifierRepresentation] + " :\n"
+                      + "::Enumeration::enum_" + [mValue.string identifierRepresentation] + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"

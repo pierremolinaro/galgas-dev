@@ -301,7 +301,7 @@ override method @mapDeclarationAST addAssociatedElement
     !comparison: if self.equatable then .equatable else .none end
   }
 //--- Add optional element
-  [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName]
+  [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -621,7 +621,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   ]
 #--- Read subscripts
   var @subscriptMap readSubscriptMap = ()
-  let @functionSignature argumentTypeList = §[.init (["string" nowhere], stringTypeIndex, "inKey", true)]
+  let @functionSignature argumentTypeList = §[.init (["" nowhere], stringTypeIndex, "inKey", true)]
   [!?readSubscriptMap insertKey
     !.init ([argumentTypeList subcriptSignature], .nowhere)
     !argumentTypeList

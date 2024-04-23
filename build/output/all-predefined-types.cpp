@@ -6343,6 +6343,127 @@ void GALGAS_range::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 //
+//     @bigint? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint_3F_ ("bigint?",
+                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_bigint_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bigint_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_bigint_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_bigint_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bigint_3F_ GALGAS_bigint_3F_::extractObject (const GALGAS_object & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_bigint_3F_ result ;
+  const GALGAS_bigint_3F_ * p = (const GALGAS_bigint_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_bigint_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("bigint?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Optional @bigint_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bigint_3F_::GALGAS_bigint_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bigint_3F_::GALGAS_bigint_3F_ (const GALGAS_bigint & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bigint_3F_ GALGAS_bigint_3F_::init_nil (void) {
+  GALGAS_bigint_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_bigint_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_bigint_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_bigint_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_bigint () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_bigint_3F_::description (String & ioString,
+                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
 //     @functionlist-element generic code implementation
 //
 //--------------------------------------------------------------------------------------------------

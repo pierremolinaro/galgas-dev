@@ -569,24 +569,24 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
   GALGAS_string result_result ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::invalid:
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
     {
       result_result = GALGAS_string ("!") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
     {
       result_result = GALGAS_string ("!") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
     {
       result_result = GALGAS_string ("\?") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
     {
       result_result = GALGAS_string ("!\?") ;
     }
@@ -797,12 +797,12 @@ GALGAS_propertyIndexMap GALGAS_propertyIndexMap::class_func_emptyMap (LOCATION_A
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_propertyIndexMap_2D_element_3F_ GALGAS_propertyIndexMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_propertyIndexMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_propertyIndexMap * p = (cMapElement_propertyIndexMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_propertyIndexMap * p = (cMapElement_propertyIndexMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_propertyIndexMap_2D_element_3F_::init_nil () ;
     }else{
@@ -1136,12 +1136,12 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalLabelMap::class_func_emptyMap (LOCA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalLabelMap_2D_element_3F_ GALGAS_nonterminalLabelMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_nonterminalLabelMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_nonterminalLabelMap * p = (cMapElement_nonterminalLabelMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_nonterminalLabelMap * p = (cMapElement_nonterminalLabelMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_nonterminalLabelMap_2D_element_3F_::init_nil () ;
     }else{
@@ -1553,12 +1553,12 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::class_func_emptyMap (LOCATION_ARGS)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalMap_2D_element_3F_ GALGAS_nonterminalMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_nonterminalMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_nonterminalMap * p = (cMapElement_nonterminalMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_nonterminalMap * p = (cMapElement_nonterminalMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_nonterminalMap_2D_element_3F_::init_nil () ;
     }else{
@@ -3805,12 +3805,12 @@ GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::class_func_empt
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_uselessEntityLocationMap_2D_element_3F_ GALGAS_uselessEntityLocationMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_uselessEntityLocationMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_uselessEntityLocationMap * p = (cMapElement_uselessEntityLocationMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_uselessEntityLocationMap * p = (cMapElement_uselessEntityLocationMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_uselessEntityLocationMap_2D_element_3F_::init_nil () ;
     }else{
@@ -5965,14 +5965,14 @@ GALGAS_subExpressionNoOverflowAST_2D_weak GALGAS_subExpressionNoOverflowAST_2D_w
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryOperator::GALGAS_binaryOperator (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_rightShift (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_rightShift ;
+  result.mEnum = Enumeration::enum_rightShift ;
   return result ;
 }
 
@@ -5980,7 +5980,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_rightShift (UNUSED_LOCAT
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_leftShift (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_leftShift ;
+  result.mEnum = Enumeration::enum_leftShift ;
   return result ;
 }
 
@@ -5988,7 +5988,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_leftShift (UNUSED_LOCATI
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_add (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_add ;
+  result.mEnum = Enumeration::enum_add ;
   return result ;
 }
 
@@ -5996,7 +5996,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_add (UNUSED_LOCATION_ARG
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_addNoOverflow (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_addNoOverflow ;
+  result.mEnum = Enumeration::enum_addNoOverflow ;
   return result ;
 }
 
@@ -6004,7 +6004,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_addNoOverflow (UNUSED_LO
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_sub (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_sub ;
+  result.mEnum = Enumeration::enum_sub ;
   return result ;
 }
 
@@ -6012,7 +6012,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_sub (UNUSED_LOCATION_ARG
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_subNoOverflow (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_subNoOverflow ;
+  result.mEnum = Enumeration::enum_subNoOverflow ;
   return result ;
 }
 
@@ -6020,7 +6020,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_subNoOverflow (UNUSED_LO
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_and (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_operator_5F_and ;
+  result.mEnum = Enumeration::enum_operator_5F_and ;
   return result ;
 }
 
@@ -6028,7 +6028,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_and (UNUSED_
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_or (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_operator_5F_or ;
+  result.mEnum = Enumeration::enum_operator_5F_or ;
   return result ;
 }
 
@@ -6036,7 +6036,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_or (UNUSED_L
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_xor (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_operator_5F_xor ;
+  result.mEnum = Enumeration::enum_operator_5F_xor ;
   return result ;
 }
 
@@ -6044,7 +6044,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_operator_5F_xor (UNUSED_
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_multiply_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_multiply_5F_operation_5F_no_5F_ovf ;
+  result.mEnum = Enumeration::enum_multiply_5F_operation_5F_no_5F_ovf ;
   return result ;
 }
 
@@ -6052,7 +6052,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_multiply_5F_operation_5F
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_multiply_5F_operation (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_multiply_5F_operation ;
+  result.mEnum = Enumeration::enum_multiply_5F_operation ;
   return result ;
 }
 
@@ -6060,7 +6060,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_multiply_5F_operation (U
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_divide_5F_operation (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_divide_5F_operation ;
+  result.mEnum = Enumeration::enum_divide_5F_operation ;
   return result ;
 }
 
@@ -6068,7 +6068,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_divide_5F_operation (UNU
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_divide_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_divide_5F_operation_5F_no_5F_ovf ;
+  result.mEnum = Enumeration::enum_divide_5F_operation_5F_no_5F_ovf ;
   return result ;
 }
 
@@ -6076,105 +6076,105 @@ GALGAS_binaryOperator GALGAS_binaryOperator::class_func_divide_5F_operation_5F_n
 
 GALGAS_binaryOperator GALGAS_binaryOperator::class_func_modulo_5F_operation (UNUSED_LOCATION_ARGS) {
   GALGAS_binaryOperator result ;
-  result.mEnum = kEnum_modulo_5F_operation ;
+  result.mEnum = Enumeration::enum_modulo_5F_operation ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_rightShift () const {
-  const bool ok = mEnum == kEnum_rightShift ;
+  const bool ok = mEnum == Enumeration::enum_rightShift ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_leftShift () const {
-  const bool ok = mEnum == kEnum_leftShift ;
+  const bool ok = mEnum == Enumeration::enum_leftShift ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_add () const {
-  const bool ok = mEnum == kEnum_add ;
+  const bool ok = mEnum == Enumeration::enum_add ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_addNoOverflow () const {
-  const bool ok = mEnum == kEnum_addNoOverflow ;
+  const bool ok = mEnum == Enumeration::enum_addNoOverflow ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_sub () const {
-  const bool ok = mEnum == kEnum_sub ;
+  const bool ok = mEnum == Enumeration::enum_sub ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_subNoOverflow () const {
-  const bool ok = mEnum == kEnum_subNoOverflow ;
+  const bool ok = mEnum == Enumeration::enum_subNoOverflow ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_operator_5F_and () const {
-  const bool ok = mEnum == kEnum_operator_5F_and ;
+  const bool ok = mEnum == Enumeration::enum_operator_5F_and ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_operator_5F_or () const {
-  const bool ok = mEnum == kEnum_operator_5F_or ;
+  const bool ok = mEnum == Enumeration::enum_operator_5F_or ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_operator_5F_xor () const {
-  const bool ok = mEnum == kEnum_operator_5F_xor ;
+  const bool ok = mEnum == Enumeration::enum_operator_5F_xor ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_multiply_5F_operation_5F_no_5F_ovf () const {
-  const bool ok = mEnum == kEnum_multiply_5F_operation_5F_no_5F_ovf ;
+  const bool ok = mEnum == Enumeration::enum_multiply_5F_operation_5F_no_5F_ovf ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_multiply_5F_operation () const {
-  const bool ok = mEnum == kEnum_multiply_5F_operation ;
+  const bool ok = mEnum == Enumeration::enum_multiply_5F_operation ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_divide_5F_operation () const {
-  const bool ok = mEnum == kEnum_divide_5F_operation ;
+  const bool ok = mEnum == Enumeration::enum_divide_5F_operation ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_divide_5F_operation_5F_no_5F_ovf () const {
-  const bool ok = mEnum == kEnum_divide_5F_operation_5F_no_5F_ovf ;
+  const bool ok = mEnum == Enumeration::enum_divide_5F_operation_5F_no_5F_ovf ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_binaryOperator::optional_modulo_5F_operation () const {
-  const bool ok = mEnum == kEnum_modulo_5F_operation ;
+  const bool ok = mEnum == Enumeration::enum_modulo_5F_operation ;
   return ok ;
 }
 
@@ -6201,85 +6201,85 @@ static const char * gEnumNameArrayFor_binaryOperator [15] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isRightShift (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_rightShift == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_rightShift == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isLeftShift (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_leftShift == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_leftShift == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isAdd (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_add == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_add == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isAddNoOverflow (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_addNoOverflow == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_addNoOverflow == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isSub (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_sub == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_sub == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isSubNoOverflow (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_subNoOverflow == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_subNoOverflow == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isOperator_5F_and (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_operator_5F_and == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_operator_5F_and == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isOperator_5F_or (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_operator_5F_or == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_operator_5F_or == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isOperator_5F_xor (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_operator_5F_xor == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_operator_5F_xor == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isMultiply_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_multiply_5F_operation_5F_no_5F_ovf == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_multiply_5F_operation_5F_no_5F_ovf == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isMultiply_5F_operation (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_multiply_5F_operation == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_multiply_5F_operation == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isDivide_5F_operation (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_divide_5F_operation == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_divide_5F_operation == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isDivide_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_divide_5F_operation_5F_no_5F_ovf == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_divide_5F_operation_5F_no_5F_ovf == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_binaryOperator::getter_isModulo_5F_operation (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_modulo_5F_operation == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_modulo_5F_operation == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6287,7 +6287,7 @@ GALGAS_bool GALGAS_binaryOperator::getter_isModulo_5F_operation (UNUSED_LOCATION
 void GALGAS_binaryOperator::description (String & ioString,
                                          const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @binaryOperator: ") ;
-  ioString.appendCString (gEnumNameArrayFor_binaryOperator [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_binaryOperator [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -9568,14 +9568,14 @@ GALGAS_expressionCollectionForGeneration_2D_weak GALGAS_expressionCollectionForG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_comparison::GALGAS_comparison (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_comparison GALGAS_comparison::class_func_equal (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_equal ;
+  result.mEnum = Enumeration::enum_equal ;
   return result ;
 }
 
@@ -9583,7 +9583,7 @@ GALGAS_comparison GALGAS_comparison::class_func_equal (UNUSED_LOCATION_ARGS) {
 
 GALGAS_comparison GALGAS_comparison::class_func_notEqual (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_notEqual ;
+  result.mEnum = Enumeration::enum_notEqual ;
   return result ;
 }
 
@@ -9591,7 +9591,7 @@ GALGAS_comparison GALGAS_comparison::class_func_notEqual (UNUSED_LOCATION_ARGS) 
 
 GALGAS_comparison GALGAS_comparison::class_func_lowerOrEqual (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_lowerOrEqual ;
+  result.mEnum = Enumeration::enum_lowerOrEqual ;
   return result ;
 }
 
@@ -9599,7 +9599,7 @@ GALGAS_comparison GALGAS_comparison::class_func_lowerOrEqual (UNUSED_LOCATION_AR
 
 GALGAS_comparison GALGAS_comparison::class_func_lowerThan (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_lowerThan ;
+  result.mEnum = Enumeration::enum_lowerThan ;
   return result ;
 }
 
@@ -9607,7 +9607,7 @@ GALGAS_comparison GALGAS_comparison::class_func_lowerThan (UNUSED_LOCATION_ARGS)
 
 GALGAS_comparison GALGAS_comparison::class_func_greaterOrEqual (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_greaterOrEqual ;
+  result.mEnum = Enumeration::enum_greaterOrEqual ;
   return result ;
 }
 
@@ -9615,7 +9615,7 @@ GALGAS_comparison GALGAS_comparison::class_func_greaterOrEqual (UNUSED_LOCATION_
 
 GALGAS_comparison GALGAS_comparison::class_func_greaterThan (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_greaterThan ;
+  result.mEnum = Enumeration::enum_greaterThan ;
   return result ;
 }
 
@@ -9623,7 +9623,7 @@ GALGAS_comparison GALGAS_comparison::class_func_greaterThan (UNUSED_LOCATION_ARG
 
 GALGAS_comparison GALGAS_comparison::class_func_sameInstance (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_sameInstance ;
+  result.mEnum = Enumeration::enum_sameInstance ;
   return result ;
 }
 
@@ -9631,63 +9631,63 @@ GALGAS_comparison GALGAS_comparison::class_func_sameInstance (UNUSED_LOCATION_AR
 
 GALGAS_comparison GALGAS_comparison::class_func_differentInstances (UNUSED_LOCATION_ARGS) {
   GALGAS_comparison result ;
-  result.mEnum = kEnum_differentInstances ;
+  result.mEnum = Enumeration::enum_differentInstances ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_equal () const {
-  const bool ok = mEnum == kEnum_equal ;
+  const bool ok = mEnum == Enumeration::enum_equal ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_notEqual () const {
-  const bool ok = mEnum == kEnum_notEqual ;
+  const bool ok = mEnum == Enumeration::enum_notEqual ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_lowerOrEqual () const {
-  const bool ok = mEnum == kEnum_lowerOrEqual ;
+  const bool ok = mEnum == Enumeration::enum_lowerOrEqual ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_lowerThan () const {
-  const bool ok = mEnum == kEnum_lowerThan ;
+  const bool ok = mEnum == Enumeration::enum_lowerThan ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_greaterOrEqual () const {
-  const bool ok = mEnum == kEnum_greaterOrEqual ;
+  const bool ok = mEnum == Enumeration::enum_greaterOrEqual ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_greaterThan () const {
-  const bool ok = mEnum == kEnum_greaterThan ;
+  const bool ok = mEnum == Enumeration::enum_greaterThan ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_sameInstance () const {
-  const bool ok = mEnum == kEnum_sameInstance ;
+  const bool ok = mEnum == Enumeration::enum_sameInstance ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_comparison::optional_differentInstances () const {
-  const bool ok = mEnum == kEnum_differentInstances ;
+  const bool ok = mEnum == Enumeration::enum_differentInstances ;
   return ok ;
 }
 
@@ -9708,49 +9708,49 @@ static const char * gEnumNameArrayFor_comparison [9] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_equal == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equal == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isNotEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_notEqual == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_notEqual == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isLowerOrEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lowerOrEqual == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lowerOrEqual == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isLowerThan (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lowerThan == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lowerThan == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isGreaterOrEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_greaterOrEqual == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_greaterOrEqual == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isGreaterThan (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_greaterThan == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_greaterThan == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isSameInstance (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_sameInstance == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_sameInstance == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_comparison::getter_isDifferentInstances (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_differentInstances == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_differentInstances == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9758,7 +9758,7 @@ GALGAS_bool GALGAS_comparison::getter_isDifferentInstances (UNUSED_LOCATION_ARGS
 void GALGAS_comparison::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @comparison: ") ;
-  ioString.appendCString (gEnumNameArrayFor_comparison [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_comparison [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 

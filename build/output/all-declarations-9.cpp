@@ -7084,14 +7084,14 @@ GALGAS_varInExpressionForGeneration_2D_weak GALGAS_varInExpressionForGeneration_
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_selfMutability::GALGAS_selfMutability (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_selfMutability GALGAS_selfMutability::class_func_none (UNUSED_LOCATION_ARGS) {
   GALGAS_selfMutability result ;
-  result.mEnum = kEnum_none ;
+  result.mEnum = Enumeration::enum_none ;
   return result ;
 }
 
@@ -7099,7 +7099,7 @@ GALGAS_selfMutability GALGAS_selfMutability::class_func_none (UNUSED_LOCATION_AR
 
 GALGAS_selfMutability GALGAS_selfMutability::class_func_propertiesAreMutableSelfIsNot (UNUSED_LOCATION_ARGS) {
   GALGAS_selfMutability result ;
-  result.mEnum = kEnum_propertiesAreMutableSelfIsNot ;
+  result.mEnum = Enumeration::enum_propertiesAreMutableSelfIsNot ;
   return result ;
 }
 
@@ -7107,7 +7107,7 @@ GALGAS_selfMutability GALGAS_selfMutability::class_func_propertiesAreMutableSelf
 
 GALGAS_selfMutability GALGAS_selfMutability::class_func_selfAndPropertiesAreMutable (UNUSED_LOCATION_ARGS) {
   GALGAS_selfMutability result ;
-  result.mEnum = kEnum_selfAndPropertiesAreMutable ;
+  result.mEnum = Enumeration::enum_selfAndPropertiesAreMutable ;
   return result ;
 }
 
@@ -7115,35 +7115,35 @@ GALGAS_selfMutability GALGAS_selfMutability::class_func_selfAndPropertiesAreMuta
 
 GALGAS_selfMutability GALGAS_selfMutability::class_func_initializer (UNUSED_LOCATION_ARGS) {
   GALGAS_selfMutability result ;
-  result.mEnum = kEnum_initializer ;
+  result.mEnum = Enumeration::enum_initializer ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_selfMutability::optional_none () const {
-  const bool ok = mEnum == kEnum_none ;
+  const bool ok = mEnum == Enumeration::enum_none ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_selfMutability::optional_propertiesAreMutableSelfIsNot () const {
-  const bool ok = mEnum == kEnum_propertiesAreMutableSelfIsNot ;
+  const bool ok = mEnum == Enumeration::enum_propertiesAreMutableSelfIsNot ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_selfMutability::optional_selfAndPropertiesAreMutable () const {
-  const bool ok = mEnum == kEnum_selfAndPropertiesAreMutable ;
+  const bool ok = mEnum == Enumeration::enum_selfAndPropertiesAreMutable ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_selfMutability::optional_initializer () const {
-  const bool ok = mEnum == kEnum_initializer ;
+  const bool ok = mEnum == Enumeration::enum_initializer ;
   return ok ;
 }
 
@@ -7160,25 +7160,25 @@ static const char * gEnumNameArrayFor_selfMutability [5] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_selfMutability::getter_isNone (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_none == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_selfMutability::getter_isPropertiesAreMutableSelfIsNot (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_propertiesAreMutableSelfIsNot == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_propertiesAreMutableSelfIsNot == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_selfMutability::getter_isSelfAndPropertiesAreMutable (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_selfAndPropertiesAreMutable == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_selfAndPropertiesAreMutable == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_selfMutability::getter_isInitializer (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_initializer == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_initializer == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7186,7 +7186,7 @@ GALGAS_bool GALGAS_selfMutability::getter_isInitializer (UNUSED_LOCATION_ARGS) c
 void GALGAS_selfMutability::description (String & ioString,
                                          const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @selfMutability: ") ;
-  ioString.appendCString (gEnumNameArrayFor_selfMutability [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_selfMutability [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -7260,16 +7260,16 @@ GALGAS_bool extensionGetter_selfIsMutable (const GALGAS_selfMutability & inObjec
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_selfMutability temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_selfMutability::kNotBuilt:
+  case GALGAS_selfMutability::Enumeration::invalid:
     break ;
-  case GALGAS_selfMutability::kEnum_none:
-  case GALGAS_selfMutability::kEnum_propertiesAreMutableSelfIsNot:
+  case GALGAS_selfMutability::Enumeration::enum_none:
+  case GALGAS_selfMutability::Enumeration::enum_propertiesAreMutableSelfIsNot:
     {
       result_result = GALGAS_bool (false) ;
     }
     break ;
-  case GALGAS_selfMutability::kEnum_selfAndPropertiesAreMutable:
-  case GALGAS_selfMutability::kEnum_initializer:
+  case GALGAS_selfMutability::Enumeration::enum_selfAndPropertiesAreMutable:
+  case GALGAS_selfMutability::Enumeration::enum_initializer:
     {
       result_result = GALGAS_bool (true) ;
     }
@@ -7321,14 +7321,14 @@ ComparisonResult cEnumAssociatedValues_selfAvailability_available::compare (cons
 
 GALGAS_selfAvailability::GALGAS_selfAvailability (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_selfAvailability GALGAS_selfAvailability::class_func_none (UNUSED_LOCATION_ARGS) {
   GALGAS_selfAvailability result ;
-  result.mEnum = kEnum_none ;
+  result.mEnum = Enumeration::enum_none ;
   return result ;
 }
 
@@ -7339,7 +7339,7 @@ GALGAS_selfAvailability GALGAS_selfAvailability::class_func_available (const GAL
                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_selfAvailability result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_available ;
+    result.mEnum = Enumeration::enum_available ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_selfAvailability_available (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -7354,7 +7354,7 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
                                                 GALGAS_selfMutability & outAssociatedValue1,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_available) {
+  if (mEnum != Enumeration::enum_available) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -7370,7 +7370,7 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_selfAvailability::optional_none () const {
-  const bool ok = mEnum == kEnum_none ;
+  const bool ok = mEnum == Enumeration::enum_none ;
   return ok ;
 }
 
@@ -7378,7 +7378,7 @@ bool GALGAS_selfAvailability::optional_none () const {
 
 bool GALGAS_selfAvailability::optional_available (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
                                                   GALGAS_selfMutability & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_available ;
+  const bool ok = mEnum == Enumeration::enum_available ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_selfAvailability_available *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -7398,13 +7398,13 @@ static const char * gEnumNameArrayFor_selfAvailability [3] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_selfAvailability::getter_isNone (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_none == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_selfAvailability::getter_isAvailable (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_available == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_available == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7412,7 +7412,7 @@ GALGAS_bool GALGAS_selfAvailability::getter_isAvailable (UNUSED_LOCATION_ARGS) c
 void GALGAS_selfAvailability::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString.appendCString ("<enum @selfAvailability: ") ;
-  ioString.appendCString (gEnumNameArrayFor_selfAvailability [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_selfAvailability [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -10989,14 +10989,14 @@ void cEnumAssociatedValues_fixitElementAST_fixItInsertBefore::description (Strin
 
 GALGAS_fixitElementAST::GALGAS_fixitElementAST (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_fixitElementAST GALGAS_fixitElementAST::class_func_fixItRemove (UNUSED_LOCATION_ARGS) {
   GALGAS_fixitElementAST result ;
-  result.mEnum = kEnum_fixItRemove ;
+  result.mEnum = Enumeration::enum_fixItRemove ;
   return result ;
 }
 
@@ -11007,7 +11007,7 @@ GALGAS_fixitElementAST GALGAS_fixitElementAST::class_func_fixItReplace (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_fixitElementAST result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_fixItReplace ;
+    result.mEnum = Enumeration::enum_fixItReplace ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_fixitElementAST_fixItReplace (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -11023,7 +11023,7 @@ GALGAS_fixitElementAST GALGAS_fixitElementAST::class_func_fixItInsertAfter (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_fixitElementAST result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_fixItInsertAfter ;
+    result.mEnum = Enumeration::enum_fixItInsertAfter ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_fixitElementAST_fixItInsertAfter (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -11039,7 +11039,7 @@ GALGAS_fixitElementAST GALGAS_fixitElementAST::class_func_fixItInsertBefore (con
                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_fixitElementAST result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_fixItInsertBefore ;
+    result.mEnum = Enumeration::enum_fixItInsertBefore ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_fixitElementAST_fixItInsertBefore (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -11054,7 +11054,7 @@ void GALGAS_fixitElementAST::method_fixItReplace (GALGAS_semanticExpressionAST &
                                                   GALGAS_location & outAssociatedValue1,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fixItReplace) {
+  if (mEnum != Enumeration::enum_fixItReplace) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -11073,7 +11073,7 @@ void GALGAS_fixitElementAST::method_fixItInsertAfter (GALGAS_semanticExpressionA
                                                       GALGAS_location & outAssociatedValue1,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fixItInsertAfter) {
+  if (mEnum != Enumeration::enum_fixItInsertAfter) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -11092,7 +11092,7 @@ void GALGAS_fixitElementAST::method_fixItInsertBefore (GALGAS_semanticExpression
                                                        GALGAS_location & outAssociatedValue1,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fixItInsertBefore) {
+  if (mEnum != Enumeration::enum_fixItInsertBefore) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -11108,7 +11108,7 @@ void GALGAS_fixitElementAST::method_fixItInsertBefore (GALGAS_semanticExpression
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_fixitElementAST::optional_fixItRemove () const {
-  const bool ok = mEnum == kEnum_fixItRemove ;
+  const bool ok = mEnum == Enumeration::enum_fixItRemove ;
   return ok ;
 }
 
@@ -11116,7 +11116,7 @@ bool GALGAS_fixitElementAST::optional_fixItRemove () const {
 
 bool GALGAS_fixitElementAST::optional_fixItReplace (GALGAS_semanticExpressionAST & outAssociatedValue0,
                                                     GALGAS_location & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_fixItReplace ;
+  const bool ok = mEnum == Enumeration::enum_fixItReplace ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -11129,7 +11129,7 @@ bool GALGAS_fixitElementAST::optional_fixItReplace (GALGAS_semanticExpressionAST
 
 bool GALGAS_fixitElementAST::optional_fixItInsertAfter (GALGAS_semanticExpressionAST & outAssociatedValue0,
                                                         GALGAS_location & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_fixItInsertAfter ;
+  const bool ok = mEnum == Enumeration::enum_fixItInsertAfter ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -11142,7 +11142,7 @@ bool GALGAS_fixitElementAST::optional_fixItInsertAfter (GALGAS_semanticExpressio
 
 bool GALGAS_fixitElementAST::optional_fixItInsertBefore (GALGAS_semanticExpressionAST & outAssociatedValue0,
                                                          GALGAS_location & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_fixItInsertBefore ;
+  const bool ok = mEnum == Enumeration::enum_fixItInsertBefore ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -11164,25 +11164,25 @@ static const char * gEnumNameArrayFor_fixitElementAST [5] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementAST::getter_isFixItRemove (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItRemove == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItRemove == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementAST::getter_isFixItReplace (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItReplace == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItReplace == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementAST::getter_isFixItInsertAfter (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItInsertAfter == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItInsertAfter == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementAST::getter_isFixItInsertBefore (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItInsertBefore == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItInsertBefore == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11190,7 +11190,7 @@ GALGAS_bool GALGAS_fixitElementAST::getter_isFixItInsertBefore (UNUSED_LOCATION_
 void GALGAS_fixitElementAST::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString.appendCString ("<enum @fixitElementAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_fixitElementAST [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_fixitElementAST [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -12023,27 +12023,27 @@ void extensionMethod_enterFixItListInSemanticContext (const GALGAS_fixitListAST 
   cEnumerator_fixitListAST enumerator_8047 (temp_0, EnumerationOrder::up) ;
   while (enumerator_8047.hasCurrentObject ()) {
     switch (enumerator_8047.current_mElement (HERE).enumValue ()) {
-    case GALGAS_fixitElementAST::kNotBuilt:
+    case GALGAS_fixitElementAST::Enumeration::invalid:
       break ;
-    case GALGAS_fixitElementAST::kEnum_fixItRemove:
+    case GALGAS_fixitElementAST::Enumeration::enum_fixItRemove:
       {
       }
       break ;
-    case GALGAS_fixitElementAST::kEnum_fixItReplace:
+    case GALGAS_fixitElementAST::Enumeration::enum_fixItReplace:
       {
         const cEnumAssociatedValues_fixitElementAST_fixItReplace * extractPtr_8219 = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) (enumerator_8047.current_mElement (HERE).unsafePointer ()) ;
         const GALGAS_semanticExpressionAST extractedValue_8155_exp = extractPtr_8219->mAssociatedValue0 ;
         callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_8155_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 222)) ;
       }
       break ;
-    case GALGAS_fixitElementAST::kEnum_fixItInsertBefore:
+    case GALGAS_fixitElementAST::Enumeration::enum_fixItInsertBefore:
       {
         const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore * extractPtr_8336 = (const cEnumAssociatedValues_fixitElementAST_fixItInsertBefore *) (enumerator_8047.current_mElement (HERE).unsafePointer ()) ;
         const GALGAS_semanticExpressionAST extractedValue_8272_exp = extractPtr_8336->mAssociatedValue0 ;
         callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_8272_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 224)) ;
       }
       break ;
-    case GALGAS_fixitElementAST::kEnum_fixItInsertAfter:
+    case GALGAS_fixitElementAST::Enumeration::enum_fixItInsertAfter:
       {
         const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter * extractPtr_8452 = (const cEnumAssociatedValues_fixitElementAST_fixItInsertAfter *) (enumerator_8047.current_mElement (HERE).unsafePointer ()) ;
         const GALGAS_semanticExpressionAST extractedValue_8388_exp = extractPtr_8452->mAssociatedValue0 ;
@@ -12111,14 +12111,14 @@ void cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter::descripti
 
 GALGAS_fixitElementForGeneration::GALGAS_fixitElementForGeneration (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::class_func_fixItRemove (UNUSED_LOCATION_ARGS) {
   GALGAS_fixitElementForGeneration result ;
-  result.mEnum = kEnum_fixItRemove ;
+  result.mEnum = Enumeration::enum_fixItRemove ;
   return result ;
 }
 
@@ -12128,7 +12128,7 @@ GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::class_func_fi
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_fixitElementForGeneration result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_fixItReplace ;
+    result.mEnum = Enumeration::enum_fixItReplace ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_fixitElementForGeneration_fixItReplace (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12143,7 +12143,7 @@ GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::class_func_fi
                                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_fixitElementForGeneration result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_fixItInsertBefore ;
+    result.mEnum = Enumeration::enum_fixItInsertBefore ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12158,7 +12158,7 @@ GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::class_func_fi
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_fixitElementForGeneration result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_fixItInsertAfter ;
+    result.mEnum = Enumeration::enum_fixItInsertAfter ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12172,7 +12172,7 @@ GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::class_func_fi
 void GALGAS_fixitElementForGeneration::method_fixItReplace (GALGAS_semanticExpressionForGeneration & outAssociatedValue0,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fixItReplace) {
+  if (mEnum != Enumeration::enum_fixItReplace) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @fixitElementForGeneration fixItReplace invoked with an invalid enum value") ;
@@ -12188,7 +12188,7 @@ void GALGAS_fixitElementForGeneration::method_fixItReplace (GALGAS_semanticExpre
 void GALGAS_fixitElementForGeneration::method_fixItInsertBefore (GALGAS_semanticExpressionForGeneration & outAssociatedValue0,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fixItInsertBefore) {
+  if (mEnum != Enumeration::enum_fixItInsertBefore) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @fixitElementForGeneration fixItInsertBefore invoked with an invalid enum value") ;
@@ -12204,7 +12204,7 @@ void GALGAS_fixitElementForGeneration::method_fixItInsertBefore (GALGAS_semantic
 void GALGAS_fixitElementForGeneration::method_fixItInsertAfter (GALGAS_semanticExpressionForGeneration & outAssociatedValue0,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fixItInsertAfter) {
+  if (mEnum != Enumeration::enum_fixItInsertAfter) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @fixitElementForGeneration fixItInsertAfter invoked with an invalid enum value") ;
@@ -12218,14 +12218,14 @@ void GALGAS_fixitElementForGeneration::method_fixItInsertAfter (GALGAS_semanticE
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_fixitElementForGeneration::optional_fixItRemove () const {
-  const bool ok = mEnum == kEnum_fixItRemove ;
+  const bool ok = mEnum == Enumeration::enum_fixItRemove ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_fixitElementForGeneration::optional_fixItReplace (GALGAS_semanticExpressionForGeneration & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_fixItReplace ;
+  const bool ok = mEnum == Enumeration::enum_fixItReplace ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12236,7 +12236,7 @@ bool GALGAS_fixitElementForGeneration::optional_fixItReplace (GALGAS_semanticExp
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_fixitElementForGeneration::optional_fixItInsertBefore (GALGAS_semanticExpressionForGeneration & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_fixItInsertBefore ;
+  const bool ok = mEnum == Enumeration::enum_fixItInsertBefore ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12247,7 +12247,7 @@ bool GALGAS_fixitElementForGeneration::optional_fixItInsertBefore (GALGAS_semant
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_fixitElementForGeneration::optional_fixItInsertAfter (GALGAS_semanticExpressionForGeneration & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_fixItInsertAfter ;
+  const bool ok = mEnum == Enumeration::enum_fixItInsertAfter ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12268,25 +12268,25 @@ static const char * gEnumNameArrayFor_fixitElementForGeneration [5] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementForGeneration::getter_isFixItRemove (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItRemove == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItRemove == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementForGeneration::getter_isFixItReplace (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItReplace == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItReplace == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementForGeneration::getter_isFixItInsertBefore (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItInsertBefore == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItInsertBefore == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_fixitElementForGeneration::getter_isFixItInsertAfter (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fixItInsertAfter == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fixItInsertAfter == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12294,7 +12294,7 @@ GALGAS_bool GALGAS_fixitElementForGeneration::getter_isFixItInsertAfter (UNUSED_
 void GALGAS_fixitElementForGeneration::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString.appendCString ("<enum @fixitElementForGeneration: ") ;
-  ioString.appendCString (gEnumNameArrayFor_fixitElementForGeneration [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_fixitElementForGeneration [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -12783,14 +12783,14 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
   cEnumerator_fixitListForGeneration enumerator_16179 (temp_0, EnumerationOrder::up) ;
   while (enumerator_16179.hasCurrentObject ()) {
     switch (enumerator_16179.current_mElement (HERE).enumValue ()) {
-    case GALGAS_fixitElementForGeneration::kNotBuilt:
+    case GALGAS_fixitElementForGeneration::Enumeration::invalid:
       break ;
-    case GALGAS_fixitElementForGeneration::kEnum_fixItRemove:
+    case GALGAS_fixitElementForGeneration::Enumeration::enum_fixItRemove:
       {
         ioArgument_ioGeneratedCode.plusAssign_operation(outArgument_outFixItArrayCppName.add_operation (GALGAS_string (".appendObject (FixItDescription (kFixItRemove, \"\")) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 422)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 422)) ;
       }
       break ;
-    case GALGAS_fixitElementForGeneration::kEnum_fixItReplace:
+    case GALGAS_fixitElementForGeneration::Enumeration::enum_fixItReplace:
       {
         const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace * extractPtr_16723 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) (enumerator_16179.current_mElement (HERE).unsafePointer ()) ;
         const GALGAS_semanticExpressionForGeneration extractedValue_16407_exp = extractPtr_16723->mAssociatedValue0 ;
@@ -12799,7 +12799,7 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
         ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (GALGAS_string (", kFixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (var_receiverCppVarName_16580, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 431)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 431)) ;
       }
       break ;
-    case GALGAS_fixitElementForGeneration::kEnum_fixItInsertBefore:
+    case GALGAS_fixitElementForGeneration::Enumeration::enum_fixItInsertBefore:
       {
         const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore * extractPtr_17113 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertBefore *) (enumerator_16179.current_mElement (HERE).unsafePointer ()) ;
         const GALGAS_semanticExpressionForGeneration extractedValue_16792_exp = extractPtr_17113->mAssociatedValue0 ;
@@ -12808,7 +12808,7 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
         ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (GALGAS_string (", kFixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (var_receiverCppVarName_16965, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 440)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 440)) ;
       }
       break ;
-    case GALGAS_fixitElementForGeneration::kEnum_fixItInsertAfter:
+    case GALGAS_fixitElementForGeneration::Enumeration::enum_fixItInsertAfter:
       {
         const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter * extractPtr_17501 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter *) (enumerator_16179.current_mElement (HERE).unsafePointer ()) ;
         const GALGAS_semanticExpressionForGeneration extractedValue_17181_exp = extractPtr_17501->mAssociatedValue0 ;

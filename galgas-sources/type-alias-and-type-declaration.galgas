@@ -85,18 +85,7 @@ syntax extension galgas3DeclarationsSyntax {
     <type_definition_ggs3> !?ioDeclarations ?outTypeName
     $?$
     let unwrappedTypeName = outTypeName 
-    [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName]
-#    outTypeName.string += "?"
-#    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
-#      ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
-#      ioDeclarations.mDeclarationList += !@optionalTypeDeclarationAST (
-#        !isPredefined: false,
-#        outTypeName,
-#        unwrappedTypeName,
-#        !isUsefull: true,
-#        !equatable: false
-#      )
-#    end
+    [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
   }
 
   #·······························································································
@@ -161,18 +150,7 @@ syntax extension galgas4DeclarationsSyntax {
     or
       $?$
       let unwrappedTypeName = outTypeName 
-      [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName]
-#      outTypeName.string += "?"
-#      if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
-#        ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
-#        ioDeclarations.mDeclarationList += !@optionalTypeDeclarationAST (
-#          !isPredefined: false,
-#          outTypeName,
-#          unwrappedTypeName,
-#          !isUsefull: true,
-#          !equatable: false
-#        )
-#      end
+      [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
     end
   }
 

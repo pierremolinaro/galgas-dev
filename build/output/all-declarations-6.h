@@ -2727,21 +2727,21 @@ class GALGAS_selfMutability : public AC_GALGAS_root {
   public: GALGAS_selfMutability (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_none,
-    kEnum_propertiesAreMutableSelfIsNot,
-    kEnum_selfAndPropertiesAreMutable,
-    kEnum_initializer
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_none,
+    enum_propertiesAreMutableSelfIsNot,
+    enum_selfAndPropertiesAreMutable,
+    enum_initializer
+  } ;
   
-//--------------------------------- Private data member
-  private: enumeration mEnum ;
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -7305,9 +7305,9 @@ class GALGAS_routineArgumentMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_routineArgumentMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_routineArgumentMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -8131,9 +8131,9 @@ class GALGAS_grammarLabelMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_grammarLabelMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_grammarLabelMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods

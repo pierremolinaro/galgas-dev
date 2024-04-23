@@ -506,12 +506,14 @@ struct @galgasDeclarationAST {
   
   #·······························································································
 
-  setter getOptionalTypeName !@lstring outOptionalTypeName ?forTypeNamed: @lstring inTypeName {
+  setter getOptionalTypeName !@lstring outOptionalTypeName
+                             ?forTypeNamed: @lstring inTypeName
+                             ?isPredefined: let @bool inPredefined {
     outOptionalTypeName = optionalTypeName (!forTypeNamed: inTypeName)
     if not [self.implicitTypeDeclarationSet hasKey !outOptionalTypeName.string] then
       self.implicitTypeDeclarationSet += !outOptionalTypeName.string
       self.mDeclarationList += !@optionalTypeDeclarationAST (
-        !isPredefined: false,
+        !isPredefined: inPredefined,
         !optionalTypeName: outOptionalTypeName,
         !unwrappedTypeName: inTypeName,
         !isUsefull: true,

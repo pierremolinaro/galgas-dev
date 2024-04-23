@@ -1966,9 +1966,9 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_headerCompositionMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_headerCompositionMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -2297,9 +2297,9 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_headerRepartitionMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_headerRepartitionMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -2612,9 +2612,9 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_projectQualifiedFeatureMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                            Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_projectQualifiedFeatureMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods

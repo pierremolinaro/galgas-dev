@@ -47,7 +47,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 if HAS_ASSOCIATED_VALUES then
   %mAssociatedValues (),\n%
 end
-%mEnum (kNotBuilt) {
+%mEnum (Enumeration::invalid) {
 }
 
 %
@@ -66,7 +66,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   %) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
   if [mAssociatedValueTypeList count] == 0 then
-    %  result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
+    %  result.mEnum = Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
   else
     %  if (%
     for (mType) in mAssociatedValueTypeList
@@ -74,7 +74,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     between % && %
     end
     %) {\n%
-    %    result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
+    %    result.mEnum = Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
     %    cEnumAssociatedValues * ptr = nullptr ;\n%
     %    macroMyNew (ptr, cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%
     for (mType) in mAssociatedValueTypeList
@@ -99,7 +99,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     end
     !^%Compiler * inCompiler\n%
     !^%COMMA_LOCATION_ARGS) const {\n%
-    %  if (mEnum != kEnum_%![mConstantName identifierRepresentation]%) {\n%
+    %  if (mEnum != Enumeration::enum_%![mConstantName identifierRepresentation]%) {\n%
     for (mType) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
@@ -127,7 +127,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %,\n%!^
     end
     %) const {\n%
-    %  const bool ok = mEnum == kEnum_%![mConstantName identifierRepresentation]% ;\n%
+    %  const bool ok = mEnum == Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
     if [mAssociatedValueTypeList count] > 0 then
       %  if (ok) {\n%
       %    const auto * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
@@ -154,7 +154,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 %//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_is%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_%![mConstantName identifierRepresentation]% == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_%![mConstantName identifierRepresentation]% == mEnum) ;
 }\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ else
 end
 %) const {
   ioString.appendCString ("<enum @%!TYPE_NAME%: ") ;
-  ioString.appendCString (gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_%!TYPE_IDENTIFIER% [size_t (mEnum)]) ;
 %
 if HAS_ASSOCIATED_VALUES then
   %  mAssociatedValues.description (ioString, inIndentation) ;\n%

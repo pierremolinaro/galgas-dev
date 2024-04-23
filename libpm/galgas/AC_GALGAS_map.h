@@ -104,13 +104,13 @@ class AC_GALGAS_map : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG cMapNode * searchEntryInMap (const String & inKey) const ;
 
   protected: VIRTUAL_IN_DEBUG const cCollectionElement * performSearch (const GALGAS_lstring & inKey,
-                                                                         Compiler * inCompiler,
-                                                                         const char * inSearchErrorMessage
-                                                                         COMMA_LOCATION_ARGS) const ;
+                                                                        Compiler * inCompiler,
+                                                                        const char * inSearchErrorMessage
+                                                                        COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG const cMapElement * searchForKey (const GALGAS_string & inKey) const ;
 

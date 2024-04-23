@@ -345,13 +345,6 @@ override getter @predefinedTypeAST keyRepresentation
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @enumDeclarationAST keyRepresentation
-  ->@string {
-  result = "enum @" + self.mEnumTypeName
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override getter @sortedListDeclarationAST keyRepresentation
   ->@string {
   result = "sorted list @" + self.mSortedListTypeName

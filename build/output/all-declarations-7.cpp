@@ -99,12 +99,12 @@ GALGAS_functionMap GALGAS_functionMap::class_func_emptyMap (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_functionMap_2D_element_3F_ GALGAS_functionMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_functionMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_functionMap * p = (cMapElement_functionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_functionMap * p = (cMapElement_functionMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_functionMap_2D_element_3F_::init_nil () ;
     }else{
@@ -537,12 +537,12 @@ GALGAS_wrapperFileMap GALGAS_wrapperFileMap::class_func_emptyMap (LOCATION_ARGS)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_wrapperFileMap_2D_element_3F_ GALGAS_wrapperFileMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_wrapperFileMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_wrapperFileMap_2D_element_3F_::init_nil () ;
     }else{
@@ -1014,12 +1014,12 @@ GALGAS_wrapperDirectoryMap GALGAS_wrapperDirectoryMap::class_func_emptyMap (LOCA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_wrapperDirectoryMap_2D_element_3F_ GALGAS_wrapperDirectoryMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_wrapperDirectoryMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_wrapperDirectoryMap_2D_element_3F_::init_nil () ;
     }else{
@@ -1438,12 +1438,12 @@ GALGAS_filewrapperTemplateMap GALGAS_filewrapperTemplateMap::class_func_emptyMap
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperTemplateMap_2D_element_3F_ GALGAS_filewrapperTemplateMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_filewrapperTemplateMap * p = (cMapElement_filewrapperTemplateMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_filewrapperTemplateMap * p = (cMapElement_filewrapperTemplateMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_filewrapperTemplateMap_2D_element_3F_::init_nil () ;
     }else{
@@ -1844,12 +1844,12 @@ GALGAS_filewrapperMap GALGAS_filewrapperMap::class_func_emptyMap (LOCATION_ARGS)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_filewrapperMap_2D_element_3F_ GALGAS_filewrapperMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_filewrapperMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_filewrapperMap_2D_element_3F_::init_nil () ;
     }else{
@@ -2427,12 +2427,12 @@ GALGAS_optionComponentMapForSemanticAnalysis GALGAS_optionComponentMapForSemanti
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionComponentMapForSemanticAnalysis_2D_element_3F_ GALGAS_optionComponentMapForSemanticAnalysis
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_optionComponentMapForSemanticAnalysis_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_optionComponentMapForSemanticAnalysis_2D_element_3F_::init_nil () ;
     }else{
@@ -2978,12 +2978,12 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis GALGAS_lexiqueComponentMapForSeman
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element_3F_ GALGAS_lexiqueComponentMapForSemanticAnalysis
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element_3F_::init_nil () ;
     }else{
@@ -3600,12 +3600,12 @@ GALGAS_syntaxComponentMap GALGAS_syntaxComponentMap::class_func_emptyMap (LOCATI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_syntaxComponentMap_2D_element_3F_ GALGAS_syntaxComponentMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_syntaxComponentMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_syntaxComponentMap_2D_element_3F_::init_nil () ;
     }else{
@@ -4063,12 +4063,12 @@ GALGAS_extensionInitializerMapForType GALGAS_extensionInitializerMapForType::cla
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionInitializerMapForType_2D_element_3F_ GALGAS_extensionInitializerMapForType
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionInitializerMapForType_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionInitializerMapForType * p = (cMapElement_extensionInitializerMapForType *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionInitializerMapForType * p = (cMapElement_extensionInitializerMapForType *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionInitializerMapForType_2D_element_3F_::init_nil () ;
     }else{
@@ -4366,12 +4366,12 @@ GALGAS_extensionInitializerForBuildingContext GALGAS_extensionInitializerForBuil
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionInitializerForBuildingContext_2D_element_3F_ GALGAS_extensionInitializerForBuildingContext
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionInitializerForBuildingContext_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionInitializerForBuildingContext * p = (cMapElement_extensionInitializerForBuildingContext *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionInitializerForBuildingContext * p = (cMapElement_extensionInitializerForBuildingContext *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionInitializerForBuildingContext_2D_element_3F_::init_nil () ;
     }else{
@@ -4698,12 +4698,12 @@ GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForType::class_func_em
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodMapForType_2D_element_3F_ GALGAS_extensionMethodMapForType
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionMethodMapForType_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionMethodMapForType * p = (cMapElement_extensionMethodMapForType *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionMethodMapForType * p = (cMapElement_extensionMethodMapForType *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionMethodMapForType_2D_element_3F_::init_nil () ;
     }else{
@@ -5044,12 +5044,12 @@ GALGAS_extensionMethodMapForBuildingContext GALGAS_extensionMethodMapForBuilding
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodMapForBuildingContext_2D_element_3F_ GALGAS_extensionMethodMapForBuildingContext
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionMethodMapForBuildingContext_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionMethodMapForBuildingContext * p = (cMapElement_extensionMethodMapForBuildingContext *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionMethodMapForBuildingContext * p = (cMapElement_extensionMethodMapForBuildingContext *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionMethodMapForBuildingContext_2D_element_3F_::init_nil () ;
     }else{
@@ -5369,12 +5369,12 @@ GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForType::class_func_em
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterMapForType_2D_element_3F_ GALGAS_extensionSetterMapForType
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionSetterMapForType_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionSetterMapForType * p = (cMapElement_extensionSetterMapForType *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionSetterMapForType * p = (cMapElement_extensionSetterMapForType *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionSetterMapForType_2D_element_3F_::init_nil () ;
     }else{
@@ -5672,12 +5672,12 @@ GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuilding
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterMapForBuildingContext_2D_element_3F_ GALGAS_extensionSetterMapForBuildingContext
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionSetterMapForBuildingContext_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionSetterMapForBuildingContext * p = (cMapElement_extensionSetterMapForBuildingContext *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionSetterMapForBuildingContext * p = (cMapElement_extensionSetterMapForBuildingContext *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionSetterMapForBuildingContext_2D_element_3F_::init_nil () ;
     }else{
@@ -6011,12 +6011,12 @@ GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::class_func_em
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterMapForType_2D_element_3F_ GALGAS_extensionGetterMapForType
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionGetterMapForType_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionGetterMapForType * p = (cMapElement_extensionGetterMapForType *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionGetterMapForType * p = (cMapElement_extensionGetterMapForType *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionGetterMapForType_2D_element_3F_::init_nil () ;
     }else{
@@ -6400,12 +6400,12 @@ GALGAS_extensionGetterMapForBuildingContext GALGAS_extensionGetterMapForBuilding
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterMapForBuildingContext_2D_element_3F_ GALGAS_extensionGetterMapForBuildingContext
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionGetterMapForBuildingContext_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionGetterMapForBuildingContext * p = (cMapElement_extensionGetterMapForBuildingContext *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionGetterMapForBuildingContext * p = (cMapElement_extensionGetterMapForBuildingContext *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionGetterMapForBuildingContext_2D_element_3F_::init_nil () ;
     }else{
@@ -6756,12 +6756,12 @@ GALGAS_wrapperExtensionMap GALGAS_wrapperExtensionMap::class_func_emptyMap (LOCA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_wrapperExtensionMap_2D_element_3F_ GALGAS_wrapperExtensionMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_wrapperExtensionMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_wrapperExtensionMap * p = (cMapElement_wrapperExtensionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_wrapperExtensionMap * p = (cMapElement_wrapperExtensionMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_wrapperExtensionMap_2D_element_3F_::init_nil () ;
     }else{
@@ -11706,12 +11706,12 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis GALGAS_nonterminalSymbolLabel
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element_3F_ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = (cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = (cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element_3F_::init_nil () ;
     }else{
@@ -12038,12 +12038,12 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis GALGAS_nonTerminalSymbolMapForGram
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element_3F_ GALGAS_nonTerminalSymbolMapForGrammarAnalysis
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element_3F_::init_nil () ;
     }else{

@@ -516,9 +516,9 @@ class GALGAS_propertyIndexMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_propertyIndexMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_propertyIndexMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -855,9 +855,9 @@ class GALGAS_nonterminalLabelMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalLabelMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalLabelMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -1202,9 +1202,9 @@ class GALGAS_nonterminalMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_nonterminalMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -2437,9 +2437,9 @@ class GALGAS_uselessEntityLocationMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_uselessEntityLocationMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_uselessEntityLocationMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -3790,31 +3790,31 @@ class GALGAS_binaryOperator : public AC_GALGAS_root {
   public: GALGAS_binaryOperator (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_rightShift,
-    kEnum_leftShift,
-    kEnum_add,
-    kEnum_addNoOverflow,
-    kEnum_sub,
-    kEnum_subNoOverflow,
-    kEnum_operator_5F_and,
-    kEnum_operator_5F_or,
-    kEnum_operator_5F_xor,
-    kEnum_multiply_5F_operation_5F_no_5F_ovf,
-    kEnum_multiply_5F_operation,
-    kEnum_divide_5F_operation,
-    kEnum_divide_5F_operation_5F_no_5F_ovf,
-    kEnum_modulo_5F_operation
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_rightShift,
+    enum_leftShift,
+    enum_add,
+    enum_addNoOverflow,
+    enum_sub,
+    enum_subNoOverflow,
+    enum_operator_5F_and,
+    enum_operator_5F_or,
+    enum_operator_5F_xor,
+    enum_multiply_5F_operation_5F_no_5F_ovf,
+    enum_multiply_5F_operation,
+    enum_divide_5F_operation,
+    enum_divide_5F_operation_5F_no_5F_ovf,
+    enum_modulo_5F_operation
+  } ;
   
-//--------------------------------- Private data member
-  private: enumeration mEnum ;
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -6403,25 +6403,25 @@ class GALGAS_comparison : public AC_GALGAS_root {
   public: GALGAS_comparison (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_equal,
-    kEnum_notEqual,
-    kEnum_lowerOrEqual,
-    kEnum_lowerThan,
-    kEnum_greaterOrEqual,
-    kEnum_greaterThan,
-    kEnum_sameInstance,
-    kEnum_differentInstances
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_equal,
+    enum_notEqual,
+    enum_lowerOrEqual,
+    enum_lowerThan,
+    enum_greaterOrEqual,
+    enum_greaterThan,
+    enum_sameInstance,
+    enum_differentInstances
+  } ;
   
-//--------------------------------- Private data member
-  private: enumeration mEnum ;
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 

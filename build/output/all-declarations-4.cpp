@@ -4107,12 +4107,12 @@ GALGAS_initializerMap GALGAS_initializerMap::class_func_emptyMap (LOCATION_ARGS)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_initializerMap_2D_element_3F_ GALGAS_initializerMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_initializerMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_initializerMap * p = (cMapElement_initializerMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_initializerMap * p = (cMapElement_initializerMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_initializerMap_2D_element_3F_::init_nil () ;
     }else{
@@ -4474,8 +4474,8 @@ class cCollectionElement_enumConstantList : public cCollectionElement {
   public: GALGAS_enumConstantList_2D_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_enumConstantList (const GALGAS_lstring & in_mConstantName,
-                                               const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList
+  public: cCollectionElement_enumConstantList (const GALGAS_lstring & in_name,
+                                               const GALGAS__32_lstringlist & in_associatedValueTypeList
                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_enumConstantList (const GALGAS_enumConstantList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -4493,18 +4493,18 @@ class cCollectionElement_enumConstantList : public cCollectionElement {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_enumConstantList::cCollectionElement_enumConstantList (const GALGAS_lstring & in_mConstantName,
-                                                                          const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList
+cCollectionElement_enumConstantList::cCollectionElement_enumConstantList (const GALGAS_lstring & in_name,
+                                                                          const GALGAS__32_lstringlist & in_associatedValueTypeList
                                                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mConstantName, in_mAssociatedValueDefinitionList) {
+mObject (in_name, in_associatedValueTypeList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement_enumConstantList::cCollectionElement_enumConstantList (const GALGAS_enumConstantList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mConstantName, inElement.mProperty_mAssociatedValueDefinitionList) {
+mObject (inElement.mProperty_name, inElement.mProperty_associatedValueTypeList) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4517,7 +4517,7 @@ bool cCollectionElement_enumConstantList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_enumConstantList::copy (void) {
   cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_enumConstantList (mObject.mProperty_mConstantName, mObject.mProperty_mAssociatedValueDefinitionList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_enumConstantList (mObject.mProperty_name, mObject.mProperty_associatedValueTypeList COMMA_HERE)) ;
   return result ;
 }
 
@@ -4526,12 +4526,12 @@ cCollectionElement * cCollectionElement_enumConstantList::copy (void) {
 void cCollectionElement_enumConstantList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mConstantName" ":") ;
-  mObject.mProperty_mConstantName.description (ioString, inIndentation) ;
+  ioString.appendCString ("name" ":") ;
+  mObject.mProperty_name.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mAssociatedValueDefinitionList" ":") ;
-  mObject.mProperty_mAssociatedValueDefinitionList.description (ioString, inIndentation) ;
+  ioString.appendCString ("associatedValueTypeList" ":") ;
+  mObject.mProperty_associatedValueTypeList.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4589,12 +4589,12 @@ GALGAS_enumConstantList GALGAS_enumConstantList::class_func_listWithValue (const
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                         const GALGAS_lstring & in_mConstantName,
-                                                         const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList
+                                                         const GALGAS_lstring & in_name,
+                                                         const GALGAS__32_lstringlist & in_associatedValueTypeList
                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_enumConstantList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_enumConstantList (in_mConstantName,
-                                                      in_mAssociatedValueDefinitionList COMMA_THERE)) ;
+  macroMyNew (p, cCollectionElement_enumConstantList (in_name,
+                                                      in_associatedValueTypeList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -4669,8 +4669,8 @@ void GALGAS_enumConstantList::setter_removeAtIndex (GALGAS_lstring & outOperand0
         drop () ;
       }else{
         macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-        outOperand0 = p->mObject.mProperty_mConstantName ;
-        outOperand1 = p->mObject.mProperty_mAssociatedValueDefinitionList ;
+        outOperand0 = p->mObject.mProperty_name ;
+        outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
       }
     }else{
       outOperand0.drop () ;
@@ -4697,8 +4697,8 @@ void GALGAS_enumConstantList::setter_popFirst (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueDefinitionList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -4716,8 +4716,8 @@ void GALGAS_enumConstantList::setter_popLast (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueDefinitionList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -4735,8 +4735,8 @@ void GALGAS_enumConstantList::method_first (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueDefinitionList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -4754,8 +4754,8 @@ void GALGAS_enumConstantList::method_last (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueDefinitionList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -4812,58 +4812,58 @@ void GALGAS_enumConstantList::plusAssign_operation (const GALGAS_enumConstantLis
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantList::setter_setMConstantNameAtIndex (GALGAS_lstring inOperand,
-                                                              GALGAS_uint inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_enumConstantList::setter_setNameAtIndex (GALGAS_lstring inOperand,
+                                                     GALGAS_uint inIndex,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_enumConstantList * p = (cCollectionElement_enumConstantList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mConstantName = inOperand ;
+    p->mObject.mProperty_name = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_enumConstantList::getter_mConstantNameAtIndex (const GALGAS_uint & inIndex,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_enumConstantList::getter_nameAtIndex (const GALGAS_uint & inIndex,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_enumConstantList * p = (cCollectionElement_enumConstantList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-    result = p->mObject.mProperty_mConstantName ;
+    result = p->mObject.mProperty_name ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantList::setter_setMAssociatedValueDefinitionListAtIndex (GALGAS__32_lstringlist inOperand,
-                                                                               GALGAS_uint inIndex,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
+void GALGAS_enumConstantList::setter_setAssociatedValueTypeListAtIndex (GALGAS__32_lstringlist inOperand,
+                                                                        GALGAS_uint inIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement_enumConstantList * p = (cCollectionElement_enumConstantList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mAssociatedValueDefinitionList = inOperand ;
+    p->mObject.mProperty_associatedValueTypeList = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_lstringlist GALGAS_enumConstantList::getter_mAssociatedValueDefinitionListAtIndex (const GALGAS_uint & inIndex,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const {
+GALGAS__32_lstringlist GALGAS_enumConstantList::getter_associatedValueTypeListAtIndex (const GALGAS_uint & inIndex,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_enumConstantList * p = (cCollectionElement_enumConstantList *) attributes.ptr () ;
   GALGAS__32_lstringlist result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-    result = p->mObject.mProperty_mAssociatedValueDefinitionList ;
+    result = p->mObject.mProperty_associatedValueTypeList ;
   }
   return result ;
 }
@@ -4889,18 +4889,18 @@ GALGAS_enumConstantList_2D_element cEnumerator_enumConstantList::current (LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_enumConstantList::current_mConstantName (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_enumConstantList::current_name (LOCATION_ARGS) const {
   const cCollectionElement_enumConstantList * p = (const cCollectionElement_enumConstantList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-  return p->mObject.mProperty_mConstantName ;
+  return p->mObject.mProperty_name ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_lstringlist cEnumerator_enumConstantList::current_mAssociatedValueDefinitionList (LOCATION_ARGS) const {
+GALGAS__32_lstringlist cEnumerator_enumConstantList::current_associatedValueTypeList (LOCATION_ARGS) const {
   const cCollectionElement_enumConstantList * p = (const cCollectionElement_enumConstantList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_enumConstantList) ;
-  return p->mObject.mProperty_mAssociatedValueDefinitionList ;
+  return p->mObject.mProperty_associatedValueTypeList ;
 }
 
 
@@ -4951,14 +4951,14 @@ GALGAS_enumConstantList GALGAS_enumConstantList::extractObject (const GALGAS_obj
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structComparison::GALGAS_structComparison (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structComparison GALGAS_structComparison::class_func_none (UNUSED_LOCATION_ARGS) {
   GALGAS_structComparison result ;
-  result.mEnum = kEnum_none ;
+  result.mEnum = Enumeration::enum_none ;
   return result ;
 }
 
@@ -4966,7 +4966,7 @@ GALGAS_structComparison GALGAS_structComparison::class_func_none (UNUSED_LOCATIO
 
 GALGAS_structComparison GALGAS_structComparison::class_func_equatable (UNUSED_LOCATION_ARGS) {
   GALGAS_structComparison result ;
-  result.mEnum = kEnum_equatable ;
+  result.mEnum = Enumeration::enum_equatable ;
   return result ;
 }
 
@@ -4974,28 +4974,28 @@ GALGAS_structComparison GALGAS_structComparison::class_func_equatable (UNUSED_LO
 
 GALGAS_structComparison GALGAS_structComparison::class_func_comparable (UNUSED_LOCATION_ARGS) {
   GALGAS_structComparison result ;
-  result.mEnum = kEnum_comparable ;
+  result.mEnum = Enumeration::enum_comparable ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_structComparison::optional_none () const {
-  const bool ok = mEnum == kEnum_none ;
+  const bool ok = mEnum == Enumeration::enum_none ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_structComparison::optional_equatable () const {
-  const bool ok = mEnum == kEnum_equatable ;
+  const bool ok = mEnum == Enumeration::enum_equatable ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_structComparison::optional_comparable () const {
-  const bool ok = mEnum == kEnum_comparable ;
+  const bool ok = mEnum == Enumeration::enum_comparable ;
   return ok ;
 }
 
@@ -5011,19 +5011,19 @@ static const char * gEnumNameArrayFor_structComparison [4] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_structComparison::getter_isNone (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_none == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_structComparison::getter_isEquatable (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_equatable == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equatable == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_structComparison::getter_isComparable (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_comparable == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_comparable == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5031,7 +5031,7 @@ GALGAS_bool GALGAS_structComparison::getter_isComparable (UNUSED_LOCATION_ARGS) 
 void GALGAS_structComparison::description (String & ioString,
                                            const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @structComparison: ") ;
-  ioString.appendCString (gEnumNameArrayFor_structComparison [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_structComparison [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -5198,8 +5198,8 @@ class cCollectionElement_enumConstantListForGeneration : public cCollectionEleme
   public: GALGAS_enumConstantListForGeneration_2D_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_enumConstantListForGeneration (const GALGAS_string & in_mConstantName,
-                                                            const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
+  public: cCollectionElement_enumConstantListForGeneration (const GALGAS_string & in_name,
+                                                            const GALGAS_unifiedTypeMapEntryList & in_associatedValueTypeList
                                                             COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_enumConstantListForGeneration (const GALGAS_enumConstantListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -5217,18 +5217,18 @@ class cCollectionElement_enumConstantListForGeneration : public cCollectionEleme
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_enumConstantListForGeneration::cCollectionElement_enumConstantListForGeneration (const GALGAS_string & in_mConstantName,
-                                                                                                    const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
+cCollectionElement_enumConstantListForGeneration::cCollectionElement_enumConstantListForGeneration (const GALGAS_string & in_name,
+                                                                                                    const GALGAS_unifiedTypeMapEntryList & in_associatedValueTypeList
                                                                                                     COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mConstantName, in_mAssociatedValueTypeList) {
+mObject (in_name, in_associatedValueTypeList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement_enumConstantListForGeneration::cCollectionElement_enumConstantListForGeneration (const GALGAS_enumConstantListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mConstantName, inElement.mProperty_mAssociatedValueTypeList) {
+mObject (inElement.mProperty_name, inElement.mProperty_associatedValueTypeList) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5241,7 +5241,7 @@ bool cCollectionElement_enumConstantListForGeneration::isValid (void) const {
 
 cCollectionElement * cCollectionElement_enumConstantListForGeneration::copy (void) {
   cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_enumConstantListForGeneration (mObject.mProperty_mConstantName, mObject.mProperty_mAssociatedValueTypeList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_enumConstantListForGeneration (mObject.mProperty_name, mObject.mProperty_associatedValueTypeList COMMA_HERE)) ;
   return result ;
 }
 
@@ -5250,12 +5250,12 @@ cCollectionElement * cCollectionElement_enumConstantListForGeneration::copy (voi
 void cCollectionElement_enumConstantListForGeneration::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mConstantName" ":") ;
-  mObject.mProperty_mConstantName.description (ioString, inIndentation) ;
+  ioString.appendCString ("name" ":") ;
+  mObject.mProperty_name.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mAssociatedValueTypeList" ":") ;
-  mObject.mProperty_mAssociatedValueTypeList.description (ioString, inIndentation) ;
+  ioString.appendCString ("associatedValueTypeList" ":") ;
+  mObject.mProperty_associatedValueTypeList.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5313,12 +5313,12 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::class
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                      const GALGAS_string & in_mConstantName,
-                                                                      const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
+                                                                      const GALGAS_string & in_name,
+                                                                      const GALGAS_unifiedTypeMapEntryList & in_associatedValueTypeList
                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement_enumConstantListForGeneration * p = nullptr ;
-  macroMyNew (p, cCollectionElement_enumConstantListForGeneration (in_mConstantName,
-                                                                   in_mAssociatedValueTypeList COMMA_THERE)) ;
+  macroMyNew (p, cCollectionElement_enumConstantListForGeneration (in_name,
+                                                                   in_associatedValueTypeList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -5393,8 +5393,8 @@ void GALGAS_enumConstantListForGeneration::setter_removeAtIndex (GALGAS_string &
         drop () ;
       }else{
         macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-        outOperand0 = p->mObject.mProperty_mConstantName ;
-        outOperand1 = p->mObject.mProperty_mAssociatedValueTypeList ;
+        outOperand0 = p->mObject.mProperty_name ;
+        outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
       }
     }else{
       outOperand0.drop () ;
@@ -5421,8 +5421,8 @@ void GALGAS_enumConstantListForGeneration::setter_popFirst (GALGAS_string & outO
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueTypeList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -5440,8 +5440,8 @@ void GALGAS_enumConstantListForGeneration::setter_popLast (GALGAS_string & outOp
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueTypeList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -5459,8 +5459,8 @@ void GALGAS_enumConstantListForGeneration::method_first (GALGAS_string & outOper
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueTypeList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -5478,8 +5478,8 @@ void GALGAS_enumConstantListForGeneration::method_last (GALGAS_string & outOpera
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mConstantName ;
-    outOperand1 = p->mObject.mProperty_mAssociatedValueTypeList ;
+    outOperand0 = p->mObject.mProperty_name ;
+    outOperand1 = p->mObject.mProperty_associatedValueTypeList ;
   }
 }
 
@@ -5536,58 +5536,58 @@ void GALGAS_enumConstantListForGeneration::plusAssign_operation (const GALGAS_en
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantListForGeneration::setter_setMConstantNameAtIndex (GALGAS_string inOperand,
-                                                                           GALGAS_uint inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_enumConstantListForGeneration::setter_setNameAtIndex (GALGAS_string inOperand,
+                                                                  GALGAS_uint inIndex,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_enumConstantListForGeneration * p = (cCollectionElement_enumConstantListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mConstantName = inOperand ;
+    p->mObject.mProperty_name = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_enumConstantListForGeneration::getter_mConstantNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
+GALGAS_string GALGAS_enumConstantListForGeneration::getter_nameAtIndex (const GALGAS_uint & inIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_enumConstantListForGeneration * p = (cCollectionElement_enumConstantListForGeneration *) attributes.ptr () ;
   GALGAS_string result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-    result = p->mObject.mProperty_mConstantName ;
+    result = p->mObject.mProperty_name ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_enumConstantListForGeneration::setter_setMAssociatedValueTypeListAtIndex (GALGAS_unifiedTypeMapEntryList inOperand,
-                                                                                      GALGAS_uint inIndex,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_enumConstantListForGeneration::setter_setAssociatedValueTypeListAtIndex (GALGAS_unifiedTypeMapEntryList inOperand,
+                                                                                     GALGAS_uint inIndex,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_enumConstantListForGeneration * p = (cCollectionElement_enumConstantListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mAssociatedValueTypeList = inOperand ;
+    p->mObject.mProperty_associatedValueTypeList = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList GALGAS_enumConstantListForGeneration::getter_mAssociatedValueTypeListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntryList GALGAS_enumConstantListForGeneration::getter_associatedValueTypeListAtIndex (const GALGAS_uint & inIndex,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_enumConstantListForGeneration * p = (cCollectionElement_enumConstantListForGeneration *) attributes.ptr () ;
   GALGAS_unifiedTypeMapEntryList result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-    result = p->mObject.mProperty_mAssociatedValueTypeList ;
+    result = p->mObject.mProperty_associatedValueTypeList ;
   }
   return result ;
 }
@@ -5613,18 +5613,18 @@ GALGAS_enumConstantListForGeneration_2D_element cEnumerator_enumConstantListForG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cEnumerator_enumConstantListForGeneration::current_mConstantName (LOCATION_ARGS) const {
+GALGAS_string cEnumerator_enumConstantListForGeneration::current_name (LOCATION_ARGS) const {
   const cCollectionElement_enumConstantListForGeneration * p = (const cCollectionElement_enumConstantListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-  return p->mObject.mProperty_mConstantName ;
+  return p->mObject.mProperty_name ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntryList cEnumerator_enumConstantListForGeneration::current_mAssociatedValueTypeList (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntryList cEnumerator_enumConstantListForGeneration::current_associatedValueTypeList (LOCATION_ARGS) const {
   const cCollectionElement_enumConstantListForGeneration * p = (const cCollectionElement_enumConstantListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_enumConstantListForGeneration) ;
-  return p->mObject.mProperty_mAssociatedValueTypeList ;
+  return p->mObject.mProperty_associatedValueTypeList ;
 }
 
 
@@ -12374,12 +12374,12 @@ GALGAS_insertMethodMap GALGAS_insertMethodMap::class_func_emptyMap (LOCATION_ARG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_insertMethodMap_2D_element_3F_ GALGAS_insertMethodMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_insertMethodMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_insertMethodMap * p = (cMapElement_insertMethodMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_insertMethodMap * p = (cMapElement_insertMethodMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_insertMethodMap_2D_element_3F_::init_nil () ;
     }else{
@@ -12627,12 +12627,12 @@ GALGAS_searchMethodMap GALGAS_searchMethodMap::class_func_emptyMap (LOCATION_ARG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_searchMethodMap_2D_element_3F_ GALGAS_searchMethodMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_searchMethodMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_searchMethodMap * p = (cMapElement_searchMethodMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_searchMethodMap * p = (cMapElement_searchMethodMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_searchMethodMap_2D_element_3F_::init_nil () ;
     }else{

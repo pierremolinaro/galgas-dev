@@ -5440,6 +5440,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ;
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: bigint? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_bigint_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_bigint mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_bigint_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_bigint_3F_ (const GALGAS_bigint & inValue) ;
+  public: static GALGAS_bigint_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_bigint unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_bigint_3F_ extractObject (const GALGAS_object & inObject,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_bigint_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @functionlist_2D_element struct
 //
 //--------------------------------------------------------------------------------------------------

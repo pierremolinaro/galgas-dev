@@ -9,15 +9,15 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt%
-    for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-      %,\n    kEnum_%![mConstantName identifierRepresentation]
+  public: enum class Enumeration {
+    invalid%
+    for (mConstantName *) in CONSTANT_LIST do
+      %,\n    enum_%![mConstantName identifierRepresentation]
     end
 %
-  } enumeration ;
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
 %
 if HAS_ASSOCIATED_VALUES then
   %  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;\n%
@@ -25,10 +25,10 @@ if HAS_ASSOCIATED_VALUES then
   %    return mAssociatedValues.unsafePointer () ;\n%
   %  }\n\n%
 end
-%  private: enumeration mEnum ;
+%  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 

@@ -9731,14 +9731,14 @@ GALGAS_templateOptionAccessAST_2D_weak GALGAS_templateOptionAccessAST_2D_weak::e
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_dynamicTypeComparisonKind::GALGAS_dynamicTypeComparisonKind (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_equal (UNUSED_LOCATION_ARGS) {
   GALGAS_dynamicTypeComparisonKind result ;
-  result.mEnum = kEnum_equal ;
+  result.mEnum = Enumeration::enum_equal ;
   return result ;
 }
 
@@ -9746,7 +9746,7 @@ GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_eq
 
 GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_inherited (UNUSED_LOCATION_ARGS) {
   GALGAS_dynamicTypeComparisonKind result ;
-  result.mEnum = kEnum_inherited ;
+  result.mEnum = Enumeration::enum_inherited ;
   return result ;
 }
 
@@ -9754,28 +9754,28 @@ GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_in
 
 GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_strictlyInherited (UNUSED_LOCATION_ARGS) {
   GALGAS_dynamicTypeComparisonKind result ;
-  result.mEnum = kEnum_strictlyInherited ;
+  result.mEnum = Enumeration::enum_strictlyInherited ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_dynamicTypeComparisonKind::optional_equal () const {
-  const bool ok = mEnum == kEnum_equal ;
+  const bool ok = mEnum == Enumeration::enum_equal ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_dynamicTypeComparisonKind::optional_inherited () const {
-  const bool ok = mEnum == kEnum_inherited ;
+  const bool ok = mEnum == Enumeration::enum_inherited ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_dynamicTypeComparisonKind::optional_strictlyInherited () const {
-  const bool ok = mEnum == kEnum_strictlyInherited ;
+  const bool ok = mEnum == Enumeration::enum_strictlyInherited ;
   return ok ;
 }
 
@@ -9791,19 +9791,19 @@ static const char * gEnumNameArrayFor_dynamicTypeComparisonKind [4] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_isEqual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_equal == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equal == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_isInherited (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_inherited == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_inherited == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_isStrictlyInherited (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_strictlyInherited == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_strictlyInherited == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9811,7 +9811,7 @@ GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_isStrictlyInherited (UNUSED
 void GALGAS_dynamicTypeComparisonKind::description (String & ioString,
                                                     const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @dynamicTypeComparisonKind: ") ;
-  ioString.appendCString (gEnumNameArrayFor_dynamicTypeComparisonKind [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_dynamicTypeComparisonKind [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 

@@ -6439,12 +6439,12 @@ GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis GALGAS_unusedNonTerminalSymb
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element_3F_ GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element_3F_::init_nil () ;
     }else{
@@ -8729,12 +8729,12 @@ GALGAS_terminalSymbolsMapForGrammarAnalysis GALGAS_terminalSymbolsMapForGrammarA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element_3F_ GALGAS_terminalSymbolsMapForGrammarAnalysis
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_terminalSymbolsMapForGrammarAnalysis * p = (cMapElement_terminalSymbolsMapForGrammarAnalysis *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_terminalSymbolsMapForGrammarAnalysis * p = (cMapElement_terminalSymbolsMapForGrammarAnalysis *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element_3F_::init_nil () ;
     }else{
@@ -12059,12 +12059,12 @@ GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCh
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMethodMapForGlobalCheckings_2D_element_3F_ GALGAS_extensionMethodMapForGlobalCheckings
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionMethodMapForGlobalCheckings_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionMethodMapForGlobalCheckings * p = (cMapElement_extensionMethodMapForGlobalCheckings *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionMethodMapForGlobalCheckings * p = (cMapElement_extensionMethodMapForGlobalCheckings *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionMethodMapForGlobalCheckings_2D_element_3F_::init_nil () ;
     }else{
@@ -12312,12 +12312,12 @@ GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCh
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionSetterMapForGlobalCheckings_2D_element_3F_ GALGAS_extensionSetterMapForGlobalCheckings
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionSetterMapForGlobalCheckings_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionSetterMapForGlobalCheckings * p = (cMapElement_extensionSetterMapForGlobalCheckings *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionSetterMapForGlobalCheckings * p = (cMapElement_extensionSetterMapForGlobalCheckings *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionSetterMapForGlobalCheckings_2D_element_3F_::init_nil () ;
     }else{
@@ -12565,12 +12565,12 @@ GALGAS_extensionGetterMapForGlobalCheckings GALGAS_extensionGetterMapForGlobalCh
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionGetterMapForGlobalCheckings_2D_element_3F_ GALGAS_extensionGetterMapForGlobalCheckings
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionGetterMapForGlobalCheckings_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionGetterMapForGlobalCheckings * p = (cMapElement_extensionGetterMapForGlobalCheckings *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionGetterMapForGlobalCheckings * p = (cMapElement_extensionGetterMapForGlobalCheckings *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionGetterMapForGlobalCheckings_2D_element_3F_::init_nil () ;
     }else{
@@ -13592,37 +13592,37 @@ void extensionMethod_checkCompatibilityWithLet (const GALGAS_AccessControlAST in
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_AccessControlAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_AccessControlAST::kNotBuilt:
+  case GALGAS_AccessControlAST::Enumeration::invalid:
     break ;
-  case GALGAS_AccessControlAST::kEnum_publicAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_publicAccess:
     {
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_protectedAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_protectedAccess:
     {
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_protectedSetAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_protectedSetAccess:
     {
       TC_Array <FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GALGAS_string ("'protected(set)' and 'let' are incompatible"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 155)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_privateAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_privateAccess:
     {
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_privateSetAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_privateSetAccess:
     {
       TC_Array <FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GALGAS_string ("'private(set)' and 'let' are incompatible"), fixItArray2  COMMA_SOURCE_FILE ("accessControl.galgas", 158)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_fileprivateAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_fileprivateAccess:
     {
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_fileprivateSetAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_fileprivateSetAccess:
     {
       TC_Array <FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (constinArgument_inLocation, GALGAS_string ("'private(set)' and 'let' are incompatible"), fixItArray3  COMMA_SOURCE_FILE ("accessControl.galgas", 161)) ;
@@ -13645,41 +13645,41 @@ GALGAS_AccessControl extensionGetter_accessControl (const GALGAS_AccessControlAS
   GALGAS_AccessControl result_result ; // Returned variable
   const GALGAS_AccessControlAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_AccessControlAST::kNotBuilt:
+  case GALGAS_AccessControlAST::Enumeration::invalid:
     break ;
-  case GALGAS_AccessControlAST::kEnum_publicAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_publicAccess:
     {
       result_result = GALGAS_AccessControl::class_func_publicAccess (SOURCE_FILE ("accessControl.galgas", 170)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_protectedAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_protectedAccess:
     {
       result_result = GALGAS_AccessControl::class_func_protectedAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 172)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_protectedSetAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_protectedSetAccess:
     {
       result_result = GALGAS_AccessControl::class_func_protectedSetAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 174)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_privateAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_privateAccess:
     {
       result_result = GALGAS_AccessControl::class_func_privateAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 176)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_privateSetAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_privateSetAccess:
     {
       result_result = GALGAS_AccessControl::class_func_privateSetAccess (constinArgument_inDeclaringType  COMMA_SOURCE_FILE ("accessControl.galgas", 178)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_fileprivateAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_fileprivateAccess:
     {
       const cEnumAssociatedValues_AccessControlAST_fileprivateAccess * extractPtr_6042 = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_location extractedValue_5943_declarationLocation = extractPtr_6042->mAssociatedValue0 ;
       result_result = GALGAS_AccessControl::class_func_fileprivateAccess (extractedValue_5943_declarationLocation  COMMA_SOURCE_FILE ("accessControl.galgas", 180)) ;
     }
     break ;
-  case GALGAS_AccessControlAST::kEnum_fileprivateSetAccess:
+  case GALGAS_AccessControlAST::Enumeration::enum_fileprivateSetAccess:
     {
       const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess * extractPtr_6177 = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_location extractedValue_6075_declarationLocation = extractPtr_6177->mAssociatedValue0 ;
@@ -13707,26 +13707,26 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_AccessControl temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_AccessControl::kNotBuilt:
+  case GALGAS_AccessControl::Enumeration::invalid:
     break ;
-  case GALGAS_AccessControl::kEnum_publicAccess:
+  case GALGAS_AccessControl::Enumeration::enum_publicAccess:
     {
     }
     break ;
-  case GALGAS_AccessControl::kEnum_protectedAccess:
+  case GALGAS_AccessControl::Enumeration::enum_protectedAccess:
     {
       const cEnumAssociatedValues_AccessControl_protectedAccess * extractPtr_7722 = (const cEnumAssociatedValues_AccessControl_protectedAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_unifiedTypeMapEntry extractedValue_7089_declaringType = extractPtr_7722->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
+      case GALGAS_selfAvailability::Enumeration::invalid:
         break ;
-      case GALGAS_selfAvailability::kEnum_none:
+      case GALGAS_selfAvailability::Enumeration::enum_none:
         {
           TC_Array <FixItDescription> fixItArray1 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 210)) ;
         }
         break ;
-      case GALGAS_selfAvailability::kEnum_available:
+      case GALGAS_selfAvailability::Enumeration::enum_available:
         {
           const cEnumAssociatedValues_selfAvailability_available * extractPtr_7712 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
           const GALGAS_unifiedTypeMapEntry extractedValue_7268_t = extractPtr_7712->mAssociatedValue0 ;
@@ -13760,20 +13760,20 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_protectedSetAccess:
+  case GALGAS_AccessControl::Enumeration::enum_protectedSetAccess:
     {
       const cEnumAssociatedValues_AccessControl_protectedSetAccess * extractPtr_8403 = (const cEnumAssociatedValues_AccessControl_protectedSetAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_unifiedTypeMapEntry extractedValue_7755_declaringType = extractPtr_8403->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
+      case GALGAS_selfAvailability::Enumeration::invalid:
         break ;
-      case GALGAS_selfAvailability::kEnum_none:
+      case GALGAS_selfAvailability::Enumeration::enum_none:
         {
           TC_Array <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'protected(set)' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.galgas", 225)) ;
         }
         break ;
-      case GALGAS_selfAvailability::kEnum_available:
+      case GALGAS_selfAvailability::Enumeration::enum_available:
         {
           const cEnumAssociatedValues_selfAvailability_available * extractPtr_8393 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
           const GALGAS_unifiedTypeMapEntry extractedValue_7942_t = extractPtr_8393->mAssociatedValue0 ;
@@ -13807,20 +13807,20 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_privateAccess:
+  case GALGAS_AccessControl::Enumeration::enum_privateAccess:
     {
       const cEnumAssociatedValues_AccessControl_privateAccess * extractPtr_8797 = (const cEnumAssociatedValues_AccessControl_privateAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_unifiedTypeMapEntry extractedValue_8431_declaringType = extractPtr_8797->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
+      case GALGAS_selfAvailability::Enumeration::invalid:
         break ;
-      case GALGAS_selfAvailability::kEnum_none:
+      case GALGAS_selfAvailability::Enumeration::enum_none:
         {
           TC_Array <FixItDescription> fixItArray9 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray9  COMMA_SOURCE_FILE ("accessControl.galgas", 240)) ;
         }
         break ;
-      case GALGAS_selfAvailability::kEnum_available:
+      case GALGAS_selfAvailability::Enumeration::enum_available:
         {
           const cEnumAssociatedValues_selfAvailability_available * extractPtr_8787 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
           const GALGAS_unifiedTypeMapEntry extractedValue_8608_currentType = extractPtr_8787->mAssociatedValue0 ;
@@ -13837,20 +13837,20 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_privateSetAccess:
+  case GALGAS_AccessControl::Enumeration::enum_privateSetAccess:
     {
       const cEnumAssociatedValues_AccessControl_privateSetAccess * extractPtr_9207 = (const cEnumAssociatedValues_AccessControl_privateSetAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_unifiedTypeMapEntry extractedValue_8828_declaringType = extractPtr_9207->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
+      case GALGAS_selfAvailability::Enumeration::invalid:
         break ;
-      case GALGAS_selfAvailability::kEnum_none:
+      case GALGAS_selfAvailability::Enumeration::enum_none:
         {
           TC_Array <FixItDescription> fixItArray12 ;
           inCompiler->emitSemanticWarning (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private(set)' qualifier)"), fixItArray12  COMMA_SOURCE_FILE ("accessControl.galgas", 249)) ;
         }
         break ;
-      case GALGAS_selfAvailability::kEnum_available:
+      case GALGAS_selfAvailability::Enumeration::enum_available:
         {
           const cEnumAssociatedValues_selfAvailability_available * extractPtr_9197 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
           const GALGAS_unifiedTypeMapEntry extractedValue_9013_currentType = extractPtr_9197->mAssociatedValue0 ;
@@ -13867,7 +13867,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_fileprivateAccess:
+  case GALGAS_AccessControl::Enumeration::enum_fileprivateAccess:
     {
       const cEnumAssociatedValues_AccessControl_fileprivateAccess * extractPtr_9432 = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_location extractedValue_9239_declaringLocation = extractPtr_9432->mAssociatedValue0 ;
@@ -13881,7 +13881,7 @@ void extensionMethod_checkSetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_fileprivateSetAccess:
+  case GALGAS_AccessControl::Enumeration::enum_fileprivateSetAccess:
     {
       const cEnumAssociatedValues_AccessControl_fileprivateSetAccess * extractPtr_9665 = (const cEnumAssociatedValues_AccessControl_fileprivateSetAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_location extractedValue_9467_declaringLocation = extractPtr_9665->mAssociatedValue0 ;
@@ -13912,34 +13912,34 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_AccessControl temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_AccessControl::kNotBuilt:
+  case GALGAS_AccessControl::Enumeration::invalid:
     break ;
-  case GALGAS_AccessControl::kEnum_publicAccess:
+  case GALGAS_AccessControl::Enumeration::enum_publicAccess:
     {
     }
     break ;
-  case GALGAS_AccessControl::kEnum_protectedSetAccess:
+  case GALGAS_AccessControl::Enumeration::enum_protectedSetAccess:
     {
     }
     break ;
-  case GALGAS_AccessControl::kEnum_privateSetAccess:
+  case GALGAS_AccessControl::Enumeration::enum_privateSetAccess:
     {
     }
     break ;
-  case GALGAS_AccessControl::kEnum_protectedAccess:
+  case GALGAS_AccessControl::Enumeration::enum_protectedAccess:
     {
       const cEnumAssociatedValues_AccessControl_protectedAccess * extractPtr_10671 = (const cEnumAssociatedValues_AccessControl_protectedAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_unifiedTypeMapEntry extractedValue_10040_declaringType = extractPtr_10671->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
+      case GALGAS_selfAvailability::Enumeration::invalid:
         break ;
-      case GALGAS_selfAvailability::kEnum_none:
+      case GALGAS_selfAvailability::Enumeration::enum_none:
         {
           TC_Array <FixItDescription> fixItArray1 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas", 277)) ;
         }
         break ;
-      case GALGAS_selfAvailability::kEnum_available:
+      case GALGAS_selfAvailability::Enumeration::enum_available:
         {
           const cEnumAssociatedValues_selfAvailability_available * extractPtr_10661 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
           const GALGAS_unifiedTypeMapEntry extractedValue_10217_t = extractPtr_10661->mAssociatedValue0 ;
@@ -13973,20 +13973,20 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_privateAccess:
+  case GALGAS_AccessControl::Enumeration::enum_privateAccess:
     {
       const cEnumAssociatedValues_AccessControl_privateAccess * extractPtr_11065 = (const cEnumAssociatedValues_AccessControl_privateAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_unifiedTypeMapEntry extractedValue_10699_declaringType = extractPtr_11065->mAssociatedValue0 ;
       switch (constinArgument_inOptionalCurrentType.enumValue ()) {
-      case GALGAS_selfAvailability::kNotBuilt:
+      case GALGAS_selfAvailability::Enumeration::invalid:
         break ;
-      case GALGAS_selfAvailability::kEnum_none:
+      case GALGAS_selfAvailability::Enumeration::enum_none:
         {
           TC_Array <FixItDescription> fixItArray5 ;
           inCompiler->emitSemanticError (constinArgument_inErrorLocation, GALGAS_string ("inaccessible property (due to 'private' qualifier)"), fixItArray5  COMMA_SOURCE_FILE ("accessControl.galgas", 292)) ;
         }
         break ;
-      case GALGAS_selfAvailability::kEnum_available:
+      case GALGAS_selfAvailability::Enumeration::enum_available:
         {
           const cEnumAssociatedValues_selfAvailability_available * extractPtr_11055 = (const cEnumAssociatedValues_selfAvailability_available *) (constinArgument_inOptionalCurrentType.unsafePointer ()) ;
           const GALGAS_unifiedTypeMapEntry extractedValue_10876_currentType = extractPtr_11055->mAssociatedValue0 ;
@@ -14003,7 +14003,7 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_fileprivateAccess:
+  case GALGAS_AccessControl::Enumeration::enum_fileprivateAccess:
     {
       const cEnumAssociatedValues_AccessControl_fileprivateAccess * extractPtr_11290 = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) (temp_0.unsafePointer ()) ;
       const GALGAS_location extractedValue_11097_declaringLocation = extractPtr_11290->mAssociatedValue0 ;
@@ -14017,7 +14017,7 @@ void extensionMethod_checkGetAccess (const GALGAS_AccessControl inObject,
       }
     }
     break ;
-  case GALGAS_AccessControl::kEnum_fileprivateSetAccess:
+  case GALGAS_AccessControl::Enumeration::enum_fileprivateSetAccess:
     {
     }
     break ;

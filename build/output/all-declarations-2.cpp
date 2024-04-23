@@ -2746,14 +2746,14 @@ GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgume
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalArgumentModeAST::GALGAS_lexicalArgumentModeAST (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::class_func_lexicalInputMode (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalArgumentModeAST result ;
-  result.mEnum = kEnum_lexicalInputMode ;
+  result.mEnum = Enumeration::enum_lexicalInputMode ;
   return result ;
 }
 
@@ -2761,21 +2761,21 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::class_func_lexicalI
 
 GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalArgumentModeAST result ;
-  result.mEnum = kEnum_lexicalInputOutputMode ;
+  result.mEnum = Enumeration::enum_lexicalInputOutputMode ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalArgumentModeAST::optional_lexicalInputMode () const {
-  const bool ok = mEnum == kEnum_lexicalInputMode ;
+  const bool ok = mEnum == Enumeration::enum_lexicalInputMode ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalArgumentModeAST::optional_lexicalInputOutputMode () const {
-  const bool ok = mEnum == kEnum_lexicalInputOutputMode ;
+  const bool ok = mEnum == Enumeration::enum_lexicalInputOutputMode ;
   return ok ;
 }
 
@@ -2790,13 +2790,13 @@ static const char * gEnumNameArrayFor_lexicalArgumentModeAST [3] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalArgumentModeAST::getter_isLexicalInputMode (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalInputMode == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputMode == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalArgumentModeAST::getter_isLexicalInputOutputMode (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalInputOutputMode == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputOutputMode == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2804,7 +2804,7 @@ GALGAS_bool GALGAS_lexicalArgumentModeAST::getter_isLexicalInputOutputMode (UNUS
 void GALGAS_lexicalArgumentModeAST::description (String & ioString,
                                                  const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @lexicalArgumentModeAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_lexicalArgumentModeAST [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_lexicalArgumentModeAST [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -2878,14 +2878,14 @@ GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumen
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalArgumentModeAST::kNotBuilt:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputMode:
     {
       result_result = GALGAS_string ("!") ;
     }
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputOutputMode:
     {
       result_result = GALGAS_string ("\?!") ;
     }
@@ -2910,14 +2910,14 @@ GALGAS_string extensionGetter_cppConstInFormalArgument (const GALGAS_lexicalArgu
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalArgumentModeAST::kNotBuilt:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputMode:
     {
       result_result = GALGAS_string ("const ") ;
     }
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputOutputMode:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
@@ -2942,14 +2942,14 @@ GALGAS_string extensionGetter_cppReferenceInFormalArgument (const GALGAS_lexical
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalArgumentModeAST::kNotBuilt:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputMode:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputOutputMode:
     {
       result_result = GALGAS_string (" &") ;
     }
@@ -2974,14 +2974,14 @@ GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const GALGAS_lexical
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalArgumentModeAST::kNotBuilt:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputMode:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
+  case GALGAS_lexicalArgumentModeAST::Enumeration::enum_lexicalInputOutputMode:
     {
       result_result = GALGAS_string (" *") ;
     }
@@ -2997,14 +2997,14 @@ GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const GALGAS_lexical
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum::GALGAS_lexicalTypeEnum (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_string (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_string ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_string ;
   return result ;
 }
 
@@ -3012,7 +3012,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_string 
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_char (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_char ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_char ;
   return result ;
 }
 
@@ -3020,7 +3020,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_char (U
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_uint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_uint ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_uint ;
   return result ;
 }
 
@@ -3028,7 +3028,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_uint (U
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_uint_36__34_ ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_uint_36__34_ ;
   return result ;
 }
 
@@ -3036,7 +3036,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_sint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_sint ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_sint ;
   return result ;
 }
 
@@ -3044,7 +3044,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_sint (U
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_sint_36__34_ ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_sint_36__34_ ;
   return result ;
 }
 
@@ -3052,7 +3052,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_double (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_double ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_double ;
   return result ;
 }
 
@@ -3060,63 +3060,63 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_double 
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
-  result.mEnum = kEnum_lexicalType_5F_bigint ;
+  result.mEnum = Enumeration::enum_lexicalType_5F_bigint ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_string () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_string ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_string ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_char () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_char ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_char ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_uint () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_uint ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_uint ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_uint_36__34_ () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_uint_36__34_ ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_uint_36__34_ ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_sint () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_sint ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_sint ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_sint_36__34_ () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_sint_36__34_ ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_sint_36__34_ ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_double () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_double ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_double ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_bigint () const {
-  const bool ok = mEnum == kEnum_lexicalType_5F_bigint ;
+  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_bigint ;
   return ok ;
 }
 
@@ -3137,49 +3137,49 @@ static const char * gEnumNameArrayFor_lexicalTypeEnum [9] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_string (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_string == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_string == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_char (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_char == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_char == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_uint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_uint == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_uint == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_uint_36__34_ == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_uint_36__34_ == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_sint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_sint == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_sint == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_sint_36__34_ == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_sint_36__34_ == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_double (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_double == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_double == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_bigint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_bigint == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_bigint == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3187,7 +3187,7 @@ GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_bigint (UNUSED_LOCAT
 void GALGAS_lexicalTypeEnum::description (String & ioString,
                                           const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @lexicalTypeEnum: ") ;
-  ioString.appendCString (gEnumNameArrayFor_lexicalTypeEnum [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_lexicalTypeEnum [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -3877,12 +3877,12 @@ GALGAS_terminalMap GALGAS_terminalMap::class_func_emptyMap (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap_2D_element_3F_ GALGAS_terminalMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_terminalMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_terminalMap * p = (cMapElement_terminalMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_terminalMap * p = (cMapElement_terminalMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_terminalMap_2D_element_3F_::init_nil () ;
     }else{
@@ -4202,12 +4202,12 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::class_func_emptyMap (LOCATION_ARGS)
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap_2D_element_3F_ GALGAS_lexicalTypeMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalTypeMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalTypeMap * p = (cMapElement_lexicalTypeMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalTypeMap * p = (cMapElement_lexicalTypeMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalTypeMap_2D_element_3F_::init_nil () ;
     }else{
@@ -4527,12 +4527,12 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::class_func_emptyMap (LOCA
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap_2D_element_3F_ GALGAS_lexicalAttributeMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalAttributeMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalAttributeMap * p = (cMapElement_lexicalAttributeMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalAttributeMap * p = (cMapElement_lexicalAttributeMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalAttributeMap_2D_element_3F_::init_nil () ;
     }else{
@@ -5614,12 +5614,12 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::class_fun
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ GALGAS_lexicalExplicitTokenListMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalExplicitTokenListMap_2D_element_3F_::init_nil () ;
     }else{
@@ -6409,12 +6409,12 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::cla
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ GALGAS_lexicalExplicitTokenListMapMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_::init_nil () ;
     }else{
@@ -6833,12 +6833,12 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::class_func_emptyMap (LOCATION
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap_2D_element_3F_ GALGAS_lexicalMessageMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalMessageMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalMessageMap_2D_element_3F_::init_nil () ;
     }else{
@@ -7768,12 +7768,12 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::class_func_emptyMap (LOCATION
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap_2D_element_3F_ GALGAS_lexicalRoutineMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalRoutineMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalRoutineMap_2D_element_3F_::init_nil () ;
     }else{
@@ -8690,12 +8690,12 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::class_func_emptyMap (LOCATI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap_2D_element_3F_ GALGAS_lexicalFunctionMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalFunctionMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalFunctionMap_2D_element_3F_::init_nil () ;
     }else{
@@ -9710,12 +9710,12 @@ GALGAS_styleMap GALGAS_styleMap::class_func_emptyMap (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap_2D_element_3F_ GALGAS_styleMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_styleMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_styleMap * p = (cMapElement_styleMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_styleMap * p = (cMapElement_styleMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_styleMap_2D_element_3F_::init_nil () ;
     }else{
@@ -10074,12 +10074,12 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::class_func_emptyMap (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap_2D_element_3F_ GALGAS_lexicalTagMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalTagMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_lexicalTagMap * p = (cMapElement_lexicalTagMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_lexicalTagMap * p = (cMapElement_lexicalTagMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_lexicalTagMap_2D_element_3F_::init_nil () ;
     }else{
@@ -10287,44 +10287,44 @@ GALGAS_string extensionGetter_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum 
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("string") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string ("char") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string ("uint") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string ("uint64") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string ("sint") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string ("sint64") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string ("double") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("bigint") ;
     }
@@ -10639,44 +10639,44 @@ GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObje
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("String") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string ("utf32") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string ("uint32_t") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string ("uint64_t") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string ("int32_t") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string ("int64_t") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string ("double") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("BigSigned") ;
     }
@@ -10701,44 +10701,44 @@ GALGAS_string extensionGetter_appendMethodName (const GALGAS_lexicalTypeEnum & i
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("appendStringAsCLiteralStringConstant") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string ("appendChar") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string ("appendUnsigned") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string ("appendUnsigned") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string ("appendSigned") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string ("appendSigned") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string ("appendDouble") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("appendStringAsCLiteralStringConstant") ;
     }
@@ -10763,44 +10763,44 @@ GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEn
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string (".decimalString ()") ;
     }
@@ -10825,44 +10825,44 @@ GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inO
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string (".removeAllKeepingCapacity ()") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string (" = TO_UNICODE (0)") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string (" = 0.0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string (" = BigSigned ()") ;
     }
@@ -10887,44 +10887,44 @@ GALGAS_string extensionGetter_cocoaTypeName (const GALGAS_lexicalTypeEnum & inOb
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("NSMutableString *") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string ("UInt32") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string ("UInt32") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string ("UInt64") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string ("SInt32") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string ("SInt64") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string ("double") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("NSMutableString *") ;
     }
@@ -10949,44 +10949,44 @@ GALGAS_string extensionGetter_swiftTypeName (const GALGAS_lexicalTypeEnum & inOb
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("String") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string ("UInt32") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string ("UInt32") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string ("UInt64") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string ("Int32") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string ("Int64") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string ("Double") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("String") ;
     }
@@ -11011,44 +11011,44 @@ GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GALGAS_lex
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_bool (false) ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_bool (true) ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_bool (true) ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_bool (true) ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_bool (true) ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_bool (true) ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_bool (true) ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_bool (false) ;
     }
@@ -11073,44 +11073,44 @@ GALGAS_string extensionGetter_cocoaInitializationCode (const GALGAS_lexicalTypeE
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("[[NSMutableString alloc] init]") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string ("0.0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("[[NSMutableString alloc] init]") ;
     }
@@ -11135,44 +11135,44 @@ GALGAS_string extensionGetter_swiftInitializationCode (const GALGAS_lexicalTypeE
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("\"\"") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string ("0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string ("0.0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("\"\"") ;
     }
@@ -11197,44 +11197,44 @@ GALGAS_string extensionGetter_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & i
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string ("[") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string ("[") ;
     }
@@ -11259,44 +11259,44 @@ GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObjec
   GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_lexicalTypeEnum::kNotBuilt:
+  case GALGAS_lexicalTypeEnum::Enumeration::invalid:
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
     {
       result_result = GALGAS_string (" setString:@\"\"]") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
       result_result = GALGAS_string (" = 0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
       result_result = GALGAS_string (" = 0.0") ;
     }
     break ;
-  case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
+  case GALGAS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
     {
       result_result = GALGAS_string (" setString:@\"\"]") ;
     }
@@ -14465,14 +14465,14 @@ GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST::GALGAS_optionDefaultValueEnumAST (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_noDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
-  result.mEnum = kEnum_noDefaultValue ;
+  result.mEnum = Enumeration::enum_noDefaultValue ;
   return result ;
 }
 
@@ -14480,7 +14480,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_no
 
 GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_unsignedDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
-  result.mEnum = kEnum_unsignedDefaultValue ;
+  result.mEnum = Enumeration::enum_unsignedDefaultValue ;
   return result ;
 }
 
@@ -14488,28 +14488,28 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_un
 
 GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_stringDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
-  result.mEnum = kEnum_stringDefaultValue ;
+  result.mEnum = Enumeration::enum_stringDefaultValue ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_optionDefaultValueEnumAST::optional_noDefaultValue () const {
-  const bool ok = mEnum == kEnum_noDefaultValue ;
+  const bool ok = mEnum == Enumeration::enum_noDefaultValue ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_optionDefaultValueEnumAST::optional_unsignedDefaultValue () const {
-  const bool ok = mEnum == kEnum_unsignedDefaultValue ;
+  const bool ok = mEnum == Enumeration::enum_unsignedDefaultValue ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_optionDefaultValueEnumAST::optional_stringDefaultValue () const {
-  const bool ok = mEnum == kEnum_stringDefaultValue ;
+  const bool ok = mEnum == Enumeration::enum_stringDefaultValue ;
   return ok ;
 }
 
@@ -14525,19 +14525,19 @@ static const char * gEnumNameArrayFor_optionDefaultValueEnumAST [4] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_isNoDefaultValue (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_noDefaultValue == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_noDefaultValue == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_isUnsignedDefaultValue (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_unsignedDefaultValue == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_unsignedDefaultValue == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_isStringDefaultValue (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_stringDefaultValue == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_stringDefaultValue == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14545,7 +14545,7 @@ GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_isStringDefaultValue (UNUSE
 void GALGAS_optionDefaultValueEnumAST::description (String & ioString,
                                                     const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @optionDefaultValueEnumAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_optionDefaultValueEnumAST [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_optionDefaultValueEnumAST [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 

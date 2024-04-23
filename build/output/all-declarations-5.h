@@ -3481,9 +3481,9 @@ class GALGAS_constantIndexMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_constantIndexMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_constantIndexMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -3592,29 +3592,29 @@ class GALGAS_AccessControl : public AC_GALGAS_root {
   public: GALGAS_AccessControl (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_publicAccess,
-    kEnum_protectedAccess,
-    kEnum_protectedSetAccess,
-    kEnum_privateAccess,
-    kEnum_privateSetAccess,
-    kEnum_fileprivateAccess,
-    kEnum_fileprivateSetAccess
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_publicAccess,
+    enum_protectedAccess,
+    enum_protectedSetAccess,
+    enum_privateAccess,
+    enum_privateSetAccess,
+    enum_fileprivateAccess,
+    enum_fileprivateSetAccess
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -5879,27 +5879,27 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
   public: GALGAS_localVarValuation (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_invalid,
-    kEnum_declared,
-    kEnum_initialized,
-    kEnum_read,
-    kEnum_mutated
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_invalid,
+    enum_declared,
+    enum_initialized,
+    enum_read,
+    enum_mutated
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -6136,9 +6136,9 @@ class GALGAS_scopeLocalVarMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_scopeLocalVarMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_scopeLocalVarMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -6667,25 +6667,25 @@ class GALGAS_overrideKind : public AC_GALGAS_root {
   public: GALGAS_overrideKind (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_selectOverrideFirstBranch,
-    kEnum_selectOverrideNextBranches,
-    kEnum_repeatOverride
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_selectOverrideFirstBranch,
+    enum_selectOverrideNextBranches,
+    enum_repeatOverride
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -8395,24 +8395,24 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
   public: GALGAS_selfAvailability (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_none,
-    kEnum_available
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_none,
+    enum_available
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -11388,6 +11388,151 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST_
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @syntaxExtensionsDictionary dict
+//
+//--------------------------------------------------------------------------------------------------
+
+class cSharedDictRoot_syntaxExtensionsDictionary ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_syntaxExtensionsDictionary : public AC_GALGAS_root {
+//--------------------------------- Attributes
+  private: cSharedDictRoot_syntaxExtensionsDictionary * mSharedDict ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_syntaxExtensionsDictionary (void) ;
+
+//--------------------------------- Destructor
+  public: virtual ~ GALGAS_syntaxExtensionsDictionary (void) ;
+
+//--------------------------------- Handle copy
+  public: GALGAS_syntaxExtensionsDictionary (const GALGAS_syntaxExtensionsDictionary & inSource) ;
+  public: GALGAS_syntaxExtensionsDictionary & operator = (const GALGAS_syntaxExtensionsDictionary & inSource) ;
+
+//--- isValid
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedDict != nullptr ; }
+
+//--- drop
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--- Implementation of reader 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--- Insulate
+  private: void insulate (LOCATION_ARGS) ;
+
+//--- Object compare
+  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const GALGAS_syntaxExtensionsDictionary & inOperand) const ;
+
+//--- Enumeration
+  public: void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_syntaxExtensionsDictionary init (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_syntaxExtensionsDictionary extractObject (const GALGAS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_syntaxExtensionsDictionary class_func_emptyDict (LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
+                                                     const class GALGAS_galgas_33_SyntaxExtensionListAST & inOperand1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_string constinArgument0,
+                                               class GALGAS_galgas_33_SyntaxExtensionListAST constinArgument1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_removeKey (class GALGAS_string constinArgument0,
+                                                  class GALGAS_galgas_33_SyntaxExtensionListAST & outArgument1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setExtensionListForKey (class GALGAS_galgas_33_SyntaxExtensionListAST constinArgument0,
+                                                               class GALGAS_string constinArgument1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_string constinArgument0,
+                                                  class GALGAS_galgas_33_SyntaxExtensionListAST & outArgument1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_SyntaxExtensionListAST getter_extensionListForKey (const class GALGAS_string & constinOperand0,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_hasKey (const class GALGAS_string & constinOperand0
+                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_syntaxExtensionsDictionary_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                    class GALGAS_galgas_33_SyntaxExtensionListAST & outOperand1) const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_syntaxExtensionsDictionary_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+  friend class cEnumerator_syntaxExtensionsDictionary ;
+ 
+} ; // End of GALGAS_syntaxExtensionsDictionary class
+
+//--------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//--------------------------------------------------------------------------------------------------
+
+class cEnumerator_syntaxExtensionsDictionary : public cGenericAbstractEnumerator {
+  public: cEnumerator_syntaxExtensionsDictionary (const GALGAS_syntaxExtensionsDictionary & inEnumeratedObject,
+                                                  const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  public: class GALGAS_string current_key (LOCATION_ARGS) const ;
+  public: class GALGAS_galgas_33_SyntaxExtensionListAST current_extensionList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GALGAS_syntaxExtensionsDictionary_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @galgas3SyntaxExtensionListAST list
 //
 //--------------------------------------------------------------------------------------------------
@@ -11726,149 +11871,4 @@ class GALGAS_syntaxExtensionsDictionary_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2D_element_3F_ ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @syntaxExtensionsDictionary dict
-//
-//--------------------------------------------------------------------------------------------------
-
-class cSharedDictRoot_syntaxExtensionsDictionary ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_syntaxExtensionsDictionary : public AC_GALGAS_root {
-//--------------------------------- Attributes
-  private: cSharedDictRoot_syntaxExtensionsDictionary * mSharedDict ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_syntaxExtensionsDictionary (void) ;
-
-//--------------------------------- Destructor
-  public: virtual ~ GALGAS_syntaxExtensionsDictionary (void) ;
-
-//--------------------------------- Handle copy
-  public: GALGAS_syntaxExtensionsDictionary (const GALGAS_syntaxExtensionsDictionary & inSource) ;
-  public: GALGAS_syntaxExtensionsDictionary & operator = (const GALGAS_syntaxExtensionsDictionary & inSource) ;
-
-//--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedDict != nullptr ; }
-
-//--- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--- Implementation of reader 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--- Insulate
-  private: void insulate (LOCATION_ARGS) ;
-
-//--- Object compare
-  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const GALGAS_syntaxExtensionsDictionary & inOperand) const ;
-
-//--- Enumeration
-  public: void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_syntaxExtensionsDictionary init (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_syntaxExtensionsDictionary extractObject (const GALGAS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_syntaxExtensionsDictionary class_func_emptyDict (LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
-                                                     const class GALGAS_galgas_33_SyntaxExtensionListAST & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_insert (class GALGAS_string constinArgument0,
-                                               class GALGAS_galgas_33_SyntaxExtensionListAST constinArgument1,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeKey (class GALGAS_string constinArgument0,
-                                                  class GALGAS_galgas_33_SyntaxExtensionListAST & outArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setExtensionListForKey (class GALGAS_galgas_33_SyntaxExtensionListAST constinArgument0,
-                                                               class GALGAS_string constinArgument1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_string constinArgument0,
-                                                  class GALGAS_galgas_33_SyntaxExtensionListAST & outArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_galgas_33_SyntaxExtensionListAST getter_extensionListForKey (const class GALGAS_string & constinOperand0,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_hasKey (const class GALGAS_string & constinOperand0
-                                                            COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_syntaxExtensionsDictionary_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_galgas_33_SyntaxExtensionListAST & outOperand1) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_syntaxExtensionsDictionary_2D_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-  friend class cEnumerator_syntaxExtensionsDictionary ;
- 
-} ; // End of GALGAS_syntaxExtensionsDictionary class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_syntaxExtensionsDictionary : public cGenericAbstractEnumerator {
-  public: cEnumerator_syntaxExtensionsDictionary (const GALGAS_syntaxExtensionsDictionary & inEnumeratedObject,
-                                                  const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_string current_key (LOCATION_ARGS) const ;
-  public: class GALGAS_galgas_33_SyntaxExtensionListAST current_extensionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_syntaxExtensionsDictionary_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary ;
 

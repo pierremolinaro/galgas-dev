@@ -643,20 +643,20 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
-        if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
+        if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
           ioCppFileContents.appendCString ("const ") ;
         }
         ioCppFileContents.appendCString ("GALGAS_") ;
         ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
+        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
           ioCppFileContents.appendCString (" ") ;
           break ;
-        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn :
+        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
           ioCppFileContents.appendCString (" ") ;
           break ;
-        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
-        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
+        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
+        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
           ioCppFileContents.appendCString (" & ") ;
           break ;
         default : break ;
@@ -792,20 +792,20 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
             ioCppFileContents.appendCString ("const ") ;
           }
           ioCppFileContents.appendCString ("GALGAS_") ;
           ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
             ioCppFileContents.appendCString (" & ") ;
             break ;
           default : break ;
@@ -914,20 +914,20 @@ generate_LL1_grammar_Cpp_file (const GALGAS_nonTerminalSymbolSortedListForGramma
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
             ioCppFileContents.appendCString ("const ") ;
           }
           ioCppFileContents.appendCString ("GALGAS_") ;
           ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
+          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
             ioCppFileContents.appendCString (" & ") ;
             break ;
           default : break ;

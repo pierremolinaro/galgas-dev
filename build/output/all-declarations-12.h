@@ -2085,6 +2085,7 @@ class GALGAS_string function_weakSuffix (class Compiler * inCompiler
 void extensionSetter_getOptionalTypeName (class GALGAS_galgasDeclarationAST & ioObject,
                                           class GALGAS_lstring & out_outOptionalTypeName,
                                           class GALGAS_lstring in_inTypeName,
+                                          const class GALGAS_bool constin_inPredefined,
                                           class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 

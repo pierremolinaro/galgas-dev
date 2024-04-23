@@ -1677,19 +1677,19 @@ class GALGAS_incDecKind : public AC_GALGAS_root {
   public: GALGAS_incDecKind (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_increment,
-    kEnum_decrement
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_increment,
+    enum_decrement
+  } ;
   
-//--------------------------------- Private data member
-  private: enumeration mEnum ;
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -2876,25 +2876,25 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
   public: GALGAS_ifExpressionKind (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_regularExp,
-    kEnum_letExp,
-    kEnum_optionalMethodCall
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_regularExp,
+    enum_letExp,
+    enum_optionalMethodCall
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -3219,26 +3219,26 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
   public: GALGAS_optionalMethodActualArgument (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_actualOutput,
-    kEnum_actualLetInput,
-    kEnum_actualVarInput,
-    kEnum_actualInputJoker
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_actualOutput,
+    enum_actualLetInput,
+    enum_actualVarInput,
+    enum_actualInputJoker
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -3935,26 +3935,26 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
   public: GALGAS_ifTestForGeneration (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_regular,
-    kEnum_letExp,
-    kEnum_optionalExp,
-    kEnum_optionalMethodCall
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_regular,
+    enum_letExp,
+    enum_optionalExp,
+    enum_optionalMethodCall
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -4289,25 +4289,25 @@ class GALGAS_optionalMethodActualArgumentForGeneration : public AC_GALGAS_root {
   public: GALGAS_optionalMethodActualArgumentForGeneration (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_actualOutput,
-    kEnum_actualLetInput,
-    kEnum_actualVarInput
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_actualOutput,
+    enum_actualLetInput,
+    enum_actualVarInput
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 

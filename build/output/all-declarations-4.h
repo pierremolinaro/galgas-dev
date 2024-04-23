@@ -2183,29 +2183,29 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
   public: GALGAS_AccessControlAST (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_publicAccess,
-    kEnum_protectedAccess,
-    kEnum_protectedSetAccess,
-    kEnum_privateAccess,
-    kEnum_privateSetAccess,
-    kEnum_fileprivateAccess,
-    kEnum_fileprivateSetAccess
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_publicAccess,
+    enum_protectedAccess,
+    enum_protectedSetAccess,
+    enum_privateAccess,
+    enum_privateSetAccess,
+    enum_fileprivateAccess,
+    enum_fileprivateSetAccess
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -2392,24 +2392,24 @@ class GALGAS_propertyInCollectionInitializationAST : public AC_GALGAS_root {
   public: GALGAS_propertyInCollectionInitializationAST (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_none,
-    kEnum_some
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_none,
+    enum_some
+  } ;
   
-//--------------------------------- Private data member
+//--------------------------------- Private properties
   private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValues.unsafePointer () ;
   }
 
-  private: enumeration mEnum ;
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -3409,8 +3409,8 @@ class GALGAS_enumConstantList : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS_lstring & in_mConstantName,
-                                                 const class GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList
+                                                 const class GALGAS_lstring & in_name,
+                                                 const class GALGAS__32_lstringlist & in_associatedValueTypeList
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
@@ -3477,15 +3477,15 @@ class GALGAS_enumConstantList : public AC_GALGAS_list {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedValueDefinitionListAtIndex (class GALGAS__32_lstringlist constinArgument0,
-                                                                                 class GALGAS_uint constinArgument1,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setAssociatedValueTypeListAtIndex (class GALGAS__32_lstringlist constinArgument0,
+                                                                          class GALGAS_uint constinArgument1,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMConstantNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                                class GALGAS_uint constinArgument1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                       class GALGAS_uint constinArgument1,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -3502,13 +3502,13 @@ class GALGAS_enumConstantList : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS__32_lstringlist getter_mAssociatedValueDefinitionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS__32_lstringlist getter_associatedValueTypeListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mConstantNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_nameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_enumConstantList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                   Compiler * inCompiler
@@ -3549,8 +3549,8 @@ class cEnumerator_enumConstantList : public cGenericAbstractEnumerator {
                                         const EnumerationOrder inOrder) ;
 
 //--- Current element access
-  public: class GALGAS_lstring current_mConstantName (LOCATION_ARGS) const ;
-  public: class GALGAS__32_lstringlist current_mAssociatedValueDefinitionList (LOCATION_ARGS) const ;
+  public: class GALGAS_lstring current_name (LOCATION_ARGS) const ;
+  public: class GALGAS__32_lstringlist current_associatedValueTypeList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_enumConstantList_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -3567,14 +3567,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList ;
 
 class GALGAS_enumConstantList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS_lstring mProperty_mConstantName ;
-  public: inline GALGAS_lstring readProperty_mConstantName (void) const {
-    return mProperty_mConstantName ;
+  public: GALGAS_lstring mProperty_name ;
+  public: inline GALGAS_lstring readProperty_name (void) const {
+    return mProperty_name ;
   }
 
-  public: GALGAS__32_lstringlist mProperty_mAssociatedValueDefinitionList ;
-  public: inline GALGAS__32_lstringlist readProperty_mAssociatedValueDefinitionList (void) const {
-    return mProperty_mAssociatedValueDefinitionList ;
+  public: GALGAS__32_lstringlist mProperty_associatedValueTypeList ;
+  public: inline GALGAS__32_lstringlist readProperty_associatedValueTypeList (void) const {
+    return mProperty_associatedValueTypeList ;
   }
 
 //--------------------------------- Accessors
@@ -3585,12 +3585,12 @@ class GALGAS_enumConstantList_2D_element : public AC_GALGAS_root {
   public: GALGAS_enumConstantList_2D_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMConstantName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mConstantName = inValue ;
+  public: inline void setter_setName (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_name = inValue ;
   }
 
-  public: inline void setter_setMAssociatedValueDefinitionList (const GALGAS__32_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAssociatedValueDefinitionList = inValue ;
+  public: inline void setter_setAssociatedValueTypeList (const GALGAS__32_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_associatedValueTypeList = inValue ;
   }
 
 //--------------------------------- Virtual destructor
@@ -3600,8 +3600,8 @@ class GALGAS_enumConstantList_2D_element : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_enumConstantList_2D_element (const GALGAS_lstring & in_mConstantName,
-                                              const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList) ;
+  public: GALGAS_enumConstantList_2D_element (const GALGAS_lstring & in_name,
+                                              const GALGAS__32_lstringlist & in_associatedValueTypeList) ;
 
 //-- Start of type generic part
 
@@ -3661,20 +3661,20 @@ class GALGAS_structComparison : public AC_GALGAS_root {
   public: GALGAS_structComparison (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_none,
-    kEnum_equatable,
-    kEnum_comparable
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_none,
+    enum_equatable,
+    enum_comparable
+  } ;
   
-//--------------------------------- Private data member
-  private: enumeration mEnum ;
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -3746,9 +3746,9 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
   public: GALGAS_enumDeclarationAST (const class cPtr_enumDeclarationAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_lstring readProperty_mEnumTypeName (void) const ;
+  public: class GALGAS_lstring readProperty_enumTypeName (void) const ;
 
-  public: class GALGAS_enumConstantList readProperty_mConstantList (void) const ;
+  public: class GALGAS_enumConstantList readProperty_constantList (void) const ;
 
   public: class GALGAS_structComparison readProperty_comparison (void) const ;
 
@@ -3824,6 +3824,10 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
+//--- Extension method addAssociatedElement
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
@@ -3853,8 +3857,8 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_lstring mProperty_mEnumTypeName ;
-  public: GALGAS_enumConstantList mProperty_mConstantList ;
+  public: GALGAS_lstring mProperty_enumTypeName ;
+  public: GALGAS_enumConstantList mProperty_constantList ;
   public: GALGAS_structComparison mProperty_comparison ;
 
 
@@ -3863,8 +3867,8 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Constructor
   public: cPtr_enumDeclarationAST (const GALGAS_bool & in_isPredefined,
-                                   const GALGAS_lstring & in_mEnumTypeName,
-                                   const GALGAS_enumConstantList & in_mConstantList,
+                                   const GALGAS_lstring & in_enumTypeName,
+                                   const GALGAS_enumConstantList & in_constantList,
                                    const GALGAS_structComparison & in_comparison
                                    COMMA_LOCATION_ARGS) ;
 
@@ -3953,8 +3957,8 @@ class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS_string & in_mConstantName,
-                                                 const class GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList
+                                                 const class GALGAS_string & in_name,
+                                                 const class GALGAS_unifiedTypeMapEntryList & in_associatedValueTypeList
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
@@ -4021,15 +4025,15 @@ class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedValueTypeListAtIndex (class GALGAS_unifiedTypeMapEntryList constinArgument0,
-                                                                           class GALGAS_uint constinArgument1,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setAssociatedValueTypeListAtIndex (class GALGAS_unifiedTypeMapEntryList constinArgument0,
+                                                                          class GALGAS_uint constinArgument1,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMConstantNameAtIndex (class GALGAS_string constinArgument0,
-                                                                class GALGAS_uint constinArgument1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setNameAtIndex (class GALGAS_string constinArgument0,
+                                                       class GALGAS_uint constinArgument1,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -4046,13 +4050,13 @@ class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntryList getter_mAssociatedValueTypeListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntryList getter_associatedValueTypeListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mConstantNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_string getter_nameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_enumConstantListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                                Compiler * inCompiler
@@ -4093,8 +4097,8 @@ class cEnumerator_enumConstantListForGeneration : public cGenericAbstractEnumera
                                                      const EnumerationOrder inOrder) ;
 
 //--- Current element access
-  public: class GALGAS_string current_mConstantName (LOCATION_ARGS) const ;
-  public: class GALGAS_unifiedTypeMapEntryList current_mAssociatedValueTypeList (LOCATION_ARGS) const ;
+  public: class GALGAS_string current_name (LOCATION_ARGS) const ;
+  public: class GALGAS_unifiedTypeMapEntryList current_associatedValueTypeList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_enumConstantListForGeneration_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -4256,14 +4260,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry
 
 class GALGAS_enumConstantListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS_string mProperty_mConstantName ;
-  public: inline GALGAS_string readProperty_mConstantName (void) const {
-    return mProperty_mConstantName ;
+  public: GALGAS_string mProperty_name ;
+  public: inline GALGAS_string readProperty_name (void) const {
+    return mProperty_name ;
   }
 
-  public: GALGAS_unifiedTypeMapEntryList mProperty_mAssociatedValueTypeList ;
-  public: inline GALGAS_unifiedTypeMapEntryList readProperty_mAssociatedValueTypeList (void) const {
-    return mProperty_mAssociatedValueTypeList ;
+  public: GALGAS_unifiedTypeMapEntryList mProperty_associatedValueTypeList ;
+  public: inline GALGAS_unifiedTypeMapEntryList readProperty_associatedValueTypeList (void) const {
+    return mProperty_associatedValueTypeList ;
   }
 
 //--------------------------------- Accessors
@@ -4274,12 +4278,12 @@ class GALGAS_enumConstantListForGeneration_2D_element : public AC_GALGAS_root {
   public: GALGAS_enumConstantListForGeneration_2D_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMConstantName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mConstantName = inValue ;
+  public: inline void setter_setName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_name = inValue ;
   }
 
-  public: inline void setter_setMAssociatedValueTypeList (const GALGAS_unifiedTypeMapEntryList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAssociatedValueTypeList = inValue ;
+  public: inline void setter_setAssociatedValueTypeList (const GALGAS_unifiedTypeMapEntryList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_associatedValueTypeList = inValue ;
   }
 
 //--------------------------------- Virtual destructor
@@ -4289,8 +4293,8 @@ class GALGAS_enumConstantListForGeneration_2D_element : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_enumConstantListForGeneration_2D_element (const GALGAS_string & in_mConstantName,
-                                                           const GALGAS_unifiedTypeMapEntryList & in_mAssociatedValueTypeList) ;
+  public: GALGAS_enumConstantListForGeneration_2D_element (const GALGAS_string & in_name,
+                                                           const GALGAS_unifiedTypeMapEntryList & in_associatedValueTypeList) ;
 
 //-- Start of type generic part
 
@@ -5712,21 +5716,21 @@ class GALGAS_formalArgumentPassingModeAST : public AC_GALGAS_root {
   public: GALGAS_formalArgumentPassingModeAST (void) ;
 
 //--------------------------------- Enumeration
-  public: typedef enum {
-    kNotBuilt,
-    kEnum_argumentVarIn,
-    kEnum_argumentOut,
-    kEnum_argumentInOut,
-    kEnum_argumentConstantIn
-  } enumeration ;
+  public: enum class Enumeration {
+    invalid,
+    enum_argumentVarIn,
+    enum_argumentOut,
+    enum_argumentInOut,
+    enum_argumentConstantIn
+  } ;
   
-//--------------------------------- Private data member
-  private: enumeration mEnum ;
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return kNotBuilt != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = kNotBuilt ; }
-  public: inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
+  public: inline Enumeration enumValue (void) const { return mEnum ; }
 
 //-- Start of type generic part
 
@@ -8497,9 +8501,9 @@ class GALGAS_insertMethodMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_insertMethodMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_insertMethodMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods
@@ -8776,9 +8780,9 @@ class GALGAS_searchMethodMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_searchMethodMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_searchMethodMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods

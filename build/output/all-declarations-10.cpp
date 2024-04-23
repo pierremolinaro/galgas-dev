@@ -1166,14 +1166,14 @@ GALGAS_grammarInstructionWithSourceExpressionForGeneration_2D_weak GALGAS_gramma
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_incDecKind::GALGAS_incDecKind (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_incDecKind GALGAS_incDecKind::class_func_increment (UNUSED_LOCATION_ARGS) {
   GALGAS_incDecKind result ;
-  result.mEnum = kEnum_increment ;
+  result.mEnum = Enumeration::enum_increment ;
   return result ;
 }
 
@@ -1181,21 +1181,21 @@ GALGAS_incDecKind GALGAS_incDecKind::class_func_increment (UNUSED_LOCATION_ARGS)
 
 GALGAS_incDecKind GALGAS_incDecKind::class_func_decrement (UNUSED_LOCATION_ARGS) {
   GALGAS_incDecKind result ;
-  result.mEnum = kEnum_decrement ;
+  result.mEnum = Enumeration::enum_decrement ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_incDecKind::optional_increment () const {
-  const bool ok = mEnum == kEnum_increment ;
+  const bool ok = mEnum == Enumeration::enum_increment ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_incDecKind::optional_decrement () const {
-  const bool ok = mEnum == kEnum_decrement ;
+  const bool ok = mEnum == Enumeration::enum_decrement ;
   return ok ;
 }
 
@@ -1210,13 +1210,13 @@ static const char * gEnumNameArrayFor_incDecKind [3] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_incDecKind::getter_isIncrement (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_increment == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_increment == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_incDecKind::getter_isDecrement (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_decrement == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_decrement == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1224,7 +1224,7 @@ GALGAS_bool GALGAS_incDecKind::getter_isDecrement (UNUSED_LOCATION_ARGS) const {
 void GALGAS_incDecKind::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @incDecKind: ") ;
-  ioString.appendCString (gEnumNameArrayFor_incDecKind [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_incDecKind [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -2868,7 +2868,7 @@ void cEnumAssociatedValues_ifExpressionKind_optionalMethodCall::description (Str
 
 GALGAS_ifExpressionKind::GALGAS_ifExpressionKind (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2878,7 +2878,7 @@ GALGAS_ifExpressionKind GALGAS_ifExpressionKind::class_func_regularExp (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_ifExpressionKind result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_regularExp ;
+    result.mEnum = Enumeration::enum_regularExp ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_ifExpressionKind_regularExp (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -2896,7 +2896,7 @@ GALGAS_ifExpressionKind GALGAS_ifExpressionKind::class_func_letExp (const GALGAS
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_ifExpressionKind result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid () && inAssociatedValue3.isValid ()) {
-    result.mEnum = kEnum_letExp ;
+    result.mEnum = Enumeration::enum_letExp ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_ifExpressionKind_letExp (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2, inAssociatedValue3 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -2913,7 +2913,7 @@ GALGAS_ifExpressionKind GALGAS_ifExpressionKind::class_func_optionalMethodCall (
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_ifExpressionKind result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
-    result.mEnum = kEnum_optionalMethodCall ;
+    result.mEnum = Enumeration::enum_optionalMethodCall ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_ifExpressionKind_optionalMethodCall (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -2928,7 +2928,7 @@ void GALGAS_ifExpressionKind::method_regularExp (GALGAS_semanticExpressionAST & 
                                                  GALGAS_location & outAssociatedValue1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_regularExp) {
+  if (mEnum != Enumeration::enum_regularExp) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -2949,7 +2949,7 @@ void GALGAS_ifExpressionKind::method_letExp (GALGAS_lstring & outAssociatedValue
                                              GALGAS_lstring & outAssociatedValue3,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_letExp) {
+  if (mEnum != Enumeration::enum_letExp) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
@@ -2973,7 +2973,7 @@ void GALGAS_ifExpressionKind::method_optionalMethodCall (GALGAS_semanticExpressi
                                                          GALGAS_optionalMethodActualArgumentList & outAssociatedValue2,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_optionalMethodCall) {
+  if (mEnum != Enumeration::enum_optionalMethodCall) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
@@ -2992,7 +2992,7 @@ void GALGAS_ifExpressionKind::method_optionalMethodCall (GALGAS_semanticExpressi
 
 bool GALGAS_ifExpressionKind::optional_regularExp (GALGAS_semanticExpressionAST & outAssociatedValue0,
                                                    GALGAS_location & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_regularExp ;
+  const bool ok = mEnum == Enumeration::enum_regularExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3007,7 +3007,7 @@ bool GALGAS_ifExpressionKind::optional_letExp (GALGAS_lstring & outAssociatedVal
                                                GALGAS_semanticExpressionAST & outAssociatedValue1,
                                                GALGAS_location & outAssociatedValue2,
                                                GALGAS_lstring & outAssociatedValue3) const {
-  const bool ok = mEnum == kEnum_letExp ;
+  const bool ok = mEnum == Enumeration::enum_letExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_letExp *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3023,7 +3023,7 @@ bool GALGAS_ifExpressionKind::optional_letExp (GALGAS_lstring & outAssociatedVal
 bool GALGAS_ifExpressionKind::optional_optionalMethodCall (GALGAS_semanticExpressionAST & outAssociatedValue0,
                                                            GALGAS_lstring & outAssociatedValue1,
                                                            GALGAS_optionalMethodActualArgumentList & outAssociatedValue2) const {
-  const bool ok = mEnum == kEnum_optionalMethodCall ;
+  const bool ok = mEnum == Enumeration::enum_optionalMethodCall ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifExpressionKind_optionalMethodCall *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3045,19 +3045,19 @@ static const char * gEnumNameArrayFor_ifExpressionKind [4] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_ifExpressionKind::getter_isRegularExp (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_regularExp == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_regularExp == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_ifExpressionKind::getter_isLetExp (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_letExp == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_letExp == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_ifExpressionKind::getter_isOptionalMethodCall (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_optionalMethodCall == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_optionalMethodCall == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3065,7 +3065,7 @@ GALGAS_bool GALGAS_ifExpressionKind::getter_isOptionalMethodCall (UNUSED_LOCATIO
 void GALGAS_ifExpressionKind::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString.appendCString ("<enum @ifExpressionKind: ") ;
-  ioString.appendCString (gEnumNameArrayFor_ifExpressionKind [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_ifExpressionKind [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -3200,7 +3200,7 @@ void cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker::descri
 
 GALGAS_optionalMethodActualArgument::GALGAS_optionalMethodActualArgument (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3210,7 +3210,7 @@ GALGAS_optionalMethodActualArgument GALGAS_optionalMethodActualArgument::class_f
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgument result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_actualOutput ;
+    result.mEnum = Enumeration::enum_actualOutput ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgument_actualOutput (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -3226,7 +3226,7 @@ GALGAS_optionalMethodActualArgument GALGAS_optionalMethodActualArgument::class_f
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgument result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_actualLetInput ;
+    result.mEnum = Enumeration::enum_actualLetInput ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -3242,7 +3242,7 @@ GALGAS_optionalMethodActualArgument GALGAS_optionalMethodActualArgument::class_f
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgument result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_actualVarInput ;
+    result.mEnum = Enumeration::enum_actualVarInput ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -3259,7 +3259,7 @@ GALGAS_optionalMethodActualArgument GALGAS_optionalMethodActualArgument::class_f
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgument result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
-    result.mEnum = kEnum_actualInputJoker ;
+    result.mEnum = Enumeration::enum_actualInputJoker ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -3274,7 +3274,7 @@ void GALGAS_optionalMethodActualArgument::method_actualOutput (GALGAS_semanticEx
                                                                GALGAS_location & outAssociatedValue1,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_actualOutput) {
+  if (mEnum != Enumeration::enum_actualOutput) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -3293,7 +3293,7 @@ void GALGAS_optionalMethodActualArgument::method_actualLetInput (GALGAS_lstring 
                                                                  GALGAS_lstring & outAssociatedValue1,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_actualLetInput) {
+  if (mEnum != Enumeration::enum_actualLetInput) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -3312,7 +3312,7 @@ void GALGAS_optionalMethodActualArgument::method_actualVarInput (GALGAS_lstring 
                                                                  GALGAS_lstring & outAssociatedValue1,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_actualVarInput) {
+  if (mEnum != Enumeration::enum_actualVarInput) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -3332,7 +3332,7 @@ void GALGAS_optionalMethodActualArgument::method_actualInputJoker (GALGAS_bool &
                                                                    GALGAS_uint & outAssociatedValue2,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_actualInputJoker) {
+  if (mEnum != Enumeration::enum_actualInputJoker) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
@@ -3351,7 +3351,7 @@ void GALGAS_optionalMethodActualArgument::method_actualInputJoker (GALGAS_bool &
 
 bool GALGAS_optionalMethodActualArgument::optional_actualOutput (GALGAS_semanticExpressionAST & outAssociatedValue0,
                                                                  GALGAS_location & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_actualOutput ;
+  const bool ok = mEnum == Enumeration::enum_actualOutput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualOutput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3364,7 +3364,7 @@ bool GALGAS_optionalMethodActualArgument::optional_actualOutput (GALGAS_semantic
 
 bool GALGAS_optionalMethodActualArgument::optional_actualLetInput (GALGAS_lstring & outAssociatedValue0,
                                                                    GALGAS_lstring & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_actualLetInput ;
+  const bool ok = mEnum == Enumeration::enum_actualLetInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3377,7 +3377,7 @@ bool GALGAS_optionalMethodActualArgument::optional_actualLetInput (GALGAS_lstrin
 
 bool GALGAS_optionalMethodActualArgument::optional_actualVarInput (GALGAS_lstring & outAssociatedValue0,
                                                                    GALGAS_lstring & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_actualVarInput ;
+  const bool ok = mEnum == Enumeration::enum_actualVarInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3391,7 +3391,7 @@ bool GALGAS_optionalMethodActualArgument::optional_actualVarInput (GALGAS_lstrin
 bool GALGAS_optionalMethodActualArgument::optional_actualInputJoker (GALGAS_bool & outAssociatedValue0,
                                                                      GALGAS_location & outAssociatedValue1,
                                                                      GALGAS_uint & outAssociatedValue2) const {
-  const bool ok = mEnum == kEnum_actualInputJoker ;
+  const bool ok = mEnum == Enumeration::enum_actualInputJoker ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3414,25 +3414,25 @@ static const char * gEnumNameArrayFor_optionalMethodActualArgument [5] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionalMethodActualArgument::getter_isActualOutput (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_actualOutput == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_actualOutput == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionalMethodActualArgument::getter_isActualLetInput (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_actualLetInput == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_actualLetInput == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionalMethodActualArgument::getter_isActualVarInput (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_actualVarInput == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_actualVarInput == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionalMethodActualArgument::getter_isActualInputJoker (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_actualInputJoker == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_actualInputJoker == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3440,7 +3440,7 @@ GALGAS_bool GALGAS_optionalMethodActualArgument::getter_isActualInputJoker (UNUS
 void GALGAS_optionalMethodActualArgument::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString.appendCString ("<enum @optionalMethodActualArgument: ") ;
-  ioString.appendCString (gEnumNameArrayFor_optionalMethodActualArgument [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_optionalMethodActualArgument [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -4859,7 +4859,7 @@ void cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall::description (
 
 GALGAS_ifTestForGeneration::GALGAS_ifTestForGeneration (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4868,7 +4868,7 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::class_func_regular (const
                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_ifTestForGeneration result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_regular ;
+    result.mEnum = Enumeration::enum_regular ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_ifTestForGeneration_regular (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -4886,7 +4886,7 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::class_func_letExp (const 
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_ifTestForGeneration result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid () && inAssociatedValue3.isValid ()) {
-    result.mEnum = kEnum_letExp ;
+    result.mEnum = Enumeration::enum_letExp ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_ifTestForGeneration_letExp (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2, inAssociatedValue3 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -4903,7 +4903,7 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::class_func_optionalExp (c
                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_ifTestForGeneration result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
-    result.mEnum = kEnum_optionalExp ;
+    result.mEnum = Enumeration::enum_optionalExp ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_ifTestForGeneration_optionalExp (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -4920,7 +4920,7 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::class_func_optionalMethod
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_ifTestForGeneration result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
-    result.mEnum = kEnum_optionalMethodCall ;
+    result.mEnum = Enumeration::enum_optionalMethodCall ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -4934,7 +4934,7 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::class_func_optionalMethod
 void GALGAS_ifTestForGeneration::method_regular (GALGAS_semanticExpressionForGeneration & outAssociatedValue0,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_regular) {
+  if (mEnum != Enumeration::enum_regular) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @ifTestForGeneration regular invoked with an invalid enum value") ;
@@ -4953,7 +4953,7 @@ void GALGAS_ifTestForGeneration::method_letExp (GALGAS_string & outAssociatedVal
                                                 GALGAS_unifiedTypeMapEntry & outAssociatedValue3,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_letExp) {
+  if (mEnum != Enumeration::enum_letExp) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
@@ -4977,7 +4977,7 @@ void GALGAS_ifTestForGeneration::method_optionalExp (GALGAS_string & outAssociat
                                                      GALGAS_unifiedTypeMapEntry & outAssociatedValue2,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_optionalExp) {
+  if (mEnum != Enumeration::enum_optionalExp) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
@@ -4999,7 +4999,7 @@ void GALGAS_ifTestForGeneration::method_optionalMethodCall (GALGAS_semanticExpre
                                                             GALGAS_optionalMethodActualArgumentListForGeneration & outAssociatedValue2,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_optionalMethodCall) {
+  if (mEnum != Enumeration::enum_optionalMethodCall) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     outAssociatedValue2.drop () ;
@@ -5017,7 +5017,7 @@ void GALGAS_ifTestForGeneration::method_optionalMethodCall (GALGAS_semanticExpre
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_ifTestForGeneration::optional_regular (GALGAS_semanticExpressionForGeneration & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_regular ;
+  const bool ok = mEnum == Enumeration::enum_regular ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_regular *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -5031,7 +5031,7 @@ bool GALGAS_ifTestForGeneration::optional_letExp (GALGAS_string & outAssociatedV
                                                   GALGAS_semanticExpressionForGeneration & outAssociatedValue1,
                                                   GALGAS_unifiedTypeMapEntry & outAssociatedValue2,
                                                   GALGAS_unifiedTypeMapEntry & outAssociatedValue3) const {
-  const bool ok = mEnum == kEnum_letExp ;
+  const bool ok = mEnum == Enumeration::enum_letExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_letExp *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -5047,7 +5047,7 @@ bool GALGAS_ifTestForGeneration::optional_letExp (GALGAS_string & outAssociatedV
 bool GALGAS_ifTestForGeneration::optional_optionalExp (GALGAS_string & outAssociatedValue0,
                                                        GALGAS_semanticExpressionForGeneration & outAssociatedValue1,
                                                        GALGAS_unifiedTypeMapEntry & outAssociatedValue2) const {
-  const bool ok = mEnum == kEnum_optionalExp ;
+  const bool ok = mEnum == Enumeration::enum_optionalExp ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_optionalExp *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -5062,7 +5062,7 @@ bool GALGAS_ifTestForGeneration::optional_optionalExp (GALGAS_string & outAssoci
 bool GALGAS_ifTestForGeneration::optional_optionalMethodCall (GALGAS_semanticExpressionForGeneration & outAssociatedValue0,
                                                               GALGAS_lstring & outAssociatedValue1,
                                                               GALGAS_optionalMethodActualArgumentListForGeneration & outAssociatedValue2) const {
-  const bool ok = mEnum == kEnum_optionalMethodCall ;
+  const bool ok = mEnum == Enumeration::enum_optionalMethodCall ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_ifTestForGeneration_optionalMethodCall *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -5085,25 +5085,25 @@ static const char * gEnumNameArrayFor_ifTestForGeneration [5] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_ifTestForGeneration::getter_isRegular (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_regular == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_regular == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_ifTestForGeneration::getter_isLetExp (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_letExp == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_letExp == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_ifTestForGeneration::getter_isOptionalExp (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_optionalExp == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_optionalExp == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_ifTestForGeneration::getter_isOptionalMethodCall (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_optionalMethodCall == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_optionalMethodCall == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5111,7 +5111,7 @@ GALGAS_bool GALGAS_ifTestForGeneration::getter_isOptionalMethodCall (UNUSED_LOCA
 void GALGAS_ifTestForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString.appendCString ("<enum @ifTestForGeneration: ") ;
-  ioString.appendCString (gEnumNameArrayFor_ifTestForGeneration [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_ifTestForGeneration [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -5220,7 +5220,7 @@ void cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarIn
 
 GALGAS_optionalMethodActualArgumentForGeneration::GALGAS_optionalMethodActualArgumentForGeneration (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5229,7 +5229,7 @@ GALGAS_optionalMethodActualArgumentForGeneration GALGAS_optionalMethodActualArgu
                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgumentForGeneration result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_actualOutput ;
+    result.mEnum = Enumeration::enum_actualOutput ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutput (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -5245,7 +5245,7 @@ GALGAS_optionalMethodActualArgumentForGeneration GALGAS_optionalMethodActualArgu
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgumentForGeneration result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_actualLetInput ;
+    result.mEnum = Enumeration::enum_actualLetInput ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetInput (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -5261,7 +5261,7 @@ GALGAS_optionalMethodActualArgumentForGeneration GALGAS_optionalMethodActualArgu
                                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgumentForGeneration result ;
   if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    result.mEnum = kEnum_actualVarInput ;
+    result.mEnum = Enumeration::enum_actualVarInput ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarInput (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -5275,7 +5275,7 @@ GALGAS_optionalMethodActualArgumentForGeneration GALGAS_optionalMethodActualArgu
 void GALGAS_optionalMethodActualArgumentForGeneration::method_actualOutput (GALGAS_semanticExpressionForGeneration & outAssociatedValue0,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_actualOutput) {
+  if (mEnum != Enumeration::enum_actualOutput) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @optionalMethodActualArgumentForGeneration actualOutput invoked with an invalid enum value") ;
@@ -5292,7 +5292,7 @@ void GALGAS_optionalMethodActualArgumentForGeneration::method_actualLetInput (GA
                                                                               GALGAS_string & outAssociatedValue1,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_actualLetInput) {
+  if (mEnum != Enumeration::enum_actualLetInput) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -5311,7 +5311,7 @@ void GALGAS_optionalMethodActualArgumentForGeneration::method_actualVarInput (GA
                                                                               GALGAS_string & outAssociatedValue1,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_actualVarInput) {
+  if (mEnum != Enumeration::enum_actualVarInput) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
     String s ;
@@ -5327,7 +5327,7 @@ void GALGAS_optionalMethodActualArgumentForGeneration::method_actualVarInput (GA
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualOutput (GALGAS_semanticExpressionForGeneration & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_actualOutput ;
+  const bool ok = mEnum == Enumeration::enum_actualOutput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualOutput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -5339,7 +5339,7 @@ bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualOutput (GA
 
 bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualLetInput (GALGAS_string & outAssociatedValue0,
                                                                                 GALGAS_string & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_actualLetInput ;
+  const bool ok = mEnum == Enumeration::enum_actualLetInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualLetInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -5352,7 +5352,7 @@ bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualLetInput (
 
 bool GALGAS_optionalMethodActualArgumentForGeneration::optional_actualVarInput (GALGAS_string & outAssociatedValue0,
                                                                                 GALGAS_string & outAssociatedValue1) const {
-  const bool ok = mEnum == kEnum_actualVarInput ;
+  const bool ok = mEnum == Enumeration::enum_actualVarInput ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgumentForGeneration_actualVarInput *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -5373,19 +5373,19 @@ static const char * gEnumNameArrayFor_optionalMethodActualArgumentForGeneration 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionalMethodActualArgumentForGeneration::getter_isActualOutput (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_actualOutput == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_actualOutput == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionalMethodActualArgumentForGeneration::getter_isActualLetInput (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_actualLetInput == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_actualLetInput == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionalMethodActualArgumentForGeneration::getter_isActualVarInput (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_actualVarInput == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_actualVarInput == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5393,7 +5393,7 @@ GALGAS_bool GALGAS_optionalMethodActualArgumentForGeneration::getter_isActualVar
 void GALGAS_optionalMethodActualArgumentForGeneration::description (String & ioString,
                                                                     const int32_t inIndentation) const {
   ioString.appendCString ("<enum @optionalMethodActualArgumentForGeneration: ") ;
-  ioString.appendCString (gEnumNameArrayFor_optionalMethodActualArgumentForGeneration [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_optionalMethodActualArgumentForGeneration [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }

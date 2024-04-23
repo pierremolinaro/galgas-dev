@@ -106,12 +106,12 @@ GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::class_func_emptyMap (LO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap_2D_element_3F_ GALGAS_commandLineOptionMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_commandLineOptionMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_commandLineOptionMap_2D_element_3F_::init_nil () ;
     }else{
@@ -3942,12 +3942,12 @@ GALGAS_extensionMap GALGAS_extensionMap::class_func_emptyMap (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extensionMap_2D_element_3F_ GALGAS_extensionMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extensionMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_extensionMap * p = (cMapElement_extensionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_extensionMap * p = (cMapElement_extensionMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_extensionMap_2D_element_3F_::init_nil () ;
     }else{
@@ -6916,12 +6916,12 @@ GALGAS_optionComponentMapForGeneration GALGAS_optionComponentMapForGeneration::c
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionComponentMapForGeneration_2D_element_3F_ GALGAS_optionComponentMapForGeneration
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_optionComponentMapForGeneration_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_optionComponentMapForGeneration * p = (cMapElement_optionComponentMapForGeneration *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_optionComponentMapForGeneration * p = (cMapElement_optionComponentMapForGeneration *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_optionComponentMapForGeneration_2D_element_3F_::init_nil () ;
     }else{

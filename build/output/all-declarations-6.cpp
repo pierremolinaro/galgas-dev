@@ -808,14 +808,14 @@ GALGAS_semanticExpressionAST_2D_weak GALGAS_semanticExpressionAST_2D_weak::extra
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalArgumentPassingModeAST::GALGAS_formalArgumentPassingModeAST (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_func_argumentVarIn (UNUSED_LOCATION_ARGS) {
   GALGAS_formalArgumentPassingModeAST result ;
-  result.mEnum = kEnum_argumentVarIn ;
+  result.mEnum = Enumeration::enum_argumentVarIn ;
   return result ;
 }
 
@@ -823,7 +823,7 @@ GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_f
 
 GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (UNUSED_LOCATION_ARGS) {
   GALGAS_formalArgumentPassingModeAST result ;
-  result.mEnum = kEnum_argumentOut ;
+  result.mEnum = Enumeration::enum_argumentOut ;
   return result ;
 }
 
@@ -831,7 +831,7 @@ GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_f
 
 GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_func_argumentInOut (UNUSED_LOCATION_ARGS) {
   GALGAS_formalArgumentPassingModeAST result ;
-  result.mEnum = kEnum_argumentInOut ;
+  result.mEnum = Enumeration::enum_argumentInOut ;
   return result ;
 }
 
@@ -839,35 +839,35 @@ GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_f
 
 GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (UNUSED_LOCATION_ARGS) {
   GALGAS_formalArgumentPassingModeAST result ;
-  result.mEnum = kEnum_argumentConstantIn ;
+  result.mEnum = Enumeration::enum_argumentConstantIn ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_formalArgumentPassingModeAST::optional_argumentVarIn () const {
-  const bool ok = mEnum == kEnum_argumentVarIn ;
+  const bool ok = mEnum == Enumeration::enum_argumentVarIn ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_formalArgumentPassingModeAST::optional_argumentOut () const {
-  const bool ok = mEnum == kEnum_argumentOut ;
+  const bool ok = mEnum == Enumeration::enum_argumentOut ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_formalArgumentPassingModeAST::optional_argumentInOut () const {
-  const bool ok = mEnum == kEnum_argumentInOut ;
+  const bool ok = mEnum == Enumeration::enum_argumentInOut ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_formalArgumentPassingModeAST::optional_argumentConstantIn () const {
-  const bool ok = mEnum == kEnum_argumentConstantIn ;
+  const bool ok = mEnum == Enumeration::enum_argumentConstantIn ;
   return ok ;
 }
 
@@ -884,25 +884,25 @@ static const char * gEnumNameArrayFor_formalArgumentPassingModeAST [5] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_isArgumentVarIn (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentVarIn == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentVarIn == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_isArgumentOut (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentOut == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentOut == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_isArgumentInOut (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentInOut == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentInOut == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_isArgumentConstantIn (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentConstantIn == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentConstantIn == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -910,7 +910,7 @@ GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_isArgumentConstantIn (UN
 void GALGAS_formalArgumentPassingModeAST::description (String & ioString,
                                                        const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @formalArgumentPassingModeAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_formalArgumentPassingModeAST [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_formalArgumentPassingModeAST [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -984,24 +984,24 @@ GALGAS_string extensionGetter_string (const GALGAS_formalArgumentPassingModeAST 
   GALGAS_string result_result ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::invalid:
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
     {
       result_result = GALGAS_string ("\?let") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
     {
       result_result = GALGAS_string ("\?") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
     {
       result_result = GALGAS_string ("!") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
     {
       result_result = GALGAS_string ("\?!") ;
     }
@@ -1026,24 +1026,24 @@ GALGAS_string extensionGetter_formalArgumentMessage (const GALGAS_formalArgument
   GALGAS_string result_result ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
-  case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::invalid:
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
     {
       result_result = GALGAS_string ("a constant input (\?let) formal argument") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
     {
       result_result = GALGAS_string ("an input (\?) formal argument") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
     {
       result_result = GALGAS_string ("an output (!) formal argument") ;
     }
     break ;
-  case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
+  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
     {
       result_result = GALGAS_string ("an input/output (\?!) formal argument") ;
     }
@@ -1071,20 +1071,20 @@ GALGAS_string extensionGetter_keyRepresentation (const GALGAS_formalParameterLis
   cEnumerator_formalParameterListAST enumerator_4866 (temp_0, EnumerationOrder::up) ;
   while (enumerator_4866.hasCurrentObject ()) {
     switch (enumerator_4866.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
-    case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
+    case GALGAS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentVarIn:
+    case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
+    case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
       {
         result_result.plusAssign_operation(GALGAS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 126)) ;
       }
       break ;
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
+    case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
       {
         result_result.plusAssign_operation(GALGAS_string ("\?!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 128)) ;
       }
       break ;
-    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
+    case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
       {
         result_result.plusAssign_operation(GALGAS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 130)) ;
       }
@@ -3611,13 +3611,13 @@ void extensionMethod_buildPropertyInitializationCode (const GALGAS_propertyInCol
   cEnumerator_propertyInCollectionListAST enumerator_10997 (temp_1, EnumerationOrder::up) ;
   while (enumerator_10997.hasCurrentObject ()) {
     switch (enumerator_10997.current_initialization (HERE).enumValue ()) {
-    case GALGAS_propertyInCollectionInitializationAST::kNotBuilt:
+    case GALGAS_propertyInCollectionInitializationAST::Enumeration::invalid:
       break ;
-    case GALGAS_propertyInCollectionInitializationAST::kEnum_none:
+    case GALGAS_propertyInCollectionInitializationAST::Enumeration::enum_none:
       {
       }
       break ;
-    case GALGAS_propertyInCollectionInitializationAST::kEnum_some:
+    case GALGAS_propertyInCollectionInitializationAST::Enumeration::enum_some:
       {
         const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * extractPtr_12423 = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) (enumerator_10997.current_initialization (HERE).unsafePointer ()) ;
         const GALGAS_semanticExpressionAST extractedValue_11086_expressionAST = extractPtr_12423->mAssociatedValue0 ;
@@ -3679,14 +3679,14 @@ void cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess::description (S
 
 GALGAS_AccessControlAST::GALGAS_AccessControlAST (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_publicAccess (UNUSED_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
-  result.mEnum = kEnum_publicAccess ;
+  result.mEnum = Enumeration::enum_publicAccess ;
   return result ;
 }
 
@@ -3694,7 +3694,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_publicAccess (UNUSED
 
 GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_protectedAccess (UNUSED_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
-  result.mEnum = kEnum_protectedAccess ;
+  result.mEnum = Enumeration::enum_protectedAccess ;
   return result ;
 }
 
@@ -3702,7 +3702,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_protectedAccess (UNU
 
 GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_protectedSetAccess (UNUSED_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
-  result.mEnum = kEnum_protectedSetAccess ;
+  result.mEnum = Enumeration::enum_protectedSetAccess ;
   return result ;
 }
 
@@ -3710,7 +3710,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_protectedSetAccess (
 
 GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_privateAccess (UNUSED_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
-  result.mEnum = kEnum_privateAccess ;
+  result.mEnum = Enumeration::enum_privateAccess ;
   return result ;
 }
 
@@ -3718,7 +3718,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_privateAccess (UNUSE
 
 GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_privateSetAccess (UNUSED_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
-  result.mEnum = kEnum_privateSetAccess ;
+  result.mEnum = Enumeration::enum_privateSetAccess ;
   return result ;
 }
 
@@ -3728,7 +3728,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_fileprivateAccess (c
                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_fileprivateAccess ;
+    result.mEnum = Enumeration::enum_fileprivateAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControlAST_fileprivateAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -3743,7 +3743,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_fileprivateSetAccess
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_AccessControlAST result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_fileprivateSetAccess ;
+    result.mEnum = Enumeration::enum_fileprivateSetAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -3757,7 +3757,7 @@ GALGAS_AccessControlAST GALGAS_AccessControlAST::class_func_fileprivateSetAccess
 void GALGAS_AccessControlAST::method_fileprivateAccess (GALGAS_location & outAssociatedValue0,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fileprivateAccess) {
+  if (mEnum != Enumeration::enum_fileprivateAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControlAST fileprivateAccess invoked with an invalid enum value") ;
@@ -3773,7 +3773,7 @@ void GALGAS_AccessControlAST::method_fileprivateAccess (GALGAS_location & outAss
 void GALGAS_AccessControlAST::method_fileprivateSetAccess (GALGAS_location & outAssociatedValue0,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fileprivateSetAccess) {
+  if (mEnum != Enumeration::enum_fileprivateSetAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControlAST fileprivateSetAccess invoked with an invalid enum value") ;
@@ -3787,42 +3787,42 @@ void GALGAS_AccessControlAST::method_fileprivateSetAccess (GALGAS_location & out
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControlAST::optional_publicAccess () const {
-  const bool ok = mEnum == kEnum_publicAccess ;
+  const bool ok = mEnum == Enumeration::enum_publicAccess ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControlAST::optional_protectedAccess () const {
-  const bool ok = mEnum == kEnum_protectedAccess ;
+  const bool ok = mEnum == Enumeration::enum_protectedAccess ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControlAST::optional_protectedSetAccess () const {
-  const bool ok = mEnum == kEnum_protectedSetAccess ;
+  const bool ok = mEnum == Enumeration::enum_protectedSetAccess ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControlAST::optional_privateAccess () const {
-  const bool ok = mEnum == kEnum_privateAccess ;
+  const bool ok = mEnum == Enumeration::enum_privateAccess ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControlAST::optional_privateSetAccess () const {
-  const bool ok = mEnum == kEnum_privateSetAccess ;
+  const bool ok = mEnum == Enumeration::enum_privateSetAccess ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControlAST::optional_fileprivateAccess (GALGAS_location & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_fileprivateAccess ;
+  const bool ok = mEnum == Enumeration::enum_fileprivateAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3833,7 +3833,7 @@ bool GALGAS_AccessControlAST::optional_fileprivateAccess (GALGAS_location & outA
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControlAST::optional_fileprivateSetAccess (GALGAS_location & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_fileprivateSetAccess ;
+  const bool ok = mEnum == Enumeration::enum_fileprivateSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControlAST_fileprivateSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -3857,43 +3857,43 @@ static const char * gEnumNameArrayFor_AccessControlAST [8] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isPublicAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_publicAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_publicAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isProtectedAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_protectedAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isProtectedSetAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_protectedSetAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedSetAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isPrivateAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_privateAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isPrivateSetAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_privateSetAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateSetAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isFileprivateAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fileprivateAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fileprivateAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControlAST::getter_isFileprivateSetAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fileprivateSetAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fileprivateSetAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3901,7 +3901,7 @@ GALGAS_bool GALGAS_AccessControlAST::getter_isFileprivateSetAccess (UNUSED_LOCAT
 void GALGAS_AccessControlAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString.appendCString ("<enum @AccessControlAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_AccessControlAST [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_AccessControlAST [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -3982,14 +3982,14 @@ ComparisonResult cEnumAssociatedValues_propertyInCollectionInitializationAST_som
 
 GALGAS_propertyInCollectionInitializationAST::GALGAS_propertyInCollectionInitializationAST (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_propertyInCollectionInitializationAST GALGAS_propertyInCollectionInitializationAST::class_func_none (UNUSED_LOCATION_ARGS) {
   GALGAS_propertyInCollectionInitializationAST result ;
-  result.mEnum = kEnum_none ;
+  result.mEnum = Enumeration::enum_none ;
   return result ;
 }
 
@@ -3999,7 +3999,7 @@ GALGAS_propertyInCollectionInitializationAST GALGAS_propertyInCollectionInitiali
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_propertyInCollectionInitializationAST result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_some ;
+    result.mEnum = Enumeration::enum_some ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_propertyInCollectionInitializationAST_some (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -4013,7 +4013,7 @@ GALGAS_propertyInCollectionInitializationAST GALGAS_propertyInCollectionInitiali
 void GALGAS_propertyInCollectionInitializationAST::method_some (GALGAS_semanticExpressionAST & outAssociatedValue0,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_some) {
+  if (mEnum != Enumeration::enum_some) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @propertyInCollectionInitializationAST some invoked with an invalid enum value") ;
@@ -4027,14 +4027,14 @@ void GALGAS_propertyInCollectionInitializationAST::method_some (GALGAS_semanticE
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyInCollectionInitializationAST::optional_none () const {
-  const bool ok = mEnum == kEnum_none ;
+  const bool ok = mEnum == Enumeration::enum_none ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_propertyInCollectionInitializationAST::optional_some (GALGAS_semanticExpressionAST & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_some ;
+  const bool ok = mEnum == Enumeration::enum_some ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -4053,13 +4053,13 @@ static const char * gEnumNameArrayFor_propertyInCollectionInitializationAST [3] 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_propertyInCollectionInitializationAST::getter_isNone (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_none == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_propertyInCollectionInitializationAST::getter_isSome (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_some == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_some == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4067,7 +4067,7 @@ GALGAS_bool GALGAS_propertyInCollectionInitializationAST::getter_isSome (UNUSED_
 void GALGAS_propertyInCollectionInitializationAST::description (String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString.appendCString ("<enum @propertyInCollectionInitializationAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_propertyInCollectionInitializationAST [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_propertyInCollectionInitializationAST [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -10916,14 +10916,14 @@ GALGAS_string extensionGetter_subcriptSignature (const GALGAS_functionSignature 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_methodQualifier::GALGAS_methodQualifier (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtual (UNUSED_LOCATION_ARGS) {
   GALGAS_methodQualifier result ;
-  result.mEnum = kEnum_isVirtual ;
+  result.mEnum = Enumeration::enum_isVirtual ;
   return result ;
 }
 
@@ -10931,7 +10931,7 @@ GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtual (UNUSED_LOCA
 
 GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtualAbstract (UNUSED_LOCATION_ARGS) {
   GALGAS_methodQualifier result ;
-  result.mEnum = kEnum_isVirtualAbstract ;
+  result.mEnum = Enumeration::enum_isVirtualAbstract ;
   return result ;
 }
 
@@ -10939,7 +10939,7 @@ GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtualAbstract (UNU
 
 GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isBasic (UNUSED_LOCATION_ARGS) {
   GALGAS_methodQualifier result ;
-  result.mEnum = kEnum_isBasic ;
+  result.mEnum = Enumeration::enum_isBasic ;
   return result ;
 }
 
@@ -10947,7 +10947,7 @@ GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isBasic (UNUSED_LOCATI
 
 GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isBasicFinal (UNUSED_LOCATION_ARGS) {
   GALGAS_methodQualifier result ;
-  result.mEnum = kEnum_isBasicFinal ;
+  result.mEnum = Enumeration::enum_isBasicFinal ;
   return result ;
 }
 
@@ -10955,7 +10955,7 @@ GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isBasicFinal (UNUSED_L
 
 GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isInherited (UNUSED_LOCATION_ARGS) {
   GALGAS_methodQualifier result ;
-  result.mEnum = kEnum_isInherited ;
+  result.mEnum = Enumeration::enum_isInherited ;
   return result ;
 }
 
@@ -10963,7 +10963,7 @@ GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isInherited (UNUSED_LO
 
 GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtualOverriding (UNUSED_LOCATION_ARGS) {
   GALGAS_methodQualifier result ;
-  result.mEnum = kEnum_isVirtualOverriding ;
+  result.mEnum = Enumeration::enum_isVirtualOverriding ;
   return result ;
 }
 
@@ -10971,56 +10971,56 @@ GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtualOverriding (U
 
 GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtualOverridingAbstract (UNUSED_LOCATION_ARGS) {
   GALGAS_methodQualifier result ;
-  result.mEnum = kEnum_isVirtualOverridingAbstract ;
+  result.mEnum = Enumeration::enum_isVirtualOverridingAbstract ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodQualifier::optional_isVirtual () const {
-  const bool ok = mEnum == kEnum_isVirtual ;
+  const bool ok = mEnum == Enumeration::enum_isVirtual ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodQualifier::optional_isVirtualAbstract () const {
-  const bool ok = mEnum == kEnum_isVirtualAbstract ;
+  const bool ok = mEnum == Enumeration::enum_isVirtualAbstract ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodQualifier::optional_isBasic () const {
-  const bool ok = mEnum == kEnum_isBasic ;
+  const bool ok = mEnum == Enumeration::enum_isBasic ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodQualifier::optional_isBasicFinal () const {
-  const bool ok = mEnum == kEnum_isBasicFinal ;
+  const bool ok = mEnum == Enumeration::enum_isBasicFinal ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodQualifier::optional_isInherited () const {
-  const bool ok = mEnum == kEnum_isInherited ;
+  const bool ok = mEnum == Enumeration::enum_isInherited ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodQualifier::optional_isVirtualOverriding () const {
-  const bool ok = mEnum == kEnum_isVirtualOverriding ;
+  const bool ok = mEnum == Enumeration::enum_isVirtualOverriding ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodQualifier::optional_isVirtualOverridingAbstract () const {
-  const bool ok = mEnum == kEnum_isVirtualOverridingAbstract ;
+  const bool ok = mEnum == Enumeration::enum_isVirtualOverridingAbstract ;
   return ok ;
 }
 
@@ -11040,43 +11040,43 @@ static const char * gEnumNameArrayFor_methodQualifier [8] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodQualifier::getter_isIsVirtual (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_isVirtual == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtual == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodQualifier::getter_isIsVirtualAbstract (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_isVirtualAbstract == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtualAbstract == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodQualifier::getter_isIsBasic (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_isBasic == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isBasic == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodQualifier::getter_isIsBasicFinal (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_isBasicFinal == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isBasicFinal == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodQualifier::getter_isIsInherited (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_isInherited == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isInherited == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodQualifier::getter_isIsVirtualOverriding (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_isVirtualOverriding == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtualOverriding == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodQualifier::getter_isIsVirtualOverridingAbstract (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_isVirtualOverridingAbstract == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtualOverridingAbstract == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11084,7 +11084,7 @@ GALGAS_bool GALGAS_methodQualifier::getter_isIsVirtualOverridingAbstract (UNUSED
 void GALGAS_methodQualifier::description (String & ioString,
                                           const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @methodQualifier: ") ;
-  ioString.appendCString (gEnumNameArrayFor_methodQualifier [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_methodQualifier [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -11149,14 +11149,14 @@ GALGAS_methodQualifier GALGAS_methodQualifier::extractObject (const GALGAS_objec
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_methodKind::GALGAS_methodKind (void) :
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_methodKind GALGAS_methodKind::class_func_definedAsMember (UNUSED_LOCATION_ARGS) {
   GALGAS_methodKind result ;
-  result.mEnum = kEnum_definedAsMember ;
+  result.mEnum = Enumeration::enum_definedAsMember ;
   return result ;
 }
 
@@ -11164,21 +11164,21 @@ GALGAS_methodKind GALGAS_methodKind::class_func_definedAsMember (UNUSED_LOCATION
 
 GALGAS_methodKind GALGAS_methodKind::class_func_definedAsExtension (UNUSED_LOCATION_ARGS) {
   GALGAS_methodKind result ;
-  result.mEnum = kEnum_definedAsExtension ;
+  result.mEnum = Enumeration::enum_definedAsExtension ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodKind::optional_definedAsMember () const {
-  const bool ok = mEnum == kEnum_definedAsMember ;
+  const bool ok = mEnum == Enumeration::enum_definedAsMember ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_methodKind::optional_definedAsExtension () const {
-  const bool ok = mEnum == kEnum_definedAsExtension ;
+  const bool ok = mEnum == Enumeration::enum_definedAsExtension ;
   return ok ;
 }
 
@@ -11193,13 +11193,13 @@ static const char * gEnumNameArrayFor_methodKind [3] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodKind::getter_isDefinedAsMember (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_definedAsMember == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_definedAsMember == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_methodKind::getter_isDefinedAsExtension (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_definedAsExtension == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_definedAsExtension == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11207,7 +11207,7 @@ GALGAS_bool GALGAS_methodKind::getter_isDefinedAsExtension (UNUSED_LOCATION_ARGS
 void GALGAS_methodKind::description (String & ioString,
                                      const int32_t /* inIndentation */) const {
   ioString.appendCString ("<enum @methodKind: ") ;
-  ioString.appendCString (gEnumNameArrayFor_methodKind [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_methodKind [size_t (mEnum)]) ;
   ioString.appendCString (">") ;
 }
 
@@ -12644,14 +12644,14 @@ void cEnumAssociatedValues_AccessControl_fileprivateSetAccess::description (Stri
 
 GALGAS_AccessControl::GALGAS_AccessControl (void) :
 mAssociatedValues (),
-mEnum (kNotBuilt) {
+mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_AccessControl GALGAS_AccessControl::class_func_publicAccess (UNUSED_LOCATION_ARGS) {
   GALGAS_AccessControl result ;
-  result.mEnum = kEnum_publicAccess ;
+  result.mEnum = Enumeration::enum_publicAccess ;
   return result ;
 }
 
@@ -12661,7 +12661,7 @@ GALGAS_AccessControl GALGAS_AccessControl::class_func_protectedAccess (const GAL
                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_AccessControl result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_protectedAccess ;
+    result.mEnum = Enumeration::enum_protectedAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControl_protectedAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12676,7 +12676,7 @@ GALGAS_AccessControl GALGAS_AccessControl::class_func_protectedSetAccess (const 
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_AccessControl result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_protectedSetAccess ;
+    result.mEnum = Enumeration::enum_protectedSetAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControl_protectedSetAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12691,7 +12691,7 @@ GALGAS_AccessControl GALGAS_AccessControl::class_func_privateAccess (const GALGA
                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_AccessControl result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_privateAccess ;
+    result.mEnum = Enumeration::enum_privateAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControl_privateAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12706,7 +12706,7 @@ GALGAS_AccessControl GALGAS_AccessControl::class_func_privateSetAccess (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_AccessControl result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_privateSetAccess ;
+    result.mEnum = Enumeration::enum_privateSetAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControl_privateSetAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12721,7 +12721,7 @@ GALGAS_AccessControl GALGAS_AccessControl::class_func_fileprivateAccess (const G
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_AccessControl result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_fileprivateAccess ;
+    result.mEnum = Enumeration::enum_fileprivateAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControl_fileprivateAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12736,7 +12736,7 @@ GALGAS_AccessControl GALGAS_AccessControl::class_func_fileprivateSetAccess (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_AccessControl result ;
   if (inAssociatedValue0.isValid ()) {
-    result.mEnum = kEnum_fileprivateSetAccess ;
+    result.mEnum = Enumeration::enum_fileprivateSetAccess ;
     cEnumAssociatedValues * ptr = nullptr ;
     macroMyNew (ptr, cEnumAssociatedValues_AccessControl_fileprivateSetAccess (inAssociatedValue0 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
@@ -12750,7 +12750,7 @@ GALGAS_AccessControl GALGAS_AccessControl::class_func_fileprivateSetAccess (cons
 void GALGAS_AccessControl::method_protectedAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_protectedAccess) {
+  if (mEnum != Enumeration::enum_protectedAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControl protectedAccess invoked with an invalid enum value") ;
@@ -12766,7 +12766,7 @@ void GALGAS_AccessControl::method_protectedAccess (GALGAS_unifiedTypeMapEntry & 
 void GALGAS_AccessControl::method_protectedSetAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_protectedSetAccess) {
+  if (mEnum != Enumeration::enum_protectedSetAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControl protectedSetAccess invoked with an invalid enum value") ;
@@ -12782,7 +12782,7 @@ void GALGAS_AccessControl::method_protectedSetAccess (GALGAS_unifiedTypeMapEntry
 void GALGAS_AccessControl::method_privateAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_privateAccess) {
+  if (mEnum != Enumeration::enum_privateAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControl privateAccess invoked with an invalid enum value") ;
@@ -12798,7 +12798,7 @@ void GALGAS_AccessControl::method_privateAccess (GALGAS_unifiedTypeMapEntry & ou
 void GALGAS_AccessControl::method_privateSetAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_privateSetAccess) {
+  if (mEnum != Enumeration::enum_privateSetAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControl privateSetAccess invoked with an invalid enum value") ;
@@ -12814,7 +12814,7 @@ void GALGAS_AccessControl::method_privateSetAccess (GALGAS_unifiedTypeMapEntry &
 void GALGAS_AccessControl::method_fileprivateAccess (GALGAS_location & outAssociatedValue0,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fileprivateAccess) {
+  if (mEnum != Enumeration::enum_fileprivateAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControl fileprivateAccess invoked with an invalid enum value") ;
@@ -12830,7 +12830,7 @@ void GALGAS_AccessControl::method_fileprivateAccess (GALGAS_location & outAssoci
 void GALGAS_AccessControl::method_fileprivateSetAccess (GALGAS_location & outAssociatedValue0,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  if (mEnum != kEnum_fileprivateSetAccess) {
+  if (mEnum != Enumeration::enum_fileprivateSetAccess) {
     outAssociatedValue0.drop () ;
     String s ;
     s.appendCString ("method @AccessControl fileprivateSetAccess invoked with an invalid enum value") ;
@@ -12844,14 +12844,14 @@ void GALGAS_AccessControl::method_fileprivateSetAccess (GALGAS_location & outAss
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControl::optional_publicAccess () const {
-  const bool ok = mEnum == kEnum_publicAccess ;
+  const bool ok = mEnum == Enumeration::enum_publicAccess ;
   return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControl::optional_protectedAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_protectedAccess ;
+  const bool ok = mEnum == Enumeration::enum_protectedAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_protectedAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12862,7 +12862,7 @@ bool GALGAS_AccessControl::optional_protectedAccess (GALGAS_unifiedTypeMapEntry 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControl::optional_protectedSetAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_protectedSetAccess ;
+  const bool ok = mEnum == Enumeration::enum_protectedSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_protectedSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12873,7 +12873,7 @@ bool GALGAS_AccessControl::optional_protectedSetAccess (GALGAS_unifiedTypeMapEnt
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControl::optional_privateAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_privateAccess ;
+  const bool ok = mEnum == Enumeration::enum_privateAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_privateAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12884,7 +12884,7 @@ bool GALGAS_AccessControl::optional_privateAccess (GALGAS_unifiedTypeMapEntry & 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControl::optional_privateSetAccess (GALGAS_unifiedTypeMapEntry & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_privateSetAccess ;
+  const bool ok = mEnum == Enumeration::enum_privateSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_privateSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12895,7 +12895,7 @@ bool GALGAS_AccessControl::optional_privateSetAccess (GALGAS_unifiedTypeMapEntry
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControl::optional_fileprivateAccess (GALGAS_location & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_fileprivateAccess ;
+  const bool ok = mEnum == Enumeration::enum_fileprivateAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_fileprivateAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12906,7 +12906,7 @@ bool GALGAS_AccessControl::optional_fileprivateAccess (GALGAS_location & outAsso
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_AccessControl::optional_fileprivateSetAccess (GALGAS_location & outAssociatedValue0) const {
-  const bool ok = mEnum == kEnum_fileprivateSetAccess ;
+  const bool ok = mEnum == Enumeration::enum_fileprivateSetAccess ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_AccessControl_fileprivateSetAccess *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
@@ -12930,43 +12930,43 @@ static const char * gEnumNameArrayFor_AccessControl [8] = {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControl::getter_isPublicAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_publicAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_publicAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControl::getter_isProtectedAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_protectedAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControl::getter_isProtectedSetAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_protectedSetAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedSetAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControl::getter_isPrivateAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_privateAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControl::getter_isPrivateSetAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_privateSetAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateSetAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControl::getter_isFileprivateAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fileprivateAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fileprivateAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_AccessControl::getter_isFileprivateSetAccess (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_fileprivateSetAccess == mEnum) ;
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_fileprivateSetAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12974,7 +12974,7 @@ GALGAS_bool GALGAS_AccessControl::getter_isFileprivateSetAccess (UNUSED_LOCATION
 void GALGAS_AccessControl::description (String & ioString,
                                         const int32_t inIndentation) const {
   ioString.appendCString ("<enum @AccessControl: ") ;
-  ioString.appendCString (gEnumNameArrayFor_AccessControl [mEnum]) ;
+  ioString.appendCString (gEnumNameArrayFor_AccessControl [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
@@ -13121,12 +13121,12 @@ GALGAS_constantIndexMap GALGAS_constantIndexMap::class_func_emptyMap (LOCATION_A
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_constantIndexMap_2D_element_3F_ GALGAS_constantIndexMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_constantIndexMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_constantIndexMap * p = (cMapElement_constantIndexMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_constantIndexMap * p = (cMapElement_constantIndexMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_constantIndexMap_2D_element_3F_::init_nil () ;
     }else{
@@ -13492,12 +13492,12 @@ GALGAS_internalRoutineMap GALGAS_internalRoutineMap::class_func_emptyMap (LOCATI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_internalRoutineMap_2D_element_3F_ GALGAS_internalRoutineMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_internalRoutineMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_internalRoutineMap * p = (cMapElement_internalRoutineMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_internalRoutineMap * p = (cMapElement_internalRoutineMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_internalRoutineMap_2D_element_3F_::init_nil () ;
     }else{
@@ -13837,12 +13837,12 @@ GALGAS_routineArgumentMap GALGAS_routineArgumentMap::class_func_emptyMap (LOCATI
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_routineArgumentMap_2D_element_3F_ GALGAS_routineArgumentMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_routineArgumentMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_routineArgumentMap * p = (cMapElement_routineArgumentMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_routineArgumentMap * p = (cMapElement_routineArgumentMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_routineArgumentMap_2D_element_3F_::init_nil () ;
     }else{
@@ -14794,12 +14794,12 @@ GALGAS_grammarLabelMap GALGAS_grammarLabelMap::class_func_emptyMap (LOCATION_ARG
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarLabelMap_2D_element_3F_ GALGAS_grammarLabelMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_grammarLabelMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_grammarLabelMap * p = (cMapElement_grammarLabelMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_grammarLabelMap * p = (cMapElement_grammarLabelMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_grammarLabelMap_2D_element_3F_::init_nil () ;
     }else{
@@ -15133,12 +15133,12 @@ GALGAS_grammarMap GALGAS_grammarMap::class_func_emptyMap (LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_grammarMap_2D_element_3F_ GALGAS_grammarMap
-::readSubscript__3F_string (const class GALGAS_string & inKey,
+::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_grammarMap_2D_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    cMapElement_grammarMap * p = (cMapElement_grammarMap *) searchEntryInMap (inKey.stringValue ()) ;
+    cMapElement_grammarMap * p = (cMapElement_grammarMap *) searchForKey (inKey) ;
     if (nullptr == p) {
       result = GALGAS_grammarMap_2D_element_3F_::init_nil () ;
     }else{

@@ -7732,8 +7732,8 @@ GALGAS_optionComponentMapForGeneration_2D_element_3F_ GALGAS_optionComponentMapF
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_enumConstantList_2D_element::GALGAS_enumConstantList_2D_element (void) :
-mProperty_mConstantName (),
-mProperty_mAssociatedValueDefinitionList () {
+mProperty_name (),
+mProperty_associatedValueTypeList () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7743,14 +7743,14 @@ GALGAS_enumConstantList_2D_element::~ GALGAS_enumConstantList_2D_element (void) 
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::init_21__21_ (const GALGAS_lstring & in_mConstantName,
-                                                                                     const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList,
+GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::init_21__21_ (const GALGAS_lstring & in_name,
+                                                                                     const GALGAS__32_lstringlist & in_associatedValueTypeList,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mConstantName = in_mConstantName ;
-  result.mProperty_mAssociatedValueDefinitionList = in_mAssociatedValueDefinitionList ;
+  result.mProperty_name = in_name ;
+  result.mProperty_associatedValueTypeList = in_associatedValueTypeList ;
   return result ;
 }
 
@@ -7763,34 +7763,34 @@ void GALGAS_enumConstantList_2D_element::setInitializedProperties (Compiler * /*
 
 GALGAS_enumConstantList_2D_element::GALGAS_enumConstantList_2D_element (const GALGAS_lstring & inOperand0,
                                                                         const GALGAS__32_lstringlist & inOperand1) :
-mProperty_mConstantName (inOperand0),
-mProperty_mAssociatedValueDefinitionList (inOperand1) {
+mProperty_name (inOperand0),
+mProperty_associatedValueTypeList (inOperand1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::class_func_new (const GALGAS_lstring & in_mConstantName,
-                                                                                       const GALGAS__32_lstringlist & in_mAssociatedValueDefinitionList,
+GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::class_func_new (const GALGAS_lstring & in_name,
+                                                                                       const GALGAS__32_lstringlist & in_associatedValueTypeList,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantList_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mConstantName = in_mConstantName ;
-  result.mProperty_mAssociatedValueDefinitionList = in_mAssociatedValueDefinitionList ;
+  result.mProperty_name = in_name ;
+  result.mProperty_associatedValueTypeList = in_associatedValueTypeList ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_enumConstantList_2D_element::isValid (void) const {
-  return mProperty_mConstantName.isValid () && mProperty_mAssociatedValueDefinitionList.isValid () ;
+  return mProperty_name.isValid () && mProperty_associatedValueTypeList.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_enumConstantList_2D_element::drop (void) {
-  mProperty_mConstantName.drop () ;
-  mProperty_mAssociatedValueDefinitionList.drop () ;
+  mProperty_name.drop () ;
+  mProperty_associatedValueTypeList.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7801,9 +7801,9 @@ void GALGAS_enumConstantList_2D_element::description (String & ioString,
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_mConstantName.description (ioString, inIndentation+1) ;
+    mProperty_name.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mAssociatedValueDefinitionList.description (ioString, inIndentation+1) ;
+    mProperty_associatedValueTypeList.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
@@ -10214,6 +10214,117 @@ GALGAS_unifiedTypeMap_2D_element_3F_ GALGAS_unifiedTypeMap_2D_element_3F_::extra
       result = *p ;
     }else{
       inCompiler->castError ("unifiedTypeMap-element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition_2E_solved::GALGAS_typeDefinition_2E_solved (void) :
+mProperty_definition () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition_2E_solved::~ GALGAS_typeDefinition_2E_solved (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::init_21_ (const GALGAS_unifiedTypeDefinition & in_definition,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_typeDefinition_2E_solved result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_definition = in_definition ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeDefinition_2E_solved::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition_2E_solved::GALGAS_typeDefinition_2E_solved (const GALGAS_unifiedTypeDefinition & inOperand0) :
+mProperty_definition (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::class_func_new (const GALGAS_unifiedTypeDefinition & in_definition,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_typeDefinition_2E_solved result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_definition = in_definition ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeDefinition_2E_solved::isValid (void) const {
+  return mProperty_definition.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeDefinition_2E_solved::drop (void) {
+  mProperty_definition.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeDefinition_2E_solved::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @typeDefinition.solved:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_definition.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @typeDefinition.solved generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved ("typeDefinition.solved",
+                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_typeDefinition_2E_solved::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typeDefinition_2E_solved ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_typeDefinition_2E_solved::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_typeDefinition_2E_solved (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_typeDefinition_2E_solved result ;
+  const GALGAS_typeDefinition_2E_solved * p = (const GALGAS_typeDefinition_2E_solved *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_typeDefinition_2E_solved *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("typeDefinition.solved", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -15640,127 +15751,6 @@ GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::extractObje
       result = *p ;
     }else{
       inCompiler->castError ("grammarLabelMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Optional @grammarLabelMap_2D_element_3F_
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_::GALGAS_grammarLabelMap_2D_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_::GALGAS_grammarLabelMap_2D_element_3F_ (const GALGAS_grammarLabelMap_2D_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_ GALGAS_grammarLabelMap_2D_element_3F_::init_nil (void) {
-  GALGAS_grammarLabelMap_2D_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_grammarLabelMap_2D_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_grammarLabelMap_2D_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_grammarLabelMap_2D_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GALGAS_grammarLabelMap_2D_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_grammarLabelMap_2D_element_3F_::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @grammarLabelMap-element? generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2D_element_3F_ ("grammarLabelMap-element?",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_grammarLabelMap_2D_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarLabelMap_2D_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_grammarLabelMap_2D_element_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_grammarLabelMap_2D_element_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_ GALGAS_grammarLabelMap_2D_element_3F_::extractObject (const GALGAS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_grammarLabelMap_2D_element_3F_ result ;
-  const GALGAS_grammarLabelMap_2D_element_3F_ * p = (const GALGAS_grammarLabelMap_2D_element_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_grammarLabelMap_2D_element_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("grammarLabelMap-element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

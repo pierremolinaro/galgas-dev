@@ -18,17 +18,16 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-//#include "all-predefined-types.h"
-//#include "C_galgas_CLI_Options.h"
+#include "all-predefined-types.h"
+#include "C_galgas_CLI_Options.h"
 #include "Compiler.h"
-//#include "F_mainForLIBPM.h"
-//#include "analyzeCommandLineOptions.h"
-//#include "unicode_character_cpp.h"
-//#include "galgas-input-output.h"
+#include "F_mainForLIBPM.h"
+#include "analyzeCommandLineOptions.h"
+#include "unicode_character_cpp.h"
+#include "galgas-input-output.h"
 #include "FileManager.h"
-//#include "BinaryFileWrite.h"
-//#include "F_verbose_output.h"
-#include "all-declarations.h"
+#include "BinaryFileWrite.h"
+#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

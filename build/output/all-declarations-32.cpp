@@ -402,9 +402,9 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GALGAS_string constinArg
         }
         var_headerIncludes_32__13552.plusAssign_operation(var_headerDef_32__13530, inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 322)) ;
         switch (callExtensionGetter_headerKind ((const cPtr_semanticDeclarationForGeneration *) enumerator_12823.current (HERE).readProperty_mDeclaration ().ptr (), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas", 324)).enumValue ()) {
-        case GALGAS_headerKind::kNotBuilt:
+        case GALGAS_headerKind::Enumeration::invalid:
           break ;
-        case GALGAS_headerKind::kEnum_noHeader:
+        case GALGAS_headerKind::Enumeration::enum_noHeader:
           {
             enumGalgasBool test_3 = kBoolTrue ;
             if (kBoolTrue == test_3) {
@@ -424,7 +424,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GALGAS_string constinArg
             }
           }
           break ;
-        case GALGAS_headerKind::kEnum_oneHeader:
+        case GALGAS_headerKind::Enumeration::enum_oneHeader:
           {
             enumGalgasBool test_7 = kBoolTrue ;
             if (kBoolTrue == test_7) {
@@ -444,7 +444,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const GALGAS_string constinArg
             }
           }
           break ;
-        case GALGAS_headerKind::kEnum_twoHeaders:
+        case GALGAS_headerKind::Enumeration::enum_twoHeaders:
           {
             enumGalgasBool test_11 = kBoolTrue ;
             if (kBoolTrue == test_11) {
