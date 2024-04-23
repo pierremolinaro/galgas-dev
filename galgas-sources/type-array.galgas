@@ -280,7 +280,7 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method addAssociatedElement
-    ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
+    ?!@galgasDeclarationAST unused ioDeclarations {
 #    var @propertyInCollectionListAST structAttributeList = ()
 #    for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
 #      structAttributeList +=

@@ -180,6 +180,50 @@ class GALGAS_stringset function_forbiddenKeysForMapAndDict (class Compiler * inC
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'dictGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_dictGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'dictGenerationTemplate dictTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_dictGenerationTemplate_dictTypeHeader_31_ (class Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'dictGenerationTemplate dictTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                         const class GALGAS_string & in_KEY_5F_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_bool & in_GENERATE_5F_COMPARISON,
+                                                                                         const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_string & in_OPTIONAL_5F_ELEMENT_5F_TYPE_5F_IDENTIFIER
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'enterInheritedGetterWith2Arguments&&??????returnedTypeName?hasCompilerArgument'
 //
 //--------------------------------------------------------------------------------------------------
@@ -949,31 +993,4 @@ void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GALGAS_f
                                                             const class GALGAS_location constinArgument5,
                                                             class Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'buildLocalVariableMapAndSignature?&?&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class GALGAS_semanticContext constinArgument0,
-                                                                    class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                    const class GALGAS_formalParameterListAST constinArgument2,
-                                                                    class GALGAS_localVarManager & ioArgument3,
-                                                                    class GALGAS_formalParameterListForGeneration & outArgument4,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkMethodSignatures????'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GALGAS_formalParameterListForGeneration constinArgument0,
-                                                    const class GALGAS_location constinArgument1,
-                                                    const class GALGAS_formalParameterSignature constinArgument2,
-                                                    const class GALGAS_location constinArgument3,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
 

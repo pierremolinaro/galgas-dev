@@ -194,7 +194,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
                             ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
-  var @galgasDeclarationAST declarationAST = .init {}
+  var @galgasDeclarationAST declarationAST = ()
 //--- Parse predefined type definitions
 #  var f = filewrapper  typeGenerationTemplate
   grammar galgas4Grammar (!?declarationAST) on
@@ -212,25 +212,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
       error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
     end
   end
-#---------------------------------- Add 'print' proc
-#  var @formalParameterListAST formalParameterList = ()
-#  formalParameterList += !["" nowhere] !.argumentConstantIn !["string" nowhere] !["inMessage" nowhere] !false
-#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST {
-#    !false # Is not predefined
-#    !false # Is not internal
-#    !["println" nowhere]
-#    !formalParameterList
-#    !usefullProcedure: true
-#  }
-##  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["println" nowhere])
-#  declarationAST.mDeclarationList += !@externProcedureDeclarationAST {
-#    !false # Is not predefined
-#    !false # Is not internal
-#    !["print" nowhere]
-#    !formalParameterList
-#    !usefullProcedure: true
-#  }
-##  usefulnessRootEntities += !procedureNameForUsefulEntitiesGraph (!["print" nowhere])
 #---------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = ()
   var @stringlist handCodedLinkAppFileList = ()
@@ -312,7 +293,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
       !galgas4: inGalgas4
       !productDirectory
       !inProjectComponentAST.mEndOfSourceFile
-      !declarationAST.mDeclarationList
+      !declarationAST
       ?semanticContext
       ?typeMap
       ?semanticDeclarationSortedListForGeneration

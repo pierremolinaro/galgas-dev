@@ -3686,7 +3686,7 @@ void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclaration
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_addAssociatedElement (class cPtr_semanticDeclarationAST * inObject,
-                                               class GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
+                                               class GALGAS_galgasDeclarationAST & io_ioDeclarations,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

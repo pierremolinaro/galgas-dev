@@ -1553,7 +1553,7 @@ class cPtr_arrayTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
@@ -6880,7 +6880,7 @@ class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
@@ -7097,7 +7097,7 @@ class cPtr_dictDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
@@ -8188,7 +8188,7 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
@@ -8758,13 +8758,13 @@ class GALGAS_optionalTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_optionalTypeDeclarationAST init_21_isPredefined_21__21__21_isUsefull_21_equatable (const class GALGAS_bool & inOperand0,
-                                                                                                           const class GALGAS_lstring & inOperand1,
-                                                                                                           const class GALGAS_lstring & inOperand2,
-                                                                                                           const class GALGAS_bool & inOperand3,
-                                                                                                           const class GALGAS_bool & inOperand4,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_optionalTypeDeclarationAST init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_equatable (const class GALGAS_bool & inOperand0,
+                                                                                                                                            const class GALGAS_lstring & inOperand1,
+                                                                                                                                            const class GALGAS_lstring & inOperand2,
+                                                                                                                                            const class GALGAS_bool & inOperand3,
+                                                                                                                                            const class GALGAS_bool & inOperand4,
+                                                                                                                                            Compiler * inCompiler
+                                                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8819,19 +8819,19 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void optionalTypeDeclarationAST_init_21_isPredefined_21__21__21_isUsefull_21_equatable (const class GALGAS_bool & inOperand0,
-                                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                                  const class GALGAS_lstring & inOperand2,
-                                                                                                  const class GALGAS_bool & inOperand3,
-                                                                                                  const class GALGAS_bool & inOperand4,
-                                                                                                  Compiler * inCompiler) ;
+  public: void optionalTypeDeclarationAST_init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_equatable (const class GALGAS_bool & inOperand0,
+                                                                                                                                   const class GALGAS_lstring & inOperand1,
+                                                                                                                                   const class GALGAS_lstring & inOperand2,
+                                                                                                                                   const class GALGAS_bool & inOperand3,
+                                                                                                                                   const class GALGAS_bool & inOperand4,
+                                                                                                                                   Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph
@@ -9304,7 +9304,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInGraph

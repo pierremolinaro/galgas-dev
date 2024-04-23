@@ -279,7 +279,7 @@ void routine_compileSemanticDeclarationsGalgas_26__26__3F_galgas_34__3F__3F__3F_
                                                                                               const class GALGAS_bool constinArgument2,
                                                                                               const class GALGAS_string constinArgument3,
                                                                                               const class GALGAS_location constinArgument4,
-                                                                                              const class GALGAS_semanticDeclarationListAST constinArgument5,
+                                                                                              const class GALGAS_galgasDeclarationAST constinArgument5,
                                                                                               class GALGAS_semanticContext & outArgument6,
                                                                                               class GALGAS_unifiedTypeMap & outArgument7,
                                                                                               class GALGAS_semanticDeclarationListForGeneration & outArgument8,

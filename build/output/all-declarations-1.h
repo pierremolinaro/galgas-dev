@@ -5957,7 +5957,7 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
   public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method addAssociatedElement
-  public: virtual void method_addAssociatedElement (class GALGAS_semanticDeclarationListAST & arg_ioSemanticDeclarationList,
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method buildExtensionListMaps

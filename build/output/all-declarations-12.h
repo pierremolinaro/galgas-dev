@@ -2076,3 +2076,15 @@ class cParser_galgas_33_DeclarationsSyntax {
 class GALGAS_string function_weakSuffix (class Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@galgasDeclarationAST getOptionalTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_getOptionalTypeName (class GALGAS_galgasDeclarationAST & ioObject,
+                                          class GALGAS_lstring & out_outOptionalTypeName,
+                                          class GALGAS_lstring in_inTypeName,
+                                          class Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+

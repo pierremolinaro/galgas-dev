@@ -369,7 +369,7 @@ end
 //--------------------------------- Read subscripts
 %
 for (key argumentList resultType) in READ_SUBSCRIPT_MAP do
-%  public: VIRTUAL_IN_DEBUG GALGAS_%![resultType identifierRepresentation]% readSubscript_%
+%  public: VIRTUAL_IN_DEBUG class GALGAS_%![resultType identifierRepresentation]% readSubscript_%
    ![key identifierRepresentation]% (%?^
   for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in argumentList do (IDX) 
     %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & in% ![IDX string] %,\n% !^

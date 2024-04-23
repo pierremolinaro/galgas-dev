@@ -15810,6 +15810,24 @@ GALGAS_uint GALGAS_syntaxExtensionsDictionary::getter_count (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_syntaxExtensionsDictionary_2D_element_3F_ GALGAS_syntaxExtensionsDictionary
+::readSubscript__3F_ (const class GALGAS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_syntaxExtensionsDictionary_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const cNode_syntaxExtensionsDictionary * p = mSharedDict->findEntryInDict (inKey) ;
+    if (nullptr == p) {
+      result = GALGAS_syntaxExtensionsDictionary_2D_element_3F_::init_nil () ;
+    }else{
+      result = *p ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Insulate
 #endif

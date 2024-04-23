@@ -503,6 +503,25 @@ struct @galgasDeclarationAST {
   public var @prologueEpilogueList mPrologueDeclarationList = ()
   public var @programRuleList mSourceRuleList = ()
   public var @prologueEpilogueList mEpilogueDeclarationList = ()
+  
+  #·······························································································
+
+  setter getOptionalTypeName !@lstring outOptionalTypeName ?forTypeNamed: @lstring inTypeName {
+    outOptionalTypeName = optionalTypeName (!forTypeNamed: inTypeName)
+    if not [self.implicitTypeDeclarationSet hasKey !outOptionalTypeName.string] then
+      self.implicitTypeDeclarationSet += !outOptionalTypeName.string
+      self.mDeclarationList += !@optionalTypeDeclarationAST (
+        !isPredefined: false,
+        !optionalTypeName: outOptionalTypeName,
+        !unwrappedTypeName: inTypeName,
+        !isUsefull: true,
+        !equatable: false
+      )
+    end
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

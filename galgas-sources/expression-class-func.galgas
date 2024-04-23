@@ -41,7 +41,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     let startOfExpression = @location.here
   #--- Constructor name
-    $identifier$ ?let @lstring constructorName
+    $identifier$ ?let classFuncName
   #--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
@@ -54,7 +54,7 @@ syntax extension galgas3ExpressionSyntax {
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST {
       !typeName
-      !constructorName
+      !classFuncName
       !expressionList
       ![startOfExpression union !endOfExpression]
     }
@@ -73,7 +73,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary_beginning_by_dot> ?!@galgasDeclarationAST ioDeclarations
                                   !@semanticExpressionAST outExpression {
   #--- Constructor name
-    $identifier$ ?let @lstring constructorName
+    $identifier$ ?let @lstring classFuncName
   #--- Actual arguments
     let startOfExpression = @location.here
     let @actualOutputArgumentList expressionList
@@ -87,7 +87,7 @@ syntax extension galgas4ExpressionSyntax {
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST {
       !.init ("", startOfExpression)
-      !constructorName
+      !classFuncName
       !expressionList
       ![startOfExpression union !endOfExpression]
     }
@@ -125,31 +125,30 @@ syntax extension galgas4ExpressionSyntax {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classFuncExpressionAST : @semanticExpressionAST {
-  private let @lstring mTypeName
-  private let @lstring mConstructorName
-  private let @actualOutputArgumentList mExpressions
+  private let @lstring typeName
+  private let @lstring classFuncName
+  private let @actualOutputArgumentList expressions
   private let @location locationForOldStyleCollectionInitializerError
 
   #·······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-    if self.mTypeName.string != "" then
-      [!?ioTypeMap makeEntry !self.mTypeName ?*]
+    if self.typeName.string != "" then
+      [!?ioTypeMap makeEntry !self.typeName ?*]
     end
-    [self.mExpressions enterInSemanticContext !?ioTypeMap]
+    [self.expressions enterInSemanticContext !?ioTypeMap]
   }
 
   #·······························································································
 
   override method analyzeSemanticExpression
-    ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?inferenceType: let @unifiedTypeMapEntry inType
-    ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?!@localVarManager ioVariableMap
-    !@semanticExpressionForGeneration outExpression
-  {
+                          ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                          ?inferenceType: let @unifiedTypeMapEntry inType
+                          ?let @analysisContext inAnalysisContext
+                          ?!@unifiedTypeMap ioTypeMap
+                          ?!@localVarManager ioVariableMap
+                          !@semanticExpressionForGeneration outExpression {
     analyzeConstructorInvocation (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -157,25 +156,25 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
-      !self.mTypeName
-      !self.mConstructorName
-      !self.mExpressions
+      !self.typeName
+      !self.classFuncName
+      !self.expressions
       !self.locationForOldStyleCollectionInitializerError
       ?let @unifiedTypeMapEntry returnedType
-      ?let @unifiedTypeMapEntry constructorType
+      ?let @unifiedTypeMapEntry classFuncType
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
       ?let @bool hasCompilerArgument
     )
-    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![constructorType definition].typeName.string !self.mTypeName})
+    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![classFuncType definition].typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![returnedType definition].typeName.string !self.mTypeName})
+    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![returnedType definition].typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
   #---
     outExpression = @classFuncExpressionForGeneration {
       !returnedType
-      !self.mConstructorName.location
-      !constructorType
-      !self.mConstructorName.string
+      !self.classFuncName.location
+      !classFuncType
+      !self.classFuncName.string
       !constructorEffectiveParameterList
       !hasCompilerArgument
     }
@@ -303,7 +302,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
 
 refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry mConstructorType
-  private let @string mConstructorName
+  private let @string classFuncName
   private let @semanticExpressionListForGeneration mEffectiveParameterList
   private let @bool mHasCompilerArgument
 
@@ -329,7 +328,7 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
       parameterList += !parameter
     end
     outCppExpression = "GALGAS_"  + [self.mConstructorType identifierRepresentation]
-                     + "::class_func_" + [self.mConstructorName identifierRepresentation]
+                     + "::class_func_" + [self.classFuncName identifierRepresentation]
                      + " ("
     for (mValue) in parameterList
       do outCppExpression += mValue

@@ -175,7 +175,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST addAssociatedElement
-  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
+  ?!@galgasDeclarationAST ioDeclarations {
   var @propertyInCollectionListAST structAttributeList = ()
   for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
@@ -186,7 +186,7 @@ override method @sortedListDeclarationAST addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
-  ioSemanticDeclarationList += !@structDeclarationAST {
+  ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
     !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     !structAttributeList

@@ -274,7 +274,7 @@ syntax extension galgas4DeclarationsSyntax {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST addAssociatedElement
-  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
+  ?!@galgasDeclarationAST ioDeclarations {
   var structAttributeList = @propertyInCollectionListAST ()
   structAttributeList +=
     !isConstant: false
@@ -292,7 +292,7 @@ override method @mapDeclarationAST addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
-  ioSemanticDeclarationList += !@structDeclarationAST {
+  ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
     !@lstring {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
     !structAttributeList

@@ -920,7 +920,7 @@ override method @filewrapperDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationAST addAssociatedElement
-  ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
+  ?!@galgasDeclarationAST unused ioDeclarations {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

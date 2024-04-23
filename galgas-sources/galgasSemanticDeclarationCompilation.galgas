@@ -25,7 +25,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
                             ?galgas4: let @bool inGalgas4
                             ?let @string inProductDirectory
                             ?let @location inEndOfProjectSourceFile
-                            ?let @semanticDeclarationListAST inSemanticDeclarationList
+                            ?let @galgasDeclarationAST inSemanticDeclarations
                             !@semanticContext outSemanticContext
                             !@unifiedTypeMap outTypeMap
                             !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration {
@@ -33,8 +33,8 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
     println (!"*** Building semantic context")
   end
 #------ Add predefined types to semantics declarations
-  var @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
-  appendPredefinedTypesASTs (!?semanticDeclarationListWithPredefinedTypes !?ioUsefulnessRootEntities)
+  var semanticDeclarations = inSemanticDeclarations
+  appendPredefinedTypesASTs (!?semanticDeclarations.mDeclarationList !?ioUsefulnessRootEntities)
 #---- Add predefined option component
   var @commandLineOptionListAST options = ()
   for name in @application.boolOptionNameList do
@@ -67,7 +67,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
       !["" nowhere]
       !.noDefaultValue
   end
-  semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST {
+  semanticDeclarations.mDeclarationList += !@optionComponentDeclarationAST {
     !isPredefined: true # Is predefined
     !["galgas_builtin_options" nowhere]
     !options
@@ -76,7 +76,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   ioUsefulnessRootEntities += !galgas_builtin_optionsUsefulnessName
 #------ Build semantic context
   buildGalgasSemanticContext (
-    !semanticDeclarationListWithPredefinedTypes
+    !semanticDeclarations
     !inEndOfProjectSourceFile
     !galgas4: inGalgas4
     ?outSemanticContext
@@ -115,16 +115,16 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSemanticDeclarationList
+private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclarations
                                         ?let @location inEndOfProjectSourceFile
                                         ?galgas4: let @bool inGalgas4
                                         !@semanticContext outSemanticContext
                                         !@unifiedTypeMap outTypeMap
                                         !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
 #------ Create associated type (@TYPE-element) for lists, maps, ...
-  var @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
-  for declaration in inSemanticDeclarationList do
-    [declaration.mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
+  var @galgasDeclarationAST semanticDeclarations = inDeclarations
+  for declaration in inDeclarations.mDeclarationList do
+    [declaration.mSemanticDeclaration addAssociatedElement !?semanticDeclarations]
   end
 #------ Build ordered types list, so that
 #  - a class appears after its super class
@@ -136,7 +136,7 @@ private proc buildGalgasSemanticContext ?let @semanticDeclarationListAST inSeman
   var @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = ()
   var @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = ()
   var @semanticDeclarationListAST extensionOverrideDefinitionList = ()
-  for declaration in semanticDeclarationList do
+  for declaration in semanticDeclarations.mDeclarationList do
     [declaration.mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?extensionInitializerForBuildingContext

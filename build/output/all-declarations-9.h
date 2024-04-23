@@ -2699,9 +2699,9 @@ friend class cEnumerator__5B_string_5D_ ;
 
 
 //--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG GALGAS_string readSubscript__3F_ (const class GALGAS_uint & in0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_string readSubscript__3F_ (const class GALGAS_uint & in0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Optional Methods

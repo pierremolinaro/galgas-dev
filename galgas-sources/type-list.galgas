@@ -416,7 +416,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 #·······················································································································
 
 override method @listDeclarationAST addAssociatedElement
-  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
+  ?!@galgasDeclarationAST ioDeclarations {
   var @propertyInCollectionListAST structAttributeList = ()
   for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
@@ -427,7 +427,7 @@ override method @listDeclarationAST addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
-  ioSemanticDeclarationList += !@structDeclarationAST {
+  ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
     !.init {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
     !structAttributeList

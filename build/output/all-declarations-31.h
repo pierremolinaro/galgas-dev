@@ -24,7 +24,7 @@ void routine_updateLIBPMatPath_3F_ (const class GALGAS_string constinArgument0,
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildGalgasSemanticContext_3F__3F__3F_galgas_34__21__21__21_ (const class GALGAS_semanticDeclarationListAST constinArgument0,
+void routine_buildGalgasSemanticContext_3F__3F__3F_galgas_34__21__21__21_ (const class GALGAS_galgasDeclarationAST constinArgument0,
                                                                            const class GALGAS_location constinArgument1,
                                                                            const class GALGAS_bool constinArgument2,
                                                                            class GALGAS_semanticContext & outArgument3,

@@ -448,6 +448,24 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%
+::readSubscript__3F_ (const class GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inKey.isValid ()) {
+    const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;
+    if (nullptr == p) {
+      result = GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER%::init_nil () ;
+    }else{
+      result = *p ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Insulate
 #endif

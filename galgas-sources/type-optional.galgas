@@ -16,49 +16,17 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3DeclarationsSyntax {
-
-  #·······························································································
-
-#  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
-#                              !@lstring outTypeName {
-#    $[$
-#    <type_definition_ggs3> !?ioDeclarations ?let elementTypeName
-#    outTypeName = .init ("[" + elementTypeName.string + "]", elementTypeName.location)
-#    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
-#      ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
-#      ioDeclarations.mDeclarationList += !@optionalTypeDeclarationAST (
-#        !isPredefined: false,
-#        outTypeName,
-#        elementTypeName,
-#        !isUsefull: true,
-#        !equatable: false
-#      )
-#    end
-#    $]$
-#  }
-
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
+func optionalTypeName ?forTypeNamed: let @lstring inTypeName -> @lstring {
+  result = inTypeName
+  result.string += "?"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
-  private let @lstring optionalTypeName
-  private let @lstring unwrappedTypeName
+  private let @lstring optionalTypeName %initArgLabel
+  private let @lstring unwrappedTypeName %initArgLabel
   private let @bool isUsefull %initArgLabel
   private let @bool equatable %initArgLabel
 
@@ -92,106 +60,12 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext {
-  #--- uint type index
-#    [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
-  #--- Setter argument list
-#    var @formalParameterSignature setterInputFormalArgumentList = §[
-#      .init (["" nowhere], elementType, .argumentConstantIn, "inElement")
-#    ]
-#    var @formalParameterSignature setterOutputFormalArgumentList = §[
-#      .init (["" nowhere], elementType, .argumentOut, "outElement")
-#    ]
   #--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
-#    enterBaseGetterWithoutArgument (
-#      !?getterMap
-#      !?ioTypeMap
-#      !getterName: "count"
-#      !obsoleteName: ""
-#      !returnedTypeName: "uint"
-#      !hasCompilerArgument: false
-#    )
-  #------------------------- Instance methods
-    var @instanceMethodMap instanceMethodMap = ()
-#    [!?instanceMethodMap insertKey
-#      !@lstring {!"first" !@location.here}
-#      !@methodKind.definedAsMember
-#      !setterOutputFormalArgumentList
-#      !@location.here
-#      !true
-#      !@methodQualifier.isBasic
-#      !""
-#    ]
-#    [!?instanceMethodMap insertKey
-#      !@lstring {!"last" !@location.here}
-#      !@methodKind.definedAsMember
-#      !setterOutputFormalArgumentList
-#      !@location.here
-#      !true
-#      !@methodQualifier.isBasic
-#      !""
-#    ]
-  #----------------------------------------- Setters
-    var @setterMap setterMap = ()
-#    [!?setterMap insertKey
-#      !@lstring {!"append" !.here}
-#      !.definedAsMember
-#      !§[.init (["" nowhere], elementType, .argumentConstantIn, "inElement")]
-#      !true
-#      !@methodQualifier.isBasic
-#      !""
-#    ]
-#    [!?setterMap insertKey
-#      !@lstring {!"popFirst" !@location.here}
-#      !@methodKind.definedAsMember
-#      !setterOutputFormalArgumentList
-#      !true
-#      !@methodQualifier.isBasic
-#      !""
-#    ]
-#    [!?setterMap insertKey
-#      !@lstring {!"popLast" !@location.here}
-#      !@methodKind.definedAsMember
-#      !setterOutputFormalArgumentList
-#      !true
-#      !@methodQualifier.isBasic
-#      !""
-#    ]
-#    setterOutputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inIndex"
-#    [!?setterMap insertKey
-#      !@lstring {!"removeAtIndex" !@location.here}
-#      !@methodKind.definedAsMember
-#      !setterOutputFormalArgumentList
-#      !true
-#      !@methodQualifier.isBasic
-#      !""
-#    ]
-  #--- setter 'insertAtIndex'
-#    setterInputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inInsertionIndex"
-#    [!?setterMap insertKey
-#      !@lstring {!"insertAtIndex" !@location.here}
-#      !@methodKind.definedAsMember
-#      !setterInputFormalArgumentList
-#      !true
-#      !@methodQualifier.isBasic
-#      !"" # No error message
-#    ]
-  #--- Add initializer without argument
-    var @initializerMap initializerMap = ()
-#    let @functionSignature emptyArgumentList = ()
-#    [!?initializerMap insertKey
-#      !.init {![emptyArgumentList initializerSignature] !self.arrayTypeName}
-#      !emptyArgumentList
-#    ]
-  #--- Read subscripts
-#    var @subscriptMap readSubscriptMap = ()
-#    let @functionSignature argumentTypeList = §[.init (["" nowhere], uintType, "inIndex", true)]
-#    [!?readSubscriptMap insertKey
-#      !.init ([argumentTypeList subcriptSignature], .nowhere)
-#      !argumentTypeList
-#      !elementType
-#    ]
   #--- Add extensions
+    var @instanceMethodMap instanceMethodMap = ()
+    var @setterMap setterMap = ()
+    var @initializerMap initializerMap = ()
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -248,24 +122,7 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   #·······························································································
 
-  override method addAssociatedElement ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
-#    var @propertyInCollectionListAST structAttributeList = ()
-#    for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
-#      structAttributeList +=
-#        !isConstant: isConstant
-#        !qualifiedTypeAST
-#        !mPropertyName
-#        !.publicAccess
-#        !hasSelector: hasSelector
-#        !initialization: initExpression
-#    end
-#    ioSemanticDeclarationList += !@structDeclarationAST {
-#      !isPredefined: self.isPredefined
-#      !.init {!self.arrayTypeName.string + elementTypeNameSuffix () !self.arrayTypeName.location}
-#      !structAttributeList
-#      !enumeratedElementTypeName: ""
-#      !comparison: if self.equatable then .equatable else .none end
-#    }
+  override method addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
   }
 
   #·······························································································
@@ -308,8 +165,9 @@ refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   #·······························································································
 
-  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+  override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
+    [self.unwrappedType addHeaderFileName !?ioInclusionSet]
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     outHeader = [filewrapper optionalTypeGenerationTemplate.optionalTypeHeader1
       !selfTypeDefinition.typeName.string

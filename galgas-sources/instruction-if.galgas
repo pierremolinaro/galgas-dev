@@ -277,6 +277,7 @@ syntax extension galgas4InstructionsSyntax {
       or
         $let$
         $[$
+        warning .here : "deprecated"
         <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
         var @optionalMethodActualArgumentList optionalMethodActualArgumentList = ()

@@ -5903,7 +5903,7 @@ void callExtensionMethod_enterDeclarationInGraph (cPtr_semanticDeclarationAST * 
 //
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_semanticDeclarationAST::method_addAssociatedElement (GALGAS_semanticDeclarationListAST & /* ioArgument_ioSemanticDeclarationList */,
+void cPtr_semanticDeclarationAST::method_addAssociatedElement (GALGAS_galgasDeclarationAST & /* ioArgument_ioDeclarations */,
                                                                Compiler * /* inCompiler */
                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
@@ -5911,12 +5911,12 @@ void cPtr_semanticDeclarationAST::method_addAssociatedElement (GALGAS_semanticDe
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_addAssociatedElement (cPtr_semanticDeclarationAST * inObject,
-                                               GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
+                                               GALGAS_galgasDeclarationAST & io_ioDeclarations,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_addAssociatedElement  (io_ioSemanticDeclarationList, inCompiler COMMA_THERE) ;
+    inObject->method_addAssociatedElement  (io_ioDeclarations, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
