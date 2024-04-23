@@ -1065,17 +1065,17 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
-  override method getOptionalMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
-                                       !@optionalMethodMap outMap {
-    outMap = ()
-    enterBaseOptionalMethodWithArgument (
-      !?outMap
-      !?ioUnifiedTypeMap
-      !optionalMethodName: "extractBigInt"
-      !"bigint"
-      !"outBigInt"
-    )
-  }
+#  override method getOptionalMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
+#                                       !@optionalMethodMap outMap {
+#    outMap = ()
+#    enterBaseOptionalMethodWithArgument (
+#      !?outMap
+#      !?ioUnifiedTypeMap
+#      !optionalMethodName: "extractBigInt"
+#      !"bigint"
+#      !"outBigInt"
+#    )
+#  }
 
   #-----------------------------------------------------------------------------------------------
 

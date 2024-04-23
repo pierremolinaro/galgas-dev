@@ -659,11 +659,6 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
            class GALGAS_instanceMethodMap & arg_outInstanceMethodMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--- Extension method getOptionalMethodMap
-  public: virtual void method_getOptionalMethodMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
-           class GALGAS_optionalMethodMap & arg_outMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
 //--- Extension method getSetterMap
   public: virtual void method_getSetterMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GALGAS_setterMap & arg_outSetterMap,

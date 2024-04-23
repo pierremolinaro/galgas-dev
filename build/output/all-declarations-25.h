@@ -726,20 +726,6 @@ void routine_enterBaseGetterWith_32_Arguments_26__26__3F_getterName_3F_arg_31_Se
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterBaseOptionalMethodWithArgument&&?optionalMethodName??'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseOptionalMethodWithArgument_26__26__3F_optionalMethodName_3F__3F_ (class GALGAS_optionalMethodMap & ioArgument0,
-                                                                                        class GALGAS_unifiedTypeMap & ioArgument1,
-                                                                                        const class GALGAS_string constinArgument2,
-                                                                                        const class GALGAS_string constinArgument3,
-                                                                                        const class GALGAS_string constinArgument4,
-                                                                                        class Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'enterModifierWithoutArgument&??compilerArg'
 //
 //--------------------------------------------------------------------------------------------------

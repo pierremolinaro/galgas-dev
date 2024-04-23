@@ -157,7 +157,6 @@ project (3:7:0) -> "galgas" {
   "galgas-sources/semanticsSetters.galgas"
   "galgas-sources/semanticsInstanceMethods.galgas"
   "galgas-sources/semanticsTypeMethods.galgas"
-  "galgas-sources/semanticsOptionalMethods.galgas"
   "galgas-sources/routineMap.galgas"
   "galgas-sources/semanticContext.galgas"
   "galgas-sources/semanticsDecoratedTypes.galgas"

@@ -3737,31 +3737,6 @@ void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_a
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterBaseOptionalMethodWithArgument&&?optionalMethodName??'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseOptionalMethodWithArgument_26__26__3F_optionalMethodName_3F__3F_ (GALGAS_optionalMethodMap & ioArgument_ioMap,
-                                                                                        GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
-                                                                                        const GALGAS_string constinArgument_inOptionalMethodName,
-                                                                                        const GALGAS_string constinArgument_inArgument_31_TypeName,
-                                                                                        const GALGAS_string constinArgument_inArgument_31_Name,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodSignature var_argList_1632 = GALGAS_optionalMethodSignature::init (inCompiler COMMA_HERE) ;
-  GALGAS_unifiedTypeMapEntry var_t_1713 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_1713, inCompiler COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 33)) ;
-  }
-  var_argList_1632.addAssign_operation (GALGAS_bool (false), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsOptionalMethods.galgas", 34)), var_t_1713, constinArgument_inArgument_31_Name  COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 34)) ;
-  {
-  ioArgument_ioMap.setter_insertKey (GALGAS_lstring::init_21__21_ (constinArgument_inOptionalMethodName, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 36)), inCompiler COMMA_HERE), var_argList_1632, inCompiler COMMA_SOURCE_FILE ("semanticsOptionalMethods.galgas", 35)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'routineMangledName'
 //
 //--------------------------------------------------------------------------------------------------

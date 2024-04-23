@@ -1011,21 +1011,6 @@ void GALGAS_string::class_method_generateFileWithPattern (GALGAS_string inStartP
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_string::optional_extractBigInt (GALGAS_bigint & outBigInt) const {
-  bool extracted = false ;
-  outBigInt.drop () ;
-  if (isValid () && (mString.length () > 0)) {
-    extracted = true ;
-    const BigSigned bigint (mString.cString (), BigUnsignedBase::ten, extracted) ;
-    if (extracted) {
-      outBigInt = GALGAS_bigint (bigint) ;
-    }
-  }
-  return extracted ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void GALGAS_string::printNonNullClassInstanceProperties (const char * inPropertyName) const {
     if (isValid ()) {

@@ -67,13 +67,12 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   #-----------------------------------------------------------------------------------------------
 
   override method enterDeclarationInSemanticContext
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext {
-    [self getOptionalMethodMap !?ioTypeMap ?let @optionalMethodMap optionalMethodMap]
+        ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+        ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+        ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+        ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+        ?!@unifiedTypeMap ioTypeMap
+        ?!@semanticContext ioSemanticContext {
     [self getClassFunctionMap !?ioTypeMap ?let @classFunctionMap constructorMap]
     [self getGetterMap !?ioTypeMap ?var @getterMap getterMap]
     [self getSetterMap !?ioTypeMap ?var @setterMap setterMap]
@@ -139,7 +138,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: classMethodMap
       !unwrappedType: .null
-      !optionalMethodMap: optionalMethodMap
+      !optionalMethodMap: ()
       !readSubscriptMap: ()
       !enumerationDescriptorList: enumerationList
       !features: [self getSupportedOperatorFlags]
@@ -209,13 +208,6 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@classMethodMap outClassMethodMap {
     outClassMethodMap = ()
-  }
-
-  #-----------------------------------------------------------------------------------------------
-
-  method getOptionalMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
-                               !@optionalMethodMap outMap {
-    outMap = ()
   }
 
   #-----------------------------------------------------------------------------------------------
